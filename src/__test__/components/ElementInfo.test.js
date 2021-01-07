@@ -15,7 +15,9 @@ const setup = () => {
         skosExample: 'skosExample'
       }
     },
-    selectedNode: 'abc'
+    selectedNode: 'abc',
+    setStoreState: jest.fn(),
+    deletedNodes: []
   };
 
   const component = shallow(<ElementInfo {...props} />);
@@ -27,6 +29,10 @@ const setup = () => {
 };
 
 describe('ElementInfo', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should match snapshot ', () => {
     const {
       component

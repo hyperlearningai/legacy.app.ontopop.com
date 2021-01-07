@@ -26,6 +26,7 @@ const Navbar = ({
   isSearchOpen,
   // mainView,
   isInfoOpen,
+  availableNodes,
 }) => {
   const { t } = useTranslation()
 
@@ -41,6 +42,9 @@ const Navbar = ({
           <ImInfo />
         </button>
 
+        <span>
+          {`${t('nodes')}: ${availableNodes.length}`}
+        </span>
         {/* <button
           type="button"
           title={t(isSidebarOpen ? 'hideSidebar' : 'showSidebar')}
@@ -96,18 +100,21 @@ Navbar.propTypes = {
   isInfoOpen: PropTypes.bool.isRequired,
   isSearchOpen: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
+  availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 }
 
 const mapToProps = ({
   isSidebarOpen,
   // mainView,
   isInfoOpen,
-  isSearchOpen
+  isSearchOpen,
+  availableNodes
 }) => ({
   isSidebarOpen,
   // mainView,
   isInfoOpen,
-  isSearchOpen
+  isSearchOpen,
+  availableNodes
 })
 
 export default connect(

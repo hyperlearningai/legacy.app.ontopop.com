@@ -2,7 +2,11 @@
 
 exports[`ElementInfo should match snapshot  1`] = `
 <Connect
-  actions={Object {}}
+  actions={
+    Object {
+      "setStoreState": [Function],
+    }
+  }
   availableNodesNormalised={
     Object {
       "abc": Object {
@@ -15,8 +19,10 @@ exports[`ElementInfo should match snapshot  1`] = `
       },
     }
   }
+  deletedNodes={Array []}
   mapToProps={[Function]}
   selectedNode="abc"
+  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>

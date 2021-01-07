@@ -14,6 +14,7 @@ const FooterComponent = ({
   setStoreState,
   isSettingsOpen,
   isEdgeFilterOpen,
+  availableEdges,
 }) => {
   const { t } = useTranslation()
 
@@ -28,6 +29,10 @@ const FooterComponent = ({
         >
           <AiOutlineNodeIndex />
         </button>
+
+        <span>
+          {`${t('edges')}: ${availableEdges.length}`}
+        </span>
       </div>
 
       <div className="footer-right">
@@ -48,14 +53,17 @@ FooterComponent.propTypes = {
   isEdgeFilterOpen: PropTypes.bool.isRequired,
   isSettingsOpen: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
+  availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 }
 
 const mapToProps = ({
   isEdgeFilterOpen,
-  isSettingsOpen
+  isSettingsOpen,
+  availableEdges,
 }) => ({
   isEdgeFilterOpen,
-  isSettingsOpen
+  isSettingsOpen,
+  availableEdges,
 })
 
 export default connect(

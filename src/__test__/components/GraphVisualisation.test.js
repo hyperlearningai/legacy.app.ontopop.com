@@ -53,6 +53,7 @@ const setup = () => {
     },
     nodesIdsToDisplay: [],
     selectedNode: {},
+    deletedNodes: []
   };
 
   const component = shallow(<GraphVisualisation {...props} />);

@@ -36,6 +36,7 @@ exports[`GraphVisualisation should match snapshot  1`] = `
       },
     }
   }
+  deletedNodes={Array []}
   edgesToIgnore={Array []}
   fitNetwork={false}
   mapToProps={[Function]}

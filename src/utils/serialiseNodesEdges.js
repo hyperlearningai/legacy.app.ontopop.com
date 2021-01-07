@@ -3,7 +3,8 @@ const serialiseNodesEdges = ({
   classesFromApi,
   objectPropertiesFromApi,
   setStoreState,
-  edgesToIgnore
+  edgesToIgnore,
+  deletedNodes
 }) => {
   const { OwlClasses } = JSON.parse(JSON.stringify(classesFromApi))
 
@@ -18,6 +19,11 @@ const serialiseNodesEdges = ({
     const nodeId = nodesIdsToDisplay[nodeIndex]
     const nodeIdObject = OwlClasses[nodeId]
 
+    console.log({
+      nodeId,
+      addedNodes
+    })
+
     nodeIdObject.id = nodeId
     nodeIdObject.label = nodeIdObject.rdfsLabel
 
@@ -27,6 +33,12 @@ const serialiseNodesEdges = ({
     if (rdfsSubClassOf.length > 0) {
       rdfsSubClassOf.map((rdfsSubClassOfObject) => {
         const { owlRestriction } = rdfsSubClassOfObject
+
+        console.log({
+          deletedNodes,
+          nodeId,
+          addedNodes
+        })
 
         if (owlRestriction) {
           const edgeId = owlRestriction.objectPropertyRdfAbout
@@ -44,7 +56,10 @@ const serialiseNodesEdges = ({
                 label: edgeLabel
               })
 
-              if (!addedNodes.includes(linkedNodeId)) {
+              if (
+                !addedNodes.includes(linkedNodeId)
+                && !deletedNodes.includes(linkedNodeId)
+              ) {
                 const linkedNodeIdObject = OwlClasses[linkedNodeId]
 
                 linkedNodeIdObject.id = linkedNodeId
@@ -64,15 +79,38 @@ const serialiseNodesEdges = ({
       })
     }
 
-    if (!addedNodes.includes(nodeId) && nodeIdObject.label && nodeIdObject.label !== '') {
+    console.log({
+      nodeId
+    })
+
+    if (!addedNodes.includes(nodeId)
+      && !deletedNodes.includes(nodeId)
+      && nodeIdObject.label
+      && nodeIdObject.label !== '') {
       availableNodesNormalised[nodeId] = nodeIdObject
       availableNodes.push(nodeIdObject)
       addedNodes.push(nodeId)
     }
   }
 
+  console.log({
+    availableNodes,
+    availableEdges
+  })
+
+  // display only nodes with edges
+  const availableEdgesUniqueNodesTo = availableEdges.map((edge) => edge.to)
+  const availableEdgesUniqueNodesFrom = availableEdges.map((edge) => edge.from)
+
+  const totalNodes = [
+    ...availableEdgesUniqueNodesTo,
+    ...availableEdgesUniqueNodesFrom
+  ]
+
+  const availableNodesWithEdges = availableNodes.filter((node) => totalNodes.includes(node.id))
+
   setStoreState('availableNodesNormalised', availableNodesNormalised)
-  setStoreState('availableNodes', availableNodes)
+  setStoreState('availableNodes', availableNodesWithEdges)
   setStoreState('availableEdges', availableEdges)
 }
 

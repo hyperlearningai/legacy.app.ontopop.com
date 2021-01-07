@@ -8,6 +8,7 @@ const setup = () => {
     setStoreState: jest.fn(),
     isSettingsOpen: true,
     isEdgeFilterOpen: true,
+    availableEdges: [{ id: '123' }]
   };
 
   const component = shallow(<FooterComponent {...props} />);

@@ -11,6 +11,7 @@ const setup = () => {
     isSidebarOpen: true,
     setStoreState: jest.fn(),
     mainView: NETWORK_GRAPH_VIEW,
+    availableNodes: [{ id: '123' }]
   };
 
   const component = shallow(<Navbar {...props} />);

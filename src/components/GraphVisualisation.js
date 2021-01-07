@@ -126,7 +126,8 @@ const GraphVisualisation = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork
+  fitNetwork,
+  deletedNodes
 }) => {
   const visJsRef = useRef(null);
 
@@ -151,9 +152,10 @@ const GraphVisualisation = ({
       classesFromApi,
       objectPropertiesFromApi,
       setStoreState,
-      edgesToIgnore
+      edgesToIgnore,
+      deletedNodes
     })
-  }, [nodesIdsToDisplay, selectedNode, edgesToIgnore]); 
+  }, [nodesIdsToDisplay, selectedNode, edgesToIgnore, deletedNodes]); 
 
   useEffect(async () => {
     const physicsSettings = getPhysicsOptions({
@@ -235,6 +237,7 @@ GraphVisualisation.propTypes = {
   physicsRepulsion: PropTypes.bool.isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
   fitNetwork: PropTypes.bool.isRequired,
+  deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -252,7 +255,8 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork
+  fitNetwork,
+  deletedNodes
 }) => ({
   availableNodes,
   availableEdges,
@@ -264,7 +268,8 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork
+  fitNetwork,
+  deletedNodes
 })
 
 export default connect(
