@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainView should match snapshot  1`] = `
+<Connect
+  actions={Object {}}
+  isEdgeFilterOpen={true}
+  isInfoOpen={true}
+  isSearchOpen={true}
+  isSettingsOpen={true}
+  isSidebarOpen={true}
+  mapToProps={[Function]}
+  selectedNode="abc"
+>
+  <Component />
+</Connect>
+`;

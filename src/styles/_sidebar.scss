@@ -1,0 +1,58 @@
+aside {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: $light-grey;
+  color: $white;
+  width: 280px;
+
+  .aside {
+    &-bar {
+      width: 100%;
+      background: $grey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid $secondary;
+
+      button {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        background: transparent;
+        outline: none;
+
+        svg {
+          color: $secondary;
+          font-size: 20px;
+        }
+
+        &:hover {
+          background: $secondary;
+          color: $white;
+          transition: $transition;
+
+          svg {
+            color: $white;
+            transition: $transition;
+          }
+        }
+      }
+
+      &-button-selected {
+        background: $secondary !important;
+        color: $white;
+        transition: $transition;
+
+        svg {
+          color: $white !important;
+          transition: $transition;
+        }
+      }
+    }
+  }
+}

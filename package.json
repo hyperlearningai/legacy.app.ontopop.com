@@ -1,0 +1,121 @@
+{
+  "name": "ontology-visualisation",
+  "version": "0.0.1",
+  "description": "Ontology visualisation",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperlearningai/ontology-framework.git"
+  },
+  "scripts": {
+    "test": "jest --no-cache",
+    "test:coverage": "npm run test -- --coverage",
+    "test:watch": "npm run test -- --watch",
+    "test:update-snapshots": "npm run test -- --updateSnapshot",
+    "lint": "eslint --ext .js src/components/ src/pages/ src/constants/ src/i18n/ src/store/ src/__test__/ src/constants/ src/utils/ .*.js",
+    "lint:watch": "npm run lint -- --watch",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:style": "npm run stylelint src/styles/*.scss",
+    "lint:commitmsg:ci": "echo $CI_COMMIT_MESSAGE | npm run commitlint",
+    "dev": "next",
+    "build": "next build && next export",
+    "start": "next start",
+    "audit": "npm audit"
+  },
+  "author": "@chriscarex",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-proposal-throw-expressions": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.5",
+    "@testing-library/dom": "^7.22.1",
+    "@testing-library/jest-dom": "^5.11.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
+    "browserslist": "^4.14.5",
+    "browserstack-local": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.5.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-formatter-gitlab": "^2.0.0",
+    "eslint-plugin-html": "^6.0.3",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "^4.2.5",
+    "jest": "^26.3.0",
+    "jest-junit": "^11.1.0",
+    "jsdom": "^16.4.0",
+    "serverless": "^2.0.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0",
+    "webpack": "^4.44.1",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": ""
+    }
+  },
+  "browserslist": {
+    "dev": [
+      "last 1 Chrome version",
+      "Explorer 11"
+    ],
+    "test": [
+      "last 1 Chrome version",
+      "Explorer 11"
+    ],
+    "production": [
+      "last 1 Chrome version",
+      "Explorer 11",
+      "last 1 iOS version",
+      "last 1 Edge version"
+    ],
+    "longtail": [
+      "last 1 Chrome version",
+      "Explorer 11",
+      "last 1 iOS version",
+      "last 1 Edge version",
+      "last 1 Samsung version",
+      "last 1 Android version",
+      "last 1 Firefox version",
+      "last 1 Baidu version"
+    ]
+  },
+  "dependencies": {
+    "@next/bundle-analyzer": "^10.0.3",
+    "axios": "^0.20.0",
+    "i18next": "^19.8.4",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "i18next-xhr-backend": "^3.2.2",
+    "lodash": "^4.17.20",
+    "next": "^10.0.3",
+    "next-images": "^1.6.2",
+    "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-i18next": "^11.8.5",
+    "react-icons": "^4.1.0",
+    "react-notifications-component": "^3.0.3",
+    "react-transition-group": "^4.4.1",
+    "redux-loading-middleware": "^1.0.1",
+    "redux-zero": "^5.1.7",
+    "vis-data": "^7.1.1",
+    "vis-network": "^8.5.6",
+    "vis-util": "^4.3.4"
+  },
+  "jest-junit": {
+    "outputDirectory": "test/test_reports",
+    "outputName": "jest-junit.xml"
+  }
+}

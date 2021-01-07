@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeadTags should match snapshot  1`] = `
+<Head>
+  <title>
+    Highways England Ontology Visualisation
+     - Test
+  </title>
+  <meta
+    content="Another test"
+    name="description"
+  />
+  <meta
+    content="initial-scale=1.0, width=device-width"
+    name="viewport"
+  />
+</Head>
+`;

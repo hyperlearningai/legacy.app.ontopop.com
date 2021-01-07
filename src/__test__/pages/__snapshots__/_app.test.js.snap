@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`_app should match snapshot  1`] = `
+<Provider
+  store={
+    Object {
+      "getState": [Function],
+      "middleware": [Function],
+      "reset": [Function],
+      "setState": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HeaderComponent />
+  <HeaderComponent
+    success={false}
+  />
+  <ConnectWrapper />
+  <Container />
+</Provider>
+`;
+
+exports[`_app should match snapshot if error occurs 1`] = `
+<Provider
+  store={
+    Object {
+      "getState": [Function],
+      "middleware": [Function],
+      "reset": [Function],
+      "setState": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <HeaderComponent />
+  <HeaderComponent
+    error={
+      Object {
+        "statusCode": 400,
+      }
+    }
+  />
+  <ConnectWrapper />
+  <Container />
+</Provider>
+`;
