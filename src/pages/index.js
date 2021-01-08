@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
-import Navbar from '../components/Navbar';
-import MainView from '../components/MainView';
-import HeadTags from '../components/HeadTags';
+import { useTranslation } from 'react-i18next'
+import Navbar from '../components/Navbar'
+import MainView from '../components/MainView'
+import HeadTags from '../components/HeadTags'
 
 const Index = () => {
   const { t } = useTranslation()
@@ -16,6 +16,6 @@ const Index = () => {
       <MainView />
     </>
   )
-};
+}
 
-export default Index;
+export default Index

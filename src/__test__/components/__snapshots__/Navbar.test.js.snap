@@ -7,6 +7,13 @@ exports[`Navbar should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
+  availableNodes={
+    Array [
+      Object {
+        "id": "123",
+      },
+    ]
+  }
   isSidebarOpen={true}
   mainView="networkGraphView"
   mapToProps={[Function]}

@@ -1,9 +1,7 @@
-import React, { useRef, useEffect } from 'react';
-import { Network } from 'vis-network';
+import React, { useRef, useEffect } from 'react'
+import { Network } from 'vis-network'
 import { connect } from 'redux-zero/react'
-// import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-// import VisNetworkReactComponent from '../libs/VisNetworkReactComponent'
 import actions from '../store/actions'
 import serialiseNodesEdges from '../utils/serialiseNodesEdges'
 import filterNodesToDisplay from '../utils/filterNodesToDisplay'
@@ -11,107 +9,7 @@ import jsonClasses from '../assets/json/test-ontology-classes.json'
 import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import getPhysicsOptions from '../utils/getPhysicsOptions'
 
-// const defaultdata = {
-//   nodes: [
-//     { id: 1, label: 'Node 1' },
-//     { id: 2, label: 'Node 2' },
-//     { id: 3, label: 'Node 3' },
-//     { id: 4, label: 'Node 4' },
-//     { id: 5, label: 'Node 5' },
-//   ],
-//   edges: [
-//     { from: 1, to: 3 },
-//     { from: 1, to: 2 },
-//     { from: 2, to: 4 },
-//     { from: 2, to: 5 },
-//     { from: 3, to: 3 },
-//   ],
-// };
-
-// {
-//   autoResize: true,
-//   edges: {
-//     color: '#411811'
-//   }
-// }
-
-// let events = {
-//   click: function (params) {
-//     params.event = "[original event]";
-//     console.log(
-//       "click event, getNodeAt returns: " + this.getNodeAt(params.pointer.DOM)
-//     );
-//   },
-//   doubleClick: function (params) {
-//     console.log("doubleClick Event:", params);
-//     params.event = "[original event]";
-//   },
-//   oncontext: function (params) {
-//     console.log("oncontext Event:", params);
-
-//     params.event = "[original event]";
-//   },
-//   dragStart: function (params) {
-//     // There's no point in displaying this event on screen, it gets immediately overwritten
-//     params.event = "[original event]";
-//     console.log("dragStart Event:", params);
-//     console.log(
-//       "dragStart event, getNodeAt returns: " +
-//         this.getNodeAt(params.pointer.DOM)
-//     );
-//   },
-//   dragging: function (params) {
-//     params.event = "[original event]";
-//   },
-//   dragEnd: function (params) {
-//     params.event = "[original event]";
-//     console.log("dragEnd Event:", params);
-//     console.log(
-//       "dragEnd event, getNodeAt returns: " + this.getNodeAt(params.pointer.DOM)
-//     );
-//   },
-//   controlNodeDragging: function (params) {
-//     params.event = "[original event]";
-//   },
-//   controlNodeDragEnd: function (params) {
-//     params.event = "[original event]";
-//     console.log("controlNodeDragEnd Event:", params);
-//   },
-//   zoom: function (params) {},
-//   showPopup: function (params) {},
-//   hidePopup: function () {
-//     console.log("hidePopup Event");
-//   },
-//   select: function (params) {
-//     console.log("select Event:", params);
-//   },
-//   selectNode: function (params) {
-//     console.log("selectNode Event:", params);
-//   },
-//   selectEdge: function (params) {
-//     console.log("selectEdge Event:", params);
-//   },
-//   deselectNode: function (params) {
-//     console.log("deselectNode Event:", params);
-//   },
-//   deselectEdge: function (params) {
-//     console.log("deselectEdge Event:", params);
-//   },
-//   hoverNode: function (params) {
-//     console.log("hoverNode Event:", params);
-//   },
-//   hoverEdge: function (params) {
-//     console.log("hoverEdge Event:", params);
-//   },
-//   blurNode: function (params) {
-//     console.log("blurNode Event:", params);
-//   },
-//   blurEdge: function (params) {
-//     console.log("blurEdge Event:", params);
-//   },
-// };
-
-let network = undefined
+let network
 
 const GraphVisualisation = ({
   availableNodes,
@@ -126,24 +24,25 @@ const GraphVisualisation = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork
+  fitNetwork,
+  deletedNodes
 }) => {
-  const visJsRef = useRef(null);
+  const visJsRef = useRef(null)
 
   useEffect(() => {
     // Set data from api
     setStoreState('classesFromApi', jsonClasses)
     setStoreState('objectPropertiesFromApi', jsonObjectProperties)
     setStoreState('nodesIdsToDisplay', Object.keys(jsonClasses.OwlClasses))
-  }, []); 
-  
+  }, [])
+
   useEffect(() => {
     filterNodesToDisplay({
       classesFromApi,
       setStoreState,
       searchFilter
     })
-  }, [searchFilter]); 
+  }, [searchFilter])
 
   useEffect(() => {
     serialiseNodesEdges({
@@ -151,11 +50,14 @@ const GraphVisualisation = ({
       classesFromApi,
       objectPropertiesFromApi,
       setStoreState,
-      edgesToIgnore
+      edgesToIgnore,
+      deletedNodes
     })
-  }, [nodesIdsToDisplay, selectedNode, edgesToIgnore]); 
+  }, [nodesIdsToDisplay, selectedNode, edgesToIgnore, deletedNodes])
 
   useEffect(async () => {
+    setStoreState('isNetworkLoading', true)
+
     const physicsSettings = getPhysicsOptions({
       physicsHierarchicalView,
       physicsRepulsion,
@@ -167,8 +69,7 @@ const GraphVisualisation = ({
         nodes: availableNodes,
         edges: availableEdges
       },
-      physicsSettings
-    );
+      physicsSettings)
 
     network?.on('selectNode', (event) => {
       if (event.nodes?.length === 1) {
@@ -183,14 +84,25 @@ const GraphVisualisation = ({
 
           setStoreState('nodesIdsToDisplay', newNodesIdsToDisplay)
         }
+      } else {
+        setStoreState('selectedNode', undefined)
       }
-    });
+    })
 
-    // console.log(network)
-    // Use `network` here to configure events, etc
-    await network.stabilize(2000)
+    network?.on('stabilizationProgress', (params) => {
+      const percentage = parseFloat(params.iterations / params.total).toFixed(2)
 
-    network.fit()
+      setStoreState('networkLoadingProgress', percentage * 100)
+    })
+
+    network?.once('stabilizationIterationsDone', () => {
+      setStoreState('networkLoadingProgress', false)
+      setStoreState('isNetworkLoading', 0)
+    })
+
+    await network?.stabilize(2000)
+
+    network?.fit()
 
     setStoreState('fitNetwork', false)
   }, [
@@ -200,7 +112,7 @@ const GraphVisualisation = ({
     physicsHierarchicalView,
     physicsRepulsion,
     physicsEdgeLength
-  ]);
+  ])
 
   useEffect(() => {
     if (network && fitNetwork) {
@@ -211,15 +123,16 @@ const GraphVisualisation = ({
   }, [fitNetwork])
 
   return (
-    <div 
-      ref={visJsRef} 
+    <div
+      id="network-graph"
+      ref={visJsRef}
       style={{
-        height: `100%`,
-        width: `100%`
+        height: '100%',
+        width: '100%'
       }}
     />
   )
-};
+}
 
 GraphVisualisation.propTypes = {
   availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -235,6 +148,7 @@ GraphVisualisation.propTypes = {
   physicsRepulsion: PropTypes.bool.isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
   fitNetwork: PropTypes.bool.isRequired,
+  deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -252,7 +166,8 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork
+  fitNetwork,
+  deletedNodes
 }) => ({
   availableNodes,
   availableEdges,
@@ -264,7 +179,8 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork
+  fitNetwork,
+  deletedNodes
 })
 
 export default connect(

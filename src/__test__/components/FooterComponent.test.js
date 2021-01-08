@@ -1,22 +1,23 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import FooterComponent from '../../components/FooterComponent';
+import React from 'react'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import FooterComponent from '../../components/FooterComponent'
 
 const setup = () => {
   const props = {
     setStoreState: jest.fn(),
     isSettingsOpen: true,
     isEdgeFilterOpen: true,
-  };
+    availableEdges: [{ id: '123' }]
+  }
 
-  const component = shallow(<FooterComponent {...props} />);
+  const component = shallow(<FooterComponent {...props} />)
 
   return {
     component,
     props
-  };
-};
+  }
+}
 
 describe('FooterComponent', () => {
   afterEach(() => {
@@ -26,8 +27,8 @@ describe('FooterComponent', () => {
   it('should match snapshot ', () => {
     const {
       component
-    } = setup();
+    } = setup()
 
-    expect(toJson(component)).toMatchSnapshot();
-  });
-});
+    expect(toJson(component)).toMatchSnapshot()
+  })
+})

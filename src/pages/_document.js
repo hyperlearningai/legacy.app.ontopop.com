@@ -1,6 +1,6 @@
 import Document, {
   Html, Head, Main, NextScript
-} from 'next/document';
+} from 'next/document'
 
 // We can't use Content-Security-Policy in 'next dev' mode, as it breaks hot-reloading
 // const disableCsp = process.env.NODE_ENV === 'development';
@@ -28,8 +28,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

@@ -37,7 +37,7 @@ const classesFromApi = {
         'http://www.w3.org/2004/02/skos/core#example': 'Develop connectivity between London and Inverness.',
         'http://www.w3.org/2004/02/skos/core#definition': 'A collection of projects or tasks undertaken to realise a strategic goal.'
       },
-      rdfsSubClassOf: [ {
+      rdfsSubClassOf: [{
         classRdfAbout: 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6',
         owlRestriction: {
           objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',

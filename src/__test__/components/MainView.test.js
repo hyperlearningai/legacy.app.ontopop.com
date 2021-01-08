@@ -1,7 +1,7 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import MainView from '../../components/MainView';
+import React from 'react'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import MainView from '../../components/MainView'
 
 const setup = () => {
   const props = {
@@ -10,23 +10,25 @@ const setup = () => {
     isInfoOpen: true,
     isEdgeFilterOpen: true,
     isSettingsOpen: true,
-    selectedNode: 'abc'
-  };
+    selectedNode: 'abc',
+    isNetworkLoading: true,
+    networkLoadingProgress: 10
+  }
 
-  const component = shallow(<MainView {...props} />);
+  const component = shallow(<MainView {...props} />)
 
   return {
     component,
     props
-  };
-};
+  }
+}
 
 describe('MainView', () => {
   it('should match snapshot ', () => {
     const {
       component
-    } = setup();
+    } = setup()
 
-    expect(toJson(component)).toMatchSnapshot();
-  });
-});
+    expect(toJson(component)).toMatchSnapshot()
+  })
+})

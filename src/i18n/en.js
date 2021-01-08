@@ -12,6 +12,7 @@ export default {
   showTable: 'Show table',
   showInfo: 'Show element info',
   hideInfo: 'Hide element info',
+  nodes: 'Nodes',
 
   // sidebar
   nodesOptions: 'Nodes options',
@@ -32,6 +33,7 @@ export default {
   skosDefinition: 'skosDefinition',
   skosExample: 'skosExample',
   null: 'Null',
+  deleteNode: 'Delete node',
 
   // search
   search: 'Search',
@@ -39,6 +41,7 @@ export default {
 
   // edges list
   edgesList: 'Edges\' list',
+  edges: 'Edges',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -47,5 +50,12 @@ export default {
   gravitationalView: 'Gravitational view',
   enableRepulsion: 'Enable repulsion',
   disableRepulsion: 'Disable repulsion',
-  fitNetwork: 'Fit screen'
-};
+  fitNetwork: 'Fit screen',
+  hideInwardLinks: 'Hide inward links',
+  showInwardLinks: 'Show outward links',
+  hideOutwardLinks: 'Hide inward links',
+  showOutwardLinks: 'Show outward links',
+
+  // Progress bar
+  loading: 'Loading...',
+}

@@ -2,7 +2,11 @@
 
 exports[`ElementInfo should match snapshot  1`] = `
 <Connect
-  actions={Object {}}
+  actions={
+    Object {
+      "setStoreState": [Function],
+    }
+  }
   mapToProps={[Function]}
   searchFilter="abc"
   setStoreState={[MockFunction]}

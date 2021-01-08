@@ -1,12 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import HeaderComponent from '../../components/HeaderComponent'
+import ProgressBar from '../../components/ProgressBar'
 
 const setup = () => {
-  const props = {}
+  const props = {
+    progress: 10
+  }
 
-  const component = shallow(<HeaderComponent {...props} />)
+  const component = shallow(<ProgressBar {...props} />)
 
   return {
     component,
@@ -14,7 +16,7 @@ const setup = () => {
   }
 }
 
-describe('HeaderComponent', () => {
+describe('ProgressBar', () => {
   it('should match snapshot ', () => {
     const {
       component

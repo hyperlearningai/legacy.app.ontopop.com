@@ -1,10 +1,13 @@
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import actions from '../store/actions'
 
 const ElementInfo = ({
   selectedNode,
-  availableNodesNormalised
+  availableNodesNormalised,
+  setStoreState,
+  deletedNodes
 }) => {
   const { t } = useTranslation()
 
@@ -43,6 +46,24 @@ const ElementInfo = ({
           </div>
         ))
       }
+
+      <div className="element-info-item">
+        <button
+          type="button"
+          title={t('deleteNode')}
+          onClick={() => {
+            const newDeletedNodes = deletedNodes.slice()
+
+            newDeletedNodes.push(selectedNode)
+
+            setStoreState('deletedNodes', newDeletedNodes)
+
+            setStoreState('selectedNode', undefined)
+          }}
+        >
+          {t('deleteNode')}
+        </button>
+      </div>
     </div>
   )
 }
@@ -50,6 +71,8 @@ const ElementInfo = ({
 ElementInfo.propTypes = {
   selectedNode: PropTypes.string,
   availableNodesNormalised: PropTypes.shape().isRequired,
+  setStoreState: PropTypes.func.isRequired,
+  deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 ElementInfo.defaultProps = {
@@ -58,12 +81,15 @@ ElementInfo.defaultProps = {
 
 const mapToProps = ({
   selectedNode,
-  availableNodesNormalised
+  availableNodesNormalised,
+  deletedNodes
 }) => ({
   selectedNode,
-  availableNodesNormalised
+  availableNodesNormalised,
+  deletedNodes
 })
 
 export default connect(
-  mapToProps
+  mapToProps,
+  actions
 )(ElementInfo)

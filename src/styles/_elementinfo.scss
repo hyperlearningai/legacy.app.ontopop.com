@@ -47,6 +47,26 @@
       font-style: italic;
       margin-bottom: 40px;
       font-weight: 400;
+      font-size: 12px;
+    }
+
+    button {
+      width: 90%;
+      padding: 10px;
+      background: transparent;
+      border: 1px solid $white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: auto 10px;
+      margin-bottom: 20px;
+      outline: none;
+      color: $white;
+
+      &:hover {
+        background: $white;
+        color: $secondary;
+        transition: $transition;
+      }
     }
   }
 }
