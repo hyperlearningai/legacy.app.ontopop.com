@@ -44,12 +44,12 @@ To check the lint status:
 From develop branch, open a new feature branch
 
 ```shell script
-  git checkout -b feature/branch-description
+  git checkout -b feature/ONTOLOGY-XX_branch-description
 ```
 
 When changes are ready:
 ```shell script
-  git commit -am 'Descriptive commit message'
+  git commit -am 'ONTOLOGY-XX Descriptive commit message'
   git push     ### when ready for review
 ```
 

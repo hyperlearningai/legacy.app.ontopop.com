@@ -16,6 +16,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.0.3]
+### Added
+- ONTOLOGY-16 Simple network-based ontology visualisation
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
 ## [0.0.2]
 ### Added
 - Hide edges on drag for performance
@@ -24,16 +38,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Node removal feature
 - Nodes/edges count
 
-### Changed
-
-### Deprecated
-
 ### Removed
 - Zoom button from settings as already present in navigation buttons
-
-### Fixed
-
-### Security
 
 ## [0.0.1]
 ### Added
@@ -44,13 +50,3 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Node/edges visualisation from JSOn file
 - Internationalisation
 - NextJS boilerplate
-
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
