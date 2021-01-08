@@ -39,6 +39,12 @@ describe('getPhysicsOptions', () => {
         improvedLayout: false,
         randomSeed: 333
       },
+      interaction: {
+        navigationButtons: true,
+        keyboard: true,
+        hideEdgesOnDrag: true,
+        hover: true
+      },
       physics: {
         barnesHut: {
           avoidOverlap: 0.16,

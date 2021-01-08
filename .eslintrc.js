@@ -5,7 +5,14 @@ module.exports = {
     node: true,
     jest: true,
   },
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    sourceType: 'module',
+    allowImportExportEverywhere: false,
+    ecmaFeatures: {
+      globalReturn: false,
+    }
+  },
   extends: [
     'airbnb',
     'eslint:recommended',
@@ -31,6 +38,7 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     'comma-dangle': ['error', 'only-multiline'],
     'react/react-in-jsx-scope': 'off',
+    quotes: [2, 'single', { avoidEscape: true }],
     'react/jsx-filename-extension': 0,
     'react/jsx-props-no-spreading': 0,
     'jsx-a11y/href-no-hash': [0],
@@ -45,7 +53,9 @@ module.exports = {
     'no-await-in-loop': 0,
     'jsx-a11y/control-has-associated-label': 0,
     'no-continue': 0,
-    semi: 0,
-    radix: 0
+    'max-len': [2, 200, 4, { ignoreUrls: true }],
+    semi: [2, 'never'],
+    radix: 0,
+    'security/detect-object-injection': 0
   }
-};
+}

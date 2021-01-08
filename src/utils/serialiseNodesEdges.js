@@ -1,10 +1,22 @@
+const addNode = ({
+  availableNodesNormalised,
+  availableNodes,
+  addedNodes,
+  nodeId,
+  nodeIdObject
+}) => {
+  availableNodesNormalised[nodeId] = nodeIdObject  // eslint-disable-line
+  availableNodes.push(nodeIdObject)
+  addedNodes.push(nodeId)
+}
+
 const serialiseNodesEdges = ({
   nodesIdsToDisplay,
   classesFromApi,
   objectPropertiesFromApi,
   setStoreState,
   edgesToIgnore,
-  deletedNodes
+  deletedNodes,
 }) => {
   const { OwlClasses } = JSON.parse(JSON.stringify(classesFromApi))
 
@@ -15,88 +27,95 @@ const serialiseNodesEdges = ({
   const availableEdges = []
   const availableNodesNormalised = {}
 
-  for (const nodeIndex in nodesIdsToDisplay) {
-    const nodeId = nodesIdsToDisplay[nodeIndex]
-    const nodeIdObject = OwlClasses[nodeId]
+  const allNodeIdsKeys = Object.keys(OwlClasses)
 
-    console.log({
-      nodeId,
-      addedNodes
-    })
+  for (const nodeIndex in allNodeIdsKeys) {
+    const nodeId = allNodeIdsKeys[nodeIndex]
+
+    if (deletedNodes.includes(nodeId)) continue
+
+    const nodeIdObject = OwlClasses[nodeId]
 
     nodeIdObject.id = nodeId
     nodeIdObject.label = nodeIdObject.rdfsLabel
 
+    // ignore ndoe without labels
+    if (
+      !nodeIdObject.label
+      || !nodeIdObject.label === ''
+    ) continue
+
     const { rdfsSubClassOf } = nodeIdObject
-    delete nodeIdObject.rdfsSubClassOf
 
-    if (rdfsSubClassOf.length > 0) {
-      rdfsSubClassOf.map((rdfsSubClassOfObject) => {
-        const { owlRestriction } = rdfsSubClassOfObject
+    if (!rdfsSubClassOf || rdfsSubClassOf.length === 0) continue
 
-        console.log({
-          deletedNodes,
-          nodeId,
-          addedNodes
+    rdfsSubClassOf.map((rdfsSubClassOfObject) => {
+      const { owlRestriction } = rdfsSubClassOfObject
+
+      if (!owlRestriction) return false
+
+      const edgeId = owlRestriction.objectPropertyRdfAbout
+      const edgeObject = objectPropertiesFromApi.OwlObjectProperties[edgeId]
+
+      if (!edgeObject) return false
+
+      const edgeLabel = edgeObject.rdfsLabel
+
+      if (!edgeLabel || edgesToIgnore.includes(edgeId)) return false
+
+      const linkedNodeId = owlRestriction.classRdfAbout
+
+      const isNodeIdToDisplay = nodesIdsToDisplay.includes(nodeId)
+      const isLinkedNodeIdToDisplay = nodesIdsToDisplay.includes(linkedNodeId)
+      const nodesToDisplay = isNodeIdToDisplay || isLinkedNodeIdToDisplay
+
+      if (!nodesToDisplay || deletedNodes.includes(linkedNodeId)) return false
+
+      const linkedNodeIdObject = OwlClasses[linkedNodeId]
+
+      linkedNodeIdObject.id = linkedNodeId
+      linkedNodeIdObject.label = linkedNodeIdObject.rdfsLabel
+
+      const edge = {
+        from: nodeId,
+        to: linkedNodeId,
+        label: edgeLabel
+      }
+
+      if (!availableEdges.includes(edge)) {
+        availableEdges.push(edge)
+      }
+
+      if (!addedNodes.includes(linkedNodeId)
+        && linkedNodeIdObject.label
+        && linkedNodeIdObject.label !== ''
+      ) {
+        addNode({
+          availableNodesNormalised,
+          availableNodes,
+          addedNodes,
+          nodeId: linkedNodeId,
+          nodeIdObject: linkedNodeIdObject
         })
+      }
 
-        if (owlRestriction) {
-          const edgeId = owlRestriction.objectPropertyRdfAbout
-          const edgeObject = objectPropertiesFromApi.OwlObjectProperties[edgeId]
+      // add node
+      if (!addedNodes.includes(nodeId)
+        && nodeIdObject.label
+        && nodeIdObject.label !== ''
+      ) {
+        addNode({
+          availableNodesNormalised,
+          availableNodes,
+          addedNodes,
+          nodeId,
+          nodeIdObject
+        })
+      }
 
-          if (edgeObject) {
-            const edgeLabel = edgeObject.rdfsLabel
-
-            if (edgeLabel && !edgesToIgnore.includes(edgeId)) {
-              const linkedNodeId = owlRestriction.classRdfAbout
-
-              availableEdges.push({
-                from: nodeId,
-                to: linkedNodeId,
-                label: edgeLabel
-              })
-
-              if (
-                !addedNodes.includes(linkedNodeId)
-                && !deletedNodes.includes(linkedNodeId)
-              ) {
-                const linkedNodeIdObject = OwlClasses[linkedNodeId]
-
-                linkedNodeIdObject.id = linkedNodeId
-                linkedNodeIdObject.label = linkedNodeIdObject.rdfsLabel
-
-                if (linkedNodeIdObject.label && linkedNodeIdObject.label !== '') {
-                  availableNodesNormalised[linkedNodeId] = linkedNodeIdObject
-                  availableNodes.push(linkedNodeIdObject)
-                  addedNodes.push(linkedNodeId)
-                }
-              }
-            }
-          }
-        }
-
-        return true
-      })
-    }
-
-    console.log({
-      nodeId
+      return true
     })
-
-    if (!addedNodes.includes(nodeId)
-      && !deletedNodes.includes(nodeId)
-      && nodeIdObject.label
-      && nodeIdObject.label !== '') {
-      availableNodesNormalised[nodeId] = nodeIdObject
-      availableNodes.push(nodeIdObject)
-      addedNodes.push(nodeId)
-    }
   }
-
-  console.log({
-    availableNodes,
-    availableEdges
-  })
 
   // display only nodes with edges
   const availableEdgesUniqueNodesTo = availableEdges.map((edge) => edge.to)

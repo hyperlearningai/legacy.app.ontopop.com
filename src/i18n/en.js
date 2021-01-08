@@ -50,5 +50,12 @@ export default {
   gravitationalView: 'Gravitational view',
   enableRepulsion: 'Enable repulsion',
   disableRepulsion: 'Disable repulsion',
-  fitNetwork: 'Fit screen'
-};
+  fitNetwork: 'Fit screen',
+  hideInwardLinks: 'Hide inward links',
+  showInwardLinks: 'Show outward links',
+  hideOutwardLinks: 'Hide inward links',
+  showOutwardLinks: 'Show outward links',
+
+  // Progress bar
+  loading: 'Loading...',
+}

@@ -5,10 +5,12 @@ exports[`MainView should match snapshot  1`] = `
   actions={Object {}}
   isEdgeFilterOpen={true}
   isInfoOpen={true}
+  isNetworkLoading={true}
   isSearchOpen={true}
   isSettingsOpen={true}
   isSidebarOpen={true}
   mapToProps={[Function]}
+  networkLoadingProgress={10}
   selectedNode="abc"
 >
   <Component />

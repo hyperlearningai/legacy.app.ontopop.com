@@ -107,7 +107,7 @@ describe('serialiseNodesEdges', () => {
       objectPropertiesFromApi,
       setStoreState,
       edgesToIgnore,
-      deletedNodes
+      deletedNodes,
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -124,6 +124,19 @@ describe('serialiseNodesEdges', () => {
             },
             rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
             rdfsLabel: 'Communication Document',
+            rdfsSubClassOf: [
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u',
+                owlRestriction: null,
+              },
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+                owlRestriction: {
+                  classRdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+                  objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+                },
+              },
+            ],
             skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
             skosDefinition: 'Document storing the information conveyed between two or more parties.',
             skosExample: null,
@@ -152,6 +165,27 @@ describe('serialiseNodesEdges', () => {
             skosDefinition: 'A collection of projects or tasks undertaken to realise a strategic goal.',
             skosExample: 'Develop connectivity between London and Inverness.',
           },
+          'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8': {
+            id: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            label: 'Low Level Design',
+            owlAnnotationProperties: {
+              'http://www.w3.org/2004/02/skos/core#definition': 'Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.',
+            },
+            rdfAbout: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            rdfsLabel: 'Low Level Design',
+            rdfsSubClassOf: [
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+                owlRestriction: {
+                  classRdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+                  objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+                },
+              },
+            ],
+            skosComment: null,
+            skosDefinition: 'Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.',
+            skosExample: null,
+          },
         },
       ],
       [
@@ -191,8 +225,42 @@ describe('serialiseNodesEdges', () => {
             },
             rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
             rdfsLabel: 'Communication Document',
+            rdfsSubClassOf: [
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u',
+                owlRestriction: null,
+              },
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+                owlRestriction: {
+                  classRdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+                  objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+                },
+              },
+            ],
             skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
             skosDefinition: 'Document storing the information conveyed between two or more parties.',
+            skosExample: null,
+          },
+          {
+            id: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            label: 'Low Level Design',
+            owlAnnotationProperties: {
+              'http://www.w3.org/2004/02/skos/core#definition': 'Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.',
+            },
+            rdfAbout: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            rdfsLabel: 'Low Level Design',
+            rdfsSubClassOf: [
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+                owlRestriction: {
+                  classRdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+                  objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+                },
+              },
+            ],
+            skosComment: null,
+            skosDefinition: 'Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.',
             skosExample: null,
           },
         ],
@@ -204,6 +272,11 @@ describe('serialiseNodesEdges', () => {
             from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
             label: 'Instantiation of',
             to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+          },
+          {
+            from: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            label: 'Instantiation of',
+            to: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
           },
         ],
       ],
@@ -229,22 +302,7 @@ describe('serialiseNodesEdges', () => {
     expect(setStoreState.mock.calls).toEqual([
       [
         'availableNodesNormalised',
-        {
-          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': {
-            id: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-            label: 'Communication Document',
-            owlAnnotationProperties: {
-              'http://webprotege.stanford.edu/RkKVruwOD8lCCdsbyX0lwY': 'Communications',
-              'http://www.w3.org/2004/02/skos/core#comment': 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
-              'http://www.w3.org/2004/02/skos/core#definition': 'Document storing the information conveyed between two or more parties.',
-            },
-            rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-            rdfsLabel: 'Communication Document',
-            skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
-            skosDefinition: 'Document storing the information conveyed between two or more parties.',
-            skosExample: null,
-          },
-        },
+        {},
       ],
       [
         'availableNodes',
@@ -254,7 +312,6 @@ describe('serialiseNodesEdges', () => {
         'availableEdges',
         [],
       ],
-
     ])
   })
 
@@ -286,8 +343,42 @@ describe('serialiseNodesEdges', () => {
             },
             rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
             rdfsLabel: 'Communication Document',
+            rdfsSubClassOf: [
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u',
+                owlRestriction: null,
+              },
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+                owlRestriction: {
+                  classRdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+                  objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+                },
+              },
+            ],
             skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
             skosDefinition: 'Document storing the information conveyed between two or more parties.',
+            skosExample: null,
+          },
+          'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8': {
+            id: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            label: 'Low Level Design',
+            owlAnnotationProperties: {
+              'http://www.w3.org/2004/02/skos/core#definition': 'Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.',
+            },
+            rdfAbout: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            rdfsLabel: 'Low Level Design',
+            rdfsSubClassOf: [
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+                owlRestriction: {
+                  classRdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+                  objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+                },
+              },
+            ],
+            skosComment: null,
+            skosDefinition: 'Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.',
             skosExample: null,
           },
         },
@@ -305,8 +396,42 @@ describe('serialiseNodesEdges', () => {
             },
             rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
             rdfsLabel: 'Communication Document',
+            rdfsSubClassOf: [
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u',
+                owlRestriction: null,
+              },
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+                owlRestriction: {
+                  classRdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+                  objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+                },
+              },
+            ],
             skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
             skosDefinition: 'Document storing the information conveyed between two or more parties.',
+            skosExample: null,
+          },
+          {
+            id: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            label: 'Low Level Design',
+            owlAnnotationProperties: {
+              'http://www.w3.org/2004/02/skos/core#definition': 'Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.',
+            },
+            rdfAbout: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            rdfsLabel: 'Low Level Design',
+            rdfsSubClassOf: [
+              {
+                classRdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+                owlRestriction: {
+                  classRdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+                  objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+                },
+              },
+            ],
+            skosComment: null,
+            skosDefinition: 'Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.',
             skosExample: null,
           },
         ],
@@ -315,9 +440,9 @@ describe('serialiseNodesEdges', () => {
         'availableEdges',
         [
           {
-            from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+            from: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
             label: 'Instantiation of',
-            to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+            to: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
           },
         ],
       ],

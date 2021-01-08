@@ -27,7 +27,9 @@ const initialState = {
   physicsEdgeLength: 300,
   edgeFilter: '',
   fitNetwork: false,
-  deletedNodes: []
+  deletedNodes: [],
+  isNetworkLoading: false,
+  networkLoadingProgress: 0,
 }
 
 const middlewares = applyMiddleware(loadingMiddleware)

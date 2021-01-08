@@ -1,7 +1,7 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import EdgeFilter from '../../components/EdgeFilter';
+import React from 'react'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import EdgeFilter from '../../components/EdgeFilter'
 import jsonObjectProperties from '../../assets/json/test-ontology-object-properties.json'
 
 const setup = () => {
@@ -10,22 +10,22 @@ const setup = () => {
     objectPropertiesFromApi: jsonObjectProperties,
     setStoreState: jest.fn(),
     edgeFilter: 'ac'
-  };
+  }
 
-  const component = shallow(<EdgeFilter {...props} />);
+  const component = shallow(<EdgeFilter {...props} />)
 
   return {
     component,
     props
-  };
-};
+  }
+}
 
 describe('EdgeFilter', () => {
   it('should match snapshot ', () => {
     const {
       component
-    } = setup();
+    } = setup()
 
-    expect(toJson(component)).toMatchSnapshot();
-  });
-});
+    expect(toJson(component)).toMatchSnapshot()
+  })
+})

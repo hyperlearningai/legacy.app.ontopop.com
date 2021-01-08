@@ -1,25 +1,25 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import MyDocument from '../../pages/_document';
+import React from 'react'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import MyDocument from '../../pages/_document'
 
 const setup = () => {
-  const props = {};
+  const props = {}
 
-  const component = shallow(<MyDocument {...props} />);
+  const component = shallow(<MyDocument {...props} />)
 
   return {
     component,
     props
-  };
-};
+  }
+}
 
 describe('_document', () => {
   it('should match snapshot ', () => {
     const {
       component
-    } = setup();
+    } = setup()
 
-    expect(toJson(component)).toMatchSnapshot();
-  });
-});
+    expect(toJson(component)).toMatchSnapshot()
+  })
+})

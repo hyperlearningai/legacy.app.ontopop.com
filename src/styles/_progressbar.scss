@@ -1,0 +1,44 @@
+.progress-bar {
+  display: block;
+  position: absolute;
+  bottom: calc(50% - 45px);
+  left: calc(50% - 100px);
+  background: $font-color;
+  opacity: 0.8;
+  color: $white;
+  width: 250px;
+  height: 90px;
+  padding: 10px;
+  word-break: break-word;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 10;
+
+  &-title,
+  &-box {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    display: block;
+  }
+
+  &-title {
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  &-box {
+    width: 200px;
+    border: 1px solid $white;
+    height: 30px;
+    margin: auto;
+    background: transparent;
+
+    &-filler {
+      background: $blue;
+      height: 30px;
+    }
+  }
+}

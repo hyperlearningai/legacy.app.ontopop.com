@@ -6,6 +6,7 @@ import ElementInfo from './ElementInfo'
 import SearchBox from './SearchBox'
 import SettingsBox from './SettingsBox'
 import EdgeFilter from './EdgeFilter'
+import ProgressBar from './ProgressBar'
 
 const MainView = ({
   isSidebarOpen,
@@ -13,7 +14,9 @@ const MainView = ({
   isInfoOpen,
   selectedNode,
   isEdgeFilterOpen,
-  isSettingsOpen
+  isSettingsOpen,
+  isNetworkLoading,
+  networkLoadingProgress
 }) => (
   <main className="main-view">
     {
@@ -38,6 +41,15 @@ const MainView = ({
         )
       }
 
+      {
+        isNetworkLoading
+          ? (
+            <ProgressBar
+              progress={networkLoadingProgress}
+            />
+          ) : null
+      }
+
       <GraphVisualisation />
 
       {
@@ -53,6 +65,7 @@ const MainView = ({
           <SettingsBox />
         )
       }
+
     </div>
   </main>
 )
@@ -64,6 +77,8 @@ MainView.propTypes = {
   selectedNode: PropTypes.string,
   isEdgeFilterOpen: PropTypes.bool.isRequired,
   isSettingsOpen: PropTypes.bool.isRequired,
+  isNetworkLoading: PropTypes.bool.isRequired,
+  networkLoadingProgress: PropTypes.number.isRequired,
 }
 
 MainView.defaultProps = {
@@ -76,14 +91,18 @@ const mapToProps = ({
   isSearchOpen,
   selectedNode,
   isEdgeFilterOpen,
-  isSettingsOpen
+  isSettingsOpen,
+  isNetworkLoading,
+  networkLoadingProgress
 }) => ({
   isSidebarOpen,
   isInfoOpen,
   isSearchOpen,
   selectedNode,
   isEdgeFilterOpen,
-  isSettingsOpen
+  isSettingsOpen,
+  isNetworkLoading,
+  networkLoadingProgress
 })
 
 export default connect(

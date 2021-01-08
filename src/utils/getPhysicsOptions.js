@@ -3,7 +3,6 @@ const getPhysicsOptions = ({
   physicsRepulsion,
   physicsEdgeLength
 }) => ({
-// const getPhysicsOptions = () => ({
   edges: {
     smooth: {
       type: 'cubicBezier',
@@ -25,8 +24,14 @@ const getPhysicsOptions = ({
     randomSeed: 333,
     improvedLayout: false,
   },
+  interaction: {
+    navigationButtons: true,
+    keyboard: true,
+    hideEdgesOnDrag: true,
+    hover: true
+  },
   physics: {
-    enabled: !physicsHierarchicalView, //! hierarchicalView,
+    enabled: !physicsHierarchicalView,
     hierarchicalRepulsion: {
       centralGravity: 0.5,
       springLength: 120,

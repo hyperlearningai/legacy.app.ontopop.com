@@ -7,16 +7,13 @@ import {
 import {
   IoFootballOutline
 } from 'react-icons/io5'
-import {
-  MdZoomOutMap
-} from 'react-icons/md'
 import actions from '../store/actions'
 
 const SettingsBox = ({
   setStoreState,
   physicsEdgeLength,
   physicsRepulsion,
-  physicsHierarchicalView
+  physicsHierarchicalView,
 }) => {
   const { t } = useTranslation()
 
@@ -51,14 +48,6 @@ const SettingsBox = ({
       <div className="physics-settings-item physics-settings-item-buttons">
         <button
           type="button"
-          title={t('fitNetwork')}
-          onClick={() => setStoreState('fitNetwork', true)}
-        >
-          <MdZoomOutMap />
-        </button>
-
-        <button
-          type="button"
           title={t(physicsHierarchicalView ? 'hideInfo' : 'hierachicalView')}
           className={physicsHierarchicalView ? 'physics-settings-item-buttons-button-selected' : ''}
           onClick={() => setStoreState('physicsHierarchicalView', !physicsHierarchicalView)}
@@ -89,11 +78,11 @@ SettingsBox.propTypes = {
 const mapToProps = ({
   physicsEdgeLength,
   physicsRepulsion,
-  physicsHierarchicalView
+  physicsHierarchicalView,
 }) => ({
   physicsEdgeLength,
   physicsRepulsion,
-  physicsHierarchicalView
+  physicsHierarchicalView,
 })
 
 export default connect(

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import logo from '../assets/images/logo.svg'
 
 const HeaderComponent = () => (
@@ -10,6 +10,6 @@ const HeaderComponent = () => (
       />
     </div>
   </header>
-);
+)
 
-export default HeaderComponent;
+export default HeaderComponent

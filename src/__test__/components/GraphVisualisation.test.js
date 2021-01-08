@@ -1,7 +1,7 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import GraphVisualisation from '../../components/GraphVisualisation';
+import React from 'react'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import GraphVisualisation from '../../components/GraphVisualisation'
 
 const setup = () => {
   const props = {
@@ -54,15 +54,15 @@ const setup = () => {
     nodesIdsToDisplay: [],
     selectedNode: {},
     deletedNodes: []
-  };
+  }
 
-  const component = shallow(<GraphVisualisation {...props} />);
+  const component = shallow(<GraphVisualisation {...props} />)
 
   return {
     component,
     props
-  };
-};
+  }
+}
 
 describe('GraphVisualisation', () => {
   afterEach(() => {
@@ -72,8 +72,8 @@ describe('GraphVisualisation', () => {
   it('should match snapshot ', () => {
     const {
       component
-    } = setup();
+    } = setup()
 
-    expect(toJson(component)).toMatchSnapshot();
-  });
-});
+    expect(toJson(component)).toMatchSnapshot()
+  })
+})

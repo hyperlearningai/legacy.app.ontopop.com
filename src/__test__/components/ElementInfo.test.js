@@ -1,7 +1,7 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import ElementInfo from '../../components/ElementInfo';
+import React from 'react'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import ElementInfo from '../../components/ElementInfo'
 
 const setup = () => {
   const props = {
@@ -18,15 +18,15 @@ const setup = () => {
     selectedNode: 'abc',
     setStoreState: jest.fn(),
     deletedNodes: []
-  };
+  }
 
-  const component = shallow(<ElementInfo {...props} />);
+  const component = shallow(<ElementInfo {...props} />)
 
   return {
     component,
     props
-  };
-};
+  }
+}
 
 describe('ElementInfo', () => {
   afterEach(() => {
@@ -36,8 +36,8 @@ describe('ElementInfo', () => {
   it('should match snapshot ', () => {
     const {
       component
-    } = setup();
+    } = setup()
 
-    expect(toJson(component)).toMatchSnapshot();
-  });
-});
+    expect(toJson(component)).toMatchSnapshot()
+  })
+})
