@@ -15,22 +15,12 @@ import ElementInfoDetails from './ElementInfoDetails'
 const ElementInfo = ({
   selectedNodes,
   availableNodesNormalised,
-  // setStoreState,
-  // deletedNodes,
   removeFromArray
 }) => {
   const { t } = useTranslation()
 
   const [view, setView] = useState('')
   const [nodeId, setNodeId] = useState('')
-
-  // const tableRowNames = [
-  //   'id',
-  //   'rdfAbout',
-  //   'skosComment',
-  //   'skosDefinition',
-  //   'skosExample'
-  // ]
 
   return (
     <div className="element-info">
@@ -100,58 +90,6 @@ const ElementInfo = ({
             )
         }
       </div>
-
-      {/* {
-        selectedNodes.map((selectedNode) => {
-          const selectedElementInfo = availableNodesNormalised[selectedNode]
-
-          if (!selectedElementInfo) return null
-
-          const { label } = selectedElementInfo
-
-          return (
-            <>
-              <div className="element-info-title">
-                {label}
-              </div>
-
-              {
-                tableRowNames.map((tableRowName) => (
-                  <div
-                    className="element-info-item"
-                    key={`info-row-${tableRowName}`}
-                  >
-                    <span className="element-info-item-label">
-                      {t(tableRowName)}
-                    </span>
-                    <span className="element-info-item-value">
-                      {selectedElementInfo[tableRowName] || t('null')}
-                    </span>
-                  </div>
-                ))
-              }
-            </>
-          )
-        })
-      } */}
-
-      {/* <div className="element-info-item">
-        <button
-          type="button"
-          title={t('deleteNode')}
-          onClick={() => {
-            const newDeletedNodes = deletedNodes.slice()
-
-            newDeletedNodes.push(selectedNodes)
-
-            setStoreState('deletedNodes', newDeletedNodes)
-
-            setStoreState('selectedNodes', undefined)
-          }}
-        >
-          {t('deleteNode')}
-        </button>
-      </div> */}
     </div>
   )
 }
@@ -159,9 +97,7 @@ const ElementInfo = ({
 ElementInfo.propTypes = {
   selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   availableNodesNormalised: PropTypes.shape().isRequired,
-  // setStoreState: PropTypes.func.isRequired,
   removeFromArray: PropTypes.func.isRequired,
-  // deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 const mapToProps = ({

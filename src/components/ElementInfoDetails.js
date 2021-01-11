@@ -1,9 +1,6 @@
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-// import {
-//   ImCross
-// } from 'react-icons/im'
 import actions from '../store/actions'
 
 const ElementInfoDetails = ({
@@ -91,24 +88,6 @@ const ElementInfoDetails = ({
           </tbody>
         </table>
       </div>
-
-      {/* <div className="element-info-item">
-        <button
-          type="button"
-          title={t('deleteNode')}
-          onClick={() => {
-            const newDeletedNodes = deletedNodes.slice()
-
-            newDeletedNodes.push(selectedNodes)
-
-            setStoreState('deletedNodes', newDeletedNodes)
-
-            setStoreState('selectedNodes', undefined)
-          }}
-        >
-          {t('deleteNode')}
-        </button>
-      </div> */}
     </div>
   )
 }

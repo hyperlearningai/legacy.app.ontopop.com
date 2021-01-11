@@ -9,8 +9,6 @@ import jsonClasses from '../assets/json/test-ontology-classes.json'
 import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import getPhysicsOptions from '../utils/getPhysicsOptions'
 
-// let network
-
 const GraphVisualisation = ({
   availableNodes,
   availableEdges,
