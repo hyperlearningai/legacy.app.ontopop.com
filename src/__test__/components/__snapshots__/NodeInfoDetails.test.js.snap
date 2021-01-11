@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ElementInfoDetails should match snapshot  1`] = `
+exports[`NodeInfoDetails should match snapshot  1`] = `
 <Connect
   actions={
     Object {

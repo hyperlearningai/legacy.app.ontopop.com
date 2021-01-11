@@ -8,15 +8,11 @@ import {
 import {
   BsSearch,
 } from 'react-icons/bs'
-import {
-  ImInfo
-} from 'react-icons/im'
 import actions from '../store/actions'
 
 const Navbar = ({
   setStoreState,
   isSearchOpen,
-  isInfoOpen,
   availableNodes,
   isNodeSelectable
 }) => {
@@ -30,21 +26,12 @@ const Navbar = ({
           title={t(isNodeSelectable ? 'disallowNodeSelection' : 'allowNodeSelection')}
           className={isNodeSelectable ? 'nav-left-button-selected' : ''}
           onClick={() => {
-            if (isNodeSelectable) setStoreState('isNodeSelectable', [])
+            if (isNodeSelectable) setStoreState('selectedNodes', [])
 
             setStoreState('isNodeSelectable', !isNodeSelectable)
           }}
         >
           <FaRegHandPointer />
-        </button>
-
-        <button
-          type="button"
-          title={t(isInfoOpen ? 'hideInfo' : 'showInfo')}
-          className={isInfoOpen ? 'nav-left-button-selected' : ''}
-          onClick={() => setStoreState('isInfoOpen', !isInfoOpen)}
-        >
-          <ImInfo />
         </button>
 
         <span>
@@ -57,10 +44,7 @@ const Navbar = ({
           type="button"
           title={t('search')}
           className={isSearchOpen ? 'nav-right-button-selected' : ''}
-          onClick={() => {
-            setStoreState('isInfoOpen', false)
-            setStoreState('isSearchOpen', !isSearchOpen)
-          }}
+          onClick={() => setStoreState('isSearchOpen', !isSearchOpen)}
         >
           <BsSearch />
         </button>
@@ -70,7 +54,6 @@ const Navbar = ({
 }
 
 Navbar.propTypes = {
-  isInfoOpen: PropTypes.bool.isRequired,
   isSearchOpen: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
   availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -78,12 +61,10 @@ Navbar.propTypes = {
 }
 
 const mapToProps = ({
-  isInfoOpen,
   isSearchOpen,
   availableNodes,
   isNodeSelectable
 }) => ({
-  isInfoOpen,
   isSearchOpen,
   availableNodes,
   isNodeSelectable

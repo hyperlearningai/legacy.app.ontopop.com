@@ -16,7 +16,6 @@ exports[`Navbar should match snapshot  1`] = `
       },
     ]
   }
-  isInfoOpen={true}
   isNodeSelectable={true}
   mainView="networkGraphView"
   mapToProps={[Function]}

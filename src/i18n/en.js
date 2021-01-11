@@ -26,6 +26,9 @@ export default {
   showEdgeFilter: 'Show edge filter',
   hidePhysicsSettings: 'Hide physics settings',
   showPhysicsSettings: 'Show physics settings',
+  allowEdgeSelection: 'Allow edge selection',
+  disallowEdgeSelection: 'Disallow edge selection',
+  selectedEdges: 'Selected edges',
 
   // info
   id: 'ID',
@@ -45,6 +48,7 @@ export default {
   from: 'From',
   connection: 'Connection',
   to: 'to',
+  nodesProperties: 'Nodes properties',
 
   // search
   search: 'Search',

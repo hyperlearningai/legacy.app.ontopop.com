@@ -1,0 +1,71 @@
+.edge-info-details {
+  padding: 10px;
+
+  &-title {
+    font-weight: 700;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  &-table {
+    margin-bottom: 40px;
+
+    table {
+      border-collapse: collapse;
+
+      tr {
+        text-align: left;
+
+        th {
+          font-weight: 700;
+        }
+
+        td {
+          padding: 5px;
+          border-top: 1px solid $white;
+          border-bottom: 1px solid $white;
+          vertical-align: top;
+
+          &:nth-child(1) {
+            width: 100px;
+          }
+
+          &.icon-cell {
+            width: 40px;
+          }
+
+          button {
+            background: transparent;
+            outline: none;
+            border: none;
+            color: $white;
+            font-size: 20px;
+            cursor: pointer;
+          }
+
+          .edge-node-info {
+            width: 100%;
+
+            span {
+              width: 100%;
+            }
+
+            &-title {
+              margin-top: 10px;
+              width: 100%;
+              font-weight: 700;
+              font-size: 12px;
+            }
+
+            &-value {
+              width: 100%;
+              font-size: 12px;
+              font-style: italic;
+            }
+          }
+        }
+      }
+    }
+  }
+}

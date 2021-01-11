@@ -2,70 +2,73 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import Sidebar from './Sidebar'
 import GraphVisualisation from './GraphVisualisation'
-import ElementInfo from './ElementInfo'
+import NodeInfo from './NodeInfo'
+import EdgeInfo from './EdgeInfo'
 import SearchBox from './SearchBox'
 import SettingsBox from './SettingsBox'
-import EdgeFilter from './EdgeFilter'
 import ProgressBar from './ProgressBar'
 
 const MainView = ({
   isSidebarOpen,
   isSearchOpen,
-  isInfoOpen,
+  isNodeSelectable,
   selectedNodes,
-  isEdgeFilterOpen,
+  selectedEdges,
+  isEdgeSelectable,
   isSettingsOpen,
   isNetworkLoading,
   networkLoadingProgress
 }) => (
   <main className="main-view">
     {
-      isSidebarOpen && (
-        <Sidebar />
-      )
-    }
+        isSidebarOpen && (
+          <Sidebar />
+        )
+      }
 
     <div className="main-view-area">
       {
-        isInfoOpen
-        && selectedNodes
-        && selectedNodes.length > 0
-        && (
-          <ElementInfo />
-        )
-      }
+          isNodeSelectable
+          && selectedNodes
+          && selectedNodes.length > 0
+          && (
+            <NodeInfo />
+          )
+        }
 
       {
-        isSearchOpen
-        && (
-          <SearchBox />
-        )
-      }
+          isSearchOpen
+          && (
+            <SearchBox />
+          )
+        }
 
       {
-        isNetworkLoading
-          ? (
-            <ProgressBar
-              progress={networkLoadingProgress}
-            />
-          ) : null
-      }
+          isNetworkLoading
+            ? (
+              <ProgressBar
+                progress={networkLoadingProgress}
+              />
+            ) : null
+        }
 
       <GraphVisualisation />
 
       {
-        isEdgeFilterOpen
-        && (
-          <EdgeFilter />
-        )
-      }
+          isEdgeSelectable
+          && selectedEdges
+          && selectedEdges.length > 0
+          && (
+            <EdgeInfo />
+          )
+        }
 
       {
-        isSettingsOpen
-        && (
-          <SettingsBox />
-        )
-      }
+          isSettingsOpen
+          && (
+            <SettingsBox />
+          )
+        }
 
     </div>
   </main>
@@ -74,32 +77,37 @@ const MainView = ({
 MainView.propTypes = {
   isSidebarOpen: PropTypes.bool.isRequired,
   isSearchOpen: PropTypes.bool.isRequired,
-  isInfoOpen: PropTypes.bool.isRequired,
   selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isEdgeFilterOpen: PropTypes.bool.isRequired,
+  selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   isSettingsOpen: PropTypes.bool.isRequired,
   isNetworkLoading: PropTypes.bool.isRequired,
+  isNodeSelectable: PropTypes.bool.isRequired,
+  isEdgeSelectable: PropTypes.bool.isRequired,
   networkLoadingProgress: PropTypes.number.isRequired,
 }
 
 const mapToProps = ({
   isSidebarOpen,
-  isInfoOpen,
   isSearchOpen,
   selectedNodes,
+  selectedEdges,
   isEdgeFilterOpen,
   isSettingsOpen,
   isNetworkLoading,
-  networkLoadingProgress
+  networkLoadingProgress,
+  isNodeSelectable,
+  isEdgeSelectable
 }) => ({
   isSidebarOpen,
-  isInfoOpen,
   isSearchOpen,
   selectedNodes,
+  selectedEdges,
   isEdgeFilterOpen,
   isSettingsOpen,
   isNetworkLoading,
-  networkLoadingProgress
+  networkLoadingProgress,
+  isNodeSelectable,
+  isEdgeSelectable
 })
 
 export default connect(

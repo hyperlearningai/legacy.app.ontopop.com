@@ -15,7 +15,7 @@ const serialiseNodesEdges = ({
   classesFromApi,
   objectPropertiesFromApi,
   setStoreState,
-  edgesToIgnore,
+  // edgesToIgnore,
   deletedNodes,
 }) => {
   const { OwlClasses } = JSON.parse(JSON.stringify(classesFromApi))
@@ -27,6 +27,7 @@ const serialiseNodesEdges = ({
   const availableEdges = []
   const availableNodesNormalised = {}
   const nodesConnections = {}
+  const edgesConnections = {}
 
   const allNodeIdsKeys = Object.keys(OwlClasses)
 
@@ -62,7 +63,9 @@ const serialiseNodesEdges = ({
 
       const edgeLabel = edgeObject.rdfsLabel
 
-      if (!edgeLabel || edgesToIgnore.includes(edgeId)) return false
+      if (!edgeLabel
+      // || edgesToIgnore.includes(edgeId)
+      ) return false
 
       const linkedNodeId = owlRestriction.classRdfAbout
 
@@ -77,17 +80,33 @@ const serialiseNodesEdges = ({
       linkedNodeIdObject.id = linkedNodeId
       linkedNodeIdObject.label = linkedNodeIdObject.rdfsLabel
 
+      const edgeUniqueId = `${edgeId}___${nodeId}___${linkedNodeId}`
+
       const edge = {
         from: nodeId,
         fromLabel: nodeIdObject.label,
         to: linkedNodeId,
         toLabel: linkedNodeIdObject.label,
         label: edgeLabel,
-        edgeId
+        edgeId,
+        id: edgeUniqueId
       }
 
       if (!availableEdges.includes(edge)) {
         availableEdges.push(edge)
+
+        const edgeConnection = {
+          from: nodeId,
+          fromLabel: nodeIdObject.label,
+          to: linkedNodeId,
+          toLabel: linkedNodeIdObject.label,
+        }
+
+        if (edgesConnections[edgeId] && !edgesConnections[edgeId].includes(edge)) {
+          edgesConnections[edgeId].push(edgeConnection)
+        } else {
+          edgesConnections[edgeId] = [edgeConnection]
+        }
 
         if (nodesConnections[nodeId] && !nodesConnections[nodeId].includes(edge)) {
           nodesConnections[nodeId].push(edge)
@@ -148,6 +167,7 @@ const serialiseNodesEdges = ({
   setStoreState('availableNodes', availableNodesWithEdges)
   setStoreState('availableEdges', availableEdges)
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
+  setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
 }
 
 export default serialiseNodesEdges

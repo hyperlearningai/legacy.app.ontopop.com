@@ -38,8 +38,10 @@ main {
 @import '_footer';
 @import '_sidebar';
 @import '_mainview';
-@import '_elementinfo';
-@import '_elementinfodetails';
+@import '_nodeinfo';
+@import '_nodeinfodetails';
+@import '_edgeinfo';
+@import '_edgeinfodetails';
 @import '_searchbox';
 @import '_edgefilter';
 @import '_physicssettings';

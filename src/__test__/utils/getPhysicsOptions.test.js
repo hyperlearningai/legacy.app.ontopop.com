@@ -26,7 +26,9 @@ describe('getPhysicsOptions', () => {
           forceDirection: 'none',
           roundness: 0.45,
           type: 'cubicBezier'
-        }
+        },
+        labelHighlightBold: true,
+        selectionWidth: 3,
       },
       nodes: {
         color: {

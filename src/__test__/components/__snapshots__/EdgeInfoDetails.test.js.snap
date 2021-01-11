@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EdgeInfoDetails should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  edgeId="abc"
+  edgesConnections={
+    Array [
+      Object {
+        "from": "abc",
+        "fromLabel": "label",
+        "to": "cde",
+        "toLabel": "label2",
+      },
+    ]
+  }
+  mapToProps={[Function]}
+  objectPropertiesFromApi={
+    Object {
+      "OwlObjectProperties": Object {
+        "abc": Object {
+          "id": "abc",
+          "rdfsLabel": "label",
+        },
+      },
+    }
+  }
+>
+  <Component />
+</Connect>
+`;

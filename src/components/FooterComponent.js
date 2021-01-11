@@ -3,18 +3,18 @@ import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import {
-  AiOutlineNodeIndex
-} from 'react-icons/ai'
-import {
   SiAtom,
 } from 'react-icons/si'
+import {
+  FaRegHandPointer
+} from 'react-icons/fa'
 import actions from '../store/actions'
 
 const FooterComponent = ({
   setStoreState,
   isSettingsOpen,
-  isEdgeFilterOpen,
   availableEdges,
+  isEdgeSelectable
 }) => {
   const { t } = useTranslation()
 
@@ -23,11 +23,15 @@ const FooterComponent = ({
       <div className="footer-left">
         <button
           type="button"
-          title={t(isEdgeFilterOpen ? 'hideEdgeFilter' : 'showEdgeFilter')}
-          className={isEdgeFilterOpen ? 'footer-left-button-selected' : ''}
-          onClick={() => setStoreState('isEdgeFilterOpen', !isEdgeFilterOpen)}
+          title={t(isEdgeSelectable ? 'disallowEdgeSelection' : 'allowEdgeSelection')}
+          className={isEdgeSelectable ? 'footer-left-button-selected' : ''}
+          onClick={() => {
+            if (isEdgeSelectable) setStoreState('selectedEdges', [])
+
+            setStoreState('isEdgeSelectable', !isEdgeSelectable)
+          }}
         >
-          <AiOutlineNodeIndex />
+          <FaRegHandPointer />
         </button>
 
         <span>
@@ -50,20 +54,20 @@ const FooterComponent = ({
 }
 
 FooterComponent.propTypes = {
-  isEdgeFilterOpen: PropTypes.bool.isRequired,
   isSettingsOpen: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
+  isEdgeSelectable: PropTypes.bool.isRequired,
   availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 }
 
 const mapToProps = ({
-  isEdgeFilterOpen,
   isSettingsOpen,
   availableEdges,
+  isEdgeSelectable,
 }) => ({
-  isEdgeFilterOpen,
   isSettingsOpen,
   availableEdges,
+  isEdgeSelectable,
 })
 
 export default connect(

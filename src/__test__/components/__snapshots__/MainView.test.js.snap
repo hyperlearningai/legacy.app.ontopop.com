@@ -3,14 +3,19 @@
 exports[`MainView should match snapshot  1`] = `
 <Connect
   actions={Object {}}
-  isEdgeFilterOpen={true}
-  isInfoOpen={true}
+  isEdgeSelectable={true}
   isNetworkLoading={true}
+  isNodeSelectable={true}
   isSearchOpen={true}
   isSettingsOpen={true}
   isSidebarOpen={true}
   mapToProps={[Function]}
   networkLoadingProgress={10}
+  selectedEdges={
+    Array [
+      "123",
+    ]
+  }
   selectedNodes={
     Array [
       "abc",

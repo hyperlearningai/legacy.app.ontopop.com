@@ -10,7 +10,9 @@ const getPhysicsOptions = ({
       roundness: 0.45,
     },
     arrows: { to: true },
-    color: '#070b11'
+    color: '#070b11',
+    labelHighlightBold: true,
+    selectionWidth: 3,
   },
   nodes: {
     color: {

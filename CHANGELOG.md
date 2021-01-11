@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.1.0]
 ### Added
+- ONTOLOGY-18 Select edges and display edge and related nodes properties
 - ONTOLOGY-17 Select nodes and display node properties
 - ONTOLOGY-16 Simple network-based ontology visualisation
 

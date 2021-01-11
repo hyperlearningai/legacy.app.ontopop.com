@@ -19,7 +19,11 @@ const SearchBox = ({
       <div className="search-box-input">
         <input
           value={searchFilter}
-          onChange={(e) => setStoreState('searchFilter', e.target.value)}
+          onChange={(e) => {
+            setStoreState('selectedNodes', [])
+            setStoreState('selectedEdges', [])
+            setStoreState('searchFilter', e.target.value)
+          }}
         />
         <BsSearch />
       </div>

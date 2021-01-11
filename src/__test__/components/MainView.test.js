@@ -7,10 +7,11 @@ const setup = () => {
   const props = {
     isSidebarOpen: true,
     isSearchOpen: true,
-    isInfoOpen: true,
-    isEdgeFilterOpen: true,
-    isSettingsOpen: true,
+    isNodeSelectable: true,
     selectedNodes: ['abc'],
+    selectedEdges: ['123'],
+    isEdgeSelectable: true,
+    isSettingsOpen: true,
     isNetworkLoading: true,
     networkLoadingProgress: 10
   }
