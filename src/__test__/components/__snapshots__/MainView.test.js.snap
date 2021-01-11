@@ -11,7 +11,11 @@ exports[`MainView should match snapshot  1`] = `
   isSidebarOpen={true}
   mapToProps={[Function]}
   networkLoadingProgress={10}
-  selectedNode="abc"
+  selectedNodes={
+    Array [
+      "abc",
+    ]
+  }
 >
   <Component />
 </Connect>

@@ -269,17 +269,66 @@ describe('serialiseNodesEdges', () => {
         'availableEdges',
         [
           {
+            edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
             from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+            fromLabel: 'Communication Document',
             label: 'Instantiation of',
             to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+            toLabel: 'Programme',
           },
           {
+            edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
             from: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            fromLabel: 'Low Level Design',
             label: 'Instantiation of',
             to: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+            toLabel: 'Communication Document',
           },
         ],
       ],
+      [
+        'nodesConnections',
+        {
+          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': [
+            {
+              edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+              from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+              fromLabel: 'Communication Document',
+              label: 'Instantiation of',
+              to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+              toLabel: 'Programme',
+            },
+            {
+              edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+              from: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+              fromLabel: 'Low Level Design',
+              label: 'Instantiation of',
+              to: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+              toLabel: 'Communication Document',
+            },
+          ],
+          'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M': [
+            {
+              edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+              from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+              fromLabel: 'Communication Document',
+              label: 'Instantiation of',
+              to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+              toLabel: 'Programme',
+            },
+          ],
+          'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8': [
+            {
+              edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+              from: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+              fromLabel: 'Low Level Design',
+              label: 'Instantiation of',
+              to: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+              toLabel: 'Communication Document',
+            },
+          ],
+        },
+      ]
     ])
   })
 
@@ -311,6 +360,10 @@ describe('serialiseNodesEdges', () => {
       [
         'availableEdges',
         [],
+      ],
+      [
+        'nodesConnections',
+        {},
       ],
     ])
   })
@@ -440,11 +493,39 @@ describe('serialiseNodesEdges', () => {
         'availableEdges',
         [
           {
+            edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
             from: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+            fromLabel: 'Low Level Design',
             label: 'Instantiation of',
             to: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+            toLabel: 'Communication Document',
           },
         ],
+      ],
+      [
+        'nodesConnections',
+        {
+          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': [
+            {
+              edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+              from: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+              fromLabel: 'Low Level Design',
+              label: 'Instantiation of',
+              to: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+              toLabel: 'Communication Document',
+            },
+          ],
+          'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8': [
+            {
+              edgeId: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+              from: 'http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8',
+              fromLabel: 'Low Level Design',
+              label: 'Instantiation of',
+              to: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+              toLabel: 'Communication Document',
+            },
+          ],
+        },
       ],
     ])
   })

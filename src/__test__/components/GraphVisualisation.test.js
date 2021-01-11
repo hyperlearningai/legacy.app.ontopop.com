@@ -7,8 +7,8 @@ const setup = () => {
   const props = {
     availableNodes: [],
     availableEdges: [],
-    fitNetwork: false,
     setStoreState: jest.fn(),
+    selectedNodes: [],
     searchFilter: '',
     edgesToIgnore: [],
     physicsHierarchicalView: true,
@@ -52,8 +52,8 @@ const setup = () => {
       }
     },
     nodesIdsToDisplay: [],
-    selectedNode: {},
-    deletedNodes: []
+    deletedNodes: [],
+    isNodeSelectable: true,
   }
 
   const component = shallow(<GraphVisualisation {...props} />)

@@ -4,6 +4,8 @@ exports[`EdgeFilter should match snapshot  1`] = `
 <Connect
   actions={
     Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
       "setStoreState": [Function],
     }
   }

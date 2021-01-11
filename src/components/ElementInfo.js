@@ -1,90 +1,111 @@
+import { useState } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import {
+  BsChevronLeft,
+  BsChevronRight,
+} from 'react-icons/bs'
+import {
+  ImCross
+} from 'react-icons/im'
 import actions from '../store/actions'
+import ElementInfoDetails from './ElementInfoDetails'
 
 const ElementInfo = ({
-  selectedNode,
+  selectedNodes,
   availableNodesNormalised,
-  setStoreState,
-  deletedNodes
+  removeFromArray
 }) => {
   const { t } = useTranslation()
 
-  const selectedElementInfo = availableNodesNormalised[selectedNode]
-
-  const tableRowNames = [
-    'id',
-    'rdfAbout',
-    'skosComment',
-    'skosDefinition',
-    'skosExample'
-  ]
-
-  if (!selectedElementInfo) return null
-
-  const { label } = selectedElementInfo
+  const [view, setView] = useState('')
+  const [nodeId, setNodeId] = useState('')
 
   return (
     <div className="element-info">
-      <div className="element-info-title">
-        {label}
+      <div className="element-info-navbar">
+        <div className="element-info-navbar-button">
+          {
+            view !== '' && (
+              <button
+                type="button"
+                title={t('goBack')}
+                onClick={() => setView('')}
+              >
+                <BsChevronLeft />
+              </button>
+            )
+          }
+        </div>
+        {
+          view !== ''
+            ? availableNodesNormalised[nodeId].label
+            : t('selectedNodes')
+        }
       </div>
 
-      {
-        tableRowNames.map((tableRowName) => (
-          <div
-            className="element-info-item"
-            key={`info-row-${tableRowName}`}
-          >
-            <span className="element-info-item-label">
-              {t(tableRowName)}
-            </span>
-            <span className="element-info-item-value">
-              {selectedElementInfo[tableRowName] || t('null')}
-            </span>
-          </div>
-        ))
-      }
+      <div className="element-info-body">
+        {
+          view === ''
+            ? selectedNodes.map((selectedNode) => {
+              const selectedElementInfo = availableNodesNormalised[selectedNode]
 
-      <div className="element-info-item">
-        <button
-          type="button"
-          title={t('deleteNode')}
-          onClick={() => {
-            const newDeletedNodes = deletedNodes.slice()
+              if (!selectedElementInfo) return null
 
-            newDeletedNodes.push(selectedNode)
+              const { label, id } = selectedElementInfo
 
-            setStoreState('deletedNodes', newDeletedNodes)
-
-            setStoreState('selectedNode', undefined)
-          }}
-        >
-          {t('deleteNode')}
-        </button>
+              return (
+                <div
+                  className="element-info-body-row"
+                  key={`selected-node-row-${id}`}
+                >
+                  <button
+                    type="button"
+                    title={t('removeSelectedNode')}
+                    onClick={() => removeFromArray('selectedNodes', id)}
+                  >
+                    <ImCross />
+                  </button>
+                  <span>
+                    {label}
+                  </span>
+                  <button
+                    type="button"
+                    title={t('viewNode')}
+                    onClick={() => {
+                      setNodeId(id)
+                      setView('node')
+                    }}
+                  >
+                    <BsChevronRight />
+                  </button>
+                </div>
+              )
+            })
+            : (
+              <ElementInfoDetails
+                nodeId={nodeId}
+              />
+            )
+        }
       </div>
     </div>
   )
 }
 
 ElementInfo.propTypes = {
-  selectedNode: PropTypes.string,
+  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   availableNodesNormalised: PropTypes.shape().isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-}
-
-ElementInfo.defaultProps = {
-  selectedNode: undefined,
+  removeFromArray: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  selectedNode,
+  selectedNodes,
   availableNodesNormalised,
   deletedNodes
 }) => ({
-  selectedNode,
+  selectedNodes,
   availableNodesNormalised,
   deletedNodes
 })

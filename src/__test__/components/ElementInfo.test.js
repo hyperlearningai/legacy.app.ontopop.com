@@ -15,7 +15,7 @@ const setup = () => {
         skosExample: 'skosExample'
       }
     },
-    selectedNode: 'abc',
+    selectedNodes: ['abc'],
     setStoreState: jest.fn(),
     deletedNodes: []
   }

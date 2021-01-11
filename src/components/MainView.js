@@ -12,7 +12,7 @@ const MainView = ({
   isSidebarOpen,
   isSearchOpen,
   isInfoOpen,
-  selectedNode,
+  selectedNodes,
   isEdgeFilterOpen,
   isSettingsOpen,
   isNetworkLoading,
@@ -28,7 +28,8 @@ const MainView = ({
     <div className="main-view-area">
       {
         isInfoOpen
-        && selectedNode
+        && selectedNodes
+        && selectedNodes.length > 0
         && (
           <ElementInfo />
         )
@@ -74,22 +75,18 @@ MainView.propTypes = {
   isSidebarOpen: PropTypes.bool.isRequired,
   isSearchOpen: PropTypes.bool.isRequired,
   isInfoOpen: PropTypes.bool.isRequired,
-  selectedNode: PropTypes.string,
+  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   isEdgeFilterOpen: PropTypes.bool.isRequired,
   isSettingsOpen: PropTypes.bool.isRequired,
   isNetworkLoading: PropTypes.bool.isRequired,
   networkLoadingProgress: PropTypes.number.isRequired,
 }
 
-MainView.defaultProps = {
-  selectedNode: undefined,
-}
-
 const mapToProps = ({
   isSidebarOpen,
   isInfoOpen,
   isSearchOpen,
-  selectedNode,
+  selectedNodes,
   isEdgeFilterOpen,
   isSettingsOpen,
   isNetworkLoading,
@@ -98,7 +95,7 @@ const mapToProps = ({
   isSidebarOpen,
   isInfoOpen,
   isSearchOpen,
-  selectedNode,
+  selectedNodes,
   isEdgeFilterOpen,
   isSettingsOpen,
   isNetworkLoading,

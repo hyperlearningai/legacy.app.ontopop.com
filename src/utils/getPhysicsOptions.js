@@ -12,6 +12,20 @@ const getPhysicsOptions = ({
     arrows: { to: true },
     color: '#070b11'
   },
+  nodes: {
+    color: {
+      background: '#03a9f4', // '#2B7CE9',
+      border: '#011e41', // '#D2E5FF',
+      highlight: {
+        background: '#4caf50',
+        border: '#009688',
+      },
+      hover: {
+        background: '#f2f2f2',
+        border: '#607d8b',
+      },
+    }
+  },
   autoResize: true,
   layout: {
     hierarchical: {

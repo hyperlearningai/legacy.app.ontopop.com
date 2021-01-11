@@ -9,23 +9,23 @@ import jsonClasses from '../assets/json/test-ontology-classes.json'
 import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import getPhysicsOptions from '../utils/getPhysicsOptions'
 
-let network
-
 const GraphVisualisation = ({
   availableNodes,
   availableEdges,
   searchFilter,
   setStoreState,
+  addToArray,
   classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
-  selectedNode,
   edgesToIgnore,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork,
-  deletedNodes
+  deletedNodes,
+  isNodeSelectable,
+  network,
+  selectedNodes
 }) => {
   const visJsRef = useRef(null)
 
@@ -53,7 +53,7 @@ const GraphVisualisation = ({
       edgesToIgnore,
       deletedNodes
     })
-  }, [nodesIdsToDisplay, selectedNode, edgesToIgnore, deletedNodes])
+  }, [nodesIdsToDisplay, edgesToIgnore, deletedNodes])
 
   useEffect(async () => {
     setStoreState('isNetworkLoading', true)
@@ -64,17 +64,27 @@ const GraphVisualisation = ({
       physicsEdgeLength
     })
 
-    network = visJsRef.current
+    setStoreState('network', visJsRef.current
       && new Network(visJsRef.current, {
         nodes: availableNodes,
         edges: availableEdges
       },
-      physicsSettings)
+      physicsSettings))
+  }, [
+    visJsRef,
+    availableNodes,
+    availableEdges,
+    physicsHierarchicalView,
+    physicsRepulsion,
+    physicsEdgeLength
+  ])
 
+  useEffect(async () => {
     network?.on('selectNode', (event) => {
       if (event.nodes?.length === 1) {
-        // eslint-disable-next-line
-        setStoreState('selectedNode', event.nodes[0])
+        if (isNodeSelectable) {
+          addToArray('selectedNodes', event.nodes[0])
+        }
 
         if (!nodesIdsToDisplay.includes(event.nodes[0])) {
           const newNodesIdsToDisplay = [
@@ -84,8 +94,6 @@ const GraphVisualisation = ({
 
           setStoreState('nodesIdsToDisplay', newNodesIdsToDisplay)
         }
-      } else {
-        setStoreState('selectedNode', undefined)
       }
     })
 
@@ -96,31 +104,24 @@ const GraphVisualisation = ({
     })
 
     network?.once('stabilizationIterationsDone', () => {
-      setStoreState('networkLoadingProgress', false)
-      setStoreState('isNetworkLoading', 0)
+      setStoreState('networkLoadingProgress', 0)
+      setStoreState('isNetworkLoading', false)
     })
 
     await network?.stabilize(2000)
 
     network?.fit()
-
-    setStoreState('fitNetwork', false)
   }, [
-    visJsRef,
-    availableNodes,
-    availableEdges,
-    physicsHierarchicalView,
-    physicsRepulsion,
-    physicsEdgeLength
+    network,
+    isNodeSelectable
   ])
 
   useEffect(() => {
-    if (network && fitNetwork) {
-      network.fit()
-    }
-
-    setStoreState('fitNetwork', false)
-  }, [fitNetwork])
+    network?.selectNodes(selectedNodes)
+  }, [
+    network,
+    selectedNodes
+  ])
 
   return (
     <div
@@ -138,21 +139,23 @@ GraphVisualisation.propTypes = {
   availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   edgesToIgnore: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   setStoreState: PropTypes.func.isRequired,
+  addToArray: PropTypes.func.isRequired,
   searchFilter: PropTypes.string.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedNode: PropTypes.shape(),
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
-  fitNetwork: PropTypes.bool.isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isNodeSelectable: PropTypes.bool.isRequired,
+  network: PropTypes.shape()
 }
 
 GraphVisualisation.defaultProps = {
-  selectedNode: undefined
+  network: undefined,
 }
 
 const mapToProps = ({
@@ -166,8 +169,10 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork,
-  deletedNodes
+  deletedNodes,
+  isNodeSelectable,
+  network,
+  selectedNodes
 }) => ({
   availableNodes,
   availableEdges,
@@ -179,8 +184,10 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  fitNetwork,
-  deletedNodes
+  deletedNodes,
+  isNodeSelectable,
+  network,
+  selectedNodes
 })
 
 export default connect(

@@ -4,6 +4,8 @@ exports[`Navbar should match snapshot  1`] = `
 <Connect
   actions={
     Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
       "setStoreState": [Function],
     }
   }
@@ -14,7 +16,8 @@ exports[`Navbar should match snapshot  1`] = `
       },
     ]
   }
-  isSidebarOpen={true}
+  isInfoOpen={true}
+  isNodeSelectable={true}
   mainView="networkGraphView"
   mapToProps={[Function]}
   setStoreState={[MockFunction]}

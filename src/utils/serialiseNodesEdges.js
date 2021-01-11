@@ -26,6 +26,7 @@ const serialiseNodesEdges = ({
   const availableNodes = []
   const availableEdges = []
   const availableNodesNormalised = {}
+  const nodesConnections = {}
 
   const allNodeIdsKeys = Object.keys(OwlClasses)
 
@@ -39,7 +40,7 @@ const serialiseNodesEdges = ({
     nodeIdObject.id = nodeId
     nodeIdObject.label = nodeIdObject.rdfsLabel
 
-    // ignore ndoe without labels
+    // ignore node without labels
     if (
       !nodeIdObject.label
       || !nodeIdObject.label === ''
@@ -78,12 +79,27 @@ const serialiseNodesEdges = ({
 
       const edge = {
         from: nodeId,
+        fromLabel: nodeIdObject.label,
         to: linkedNodeId,
-        label: edgeLabel
+        toLabel: linkedNodeIdObject.label,
+        label: edgeLabel,
+        edgeId
       }
 
       if (!availableEdges.includes(edge)) {
         availableEdges.push(edge)
+
+        if (nodesConnections[nodeId] && !nodesConnections[nodeId].includes(edge)) {
+          nodesConnections[nodeId].push(edge)
+        } else {
+          nodesConnections[nodeId] = [edge]
+        }
+
+        if (nodesConnections[linkedNodeId] && !nodesConnections[linkedNodeId].includes(edge)) {
+          nodesConnections[linkedNodeId].push(edge)
+        } else {
+          nodesConnections[linkedNodeId] = [edge]
+        }
       }
 
       if (!addedNodes.includes(linkedNodeId)
@@ -131,6 +147,7 @@ const serialiseNodesEdges = ({
   setStoreState('availableNodesNormalised', availableNodesNormalised)
   setStoreState('availableNodes', availableNodesWithEdges)
   setStoreState('availableEdges', availableEdges)
+  setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
 }
 
 export default serialiseNodesEdges

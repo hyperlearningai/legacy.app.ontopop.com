@@ -28,6 +28,20 @@ describe('getPhysicsOptions', () => {
           type: 'cubicBezier'
         }
       },
+      nodes: {
+        color: {
+          background: '#03a9f4',
+          border: '#011e41',
+          highlight: {
+            background: '#4caf50',
+            border: '#009688',
+          },
+          hover: {
+            background: '#f2f2f2',
+            border: '#607d8b',
+          },
+        },
+      },
       layout: {
         hierarchical: {
           enabled: true,

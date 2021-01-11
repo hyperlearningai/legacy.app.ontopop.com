@@ -15,7 +15,6 @@ const initialState = {
   availableNodesNormalised: {},
   availableEdges: [],
   nodesIdsToDisplay: [],
-  selectedNode: undefined,
   isInfoOpen: true,
   isSearchOpen: false,
   isEdgeFilterOpen: false,
@@ -26,10 +25,13 @@ const initialState = {
   physicsRepulsion: true,
   physicsEdgeLength: 250,
   edgeFilter: '',
-  fitNetwork: false,
   deletedNodes: [],
   isNetworkLoading: false,
   networkLoadingProgress: 0,
+  isNodeSelectable: false,
+  selectedNodes: [],
+  network: undefined,
+  nodesConnections: {}
 }
 
 const middlewares = applyMiddleware(loadingMiddleware)
