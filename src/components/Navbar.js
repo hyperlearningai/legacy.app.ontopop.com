@@ -3,36 +3,41 @@ import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import {
-  // BsLayoutSidebar,
-  // BsLayoutSidebarInset,
+  FaRegHandPointer
+} from 'react-icons/fa'
+import {
   BsSearch,
-  // BsTable
 } from 'react-icons/bs'
-// import {
-//   BiNetworkChart
-// } from 'react-icons/bi'
 import {
   ImInfo
 } from 'react-icons/im'
 import actions from '../store/actions'
-// import {
-//   // NETWORK_GRAPH_VIEW,
-//   TABLE_VIEW
-// } from '../constants/views'
 
 const Navbar = ({
-  // isSidebarOpen,
   setStoreState,
   isSearchOpen,
-  // mainView,
   isInfoOpen,
   availableNodes,
+  isNodeSelectable
 }) => {
   const { t } = useTranslation()
 
   return (
     <nav>
       <div className="nav-left">
+        <button
+          type="button"
+          title={t(isNodeSelectable ? 'disallowNodeSelection' : 'allowNodeSelection')}
+          className={isNodeSelectable ? 'nav-left-button-selected' : ''}
+          onClick={() => {
+            if (isNodeSelectable) setStoreState('isNodeSelectable', [])
+
+            setStoreState('isNodeSelectable', !isNodeSelectable)
+          }}
+        >
+          <FaRegHandPointer />
+        </button>
+
         <button
           type="button"
           title={t(isInfoOpen ? 'hideInfo' : 'showInfo')}
@@ -45,46 +50,15 @@ const Navbar = ({
         <span>
           {`${t('nodes')}: ${availableNodes.length}`}
         </span>
-        {/* <button
-          type="button"
-          title={t(isSidebarOpen ? 'hideSidebar' : 'showSidebar')}
-          onClick={() => setStoreState('isSidebarOpen', !isSidebarOpen)}
-        >
-          {
-            isSidebarOpen ? (
-              <BsLayoutSidebar />
-            ) : (
-              <BsLayoutSidebarInset />
-            )
-          }
-        </button> */}
       </div>
 
       <div className="nav-right">
-        {/* <button
-          type="button"
-          title={t('showNetworkGraph')}
-          className={mainView === NETWORK_GRAPH_VIEW ? 'nav-right-button-selected' : ''}
-          onClick={() => setStoreState('mainView', NETWORK_GRAPH_VIEW)}
-        >
-          <BiNetworkChart />
-        </button>
-
-        <button
-          type="button"
-          title={t('showTable')}
-          className={mainView === TABLE_VIEW ? 'nav-right-button-selected' : ''}
-          onClick={() => setStoreState('mainView', TABLE_VIEW)}
-        >
-          <BsTable />
-        </button> */}
-
         <button
           type="button"
           title={t('search')}
           className={isSearchOpen ? 'nav-right-button-selected' : ''}
           onClick={() => {
-            setStoreState('selectedNode', undefined)
+            setStoreState('isInfoOpen', false)
             setStoreState('isSearchOpen', !isSearchOpen)
           }}
         >
@@ -96,25 +70,23 @@ const Navbar = ({
 }
 
 Navbar.propTypes = {
-  // isSidebarOpen: PropTypes.bool.isRequired,
   isInfoOpen: PropTypes.bool.isRequired,
   isSearchOpen: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
   availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  isNodeSelectable: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
-  isSidebarOpen,
-  // mainView,
   isInfoOpen,
   isSearchOpen,
-  availableNodes
+  availableNodes,
+  isNodeSelectable
 }) => ({
-  isSidebarOpen,
-  // mainView,
   isInfoOpen,
   isSearchOpen,
-  availableNodes
+  availableNodes,
+  isNodeSelectable
 })
 
 export default connect(

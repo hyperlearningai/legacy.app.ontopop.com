@@ -10,7 +10,7 @@ const setup = () => {
     isInfoOpen: true,
     isEdgeFilterOpen: true,
     isSettingsOpen: true,
-    selectedNode: 'abc',
+    selectedNodes: ['abc'],
     isNetworkLoading: true,
     networkLoadingProgress: 10
   }

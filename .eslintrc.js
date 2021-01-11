@@ -56,6 +56,7 @@ module.exports = {
     'max-len': [2, 200, 4, { ignoreUrls: true }],
     semi: [2, 'never'],
     radix: 0,
-    'security/detect-object-injection': 0
+    'security/detect-object-injection': 0,
+    'no-plusplus': 0
   }
 }

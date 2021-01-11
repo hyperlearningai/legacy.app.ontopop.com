@@ -13,6 +13,8 @@ export default {
   showInfo: 'Show element info',
   hideInfo: 'Hide element info',
   nodes: 'Nodes',
+  allowNodeSelection: 'Allow node selection',
+  disallowNodeSelection: 'Disallow node selection',
 
   // sidebar
   nodesOptions: 'Nodes options',
@@ -34,6 +36,15 @@ export default {
   skosExample: 'skosExample',
   null: 'Null',
   deleteNode: 'Delete node',
+  selectedNodes: 'Selected nodes',
+  removeSelectedNode: 'Remove selected node',
+  viewNode: 'View node',
+  goBack: 'Go back',
+  properties: 'Properties',
+  relationships: 'Relationships',
+  from: 'From',
+  connection: 'Connection',
+  to: 'to',
 
   // search
   search: 'Search',
@@ -50,11 +61,6 @@ export default {
   gravitationalView: 'Gravitational view',
   enableRepulsion: 'Enable repulsion',
   disableRepulsion: 'Disable repulsion',
-  fitNetwork: 'Fit screen',
-  hideInwardLinks: 'Hide inward links',
-  showInwardLinks: 'Show outward links',
-  hideOutwardLinks: 'Hide inward links',
-  showOutwardLinks: 'Show outward links',
 
   // Progress bar
   loading: 'Loading...',

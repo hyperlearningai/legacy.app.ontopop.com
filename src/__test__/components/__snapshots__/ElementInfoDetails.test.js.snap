@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ElementInfo should match snapshot  1`] = `
+exports[`ElementInfoDetails should match snapshot  1`] = `
 <Connect
   actions={
     Object {
@@ -12,8 +12,16 @@ exports[`ElementInfo should match snapshot  1`] = `
   availableNodesNormalised={
     Object {
       "abc": Object {
-        "id": "id",
+        "id": "abc",
         "label": "label",
+        "rdfAbout": "rdfAbout",
+        "skosComment": "skosComment",
+        "skosDefinition": "skosDefinition",
+        "skosExample": "skosExample",
+      },
+      "cde": Object {
+        "id": "cde",
+        "label": "label2",
         "rdfAbout": "rdfAbout",
         "skosComment": "skosComment",
         "skosDefinition": "skosDefinition",
@@ -21,14 +29,20 @@ exports[`ElementInfo should match snapshot  1`] = `
       },
     }
   }
-  deletedNodes={Array []}
   mapToProps={[Function]}
-  selectedNodes={
+  nodeId="abc"
+  nodesConnections={
     Array [
-      "abc",
+      Object {
+        "edgeId": "abc",
+        "from": "abc",
+        "fromLabel": "label",
+        "label": "is child of",
+        "to": "cde",
+        "toLabel": "label2",
+      },
     ]
   }
-  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>
