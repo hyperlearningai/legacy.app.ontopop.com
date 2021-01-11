@@ -24,7 +24,7 @@ const initialState = {
   edgesToIgnore: [],
   physicsHierarchicalView: false,
   physicsRepulsion: true,
-  physicsEdgeLength: 300,
+  physicsEdgeLength: 250,
   edgeFilter: '',
   fitNetwork: false,
   deletedNodes: [],
