@@ -1,17 +1,23 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import FooterComponent from '../../components/FooterComponent'
+import EdgeInfo from '../../components/EdgeInfo'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
-    isSettingsOpen: true,
-    isEdgeSelectable: true,
-    availableEdges: [{ id: '123' }]
+    objectPropertiesFromApi: {
+      OwlObjectProperties: {
+        abc: {
+          id: 'abc',
+          rdfsLabel: 'label',
+        }
+      }
+    },
+    selectedEdges: ['abc'],
+    removeFromArray: jest.fn(),
   }
 
-  const component = shallow(<FooterComponent {...props} />)
+  const component = shallow(<EdgeInfo {...props} />)
 
   return {
     component,
@@ -19,7 +25,7 @@ const setup = () => {
   }
 }
 
-describe('FooterComponent', () => {
+describe('EdgeInfo', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

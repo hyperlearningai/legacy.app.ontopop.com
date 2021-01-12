@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import ElementInfoDetails from '../../components/ElementInfoDetails'
+import EdgeInfoDetailsRow from '../../components/EdgeInfoDetailsRow'
 
 const setup = () => {
   const props = {
@@ -23,18 +23,15 @@ const setup = () => {
         skosExample: 'skosExample'
       }
     },
-    nodesConnections: [{
+    connection: {
       from: 'abc',
       fromLabel: 'label',
       to: 'cde',
       toLabel: 'label2',
-      label: 'is child of',
-      edgeId: 'abc'
-    }],
-    nodeId: 'abc'
+    },
   }
 
-  const component = shallow(<ElementInfoDetails {...props} />)
+  const component = shallow(<EdgeInfoDetailsRow {...props} />)
 
   return {
     component,
@@ -42,7 +39,7 @@ const setup = () => {
   }
 }
 
-describe('ElementInfoDetails', () => {
+describe('EdgeInfoDetailsRow', () => {
   it('should match snapshot ', () => {
     const {
       component

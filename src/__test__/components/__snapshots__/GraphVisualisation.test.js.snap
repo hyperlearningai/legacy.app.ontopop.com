@@ -39,7 +39,7 @@ exports[`GraphVisualisation should match snapshot  1`] = `
     }
   }
   deletedNodes={Array []}
-  edgesToIgnore={Array []}
+  isEdgeSelectable={true}
   isNodeSelectable={true}
   mapToProps={[Function]}
   nodesIdsToDisplay={Array []}

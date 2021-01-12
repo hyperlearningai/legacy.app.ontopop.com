@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import ElementInfo from '../../components/ElementInfo'
+import NodeInfo from '../../components/NodeInfo'
 
 const setup = () => {
   const props = {
@@ -20,7 +20,7 @@ const setup = () => {
     deletedNodes: []
   }
 
-  const component = shallow(<ElementInfo {...props} />)
+  const component = shallow(<NodeInfo {...props} />)
 
   return {
     component,
@@ -28,7 +28,7 @@ const setup = () => {
   }
 }
 
-describe('ElementInfo', () => {
+describe('NodeInfo', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

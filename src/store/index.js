@@ -29,9 +29,12 @@ const initialState = {
   isNetworkLoading: false,
   networkLoadingProgress: 0,
   isNodeSelectable: false,
+  isEdgeSelectable: false,
   selectedNodes: [],
+  selectedEdges: [],
   network: undefined,
-  nodesConnections: {}
+  nodesConnections: {},
+  edgesConnections: {}
 }
 
 const middlewares = applyMiddleware(loadingMiddleware)

@@ -18,14 +18,16 @@ const GraphVisualisation = ({
   classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
-  edgesToIgnore,
+  // edgesToIgnore,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
   deletedNodes,
   isNodeSelectable,
   network,
-  selectedNodes
+  selectedNodes,
+  selectedEdges,
+  isEdgeSelectable
 }) => {
   const visJsRef = useRef(null)
 
@@ -50,10 +52,14 @@ const GraphVisualisation = ({
       classesFromApi,
       objectPropertiesFromApi,
       setStoreState,
-      edgesToIgnore,
+      // edgesToIgnore,
       deletedNodes
     })
-  }, [nodesIdsToDisplay, edgesToIgnore, deletedNodes])
+  }, [
+    nodesIdsToDisplay,
+    // edgesToIgnore,
+    deletedNodes
+  ])
 
   useEffect(async () => {
     setStoreState('isNetworkLoading', true)
@@ -97,6 +103,14 @@ const GraphVisualisation = ({
       }
     })
 
+    network?.on('selectEdge', (event) => {
+      if (event.edges?.length === 1) {
+        if (isEdgeSelectable) {
+          addToArray('selectedEdges', event.edges[0])
+        }
+      }
+    })
+
     network?.on('stabilizationProgress', (params) => {
       const percentage = parseFloat(params.iterations / params.total).toFixed(2)
 
@@ -113,14 +127,28 @@ const GraphVisualisation = ({
     network?.fit()
   }, [
     network,
-    isNodeSelectable
+    isNodeSelectable,
+    isEdgeSelectable
   ])
 
   useEffect(() => {
-    network?.selectNodes(selectedNodes)
+    const availableNodesIds = availableNodes.map((node) => node.id)
+
+    const nodesToAdd = selectedNodes.filter((node) => availableNodesIds.includes(node))
+
+    network?.selectNodes(nodesToAdd)
   }, [
-    network,
     selectedNodes
+  ])
+
+  useEffect(() => {
+    const availableEdgesIds = availableEdges.map((edge) => edge.id)
+
+    const edgesToAdd = selectedEdges.filter((edge) => availableEdgesIds.includes(edge))
+
+    network?.selectEdges(edgesToAdd)
+  }, [
+    selectedEdges
   ])
 
   return (
@@ -138,8 +166,9 @@ const GraphVisualisation = ({
 GraphVisualisation.propTypes = {
   availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  edgesToIgnore: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // edgesToIgnore: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   setStoreState: PropTypes.func.isRequired,
   addToArray: PropTypes.func.isRequired,
   searchFilter: PropTypes.string.isRequired,
@@ -151,7 +180,8 @@ GraphVisualisation.propTypes = {
   physicsEdgeLength: PropTypes.number.isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   isNodeSelectable: PropTypes.bool.isRequired,
-  network: PropTypes.shape()
+  network: PropTypes.shape(),
+  isEdgeSelectable: PropTypes.bool.isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -165,14 +195,16 @@ const mapToProps = ({
   classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
-  edgesToIgnore,
+  // edgesToIgnore,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
   deletedNodes,
   isNodeSelectable,
   network,
-  selectedNodes
+  selectedNodes,
+  isEdgeSelectable,
+  selectedEdges
 }) => ({
   availableNodes,
   availableEdges,
@@ -180,14 +212,16 @@ const mapToProps = ({
   classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
-  edgesToIgnore,
+  // edgesToIgnore,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
   deletedNodes,
   isNodeSelectable,
   network,
-  selectedNodes
+  selectedNodes,
+  isEdgeSelectable,
+  selectedEdges
 })
 
 export default connect(

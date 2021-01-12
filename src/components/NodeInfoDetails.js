@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 
-const ElementInfoDetails = ({
+const NodeInfoDetails = ({
   nodeId,
   availableNodesNormalised,
   nodesConnections,
@@ -22,12 +22,12 @@ const ElementInfoDetails = ({
   }
 
   return (
-    <div className="element-info-details">
-      <div className="element-info-details-title">
+    <div className="node-info-details">
+      <div className="node-info-details-title">
         {t('properties')}
       </div>
 
-      <div className="element-info-details-table">
+      <div className="node-info-details-table">
         <table>
           <thead>
             <tr>
@@ -54,11 +54,11 @@ const ElementInfoDetails = ({
         </table>
       </div>
 
-      <div className="element-info-details-title">
+      <div className="node-info-details-title">
         {t('relationships')}
       </div>
 
-      <div className="element-info-details-table">
+      <div className="node-info-details-table">
         <table>
           <thead>
             <tr>
@@ -92,7 +92,7 @@ const ElementInfoDetails = ({
   )
 }
 
-ElementInfoDetails.propTypes = {
+NodeInfoDetails.propTypes = {
   nodeId: PropTypes.string.isRequired,
   availableNodesNormalised: PropTypes.shape().isRequired,
   nodesConnections: PropTypes.shape().isRequired,
@@ -109,4 +109,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(ElementInfoDetails)
+)(NodeInfoDetails)

@@ -10,10 +10,11 @@ const setup = () => {
     setStoreState: jest.fn(),
     selectedNodes: [],
     searchFilter: '',
-    edgesToIgnore: [],
+    // edgesToIgnore: [],
     physicsHierarchicalView: true,
     physicsRepulsion: true,
     physicsEdgeLength: true,
+    isEdgeSelectable: true,
     classesFromApi: {
       OwlClasses: {
         'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': {

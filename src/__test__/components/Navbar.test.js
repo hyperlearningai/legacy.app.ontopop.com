@@ -12,7 +12,6 @@ const setup = () => {
     mainView: NETWORK_GRAPH_VIEW,
     availableNodes: [{ id: '123' }],
     isNodeSelectable: true,
-    isInfoOpen: true,
   }
 
   const component = shallow(<Navbar {...props} />)

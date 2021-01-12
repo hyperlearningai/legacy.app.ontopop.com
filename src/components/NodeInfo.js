@@ -10,9 +10,9 @@ import {
   ImCross
 } from 'react-icons/im'
 import actions from '../store/actions'
-import ElementInfoDetails from './ElementInfoDetails'
+import NodeInfoDetails from './NodeInfoDetails'
 
-const ElementInfo = ({
+const NodeInfo = ({
   selectedNodes,
   availableNodesNormalised,
   removeFromArray
@@ -23,9 +23,9 @@ const ElementInfo = ({
   const [nodeId, setNodeId] = useState('')
 
   return (
-    <div className="element-info">
-      <div className="element-info-navbar">
-        <div className="element-info-navbar-button">
+    <div className="node-info">
+      <div className="node-info-navbar">
+        <div className="node-info-navbar-button">
           {
             view !== '' && (
               <button
@@ -45,19 +45,19 @@ const ElementInfo = ({
         }
       </div>
 
-      <div className="element-info-body">
+      <div className="node-info-body">
         {
           view === ''
             ? selectedNodes.map((selectedNode) => {
-              const selectedElementInfo = availableNodesNormalised[selectedNode]
+              const selectedNodeInfo = availableNodesNormalised[selectedNode]
 
-              if (!selectedElementInfo) return null
+              if (!selectedNodeInfo) return null
 
-              const { label, id } = selectedElementInfo
+              const { label, id } = selectedNodeInfo
 
               return (
                 <div
-                  className="element-info-body-row"
+                  className="node-info-body-row"
                   key={`selected-node-row-${id}`}
                 >
                   <button
@@ -84,7 +84,7 @@ const ElementInfo = ({
               )
             })
             : (
-              <ElementInfoDetails
+              <NodeInfoDetails
                 nodeId={nodeId}
               />
             )
@@ -94,7 +94,7 @@ const ElementInfo = ({
   )
 }
 
-ElementInfo.propTypes = {
+NodeInfo.propTypes = {
   selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   availableNodesNormalised: PropTypes.shape().isRequired,
   removeFromArray: PropTypes.func.isRequired,
@@ -113,4 +113,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(ElementInfo)
+)(NodeInfo)
