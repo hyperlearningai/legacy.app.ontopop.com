@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import actions from '../store/actions'
 import serialiseNodesEdges from '../utils/serialiseNodesEdges'
 import setNetwork from '../utils/setNetwork'
+import setNetworkMethods from '../utils/setNetworkMethods'
 // import filterNodesToDisplay from '../utils/filterNodesToDisplay'
 
 const GraphVisualisation = ({
@@ -11,7 +12,7 @@ const GraphVisualisation = ({
   availableEdges,
   // searchFilter,
   setStoreState,
-  // addToArray,
+  addToArray,
   classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
@@ -19,18 +20,20 @@ const GraphVisualisation = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
+  triplesPerNode,
   // deletedNodes,
-  // isNodeSelectable,
-  // network,
+  isNodeSelectable,
+  network,
   // selectedNodes,
   // selectedEdges,
-  // isEdgeSelectable
+  isEdgeSelectable
 }) => {
   const visJsRef = useRef(null)
 
   // update available nodes/edges according to view
   useEffect(() => serialiseNodesEdges({
     nodesIdsToDisplay,
+    triplesPerNode,
     classesFromApi,
     objectPropertiesFromApi,
     setStoreState,
@@ -68,51 +71,18 @@ const GraphVisualisation = ({
   //   })
   // }, [searchFilter])
 
-  // useEffect(async () => {
-  //   network?.on('selectNode', (event) => {
-  //     if (event.nodes?.length === 1) {
-  //       if (isNodeSelectable) {
-  //         addToArray('selectedNodes', event.nodes[0])
-  //       }
-
-  //       if (!nodesIdsToDisplay.includes(event.nodes[0])) {
-  //         const newNodesIdsToDisplay = [
-  //           ...nodesIdsToDisplay,
-  //           event.nodes[0]
-  //         ]
-
-  //         setStoreState('nodesIdsToDisplay', newNodesIdsToDisplay)
-  //       }
-  //     }
-  //   })
-
-  //   network?.on('selectEdge', (event) => {
-  //     if (event.edges?.length === 1) {
-  //       if (isEdgeSelectable) {
-  //         addToArray('selectedEdges', event.edges[0])
-  //       }
-  //     }
-  //   })
-
-  //   network?.on('stabilizationProgress', (params) => {
-  //     const percentage = parseFloat(params.iterations / params.total).toFixed(2)
-
-  //     setStoreState('networkLoadingProgress', percentage * 100)
-  //   })
-
-  //   network?.once('stabilizationIterationsDone', () => {
-  //     setStoreState('networkLoadingProgress', 0)
-  //     setStoreState('isNetworkLoading', false)
-  //   })
-
-  //   await network?.stabilize(2000)
-
-  //   network?.fit()
-  // }, [
-  //   network,
-  //   isNodeSelectable,
-  //   isEdgeSelectable
-  // ])
+  useEffect(() => setNetworkMethods({
+    setStoreState,
+    network,
+    addToArray,
+    isNodeSelectable,
+    isEdgeSelectable,
+    nodesIdsToDisplay
+  }), [
+    network,
+    isNodeSelectable,
+    isEdgeSelectable
+  ])
 
   // useEffect(() => {
   //   const availableNodesIds = availableNodes.map((node) => node.id)
@@ -151,7 +121,7 @@ GraphVisualisation.propTypes = {
   availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   // searchFilter: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  // addToArray: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  addToArray: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -160,11 +130,12 @@ GraphVisualisation.propTypes = {
   physicsRepulsion: PropTypes.bool.isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
   // deletedNodes,
-  // isNodeSelectable,
-  // network,
+  isNodeSelectable: PropTypes.bool.isRequired,
+  network: PropTypes.shape().isRequired,
+  triplesPerNode: PropTypes.shape().isRequired,
   // selectedNodes,
   // selectedEdges,
-  // isEdgeSelectable
+  isEdgeSelectable: PropTypes.bool.isRequired,
 }
 
 // GraphVisualisation.defaultProps = {
@@ -187,7 +158,8 @@ const mapToProps = ({
   network,
   selectedNodes,
   isEdgeSelectable,
-  selectedEdges
+  selectedEdges,
+  triplesPerNode
 }) => ({
   availableNodes,
   availableEdges,
@@ -204,7 +176,8 @@ const mapToProps = ({
   network,
   selectedNodes,
   isEdgeSelectable,
-  selectedEdges
+  selectedEdges,
+  triplesPerNode
 })
 
 export default connect(

@@ -12,6 +12,7 @@ const initialState = {
   loading: false,
   classesFromApi: {},
   objectPropertiesFromApi: {},
+  triplesPerNode: {},
   network: undefined,
 
   isInfoOpen: true,
@@ -31,10 +32,11 @@ const initialState = {
   isEdgeSelectable: false,
 
   // states to update at every view refresh
+  nodesIdsToDisplay: [],
+
   availableNodes: [],
   availableNodesNormalised: {},
   availableEdges: [],
-  nodesIdsToDisplay: [],
   selectedNodes: [],
   selectedEdges: [],
   nodesConnections: {},

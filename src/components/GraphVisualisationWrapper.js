@@ -10,6 +10,8 @@ import ProgressBar from './ProgressBar'
 import jsonClasses from '../assets/json/test-ontology-classes.json'
 import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import actions from '../store/actions'
+import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
+import { ALGO_TYPE_FULL } from '../constants/algorithms'
 
 const GraphVisualisationWrapper = ({
   isSearchOpen,
@@ -25,54 +27,58 @@ const GraphVisualisationWrapper = ({
   useEffect(() => {
     // Set data from api
     setStoreState('classesFromApi', jsonClasses.OwlClasses)
-    setStoreState('nodesIdsToDisplay', Object.keys(jsonClasses.OwlClasses))
     setStoreState('objectPropertiesFromApi', jsonObjectProperties.OwlObjectProperties)
+    setNodesIdsToDisplay({
+      type: ALGO_TYPE_FULL,
+      classesFromApi: jsonClasses.OwlClasses,
+      setStoreState
+    })
   }, [])
 
   return (
     <>
       {
-      isNodeSelectable
-      && selectedNodes
-      && selectedNodes.length > 0
-      && (
-        <NodeInfo />
-      )
-    }
+        isNodeSelectable
+        && selectedNodes
+        && selectedNodes.length > 0
+        && (
+          <NodeInfo />
+        )
+      }
 
       {
-      isSearchOpen
-      && (
-        <SearchBox />
-      )
-    }
+        isSearchOpen
+        && (
+          <SearchBox />
+        )
+      }
 
       {
-          isNetworkLoading
-            ? (
-              <ProgressBar
-                progress={networkLoadingProgress}
-              />
-            ) : null
+        isNetworkLoading
+          ? (
+            <ProgressBar
+              progress={networkLoadingProgress}
+            />
+          ) : null
         }
 
       <GraphVisualisation />
 
       {
-          isEdgeSelectable
-          && selectedEdges
-          && selectedEdges.length > 0
-          && (
-            <EdgeInfo />
-          )
-        }
+        isEdgeSelectable
+        && selectedEdges
+        && selectedEdges.length > 0
+        && (
+          <EdgeInfo />
+        )
+      }
 
       {
-          isSettingsOpen
-          && (
-            <SettingsBox />
-          )
-        }
+        isSettingsOpen
+        && (
+          <SettingsBox />
+        )
+      }
     </>
   )
 }
