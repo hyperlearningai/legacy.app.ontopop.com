@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FooterComponent should match snapshot  1`] = `
+exports[`NetworkGraphList should match snapshot  1`] = `
 <Connect
   actions={
     Object {
@@ -10,16 +10,20 @@ exports[`FooterComponent should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  availableEdges={
-    Array [
-      Object {
-        "id": "123",
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
       },
-    ]
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
   }
-  isEdgeSelectable={true}
-  isSettingsOpen={true}
   mapToProps={[Function]}
+  removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
 >
   <Component />

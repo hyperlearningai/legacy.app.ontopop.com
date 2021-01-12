@@ -8,5 +8,6 @@ exports[`Index page should match snapshot 1`] = `
   />
   <ConnectWrapper />
   <ConnectWrapper />
+  <ConnectWrapper />
 </Fragment>
 `;

@@ -2,7 +2,7 @@ import App from 'next/app'
 import { Provider } from 'redux-zero/react'
 import ReactNotification from 'react-notifications-component'
 import HeaderComponent from '../components/HeaderComponent'
-import FooterComponent from '../components/FooterComponent'
+import Sidebar from '../components/Sidebar'
 import store from '../store'
 import 'vis-network/styles/vis-network.min.css'
 import '../styles/styles.scss'
@@ -15,8 +15,15 @@ class MyApp extends App {
     return (
       <Provider store={store}>
         <HeaderComponent />
-        <Component {...pageProps} />
-        <FooterComponent />
+
+        <main className="main-view">
+          <Sidebar />
+
+          <div className="main-view-area">
+            <Component {...pageProps} />
+          </div>
+        </main>
+
         <ReactNotification />
       </Provider>
     )

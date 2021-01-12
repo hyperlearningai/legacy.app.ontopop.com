@@ -1,11 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import MainView from '../../components/MainView'
+import GraphVisualisationWrapper from '../../components/GraphVisualisationWrapper'
 
 const setup = () => {
   const props = {
-    isSidebarOpen: true,
     isSearchOpen: true,
     isNodeSelectable: true,
     selectedNodes: ['abc'],
@@ -13,10 +12,11 @@ const setup = () => {
     isEdgeSelectable: true,
     isSettingsOpen: true,
     isNetworkLoading: true,
-    networkLoadingProgress: 10
+    networkLoadingProgress: 10,
+    setStoreState: jest.fn()
   }
 
-  const component = shallow(<MainView {...props} />)
+  const component = shallow(<GraphVisualisationWrapper {...props} />)
 
   return {
     component,
@@ -24,7 +24,11 @@ const setup = () => {
   }
 }
 
-describe('MainView', () => {
+describe('GraphVisualisationWrapper', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should match snapshot ', () => {
     const {
       component

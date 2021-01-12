@@ -6,6 +6,7 @@ exports[`EdgeInfoDetailsRow should match snapshot  1`] = `
     Object {
       "addToArray": [Function],
       "removeFromArray": [Function],
+      "removeFromObject": [Function],
       "setStoreState": [Function],
     }
   }

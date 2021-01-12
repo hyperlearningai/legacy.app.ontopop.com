@@ -2,10 +2,15 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Sidebar from '../../components/Sidebar'
+import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 
-const setup = () => {
+const setup = ({
+  isSidebarOpen,
+  sidebarView
+}) => {
   const props = {
-    isSidebarOpen: true,
+    isSidebarOpen,
+    sidebarView,
     setStoreState: jest.fn(),
   }
 
@@ -18,10 +23,24 @@ const setup = () => {
 }
 
 describe('Sidebar', () => {
-  it('should match snapshot ', () => {
+  it('should match snapshot when sidebar closed', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      isSidebarOpen: false,
+      sidebarView: SIDEBAR_VIEW_GRAPHS
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: false,
+      sidebarView: SIDEBAR_VIEW_GRAPHS
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

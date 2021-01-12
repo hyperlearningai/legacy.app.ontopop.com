@@ -1,20 +1,19 @@
 import createStore from 'redux-zero'
 import { applyMiddleware } from 'redux-zero/middleware'
 import loadingMiddleware from 'redux-loading-middleware'
-import { NETWORK_GRAPH_VIEW, SIDEBAR_VIEW_NODES } from '../constants/views'
+import { NETWORK_GRAPH_VIEW, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 
 const initialState = {
-  isSidebarOpen: false,
+  // common states
+  isSidebarOpen: true,
   mainView: NETWORK_GRAPH_VIEW,
-  sidebarView: SIDEBAR_VIEW_NODES,
+  sidebarView: SIDEBAR_VIEW_GRAPHS,
   modal: '',
   loading: false,
   classesFromApi: {},
   objectPropertiesFromApi: {},
-  availableNodes: [],
-  availableNodesNormalised: {},
-  availableEdges: [],
-  nodesIdsToDisplay: [],
+  network: undefined,
+
   isInfoOpen: true,
   isSearchOpen: false,
   isEdgeFilterOpen: false,
@@ -30,11 +29,26 @@ const initialState = {
   networkLoadingProgress: 0,
   isNodeSelectable: false,
   isEdgeSelectable: false,
+
+  // states to update at every view refresh
+  availableNodes: [],
+  availableNodesNormalised: {},
+  availableEdges: [],
+  nodesIdsToDisplay: [],
   selectedNodes: [],
   selectedEdges: [],
-  network: undefined,
   nodesConnections: {},
-  edgesConnections: {}
+  edgesConnections: {},
+
+  // view data storage
+  lastGraphIndex: 0,
+  currentGraph: 'graph-0',
+  graphData: {
+    'graph-0': {
+      label: 'Main',
+      noDelete: true,
+    }
+  }
 }
 
 const middlewares = applyMiddleware(loadingMiddleware)

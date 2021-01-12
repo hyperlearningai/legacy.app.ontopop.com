@@ -1,17 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sidebar should match snapshot  1`] = `
+exports[`Sidebar should match snapshot when sidebar closed 1`] = `
 <Connect
   actions={
     Object {
       "addToArray": [Function],
       "removeFromArray": [Function],
+      "removeFromObject": [Function],
       "setStoreState": [Function],
     }
   }
-  isSidebarOpen={true}
+  isSidebarOpen={false}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
+  sidebarView="networkGraphs"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  isSidebarOpen={false}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="networkGraphs"
 >
   <Component />
 </Connect>

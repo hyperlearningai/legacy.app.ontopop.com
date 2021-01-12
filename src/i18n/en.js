@@ -17,9 +17,10 @@ export default {
   disallowNodeSelection: 'Disallow node selection',
 
   // sidebar
-  nodesOptions: 'Nodes options',
-  edgesOptions: 'Edges options',
-  settings: 'Settings',
+  networkGraphs: 'Network graphs',
+  nodeNeighbourhood: 'Node neighbourhood',
+  shortestPath: 'Shortest path',
+  toggleSidebar: 'Toggle sidebar',
 
   // footer navbar
   hideEdgeFilter: 'Hide edge filter',

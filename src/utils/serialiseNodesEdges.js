@@ -16,11 +16,11 @@ const serialiseNodesEdges = ({
   objectPropertiesFromApi,
   setStoreState,
   // edgesToIgnore,
-  deletedNodes,
+  // deletedNodes,
 }) => {
-  const { OwlClasses } = JSON.parse(JSON.stringify(classesFromApi))
+  const allClassesAvailable = JSON.parse(JSON.stringify(classesFromApi))
 
-  if (!OwlClasses) return
+  if (!allClassesAvailable) return
 
   const addedNodes = []
   const availableNodes = []
@@ -29,14 +29,14 @@ const serialiseNodesEdges = ({
   const nodesConnections = {}
   const edgesConnections = {}
 
-  const allNodeIdsKeys = Object.keys(OwlClasses)
+  const allNodeIdsKeys = Object.keys(allClassesAvailable)
 
   for (const nodeIndex in allNodeIdsKeys) {
     const nodeId = allNodeIdsKeys[nodeIndex]
 
-    if (deletedNodes.includes(nodeId)) continue
+    // if (deletedNodes.includes(nodeId)) continue
 
-    const nodeIdObject = OwlClasses[nodeId]
+    const nodeIdObject = allClassesAvailable[nodeId]
 
     nodeIdObject.id = nodeId
     nodeIdObject.label = nodeIdObject.rdfsLabel
@@ -57,7 +57,7 @@ const serialiseNodesEdges = ({
       if (!owlRestriction) return false
 
       const edgeId = owlRestriction.objectPropertyRdfAbout
-      const edgeObject = objectPropertiesFromApi.OwlObjectProperties[edgeId]
+      const edgeObject = objectPropertiesFromApi[edgeId]
 
       if (!edgeObject) return false
 
@@ -73,9 +73,11 @@ const serialiseNodesEdges = ({
       const isLinkedNodeIdToDisplay = nodesIdsToDisplay.includes(linkedNodeId)
       const nodesToDisplay = isNodeIdToDisplay || isLinkedNodeIdToDisplay
 
-      if (!nodesToDisplay || deletedNodes.includes(linkedNodeId)) return false
+      if (!nodesToDisplay
+      //  || deletedNodes.includes(linkedNodeId)
+      ) return false
 
-      const linkedNodeIdObject = OwlClasses[linkedNodeId]
+      const linkedNodeIdObject = allClassesAvailable[linkedNodeId]
 
       linkedNodeIdObject.id = linkedNodeId
       linkedNodeIdObject.label = linkedNodeIdObject.rdfsLabel
@@ -163,6 +165,9 @@ const serialiseNodesEdges = ({
 
   const availableNodesWithEdges = availableNodes.filter((node) => totalNodes.includes(node.id))
 
+  console.log({
+    availableNodesWithEdges
+  })
   setStoreState('availableNodesNormalised', availableNodesNormalised)
   setStoreState('availableNodes', availableNodesWithEdges)
   setStoreState('availableEdges', availableEdges)

@@ -1,4 +1,13 @@
 export default {
+  removeFromObject: (state, stateKey, id) => {
+    const newObject = JSON.parse(JSON.stringify(state[stateKey]))
+
+    delete newObject[id]
+
+    return ({
+      [stateKey]: newObject
+    })
+  },
   removeFromArray: (state, stateKey, id) => {
     const newArray = state[stateKey].slice()
 

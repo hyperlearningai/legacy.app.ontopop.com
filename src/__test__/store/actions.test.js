@@ -1,6 +1,24 @@
 import actions from '../../store/actions'
 
 describe('Actions', () => {
+  it('removeFromObject should work correctly', () => {
+    const state = {
+      graphData: {
+        'graph-0': {
+          label: 'Main'
+        }
+      }
+    }
+
+    const id = 'graph-0'
+
+    const newState = {
+      graphData: {}
+    }
+
+    expect(actions.removeFromObject(state, 'graphData', id)).toEqual(newState)
+  })
+
   it('removeFromArray should work correctly', () => {
     const state = {
       selectedNodes: [0.123]

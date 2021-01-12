@@ -1,15 +1,17 @@
+import { useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
-import Sidebar from './Sidebar'
 import GraphVisualisation from './GraphVisualisation'
 import NodeInfo from './NodeInfo'
 import EdgeInfo from './EdgeInfo'
 import SearchBox from './SearchBox'
 import SettingsBox from './SettingsBox'
 import ProgressBar from './ProgressBar'
+import jsonClasses from '../assets/json/test-ontology-classes.json'
+import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
+import actions from '../store/actions'
 
-const MainView = ({
-  isSidebarOpen,
+const GraphVisualisationWrapper = ({
   isSearchOpen,
   isNodeSelectable,
   selectedNodes,
@@ -17,31 +19,33 @@ const MainView = ({
   isEdgeSelectable,
   isSettingsOpen,
   isNetworkLoading,
-  networkLoadingProgress
-}) => (
-  <main className="main-view">
-    {
-        isSidebarOpen && (
-          <Sidebar />
-        )
-      }
+  networkLoadingProgress,
+  setStoreState
+}) => {
+  useEffect(() => {
+    // Set data from api
+    setStoreState('classesFromApi', jsonClasses.OwlClasses)
+    setStoreState('nodesIdsToDisplay', Object.keys(jsonClasses.OwlClasses))
+    setStoreState('objectPropertiesFromApi', jsonObjectProperties.OwlObjectProperties)
+  }, [])
 
-    <div className="main-view-area">
+  return (
+    <>
       {
-          isNodeSelectable
-          && selectedNodes
-          && selectedNodes.length > 0
-          && (
-            <NodeInfo />
-          )
-        }
+      isNodeSelectable
+      && selectedNodes
+      && selectedNodes.length > 0
+      && (
+        <NodeInfo />
+      )
+    }
 
       {
-          isSearchOpen
-          && (
-            <SearchBox />
-          )
-        }
+      isSearchOpen
+      && (
+        <SearchBox />
+      )
+    }
 
       {
           isNetworkLoading
@@ -69,13 +73,11 @@ const MainView = ({
             <SettingsBox />
           )
         }
+    </>
+  )
+}
 
-    </div>
-  </main>
-)
-
-MainView.propTypes = {
-  isSidebarOpen: PropTypes.bool.isRequired,
+GraphVisualisationWrapper.propTypes = {
   isSearchOpen: PropTypes.bool.isRequired,
   selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -84,10 +86,10 @@ MainView.propTypes = {
   isNodeSelectable: PropTypes.bool.isRequired,
   isEdgeSelectable: PropTypes.bool.isRequired,
   networkLoadingProgress: PropTypes.number.isRequired,
+  setStoreState: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  isSidebarOpen,
   isSearchOpen,
   selectedNodes,
   selectedEdges,
@@ -98,7 +100,6 @@ const mapToProps = ({
   isNodeSelectable,
   isEdgeSelectable
 }) => ({
-  isSidebarOpen,
   isSearchOpen,
   selectedNodes,
   selectedEdges,
@@ -111,5 +112,6 @@ const mapToProps = ({
 })
 
 export default connect(
-  mapToProps
-)(MainView)
+  mapToProps,
+  actions
+)(GraphVisualisationWrapper)
