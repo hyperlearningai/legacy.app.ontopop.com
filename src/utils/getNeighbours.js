@@ -1,6 +1,7 @@
 const loopthroughNodes = ({
   nextIds,
-  nodesToDisplay,
+  neighbourNodes,
+  neighbourEdges,
   triplesPerNode,
   separationDegree,
   round
@@ -14,19 +15,24 @@ const loopthroughNodes = ({
       listOfTriples.map((triple) => {
         const {
           from,
-          // predicate,
+          predicate,
           to
         } = triple
 
         const newNode = from === nodeId ? to : from
 
-        if (!nodesToDisplay.includes(newNode)) {
-          nodesToDisplay.push(newNode)
+        if (!neighbourNodes.includes(newNode)) {
+          neighbourNodes.push(newNode)
 
           if (!nextIdsLoop.includes(newNode)) {
             nextIdsLoop.push(newNode)
           }
         }
+
+        if (!neighbourEdges.includes(predicate)) {
+          neighbourEdges.push(predicate)
+        }
+
         return true
       })
     }
@@ -34,39 +40,47 @@ const loopthroughNodes = ({
     return true
   })
 
-  if (nextIdsLoop.length > 0 && round < separationDegree) {
+  const nextRound = round + 1
+
+  if (nextIdsLoop.length > 0 && nextRound < separationDegree) {
     loopthroughNodes({
-      nodesToDisplay,
+      neighbourNodes,
       nextIds: nextIdsLoop,
+      neighbourEdges,
       triplesPerNode,
       separationDegree,
-      round: round + 1
+      round: nextRound
     })
   }
 }
 
-const getNeighbourNodes = ({
+const getNeighbours = ({
   selectedNodeId,
   separationDegree,
   classesFromApi,
   triplesPerNode
 }) => {
-  const nodesToDisplay = [selectedNodeId]
+  const neighbourNodes = [selectedNodeId]
+  const neighbourEdges = []
   const nextIds = [selectedNodeId]
   const round = 0
 
-  if (!selectedNodeId || !triplesPerNode || !separationDegree || separationDegree < 1) return nodesToDisplay
+  if (!selectedNodeId || !triplesPerNode || !separationDegree || separationDegree < 1) return neighbourNodes
 
   loopthroughNodes({
     nextIds,
-    nodesToDisplay,
+    neighbourNodes,
+    neighbourEdges,
     triplesPerNode,
     classesFromApi,
     separationDegree,
     round
   })
 
-  return nodesToDisplay
+  return {
+    neighbourNodes,
+    neighbourEdges
+  }
 }
 
-export default getNeighbourNodes
+export default getNeighbours

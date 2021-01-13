@@ -1,4 +1,13 @@
 export default {
+  updateGraphData: (state, graphId, value) => {
+    const newGraphData = JSON.parse(JSON.stringify(state.graphData))
+
+    newGraphData[graphId] = value
+
+    return ({
+      graphData: newGraphData
+    })
+  },
   removeFromObject: (state, stateKey, id) => {
     const newObject = JSON.parse(JSON.stringify(state[stateKey]))
 

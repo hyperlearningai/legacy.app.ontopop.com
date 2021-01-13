@@ -8,6 +8,7 @@ exports[`EdgeInfoDetails should match snapshot  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "updateGraphData": [Function],
     }
   }
   edgeId="abc"

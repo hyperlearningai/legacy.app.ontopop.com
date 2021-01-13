@@ -26,6 +26,7 @@ import {
   SIDEBAR_VIEW_SHORTEST_PATH
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
+import NodeNeighbourhood from './NodeNeighbourhood'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -62,7 +63,10 @@ const Sidebar = ({
           type="button"
           title={t('nodeNeighbourhood')}
           className={sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_NEIGHBOURHOOD)}
+          onClick={() => {
+            setStoreState('isNeighbourNodeSelectable', true)
+            setView(SIDEBAR_VIEW_NEIGHBOURHOOD)
+          }}
         >
           <BiNetworkChart />
         </button>
@@ -99,6 +103,12 @@ const Sidebar = ({
           {
             sidebarView === SIDEBAR_VIEW_GRAPHS && (
               <NetworkGraphList />
+            )
+          }
+
+          {
+            sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD && (
+              <NodeNeighbourhood />
             )
           }
         </div>

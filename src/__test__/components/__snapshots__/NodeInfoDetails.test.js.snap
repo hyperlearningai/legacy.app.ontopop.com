@@ -8,6 +8,7 @@ exports[`NodeInfoDetails should match snapshot  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "updateGraphData": [Function],
     }
   }
   availableNodesNormalised={

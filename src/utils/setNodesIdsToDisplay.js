@@ -2,25 +2,23 @@ import {
   ALGO_TYPE_FULL,
   ALGO_TYPE_NEIGHBOURHOOD
 } from '../constants/algorithms'
-import getNeighbourNodes from './getNeighbourNodes'
-import getAllTriplesPerNode from './getAllTriplesPerNode'
+import getNeighbours from './getNeighbours'
 
 const setNodesIdsToDisplay = async ({
   type,
   classesFromApi,
+  objectPropertiesFromApi,
   setStoreState,
   options
 }) => {
+  setStoreState('highlightedNodes', [])
+
   if (type === ALGO_TYPE_FULL) {
     const classesIds = Object.keys(classesFromApi)
-    await getAllTriplesPerNode({
-      classesIds,
-      setStoreState,
-      classesFromApi
-    })
+    const predicatesIds = Object.keys(objectPropertiesFromApi)
 
+    setStoreState('edgesIdsToDisplay', predicatesIds)
     setStoreState('nodesIdsToDisplay', classesIds)
-    // in the background, parse classes to get triples per node
   }
 
   if (type === ALGO_TYPE_NEIGHBOURHOOD) {
@@ -32,13 +30,18 @@ const setNodesIdsToDisplay = async ({
       triplesPerNode
     } = options
 
-    const neighbourNodes = getNeighbourNodes({
+    const {
+      neighbourNodes,
+      neighbourEdges
+    } = getNeighbours({
       selectedNodeId,
       separationDegree,
       classesFromApi,
       triplesPerNode
     })
 
+    setStoreState('highlightedNodes', [selectedNodeId])
+    setStoreState('edgesIdsToDisplay', neighbourEdges)
     setStoreState('nodesIdsToDisplay', neighbourNodes)
   }
 

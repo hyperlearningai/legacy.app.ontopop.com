@@ -22,6 +22,12 @@ export default {
   shortestPath: 'Shortest path',
   toggleSidebar: 'Toggle sidebar',
 
+  // node neighbourhood
+  selectNodeFromGraph: 'Select node from graph',
+  show: 'Show',
+  separationDegree: 'Separation degree',
+  selectedNode: 'Selected node',
+
   // footer navbar
   hideEdgeFilter: 'Hide edge filter',
   showEdgeFilter: 'Show edge filter',

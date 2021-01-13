@@ -12,6 +12,7 @@ import jsonObjectProperties from '../assets/json/test-ontology-object-properties
 import actions from '../store/actions'
 import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
+import getAllTriplesPerNode from '../utils/getAllTriplesPerNode'
 
 const GraphVisualisationWrapper = ({
   isSearchOpen,
@@ -22,18 +23,55 @@ const GraphVisualisationWrapper = ({
   isSettingsOpen,
   isNetworkLoading,
   networkLoadingProgress,
-  setStoreState
+  setStoreState,
+  currentGraph,
+  graphData,
 }) => {
-  useEffect(() => {
+  useEffect(async () => {
     // Set data from api
-    setStoreState('classesFromApi', jsonClasses.OwlClasses)
-    setStoreState('objectPropertiesFromApi', jsonObjectProperties.OwlObjectProperties)
+    const classesFromApi = jsonClasses.OwlClasses
+    const objectPropertiesFromApi = jsonObjectProperties.OwlObjectProperties
+
+    setStoreState('classesFromApi', classesFromApi)
+    setStoreState('objectPropertiesFromApi', objectPropertiesFromApi)
+
+    const classesIds = Object.keys(classesFromApi)
+    const predicatesIds = Object.keys(objectPropertiesFromApi)
+
+    // in the background, parse classes to get triples per node
+    await getAllTriplesPerNode({
+      classesIds,
+      predicatesIds,
+      setStoreState,
+      classesFromApi
+    })
+
     setNodesIdsToDisplay({
       type: ALGO_TYPE_FULL,
-      classesFromApi: jsonClasses.OwlClasses,
+      classesFromApi,
+      objectPropertiesFromApi,
       setStoreState
     })
   }, [])
+
+  useEffect(() => {
+    const classesFromApi = jsonClasses.OwlClasses
+    const objectPropertiesFromApi = jsonObjectProperties.OwlObjectProperties
+
+    // Update nodes to display based on selected graph
+    const {
+      type,
+      options
+    } = graphData[currentGraph]
+
+    setNodesIdsToDisplay({
+      type,
+      classesFromApi,
+      objectPropertiesFromApi,
+      setStoreState,
+      options
+    })
+  }, [currentGraph])
 
   return (
     <>
@@ -93,6 +131,8 @@ GraphVisualisationWrapper.propTypes = {
   isEdgeSelectable: PropTypes.bool.isRequired,
   networkLoadingProgress: PropTypes.number.isRequired,
   setStoreState: PropTypes.func.isRequired,
+  currentGraph: PropTypes.string.isRequired,
+  graphData: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -104,7 +144,9 @@ const mapToProps = ({
   isNetworkLoading,
   networkLoadingProgress,
   isNodeSelectable,
-  isEdgeSelectable
+  isEdgeSelectable,
+  currentGraph,
+  graphData
 }) => ({
   isSearchOpen,
   selectedNodes,
@@ -114,7 +156,9 @@ const mapToProps = ({
   isNetworkLoading,
   networkLoadingProgress,
   isNodeSelectable,
-  isEdgeSelectable
+  isEdgeSelectable,
+  currentGraph,
+  graphData
 })
 
 export default connect(

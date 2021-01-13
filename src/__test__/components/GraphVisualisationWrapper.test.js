@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import GraphVisualisationWrapper from '../../components/GraphVisualisationWrapper'
+import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 
 const setup = () => {
   const props = {
@@ -13,7 +14,15 @@ const setup = () => {
     isSettingsOpen: true,
     isNetworkLoading: true,
     networkLoadingProgress: 10,
-    setStoreState: jest.fn()
+    setStoreState: jest.fn(),
+    currentGraph: 'graph-0',
+    graphData: {
+      'graph-0': {
+        label: 'Main',
+        noDelete: true,
+        type: ALGO_TYPE_FULL
+      }
+    }
   }
 
   const component = shallow(<GraphVisualisationWrapper {...props} />)

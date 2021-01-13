@@ -1,6 +1,34 @@
 import actions from '../../store/actions'
 
 describe('Actions', () => {
+  it('updateGraphData should work correctly', () => {
+    const state = {
+      graphData: {
+        'graph-0': {
+          label: 'Main'
+        }
+      }
+    }
+
+    const graphId = 'graph-1'
+    const value = {
+      label: 'graph-1'
+    }
+
+    const newState = {
+      graphData: {
+        'graph-0': {
+          label: 'Main'
+        },
+        'graph-1': {
+          label: 'graph-1'
+        }
+      }
+    }
+
+    expect(actions.updateGraphData(state, graphId, value)).toEqual(newState)
+  })
+
   it('removeFromObject should work correctly', () => {
     const state = {
       graphData: {

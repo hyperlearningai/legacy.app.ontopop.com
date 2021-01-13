@@ -8,6 +8,17 @@ exports[`GraphVisualisationWrapper should match snapshot  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+        "type": "full",
+      },
     }
   }
   isEdgeSelectable={true}

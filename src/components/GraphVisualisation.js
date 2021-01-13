@@ -5,6 +5,7 @@ import actions from '../store/actions'
 import serialiseNodesEdges from '../utils/serialiseNodesEdges'
 import setNetwork from '../utils/setNetwork'
 import setNetworkMethods from '../utils/setNetworkMethods'
+import { ALGO_TYPE_NEIGHBOURHOOD } from '../constants/algorithms'
 // import filterNodesToDisplay from '../utils/filterNodesToDisplay'
 
 const GraphVisualisation = ({
@@ -16,6 +17,7 @@ const GraphVisualisation = ({
   classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
+  edgesIdsToDisplay,
   // edgesToIgnore,
   physicsHierarchicalView,
   physicsRepulsion,
@@ -26,17 +28,24 @@ const GraphVisualisation = ({
   network,
   // selectedNodes,
   // selectedEdges,
-  isEdgeSelectable
+  isEdgeSelectable,
+  isNeighbourNodeSelectable,
+  selectedNeighbourNode,
+  currentGraph,
+  graphData,
+  highlightedNodes
 }) => {
   const visJsRef = useRef(null)
 
   // update available nodes/edges according to view
   useEffect(() => serialiseNodesEdges({
     nodesIdsToDisplay,
-    triplesPerNode,
+    edgesIdsToDisplay,
     classesFromApi,
     objectPropertiesFromApi,
     setStoreState,
+    triplesPerNode,
+    highlightedNodes
     // edgesToIgnore,
     // deletedNodes
   }), [
@@ -63,6 +72,22 @@ const GraphVisualisation = ({
     physicsEdgeLength
   ])
 
+  // set network methods
+  useEffect(() => setNetworkMethods({
+    setStoreState,
+    network,
+    addToArray,
+    isNodeSelectable,
+    isEdgeSelectable,
+    nodesIdsToDisplay,
+    isNeighbourNodeSelectable
+  }), [
+    network,
+    isNodeSelectable,
+    isEdgeSelectable,
+    isNeighbourNodeSelectable
+  ])
+
   // useEffect(() => {
   //   filterNodesToDisplay({
   //     classesFromApi,
@@ -70,19 +95,6 @@ const GraphVisualisation = ({
   //     searchFilter
   //   })
   // }, [searchFilter])
-
-  useEffect(() => setNetworkMethods({
-    setStoreState,
-    network,
-    addToArray,
-    isNodeSelectable,
-    isEdgeSelectable,
-    nodesIdsToDisplay
-  }), [
-    network,
-    isNodeSelectable,
-    isEdgeSelectable
-  ])
 
   // useEffect(() => {
   //   const availableNodesIds = availableNodes.map((node) => node.id)
@@ -93,6 +105,19 @@ const GraphVisualisation = ({
   // }, [
   //   selectedNodes
   // ])
+
+  useEffect(() => {
+    if (graphData[currentGraph].type === ALGO_TYPE_NEIGHBOURHOOD) {
+      if (selectedNeighbourNode !== '') {
+        network?.selectNodes([selectedNeighbourNode])
+      } else {
+        network?.selectNodes([])
+      }
+    }
+  }, [
+    selectedNeighbourNode,
+    currentGraph
+  ])
 
   // useEffect(() => {
   //   const availableEdgesIds = availableEdges.map((edge) => edge.id)
@@ -125,22 +150,28 @@ GraphVisualisation.propTypes = {
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
+  edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   // edgesToIgnore,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
   // deletedNodes,
   isNodeSelectable: PropTypes.bool.isRequired,
-  network: PropTypes.shape().isRequired,
+  network: PropTypes.shape(),
   triplesPerNode: PropTypes.shape().isRequired,
   // selectedNodes,
   // selectedEdges,
   isEdgeSelectable: PropTypes.bool.isRequired,
+  selectedNeighbourNode: PropTypes.string.isRequired,
+  isNeighbourNodeSelectable: PropTypes.bool.isRequired,
+  currentGraph: PropTypes.string.isRequired,
+  graphData: PropTypes.shape().isRequired,
+  highlightedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
-// GraphVisualisation.defaultProps = {
-//   network: undefined,
-// }
+GraphVisualisation.defaultProps = {
+  network: undefined,
+}
 
 const mapToProps = ({
   availableNodes,
@@ -159,7 +190,13 @@ const mapToProps = ({
   selectedNodes,
   isEdgeSelectable,
   selectedEdges,
-  triplesPerNode
+  triplesPerNode,
+  isNeighbourNodeSelectable,
+  selectedNeighbourNode,
+  currentGraph,
+  graphData,
+  edgesIdsToDisplay,
+  highlightedNodes
 }) => ({
   availableNodes,
   availableEdges,
@@ -177,7 +214,13 @@ const mapToProps = ({
   selectedNodes,
   isEdgeSelectable,
   selectedEdges,
-  triplesPerNode
+  triplesPerNode,
+  isNeighbourNodeSelectable,
+  selectedNeighbourNode,
+  currentGraph,
+  graphData,
+  edgesIdsToDisplay,
+  highlightedNodes
 })
 
 export default connect(

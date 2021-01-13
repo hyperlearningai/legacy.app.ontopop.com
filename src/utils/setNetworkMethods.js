@@ -4,22 +4,28 @@ const setNetworkMethods = async ({
   addToArray,
   isNodeSelectable,
   isEdgeSelectable,
-  nodesIdsToDisplay
+  // nodesIdsToDisplay,
+  isNeighbourNodeSelectable
 }) => {
   network?.on('selectNode', (event) => {
     if (event.nodes?.length === 1) {
+      const nodeId = event.nodes[0]
       if (isNodeSelectable) {
-        addToArray('selectedNodes', event.nodes[0])
+        addToArray('selectedNodes', nodeId)
       }
 
-      if (!nodesIdsToDisplay.includes(event.nodes[0])) {
-        const newNodesIdsToDisplay = [
-          ...nodesIdsToDisplay,
-          event.nodes[0]
-        ]
-
-        setStoreState('nodesIdsToDisplay', newNodesIdsToDisplay)
+      if (isNeighbourNodeSelectable) {
+        setStoreState('selectedNeighbourNode', nodeId)
       }
+
+      // if (!nodesIdsToDisplay.includes(event.nodes[0])) {
+      //   const newNodesIdsToDisplay = [
+      //     ...nodesIdsToDisplay,
+      //     event.nodes[0]
+      //   ]
+
+      //   setStoreState('nodesIdsToDisplay', newNodesIdsToDisplay)
+      // }
     }
   })
 

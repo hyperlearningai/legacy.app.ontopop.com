@@ -1,0 +1,1 @@
+export const SELECTED_NODE_COLOR = '#FFFF00'

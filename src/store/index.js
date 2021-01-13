@@ -2,6 +2,7 @@ import createStore from 'redux-zero'
 import { applyMiddleware } from 'redux-zero/middleware'
 import loadingMiddleware from 'redux-loading-middleware'
 import { NETWORK_GRAPH_VIEW, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { ALGO_TYPE_FULL } from '../constants/algorithms'
 
 const initialState = {
   // common states
@@ -33,6 +34,7 @@ const initialState = {
 
   // states to update at every view refresh
   nodesIdsToDisplay: [],
+  edgesIdsToDisplay: [],
 
   availableNodes: [],
   availableNodesNormalised: {},
@@ -41,6 +43,9 @@ const initialState = {
   selectedEdges: [],
   nodesConnections: {},
   edgesConnections: {},
+  selectedNeighbourNode: '',
+  isNeighbourNodeSelectable: false,
+  highlightedNodes: [],
 
   // view data storage
   lastGraphIndex: 0,
@@ -49,6 +54,7 @@ const initialState = {
     'graph-0': {
       label: 'Main',
       noDelete: true,
+      type: ALGO_TYPE_FULL
     }
   }
 }
