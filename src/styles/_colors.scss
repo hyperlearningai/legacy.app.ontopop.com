@@ -21,8 +21,18 @@ $blue-grey: #607d8b;
 $dark-grey: #33333d;
 $white: #ffffff;
 $black: #000000;
+$mint: #adefd1;
+$blazing-yellow: #ffe715;
+$island-green: #2bae66;
+$clear-water: #abd6df;
+$living-coral: #ff6f61;
 
 $primary: $blue;
 $secondary: $indigo;
 $tertiary: $orange;
 $font-color: $black;
+
+// edge colors
+$node-background: $mint;
+$node-selected: $living-coral;
+$node-highlight: $blazing-yellow;

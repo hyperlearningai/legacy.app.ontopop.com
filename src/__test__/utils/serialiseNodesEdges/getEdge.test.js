@@ -62,7 +62,7 @@ describe('getEdge', () => {
           }
         ],
         id: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-        label: 'Communication Document'
+        label: 'Communication\nDocument'
       },
       toObject: {
         rdfAbout: 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
@@ -104,7 +104,7 @@ describe('getEdge', () => {
           }
         ],
         id: 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
-        label: 'Licence Holder'
+        label: 'Licence\nHolder'
       }
     })
   })

@@ -10,10 +10,14 @@ const getEdge = ({
   const fromObject = classesFromApi[from]
   fromObject.id = from
   fromObject.label = fromObject.rdfsLabel
+    ? fromObject.rdfsLabel.replace(/ /g, '\n') : ''
+
   const fromLabel = fromObject.rdfsLabel
   const toObject = classesFromApi[to]
   toObject.id = to
   toObject.label = toObject.rdfsLabel
+    ? toObject.rdfsLabel.replace(/ /g, '\n') : ''
+
   const toLabel = toObject.rdfsLabel
 
   const edgeConnection = {

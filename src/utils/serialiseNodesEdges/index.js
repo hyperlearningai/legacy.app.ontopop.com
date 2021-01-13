@@ -25,15 +25,18 @@ const serialiseNodesEdges = async ({
 
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
-    const nodeLabel = classesFromApi[nodeId]
+    const nodeIdObject = classesFromApi[nodeId]
     const triples = triplesPerNode[nodeId]
+    nodeIdObject.id = nodeId
+    nodeIdObject.label = nodeIdObject.rdfsLabel
+      ? nodeIdObject.rdfsLabel.replace(/ /g, '\n') : ''
 
     addNode({
       availableNodesNormalised,
       availableNodes,
       addedNodes,
       nodeId,
-      nodeIdObject: nodeLabel,
+      nodeIdObject,
       highlightedNodes
     })
 
