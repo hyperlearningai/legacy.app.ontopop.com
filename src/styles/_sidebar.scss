@@ -28,7 +28,8 @@
       color: $white;
       border-top: 1px solid $dark-grey;
       border-bottom: 1px solid $dark-grey;
-      cursor: pointer;
+      overflow: hidden;
+      position: relative;
 
       &:hover {
         color: $dark-grey;
@@ -40,6 +41,14 @@
         color: $white;
         background: $grey;
         transition: $transition;
+      }
+
+      svg {
+        &:nth-child(2) {
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+        }
       }
     }
   }
@@ -56,6 +65,24 @@
       font-weight: 700;
       border-bottom: 1px solid $white;
       padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      button {
+        font-size: 18px;
+        width: 24px;
+        height: 24px;
+        outline: none;
+        background: transparent;
+        color: $white;
+        border: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
     }
   }
 }

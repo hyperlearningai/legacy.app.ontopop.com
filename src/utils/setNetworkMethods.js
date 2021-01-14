@@ -31,8 +31,10 @@ const setNetworkMethods = async ({
 
   network?.on('selectEdge', (event) => {
     if (event.edges?.length === 1) {
+      const edgeId = event.edges[0]
+
       if (isEdgeSelectable) {
-        addToArray('selectedEdges', event.edges[0])
+        addToArray('selectedEdges', edgeId)
       }
     }
   })

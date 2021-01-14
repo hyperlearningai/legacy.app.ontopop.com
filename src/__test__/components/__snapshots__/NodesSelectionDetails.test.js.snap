@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NodeInfoDetails should match snapshot  1`] = `
+exports[`NodesSelectionDetails should match snapshot  1`] = `
 <Connect
   actions={
     Object {
@@ -14,7 +14,7 @@ exports[`NodeInfoDetails should match snapshot  1`] = `
   availableNodesNormalised={
     Object {
       "abc": Object {
-        "id": "abc",
+        "id": "id",
         "label": "label",
         "rdfAbout": "rdfAbout",
         "skosComment": "skosComment",

@@ -26,7 +26,7 @@ const GraphVisualisation = ({
   // deletedNodes,
   isNodeSelectable,
   network,
-  // selectedNodes,
+  selectedNodes,
   // selectedEdges,
   isEdgeSelectable,
   isNeighbourNodeSelectable,
@@ -96,15 +96,15 @@ const GraphVisualisation = ({
   //   })
   // }, [searchFilter])
 
-  // useEffect(() => {
-  //   const availableNodesIds = availableNodes.map((node) => node.id)
+  useEffect(() => {
+    const availableNodesIds = availableNodes.map((node) => node.id)
 
-  //   const nodesToAdd = selectedNodes.filter((node) => availableNodesIds.includes(node))
+    const nodesToAdd = selectedNodes.filter((node) => availableNodesIds.includes(node))
 
-  //   network?.selectNodes(nodesToAdd)
-  // }, [
-  //   selectedNodes
-  // ])
+    network?.selectNodes(nodesToAdd)
+  }, [
+    selectedNodes
+  ])
 
   useEffect(() => {
     if (graphData[currentGraph].type === ALGO_TYPE_NEIGHBOURHOOD) {
@@ -142,31 +142,31 @@ const GraphVisualisation = ({
 }
 
 GraphVisualisation.propTypes = {
+  addToArray: PropTypes.func.isRequired,
   availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  // searchFilter: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addToArray: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
-  nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // edgesToIgnore,
-  physicsHierarchicalView: PropTypes.bool.isRequired,
-  physicsRepulsion: PropTypes.bool.isRequired,
-  physicsEdgeLength: PropTypes.number.isRequired,
-  // deletedNodes,
-  isNodeSelectable: PropTypes.bool.isRequired,
-  network: PropTypes.shape(),
-  triplesPerNode: PropTypes.shape().isRequired,
-  // selectedNodes,
-  // selectedEdges,
-  isEdgeSelectable: PropTypes.bool.isRequired,
-  selectedNeighbourNode: PropTypes.string.isRequired,
-  isNeighbourNodeSelectable: PropTypes.bool.isRequired,
   currentGraph: PropTypes.string.isRequired,
+  // deletedNodes,
+  // edgesToIgnore,
+  edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   graphData: PropTypes.shape().isRequired,
   highlightedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isEdgeSelectable: PropTypes.bool.isRequired,
+  isNeighbourNodeSelectable: PropTypes.bool.isRequired,
+  isNodeSelectable: PropTypes.bool.isRequired,
+  network: PropTypes.shape(),
+  nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
+  objectPropertiesFromApi: PropTypes.shape().isRequired,
+  physicsEdgeLength: PropTypes.number.isRequired,
+  physicsHierarchicalView: PropTypes.bool.isRequired,
+  physicsRepulsion: PropTypes.bool.isRequired,
+  // searchFilter: PropTypes.string.isRequired,
+  selectedNeighbourNode: PropTypes.string.isRequired,
+  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setStoreState: PropTypes.func.isRequired,
+  triplesPerNode: PropTypes.shape().isRequired,
+  // selectedEdges,
 }
 
 GraphVisualisation.defaultProps = {

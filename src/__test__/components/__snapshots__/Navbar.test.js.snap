@@ -18,7 +18,6 @@ exports[`Navbar should match snapshot  1`] = `
       },
     ]
   }
-  isNodeSelectable={true}
   mainView="networkGraphView"
   mapToProps={[Function]}
   setStoreState={[MockFunction]}

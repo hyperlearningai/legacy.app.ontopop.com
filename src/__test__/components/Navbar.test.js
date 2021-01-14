@@ -11,7 +11,6 @@ const setup = () => {
     setStoreState: jest.fn(),
     mainView: NETWORK_GRAPH_VIEW,
     availableNodes: [{ id: '123' }],
-    isNodeSelectable: true,
   }
 
   const component = shallow(<Navbar {...props} />)

@@ -18,7 +18,6 @@ exports[`FooterComponent should match snapshot  1`] = `
       },
     ]
   }
-  isEdgeSelectable={true}
   isSettingsOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}

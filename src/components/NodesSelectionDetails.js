@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 
-const NodeInfoDetails = ({
+const NodesSelectionDetails = ({
   nodeId,
   availableNodesNormalised,
   nodesConnections,
@@ -22,12 +22,12 @@ const NodeInfoDetails = ({
   }
 
   return (
-    <div className="node-info-details">
-      <div className="node-info-details-title">
+    <div className="nodes-selection-details">
+      <div className="nodes-selection-details-title">
         {t('properties')}
       </div>
 
-      <div className="node-info-details-table">
+      <div className="nodes-selection-details-table">
         <table>
           <thead>
             <tr>
@@ -54,45 +54,54 @@ const NodeInfoDetails = ({
         </table>
       </div>
 
-      <div className="node-info-details-title">
+      <div className="nodes-selection-details-title">
         {t('relationships')}
       </div>
 
-      <div className="node-info-details-table">
-        <table>
-          <thead>
-            <tr>
-              <th>{t('from')}</th>
-              <th>{t('connection')}</th>
-              <th>{t('to')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              connections.map((triple) => (
-                <tr
-                  key={`relationship-row-${triple.from}-${triple.label}-${triple.to}`}
-                >
-                  <td className={`${triple.from === selectedNode.id ? 'bold italic' : ''}`}>
-                    {triple.fromLabel}
-                  </td>
-                  <td>
-                    {triple.label}
-                  </td>
-                  <td className={`${triple.to === selectedNode.id ? 'bold italic' : ''}`}>
-                    {triple.toLabel}
-                  </td>
+      {
+        connections.length > 0 ? (
+          <div className="nodes-selection-details-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>{t('from')}</th>
+                  <th>{t('connection')}</th>
+                  <th>{t('to')}</th>
                 </tr>
-              ))
-          }
-          </tbody>
-        </table>
-      </div>
+              </thead>
+              <tbody>
+                {
+                connections.map((triple) => (
+                  <tr
+                    key={`relationship-row-${triple.from}-${triple.label}-${triple.to}`}
+                  >
+                    <td className={`${triple.from === selectedNode.id ? 'bold italic' : ''}`}>
+                      {triple.fromLabel}
+                    </td>
+                    <td>
+                      {triple.label}
+                    </td>
+                    <td className={`${triple.to === selectedNode.id ? 'bold italic' : ''}`}>
+                      {triple.toLabel}
+                    </td>
+                  </tr>
+                ))
+            }
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <>
+            {t('noRelationships')}
+          </>
+        )
+      }
+
     </div>
   )
 }
 
-NodeInfoDetails.propTypes = {
+NodesSelectionDetails.propTypes = {
   nodeId: PropTypes.string.isRequired,
   availableNodesNormalised: PropTypes.shape().isRequired,
   nodesConnections: PropTypes.shape().isRequired,
@@ -109,4 +118,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(NodeInfoDetails)
+)(NodesSelectionDetails)

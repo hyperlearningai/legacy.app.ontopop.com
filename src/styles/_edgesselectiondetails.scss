@@ -1,5 +1,7 @@
-.edge-info-details {
+.edges-selection-details {
   padding: 10px;
+  width: calc(100% - 25px);
+  overflow-y: auto;
 
   &-title {
     font-weight: 700;
@@ -10,6 +12,7 @@
 
   &-table {
     margin-bottom: 40px;
+    width: 100%;
 
     table {
       border-collapse: collapse;
@@ -26,6 +29,7 @@
           border-top: 1px solid $white;
           border-bottom: 1px solid $white;
           vertical-align: top;
+          word-break: break-all;
 
           &:nth-child(1) {
             width: 100px;
@@ -33,15 +37,15 @@
 
           &.icon-cell {
             width: 40px;
-          }
 
-          button {
-            background: transparent;
-            outline: none;
-            border: none;
-            color: $white;
-            font-size: 20px;
-            cursor: pointer;
+            button {
+              background: transparent;
+              outline: none;
+              border: none;
+              color: $white;
+              font-size: 20px;
+              cursor: pointer;
+            }
           }
 
           .edge-node-info {

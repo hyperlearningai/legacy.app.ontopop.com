@@ -2,18 +2,16 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
-import EdgeInfoDetailsRow from './EdgeInfoDetailsRow'
+import EdgeSelectionDetailsRow from './EdgeSelectionDetailsRow'
 
-const EdgeInfoDetails = ({
+const EdgesSelectionDetails = ({
   edgeId,
   objectPropertiesFromApi,
   edgesConnections,
 }) => {
   const { t } = useTranslation()
 
-  const { OwlObjectProperties } = objectPropertiesFromApi
-
-  const selectedEdge = OwlObjectProperties[edgeId]
+  const selectedEdge = objectPropertiesFromApi[edgeId]
 
   const tableRowNames = Object.keys(selectedEdge).filter((key) => typeof selectedEdge[key] !== 'object'
     && !key.includes('label')).sort()
@@ -25,12 +23,12 @@ const EdgeInfoDetails = ({
   }
 
   return (
-    <div className="edge-info-details">
-      <div className="edge-info-details-title">
+    <div className="edges-selection-details">
+      <div className="edges-selection-details-title">
         {t('properties')}
       </div>
 
-      <div className="edge-info-details-table">
+      <div className="edges-selection-details-table">
         <table>
           <thead>
             <tr>
@@ -57,36 +55,45 @@ const EdgeInfoDetails = ({
         </table>
       </div>
 
-      <div className="edge-info-details-title">
+      <div className="edges-selection-details-title">
         {t('nodesProperties')}
       </div>
 
-      <div className="edge-info-details-table">
-        <table>
-          <thead>
-            <tr>
-              <th />
-              <th>{t('from')}</th>
-              <th>{t('to')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              connections.map((connection) => (
-                <EdgeInfoDetailsRow
-                  key={`edge-relationship-row-${connection.from}-${connection.to}`}
-                  connection={connection}
-                />
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
+      {
+        connections.length > 0 ? (
+          <div className="edges-selection-details-table">
+            <table>
+              <thead>
+                <tr>
+                  <th />
+                  <th>{t('from')}</th>
+                  <th>{t('to')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  connections.map((connection) => (
+                    <EdgeSelectionDetailsRow
+                      key={`edge-relationship-row-${connection.from}-${connection.to}`}
+                      connection={connection}
+                    />
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <>
+            {t('noRelationships')}
+          </>
+        )
+      }
+
     </div>
   )
 }
 
-EdgeInfoDetails.propTypes = {
+EdgesSelectionDetails.propTypes = {
   edgeId: PropTypes.string.isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   edgesConnections: PropTypes.shape().isRequired,
@@ -94,15 +101,13 @@ EdgeInfoDetails.propTypes = {
 
 const mapToProps = ({
   objectPropertiesFromApi,
-  nodesConnections,
   edgesConnections
 }) => ({
   objectPropertiesFromApi,
-  nodesConnections,
   edgesConnections
 })
 
 export default connect(
   mapToProps,
   actions
-)(EdgeInfoDetails)
+)(EdgesSelectionDetails)

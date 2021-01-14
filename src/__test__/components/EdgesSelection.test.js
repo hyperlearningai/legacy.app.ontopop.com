@@ -1,23 +1,18 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import EdgeInfo from '../../components/EdgeInfo'
+import EdgesSelection from '../../components/EdgesSelection'
+import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
 
 const setup = () => {
   const props = {
-    objectPropertiesFromApi: {
-      OwlObjectProperties: {
-        abc: {
-          id: 'abc',
-          rdfsLabel: 'label',
-        }
-      }
-    },
-    selectedEdges: ['abc'],
+    setStoreState: jest.fn(),
     removeFromArray: jest.fn(),
+    objectPropertiesFromApi: OwlObjectProperties,
+    selectedEdges: ['http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM']
   }
 
-  const component = shallow(<EdgeInfo {...props} />)
+  const component = shallow(<EdgesSelection {...props} />)
 
   return {
     component,
@@ -25,7 +20,7 @@ const setup = () => {
   }
 }
 
-describe('EdgeInfo', () => {
+describe('EdgesSelection', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

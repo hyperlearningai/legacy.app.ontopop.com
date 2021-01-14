@@ -3,7 +3,7 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { SIDEBAR_VIEW_GRAPHS, SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import { ALGO_TYPE_NEIGHBOURHOOD } from '../constants/algorithms'
 
 const NodeNeighbourhood = ({
@@ -27,12 +27,16 @@ const NodeNeighbourhood = ({
   }, [])
 
   return (
-    <div className="node-neighbourhood">
-      <div className="node-neighbourhood-selection">
-        {t('selectNodeFromGraph')}
+    <>
+      <div className="sidebar-main-title">
+        {t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
       </div>
+      <div className="node-neighbourhood">
+        <div className="node-neighbourhood-selection">
+          {t('selectNodeFromGraph')}
+        </div>
 
-      {
+        {
         selectedNeighbourNode
         && selectedNeighbourNode !== '' && (
           <div className="node-neighbourhood-selected">
@@ -52,48 +56,49 @@ const NodeNeighbourhood = ({
         )
       }
 
-      <div className="node-neighbourhood-input">
-        <label htmlFor="separationDegree">
-          {t('separationDegree')}
-        </label>
-        <input
-          name="separationDegree"
-          type="number"
-          min="1"
-          step="1"
-          value={separationDegree}
-          onChange={(e) => setSeparationDegree(e.target.value)}
-        />
-      </div>
+        <div className="node-neighbourhood-input">
+          <label htmlFor="separationDegree">
+            {t('separationDegree')}
+          </label>
+          <input
+            name="separationDegree"
+            type="number"
+            min="1"
+            step="1"
+            value={separationDegree}
+            onChange={(e) => setSeparationDegree(e.target.value)}
+          />
+        </div>
 
-      <button
-        type="button"
-        className="node-neighbourhood-button"
-        title={t('showNeighbourhood')}
-        disabled={selectedNeighbourNode === ''}
-        onClick={() => {
-          const selectedNodeId = classesFromApi[selectedNeighbourNode] ? classesFromApi[selectedNeighbourNode].id : ''
-          const label = `neighbourhood-${newCurrentGraph}`
+        <button
+          type="button"
+          className="node-neighbourhood-button"
+          title={t('showNeighbourhood')}
+          disabled={selectedNeighbourNode === ''}
+          onClick={() => {
+            const selectedNodeId = classesFromApi[selectedNeighbourNode] ? classesFromApi[selectedNeighbourNode].id : ''
+            const label = `neighbourhood-${newCurrentGraph}`
 
-          const graphValue = {
-            label,
-            type: ALGO_TYPE_NEIGHBOURHOOD,
-            options: {
-              selectedNodeId,
-              separationDegree,
-              triplesPerNode
+            const graphValue = {
+              label,
+              type: ALGO_TYPE_NEIGHBOURHOOD,
+              options: {
+                selectedNodeId,
+                separationDegree,
+                triplesPerNode
+              }
             }
-          }
 
-          updateGraphData(newCurrentGraph, graphValue)
-          setStoreState('currentGraph', newCurrentGraph)
-          setStoreState('lastGraphIndex', newGraphIndex)
-          setStoreState('sidebarView', SIDEBAR_VIEW_GRAPHS)
-        }}
-      >
-        {t('show')}
-      </button>
-    </div>
+            updateGraphData(newCurrentGraph, graphValue)
+            setStoreState('currentGraph', newCurrentGraph)
+            setStoreState('lastGraphIndex', newGraphIndex)
+            setStoreState('sidebarView', SIDEBAR_VIEW_GRAPHS)
+          }}
+        >
+          {t('show')}
+        </button>
+      </div>
+    </>
   )
 }
 

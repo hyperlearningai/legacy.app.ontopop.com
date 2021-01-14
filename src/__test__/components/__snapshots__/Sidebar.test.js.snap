@@ -20,6 +20,26 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
 </Connect>
 `;
 
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_SELECTION 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  isSidebarOpen={false}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="edgesSelection"
+>
+  <Component />
+</Connect>
+`;
+
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS 1`] = `
 <Connect
   actions={
@@ -55,6 +75,26 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="nodeNeighbourhood"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_SELECTION 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  isSidebarOpen={false}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="nodesSelection"
 >
   <Component />
 </Connect>

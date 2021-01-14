@@ -8,7 +8,7 @@ import {
 } from 'react-icons/bs'
 import actions from '../store/actions'
 
-const EdgeInfoDetailsRow = ({
+const EdgeSelectionDetailsRow = ({
   availableNodesNormalised,
   connection,
 }) => {
@@ -72,7 +72,7 @@ const EdgeInfoDetailsRow = ({
   )
 }
 
-EdgeInfoDetailsRow.propTypes = {
+EdgeSelectionDetailsRow.propTypes = {
   availableNodesNormalised: PropTypes.shape().isRequired,
   connection: PropTypes.shape().isRequired,
 }
@@ -86,4 +86,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(EdgeInfoDetailsRow)
+)(EdgeSelectionDetailsRow)

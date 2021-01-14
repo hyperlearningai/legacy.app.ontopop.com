@@ -2,7 +2,12 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Sidebar from '../../components/Sidebar'
-import { SIDEBAR_VIEW_GRAPHS, SIDEBAR_VIEW_NEIGHBOURHOOD } from '../../constants/views'
+import {
+  SIDEBAR_VIEW_GRAPHS,
+  SIDEBAR_VIEW_EDGES_SELECTION,
+  SIDEBAR_VIEW_NODES_SELECTION,
+  SIDEBAR_VIEW_NEIGHBOURHOOD
+} from '../../constants/views'
 
 const setup = ({
   isSidebarOpen,
@@ -51,6 +56,28 @@ describe('Sidebar', () => {
     } = setup({
       isSidebarOpen: false,
       sidebarView: SIDEBAR_VIEW_NEIGHBOURHOOD
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_SELECTION', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: false,
+      sidebarView: SIDEBAR_VIEW_NODES_SELECTION
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_SELECTION', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: false,
+      sidebarView: SIDEBAR_VIEW_EDGES_SELECTION
     })
 
     expect(toJson(component)).toMatchSnapshot()

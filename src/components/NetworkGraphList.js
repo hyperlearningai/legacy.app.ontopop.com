@@ -8,6 +8,7 @@ import {
   ImCross
 } from 'react-icons/im'
 import actions from '../store/actions'
+import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 
 const NetworkGraphList = ({
   setStoreState,
@@ -20,8 +21,12 @@ const NetworkGraphList = ({
   const graphViewsKeys = Object.keys(graphData)
 
   return (
-    <div className="network-graph-list">
-      {
+    <>
+      <div className="sidebar-main-title">
+        {t(SIDEBAR_VIEW_GRAPHS)}
+      </div>
+      <div className="network-graph-list">
+        {
         graphViewsKeys.map((graphViewsKey) => {
           const { label, noDelete } = graphData[graphViewsKey]
 
@@ -64,7 +69,8 @@ const NetworkGraphList = ({
           )
         })
       }
-    </div>
+      </div>
+    </>
   )
 }
 

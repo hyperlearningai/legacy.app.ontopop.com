@@ -1,10 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import EdgeInfoDetailsRow from '../../components/EdgeInfoDetailsRow'
+import NodesSelection from '../../components/NodesSelection'
 
 const setup = () => {
   const props = {
+    setStoreState: jest.fn(),
+    removeFromArray: jest.fn(),
     availableNodesNormalised: {
       abc: {
         id: 'abc',
@@ -23,15 +25,10 @@ const setup = () => {
         skosExample: 'skosExample'
       }
     },
-    connection: {
-      from: 'abc',
-      fromLabel: 'label',
-      to: 'cde',
-      toLabel: 'label2',
-    },
+    selectedNodes: ['abc']
   }
 
-  const component = shallow(<EdgeInfoDetailsRow {...props} />)
+  const component = shallow(<NodesSelection {...props} />)
 
   return {
     component,
@@ -39,7 +36,11 @@ const setup = () => {
   }
 }
 
-describe('EdgeInfoDetailsRow', () => {
+describe('NodesSelection', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should match snapshot ', () => {
     const {
       component

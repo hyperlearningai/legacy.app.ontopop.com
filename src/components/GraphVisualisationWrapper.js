@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import GraphVisualisation from './GraphVisualisation'
-import NodeInfo from './NodeInfo'
-import EdgeInfo from './EdgeInfo'
+// import NodeInfo from './NodeInfo'
+// import EdgeInfo from './EdgeInfo'
 import SearchBox from './SearchBox'
 import SettingsBox from './SettingsBox'
 import ProgressBar from './ProgressBar'
@@ -16,10 +16,10 @@ import getAllTriplesPerNode from '../utils/getAllTriplesPerNode'
 
 const GraphVisualisationWrapper = ({
   isSearchOpen,
-  isNodeSelectable,
-  selectedNodes,
-  selectedEdges,
-  isEdgeSelectable,
+  // isNodeSelectable,
+  // selectedNodes,
+  // selectedEdges,
+  // isEdgeSelectable,
   isSettingsOpen,
   isNetworkLoading,
   networkLoadingProgress,
@@ -75,14 +75,14 @@ const GraphVisualisationWrapper = ({
 
   return (
     <>
-      {
+      {/* {
         isNodeSelectable
         && selectedNodes
         && selectedNodes.length > 0
         && (
           <NodeInfo />
         )
-      }
+      } */}
 
       {
         isSearchOpen
@@ -102,14 +102,14 @@ const GraphVisualisationWrapper = ({
 
       <GraphVisualisation />
 
-      {
+      {/* {
         isEdgeSelectable
         && selectedEdges
         && selectedEdges.length > 0
         && (
           <EdgeInfo />
         )
-      }
+      } */}
 
       {
         isSettingsOpen
@@ -123,12 +123,12 @@ const GraphVisualisationWrapper = ({
 
 GraphVisualisationWrapper.propTypes = {
   isSearchOpen: PropTypes.bool.isRequired,
-  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   isSettingsOpen: PropTypes.bool.isRequired,
   isNetworkLoading: PropTypes.bool.isRequired,
-  isNodeSelectable: PropTypes.bool.isRequired,
-  isEdgeSelectable: PropTypes.bool.isRequired,
+  // isNodeSelectable: PropTypes.bool.isRequired,
+  // isEdgeSelectable: PropTypes.bool.isRequired,
   networkLoadingProgress: PropTypes.number.isRequired,
   setStoreState: PropTypes.func.isRequired,
   currentGraph: PropTypes.string.isRequired,
@@ -137,26 +137,26 @@ GraphVisualisationWrapper.propTypes = {
 
 const mapToProps = ({
   isSearchOpen,
-  selectedNodes,
-  selectedEdges,
-  isEdgeFilterOpen,
+  // selectedNodes,
+  // selectedEdges,
+  // isEdgeFilterOpen,
   isSettingsOpen,
   isNetworkLoading,
   networkLoadingProgress,
-  isNodeSelectable,
-  isEdgeSelectable,
+  // isNodeSelectable,
+  // isEdgeSelectable,
   currentGraph,
   graphData
 }) => ({
   isSearchOpen,
-  selectedNodes,
-  selectedEdges,
-  isEdgeFilterOpen,
+  // selectedNodes,
+  // selectedEdges,
+  // isEdgeFilterOpen,
   isSettingsOpen,
   isNetworkLoading,
   networkLoadingProgress,
-  isNodeSelectable,
-  isEdgeSelectable,
+  // isNodeSelectable,
+  // isEdgeSelectable,
   currentGraph,
   graphData
 })
