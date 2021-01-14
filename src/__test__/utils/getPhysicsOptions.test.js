@@ -32,10 +32,10 @@ describe('getPhysicsOptions', () => {
       },
       nodes: {
         color: {
-          background: '#03a9f4',
+          background: '#adefd1',
           border: '#011e41',
           highlight: {
-            background: '#4caf50',
+            background: '#ffe715',
             border: '#009688',
           },
           hover: {
@@ -43,6 +43,13 @@ describe('getPhysicsOptions', () => {
             border: '#607d8b',
           },
         },
+        font: {
+          bold: '700',
+          color: 'black',
+          face: 'Montserrat',
+          size: 12,
+        },
+        shape: 'circle',
       },
       layout: {
         hierarchical: {

@@ -3,9 +3,6 @@ import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import {
-  FaRegHandPointer
-} from 'react-icons/fa'
-import {
   BsSearch,
 } from 'react-icons/bs'
 import actions from '../store/actions'
@@ -13,27 +10,13 @@ import actions from '../store/actions'
 const Navbar = ({
   setStoreState,
   isSearchOpen,
-  availableNodes,
-  isNodeSelectable
+  availableNodes
 }) => {
   const { t } = useTranslation()
 
   return (
     <nav>
       <div className="nav-left">
-        <button
-          type="button"
-          title={t(isNodeSelectable ? 'disallowNodeSelection' : 'allowNodeSelection')}
-          className={isNodeSelectable ? 'nav-left-button-selected' : ''}
-          onClick={() => {
-            if (isNodeSelectable) setStoreState('selectedNodes', [])
-
-            setStoreState('isNodeSelectable', !isNodeSelectable)
-          }}
-        >
-          <FaRegHandPointer />
-        </button>
-
         <span>
           {`${t('nodes')}: ${availableNodes.length}`}
         </span>
@@ -57,17 +40,14 @@ Navbar.propTypes = {
   isSearchOpen: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
   availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  isNodeSelectable: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
   isSearchOpen,
   availableNodes,
-  isNodeSelectable
 }) => ({
   isSearchOpen,
   availableNodes,
-  isNodeSelectable
 })
 
 export default connect(

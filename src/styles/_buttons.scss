@@ -1,0 +1,20 @@
+button {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background: $indigo;
+  color: $white;
+  font-size: 14px;
+  padding: 10px;
+  margin: auto;
+
+  &:hover {
+    background: $white;
+    color: $indigo;
+    transition: $transition;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}

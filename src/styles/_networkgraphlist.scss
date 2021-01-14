@@ -1,0 +1,54 @@
+.network-graph-list {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+
+  &-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 0.5px solid $white;
+
+    &-selected {
+      background: $indigo;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      color: $white;
+
+      &:hover {
+        background: $white;
+        color: $secondary;
+        transition: $transition;
+      }
+    }
+
+    &-delete {
+      width: 50px;
+    }
+
+    &-main {
+      width: calc(100% - 50px);
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+          width: calc(100% - 50px);
+          text-overflow: ellipsis;
+          text-align: left;
+        }
+      }
+    }
+  }
+}

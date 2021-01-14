@@ -2,6 +2,7 @@
 @import '_colors';
 @import '_typography';
 @import '_utils';
+@import '_buttons';
 
 html,
 body {
@@ -40,9 +41,12 @@ main {
 @import '_mainview';
 @import '_nodeinfo';
 @import '_nodeinfodetails';
-@import '_edgeinfo';
-@import '_edgeinfodetails';
 @import '_searchbox';
-@import '_edgefilter';
 @import '_physicssettings';
 @import '_progressbar';
+@import '_networkgraphlist';
+@import '_nodeneighbourhood';
+@import '_nodesselection';
+@import '_nodesselectiondetails';
+@import '_edgesselection';
+@import '_edgesselectiondetails';

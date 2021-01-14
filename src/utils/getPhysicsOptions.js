@@ -1,3 +1,14 @@
+import {
+  HIGHLIGHT_NODE_BACKGROUND,
+  HIGHLIGHT_NODE_BORDER,
+  HOVER_NODE_BACKGROUND,
+  HOVER_NODE_BORDER,
+  NODE_BACKGROUND,
+  NODE_BORDER,
+  EDGE_COLOR,
+  NODE_FONT,
+} from '../constants/graph'
+
 const getPhysicsOptions = ({
   physicsHierarchicalView,
   physicsRepulsion,
@@ -10,21 +21,23 @@ const getPhysicsOptions = ({
       roundness: 0.45,
     },
     arrows: { to: true },
-    color: '#070b11',
+    color: EDGE_COLOR,
     labelHighlightBold: true,
     selectionWidth: 3,
   },
   nodes: {
+    font: NODE_FONT,
+    shape: 'circle', // ellipse, circle, database, box, text, image, circularImage, diamond, dot, star, triangle, triangleDown, hexagon, square, icon
     color: {
-      background: '#03a9f4', // '#2B7CE9',
-      border: '#011e41', // '#D2E5FF',
+      background: NODE_BACKGROUND, // '#2B7CE9',
+      border: NODE_BORDER, // '#D2E5FF',
       highlight: {
-        background: '#4caf50',
-        border: '#009688',
+        background: HIGHLIGHT_NODE_BACKGROUND,
+        border: HIGHLIGHT_NODE_BORDER,
       },
       hover: {
-        background: '#f2f2f2',
-        border: '#607d8b',
+        background: HOVER_NODE_BACKGROUND,
+        border: HOVER_NODE_BORDER,
       },
     }
   },

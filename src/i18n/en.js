@@ -17,9 +17,28 @@ export default {
   disallowNodeSelection: 'Disallow node selection',
 
   // sidebar
-  nodesOptions: 'Nodes options',
-  edgesOptions: 'Edges options',
-  settings: 'Settings',
+  networkGraphs: 'Network graphs',
+  nodeNeighbourhood: 'Node neighbourhood',
+  shortestPath: 'Shortest path',
+  toggleSidebar: 'Toggle sidebar',
+  nodesSelection: 'Nodes selection',
+  edgesSelection: 'Edges selection',
+  selectNodes: 'Select nodes',
+  selectEdges: 'Select edges',
+
+  // node selection
+  node: 'Node',
+  noRelationships: 'No relationships found',
+  selectNodeFromGraph: 'Select node from graph',
+
+  // edge selection
+  selectEdgeFromGraph: 'Select edge from graph',
+  edge: 'Edge',
+
+  // node neighbourhood
+  show: 'Show',
+  separationDegree: 'Separation degree',
+  selectedNode: 'Selected node',
 
   // footer navbar
   hideEdgeFilter: 'Hide edge filter',

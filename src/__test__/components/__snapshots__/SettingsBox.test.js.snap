@@ -6,7 +6,9 @@ exports[`SettingsBox should match snapshot  1`] = `
     Object {
       "addToArray": [Function],
       "removeFromArray": [Function],
+      "removeFromObject": [Function],
       "setStoreState": [Function],
+      "updateGraphData": [Function],
     }
   }
   mapToProps={[Function]}

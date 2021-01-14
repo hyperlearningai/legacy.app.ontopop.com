@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NodesSelection should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  availableNodesNormalised={
+    Object {
+      "abc": Object {
+        "id": "abc",
+        "label": "label",
+        "rdfAbout": "rdfAbout",
+        "skosComment": "skosComment",
+        "skosDefinition": "skosDefinition",
+        "skosExample": "skosExample",
+      },
+      "cde": Object {
+        "id": "cde",
+        "label": "label2",
+        "rdfAbout": "rdfAbout",
+        "skosComment": "skosComment",
+        "skosDefinition": "skosDefinition",
+        "skosExample": "skosExample",
+      },
+    }
+  }
+  mapToProps={[Function]}
+  removeFromArray={[MockFunction]}
+  selectedNodes={
+    Array [
+      "abc",
+    ]
+  }
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

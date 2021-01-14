@@ -1,57 +1,87 @@
-aside {
-  height: 100%;
+.sidebar {
   display: flex;
-  flex-direction: column;
-  background: $light-grey;
+  flex-direction: row;
+  background: $grey;
   color: $white;
-  width: 280px;
+  width: 100%;
+  max-width: 360px;
+  height: 100%;
 
-  .aside {
-    &-bar {
+  &-closed {
+    width: 50px;
+    height: 100%;
+  }
+
+  &-icons {
+    height: 100%;
+    width: 50px;
+    background: $dark-grey;
+    overflow-y: auto;
+
+    button {
+      font-size: 24px;
       width: 100%;
-      background: $grey;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-bottom: 1px solid $secondary;
+      height: 50px;
+      outline: none;
+      border: none;
+      background: $dark-grey;
+      color: $white;
+      border-top: 1px solid $dark-grey;
+      border-bottom: 1px solid $dark-grey;
+      overflow: hidden;
+      position: relative;
 
-      button {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-        background: transparent;
-        outline: none;
-
-        svg {
-          color: $secondary;
-          font-size: 20px;
-        }
-
-        &:hover {
-          background: $secondary;
-          color: $white;
-          transition: $transition;
-
-          svg {
-            color: $white;
-            transition: $transition;
-          }
-        }
+      &:hover {
+        color: $dark-grey;
+        background: $white;
+        transition: $transition;
       }
 
-      &-button-selected {
-        background: $secondary !important;
+      &.sidebar-bar-button-selected {
         color: $white;
+        background: $grey;
         transition: $transition;
+      }
 
-        svg {
-          color: $white !important;
-          transition: $transition;
+      svg {
+        &:nth-child(2) {
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
         }
+      }
+    }
+  }
+
+  &-main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $secondary;
+    overflow: hidden;
+
+    &-title {
+      font-weight: 700;
+      border-bottom: 1px solid $white;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      button {
+        font-size: 18px;
+        width: 24px;
+        height: 24px;
+        outline: none;
+        background: transparent;
+        color: $white;
+        border: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
       }
     }
   }

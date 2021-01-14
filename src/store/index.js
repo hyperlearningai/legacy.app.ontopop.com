@@ -1,20 +1,21 @@
 import createStore from 'redux-zero'
 import { applyMiddleware } from 'redux-zero/middleware'
 import loadingMiddleware from 'redux-loading-middleware'
-import { NETWORK_GRAPH_VIEW, SIDEBAR_VIEW_NODES } from '../constants/views'
+import { NETWORK_GRAPH_VIEW, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { ALGO_TYPE_FULL } from '../constants/algorithms'
 
 const initialState = {
-  isSidebarOpen: false,
+  // common states
+  isSidebarOpen: true,
   mainView: NETWORK_GRAPH_VIEW,
-  sidebarView: SIDEBAR_VIEW_NODES,
+  sidebarView: SIDEBAR_VIEW_GRAPHS,
   modal: '',
   loading: false,
   classesFromApi: {},
   objectPropertiesFromApi: {},
-  availableNodes: [],
-  availableNodesNormalised: {},
-  availableEdges: [],
-  nodesIdsToDisplay: [],
+  triplesPerNode: {},
+  network: undefined,
+
   isInfoOpen: true,
   isSearchOpen: false,
   isEdgeFilterOpen: false,
@@ -30,11 +31,32 @@ const initialState = {
   networkLoadingProgress: 0,
   isNodeSelectable: false,
   isEdgeSelectable: false,
+
+  // states to update at every view refresh
+  nodesIdsToDisplay: [],
+  edgesIdsToDisplay: [],
+
+  availableNodes: [],
+  availableNodesNormalised: {},
+  availableEdges: [],
   selectedNodes: [],
   selectedEdges: [],
-  network: undefined,
   nodesConnections: {},
-  edgesConnections: {}
+  edgesConnections: {},
+  selectedNeighbourNode: '',
+  isNeighbourNodeSelectable: false,
+  highlightedNodes: [],
+
+  // view data storage
+  lastGraphIndex: 0,
+  currentGraph: 'graph-0',
+  graphData: {
+    'graph-0': {
+      label: 'Main',
+      noDelete: true,
+      type: ALGO_TYPE_FULL
+    }
+  }
 }
 
 const middlewares = applyMiddleware(loadingMiddleware)

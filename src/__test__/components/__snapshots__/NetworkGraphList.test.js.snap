@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NetworkGraphList should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
+  mapToProps={[Function]}
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
