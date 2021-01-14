@@ -4,21 +4,26 @@ import showEdgeCheck from './showEdgeCheck'
 import addConnections from './addConnections'
 import addNode from './addNode'
 
-const serialiseNodesEdges = async ({
-  nodesIdsToDisplay,
-  edgesIdsToDisplay,
+const serialiseNodesEdges = ({
+  availableNodes,
+  availableEdges,
   classesFromApi,
+  edgesIdsToDisplay,
+  highlightedNodes,
+  network,
+  nodesIdsToDisplay,
   objectPropertiesFromApi,
   setStoreState,
   triplesPerNode,
-  highlightedNodes
-  // edgesToIgnore,
-  // deletedNodes,
 }) => {
+  // reset nodes/edges (display at the end of the function)
+  availableNodes.clear()
+  availableEdges.clear()
+
   const addedNodes = []
   const addedEdges = []
-  const availableNodes = []
-  const availableEdges = []
+  const availableNodesList = []
+  const availableEdgesList = []
   const availableNodesNormalised = {}
   const nodesConnections = {}
   const edgesConnections = {}
@@ -33,7 +38,7 @@ const serialiseNodesEdges = async ({
 
     addNode({
       availableNodesNormalised,
-      availableNodes,
+      availableNodesList,
       addedNodes,
       nodeId,
       nodeIdObject,
@@ -77,7 +82,7 @@ const serialiseNodesEdges = async ({
             addedEdges,
             edgeUniqueId,
             edge,
-            availableEdges,
+            availableEdgesList,
             edgesConnections,
             edgeConnection,
             predicate,
@@ -90,7 +95,7 @@ const serialiseNodesEdges = async ({
 
           addNode({
             availableNodesNormalised,
-            availableNodes,
+            availableNodesList,
             addedNodes,
             nodeId: to,
             nodeIdObject: toObject,
@@ -99,7 +104,7 @@ const serialiseNodesEdges = async ({
 
           addNode({
             availableNodesNormalised,
-            availableNodes,
+            availableNodesList,
             addedNodes,
             nodeId: from,
             nodeIdObject: fromObject,
@@ -113,10 +118,12 @@ const serialiseNodesEdges = async ({
   }
 
   setStoreState('availableNodesNormalised', availableNodesNormalised)
-  setStoreState('availableNodes', availableNodes)
-  setStoreState('availableEdges', availableEdges)
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
+
+  availableNodes.add(availableNodesList)
+  availableEdges.add(availableEdgesList)
+  network.redraw()
 }
 
 export default serialiseNodesEdges

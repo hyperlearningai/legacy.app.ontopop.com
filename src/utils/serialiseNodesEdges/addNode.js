@@ -2,7 +2,7 @@ import { SELECTED_NODE_COLOR } from '../../constants/graph'
 
 const addNode = ({
   availableNodesNormalised,
-  availableNodes,
+  availableNodesList,
   addedNodes,
   nodeId,
   nodeIdObject,
@@ -21,7 +21,7 @@ const addNode = ({
     }
 
     availableNodesNormalised[nodeId] = extendedNodeObject  // eslint-disable-line
-    availableNodes.push(extendedNodeObject)
+    availableNodesList.push(extendedNodeObject)
     addedNodes.push(nodeId)
   }
 }

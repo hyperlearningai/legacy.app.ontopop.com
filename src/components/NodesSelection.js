@@ -16,20 +16,17 @@ import NodesSelectionDetails from './NodesSelectionDetails'
 import { SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
 
 const NodesSelection = ({
-  setStoreState,
   removeFromArray,
   availableNodesNormalised,
-  selectedNodes
+  selectedNodes,
+  resetSelectedNodes
 }) => {
   const { t } = useTranslation()
 
   const [isNodeSelected, toggleNodeSelected] = useState(false)
   const [nodeId, setNodeId] = useState('')
 
-  useEffect(() => () => {
-    setStoreState('isNodeSelectable', false)
-    setStoreState('selectedNodes', [])
-  }, [])
+  useEffect(() => () => resetSelectedNodes(), [])
 
   return (
     <>
@@ -105,18 +102,18 @@ const NodesSelection = ({
 }
 
 NodesSelection.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
   selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   removeFromArray: PropTypes.func.isRequired,
   availableNodesNormalised: PropTypes.shape().isRequired,
+  resetSelectedNodes: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
   selectedNodes,
-  availableNodesNormalised
+  availableNodesNormalised,
 }) => ({
   selectedNodes,
-  availableNodesNormalised
+  availableNodesNormalised,
 })
 
 export default connect(

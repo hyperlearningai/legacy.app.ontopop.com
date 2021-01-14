@@ -35,7 +35,7 @@ describe('getPhysicsOptions', () => {
           background: '#adefd1',
           border: '#011e41',
           highlight: {
-            background: '#ffe715',
+            background: '#abd6df',
             border: '#009688',
           },
           hover: {

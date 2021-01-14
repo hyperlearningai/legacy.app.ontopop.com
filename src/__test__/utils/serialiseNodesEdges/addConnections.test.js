@@ -16,7 +16,7 @@ describe('addConnections', () => {
       from,
       to
     }
-    const availableEdges = []
+    const availableEdgesList = []
     const edgesConnections = {}
     const edgeConnection = {
       ...edge
@@ -27,7 +27,7 @@ describe('addConnections', () => {
       addedEdges,
       edgeUniqueId,
       edge,
-      availableEdges,
+      availableEdgesList,
       edgesConnections,
       edgeConnection,
       predicate,

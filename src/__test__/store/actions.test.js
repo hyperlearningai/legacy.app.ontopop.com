@@ -1,6 +1,41 @@
+import { DataSet } from 'vis-data'
 import actions from '../../store/actions'
 
 describe('Actions', () => {
+  it('resetSelectedEdges should work correctly', () => {
+    const state = {
+      selectedEdges: ['abc'],
+      availableEdges: new DataSet([{
+        id: 'abc',
+        color: { background: 'ffffff' }
+      }])
+    }
+
+    const newState = {
+      selectedEdges: [],
+      isEdgeSelectable: false
+    }
+
+    expect(actions.resetSelectedEdges(state)).toEqual(newState)
+  })
+
+  it('resetSelectedNodes should work correctly', () => {
+    const state = {
+      selectedNodes: ['abc'],
+      availableNodes: new DataSet([{
+        id: 'abc',
+        color: 'ffffff'
+      }])
+    }
+
+    const newState = {
+      selectedNodes: [],
+      isNodeSelectable: false
+    }
+
+    expect(actions.resetSelectedNodes(state)).toEqual(newState)
+  })
+
   it('updateGraphData should work correctly', () => {
     const state = {
       graphData: {
@@ -47,9 +82,10 @@ describe('Actions', () => {
     expect(actions.removeFromObject(state, 'graphData', id)).toEqual(newState)
   })
 
-  it('removeFromArray should work correctly', () => {
+  it('removeFromArray should work correctly when selectedNodes', () => {
     const state = {
-      selectedNodes: [0.123]
+      selectedNodes: ['123'],
+      availableNodes: new DataSet([{ id: '123' }])
     }
 
     const id = '123'
@@ -59,6 +95,21 @@ describe('Actions', () => {
     }
 
     expect(actions.removeFromArray(state, 'selectedNodes', id)).toEqual(newState)
+  })
+
+  it('removeFromArray should work correctly when selectedEdges', () => {
+    const state = {
+      selectedEdges: ['123'],
+      availableEdges: new DataSet([{ id: '123' }])
+    }
+
+    const id = '123'
+
+    const newState = {
+      selectedEdges: []
+    }
+
+    expect(actions.removeFromArray(state, 'selectedEdges', id)).toEqual(newState)
   })
 
   it('addToArray should work correctly', () => {
