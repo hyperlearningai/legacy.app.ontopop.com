@@ -21,17 +21,10 @@ describe('setNetworkMethods', () => {
       on
     }
 
-    const isNodeSelectable = true
-    const isEdgeSelectable = true
-    const isNeighbourNodeSelectable = true
-
     await setNetworkMethods({
       setStoreState,
       network,
       addToArray,
-      isNodeSelectable,
-      isEdgeSelectable,
-      isNeighbourNodeSelectable
     })
 
     expect(on).toHaveBeenCalled()
