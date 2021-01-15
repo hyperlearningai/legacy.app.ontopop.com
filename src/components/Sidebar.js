@@ -3,72 +3,191 @@ import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import {
-  GiTronArrow
-} from 'react-icons/gi'
+  FiLayers,
+  FiSettings
+} from 'react-icons/fi'
 import {
-  GrNodes
-} from 'react-icons/gr'
+  BiNetworkChart
+} from 'react-icons/bi'
 import {
-  AiFillSetting,
+  BsSearch,
+  BsArrowUpDown
+} from 'react-icons/bs'
+import {
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight
 } from 'react-icons/ai'
+import {
+  IoGitNetwork
+} from 'react-icons/io5'
+import {
+  FaRegHandPointer,
+  FaRegCircle
+} from 'react-icons/fa'
 import actions from '../store/actions'
 import {
-  SIDEBAR_VIEW_NODES,
-  SIDEBAR_VIEW_EDGES,
+  SIDEBAR_VIEW_GRAPHS,
+  SIDEBAR_VIEW_SEARCH,
+  SIDEBAR_VIEW_NEIGHBOURHOOD,
+  SIDEBAR_VIEW_SHORTEST_PATH,
+  SIDEBAR_VIEW_NODES_SELECTION,
+  SIDEBAR_VIEW_EDGES_SELECTION,
   SIDEBAR_VIEW_SETTINGS
 } from '../constants/views'
+import NetworkGraphList from './NetworkGraphList'
+import NodeNeighbourhood from './NodeNeighbourhood'
+import NodesSelection from './NodesSelection'
+import EdgesSelection from './EdgesSelection'
+import NetworkSettings from './NetworkSettings'
 
 const Sidebar = ({
+  isSidebarOpen,
   sidebarView,
   setStoreState,
 }) => {
   const { t } = useTranslation()
 
+  const setView = (view) => {
+    setStoreState('isSidebarOpen', true)
+    setStoreState('sidebarView', view)
+  }
+
   return (
-    <aside>
-      <div className="aside-bar">
+    <aside className={`sidebar${isSidebarOpen ? '' : '-closed'}`}>
+      <div className="sidebar-icons">
         <button
           type="button"
-          title={t('nodesOptions')}
-          className={sidebarView === SIDEBAR_VIEW_NODES ? 'aside-bar-button-selected' : ''}
-          onClick={() => setStoreState('sidebarView', SIDEBAR_VIEW_NODES)}
+          title={t('networkGraphs')}
+          className={sidebarView === SIDEBAR_VIEW_GRAPHS ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_GRAPHS)}
         >
-          <GrNodes />
+          <FiLayers />
         </button>
-
         <button
           type="button"
-          title={t('edgesOptions')}
-          className={sidebarView === SIDEBAR_VIEW_EDGES ? 'aside-bar-button-selected' : ''}
-          onClick={() => setStoreState('sidebarView', SIDEBAR_VIEW_EDGES)}
+          title={t('search')}
+          className={sidebarView === SIDEBAR_VIEW_SEARCH ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_SEARCH)}
         >
-          <GiTronArrow />
+          <BsSearch />
         </button>
-
+        <button
+          type="button"
+          title={t('selectNodes')}
+          className={sidebarView === SIDEBAR_VIEW_NODES_SELECTION ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isNodeSelectable', true)
+            setView(SIDEBAR_VIEW_NODES_SELECTION)
+          }}
+        >
+          <FaRegCircle />
+          <FaRegHandPointer />
+        </button>
+        <button
+          type="button"
+          title={t('selectEdges')}
+          className={sidebarView === SIDEBAR_VIEW_EDGES_SELECTION ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isEdgeSelectable', true)
+            setView(SIDEBAR_VIEW_EDGES_SELECTION)
+          }}
+        >
+          <BsArrowUpDown />
+          <FaRegHandPointer />
+        </button>
+        <button
+          type="button"
+          title={t('nodeNeighbourhood')}
+          className={sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isNeighbourNodeSelectable', true)
+            setView(SIDEBAR_VIEW_NEIGHBOURHOOD)
+          }}
+        >
+          <BiNetworkChart />
+        </button>
+        <button
+          type="button"
+          title={t('shortestPath')}
+          className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_SHORTEST_PATH)}
+        >
+          <IoGitNetwork />
+        </button>
         <button
           type="button"
           title={t('settings')}
-          className={sidebarView === SIDEBAR_VIEW_SETTINGS ? 'aside-bar-button-selected' : ''}
-          onClick={() => setStoreState('sidebarView', SIDEBAR_VIEW_SETTINGS)}
+          className={sidebarView === SIDEBAR_VIEW_SETTINGS ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_SETTINGS)}
         >
-          <AiFillSetting />
+          <FiSettings />
+        </button>
+        <button
+          type="button"
+          title={t('toggleSidebar')}
+          onClick={() => setStoreState('isSidebarOpen', !isSidebarOpen)}
+        >
+          {
+            isSidebarOpen ? (
+              <AiOutlineArrowLeft />
+            ) : (
+              <AiOutlineArrowRight />
+            )
+          }
         </button>
       </div>
 
-      ADD CONTENT
+      {
+        isSidebarOpen && (
+          <div className="sidebar-main">
+            {
+              sidebarView === SIDEBAR_VIEW_GRAPHS && (
+                <NetworkGraphList />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_NODES_SELECTION && (
+                <NodesSelection />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_EDGES_SELECTION && (
+                <EdgesSelection />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD && (
+                <NodeNeighbourhood />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_SETTINGS && (
+                <NetworkSettings />
+              )
+            }
+          </div>
+        )
+      }
     </aside>
   )
 }
 
 Sidebar.propTypes = {
+  isSidebarOpen: PropTypes.bool.isRequired,
   sidebarView: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  sidebarView
+  sidebarView,
+  isSidebarOpen
 }) => ({
-  sidebarView
+  sidebarView,
+  isSidebarOpen
 })
 
 export default connect(

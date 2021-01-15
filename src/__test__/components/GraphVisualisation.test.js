@@ -1,60 +1,32 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
+import { DataSet } from 'vis-data'
 import GraphVisualisation from '../../components/GraphVisualisation'
+import { OwlClasses } from '../fixtures/test-ontology-classes.json'
+import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
+import { triplesPerNode } from '../fixtures/triplesPerNode'
 
 const setup = () => {
   const props = {
-    availableNodes: [],
-    availableEdges: [],
-    setStoreState: jest.fn(),
-    selectedNodes: [],
-    searchFilter: '',
-    // edgesToIgnore: [],
+    availableEdges: new DataSet([]),
+    availableNodes: new DataSet([]),
+    addToArray: jest.fn(),
+    classesFromApi: OwlClasses,
+    edgesIdsToDisplay: [
+      'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+      'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU'
+    ],
+    highlightedNodes: [],
+    network: {},
+    nodesIdsToDisplay: [],
+    objectPropertiesFromApi: OwlObjectProperties,
+    physicsEdgeLength: true,
     physicsHierarchicalView: true,
     physicsRepulsion: true,
-    physicsEdgeLength: true,
-    isEdgeSelectable: true,
-    classesFromApi: {
-      OwlClasses: {
-        'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': {
-          rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-          rdfsLabel: 'Communication Document',
-          skosDefinition: 'Document storing the information conveyed between two or more parties.',
-          skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
-          skosExample: null,
-          owlAnnotationProperties: {
-            'http://www.w3.org/2004/02/skos/core#definition': 'Document storing the information conveyed between two or more parties.',
-            'http://webprotege.stanford.edu/RkKVruwOD8lCCdsbyX0lwY': 'Communications',
-            'http://www.w3.org/2004/02/skos/core#comment': 'A communication will typically have the Licence Holder (Highways England) as one of the parties.'
-          },
-          rdfsSubClassOf: [{
-            classRdfAbout: 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
-            owlRestriction: {
-              objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-              classRdfAbout: 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
-            }
-          }]
-        },
-      },
-    },
-    objectPropertiesFromApi: {
-      OwlObjectProperties: {
-        'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM': {
-          rdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
-          rdfsLabel: 'Instantiation of',
-          skosDefinition: null,
-          skosComment: null,
-          owlAnnotationProperties: {
-            'http://webprotege.stanford.edu/RtMeQat8p1tL74b64dS2qs': 'Record'
-          },
-          rdfsSubPropertyOf: ['http://webprotege.stanford.edu/R8zMIKp038MgC2umoxwzWBJ']
-        }
-      }
-    },
-    nodesIdsToDisplay: [],
-    deletedNodes: [],
-    isNodeSelectable: true,
+    // searchFilter: '',
+    setStoreState: jest.fn(),
+    triplesPerNode
   }
 
   const component = shallow(<GraphVisualisation {...props} />)

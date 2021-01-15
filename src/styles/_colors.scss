@@ -15,13 +15,24 @@ $amber: #ffc107;
 $orange: #f28a00;
 $deep-orange: #ff5722;
 $brown: #795548;
-$grey: #cfd1d1;
+$grey: #424250;
 $light-grey: #f2f2f2;
 $blue-grey: #607d8b;
+$dark-grey: #33333d;
 $white: #ffffff;
 $black: #000000;
+$mint: #adefd1;
+$blazing-yellow: #ffe715;
+$island-green: #2bae66;
+$clear-water: #abd6df;
+$living-coral: #ff6f61;
 
 $primary: $blue;
 $secondary: $indigo;
 $tertiary: $orange;
 $font-color: $black;
+
+// edge colors
+$node-background: $mint;
+$node-selected: $living-coral;
+$node-highlight: $blazing-yellow;

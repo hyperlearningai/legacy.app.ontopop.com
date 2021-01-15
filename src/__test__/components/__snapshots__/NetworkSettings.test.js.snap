@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NetworkSettings should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  mapToProps={[Function]}
+  physicsEdgeLength={100}
+  physicsHierarchicalView={true}
+  physicsRepulsion={true}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

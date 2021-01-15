@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphVisualisationWrapper should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+        "type": "full",
+      },
+    }
+  }
+  isNetworkLoading={true}
+  isSearchOpen={true}
+  mapToProps={[Function]}
+  networkLoadingProgress={10}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

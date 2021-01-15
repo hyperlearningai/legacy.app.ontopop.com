@@ -1,155 +1,95 @@
-import React, { useRef, useEffect } from 'react'
-import { Network } from 'vis-network'
+import { useRef, useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import actions from '../store/actions'
 import serialiseNodesEdges from '../utils/serialiseNodesEdges'
-import filterNodesToDisplay from '../utils/filterNodesToDisplay'
-import jsonClasses from '../assets/json/test-ontology-classes.json'
-import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
+import setNetwork from '../utils/setNetwork'
+import setNetworkMethods from '../utils/setNetworkMethods'
 import getPhysicsOptions from '../utils/getPhysicsOptions'
 
 const GraphVisualisation = ({
   availableNodes,
   availableEdges,
-  searchFilter,
-  setStoreState,
   addToArray,
   classesFromApi,
-  objectPropertiesFromApi,
+  edgesIdsToDisplay,
+  highlightedNodes,
+  network,
   nodesIdsToDisplay,
-  // edgesToIgnore,
+  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  deletedNodes,
-  isNodeSelectable,
-  network,
-  selectedNodes,
-  selectedEdges,
-  isEdgeSelectable
+  // searchFilter,
+  setStoreState,
+  triplesPerNode,
 }) => {
   const visJsRef = useRef(null)
 
-  useEffect(() => {
-    // Set data from api
-    setStoreState('classesFromApi', jsonClasses)
-    setStoreState('objectPropertiesFromApi', jsonObjectProperties)
-    setStoreState('nodesIdsToDisplay', Object.keys(jsonClasses.OwlClasses))
-  }, [])
-
-  useEffect(() => {
-    filterNodesToDisplay({
-      classesFromApi,
-      setStoreState,
-      searchFilter
-    })
-  }, [searchFilter])
-
-  useEffect(() => {
-    serialiseNodesEdges({
-      nodesIdsToDisplay,
-      classesFromApi,
-      objectPropertiesFromApi,
-      setStoreState,
-      // edgesToIgnore,
-      deletedNodes
-    })
-  }, [
-    nodesIdsToDisplay,
-    // edgesToIgnore,
-    deletedNodes
-  ])
-
-  useEffect(async () => {
-    setStoreState('isNetworkLoading', true)
-
-    const physicsSettings = getPhysicsOptions({
-      physicsHierarchicalView,
-      physicsRepulsion,
-      physicsEdgeLength
-    })
-
-    setStoreState('network', visJsRef.current
-      && new Network(visJsRef.current, {
-        nodes: availableNodes,
-        edges: availableEdges
-      },
-      physicsSettings))
-  }, [
+  // set new Network
+  useEffect(() => setNetwork({
+    setStoreState,
     visJsRef,
     availableNodes,
     availableEdges,
     physicsHierarchicalView,
     physicsRepulsion,
     physicsEdgeLength
+  }), [
+    visJsRef,
   ])
 
-  useEffect(async () => {
-    network?.on('selectNode', (event) => {
-      if (event.nodes?.length === 1) {
-        if (isNodeSelectable) {
-          addToArray('selectedNodes', event.nodes[0])
-        }
-
-        if (!nodesIdsToDisplay.includes(event.nodes[0])) {
-          const newNodesIdsToDisplay = [
-            ...nodesIdsToDisplay,
-            event.nodes[0]
-          ]
-
-          setStoreState('nodesIdsToDisplay', newNodesIdsToDisplay)
-        }
-      }
-    })
-
-    network?.on('selectEdge', (event) => {
-      if (event.edges?.length === 1) {
-        if (isEdgeSelectable) {
-          addToArray('selectedEdges', event.edges[0])
-        }
-      }
-    })
-
-    network?.on('stabilizationProgress', (params) => {
-      const percentage = parseFloat(params.iterations / params.total).toFixed(2)
-
-      setStoreState('networkLoadingProgress', percentage * 100)
-    })
-
-    network?.once('stabilizationIterationsDone', () => {
-      setStoreState('networkLoadingProgress', 0)
-      setStoreState('isNetworkLoading', false)
-    })
-
-    await network?.stabilize(2000)
-
-    network?.fit()
+  // update available nodes/edges according to view
+  useEffect(() => {
+    if (network) {
+      serialiseNodesEdges({
+        nodesIdsToDisplay,
+        edgesIdsToDisplay,
+        classesFromApi,
+        objectPropertiesFromApi,
+        setStoreState,
+        triplesPerNode,
+        highlightedNodes,
+        availableNodes,
+        availableEdges,
+        network,
+      })
+    }
   }, [
+    nodesIdsToDisplay,
+  ])
+
+  // set graph options
+  useEffect(() => {
+    if (network) {
+      network.setOptions(getPhysicsOptions({
+        physicsHierarchicalView,
+        physicsRepulsion,
+        physicsEdgeLength
+      }))
+    }
+  }, [
+    physicsHierarchicalView,
+    physicsRepulsion,
+    physicsEdgeLength
+  ])
+
+  // set graph options
+  useEffect(() => setNetworkMethods({
+    setStoreState,
     network,
-    isNodeSelectable,
-    isEdgeSelectable
+    addToArray,
+  }), [
+    network
   ])
 
-  useEffect(() => {
-    const availableNodesIds = availableNodes.map((node) => node.id)
-
-    const nodesToAdd = selectedNodes.filter((node) => availableNodesIds.includes(node))
-
-    network?.selectNodes(nodesToAdd)
-  }, [
-    selectedNodes
-  ])
-
-  useEffect(() => {
-    const availableEdgesIds = availableEdges.map((edge) => edge.id)
-
-    const edgesToAdd = selectedEdges.filter((edge) => availableEdgesIds.includes(edge))
-
-    network?.selectEdges(edgesToAdd)
-  }, [
-    selectedEdges
-  ])
+  // useEffect(() => {
+  //   filterNodesToDisplay({
+  //     classesFromApi,
+  //     setStoreState,
+  //     searchFilter
+  //   })
+  // }, [searchFilter])
 
   return (
     <div
@@ -164,24 +104,20 @@ const GraphVisualisation = ({
 }
 
 GraphVisualisation.propTypes = {
-  availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  // edgesToIgnore: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setStoreState: PropTypes.func.isRequired,
   addToArray: PropTypes.func.isRequired,
-  searchFilter: PropTypes.string.isRequired,
+  availableNodes: PropTypes.shape().isRequired,
+  availableEdges: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
+  edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
+  highlightedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  network: PropTypes.shape(),
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
+  objectPropertiesFromApi: PropTypes.shape().isRequired,
+  physicsEdgeLength: PropTypes.number.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
-  physicsEdgeLength: PropTypes.number.isRequired,
-  deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isNodeSelectable: PropTypes.bool.isRequired,
-  network: PropTypes.shape(),
-  isEdgeSelectable: PropTypes.bool.isRequired,
+  setStoreState: PropTypes.func.isRequired,
+  triplesPerNode: PropTypes.shape().isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -191,37 +127,40 @@ GraphVisualisation.defaultProps = {
 const mapToProps = ({
   availableNodes,
   availableEdges,
-  searchFilter,
   classesFromApi,
-  objectPropertiesFromApi,
+  deletedNodes,
+  edgesIdsToDisplay,
+  highlightedNodes,
+  network,
   nodesIdsToDisplay,
-  // edgesToIgnore,
+  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  deletedNodes,
-  isNodeSelectable,
-  network,
+  searchFilter,
+  selectedEdges,
+  selectedNeighbourNode,
   selectedNodes,
-  isEdgeSelectable,
-  selectedEdges
+  triplesPerNode,
+
 }) => ({
   availableNodes,
   availableEdges,
-  searchFilter,
   classesFromApi,
-  objectPropertiesFromApi,
+  deletedNodes,
+  edgesIdsToDisplay,
+  highlightedNodes,
+  network,
   nodesIdsToDisplay,
-  // edgesToIgnore,
+  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  deletedNodes,
-  isNodeSelectable,
-  network,
+  searchFilter,
+  selectedEdges,
+  selectedNeighbourNode,
   selectedNodes,
-  isEdgeSelectable,
-  selectedEdges
+  triplesPerNode,
 })
 
 export default connect(
