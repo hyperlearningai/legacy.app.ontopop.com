@@ -18,11 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.1.0]
 ### Added
+- ONTOLOGY-36 Added settigns to sidebar
+- ONTOLOGY-23 Added node neighbourhood filter
 - ONTOLOGY-18 Select edges and display edge and related nodes properties
 - ONTOLOGY-17 Select nodes and display node properties
 - ONTOLOGY-16 Simple network-based ontology visualisation
 
 ### Changed
+- ONTOLOGY-23 Moved from modal overlays to sidebar with left icons vscode-style
+- ONTOLOGY-36 Moved from nodes/edges arrays to datasets to improve elements customisation
 
 ### Deprecated
 
