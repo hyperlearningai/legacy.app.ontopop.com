@@ -5,9 +5,11 @@ import actions from '../store/actions'
 import { SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import {
   EXPORT_GRAPH_OPTIONS,
-  EXPORT_DATA_OPTIONS
+  EXPORT_DATA_OPTIONS,
+  EXPORT_PDF
 } from '../constants/export'
 import exportAsImage from '../utils/exportAsImage'
+import exportAsPdf from '../utils/exportAsPdf'
 
 const ExportSettings = ({
   setStoreState,
@@ -52,12 +54,18 @@ const ExportSettings = ({
                   key={`export-btn-${option}`}
                   type="button"
                   title={t(option)}
-                  onClick={() => exportAsImage({
-                    exportFileName,
-                    type: option,
-                    canvasElement,
-                    t
-                  })}
+                  onClick={() => (option === EXPORT_PDF
+                    ? exportAsPdf({
+                      exportFileName,
+                      canvasElement,
+                      t
+                    })
+                    : exportAsImage({
+                      exportFileName,
+                      type: option,
+                      canvasElement,
+                      t
+                    }))}
                 >
                   {t(option)}
                 </button>

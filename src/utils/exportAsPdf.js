@@ -1,4 +1,6 @@
 /* eslint no-param-reassign:0 */
+/* eslint new-cap:0 */
+import { jsPDF } from 'jspdf'
 import { NOTIFY_SUCCESS } from '../constants/notifications'
 import showNotification from './showNotification'
 
@@ -6,43 +8,58 @@ import showNotification from './showNotification'
  * Export canvas as image
  * @param  {Object} params
  * @param  {String} params.exportFileName  File name
- * @param  {String} params.type            Export file type (jpeg|png)
  * @param  {Node}   params.canvasElement   Canvas DOM element
  * @param  {Function} params.t             i18n translation function
  * @return
  */
-const exportAsImage = ({
+const exportAsPdf = ({
   exportFileName,
-  type,
   canvasElement,
   t
 }) => {
-  // Generate a canvas copy to add white background
+  // generate pdf file and get aspect ratio
+  const doc = new jsPDF()
+  // const doc = new jsPDF('landscape')
+
+  const { width, height } = doc.internal.pageSize
+
+  // // Generate a canvas copy to add white background
   const destinationCanvas = document.createElement('canvas')
   destinationCanvas.width = canvasElement.width
   destinationCanvas.height = canvasElement.height
+
   const destCtx = destinationCanvas.getContext('2d')
   destCtx.fillStyle = '#FFFFFF'
   destCtx.fillRect(0, 0, destinationCanvas.width, destinationCanvas.height)
-
   destCtx.drawImage(canvasElement, 0, 0)
 
   const canvasQuality = 1.0
-
-  const format = `image/${type}`
+  const format = 'image/png'
   const imageData = destinationCanvas.toDataURL(format, canvasQuality)
   const imageDataUpdated = imageData.replace(format, 'image/octet-stream')
 
-  const element = document.createElement('a')
-  element.href = imageDataUpdated
-  element.download = `${exportFileName}.${type}`
-  element.id = 'output'
-  element.style.display = 'none'
-  document.body.appendChild(element)
+  const topMargin = 10
+  const leftMargin = 10
 
-  element.click()
+  const widthRatio = width / destinationCanvas.width
+  const heightRatio = height / destinationCanvas.height
 
-  document.body.removeChild(element)
+  const ratio = widthRatio > heightRatio ? heightRatio : widthRatio
+
+  const pdfWidth = (destinationCanvas.width * ratio) - (topMargin * 2)
+  const pdfHeight = (destinationCanvas.height * ratio) - (leftMargin * 2)
+
+  doc.addImage(imageDataUpdated,
+    'PNG',
+    leftMargin,
+    topMargin,
+    pdfWidth,
+    pdfHeight,
+    undefined,
+    'FAST')
+  // }
+  doc.save(`${exportFileName}.pdf`)
+
   destinationCanvas.remove()
 
   return showNotification({
@@ -52,4 +69,4 @@ const exportAsImage = ({
   })
 }
 
-export default exportAsImage
+export default exportAsPdf
