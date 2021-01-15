@@ -6,15 +6,6 @@ import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 
 const setup = () => {
   const props = {
-    isSearchOpen: true,
-    isNodeSelectable: true,
-    selectedNodes: ['abc'],
-    selectedEdges: ['123'],
-    isEdgeSelectable: true,
-    isSettingsOpen: true,
-    isNetworkLoading: true,
-    networkLoadingProgress: 10,
-    setStoreState: jest.fn(),
     currentGraph: 'graph-0',
     graphData: {
       'graph-0': {
@@ -22,7 +13,11 @@ const setup = () => {
         noDelete: true,
         type: ALGO_TYPE_FULL
       }
-    }
+    },
+    isNetworkLoading: true,
+    isSearchOpen: true,
+    networkLoadingProgress: 10,
+    setStoreState: jest.fn(),
   }
 
   const component = shallow(<GraphVisualisationWrapper {...props} />)

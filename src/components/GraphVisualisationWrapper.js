@@ -2,10 +2,7 @@ import { useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import GraphVisualisation from './GraphVisualisation'
-// import NodeInfo from './NodeInfo'
-// import EdgeInfo from './EdgeInfo'
 import SearchBox from './SearchBox'
-import SettingsBox from './SettingsBox'
 import ProgressBar from './ProgressBar'
 import jsonClasses from '../assets/json/test-ontology-classes.json'
 import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
@@ -15,17 +12,12 @@ import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import getAllTriplesPerNode from '../utils/getAllTriplesPerNode'
 
 const GraphVisualisationWrapper = ({
-  isSearchOpen,
-  // isNodeSelectable,
-  // selectedNodes,
-  // selectedEdges,
-  // isEdgeSelectable,
-  isSettingsOpen,
-  isNetworkLoading,
-  networkLoadingProgress,
-  setStoreState,
   currentGraph,
   graphData,
+  isNetworkLoading,
+  isSearchOpen,
+  networkLoadingProgress,
+  setStoreState,
 }) => {
   useEffect(async () => {
     // Set data from api
@@ -75,15 +67,6 @@ const GraphVisualisationWrapper = ({
 
   return (
     <>
-      {/* {
-        isNodeSelectable
-        && selectedNodes
-        && selectedNodes.length > 0
-        && (
-          <NodeInfo />
-        )
-      } */}
-
       {
         isSearchOpen
         && (
@@ -101,64 +84,33 @@ const GraphVisualisationWrapper = ({
         }
 
       <GraphVisualisation />
-
-      {/* {
-        isEdgeSelectable
-        && selectedEdges
-        && selectedEdges.length > 0
-        && (
-          <EdgeInfo />
-        )
-      } */}
-
-      {
-        isSettingsOpen
-        && (
-          <SettingsBox />
-        )
-      }
     </>
   )
 }
 
 GraphVisualisationWrapper.propTypes = {
-  isSearchOpen: PropTypes.bool.isRequired,
-  // selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isSettingsOpen: PropTypes.bool.isRequired,
-  isNetworkLoading: PropTypes.bool.isRequired,
-  // isNodeSelectable: PropTypes.bool.isRequired,
-  // isEdgeSelectable: PropTypes.bool.isRequired,
-  networkLoadingProgress: PropTypes.number.isRequired,
-  setStoreState: PropTypes.func.isRequired,
   currentGraph: PropTypes.string.isRequired,
   graphData: PropTypes.shape().isRequired,
+  isSearchOpen: PropTypes.bool.isRequired,
+  isNetworkLoading: PropTypes.bool.isRequired,
+  networkLoadingProgress: PropTypes.number.isRequired,
+  setStoreState: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  isSearchOpen,
-  // selectedNodes,
-  // selectedEdges,
-  // isEdgeFilterOpen,
-  isSettingsOpen,
-  isNetworkLoading,
-  networkLoadingProgress,
-  // isNodeSelectable,
-  // isEdgeSelectable,
   currentGraph,
-  graphData
+  graphData,
+  isNetworkLoading,
+  isSearchOpen,
+  isSettingsOpen,
+  networkLoadingProgress,
 }) => ({
-  isSearchOpen,
-  // selectedNodes,
-  // selectedEdges,
-  // isEdgeFilterOpen,
-  isSettingsOpen,
-  isNetworkLoading,
-  networkLoadingProgress,
-  // isNodeSelectable,
-  // isEdgeSelectable,
   currentGraph,
-  graphData
+  graphData,
+  isNetworkLoading,
+  isSearchOpen,
+  isSettingsOpen,
+  networkLoadingProgress,
 })
 
 export default connect(

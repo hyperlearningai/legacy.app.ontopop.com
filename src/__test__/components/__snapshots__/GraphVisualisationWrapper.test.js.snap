@@ -23,23 +23,10 @@ exports[`GraphVisualisationWrapper should match snapshot  1`] = `
       },
     }
   }
-  isEdgeSelectable={true}
   isNetworkLoading={true}
-  isNodeSelectable={true}
   isSearchOpen={true}
-  isSettingsOpen={true}
   mapToProps={[Function]}
   networkLoadingProgress={10}
-  selectedEdges={
-    Array [
-      "123",
-    ]
-  }
-  selectedNodes={
-    Array [
-      "abc",
-    ]
-  }
   setStoreState={[MockFunction]}
 >
   <Component />

@@ -3,7 +3,8 @@ import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import {
-  FiLayers
+  FiLayers,
+  FiSettings
 } from 'react-icons/fi'
 import {
   BiNetworkChart
@@ -17,8 +18,8 @@ import {
   AiOutlineArrowRight
 } from 'react-icons/ai'
 import {
-  RiSpeedLine
-} from 'react-icons/ri'
+  IoGitNetwork
+} from 'react-icons/io5'
 import {
   FaRegHandPointer,
   FaRegCircle
@@ -30,12 +31,14 @@ import {
   SIDEBAR_VIEW_NEIGHBOURHOOD,
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_NODES_SELECTION,
-  SIDEBAR_VIEW_EDGES_SELECTION
+  SIDEBAR_VIEW_EDGES_SELECTION,
+  SIDEBAR_VIEW_SETTINGS
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import NodeNeighbourhood from './NodeNeighbourhood'
 import NodesSelection from './NodesSelection'
 import EdgesSelection from './EdgesSelection'
+import NetworkSettings from './NetworkSettings'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -109,7 +112,15 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => setView(SIDEBAR_VIEW_SHORTEST_PATH)}
         >
-          <RiSpeedLine />
+          <IoGitNetwork />
+        </button>
+        <button
+          type="button"
+          title={t('settings')}
+          className={sidebarView === SIDEBAR_VIEW_SETTINGS ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_SETTINGS)}
+        >
+          <FiSettings />
         </button>
         <button
           type="button"
@@ -150,6 +161,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD && (
                 <NodeNeighbourhood />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_SETTINGS && (
+                <NetworkSettings />
               )
             }
           </div>

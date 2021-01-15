@@ -5,8 +5,6 @@ import FooterComponent from '../../components/FooterComponent'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
-    isSettingsOpen: true,
     availableEdgesNormalised: { 123: { id: '123' } }
   }
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SettingsBox should match snapshot  1`] = `
+exports[`NetworkSettings should match snapshot  1`] = `
 <Connect
   actions={
     Object {
@@ -14,7 +14,7 @@ exports[`SettingsBox should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
-  physicsEdgeLength={10}
+  physicsEdgeLength={100}
   physicsHierarchicalView={true}
   physicsRepulsion={true}
   setStoreState={[MockFunction]}
