@@ -16,20 +16,17 @@ import EdgesSelectionDetails from './EdgesSelectionDetails'
 import { SIDEBAR_VIEW_EDGES_SELECTION } from '../constants/views'
 
 const EdgesSelection = ({
-  setStoreState,
   removeFromArray,
   objectPropertiesFromApi,
-  selectedEdges
+  selectedEdges,
+  resetSelectedEdges
 }) => {
   const { t } = useTranslation()
 
   const [isEdgeSelected, toggleEdgeSelected] = useState(false)
   const [edgeId, setEdgeId] = useState('')
 
-  useEffect(() => () => {
-    setStoreState('isEdgeSelectable', false)
-    setStoreState('selectedEdges', [])
-  }, [])
+  useEffect(() => () => resetSelectedEdges(), [])
 
   return (
     <>
@@ -107,7 +104,7 @@ const EdgesSelection = ({
 }
 
 EdgesSelection.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  resetSelectedEdges: PropTypes.func.isRequired,
   selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   removeFromArray: PropTypes.func.isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,

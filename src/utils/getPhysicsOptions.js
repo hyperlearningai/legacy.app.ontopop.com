@@ -1,5 +1,5 @@
 import {
-  HIGHLIGHT_NODE_BACKGROUND,
+  CLICK_NODE_BACKGROUND,
   HIGHLIGHT_NODE_BORDER,
   HOVER_NODE_BACKGROUND,
   HOVER_NODE_BORDER,
@@ -16,7 +16,7 @@ const getPhysicsOptions = ({
 }) => ({
   edges: {
     smooth: {
-      type: 'cubicBezier',
+      type: 'cubicBezier', // 'continuous'
       forceDirection: 'none',
       roundness: 0.45,
     },
@@ -29,10 +29,10 @@ const getPhysicsOptions = ({
     font: NODE_FONT,
     shape: 'circle', // ellipse, circle, database, box, text, image, circularImage, diamond, dot, star, triangle, triangleDown, hexagon, square, icon
     color: {
-      background: NODE_BACKGROUND, // '#2B7CE9',
-      border: NODE_BORDER, // '#D2E5FF',
+      background: NODE_BACKGROUND,
+      border: NODE_BORDER,
       highlight: {
-        background: HIGHLIGHT_NODE_BACKGROUND,
+        background: CLICK_NODE_BACKGROUND,
         border: HIGHLIGHT_NODE_BORDER,
       },
       hover: {

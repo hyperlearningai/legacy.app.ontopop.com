@@ -8,7 +8,7 @@ describe('addNode', () => {
 
   it('should work correctly', async () => {
     const availableNodesNormalised = {}
-    const availableNodes = []
+    const availableNodesList = []
     const addedNodes = []
     const highlightedNodes = []
     const nodeId = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
@@ -19,7 +19,7 @@ describe('addNode', () => {
 
     await addNode({
       availableNodesNormalised,
-      availableNodes,
+      availableNodesList,
       addedNodes,
       nodeId,
       nodeIdObject,
@@ -32,7 +32,7 @@ describe('addNode', () => {
         label: 'test',
       },
     })
-    expect(availableNodes).toEqual([
+    expect(availableNodesList).toEqual([
       {
         id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
         label: 'test',
@@ -43,7 +43,7 @@ describe('addNode', () => {
 
   it('should change node background if in highlightedNodes', async () => {
     const availableNodesNormalised = {}
-    const availableNodes = []
+    const availableNodesList = []
     const addedNodes = []
     const highlightedNodes = ['http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M']
     const nodeId = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
@@ -54,7 +54,7 @@ describe('addNode', () => {
 
     await addNode({
       availableNodesNormalised,
-      availableNodes,
+      availableNodesList,
       addedNodes,
       nodeId,
       nodeIdObject,
@@ -70,7 +70,7 @@ describe('addNode', () => {
         }
       },
     })
-    expect(availableNodes).toEqual([
+    expect(availableNodesList).toEqual([
       {
         id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
         label: 'test',

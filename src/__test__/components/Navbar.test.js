@@ -10,7 +10,7 @@ const setup = () => {
   const props = {
     setStoreState: jest.fn(),
     mainView: NETWORK_GRAPH_VIEW,
-    availableNodes: [{ id: '123' }],
+    availableNodesNormalised: { 123: { id: '123' } },
   }
 
   const component = shallow(<Navbar {...props} />)

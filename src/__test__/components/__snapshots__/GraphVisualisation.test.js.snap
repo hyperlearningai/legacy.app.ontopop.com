@@ -7,13 +7,47 @@ exports[`GraphVisualisation should match snapshot  1`] = `
       "addToArray": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
     }
   }
   addToArray={[MockFunction]}
-  availableEdges={Array []}
-  availableNodes={Array []}
+  availableEdges={
+    DataSet {
+      "_data": Map {},
+      "_idProp": "id",
+      "_options": Object {},
+      "_queue": null,
+      "_subscribers": Object {
+        "*": Array [],
+        "add": Array [],
+        "remove": Array [],
+        "update": Array [],
+      },
+      "length": 0,
+      "subscribe": [Function],
+      "unsubscribe": [Function],
+    }
+  }
+  availableNodes={
+    DataSet {
+      "_data": Map {},
+      "_idProp": "id",
+      "_options": Object {},
+      "_queue": null,
+      "_subscribers": Object {
+        "*": Array [],
+        "add": Array [],
+        "remove": Array [],
+        "update": Array [],
+      },
+      "length": 0,
+      "subscribe": [Function],
+      "unsubscribe": [Function],
+    }
+  }
   classesFromApi={
     Object {
       "http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY": Object {
@@ -5878,24 +5912,13 @@ Four subdomains have been created to cover all the universals related to each of
       },
     }
   }
-  currentGraph="graph-0"
   edgesIdsToDisplay={
     Array [
       "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB",
       "http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU",
     ]
   }
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "graph-0",
-      },
-    }
-  }
   highlightedNodes={Array []}
-  isEdgeSelectable={true}
-  isNeighbourNodeSelectable={true}
-  isNodeSelectable={true}
   mapToProps={[Function]}
   network={Object {}}
   nodesIdsToDisplay={Array []}
@@ -6768,9 +6791,6 @@ Four subdomains have been created to cover all the universals related to each of
   physicsEdgeLength={true}
   physicsHierarchicalView={true}
   physicsRepulsion={true}
-  searchFilter=""
-  selectedNeighbourNode={Array []}
-  selectedNodes={Array []}
   setStoreState={[MockFunction]}
   triplesPerNode={
     Object {

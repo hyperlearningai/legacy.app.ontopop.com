@@ -5,7 +5,7 @@ import NodesSelection from '../../components/NodesSelection'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
+    resetSelectedNodes: jest.fn(),
     removeFromArray: jest.fn(),
     availableNodesNormalised: {
       abc: {

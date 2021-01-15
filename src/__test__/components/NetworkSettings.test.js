@@ -1,17 +1,17 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import SettingsBox from '../../components/SettingsBox'
+import NetworkSettings from '../../components/NetworkSettings'
 
 const setup = () => {
   const props = {
     setStoreState: jest.fn(),
-    physicsEdgeLength: 10,
+    physicsEdgeLength: 100,
     physicsRepulsion: true,
     physicsHierarchicalView: true,
   }
 
-  const component = shallow(<SettingsBox {...props} />)
+  const component = shallow(<NetworkSettings {...props} />)
 
   return {
     component,
@@ -19,7 +19,11 @@ const setup = () => {
   }
 }
 
-describe('SettingsBox', () => {
+describe('NetworkSettings', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should match snapshot ', () => {
     const {
       component

@@ -16,7 +16,8 @@ describe('addConnections', () => {
       from,
       to
     }
-    const availableEdges = []
+    const availableEdgesNormalised = {}
+    const availableEdgesList = []
     const edgesConnections = {}
     const edgeConnection = {
       ...edge
@@ -27,7 +28,8 @@ describe('addConnections', () => {
       addedEdges,
       edgeUniqueId,
       edge,
-      availableEdges,
+      availableEdgesList,
+      availableEdgesNormalised,
       edgesConnections,
       edgeConnection,
       predicate,
@@ -36,6 +38,11 @@ describe('addConnections', () => {
       nodesConnections
     })
 
+    expect(availableEdgesNormalised).toEqual({
+      pred_from_to: {
+        ...edge
+      }
+    })
     expect(edgesConnections).toEqual({
       'http://webprotege.stanford.edu/abc': [{
         ...edge

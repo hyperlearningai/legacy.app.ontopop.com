@@ -7,6 +7,8 @@ exports[`NodesSelection should match snapshot  1`] = `
       "addToArray": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
     }
@@ -33,12 +35,12 @@ exports[`NodesSelection should match snapshot  1`] = `
   }
   mapToProps={[Function]}
   removeFromArray={[MockFunction]}
+  resetSelectedNodes={[MockFunction]}
   selectedNodes={
     Array [
       "abc",
     ]
   }
-  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>

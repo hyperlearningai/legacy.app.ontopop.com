@@ -6,7 +6,7 @@ import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
+    resetSelectedEdges: jest.fn(),
     removeFromArray: jest.fn(),
     objectPropertiesFromApi: OwlObjectProperties,
     selectedEdges: ['http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM']

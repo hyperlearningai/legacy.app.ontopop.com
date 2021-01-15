@@ -5,54 +5,26 @@ import actions from '../store/actions'
 import serialiseNodesEdges from '../utils/serialiseNodesEdges'
 import setNetwork from '../utils/setNetwork'
 import setNetworkMethods from '../utils/setNetworkMethods'
-import { ALGO_TYPE_NEIGHBOURHOOD } from '../constants/algorithms'
-// import filterNodesToDisplay from '../utils/filterNodesToDisplay'
+import getPhysicsOptions from '../utils/getPhysicsOptions'
 
 const GraphVisualisation = ({
   availableNodes,
   availableEdges,
-  // searchFilter,
-  setStoreState,
   addToArray,
   classesFromApi,
-  objectPropertiesFromApi,
-  nodesIdsToDisplay,
   edgesIdsToDisplay,
-  // edgesToIgnore,
+  highlightedNodes,
+  network,
+  nodesIdsToDisplay,
+  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
+  // searchFilter,
+  setStoreState,
   triplesPerNode,
-  // deletedNodes,
-  isNodeSelectable,
-  network,
-  selectedNodes,
-  // selectedEdges,
-  isEdgeSelectable,
-  isNeighbourNodeSelectable,
-  selectedNeighbourNode,
-  currentGraph,
-  graphData,
-  highlightedNodes
 }) => {
   const visJsRef = useRef(null)
-
-  // update available nodes/edges according to view
-  useEffect(() => serialiseNodesEdges({
-    nodesIdsToDisplay,
-    edgesIdsToDisplay,
-    classesFromApi,
-    objectPropertiesFromApi,
-    setStoreState,
-    triplesPerNode,
-    highlightedNodes
-    // edgesToIgnore,
-    // deletedNodes
-  }), [
-    nodesIdsToDisplay,
-    // edgesToIgnore,
-    // deletedNodes
-  ])
 
   // set new Network
   useEffect(() => setNetwork({
@@ -65,27 +37,50 @@ const GraphVisualisation = ({
     physicsEdgeLength
   }), [
     visJsRef,
-    availableNodes,
-    availableEdges,
+  ])
+
+  // update available nodes/edges according to view
+  useEffect(() => {
+    if (network) {
+      serialiseNodesEdges({
+        nodesIdsToDisplay,
+        edgesIdsToDisplay,
+        classesFromApi,
+        objectPropertiesFromApi,
+        setStoreState,
+        triplesPerNode,
+        highlightedNodes,
+        availableNodes,
+        availableEdges,
+        network,
+      })
+    }
+  }, [
+    nodesIdsToDisplay,
+  ])
+
+  // set graph options
+  useEffect(() => {
+    if (network) {
+      network.setOptions(getPhysicsOptions({
+        physicsHierarchicalView,
+        physicsRepulsion,
+        physicsEdgeLength
+      }))
+    }
+  }, [
     physicsHierarchicalView,
     physicsRepulsion,
     physicsEdgeLength
   ])
 
-  // set network methods
+  // set graph options
   useEffect(() => setNetworkMethods({
     setStoreState,
     network,
     addToArray,
-    isNodeSelectable,
-    isEdgeSelectable,
-    nodesIdsToDisplay,
-    isNeighbourNodeSelectable
   }), [
-    network,
-    isNodeSelectable,
-    isEdgeSelectable,
-    isNeighbourNodeSelectable
+    network
   ])
 
   // useEffect(() => {
@@ -95,39 +90,6 @@ const GraphVisualisation = ({
   //     searchFilter
   //   })
   // }, [searchFilter])
-
-  useEffect(() => {
-    const availableNodesIds = availableNodes.map((node) => node.id)
-
-    const nodesToAdd = selectedNodes.filter((node) => availableNodesIds.includes(node))
-
-    network?.selectNodes(nodesToAdd)
-  }, [
-    selectedNodes
-  ])
-
-  useEffect(() => {
-    if (graphData[currentGraph].type === ALGO_TYPE_NEIGHBOURHOOD) {
-      if (selectedNeighbourNode !== '') {
-        network?.selectNodes([selectedNeighbourNode])
-      } else {
-        network?.selectNodes([])
-      }
-    }
-  }, [
-    selectedNeighbourNode,
-    currentGraph
-  ])
-
-  // useEffect(() => {
-  //   const availableEdgesIds = availableEdges.map((edge) => edge.id)
-
-  //   const edgesToAdd = selectedEdges.filter((edge) => availableEdgesIds.includes(edge))
-
-  //   network?.selectEdges(edgesToAdd)
-  // }, [
-  //   selectedEdges
-  // ])
 
   return (
     <div
@@ -143,30 +105,19 @@ const GraphVisualisation = ({
 
 GraphVisualisation.propTypes = {
   addToArray: PropTypes.func.isRequired,
-  availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  availableNodes: PropTypes.shape().isRequired,
+  availableEdges: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  currentGraph: PropTypes.string.isRequired,
-  // deletedNodes,
-  // edgesToIgnore,
   edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  graphData: PropTypes.shape().isRequired,
   highlightedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isEdgeSelectable: PropTypes.bool.isRequired,
-  isNeighbourNodeSelectable: PropTypes.bool.isRequired,
-  isNodeSelectable: PropTypes.bool.isRequired,
   network: PropTypes.shape(),
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
-  // searchFilter: PropTypes.string.isRequired,
-  selectedNeighbourNode: PropTypes.string.isRequired,
-  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   setStoreState: PropTypes.func.isRequired,
   triplesPerNode: PropTypes.shape().isRequired,
-  // selectedEdges,
 }
 
 GraphVisualisation.defaultProps = {
@@ -176,51 +127,40 @@ GraphVisualisation.defaultProps = {
 const mapToProps = ({
   availableNodes,
   availableEdges,
-  searchFilter,
   classesFromApi,
-  objectPropertiesFromApi,
+  deletedNodes,
+  edgesIdsToDisplay,
+  highlightedNodes,
+  network,
   nodesIdsToDisplay,
-  // edgesToIgnore,
+  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  deletedNodes,
-  isNodeSelectable,
-  network,
-  selectedNodes,
-  isEdgeSelectable,
+  searchFilter,
   selectedEdges,
-  triplesPerNode,
-  isNeighbourNodeSelectable,
   selectedNeighbourNode,
-  currentGraph,
-  graphData,
-  edgesIdsToDisplay,
-  highlightedNodes
+  selectedNodes,
+  triplesPerNode,
+
 }) => ({
   availableNodes,
   availableEdges,
-  searchFilter,
   classesFromApi,
-  objectPropertiesFromApi,
+  deletedNodes,
+  edgesIdsToDisplay,
+  highlightedNodes,
+  network,
   nodesIdsToDisplay,
-  // edgesToIgnore,
+  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  deletedNodes,
-  isNodeSelectable,
-  network,
-  selectedNodes,
-  isEdgeSelectable,
+  searchFilter,
   selectedEdges,
-  triplesPerNode,
-  isNeighbourNodeSelectable,
   selectedNeighbourNode,
-  currentGraph,
-  graphData,
-  edgesIdsToDisplay,
-  highlightedNodes
+  selectedNodes,
+  triplesPerNode,
 })
 
 export default connect(

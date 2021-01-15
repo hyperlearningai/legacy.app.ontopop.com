@@ -25,6 +25,7 @@ export default {
   edgesSelection: 'Edges selection',
   selectNodes: 'Select nodes',
   selectEdges: 'Select edges',
+  settings: 'Settings',
 
   // node selection
   node: 'Node',
@@ -39,6 +40,17 @@ export default {
   show: 'Show',
   separationDegree: 'Separation degree',
   selectedNode: 'Selected node',
+
+  // Physics settings
+  physicsSettings: 'Physics settings',
+  edgeLength: 'Edge length',
+  hierachicalView: 'Hierarchical view',
+  gravitationalView: 'Gravitational view',
+  enableRepulsion: 'Enable repulsion',
+  disableRepulsion: 'Disable repulsion',
+  physics: 'Physics',
+  repulsion: 'Repulsion',
+  positioning: 'Positioning',
 
   // footer navbar
   hideEdgeFilter: 'Hide edge filter',
@@ -74,16 +86,7 @@ export default {
   searchNode: 'Search node',
 
   // edges list
-  edgesList: 'Edges\' list',
   edges: 'Edges',
-
-  // Physics settings
-  physicsSettings: 'Physics settings',
-  edgeLength: 'Edge length',
-  hierachicalView: 'Hierarchical view',
-  gravitationalView: 'Gravitational view',
-  enableRepulsion: 'Enable repulsion',
-  disableRepulsion: 'Disable repulsion',
 
   // Progress bar
   loading: 'Loading...',

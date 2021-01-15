@@ -7,20 +7,20 @@ exports[`FooterComponent should match snapshot  1`] = `
       "addToArray": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
     }
   }
-  availableEdges={
-    Array [
-      Object {
+  availableEdgesNormalised={
+    Object {
+      "123": Object {
         "id": "123",
       },
-    ]
+    }
   }
-  isSettingsOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>

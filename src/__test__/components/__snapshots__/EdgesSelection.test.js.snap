@@ -7,6 +7,8 @@ exports[`EdgesSelection should match snapshot  1`] = `
       "addToArray": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
     }
@@ -879,12 +881,12 @@ exports[`EdgesSelection should match snapshot  1`] = `
     }
   }
   removeFromArray={[MockFunction]}
+  resetSelectedEdges={[MockFunction]}
   selectedEdges={
     Array [
       "http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM",
     ]
   }
-  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>

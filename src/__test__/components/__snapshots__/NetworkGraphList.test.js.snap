@@ -7,6 +7,8 @@ exports[`NetworkGraphList should match snapshot  1`] = `
       "addToArray": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
     }

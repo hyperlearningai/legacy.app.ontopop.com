@@ -7,16 +7,18 @@ exports[`Navbar should match snapshot  1`] = `
       "addToArray": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
     }
   }
-  availableNodes={
-    Array [
-      Object {
+  availableNodesNormalised={
+    Object {
+      "123": Object {
         "id": "123",
       },
-    ]
+    }
   }
   mainView="networkGraphView"
   mapToProps={[Function]}

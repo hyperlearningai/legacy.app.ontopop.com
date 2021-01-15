@@ -1,6 +1,7 @@
 import createStore from 'redux-zero'
 import { applyMiddleware } from 'redux-zero/middleware'
 import loadingMiddleware from 'redux-loading-middleware'
+import { DataSet } from 'vis-data'
 import { NETWORK_GRAPH_VIEW, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 
@@ -36,9 +37,10 @@ const initialState = {
   nodesIdsToDisplay: [],
   edgesIdsToDisplay: [],
 
-  availableNodes: [],
+  availableNodes: new DataSet([]),
   availableNodesNormalised: {},
-  availableEdges: [],
+  availableEdges: new DataSet([]),
+  availableEdgesNormalised: {},
   selectedNodes: [],
   selectedEdges: [],
   nodesConnections: {},

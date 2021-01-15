@@ -1,40 +1,47 @@
+import {
+  HIGHLIGHT_NODE_BACKGROUND,
+  EDGE_COLOR_SELECTED
+} from '../constants/graph'
+import store from '../store'
+
 const setNetworkMethods = async ({
   setStoreState,
   network,
   addToArray,
-  isNodeSelectable,
-  isEdgeSelectable,
-  // nodesIdsToDisplay,
-  isNeighbourNodeSelectable
 }) => {
   network?.on('selectNode', (event) => {
+    const {
+      isNodeSelectable,
+      isNeighbourNodeSelectable,
+      availableNodes
+    } = store.getState()
+
     if (event.nodes?.length === 1) {
       const nodeId = event.nodes[0]
+
       if (isNodeSelectable) {
         addToArray('selectedNodes', nodeId)
+        availableNodes.update([{ id: nodeId, color: { background: HIGHLIGHT_NODE_BACKGROUND } }])
       }
 
       if (isNeighbourNodeSelectable) {
         setStoreState('selectedNeighbourNode', nodeId)
       }
-
-      // if (!nodesIdsToDisplay.includes(event.nodes[0])) {
-      //   const newNodesIdsToDisplay = [
-      //     ...nodesIdsToDisplay,
-      //     event.nodes[0]
-      //   ]
-
-      //   setStoreState('nodesIdsToDisplay', newNodesIdsToDisplay)
-      // }
     }
   })
 
   network?.on('selectEdge', (event) => {
+    const {
+      isEdgeSelectable,
+      availableEdges
+    } = store.getState()
+
     if (event.edges?.length === 1) {
       const edgeId = event.edges[0]
 
       if (isEdgeSelectable) {
         addToArray('selectedEdges', edgeId)
+        availableEdges.update([{ id: edgeId, color: EDGE_COLOR_SELECTED }])
       }
     }
   })

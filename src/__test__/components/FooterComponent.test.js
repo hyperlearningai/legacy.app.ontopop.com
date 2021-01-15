@@ -5,9 +5,7 @@ import FooterComponent from '../../components/FooterComponent'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
-    isSettingsOpen: true,
-    availableEdges: [{ id: '123' }]
+    availableEdgesNormalised: { 123: { id: '123' } }
   }
 
   const component = shallow(<FooterComponent {...props} />)
