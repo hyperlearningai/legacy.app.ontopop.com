@@ -1,3 +1,11 @@
+/**
+ * Updated nodesIdsToDisplay in store filtering nodes in graph by string
+ * @param  {Object}   params
+ * @param  {Object}   params.classesFromApi   Nodes from initial OwlClasses
+ * @param  {String}   params.searchFilter     Search string
+ * @param  {Function} params.setStoreState    setStoreState action
+ * @return
+ */
 const filterNodesToDisplay = ({
   classesFromApi,
   setStoreState,

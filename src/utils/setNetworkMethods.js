@@ -4,6 +4,14 @@ import {
 } from '../constants/graph'
 import store from '../store'
 
+/**
+ * Update VisJs network methods
+ * @param  {Object}   params
+ * @param  {Function} params.setStoreState             setStoreState action
+ * @param  {Function} params.addToArray                addToArray action
+ * @param  {Object}   params.network                   VisJs network object
+ * @return
+ */
 const setNetworkMethods = async ({
   setStoreState,
   network,

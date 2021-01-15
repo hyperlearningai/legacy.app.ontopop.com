@@ -52,6 +52,7 @@
     "eslint-plugin-security": "^1.4.0",
     "husky": "^4.3.7",
     "jest": "^26.3.0",
+    "jest-canvas-mock": "^2.3.0",
     "jest-junit": "^11.1.0",
     "jsdom": "^16.4.0",
     "serverless": "^2.18.0",

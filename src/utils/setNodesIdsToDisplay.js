@@ -4,6 +4,16 @@ import {
 } from '../constants/algorithms'
 import getNeighbours from './getNeighbours'
 
+/**
+ * Updates nodes and edges to display
+ * @param  {Object}   params
+ * @param  {Function} params.setStoreState             setStoreState action
+ * @param  {Object}   params.classesFromApi            Nodes from initial OwlClasses
+ * @param  {Object}   params.objectPropertiesFromApi   Edges from initial OwlObjectProperties
+ * @param  {String}   params.type                      type of algorithm to use
+ * @param  {Object}   params.options                   additional options
+ * @return
+ */
 const setNodesIdsToDisplay = async ({
   type,
   classesFromApi,
