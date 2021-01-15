@@ -25,6 +25,7 @@ const serialiseNodesEdges = ({
   const availableNodesList = []
   const availableEdgesList = []
   const availableNodesNormalised = {}
+  const availableEdgesNormalised = {}
   const nodesConnections = {}
   const edgesConnections = {}
 
@@ -90,7 +91,8 @@ const serialiseNodesEdges = ({
             to,
             nodesConnections,
             nodesIdsToDisplay,
-            edgesIdsToDisplay
+            edgesIdsToDisplay,
+            availableEdgesNormalised
           })
 
           addNode({
@@ -118,6 +120,7 @@ const serialiseNodesEdges = ({
   }
 
   setStoreState('availableNodesNormalised', availableNodesNormalised)
+  setStoreState('availableEdgesNormalised', availableEdgesNormalised)
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
 

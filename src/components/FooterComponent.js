@@ -10,7 +10,7 @@ import actions from '../store/actions'
 const FooterComponent = ({
   setStoreState,
   isSettingsOpen,
-  availableEdges,
+  availableEdgesNormalised,
 }) => {
   const { t } = useTranslation()
 
@@ -18,7 +18,7 @@ const FooterComponent = ({
     <footer>
       <div className="footer-left">
         <span>
-          {`${t('edges')}: ${availableEdges.length}`}
+          {`${t('edges')}: ${Object.keys(availableEdgesNormalised).length}`}
         </span>
       </div>
 
@@ -39,15 +39,15 @@ const FooterComponent = ({
 FooterComponent.propTypes = {
   isSettingsOpen: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  availableEdgesNormalised: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   isSettingsOpen,
-  availableEdges,
+  availableEdgesNormalised,
 }) => ({
   isSettingsOpen,
-  availableEdges,
+  availableEdgesNormalised,
 })
 
 export default connect(

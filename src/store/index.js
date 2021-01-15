@@ -40,6 +40,7 @@ const initialState = {
   availableNodes: new DataSet([]),
   availableNodesNormalised: {},
   availableEdges: new DataSet([]),
+  availableEdgesNormalised: {},
   selectedNodes: [],
   selectedEdges: [],
   nodesConnections: {},

@@ -4,6 +4,7 @@ const addConnections = ({
   edgeUniqueId,
   edge,
   availableEdgesList,
+  availableEdgesNormalised,
   edgesConnections,
   edgeConnection,
   predicate,
@@ -13,6 +14,7 @@ const addConnections = ({
 }) => {
   addedEdges.push(edgeUniqueId)
   availableEdgesList.push(edge)
+  availableEdgesNormalised[edgeUniqueId] = edge  // eslint-disable-line
 
   if (edgesConnections[predicate] && !edgesConnections[predicate].includes(edge)) {
     edgesConnections[predicate].push(edgeConnection)

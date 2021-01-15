@@ -13,12 +13,12 @@ exports[`Navbar should match snapshot  1`] = `
       "updateGraphData": [Function],
     }
   }
-  availableNodes={
-    Array [
-      Object {
+  availableNodesNormalised={
+    Object {
+      "123": Object {
         "id": "123",
       },
-    ]
+    }
   }
   mainView="networkGraphView"
   mapToProps={[Function]}

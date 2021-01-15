@@ -13,12 +13,12 @@ exports[`FooterComponent should match snapshot  1`] = `
       "updateGraphData": [Function],
     }
   }
-  availableEdges={
-    Array [
-      Object {
+  availableEdgesNormalised={
+    Object {
+      "123": Object {
         "id": "123",
       },
-    ]
+    }
   }
   isSettingsOpen={true}
   mapToProps={[Function]}

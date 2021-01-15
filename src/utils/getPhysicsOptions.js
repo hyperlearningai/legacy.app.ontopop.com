@@ -16,7 +16,7 @@ const getPhysicsOptions = ({
 }) => ({
   edges: {
     smooth: {
-      type: 'cubicBezier',
+      type: 'cubicBezier', // 'continuous'
       forceDirection: 'none',
       roundness: 0.45,
     },

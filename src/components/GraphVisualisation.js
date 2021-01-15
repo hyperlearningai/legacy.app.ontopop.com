@@ -105,8 +105,8 @@ const GraphVisualisation = ({
 
 GraphVisualisation.propTypes = {
   addToArray: PropTypes.func.isRequired,
-  availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  availableEdges: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  availableNodes: PropTypes.shape().isRequired,
+  availableEdges: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   highlightedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,

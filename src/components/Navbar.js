@@ -10,7 +10,7 @@ import actions from '../store/actions'
 const Navbar = ({
   setStoreState,
   isSearchOpen,
-  availableNodes
+  availableNodesNormalised,
 }) => {
   const { t } = useTranslation()
 
@@ -18,7 +18,7 @@ const Navbar = ({
     <nav>
       <div className="nav-left">
         <span>
-          {`${t('nodes')}: ${availableNodes.length}`}
+          {`${t('nodes')}: ${Object.keys(availableNodesNormalised).length}`}
         </span>
       </div>
 
@@ -39,15 +39,15 @@ const Navbar = ({
 Navbar.propTypes = {
   isSearchOpen: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  availableNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  availableNodesNormalised: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   isSearchOpen,
-  availableNodes,
+  availableNodesNormalised,
 }) => ({
   isSearchOpen,
-  availableNodes,
+  availableNodesNormalised,
 })
 
 export default connect(
