@@ -6,14 +6,19 @@ import { SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import {
   EXPORT_GRAPH_OPTIONS,
   EXPORT_DATA_OPTIONS,
-  EXPORT_PDF
+  EXPORT_PDF,
+  EXPORT_CSV
 } from '../constants/export'
 import exportAsImage from '../utils/exportAsImage'
 import exportAsPdf from '../utils/exportAsPdf'
+import exportCsv from '../utils/exportCsv'
 
 const ExportSettings = ({
   setStoreState,
-  exportFileName
+  exportFileName,
+  availableNodesNormalised,
+  availableEdgesNormalised,
+  objectPropertiesFromApi
 }) => {
   const { t } = useTranslation()
   const canvasElement = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
@@ -76,7 +81,7 @@ const ExportSettings = ({
 
         <div className="export-settings-input">
           <div className="label">
-            {t('exportDataAs')}
+            {t('exportCsv')}
           </div>
           <div className="export-settings-buttons">
             {
@@ -85,7 +90,14 @@ const ExportSettings = ({
                   key={`export-btn-${option}`}
                   type="button"
                   title={t(option)}
-                  onClick={() => setStoreState('physicsHierarchicalView', true)}
+                  onClick={() => (option === EXPORT_CSV ? exportCsv({
+                    exportFileName,
+                    type: option,
+                    availableNodesNormalised,
+                    availableEdgesNormalised,
+                    objectPropertiesFromApi,
+                    t
+                  }) : null)}
                 >
                   {t(option)}
                 </button>
@@ -101,12 +113,21 @@ const ExportSettings = ({
 ExportSettings.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   exportFileName: PropTypes.string.isRequired,
+  availableNodesNormalised: PropTypes.shape().isRequired,
+  availableEdgesNormalised: PropTypes.shape().isRequired,
+  objectPropertiesFromApi: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   exportFileName,
+  availableNodesNormalised,
+  availableEdgesNormalised,
+  objectPropertiesFromApi
 }) => ({
-  exportFileName
+  exportFileName,
+  availableNodesNormalised,
+  availableEdgesNormalised,
+  objectPropertiesFromApi
 })
 
 export default connect(

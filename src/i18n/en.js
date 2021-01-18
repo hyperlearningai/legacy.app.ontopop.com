@@ -64,6 +64,7 @@ export default {
   csv: 'CSV',
   owl: 'OWL',
   fileCanBeDownloaded: 'File can now be downloaded, check your browser!',
+  couldNotDownloadCsv: 'Could not download CSV!',
 
   // footer navbar
   hideEdgeFilter: 'Hide edge filter',
