@@ -1,3 +1,13 @@
+/**
+ * Extract csv rows
+ * @param  {Object}   params
+ * @param  {Array}    params.nodeKeys                   Array of node properties keys
+ * @param  {Array}    params.edgeKeys                   Array of edge properties keys
+ * @param  {Object}   params.availableNodesNormalised   Available nodes data
+ * @param  {Object}   params.availableEdgesNormalised   Available edges data
+ * @param  {Object}   params.objectPropertiesFromApi    Edges from initial OwlObjectProperties
+ * @return
+ */
 const extractCsvRows = ({
   nodeKeys,
   edgeKeys,
