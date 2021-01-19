@@ -11,7 +11,7 @@ import extractCsvRows from './extractCsvRows'
 import downloadBlob from './downloadBlob'
 
 /**
- * Export canvas as image
+ * Export data as csv
  * @param  {Object}   params
  * @param  {String}   params.exportFileName             File name
  * @param  {Object}   params.availableNodesNormalised   Available nodes data

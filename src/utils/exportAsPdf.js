@@ -5,7 +5,7 @@ import { NOTIFY_SUCCESS } from '../constants/notifications'
 import showNotification from './showNotification'
 
 /**
- * Export canvas as image
+ * Export canvas as pdf
  * @param  {Object} params
  * @param  {String} params.exportFileName  File name
  * @param  {Node}   params.canvasElement   Canvas DOM element

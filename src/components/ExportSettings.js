@@ -12,13 +12,15 @@ import {
 import exportAsImage from '../utils/exportAsImage'
 import exportAsPdf from '../utils/exportAsPdf'
 import exportCsv from '../utils/exportCsv'
+import exportOwl from '../utils/exportOwl'
 
 const ExportSettings = ({
   setStoreState,
   exportFileName,
   availableNodesNormalised,
   availableEdgesNormalised,
-  objectPropertiesFromApi
+  objectPropertiesFromApi,
+  classesFromApi
 }) => {
   const { t } = useTranslation()
   const canvasElement = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
@@ -81,7 +83,7 @@ const ExportSettings = ({
 
         <div className="export-settings-input">
           <div className="label">
-            {t('exportCsv')}
+            {t('exportDataAs')}
           </div>
           <div className="export-settings-buttons">
             {
@@ -92,12 +94,18 @@ const ExportSettings = ({
                   title={t(option)}
                   onClick={() => (option === EXPORT_CSV ? exportCsv({
                     exportFileName,
-                    type: option,
                     availableNodesNormalised,
                     availableEdgesNormalised,
                     objectPropertiesFromApi,
                     t
-                  }) : null)}
+                  }) : exportOwl({
+                    exportFileName,
+                    availableNodesNormalised,
+                    availableEdgesNormalised,
+                    objectPropertiesFromApi,
+                    classesFromApi,
+                    t
+                  }))}
                 >
                   {t(option)}
                 </button>
@@ -116,18 +124,21 @@ ExportSettings.propTypes = {
   availableNodesNormalised: PropTypes.shape().isRequired,
   availableEdgesNormalised: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
+  classesFromApi: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   exportFileName,
   availableNodesNormalised,
   availableEdgesNormalised,
-  objectPropertiesFromApi
+  objectPropertiesFromApi,
+  classesFromApi
 }) => ({
   exportFileName,
   availableNodesNormalised,
   availableEdgesNormalised,
-  objectPropertiesFromApi
+  objectPropertiesFromApi,
+  classesFromApi
 })
 
 export default connect(
