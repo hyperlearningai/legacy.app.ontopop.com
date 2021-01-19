@@ -4,6 +4,11 @@ import {
 } from '../constants/graph'
 
 export default {
+  /**
+   * Reset selected edges and edge selectability
+   * @param  {Object} state  Store state
+   * @return
+   */
   resetSelectedEdges: (state) => {
     const newSelectedEdges = state.selectedEdges.slice()
 
@@ -18,6 +23,11 @@ export default {
       isEdgeSelectable: false
     })
   },
+  /**
+   * Reset selected nodes and nodes selectability
+   * @param  {Object} state  Store state
+   * @return
+   */
   resetSelectedNodes: (state) => {
     const newSelectedNodes = state.selectedNodes.slice()
 
@@ -32,6 +42,13 @@ export default {
       isNodeSelectable: false
     })
   },
+  /**
+   * Update cached graph data
+   * @param  {Object} state     Store state
+   * @param  {String} graphId   Graph ID
+   * @param  {Object} value     Graph ID udpated data object
+   * @return
+   */
   updateGraphData: (state, graphId, value) => {
     const newGraphData = JSON.parse(JSON.stringify(state.graphData))
 
@@ -41,6 +58,13 @@ export default {
       graphData: newGraphData
     })
   },
+  /**
+   * Remove key from object
+   * @param  {Object} state     Store state
+   * @param  {String} stateKey  State key to update
+   * @param  {String} id        key to remove from object
+   * @return
+   */
   removeFromObject: (state, stateKey, id) => {
     const newObject = JSON.parse(JSON.stringify(state[stateKey]))
 
@@ -50,6 +74,13 @@ export default {
       [stateKey]: newObject
     })
   },
+  /**
+   * Remove ID from array
+   * @param  {Object} state     Store state
+   * @param  {String} stateKey  State key to update
+   * @param  {String} id        ID to remove from array
+   * @return
+   */
   removeFromArray: (state, stateKey, id) => {
     const newArray = state[stateKey].slice()
 
@@ -71,6 +102,13 @@ export default {
       [stateKey]: newArray
     })
   },
+  /**
+   * Add ID to array
+   * @param  {Object} state     Store state
+   * @param  {String} stateKey  State key to update
+   * @param  {String} id        ID to add to array
+   * @return
+   */
   addToArray: (state, stateKey, id) => {
     const newArray = state[stateKey].slice()
 
@@ -80,6 +118,13 @@ export default {
       [stateKey]: newArray
     })
   },
+  /**
+   * Generic method to update any store key with any value
+   * @param  {Object} state     Store state
+   * @param  {String} field     State key to update
+   * @param  {*}      value     ID to add to array
+   * @return
+   */
   setStoreState: (state, field, value) => ({
     [field]: value
   })

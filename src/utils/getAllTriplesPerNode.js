@@ -1,3 +1,11 @@
+/**
+ * Update triplesPerNode (normalised list of nodes with related values) in store
+ * @param  {Object}   params
+ * @param  {Object}   params.classesFromApi   Nodes from initial OwlClasses
+ * @param  {Array}    params.classesIds       Array of node IDs
+ * @param  {Function} params.setStoreState    setStoreState action
+ * @return
+ */
 const getAllTriplesPerNode = async ({
   classesIds,
   setStoreState,

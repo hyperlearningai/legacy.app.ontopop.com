@@ -9,6 +9,14 @@ import {
   NODE_FONT,
 } from '../constants/graph'
 
+/**
+ * Get visjs visualisation options
+ * @param  {Object}   params
+ * @param  {Boolean}  params.physicsHierarchicalView   hierarchical view flag
+ * @param  {Boolean}  params.physicsRepulsion          physics repulsion flag
+ * @param  {Number}   params.physicsEdgeLength         edge length as integer
+ * @return {Object}   output                           VisJs visualisation options
+ */
 const getPhysicsOptions = ({
   physicsHierarchicalView,
   physicsRepulsion,

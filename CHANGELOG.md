@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.1.0]
 ### Added
+- ONTOLOGY-28 Added view export as owl
+- ONTOLOGY-28 Added view export as csv (zipped file containing basic and full CSV data)
+- ONTOLOGY-28 Added view export as pdf
+- ONTOLOGY-28 Added view export as png and jpeg
 - ONTOLOGY-36 Added settings to sidebar
 - ONTOLOGY-23 Added node neighbourhood filter
 - ONTOLOGY-18 Select edges and display edge and related nodes properties
@@ -33,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Removed
 
 ### Fixed
+- ONTOLOGY-28 Added jsdoc comments to store actions and utils
 
 ### Security
 

@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://webprotege.stanford.edu/project/96Ytr9AQdNv8valtcgFhzp#"
+     xml:base="http://webprotege.stanford.edu/project/96Ytr9AQdNv8valtcgFhzp"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:webprotege="http://webprotege.stanford.edu/">
+    <owl:Ontology rdf:about="http://webprotege.stanford.edu/project/96Ytr9AQdNv8valtcgFhzp"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8AWk6f00nQhiAoDl6ujohI -->
+
+    <owl:AnnotationProperty rdf:about="http://webprotege.stanford.edu/R8AWk6f00nQhiAoDl6ujohI">
+        <rdfs:label>Subdomain</rdfs:label>
+        <skos:comment>The list of existing Subdomains can be found in Project/Tags.</skos:comment>
+        <skos:definition>Annotation used to describe the Entities that compose a specific Subdomain.</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8OwNoGPHfALLALe5R3rm2H -->
+
+    <owl:AnnotationProperty rdf:about="http://webprotege.stanford.edu/R8OwNoGPHfALLALe5R3rm2H">
+        <rdfs:label>TODO</rdfs:label>
+        <skos:definition>Annotation used to mark pending action to be done in the model.</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4 -->
+
+    <owl:AnnotationProperty rdf:about="http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4">
+        <rdfs:label>Synonym</rdfs:label>
+        <skos:comment>The list of existing Synonyms can be found in Project/Tags.</skos:comment>
+        <skos:definition>Annotation used to describe Synonyms of a specific Entity.</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9S1rcldeHXCMGJUZEkvaWJ -->
+
+    <owl:AnnotationProperty rdf:about="http://webprotege.stanford.edu/R9S1rcldeHXCMGJUZEkvaWJ">
+        <rdfs:label>Type</rdfs:label>
+        <skos:definition>Annotation used to describe the existing Types of an Entity.</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RB4qRK0cMJE67o1Bc9MmGDD -->
+
+    <owl:AnnotationProperty rdf:about="http://webprotege.stanford.edu/RB4qRK0cMJE67o1Bc9MmGDD">
+        <rdfs:label>Data Source</rdfs:label>
+        <skos:comment>The list of existing Data Sources can be found in Project/Tags.</skos:comment>
+        <skos:definition>Annotation used to describe the Entities present in a specific Data Source.</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RkKVruwOD8lCCdsbyX0lwY -->
+
+    <owl:AnnotationProperty rdf:about="http://webprotege.stanford.edu/RkKVruwOD8lCCdsbyX0lwY">
+        <rdfs:label>Business Area</rdfs:label>
+        <skos:comment>The list of existing Business Areas can be found in Project/Tags.</skos:comment>
+        <skos:definition>Annotation used to describe the Business Areas impacted by an Entity.</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RtMeQat8p1tL74b64dS2qs -->
+
+    <owl:AnnotationProperty rdf:about="http://webprotege.stanford.edu/RtMeQat8p1tL74b64dS2qs">
+        <rdfs:label>Relationship Type</rdfs:label>
+        <skos:comment>The list of existing Relationship Type can be found in Project/Tags.</skos:comment>
+        <skos:definition>Annotation used to describe the type of a Relationship in order to make its use more clear.</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#comment -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#comment">
+        <skos:definition>Annotation used to add more information about an Entity or Relationship</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition">
+        <skos:definition>Annotation used to define the Entity or Relationship</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#example -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#example">
+        <skos:definition>Annotation used to list examples of the Entity or Relationship</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9gQCoIaUSnc4BOBkLNOW0k -->
+
+    <rdfs:Datatype rdf:about="http://webprotege.stanford.edu/R9gQCoIaUSnc4BOBkLNOW0k">
+        <rdfs:label>Options</rdfs:label>
+    </rdfs:Datatype>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM">
+        <rdfs:subPropertyOf rdf:resource="http://webprotege.stanford.edu/R8zMIKp038MgC2umoxwzWBJ"/>
+        <webprotege:RtMeQat8p1tL74b64dS2qs>Record</webprotege:RtMeQat8p1tL74b64dS2qs>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Instantiation of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd">
+        <rdfs:subPropertyOf rdf:resource="http://webprotege.stanford.edu/RD3fuHtzxeYkMf46qK7HAsD"/>
+        <webprotege:RtMeQat8p1tL74b64dS2qs>Record</webprotege:RtMeQat8p1tL74b64dS2qs>
+        <rdfs:label>Proposed in</rdfs:label>
+        <skos:definition>Relationship used to specify the stage, document or place where an Entity is offered or suggested for consideration, acceptance, or action.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RTyCIe0sZbCvkp6VVWaYGs"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/R8QQzkUbCD5WRXDQQSl0vX8"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/R1CEYmOdNWhDr4n2yz9Lzf"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RCxwL4b8LCMbVkVPEbOn78g"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <webprotege:RkKVruwOD8lCCdsbyX0lwY>Maintain Plan</webprotege:RkKVruwOD8lCCdsbyX0lwY>
+        <rdfs:label>Programme</rdfs:label>
+        <skos:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A strategic goal that is achieved through a number of projects.</skos:comment>
+        <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A collection of projects or tasks undertaken to realise a strategic goal.</skos:definition>
+        <skos:example rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Develop connectivity between London and Inverness.</skos:example>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9WIxkbvxYbhp8NthzYsXSx"/>
+        <rdfs:label>Low Level Design</rdfs:label>
+        <skos:definition>Design (for programmers) that further exposes logical detailed Design of each of the elements present in the High Level Design.</skos:definition>
+    </owl:Class>
+    
+</rdf:RDF>
