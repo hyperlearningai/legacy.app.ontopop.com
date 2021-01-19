@@ -28,6 +28,9 @@ export default {
   settings: 'Settings',
   export: 'Export',
 
+  // data loading
+  couldNotGetGraphData: 'Could not get graph data!',
+
   // node selection
   node: 'Node',
   noRelationships: 'No relationships found',

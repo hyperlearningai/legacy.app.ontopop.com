@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
+// import { useTranslation } from 'react-i18next'
 import GraphVisualisation from './GraphVisualisation'
 import SearchBox from './SearchBox'
 import ProgressBar from './ProgressBar'
@@ -10,6 +11,7 @@ import actions from '../store/actions'
 import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import getAllTriplesPerNode from '../utils/getAllTriplesPerNode'
+// import getGraphData from '../utils/getGraphData'
 
 const GraphVisualisationWrapper = ({
   currentGraph,
@@ -19,7 +21,10 @@ const GraphVisualisationWrapper = ({
   networkLoadingProgress,
   setStoreState,
 }) => {
+  // const { t } = useTranslation()
+
   useEffect(async () => {
+    // const { classesFromApi, objectPropertiesFromApi } = await getGraphData({ t })
     // Set data from api
     const classesFromApi = jsonClasses.OwlClasses
     const objectPropertiesFromApi = jsonObjectProperties.OwlObjectProperties

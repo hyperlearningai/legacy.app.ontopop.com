@@ -17,7 +17,15 @@ Ontology visualisation web app based on NextJs/React/Redux-zero with internation
 `npm run build`
 `npm run export`  # for generating the bundle to deploy
 
+## Run API server
+
+Download the API server from https://github.com/hyperlearningai/ontology-framework/releases/tag/v0.0.1-alpha
+Unzip and from the root folder run
+
+`./bin/start-ontology-knowledge-graph-api.sh ` # opens on http://localhost:8080
+
 ## Run dev server
+
 
 `npm run dev` # opens on http://localhost:3000
 
