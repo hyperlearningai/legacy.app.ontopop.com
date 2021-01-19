@@ -26,6 +26,7 @@ export default {
   selectNodes: 'Select nodes',
   selectEdges: 'Select edges',
   settings: 'Settings',
+  export: 'Export',
 
   // node selection
   node: 'Node',
@@ -51,6 +52,19 @@ export default {
   physics: 'Physics',
   repulsion: 'Repulsion',
   positioning: 'Positioning',
+
+  // Export settings
+  fileName: 'File name',
+  insertName: 'Insert name',
+  exportGraphAs: 'Export graph as',
+  jpeg: 'JPG',
+  png: 'PNG',
+  pdf: 'PDF',
+  exportDataAs: 'Export data as',
+  csv: 'CSV',
+  owl: 'OWL',
+  fileCanBeDownloaded: 'File can now be downloaded, check your browser!',
+  couldNotDownloadCsv: 'Could not download CSV!',
 
   // footer navbar
   hideEdgeFilter: 'Hide edge filter',

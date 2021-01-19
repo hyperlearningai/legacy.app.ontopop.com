@@ -1,6 +1,7 @@
 module.exports = {
   verbose: true,
   setupFiles: [
+    'jest-canvas-mock',
     './setupTests.js'
   ],
   moduleDirectories: [
@@ -27,4 +28,4 @@ module.exports = {
   snapshotSerializers: [
     'enzyme-to-json/serializer'
   ]
-};
+}

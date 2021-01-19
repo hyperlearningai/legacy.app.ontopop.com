@@ -22,7 +22,8 @@ import {
 } from 'react-icons/io5'
 import {
   FaRegHandPointer,
-  FaRegCircle
+  FaRegCircle,
+  FaFileExport
 } from 'react-icons/fa'
 import actions from '../store/actions'
 import {
@@ -32,13 +33,15 @@ import {
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_NODES_SELECTION,
   SIDEBAR_VIEW_EDGES_SELECTION,
-  SIDEBAR_VIEW_SETTINGS
+  SIDEBAR_VIEW_SETTINGS,
+  SIDEBAR_VIEW_EXPORT
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import NodeNeighbourhood from './NodeNeighbourhood'
 import NodesSelection from './NodesSelection'
 import EdgesSelection from './EdgesSelection'
 import NetworkSettings from './NetworkSettings'
+import ExportSettings from './ExportSettings'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -124,6 +127,14 @@ const Sidebar = ({
         </button>
         <button
           type="button"
+          title={t('export')}
+          className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_EXPORT)}
+        >
+          <FaFileExport />
+        </button>
+        <button
+          type="button"
           title={t('toggleSidebar')}
           onClick={() => setStoreState('isSidebarOpen', !isSidebarOpen)}
         >
@@ -167,6 +178,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_SETTINGS && (
                 <NetworkSettings />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_EXPORT && (
+                <ExportSettings />
               )
             }
           </div>

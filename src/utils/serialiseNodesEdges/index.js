@@ -4,6 +4,21 @@ import showEdgeCheck from './showEdgeCheck'
 import addConnections from './addConnections'
 import addNode from './addNode'
 
+/**
+ * Update store and graph based on node IDs to display
+ * @param  {Object}   params
+ * @param  {Object}   params.availableNodes          VisJs Dataset of nodes IDs
+ * @param  {Object}   params.availableEdges          VisJs Dataset of edges IDs
+ * @param  {Object}   params.classesFromApi          Nodes from initial OwlClasses
+ * @param  {Array}    params.edgesIdsToDisplay       Array of edges IDs to display
+ * @param  {Array}    params.highlightedNodes        Array of nodes IDs to highlight
+ * @param  {Object}   params.network                 VisJs network object
+ * @param  {Array}    params.nodesIdsToDisplay       Array of nodes IDs to display
+ * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
+ * @param  {Function} params.setStoreState           setStoreState action
+ * @param  {Object}   params.triplesPerNode          List of triples per node
+ * @return
+ */
 const serialiseNodesEdges = ({
   availableNodes,
   availableEdges,

@@ -32,6 +32,7 @@ const initialState = {
   networkLoadingProgress: 0,
   isNodeSelectable: false,
   isEdgeSelectable: false,
+  exportFileName: 'network-graph',
 
   // states to update at every view refresh
   nodesIdsToDisplay: [],

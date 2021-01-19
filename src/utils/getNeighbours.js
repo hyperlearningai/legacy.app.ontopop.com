@@ -1,4 +1,15 @@
-const loopthroughNodes = ({
+/**
+ * Update neighbourNodes and neighbourEdges recursively
+ * @param  {Object}   params
+ * @param  {Object}   params.triplesPerNode   List of triples per node
+ * @param  {Object}   params.nextIds          Array of node IDs to loop through
+ * @param  {Array}    params.neighbourNodes   Array of neighbour nodes IDs
+ * @param  {Array}    params.neighbourEdges   Array of neighbour edges IDs
+ * @param  {Number}   params.separationDegree Neighbourhood separation degree as integer
+ * @param  {Number}   params.round            Current loop round as integer
+ * @return
+ */
+const loopThroughNodes = ({
   nextIds,
   neighbourNodes,
   neighbourEdges,
@@ -43,7 +54,7 @@ const loopthroughNodes = ({
   const nextRound = round + 1
 
   if (nextIdsLoop.length > 0 && nextRound < separationDegree) {
-    loopthroughNodes({
+    loopThroughNodes({
       neighbourNodes,
       nextIds: nextIdsLoop,
       neighbourEdges,
@@ -54,6 +65,17 @@ const loopthroughNodes = ({
   }
 }
 
+/**
+ * Get neighbour nodes and related edges
+ * @param  {Object}   params
+ * @param  {Object}   params.triplesPerNode   List of triples per node
+ * @param  {Object}   params.classesFromApi   Nodes from initial OwlClasses
+ * @param  {Number}   params.separationDegree Neighbourhood separation degree as integer
+ * @param  {String}   params.selectedNodeId   Selected node ID
+ * @return {Object}   output
+ * @return {Array}    output.neighbourNodes   Array of neighbour nodes IDs
+ * @return {Array}    output.neighbourEdges   Array of neighbour edges IDs
+ */
 const getNeighbours = ({
   selectedNodeId,
   separationDegree,
@@ -67,7 +89,7 @@ const getNeighbours = ({
 
   if (!selectedNodeId || !triplesPerNode || !separationDegree || separationDegree < 1) return neighbourNodes
 
-  loopthroughNodes({
+  loopThroughNodes({
     nextIds,
     neighbourNodes,
     neighbourEdges,
