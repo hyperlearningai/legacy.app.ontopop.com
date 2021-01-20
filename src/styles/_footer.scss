@@ -4,7 +4,6 @@ footer {
   padding-right: 20px;
   display: flex;
   align-items: center;
-  // justify-content: space-between;
   justify-content: center;
   background: $secondary;
   color: $white;
@@ -12,13 +11,4 @@ footer {
   .p-progressbar {
     width: 100%;
   }
-
-  // .footer {
-  //   &-left,
-  //   &-right {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //   }
-  // }
 }
