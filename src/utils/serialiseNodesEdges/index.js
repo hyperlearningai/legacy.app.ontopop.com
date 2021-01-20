@@ -44,6 +44,8 @@ const serialiseNodesEdges = ({
   const nodesConnections = {}
   const edgesConnections = {}
 
+  if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
+
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId]
@@ -142,6 +144,7 @@ const serialiseNodesEdges = ({
   availableNodes.add(availableNodesList)
   availableEdges.add(availableEdgesList)
   network.redraw()
+  return true
 }
 
 export default serialiseNodesEdges

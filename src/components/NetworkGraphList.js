@@ -1,12 +1,7 @@
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import {
-  BsChevronRight,
-} from 'react-icons/bs'
-import {
-  ImCross
-} from 'react-icons/im'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 
@@ -38,32 +33,27 @@ const NetworkGraphList = ({
               <div className="network-graph-list-row-delete">
                 {
                   !noDelete && (
-                  <button
-                    type="button"
-                    title={t('removeSelectedNode')}
-                    onClick={() => {
-                      setStoreState('currentGraph', 'graph-0')
-                      removeFromObject('graphData', graphViewsKey)
-                    }}
-                  >
-                    <ImCross />
-                  </button>
+                    <Button
+                      tooltip={`${t('removeGraph')}: ${label}`}
+                      onClick={() => {
+                        setStoreState('currentGraph', 'graph-0')
+                        removeFromObject('graphData', graphViewsKey)
+                      }}
+                      icon="pi pi-times"
+                    />
                   )
                 }
               </div>
 
               <div className="network-graph-list-row-main">
-                <button
-                  type="button"
-                  title={t('viewNode')}
+                <Button
+                  tooltip={`${t('viewGraph')}: ${label}`}
                   disabled={currentGraph === graphViewsKey}
                   onClick={() => setStoreState('currentGraph', graphViewsKey)}
-                >
-                  <span>
-                    {label}
-                  </span>
-                  <BsChevronRight />
-                </button>
+                  label={label}
+                  icon="pi pi-chevron-right"
+                  iconPos="right"
+                />
               </div>
             </div>
           )

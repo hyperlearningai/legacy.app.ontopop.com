@@ -35,7 +35,7 @@ const exportAsImage = ({
 
   const element = document.createElement('a')
   element.href = imageDataUpdated
-  element.download = `${exportFileName}.${type}`
+  element.download = `${exportFileName || 'network-graph'}.${type}`
   element.id = 'output'
   element.style.display = 'none'
   document.body.appendChild(element)

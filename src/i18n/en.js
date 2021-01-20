@@ -44,6 +44,7 @@ export default {
   show: 'Show',
   separationDegree: 'Separation degree',
   selectedNode: 'Selected node',
+  insertNumber: 'Insert number',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -68,6 +69,7 @@ export default {
   owl: 'OWL',
   fileCanBeDownloaded: 'File can now be downloaded, check your browser!',
   couldNotDownloadCsv: 'Could not download CSV!',
+  insertFileName: 'Insert file name.',
 
   // footer navbar
   hideEdgeFilter: 'Hide edge filter',
@@ -88,8 +90,13 @@ export default {
   null: 'Null',
   deleteNode: 'Delete node',
   selectedNodes: 'Selected nodes',
-  removeSelectedNode: 'Remove selected node',
+  removeNode: 'Remove node',
+  removeEdge: 'Remove edge',
+  removeGraph: 'Remove graph',
+  // removeSelectedNode: 'Remove selected node',
   viewNode: 'View node',
+  viewGraph: 'View graph',
+  viewEdge: 'View edge',
   goBack: 'Go back',
   properties: 'Properties',
   relationships: 'Relationships',

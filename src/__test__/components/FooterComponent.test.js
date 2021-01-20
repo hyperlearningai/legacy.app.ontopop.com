@@ -5,7 +5,9 @@ import FooterComponent from '../../components/FooterComponent'
 
 const setup = () => {
   const props = {
-    availableEdgesNormalised: { 123: { id: '123' } }
+    // availableEdgesNormalised: { 123: { id: '123' } },
+    networkLoadingProgress: 50,
+    isNetworkLoading: true
   }
 
   const component = shallow(<FooterComponent {...props} />)

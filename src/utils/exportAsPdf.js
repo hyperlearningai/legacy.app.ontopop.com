@@ -58,7 +58,7 @@ const exportAsPdf = ({
     undefined,
     'FAST')
   // }
-  doc.save(`${exportFileName}.pdf`)
+  doc.save(`${exportFileName || 'network-graph'}.pdf`)
 
   destinationCanvas.remove()
 

@@ -3,6 +3,7 @@
   height: 100%;
   overflow-y: auto;
   text-align: center;
+  padding: 10px;
 
   &-selected {
     margin: 10px auto;
@@ -43,17 +44,22 @@
       margin-bottom: 10px;
     }
 
-    input {
+    .p-invalid {
       width: 100%;
-      max-width: 150px;
-      padding: 8px;
-      color: $white;
-      font-size: 16px;
-      text-align: center;
-      background-color: transparent;
-      -webkit-appearance: none;
-      border-radius: 10px;
+      display: block;
     }
+
+    // input {
+    //   width: 100%;
+    //   max-width: 150px;
+    //   padding: 8px;
+    //   color: $white;
+    //   font-size: 16px;
+    //   text-align: center;
+    //   background-color: transparent;
+    //   -webkit-appearance: none;
+    //   border-radius: 10px;
+    // }
   }
 
   &-buttons {
@@ -62,44 +68,8 @@
     justify-content: center;
     margin-bottom: 10px;
 
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      background: transparent;
-      border: 1px solid $white;
-      border-radius: 8px;
-      cursor: pointer;
-      margin: auto 5px;
-      outline: none;
-
-      svg {
-        color: $white;
-        font-size: 20px;
-      }
-
-      &:hover {
-        background: $white;
-        color: $secondary;
-        transition: $transition;
-
-        svg {
-          color: $secondary;
-          transition: $transition;
-        }
-      }
-    }
-
-    &-button-selected {
-      background: $white !important;
-      color: $secondary !important;
-      transition: $transition;
-
-      svg {
-        color: $secondary !important;
-        transition: $transition;
-      }
+    .p-button {
+      margin: 2px;
     }
   }
 }

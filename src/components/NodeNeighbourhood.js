@@ -1,7 +1,12 @@
-import { useState, useEffect } from 'react'
+import {
+  useState,
+  useEffect
+} from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { InputNumber } from 'primereact/inputnumber'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_GRAPHS, SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import { ALGO_TYPE_NEIGHBOURHOOD } from '../constants/algorithms'
@@ -37,44 +42,45 @@ const NodeNeighbourhood = ({
         </div>
 
         {
-        selectedNeighbourNode
-        && selectedNeighbourNode !== '' && (
-          <div className="node-neighbourhood-selected">
-            <table>
-              <tbody>
-                <tr>
-                  <td>{t('label')}</td>
-                  <td>{classesFromApi[selectedNeighbourNode].label}</td>
-                </tr>
-                <tr>
-                  <td>{t('id')}</td>
-                  <td>{classesFromApi[selectedNeighbourNode].id}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        )
-      }
+          selectedNeighbourNode
+          && selectedNeighbourNode !== '' && (
+            <div className="node-neighbourhood-selected">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>{t('label')}</td>
+                    <td>{classesFromApi[selectedNeighbourNode].label}</td>
+                  </tr>
+                  <tr>
+                    <td>{t('id')}</td>
+                    <td>{classesFromApi[selectedNeighbourNode].id}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )
+        }
 
         <div className="node-neighbourhood-input">
           <label htmlFor="separationDegree">
             {t('separationDegree')}
           </label>
-          <input
-            name="separationDegree"
-            type="number"
-            min="1"
-            step="1"
+          <InputNumber
+            id="separationDegree"
             value={separationDegree}
-            onChange={(e) => setSeparationDegree(e.target.value)}
+            min={1}
+            step={1}
+            onValueChange={(e) => setSeparationDegree(e.target.value)}
           />
         </div>
 
-        <button
-          type="button"
+        <Button
+          tooltip={t('showNeighbourhood')}
           className="node-neighbourhood-button"
-          title={t('showNeighbourhood')}
           disabled={selectedNeighbourNode === ''}
+          icon="pi pi-chevron-right"
+          iconPos="right"
+          label={t('show')}
           onClick={() => {
             const selectedNodeId = classesFromApi[selectedNeighbourNode] ? classesFromApi[selectedNeighbourNode].id : ''
             const label = `neighbourhood-${newCurrentGraph}`
@@ -94,9 +100,7 @@ const NodeNeighbourhood = ({
             setStoreState('lastGraphIndex', newGraphIndex)
             setStoreState('sidebarView', SIDEBAR_VIEW_GRAPHS)
           }}
-        >
-          {t('show')}
-        </button>
+        />
       </div>
     </>
   )
