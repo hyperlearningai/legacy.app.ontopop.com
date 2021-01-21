@@ -16,7 +16,6 @@ const setup = () => {
         type: ALGO_TYPE_FULL
       }
     },
-    isSearchOpen: true,
     setStoreState: jest.fn(),
     classesFromApi: jsonClasses.OwlClasses,
     objectPropertiesFromApi: jsonObjectProperties.OwlObjectProperties,

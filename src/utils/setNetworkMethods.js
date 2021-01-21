@@ -70,7 +70,9 @@ const setNetworkMethods = async ({
 
   await network?.stabilize(2000)
 
-  network?.fit()
+  network?.fit({
+    animation: true
+  })
 }
 
 export default setNetworkMethods

@@ -27,6 +27,7 @@ export default {
   selectEdges: 'Select edges',
   settings: 'Settings',
   export: 'Export',
+  freeTextSearch: 'Free-text search',
 
   // data loading
   couldNotGetGraphData: 'Could not get graph data!',
@@ -93,7 +94,6 @@ export default {
   removeNode: 'Remove node',
   removeEdge: 'Remove edge',
   removeGraph: 'Remove graph',
-  // removeSelectedNode: 'Remove selected node',
   viewNode: 'View node',
   viewGraph: 'View graph',
   viewEdge: 'View edge',
@@ -107,7 +107,7 @@ export default {
 
   // search
   search: 'Search',
-  searchNode: 'Search node',
+  focusElement: 'Focus element',
 
   // edges list
   edges: 'Edges',

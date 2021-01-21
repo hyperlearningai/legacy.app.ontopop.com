@@ -6,6 +6,7 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import EdgesSelectionDetails from './EdgesSelectionDetails'
 import { SIDEBAR_VIEW_EDGES_SELECTION } from '../constants/views'
+import { getEdgeUniqueId } from '../constants/functions'
 
 const EdgesSelection = ({
   removeFromArray,
@@ -42,7 +43,7 @@ const EdgesSelection = ({
           {
             selectedEdges.length > 0
               ? selectedEdges.map((selectedEdge) => {
-                const edgeUniqueId = selectedEdge.split('___')[0]
+                const edgeUniqueId = getEdgeUniqueId(selectedEdge)
 
                 const { rdfsLabel } = objectPropertiesFromApi[edgeUniqueId]
 

@@ -3,7 +3,6 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import GraphVisualisation from './GraphVisualisation'
-import SearchBox from './SearchBox'
 // import jsonClasses from '../assets/json/test-ontology-classes.json'
 // import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import actions from '../store/actions'
@@ -15,7 +14,6 @@ import getGraphData from '../utils/getGraphData'
 const GraphVisualisationWrapper = ({
   currentGraph,
   graphData,
-  isSearchOpen,
   classesFromApi,
   objectPropertiesFromApi,
   setStoreState,
@@ -73,23 +71,13 @@ const GraphVisualisationWrapper = ({
   ])
 
   return (
-    <>
-      {
-        isSearchOpen
-        && (
-          <SearchBox />
-        )
-      }
-
-      <GraphVisualisation />
-    </>
+    <GraphVisualisation />
   )
 }
 
 GraphVisualisationWrapper.propTypes = {
   currentGraph: PropTypes.string.isRequired,
   graphData: PropTypes.shape().isRequired,
-  isSearchOpen: PropTypes.bool.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   setStoreState: PropTypes.func.isRequired,
@@ -98,14 +86,12 @@ GraphVisualisationWrapper.propTypes = {
 const mapToProps = ({
   currentGraph,
   graphData,
-  isSearchOpen,
   isSettingsOpen,
   classesFromApi,
   objectPropertiesFromApi,
 }) => ({
   currentGraph,
   graphData,
-  isSearchOpen,
   isSettingsOpen,
   classesFromApi,
   objectPropertiesFromApi,

@@ -29,7 +29,7 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import {
   SIDEBAR_VIEW_GRAPHS,
-  SIDEBAR_VIEW_SEARCH,
+  SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_NODES_SELECTION,
@@ -38,6 +38,7 @@ import {
   SIDEBAR_VIEW_EXPORT
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
+import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
 import NodesSelection from './NodesSelection'
 import EdgesSelection from './EdgesSelection'
@@ -68,8 +69,8 @@ const Sidebar = ({
         </Button>
         <Button
           tooltip={t('search')}
-          className={sidebarView === SIDEBAR_VIEW_SEARCH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_SEARCH)}
+          className={sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
         >
           <BsSearch />
         </Button>
@@ -146,6 +147,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_GRAPHS && (
                 <NetworkGraphList />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH && (
+                <FreeTextSearch />
               )
             }
 
