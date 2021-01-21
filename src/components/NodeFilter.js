@@ -1,5 +1,4 @@
 import {
-  useState,
   useEffect
 } from 'react'
 import { connect } from 'redux-zero/react'
@@ -7,10 +6,10 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
+import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_GRAPHS, SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import { ALGO_TYPE_NEIGHBOURHOOD } from '../constants/algorithms'
-import { MultiSelect } from 'primereact/multiselect';
 
 const NodeFilter = ({
   setStoreState,
@@ -22,22 +21,20 @@ const NodeFilter = ({
 }) => {
   const { t } = useTranslation()
   const citySelectItems = [
-    {label: 'About', value: 'about'},
-    {label: 'Definition', value: 'definition'},
-    {label: 'Label', value: 'label'},
-    {label: 'Comment', value: 'comment'}
-];
+    { label: 'About', value: 'about' },
+    { label: 'Definition', value: 'definition' },
+    { label: 'Label', value: 'label' },
+    { label: 'Comment', value: 'comment' }
+  ]
   const cities = [
-    {name: 'About', code: 'about'},
-    {name: 'Definition', code: 'definition'},
-    {name: 'Label', code: 'label'},
-    {name: 'Comment', code: 'comment'}
-  ];
+    { name: 'About', code: 'about' },
+    { name: 'Definition', code: 'definition' },
+    { name: 'Label', code: 'label' },
+    { name: 'Comment', code: 'comment' }
+  ]
 
   const newGraphIndex = lastGraphIndex + 1
   const newCurrentGraph = `graph-${lastGraphIndex + 1}`
-
-  const [separationDegree, setSeparationDegree] = useState(1)
 
   useEffect(() => () => {
     setStoreState('isNeighbourNodeSelectable', false)
@@ -50,7 +47,6 @@ const NodeFilter = ({
         {t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
       </div>
       <div className="node-filter">
-        
 
         {/* {
           selectedNeighbourNode
@@ -78,15 +74,14 @@ const NodeFilter = ({
           </label>
           <InputText
             id="separationDegree"
-            value=''
           />
         </div>
 
         <div className="p-b-20 node-filter-selection">
           {t('filterNodesTitle')}
-          <MultiSelect value={cities} options={citySelectItems} onChange={(e) => setCities(e.value)} />
+          <MultiSelect value={cities} options={citySelectItems} />
         </div>
-       
+
         <Button
           className="node-neighbourhood-button"
           icon="pi pi-chevron-right"
@@ -101,7 +96,6 @@ const NodeFilter = ({
               type: ALGO_TYPE_NEIGHBOURHOOD,
               options: {
                 selectedNodeId,
-                separationDegree,
                 triplesPerNode
               }
             }
