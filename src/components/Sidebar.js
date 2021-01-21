@@ -11,7 +11,8 @@ import {
 } from 'react-icons/bi'
 import {
   BsSearch,
-  BsArrowUpDown
+  BsArrowUpDown,
+  BsFilter
 } from 'react-icons/bs'
 import {
   AiOutlineArrowLeft,
@@ -31,6 +32,7 @@ import {
   SIDEBAR_VIEW_GRAPHS,
   SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
+  SIDEBAR_VIEW_NODES_FILTER,
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_NODES_SELECTION,
   SIDEBAR_VIEW_EDGES_SELECTION,
@@ -40,6 +42,7 @@ import {
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
+import NodeFilter from './NodeFilter'
 import NodesSelection from './NodesSelection'
 import EdgesSelection from './EdgesSelection'
 import NetworkSettings from './NetworkSettings'
@@ -107,6 +110,16 @@ const Sidebar = ({
           <BiNetworkChart />
         </Button>
         <Button
+          tooltip={t('filterNodes')}
+          className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isNeighbourNodeSelectable', true)
+            setView(SIDEBAR_VIEW_NODES_FILTER)
+          }}
+        >
+          <BsFilter />
+        </Button>
+        <Button
           tooltip={t('shortestPath')}
           className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => setView(SIDEBAR_VIEW_SHORTEST_PATH)}
@@ -171,6 +184,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD && (
                 <NodeNeighbourhood />
+              )
+            }
+            
+            {
+              sidebarView === SIDEBAR_VIEW_NODES_FILTER && (
+                <NodeFilter />
               )
             }
 

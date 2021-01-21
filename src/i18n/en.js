@@ -19,6 +19,7 @@ export default {
   // sidebar
   networkGraphs: 'Network graphs',
   nodeNeighbourhood: 'Node neighbourhood',
+  filterNodes: 'Filter Nodes',
   shortestPath: 'Shortest path',
   toggleSidebar: 'Toggle sidebar',
   nodesSelection: 'Nodes selection',
@@ -36,6 +37,9 @@ export default {
   node: 'Node',
   noRelationships: 'No relationships found',
   selectNodeFromGraph: 'Select node from graph',
+
+  // node filter
+  filterNodesTitle: 'Filter Nodes',
 
   // edge selection
   selectEdgeFromGraph: 'Select edge from graph',
