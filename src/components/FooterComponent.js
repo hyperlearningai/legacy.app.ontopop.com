@@ -1,36 +1,36 @@
 import React from 'react'
 import { connect } from 'redux-zero/react'
-import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import actions from '../store/actions'
+import { ProgressBar } from 'primereact/progressbar'
 
 const FooterComponent = ({
-  availableEdgesNormalised,
-}) => {
-  const { t } = useTranslation()
-
-  return (
-    <footer>
-      <div className="footer-left">
-        <span>
-          {`${t('edges')}: ${Object.keys(availableEdgesNormalised).length}`}
-        </span>
-      </div>
-    </footer>
-  )
-}
+  networkLoadingProgress,
+  isNetworkLoading
+}) => (
+  <footer>
+    {isNetworkLoading
+      ? (
+        <ProgressBar
+          showValue={false}
+          value={networkLoadingProgress.toFixed(0)}
+        />
+      ) : null}
+  </footer>
+)
 
 FooterComponent.propTypes = {
-  availableEdgesNormalised: PropTypes.shape().isRequired,
+  isNetworkLoading: PropTypes.bool.isRequired,
+  networkLoadingProgress: PropTypes.number.isRequired,
 }
 
 const mapToProps = ({
-  availableEdgesNormalised,
+  networkLoadingProgress,
+  isNetworkLoading
 }) => ({
-  availableEdgesNormalised,
+  networkLoadingProgress,
+  isNetworkLoading
 })
 
 export default connect(
-  mapToProps,
-  actions
+  mapToProps
 )(FooterComponent)

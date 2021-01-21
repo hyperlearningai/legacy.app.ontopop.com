@@ -35,7 +35,7 @@ const exportOwl = async ({
   const element = document.createElement('a')
   const file = new Blob([owlText], { type: 'application/xml' })
   element.href = URL.createObjectURL(file)
-  element.download = `${exportFileName}.owl`
+  element.download = `${exportFileName || 'network-graph'}.owl`
   element.id = 'output'
   element.style.display = 'none'
   document.body.appendChild(element)

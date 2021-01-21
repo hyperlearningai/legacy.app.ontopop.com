@@ -9,6 +9,7 @@ export const SELECTED_NODE_COLOR = '#ff6f61'
 
 export const EDGE_COLOR = '#070b11'
 export const EDGE_COLOR_SELECTED = '#03a9f4'
+export const EDGE_COLOR_HIGHLIGHTED = '#9c27b0'
 
 export const NODE_FONT = {
   size: 12,

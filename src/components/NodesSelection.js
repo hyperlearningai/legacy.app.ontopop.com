@@ -2,15 +2,7 @@ import { useState, useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import {
-  BsChevronRight,
-} from 'react-icons/bs'
-import {
-  ImCross
-} from 'react-icons/im'
-import {
-  FaArrowLeft
-} from 'react-icons/fa'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import NodesSelectionDetails from './NodesSelectionDetails'
 import { SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
@@ -35,13 +27,12 @@ const NodesSelection = ({
           ? t(SIDEBAR_VIEW_NODES_SELECTION)
           : (
             <>
-              <button
-                type="button"
-                title={t('goBack')}
+              <Button
+                tooltip={t('goBack')}
                 onClick={() => toggleNodeSelected(false)}
-              >
-                <FaArrowLeft />
-              </button>
+                icon="pi pi-chevron-left"
+                iconPos="left"
+              />
               {`${t('node')}: ${availableNodesNormalised[nodeId].label}`}
             </>
           )}
@@ -59,29 +50,24 @@ const NodesSelection = ({
                     key={`selected-node-row-${selectedNode}`}
                   >
                     <div className="nodes-selection-row-delete">
-                      <button
-                        type="button"
-                        title={t('removeSelectedNode')}
+                      <Button
+                        tooltip={`${t('removeNode')}: ${label}`}
                         onClick={() => removeFromArray('selectedNodes', selectedNode)}
-                      >
-                        <ImCross />
-                      </button>
+                        icon="pi pi-times"
+                      />
                     </div>
 
                     <div className="nodes-selection-row-main">
-                      <button
-                        type="button"
-                        title={t('viewNode')}
+                      <Button
+                        tooltip={`${t('viewNode')}: ${label}`}
                         onClick={() => {
                           setNodeId(selectedNode)
                           toggleNodeSelected(true)
                         }}
-                      >
-                        <span>
-                          {label}
-                        </span>
-                        <BsChevronRight />
-                      </button>
+                        label={label}
+                        icon="pi pi-chevron-right"
+                        iconPos="right"
+                      />
                     </div>
                   </div>
                 )

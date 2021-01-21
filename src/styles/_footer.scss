@@ -4,56 +4,11 @@ footer {
   padding-right: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: $secondary;
   color: $white;
 
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    background: transparent;
-    border: 1px solid $white;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: auto 5px;
-    outline: none;
-
-    svg {
-      color: $white;
-      font-size: 20px;
-    }
-
-    &:hover {
-      background: $white;
-      color: $secondary;
-      transition: $transition;
-
-      svg {
-        color: $secondary;
-        transition: $transition;
-      }
-    }
-  }
-
-  .footer {
-    &-left,
-    &-right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &-button-selected {
-        background: $white;
-        color: $secondary;
-        transition: $transition;
-
-        svg {
-          color: $secondary;
-          transition: $transition;
-        }
-      }
-    }
+  .p-progressbar {
+    width: 100%;
   }
 }

@@ -22,8 +22,6 @@ const setNetwork = ({
   physicsRepulsion,
   physicsEdgeLength
 }) => {
-  setStoreState('isNetworkLoading', true)
-
   const physicsSettings = getPhysicsOptions({
     physicsHierarchicalView,
     physicsRepulsion,

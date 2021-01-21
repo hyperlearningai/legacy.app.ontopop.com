@@ -38,7 +38,7 @@ describe('setNetwork', () => {
       physicsEdgeLength
     })
 
-    expect(setStoreState.mock.calls[0]).toEqual(['isNetworkLoading', true])
+    expect(setStoreState.mock.calls[0][0]).toEqual('network')
     expect(Network).toHaveBeenCalled()
   })
 })

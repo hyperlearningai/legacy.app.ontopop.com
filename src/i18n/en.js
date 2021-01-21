@@ -27,6 +27,10 @@ export default {
   selectEdges: 'Select edges',
   settings: 'Settings',
   export: 'Export',
+  freeTextSearch: 'Free-text search',
+
+  // data loading
+  couldNotGetGraphData: 'Could not get graph data!',
 
   // node selection
   node: 'Node',
@@ -41,6 +45,7 @@ export default {
   show: 'Show',
   separationDegree: 'Separation degree',
   selectedNode: 'Selected node',
+  insertNumber: 'Insert number',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -65,6 +70,7 @@ export default {
   owl: 'OWL',
   fileCanBeDownloaded: 'File can now be downloaded, check your browser!',
   couldNotDownloadCsv: 'Could not download CSV!',
+  insertFileName: 'Insert file name.',
 
   // footer navbar
   hideEdgeFilter: 'Hide edge filter',
@@ -85,8 +91,12 @@ export default {
   null: 'Null',
   deleteNode: 'Delete node',
   selectedNodes: 'Selected nodes',
-  removeSelectedNode: 'Remove selected node',
+  removeNode: 'Remove node',
+  removeEdge: 'Remove edge',
+  removeGraph: 'Remove graph',
   viewNode: 'View node',
+  viewGraph: 'View graph',
+  viewEdge: 'View edge',
   goBack: 'Go back',
   properties: 'Properties',
   relationships: 'Relationships',
@@ -97,7 +107,7 @@ export default {
 
   // search
   search: 'Search',
-  searchNode: 'Search node',
+  focusElement: 'Focus element',
 
   // edges list
   edges: 'Edges',

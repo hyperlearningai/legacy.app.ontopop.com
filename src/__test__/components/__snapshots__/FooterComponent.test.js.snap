@@ -2,25 +2,10 @@
 
 exports[`FooterComponent should match snapshot  1`] = `
 <Connect
-  actions={
-    Object {
-      "addToArray": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
-      "setStoreState": [Function],
-      "updateGraphData": [Function],
-    }
-  }
-  availableEdgesNormalised={
-    Object {
-      "123": Object {
-        "id": "123",
-      },
-    }
-  }
+  actions={Object {}}
+  isNetworkLoading={true}
   mapToProps={[Function]}
+  networkLoadingProgress={50}
 >
   <Component />
 </Connect>

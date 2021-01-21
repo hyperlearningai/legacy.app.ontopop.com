@@ -10,6 +10,8 @@ import {
 import {
   IoFootballOutline
 } from 'react-icons/io5'
+import { Slider } from 'primereact/slider'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_SETTINGS } from '../constants/views'
 
@@ -32,18 +34,13 @@ const NetworkSettings = ({
             {t('edgeLength')}
           </label>
           <div className="network-settings-item-input">
-            <input
-              type="range"
-              min="0"
-              max="1000"
-              step="1"
-              name="rating"
+            <Slider
+              min={0}
+              max={1000}
+              step={1}
+              id="rating"
               value={physicsEdgeLength}
-              onChange={(e) => {
-                const { value } = e.target
-
-                setStoreState('physicsEdgeLength', parseInt(value))
-              }}
+              onChange={(e) => setStoreState('physicsEdgeLength', parseInt(e.value))}
             />
           </div>
         </div>
@@ -53,22 +50,22 @@ const NetworkSettings = ({
             {t('positioning')}
           </div>
           <div className="network-settings-buttons">
-            <button
-              type="button"
-              title={t('hierachicalView')}
+            <Button
+              tooltip={t('hierachicalView')}
+              tooltipOptions={{ position: 'top' }}
               className={physicsHierarchicalView ? 'network-settings-buttons-button-selected' : ''}
               onClick={() => setStoreState('physicsHierarchicalView', true)}
             >
               <FaSitemap />
-            </button>
-            <button
-              type="button"
-              title={t('gravitationalView')}
+            </Button>
+            <Button
+              tooltip={t('gravitationalView')}
+              tooltipOptions={{ position: 'top' }}
               className={!physicsHierarchicalView ? 'network-settings-buttons-button-selected' : ''}
               onClick={() => setStoreState('physicsHierarchicalView', false)}
             >
               <SiAtom />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -77,22 +74,22 @@ const NetworkSettings = ({
             {t('repulsion')}
           </div>
           <div className="network-settings-buttons">
-            <button
-              type="button"
-              title={t('enableRepulsion')}
+            <Button
+              tooltip={t('enableRepulsion')}
+              tooltipOptions={{ position: 'top' }}
               className={physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}
               onClick={() => setStoreState('physicsRepulsion', true)}
             >
               <IoFootballOutline />
-            </button>
-            <button
-              type="button"
-              title={t('disableRepulsion')}
+            </Button>
+            <Button
+              tooltip={t('disableRepulsion')}
+              tooltipOptions={{ position: 'top' }}
               className={!physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}
               onClick={() => setStoreState('physicsRepulsion', false)}
             >
               <IoFootballOutline />
-            </button>
+            </Button>
           </div>
         </div>
       </div>

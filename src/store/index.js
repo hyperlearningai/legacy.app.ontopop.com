@@ -33,6 +33,8 @@ const initialState = {
   isNodeSelectable: false,
   isEdgeSelectable: false,
   exportFileName: 'network-graph',
+  freeTextSelection: {},
+  freeTextSelectedElement: '',
 
   // states to update at every view refresh
   nodesIdsToDisplay: [],

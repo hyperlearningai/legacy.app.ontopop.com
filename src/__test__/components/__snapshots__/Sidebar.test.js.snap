@@ -44,6 +44,28 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
 </Connect>
 `;
 
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_TEXT_SEARCH 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  isSidebarOpen={false}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="freeTextSearch"
+>
+  <Component />
+</Connect>
+`;
+
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS 1`] = `
 <Connect
   actions={

@@ -3,6 +3,7 @@
   height: 100%;
   overflow-y: auto;
   text-align: center;
+  padding: 10px;
 
   &-selection {
     margin: 10px auto;
@@ -51,10 +52,6 @@
   }
 
   &-button {
-    width: 200px;
-    margin: 20px auto;
-    font-size: 16px;
-    background: $indigo;
-    color: $white;
+    width: 100%;
   }
 }

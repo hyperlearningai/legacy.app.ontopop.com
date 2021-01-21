@@ -61,7 +61,7 @@ const exportCsv = async ({
 
   try {
     zip.generateAsync({ type: 'blob' }).then((blob) => {
-      const fileName = `${exportFileName}.zip`
+      const fileName = `${exportFileName || 'network-graph'}.zip`
 
       downloadBlob({
         blob,

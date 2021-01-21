@@ -4,7 +4,9 @@ import toJson from 'enzyme-to-json'
 import HeaderComponent from '../../components/HeaderComponent'
 
 const setup = () => {
-  const props = {}
+  const props = {
+    loading: true
+  }
 
   const component = shallow(<HeaderComponent {...props} />)
 

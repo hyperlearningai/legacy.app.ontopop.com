@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GraphVisualisationWrapper should match snapshot  1`] = `
+exports[`FreeTextSearch should match snapshot  1`] = `
 <Connect
   actions={
     Object {
@@ -11,6 +11,57 @@ exports[`GraphVisualisationWrapper should match snapshot  1`] = `
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
+    }
+  }
+  availableEdges={
+    DataSet {
+      "_data": Map {
+        "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB" => Object {
+          "id": "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB",
+        },
+      },
+      "_idProp": "id",
+      "_options": Object {},
+      "_queue": null,
+      "_subscribers": Object {
+        "*": Array [],
+        "add": Array [],
+        "remove": Array [],
+        "update": Array [],
+      },
+      "length": 1,
+      "subscribe": [Function],
+      "unsubscribe": [Function],
+    }
+  }
+  availableEdgesNormalised={
+    Object {
+      "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB___abc___edf": Object {
+        "edgeId": "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB",
+        "id": "123___abc___edf",
+      },
+    }
+  }
+  availableNodes={
+    DataSet {
+      "_data": Map {
+        "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n" => Object {
+          "color": "ffffff",
+          "id": "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n",
+        },
+      },
+      "_idProp": "id",
+      "_options": Object {},
+      "_queue": null,
+      "_subscribers": Object {
+        "*": Array [],
+        "add": Array [],
+        "remove": Array [],
+        "update": Array [],
+      },
+      "length": 1,
+      "subscribe": [Function],
+      "unsubscribe": [Function],
     }
   }
   classesFromApi={
@@ -5877,17 +5928,27 @@ Four subdomains have been created to cover all the universals related to each of
       },
     }
   }
-  currentGraph="graph-0"
-  graphData={
+  edgesIdsToDisplay={
+    Array [
+      "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB",
+      "http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU",
+    ]
+  }
+  freeTextSelectedElement="http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay"
+  freeTextSelection={
     Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-        "type": "full",
-      },
+      "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n": "node",
+      "http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay": "edge",
+      "http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M": "node",
     }
   }
   mapToProps={[Function]}
+  network={
+    Object {
+      "focus": [MockFunction],
+    }
+  }
+  nodesIdsToDisplay={Array []}
   objectPropertiesFromApi={
     Object {
       "http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM": Object {
@@ -6754,6 +6815,7 @@ Four subdomains have been created to cover all the universals related to each of
       },
     }
   }
+  removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
 >
   <Component />

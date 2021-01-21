@@ -1,6 +1,8 @@
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { InputText } from 'primereact/inputtext'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import {
@@ -36,9 +38,8 @@ const ExportSettings = ({
             {t('fileName')}
           </label>
           <div className="export-settings-item-input">
-            <input
-              type="text"
-              name="filename"
+            <InputText
+              id="filename"
               value={exportFileName}
               placeholder={t('insertName')}
               onChange={(e) => {
@@ -47,6 +48,13 @@ const ExportSettings = ({
                 setStoreState('exportFileName', value)
               }}
             />
+            {
+              exportFileName === '' && (
+                <small id="username2-help" className="p-invalid p-d-block">
+                  {t('insertFileName')}
+                </small>
+              )
+            }
           </div>
         </div>
 
@@ -57,10 +65,11 @@ const ExportSettings = ({
           <div className="export-settings-buttons">
             {
               EXPORT_GRAPH_OPTIONS.map((option) => (
-                <button
+                <Button
                   key={`export-btn-${option}`}
-                  type="button"
-                  title={t(option)}
+                  tooltip={t(option)}
+                  label={t(option)}
+                  tooltipOptions={{ position: 'top' }}
                   onClick={() => (option === EXPORT_PDF
                     ? exportAsPdf({
                       exportFileName,
@@ -73,9 +82,7 @@ const ExportSettings = ({
                       canvasElement,
                       t
                     }))}
-                >
-                  {t(option)}
-                </button>
+                />
               ))
             }
           </div>
@@ -88,10 +95,11 @@ const ExportSettings = ({
           <div className="export-settings-buttons">
             {
               EXPORT_DATA_OPTIONS.map((option) => (
-                <button
+                <Button
                   key={`export-btn-${option}`}
-                  type="button"
-                  title={t(option)}
+                  tooltip={t(option)}
+                  tooltipOptions={{ position: 'top' }}
+                  label={t(option)}
                   onClick={() => (option === EXPORT_CSV ? exportCsv({
                     exportFileName,
                     availableNodesNormalised,
@@ -106,9 +114,7 @@ const ExportSettings = ({
                     classesFromApi,
                     t
                   }))}
-                >
-                  {t(option)}
-                </button>
+                />
               ))
             }
           </div>

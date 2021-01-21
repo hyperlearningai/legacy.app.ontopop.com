@@ -2,18 +2,11 @@ import { useState, useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import {
-  BsChevronRight,
-} from 'react-icons/bs'
-import {
-  ImCross
-} from 'react-icons/im'
-import {
-  FaArrowLeft
-} from 'react-icons/fa'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import EdgesSelectionDetails from './EdgesSelectionDetails'
 import { SIDEBAR_VIEW_EDGES_SELECTION } from '../constants/views'
+import { getEdgeUniqueId } from '../constants/functions'
 
 const EdgesSelection = ({
   removeFromArray,
@@ -35,13 +28,12 @@ const EdgesSelection = ({
           ? t(SIDEBAR_VIEW_EDGES_SELECTION)
           : (
             <>
-              <button
-                type="button"
-                title={t('goBack')}
+              <Button
+                tooltip={t('goBack')}
                 onClick={() => toggleEdgeSelected(false)}
-              >
-                <FaArrowLeft />
-              </button>
+                icon="pi pi-chevron-left"
+                iconPos="left"
+              />
               {`${t('edge')}: ${objectPropertiesFromApi[edgeId].rdfsLabel}`}
             </>
           )}
@@ -51,7 +43,7 @@ const EdgesSelection = ({
           {
             selectedEdges.length > 0
               ? selectedEdges.map((selectedEdge) => {
-                const edgeUniqueId = selectedEdge.split('___')[0]
+                const edgeUniqueId = getEdgeUniqueId(selectedEdge)
 
                 const { rdfsLabel } = objectPropertiesFromApi[edgeUniqueId]
 
@@ -61,29 +53,24 @@ const EdgesSelection = ({
                     key={`selected-edge-row-${selectedEdge}`}
                   >
                     <div className="edges-selection-row-delete">
-                      <button
-                        type="button"
-                        title={t('removeSelectedEdge')}
+                      <Button
+                        tooltip={`${t('removeEdge')}: ${rdfsLabel}`}
                         onClick={() => removeFromArray('selectedEdges', selectedEdge)}
-                      >
-                        <ImCross />
-                      </button>
+                        icon="pi pi-times"
+                      />
                     </div>
 
                     <div className="edges-selection-row-main">
-                      <button
-                        type="button"
-                        title={t('viewEdge')}
+                      <Button
+                        tooltip={`${t('viewEdge')}: ${rdfsLabel}`}
                         onClick={() => {
                           setEdgeId(edgeUniqueId)
                           toggleEdgeSelected(true)
                         }}
-                      >
-                        <span>
-                          {rdfsLabel}
-                        </span>
-                        <BsChevronRight />
-                      </button>
+                        label={rdfsLabel}
+                        icon="pi pi-chevron-right"
+                        iconPos="right"
+                      />
                     </div>
                   </div>
                 )

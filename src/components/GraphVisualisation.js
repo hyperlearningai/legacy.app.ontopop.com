@@ -42,6 +42,8 @@ const GraphVisualisation = ({
   // update available nodes/edges according to view
   useEffect(() => {
     if (network) {
+      setStoreState('isNetworkLoading', true)
+
       serialiseNodesEdges({
         nodesIdsToDisplay,
         edgesIdsToDisplay,
@@ -79,8 +81,10 @@ const GraphVisualisation = ({
     setStoreState,
     network,
     addToArray,
+    nodesIdsToDisplay
   }), [
-    network
+    network,
+    nodesIdsToDisplay
   ])
 
   // useEffect(() => {

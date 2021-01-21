@@ -25,10 +25,11 @@ import {
   FaRegCircle,
   FaFileExport
 } from 'react-icons/fa'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import {
   SIDEBAR_VIEW_GRAPHS,
-  SIDEBAR_VIEW_SEARCH,
+  SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_NODES_SELECTION,
@@ -37,6 +38,7 @@ import {
   SIDEBAR_VIEW_EXPORT
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
+import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
 import NodesSelection from './NodesSelection'
 import EdgesSelection from './EdgesSelection'
@@ -58,25 +60,22 @@ const Sidebar = ({
   return (
     <aside className={`sidebar${isSidebarOpen ? '' : '-closed'}`}>
       <div className="sidebar-icons">
-        <button
-          type="button"
-          title={t('networkGraphs')}
+        <Button
+          tooltip={t('networkGraphs')}
           className={sidebarView === SIDEBAR_VIEW_GRAPHS ? 'sidebar-bar-button-selected' : ''}
           onClick={() => setView(SIDEBAR_VIEW_GRAPHS)}
         >
           <FiLayers />
-        </button>
-        <button
-          type="button"
-          title={t('search')}
-          className={sidebarView === SIDEBAR_VIEW_SEARCH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_SEARCH)}
+        </Button>
+        <Button
+          tooltip={t('search')}
+          className={sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
         >
           <BsSearch />
-        </button>
-        <button
-          type="button"
-          title={t('selectNodes')}
+        </Button>
+        <Button
+          tooltip={t('selectNodes')}
           className={sidebarView === SIDEBAR_VIEW_NODES_SELECTION ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setStoreState('isNodeSelectable', true)
@@ -85,10 +84,9 @@ const Sidebar = ({
         >
           <FaRegCircle />
           <FaRegHandPointer />
-        </button>
-        <button
-          type="button"
-          title={t('selectEdges')}
+        </Button>
+        <Button
+          tooltip={t('selectEdges')}
           className={sidebarView === SIDEBAR_VIEW_EDGES_SELECTION ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setStoreState('isEdgeSelectable', true)
@@ -97,10 +95,9 @@ const Sidebar = ({
         >
           <BsArrowUpDown />
           <FaRegHandPointer />
-        </button>
-        <button
-          type="button"
-          title={t('nodeNeighbourhood')}
+        </Button>
+        <Button
+          tooltip={t('nodeNeighbourhood')}
           className={sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setStoreState('isNeighbourNodeSelectable', true)
@@ -108,34 +105,30 @@ const Sidebar = ({
           }}
         >
           <BiNetworkChart />
-        </button>
-        <button
-          type="button"
-          title={t('shortestPath')}
+        </Button>
+        <Button
+          tooltip={t('shortestPath')}
           className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => setView(SIDEBAR_VIEW_SHORTEST_PATH)}
         >
           <IoGitNetwork />
-        </button>
-        <button
-          type="button"
-          title={t('settings')}
+        </Button>
+        <Button
+          tooltip={t('settings')}
           className={sidebarView === SIDEBAR_VIEW_SETTINGS ? 'sidebar-bar-button-selected' : ''}
           onClick={() => setView(SIDEBAR_VIEW_SETTINGS)}
         >
           <FiSettings />
-        </button>
-        <button
-          type="button"
-          title={t('export')}
+        </Button>
+        <Button
+          tooltip={t('export')}
           className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
           onClick={() => setView(SIDEBAR_VIEW_EXPORT)}
         >
           <FaFileExport />
-        </button>
-        <button
-          type="button"
-          title={t('toggleSidebar')}
+        </Button>
+        <Button
+          tooltip={t('toggleSidebar')}
           onClick={() => setStoreState('isSidebarOpen', !isSidebarOpen)}
         >
           {
@@ -145,7 +138,7 @@ const Sidebar = ({
               <AiOutlineArrowRight />
             )
           }
-        </button>
+        </Button>
       </div>
 
       {
@@ -154,6 +147,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_GRAPHS && (
                 <NetworkGraphList />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH && (
+                <FreeTextSearch />
               )
             }
 

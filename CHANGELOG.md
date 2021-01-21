@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.1.0]
 ### Added
+- ONTOLOGY-25 Free text search on nodes and edges properties
+- ONTOLOGY-37 Get graph data from API
 - ONTOLOGY-28 Added view export as owl
 - ONTOLOGY-28 Added view export as csv (zipped file containing basic and full CSV data)
 - ONTOLOGY-28 Added view export as pdf
@@ -29,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-16 Simple network-based ontology visualisation
 
 ### Changed
+- ONTOLOGY-37 Replaced ant design with primereact
 - ONTOLOGY-23 Moved from modal overlays to sidebar with left icons vscode-style
 - ONTOLOGY-36 Moved from nodes/edges arrays to datasets to improve elements customisation
 

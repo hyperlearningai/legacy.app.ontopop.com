@@ -16,6 +16,7 @@ const setNetworkMethods = async ({
   setStoreState,
   network,
   addToArray,
+  nodesIdsToDisplay
 }) => {
   network?.on('selectNode', (event) => {
     const {
@@ -55,9 +56,11 @@ const setNetworkMethods = async ({
   })
 
   network?.on('stabilizationProgress', (params) => {
-    const percentage = parseFloat(params.iterations / params.total).toFixed(2)
+    if (nodesIdsToDisplay) {
+      const percentage = parseFloat(params.iterations / params.total).toFixed(2)
 
-    setStoreState('networkLoadingProgress', percentage * 100)
+      setStoreState('networkLoadingProgress', percentage * 100)
+    }
   })
 
   network?.once('stabilizationIterationsDone', () => {
@@ -67,7 +70,9 @@ const setNetworkMethods = async ({
 
   await network?.stabilize(2000)
 
-  network?.fit()
+  network?.fit({
+    animation: true
+  })
 }
 
 export default setNetworkMethods

@@ -29,6 +29,10 @@
         color: $secondary;
         transition: $transition;
       }
+
+      &:disabled {
+        opacity: 1;
+      }
     }
 
     &-delete {
@@ -37,18 +41,6 @@
 
     &-main {
       width: calc(100% - 50px);
-
-      button {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        span {
-          width: calc(100% - 50px);
-          text-overflow: ellipsis;
-          text-align: left;
-        }
-      }
     }
   }
 }
