@@ -186,7 +186,7 @@ const Sidebar = ({
                 <NodeNeighbourhood />
               )
             }
-            
+
             {
               sidebarView === SIDEBAR_VIEW_NODES_FILTER && (
                 <NodeFilter />
