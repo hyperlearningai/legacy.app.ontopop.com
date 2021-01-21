@@ -5,11 +5,12 @@ import {
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { InputNumber } from 'primereact/inputnumber'
+import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_GRAPHS, SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import { ALGO_TYPE_NEIGHBOURHOOD } from '../constants/algorithms'
+import { MultiSelect } from 'primereact/multiselect';
 
 const NodeFilter = ({
   setStoreState,
@@ -20,6 +21,18 @@ const NodeFilter = ({
   triplesPerNode
 }) => {
   const { t } = useTranslation()
+  const citySelectItems = [
+    {label: 'About', value: 'about'},
+    {label: 'Definition', value: 'definition'},
+    {label: 'Label', value: 'label'},
+    {label: 'Comment', value: 'comment'}
+];
+  const cities = [
+    {name: 'About', code: 'about'},
+    {name: 'Definition', code: 'definition'},
+    {name: 'Label', code: 'label'},
+    {name: 'Comment', code: 'comment'}
+  ];
 
   const newGraphIndex = lastGraphIndex + 1
   const newCurrentGraph = `graph-${lastGraphIndex + 1}`
@@ -36,12 +49,10 @@ const NodeFilter = ({
       <div className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
       </div>
-      <div className="node-neighbourhood">
-        <div className="node-neighbourhood-selection">
-          {t('filterNodesTitle')}
-        </div>
+      <div className="node-filter">
+        
 
-        {
+        {/* {
           selectedNeighbourNode
           && selectedNeighbourNode !== '' && (
             <div className="node-neighbourhood-selected">
@@ -59,28 +70,28 @@ const NodeFilter = ({
               </table>
             </div>
           )
-        }
+        } */}
 
-        <div className="node-neighbourhood-input">
+        <div className="node-filter-input">
           <label htmlFor="separationDegree">
-            {t('separationDegree')}
+            {t('searchInputText')}
           </label>
-          <InputNumber
+          <InputText
             id="separationDegree"
-            value={separationDegree}
-            min={1}
-            step={1}
-            onValueChange={(e) => setSeparationDegree(e.target.value)}
+            value=''
           />
         </div>
 
+        <div className="p-b-20 node-filter-selection">
+          {t('filterNodesTitle')}
+          <MultiSelect value={cities} options={citySelectItems} onChange={(e) => setCities(e.value)} />
+        </div>
+       
         <Button
-          tooltip={t('showNeighbourhood')}
           className="node-neighbourhood-button"
-          disabled={selectedNeighbourNode === ''}
           icon="pi pi-chevron-right"
           iconPos="right"
-          label={t('show')}
+          label={t('performSearch')}
           onClick={() => {
             const selectedNodeId = classesFromApi[selectedNeighbourNode] ? classesFromApi[selectedNeighbourNode].id : ''
             const label = `neighbourhood-${newCurrentGraph}`

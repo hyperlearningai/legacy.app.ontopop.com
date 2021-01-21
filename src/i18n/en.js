@@ -39,7 +39,9 @@ export default {
   selectNodeFromGraph: 'Select node from graph',
 
   // node filter
-  filterNodesTitle: 'Filter Nodes',
+  filterNodesTitle: 'Select Propertie(s) to filter',
+  searchInputText: 'Enter search string',
+  performSearch: 'Perform search',
 
   // edge selection
   selectEdgeFromGraph: 'Select edge from graph',
