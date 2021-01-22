@@ -8,7 +8,8 @@ import {
   FaSitemap
 } from 'react-icons/fa'
 import {
-  IoFootballOutline
+  IoFootballOutline,
+  IoGitNetworkSharp
 } from 'react-icons/io5'
 import { Slider } from 'primereact/slider'
 import { Button } from 'primereact/button'
@@ -88,7 +89,7 @@ const NetworkSettings = ({
               className={!physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}
               onClick={() => setStoreState('physicsRepulsion', false)}
             >
-              <IoFootballOutline />
+              <IoGitNetworkSharp />
             </Button>
           </div>
         </div>

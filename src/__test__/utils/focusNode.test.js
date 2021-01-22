@@ -1,12 +1,25 @@
 import { DataSet } from 'vis-data'
 import focusNode from '../../utils/focusNode'
+import store from '../../store'
 
 const setStoreState = jest.fn()
 const setPrevSelectedNode = jest.fn()
+const availableNodes = new DataSet([{
+  id: 'id-123',
+  color: 'ffffff'
+}, {
+  id: 'id-234',
+  color: 'ffffff'
+}])
 const focus = jest.fn()
 const network = {
   focus
 }
+const getState = jest.fn().mockImplementation(() => ({
+  availableNodes,
+  network,
+}))
+store.getState = getState
 
 describe('focusNode', () => {
   afterEach(() => {
@@ -16,13 +29,6 @@ describe('focusNode', () => {
   it('should work correctly', async () => {
     const elementId = 'id-123'
     const prevSelectedNode = 'id-234'
-    const availableNodes = new DataSet([{
-      id: 'id-123',
-      color: 'ffffff'
-    }, {
-      id: 'id-234',
-      color: 'ffffff'
-    }])
 
     await focusNode({
       availableNodes,

@@ -15,14 +15,11 @@ import highlightEdge from '../utils/highlightEdge'
 import resetSearchSelection from '../utils/resetSearchSelection'
 
 const FreeTextSearch = ({
-  availableEdges,
-  availableEdgesNormalised,
   availableNodes,
   classesFromApi,
   edgesIdsToDisplay,
   freeTextSelection,
   freeTextSelectedElement,
-  network,
   nodesIdsToDisplay,
   objectPropertiesFromApi,
   removeFromObject,
@@ -107,8 +104,6 @@ const FreeTextSearch = ({
                     disabled={elementId === freeTextSelectedElement}
                     onClick={() => {
                       resetSearchSelection({
-                        availableEdges,
-                        availableNodes,
                         prevSelectedEdges,
                         setPrevSelectedEdges,
                         prevSelectedNode,
@@ -118,18 +113,13 @@ const FreeTextSearch = ({
                       if (elementType === 'edge') {
                         return highlightEdge({
                           setPrevSelectedEdges,
-                          availableEdges,
-                          availableEdgesNormalised,
                           elementId,
                           setStoreState,
-                          network
                         })
                       }
 
                       return focusNode({
                         setPrevSelectedNode,
-                        availableNodes,
-                        network,
                         elementId,
                         setStoreState
                       })
@@ -158,10 +148,7 @@ FreeTextSearch.propTypes = {
   freeTextSelection: PropTypes.shape().isRequired,
   freeTextSelectedElement: PropTypes.string.isRequired,
   availableNodes: PropTypes.shape().isRequired,
-  availableEdges: PropTypes.shape().isRequired,
-  availableEdgesNormalised: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  network: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -174,10 +161,7 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  network,
   availableNodes,
-  availableEdges,
-  availableEdgesNormalised
 }) => ({
   freeTextSelection,
   freeTextSelectedElement,
@@ -185,10 +169,7 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  network,
   availableNodes,
-  availableEdges,
-  availableEdgesNormalised
 })
 
 export default connect(

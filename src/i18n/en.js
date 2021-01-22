@@ -47,6 +47,11 @@ export default {
   selectedNode: 'Selected node',
   insertNumber: 'Insert number',
 
+  // shortest path
+  selectNodesFromGraph: 'Select nodes from graph',
+  isNodeOverlay: 'Show all nodes',
+  isNotNodeOverlay: 'Show only path',
+
   // Physics settings
   physicsSettings: 'Physics settings',
   edgeLength: 'Edge length',

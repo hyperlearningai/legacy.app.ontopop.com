@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.1.0]
 ### Added
+- ONTOLOGY-24 Shortest path between two nodes
 - ONTOLOGY-25 Free text search on nodes and edges properties
 - ONTOLOGY-37 Get graph data from API
 - ONTOLOGY-28 Added view export as owl

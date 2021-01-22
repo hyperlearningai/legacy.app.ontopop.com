@@ -4,6 +4,10 @@ export const algoTypeFull = [
     [],
   ],
   [
+    'isNodeOverlay',
+    false,
+  ],
+  [
     'edgesIdsToDisplay',
     [
       'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
