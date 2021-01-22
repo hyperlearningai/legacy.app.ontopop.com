@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import {
   BsSearch,
+  BsFillCircleFill,
+  BsArrowUpRight
 } from 'react-icons/bs'
 import actions from '../store/actions'
 
@@ -19,7 +21,7 @@ const Navbar = ({
     <nav>
       <div className="nav-left">
         <span>
-          {`${t('nodes')}: ${Object.keys(availableNodesNormalised).length} | ${t('edges')}: ${Object.keys(availableEdgesNormalised).length}`}
+          <BsFillCircleFill className="nodes-icon node" /> {`${t('nodes')}: ${Object.keys(availableNodesNormalised).length}`} | <BsArrowUpRight className="nodes-icon edge" /> {`${t('edges')}: ${Object.keys(availableEdgesNormalised).length}`}
         </span>
       </div>
 

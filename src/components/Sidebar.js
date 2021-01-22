@@ -42,7 +42,7 @@ import {
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
-import NodeFilter from './NodeFilter'
+import OntologyFilter from './Filter'
 import NodesSelection from './NodesSelection'
 import EdgesSelection from './EdgesSelection'
 import NetworkSettings from './NetworkSettings'
@@ -110,7 +110,7 @@ const Sidebar = ({
           <BiNetworkChart />
         </Button>
         <Button
-          tooltip={t('filterNodes')}
+          tooltip={t('ontologyFilter')}
           className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setStoreState('isNeighbourNodeSelectable', true)
@@ -189,7 +189,7 @@ const Sidebar = ({
 
             {
               sidebarView === SIDEBAR_VIEW_NODES_FILTER && (
-                <NodeFilter />
+                <OntologyFilter />
               )
             }
 
