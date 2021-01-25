@@ -4,7 +4,9 @@ import toJson from 'enzyme-to-json'
 import GraphVisualisationWrapper from '../../components/GraphVisualisationWrapper'
 import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 
-const setup = () => {
+const setup = ({
+  showContextMenu
+}) => {
   const props = {
     currentGraph: 'graph-0',
     graphData: {
@@ -15,6 +17,12 @@ const setup = () => {
       }
     },
     setStoreState: jest.fn(),
+    showContextMenu,
+    contextMenuData: {
+      top: 0,
+      left: 0,
+      nodeId: ''
+    }
   }
 
   const component = shallow(<GraphVisualisationWrapper {...props} />)
@@ -30,10 +38,22 @@ describe('GraphVisualisationWrapper', () => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot ', () => {
+  it('should match snapshot when no context menu', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      showContextMenu: false
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when context menu', () => {
+    const {
+      component
+    } = setup({
+      showContextMenu: true
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

@@ -38,6 +38,12 @@ const initialState = {
   isShortestPathNodeSelectable: false,
   shortestPathSelectedNodes: [],
   shortestPathResults: [],
+  showContextMenu: false,
+  contextMenuData: {
+    top: 0,
+    left: 0,
+    nodeId: ''
+  },
 
   // states to update at every view refresh
   nodesIdsToDisplay: [],
