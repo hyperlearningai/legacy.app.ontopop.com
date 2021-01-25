@@ -1,0 +1,55 @@
+.shortest-path {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  text-align: center;
+  padding: 10px;
+
+  &-selection {
+    margin: 10px auto;
+  }
+
+  &-nodes-list {
+    .p-chip {
+      width: auto;
+      margin: 10px;
+    }
+  }
+
+  &-toggle {
+    width: 100%;
+    margin: 10px auto;
+
+    &-label {
+      margin: 10px auto;
+      margin-top: 30px;
+    }
+  }
+
+  &-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    label {
+      margin-bottom: 5px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100px;
+      margin: auto;
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  &-button {
+    margin-top: 30px;
+    width: 100%;
+  }
+}

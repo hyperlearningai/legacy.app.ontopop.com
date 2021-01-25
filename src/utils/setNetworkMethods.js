@@ -1,6 +1,6 @@
 import {
   HIGHLIGHT_NODE_BACKGROUND,
-  EDGE_COLOR_SELECTED
+  EDGE_COLOR_SELECTED,
 } from '../constants/graph'
 import store from '../store'
 
@@ -14,15 +14,16 @@ import store from '../store'
  */
 const setNetworkMethods = async ({
   setStoreState,
-  network,
   addToArray,
-  nodesIdsToDisplay
+  network,
 }) => {
   network?.on('selectNode', (event) => {
     const {
+      availableNodes,
       isNodeSelectable,
       isNeighbourNodeSelectable,
-      availableNodes
+      isShortestPathNodeSelectable,
+      shortestPathSelectedNodes
     } = store.getState()
 
     if (event.nodes?.length === 1) {
@@ -35,6 +36,10 @@ const setNetworkMethods = async ({
 
       if (isNeighbourNodeSelectable) {
         setStoreState('selectedNeighbourNode', nodeId)
+      }
+
+      if (isShortestPathNodeSelectable && shortestPathSelectedNodes.length < 2) {
+        addToArray('shortestPathSelectedNodes', nodeId)
       }
     }
   })
@@ -56,6 +61,10 @@ const setNetworkMethods = async ({
   })
 
   network?.on('stabilizationProgress', (params) => {
+    const {
+      nodesIdsToDisplay,
+    } = store.getState()
+
     if (nodesIdsToDisplay) {
       const percentage = parseFloat(params.iterations / params.total).toFixed(2)
 

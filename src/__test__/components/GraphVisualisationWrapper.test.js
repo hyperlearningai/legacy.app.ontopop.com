@@ -3,8 +3,6 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import GraphVisualisationWrapper from '../../components/GraphVisualisationWrapper'
 import { ALGO_TYPE_FULL } from '../../constants/algorithms'
-import jsonClasses from '../fixtures/test-ontology-classes.json'
-import jsonObjectProperties from '../fixtures/test-ontology-object-properties.json'
 
 const setup = () => {
   const props = {
@@ -17,8 +15,6 @@ const setup = () => {
       }
     },
     setStoreState: jest.fn(),
-    classesFromApi: jsonClasses.OwlClasses,
-    objectPropertiesFromApi: jsonObjectProperties.OwlObjectProperties,
   }
 
   const component = shallow(<GraphVisualisationWrapper {...props} />)

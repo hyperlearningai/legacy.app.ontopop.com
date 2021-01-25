@@ -1,10 +1,9 @@
 import { EDGE_COLOR, NODE_BACKGROUND } from '../constants/graph'
+import store from '../store'
 
 /**
  * Search free-text in elements' properties
  * @param  {Object}   params
- * @param  {Object}   params.availableEdges           Available edges on canvas (DataSet)
- * @param  {Object}   params.availableNodes           Available nodes on canvas DataSet
  * @param  {String}   params.prevSelectedEdges        Previously selected edges id
  * @param  {String}   params.prevSelectedNode         Previously selected node id
  * @param  {Function} params.setPrevSelectedEdges     update previously selected edges
@@ -12,13 +11,16 @@ import { EDGE_COLOR, NODE_BACKGROUND } from '../constants/graph'
  * @return
  */
 const resetSearchSelection = ({
-  availableEdges,
-  availableNodes,
   prevSelectedEdges,
   prevSelectedNode,
   setPrevSelectedEdges,
   setPrevSelectedNode,
 }) => {
+  const {
+    availableEdges,
+    availableNodes,
+  } = store.getState()
+
   // reset nodes
   if (prevSelectedNode !== '') {
     availableNodes.update(

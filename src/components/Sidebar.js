@@ -44,6 +44,7 @@ import NodesSelection from './NodesSelection'
 import EdgesSelection from './EdgesSelection'
 import NetworkSettings from './NetworkSettings'
 import ExportSettings from './ExportSettings'
+import ShortestPath from './ShortestPath'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -171,6 +172,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD && (
                 <NodeNeighbourhood />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_SHORTEST_PATH && (
+                <ShortestPath />
               )
             }
 

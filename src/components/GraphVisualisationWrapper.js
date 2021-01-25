@@ -14,8 +14,6 @@ import getGraphData from '../utils/getGraphData'
 const GraphVisualisationWrapper = ({
   currentGraph,
   graphData,
-  classesFromApi,
-  objectPropertiesFromApi,
   setStoreState,
 }) => {
   const { t } = useTranslation()
@@ -61,8 +59,6 @@ const GraphVisualisationWrapper = ({
 
     setNodesIdsToDisplay({
       type,
-      classesFromApi,
-      objectPropertiesFromApi,
       setStoreState,
       options
     })
@@ -78,8 +74,6 @@ const GraphVisualisationWrapper = ({
 GraphVisualisationWrapper.propTypes = {
   currentGraph: PropTypes.string.isRequired,
   graphData: PropTypes.shape().isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
   setStoreState: PropTypes.func.isRequired,
 }
 
@@ -87,14 +81,10 @@ const mapToProps = ({
   currentGraph,
   graphData,
   isSettingsOpen,
-  classesFromApi,
-  objectPropertiesFromApi,
 }) => ({
   currentGraph,
   graphData,
   isSettingsOpen,
-  classesFromApi,
-  objectPropertiesFromApi,
 })
 
 export default connect(

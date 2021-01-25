@@ -11,18 +11,12 @@ const GraphVisualisation = ({
   availableNodes,
   availableEdges,
   addToArray,
-  classesFromApi,
-  edgesIdsToDisplay,
-  highlightedNodes,
   network,
   nodesIdsToDisplay,
-  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  // searchFilter,
   setStoreState,
-  triplesPerNode,
 }) => {
   const visJsRef = useRef(null)
 
@@ -45,16 +39,7 @@ const GraphVisualisation = ({
       setStoreState('isNetworkLoading', true)
 
       serialiseNodesEdges({
-        nodesIdsToDisplay,
-        edgesIdsToDisplay,
-        classesFromApi,
-        objectPropertiesFromApi,
         setStoreState,
-        triplesPerNode,
-        highlightedNodes,
-        availableNodes,
-        availableEdges,
-        network,
       })
     }
   }, [
@@ -81,19 +66,10 @@ const GraphVisualisation = ({
     setStoreState,
     network,
     addToArray,
-    nodesIdsToDisplay
   }), [
     network,
     nodesIdsToDisplay
   ])
-
-  // useEffect(() => {
-  //   filterNodesToDisplay({
-  //     classesFromApi,
-  //     setStoreState,
-  //     searchFilter
-  //   })
-  // }, [searchFilter])
 
   return (
     <div
@@ -111,17 +87,12 @@ GraphVisualisation.propTypes = {
   addToArray: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
-  edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  highlightedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   network: PropTypes.shape(),
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  triplesPerNode: PropTypes.shape().isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -131,13 +102,8 @@ GraphVisualisation.defaultProps = {
 const mapToProps = ({
   availableNodes,
   availableEdges,
-  classesFromApi,
-  deletedNodes,
-  edgesIdsToDisplay,
-  highlightedNodes,
   network,
   nodesIdsToDisplay,
-  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
@@ -145,18 +111,11 @@ const mapToProps = ({
   selectedEdges,
   selectedNeighbourNode,
   selectedNodes,
-  triplesPerNode,
-
 }) => ({
   availableNodes,
   availableEdges,
-  classesFromApi,
-  deletedNodes,
-  edgesIdsToDisplay,
-  highlightedNodes,
   network,
   nodesIdsToDisplay,
-  objectPropertiesFromApi,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
@@ -164,7 +123,6 @@ const mapToProps = ({
   selectedEdges,
   selectedNeighbourNode,
   selectedNodes,
-  triplesPerNode,
 })
 
 export default connect(
