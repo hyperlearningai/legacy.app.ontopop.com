@@ -1,4 +1,4 @@
-import { getPathEdges } from '../../constants/functions'
+import { generatePredicateId, getPathEdges } from '../../constants/functions'
 
 /**
  * Get edge info and related nodes
@@ -26,7 +26,11 @@ const getEdge = ({
   predicate,
   to,
 }) => {
-  const edgeUniqueId = `${predicate}___${from}___${to}`
+  const edgeUniqueId = generatePredicateId({
+    predicate,
+    from,
+    to
+  })
   const edgeLabel = objectPropertiesFromApi[predicate].rdfsLabel
   const fromObject = classesFromApi[from]
   fromObject.id = from

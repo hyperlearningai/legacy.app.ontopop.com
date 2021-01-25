@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GraphVisualisationWrapper should match snapshot  1`] = `
+exports[`GraphVisualisationWrapper should match snapshot when context menu 1`] = `
 <Connect
   actions={
     Object {
@@ -11,6 +11,13 @@ exports[`GraphVisualisationWrapper should match snapshot  1`] = `
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
+    }
+  }
+  contextMenuData={
+    Object {
+      "left": 0,
+      "nodeId": "",
+      "top": 0,
     }
   }
   currentGraph="graph-0"
@@ -25,6 +32,45 @@ exports[`GraphVisualisationWrapper should match snapshot  1`] = `
   }
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
+  showContextMenu={true}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`GraphVisualisationWrapper should match snapshot when no context menu 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  contextMenuData={
+    Object {
+      "left": 0,
+      "nodeId": "",
+      "top": 0,
+    }
+  }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+        "type": "full",
+      },
+    }
+  }
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  showContextMenu={false}
 >
   <Component />
 </Connect>

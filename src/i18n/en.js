@@ -119,4 +119,8 @@ export default {
 
   // Progress bar
   loading: 'Loading...',
+
+  // context menu
+  expandNode: 'Expand node',
+  close: 'Close',
 }

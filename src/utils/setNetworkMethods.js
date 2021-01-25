@@ -3,6 +3,7 @@ import {
   EDGE_COLOR_SELECTED,
 } from '../constants/graph'
 import store from '../store'
+import addNodesEdgesToGraph from './addNodesEdgesToGraph'
 
 /**
  * Update VisJs network methods
@@ -41,6 +42,41 @@ const setNetworkMethods = async ({
       if (isShortestPathNodeSelectable && shortestPathSelectedNodes.length < 2) {
         addToArray('shortestPathSelectedNodes', nodeId)
       }
+    }
+  })
+
+  network?.on('click', () => {
+    setStoreState('showContextMenu', false)
+  })
+
+  network?.on('doubleClick', (event) => {
+    if (event.nodes?.length === 1) {
+      const nodeId = event.nodes[0]
+      addNodesEdgesToGraph({
+        nodeId,
+        setStoreState
+      })
+    }
+  })
+
+  network?.on('oncontext', (event) => {
+    event.event.preventDefault()
+
+    if (event.nodes?.length === 1) {
+      const nodeId = event.nodes[0]
+      const {
+        layerX,
+        layerY,
+      } = event.event
+
+      setStoreState('contextMenuData', {
+        nodeId,
+        top: layerY,
+        left: layerX
+      })
+      setStoreState('showContextMenu', true)
+    } else {
+      setStoreState('showContextMenu', false)
     }
   })
 
