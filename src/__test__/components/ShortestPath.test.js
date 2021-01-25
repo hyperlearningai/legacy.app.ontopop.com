@@ -1,18 +1,22 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import NodeNeighbourhood from '../../components/NodeNeighbourhood'
+import ShortestPath from '../../components/ShortestPath'
 import { OwlClasses } from '../fixtures/test-ontology-classes.json'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
-    updateGraphData: jest.fn(),
     classesFromApi: OwlClasses,
-    selectedNeighbourNode: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
+    removeFromArray: jest.fn(),
+    setStoreState: jest.fn(),
+    shortestPathSelectedNodes: [
+      'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',
+      'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
+    ],
+    updateGraphData: jest.fn(),
   }
 
-  const component = shallow(<NodeNeighbourhood {...props} />)
+  const component = shallow(<ShortestPath {...props} />)
 
   return {
     component,
@@ -20,7 +24,7 @@ const setup = () => {
   }
 }
 
-describe('NodeNeighbourhood', () => {
+describe('ShortestPath', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

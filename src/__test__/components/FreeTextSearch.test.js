@@ -8,13 +8,6 @@ import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties
 
 const setup = () => {
   const props = {
-    availableEdges: new DataSet([{ id: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB' }]),
-    availableEdgesNormalised: {
-      'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB___abc___edf': {
-        id: '123___abc___edf',
-        edgeId: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB'
-      }
-    },
     availableNodes: new DataSet([{
       id: 'http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n',
       color: 'ffffff'
@@ -30,9 +23,6 @@ const setup = () => {
       'http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M': 'node',
     },
     freeTextSelectedElement: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    network: {
-      focus: jest.fn()
-    },
     nodesIdsToDisplay: [],
     objectPropertiesFromApi: OwlObjectProperties,
     removeFromObject: jest.fn(),

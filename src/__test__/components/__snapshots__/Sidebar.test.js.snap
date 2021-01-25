@@ -153,3 +153,25 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
   <Component />
 </Connect>
 `;
+
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTEST_PATH 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  isSidebarOpen={false}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="shortestPath"
+>
+  <Component />
+</Connect>
+`;

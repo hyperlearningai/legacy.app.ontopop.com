@@ -3,6 +3,8 @@ import getEdge from './getEdge'
 import showEdgeCheck from './showEdgeCheck'
 import addConnections from './addConnections'
 import addNode from './addNode'
+import store from '../../store'
+import getNodesEdgesFromPaths from '../getNodesEdgesFromPaths'
 
 /**
  * Update store and graph based on node IDs to display
@@ -12,6 +14,7 @@ import addNode from './addNode'
  * @param  {Object}   params.classesFromApi          Nodes from initial OwlClasses
  * @param  {Array}    params.edgesIdsToDisplay       Array of edges IDs to display
  * @param  {Array}    params.highlightedNodes        Array of nodes IDs to highlight
+ * @param  {Boolean}  params.isNodeOverlay           Flag to make non-highlighted nodes transparent
  * @param  {Object}   params.network                 VisJs network object
  * @param  {Array}    params.nodesIdsToDisplay       Array of nodes IDs to display
  * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
@@ -20,17 +23,22 @@ import addNode from './addNode'
  * @return
  */
 const serialiseNodesEdges = ({
-  availableNodes,
-  availableEdges,
-  classesFromApi,
-  edgesIdsToDisplay,
-  highlightedNodes,
-  network,
-  nodesIdsToDisplay,
-  objectPropertiesFromApi,
   setStoreState,
-  triplesPerNode,
 }) => {
+  const {
+    availableNodes,
+    availableEdges,
+    classesFromApi,
+    edgesIdsToDisplay,
+    highlightedNodes,
+    isNodeOverlay,
+    network,
+    nodesIdsToDisplay,
+    objectPropertiesFromApi,
+    paths,
+    triplesPerNode,
+  } = store.getState()
+
   // reset nodes/edges (display at the end of the function)
   availableNodes.clear()
   availableEdges.clear()
@@ -46,6 +54,13 @@ const serialiseNodesEdges = ({
 
   if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
 
+  const {
+    // shortestPathEdges,
+    shortestPathNodes
+  } = getNodesEdgesFromPaths({
+    paths
+  })
+
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId]
@@ -58,9 +73,11 @@ const serialiseNodesEdges = ({
       availableNodesNormalised,
       availableNodesList,
       addedNodes,
+      isNodeOverlay,
       nodeId,
       nodeIdObject,
-      highlightedNodes
+      highlightedNodes,
+      shortestPathNodes,
     })
 
     if (triples && triples.length > 0) {
@@ -82,7 +99,9 @@ const serialiseNodesEdges = ({
           predicate,
           to,
           objectPropertiesFromApi,
-          classesFromApi
+          classesFromApi,
+          isNodeOverlay,
+          paths
         })
 
         const isEdgeDisplayable = showEdgeCheck({
@@ -109,25 +128,29 @@ const serialiseNodesEdges = ({
             nodesConnections,
             nodesIdsToDisplay,
             edgesIdsToDisplay,
-            availableEdgesNormalised
+            availableEdgesNormalised,
           })
 
           addNode({
             availableNodesNormalised,
             availableNodesList,
             addedNodes,
+            highlightedNodes,
+            isNodeOverlay,
             nodeId: to,
             nodeIdObject: toObject,
-            highlightedNodes
+            shortestPathNodes
           })
 
           addNode({
             availableNodesNormalised,
             availableNodesList,
             addedNodes,
+            highlightedNodes,
+            isNodeOverlay,
             nodeId: from,
             nodeIdObject: fromObject,
-            highlightedNodes
+            shortestPathNodes,
           })
         }
 

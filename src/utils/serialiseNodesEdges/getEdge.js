@@ -1,11 +1,15 @@
+import { generatePredicateId, getPathEdges } from '../../constants/functions'
+
 /**
  * Get edge info and related nodes
  * @param  {Object}   params
+ * @param  {Object}   params.classesFromApi          Nodes from initial OwlClasses
  * @param  {String}   params.from                    Subject node ID
+ * @param  {Boolean}  params.isNodeOverlay           Flag to make non-highlighted nodes transparent
+ * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
+ * @param  {Array}    params.paths                   Array of strings with concatenated nodes and edges
  * @param  {String}   params.predicate               Predicate node ID
  * @param  {String}   params.to                      Object node ID
- * @param  {Object}   params.classesFromApi          Nodes from initial OwlClasses
- * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
  * @return {Object}   output
  * @return {String}   output.edgeUniqueID            Edge unique ID
  * @return {Object}   output.edgeConnection          Edge connection containing nodes IDs and labels
@@ -16,11 +20,17 @@
 const getEdge = ({
   classesFromApi,
   from,
+  isNodeOverlay,
   objectPropertiesFromApi,
+  paths,
   predicate,
   to,
 }) => {
-  const edgeUniqueId = `${predicate}___${from}___${to}`
+  const edgeUniqueId = generatePredicateId({
+    predicate,
+    from,
+    to
+  })
   const edgeLabel = objectPropertiesFromApi[predicate].rdfsLabel
   const fromObject = classesFromApi[from]
   fromObject.id = from
@@ -47,6 +57,21 @@ const getEdge = ({
     label: edgeLabel,
     edgeId: predicate,
     id: edgeUniqueId
+  }
+
+  if (isNodeOverlay) {
+    const pathEdges = getPathEdges(paths.join('|||'))
+
+    if (!pathEdges.includes(edgeUniqueId)) {
+      edge.dashes = true
+      edge.width = 0.2
+      edge.arrows = {
+        to: { scaleFactor: 0.2 }
+      }
+    } else {
+      edge.dashes = false
+      edge.width = 3
+    }
   }
 
   return ({

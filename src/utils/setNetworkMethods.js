@@ -1,8 +1,9 @@
 import {
   HIGHLIGHT_NODE_BACKGROUND,
-  EDGE_COLOR_SELECTED
+  EDGE_COLOR_SELECTED,
 } from '../constants/graph'
 import store from '../store'
+import addNodesEdgesToGraph from './addNodesEdgesToGraph'
 
 /**
  * Update VisJs network methods
@@ -14,15 +15,16 @@ import store from '../store'
  */
 const setNetworkMethods = async ({
   setStoreState,
-  network,
   addToArray,
-  nodesIdsToDisplay
+  network,
 }) => {
   network?.on('selectNode', (event) => {
     const {
+      availableNodes,
       isNodeSelectable,
       isNeighbourNodeSelectable,
-      availableNodes
+      isShortestPathNodeSelectable,
+      shortestPathSelectedNodes
     } = store.getState()
 
     if (event.nodes?.length === 1) {
@@ -36,6 +38,45 @@ const setNetworkMethods = async ({
       if (isNeighbourNodeSelectable) {
         setStoreState('selectedNeighbourNode', nodeId)
       }
+
+      if (isShortestPathNodeSelectable && shortestPathSelectedNodes.length < 2) {
+        addToArray('shortestPathSelectedNodes', nodeId)
+      }
+    }
+  })
+
+  network?.on('click', () => {
+    setStoreState('showContextMenu', false)
+  })
+
+  network?.on('doubleClick', (event) => {
+    if (event.nodes?.length === 1) {
+      const nodeId = event.nodes[0]
+      addNodesEdgesToGraph({
+        nodeId,
+        setStoreState
+      })
+    }
+  })
+
+  network?.on('oncontext', (event) => {
+    event.event.preventDefault()
+
+    if (event.nodes?.length === 1) {
+      const nodeId = event.nodes[0]
+      const {
+        layerX,
+        layerY,
+      } = event.event
+
+      setStoreState('contextMenuData', {
+        nodeId,
+        top: layerY,
+        left: layerX
+      })
+      setStoreState('showContextMenu', true)
+    } else {
+      setStoreState('showContextMenu', false)
     }
   })
 
@@ -56,6 +97,10 @@ const setNetworkMethods = async ({
   })
 
   network?.on('stabilizationProgress', (params) => {
+    const {
+      nodesIdsToDisplay,
+    } = store.getState()
+
     if (nodesIdsToDisplay) {
       const percentage = parseFloat(params.iterations / params.total).toFixed(2)
 

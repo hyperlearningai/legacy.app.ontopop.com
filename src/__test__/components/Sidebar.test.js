@@ -8,6 +8,7 @@ import {
   SIDEBAR_VIEW_EDGES_SELECTION,
   SIDEBAR_VIEW_NODES_SELECTION,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
+  SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_SETTINGS
 } from '../../constants/views'
 
@@ -91,6 +92,17 @@ describe('Sidebar', () => {
     } = setup({
       isSidebarOpen: false,
       sidebarView: SIDEBAR_VIEW_EDGES_SELECTION
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTEST_PATH', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: false,
+      sidebarView: SIDEBAR_VIEW_SHORTEST_PATH
     })
 
     expect(toJson(component)).toMatchSnapshot()
