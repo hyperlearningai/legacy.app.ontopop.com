@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
-import { Badge } from 'primereact/badge';
+import { Badge } from 'primereact/badge'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
 import searchElement from '../utils/searchElement'
@@ -137,11 +137,11 @@ const OntologyFilter = ({
                 </div>
                 <div className="p-l-30 p-t-30 p-r-30 p-b-30 text-center">
                   <div>
-                    <Badge value="1" className="p-mr-2" size="large" severity="warning"></Badge>
+                    <Badge value="1" className="p-mr-2" size="large" severity="warning" />
                   </div>
                   <p><strong>{t('filterNodesDescription1')}</strong></p>
                   <div>
-                    <Badge value="2" className="p-mr-2" size="large" severity="warning"></Badge>
+                    <Badge value="2" className="p-mr-2" size="large" severity="warning" />
                   </div>
                   <p><strong>{t('filterNodesDescription2')}</strong></p>
                 </div>
@@ -190,15 +190,14 @@ const OntologyFilter = ({
                 </div>
                 <div className="p-l-30 p-t-30 p-r-30 p-b-30 text-center">
                   <div>
-                    <Badge value="1" className="p-mr-2" size="large" severity="warning"></Badge>
+                    <Badge value="1" className="p-mr-2" size="large" severity="warning" />
                   </div>
                   <p><strong>{t('filterEdgesDescription1')}</strong></p>
                   <div>
-                    <Badge value="2" className="p-mr-2" size="large" severity="warning"></Badge>
+                    <Badge value="2" className="p-mr-2" size="large" severity="warning" />
                   </div>
                   <p><strong>{t('filterEdgesDescription2')}</strong></p>
                 </div>
-                
               </AccordionTab>
             </Accordion>
           </div>
