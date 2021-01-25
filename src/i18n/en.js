@@ -48,13 +48,15 @@ export default {
   freeNodeSearchInputPlaceholder: 'Filter by Node properties',
   selectNodeProperties: 'Select node properties to search on',
   allNodeProperties: 'All node properties',
-  filterNodesDescription: 'First select the node properties you would like to search on.  Then enter the search string to filter',
+  filterNodesDescription1: 'First select the node properties you would like to search on',
+  filterNodesDescription2: 'Then enter the search string to filter',
 
   // edge properties
   freeEdgeSearchInputPlaceholder: 'Filter by Edge properties',
   selectEdgeProperties: 'Select edge properties to search on',
   allEdgeProperties: 'All edge properties',
-  filterEdgesDescription: 'First select the edge properties you would like to search on.  Then enter the search string to filter',
+  filterEdgesDescription1: 'First select the edge properties you would like to search on',
+  filterEdgesDescription2: 'Then enter the search string to filter',
 
   // edge selection
   selectEdgeFromGraph: 'Select edge from graph',

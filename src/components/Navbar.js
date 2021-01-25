@@ -21,7 +21,11 @@ const Navbar = ({
     <nav>
       <div className="nav-left">
         <span>
-          <BsFillCircleFill className="nodes-icon node" /> {`${t('nodes')}: ${Object.keys(availableNodesNormalised).length}`} | <BsArrowUpRight className="nodes-icon edge" /> {`${t('edges')}: ${Object.keys(availableEdgesNormalised).length}`}
+          <BsFillCircleFill className="nodes-icon node m-r-5" />
+          {`${t('nodes')}: ${Object.keys(availableNodesNormalised).length}`}
+          <span className="m-l-5 m-r-5">|</span>
+          <BsArrowUpRight className="nodes-icon edge" />
+          {`${t('edges')}: ${Object.keys(availableEdgesNormalised).length}`}
         </span>
       </div>
 

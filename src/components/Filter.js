@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
+import { Badge } from 'primereact/badge';
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
 import searchElement from '../utils/searchElement'
@@ -39,21 +40,17 @@ const OntologyFilter = ({
     { name: 'Label', code: 'label' }
   ]
 
-  const nodePropTemplate = (option) => {
-    return (
-      <div className="node-item">
-        <div>{option.name}</div>
-      </div>
-    )
-  }
+  const nodePropTemplate = (option) => (
+    <div className="node-item">
+      <div>{option.name}</div>
+    </div>
+  )
 
-  const edgePropTemplate = (option) => {
-    return (
-      <div className="edge-item">
-        <div>{option.name}</div>
-      </div>
-    )
-  }
+  const edgePropTemplate = (option) => (
+    <div className="edge-item">
+      <div>{option.name}</div>
+    </div>
+  )
 
   const selectedNodesOptions = (option) => {
     if (option) {
@@ -138,8 +135,16 @@ const OntologyFilter = ({
                   />
 
                 </div>
-
-                <p>{t('filterNodesDescription')}</p>
+                <div className="p-l-30 p-t-30 p-r-30 p-b-30 text-center">
+                  <div>
+                    <Badge value="1" className="p-mr-2" size="large" severity="warning"></Badge>
+                  </div>
+                  <p><strong>{t('filterNodesDescription1')}</strong></p>
+                  <div>
+                    <Badge value="2" className="p-mr-2" size="large" severity="warning"></Badge>
+                  </div>
+                  <p><strong>{t('filterNodesDescription2')}</strong></p>
+                </div>
               </AccordionTab>
               <AccordionTab header={t('filterEdgesByEdgesProps')}>
                 <div className="p-b-10">
@@ -160,7 +165,7 @@ const OntologyFilter = ({
                   />
                 </div>
                 <div className="p-b-10">
-                    <label htmlFor="filterEdgePropsString">{t('searchInputText')}</label>
+                  <label htmlFor="filterEdgePropsString">{t('searchInputText')}</label>
                 </div>
                 <div className="p-input-icon-right freetext-search-input">
                   <i className="pi pi-search" />
@@ -183,8 +188,17 @@ const OntologyFilter = ({
                   />
 
                 </div>
-
-                <p>{t('filterEdgesDescription')}</p>
+                <div className="p-l-30 p-t-30 p-r-30 p-b-30 text-center">
+                  <div>
+                    <Badge value="1" className="p-mr-2" size="large" severity="warning"></Badge>
+                  </div>
+                  <p><strong>{t('filterEdgesDescription1')}</strong></p>
+                  <div>
+                    <Badge value="2" className="p-mr-2" size="large" severity="warning"></Badge>
+                  </div>
+                  <p><strong>{t('filterEdgesDescription2')}</strong></p>
+                </div>
+                
               </AccordionTab>
             </Accordion>
           </div>
