@@ -3,6 +3,7 @@
   "rules": {
     "color-hex-length": "long",
     "no-descending-specificity": null,
-    "at-rule-no-unknown": null
+    "at-rule-no-unknown": null,
+    "value-keyword-case": null
   }
 }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GraphVisualisationWrapper should match snapshot when context menu 1`] = `
+exports[`GraphVisualisationWrapper should match snapshot when context menu and bounding box 1`] = `
 <Connect
   actions={
     Object {
@@ -11,6 +11,14 @@ exports[`GraphVisualisationWrapper should match snapshot when context menu 1`] =
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
+    }
+  }
+  boundingBoxGeometry={
+    Object {
+      "boundingBoxHeight": 200,
+      "boundingBoxPosX": 100,
+      "boundingBoxPosY": 100,
+      "boundingBoxWidth": 200,
     }
   }
   contextMenuData={
@@ -30,6 +38,7 @@ exports[`GraphVisualisationWrapper should match snapshot when context menu 1`] =
       },
     }
   }
+  isBoundingBoxSelectable={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   showContextMenu={true}
@@ -38,7 +47,7 @@ exports[`GraphVisualisationWrapper should match snapshot when context menu 1`] =
 </Connect>
 `;
 
-exports[`GraphVisualisationWrapper should match snapshot when no context menu 1`] = `
+exports[`GraphVisualisationWrapper should match snapshot when no context menu and no bounding box 1`] = `
 <Connect
   actions={
     Object {
@@ -49,6 +58,14 @@ exports[`GraphVisualisationWrapper should match snapshot when no context menu 1`
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
       "updateGraphData": [Function],
+    }
+  }
+  boundingBoxGeometry={
+    Object {
+      "boundingBoxHeight": 200,
+      "boundingBoxPosX": 100,
+      "boundingBoxPosY": 100,
+      "boundingBoxWidth": 200,
     }
   }
   contextMenuData={
@@ -68,6 +85,7 @@ exports[`GraphVisualisationWrapper should match snapshot when no context menu 1`
       },
     }
   }
+  isBoundingBoxSelectable={false}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   showContextMenu={false}

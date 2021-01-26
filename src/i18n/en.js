@@ -41,6 +41,11 @@ export default {
   selectEdgeFromGraph: 'Select edge from graph',
   edge: 'Edge',
 
+  // bounding box
+  boundingBox: 'Bounding box selection',
+  drawBoundingBox: 'Draw a bounding box on canvas to select nodes inside it',
+  showSelectedNodes: 'Show selected nodes',
+
   // node neighbourhood
   show: 'Show',
   separationDegree: 'Separation degree',

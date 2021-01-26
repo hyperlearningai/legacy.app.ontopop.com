@@ -1,7 +1,8 @@
 import {
   ALGO_TYPE_FULL,
   ALGO_TYPE_NEIGHBOURHOOD,
-  ALGO_TYPE_SHORTEST_PATH
+  ALGO_TYPE_SHORTEST_PATH,
+  ALGO_TYPE_BOUNDING_BOX
 } from '../constants/algorithms'
 import getNodesEdgesFromPaths from './getNodesEdgesFromPaths'
 import getNeighbours from './getNeighbours'
@@ -35,6 +36,28 @@ const setNodesIdsToDisplay = async ({
 
     setStoreState('edgesIdsToDisplay', predicatesIds)
     setStoreState('nodesIdsToDisplay', classesIds)
+  }
+
+  if (type === ALGO_TYPE_BOUNDING_BOX) {
+    if (!options) return false
+
+    const {
+      selectedBoundingBoxNodes,
+      triplesPerNode
+    } = options
+
+    const {
+      neighbourNodes,
+      neighbourEdges
+    } = getNeighbours({
+      selectedBoundingBoxNodes,
+      classesFromApi,
+      triplesPerNode
+    })
+
+    setStoreState('highlightedNodes', [])
+    setStoreState('edgesIdsToDisplay', neighbourEdges)
+    setStoreState('nodesIdsToDisplay', neighbourNodes)
   }
 
   if (type === ALGO_TYPE_NEIGHBOURHOOD) {

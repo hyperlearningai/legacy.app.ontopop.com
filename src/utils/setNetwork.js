@@ -1,4 +1,6 @@
 import { Network } from 'vis-network'
+import onMouseDown from './canvasUtils/onMouseDown'
+import onMouseMove from './canvasUtils/onMouseMove'
 import getPhysicsOptions from './getPhysicsOptions'
 
 /**
@@ -34,6 +36,18 @@ const setNetwork = ({
       edges: availableEdges
     },
     physicsSettings))
+
+  const canvas = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
+
+  canvas.addEventListener('mousedown', (e) => onMouseDown({
+    e,
+    setStoreState
+  }), false)
+
+  canvas.addEventListener('mousemove', (e) => onMouseMove({
+    e,
+    setStoreState
+  }), false)
 }
 
 export default setNetwork

@@ -18,7 +18,9 @@ const GraphVisualisationWrapper = ({
   graphData,
   setStoreState,
   showContextMenu,
-  contextMenuData
+  contextMenuData,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry
 }) => {
   const { t } = useTranslation()
 
@@ -76,9 +78,31 @@ const GraphVisualisationWrapper = ({
     nodeId
   } = contextMenuData
 
+  const {
+    boundingBoxPosX,
+    boundingBoxPosY,
+    boundingBoxWidth,
+    boundingBoxHeight
+  } = boundingBoxGeometry
+
   return (
     <>
       <GraphVisualisation />
+
+      {
+        isBoundingBoxSelectable
+        && (
+          <div
+            style={{
+              top: boundingBoxPosY,
+              left: boundingBoxPosX,
+              width: boundingBoxWidth,
+              height: boundingBoxHeight
+            }}
+            className="bounding-box-wrapper"
+          />
+        )
+      }
 
       {
         showContextMenu
@@ -120,7 +144,9 @@ GraphVisualisationWrapper.propTypes = {
   graphData: PropTypes.shape().isRequired,
   setStoreState: PropTypes.func.isRequired,
   showContextMenu: PropTypes.bool.isRequired,
+  isBoundingBoxSelectable: PropTypes.bool.isRequired,
   contextMenuData: PropTypes.shape().isRequired,
+  boundingBoxGeometry: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -128,13 +154,17 @@ const mapToProps = ({
   graphData,
   isSettingsOpen,
   showContextMenu,
-  contextMenuData
+  contextMenuData,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry
 }) => ({
   currentGraph,
   graphData,
   isSettingsOpen,
   showContextMenu,
-  contextMenuData
+  contextMenuData,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry
 })
 
 export default connect(

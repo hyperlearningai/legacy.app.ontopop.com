@@ -11,7 +11,8 @@ import {
 } from 'react-icons/bi'
 import {
   BsSearch,
-  BsArrowUpDown
+  BsArrowUpDown,
+  BsPencilSquare
 } from 'react-icons/bs'
 import {
   AiOutlineArrowLeft,
@@ -35,7 +36,8 @@ import {
   SIDEBAR_VIEW_NODES_SELECTION,
   SIDEBAR_VIEW_EDGES_SELECTION,
   SIDEBAR_VIEW_SETTINGS,
-  SIDEBAR_VIEW_EXPORT
+  SIDEBAR_VIEW_EXPORT,
+  SIDEBAR_VIEW_BOUNDING_BOX
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
@@ -45,6 +47,7 @@ import EdgesSelection from './EdgesSelection'
 import NetworkSettings from './NetworkSettings'
 import ExportSettings from './ExportSettings'
 import ShortestPath from './ShortestPath'
+import BoundingBoxSelection from './BoundingBoxSelection'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -96,6 +99,16 @@ const Sidebar = ({
         >
           <BsArrowUpDown />
           <FaRegHandPointer />
+        </Button>
+        <Button
+          tooltip={t('boundingBox')}
+          className={sidebarView === SIDEBAR_VIEW_BOUNDING_BOX ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isBoundingBox', true)
+            setView(SIDEBAR_VIEW_BOUNDING_BOX)
+          }}
+        >
+          <BsPencilSquare />
         </Button>
         <Button
           tooltip={t('nodeNeighbourhood')}
@@ -166,6 +179,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_EDGES_SELECTION && (
                 <EdgesSelection />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_BOUNDING_BOX && (
+                <BoundingBoxSelection />
               )
             }
 
