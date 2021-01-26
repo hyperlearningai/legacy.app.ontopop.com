@@ -6771,6 +6771,10 @@ Four subdomains have been created to cover all the universals related to each of
         "skosComment": null,
         "skosDefinition": "Relationship used to specify the place or system from where an Entity is controlled.",
       },
+      "http://www.w3.org/2000/01/rdf-schema#subclassof": Object {
+        "rdfAbout": "http://www.w3.org/2000/01/rdf-schema#subclassof",
+        "rdfsLabel": "subClassOf",
+      },
       "http://www.w3.org/2002/07/owl#topObjectProperty": Object {
         "owlAnnotationProperties": Object {},
         "rdfAbout": "http://www.w3.org/2002/07/owl#topObjectProperty",

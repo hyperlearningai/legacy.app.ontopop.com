@@ -40,8 +40,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-54 Node search icon in toolbar
 
 ### Fixed
+- ONTOLOGY-54 Object properties removed from CSV export
+- ONTOLOGY-54 Fixed node and edges count when node expanded
+- ONTOLOGY-54 Added subClassOf as default edge is owlRestrictions missing
 - ONTOLOGY-28 Added jsdoc comments to store actions and utils
 
 ### Security
