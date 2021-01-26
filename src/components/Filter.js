@@ -224,7 +224,7 @@ const OntologyFilter = ({
                     })
                   }
                 </div>
-                  
+
                 <div className="p-l-30 p-t-30 p-r-30 p-b-30 text-center">
                   <div>
                     <Badge value="1" className="p-mr-2" size="large" severity="warning" />
@@ -235,7 +235,7 @@ const OntologyFilter = ({
                   </div>
                   <p><strong>{t('filterNodesDescription2')}</strong></p>
                 </div>
-                
+
               </AccordionTab>
               <AccordionTab header={t('filterEdgesByEdgesProps')}>
                 <div className="p-b-10">
