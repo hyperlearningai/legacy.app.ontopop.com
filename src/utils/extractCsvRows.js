@@ -1,3 +1,5 @@
+import { IGNORED_PROPERTIES } from '../constants/export'
+
 /**
  * Extract csv rows
  * @param  {Object}   params
@@ -44,7 +46,7 @@ const extractCsvRows = ({
     const fullRow = {}
 
     nodeKeys.map((key) => {
-      if (key === 'id' || key === 'label') return false
+      if (IGNORED_PROPERTIES.includes(key)) return false
 
       fullRow[`from:${key}`] = availableNodesNormalised[from] ? availableNodesNormalised[from][key] : ''
       fullRow[`to:${key}`] = availableNodesNormalised[to] ? availableNodesNormalised[to][key] : ''
@@ -52,7 +54,7 @@ const extractCsvRows = ({
     })
 
     edgeKeys.map((key) => {
-      if (key === 'id' || key === 'label') return false
+      if (IGNORED_PROPERTIES.includes(key)) return false
 
       fullRow[`predicate:${key}`] = objectPropertiesFromApi[edgeId][key]
       return true

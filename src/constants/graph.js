@@ -17,3 +17,6 @@ export const NODE_FONT = {
   face: 'Montserrat',
   bold: '700'
 }
+
+export const SUB_CLASS_OF_ID = 'http://www.w3.org/2000/01/rdf-schema#subclassof'
+export const SUB_CLASS_OF_LABEL = 'subClassOf'
