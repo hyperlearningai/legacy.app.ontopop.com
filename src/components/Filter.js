@@ -9,26 +9,41 @@ import { InputText } from 'primereact/inputtext'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import { Badge } from 'primereact/badge'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
-import searchElement from '../utils/searchElement'
+import focusNode from '../utils/focusNode'
+import filterNodeProps from '../utils/filterNodeProps'
+import {
+  NODE_BACKGROUND,
+} from '../constants/graph'
+import highlightEdge from '../utils/highlightEdge'
+import resetSearchSelection from '../utils/resetSearchSelection'
 
 const OntologyFilter = ({
   setStoreState,
+  availableNodes,
   classesFromApi,
+  filterNodeByPropsData,
+  filterNodesByPropSelectedElement,
+  filterEdgeByPropsData,
+  filterEdgesByPropSelectedElement,
   objectPropertiesFromApi,
+  removeFromObject,
   nodesIdsToDisplay,
   edgesIdsToDisplay
 }) => {
   const { t } = useTranslation()
-  const [value1, setValue1] = useState('')
+  const [nodeStringSearch, setNodeStringSearch] = useState('')
+  const [edgeStringSearch, setEdgeStringSearch] = useState('')
   const [selectedNodeProps, setSelectedNodeProps] = useState(null)
   const [selectedEdgeProps, setSelectedEdgeProps] = useState(null)
+  const [prevSelectedNode, setPrevSelectedNode] = useState('')
+  const [prevSelectedEdges, setPrevSelectedEdges] = useState([])
   const nodeProps = [
     { name: 'About', code: 'about' },
     { name: 'Comment', code: 'comment' },
     { name: 'Definition', code: 'definition' },
-    { name: 'Example', code: 'example' },
     { name: 'Label', code: 'label' }
   ]
 
@@ -36,7 +51,6 @@ const OntologyFilter = ({
     { name: 'About', code: 'about' },
     { name: 'Comment', code: 'comment' },
     { name: 'Definition', code: 'definition' },
-    { name: 'Example', code: 'example' },
     { name: 'Label', code: 'label' }
   ]
 
@@ -76,8 +90,9 @@ const OntologyFilter = ({
     return t('allEdgeProperties')
   }
 
-  useEffect(() => () => searchElement({
-    search: '',
+  useEffect(() => () => filterNodeProps({
+    searchFilterNode: '',
+    searchFilterEdge: '',
     nodesIdsToDisplay,
     edgesIdsToDisplay,
     classesFromApi,
@@ -119,22 +134,97 @@ const OntologyFilter = ({
                   <i className="pi pi-search" />
                   <InputText
                     id="filterNodePropsString"
-                    value={value1}
+                    value={nodeStringSearch}
                     placeholder={t('freeNodeSearchInputPlaceholder')}
                     onChange={(e) => {
-                      setValue1(e.target.value)
-                      // searchElement({
-                      //   search: e.target.value,
-                      //   nodesIdsToDisplay,
-                      //   edgesIdsToDisplay,
-                      //   classesFromApi,
-                      //   objectPropertiesFromApi,
-                      //   setStoreState
-                      // })
+                      setNodeStringSearch(e.target.value)
+                      filterNodeProps({
+                        searchFilterNode: e.target.value,
+                        nodesIdsToDisplay,
+                        edgesIdsToDisplay,
+                        classesFromApi,
+                        objectPropertiesFromApi,
+                        setStoreState
+                      })
                     }}
                   />
 
                 </div>
+
+                <div className="freetext-search">
+                  {
+                    Object.keys(filterNodeByPropsData).length > 0
+                    && Object.keys(filterNodeByPropsData).map((elementId) => {
+                      const elementType = filterNodeByPropsData[elementId]
+
+                      const elementLabel = elementType === 'node'
+                        ? classesFromApi[elementId].rdfsLabel
+                        : objectPropertiesFromApi[elementId].rdfsLabel
+
+                      return (
+                        <div
+                          className={`freetext-search-row ${elementId === filterNodesByPropSelectedElement ? 'freetext-search-row-selected' : ''}`}
+                          key={`freetext-search-row-${elementId}`}
+                        >
+                          <div className="freetext-search-row-delete">
+
+                            <Button
+                              tooltip={`${t('removeGraph')}: ${elementId}`}
+                              onClick={() => {
+                                if (elementType === 'node') {
+                                  availableNodes.update(
+                                    [{ id: elementId, color: { background: NODE_BACKGROUND } }]
+                                  )
+                                }
+
+                                removeFromObject('filterNodeByPropsData', elementId)
+                              }}
+                              icon="pi pi-times"
+                            />
+
+                          </div>
+
+                          <div className="freetext-search-row-main">
+                            <Button
+                              tooltip={`${t('focusElement')}: ${elementLabel}`}
+                              disabled={elementId === filterNodesByPropSelectedElement}
+                              onClick={() => {
+                                resetSearchSelection({
+                                  prevSelectedEdges,
+                                  setPrevSelectedEdges,
+                                  prevSelectedNode,
+                                  setPrevSelectedNode,
+                                })
+
+                                if (elementType === 'edge') {
+                                  return highlightEdge({
+                                    setPrevSelectedEdges,
+                                    elementId,
+                                    setStoreState,
+                                  })
+                                }
+
+                                return focusNode({
+                                  setPrevSelectedNode,
+                                  elementId,
+                                  setStoreState
+                                })
+                              }}
+                            >
+                              <span>
+                                <i className={`pi pi-${elementType === 'node' ? 'circle-off' : 'arrow-up'}`} />
+                                {' '}
+                                {elementLabel}
+                              </span>
+                              <i className="pi pi-chevron-right" />
+                            </Button>
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+                  
                 <div className="p-l-30 p-t-30 p-r-30 p-b-30 text-center">
                   <div>
                     <Badge value="1" className="p-mr-2" size="large" severity="warning" />
@@ -145,6 +235,7 @@ const OntologyFilter = ({
                   </div>
                   <p><strong>{t('filterNodesDescription2')}</strong></p>
                 </div>
+                
               </AccordionTab>
               <AccordionTab header={t('filterEdgesByEdgesProps')}>
                 <div className="p-b-10">
@@ -172,21 +263,94 @@ const OntologyFilter = ({
 
                   <InputText
                     id="filterEdgePropsString"
-                    value={value1}
+                    value={edgeStringSearch}
                     placeholder={t('freeEdgeSearchInputPlaceholder')}
                     onChange={(e) => {
-                      setValue1(e.target.value)
-                      // searchElement({
-                      //   search: e.target.value,
-                      //   nodesIdsToDisplay,
-                      //   edgesIdsToDisplay,
-                      //   classesFromApi,
-                      //   objectPropertiesFromApi,
-                      //   setStoreState
-                      // })
+                      setEdgeStringSearch(e.target.value)
+                      filterNodeProps({
+                        searchFilterEdge: e.target.value,
+                        nodesIdsToDisplay,
+                        edgesIdsToDisplay,
+                        classesFromApi,
+                        objectPropertiesFromApi,
+                        setStoreState
+                      })
                     }}
                   />
 
+                </div>
+                <div className="freetext-search">
+                  {
+                    Object.keys(filterEdgeByPropsData).length > 0
+                    && Object.keys(filterEdgeByPropsData).map((elementId) => {
+                      const elementType = filterEdgeByPropsData[elementId]
+
+                      const elementLabel = elementType === 'node'
+                        ? classesFromApi[elementId].rdfsLabel
+                        : objectPropertiesFromApi[elementId].rdfsLabel
+
+                      return (
+                        <div
+                          className={`freetext-search-row ${elementId === filterEdgesByPropSelectedElement ? 'freetext-search-row-selected' : ''}`}
+                          key={`freetext-search-row-${elementId}`}
+                        >
+                          <div className="freetext-search-row-delete">
+
+                            <Button
+                              tooltip={`${t('removeGraph')}: ${elementId}`}
+                              onClick={() => {
+                                if (elementType === 'node') {
+                                  availableNodes.update(
+                                    [{ id: elementId, color: { background: NODE_BACKGROUND } }]
+                                  )
+                                }
+
+                                removeFromObject('filterEdgeByPropsData', elementId)
+                              }}
+                              icon="pi pi-times"
+                            />
+
+                          </div>
+
+                          <div className="freetext-search-row-main">
+                            <Button
+                              tooltip={`${t('focusElement')}: ${elementLabel}`}
+                              disabled={elementId === filterEdgesByPropSelectedElement}
+                              onClick={() => {
+                                resetSearchSelection({
+                                  prevSelectedEdges,
+                                  setPrevSelectedEdges,
+                                  prevSelectedNode,
+                                  setPrevSelectedNode,
+                                })
+
+                                if (elementType === 'edge') {
+                                  return highlightEdge({
+                                    setPrevSelectedEdges,
+                                    elementId,
+                                    setStoreState,
+                                  })
+                                }
+
+                                return focusNode({
+                                  setPrevSelectedNode,
+                                  elementId,
+                                  setStoreState
+                                })
+                              }}
+                            >
+                              <span>
+                                <i className={`pi pi-${elementType === 'node' ? 'circle-off' : 'arrow-up'}`} />
+                                {' '}
+                                {elementLabel}
+                              </span>
+                              <i className="pi pi-chevron-right" />
+                            </Button>
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
                 </div>
                 <div className="p-l-30 p-t-30 p-r-30 p-b-30 text-center">
                   <div>
@@ -210,6 +374,12 @@ const OntologyFilter = ({
 OntologyFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
+  removeFromObject: PropTypes.func.isRequired,
+  availableNodes: PropTypes.shape().isRequired,
+  filterNodeByPropsData: PropTypes.shape().isRequired,
+  filterEdgeByPropsData: PropTypes.shape().isRequired,
+  filterNodesByPropSelectedElement: PropTypes.string.isRequired,
+  filterEdgesByPropSelectedElement: PropTypes.string.isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -219,10 +389,26 @@ const mapToProps = ({
   graphData,
   currentGraph,
   classesFromApi,
+  availableNodes,
+  filterNodeByPropsData,
+  filterNodesByPropSelectedElement,
+  filterEdgeByPropsData,
+  filterEdgesByPropSelectedElement,
+  objectPropertiesFromApi,
+  nodesIdsToDisplay,
+  edgesIdsToDisplay
 }) => ({
   graphData,
   currentGraph,
   classesFromApi,
+  availableNodes,
+  filterNodeByPropsData,
+  filterNodesByPropSelectedElement,
+  filterEdgeByPropsData,
+  filterEdgesByPropSelectedElement,
+  objectPropertiesFromApi,
+  nodesIdsToDisplay,
+  edgesIdsToDisplay
 })
 
 export default connect(

@@ -24,10 +24,11 @@ const searchElement = ({
   if (search === '') {
     return setStoreState('freeTextSelection', JSON.parse(JSON.stringify(elementsToDisplay)))
   }
-
+console.log(nodesIdsToDisplay)
   if (nodesIdsToDisplay.length > 0) {
     for (let index = 0; index < nodesIdsToDisplay.length; index++) {
       const nodeId = nodesIdsToDisplay[index]
+      console.log(nodeId)
 
       const nodeElement = classesFromApi[nodeId]
 
