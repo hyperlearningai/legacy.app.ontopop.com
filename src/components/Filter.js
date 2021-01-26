@@ -14,6 +14,10 @@ import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
 import focusNode from '../utils/focusNode'
 import filterNodeProps from '../utils/filterNodeProps'
+import NodesSelectionDetails from './NodesSelectionDetails'
+import EdgesSelectionDetails from './EdgesSelectionDetails'
+import { SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
+import { SIDEBAR_VIEW_EDGES_SELECTION } from '../constants/views'
 import {
   NODE_BACKGROUND,
 } from '../constants/graph'
@@ -22,6 +26,9 @@ import resetSearchSelection from '../utils/resetSearchSelection'
 
 const OntologyFilter = ({
   setStoreState,
+  availableNodesNormalised,
+  selectedNodes,
+  selectedEdges,
   availableNodes,
   classesFromApi,
   filterNodeByPropsData,
@@ -34,12 +41,16 @@ const OntologyFilter = ({
   edgesIdsToDisplay
 }) => {
   const { t } = useTranslation()
+  const [isNodeSelected, toggleNodeSelected] = useState(false)
+  const [isEdgeSelected, toggleEdgeSelected] = useState(false)
   const [nodeStringSearch, setNodeStringSearch] = useState('')
   const [edgeStringSearch, setEdgeStringSearch] = useState('')
   const [selectedNodeProps, setSelectedNodeProps] = useState(null)
   const [selectedEdgeProps, setSelectedEdgeProps] = useState(null)
   const [prevSelectedNode, setPrevSelectedNode] = useState('')
   const [prevSelectedEdges, setPrevSelectedEdges] = useState([])
+  const [nodeId, setNodeId] = useState('')
+  const [edgeId, setEdgeId] = useState('')
   const nodeProps = [
     { name: 'About', code: 'about' },
     { name: 'Comment', code: 'comment' },
@@ -103,7 +114,34 @@ const OntologyFilter = ({
   return (
     <>
       <div className="sidebar-main-title">
-        {t(SIDEBAR_VIEW_NODES_FILTER)}
+        
+        {!isNodeSelected
+          ? t(SIDEBAR_VIEW_NODES_SELECTION)
+          : (
+            <>
+            
+              <Button
+                tooltip={t('goBack')}
+                onClick={() => toggleNodeSelected(false)}
+                icon="pi pi-chevron-left"
+                iconPos="left"
+              />
+              {`${t('Selection')}: ${availableNodesNormalised[nodeId].label}`}
+            </>
+          )}
+          {/* {!isEdgeSelected
+          ? t(SIDEBAR_VIEW_EDGES_SELECTION)
+          : (
+            <>
+              <Button
+                tooltip={t('goBack')}
+                onClick={() => toggleEdgeSelected(false)}
+                icon="pi pi-chevron-left"
+                iconPos="left"
+              />
+              {`${t('Selection')}: ${availableNodesNormalised[edgeId]}`}
+            </>
+          )} */}
       </div>
       <div className="ontology-filter">
         <div className="accordion-demo">
@@ -151,6 +189,53 @@ const OntologyFilter = ({
 
                 </div>
 
+                {!isNodeSelected ? (
+                  <div className="nodes-selection">
+                    {
+                      selectedNodes.length > 0
+                        ? selectedNodes.map((selectedNode) => {
+                          const { label } = availableNodesNormalised[selectedNode]
+
+                          return (
+                            <div
+                              className="nodes-selection-row"
+                              key={`selected-node-row-${selectedNode}`}
+                            >
+                              <div className="nodes-selection-row-delete">
+                                <Button
+                                  tooltip={`${t('removeNode')}: ${label}`}
+                                  onClick={() => removeFromArray('selectedNodes', selectedNode)}
+                                  icon="pi pi-times"
+                                />
+                              </div>
+
+                              <div className="nodes-selection-row-main">
+                                <Button
+                                  tooltip={`${t('viewNode')}: ${label}`}
+                                  onClick={() => {
+                                    setNodeId(selectedNode)
+                                    toggleNodeSelected(true)
+                                  }}
+                                  label={label}
+                                  icon="pi pi-chevron-right"
+                                  iconPos="right"
+                                />
+                              </div>
+                            </div>
+                          )
+                        }) : (
+                          <div className="nodes-selection-message">
+                            
+                          </div>
+                        )
+                    }
+                  </div>
+                ) : (
+                    <NodesSelectionDetails
+                      nodeId={nodeId}
+                    />
+                  )}
+
                 <div className="freetext-search">
                   {
                     Object.keys(filterNodeByPropsData).length > 0
@@ -189,6 +274,8 @@ const OntologyFilter = ({
                               tooltip={`${t('focusElement')}: ${elementLabel}`}
                               disabled={elementId === filterNodesByPropSelectedElement}
                               onClick={() => {
+                                setNodeId(elementId)
+                                toggleNodeSelected(true)
                                 resetSearchSelection({
                                   prevSelectedEdges,
                                   setPrevSelectedEdges,
@@ -236,6 +323,8 @@ const OntologyFilter = ({
                   <p><strong>{t('filterNodesDescription2')}</strong></p>
                 </div>
 
+                
+
               </AccordionTab>
               <AccordionTab header={t('filterEdgesByEdgesProps')}>
                 <div className="p-b-10">
@@ -279,6 +368,56 @@ const OntologyFilter = ({
                   />
 
                 </div>
+
+                {!isEdgeSelected ? (
+        <div className="edges-selection">
+          {
+            selectedEdges.length > 0
+              ? selectedEdges.map((selectedEdge) => {
+                const edgeUniqueId = getEdgeUniqueId(selectedEdge)
+
+                const { rdfsLabel } = objectPropertiesFromApi[edgeUniqueId]
+
+                return (
+                  <div
+                    className="edges-selection-row"
+                    key={`selected-edge-row-${selectedEdge}`}
+                  >
+                    <div className="edges-selection-row-delete">
+                      <Button
+                        tooltip={`${t('removeEdge')}: ${rdfsLabel}`}
+                        onClick={() => removeFromArray('selectedEdges', selectedEdge)}
+                        icon="pi pi-times"
+                      />
+                    </div>
+
+                    <div className="edges-selection-row-main">
+                      <Button
+                        tooltip={`${t('viewEdge')}: ${rdfsLabel}`}
+                        onClick={() => {
+                          setEdgeId(edgeUniqueId)
+                          toggleEdgeSelected(true)
+                        }}
+                        label={rdfsLabel}
+                        icon="pi pi-chevron-right"
+                        iconPos="right"
+                      />
+                    </div>
+                  </div>
+                )
+              }) : (
+                <div className="edges-selection-message">
+                  {t('selectEdgeFromGraph')}
+                </div>
+              )
+          }
+        </div>
+      ) : (
+        <EdgesSelectionDetails
+          edgeId={edgeId}
+        />
+      )}
+
                 <div className="freetext-search">
                   {
                     Object.keys(filterEdgeByPropsData).length > 0
@@ -317,6 +456,8 @@ const OntologyFilter = ({
                               tooltip={`${t('focusElement')}: ${elementLabel}`}
                               disabled={elementId === filterEdgesByPropSelectedElement}
                               onClick={() => {
+                                setEdgeId(elementId)
+                                toggleEdgeSelected(true)
                                 resetSearchSelection({
                                   prevSelectedEdges,
                                   setPrevSelectedEdges,
@@ -373,6 +514,8 @@ const OntologyFilter = ({
 
 OntologyFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
+  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   removeFromObject: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
@@ -383,10 +526,13 @@ OntologyFilter.propTypes = {
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
+  availableNodesNormalised: PropTypes.shape().isRequired
 }
 
 const mapToProps = ({
   graphData,
+  selectedNodes,
+  selectedEdges,
   currentGraph,
   classesFromApi,
   availableNodes,
@@ -396,9 +542,12 @@ const mapToProps = ({
   filterEdgesByPropSelectedElement,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
-  edgesIdsToDisplay
+  edgesIdsToDisplay,
+  availableNodesNormalised
 }) => ({
   graphData,
+  selectedNodes,
+  selectedEdges,
   currentGraph,
   classesFromApi,
   availableNodes,
@@ -408,7 +557,8 @@ const mapToProps = ({
   filterEdgesByPropSelectedElement,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
-  edgesIdsToDisplay
+  edgesIdsToDisplay,
+  availableNodesNormalised
 })
 
 export default connect(
