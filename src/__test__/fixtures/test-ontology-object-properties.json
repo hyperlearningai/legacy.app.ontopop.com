@@ -729,6 +729,10 @@
       "skosComment" : null,
       "owlAnnotationProperties" : { },
       "rdfsSubPropertyOf" : [ ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subclassof": {
+      "rdfAbout": "http://www.w3.org/2000/01/rdf-schema#subclassof",
+      "rdfsLabel": "subClassOf"
     }
   }
 }

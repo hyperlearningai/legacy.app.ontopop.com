@@ -1,4 +1,5 @@
 import { generatePredicateId } from '../constants/functions'
+import { SUB_CLASS_OF_LABEL } from '../constants/graph'
 import store from '../store'
 
 /**
@@ -49,7 +50,7 @@ const addNodesEdgesToGraph = async ({
           from,
           to,
           id,
-          label: objectPropertiesFromApi[predicate].rdfsLabel,
+          label: objectPropertiesFromApi[predicate]?.rdfsLabel || SUB_CLASS_OF_LABEL,
         }
 
         const edgeObject = {
@@ -109,13 +110,13 @@ const addNodesEdgesToGraph = async ({
   }
 
   if (edgesAdded) {
-    setStoreState('newAvailableNodesNormalised', newAvailableNodesNormalised)
+    setStoreState('edgesConnections', newEdgesConnections)
     setStoreState('availableEdgesNormalised', newAvailableEdgesNormalised)
   }
 
   if (nodesAdded) {
+    setStoreState('availableNodesNormalised', newAvailableNodesNormalised)
     setStoreState('nodesConnections', newNodesConnections)
-    setStoreState('edgesConnections', newEdgesConnections)
 
     setStoreState('physicsRepulsion', false)
   }

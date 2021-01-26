@@ -73,6 +73,7 @@ describe('setNodesIdsToDisplay', () => {
       [
         'edgesIdsToDisplay',
         [
+          'http://www.w3.org/2000/01/rdf-schema#subclassof',
           'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
           'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
         ],
@@ -81,11 +82,17 @@ describe('setNodesIdsToDisplay', () => {
         'nodesIdsToDisplay',
         [
           'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          'http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u',
           'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
+          'http://webprotege.stanford.edu/R83VJMr2iUDDav8mz3n6ZyH',
+          'http://webprotege.stanford.edu/R9UuC5ptRevqURhJa0PIBmB',
+          'http://webprotege.stanford.edu/R9Y5iEV0xhBtSZMrtzLdmwd',
+          'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6',
+          'http://webprotege.stanford.edu/RYOFagzdcydXMf8mlO9vsG',
           'http://webprotege.stanford.edu/Rhx4iGF2ITGgrmcS2fHAN5',
+          'http://webprotege.stanford.edu/RmrjgvX01FgGHXkfTXE4MO',
         ],
       ],
-
     ])
   })
 
@@ -126,7 +133,7 @@ describe('setNodesIdsToDisplay', () => {
       ],
       [
         'isNodeOverlay',
-        true
+        true,
       ],
       [
         'highlightedNodes',
@@ -181,7 +188,7 @@ describe('setNodesIdsToDisplay', () => {
       ],
       [
         'isNodeOverlay',
-        false
+        false,
       ],
       [
         'highlightedNodes',

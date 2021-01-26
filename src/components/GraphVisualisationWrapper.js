@@ -12,6 +12,7 @@ import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import getAllTriplesPerNode from '../utils/getAllTriplesPerNode'
 import getGraphData from '../utils/getGraphData'
 import addNodesEdgesToGraph from '../utils/addNodesEdgesToGraph'
+import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
 
 const GraphVisualisationWrapper = ({
   currentGraph,
@@ -31,6 +32,12 @@ const GraphVisualisationWrapper = ({
     // Set data from local file for debugging
     // const classesFromApi = jsonClasses.OwlClasses
     // const objectPropertiesFromApi = jsonObjectProperties.OwlObjectProperties
+
+    // add subClassOf to avoid missing links between nodes
+    objectProperties[SUB_CLASS_OF_ID] = {
+      rdfAbout: SUB_CLASS_OF_ID,
+      rdfsLabel: SUB_CLASS_OF_LABEL
+    }
 
     setStoreState('classesFromApi', classes)
     setStoreState('objectPropertiesFromApi', objectProperties)

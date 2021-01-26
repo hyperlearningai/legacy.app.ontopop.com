@@ -77,6 +77,7 @@ export const algoTypeFull = [
       'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
       'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
       'http://www.w3.org/2002/07/owl#topObjectProperty',
+      'http://www.w3.org/2000/01/rdf-schema#subclassof',
     ],
   ],
   [
