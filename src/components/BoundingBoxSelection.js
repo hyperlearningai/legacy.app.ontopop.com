@@ -5,26 +5,34 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
+import {
+  RiAddBoxLine,
+  RiCheckboxIndeterminateLine
+} from 'react-icons/ri'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_BOUNDING_BOX } from '../constants/views'
 import setBoundingBoxNodes from '../utils/setBoundingBoxNodes'
+import getNodesFromBoundingBox from '../utils/canvasUtils/getNodesFromBoundingBox'
 
 const BoundingBoxSelection = ({
   setStoreState,
   selectedBoundingBoxNodes,
   updateGraphData,
+  isBoundingBoxSelectionInternal
 }) => {
   const { t } = useTranslation()
 
   useEffect(() => {
     setStoreState('isBoundingBoxSelectable', true)
-    // setStoreState('isBoundingBoxDraggable', true)
 
     return () => {
       setStoreState('isBoundingBoxSelectable', false)
-      setStoreState('isBoundingBoxDraggable', false)
+      setStoreState('isBoundingBoxDrawable', false)
+      setStoreState('isBoundingBoxSelectionInternal', true)
       setStoreState('selectedBoundingBoxNodes', [])
       setStoreState('boundingBoxGeometry', {
+        fixedPointX: 0,
+        fixedPointY: 0,
         boundingBoxPosX: 0,
         boundingBoxPosY: 0,
         boundingBoxWidth: 0,
@@ -32,6 +40,10 @@ const BoundingBoxSelection = ({
       })
     }
   }, [])
+
+  useEffect(() => getNodesFromBoundingBox({
+    setStoreState
+  }), [isBoundingBoxSelectionInternal])
 
   return (
     <>
@@ -41,6 +53,12 @@ const BoundingBoxSelection = ({
       <div className="bounding-box">
         <div className="bounding-box-selection">
           {t('drawBoundingBox')}
+        </div>
+        <div className="bounding-box-selection-steps">
+          {t('drawBoundingBoxFirstClick')}
+        </div>
+        <div className="bounding-box-selection-steps">
+          {t('drawBoundingBoxSecondClick')}
         </div>
 
         <div className="bounding-box-selected">
@@ -55,6 +73,30 @@ const BoundingBoxSelection = ({
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div className="bounding-box-input">
+          <div className="label">
+            {t('selectionDirection')}
+          </div>
+          <div className="network-settings-buttons">
+            <Button
+              tooltip={t('insideBoundingBox')}
+              tooltipOptions={{ position: 'top' }}
+              className={isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
+              onClick={() => setStoreState('isBoundingBoxSelectionInternal', true)}
+            >
+              <RiAddBoxLine />
+            </Button>
+            <Button
+              tooltip={t('outsideBoundingBox')}
+              tooltipOptions={{ position: 'top' }}
+              className={!isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
+              onClick={() => setStoreState('isBoundingBoxSelectionInternal', false)}
+            >
+              <RiCheckboxIndeterminateLine />
+            </Button>
+          </div>
         </div>
 
         <Button
@@ -78,16 +120,19 @@ BoundingBoxSelection.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   selectedBoundingBoxNodes: PropTypes.string.isRequired,
   updateGraphData: PropTypes.func.isRequired,
+  isBoundingBoxSelectionInternal: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
   graphData,
   currentGraph,
   selectedBoundingBoxNodes,
+  isBoundingBoxSelectionInternal
 }) => ({
   graphData,
   currentGraph,
   selectedBoundingBoxNodes,
+  isBoundingBoxSelectionInternal
 })
 
 export default connect(

@@ -1,4 +1,5 @@
 import store from '../../store'
+import getNodesFromBoundingBox from './getNodesFromBoundingBox'
 
 /**
  * Update X-Y position of bounding box on mouse down event listener
@@ -13,42 +14,35 @@ const onMouseDown = ({
 }) => {
   const {
     boundingBoxGeometry,
-    isBoundingBoxDraggable
+    isBoundingBoxDrawable,
   } = store.getState()
 
-  const newDraggingState = !isBoundingBoxDraggable
-  setStoreState('boundingBoxGeometry', isBoundingBoxDraggable)
+  const isBoundingBoxDrawableNow = !isBoundingBoxDrawable
 
-  if (newDraggingState) {
-    const newBoundingBoxGeometry = JSON.parse(JSON.stringify(boundingBoxGeometry))
+  setStoreState('isBoundingBoxDrawable', isBoundingBoxDrawableNow)
+
+  const newBoundingBoxGeometry = JSON.parse(JSON.stringify(boundingBoxGeometry))
+
+  if (isBoundingBoxDrawableNow) {
+    setStoreState('selectedBoundingBoxNodes', [])
 
     const {
-      layerX,
-      layerY,
-      movementX,
-      movementY,
       offsetX,
       offsetY,
-      x,
-      y,
     } = e
-    console.log({
-      layerX,
-      layerY,
-      movementX,
-      movementY,
-      offsetX,
-      offsetY,
-      x,
-      y,
-    })
 
-    newBoundingBoxGeometry.boundingBoxPosX = e.offsetX
-    newBoundingBoxGeometry.boundingBoxPosY = e.offsetY + 70
+    newBoundingBoxGeometry.fixedPointX = offsetX
+    newBoundingBoxGeometry.fixedPointY = offsetY
+    newBoundingBoxGeometry.boundingBoxPosX = offsetX
+    newBoundingBoxGeometry.boundingBoxPosY = offsetY
     newBoundingBoxGeometry.boundingBoxWidth = 0
     newBoundingBoxGeometry.boundingBoxHeight = 0
 
     setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
+  } else {
+    getNodesFromBoundingBox({
+      setStoreState
+    })
   }
 }
 

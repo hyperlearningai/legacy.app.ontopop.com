@@ -43,8 +43,13 @@ export default {
 
   // bounding box
   boundingBox: 'Bounding box selection',
-  drawBoundingBox: 'Draw a bounding box on canvas to select nodes inside it',
+  drawBoundingBox: 'Select nodes by drawing a bounding box in the canvas',
+  drawBoundingBoxFirstClick: 'First click: Start drawing',
+  drawBoundingBoxSecondClick: 'Second click: Set bounding box',
   showSelectedNodes: 'Show selected nodes',
+  selectionDirection: 'Selection direction',
+  insideBoundingBox: 'Inside bounding box',
+  outsideBoundingBox: 'Outside bounding box',
 
   // node neighbourhood
   show: 'Show',

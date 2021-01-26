@@ -26,6 +26,8 @@ const setup = ({
     },
     isBoundingBoxSelectable,
     boundingBoxGeometry: {
+      fixedPointX: 100,
+      fixedPointY: 100,
       boundingBoxPosX: 100,
       boundingBoxPosY: 100,
       boundingBoxWidth: 200,

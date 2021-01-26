@@ -93,7 +93,7 @@ const GraphVisualisationWrapper = ({
   } = boundingBoxGeometry
 
   return (
-    <>
+    <div className="graph-container">
       <GraphVisualisation />
 
       {
@@ -141,8 +141,7 @@ const GraphVisualisationWrapper = ({
         />
         )
       }
-
-    </>
+    </div>
   )
 }
 

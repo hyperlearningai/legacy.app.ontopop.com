@@ -1,10 +1,3 @@
-// if (drag) {
-//   rect.w = (e.pageX - this.offsetLeft) - rect.startX
-//   rect.h = (e.pageY - this.offsetTop) - rect.startY
-//   ctx.clearRect(0, 0, canvas.width, canvas.height)
-//   draw()
-// }
-
 import store from '../../store'
 
 /**
@@ -20,31 +13,38 @@ const onMouseMove = ({
 }) => {
   const {
     boundingBoxGeometry,
+    isBoundingBoxDrawable
   } = store.getState()
 
-  const newBoundingBoxGeometry = JSON.parse(JSON.stringify(boundingBoxGeometry))
+  if (isBoundingBoxDrawable) {
+    const newBoundingBoxGeometry = JSON.parse(JSON.stringify(boundingBoxGeometry))
 
-  const {
-    layerX,
-    layerY,
-    // movementX,
-    // movementY,
-    // offsetX,
-    // offsetY,
-    // x,
-    // y,
-  } = e
-  console.log({
-    layerX,
-    layerY,
-    boundingBoxPosX: newBoundingBoxGeometry.boundingBoxPosX,
-    boundingBoxPosY: newBoundingBoxGeometry.boundingBoxPosY
-  })
+    const {
+      fixedPointX,
+      fixedPointY,
+    } = newBoundingBoxGeometry
 
-  newBoundingBoxGeometry.boundingBoxWidth = e.layerX - newBoundingBoxGeometry.boundingBoxPosX
-  newBoundingBoxGeometry.boundingBoxHeight = e.layerY // - newBoundingBoxGeometry.boundingBoxPosY
+    const {
+      offsetX,
+      offsetY
+    } = e
 
-  setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
+    const boundingBoxPosX = offsetX >= fixedPointX ? fixedPointX : offsetX
+    const boundingBoxPosY = offsetY >= fixedPointY ? fixedPointY : offsetY
+    const boundingBoxWidth = offsetX >= fixedPointX
+      ? offsetX - fixedPointX
+      : fixedPointX - offsetX
+    const boundingBoxHeight = offsetY >= fixedPointY
+      ? offsetY - fixedPointY
+      : fixedPointY - offsetY
+
+    newBoundingBoxGeometry.boundingBoxPosX = boundingBoxPosX
+    newBoundingBoxGeometry.boundingBoxPosY = boundingBoxPosY
+    newBoundingBoxGeometry.boundingBoxWidth = boundingBoxWidth
+    newBoundingBoxGeometry.boundingBoxHeight = boundingBoxHeight
+
+    setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
+  }
 }
 
 export default onMouseMove

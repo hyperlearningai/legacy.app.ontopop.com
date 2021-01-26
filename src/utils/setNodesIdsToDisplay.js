@@ -6,6 +6,7 @@ import {
 } from '../constants/algorithms'
 import getNodesEdgesFromPaths from './getNodesEdgesFromPaths'
 import getNeighbours from './getNeighbours'
+import getBoundingBoxEdges from './getBoundingBoxEdges'
 import store from '../store'
 
 /**
@@ -46,18 +47,15 @@ const setNodesIdsToDisplay = async ({
       triplesPerNode
     } = options
 
-    const {
-      neighbourNodes,
-      neighbourEdges
-    } = getNeighbours({
+    const boundingBoxEdges = getBoundingBoxEdges({
       selectedBoundingBoxNodes,
       classesFromApi,
       triplesPerNode
     })
 
     setStoreState('highlightedNodes', [])
-    setStoreState('edgesIdsToDisplay', neighbourEdges)
-    setStoreState('nodesIdsToDisplay', neighbourNodes)
+    setStoreState('edgesIdsToDisplay', boundingBoxEdges)
+    setStoreState('nodesIdsToDisplay', selectedBoundingBoxNodes)
   }
 
   if (type === ALGO_TYPE_NEIGHBOURHOOD) {

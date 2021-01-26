@@ -16,6 +16,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.2.0]
+### Added
+- ONTOLOGY-47 Visualise subnetwork after dynamic bounding box selection
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
 ## [0.1.0]
 ### Added
 - ONTOLOGY-27 Spider on filtered nodes

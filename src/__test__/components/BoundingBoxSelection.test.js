@@ -3,11 +3,14 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import BoundingBoxSelection from '../../components/BoundingBoxSelection'
 
-const setup = () => {
+const setup = ({
+  isBoundingBoxSelectionInternal
+}) => {
   const props = {
     setStoreState: jest.fn(),
     selectedBoundingBoxNodes: [],
     updateGraphData: jest.fn(),
+    isBoundingBoxSelectionInternal
   }
 
   const component = shallow(<BoundingBoxSelection {...props} />)
@@ -23,10 +26,22 @@ describe('BoundingBoxSelection', () => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot ', () => {
+  it('should match snapshot when isBoundingBoxSelectionInternal', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      isBoundingBoxSelectionInternal: true
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when isBoundingBoxSelectionInternal is false', () => {
+    const {
+      component
+    } = setup({
+      isBoundingBoxSelectionInternal: false
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

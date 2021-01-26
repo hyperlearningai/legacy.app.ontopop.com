@@ -14,8 +14,6 @@ const setBoundingBoxNodes = ({
   updateGraphData
 }) => {
   const {
-    // classesFromApi,
-    // selectedNeighbourNode,
     lastGraphIndex,
     triplesPerNode,
     selectedBoundingBoxNodes
@@ -25,7 +23,6 @@ const setBoundingBoxNodes = ({
 
   const newCurrentGraph = `graph-${newGraphIndex}`
 
-  // const selectedNodeId = classesFromApi[selectedNeighbourNode] ? classesFromApi[selectedNeighbourNode].id : ''
   const label = `bounding-box-${newCurrentGraph}`
 
   const graphValue = {
