@@ -108,31 +108,6 @@ const setNetworkMethods = async ({
     }
   })
 
-  // network?.on('afterDrawing', (ctx) => {
-  //   // const rect = {},
-  //   // const drag = false;
-
-  //   const nodeId = 1
-  //   const nodePosition = network.getPositions([nodeId])
-  //   ctx.strokeStyle = '#294475'
-  //   ctx.lineWidth = 4
-  //   ctx.fillStyle = '#A6D5F7'
-
-  //   ctx.beginPath()
-  //   ctx.arc(
-  //     nodePosition[nodeId].x,
-  //     nodePosition[nodeId].y,
-  //     20,
-  //     0,
-  //     2 * Math.PI,
-  //     false
-  //   )
-  //   ctx.closePath()
-
-  //   ctx.fill()
-  //   ctx.stroke()
-  // })
-
   network?.once('stabilizationIterationsDone', () => {
     setStoreState('networkLoadingProgress', 0)
     setStoreState('isNetworkLoading', false)
