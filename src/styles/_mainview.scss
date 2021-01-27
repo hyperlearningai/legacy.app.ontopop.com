@@ -7,6 +7,10 @@
   &-area {
     width: 100%;
     height: calc(100% - 140px);
-    position: relative;
+
+    .graph-container {
+      position: relative;
+      height: 100%;
+    }
   }
 }

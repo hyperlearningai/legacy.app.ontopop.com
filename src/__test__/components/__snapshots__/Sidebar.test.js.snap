@@ -22,6 +22,28 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
 </Connect>
 `;
 
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDING_BOX 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  isSidebarOpen={true}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="boundingBox"
+>
+  <Component />
+</Connect>
+`;
+
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_SELECTION 1`] = `
 <Connect
   actions={
@@ -35,7 +57,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
       "updateGraphData": [Function],
     }
   }
-  isSidebarOpen={false}
+  isSidebarOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="edgesSelection"
@@ -57,7 +79,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_T
       "updateGraphData": [Function],
     }
   }
-  isSidebarOpen={false}
+  isSidebarOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="freeTextSearch"
@@ -79,7 +101,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
       "updateGraphData": [Function],
     }
   }
-  isSidebarOpen={false}
+  isSidebarOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="networkGraphs"
@@ -101,7 +123,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
       "updateGraphData": [Function],
     }
   }
-  isSidebarOpen={false}
+  isSidebarOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="nodeNeighbourhood"
@@ -123,7 +145,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
       "updateGraphData": [Function],
     }
   }
-  isSidebarOpen={false}
+  isSidebarOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="nodesSelection"
@@ -145,7 +167,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
       "updateGraphData": [Function],
     }
   }
-  isSidebarOpen={false}
+  isSidebarOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="settings"
@@ -167,7 +189,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
       "updateGraphData": [Function],
     }
   }
-  isSidebarOpen={false}
+  isSidebarOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="shortestPath"

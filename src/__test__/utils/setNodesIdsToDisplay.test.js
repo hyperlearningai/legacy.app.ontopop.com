@@ -1,7 +1,8 @@
 import {
   ALGO_TYPE_FULL,
   ALGO_TYPE_NEIGHBOURHOOD,
-  ALGO_TYPE_SHORTEST_PATH
+  ALGO_TYPE_SHORTEST_PATH,
+  ALGO_TYPE_BOUNDING_BOX
 } from '../../constants/algorithms'
 import setNodesIdsToDisplay from '../../utils/setNodesIdsToDisplay'
 import { OwlClasses } from '../fixtures/test-ontology-classes.json'
@@ -38,6 +39,46 @@ describe('setNodesIdsToDisplay', () => {
     })
 
     expect(setStoreState.mock.calls).toEqual(algoTypeFull)
+  })
+
+  it('should work correctly when ALGO_TYPE_BOUNDING_BOX', async () => {
+    const type = ALGO_TYPE_BOUNDING_BOX
+
+    const options = {
+      selectedBoundingBoxNodes: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
+      triplesPerNode
+    }
+
+    await setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options
+    })
+
+    expect(setStoreState.mock.calls).toEqual([
+      [
+        'highlightedNodes',
+        [],
+      ],
+      [
+        'isNodeOverlay',
+        false,
+      ],
+      [
+        'highlightedNodes',
+        [],
+      ],
+      [
+        'edgesIdsToDisplay',
+        [],
+      ],
+      [
+        'nodesIdsToDisplay',
+        [
+          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+        ],
+      ],
+    ])
   })
 
   it('should work correctly when ALGO_TYPE_NEIGHBOURHOOD', async () => {
