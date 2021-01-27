@@ -1,7 +1,10 @@
+import { DataSet } from 'vis-data'
 import getNodesFromBoundingBox from '../../../utils/canvasUtils/getNodesFromBoundingBox'
 import store from '../../../store'
+import clearNodesSelection from '../../../utils/canvasUtils/clearNodesSelection'
 
 const setStoreState = jest.fn()
+jest.mock('../../../utils/canvasUtils/clearNodesSelection')
 
 describe('getNodesFromBoundingBox', () => {
   afterEach(() => {
@@ -29,6 +32,7 @@ describe('getNodesFromBoundingBox', () => {
           x: 50,
           y: 50
         }),
+        availableNodes: new DataSet()
       }
 
     }))
@@ -37,6 +41,7 @@ describe('getNodesFromBoundingBox', () => {
       setStoreState
     })
 
+    expect(clearNodesSelection).toHaveBeenCalled()
     expect(setStoreState).toHaveBeenCalledTimes(0)
   })
 
@@ -65,14 +70,17 @@ describe('getNodesFromBoundingBox', () => {
           x: 200,
           y: 200
         }),
-      }
-
+      },
+      availableNodes: new DataSet({
+        id: 'node-123'
+      })
     }))
 
     await getNodesFromBoundingBox({
       setStoreState
     })
 
+    expect(clearNodesSelection).toHaveBeenCalled()
     expect(setStoreState).toHaveBeenCalledWith(
       'selectedBoundingBoxNodes',
       ['node-123']
@@ -104,7 +112,10 @@ describe('getNodesFromBoundingBox', () => {
           x: 50,
           y: 50
         }),
-      }
+      },
+      availableNodes: new DataSet({
+        id: 'node-123'
+      })
 
     }))
 
@@ -112,6 +123,7 @@ describe('getNodesFromBoundingBox', () => {
       setStoreState
     })
 
+    expect(clearNodesSelection).toHaveBeenCalled()
     expect(setStoreState).toHaveBeenCalledWith(
       'selectedBoundingBoxNodes',
       ['node-123']

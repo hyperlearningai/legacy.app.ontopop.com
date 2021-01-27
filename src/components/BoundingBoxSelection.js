@@ -13,12 +13,13 @@ import actions from '../store/actions'
 import { SIDEBAR_VIEW_BOUNDING_BOX } from '../constants/views'
 import setBoundingBoxNodes from '../utils/setBoundingBoxNodes'
 import getNodesFromBoundingBox from '../utils/canvasUtils/getNodesFromBoundingBox'
+import clearNodesSelection from '../utils/canvasUtils/clearNodesSelection'
 
 const BoundingBoxSelection = ({
   setStoreState,
   selectedBoundingBoxNodes,
   updateGraphData,
-  isBoundingBoxSelectionInternal
+  isBoundingBoxSelectionInternal,
 }) => {
   const { t } = useTranslation()
 
@@ -26,6 +27,7 @@ const BoundingBoxSelection = ({
     setStoreState('isBoundingBoxSelectable', true)
 
     return () => {
+      clearNodesSelection()
       setStoreState('isBoundingBoxSelectable', false)
       setStoreState('isBoundingBoxDrawable', false)
       setStoreState('isBoundingBoxSelectionInternal', true)
@@ -127,12 +129,12 @@ const mapToProps = ({
   graphData,
   currentGraph,
   selectedBoundingBoxNodes,
-  isBoundingBoxSelectionInternal
+  isBoundingBoxSelectionInternal,
 }) => ({
   graphData,
   currentGraph,
   selectedBoundingBoxNodes,
-  isBoundingBoxSelectionInternal
+  isBoundingBoxSelectionInternal,
 })
 
 export default connect(

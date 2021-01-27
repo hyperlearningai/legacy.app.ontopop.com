@@ -1,4 +1,6 @@
+import { HIGHLIGHT_NODE_BACKGROUND } from '../../constants/graph'
 import store from '../../store'
+import clearNodesSelection from './clearNodesSelection'
 
 /**
  * Get nodes inside/outside bounding box
@@ -6,15 +8,18 @@ import store from '../../store'
  * @param  {function} params.setStoreState          setStoreState action
  * @return
  */
-const getNodesFromBoundingBox = async ({
+const getNodesFromBoundingBox = ({
   setStoreState
 }) => {
   const {
     boundingBoxGeometry,
     isBoundingBoxSelectionInternal,
     availableNodesNormalised,
-    network
+    availableNodes,
+    network,
   } = store.getState()
+
+  clearNodesSelection()
 
   const availableNodesIds = Object.keys(availableNodesNormalised)
 
@@ -41,7 +46,15 @@ const getNodesFromBoundingBox = async ({
           && nodeXyCoordinatesCanvas.y <= boundingBoxPosY2
           && nodeXyCoordinatesCanvas.y >= boundingBoxPosY
 
-        return isBoundingBoxSelectionInternal ? isInsideBox : !isInsideBox
+        const isHighlighted = isBoundingBoxSelectionInternal ? isInsideBox : !isInsideBox
+
+        if (isHighlighted) {
+          availableNodes.update(
+            [{ id: nodeId, color: { background: HIGHLIGHT_NODE_BACKGROUND } }]
+          )
+        }
+
+        return isHighlighted
       }))
   }
 }

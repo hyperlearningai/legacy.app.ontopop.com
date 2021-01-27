@@ -36,7 +36,10 @@ const NetworkGraphList = ({
                     <Button
                       tooltip={`${t('removeGraph')}: ${label}`}
                       onClick={() => {
-                        setStoreState('currentGraph', 'graph-0')
+                        if (currentGraph === graphViewsKey) {
+                          setStoreState('currentGraph', 'graph-0')
+                        }
+
                         removeFromObject('graphData', graphViewsKey)
                       }}
                       icon="pi pi-times"

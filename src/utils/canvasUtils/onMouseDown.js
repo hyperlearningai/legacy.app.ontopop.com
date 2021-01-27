@@ -1,4 +1,5 @@
 import store from '../../store'
+import clearNodesSelection from './clearNodesSelection'
 import getNodesFromBoundingBox from './getNodesFromBoundingBox'
 
 /**
@@ -15,34 +16,39 @@ const onMouseDown = ({
   const {
     boundingBoxGeometry,
     isBoundingBoxDrawable,
+    isBoundingBoxSelectable
   } = store.getState()
 
-  const isBoundingBoxDrawableNow = !isBoundingBoxDrawable
+  if (isBoundingBoxSelectable) {
+    const isBoundingBoxDrawableNow = !isBoundingBoxDrawable
 
-  setStoreState('isBoundingBoxDrawable', isBoundingBoxDrawableNow)
+    setStoreState('isBoundingBoxDrawable', isBoundingBoxDrawableNow)
 
-  const newBoundingBoxGeometry = JSON.parse(JSON.stringify(boundingBoxGeometry))
+    const newBoundingBoxGeometry = JSON.parse(JSON.stringify(boundingBoxGeometry))
 
-  if (isBoundingBoxDrawableNow) {
-    setStoreState('selectedBoundingBoxNodes', [])
+    if (isBoundingBoxDrawableNow) {
+      clearNodesSelection()
 
-    const {
-      offsetX,
-      offsetY,
-    } = e
+      setStoreState('selectedBoundingBoxNodes', [])
 
-    newBoundingBoxGeometry.fixedPointX = offsetX
-    newBoundingBoxGeometry.fixedPointY = offsetY
-    newBoundingBoxGeometry.boundingBoxPosX = offsetX
-    newBoundingBoxGeometry.boundingBoxPosY = offsetY
-    newBoundingBoxGeometry.boundingBoxWidth = 0
-    newBoundingBoxGeometry.boundingBoxHeight = 0
+      const {
+        offsetX,
+        offsetY,
+      } = e
 
-    setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
-  } else {
-    getNodesFromBoundingBox({
-      setStoreState
-    })
+      newBoundingBoxGeometry.fixedPointX = offsetX
+      newBoundingBoxGeometry.fixedPointY = offsetY
+      newBoundingBoxGeometry.boundingBoxPosX = offsetX
+      newBoundingBoxGeometry.boundingBoxPosY = offsetY
+      newBoundingBoxGeometry.boundingBoxWidth = 0
+      newBoundingBoxGeometry.boundingBoxHeight = 0
+
+      setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
+    } else {
+      getNodesFromBoundingBox({
+        setStoreState
+      })
+    }
   }
 }
 

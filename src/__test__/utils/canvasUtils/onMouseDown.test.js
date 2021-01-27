@@ -1,8 +1,11 @@
 import onMouseDown from '../../../utils/canvasUtils/onMouseDown'
 import store from '../../../store'
 import getNodesFromBoundingBox from '../../../utils/canvasUtils/getNodesFromBoundingBox'
+import clearNodesSelection from '../../../utils/canvasUtils/clearNodesSelection'
 
 jest.mock('../../../utils/canvasUtils/getNodesFromBoundingBox')
+jest.mock('../../../utils/canvasUtils/clearNodesSelection')
+
 const setStoreState = jest.fn()
 const e = {
   offsetX: 100,
@@ -14,10 +17,11 @@ describe('onMouseDown', () => {
     jest.clearAllMocks()
   })
 
-  it('should work correctly when isBoundingBoxDrawableNow is false at start', async () => {
+  it('should work correctly when isBoundingBoxSelectable is false', async () => {
     store.getState = jest.fn().mockImplementationOnce(() => ({
       boundingBoxGeometry: {},
       isBoundingBoxDrawable: false,
+      isBoundingBoxSelectable: false
     }))
 
     await onMouseDown({
@@ -25,6 +29,22 @@ describe('onMouseDown', () => {
       setStoreState
     })
 
+    expect(setStoreState).toHaveBeenCalledTimes(0)
+  })
+
+  it('should work correctly when isBoundingBoxDrawableNow is false at start', async () => {
+    store.getState = jest.fn().mockImplementationOnce(() => ({
+      boundingBoxGeometry: {},
+      isBoundingBoxDrawable: false,
+      isBoundingBoxSelectable: true
+    }))
+
+    await onMouseDown({
+      e,
+      setStoreState
+    })
+
+    expect(clearNodesSelection).toHaveBeenCalled()
     expect(setStoreState.mock.calls).toEqual([
       [
         'isBoundingBoxDrawable',
@@ -52,6 +72,7 @@ describe('onMouseDown', () => {
     store.getState = jest.fn().mockImplementationOnce(() => ({
       boundingBoxGeometry: {},
       isBoundingBoxDrawable: true,
+      isBoundingBoxSelectable: true
     }))
 
     await onMouseDown({
