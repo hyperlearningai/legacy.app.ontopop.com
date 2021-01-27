@@ -12,26 +12,35 @@ const initialState = {
   sidebarView: SIDEBAR_VIEW_GRAPHS,
   modal: '',
   loading: false,
+
+  // data loaded at startup
   classesFromApi: {},
   objectPropertiesFromApi: {},
   triplesPerNode: {},
   network: undefined,
 
+  // navbar buttons
   isInfoOpen: true,
   isSearchOpen: false,
   isEdgeFilterOpen: false,
   isSettingsOpen: false,
   searchFilter: '',
   edgesToIgnore: [],
-  physicsHierarchicalView: false,
-  physicsRepulsion: true,
-  physicsEdgeLength: 250,
+
   edgeFilter: '',
   deletedNodes: [],
   isNetworkLoading: false,
   networkLoadingProgress: 0,
+
+  // free text selection
+  freeTextSelection: {},
+  freeTextSelectedElement: '',
+
+  // node/edge selection
   isNodeSelectable: false,
   isEdgeSelectable: false,
+
+  // bounding box
   selectedBoundingBoxNodes: [],
   isBoundingBoxSelectable: false,
   isBoundingBoxDrawable: false,
@@ -44,12 +53,16 @@ const initialState = {
     boundingBoxHeight: 0,
   },
   isBoundingBoxSelectionInternal: true,
+
+  // file export
   exportFileName: 'network-graph',
-  freeTextSelection: {},
-  freeTextSelectedElement: '',
+
+  // shortest path
   isShortestPathNodeSelectable: false,
   shortestPathSelectedNodes: [],
   shortestPathResults: [],
+
+  // context menu
   showContextMenu: false,
   contextMenuData: {
     top: 0,
@@ -57,10 +70,15 @@ const initialState = {
     nodeId: ''
   },
 
+  // physics
+  isPhysicsOn: false,
+  physicsHierarchicalView: false,
+  physicsRepulsion: true,
+  physicsEdgeLength: 250,
+
   // states to update at every view refresh
   nodesIdsToDisplay: [],
   edgesIdsToDisplay: [],
-
   availableNodes: new DataSet([]),
   availableNodesNormalised: {},
   availableEdges: new DataSet([]),
@@ -82,7 +100,7 @@ const initialState = {
     'graph-0': {
       label: 'Main',
       noDelete: true,
-      type: ALGO_TYPE_FULL
+      type: ALGO_TYPE_FULL,
     }
   }
 }

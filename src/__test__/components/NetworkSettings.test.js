@@ -9,6 +9,7 @@ const setup = () => {
     physicsEdgeLength: 100,
     physicsRepulsion: true,
     physicsHierarchicalView: true,
+    isPhysicsOn: true,
   }
 
   const component = shallow(<NetworkSettings {...props} />)

@@ -9,6 +9,7 @@ const setup = () => {
     availableEdges: new DataSet([]),
     availableNodes: new DataSet([]),
     addToArray: jest.fn(),
+    isPhysicsOn: true,
     network: {},
     nodesIdsToDisplay: [],
     physicsEdgeLength: true,

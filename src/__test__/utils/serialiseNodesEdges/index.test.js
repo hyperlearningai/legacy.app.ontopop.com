@@ -26,9 +26,16 @@ const paths = []
 const classesFromApi = OwlClasses
 const objectPropertiesFromApi = OwlObjectProperties
 const redraw = jest.fn()
+const setOptions = jest.fn()
 const network = {
-  redraw
+  redraw,
+  setOptions
 }
+const isPhysicsOn = false
+const physicsHierarchicalView = true
+const physicsRepulsion = false
+const physicsEdgeLength = 100
+
 const getState = jest.fn().mockImplementation(() => ({
   availableNodes,
   availableEdges,
@@ -41,6 +48,10 @@ const getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
   paths,
   triplesPerNode,
+  isPhysicsOn,
+  physicsHierarchicalView,
+  physicsRepulsion,
+  physicsEdgeLength
 }))
 
 store.getState = getState
@@ -57,5 +68,60 @@ describe('serialiseNodesEdges', () => {
 
     expect(setStoreState.mock.calls).toEqual(serialiseNodesEdges1)
     expect(redraw).toHaveBeenCalled()
+    expect(setOptions).toHaveBeenCalledWith({
+      autoResize: true,
+      edges: {
+        arrows: {
+          to: true,
+        },
+        color: '#070b11',
+        labelHighlightBold: true,
+        selectionWidth: 3,
+        smooth: {
+          forceDirection: 'none',
+          roundness: 0.45,
+          type: 'cubicBezier',
+        },
+      },
+      interaction: {
+        hideEdgesOnDrag: true,
+        hover: true,
+        keyboard: true,
+        navigationButtons: true,
+      },
+      layout: {
+        hierarchical: {
+          enabled: true,
+          levelSeparation: 50,
+          nodeSpacing: 100,
+          sortMethod: 'hubsize',
+          treeSpacing: 115,
+        },
+        improvedLayout: false,
+        randomSeed: 333,
+      },
+      nodes: {
+        color: {
+          background: '#adefd1',
+          border: '#011e41',
+          highlight: {
+            background: '#abd6df',
+            border: '#009688',
+          },
+          hover: {
+            background: '#f2f2f2',
+            border: '#607d8b',
+          },
+        },
+        font: {
+          bold: '700',
+          color: 'black',
+          face: 'Montserrat',
+          size: 12,
+        },
+        shape: 'circle',
+      },
+      physics: false,
+    })
   })
 })

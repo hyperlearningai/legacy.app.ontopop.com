@@ -13,6 +13,7 @@ exports[`NetworkSettings should match snapshot  1`] = `
       "updateGraphData": [Function],
     }
   }
+  isPhysicsOn={true}
   mapToProps={[Function]}
   physicsEdgeLength={100}
   physicsHierarchicalView={true}

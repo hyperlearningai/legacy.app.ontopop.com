@@ -5,6 +5,7 @@ import addConnections from './addConnections'
 import addNode from './addNode'
 import store from '../../store'
 import getNodesEdgesFromPaths from '../getNodesEdgesFromPaths'
+import getPhysicsOptions from '../getPhysicsOptions'
 
 /**
  * Update store and graph based on node IDs to display
@@ -37,6 +38,10 @@ const serialiseNodesEdges = ({
     objectPropertiesFromApi,
     paths,
     triplesPerNode,
+    isPhysicsOn,
+    physicsHierarchicalView,
+    physicsRepulsion,
+    physicsEdgeLength
   } = store.getState()
 
   // reset nodes/edges (display at the end of the function)
@@ -166,7 +171,15 @@ const serialiseNodesEdges = ({
 
   availableNodes.add(availableNodesList)
   availableEdges.add(availableEdgesList)
-  network.redraw()
+
+  network?.redraw()
+  network?.setOptions(getPhysicsOptions({
+    isPhysicsOn,
+    physicsHierarchicalView,
+    physicsRepulsion,
+    physicsEdgeLength
+  }))
+
   return true
 }
 

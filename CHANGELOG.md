@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.2.0]
 ### Added
+- ONTOLOGY-56 Ability to turn on/off network physics
 - ONTOLOGY-47 Visualise subnetwork after dynamic bounding box selection
 
 ### Changed

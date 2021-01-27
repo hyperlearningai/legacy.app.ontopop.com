@@ -72,6 +72,8 @@ export default {
   physics: 'Physics',
   repulsion: 'Repulsion',
   positioning: 'Positioning',
+  physicsOn: 'Physics on',
+  physicsOff: 'Physics off',
 
   // Export settings
   fileName: 'File name',
