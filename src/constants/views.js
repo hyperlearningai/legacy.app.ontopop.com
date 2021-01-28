@@ -1,6 +1,3 @@
-export const NETWORK_GRAPH_VIEW = 'networkGraphView'
-export const TABLE_VIEW = 'tableView'
-
 export const SIDEBAR_VIEW_GRAPHS = 'networkGraphs'
 export const SIDEBAR_VIEW_FREE_TEXT_SEARCH = 'freeTextSearch'
 export const SIDEBAR_VIEW_NODES_SELECTION = 'nodesSelection'

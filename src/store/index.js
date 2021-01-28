@@ -2,15 +2,13 @@ import createStore from 'redux-zero'
 import { applyMiddleware } from 'redux-zero/middleware'
 import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
-import { NETWORK_GRAPH_VIEW, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 
 const initialState = {
-  // common states
+  // view updates
   isSidebarOpen: true,
-  mainView: NETWORK_GRAPH_VIEW,
   sidebarView: SIDEBAR_VIEW_GRAPHS,
-  modal: '',
   loading: false,
 
   // data loaded at startup
@@ -19,20 +17,12 @@ const initialState = {
   triplesPerNode: {},
   network: undefined,
 
-  // navbar buttons
-  isInfoOpen: true,
-  isSearchOpen: false,
-  isEdgeFilterOpen: false,
-  isSettingsOpen: false,
-  searchFilter: '',
-  edgesToIgnore: [],
-
-  edgeFilter: '',
-  deletedNodes: [],
+  // netowrk graph loading
   isNetworkLoading: false,
   networkLoadingProgress: 0,
 
   // free text selection
+  searchFilter: '',
   freeTextSelection: {},
   freeTextSelectedElement: '',
 
@@ -57,10 +47,15 @@ const initialState = {
   // file export
   exportFileName: 'network-graph',
 
+  // node neighbourhood
+  selectedNeighbourNode: '',
+  isNeighbourNodeSelectable: false,
+
   // shortest path
   isShortestPathNodeSelectable: false,
   shortestPathSelectedNodes: [],
   shortestPathResults: [],
+  isNodeOverlay: false,
 
   // context menu
   showContextMenu: false,
@@ -76,7 +71,7 @@ const initialState = {
   physicsRepulsion: true,
   physicsEdgeLength: 250,
 
-  // states to update at every view refresh
+  // Data visualisation
   nodesIdsToDisplay: [],
   edgesIdsToDisplay: [],
   availableNodes: new DataSet([]),
@@ -87,13 +82,9 @@ const initialState = {
   selectedEdges: [],
   nodesConnections: {},
   edgesConnections: {},
-  selectedNeighbourNode: '',
-  isNeighbourNodeSelectable: false,
   highlightedNodes: [],
-  isNodeOverlay: false,
-  paths: [],
 
-  // view data storage
+  // graphs data storage
   lastGraphIndex: 0,
   currentGraph: 'graph-0',
   graphData: {

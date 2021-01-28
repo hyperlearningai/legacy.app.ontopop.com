@@ -1,6 +1,7 @@
 import { generatePredicateId } from '../constants/functions'
-import { SUB_CLASS_OF_LABEL } from '../constants/graph'
+import { NODE_BORDER, NODE_BORDER_WIDTH, SUB_CLASS_OF_LABEL } from '../constants/graph'
 import store from '../store'
+import highlightSpiderableNodes from './highlightSpiderableNodes'
 
 /**
  * Add nodes and/or edges to graph
@@ -9,7 +10,7 @@ import store from '../store'
  * @param  {Function} params.setStoreState    setStoreState action
  * @return
  */
-const addNodesEdgesToGraph = async ({
+const addNodesEdgesToGraph = ({
   nodeId,
   setStoreState
 }) => {
@@ -23,6 +24,7 @@ const addNodesEdgesToGraph = async ({
     availableEdgesNormalised,
     nodesConnections,
     edgesConnections,
+    isPhysicsOn
   } = store.getState()
 
   const triples = triplesPerNode[nodeId]
@@ -115,10 +117,41 @@ const addNodesEdgesToGraph = async ({
   }
 
   if (nodesAdded) {
+    const isPhysicsOnNow = isPhysicsOn
+    if (!isPhysicsOnNow) {
+      setStoreState('isPhysicsOn', true)
+      setStoreState('physicsRepulsion', false)
+    }
+
     setStoreState('availableNodesNormalised', newAvailableNodesNormalised)
     setStoreState('nodesConnections', newNodesConnections)
 
-    setStoreState('physicsRepulsion', false)
+    highlightSpiderableNodes({
+      nodesConnections,
+      triplesPerNode,
+      availableNodes,
+      availableNodesNormalised
+    })
+
+    if (!isPhysicsOnNow) {
+      setTimeout(() => {
+        setStoreState('isPhysicsOn', false)
+        setStoreState('physicsRepulsion', false)
+      }, 4000)
+    }
+  }
+
+  const nodeProperties = availableNodes.get(nodeId)
+  if (nodeProperties) {
+    const { color } = nodeProperties
+    const newColor = color ? JSON.parse(JSON.stringify(color)) : {}
+    newColor.border = NODE_BORDER
+    newColor.borderWidth = NODE_BORDER_WIDTH
+
+    availableNodes.update({
+      id: nodeId,
+      color: newColor
+    })
   }
 }
 

@@ -90,8 +90,6 @@ export default {
   insertFileName: 'Insert file name.',
 
   // footer navbar
-  hideEdgeFilter: 'Hide edge filter',
-  showEdgeFilter: 'Show edge filter',
   hidePhysicsSettings: 'Hide physics settings',
   showPhysicsSettings: 'Show physics settings',
   allowEdgeSelection: 'Allow edge selection',

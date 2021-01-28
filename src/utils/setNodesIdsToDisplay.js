@@ -87,16 +87,16 @@ const setNodesIdsToDisplay = async ({
 
     const {
       shortestPathSelectedNodes,
-      paths,
+      shortestPathResults,
       isNodeOverlay
     } = options
 
     const {
       shortestPathEdges,
       shortestPathNodes
-    } = await getNodesEdgesFromPaths({ paths })
+    } = await getNodesEdgesFromPaths({ shortestPathResults })
 
-    setStoreState('paths', paths)
+    setStoreState('shortestPathResults', shortestPathResults)
     setStoreState('isNodeOverlay', isNodeOverlay)
     setStoreState('highlightedNodes', shortestPathSelectedNodes)
 

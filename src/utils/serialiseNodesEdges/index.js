@@ -6,7 +6,7 @@ import addNode from './addNode'
 import store from '../../store'
 import getNodesEdgesFromPaths from '../getNodesEdgesFromPaths'
 import getPhysicsOptions from '../getPhysicsOptions'
-
+import highlightSpiderableNodes from '../highlightSpiderableNodes'
 /**
  * Update store and graph based on node IDs to display
  * @param  {Object}   params
@@ -36,7 +36,7 @@ const serialiseNodesEdges = ({
     network,
     nodesIdsToDisplay,
     objectPropertiesFromApi,
-    paths,
+    shortestPathResults,
     triplesPerNode,
     isPhysicsOn,
     physicsHierarchicalView,
@@ -63,7 +63,7 @@ const serialiseNodesEdges = ({
     // shortestPathEdges,
     shortestPathNodes
   } = getNodesEdgesFromPaths({
-    paths
+    shortestPathResults
   })
 
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
@@ -106,7 +106,7 @@ const serialiseNodesEdges = ({
           objectPropertiesFromApi,
           classesFromApi,
           isNodeOverlay,
-          paths
+          shortestPathResults
         })
 
         const isEdgeDisplayable = showEdgeCheck({
@@ -144,7 +144,7 @@ const serialiseNodesEdges = ({
             isNodeOverlay,
             nodeId: to,
             nodeIdObject: toObject,
-            shortestPathNodes
+            shortestPathNodes,
           })
 
           addNode({
@@ -179,6 +179,14 @@ const serialiseNodesEdges = ({
     physicsRepulsion,
     physicsEdgeLength
   }))
+
+  // check if all connection edges are present, otherwise make a different border to display that it's spidetable
+  highlightSpiderableNodes({
+    nodesConnections,
+    triplesPerNode,
+    availableNodes,
+    availableNodesNormalised
+  })
 
   return true
 }

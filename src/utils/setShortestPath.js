@@ -24,7 +24,7 @@ const setShortestPath = async ({
     shortestPathSelectedNodes,
   } = store.getState()
 
-  const paths = await getShortestPath({
+  const shortestPathResults = await getShortestPath({
     shortestPathSelectedNodes,
     availableEdgesNormalised,
     availableNodesNormalised,
@@ -41,7 +41,7 @@ const setShortestPath = async ({
     type: ALGO_TYPE_SHORTEST_PATH,
     options: {
       shortestPathSelectedNodes,
-      paths,
+      shortestPathResults,
       isNodeOverlay
     }
   }

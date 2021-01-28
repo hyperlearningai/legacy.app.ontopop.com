@@ -158,7 +158,6 @@ GraphVisualisationWrapper.propTypes = {
 const mapToProps = ({
   currentGraph,
   graphData,
-  isSettingsOpen,
   showContextMenu,
   contextMenuData,
   isBoundingBoxSelectable,
@@ -166,7 +165,6 @@ const mapToProps = ({
 }) => ({
   currentGraph,
   graphData,
-  isSettingsOpen,
   showContextMenu,
   contextMenuData,
   isBoundingBoxSelectable,
