@@ -37,7 +37,9 @@ const OntologyFilter = ({
   objectPropertiesFromApi,
   removeFromObject,
   nodesIdsToDisplay,
-  edgesIdsToDisplay
+  edgesIdsToDisplay,
+  filterNodesByPropElementArray,
+  filterEdgesByPropElementArray
 }) => {
   const { t } = useTranslation()
   const [isNodeSelected, toggleNodeSelected] = useState(false)
@@ -50,19 +52,9 @@ const OntologyFilter = ({
   const [prevSelectedEdges, setPrevSelectedEdges] = useState([])
   const [nodeId, setNodeId] = useState('')
   const [edgeId, setEdgeId] = useState('')
-  const nodeProps = [
-    { name: 'About', code: 'about' },
-    { name: 'Comment', code: 'comment' },
-    { name: 'Definition', code: 'definition' },
-    { name: 'Label', code: 'label' }
-  ]
-
-  const edgeProps = [
-    { name: 'About', code: 'about' },
-    { name: 'Comment', code: 'comment' },
-    { name: 'Definition', code: 'definition' },
-    { name: 'Label', code: 'label' }
-  ]
+  //const filterNodesByPropElementArray 
+  //const filterEdgesByPropElementArray
+  
 
   const nodePropTemplate = (option) => (
     <div className="node-item">
@@ -100,7 +92,9 @@ const OntologyFilter = ({
     return t('allEdgeProperties')
   }
 
-  useEffect(() => () => filterNodeProps({
+  useEffect(() => {
+    getEdgesAndNodeProperties({setStoreState})
+    return () => filterNodeProps({
     searchFilterNode: '',
     searchFilterEdge: '',
     nodesIdsToDisplay,
@@ -108,7 +102,7 @@ const OntologyFilter = ({
     classesFromApi,
     objectPropertiesFromApi,
     setStoreState
-  }), [])
+  })}, [])
 
   return (
     <>
@@ -139,7 +133,7 @@ const OntologyFilter = ({
                   <MultiSelect
                     id="filterNodeProps"
                     value={selectedNodeProps}
-                    options={nodeProps}
+                    options={filterNodesByPropElementArray}
                     onChange={(e) => setSelectedNodeProps(e.value)}
                     optionLabel="name"
                     placeholder={t('allNodeProperties')}
@@ -312,7 +306,7 @@ const OntologyFilter = ({
                   <MultiSelect
                     id="filterEdgeProps"
                     value={selectedEdgeProps}
-                    options={edgeProps}
+                    options={filterEdgesByPropElementArray}
                     onChange={(e) => setSelectedEdgeProps(e.value)}
                     optionLabel="name"
                     placeholder={t('allEdgeProperties')}
@@ -505,7 +499,9 @@ OntologyFilter.propTypes = {
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  availableNodesNormalised: PropTypes.shape().isRequired
+  availableNodesNormalised: PropTypes.shape().isRequired,
+  filterNodesByPropElementArray: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  filterEdgesByPropElementArray: PropTypes.arrayOf(PropTypes.shape()).isRequired
 }
 
 const mapToProps = ({
@@ -523,7 +519,9 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  availableNodesNormalised
+  availableNodesNormalised,
+  filterNodesByPropElementArray,
+  filterEdgesByPropElementArray
 }) => ({
   graphData,
   selectedNodes,
@@ -539,7 +537,9 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  availableNodesNormalised
+  availableNodesNormalised,
+  filterNodesByPropElementArray,
+  filterEdgesByPropElementArray
 })
 
 export default connect(
