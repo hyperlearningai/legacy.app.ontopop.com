@@ -38,6 +38,7 @@ const OntologyFilter = ({
   removeFromObject,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
+  getEdgesAndNodeProperties,
   filterNodesByPropElementArray,
   filterEdgesByPropElementArray
 }) => {
@@ -52,9 +53,8 @@ const OntologyFilter = ({
   const [prevSelectedEdges, setPrevSelectedEdges] = useState([])
   const [nodeId, setNodeId] = useState('')
   const [edgeId, setEdgeId] = useState('')
-  //const filterNodesByPropElementArray 
-  //const filterEdgesByPropElementArray
-  
+  // const filterNodesByPropElementArray
+  // const filterEdgesByPropElementArray
 
   const nodePropTemplate = (option) => (
     <div className="node-item">
@@ -93,16 +93,17 @@ const OntologyFilter = ({
   }
 
   useEffect(() => {
-    getEdgesAndNodeProperties({setStoreState})
+    getEdgesAndNodeProperties({ setStoreState })
     return () => filterNodeProps({
-    searchFilterNode: '',
-    searchFilterEdge: '',
-    nodesIdsToDisplay,
-    edgesIdsToDisplay,
-    classesFromApi,
-    objectPropertiesFromApi,
-    setStoreState
-  })}, [])
+      searchFilterNode: '',
+      searchFilterEdge: '',
+      nodesIdsToDisplay,
+      edgesIdsToDisplay,
+      classesFromApi,
+      objectPropertiesFromApi,
+      setStoreState
+    })
+  }, [])
 
   return (
     <>
@@ -521,7 +522,8 @@ const mapToProps = ({
   edgesIdsToDisplay,
   availableNodesNormalised,
   filterNodesByPropElementArray,
-  filterEdgesByPropElementArray
+  filterEdgesByPropElementArray,
+  getEdgesAndNodeProperties
 }) => ({
   graphData,
   selectedNodes,
@@ -539,7 +541,8 @@ const mapToProps = ({
   edgesIdsToDisplay,
   availableNodesNormalised,
   filterNodesByPropElementArray,
-  filterEdgesByPropElementArray
+  filterEdgesByPropElementArray,
+  getEdgesAndNodeProperties
 })
 
 export default connect(
