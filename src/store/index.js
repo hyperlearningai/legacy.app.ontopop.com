@@ -26,6 +26,7 @@ const initialState = {
   physicsHierarchicalView: false,
   physicsRepulsion: true,
   physicsEdgeLength: 250,
+  physicsEdgeWidth: 2,
   edgeFilter: '',
   deletedNodes: [],
   isNetworkLoading: false,

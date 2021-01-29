@@ -29,7 +29,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
     margin-bottom: 10px;
 
     label,
@@ -97,6 +96,58 @@
       svg {
         color: $secondary !important;
         transition: $transition;
+      }
+    }
+  }
+
+  .p-accordion-tab {
+    &.p-accordion-tab-active {
+      .p-accordion-header-link {
+        text-align: left;
+        background: #32353c;
+        color: white;
+        border: 0 !important;
+        border-radius: 0 !important;
+
+        &:hover {
+          background: white;
+        }
+
+        border-top: 1px solid;
+      }
+    }
+
+    .p-accordion-header {
+      .p-accordion-header-link {
+        text-align: left;
+        background: #424350;
+        color: white;
+        border: 0;
+        border-radius: 0;
+
+        &:hover {
+          background: white;
+        }
+
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+      }
+    }
+
+    .p-accordion-content {
+      text-align: left;
+      font-size: 14px;
+      border: 0;
+      background: #33343d;
+      color: white;
+
+      .p-inputtext {
+        width: 100%;
+        border-radius: 0;
+        background: #33343d;
+        border: 0;
+        color: white;
+        text-align: center;
       }
     }
   }

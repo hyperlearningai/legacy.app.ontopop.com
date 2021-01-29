@@ -16,6 +16,7 @@ const GraphVisualisation = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
+  physicsEdgeWidth,
   setStoreState,
 }) => {
   const visJsRef = useRef(null)
@@ -28,7 +29,8 @@ const GraphVisualisation = ({
     availableEdges,
     physicsHierarchicalView,
     physicsRepulsion,
-    physicsEdgeLength
+    physicsEdgeLength,
+    physicsEdgeWidth
   }), [
     visJsRef,
   ])
@@ -52,13 +54,15 @@ const GraphVisualisation = ({
       network.setOptions(getPhysicsOptions({
         physicsHierarchicalView,
         physicsRepulsion,
-        physicsEdgeLength
+        physicsEdgeLength,
+        physicsEdgeWidth
       }))
     }
   }, [
     physicsHierarchicalView,
     physicsRepulsion,
-    physicsEdgeLength
+    physicsEdgeLength,
+    physicsEdgeWidth
   ])
 
   // set graph options
@@ -90,6 +94,7 @@ GraphVisualisation.propTypes = {
   network: PropTypes.shape(),
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
+  physicsEdgeWidth: PropTypes.number.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
@@ -107,6 +112,7 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
+  physicsEdgeWidth,
   searchFilter,
   selectedEdges,
   selectedNeighbourNode,
@@ -119,6 +125,7 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
+  physicsEdgeWidth,
   searchFilter,
   selectedEdges,
   selectedNeighbourNode,

@@ -9,6 +9,7 @@ import getPhysicsOptions from './getPhysicsOptions'
  * @param  {Boolean}  params.physicsHierarchicalView   hierarchical view flag
  * @param  {Boolean}  params.physicsRepulsion          physics repulsion flag
  * @param  {Number}   params.physicsEdgeLength         edge length as integer
+ * @param  {Number}   params.physicsEdgeWidth          edge width as integer
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Object}   params.availableNodes            VisJs Dataset of nodes IDs
  * @param  {Object}   params.availableEdges            VisJs Dataset of edges IDs
@@ -22,12 +23,14 @@ const setNetwork = ({
   availableEdges,
   physicsHierarchicalView,
   physicsRepulsion,
-  physicsEdgeLength
+  physicsEdgeLength,
+  physicsEdgeWidth
 }) => {
   const physicsSettings = getPhysicsOptions({
     physicsHierarchicalView,
     physicsRepulsion,
-    physicsEdgeLength
+    physicsEdgeLength,
+    physicsEdgeWidth
   })
 
   setStoreState('network', visJsRef.current
@@ -35,7 +38,7 @@ const setNetwork = ({
       nodes: availableNodes,
       edges: availableEdges
     },
-    physicsSettings))
+      physicsSettings))
 
   const canvas = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
 

@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
@@ -12,6 +13,7 @@ import {
   IoGitNetworkSharp
 } from 'react-icons/io5'
 import { Accordion, AccordionTab } from 'primereact/accordion'
+import { InputText } from 'primereact/inputtext';
 import { Slider } from 'primereact/slider'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
@@ -20,6 +22,7 @@ import { SIDEBAR_VIEW_SETTINGS } from '../constants/views'
 const NetworkSettings = ({
   setStoreState,
   physicsEdgeLength,
+  physicsEdgeWidth,
   physicsRepulsion,
   physicsHierarchicalView,
 }) => {
@@ -37,10 +40,8 @@ const NetworkSettings = ({
               <Accordion>
                 <AccordionTab header={t('edgeLength')}>
                   <div className="network-settings-input">
-                    <label htmlFor="rating">
-                      {t('edgeLength')}
-                    </label>
                     <div className="network-settings-item-input">
+                      <InputText value={physicsEdgeLength} onChange={(e) => setStoreState('physicsEdgeLength', parseInt(e.value))} />
                       <Slider
                         min={0}
                         max={1000}
@@ -101,7 +102,15 @@ const NetworkSettings = ({
                   </div>
                 </AccordionTab>
                 <AccordionTab header={t('edgeThickness')}>
-                  here
+                  <InputText value={physicsEdgeWidth} onChange={(e) => setStoreState('physicsEdgeWidth', parseInt(e.value))} />
+                  <Slider
+                    min={0}
+                    max={1000}
+                    step={1}
+                    id="edgeWidthSlider"
+                    value={physicsEdgeWidth}
+                    onChange={(e) => setStoreState('physicsEdgeWidth', parseInt(e.value))}
+                  />
                 </AccordionTab>
                 <AccordionTab header={t('edgeLineStyle')}>
                   here
