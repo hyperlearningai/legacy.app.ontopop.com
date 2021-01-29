@@ -71,7 +71,7 @@ export default {
   physics: 'Physics',
   repulsion: 'Repulsion',
   positioning: 'Positioning',
-  
+
   // Physics Edge
   edgeStyling: 'Edge Styling',
   edgeLength: 'Edge length',

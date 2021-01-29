@@ -119,7 +119,6 @@ const NetworkSettings = ({
             </AccordionTab>
           </Accordion>
         </div>
-        
       </div>
     </>
   )
