@@ -12,7 +12,7 @@ import getPhysicsOptions from './getPhysicsOptions'
  * @param  {Object}   params.availableNodes            VisJs Dataset of nodes IDs
  * @param  {Object}   params.availableEdges            VisJs Dataset of edges IDs
  * @param  {Node}     params.visJsRef                  reference to network graph DOM element
- * @return
+ * @return { undefined }
  */
 const setNetwork = ({
   setStoreState,

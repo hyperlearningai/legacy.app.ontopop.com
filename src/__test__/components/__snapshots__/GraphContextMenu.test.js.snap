@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphContextMenu should match snapshot 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  contextMenuData={
+    Object {
+      "left": 100,
+      "nodeId": "node-123",
+      "top": 100,
+    }
+  }
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

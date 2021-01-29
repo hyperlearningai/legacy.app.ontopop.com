@@ -9,7 +9,7 @@ import store from '../store'
  * @param  {Boolean}  params.isNodeOverlay              Display nodes outside path flag
  * @param  {Function} params.setStoreState              setStoreState action
  * @param  {Function} params.updateGraphData            Update graph data function
- * @return
+ * @return { undefined }
  */
 const setShortestPath = async ({
   isNodeOverlay,

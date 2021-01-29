@@ -3,7 +3,7 @@ import store from '../../store'
 
 /**
  * Clear selected nodes in canvas
- * @return
+ * @return { undefined }
  */
 const clearNodesSelection = () => {
   const {

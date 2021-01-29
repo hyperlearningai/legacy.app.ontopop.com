@@ -8,7 +8,7 @@ import store from '../store'
  * @param  {String}   params.prevSelectedNode         Previously selected node id
  * @param  {Function} params.setPrevSelectedEdges     update previously selected edges
  * @param  {Function} params.setPrevSelectedNode      update previously selected node
- * @return
+ * @return { undefined }
  */
 const resetSearchSelection = ({
   prevSelectedEdges,

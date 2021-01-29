@@ -7,8 +7,7 @@ export default {
   /**
    * Reset selected edges and edge selectability
    * @param  {Object} state  Store state
-   * @return
-   */
+   * @return {undefined}   */
   resetSelectedEdges: (state) => {
     const newSelectedEdges = state.selectedEdges.slice()
 
@@ -26,8 +25,7 @@ export default {
   /**
    * Reset selected nodes and nodes selectability
    * @param  {Object} state  Store state
-   * @return
-   */
+   * @return {undefined}   */
   resetSelectedNodes: (state) => {
     const newSelectedNodes = state.selectedNodes.slice()
 
@@ -47,8 +45,7 @@ export default {
    * @param  {Object} state     Store state
    * @param  {String} graphId   Graph ID
    * @param  {Object} value     Graph ID udpated data object
-   * @return
-   */
+   * @return {undefined}   */
   updateGraphData: (state, graphId, value) => {
     const newGraphData = JSON.parse(JSON.stringify(state.graphData))
 
@@ -63,8 +60,7 @@ export default {
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
    * @param  {String} id        key to remove from object
-   * @return
-   */
+   * @return {undefined}   */
   removeFromObject: (state, stateKey, id) => {
     const newObject = JSON.parse(JSON.stringify(state[stateKey]))
 
@@ -79,8 +75,7 @@ export default {
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
    * @param  {String} id        ID to remove from array
-   * @return
-   */
+   * @return {undefined}   */
   removeFromArray: (state, stateKey, id) => {
     const newArray = state[stateKey].slice()
 
@@ -107,12 +102,12 @@ export default {
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
    * @param  {String} id        ID to add to array
-   * @return
-   */
-  addToArray: (state, stateKey, id) => {
+   * @param  {Object} [options] Additional options
+   * @return {undefined}   */
+  addToArray: (state, stateKey, id, options) => {
     const newArray = state[stateKey].slice()
 
-    if (!newArray.includes(id)) newArray.push(id)
+    if (options?.alwaysAdd || !newArray.includes(id)) newArray.push(id)
 
     return ({
       [stateKey]: newArray
@@ -123,8 +118,7 @@ export default {
    * @param  {Object} state     Store state
    * @param  {String} field     State key to update
    * @param  {*}      value     ID to add to array
-   * @return
-   */
+   * @return {undefined}   */
   setStoreState: (state, field, value) => ({
     [field]: value
   })

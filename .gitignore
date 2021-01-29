@@ -25,10 +25,13 @@ yarn-error.log*
 .vscode/*
 !.vscode/settings.json
 
-#nextJS
+# nextJS
 .next
 out
 .build
+
+# docs
+docs
 
 # serverless
 .serverless

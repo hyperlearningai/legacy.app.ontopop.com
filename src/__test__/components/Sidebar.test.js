@@ -10,7 +10,8 @@ import {
   SIDEBAR_VIEW_BOUNDING_BOX,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
   SIDEBAR_VIEW_SHORTEST_PATH,
-  SIDEBAR_VIEW_SETTINGS
+  SIDEBAR_VIEW_SETTINGS,
+  SIDEBAR_VIEW_CUSTOM_QUERY
 } from '../../constants/views'
 
 const setup = ({
@@ -126,6 +127,17 @@ describe('Sidebar', () => {
     } = setup({
       isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_SETTINGS
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM_QUERY', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: true,
+      sidebarView: SIDEBAR_VIEW_CUSTOM_QUERY
     })
 
     expect(toJson(component)).toMatchSnapshot()

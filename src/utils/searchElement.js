@@ -9,7 +9,7 @@ import { getEdgeUniqueId, getElementProperties } from '../constants/functions'
  * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
  * @param  {String}   params.search                  Search string
  * @param  {Function} params.setStoreState           setStoreState action
- * @return
+ * @return { undefined }
  */
 const searchElement = ({
   classesFromApi,

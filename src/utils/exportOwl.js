@@ -15,8 +15,8 @@ import serialiseOwlFile from './serialiseOwlFile'
  * @param  {Object}   params.objectPropertiesFromApi    Edges from initial OwlObjectProperties
  * @param  {Object}   params.classesFromApi             Classes from initial OwlClasses
  * @param  {Function} params.t                          i18n translation function
- * @return
- */
+ * @return { undefined }
+\ */
 const exportOwl = async ({
   exportFileName,
   availableNodesNormalised,

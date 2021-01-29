@@ -84,6 +84,14 @@ const initialState = {
   edgesConnections: {},
   highlightedNodes: [],
 
+  // custom query
+  customQueryOutput: undefined,
+  customQueryFromLatestOutput: '',
+  customQueryStringHistory: [
+    'g.V().hasLabel(\'class\').count()',
+    'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()',
+  ],
+
   // graphs data storage
   lastGraphIndex: 0,
   currentGraph: 'graph-0',

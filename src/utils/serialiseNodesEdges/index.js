@@ -21,7 +21,7 @@ import highlightSpiderableNodes from '../highlightSpiderableNodes'
  * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
  * @param  {Function} params.setStoreState           setStoreState action
  * @param  {Object}   params.triplesPerNode          List of triples per node
- * @return
+ * @return { undefined }
  */
 const serialiseNodesEdges = ({
   setStoreState,

@@ -37,7 +37,7 @@ For unit testing:
   npm run test:watch
 ```
 
-For linting, if using Vscode, make sure to have the following extensions installed:
+For linting, if using VSCode, make sure to have the following extensions installed:
 - [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 - [Vscode-json](https://marketplace.visualstudio.com/items?itemName=andyyaldoo.vscode-json)
@@ -46,6 +46,13 @@ To check the lint status:
 ```shell script
   npm run lint
 ```
+
+## Docs 
+JSDoc is used to document API parameters.
+
+Extension for JSDocs on VSCode:
+- [JSDoc Viewer](https://marketplace.visualstudio.com/items?itemName=Shinworks.jsdoc-view)
+
 
 ## Git flow
 
