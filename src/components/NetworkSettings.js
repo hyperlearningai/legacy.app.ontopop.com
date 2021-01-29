@@ -31,37 +31,16 @@ const NetworkSettings = ({
 }) => {
   const { t } = useTranslation()
   const [color1, setColor1] = useState(null)
-  const [color2, setColor2] = useState('1976D2')
   const [selectedCities2, setSelectedCities2] = useState(null)
   const options = ['Left', 'Middle', 'Right']
-  const [value1, setValue1] = useState('Middle');
+  const [value1, setValue1] = useState('Middle')
   const cities = [
     { name: 'New York', code: 'NY' },
     { name: 'Rome', code: 'RM' },
     { name: 'London', code: 'LDN' },
     { name: 'Istanbul', code: 'IST' },
     { name: 'Paris', code: 'PRS' }
-  ];
-  const countries = [
-    { name: 'Australia', code: 'AU' },
-    { name: 'Brazil', code: 'BR' },
-    { name: 'China', code: 'CN' },
-    { name: 'Egypt', code: 'EG' },
-    { name: 'France', code: 'FR' },
-    { name: 'Germany', code: 'DE' },
-    { name: 'India', code: 'IN' },
-    { name: 'Japan', code: 'JP' },
-    { name: 'Spain', code: 'ES' },
-    { name: 'United States', code: 'US' }
-  ];
-  const countryTemplate = (option) => {
-    return (
-      <div className="country-item">
-        <img alt={option.name} src="showcase/demo/images/flag_placeholder.png" onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} className={`flag flag-${option.code.toLowerCase()}`} />
-        <div>{option.name}</div>
-      </div>
-    );
-  }
+  ]
 
   return (
     <>
@@ -151,10 +130,12 @@ const NetworkSettings = ({
                     </AccordionTab>
                     <AccordionTab header={t('edgeLineStyleColor')}>
                       <h3>{t('edgeLineStyleCurrentColor')}</h3>
-                      <ColorPicker value={color1} onChange={(e) => setColor1(e.value)}></ColorPicker> <span> {t('chooseColor')}</span>
+                      <ColorPicker value={color1} onChange={(e) => setColor1(e.value)} />
+                      <span>
+                        {t('chooseColor')}
+                      </span>
                     </AccordionTab>
-                    <AccordionTab header={t('edgeLineStyle')}>
-                    </AccordionTab>
+                    <AccordionTab header={t('edgeLineStyle')} />
                     <AccordionTab header={t('edgeCaptionPosition')} className="position-center">
                       <h3>Position of caption</h3>
                       <SelectButton value={value1} options={options} onChange={(e) => setValue1(e.value)} />
@@ -246,10 +227,12 @@ const NetworkSettings = ({
                     </AccordionTab>
                     <AccordionTab header={t('edgeLineStyleColor')}>
                       <h3>{t('edgeLineStyleCurrentColor')}</h3>
-                      <ColorPicker value={color1} onChange={(e) => setColor1(e.value)}></ColorPicker> <span> {t('chooseColor')}</span>
+                      <ColorPicker value={color1} onChange={(e) => setColor1(e.value)} />
+                      <span>
+                        {t('chooseColor')}
+                      </span>
                     </AccordionTab>
-                    <AccordionTab header={t('edgeLineStyle')}>
-                    </AccordionTab>
+                    <AccordionTab header={t('edgeLineStyle')} />
                     <AccordionTab header={t('edgeCaptionPosition')}>
                       here
                     </AccordionTab>
