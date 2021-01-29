@@ -2,14 +2,10 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Navbar from '../../components/Navbar'
-import {
-  NETWORK_GRAPH_VIEW
-} from '../../constants/views'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
-    mainView: NETWORK_GRAPH_VIEW,
+    availableEdgesNormalised: { 123: { id: '123' } },
     availableNodesNormalised: { 123: { id: '123' } },
   }
 

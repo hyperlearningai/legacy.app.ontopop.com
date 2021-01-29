@@ -1,7 +1,8 @@
 import {
   ALGO_TYPE_FULL,
   ALGO_TYPE_NEIGHBOURHOOD,
-  ALGO_TYPE_SHORTEST_PATH
+  ALGO_TYPE_SHORTEST_PATH,
+  ALGO_TYPE_BOUNDING_BOX
 } from '../../constants/algorithms'
 import setNodesIdsToDisplay from '../../utils/setNodesIdsToDisplay'
 import { OwlClasses } from '../fixtures/test-ontology-classes.json'
@@ -18,7 +19,7 @@ const getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
   nodesIdsToDisplay: [
     'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
-  ]
+  ],
 }))
 store.getState = getState
 
@@ -38,6 +39,46 @@ describe('setNodesIdsToDisplay', () => {
     })
 
     expect(setStoreState.mock.calls).toEqual(algoTypeFull)
+  })
+
+  it('should work correctly when ALGO_TYPE_BOUNDING_BOX', async () => {
+    const type = ALGO_TYPE_BOUNDING_BOX
+
+    const options = {
+      selectedBoundingBoxNodes: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
+      triplesPerNode
+    }
+
+    await setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options
+    })
+
+    expect(setStoreState.mock.calls).toEqual([
+      [
+        'highlightedNodes',
+        [],
+      ],
+      [
+        'isNodeOverlay',
+        false,
+      ],
+      [
+        'highlightedNodes',
+        [],
+      ],
+      [
+        'edgesIdsToDisplay',
+        [],
+      ],
+      [
+        'nodesIdsToDisplay',
+        [
+          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+        ],
+      ],
+    ])
   })
 
   it('should work correctly when ALGO_TYPE_NEIGHBOURHOOD', async () => {
@@ -73,6 +114,7 @@ describe('setNodesIdsToDisplay', () => {
       [
         'edgesIdsToDisplay',
         [
+          'http://www.w3.org/2000/01/rdf-schema#subclassof',
           'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
           'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
         ],
@@ -81,11 +123,17 @@ describe('setNodesIdsToDisplay', () => {
         'nodesIdsToDisplay',
         [
           'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          'http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u',
           'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
+          'http://webprotege.stanford.edu/R83VJMr2iUDDav8mz3n6ZyH',
+          'http://webprotege.stanford.edu/R9UuC5ptRevqURhJa0PIBmB',
+          'http://webprotege.stanford.edu/R9Y5iEV0xhBtSZMrtzLdmwd',
+          'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6',
+          'http://webprotege.stanford.edu/RYOFagzdcydXMf8mlO9vsG',
           'http://webprotege.stanford.edu/Rhx4iGF2ITGgrmcS2fHAN5',
+          'http://webprotege.stanford.edu/RmrjgvX01FgGHXkfTXE4MO',
         ],
       ],
-
     ])
   })
 
@@ -97,7 +145,7 @@ describe('setNodesIdsToDisplay', () => {
         'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
         'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ'
       ],
-      paths: [
+      shortestPathResults: [
         'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS'
       ],
       isNodeOverlay: true
@@ -119,14 +167,14 @@ describe('setNodesIdsToDisplay', () => {
         false,
       ],
       [
-        'paths',
+        'shortestPathResults',
         [
           'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS',
         ],
       ],
       [
         'isNodeOverlay',
-        true
+        true,
       ],
       [
         'highlightedNodes',
@@ -152,7 +200,7 @@ describe('setNodesIdsToDisplay', () => {
         'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
         'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ'
       ],
-      paths: [
+      shortestPathResults: [
         'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS'
       ],
       isNodeOverlay: false
@@ -174,14 +222,14 @@ describe('setNodesIdsToDisplay', () => {
         false,
       ],
       [
-        'paths',
+        'shortestPathResults',
         [
           'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS',
         ],
       ],
       [
         'isNodeOverlay',
-        false
+        false,
       ],
       [
         'highlightedNodes',

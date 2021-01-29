@@ -16,6 +16,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.2.0]
+### Added
+- ONTOLOGY-55 Made spiderable nodes border highlighted and made the border return to normal after node expansion
+- ONTOLOGY-56 Ability to turn on/off network physics
+- ONTOLOGY-47 Visualise subnetwork after dynamic bounding box selection
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- ONTOLOGY-47 Removed highlight from free-text search selected node after sidebar section update
+
+### Security
+
 ## [0.1.0]
 ### Added
 - ONTOLOGY-27 Spider on filtered nodes
@@ -40,8 +57,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-54 Node search icon in toolbar
 
 ### Fixed
+- ONTOLOGY-54 Object properties removed from CSV export
+- ONTOLOGY-54 Fixed node and edges count when node expanded
+- ONTOLOGY-54 Added subClassOf as default edge is owlRestrictions missing
 - ONTOLOGY-28 Added jsdoc comments to store actions and utils
 
 ### Security

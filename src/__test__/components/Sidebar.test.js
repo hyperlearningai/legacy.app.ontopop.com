@@ -7,6 +7,7 @@ import {
   SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_EDGES_SELECTION,
   SIDEBAR_VIEW_NODES_SELECTION,
+  SIDEBAR_VIEW_BOUNDING_BOX,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_SETTINGS
@@ -46,7 +47,7 @@ describe('Sidebar', () => {
     const {
       component
     } = setup({
-      isSidebarOpen: false,
+      isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_GRAPHS
     })
 
@@ -57,8 +58,19 @@ describe('Sidebar', () => {
     const {
       component
     } = setup({
-      isSidebarOpen: false,
+      isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_FREE_TEXT_SEARCH
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDING_BOX', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: true,
+      sidebarView: SIDEBAR_VIEW_BOUNDING_BOX
     })
 
     expect(toJson(component)).toMatchSnapshot()
@@ -68,7 +80,7 @@ describe('Sidebar', () => {
     const {
       component
     } = setup({
-      isSidebarOpen: false,
+      isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_NEIGHBOURHOOD
     })
 
@@ -79,7 +91,7 @@ describe('Sidebar', () => {
     const {
       component
     } = setup({
-      isSidebarOpen: false,
+      isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_NODES_SELECTION
     })
 
@@ -90,7 +102,7 @@ describe('Sidebar', () => {
     const {
       component
     } = setup({
-      isSidebarOpen: false,
+      isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_EDGES_SELECTION
     })
 
@@ -101,7 +113,7 @@ describe('Sidebar', () => {
     const {
       component
     } = setup({
-      isSidebarOpen: false,
+      isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_SHORTEST_PATH
     })
 
@@ -112,7 +124,7 @@ describe('Sidebar', () => {
     const {
       component
     } = setup({
-      isSidebarOpen: false,
+      isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_SETTINGS
     })
 

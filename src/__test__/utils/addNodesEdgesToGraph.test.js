@@ -9,7 +9,12 @@ const setStoreState = jest.fn()
 const classesFromApi = OwlClasses
 const objectPropertiesFromApi = OwlObjectProperties
 const getState = jest.fn().mockImplementation(() => ({
-  availableNodes: new DataSet(),
+  availableNodes: new DataSet([{
+    id: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+    color: {
+      border: '#000000'
+    }
+  }]),
   triplesPerNode,
   classesFromApi,
   objectPropertiesFromApi,
@@ -18,7 +23,7 @@ const getState = jest.fn().mockImplementation(() => ({
   availableEdgesNormalised: {},
   nodesConnections: {},
   edgesConnections: {},
-
+  isPhysicsOn: false
 }))
 store.getState = getState
 
@@ -37,7 +42,83 @@ describe('addNodesEdgesToGraph', () => {
 
     expect(setStoreState.mock.calls).toEqual([
       [
-        'newAvailableNodesNormalised',
+        'edgesConnections',
+        {
+          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ': [
+            {
+              edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+              from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+              fromLabel: 'Polyline',
+              id: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
+              label: 'Composed of',
+              to: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
+              toLabel: 'Polyline',
+            },
+            {
+              edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+              from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+              fromLabel: 'Polyline',
+              id: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
+              label: 'Composed of',
+              to: 'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
+              toLabel: 'Polyline',
+            },
+          ],
+          'http://www.w3.org/2000/01/rdf-schema#subclassof': [
+            {
+              edgeId: 'http://www.w3.org/2000/01/rdf-schema#subclassof',
+              from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+              fromLabel: 'Polyline',
+              id: 'http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+              label: 'subClassOf',
+              to: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+              toLabel: 'Polyline',
+            },
+          ],
+        },
+      ],
+      [
+        'availableEdgesNormalised',
+        {
+          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd': {
+            edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+            from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+            fromLabel: 'Polyline',
+            id: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
+            label: 'Composed of',
+            to: 'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
+            toLabel: 'Polyline',
+          },
+          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t': {
+            edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+            from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+            fromLabel: 'Polyline',
+            id: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
+            label: 'Composed of',
+            to: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
+            toLabel: 'Polyline',
+          },
+          'http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg': {
+            edgeId: 'http://www.w3.org/2000/01/rdf-schema#subclassof',
+            from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+            fromLabel: 'Polyline',
+            id: 'http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+            label: 'subClassOf',
+            to: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+            toLabel: 'Polyline',
+          },
+        },
+      ],
+      [
+        'isPhysicsOn',
+        true,
+      ],
+      [
+        'physicsRepulsion',
+        false,
+      ],
+      [
+        'availableNodesNormalised',
         {
           'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd': {
             id: 'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
@@ -81,29 +162,6 @@ describe('addNodesEdgesToGraph', () => {
         },
       ],
       [
-        'availableEdgesNormalised',
-        {
-          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd': {
-            edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-            from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-            fromLabel: 'Polyline',
-            id: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
-            label: 'Composed of',
-            to: 'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
-            toLabel: 'Polyline',
-          },
-          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t': {
-            edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-            from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-            fromLabel: 'Polyline',
-            id: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
-            label: 'Composed of',
-            to: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
-            toLabel: 'Polyline',
-          },
-        },
-      ],
-      [
         'nodesConnections',
         {
           'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd': [
@@ -130,36 +188,6 @@ describe('addNodesEdgesToGraph', () => {
           ],
         },
       ],
-      [
-        'edgesConnections',
-        {
-          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ': [
-            {
-              edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-              from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-              fromLabel: 'Polyline',
-              id: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
-              label: 'Composed of',
-              to: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
-              toLabel: 'Polyline',
-            },
-            {
-              edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-              from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-              fromLabel: 'Polyline',
-              id: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
-              label: 'Composed of',
-              to: 'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
-              toLabel: 'Polyline',
-            },
-          ],
-        },
-      ],
-      [
-        'physicsRepulsion',
-        false,
-      ],
-
     ])
   })
 })

@@ -21,7 +21,7 @@ const addNode = ({
   highlightedNodes,
   nodeId,
   nodeIdObject,
-  shortestPathNodes
+  shortestPathNodes,
 }) => {
   if (!addedNodes.includes(nodeId)
   && nodeIdObject.label

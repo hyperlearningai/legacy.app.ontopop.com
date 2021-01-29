@@ -8,6 +8,9 @@ import {
   FaSitemap
 } from 'react-icons/fa'
 import {
+  AiOutlinePoweroff
+} from 'react-icons/ai'
+import {
   IoFootballOutline,
   IoGitNetworkSharp
 } from 'react-icons/io5'
@@ -21,6 +24,7 @@ const NetworkSettings = ({
   physicsEdgeLength,
   physicsRepulsion,
   physicsHierarchicalView,
+  isPhysicsOn
 }) => {
   const { t } = useTranslation()
 
@@ -43,6 +47,22 @@ const NetworkSettings = ({
               value={physicsEdgeLength}
               onChange={(e) => setStoreState('physicsEdgeLength', parseInt(e.value))}
             />
+          </div>
+        </div>
+
+        <div className="network-settings-input">
+          <div className="label">
+            {t('physics')}
+          </div>
+          <div className="network-settings-buttons">
+            <Button
+              tooltip={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
+              tooltipOptions={{ position: 'top' }}
+              className={isPhysicsOn ? 'network-settings-buttons-button-selected' : ''}
+              onClick={() => setStoreState('isPhysicsOn', !isPhysicsOn)}
+            >
+              <AiOutlinePoweroff />
+            </Button>
           </div>
         </div>
 
@@ -102,6 +122,7 @@ NetworkSettings.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
+  isPhysicsOn: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
 }
 
@@ -109,10 +130,12 @@ const mapToProps = ({
   physicsEdgeLength,
   physicsRepulsion,
   physicsHierarchicalView,
+  isPhysicsOn
 }) => ({
   physicsEdgeLength,
   physicsRepulsion,
   physicsHierarchicalView,
+  isPhysicsOn
 })
 
 export default connect(

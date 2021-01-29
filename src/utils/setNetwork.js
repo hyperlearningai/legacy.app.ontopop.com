@@ -1,11 +1,12 @@
 import { Network } from 'vis-network'
+import onMouseDown from './canvasUtils/onMouseDown'
+import onMouseMove from './canvasUtils/onMouseMove'
 import getPhysicsOptions from './getPhysicsOptions'
 
 /**
  * Update VisJs network in store
  * @param  {Object}   params
  * @param  {Boolean}  params.physicsHierarchicalView   hierarchical view flag
- * @param  {Boolean}  params.physicsRepulsion          physics repulsion flag
  * @param  {Number}   params.physicsEdgeLength         edge length as integer
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Object}   params.availableNodes            VisJs Dataset of nodes IDs
@@ -19,12 +20,13 @@ const setNetwork = ({
   availableNodes,
   availableEdges,
   physicsHierarchicalView,
-  physicsRepulsion,
   physicsEdgeLength
 }) => {
+  // at first canvas drawing, set physics and repulsion on for a better looking graph
   const physicsSettings = getPhysicsOptions({
+    isPhysicsOn: true,
     physicsHierarchicalView,
-    physicsRepulsion,
+    physicsRepulsion: true,
     physicsEdgeLength
   })
 
@@ -34,6 +36,22 @@ const setNetwork = ({
       edges: availableEdges
     },
     physicsSettings))
+
+  // after first draw, turn off physics and repulsion as default value
+  setStoreState('isPhysicsOn', false)
+  setStoreState('physicsRepulsion', false)
+
+  const canvas = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
+
+  canvas.addEventListener('mousedown', (e) => onMouseDown({
+    e,
+    setStoreState
+  }), false)
+
+  canvas.addEventListener('mousemove', (e) => onMouseMove({
+    e,
+    setStoreState
+  }), false)
 }
 
 export default setNetwork

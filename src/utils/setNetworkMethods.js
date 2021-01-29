@@ -1,6 +1,7 @@
 import {
   HIGHLIGHT_NODE_BACKGROUND,
   EDGE_COLOR_SELECTED,
+  SPIDERABLE_NODE_BORDER_COLOR,
 } from '../constants/graph'
 import store from '../store'
 import addNodesEdgesToGraph from './addNodesEdgesToGraph'
@@ -50,12 +51,21 @@ const setNetworkMethods = async ({
   })
 
   network?.on('doubleClick', (event) => {
+    const {
+      availableNodes,
+    } = store.getState()
+
     if (event.nodes?.length === 1) {
       const nodeId = event.nodes[0]
-      addNodesEdgesToGraph({
-        nodeId,
-        setStoreState
-      })
+
+      const { color } = availableNodes.get(nodeId)
+
+      if (color?.border === SPIDERABLE_NODE_BORDER_COLOR) {
+        addNodesEdgesToGraph({
+          nodeId,
+          setStoreState
+        })
+      }
     }
   })
 

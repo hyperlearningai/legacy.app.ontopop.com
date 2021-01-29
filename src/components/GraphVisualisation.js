@@ -11,6 +11,7 @@ const GraphVisualisation = ({
   availableNodes,
   availableEdges,
   addToArray,
+  isPhysicsOn,
   network,
   nodesIdsToDisplay,
   physicsHierarchicalView,
@@ -27,7 +28,6 @@ const GraphVisualisation = ({
     availableNodes,
     availableEdges,
     physicsHierarchicalView,
-    physicsRepulsion,
     physicsEdgeLength
   }), [
     visJsRef,
@@ -47,15 +47,15 @@ const GraphVisualisation = ({
   ])
 
   // set graph options
-  useEffect(() => {
-    if (network) {
-      network.setOptions(getPhysicsOptions({
-        physicsHierarchicalView,
-        physicsRepulsion,
-        physicsEdgeLength
-      }))
-    }
-  }, [
+  useEffect(() => network?.setOptions(getPhysicsOptions({
+    isPhysicsOn,
+    physicsHierarchicalView,
+    physicsRepulsion,
+    physicsEdgeLength
+  })),
+  [
+    network,
+    isPhysicsOn,
     physicsHierarchicalView,
     physicsRepulsion,
     physicsEdgeLength
@@ -87,6 +87,7 @@ GraphVisualisation.propTypes = {
   addToArray: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
+  isPhysicsOn: PropTypes.bool.isRequired,
   network: PropTypes.shape(),
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
@@ -111,6 +112,7 @@ const mapToProps = ({
   selectedEdges,
   selectedNeighbourNode,
   selectedNodes,
+  isPhysicsOn,
 }) => ({
   availableNodes,
   availableEdges,
@@ -123,6 +125,7 @@ const mapToProps = ({
   selectedEdges,
   selectedNeighbourNode,
   selectedNodes,
+  isPhysicsOn,
 })
 
 export default connect(

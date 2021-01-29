@@ -13,6 +13,7 @@ import {
 import focusNode from '../utils/focusNode'
 import highlightEdge from '../utils/highlightEdge'
 import resetSearchSelection from '../utils/resetSearchSelection'
+import clearFreeTextSelection from '../utils/clearFreeTextSelection'
 
 const FreeTextSearch = ({
   availableNodes,
@@ -31,14 +32,18 @@ const FreeTextSearch = ({
   const [prevSelectedNode, setPrevSelectedNode] = useState('')
   const [prevSelectedEdges, setPrevSelectedEdges] = useState([])
 
-  useEffect(() => () => searchElement({
-    search: '',
-    nodesIdsToDisplay,
-    edgesIdsToDisplay,
-    classesFromApi,
-    objectPropertiesFromApi,
-    setStoreState
-  }), [])
+  useEffect(() => () => {
+    clearFreeTextSelection()
+
+    searchElement({
+      search: '',
+      nodesIdsToDisplay,
+      edgesIdsToDisplay,
+      classesFromApi,
+      objectPropertiesFromApi,
+      setStoreState
+    })
+  }, [])
 
   return (
     <>
