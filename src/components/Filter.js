@@ -522,8 +522,8 @@ const mapToProps = ({
   edgesIdsToDisplay,
   availableNodesNormalised,
   filterNodesByPropElementArray,
-  filterEdgesByPropElementArray,
-  getEdgesAndNodeProperties
+  filterEdgesByPropElementArray
+  // getEdgesAndNodeProperties
 }) => ({
   graphData,
   selectedNodes,

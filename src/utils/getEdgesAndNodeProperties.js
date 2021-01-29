@@ -10,8 +10,7 @@ import store from '../store'
 const getEdgesAndNodeProperties = ({
   // classesFromApi,
   // objectPropertiesFromApi,
-  setStoreState,
-  searchFilter
+  setStoreState
 }) => {
   const {
     classesFromApi,
@@ -34,18 +33,14 @@ const getEdgesAndNodeProperties = ({
     const nodeIdObject = classesFromApi[nodeId]
     // const nodeObjectKeysNodeIdObjectProperty
 
-    console.log(classesFromApi)
-
     // loop here search which are keys of type string
     // if type string push to array (if string then assume property push to array)
     // each node from classesFromApi
     // from value new loop on each check object keys map filter params strings
     // then look through
 
-    // nodeIdObject.id = nodeId
+    nodeIdObject.id = nodeId
     // nodeIdObject.label = nodeIdObject.rdfsLabel
-
-
 
     // TODO: now just searching for label, next search also for other keys
     // if (searchFilter !== ''
@@ -60,12 +55,12 @@ const getEdgesAndNodeProperties = ({
   // objectPropertiesFromApi
   for (const nodeIndex in nodesIds) {
     const nodeId = nodesIds[nodeIndex]
-    const nodeIdObject = objectPropertiesFromApi[nodeId]
+    const edgeIdObject = objectPropertiesFromApi[nodeId]
 
     // loop here search which are keys of type string
     // if type string push to array (if string then assume property push to array)
 
-    // nodeIdObject.id = nodeId
+    edgeIdObject.id = nodeId
     // nodeIdObject.label = nodeIdObject.rdfsLabel
 
     // TODO: now just searching for label, next search also for other keys
