@@ -64,7 +64,6 @@ export default {
 
   // Physics settings
   physicsSettings: 'Physics settings',
-  edgeLength: 'Edge length',
   hierachicalView: 'Hierarchical view',
   gravitationalView: 'Gravitational view',
   enableRepulsion: 'Enable repulsion',
@@ -72,6 +71,17 @@ export default {
   physics: 'Physics',
   repulsion: 'Repulsion',
   positioning: 'Positioning',
+  
+  // Physics Edge
+  edgeStyling: 'Edge Styling',
+  edgeLength: 'Edge length',
+  edgeThickness: 'Edge Thickness',
+  edgeLineStyle: 'Edge Line Style',
+  edgeCaptionPosition: 'Edge Caption Position',
+  edgeCaptionProperties: 'Edge Caption Properties',
+
+  // Physics Node
+  nodeStyling: 'Node Styling',
 
   // Export settings
   fileName: 'File name',
