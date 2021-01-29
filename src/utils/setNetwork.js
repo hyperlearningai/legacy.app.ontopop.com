@@ -37,8 +37,7 @@ const setNetwork = ({
     && new Network(visJsRef.current, {
       nodes: availableNodes,
       edges: availableEdges
-    },
-      physicsSettings))
+    }, physicsSettings))
 
   const canvas = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
 

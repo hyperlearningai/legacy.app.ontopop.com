@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
@@ -13,7 +12,7 @@ import {
   IoGitNetworkSharp
 } from 'react-icons/io5'
 import { Accordion, AccordionTab } from 'primereact/accordion'
-import { InputText } from 'primereact/inputtext';
+import { InputText } from 'primereact/inputtext'
 import { Slider } from 'primereact/slider'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
@@ -136,16 +135,19 @@ const NetworkSettings = ({
 NetworkSettings.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
+  physicsEdgeWidth: PropTypes.number.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
   physicsEdgeLength,
+  physicsEdgeWidth,
   physicsRepulsion,
   physicsHierarchicalView,
 }) => ({
   physicsEdgeLength,
+  physicsEdgeWidth,
   physicsRepulsion,
   physicsHierarchicalView,
 })
