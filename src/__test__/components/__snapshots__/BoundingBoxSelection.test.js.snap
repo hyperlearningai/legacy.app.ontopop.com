@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionInternal 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  isBoundingBoxSelectionInternal={true}
+  mapToProps={[Function]}
+  selectedBoundingBoxNodes={Array []}
+  setStoreState={[MockFunction]}
+  updateGraphData={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionInternal is false 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  isBoundingBoxSelectionInternal={false}
+  mapToProps={[Function]}
+  selectedBoundingBoxNodes={Array []}
+  setStoreState={[MockFunction]}
+  updateGraphData={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

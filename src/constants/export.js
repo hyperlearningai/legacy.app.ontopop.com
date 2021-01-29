@@ -14,3 +14,9 @@ export const EXPORT_DATA_OPTIONS = [
   EXPORT_CSV,
   EXPORT_OWL
 ]
+
+export const IGNORED_PROPERTIES = [
+  'id',
+  'label',
+  'color'
+]

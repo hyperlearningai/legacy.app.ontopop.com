@@ -47,7 +47,7 @@ const getPhysicsOptions = ({
         background: HOVER_NODE_BACKGROUND,
         border: HOVER_NODE_BORDER,
       },
-    }
+    },
   },
   autoResize: true,
   layout: {
@@ -65,7 +65,10 @@ const getPhysicsOptions = ({
     navigationButtons: true,
     keyboard: true,
     hideEdgesOnDrag: true,
-    hover: true
+    hover: true,
+    // dragNodes: false, // do not allow dragging nodes
+    // zoomView: false, // do not allow zooming
+    // dragView: false // do not allow dragging
   },
   physics: {
     enabled: !physicsHierarchicalView,

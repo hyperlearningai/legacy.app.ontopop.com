@@ -5,7 +5,8 @@ import GraphVisualisationWrapper from '../../components/GraphVisualisationWrappe
 import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 
 const setup = ({
-  showContextMenu
+  showContextMenu,
+  isBoundingBoxSelectable
 }) => {
   const props = {
     currentGraph: 'graph-0',
@@ -22,6 +23,15 @@ const setup = ({
       top: 0,
       left: 0,
       nodeId: ''
+    },
+    isBoundingBoxSelectable,
+    boundingBoxGeometry: {
+      fixedPointX: 100,
+      fixedPointY: 100,
+      boundingBoxPosX: 100,
+      boundingBoxPosY: 100,
+      boundingBoxWidth: 200,
+      boundingBoxHeight: 200
     }
   }
 
@@ -38,21 +48,23 @@ describe('GraphVisualisationWrapper', () => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot when no context menu', () => {
+  it('should match snapshot when no context menu and no bounding box', () => {
     const {
       component
     } = setup({
-      showContextMenu: false
+      showContextMenu: false,
+      isBoundingBoxSelectable: false
     })
 
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when context menu', () => {
+  it('should match snapshot when context menu and bounding box', () => {
     const {
       component
     } = setup({
-      showContextMenu: true
+      showContextMenu: true,
+      isBoundingBoxSelectable: true
     })
 
     expect(toJson(component)).toMatchSnapshot()
