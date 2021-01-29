@@ -71,12 +71,18 @@ export default {
   physics: 'Physics',
   repulsion: 'Repulsion',
   positioning: 'Positioning',
+  chooseColor: 'Click to change colour',
 
   // Physics Edge
+  edgeStylingByProperty: 'Edge Styling By Property',
+  edgeStylingGlobal: 'Global Edge Styling',
   edgeStyling: 'Edge Styling',
   edgeLength: 'Edge length',
   edgeThickness: 'Edge Thickness',
   edgeLineStyle: 'Edge Line Style',
+  edgeLineStyleColorChooseProperty: 'Choose Property',
+  edgeLineStyleColor: 'Colour',
+  edgeLineStyleCurrentColor: 'Current Colour',
   edgeCaptionPosition: 'Edge Caption Position',
   edgeCaptionProperties: 'Edge Caption Properties',
 
