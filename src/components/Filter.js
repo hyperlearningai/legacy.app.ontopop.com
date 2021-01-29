@@ -15,6 +15,7 @@ import focusNode from '../utils/focusNode'
 import filterNodeProps from '../utils/filterNodeProps'
 import NodesSelectionDetails from './NodesSelectionDetails'
 import EdgesSelectionDetails from './EdgesSelectionDetails'
+import getEdgesAndNodeProperties from '../utils/getEdgesAndNodeProperties'
 import { SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
 import {
   NODE_BACKGROUND,
@@ -38,7 +39,6 @@ const OntologyFilter = ({
   removeFromObject,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  getEdgesAndNodeProperties,
   filterNodesByPropElementArray,
   filterEdgesByPropElementArray
 }) => {

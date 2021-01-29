@@ -39,6 +39,8 @@ const initialState = {
   freeTextSelectedElement: '',
   filterNodesByPropSelectedElement: '',
   filterEdgesByPropSelectedElement: '',
+  filterNodesByPropElementArray: [],
+  filterEdgesByPropElementArray: [],
   isShortestPathNodeSelectable: false,
   shortestPathSelectedNodes: [],
   shortestPathResults: [],

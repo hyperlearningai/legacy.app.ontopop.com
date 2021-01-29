@@ -8,12 +8,13 @@ import store from '../store'
  * @return
  */
 const getEdgesAndNodeProperties = ({
-  classesFromApi,
+  // classesFromApi,
   // objectPropertiesFromApi,
   setStoreState,
   searchFilter
 }) => {
   const {
+    classesFromApi,
     objectPropertiesFromApi
   } = store.getState()
   // const { OwlClasses } = JSON.parse(JSON.stringify(classesFromApi))
@@ -33,20 +34,24 @@ const getEdgesAndNodeProperties = ({
     const nodeIdObject = classesFromApi[nodeId]
     // const nodeObjectKeysNodeIdObjectProperty
 
+    console.log(classesFromApi)
+
     // loop here search which are keys of type string
     // if type string push to array (if string then assume property push to array)
     // each node from classesFromApi
     // from value new loop on each check object keys map filter params strings
     // then look through
 
-    nodeIdObject.id = nodeId
-    nodeIdObject.label = nodeIdObject.rdfsLabel
+    // nodeIdObject.id = nodeId
+    // nodeIdObject.label = nodeIdObject.rdfsLabel
+
+
 
     // TODO: now just searching for label, next search also for other keys
-    if (searchFilter !== ''
-      && nodeIdObject.label
-      && !nodeIdObject.label.toLowerCase().includes(searchFilter.toLowerCase())
-    ) continue
+    // if (searchFilter !== ''
+    //   && nodeIdObject.label
+    //   && !nodeIdObject.label.toLowerCase().includes(searchFilter.toLowerCase())
+    // ) continue
 
     // nodesIdsToDisplay.push(nodeId)
   }
@@ -60,14 +65,14 @@ const getEdgesAndNodeProperties = ({
     // loop here search which are keys of type string
     // if type string push to array (if string then assume property push to array)
 
-    nodeIdObject.id = nodeId
-    nodeIdObject.label = nodeIdObject.rdfsLabel
+    // nodeIdObject.id = nodeId
+    // nodeIdObject.label = nodeIdObject.rdfsLabel
 
     // TODO: now just searching for label, next search also for other keys
-    if (searchFilter !== ''
-      && nodeIdObject.label
-      && !nodeIdObject.label.toLowerCase().includes(searchFilter.toLowerCase())
-    ) continue
+    // if (searchFilter !== ''
+    //   && nodeIdObject.label
+    //   && !nodeIdObject.label.toLowerCase().includes(searchFilter.toLowerCase())
+    // ) continue
 
     // nodesIdsToDisplay.push(nodeId)
   }
