@@ -10,6 +10,7 @@ import getPhysicsOptions from './getPhysicsOptions'
  * @param  {Boolean}  params.physicsRepulsion          physics repulsion flag
  * @param  {Number}   params.physicsEdgeLength         edge length as integer
  * @param  {Number}   params.physicsEdgeWidth          edge width as integer
+ * @param  {Boolean}  params.physicsEdgeLineStyle      edge line style as flag
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Object}   params.availableNodes            VisJs Dataset of nodes IDs
  * @param  {Object}   params.availableEdges            VisJs Dataset of edges IDs
@@ -24,15 +25,17 @@ const setNetwork = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  physicsEdgeWidth
+  physicsEdgeWidth,
+  physicsEdgeLineStyle
 }) => {
   const physicsSettings = getPhysicsOptions({
     physicsHierarchicalView,
     physicsRepulsion,
     physicsEdgeLength,
-    physicsEdgeWidth
+    physicsEdgeWidth,
+    physicsEdgeLineStyle
   })
-
+  console.log(physicsEdgeLineStyle)
   setStoreState('network', visJsRef.current
     && new Network(visJsRef.current, {
       nodes: availableNodes,

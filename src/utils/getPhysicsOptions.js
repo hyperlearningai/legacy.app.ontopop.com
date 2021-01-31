@@ -16,13 +16,15 @@ import {
  * @param  {Boolean}  params.physicsRepulsion          physics repulsion flag
  * @param  {Number}   params.physicsEdgeLength         edge length as integer
  * @param  {Number}   params.physicsEdgeWidth          edge width as integer
+ * @param  {Boolean}  params.physicsEdgeLineStyle      physics edge line style as flag
  * @return {Object}   output                           VisJs visualisation options
  */
 const getPhysicsOptions = ({
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength,
-  physicsEdgeWidth
+  physicsEdgeWidth,
+  physicsEdgeLineStyle
 }) => ({
   edges: {
     smooth: {
@@ -34,7 +36,8 @@ const getPhysicsOptions = ({
     color: EDGE_COLOR,
     labelHighlightBold: true,
     selectionWidth: 3,
-    width: physicsEdgeWidth
+    width: physicsEdgeWidth,
+    dashes: physicsEdgeLineStyle
   },
   nodes: {
     font: NODE_FONT,

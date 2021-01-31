@@ -26,6 +26,7 @@ const NetworkSettings = ({
   setStoreState,
   physicsEdgeLength,
   physicsEdgeWidth,
+  physicsEdgeLineStyle,
   physicsRepulsion,
   physicsHierarchicalView,
 }) => {
@@ -34,6 +35,14 @@ const NetworkSettings = ({
   const [selectedCities2, setSelectedCities2] = useState(null)
   const options = ['Left', 'Middle', 'Right']
   const [value1, setValue1] = useState('Middle')
+
+  const [value3, setValue3] = useState(null)
+  const justifyOptions = [
+    { icon: 'pi pi-ellipsis-h', value: 'dashed' },
+    { icon: 'pi pi-minus', value: 'solid' }
+  ]
+  const justifyTemplate = (option) => <i className={option.icon} />
+
   const cities = [
     { name: 'New York', code: 'NY' },
     { name: 'Rome', code: 'RM' },
@@ -135,7 +144,9 @@ const NetworkSettings = ({
                         {t('chooseColor')}
                       </span>
                     </AccordionTab>
-                    <AccordionTab header={t('edgeLineStyle')} />
+                    <AccordionTab header={t('edgeLineStyle')}>
+                      <SelectButton value={value3} options={justifyOptions} onChange={(e) => setValue3(e.value)} itemTemplate={justifyTemplate} />
+                    </AccordionTab>
                     <AccordionTab header={t('edgeCaptionPosition')} className="position-center">
                       <h3>Position of caption</h3>
                       <SelectButton value={value1} options={options} onChange={(e) => setValue1(e.value)} />
@@ -232,7 +243,9 @@ const NetworkSettings = ({
                         {t('chooseColor')}
                       </span>
                     </AccordionTab>
-                    <AccordionTab header={t('edgeLineStyle')} />
+                    <AccordionTab header={t('edgeLineStyle')}>
+                      <SelectButton value={physicsEdgeLineStyle} onChange={(e) => setStoreState('physicsEdgeLineStyle', parseInt(e.value))} />
+                    </AccordionTab>
                     <AccordionTab header={t('edgeCaptionPosition')}>
                       here
                     </AccordionTab>
@@ -257,6 +270,7 @@ NetworkSettings.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   physicsEdgeLength: PropTypes.number.isRequired,
   physicsEdgeWidth: PropTypes.number.isRequired,
+  physicsEdgeLineStyle: PropTypes.bool.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
 }
@@ -264,11 +278,13 @@ NetworkSettings.propTypes = {
 const mapToProps = ({
   physicsEdgeLength,
   physicsEdgeWidth,
+  physicsEdgeLineStyle,
   physicsRepulsion,
   physicsHierarchicalView,
 }) => ({
   physicsEdgeLength,
   physicsEdgeWidth,
+  physicsEdgeLineStyle,
   physicsRepulsion,
   physicsHierarchicalView,
 })
