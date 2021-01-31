@@ -5,6 +5,10 @@
   text-align: center;
   padding: 0;
 
+  .text-center {
+    text-align: center;
+  }
+
   &-selected {
     margin: 10px auto;
     font-size: 12px;
@@ -142,6 +146,17 @@
       color: white;
       padding: 10px;
 
+      .p-accordion-content {
+        .p-accordion-header {
+          &.p-highlight {
+            a {
+              background: #0382c9;
+              color: white;
+            }
+          }
+        }
+      }
+
       .p-selectbutton {
         text-align: center;
       }
@@ -153,6 +168,13 @@
       .p-colorpicker {
         width: 30px;
         height: 30px;
+      }
+
+      .p-accordion-header-link {
+        padding: 9px;
+        background: #32353c;
+        border-bottom: 1px solid white !important;
+        color: white;
       }
 
       .p-inputtext {

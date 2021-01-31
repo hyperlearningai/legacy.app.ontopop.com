@@ -85,6 +85,8 @@ export default {
   edgeLineStyleCurrentColor: 'Current Colour',
   edgeCaptionPosition: 'Edge Caption Position',
   edgeCaptionProperties: 'Edge Caption Properties',
+  edgeByPropInstructions1: 'Choose the property you wish to style',
+  edgeByPropInstructions2: 'Then choose the styles below to update that property',
 
   // Physics Node
   nodeStyling: 'Node Styling',

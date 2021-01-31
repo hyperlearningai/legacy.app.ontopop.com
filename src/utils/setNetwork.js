@@ -35,7 +35,7 @@ const setNetwork = ({
     physicsEdgeWidth,
     physicsEdgeLineStyle
   })
-  console.log(physicsEdgeLineStyle)
+
   setStoreState('network', visJsRef.current
     && new Network(visJsRef.current, {
       nodes: availableNodes,

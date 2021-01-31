@@ -17,6 +17,7 @@ import { ColorPicker } from 'primereact/colorpicker'
 import { MultiSelect } from 'primereact/multiselect'
 import { SelectButton } from 'primereact/selectbutton'
 import { InputText } from 'primereact/inputtext'
+import { Badge } from 'primereact/badge'
 import { Slider } from 'primereact/slider'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
@@ -68,7 +69,7 @@ const NetworkSettings = ({
                         <div className="network-settings-item-input">
                           <InputText value={physicsEdgeLength} onChange={(e) => setStoreState('physicsEdgeLength', parseInt(e.value))} />
                           <Slider
-                            min={0}
+                            min={1}
                             max={1000}
                             step={1}
                             id="rating"
@@ -129,8 +130,8 @@ const NetworkSettings = ({
                     <AccordionTab header={t('edgeThickness')}>
                       <InputText value={physicsEdgeWidth} onChange={(e) => setStoreState('physicsEdgeWidth', parseInt(e.value))} />
                       <Slider
-                        min={0}
-                        max={1000}
+                        min={1}
+                        max={20}
                         step={1}
                         id="edgeWidthSlider"
                         value={physicsEdgeWidth}
@@ -157,9 +158,17 @@ const NetworkSettings = ({
                   </Accordion>
                 </AccordionTab>
                 <AccordionTab header={t('edgeStylingByProperty')}>
-                  <div className="card">
-                    <h3>{t('edgeLineStyleColorChooseProperty')}</h3>
+                  {/* <h3>{t('edgeLineStyleColorChooseProperty')}</h3> */}
+                  <div className="card m-t-10">
+                    {/* <div className="text-center">
+                      <Badge value="1" className="p-mr-2" size="large" severity="warning" />
+                    </div> */}
+                    <p><strong>{t('edgeByPropInstructions1')}</strong></p>
                     <MultiSelect value={selectedCities2} options={cities} onChange={(e) => setSelectedCities2(e.value)} optionLabel="name" placeholder="Select a City" display="chip" />
+                    {/* <div className="text-center m-t-10">
+                      <Badge value="2" className="p-mr-2" size="large" severity="warning" />
+                    </div> */}
+                    <p><strong>{t('edgeByPropInstructions2')}</strong></p>
                   </div>
                   <Accordion>
                     <AccordionTab header={t('edgeLength')}>
