@@ -20,9 +20,8 @@ const getEdgesAndNodeProperties = ({
   // const { objectPropertiesFromApi } = JSON.parse(JSON.stringify(objectPropertiesFromApi))
 
   // if (!OwlClasses) return
-
   const nodesIds = Object.keys(classesFromApi)
-  // const edgesIds = Object.keys(objectPropertiesFromApi)
+  const edgesIds = Object.keys(objectPropertiesFromApi)
   const nodesPropsToDisplay = []
   const edgePropsToDisplay = []
 
@@ -31,6 +30,9 @@ const getEdgesAndNodeProperties = ({
   for (const nodeIndex in nodesIds) {
     const nodeId = nodesIds[nodeIndex]
     const nodeIdObject = classesFromApi[nodeId]
+    if (nodeIdObject.label !== '') {
+      nodesPropsToDisplay.push({ name: nodeIdObject.label, id: nodeIdObject.id })
+    }
     // const nodeObjectKeysNodeIdObjectProperty
 
     // loop here search which are keys of type string
@@ -39,7 +41,7 @@ const getEdgesAndNodeProperties = ({
     // from value new loop on each check object keys map filter params strings
     // then look through
 
-    nodeIdObject.id = nodeId
+    // nodeIdObject.id = nodeId
     // nodeIdObject.label = nodeIdObject.rdfsLabel
 
     // TODO: now just searching for label, next search also for other keys
@@ -53,14 +55,16 @@ const getEdgesAndNodeProperties = ({
 
   // Now do edge property searches
   // objectPropertiesFromApi
-  for (const nodeIndex in nodesIds) {
-    const nodeId = nodesIds[nodeIndex]
-    const edgeIdObject = objectPropertiesFromApi[nodeId]
-
+  for (const edgeIndex in edgesIds) {
+    const edgeId = edgesIds[edgeIndex]
+    const edgeIdObject = objectPropertiesFromApi[edgeId]
+    if (edgeIdObject.rdfslabel !== null) {
+      edgePropsToDisplay.push({ name: edgeIdObject.rdfsLabel, id: edgeIdObject.id })
+    }
     // loop here search which are keys of type string
     // if type string push to array (if string then assume property push to array)
 
-    edgeIdObject.id = nodeId
+    // edgeIdObject.id = nodeId
     // nodeIdObject.label = nodeIdObject.rdfsLabel
 
     // TODO: now just searching for label, next search also for other keys

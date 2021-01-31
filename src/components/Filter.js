@@ -53,6 +53,9 @@ const OntologyFilter = ({
   const [prevSelectedEdges, setPrevSelectedEdges] = useState([])
   const [nodeId, setNodeId] = useState('')
   const [edgeId, setEdgeId] = useState('')
+
+  filterNodesByPropElementArray.sort((a, b) => ((a.name > b.name) ? 1 : -1))
+  filterEdgesByPropElementArray.sort((a, b) => ((a.name > b.name) ? 1 : -1))
   // const filterNodesByPropElementArray
   // const filterEdgesByPropElementArray
 
@@ -142,13 +145,21 @@ const OntologyFilter = ({
                     className="multiselect-custom"
                     itemTemplate={nodePropTemplate}
                     selectedItemTemplate={selectedNodesOptions}
+                    display="chip"
                   />
                 </div>
                 <div className="p-b-10">
                   <label htmlFor="filterNodePropsString">{t('searchInputText')}</label>
                 </div>
                 <div className="p-input-icon-right freetext-search-input">
-                  <i className="pi pi-search" />
+                  {nodeStringSearch === ''
+                    ? (
+                      <i className="pi pi-search" />
+                    )
+                    : (
+                      <i className="pi pi-times-circle" />
+                    )}
+
                   <InputText
                     id="filterNodePropsString"
                     value={nodeStringSearch}
@@ -207,10 +218,12 @@ const OntologyFilter = ({
                     }
                   </div>
                 ) : (
-                  <NodesSelectionDetails
-                    nodeId={nodeId}
-                  />
-                )}
+                    // eslint-disable-next-line react/jsx-indent
+                    <NodesSelectionDetails
+                      nodeId={nodeId}
+                    />
+                    // eslint-disable-next-line indent
+                  )}
 
                 <div className="freetext-search">
                   {
@@ -315,13 +328,20 @@ const OntologyFilter = ({
                     className="multiselect-custom"
                     itemTemplate={edgePropTemplate}
                     selectedItemTemplate={selectedEdgesOptions}
+                    display="chip"
                   />
                 </div>
                 <div className="p-b-10">
                   <label htmlFor="filterEdgePropsString">{t('searchInputText')}</label>
                 </div>
                 <div className="p-input-icon-right freetext-search-input">
-                  <i className="pi pi-search" />
+                  {edgeStringSearch === ''
+                    ? (
+                      <i className="pi pi-search" />
+                    )
+                    : (
+                      <i className="pi pi-times-circle" />
+                    )}
 
                   <InputText
                     id="filterEdgePropsString"
@@ -380,16 +400,18 @@ const OntologyFilter = ({
                           )
                         }) : (
                           <div className="edges-selection-message">
-                            {t('selectEdgeFromGraph')}
+                            {/* {t('selectEdgeFromGraph')} */}
                           </div>
                         )
                     }
                   </div>
                 ) : (
-                  <EdgesSelectionDetails
-                    edgeId={edgeId}
-                  />
-                )}
+                    // eslint-disable-next-line react/jsx-indent
+                    <EdgesSelectionDetails
+                      edgeId={edgeId}
+                    />
+                    // eslint-disable-next-line indent
+                  )}
 
                 <div className="freetext-search">
                   {

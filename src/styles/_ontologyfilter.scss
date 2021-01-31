@@ -3,41 +3,54 @@
   height: 100%;
   overflow-y: auto;
   text-align: center;
-  padding: 0px;
+  padding: 0;
 
-  .text-center{
+  .text-center {
     text-align: center;
   }
 
-  .p-accordion-tab{
-    &.p-accordion-tab-active{
-      .p-accordion-header-link{
+  .p-accordion-tab {
+    &.p-accordion-tab-active {
+      .p-accordion-header-link {
         text-align: left;
-        background: #32353c !important;
+        background: #32353c;
         color: white !important;
         border: 0 !important;
         border-radius: 0;
-        &:hover{
+
+        &:hover {
           background: white;
         }
+
         border-top: 1px solid;
       }
     }
-    .p-accordion-header{
-      .p-accordion-header-link{
-          text-align: left;
-          background: #424350;
+
+    .p-accordion-header {
+      &.p-highlight {
+        a {
+          background: #0382c9 !important;
           color: white;
-          border: 0;
-          border-radius: 0;
-          &:hover{
-            background: white;
-          }
-          border-top: 1px solid;
-          border-bottom: 1px solid;
+        }
+      }
+
+      .p-accordion-header-link {
+        text-align: left;
+        background: #424350;
+        color: white;
+        border: 0;
+        border-radius: 0;
+
+        &:hover {
+          background: white;
+        }
+
+        border-top: 1px solid;
+        border-bottom: 1px solid;
       }
     }
-    .p-accordion-content{
+
+    .p-accordion-content {
       text-align: left;
       font-size: 14px;
       border: 0;
@@ -45,33 +58,43 @@
       color: white;
     }
   }
-  
-  .p-multiselect{
+
+  .p-multiselect {
     width: 100%;
-    .p-placeholder{
+
+    .p-placeholder {
       text-align: left;
     }
-    .p-multiselect-label{
-      .node-item{
-        div{
+
+    .p-multiselect-panel {
+      width: 100%;
+    }
+
+    .p-multiselect-label {
+      .node-item {
+        div {
           color: white;
           background: #001f41;
           display: inline;
           padding: 3px 5px 5px 5px;
         }
+
         display: inline;
         margin-right: 5px;
       }
-      .edge-item{
-        div{
+
+      .edge-item {
+        div {
           color: white;
           background: #001f41;
           display: inline;
           padding: 3px 5px 5px 5px;
         }
+
         display: inline;
         margin-right: 5px;
       }
+
       color: black;
     }
   }
@@ -80,16 +103,17 @@
     padding: 0;
   }
 
-  .ontology-filter-input{
+  .ontology-filter-input {
     input {
       width: 100%;
     }
-    label{
+
+    label {
       text-align: left;
     }
   }
 
-  .ontology-filter-selection{
+  .ontology-filter-selection {
     text-align: left;
     font-size: 14px;
   }
