@@ -138,11 +138,30 @@ const NetworkSettings = ({
                       />
                     </AccordionTab>
                     <AccordionTab header={t('edgeLineStyleColor')}>
-                      <h3>{t('edgeLineStyleCurrentColor')}</h3>
-                      <ColorPicker value={color1} onChange={(e) => setColor1(e.value)} />
-                      <span>
-                        {t('chooseColor')}
-                      </span>
+                      <div>
+                        <ColorPicker value={color1} onChange={(e) => setColor1(e.value)} />
+                        <span>
+                          &nbsp;
+                          {' '}
+                          {t('edgeLineStyleLineColor')}
+                        </span>
+                      </div>
+                      <div>
+                        <ColorPicker value={color1} onChange={(e) => setColor1(e.value)} />
+                        <span>
+                          &nbsp;
+                          {' '}
+                          {t('edgeLineStyleHighlightColor')}
+                        </span>
+                      </div>
+                      <div>
+                        <ColorPicker value={color1} onChange={(e) => setColor1(e.value)} />
+                        <span>
+                          &nbsp;
+                          {' '}
+                          {t('edgeLineStyleHoverColor')}
+                        </span>
+                      </div>
                     </AccordionTab>
                     <AccordionTab header={t('edgeLineStyle')}>
                       <SelectButton value={value3} options={justifyOptions} onChange={(e) => setValue3(e.value)} itemTemplate={justifyTemplate} />
