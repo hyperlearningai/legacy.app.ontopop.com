@@ -7,7 +7,7 @@ import store from '../store'
  * @param  {Object}   params
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Function} params.updateGraphData           update graph data function
- * @return
+ * @return { undefined }
  */
 const setBoundingBoxNodes = ({
   setStoreState,

@@ -30,7 +30,7 @@ export default {
   freeTextSearch: 'Free-text search',
 
   // data loading
-  couldNotGetGraphData: 'Could not get graph data!',
+  couldNotQueryGraph: 'Could not query graph!',
 
   // node selection
   node: 'Node',
@@ -89,6 +89,17 @@ export default {
   couldNotDownloadCsv: 'Could not download CSV!',
   insertFileName: 'Insert file name.',
 
+  // custom query
+  customQuery: 'Custom query',
+  insertGremlinQueries: 'Insert Gremlin query',
+  queryOutput: 'Query output',
+  queryHistory: 'Query history',
+  removeFromHistory: 'Remove from history',
+  queryAgain: 'Query again',
+  query: 'Query',
+  clear: 'Clear',
+  exportAsJson: 'Export as Json',
+
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',
   showPhysicsSettings: 'Show physics settings',
@@ -131,6 +142,7 @@ export default {
   loading: 'Loading...',
 
   // context menu
+  queryGraph: 'queryGraph',
   expandNode: 'Expand node',
   close: 'Close',
 }

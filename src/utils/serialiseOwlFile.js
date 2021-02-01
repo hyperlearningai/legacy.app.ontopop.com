@@ -190,8 +190,8 @@ $CLASSES
  * @param  {Object}   params.availableEdgesNormalised   Available edges data
  * @param  {Object}   params.objectPropertiesFromApi    Edges from initial OwlObjectProperties
  * @param  {Object}   params.classesFromApi             Classes from initial OwlClasses
- * @return
- */
+ * @return { undefined }
+\ */
 const serialiseOwlFile = ({
   availableNodesNormalised,
   availableEdgesNormalised,

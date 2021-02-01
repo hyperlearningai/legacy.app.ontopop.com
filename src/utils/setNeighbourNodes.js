@@ -8,7 +8,7 @@ import store from '../store'
  * @param  {Number}   params.separationDegree          Separation degree integer
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Function} params.updateGraphData           update graph data function
- * @return
+ * @return { undefined }
  */
 const setNeighbourNodes = ({
   separationDegree,

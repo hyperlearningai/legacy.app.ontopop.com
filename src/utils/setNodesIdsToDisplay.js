@@ -15,7 +15,7 @@ import store from '../store'
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {String}   params.type                      type of algorithm to use
  * @param  {Object}   params.options                   additional options
- * @return
+ * @return { undefined }
  */
 const setNodesIdsToDisplay = async ({
   type,

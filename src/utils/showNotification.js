@@ -5,7 +5,7 @@ import { store } from 'react-notifications-component'
  * @param  {Object}   params
  * @param  {String}   params.message    message to display
  * @param  {String}   params.type       message type (warning|success|danger)
- * @return
+ * @return { undefined }
  */
 const showNotification = ({
   message,

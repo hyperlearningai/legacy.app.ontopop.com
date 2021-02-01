@@ -6,8 +6,8 @@ import clearNodesSelection from './clearNodesSelection'
  * Get nodes inside/outside bounding box
  * @param  {Object}   params
  * @param  {function} params.setStoreState          setStoreState action
- * @return
- */
+ * @return { undefined }
+\ */
 const getNodesFromBoundingBox = ({
   setStoreState
 }) => {

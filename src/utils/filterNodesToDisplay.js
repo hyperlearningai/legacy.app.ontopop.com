@@ -4,7 +4,7 @@
  * @param  {Object}   params.classesFromApi   Nodes from initial OwlClasses
  * @param  {String}   params.searchFilter     Search string
  * @param  {Function} params.setStoreState    setStoreState action
- * @return
+ * @return { undefined }
  */
 const filterNodesToDisplay = ({
   classesFromApi,

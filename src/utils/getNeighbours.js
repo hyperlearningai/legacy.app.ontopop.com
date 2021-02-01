@@ -7,8 +7,8 @@
  * @param  {Array}    params.neighbourEdges   Array of neighbour edges IDs
  * @param  {Number}   params.separationDegree Neighbourhood separation degree as integer
  * @param  {Number}   params.round            Current loop round as integer
- * @return
- */
+ * @return { undefined }
+\ */
 const loopThroughNodes = ({
   nextIds,
   neighbourNodes,

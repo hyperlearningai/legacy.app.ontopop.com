@@ -7,7 +7,7 @@ import { SPIDERABLE_NODE_BORDER_COLOR, SPIDERABLE_NODE_BORDER_WIDTH } from '../c
  * @param  {Object}   params.triplesPerNode             List of triples per node
  * @param  {Object}   params.availableNodes             VisJs Dataset of nodes IDs
  * @param  {Object}   params.availableNodesNormalised   Available nodes data
- * @return
+ * @return { undefined }
  */
 const highlightSpiderableNodes = ({
   nodesConnections, // get id from it to check
