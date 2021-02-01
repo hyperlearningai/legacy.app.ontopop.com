@@ -19,11 +19,13 @@ export default {
   // sidebar
   networkGraphs: 'Network graphs',
   nodeNeighbourhood: 'Node neighbourhood',
-  ontologyFilter: 'Filter',
+  ontologyFilter: 'Ontology filter',
   shortestPath: 'Shortest path',
   toggleSidebar: 'Toggle sidebar',
   nodesSelection: 'Nodes selection',
   edgesSelection: 'Edges selection',
+  nodesFilter: 'Nodes filter',
+  edgesFilter: 'Edges filter',
   selectNodes: 'Select nodes',
   selectEdges: 'Select edges',
   settings: 'Settings',
@@ -45,13 +47,21 @@ export default {
   performSearch: 'Perform search',
 
   // node properties
+  filterNodesByArbitraryPropsCombination: 'Filter nodes by any arbitrary combination of one or more node property values',
+  searchString: 'Search string',
+  selectProperty: 'Select property',
+  removeFilter: 'Remove filter',
+  showFilteredNodes: 'Show filtered nodes',
+
   freeNodeSearchInputPlaceholder: 'Filter by Node properties',
-  selectNodeProperties: 'Select node properties to search on',
   allNodeProperties: 'All node properties',
   filterNodesDescription1: 'First select the node properties you would like to search on',
   filterNodesDescription2: 'Then enter the search string to filter',
 
   // edge properties
+  filterEdgesByArbitraryPropsCombination: 'Filter edges by any arbitrary combination of one or more edge property values',
+  showFilteredEdges: 'Show filtered edges',
+
   freeEdgeSearchInputPlaceholder: 'Filter by Edge properties',
   selectEdgeProperties: 'Select edge properties to search on',
   allEdgeProperties: 'All edge properties',

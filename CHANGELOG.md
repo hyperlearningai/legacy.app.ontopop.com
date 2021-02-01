@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.2.0]
 ### Added
+- ONTOLOGY-21 Filter nodes by properties
+- ONTOLOGY-22 Filter edges by properties
 - ONTOLOGY-47 Visualise subnetwork after dynamic bounding box selection
 
 ### Changed

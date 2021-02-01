@@ -63,6 +63,12 @@ const initialState = {
     nodeId: ''
   },
 
+  // Filter nodes
+  nodesProperties: [],
+
+  // Filter edges
+  edgesProperties: [],
+
   // states to update at every view refresh
   nodesIdsToDisplay: [],
   edgesIdsToDisplay: [],

@@ -74,19 +74,6 @@ const NodeNeighbourhood = ({
           )
         }
 
-        {/* <div className="node-neighbourhood-input">
-          <label htmlFor="separationDegree">
-            {t('separationDegree')}
-          </label>
-          <InputNumber
-            id="separationDegree"
-            value={separationDegree}
-            min={1}
-            step={1}
-            onValueChange={(e) => setSeparationDegree(e.target.value)}
-          />
-        </div> */}
-
         <Button
           tooltip={t('showNeighbourhood')}
           className="node-neighbourhood-button m-t-30"

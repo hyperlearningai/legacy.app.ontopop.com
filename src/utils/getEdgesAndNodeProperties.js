@@ -2,82 +2,80 @@ import store from '../store'
 /**
  * Updated nodesIdsToDisplay in store filtering nodes in graph by string
  * @param  {Object}   params
- * @param  {Object}   params.classesFromApi   Nodes from initial OwlClasses
- * @param  {String}   params.searchFilter     Search string
  * @param  {Function} params.setStoreState    setStoreState action
- * @return
+ * @return {undefined}
  */
 const getEdgesAndNodeProperties = ({
-  // classesFromApi,
-  // objectPropertiesFromApi,
   setStoreState
 }) => {
   const {
     classesFromApi,
-    objectPropertiesFromApi
+    // objectPropertiesFromApi
   } = store.getState()
-  // const { OwlClasses } = JSON.parse(JSON.stringify(classesFromApi))
-  // const { objectPropertiesFromApi } = JSON.parse(JSON.stringify(objectPropertiesFromApi))
 
-  // if (!OwlClasses) return
   const nodesIds = Object.keys(classesFromApi)
-  const edgesIds = Object.keys(objectPropertiesFromApi)
+  // const edgesIds = Object.keys(objectPropertiesFromApi)
+
   const nodesPropsToDisplay = []
-  const edgePropsToDisplay = []
+  // const edgePropsToDisplay = []
 
-  // For nodes
-  // ClassesfromApi
-  for (const nodeIndex in nodesIds) {
-    const nodeId = nodesIds[nodeIndex]
-    const nodeIdObject = classesFromApi[nodeId]
-    if (nodeIdObject.label !== '') {
-      nodesPropsToDisplay.push({ name: nodeIdObject.label, id: nodeIdObject.id })
-    }
-    // const nodeObjectKeysNodeIdObjectProperty
+  nodesIds
+    .filter((nodeId, index) => index < 10)
+    .map((nodeId) => {
+      const nodeIdObject = classesFromApi[nodeId]
 
-    // loop here search which are keys of type string
-    // if type string push to array (if string then assume property push to array)
-    // each node from classesFromApi
-    // from value new loop on each check object keys map filter params strings
-    // then look through
+      const nodeProperties = Object.keys(nodeIdObject)
 
-    // nodeIdObject.id = nodeId
-    // nodeIdObject.label = nodeIdObject.rdfsLabel
+      return nodeProperties?.map((property) => {
+        if (!nodeIdObject[property] || typeof nodeIdObject[property] === 'object') return false
+        if (['id', 'label'].includes(property)) return false
 
-    // TODO: now just searching for label, next search also for other keys
-    // if (searchFilter !== ''
-    //   && nodeIdObject.label
-    //   && !nodeIdObject.label.toLowerCase().includes(searchFilter.toLowerCase())
-    // ) continue
+        // const propertyObject = { name: property, id: property }
 
-    // nodesIdsToDisplay.push(nodeId)
-  }
+        console.log({
+          property,
+          nodesPropsToDisplay,
+          isIn: nodesPropsToDisplay.includes(property)
+        })
 
-  // Now do edge property searches
-  // objectPropertiesFromApi
-  for (const edgeIndex in edgesIds) {
-    const edgeId = edgesIds[edgeIndex]
-    const edgeIdObject = objectPropertiesFromApi[edgeId]
-    if (edgeIdObject.rdfslabel !== null) {
-      edgePropsToDisplay.push({ name: edgeIdObject.rdfsLabel, id: edgeIdObject.id })
-    }
-    // loop here search which are keys of type string
-    // if type string push to array (if string then assume property push to array)
+        if (!nodesPropsToDisplay.includes(property)) {
+          nodesPropsToDisplay.push(property)
+        }
 
-    // edgeIdObject.id = nodeId
-    // nodeIdObject.label = nodeIdObject.rdfsLabel
+        return true
+      })
+    })
 
-    // TODO: now just searching for label, next search also for other keys
-    // if (searchFilter !== ''
-    //   && nodeIdObject.label
-    //   && !nodeIdObject.label.toLowerCase().includes(searchFilter.toLowerCase())
-    // ) continue
+  // for (const edgeIndex in edgesIds) {
+  //   const edgeId = edgesIds[edgeIndex]
+  //   const edgeIdObject = objectPropertiesFromApi[edgeId]
 
-    // nodesIdsToDisplay.push(nodeId)
-  }
+  //   const edgeProperties = Object.keys(edgeIdObject)
 
-  setStoreState('filterNodesByPropElementArray', nodesPropsToDisplay)
-  setStoreState('filterEdgesByPropElementArray', edgePropsToDisplay)
+  //   edgeProperties?.map((property) => {
+  //     if (!edgeIdObject[property] || typeof edgeIdObject[property] === 'object') return false
+  //     if (!edgeIdObject[property] || typeof edgeIdObject[property] === 'object') return false
+
+  //     if (!nodesPropsToDisplay.includes(property)) {
+  //       nodesPropsToDisplay.push({ name: property, id: property })
+  //     }
+
+  //     return true
+  //   })
+
+  //   if (edgeIdObject.rdfslabel !== null) {
+  //     edgePropsToDisplay.push({ name: edgeIdObject.rdfsLabel, id: edgeIdObject.id })
+  //   }
+  // }
+
+  // console.log({
+  //   nodesPropsToDisplay
+  // })
+  setStoreState('filterNodesByPropElementArray', nodesPropsToDisplay.map((prop) => ({
+    label: prop,
+    value: prop
+  })))
+  // setStoreState('filterEdgesByPropElementArray', edgePropsToDisplay)
 }
 
 export default getEdgesAndNodeProperties

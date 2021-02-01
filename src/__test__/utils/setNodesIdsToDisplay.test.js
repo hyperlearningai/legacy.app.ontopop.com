@@ -2,7 +2,9 @@ import {
   ALGO_TYPE_FULL,
   ALGO_TYPE_NEIGHBOURHOOD,
   ALGO_TYPE_SHORTEST_PATH,
-  ALGO_TYPE_BOUNDING_BOX
+  ALGO_TYPE_BOUNDING_BOX,
+  ALGO_TYPE_NODES_FILTER,
+  ALGO_TYPE_EDGES_FILTER
 } from '../../constants/algorithms'
 import setNodesIdsToDisplay from '../../utils/setNodesIdsToDisplay'
 import { OwlClasses } from '../fixtures/test-ontology-classes.json'
@@ -10,6 +12,8 @@ import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties
 import { algoTypeFull } from '../fixtures/setNodesIdsToDisplayResults'
 import { triplesPerNode } from '../fixtures/triplesPerNode'
 import store from '../../store'
+import { availableEdgesNormalised } from '../fixtures/availableEdgesNormalised'
+import { availableNodesNormalised } from '../fixtures/availableNodesNormalised'
 
 const setStoreState = jest.fn()
 const classesFromApi = OwlClasses
@@ -17,6 +21,8 @@ const objectPropertiesFromApi = OwlObjectProperties
 const getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
   objectPropertiesFromApi,
+  availableNodesNormalised,
+  availableEdgesNormalised,
   nodesIdsToDisplay: [
     'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
   ]
@@ -257,6 +263,102 @@ describe('setNodesIdsToDisplay', () => {
           'http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1',
           'http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS',
           'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ',
+        ],
+      ],
+    ])
+  })
+
+  it('should work correctly when ALGO_TYPE_NODES_FILTER and no overlay', async () => {
+    const type = ALGO_TYPE_NODES_FILTER
+
+    const options = {
+      nodesFilters: [{
+        property: 'rdfsLabel',
+        value: 'road'
+      }]
+    }
+
+    await setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options
+    })
+
+    expect(setStoreState.mock.calls).toEqual([
+      [
+        'highlightedNodes',
+        [],
+      ],
+      [
+        'isNodeOverlay',
+        false,
+      ],
+      [
+        'nodesIdsToDisplay',
+        [
+          'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep',
+          'http://webprotege.stanford.edu/RCOdkBizz0dWtRTEjZSfqP8',
+          'http://webprotege.stanford.edu/RBBDxx5ZaIbg5ASqGAeyKGg',
+          'http://webprotege.stanford.edu/Rigjqi5P4ZscabU1Pot3hK',
+        ],
+      ],
+    ])
+  })
+
+  it('should work correctly when ALGO_TYPE_EDGES_FILTER and no overlay', async () => {
+    const type = ALGO_TYPE_EDGES_FILTER
+
+    const options = {
+      edgesFilters: [{
+        property: 'rdfsLabel',
+        value: 'comp'
+      }]
+    }
+
+    await setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options
+    })
+
+    expect(setStoreState.mock.calls).toEqual([
+      [
+        'highlightedNodes',
+        [],
+      ],
+      [
+        'isNodeOverlay',
+        false,
+      ],
+      [
+        'edgesIdsToDisplay',
+        [
+          'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+        ],
+      ],
+      [
+        'nodesIdsToDisplay',
+        [
+          'http://webprotege.stanford.edu/R2RFTG7iNuFjv3A8V7qHOb',
+          'http://webprotege.stanford.edu/R7dcPTLwQrLcc9eK22R7swU',
+          'http://webprotege.stanford.edu/RFNK6OsKMaap9LxxLXdLxR',
+          'http://webprotege.stanford.edu/RB2wiyzebv6p4qrvJjgommU',
+          'http://webprotege.stanford.edu/R7pIV91w7fTKppAHSmrz8n',
+          'http://webprotege.stanford.edu/R81y0gnn3Ar0DJ8FatMTqK3',
+          'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+          'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+          'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
+          'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
+          'http://webprotege.stanford.edu/Ree4nJbmBksWE1ufpmuUfp',
+          'http://webprotege.stanford.edu/R8N1a0K78gZZbVLw2P1NkTX',
+          'http://webprotege.stanford.edu/RCGrVyxcVdUB7rI7qGrKvTF',
+          'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep',
+          'http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm',
+          'http://webprotege.stanford.edu/RC714KfXzpEYi4lGyNUEbWI',
+          'http://webprotege.stanford.edu/RBzF9qwVtyzz358WQ0Iaxjs',
+          'http://webprotege.stanford.edu/RCdB5m1RZhhIcJM0SpRcJvn',
+          'http://webprotege.stanford.edu/RnzPd3Edkzo3UTz2B80djl',
         ],
       ],
     ])

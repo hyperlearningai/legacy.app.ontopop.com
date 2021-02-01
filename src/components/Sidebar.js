@@ -11,7 +11,7 @@ import {
 } from 'react-icons/bi'
 import {
   BsSearch,
-  BsArrowUpDown,
+  BsArrowUpRight,
   BsFilter,
   BsPencilSquare
 } from 'react-icons/bs'
@@ -33,24 +33,28 @@ import {
   SIDEBAR_VIEW_GRAPHS,
   SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
-  SIDEBAR_VIEW_NODES_FILTER,
+  SIDEBAR_VIEW_ONTOLOGY_FILTER,
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_NODES_SELECTION,
   SIDEBAR_VIEW_EDGES_SELECTION,
   SIDEBAR_VIEW_SETTINGS,
   SIDEBAR_VIEW_EXPORT,
-  SIDEBAR_VIEW_BOUNDING_BOX
+  SIDEBAR_VIEW_BOUNDING_BOX,
+  SIDEBAR_VIEW_NODES_FILTER,
+  SIDEBAR_VIEW_EDGES_FILTER,
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
-import OntologyFilter from './Filter'
+import OntologyFilter from './OntologyFilter'
 import NodesSelection from './NodesSelection'
 import EdgesSelection from './EdgesSelection'
 import NetworkSettings from './NetworkSettings'
 import ExportSettings from './ExportSettings'
 import ShortestPath from './ShortestPath'
 import BoundingBoxSelection from './BoundingBoxSelection'
+import NodesFilter from './NodesFilter'
+import EdgesFilter from './EdgesFilter'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -100,8 +104,30 @@ const Sidebar = ({
             setView(SIDEBAR_VIEW_EDGES_SELECTION)
           }}
         >
-          <BsArrowUpDown />
+          <BsArrowUpRight />
           <FaRegHandPointer />
+        </Button>
+        <Button
+          tooltip={t('nodesFilter')}
+          className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isNodeSelectable', true)
+            setView(SIDEBAR_VIEW_NODES_FILTER)
+          }}
+        >
+          <FaRegCircle />
+          <BsFilter />
+        </Button>
+        <Button
+          tooltip={t('edgesFilter')}
+          className={sidebarView === SIDEBAR_VIEW_EDGES_FILTER ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isEdgeSelectable', true)
+            setView(SIDEBAR_VIEW_EDGES_FILTER)
+          }}
+        >
+          <BsArrowUpRight />
+          <BsFilter />
         </Button>
         <Button
           tooltip={t('boundingBox')}
@@ -125,10 +151,10 @@ const Sidebar = ({
         </Button>
         <Button
           tooltip={t('ontologyFilter')}
-          className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
+          className={sidebarView === SIDEBAR_VIEW_ONTOLOGY_FILTER ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setStoreState('isNeighbourNodeSelectable', true)
-            setView(SIDEBAR_VIEW_NODES_FILTER)
+            setView(SIDEBAR_VIEW_ONTOLOGY_FILTER)
           }}
         >
           <BsFilter />
@@ -196,6 +222,18 @@ const Sidebar = ({
             }
 
             {
+              sidebarView === SIDEBAR_VIEW_NODES_FILTER && (
+                <NodesFilter />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_EDGES_FILTER && (
+                <EdgesFilter />
+              )
+            }
+
+            {
               sidebarView === SIDEBAR_VIEW_BOUNDING_BOX && (
                 <BoundingBoxSelection />
               )
@@ -208,7 +246,7 @@ const Sidebar = ({
             }
 
             {
-              sidebarView === SIDEBAR_VIEW_NODES_FILTER && (
+              sidebarView === SIDEBAR_VIEW_ONTOLOGY_FILTER && (
                 <OntologyFilter />
               )
             }
