@@ -67,7 +67,6 @@ const NetworkSettings = ({
     { name: 'Hexagon', value: 'hexagon' },
     { name: 'Square', value: 'square' }
   ]
-  const selectedNodeOption = useState(physicsNodeShape.value)
 
   return (
     <>
@@ -438,9 +437,9 @@ const NetworkSettings = ({
                               name="nodeShapeValue"
                               value={nodeShapeValue.value}
                               onChange={(e) => setStoreState('physicsNodeShape', e.value)}
-                              checked={selectedNodeOption.value === physicsNodeShape}
+                              checked={physicsNodeShape === nodeShapeValue.value}
                             />
-                            <label htmlFor={nodeShapeValue.value}>{nodeShapeValue.name}</label>
+                            <label className="m-l-10" htmlFor={nodeShapeValue.value}>{nodeShapeValue.name}</label>
                           </div>
                         ))
                       }

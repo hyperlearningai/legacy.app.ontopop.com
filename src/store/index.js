@@ -31,7 +31,7 @@ const initialState = {
   physicsEdgeLineColorHighlight: '#ffcc00',
   physicsEdgeLineStyle: false,
   physicsEdgeWidth: 2,
-  physicsNodeSize: 100,
+  physicsNodeSize: 25,
   physicsNodeBorder: 1,
   physicsNodeTextColor: '000000',
   physicsNodeBorderSelected: 2,
