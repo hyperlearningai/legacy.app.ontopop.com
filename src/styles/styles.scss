@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-@import '_colors';
-@import '_typography';
-@import '_utils';
-@import '_buttons';
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import "_colors";
+@import "_typography";
+@import "_utils";
+@import "_buttons";
 
 html,
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 24px;
   color: $font-color;
@@ -34,22 +34,23 @@ main {
 }
 
 // Components
-@import '_header';
-@import '_nav';
-@import '_footer';
-@import '_sidebar';
-@import '_mainview';
-@import '_nodeinfo';
-@import '_nodeinfodetails';
-@import '_networkgraphlist';
-@import '_nodeneighbourhood';
-@import '_nodesselection';
-@import '_nodesselectiondetails';
-@import '_edgesselection';
-@import '_edgesselectiondetails';
-@import '_networksettings';
-@import '_exportsettings';
-@import '_freetextsearch';
-@import '_shortestpath';
-@import '_contextmenu';
-@import '_boundingbox';
+@import "_header";
+@import "_nav";
+@import "_footer";
+@import "_sidebar";
+@import "_mainview";
+@import "_nodeinfo";
+@import "_nodeinfodetails";
+@import "_networkgraphlist";
+@import "_nodeneighbourhood";
+@import "_nodesselection";
+@import "_nodesselectiondetails";
+@import "_edgesselection";
+@import "_edgesselectiondetails";
+@import "_networksettings";
+@import "_exportsettings";
+@import "_freetextsearch";
+@import "_spacing_helper";
+@import "_shortestpath";
+@import "_contextmenu";
+@import "_boundingbox";

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   CLICK_NODE_BACKGROUND,
   HIGHLIGHT_NODE_BORDER,
@@ -7,6 +8,7 @@ import {
   NODE_BORDER,
   EDGE_COLOR,
   NODE_FONT,
+  EDGE_COLOR_HIGHLIGHTED,
 } from '../constants/graph'
 
 /**
@@ -17,6 +19,18 @@ import {
  * @param  {Number}   params.physicsEdgeLength         edge length as integer
  * @param  {Number}   params.physicsEdgeWidth          edge width as integer
  * @param  {Boolean}  params.physicsEdgeLineStyle      physics edge line style as flag
+ * @param  {String}   params.physicsEdgeLineColor      edge line colour as string
+ * @param  {String}   params.physicsEdgeLineColorHover      edge line colour as string
+ * @param  {String}   params.physicsEdgeLineColorHighlight      edge line colour as string
+ * @param  {string}   params.physicsNodeShape          node shape as string
+ * @param  {Number}   params.physicsNodeSize           node size as integer
+ * @param  {Number}   params.physicsNodeBorder         node border width as integer
+ * @param  {Number}   params.physicsNodeBorderSelected node border selected width as integer
+ * @param  {String}   params.physicsNodeBorderColor node border colour as string
+ * @param  {String}   params.physicsNodeBackgroundColor node border colour as string
+ * @param  {String}   params.physicsNodeTextColor node text colour as string
+ * @param  {String}   params.physicsNodeHighlightBorderColor node border colour as string
+ * @param  {String}   params.physicsNodeHighlightBackgroundColor node border colour as string
  * @return {Object}   output                           VisJs visualisation options
  */
 const getPhysicsOptions = ({
@@ -24,7 +38,19 @@ const getPhysicsOptions = ({
   physicsRepulsion,
   physicsEdgeLength,
   physicsEdgeWidth,
-  physicsEdgeLineStyle
+  physicsEdgeLineStyle,
+  physicsEdgeLineColor,
+  physicsEdgeLineColorHover,
+  physicsEdgeLineColorHighlight,
+  physicsNodeShape,
+  physicsNodeSize,
+  physicsNodeBorder,
+  physicsNodeBorderSelected,
+  physicsNodeBorderColor,
+  physicsNodeBackgroundColor,
+  physicsNodeTextColor,
+  physicsNodeHighlightBorderColor,
+  physicsNodeHighlightBackgroundColor
 }) => ({
   edges: {
     smooth: {
@@ -33,27 +59,41 @@ const getPhysicsOptions = ({
       roundness: 0.45,
     },
     arrows: { to: true },
-    color: EDGE_COLOR,
+    color: {
+      color: physicsEdgeLineColor,
+      highlight: physicsEdgeLineColorHighlight,
+      hover: physicsEdgeLineColorHover,
+      inherit: 'from',
+      opacity: 1.0
+    },
     labelHighlightBold: true,
     selectionWidth: 3,
     width: physicsEdgeWidth,
     dashes: physicsEdgeLineStyle
   },
   nodes: {
-    font: NODE_FONT,
-    shape: 'circle', // ellipse, circle, database, box, text, image, circularImage, diamond, dot, star, triangle, triangleDown, hexagon, square, icon
+    borderWidth: physicsNodeBorder,
+    borderWidthSelected: physicsNodeBorderSelected,
+    font: {
+      size: 12,
+      color: `#${physicsNodeTextColor}`,
+      face: 'Montserrat',
+      bold: '700'
+    },
+    shape: physicsNodeShape, // ellipse, circle, database, box, text, image, circularImage, diamond, dot, star, triangle, triangleDown, hexagon, square, icon
     color: {
-      background: NODE_BACKGROUND,
-      border: NODE_BORDER,
+      background: `#${physicsNodeBackgroundColor}`,
+      border: `#${physicsNodeBorderColor}`,
       highlight: {
-        background: CLICK_NODE_BACKGROUND,
-        border: HIGHLIGHT_NODE_BORDER,
+        background: `#${physicsNodeHighlightBackgroundColor}`,
+        border: `#${physicsNodeHighlightBorderColor}`,
       },
       hover: {
         background: HOVER_NODE_BACKGROUND,
         border: HOVER_NODE_BORDER,
       },
     },
+    size: 100
   },
   autoResize: true,
   layout: {
@@ -104,3 +144,4 @@ const getPhysicsOptions = ({
 })
 
 export default getPhysicsOptions
+/* eslint-enable */

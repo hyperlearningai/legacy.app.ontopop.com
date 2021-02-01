@@ -122,6 +122,12 @@
     }
 
     .p-accordion-header {
+      &.p-highlight {
+        .p-accordion-header-link {
+          font-weight: bold;
+        }
+      }
+
       .p-accordion-header-link {
         text-align: left;
         background: #424350;
@@ -146,6 +152,7 @@
       background: #33343d;
       color: white;
       padding: 10px;
+      padding: 20px 10px 30px 10px;
 
       .p-accordion-header {
         font-weight: 200;
@@ -181,6 +188,10 @@
       .p-colorpicker {
         width: 30px;
         height: 30px;
+
+        input {
+          border: 1px solid white;
+        }
       }
 
       .p-accordion-header-link {
