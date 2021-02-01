@@ -1,4 +1,3 @@
-/* eslint-disable */
 import {
   CLICK_NODE_BACKGROUND,
   HIGHLIGHT_NODE_BORDER,
@@ -93,7 +92,7 @@ const getPhysicsOptions = ({
         border: HOVER_NODE_BORDER,
       },
     },
-    size: 100
+    size: physicsNodeSize
   },
   autoResize: true,
   layout: {
@@ -144,4 +143,3 @@ const getPhysicsOptions = ({
 })
 
 export default getPhysicsOptions
-/* eslint-enable */
