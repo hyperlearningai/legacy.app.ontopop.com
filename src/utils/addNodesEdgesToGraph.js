@@ -8,7 +8,7 @@ import highlightSpiderableNodes from './highlightSpiderableNodes'
  * @param  {Object}   params
  * @param  {Number}   params.nodeId           Selected node id
  * @param  {Function} params.setStoreState    setStoreState action
- * @return
+ * @return {undefined}
  */
 const addNodesEdgesToGraph = ({
   nodeId,

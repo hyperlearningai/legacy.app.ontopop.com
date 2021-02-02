@@ -9,7 +9,7 @@ import showNotification from './showNotification'
  * @param  {String} params.type            Export file type (jpeg|png)
  * @param  {Node}   params.canvasElement   Canvas DOM element
  * @param  {Function} params.t             i18n translation function
- * @return
+ * @return { undefined }
  */
 const exportAsImage = ({
   exportFileName,

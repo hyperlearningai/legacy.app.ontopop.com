@@ -12,7 +12,7 @@ import addNodesEdgesToGraph from './addNodesEdgesToGraph'
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Function} params.addToArray                addToArray action
  * @param  {Object}   params.network                   VisJs network object
- * @return
+ * @return { undefined }
  */
 const setNetworkMethods = async ({
   setStoreState,
@@ -72,22 +72,17 @@ const setNetworkMethods = async ({
   network?.on('oncontext', (event) => {
     event.event.preventDefault()
 
-    if (event.nodes?.length === 1) {
-      const nodeId = event.nodes[0]
-      const {
-        layerX,
-        layerY,
-      } = event.event
+    const {
+      offsetX,
+      offsetY,
+    } = event.event
 
-      setStoreState('contextMenuData', {
-        nodeId,
-        top: layerY,
-        left: layerX
-      })
-      setStoreState('showContextMenu', true)
-    } else {
-      setStoreState('showContextMenu', false)
-    }
+    setStoreState('contextMenuData', {
+      nodeId: event.nodes?.length ? event.nodes[0] : undefined,
+      top: offsetY,
+      left: offsetX
+    })
+    setStoreState('showContextMenu', true)
   })
 
   network?.on('selectEdge', (event) => {

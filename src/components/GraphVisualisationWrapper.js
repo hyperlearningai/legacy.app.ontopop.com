@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { Menu } from 'primereact/menu'
 import GraphVisualisation from './GraphVisualisation'
 // import jsonClasses from '../assets/json/test-ontology-classes.json'
 // import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
@@ -11,15 +10,14 @@ import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import getAllTriplesPerNode from '../utils/getAllTriplesPerNode'
 import getGraphData from '../utils/getGraphData'
-import addNodesEdgesToGraph from '../utils/addNodesEdgesToGraph'
 import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
+import GraphContextMenu from './GraphContextMenu'
 
 const GraphVisualisationWrapper = ({
   currentGraph,
   graphData,
   setStoreState,
   showContextMenu,
-  contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry
 }) => {
@@ -80,12 +78,6 @@ const GraphVisualisationWrapper = ({
   ])
 
   const {
-    top,
-    left,
-    nodeId
-  } = contextMenuData
-
-  const {
     boundingBoxPosX,
     boundingBoxPosY,
     boundingBoxWidth,
@@ -114,31 +106,7 @@ const GraphVisualisationWrapper = ({
       {
         showContextMenu
         && (
-        <Menu
-          className="context-menu"
-          style={{ top, left }}
-          model={[
-            {
-              label: t('expandNode'),
-              icon: 'pi pi-fw pi-plus',
-              command: () => {
-                addNodesEdgesToGraph({
-                  nodeId,
-                  setStoreState
-                })
-                setStoreState('showContextMenu', false)
-              }
-            },
-            {
-              separator: true
-            },
-            {
-              label: t('close'),
-              icon: 'pi pi-fw pi-power-off',
-              command: () => setStoreState('showContextMenu', false)
-            }
-          ]}
-        />
+          <GraphContextMenu />
         )
       }
     </div>
@@ -151,7 +119,6 @@ GraphVisualisationWrapper.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   showContextMenu: PropTypes.bool.isRequired,
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
-  contextMenuData: PropTypes.shape().isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
 }
 

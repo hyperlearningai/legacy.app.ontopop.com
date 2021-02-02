@@ -126,6 +126,20 @@ describe('Actions', () => {
     expect(actions.addToArray(state, 'selectedNodes', id)).toEqual(newState)
   })
 
+  it('addToArray should work correctly with options', () => {
+    const state = {
+      selectedNodes: ['123']
+    }
+
+    const id = '123'
+
+    const newState = {
+      selectedNodes: ['123', '123']
+    }
+
+    expect(actions.addToArray(state, 'selectedNodes', id, { alwaysAdd: true })).toEqual(newState)
+  })
+
   it('setStoreState should work correctly', () => expect(actions.setStoreState({ field: '' }, 'field', 'value')).toEqual({
     field: 'value'
   }))
