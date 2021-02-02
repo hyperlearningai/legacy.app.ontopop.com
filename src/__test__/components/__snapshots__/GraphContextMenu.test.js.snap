@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NetworkSettings should match snapshot  1`] = `
+exports[`GraphContextMenu should match snapshot 1`] = `
 <Connect
   actions={
     Object {
@@ -13,11 +13,14 @@ exports[`NetworkSettings should match snapshot  1`] = `
       "updateGraphData": [Function],
     }
   }
-  isPhysicsOn={true}
+  contextMenuData={
+    Object {
+      "left": 100,
+      "nodeId": "node-123",
+      "top": 100,
+    }
+  }
   mapToProps={[Function]}
-  physicsEdgeLength={100}
-  physicsHierarchicalView={true}
-  physicsRepulsion={true}
   setStoreState={[MockFunction]}
 >
   <Component />

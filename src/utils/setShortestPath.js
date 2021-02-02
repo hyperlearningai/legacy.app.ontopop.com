@@ -9,7 +9,7 @@ import store from '../store'
  * @param  {Boolean}  params.isNodeOverlay              Display nodes outside path flag
  * @param  {Function} params.setStoreState              setStoreState action
  * @param  {Function} params.updateGraphData            Update graph data function
- * @return
+ * @return { undefined }
  */
 const setShortestPath = async ({
   isNodeOverlay,
@@ -24,7 +24,7 @@ const setShortestPath = async ({
     shortestPathSelectedNodes,
   } = store.getState()
 
-  const paths = await getShortestPath({
+  const shortestPathResults = await getShortestPath({
     shortestPathSelectedNodes,
     availableEdgesNormalised,
     availableNodesNormalised,
@@ -41,7 +41,7 @@ const setShortestPath = async ({
     type: ALGO_TYPE_SHORTEST_PATH,
     options: {
       shortestPathSelectedNodes,
-      paths,
+      shortestPathResults,
       isNodeOverlay
     }
   }

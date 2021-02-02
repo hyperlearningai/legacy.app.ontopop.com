@@ -3,7 +3,7 @@ import store from '../store'
 
 /**
  * Clear free text selected nodes in canvas
- * @return
+ * @return { undefined }
  */
 const clearFreeTextSelection = () => {
   const {

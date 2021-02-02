@@ -10,8 +10,8 @@ import showNotification from './showNotification'
  * @param  {String} params.exportFileName  File name
  * @param  {Node}   params.canvasElement   Canvas DOM element
  * @param  {Function} params.t             i18n translation function
- * @return
- */
+ * @return { undefined }
+\ */
 const exportAsPdf = ({
   exportFileName,
   canvasElement,

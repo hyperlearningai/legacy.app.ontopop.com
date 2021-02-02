@@ -1,6 +1,7 @@
 export const API_ENDPOINT = 'http://localhost:8080/api'
 
 export const GET_GRAPH = `${API_ENDPOINT}/graph`
+export const GET_GRAPH_QUERY = `${GET_GRAPH}/query`
 
 export const GET_EDGES = `${GET_GRAPH}/edges`
 export const GET_EDGE = `${GET_GRAPH}/edges/{id}`

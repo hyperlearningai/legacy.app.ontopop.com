@@ -18,7 +18,7 @@ import downloadBlob from './downloadBlob'
  * @param  {Object}   params.availableEdgesNormalised   Available edges data
  * @param  {Object}   params.objectPropertiesFromApi    Edges from initial OwlObjectProperties
  * @param  {Function} params.t                          i18n translation function
- * @return
+ * @return { undefined }
  */
 const exportCsv = async ({
   exportFileName,

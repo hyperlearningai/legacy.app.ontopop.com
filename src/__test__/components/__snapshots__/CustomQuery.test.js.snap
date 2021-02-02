@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EdgesSelection should match snapshot when customQueryOutput  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  addToArray={[MockFunction]}
+  customQueryOutput="{ items: [] }"
+  customQueryStringHistory={
+    Array [
+      "q.v()",
+    ]
+  }
+  mapToProps={[Function]}
+  removeFromArray={[MockFunction]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`EdgesSelection should match snapshot when no customQueryOutput  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  addToArray={[MockFunction]}
+  customQueryStringHistory={
+    Array [
+      "q.v()",
+    ]
+  }
+  mapToProps={[Function]}
+  removeFromArray={[MockFunction]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

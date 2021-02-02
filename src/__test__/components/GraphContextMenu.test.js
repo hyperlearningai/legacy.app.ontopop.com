@@ -1,18 +1,19 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import NetworkSettings from '../../components/NetworkSettings'
+import GraphContextMenu from '../../components/GraphContextMenu'
 
 const setup = () => {
   const props = {
+    contextMenuData: {
+      top: 100,
+      left: 100,
+      nodeId: 'node-123'
+    },
     setStoreState: jest.fn(),
-    physicsEdgeLength: 100,
-    physicsRepulsion: true,
-    physicsHierarchicalView: true,
-    isPhysicsOn: true,
   }
 
-  const component = shallow(<NetworkSettings {...props} />)
+  const component = shallow(<GraphContextMenu {...props} />)
 
   return {
     component,
@@ -20,15 +21,17 @@ const setup = () => {
   }
 }
 
-describe('NetworkSettings', () => {
+describe('GraphContextMenu', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot ', () => {
+  it('should match snapshot', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      customQueryOutput: undefined
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

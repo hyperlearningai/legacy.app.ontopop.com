@@ -7,7 +7,7 @@ import { generatePredicateId, getPathEdges } from '../../constants/functions'
  * @param  {String}   params.from                    Subject node ID
  * @param  {Boolean}  params.isNodeOverlay           Flag to make non-highlighted nodes transparent
  * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
- * @param  {Array}    params.paths                   Array of strings with concatenated nodes and edges
+ * @param  {Array}    params.shortestPathResults     Array of strings with concatenated nodes and edges
  * @param  {String}   params.predicate               Predicate node ID
  * @param  {String}   params.to                      Object node ID
  * @return {Object}   output
@@ -22,7 +22,7 @@ const getEdge = ({
   from,
   isNodeOverlay,
   objectPropertiesFromApi,
-  paths,
+  shortestPathResults,
   predicate,
   to,
 }) => {
@@ -60,7 +60,7 @@ const getEdge = ({
   }
 
   if (isNodeOverlay) {
-    const pathEdges = getPathEdges(paths.join('|||'))
+    const pathEdges = getPathEdges(shortestPathResults.join('|||'))
 
     if (!pathEdges.includes(edgeUniqueId)) {
       edge.dashes = true

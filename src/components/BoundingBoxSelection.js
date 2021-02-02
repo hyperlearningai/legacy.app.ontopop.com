@@ -120,7 +120,7 @@ const BoundingBoxSelection = ({
 
 BoundingBoxSelection.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  selectedBoundingBoxNodes: PropTypes.string.isRequired,
+  selectedBoundingBoxNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateGraphData: PropTypes.func.isRequired,
   isBoundingBoxSelectionInternal: PropTypes.bool.isRequired,
 }

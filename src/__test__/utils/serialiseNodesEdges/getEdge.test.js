@@ -14,7 +14,7 @@ describe('getEdge', () => {
     const objectPropertiesFromApi = OwlObjectProperties
     const classesFromApi = OwlClasses
     const isNodeOverlay = false
-    const paths = []
+    const shortestPathResults = []
 
     expect(getEdge({
       from,
@@ -22,7 +22,7 @@ describe('getEdge', () => {
       to,
       isNodeOverlay,
       objectPropertiesFromApi,
-      paths,
+      shortestPathResults,
       classesFromApi
     })).toEqual({
       edgeUniqueId: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
@@ -120,7 +120,7 @@ describe('getEdge', () => {
     const objectPropertiesFromApi = OwlObjectProperties
     const classesFromApi = OwlClasses
     const isNodeOverlay = true
-    const paths = ['http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovTEST___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1234']
+    const shortestPathResults = ['http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovTEST___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1234']
 
     expect(getEdge({
       from,
@@ -128,7 +128,7 @@ describe('getEdge', () => {
       to,
       isNodeOverlay,
       objectPropertiesFromApi,
-      paths,
+      shortestPathResults,
       classesFromApi
     })).toEqual({
       edgeUniqueId: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
@@ -233,7 +233,7 @@ describe('getEdge', () => {
     const objectPropertiesFromApi = OwlObjectProperties
     const classesFromApi = OwlClasses
     const isNodeOverlay = true
-    const paths = [`${predicate}___${from}___${to}`]
+    const shortestPathResults = [`${predicate}___${from}___${to}`]
 
     expect(getEdge({
       from,
@@ -241,7 +241,7 @@ describe('getEdge', () => {
       to,
       isNodeOverlay,
       objectPropertiesFromApi,
-      paths,
+      shortestPathResults,
       classesFromApi
     })).toEqual({
       edgeUniqueId: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',

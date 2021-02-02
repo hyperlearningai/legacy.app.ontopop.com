@@ -6,7 +6,7 @@ import { SUB_CLASS_OF_ID } from '../constants/graph'
  * @param  {Object}   params.classesFromApi   Nodes from initial OwlClasses
  * @param  {Array}    params.classesIds       Array of node IDs
  * @param  {Function} params.setStoreState    setStoreState action
- * @return
+ * @return { undefined }
  */
 const getAllTriplesPerNode = async ({
   classesIds,

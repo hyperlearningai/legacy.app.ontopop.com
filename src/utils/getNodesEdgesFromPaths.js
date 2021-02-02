@@ -6,19 +6,19 @@ import {
 /**
  * Get shortest path
  * @param  {Object}   params
- * @param  {Array}    params.paths                      Array of strings with concatenated nodes and edges
+ * @param  {Array}    params.shortestPathResults        Array of strings with concatenated nodes and edges
  * @return {Object}   output
  * @return {Array}    output.shortestPathEdges          Array of edges IDs strings
  * @return {Array}    output.shortestPathNodes          Array of node IDs strings
  */
 const getNodesEdgesFromPaths = ({
-  paths
+  shortestPathResults
 }) => {
   const shortestPathEdges = []
   const shortestPathNodes = []
 
-  if (paths?.length > 0) {
-    paths.map((path) => {
+  if (shortestPathResults?.length > 0) {
+    shortestPathResults.map((path) => {
       const pathEdges = getPathEdges(path)
 
       if (pathEdges?.length > 0) {

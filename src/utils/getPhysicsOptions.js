@@ -12,12 +12,14 @@ import {
 /**
  * Get visjs visualisation options
  * @param  {Object}   params
+ * @param  {Boolean}  params.isPhysicsOn               physics on flag
  * @param  {Boolean}  params.physicsHierarchicalView   hierarchical view flag
  * @param  {Boolean}  params.physicsRepulsion          physics repulsion flag
  * @param  {Number}   params.physicsEdgeLength         edge length as integer
  * @return {Object}   output                           VisJs visualisation options
  */
 const getPhysicsOptions = ({
+  isPhysicsOn,
   physicsHierarchicalView,
   physicsRepulsion,
   physicsEdgeLength
@@ -70,7 +72,7 @@ const getPhysicsOptions = ({
     // zoomView: false, // do not allow zooming
     // dragView: false // do not allow dragging
   },
-  physics: {
+  physics: isPhysicsOn ? {
     enabled: !physicsHierarchicalView,
     hierarchicalRepulsion: {
       centralGravity: 0.5,
@@ -94,7 +96,7 @@ const getPhysicsOptions = ({
       iterations: 2000,
       updateInterval: 25,
     },
-  },
+  } : false,
 })
 
 export default getPhysicsOptions

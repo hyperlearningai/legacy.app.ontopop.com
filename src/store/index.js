@@ -2,36 +2,35 @@ import createStore from 'redux-zero'
 import { applyMiddleware } from 'redux-zero/middleware'
 import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
-import { NETWORK_GRAPH_VIEW, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 
 const initialState = {
-  // common states
+  // view updates
   isSidebarOpen: true,
-  mainView: NETWORK_GRAPH_VIEW,
   sidebarView: SIDEBAR_VIEW_GRAPHS,
-  modal: '',
   loading: false,
+
+  // data loaded at startup
   classesFromApi: {},
   objectPropertiesFromApi: {},
   triplesPerNode: {},
   network: undefined,
 
-  isInfoOpen: true,
-  isSearchOpen: false,
-  isEdgeFilterOpen: false,
-  isSettingsOpen: false,
-  searchFilter: '',
-  edgesToIgnore: [],
-  physicsHierarchicalView: false,
-  physicsRepulsion: true,
-  physicsEdgeLength: 250,
-  edgeFilter: '',
-  deletedNodes: [],
+  // netowrk graph loading
   isNetworkLoading: false,
   networkLoadingProgress: 0,
+
+  // free text selection
+  searchFilter: '',
+  freeTextSelection: {},
+  freeTextSelectedElement: '',
+
+  // node/edge selection
   isNodeSelectable: false,
   isEdgeSelectable: false,
+
+  // bounding box
   selectedBoundingBoxNodes: [],
   isBoundingBoxSelectable: false,
   isBoundingBoxDrawable: false,
@@ -44,18 +43,21 @@ const initialState = {
     boundingBoxHeight: 0,
   },
   isBoundingBoxSelectionInternal: true,
+
+  // file export
   exportFileName: 'network-graph',
-  freeTextSelection: {},
-  filterNodeByPropsData: {},
-  filterEdgeByPropsData: {},
-  freeTextSelectedElement: '',
-  filterNodesByPropSelectedElement: '',
-  filterEdgesByPropSelectedElement: '',
-  filterNodesByPropElementArray: [],
-  filterEdgesByPropElementArray: [],
+
+  // node neighbourhood
+  selectedNeighbourNode: '',
+  isNeighbourNodeSelectable: false,
+
+  // shortest path
   isShortestPathNodeSelectable: false,
   shortestPathSelectedNodes: [],
   shortestPathResults: [],
+  isNodeOverlay: false,
+
+  // context menu
   showContextMenu: false,
   contextMenuData: {
     top: 0,
@@ -65,14 +67,22 @@ const initialState = {
 
   // Filter nodes
   nodesProperties: [],
+  filterNodeByPropsData: {},
+  filterEdgeByPropsData: {},
 
   // Filter edges
   edgesProperties: [],
 
   // states to update at every view refresh
+  // physics
+  isPhysicsOn: false,
+  physicsHierarchicalView: false,
+  physicsRepulsion: true,
+  physicsEdgeLength: 250,
+
+  // Data visualisation
   nodesIdsToDisplay: [],
   edgesIdsToDisplay: [],
-
   availableNodes: new DataSet([]),
   availableNodesNormalised: {},
   availableEdges: new DataSet([]),
@@ -81,20 +91,24 @@ const initialState = {
   selectedEdges: [],
   nodesConnections: {},
   edgesConnections: {},
-  selectedNeighbourNode: '',
-  isNeighbourNodeSelectable: false,
   highlightedNodes: [],
-  isNodeOverlay: false,
-  paths: [],
 
-  // view data storage
+  // custom query
+  customQueryOutput: undefined,
+  customQueryFromLatestOutput: '',
+  customQueryStringHistory: [
+    'g.V().hasLabel(\'class\').count()',
+    'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()',
+  ],
+
+  // graphs data storage
   lastGraphIndex: 0,
   currentGraph: 'graph-0',
   graphData: {
     'graph-0': {
       label: 'Main',
       noDelete: true,
-      type: ALGO_TYPE_FULL
+      type: ALGO_TYPE_FULL,
     }
   }
 }

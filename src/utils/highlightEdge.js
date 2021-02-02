@@ -7,8 +7,8 @@ import store from '../store'
  * @param  {String}   params.elementId                Edge id
  * @param  {Function} params.setPrevSelectedEdges     update previously selected edges
  * @param  {Function} params.setStoreState            setStoreState action
- * @return
- */
+ * @return { undefined }
+\ */
 const highlightEdge = ({
   elementId,
   setPrevSelectedEdges,

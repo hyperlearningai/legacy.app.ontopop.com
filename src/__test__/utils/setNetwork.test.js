@@ -23,7 +23,6 @@ describe('setNetwork', () => {
 
   it('should work correctly', async () => {
     const physicsHierarchicalView = false
-    const physicsRepulsion = true
     const physicsEdgeLength = 100
     const availableNodes = []
     const availableEdges = []
@@ -44,11 +43,13 @@ describe('setNetwork', () => {
       availableNodes,
       availableEdges,
       physicsHierarchicalView,
-      physicsRepulsion,
       physicsEdgeLength
     })
 
     expect(setStoreState.mock.calls[0][0]).toEqual('network')
+    expect(setStoreState.mock.calls[1]).toEqual(['isPhysicsOn', false])
+    expect(setStoreState.mock.calls[2]).toEqual(['physicsRepulsion', false])
+
     expect(Network).toHaveBeenCalled()
     expect(addEventListener.mock.calls[0][0]).toEqual('mousedown')
     expect(addEventListener.mock.calls[1][0]).toEqual('mousemove')

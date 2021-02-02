@@ -53,7 +53,7 @@ describe('setShortestPath', () => {
         label: 'shortest-path-graph-2',
         options: {
           isNodeOverlay: false,
-          paths: [
+          shortestPathResults: [
             'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV|||http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9___http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV___http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'],
           shortestPathSelectedNodes: [
             'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',

@@ -19,7 +19,7 @@ import store from '../store'
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {String}   params.type                      type of algorithm to use
  * @param  {Object}   params.options                   additional options
- * @return
+ * @return { undefined }
  */
 const setNodesIdsToDisplay = async ({
   type,
@@ -91,16 +91,16 @@ const setNodesIdsToDisplay = async ({
 
     const {
       shortestPathSelectedNodes,
-      paths,
+      shortestPathResults,
       isNodeOverlay
     } = options
 
     const {
       shortestPathEdges,
       shortestPathNodes
-    } = await getNodesEdgesFromPaths({ paths })
+    } = await getNodesEdgesFromPaths({ shortestPathResults })
 
-    setStoreState('paths', paths)
+    setStoreState('shortestPathResults', shortestPathResults)
     setStoreState('isNodeOverlay', isNodeOverlay)
     setStoreState('highlightedNodes', shortestPathSelectedNodes)
 

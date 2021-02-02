@@ -3,62 +3,50 @@ import {
   NOTIFY_WARNING
 } from '../constants/notifications'
 import showNotification from './showNotification'
-import { GET_GRAPH } from '../constants/api'
+import { GET_GRAPH_QUERY } from '../constants/api'
 
 /**
  * Get graph data from API
  * @param  {Object}   params
  * @param  {Function} params.setStoreState              setStoreState action
  * @param  {Function} params.t                          i18n translation function
- * @return {Object}   output
- * @return {Array}    output.classes                    Array of classes
- * @return {Array}    output.objectProperties           Array of object properties
+ * @return {undefined}
  */
-const getGraphData = async ({
+const makeCustomQuery = async ({
+  customQueryString,
   setStoreState,
+  addToArray,
   t
 }) => {
   setStoreState('loading', true)
 
+  setStoreState('customQueryFromLatestOutput', '')
+  addToArray('customQueryStringHistory', customQueryString, { alwaysAdd: true })
+
   try {
-    const response = await axios.get(GET_GRAPH)
+    const response = await axios.post(GET_GRAPH_QUERY, {
+      query: customQueryString
+    })
 
     setStoreState('loading', false)
 
     if (response.status !== 200) {
-      showNotification({
+      return showNotification({
         message: t('couldNotQueryGraph'),
         type: NOTIFY_WARNING
       })
-
-      return ({
-        classes: [],
-        objectProperties: []
-      })
     }
 
-    const {
-      // owlAnnotationPropertyMap,
-      owlObjectPropertyMap,
-      owlClassMap
-    } = response.data
-
-    return ({
-      classes: owlClassMap,
-      objectProperties: owlObjectPropertyMap
-    })
+    setStoreState('customQueryFromLatestOutput', customQueryString)
+    setStoreState('customQueryOutput', response.data)
   } catch (error) {
     setStoreState('loading', false)
+
     showNotification({
       message: t('couldNotQueryGraph'),
       type: NOTIFY_WARNING
     })
-
-    return ({
-      classes: [],
-      objectProperties: []
-    })
   }
 }
 
-export default getGraphData
+export default makeCustomQuery

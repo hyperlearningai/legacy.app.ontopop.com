@@ -7,8 +7,8 @@ import getNodesFromBoundingBox from './getNodesFromBoundingBox'
  * @param  {Object}   params
  * @param  {Object}   params.e                      Canvas DOM event
  * @param  {function} params.setStoreState          setStoreState action
- * @return
- */
+ * @return { undefined }
+\ */
 const onMouseDown = ({
   e,
   setStoreState

@@ -32,7 +32,6 @@ const ShortestPath = ({
     return () => {
       setStoreState('isShortestPathNodeSelectable', false)
       setStoreState('shortestPathSelectedNodes', [])
-      setStoreState('shortestPathResults', [])
     }
   }, [])
 
