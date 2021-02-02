@@ -49,8 +49,6 @@ const getGraphData = async ({
     })
   } catch (error) {
     setStoreState('loading', false)
-
-    console.log(error.message)
     showNotification({
       message: t('couldNotQueryGraph'),
       type: NOTIFY_WARNING

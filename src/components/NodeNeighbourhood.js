@@ -34,6 +34,24 @@ const NodeNeighbourhood = ({
       <div className="node-neighbourhood">
         <div className="node-neighbourhood-selection">
           {t('selectNodeFromGraph')}
+          <div className="p-field p-col-12 p-md-3 m-t-20">
+            <label htmlFor="separationDegree">{t('separationDegree')}</label>
+            <InputNumber
+              id="separationDegree"
+              value={separationDegree}
+              onValueChange={(e) => setSeparationDegree(e.target.value)}
+              showButtons
+              buttonLayout="horizontal"
+              step={1}
+              min={1}
+              disabled={selectedNeighbourNode === ''}
+              decrementButtonClassName="p-button-danger"
+              incrementButtonClassName="p-button-success"
+              incrementButtonIcon="pi pi-plus"
+              decrementButtonIcon="pi pi-minus"
+              className="m-t-10"
+            />
+          </div>
         </div>
 
         {
@@ -56,22 +74,9 @@ const NodeNeighbourhood = ({
           )
         }
 
-        <div className="node-neighbourhood-input">
-          <label htmlFor="separationDegree">
-            {t('separationDegree')}
-          </label>
-          <InputNumber
-            id="separationDegree"
-            value={separationDegree}
-            min={1}
-            step={1}
-            onValueChange={(e) => setSeparationDegree(e.target.value)}
-          />
-        </div>
-
         <Button
           tooltip={t('showNeighbourhood')}
-          className="node-neighbourhood-button"
+          className="node-neighbourhood-button m-t-30"
           disabled={selectedNeighbourNode === ''}
           icon="pi pi-chevron-right"
           iconPos="right"

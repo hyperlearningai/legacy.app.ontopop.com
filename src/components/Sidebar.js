@@ -11,7 +11,8 @@ import {
 } from 'react-icons/bi'
 import {
   BsSearch,
-  BsArrowUpDown,
+  BsArrowUpRight,
+  BsFilter,
   BsPencilSquare,
   BsCodeSlash
 } from 'react-icons/bs'
@@ -39,6 +40,8 @@ import {
   SIDEBAR_VIEW_SETTINGS,
   SIDEBAR_VIEW_EXPORT,
   SIDEBAR_VIEW_BOUNDING_BOX,
+  SIDEBAR_VIEW_NODES_FILTER,
+  SIDEBAR_VIEW_EDGES_FILTER,
   SIDEBAR_VIEW_CUSTOM_QUERY
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
@@ -50,6 +53,8 @@ import NetworkSettings from './NetworkSettings'
 import ExportSettings from './ExportSettings'
 import ShortestPath from './ShortestPath'
 import BoundingBoxSelection from './BoundingBoxSelection'
+import NodesFilter from './NodesFilter'
+import EdgesFilter from './EdgesFilter'
 import CustomQuery from './CustomQuery'
 
 const Sidebar = ({
@@ -100,8 +105,30 @@ const Sidebar = ({
             setView(SIDEBAR_VIEW_EDGES_SELECTION)
           }}
         >
-          <BsArrowUpDown />
+          <BsArrowUpRight />
           <FaRegHandPointer />
+        </Button>
+        <Button
+          tooltip={t(SIDEBAR_VIEW_NODES_FILTER)}
+          className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isNodeSelectable', true)
+            setView(SIDEBAR_VIEW_NODES_FILTER)
+          }}
+        >
+          <FaRegCircle />
+          <BsFilter />
+        </Button>
+        <Button
+          tooltip={t(SIDEBAR_VIEW_EDGES_FILTER)}
+          className={sidebarView === SIDEBAR_VIEW_EDGES_FILTER ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isEdgeSelectable', true)
+            setView(SIDEBAR_VIEW_EDGES_FILTER)
+          }}
+        >
+          <BsArrowUpRight />
+          <BsFilter />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_BOUNDING_BOX)}
@@ -189,6 +216,18 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_EDGES_SELECTION && (
                 <EdgesSelection />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_NODES_FILTER && (
+                <NodesFilter />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_EDGES_FILTER && (
+                <EdgesFilter />
               )
             }
 

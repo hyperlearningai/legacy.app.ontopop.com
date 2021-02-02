@@ -24,19 +24,13 @@ const searchElement = ({
   if (search === '') {
     return setStoreState('freeTextSelection', JSON.parse(JSON.stringify(elementsToDisplay)))
   }
-
   if (nodesIdsToDisplay.length > 0) {
     for (let index = 0; index < nodesIdsToDisplay.length; index++) {
       const nodeId = nodesIdsToDisplay[index]
-
       const nodeElement = classesFromApi[nodeId]
-
       const elementKeys = getElementProperties(nodeElement)
-
       if (elementKeys.length === 0) continue
-
       const isContainingSearch = elementKeys.some((key) => nodeElement[key] && nodeElement[key].toString().toLowerCase().includes(search.toLowerCase()))
-
       if (isContainingSearch) {
         elementsToDisplay[nodeId] = 'node'
       }

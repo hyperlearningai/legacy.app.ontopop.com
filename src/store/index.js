@@ -65,6 +65,15 @@ const initialState = {
     nodeId: ''
   },
 
+  // Filter nodes
+  nodesProperties: [],
+  filterNodeByPropsData: {},
+  filterEdgeByPropsData: {},
+
+  // Filter edges
+  edgesProperties: [],
+
+  // states to update at every view refresh
   // physics
   isPhysicsOn: false,
   physicsHierarchicalView: false,
