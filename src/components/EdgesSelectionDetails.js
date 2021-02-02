@@ -23,7 +23,7 @@ const EdgesSelectionDetails = ({
   }
 
   return (
-    <div className="edges-selection-details">
+    <div className="edges-selection-details m-t-10">
       <div className="edges-selection-details-title">
         {t('properties')}
       </div>

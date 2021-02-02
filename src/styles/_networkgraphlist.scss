@@ -11,7 +11,7 @@
     border-bottom: 0.5px solid $white;
 
     &-selected {
-      background: $indigo;
+      background: transparent;
     }
 
     button {
@@ -23,6 +23,7 @@
       outline: none;
       border: none;
       color: $white;
+      text-align: left;
 
       &:hover {
         background: $white;

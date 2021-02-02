@@ -72,15 +72,8 @@ const exportCsv = async ({
         message: t('fileCanBeDownloaded'),
         type: NOTIFY_SUCCESS,
       })
-    }, (err) => {
-      console.log(err.message)
-      showNotification({
-        message: t('couldNotDownloadCsv'),
-        type: NOTIFY_WARNING,
-      })
     })
   } catch (e) {
-    console.log(e.message)
     showNotification({
       message: t('couldNotDownloadCsv'),
       type: NOTIFY_WARNING
