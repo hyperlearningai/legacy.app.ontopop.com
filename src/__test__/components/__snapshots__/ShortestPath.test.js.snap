@@ -5,14 +5,15 @@ exports[`ShortestPath should match snapshot  1`] = `
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
+  addToObject={[MockFunction]}
   classesFromApi={
     Object {
       "http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY": Object {
@@ -5886,7 +5887,6 @@ Four subdomains have been created to cover all the universals related to each of
       "http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9",
     ]
   }
-  updateGraphData={[MockFunction]}
 >
   <Component />
 </Connect>

@@ -23,3 +23,10 @@ export const NODE_FONT = {
 
 export const SUB_CLASS_OF_ID = 'http://www.w3.org/2000/01/rdf-schema#subclassof'
 export const SUB_CLASS_OF_LABEL = 'subClassOf'
+
+export const LOW_LEVEL_PROPERTIES = [
+  'rdfAbout',
+  'rdfsLabel',
+  'skosDefinition',
+  'skosComment'
+]

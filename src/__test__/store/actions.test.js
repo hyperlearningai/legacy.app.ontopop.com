@@ -36,7 +36,7 @@ describe('Actions', () => {
     expect(actions.resetSelectedNodes(state)).toEqual(newState)
   })
 
-  it('updateGraphData should work correctly', () => {
+  it('addToObject should work correctly', () => {
     const state = {
       graphData: {
         'graph-0': {
@@ -45,23 +45,18 @@ describe('Actions', () => {
       }
     }
 
-    const graphId = 'graph-1'
+    const id = 'graph-0'
     const value = {
-      label: 'graph-1'
+      label: 'New'
     }
 
     const newState = {
       graphData: {
-        'graph-0': {
-          label: 'Main'
-        },
-        'graph-1': {
-          label: 'graph-1'
-        }
+        'graph-0': value
       }
     }
 
-    expect(actions.updateGraphData(state, graphId, value)).toEqual(newState)
+    expect(actions.addToObject(state, 'graphData', id, value)).toEqual(newState)
   })
 
   it('removeFromObject should work correctly', () => {

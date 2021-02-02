@@ -17,7 +17,7 @@ import getEdgesProperties from '../utils/getEdgesProperties'
 const EdgesFilter = ({
   setStoreState,
   edgesProperties,
-  updateGraphData
+  addToObject
 }) => {
   const { t } = useTranslation()
 
@@ -152,7 +152,7 @@ const EdgesFilter = ({
           onClick={() => setFilteredEdges({
             setStoreState,
             edgesFilters,
-            updateGraphData
+            addToObject
           })}
         />
       </div>
@@ -163,7 +163,7 @@ const EdgesFilter = ({
 EdgesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   edgesProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateGraphData: PropTypes.func.isRequired,
+  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

@@ -19,7 +19,8 @@ const GraphVisualisationWrapper = ({
   setStoreState,
   showContextMenu,
   isBoundingBoxSelectable,
-  boundingBoxGeometry
+  boundingBoxGeometry,
+  addToObject
 }) => {
   const { t } = useTranslation()
 
@@ -41,6 +42,10 @@ const GraphVisualisationWrapper = ({
 
     setStoreState('classesFromApi', classes)
     setStoreState('objectPropertiesFromApi', objectProperties)
+    addToObject('graphVersions', 'original', {
+      classesFromApi: classes,
+      objectPropertiesFromApi: objectProperties
+    })
 
     const classesIds = Object.keys(classes)
     const predicatesIds = Object.keys(objectProperties)
@@ -120,6 +125,7 @@ GraphVisualisationWrapper.propTypes = {
   showContextMenu: PropTypes.bool.isRequired,
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
+  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

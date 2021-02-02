@@ -18,6 +18,7 @@ const setup = ({
       }
     },
     setStoreState: jest.fn(),
+    addToObject: jest.fn(),
     showContextMenu,
     contextMenuData: {
       top: 0,

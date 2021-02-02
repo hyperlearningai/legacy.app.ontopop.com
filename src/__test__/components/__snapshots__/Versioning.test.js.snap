@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Versioning should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  graphVersions={
+    Object {
+      "original": Object {
+        "addedNodes": Array [],
+        "classesFromApi": Object {},
+        "classesFromApiBackup": Object {},
+        "deletedNodes": Array [],
+        "edgesProperties": Array [],
+        "nodesProperties": Array [],
+        "objectPropertiesFromApi": Object {},
+        "objectPropertiesFromApiBackup": Object {},
+        "udpatedNodes": Array [],
+      },
+    }
+  }
+  mapToProps={[Function]}
+  selectedGraphVersion="original"
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

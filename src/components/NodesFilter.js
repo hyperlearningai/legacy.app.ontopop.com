@@ -17,7 +17,7 @@ import getNodesProperties from '../utils/getNodesProperties'
 const NodesFilter = ({
   setStoreState,
   nodesProperties,
-  updateGraphData
+  addToObject
 }) => {
   const { t } = useTranslation()
 
@@ -152,7 +152,7 @@ const NodesFilter = ({
           onClick={() => setFilteredNodes({
             setStoreState,
             nodesFilters,
-            updateGraphData
+            addToObject
           })}
         />
       </div>
@@ -163,7 +163,7 @@ const NodesFilter = ({
 NodesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   nodesProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateGraphData: PropTypes.func.isRequired,
+  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

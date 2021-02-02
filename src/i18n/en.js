@@ -31,6 +31,7 @@ export default {
   settings: 'Settings',
   export: 'Export',
   freeTextSearch: 'Free-text search',
+  versioning: 'Versioning',
 
   // data loading
   couldNotQueryGraph: 'Could not query graph!',
@@ -130,6 +131,30 @@ export default {
   query: 'Query',
   clear: 'Clear',
   exportAsJson: 'Export as Json',
+
+  // versioning
+  searchOrCreate: '',
+  chooseGraphVersion: 'Choose graph version',
+  insertGraphName: 'Insert graph version',
+  fromGraphVersion: 'From version',
+  setGraph: 'Set as current graph',
+
+  // edit ontology
+  edit: 'Edit',
+  new: 'New',
+  add: 'Add',
+  type: 'Type',
+  chooseType: 'Choose type',
+  update: 'Update',
+  delete: 'Delete',
+  selectGraph: 'Select graph',
+
+  chooseOperation: 'Choose operation',
+  setAsCurrentGraph: 'Set as current graph',
+  go: 'Go',
+
+  // edit ontology
+  editOntology: 'Edit ontology',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',

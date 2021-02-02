@@ -7,13 +7,13 @@ import store from '../store'
  * @param  {Object}   params
  * @param  {Number}   params.separationDegree          Separation degree integer
  * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Function} params.updateGraphData           update graph data function
+ * @param  {Function} params.addToObject           update graph data function
  * @return { undefined }
  */
 const setNeighbourNodes = ({
   separationDegree,
   setStoreState,
-  updateGraphData
+  addToObject
 }) => {
   const {
     classesFromApi,
@@ -39,7 +39,7 @@ const setNeighbourNodes = ({
     }
   }
 
-  updateGraphData(newCurrentGraph, graphValue)
+  addToObject('graphData', newCurrentGraph, graphValue)
   setStoreState('currentGraph', newCurrentGraph)
   setStoreState('lastGraphIndex', newGraphIndex)
   setStoreState('sidebarView', SIDEBAR_VIEW_GRAPHS)

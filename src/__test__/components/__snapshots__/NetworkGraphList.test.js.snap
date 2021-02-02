@@ -5,12 +5,12 @@ exports[`NetworkGraphList should match snapshot  1`] = `
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   currentGraph="graph-0"

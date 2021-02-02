@@ -5,12 +5,12 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={false}
@@ -27,12 +27,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -49,12 +49,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -71,12 +71,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -93,12 +93,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -110,17 +110,61 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
 </Connect>
 `;
 
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_TEXT_SEARCH 1`] = `
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_ONTOLOGY 1`] = `
 <Connect
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
+    }
+  }
+  isSidebarOpen={true}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="editOntology"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  isSidebarOpen={true}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="export"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_TEXT_SEARCH 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
     }
   }
   isSidebarOpen={true}
@@ -137,12 +181,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -159,12 +203,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -181,12 +225,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -203,12 +247,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -225,12 +269,12 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
@@ -247,18 +291,40 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   sidebarView="shortestPath"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_VERSIONING 1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  isSidebarOpen={true}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="versioning"
 >
   <Component />
 </Connect>

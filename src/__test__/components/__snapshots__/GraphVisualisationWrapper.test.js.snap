@@ -5,14 +5,15 @@ exports[`GraphVisualisationWrapper should match snapshot when context menu and b
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
+  addToObject={[MockFunction]}
   boundingBoxGeometry={
     Object {
       "boundingBoxHeight": 200,
@@ -54,14 +55,15 @@ exports[`GraphVisualisationWrapper should match snapshot when no context menu an
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
+  addToObject={[MockFunction]}
   boundingBoxGeometry={
     Object {
       "boundingBoxHeight": 200,

@@ -5,14 +5,15 @@ exports[`NodesFilter should match snapshot  1`] = `
   actions={
     Object {
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
+  addToObject={[MockFunction]}
   mapToProps={[Function]}
   nodesProperties={
     Array [
@@ -23,7 +24,6 @@ exports[`NodesFilter should match snapshot  1`] = `
     ]
   }
   setStoreState={[MockFunction]}
-  updateGraphData={[MockFunction]}
 >
   <Component />
 </Connect>

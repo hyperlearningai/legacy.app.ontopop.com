@@ -3,7 +3,7 @@ import { triplesPerNode } from '../fixtures/triplesPerNode'
 import store from '../../store'
 
 const setStoreState = jest.fn()
-const updateGraphData = jest.fn()
+const addToObject = jest.fn()
 const lastGraphIndex = 1
 
 const getState = jest.fn().mockImplementation(() => ({
@@ -21,7 +21,7 @@ describe('setBoundingBoxNodes', () => {
   it('should work correctly', async () => {
     await setBoundingBoxNodes({
       setStoreState,
-      updateGraphData
+      addToObject
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -38,7 +38,8 @@ describe('setBoundingBoxNodes', () => {
         'networkGraphs',
       ],
     ])
-    expect(updateGraphData).toHaveBeenCalledWith(
+    expect(addToObject).toHaveBeenCalledWith(
+      'graphData',
       'graph-2', {
         label: 'bounding-box-graph-2',
         options: {

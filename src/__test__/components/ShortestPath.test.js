@@ -13,7 +13,7 @@ const setup = () => {
       'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',
       'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
     ],
-    updateGraphData: jest.fn(),
+    addToObject: jest.fn(),
   }
 
   const component = shallow(<ShortestPath {...props} />)
