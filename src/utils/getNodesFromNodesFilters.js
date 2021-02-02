@@ -23,11 +23,14 @@ const getNodesFromNodesFilters = ({
 
       for (let propertyIndex = 0; propertyIndex < nodesFilters.length; propertyIndex++) {
         const { property, value } = nodesFilters[propertyIndex]
+
         if (property === '') continue
         if (value === '') continue
 
-        const isNodeToBeAdded = availableNodesNormalised[nodeId][property]
-        && availableNodesNormalised[nodeId][property].toLowerCase().includes(value.toLowerCase())
+        const isNodeToBeAdded = (availableNodesNormalised[nodeId][property]
+        && availableNodesNormalised[nodeId][property].toLowerCase().includes(value.toLowerCase())) || (
+          availableNodesNormalised[nodeId].owlAnnotationProperties[property]
+        && availableNodesNormalised[nodeId].owlAnnotationProperties?.[property].toLowerCase().includes(value.toLowerCase()))
 
         if (isNodeToBeAdded) {
           nodesToDisplay.push(nodeId)

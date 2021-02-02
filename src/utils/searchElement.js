@@ -1,4 +1,5 @@
 import { getEdgeUniqueId, getElementProperties } from '../constants/functions'
+import { LOW_LEVEL_PROPERTIES } from '../constants/graph'
 
 /**
  * Search free-text in elements' properties
@@ -24,15 +25,32 @@ const searchElement = ({
   if (search === '') {
     return setStoreState('freeTextSelection', JSON.parse(JSON.stringify(elementsToDisplay)))
   }
+
   if (nodesIdsToDisplay.length > 0) {
     for (let index = 0; index < nodesIdsToDisplay.length; index++) {
       const nodeId = nodesIdsToDisplay[index]
       const nodeElement = classesFromApi[nodeId]
-      const elementKeys = getElementProperties(nodeElement)
-      if (elementKeys.length === 0) continue
-      const isContainingSearch = elementKeys.some((key) => nodeElement[key] && nodeElement[key].toString().toLowerCase().includes(search.toLowerCase()))
-      if (isContainingSearch) {
+
+      // check content in low level properties
+      const isLowLevelPropertyContainingSearch = LOW_LEVEL_PROPERTIES.some((property) => nodeElement[property]
+        && nodeElement[property].toString().toLowerCase().includes(search.toLowerCase()))
+
+      if (isLowLevelPropertyContainingSearch) {
         elementsToDisplay[nodeId] = 'node'
+        continue
+      }
+
+      // check in annotation properties
+      const annotationProperties = Object.keys(nodeElement.owlAnnotationProperties)
+
+      if (annotationProperties.length === 0) continue
+
+      const isAnnotationPropertyContainingSearch = annotationProperties.some((property) => nodeElement.owlAnnotationProperties[property]
+      && nodeElement.owlAnnotationProperties[property].toString().toLowerCase().includes(search.toLowerCase()))
+
+      if (isAnnotationPropertyContainingSearch) {
+        elementsToDisplay[nodeId] = 'node'
+        continue
       }
     }
   }

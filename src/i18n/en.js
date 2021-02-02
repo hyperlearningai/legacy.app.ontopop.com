@@ -35,6 +35,7 @@ export default {
 
   // data loading
   couldNotQueryGraph: 'Could not query graph!',
+  couldNotQueryAnnotationProperties: 'Could not query annotation properties!',
 
   // node selection
   node: 'Node',

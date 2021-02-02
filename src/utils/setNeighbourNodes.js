@@ -7,7 +7,7 @@ import store from '../store'
  * @param  {Object}   params
  * @param  {Number}   params.separationDegree          Separation degree integer
  * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Function} params.addToObject           update graph data function
+ * @param  {Function} params.addToObject           Add to object action
  * @return { undefined }
  */
 const setNeighbourNodes = ({

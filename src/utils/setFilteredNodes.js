@@ -7,7 +7,7 @@ import store from '../store'
  * @param  {Object}   params
  * @param  {Array}    params.nodesFilters              Array of node filters {property [string], value [string]}
  * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Function} params.addToObject           update graph data function
+ * @param  {Function} params.addToObject           Add to object action
  * @return
  */
 const setFilteredNodes = ({

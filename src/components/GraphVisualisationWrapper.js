@@ -7,9 +7,9 @@ import GraphVisualisation from './GraphVisualisation'
 // import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import actions from '../store/actions'
 import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
-import { ALGO_TYPE_FULL } from '../constants/algorithms'
-import getAllTriplesPerNode from '../utils/getAllTriplesPerNode'
+import setGraphData from '../utils/setGraphData'
 import getGraphData from '../utils/getGraphData'
+import getNodeProperties from '../utils/getNodeProperties'
 import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
 import GraphContextMenu from './GraphContextMenu'
 
@@ -30,6 +30,13 @@ const GraphVisualisationWrapper = ({
       t
     })
 
+    const nodesProperties = await getNodeProperties({
+      setStoreState,
+      t
+    })
+
+    setStoreState('nodesProperties', nodesProperties)
+
     // Set data from local file for debugging
     // const classesFromApi = jsonClasses.OwlClasses
     // const objectPropertiesFromApi = jsonObjectProperties.OwlObjectProperties
@@ -40,29 +47,12 @@ const GraphVisualisationWrapper = ({
       rdfsLabel: SUB_CLASS_OF_LABEL
     }
 
-    setStoreState('classesFromApi', classes)
-    setStoreState('objectPropertiesFromApi', objectProperties)
-    addToObject('graphVersions', 'original', {
-      classesFromApi: classes,
-      objectPropertiesFromApi: objectProperties
-    })
-
-    const classesIds = Object.keys(classes)
-    const predicatesIds = Object.keys(objectProperties)
-
-    // in the background, parse classes to get triples per node
-    await getAllTriplesPerNode({
-      classesIds,
-      predicatesIds,
+    setGraphData({
       setStoreState,
-      classesFromApi: classes
-    })
-
-    setNodesIdsToDisplay({
-      type: ALGO_TYPE_FULL,
-      classesFromApi: classes,
-      objectPropertiesFromApi: objectProperties,
-      setStoreState
+      addToObject,
+      classes,
+      objectProperties,
+      graphName: 'original'
     })
   }, [])
 

@@ -6,7 +6,7 @@ import store from '../store'
  * Set nodes inside bounding box
  * @param  {Object}   params
  * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Function} params.addToObject           update graph data function
+ * @param  {Function} params.addToObject           Add to object action
  * @return { undefined }
  */
 const setBoundingBoxNodes = ({
