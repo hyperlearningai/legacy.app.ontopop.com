@@ -20,7 +20,8 @@ const GraphVisualisationWrapper = ({
   showContextMenu,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
-  addToObject
+  addToObject,
+  selectedGraphVersion
 }) => {
   const { t } = useTranslation()
 
@@ -47,14 +48,30 @@ const GraphVisualisationWrapper = ({
       rdfsLabel: SUB_CLASS_OF_LABEL
     }
 
+    addToObject('graphVersions', 'original', {
+      classesFromApi: classes,
+      objectPropertiesFromApi: objectProperties,
+      classesFromApiBackup: classes,
+      objectPropertiesFromApiBackup: objectProperties,
+      deletedNodes: [],
+      addedNodes: [],
+      udpatedNodes: []
+    })
+
     setGraphData({
       setStoreState,
-      addToObject,
-      classes,
-      objectProperties,
-      graphName: 'original'
+      graphVersion: 'original'
     })
   }, [])
+
+  // Update nodes to display based on graph version
+  useEffect(() => setGraphData({
+    setStoreState,
+    graphVersion: selectedGraphVersion
+  }),
+  [
+    selectedGraphVersion
+  ])
 
   useEffect(() => {
     // Update nodes to display based on selected graph
@@ -116,6 +133,7 @@ GraphVisualisationWrapper.propTypes = {
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
   addToObject: PropTypes.func.isRequired,
+  selectedGraphVersion: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
@@ -124,14 +142,16 @@ const mapToProps = ({
   showContextMenu,
   contextMenuData,
   isBoundingBoxSelectable,
-  boundingBoxGeometry
+  boundingBoxGeometry,
+  selectedGraphVersion
 }) => ({
   currentGraph,
   graphData,
   showContextMenu,
   contextMenuData,
   isBoundingBoxSelectable,
-  boundingBoxGeometry
+  boundingBoxGeometry,
+  selectedGraphVersion
 })
 
 export default connect(

@@ -28,6 +28,7 @@ exports[`Navbar should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
+  selectedGraphVersion="original"
 >
   <Component />
 </Connect>

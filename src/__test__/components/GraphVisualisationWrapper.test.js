@@ -33,7 +33,8 @@ const setup = ({
       boundingBoxPosY: 100,
       boundingBoxWidth: 200,
       boundingBoxHeight: 200
-    }
+    },
+    selectedGraphVersion: 'original'
   }
 
   const component = shallow(<GraphVisualisationWrapper {...props} />)

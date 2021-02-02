@@ -5,14 +5,22 @@ import setNodesIdsToDisplay from '../../utils/setNodesIdsToDisplay'
 import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
 import { OwlClasses } from '../fixtures/test-ontology-classes.json'
 import { ALGO_TYPE_FULL } from '../../constants/algorithms'
+import store from '../../store'
 
 jest.mock('../../utils/getAllTriplesPerNode')
 jest.mock('../../utils/setNodesIdsToDisplay')
 const setStoreState = jest.fn()
-const addToObject = jest.fn()
-const classes = OwlClasses
-const objectProperties = OwlObjectProperties
-const graphName = 'test'
+const graphVersion = 'original'
+
+const getState = jest.fn().mockImplementation(() => ({
+  graphVersions: {
+    original: {
+      classesFromApi: OwlClasses,
+      objectPropertiesFromApi: OwlObjectProperties
+    }
+  }
+}))
+store.getState = getState
 
 describe('setGraphData', () => {
   afterEach(() => {
@@ -22,41 +30,27 @@ describe('setGraphData', () => {
   it('should work correctly', async () => {
     await setGraphData({
       setStoreState,
-      addToObject,
-      classes,
-      objectProperties,
-      graphName
+      graphVersion
     })
 
     expect(setStoreState.mock.calls).toEqual([
       [
-        'classesFromApi', classes
+        'classesFromApi', OwlClasses
       ],
       [
-        'objectPropertiesFromApi', objectProperties
+        'objectPropertiesFromApi', OwlObjectProperties
       ]
     ])
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphVersions', 'test', {
-        classesFromApi: classes,
-        objectPropertiesFromApi: objectProperties,
-        classesFromApiBackup: classes,
-        objectPropertiesFromApiBackup: objectProperties,
-        deletedNodes: [],
-        addedNodes: [],
-        udpatedNodes: []
-      }
-    )
     expect(getAllTriplesPerNode).toHaveBeenCalledWith({
-      classesIds: Object.keys(classes),
-      predicatesIds: Object.keys(objectProperties),
+      classesIds: Object.keys(OwlClasses),
+      predicatesIds: Object.keys(OwlObjectProperties),
       setStoreState,
-      classesFromApi: classes
+      classesFromApi: OwlClasses
     })
     expect(setNodesIdsToDisplay).toHaveBeenCalledWith({
       type: ALGO_TYPE_FULL,
-      classesFromApi: classes,
-      objectPropertiesFromApi: objectProperties,
+      classesFromApi: OwlClasses,
+      objectPropertiesFromApi: OwlObjectProperties,
       setStoreState
     })
   })

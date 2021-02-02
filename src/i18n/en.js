@@ -134,6 +134,7 @@ export default {
   exportAsJson: 'Export as Json',
 
   // versioning
+  version: 'Version',
   searchOrCreate: '',
   chooseGraphVersion: 'Choose graph version',
   insertGraphName: 'Insert graph version',

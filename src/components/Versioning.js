@@ -8,16 +8,19 @@ import { Dropdown } from 'primereact/dropdown'
 import { InputText } from 'primereact/inputtext'
 import { SIDEBAR_VIEW_VERSIONING } from '../constants/views'
 import actions from '../store/actions'
+import setGraphVersion from '../utils/setGraphVersion'
 
 const Versioning = ({
   selectedGraphVersion,
-  graphVersions
+  graphVersions,
+  setStoreState,
+  addToObject
 }) => {
   const { t } = useTranslation()
 
   const [mode, setMode] = useState('search')
-  const [graph, setGraph] = useState(selectedGraphVersion)
-  const [graphName, setGraphName] = useState('')
+  const [selectedVersion, setSelectedVersion] = useState(selectedGraphVersion)
+  const [versionName, setVersionName] = useState('')
 
   const newEditButtons = [{
     label: t('search'),
@@ -64,24 +67,24 @@ const Versioning = ({
         </div>
 
         {
-        mode === 'search' && (
-          <div
-            className="versioning-row"
-          >
-            <label htmlFor="graph-select">
-              {t('chooseGraphVersion')}
-            </label>
+          mode === 'search' && (
+            <div
+              className="versioning-row"
+            >
+              <label htmlFor="graph-select">
+                {t('chooseGraphVersion')}
+              </label>
 
-            <Dropdown
-              id="graph-select"
-              value={graph}
-              options={availableGraphVersions}
-              onChange={(e) => setGraph(e.value)}
-              placeholder={t('selectGraph')}
-            />
-          </div>
-        )
-      }
+              <Dropdown
+                id="graph-select"
+                value={selectedVersion}
+                options={availableGraphVersions}
+                onChange={(e) => setSelectedVersion(e.value)}
+                placeholder={t('selectGraph')}
+              />
+            </div>
+          )
+        }
 
         {
           mode === 'new' && (
@@ -90,14 +93,14 @@ const Versioning = ({
                 className="versioning-row"
               >
                 <label htmlFor="graph-name">
-                  {t('insertGraphName')}
+                  {t('insertGraphVersion')}
                 </label>
 
                 <InputText
                   id="graph-name"
-                  value={graphName}
+                  value={versionName}
                   placeholder={t('insertName')}
-                  onChange={(e) => setGraphName(e.target.value)}
+                  onChange={(e) => setVersionName(e.target.value)}
                 />
               </div>
 
@@ -109,9 +112,9 @@ const Versioning = ({
                 </label>
                 <Dropdown
                   id="from-graph-select"
-                  value={graph}
+                  value={selectedVersion}
                   options={availableGraphVersions}
-                  onChange={(e) => setGraph(e.value)}
+                  onChange={(e) => setSelectedVersion(e.value)}
                   placeholder={t('selectGraph')}
                 />
               </div>
@@ -123,7 +126,13 @@ const Versioning = ({
           <Button
             className="go-button"
             tooltip={`${t('setGraph')}`}
-            onClick={() => {}}
+            onClick={() => setGraphVersion({
+              mode,
+              selectedVersion,
+              versionName,
+              setStoreState,
+              addToObject
+            })}
             label={t('setGraph')}
             icon="pi pi-chevron-right"
             iconPos="right"
@@ -135,6 +144,8 @@ const Versioning = ({
 }
 
 Versioning.propTypes = {
+  setStoreState: PropTypes.func.isRequired,
+  addToObject: PropTypes.func.isRequired,
   selectedGraphVersion: PropTypes.string.isRequired,
   graphVersions: PropTypes.shape().isRequired,
 }

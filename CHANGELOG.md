@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.2.0]
 ### Added
+- ONTOLOGY-32 Added node create-update-delete operation in selected graph version
+- ONTOLOGY-32 Added graph versioning tab and way to add/select version
 - ONTOLOGY-21 Filter nodes by properties
 - ONTOLOGY-22 Filter edges by properties
 - ONTOLOGY-51 Added JSDoc build command

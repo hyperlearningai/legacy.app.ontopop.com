@@ -1,50 +1,47 @@
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import setNodesIdsToDisplay from './setNodesIdsToDisplay'
 import getAllTriplesPerNode from './getAllTriplesPerNode'
+import store from '../store'
 
 /**
  * Set graph full data
  * @param  {Object}   params
- * @param  {Array}    params.edgesFilters              Array of edge filters {property [string], value [string]}
  * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Function} params.addToObject               Add to object action
- * @return
+ * @param  {Function} params.graphVersion              Selected graph version
+ * @return { undefined }
  */
 const setGraphData = async ({
   setStoreState,
-  addToObject,
-  classes,
-  objectProperties,
-  graphName
+  graphVersion
 }) => {
-  setStoreState('classesFromApi', classes)
-  setStoreState('objectPropertiesFromApi', objectProperties)
-  addToObject('graphVersions', graphName, {
-    classesFromApi: classes,
-    objectPropertiesFromApi: objectProperties,
-    classesFromApiBackup: classes,
-    objectPropertiesFromApiBackup: objectProperties,
-    deletedNodes: [],
-    addedNodes: [],
-    udpatedNodes: []
-  })
+  const {
+    graphVersions
+  } = store.getState()
 
-  const classesIds = Object.keys(classes)
-  const predicatesIds = Object.keys(objectProperties)
+  const {
+    classesFromApi,
+    objectPropertiesFromApi
+  } = graphVersions[graphVersion]
+
+  setStoreState('classesFromApi', classesFromApi)
+  setStoreState('objectPropertiesFromApi', objectPropertiesFromApi)
+
+  const classesIds = Object.keys(classesFromApi)
+  const predicatesIds = Object.keys(objectPropertiesFromApi)
 
   // in the background, parse classes to get triples per node
   await getAllTriplesPerNode({
     classesIds,
     predicatesIds,
     setStoreState,
-    classesFromApi: classes
+    classesFromApi
   })
 
   // show full view when
   setNodesIdsToDisplay({
     type: ALGO_TYPE_FULL,
-    classesFromApi: classes,
-    objectPropertiesFromApi: objectProperties,
+    classesFromApi,
+    objectPropertiesFromApi,
     setStoreState
   })
 }
