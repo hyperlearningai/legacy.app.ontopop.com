@@ -4,6 +4,10 @@ import {
 } from '../constants/notifications'
 import showNotification from './showNotification'
 import { GET_PROPERTIES_ANNOTATIONS } from '../constants/api'
+import {
+  REQUIRED_PROPERTIES,
+  UNIQUE_PROPERTY
+} from '../constants/graph'
 
 /**
  * Get node properties from API
@@ -37,16 +41,26 @@ const getNodeProperties = async ({
 
     if (annotationProperties.length === 0) return []
 
-    const propertiesList = annotationProperties.map((property) => ({
-      id: property,
-      label: data[property].rdfsLabel || property?.split('/').pop()
-    }))
+    const propertiesList = annotationProperties.map((property) => {
+      const label = data[property].rdfsLabel || property?.split('/').pop()
+
+      return ({
+        id: property,
+        label,
+        search: label.toLowerCase(),
+        isRequired: REQUIRED_PROPERTIES.includes(property),
+        isUnique: UNIQUE_PROPERTY === property
+      })
+    })
 
     const basicProperties = Object.keys(data[annotationProperties[0]])
       .filter((property) => property !== 'id')
       .map((property) => ({
         id: property,
-        label: property
+        label: property,
+        search: property.toLowerCase(),
+        isRequired: REQUIRED_PROPERTIES.includes(property),
+        isUnique: UNIQUE_PROPERTY === property
       }))
 
     return [

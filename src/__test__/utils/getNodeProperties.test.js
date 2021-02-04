@@ -82,27 +82,45 @@ describe('getNodeProperties', () => {
     expect(output).toEqual([
       {
         id: 'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4',
+        isRequired: false,
+        isUnique: false,
         label: 'Synonym',
+        search: 'synonym',
       },
       {
         id: 'http://www.w3.org/2004/02/skos/core#note',
+        isRequired: false,
+        isUnique: false,
         label: 'core#note',
+        search: 'core#note',
       },
       {
         id: 'rdfAbout',
+        isRequired: true,
+        isUnique: true,
         label: 'rdfAbout',
+        search: 'rdfabout',
       },
       {
         id: 'rdfsLabel',
+        isRequired: false,
+        isUnique: false,
         label: 'rdfsLabel',
+        search: 'rdfslabel',
       },
       {
         id: 'skosComment',
+        isRequired: false,
+        isUnique: false,
         label: 'skosComment',
+        search: 'skoscomment',
       },
       {
         id: 'skosDefinition',
+        isRequired: false,
+        isUnique: false,
         label: 'skosDefinition',
+        search: 'skosdefinition',
       },
     ])
   })

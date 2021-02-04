@@ -64,7 +64,7 @@ describe('setGraphVersion', () => {
         objectPropertiesFromApiBackup: {},
         deletedNodes: [],
         addedNodes: [],
-        udpatedNodes: []
+        updatedNodes: []
       }
     )
   })

@@ -24,7 +24,7 @@ exports[`Versioning should match snapshot  1`] = `
         "nodesProperties": Array [],
         "objectPropertiesFromApi": Object {},
         "objectPropertiesFromApiBackup": Object {},
-        "udpatedNodes": Array [],
+        "updatedNodes": Array [],
       },
     }
   }

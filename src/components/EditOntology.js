@@ -5,33 +5,29 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import { SelectButton } from 'primereact/selectbutton'
 import { Dropdown } from 'primereact/dropdown'
-import { InputText } from 'primereact/inputtext'
-import { Checkbox } from 'primereact/checkbox'
+import { MultiSelect } from 'primereact/multiselect'
 import { SIDEBAR_VIEW_VERSIONING } from '../constants/views'
 import actions from '../store/actions'
+import setOntology from '../utils/setOntology'
+import EditOntologyForm from './EditOntologyForm'
+import { UNIQUE_PROPERTY } from '../constants/graph'
+import restoreUpdatedElement from '../utils/restoreUpdatedElement'
 
 const EditOntology = ({
   selectedGraphVersion,
-  graphVersions
+  graphVersions,
+  setStoreState,
+  addToArray,
+  removeFromObject,
+  addToObject,
+  classesFromApi
 }) => {
   const { t } = useTranslation()
 
-  const [mode, setMode] = useState('edit')
-  const [graph, setGraph] = useState(selectedGraphVersion)
   const [operation, setOperation] = useState('add')
   const [type, setType] = useState('node')
-  const [graphName, setGraphName] = useState('')
-  const [isCurrent, setCurrent] = useState(false)
-
-  const newEditButtons = [{
-    label: t('edit'),
-    value: 'edit',
-    icon: 'pi-pencil'
-  }, {
-    value: 'new',
-    label: t('new'),
-    icon: 'pi-file'
-  }]
+  const [selectedElement, setSelectedElement] = useState(undefined)
+  const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
   const typeButtons = [{
     label: t('node'),
@@ -55,95 +51,41 @@ const EditOntology = ({
     value: 'delete',
     label: t('delete'),
     icon: 'pi-times'
+  }, {
+    value: 'restore',
+    label: t('restore'),
+    icon: 'pi-replay'
   }]
 
   const itemTemplate = (option) => (
-    <span className="versioning-row-select-option">
+    <span className="ontology-edit-row-select-option">
       <i className={`pi ${option.icon}`} />
       {` ${option.label}`}
     </span>
   )
 
-  const availableGraphVersions = Object.keys(graphVersions).map((graphVersion) => ({
-    label: graphVersion,
-    value: graphVersion
-  }))
+  const availableNodes = Object.keys(graphVersions[selectedGraphVersion].classesFromApi).map(
+    (nodeId) => ({
+      value: nodeId,
+      label: graphVersions[selectedGraphVersion].classesFromApi[nodeId].rdfsLabel || nodeId
+    })
+  )
+
+  const availableEdges = Object.keys(graphVersions[selectedGraphVersion].objectPropertiesFromApi).map(
+    (nodeId) => ({
+      value: nodeId,
+      label: graphVersions[selectedGraphVersion].objectPropertiesFromApi[nodeId].rdfsLabel || nodeId
+    })
+  )
 
   return (
     <>
       <div className="sidebar-main-title">
         { t(SIDEBAR_VIEW_VERSIONING)}
       </div>
-      <div className="versioning">
+      <div className="ontology-edit">
         <div
-          className="versioning-row"
-        >
-          <SelectButton
-            value={mode}
-            options={newEditButtons}
-            onChange={(e) => setMode(e.value)}
-            itemTemplate={itemTemplate}
-          />
-        </div>
-
-        {
-        mode === 'edit' && (
-          <div
-            className="versioning-row"
-          >
-            <label htmlFor="graph-select">
-              {t('chooseGraphVersion')}
-            </label>
-
-            <Dropdown
-              id="graph-select"
-              value={graph}
-              options={availableGraphVersions}
-              onChange={(e) => setGraph(e.value)}
-              placeholder={t('selectGraph')}
-            />
-          </div>
-        )
-      }
-
-        {
-          mode === 'new' && (
-            <>
-              <div
-                className="versioning-row"
-              >
-                <label htmlFor="graph-name">
-                  {t('insertGraphName')}
-                </label>
-
-                <InputText
-                  id="graph-name"
-                  value={graphName}
-                  placeholder={t('insertName')}
-                  onChange={(e) => setGraphName(e.target.value)}
-                />
-              </div>
-
-              <div
-                className="versioning-row"
-              >
-                <label htmlFor="from-graph-select">
-                  {t('fromGraphVersion')}
-                </label>
-                <Dropdown
-                  id="from-graph-select"
-                  value={graph}
-                  options={availableGraphVersions}
-                  onChange={(e) => setGraph(e.value)}
-                  placeholder={t('selectGraph')}
-                />
-              </div>
-            </>
-          )
-        }
-
-        <div
-          className="versioning-row"
+          className="ontology-edit-row"
         >
           <label htmlFor="operation-select">
             {t('chooseOperation')}
@@ -152,48 +94,184 @@ const EditOntology = ({
             id="operation-select"
             value={operation}
             options={operationButtons}
-            onChange={(e) => setOperation(e.value)}
+            onChange={(e) => {
+              setSelectedElement(undefined)
+              setSelectedElementProperties({})
+              setOperation(e.value)
+            }}
             itemTemplate={itemTemplate}
           />
         </div>
 
         <div
-          className="versioning-row"
+          className="ontology-edit-row"
         >
           <label htmlFor="type-select">
-            {t('chooseType')}
+            {t('chooseElementType')}
           </label>
           <SelectButton
             id="type-select"
             value={type}
             options={typeButtons}
-            onChange={(e) => setType(e.value)}
+            onChange={(e) => {
+              setSelectedElement(undefined)
+              setSelectedElementProperties({})
+              setType(e.value)
+            }}
             itemTemplate={itemTemplate}
           />
         </div>
 
-        <div
-          className="versioning-row inline"
-        >
-          <Checkbox
-            inputId="set-current"
-            onChange={() => setCurrent(!isCurrent)}
-            checked={isCurrent}
-          />
-          <label
-            htmlFor="set-curret"
-            className="p-checkbox-label"
-          >
-            {t('setAsCurrentGraph')}
-          </label>
-        </div>
+        {
+          operation === 'delete' && (
+            <div
+              className="ontology-edit-row"
+            >
+              <label htmlFor="element-select">
+                {t('selectElement')}
+              </label>
 
-        <div className="versioning-row">
+              <MultiSelect
+                value={selectedElement}
+                options={type === 'node' ? availableNodes : availableEdges}
+                onChange={(e) => setSelectedElement(e.value)}
+                placeholder={t('selectElement')}
+                display="chip"
+                filter
+                showClear
+                filterBy="label"
+              />
+            </div>
+          )
+        }
+
+        {
+          operation === 'update' && (
+            <div
+              className="ontology-edit-row"
+            >
+              <label htmlFor="graph-select">
+                {t('selectElement')}
+              </label>
+
+              <Dropdown
+                id="graph-select"
+                value={selectedElement}
+                options={type === 'node' ? availableNodes : availableEdges}
+                onChange={(e) => setSelectedElement(e.value)}
+                placeholder={t('selectElement')}
+              />
+            </div>
+          )
+        }
+
+        {
+          operation === 'update' && selectedElement
+          && (
+            <>
+              <div
+                className="ontology-edit-row"
+              >
+                <label htmlFor="graph-select">
+                  {t('insertProperties')}
+                </label>
+              </div>
+
+              <EditOntologyForm
+                selectedElementProperties={selectedElementProperties}
+                setSelectedElementProperties={setSelectedElementProperties}
+                initialData={classesFromApi[selectedElement]}
+                operation={operation}
+                type={type}
+              />
+            </>
+          )
+        }
+
+        {
+          operation === 'add'
+          && (
+            <>
+              <div
+                className="ontology-edit-row"
+              >
+                <label htmlFor="graph-select">
+                  {t('insertProperties')}
+                </label>
+              </div>
+
+              <EditOntologyForm
+                selectedElement={selectedElement}
+                selectedElementProperties={selectedElementProperties}
+                setSelectedElementProperties={setSelectedElementProperties}
+                operation={operation}
+                type={type}
+              />
+
+              {
+                classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]] && (
+                  <div
+                    className="ontology-edit-row"
+                  >
+                    <small
+                      id="username2-help"
+                      className="p-error p-d-block"
+                    >
+                      {t('idExists')}
+                    </small>
+                  </div>
+                )
+              }
+            </>
+          )
+        }
+
+        {
+          operation === 'update'
+          && selectedElement
+          && (
+            <div className="ontology-edit-row">
+              <Button
+                className="go-button"
+                tooltip={`${t(operation)}`}
+                onClick={() => restoreUpdatedElement({
+                  setSelectedElementProperties,
+                  type,
+                  selectedElement
+                })}
+                label={t('restoreOriginal')}
+                icon="pi pi-refresh"
+                iconPos="left"
+              />
+            </div>
+          )
+        }
+
+        <div className="ontology-edit-row">
           <Button
             className="go-button"
-            tooltip={`${t('go')}`}
-            onClick={() => {}}
-            label={t('go')}
+            tooltip={`${t(operation)}`}
+            disabled={operation === 'add'
+              && (
+                !selectedElementProperties[UNIQUE_PROPERTY]
+                || selectedElementProperties[UNIQUE_PROPERTY] === ''
+                || classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]]
+              )}
+            onClick={() => {
+              setOntology({
+                operation,
+                type,
+                selectedElement,
+                setStoreState,
+                addToArray,
+                removeFromObject,
+                addToObject,
+                selectedElementProperties
+              })
+              setSelectedElement(undefined)
+              setSelectedElementProperties({})
+            }}
+            label={t(operation)}
             icon="pi pi-chevron-right"
             iconPos="right"
           />
@@ -206,14 +284,21 @@ const EditOntology = ({
 EditOntology.propTypes = {
   selectedGraphVersion: PropTypes.string.isRequired,
   graphVersions: PropTypes.shape().isRequired,
+  classesFromApi: PropTypes.shape().isRequired,
+  setStoreState: PropTypes.func.isRequired,
+  addToArray: PropTypes.func.isRequired,
+  removeFromObject: PropTypes.func.isRequired,
+  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
   selectedGraphVersion,
-  graphVersions
+  graphVersions,
+  classesFromApi
 }) => ({
   selectedGraphVersion,
-  graphVersions
+  graphVersions,
+  classesFromApi
 })
 
 export default connect(

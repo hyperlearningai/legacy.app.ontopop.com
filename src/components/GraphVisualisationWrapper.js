@@ -21,7 +21,8 @@ const GraphVisualisationWrapper = ({
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   addToObject,
-  selectedGraphVersion
+  selectedGraphVersion,
+  isOntologyUpdated
 }) => {
   const { t } = useTranslation()
 
@@ -55,22 +56,35 @@ const GraphVisualisationWrapper = ({
       objectPropertiesFromApiBackup: objectProperties,
       deletedNodes: [],
       addedNodes: [],
-      udpatedNodes: []
+      updatedNodes: []
     })
 
     setGraphData({
       setStoreState,
-      graphVersion: 'original'
     })
   }, [])
 
   // Update nodes to display based on graph version
-  useEffect(() => setGraphData({
-    setStoreState,
-    graphVersion: selectedGraphVersion
-  }),
+  useEffect(() => {
+    setGraphData({
+      setStoreState
+    })
+  },
   [
     selectedGraphVersion
+  ])
+
+  // Update nodes to display based on graph version
+  useEffect(() => {
+    if (isOntologyUpdated) {
+      setGraphData({
+        setStoreState,
+      })
+      setStoreState('isOntologyUpdated', false)
+    }
+  },
+  [
+    isOntologyUpdated
   ])
 
   useEffect(() => {
@@ -134,6 +148,7 @@ GraphVisualisationWrapper.propTypes = {
   boundingBoxGeometry: PropTypes.shape().isRequired,
   addToObject: PropTypes.func.isRequired,
   selectedGraphVersion: PropTypes.string.isRequired,
+  isOntologyUpdated: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
@@ -143,7 +158,8 @@ const mapToProps = ({
   contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
-  selectedGraphVersion
+  selectedGraphVersion,
+  isOntologyUpdated
 }) => ({
   currentGraph,
   graphData,
@@ -151,7 +167,8 @@ const mapToProps = ({
   contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
-  selectedGraphVersion
+  selectedGraphVersion,
+  isOntologyUpdated
 })
 
 export default connect(

@@ -30,3 +30,11 @@ export const LOW_LEVEL_PROPERTIES = [
   'skosDefinition',
   'skosComment'
 ]
+
+export const REQUIRED_PROPERTIES = [
+  'rdfAbout',
+]
+
+export const UNIQUE_PROPERTY = 'rdfAbout'
+export const LABEL_PROPERTY = 'rdfsLabel'
+export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'

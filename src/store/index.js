@@ -18,6 +18,9 @@ const initialState = {
   network: undefined,
   nodesProperties: [],
   edgesProperties: [],
+  deletedNodes: [],
+  addedNodes: [],
+  updatedNodes: [],
 
   // netowrk graph loading
   isNetworkLoading: false,
@@ -97,6 +100,7 @@ const initialState = {
 
   // new graph version
   selectedGraphVersion: 'original',
+  isOntologyUpdated: false,
   graphVersions: {
     original: {
       classesFromApi: {},
@@ -105,7 +109,7 @@ const initialState = {
       objectPropertiesFromApiBackup: {},
       deletedNodes: [],
       addedNodes: [],
-      udpatedNodes: []
+      updatedNodes: []
     },
   },
 

@@ -42,6 +42,7 @@ exports[`GraphVisualisationWrapper should match snapshot when context menu and b
     }
   }
   isBoundingBoxSelectable={true}
+  isOntologyUpdated={true}
   mapToProps={[Function]}
   selectedGraphVersion="original"
   setStoreState={[MockFunction]}
@@ -93,6 +94,7 @@ exports[`GraphVisualisationWrapper should match snapshot when no context menu an
     }
   }
   isBoundingBoxSelectable={false}
+  isOntologyUpdated={true}
   mapToProps={[Function]}
   selectedGraphVersion="original"
   setStoreState={[MockFunction]}

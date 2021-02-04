@@ -1,28 +1,31 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import Versioning from '../../components/Versioning'
+import EdgesSelection from '../../components/EdgesSelection'
+import { OwlClasses } from '../fixtures/test-ontology-classes'
 
 const setup = () => {
   const props = {
     selectedGraphVersion: 'original',
-    setStoreState: jest.fn(),
     graphVersions: {
       original: {
         classesFromApi: {},
         objectPropertiesFromApi: {},
         classesFromApiBackup: {},
         objectPropertiesFromApiBackup: {},
-        nodesProperties: [],
-        edgesProperties: [],
         deletedNodes: [],
         addedNodes: [],
         updatedNodes: []
       },
-    }
+    },
+    setStoreState: jest.fn(),
+    addToArray: jest.fn(),
+    removeFromObject: jest.fn(),
+    addToObject: jest.fn(),
+    classesFromApi: OwlClasses
   }
 
-  const component = shallow(<Versioning {...props} />)
+  const component = shallow(<EdgesSelection {...props} />)
 
   return {
     component,
@@ -30,7 +33,7 @@ const setup = () => {
   }
 }
 
-describe('Versioning', () => {
+describe('EdgesSelection', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

@@ -7,24 +7,29 @@ import store from '../store'
  * Set graph full data
  * @param  {Object}   params
  * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Function} params.graphVersion              Selected graph version
  * @return { undefined }
  */
 const setGraphData = async ({
   setStoreState,
-  graphVersion
 }) => {
   const {
-    graphVersions
+    graphVersions,
+    selectedGraphVersion
   } = store.getState()
 
   const {
     classesFromApi,
-    objectPropertiesFromApi
-  } = graphVersions[graphVersion]
+    objectPropertiesFromApi,
+    deletedNodes,
+    addedNodes,
+    updatedNodes
+  } = graphVersions[selectedGraphVersion]
 
   setStoreState('classesFromApi', classesFromApi)
   setStoreState('objectPropertiesFromApi', objectPropertiesFromApi)
+  setStoreState('deletedNodes', deletedNodes)
+  setStoreState('addedNodes', addedNodes)
+  setStoreState('updatedNodes', updatedNodes)
 
   const classesIds = Object.keys(classesFromApi)
   const predicatesIds = Object.keys(objectPropertiesFromApi)

@@ -34,7 +34,8 @@ const setup = ({
       boundingBoxWidth: 200,
       boundingBoxHeight: 200
     },
-    selectedGraphVersion: 'original'
+    selectedGraphVersion: 'original',
+    isOntologyUpdated: true
   }
 
   const component = shallow(<GraphVisualisationWrapper {...props} />)

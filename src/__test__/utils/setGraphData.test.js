@@ -10,13 +10,16 @@ import store from '../../store'
 jest.mock('../../utils/getAllTriplesPerNode')
 jest.mock('../../utils/setNodesIdsToDisplay')
 const setStoreState = jest.fn()
-const graphVersion = 'original'
 
 const getState = jest.fn().mockImplementation(() => ({
+  selectedGraphVersion: 'original',
   graphVersions: {
     original: {
       classesFromApi: OwlClasses,
-      objectPropertiesFromApi: OwlObjectProperties
+      objectPropertiesFromApi: OwlObjectProperties,
+      deletedNodes: [],
+      addedNodes: [],
+      updatedNodes: []
     }
   }
 }))
@@ -29,8 +32,7 @@ describe('setGraphData', () => {
 
   it('should work correctly', async () => {
     await setGraphData({
-      setStoreState,
-      graphVersion
+      setStoreState
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -39,7 +41,19 @@ describe('setGraphData', () => {
       ],
       [
         'objectPropertiesFromApi', OwlObjectProperties
-      ]
+      ],
+      [
+        'deletedNodes',
+        [],
+      ],
+      [
+        'addedNodes',
+        [],
+      ],
+      [
+        'updatedNodes',
+        [],
+      ],
     ])
     expect(getAllTriplesPerNode).toHaveBeenCalledWith({
       classesIds: Object.keys(OwlClasses),

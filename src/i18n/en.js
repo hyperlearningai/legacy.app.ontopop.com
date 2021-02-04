@@ -146,17 +146,20 @@ export default {
   new: 'New',
   add: 'Add',
   type: 'Type',
-  chooseType: 'Choose type',
+  chooseElementType: 'Choose element type',
   update: 'Update',
   delete: 'Delete',
+  restore: 'Restore',
   selectGraph: 'Select graph',
-
   chooseOperation: 'Choose operation',
-  setAsCurrentGraph: 'Set as current graph',
   go: 'Go',
-
-  // edit ontology
+  selectElement: 'Select element',
   editOntology: 'Edit ontology',
+  insertProperties: 'Insert properties',
+  editProperties: 'Edit properties',
+  requiredField: 'This field is required',
+  restoreOriginal: 'Restore',
+  idExists: 'ID already exists',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',

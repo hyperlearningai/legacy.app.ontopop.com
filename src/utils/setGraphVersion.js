@@ -37,7 +37,7 @@ const setGraphVersion = async ({
     objectPropertiesFromApiBackup: objectPropertiesFromApi,
     deletedNodes: [],
     addedNodes: [],
-    udpatedNodes: []
+    updatedNodes: []
   })
   setStoreState('selectedGraphVersion', versionName)
 }
