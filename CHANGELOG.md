@@ -35,6 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Removed
 
 ### Fixed
+- ONTOLOGY-32 Added useRef constants in GraphVisualisationWrapper to avoid refreshing the graph multiple times at startup
 - ONTOLOGY-47 Removed highlight from free-text search selected node after sidebar section update
 
 ### Security

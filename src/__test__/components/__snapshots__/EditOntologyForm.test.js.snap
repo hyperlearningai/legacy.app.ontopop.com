@@ -4,6 +4,7 @@ exports[`EditOntologyForm should match snapshot when add operation and edge type
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -5894,6 +5895,7 @@ exports[`EditOntologyForm should match snapshot when add operation and node type
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -11784,6 +11786,7 @@ exports[`EditOntologyForm should match snapshot when update operation and edge t
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -17674,6 +17677,7 @@ exports[`EditOntologyForm should match snapshot when update operation and node t
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],

@@ -36,6 +36,32 @@ describe('Actions', () => {
     expect(actions.resetSelectedNodes(state)).toEqual(newState)
   })
 
+  it('addSubValueToObject should work correctly', () => {
+    const state = {
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          description: 'Main description'
+        }
+      }
+    }
+
+    const key = 'graph-0'
+    const subkey = 'description'
+    const value = 'New'
+
+    const newState = {
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          description: value
+        }
+      }
+    }
+
+    expect(actions.addSubValueToObject(state, 'graphData', key, subkey, value)).toEqual(newState)
+  })
+
   it('addToObject should work correctly', () => {
     const state = {
       graphData: {
@@ -45,7 +71,7 @@ describe('Actions', () => {
       }
     }
 
-    const id = 'graph-0'
+    const key = 'graph-0'
     const value = {
       label: 'New'
     }
@@ -56,7 +82,7 @@ describe('Actions', () => {
       }
     }
 
-    expect(actions.addToObject(state, 'graphData', id, value)).toEqual(newState)
+    expect(actions.addToObject(state, 'graphData', key, value)).toEqual(newState)
   })
 
   it('removeFromObject should work correctly', () => {

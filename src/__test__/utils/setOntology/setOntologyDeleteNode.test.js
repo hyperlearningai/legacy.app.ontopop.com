@@ -13,7 +13,7 @@ const selectedElement = Object.keys(OwlClasses).slice(0, Object.keys(OwlClasses)
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
 const deletedNodes = []
-describe('setOntology', () => {
+describe('setOntologyDeleteNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

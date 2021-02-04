@@ -162,7 +162,7 @@ const EdgesFilter = ({
 
 EdgesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  edgesProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
+  edgesProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   addToObject: PropTypes.func.isRequired,
 }
 

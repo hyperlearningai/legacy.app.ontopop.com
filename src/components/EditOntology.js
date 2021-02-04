@@ -78,6 +78,20 @@ const EditOntology = ({
     })
   )
 
+  const deletedNodes = graphVersions[selectedGraphVersion].deletedNodes?.map(
+    (nodeId) => ({
+      value: nodeId,
+      label: graphVersions[selectedGraphVersion].classesFromApiBackup[nodeId].rdfsLabel || nodeId
+    })
+  )
+
+  const deletedEdges = graphVersions[selectedGraphVersion].deletedEdges?.map(
+    (edgeId) => ({
+      value: edgeId,
+      label: graphVersions[selectedGraphVersion].objectPropertiesFromApiBackup[edgeId].rdfsLabel || edgeId
+    })
+  )
+
   return (
     <>
       <div className="sidebar-main-title">
@@ -121,6 +135,44 @@ const EditOntology = ({
             itemTemplate={itemTemplate}
           />
         </div>
+
+        {
+          operation === 'restore' && (
+            <div
+              className="ontology-edit-row"
+            >
+              {
+                (type === 'node'
+                  && deletedNodes.length === 0)
+                || (type === 'edge'
+                  && deletedEdges.length === 0)
+                  ? (
+                    <div>
+                      {t('noDeletedElements')}
+                    </div>
+                  ) : (
+                    <>
+                      <label htmlFor="element-select">
+                        {t('selectElement')}
+                      </label>
+
+                      <MultiSelect
+                        value={selectedElement}
+                        options={type === 'node' ? deletedNodes : deletedEdges}
+                        onChange={(e) => setSelectedElement(e.value)}
+                        placeholder={t('selectElement')}
+                        display="chip"
+                        filter
+                        showClear
+                        filterBy="label"
+                      />
+                    </>
+                  )
+              }
+
+            </div>
+          )
+        }
 
         {
           operation === 'delete' && (

@@ -109,7 +109,10 @@ const initialState = {
       objectPropertiesFromApiBackup: {},
       deletedNodes: [],
       addedNodes: [],
-      updatedNodes: []
+      updatedNodes: [],
+      deletedEdges: [],
+      addedEdges: [],
+      updatedEdges: [],
     },
   },
 

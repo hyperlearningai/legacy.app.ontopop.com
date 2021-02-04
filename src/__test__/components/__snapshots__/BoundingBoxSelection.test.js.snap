@@ -4,6 +4,7 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -27,6 +28,7 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],

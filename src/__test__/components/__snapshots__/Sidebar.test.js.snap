@@ -4,6 +4,7 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -26,6 +27,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -48,6 +50,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -70,6 +73,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -92,6 +96,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -114,6 +119,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_O
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -136,6 +142,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -158,6 +165,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_T
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -180,6 +188,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -202,6 +211,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -224,6 +234,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -246,6 +257,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -268,6 +280,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -290,6 +303,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -312,6 +326,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_VERSIO
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],

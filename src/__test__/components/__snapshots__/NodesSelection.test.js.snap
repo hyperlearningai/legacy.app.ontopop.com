@@ -4,6 +4,7 @@ exports[`NodesSelection should match snapshot  1`] = `
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],

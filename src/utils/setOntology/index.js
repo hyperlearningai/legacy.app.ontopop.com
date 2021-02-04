@@ -1,6 +1,7 @@
 import setOntologyDeleteNode from './setOntologyDeleteNode'
 import setOntologyUpdateNode from './setOntologyUpdateNode'
 import setOntologyAddNode from './setOntologyAddNode'
+import setOntologyRestoreNode from './setOntologyRestoreNode'
 
 /**
  * Set graph full data
@@ -21,6 +22,16 @@ const setOntology = ({
   selectedElementProperties,
   addToObject
 }) => {
+  if (operation === 'restore') {
+    if (type === 'node') {
+      setOntologyRestoreNode({
+        selectedElement,
+        setStoreState,
+        addToObject
+      })
+    }
+  }
+
   if (operation === 'delete') {
     if (type === 'node') {
       setOntologyDeleteNode({

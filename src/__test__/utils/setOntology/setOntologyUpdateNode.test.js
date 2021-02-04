@@ -19,7 +19,7 @@ const selectedElement = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
 
-describe('setOntology', () => {
+describe('setOntologyUpdateNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

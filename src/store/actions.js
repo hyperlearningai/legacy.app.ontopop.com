@@ -43,17 +43,35 @@ export default {
     })
   },
   /**
+   * Add subkey to object
+   * @param  {Object} state     Store state
+   * @param  {String} stateKey  State key to update
+   * @param  {String} key       key to add/update
+   * @param  {String} subkey    subkey to add/update
+   * @param  {*}      value     new subkey value
+   * @return {undefined}
+   */
+  addSubValueToObject: (state, stateKey, key, subkey, value) => ({
+    [stateKey]: {
+      ...state[stateKey],
+      [key]: {
+        ...state[stateKey][key],
+        [subkey]: value
+      }
+    }
+  }),
+  /**
    * Add key from object
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
-   * @param  {String} id        key to add/update
+   * @param  {String} key       key to add/update
    * @param  {*}      value     new key value
    * @return {undefined}
    */
-  addToObject: (state, stateKey, id, value) => ({
+  addToObject: (state, stateKey, key, value) => ({
     [stateKey]: {
       ...state[stateKey],
-      [id]: value
+      [key]: value
     }
   }),
   /**
@@ -104,17 +122,31 @@ export default {
    * Add ID to array
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
-   * @param  {String} id        ID to add to array
+   * @param  {String} value     Value to add to array
    * @param  {Object} [options] Additional options
    * @return {undefined}
    */
-  addToArray: (state, stateKey, id, options) => {
-    const newArray = state[stateKey].slice()
+  addToArray: (state, stateKey, value, options) => {
+    if ((!options || !options.alwaysAdd) && state[stateKey].includes(value)) {
+      return ({
+        [stateKey]: state[stateKey]
+      })
+    }
 
-    if (options?.alwaysAdd || !newArray.includes(id)) newArray.push(id)
+    if (Array.isArray(value)) {
+      return ({
+        [stateKey]: [
+          ...state[stateKey],
+          ...value
+        ]
+      })
+    }
 
     return ({
-      [stateKey]: newArray
+      [stateKey]: [
+        ...state[stateKey],
+        value
+      ]
     })
   },
   /**

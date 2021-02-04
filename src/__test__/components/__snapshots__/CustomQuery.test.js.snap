@@ -4,6 +4,7 @@ exports[`EdgesSelection should match snapshot when customQueryOutput  1`] = `
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -32,6 +33,7 @@ exports[`EdgesSelection should match snapshot when no customQueryOutput  1`] = `
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],

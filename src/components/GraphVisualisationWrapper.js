@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
@@ -25,6 +25,9 @@ const GraphVisualisationWrapper = ({
   isOntologyUpdated
 }) => {
   const { t } = useTranslation()
+  const isInitialMountSelectedGraphVersion = useRef(true)
+  const isInitialMountOntologyUpdated = useRef(true)
+  const isInitialMountCurrentGraph = useRef(true)
 
   useEffect(async () => {
     const { classes, objectProperties } = await getGraphData({
@@ -64,19 +67,25 @@ const GraphVisualisationWrapper = ({
     })
   }, [])
 
-  // Update nodes to display based on graph version
+  // Update nodes to display based on graph version except at component mount
   useEffect(() => {
-    setGraphData({
-      setStoreState
-    })
+    if (isInitialMountSelectedGraphVersion.current) {
+      isInitialMountSelectedGraphVersion.current = false
+    } else {
+      setGraphData({
+        setStoreState
+      })
+    }
   },
   [
     selectedGraphVersion
   ])
 
-  // Update nodes to display based on graph version
+  // Update nodes to display based on graph version when ontology is updated except at component mount
   useEffect(() => {
-    if (isOntologyUpdated) {
+    if (isInitialMountOntologyUpdated.current) {
+      isInitialMountOntologyUpdated.current = false
+    } else if (isOntologyUpdated) {
       setGraphData({
         setStoreState,
       })
@@ -88,17 +97,20 @@ const GraphVisualisationWrapper = ({
   ])
 
   useEffect(() => {
-    // Update nodes to display based on selected graph
-    const {
-      type,
-      options
-    } = graphData[currentGraph]
+    if (isInitialMountCurrentGraph.current) {
+      isInitialMountCurrentGraph.current = false
+    } else {
+      const {
+        type,
+        options
+      } = graphData[currentGraph]
 
-    setNodesIdsToDisplay({
-      type,
-      setStoreState,
-      options
-    })
+      setNodesIdsToDisplay({
+        type,
+        setStoreState,
+        options
+      })
+    }
   }, [
     currentGraph
   ])

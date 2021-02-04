@@ -4,6 +4,7 @@ exports[`GraphVisualisationWrapper should match snapshot when context menu and b
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],
@@ -56,6 +57,7 @@ exports[`GraphVisualisationWrapper should match snapshot when no context menu an
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
       "removeFromArray": [Function],

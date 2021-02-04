@@ -160,6 +160,7 @@ export default {
   requiredField: 'This field is required',
   restoreOriginal: 'Restore',
   idExists: 'ID already exists',
+  noDeletedElements: 'No deleted elements to restore!',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',
