@@ -13,7 +13,7 @@ const getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi: OwlObjectProperties,
   availableNodesNormalised: OwlClasses,
 
-  nodesProperties: [
+  annotationProperties: [
     'rdfsLabel',
     'rdfAbout'
   ],

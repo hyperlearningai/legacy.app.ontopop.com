@@ -54,6 +54,11 @@ export const addToObjectFixture = {
   objectPropertiesFromApi: OwlObjectProperties,
   objectPropertiesFromApiBackup: OwlObjectProperties,
   addedNodes: [],
+  deletedEdges: [],
+  addedEdges: [],
+  updatedEdges: [],
+  deletedConnections: [],
+  addedConnections: [],
   updatedNodes: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY']
 }
 

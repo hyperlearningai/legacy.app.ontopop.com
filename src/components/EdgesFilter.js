@@ -14,7 +14,7 @@ import setFilteredEdges from '../utils/setFilteredEdges'
 
 const EdgesFilter = ({
   setStoreState,
-  nodesProperties,
+  annotationProperties,
   addToObject
 }) => {
   const { t } = useTranslation()
@@ -79,7 +79,7 @@ const EdgesFilter = ({
                       <Dropdown
                         id={selectId}
                         value={edgesFilters[index].property}
-                        options={nodesProperties}
+                        options={annotationProperties}
                         filter
                         onChange={(e) => {
                           const newFilter = {
@@ -155,14 +155,14 @@ const EdgesFilter = ({
 
 EdgesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  nodesProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  nodesProperties
+  annotationProperties
 }) => ({
-  nodesProperties
+  annotationProperties
 })
 
 export default connect(

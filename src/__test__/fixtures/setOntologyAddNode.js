@@ -18,7 +18,12 @@ export const addToObjectFixture = {
   objectPropertiesFromApi: OwlObjectProperties,
   objectPropertiesFromApiBackup: OwlObjectProperties,
   addedNodes: ['http://test.com/node'],
-  updatedNodes: []
+  updatedNodes: [],
+  deletedEdges: [],
+  addedEdges: [],
+  updatedEdges: [],
+  deletedConnections: [],
+  addedConnections: [],
 }
 
 export const setStoreStateFixture = [

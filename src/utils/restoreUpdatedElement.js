@@ -18,7 +18,7 @@ const restoreUpdatedElement = async ({
   const {
     graphVersions,
     selectedGraphVersion,
-    nodesProperties,
+    annotationProperties,
   } = store.getState()
 
   const elementProperties = {}
@@ -27,7 +27,7 @@ const restoreUpdatedElement = async ({
     const { classesFromApiBackup } = graphVersions[selectedGraphVersion]
     const nodeBackup = classesFromApiBackup[selectedElement]
 
-    nodesProperties.map((nodeProperty) => {
+    annotationProperties.map((nodeProperty) => {
       if (nodeBackup[nodeProperty]) {
         elementProperties[nodeProperty] = nodeBackup[nodeProperty]
         return true

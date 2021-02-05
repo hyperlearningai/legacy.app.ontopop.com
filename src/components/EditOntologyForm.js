@@ -9,36 +9,46 @@ import { OWL_ANNOTATION_PROPERTIES, UNIQUE_PROPERTY } from '../constants/graph'
 const EditOntologyForm = ({
   selectedElementProperties,
   setSelectedElementProperties,
-  nodesProperties,
-  edgesProperties,
+  annotationProperties,
   operation,
   initialData,
   classesFromApi,
+  objectPropertiesFromApi,
   type
 }) => {
   const { t } = useTranslation()
 
-  const properties = type === 'node' ? nodesProperties : edgesProperties
-
   return (
     <>
       {
-        properties.length > 0
-        && orderBy(properties, ['search'], ['asc']).map((property) => {
+        annotationProperties.length > 0
+        && orderBy(annotationProperties, ['search'], ['asc']).map((property) => {
           const {
             id,
             label,
             isRequired
           } = property
 
-          const nodeIdIfAdd = selectedElementProperties[UNIQUE_PROPERTY]
+          const elementId = selectedElementProperties[UNIQUE_PROPERTY]
           const isValid = operation === 'add' && isRequired ? selectedElementProperties[id]?.length > 0 : true
-          const isExisting = operation === 'add' && classesFromApi[nodeIdIfAdd]
+          const isExisting = operation === 'add' && (
+            (type === 'node'
+            && classesFromApi[elementId])
+            || (
+              type === 'edge'
+            && objectPropertiesFromApi[elementId]
+            )
+          )
 
           const isDisabled = operation === 'update' && isRequired
 
           const initialDataValue = initialData ? (initialData[id]
-            || initialData[OWL_ANNOTATION_PROPERTIES][id]) : ''
+            || (
+              initialData[OWL_ANNOTATION_PROPERTIES]
+              && initialData[OWL_ANNOTATION_PROPERTIES][id]
+                ? initialData[OWL_ANNOTATION_PROPERTIES][id]
+                : ''
+            )) : ''
 
           const defaultValue = operation === 'add' ? '' : initialDataValue
 
@@ -103,23 +113,23 @@ const EditOntologyForm = ({
 EditOntologyForm.propTypes = {
   selectedElementProperties: PropTypes.shape().isRequired,
   setSelectedElementProperties: PropTypes.func.isRequired,
-  nodesProperties: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  edgesProperties: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   operation: PropTypes.string.isRequired,
   initialData: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
+  objectPropertiesFromApi: PropTypes.shape().isRequired,
   type: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
-  nodesProperties,
-  edgesProperties,
+  annotationProperties,
   classesFromApi,
+  objectPropertiesFromApi,
   type
 }) => ({
-  nodesProperties,
-  edgesProperties,
+  annotationProperties,
   classesFromApi,
+  objectPropertiesFromApi,
   type
 })
 

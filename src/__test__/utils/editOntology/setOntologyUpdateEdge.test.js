@@ -1,25 +1,25 @@
 /* eslint max-len:0 */
 import { DataSet } from 'vis-data'
-import setOntologyUpdateNode from '../../../utils/editOntology/setOntologyUpdateNode'
+import setOntologyUpdateEdge from '../../../utils/editOntology/setOntologyUpdateEdge'
 import store from '../../../store'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
 import { graphVersions } from '../../fixtures/graphVersions'
-import { availableNodesNormalised } from '../../fixtures/availableNodesNormalised'
+import { availableEdgesNormalised } from '../../fixtures/availableEdgesNormalised'
 import {
   addToObjectFixture,
   setStoreStateFixture
-} from '../../fixtures/setOntologyUpdateNode'
+} from '../../fixtures/setOntologyUpdateEdge'
 
 const selectedElementProperties = {
-  rdfAbout: 'http://test.com/node',
-  rdfsLabel: 'New node',
-  'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node'
+  rdfAbout: 'http://test.com/edge',
+  rdfsLabel: 'New edge',
+  'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM': 'Another edge'
 }
-const selectedElement = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
+const selectedElement = 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM'
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
 
-describe('setOntologyUpdateNode', () => {
+describe('setOntologyUpdateEdge', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -27,15 +27,15 @@ describe('setOntologyUpdateNode', () => {
   it('should work correctly', async () => {
     const getState = jest.fn().mockImplementationOnce(() => ({
       graphVersions,
-      classesFromApi: OwlClasses,
+      objectPropertiesFromApi: OwlObjectProperties,
       selectedGraphVersion: 'original',
-      availableNodes: new DataSet({ id: 1, label: 'test' }),
-      updatedNodes: [],
-      availableNodesNormalised
+      availableEdges: new DataSet({ id: 1, label: 'test' }),
+      updatedEdges: [],
+      availableEdgesNormalised
     }))
     store.getState = getState
 
-    await setOntologyUpdateNode({
+    await setOntologyUpdateEdge({
       setStoreState,
       selectedElementProperties,
       selectedElement,

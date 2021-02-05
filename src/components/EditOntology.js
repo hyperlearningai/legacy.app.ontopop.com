@@ -20,7 +20,8 @@ const EditOntology = ({
   addToArray,
   removeFromObject,
   addToObject,
-  classesFromApi
+  classesFromApi,
+  objectPropertiesFromApi
 }) => {
   const { t } = useTranslation()
 
@@ -72,9 +73,9 @@ const EditOntology = ({
   )
 
   const availableEdges = Object.keys(graphVersions[selectedGraphVersion].objectPropertiesFromApi).map(
-    (nodeId) => ({
-      value: nodeId,
-      label: graphVersions[selectedGraphVersion].objectPropertiesFromApi[nodeId].rdfsLabel || nodeId
+    (edgeId) => ({
+      value: edgeId,
+      label: graphVersions[selectedGraphVersion].objectPropertiesFromApi[edgeId].rdfsLabel || edgeId
     })
   )
 
@@ -210,7 +211,11 @@ const EditOntology = ({
                 id="graph-select"
                 value={selectedElement}
                 options={type === 'node' ? availableNodes : availableEdges}
-                onChange={(e) => setSelectedElement(e.value)}
+                onChange={(e) => {
+                  console.log(e.value)
+
+                  setSelectedElement(e.value)
+                }}
                 placeholder={t('selectElement')}
               />
             </div>
@@ -218,7 +223,8 @@ const EditOntology = ({
         }
 
         {
-          operation === 'update' && selectedElement
+          operation === 'update'
+          && selectedElement
           && (
             <>
               <div
@@ -232,7 +238,7 @@ const EditOntology = ({
               <EditOntologyForm
                 selectedElementProperties={selectedElementProperties}
                 setSelectedElementProperties={setSelectedElementProperties}
-                initialData={classesFromApi[selectedElement]}
+                initialData={type === 'node' ? classesFromApi[selectedElement] : objectPropertiesFromApi[selectedElement]}
                 operation={operation}
                 type={type}
               />
@@ -261,7 +267,10 @@ const EditOntology = ({
               />
 
               {
-                classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]] && (
+                ((type === 'node'
+                && classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]])
+                || (type === 'edge'
+                && objectPropertiesFromApi[selectedElementProperties[UNIQUE_PROPERTY]])) && (
                   <div
                     className="ontology-edit-row"
                   >
@@ -341,16 +350,19 @@ EditOntology.propTypes = {
   addToArray: PropTypes.func.isRequired,
   removeFromObject: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
+  objectPropertiesFromApi: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   selectedGraphVersion,
   graphVersions,
-  classesFromApi
+  classesFromApi,
+  objectPropertiesFromApi
 }) => ({
   selectedGraphVersion,
   graphVersions,
-  classesFromApi
+  classesFromApi,
+  objectPropertiesFromApi
 })
 
 export default connect(

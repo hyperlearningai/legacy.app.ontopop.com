@@ -14,7 +14,7 @@ import setFilteredNodes from '../utils/setFilteredNodes'
 
 const NodesFilter = ({
   setStoreState,
-  nodesProperties,
+  annotationProperties,
   addToObject
 }) => {
   const { t } = useTranslation()
@@ -79,7 +79,7 @@ const NodesFilter = ({
                       <Dropdown
                         id={selectId}
                         value={nodesFilters[index].property}
-                        options={nodesProperties}
+                        options={annotationProperties}
                         optionValue="id"
                         optionLabel="label"
                         filter
@@ -159,14 +159,14 @@ const NodesFilter = ({
 
 NodesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  nodesProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
   addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  nodesProperties
+  annotationProperties
 }) => ({
-  nodesProperties
+  annotationProperties
 })
 
 export default connect(

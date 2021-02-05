@@ -6,7 +6,7 @@ import { graphVersions } from '../../fixtures/graphVersions'
 import {
   addToObjectFixture,
   setStoreStateFixture
-} from '../../fixtures/setOntologyDeleteNodes'
+} from '../../fixtures/setOntologyDeleteNode'
 
 const selectedElement = Object.keys(OwlClasses).slice(0, Object.keys(OwlClasses).length - 2)
 

@@ -4,6 +4,7 @@ import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
 import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
+import { GRAPH_VERSION_STRUCTURE } from '../constants/graph'
 
 const initialState = {
   // view updates
@@ -16,11 +17,16 @@ const initialState = {
   objectPropertiesFromApi: {},
   triplesPerNode: {},
   network: undefined,
-  nodesProperties: [],
+  annotationProperties: [],
   edgesProperties: [],
   deletedNodes: [],
   addedNodes: [],
   updatedNodes: [],
+  deletedEdges: [],
+  addedEdges: [],
+  updatedEdges: [],
+  deletedConnections: [],
+  addedConnections: [],
 
   // netowrk graph loading
   isNetworkLoading: false,
@@ -102,18 +108,7 @@ const initialState = {
   selectedGraphVersion: 'original',
   isOntologyUpdated: false,
   graphVersions: {
-    original: {
-      classesFromApi: {},
-      objectPropertiesFromApi: {},
-      classesFromApiBackup: {},
-      objectPropertiesFromApiBackup: {},
-      deletedNodes: [],
-      addedNodes: [],
-      updatedNodes: [],
-      deletedEdges: [],
-      addedEdges: [],
-      updatedEdges: [],
-    },
+    original: GRAPH_VERSION_STRUCTURE,
   },
 
   // graphs data storage

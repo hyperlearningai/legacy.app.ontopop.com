@@ -22,7 +22,12 @@ const validateGraphVersionFile = ({
   const arrayOfStrings = [
     'deletedNodes',
     'addedNodes',
-    'updatedNodes'
+    'updatedNodes',
+    'deletedEdges',
+    'addedEdges',
+    'updatedEdges',
+    'deletedConnections',
+    'addedConnections'
   ]
 
   const graphVersionKeys = Object.keys(GRAPH_VERSION_STRUCTURE)

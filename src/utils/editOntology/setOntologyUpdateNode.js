@@ -6,9 +6,9 @@ import {
   OWL_ANNOTATION_PROPERTIES
 } from '../../constants/graph'
 /**
- * Set graph full data
+ * Update ontology nodes
  * @param  {Object}         params
- * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
+ * @param  {String|Array}   params.selectedElement            Selected node ID
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.addToObject                Add to object action
  * @param  {Object}         params.selectedElementProperties  Element properties from form

@@ -4,11 +4,15 @@ import setOntologyDeleteNode from '../../../utils/editOntology/setOntologyDelete
 import setOntologyUpdateNode from '../../../utils/editOntology/setOntologyUpdateNode'
 import setOntologyAddNode from '../../../utils/editOntology/setOntologyAddNode'
 import setOntologyRestoreNode from '../../../utils/editOntology/setOntologyRestoreNode'
+import setOntologyUpdateEdge from '../../../utils/editOntology/setOntologyUpdateEdge'
+import setOntologyAddEdge from '../../../utils/editOntology/setOntologyAddEdge'
 
 jest.mock('../../../utils/editOntology/setOntologyDeleteNode')
 jest.mock('../../../utils/editOntology/setOntologyUpdateNode')
 jest.mock('../../../utils/editOntology/setOntologyAddNode')
 jest.mock('../../../utils/editOntology/setOntologyRestoreNode')
+jest.mock('../../../utils/editOntology/setOntologyUpdateEdge')
+jest.mock('../../../utils/editOntology/setOntologyAddEdge')
 const selectedElement = 'id-123'
 const setStoreState = jest.fn()
 const selectedElementProperties = { rdfsLabel: 'id-123' }
@@ -94,6 +98,47 @@ describe('setOntology', () => {
     })
 
     expect(setOntologyAddNode).toHaveBeenCalledWith({
+      setStoreState,
+      selectedElementProperties,
+      addToObject
+    })
+  })
+
+  it('should work correctly when type edge and operation update', async () => {
+    const operation = 'update'
+    const type = 'edge'
+
+    await setOntology({
+      operation,
+      type,
+      selectedElement,
+      setStoreState,
+      selectedElementProperties,
+      addToObject
+    })
+
+    expect(setOntologyUpdateEdge).toHaveBeenCalledWith({
+      selectedElement,
+      setStoreState,
+      selectedElementProperties,
+      addToObject
+    })
+  })
+
+  it('should work correctly when type edge and operation add', async () => {
+    const operation = 'add'
+    const type = 'edge'
+
+    await setOntology({
+      operation,
+      type,
+      selectedElement,
+      setStoreState,
+      selectedElementProperties,
+      addToObject
+    })
+
+    expect(setOntologyAddEdge).toHaveBeenCalledWith({
       setStoreState,
       selectedElementProperties,
       addToObject

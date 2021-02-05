@@ -2,7 +2,7 @@ import flatten from 'flat'
 import store from '../../store'
 
 /**
- * Set graph full data
+ * Delete ontology nodes
  * @param  {Object}         params
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {Function}       params.setStoreState              setStoreState action

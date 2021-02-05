@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EdgesSelection from '../../components/EdgesSelection'
 import { OwlClasses } from '../fixtures/test-ontology-classes'
+import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
 
 const setup = () => {
   const props = {
@@ -22,7 +23,8 @@ const setup = () => {
     addToArray: jest.fn(),
     removeFromObject: jest.fn(),
     addToObject: jest.fn(),
-    classesFromApi: OwlClasses
+    classesFromApi: OwlClasses,
+    objectPropertiesFromApi: OwlObjectProperties
   }
 
   const component = shallow(<EdgesSelection {...props} />)

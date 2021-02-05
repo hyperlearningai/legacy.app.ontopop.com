@@ -38,12 +38,12 @@ const GraphVisualisationWrapper = ({
     })
 
     // get nodes properties
-    const nodesProperties = await getNodeProperties({
+    const annotationProperties = await getNodeProperties({
       setStoreState,
       t
     })
 
-    setStoreState('nodesProperties', nodesProperties)
+    setStoreState('annotationProperties', annotationProperties)
 
     // get edges properties for editing ontology connections
     const edgesProperties = await getEdgeProperties({

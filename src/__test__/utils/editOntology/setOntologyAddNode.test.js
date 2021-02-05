@@ -8,7 +8,7 @@ import { availableNodesNormalised } from '../../fixtures/availableNodesNormalise
 import {
   addToObjectFixture,
   setStoreStateFixture
-} from '../../fixtures/setOntologyAddNodes'
+} from '../../fixtures/setOntologyAddNode'
 
 const selectedElementProperties = {
   rdfAbout: 'http://test.com/node',

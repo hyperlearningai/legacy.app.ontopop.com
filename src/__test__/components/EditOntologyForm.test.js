@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EditOntologyForm from '../../components/EditOntologyForm'
-// import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
+import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
 import { OwlClasses } from '../fixtures/test-ontology-classes'
 
 const setup = ({
@@ -12,12 +12,13 @@ const setup = ({
   const props = {
     selectedElementProperties: {},
     setSelectedElementProperties: jest.fn(),
-    nodesProperties: [],
+    annotationProperties: [],
     edgesProperties: [],
     operation,
     initialData: {},
     classesFromApi: OwlClasses,
-    type
+    type,
+    objectPropertiesFromApi: OwlObjectProperties
   }
 
   const component = shallow(<EditOntologyForm {...props} />)

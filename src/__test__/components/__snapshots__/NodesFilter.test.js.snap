@@ -15,8 +15,7 @@ exports[`NodesFilter should match snapshot  1`] = `
     }
   }
   addToObject={[MockFunction]}
-  mapToProps={[Function]}
-  nodesProperties={
+  annotationProperties={
     Array [
       Object {
         "property": "rdfsLabel",
@@ -24,6 +23,7 @@ exports[`NodesFilter should match snapshot  1`] = `
       },
     ]
   }
+  mapToProps={[Function]}
   setStoreState={[MockFunction]}
 >
   <Component />

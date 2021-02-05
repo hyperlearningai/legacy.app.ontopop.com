@@ -7795,7 +7795,12 @@ export const addToObjectFixture = {
     'http://webprotege.stanford.edu/RxMK8BflSk74kqDWT4eHTy'
   ],
   addedNodes: [],
-  updatedNodes: []
+  updatedNodes: [],
+  deletedEdges: [],
+  addedEdges: [],
+  updatedEdges: [],
+  deletedConnections: [],
+  addedConnections: [],
 }
 
 export const setStoreStateFixture = [

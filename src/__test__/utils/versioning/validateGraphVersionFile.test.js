@@ -15,6 +15,11 @@ describe('validateGraphVersionFile', () => {
       objectPropertiesFromApiBackup: OwlObjectProperties,
       deletedNodes: ['test'],
       addedNodes: [],
+      deletedEdges: [],
+      addedEdges: [],
+      updatedEdges: [],
+      deletedConnections: [],
+      addedConnections: [],
     }
 
     const isValid = validateGraphVersionFile({
@@ -32,7 +37,12 @@ describe('validateGraphVersionFile', () => {
       objectPropertiesFromApiBackup: OwlObjectProperties,
       deletedNodes: ['test'],
       addedNodes: [],
-      updatedNodes: ['id123']
+      updatedNodes: ['id123'],
+      deletedEdges: [],
+      addedEdges: [],
+      updatedEdges: [],
+      deletedConnections: [],
+      addedConnections: [],
     }
 
     const isValid = validateGraphVersionFile({
@@ -73,7 +83,12 @@ describe('validateGraphVersionFile', () => {
       objectPropertiesFromApiBackup: OwlObjectProperties,
       deletedNodes: [{ test: 'test' }],
       addedNodes: '[]',
-      updatedNodes: ['id123']
+      updatedNodes: ['id123'],
+      deletedEdges: [],
+      addedEdges: [],
+      updatedEdges: [],
+      deletedConnections: [],
+      addedConnections: [],
     }
 
     const isValid = validateGraphVersionFile({
@@ -91,7 +106,12 @@ describe('validateGraphVersionFile', () => {
       objectPropertiesFromApiBackup: OwlObjectProperties,
       deletedNodes: ['test'],
       addedNodes: '[]',
-      updatedNodes: ['id123']
+      updatedNodes: ['id123'],
+      deletedEdges: [],
+      addedEdges: [],
+      updatedEdges: [],
+      deletedConnections: [],
+      addedConnections: [],
     }
 
     const isValid = validateGraphVersionFile({
@@ -109,7 +129,12 @@ describe('validateGraphVersionFile', () => {
       objectPropertiesFromApiBackup: OwlObjectProperties,
       deletedNodes: [{ test: 'test' }],
       addedNodes: '[]',
-      updatedNodes: ['id123']
+      updatedNodes: ['id123'],
+      deletedEdges: [],
+      addedEdges: [],
+      updatedEdges: [],
+      deletedConnections: [],
+      addedConnections: [],
     }
 
     const isValid = validateGraphVersionFile({
@@ -127,7 +152,12 @@ describe('validateGraphVersionFile', () => {
       objectPropertiesFromApiBackup: OwlObjectProperties,
       deletedNodes: ['test'],
       addedNodes: [],
-      updatedNodes: ['id123']
+      updatedNodes: ['id123'],
+      deletedEdges: [],
+      addedEdges: [],
+      updatedEdges: [],
+      deletedConnections: [],
+      addedConnections: [],
     }
 
     const isValid = validateGraphVersionFile({

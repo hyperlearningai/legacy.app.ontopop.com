@@ -51,5 +51,10 @@ export const GRAPH_VERSION_STRUCTURE = {
   objectPropertiesFromApiBackup: {},
   deletedNodes: [],
   addedNodes: [],
-  updatedNodes: []
+  updatedNodes: [],
+  deletedEdges: [],
+  addedEdges: [],
+  updatedEdges: [],
+  deletedConnections: [],
+  addedConnections: [],
 }

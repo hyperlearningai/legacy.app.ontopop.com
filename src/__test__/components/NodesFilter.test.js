@@ -5,7 +5,7 @@ import NodesFilter from '../../components/NodesFilter'
 
 const setup = () => {
   const props = {
-    nodesProperties: [{
+    annotationProperties: [{
       property: 'rdfsLabel',
       value: 'road'
     }],
