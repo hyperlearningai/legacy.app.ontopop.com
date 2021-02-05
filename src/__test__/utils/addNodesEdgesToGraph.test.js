@@ -9,7 +9,12 @@ const setStoreState = jest.fn()
 const classesFromApi = OwlClasses
 const objectPropertiesFromApi = OwlObjectProperties
 const getState = jest.fn().mockImplementation(() => ({
-  availableNodes: new DataSet(),
+  availableNodes: new DataSet([{
+    id: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+    color: {
+      border: '#000000'
+    }
+  }]),
   triplesPerNode,
   classesFromApi,
   objectPropertiesFromApi,
@@ -18,6 +23,7 @@ const getState = jest.fn().mockImplementation(() => ({
   availableEdgesNormalised: {},
   nodesConnections: {},
   edgesConnections: {},
+  isPhysicsOn: false
 }))
 store.getState = getState
 
@@ -104,26 +110,16 @@ describe('addNodesEdgesToGraph', () => {
         },
       ],
       [
+        'isPhysicsOn',
+        true,
+      ],
+      [
+        'physicsRepulsion',
+        false,
+      ],
+      [
         'availableNodesNormalised',
         {
-          'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg': {
-            id: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
-            label: 'Geometric\nComponent',
-            owlAnnotationProperties: {
-              'http://www.w3.org/2004/02/skos/core#definition': 'The basic building blocks of geometric objects.',
-            },
-            rdfAbout: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
-            rdfsLabel: 'Geometric Component',
-            rdfsSubClassOf: [
-              {
-                classRdfAbout: 'http://webprotege.stanford.edu/R7IYZp3FDxOZ1LbVtJN3Z7J',
-                owlRestriction: null,
-              },
-            ],
-            skosComment: null,
-            skosDefinition: 'The basic building blocks of geometric objects.',
-            skosExample: null,
-          },
           'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd': {
             id: 'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
             label: 'Line',
@@ -168,17 +164,6 @@ describe('addNodesEdgesToGraph', () => {
       [
         'nodesConnections',
         {
-          'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg': [
-            {
-              edgeId: 'http://www.w3.org/2000/01/rdf-schema#subclassof',
-              from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-              fromLabel: 'Polyline',
-              id: 'http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
-              label: 'subClassOf',
-              to: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
-              toLabel: 'Polyline',
-            },
-          ],
           'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd': [
             {
               edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
@@ -202,10 +187,6 @@ describe('addNodesEdgesToGraph', () => {
             },
           ],
         },
-      ],
-      [
-        'physicsRepulsion',
-        false,
       ],
     ])
   })

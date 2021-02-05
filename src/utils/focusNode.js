@@ -7,7 +7,7 @@ import store from '../store'
  * @param  {String}   params.elementId               Node id
  * @param  {Function} params.setPrevSelectedNode     update previously selected node
  * @param  {Function} params.setStoreState           setStoreState action
- * @return
+ * @return { undefined }
  */
 const focusNode = ({
   elementId,

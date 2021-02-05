@@ -27,7 +27,7 @@ describe('getGraphData', () => {
       container: 'bottom-left',
       dismiss: { duration: 3000, onScreen: true },
       insert: 'top',
-      message: 'Could not get graph data!',
+      message: 'Could not query graph!',
       title: '',
       type: 'warning'
     })
@@ -53,7 +53,7 @@ describe('getGraphData', () => {
       container: 'bottom-left',
       dismiss: { duration: 3000, onScreen: true },
       insert: 'top',
-      message: 'Could not get graph data!',
+      message: 'Could not query graph!',
       title: '',
       type: 'warning'
     })

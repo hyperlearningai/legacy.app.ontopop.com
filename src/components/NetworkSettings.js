@@ -41,6 +41,7 @@ const NetworkSettings = ({
   physicsNodeTextColor,
   physicsRepulsion,
   physicsHierarchicalView,
+  // isPhysicsOn
 }) => {
   const { t } = useTranslation()
   const options = ['Left', 'Middle', 'Right']
@@ -529,6 +530,7 @@ NetworkSettings.propTypes = {
   physicsNodeHighlightBackgroundColor: PropTypes.string.isRequired,
   physicsNodeSize: PropTypes.number.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
+  // isPhysicsOn: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
 }
 
@@ -550,6 +552,7 @@ const mapToProps = ({
   physicsNodeSize,
   physicsRepulsion,
   physicsHierarchicalView,
+  // isPhysicsOn
 }) => ({
   physicsEdgeLength,
   physicsEdgeWidth,
@@ -568,6 +571,7 @@ const mapToProps = ({
   physicsNodeSize,
   physicsRepulsion,
   physicsHierarchicalView,
+  // isPhysicsOn
 })
 
 export default connect(

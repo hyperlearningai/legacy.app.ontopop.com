@@ -14,7 +14,7 @@
  * @param  {String}   params.from                     Subject node ID
  * @param  {String}   params.predicate                Predicate node ID
  * @param  {String}   params.to                       Object node ID
- * @return
+ * @return { undefined }
  */
 const addConnections = ({
   addedEdges,

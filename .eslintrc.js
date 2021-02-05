@@ -57,6 +57,7 @@ module.exports = {
     semi: [2, 'never'],
     radix: 0,
     'security/detect-object-injection': 0,
-    'no-plusplus': 0
+    'no-plusplus': 0,
+    'consistent-return': 0
   }
 }

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EdgesFilter should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addToArray": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+      "updateGraphData": [Function],
+    }
+  }
+  edgesProperties={
+    Array [
+      Object {
+        "property": "rdfsLabel",
+        "value": "is composed of",
+      },
+    ]
+  }
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  updateGraphData={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

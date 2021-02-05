@@ -1,6 +1,7 @@
 import {
   HIGHLIGHT_NODE_BACKGROUND,
   EDGE_COLOR_SELECTED,
+  SPIDERABLE_NODE_BORDER_COLOR,
 } from '../constants/graph'
 import store from '../store'
 import addNodesEdgesToGraph from './addNodesEdgesToGraph'
@@ -11,7 +12,7 @@ import addNodesEdgesToGraph from './addNodesEdgesToGraph'
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Function} params.addToArray                addToArray action
  * @param  {Object}   params.network                   VisJs network object
- * @return
+ * @return { undefined }
  */
 const setNetworkMethods = async ({
   setStoreState,
@@ -50,34 +51,38 @@ const setNetworkMethods = async ({
   })
 
   network?.on('doubleClick', (event) => {
+    const {
+      availableNodes,
+    } = store.getState()
+
     if (event.nodes?.length === 1) {
       const nodeId = event.nodes[0]
-      addNodesEdgesToGraph({
-        nodeId,
-        setStoreState
-      })
+
+      const { color } = availableNodes.get(nodeId)
+
+      if (color?.border === SPIDERABLE_NODE_BORDER_COLOR) {
+        addNodesEdgesToGraph({
+          nodeId,
+          setStoreState
+        })
+      }
     }
   })
 
   network?.on('oncontext', (event) => {
     event.event.preventDefault()
 
-    if (event.nodes?.length === 1) {
-      const nodeId = event.nodes[0]
-      const {
-        layerX,
-        layerY,
-      } = event.event
+    const {
+      offsetX,
+      offsetY,
+    } = event.event
 
-      setStoreState('contextMenuData', {
-        nodeId,
-        top: layerY,
-        left: layerX
-      })
-      setStoreState('showContextMenu', true)
-    } else {
-      setStoreState('showContextMenu', false)
-    }
+    setStoreState('contextMenuData', {
+      nodeId: event.nodes?.length ? event.nodes[0] : undefined,
+      top: offsetY,
+      left: offsetX
+    })
+    setStoreState('showContextMenu', true)
   })
 
   network?.on('selectEdge', (event) => {

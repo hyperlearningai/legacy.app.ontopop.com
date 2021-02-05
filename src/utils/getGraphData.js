@@ -27,7 +27,7 @@ const getGraphData = async ({
 
     if (response.status !== 200) {
       showNotification({
-        message: t('couldNotGetGraphData'),
+        message: t('couldNotQueryGraph'),
         type: NOTIFY_WARNING
       })
 
@@ -49,10 +49,8 @@ const getGraphData = async ({
     })
   } catch (error) {
     setStoreState('loading', false)
-
-    console.log(error.message)
     showNotification({
-      message: t('couldNotGetGraphData'),
+      message: t('couldNotQueryGraph'),
       type: NOTIFY_WARNING
     })
 

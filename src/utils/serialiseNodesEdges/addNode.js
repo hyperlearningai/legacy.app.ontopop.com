@@ -11,7 +11,7 @@ import { SELECTED_NODE_COLOR } from '../../constants/graph'
  * @param  {String}   params.nodeId                   Node ID
  * @param  {Object}   params.nodeIdObject             Node ID object
  * @param  {Array}    params.shortestPathNodes        Array of nodes IDs in shortest path
- * @return
+ * @return { undefined }
  */
 const addNode = ({
   addedNodes,
@@ -21,7 +21,7 @@ const addNode = ({
   highlightedNodes,
   nodeId,
   nodeIdObject,
-  shortestPathNodes
+  shortestPathNodes,
 }) => {
   if (!addedNodes.includes(nodeId)
   && nodeIdObject.label

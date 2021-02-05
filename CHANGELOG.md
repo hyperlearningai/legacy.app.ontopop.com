@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.2.0]
 ### Added
+- ONTOLOGY-21 Filter nodes by properties
+- ONTOLOGY-22 Filter edges by properties
+- ONTOLOGY-51 Added JSDoc build command
+- ONTOLOGY-51 Gremlin console for programmatic queries
+- ONTOLOGY-55 Made spiderable nodes border highlighted and made the border return to normal after node expansion
+- ONTOLOGY-56 Ability to turn on/off network physics
 - ONTOLOGY-47 Visualise subnetwork after dynamic bounding box selection
 
 ### Changed

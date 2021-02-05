@@ -8,7 +8,7 @@ import { IGNORED_PROPERTIES } from '../constants/export'
  * @param  {Object}   params.availableNodesNormalised   Available nodes data
  * @param  {Object}   params.availableEdgesNormalised   Available edges data
  * @param  {Object}   params.objectPropertiesFromApi    Edges from initial OwlObjectProperties
- * @return
+ * @return { undefined }
  */
 const extractCsvRows = ({
   nodeKeys,

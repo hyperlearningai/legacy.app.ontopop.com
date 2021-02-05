@@ -2,11 +2,15 @@ import {
   ALGO_TYPE_FULL,
   ALGO_TYPE_NEIGHBOURHOOD,
   ALGO_TYPE_SHORTEST_PATH,
-  ALGO_TYPE_BOUNDING_BOX
+  ALGO_TYPE_BOUNDING_BOX,
+  ALGO_TYPE_NODES_FILTER,
+  ALGO_TYPE_EDGES_FILTER
 } from '../constants/algorithms'
 import getNodesEdgesFromPaths from './getNodesEdgesFromPaths'
 import getNeighbours from './getNeighbours'
 import getBoundingBoxEdges from './getBoundingBoxEdges'
+import getNodesFromNodesFilters from './getNodesFromNodesFilters'
+import getNodesEdgesFromEdgesFilters from './getNodesEdgesFromEdgesFilters'
 import store from '../store'
 
 /**
@@ -15,7 +19,7 @@ import store from '../store'
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {String}   params.type                      type of algorithm to use
  * @param  {Object}   params.options                   additional options
- * @return
+ * @return { undefined }
  */
 const setNodesIdsToDisplay = async ({
   type,
@@ -87,16 +91,16 @@ const setNodesIdsToDisplay = async ({
 
     const {
       shortestPathSelectedNodes,
-      paths,
+      shortestPathResults,
       isNodeOverlay
     } = options
 
     const {
       shortestPathEdges,
       shortestPathNodes
-    } = await getNodesEdgesFromPaths({ paths })
+    } = await getNodesEdgesFromPaths({ shortestPathResults })
 
-    setStoreState('paths', paths)
+    setStoreState('shortestPathResults', shortestPathResults)
     setStoreState('isNodeOverlay', isNodeOverlay)
     setStoreState('highlightedNodes', shortestPathSelectedNodes)
 
@@ -107,6 +111,34 @@ const setNodesIdsToDisplay = async ({
       // duplicated array to trigger new graph
       setStoreState('nodesIdsToDisplay', nodesIdsToDisplay.slice())
     }
+  }
+
+  if (type === ALGO_TYPE_NODES_FILTER) {
+    if (!options) return false
+
+    const {
+      nodesFilters
+    } = options
+
+    const nodesToDisplay = await getNodesFromNodesFilters({ nodesFilters })
+
+    setStoreState('nodesIdsToDisplay', nodesToDisplay)
+  }
+
+  if (type === ALGO_TYPE_EDGES_FILTER) {
+    if (!options) return false
+
+    const {
+      edgesFilters
+    } = options
+
+    const {
+      edgesToDisplay,
+      nodesToDisplay
+    } = await getNodesEdgesFromEdgesFilters({ edgesFilters })
+
+    setStoreState('edgesIdsToDisplay', edgesToDisplay)
+    setStoreState('nodesIdsToDisplay', nodesToDisplay)
   }
 
   return true

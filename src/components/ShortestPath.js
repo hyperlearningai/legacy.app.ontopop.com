@@ -32,7 +32,6 @@ const ShortestPath = ({
     return () => {
       setStoreState('isShortestPathNodeSelectable', false)
       setStoreState('shortestPathSelectedNodes', [])
-      setStoreState('shortestPathResults', [])
     }
   }, [])
 
@@ -69,7 +68,7 @@ const ShortestPath = ({
             offLabel={t('isNotNodeOverlay')}
             onIcon="pi pi-check"
             offIcon="pi pi-times"
-            style={{ width: '10em' }}
+            style={{ width: '100%' }}
           />
         </div>
 

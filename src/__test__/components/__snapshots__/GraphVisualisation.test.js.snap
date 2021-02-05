@@ -48,6 +48,7 @@ exports[`GraphVisualisation should match snapshot  1`] = `
       "unsubscribe": [Function],
     }
   }
+  isPhysicsOn={true}
   mapToProps={[Function]}
   network={Object {}}
   nodesIdsToDisplay={Array []}
