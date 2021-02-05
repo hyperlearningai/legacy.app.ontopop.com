@@ -4,20 +4,21 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
+  addToObject={[MockFunction]}
   isBoundingBoxSelectionInternal={true}
   mapToProps={[Function]}
   selectedBoundingBoxNodes={Array []}
   setStoreState={[MockFunction]}
-  updateGraphData={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -27,20 +28,21 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
+  addToObject={[MockFunction]}
   isBoundingBoxSelectionInternal={false}
   mapToProps={[Function]}
   selectedBoundingBoxNodes={Array []}
   setStoreState={[MockFunction]}
-  updateGraphData={[MockFunction]}
 >
   <Component />
 </Connect>

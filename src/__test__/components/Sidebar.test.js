@@ -13,7 +13,10 @@ import {
   SIDEBAR_VIEW_SETTINGS,
   SIDEBAR_VIEW_NODES_FILTER,
   SIDEBAR_VIEW_EDGES_FILTER,
-  SIDEBAR_VIEW_CUSTOM_QUERY
+  SIDEBAR_VIEW_CUSTOM_QUERY,
+  SIDEBAR_VIEW_VERSIONING,
+  SIDEBAR_VIEW_EXPORT,
+  SIDEBAR_VIEW_EDIT_ONTOLOGY
 } from '../../constants/views'
 
 const setup = ({
@@ -162,6 +165,39 @@ describe('Sidebar', () => {
     } = setup({
       isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_CUSTOM_QUERY
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: true,
+      sidebarView: SIDEBAR_VIEW_EXPORT
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_VERSIONING', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: true,
+      sidebarView: SIDEBAR_VIEW_VERSIONING
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_ONTOLOGY', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: true,
+      sidebarView: SIDEBAR_VIEW_EDIT_ONTOLOGY
     })
 
     expect(toJson(component)).toMatchSnapshot()

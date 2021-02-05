@@ -31,9 +31,11 @@ export default {
   settings: 'Settings',
   export: 'Export',
   freeTextSearch: 'Free-text search',
+  versioning: 'Versioning',
 
   // data loading
   couldNotQueryGraph: 'Could not query graph!',
+  couldNotQueryAnnotationProperties: 'Could not query annotation properties!',
 
   // node selection
   node: 'Node',
@@ -130,6 +132,44 @@ export default {
   query: 'Query',
   clear: 'Clear',
   exportAsJson: 'Export as Json',
+
+  // versioning
+  version: 'Version',
+  searchOrCreate: '',
+  chooseGraphVersion: 'Choose graph version',
+  insertGraphVersion: 'Insert graph version',
+  fromGraphVersion: 'From version',
+  setGraph: 'Set as current graph',
+  save: 'Save',
+  load: 'Load',
+  chooseLocation: 'Choose location',
+  file: 'File',
+  server: 'Server',
+  storedToServer: 'Graph version stored to server!',
+  graphVersionFileNotValid: 'The file you uploaded is not valid!',
+  graphVersionLoaded: 'Graph version loaded!',
+  dragAndDrop: 'Drag and drop files to here to upload.',
+
+  // edit ontology
+  edit: 'Edit',
+  new: 'New',
+  add: 'Add',
+  type: 'Type',
+  chooseElementType: 'Choose element type',
+  update: 'Update',
+  delete: 'Delete',
+  restore: 'Restore',
+  selectGraph: 'Select graph',
+  chooseOperation: 'Choose operation',
+  go: 'Go',
+  selectElement: 'Select element',
+  editOntology: 'Edit ontology',
+  insertProperties: 'Insert properties',
+  editProperties: 'Edit properties',
+  requiredField: 'This field is required',
+  restoreOriginal: 'Restore',
+  idExists: 'ID already exists',
+  noDeletedElements: 'No deleted elements to restore!',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',

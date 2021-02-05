@@ -4,7 +4,7 @@ import { triplesPerNode } from '../fixtures/triplesPerNode'
 import store from '../../store'
 
 const setStoreState = jest.fn()
-const updateGraphData = jest.fn()
+const addToObject = jest.fn()
 const classesFromApi = OwlClasses
 const selectedNeighbourNode = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
 const separationDegree = 1
@@ -27,7 +27,7 @@ describe('setNeighbourNodes', () => {
     await setNeighbourNodes({
       separationDegree,
       setStoreState,
-      updateGraphData
+      addToObject
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -44,7 +44,8 @@ describe('setNeighbourNodes', () => {
         'networkGraphs',
       ],
     ])
-    expect(updateGraphData).toHaveBeenCalledWith(
+    expect(addToObject).toHaveBeenCalledWith(
+      'graphData',
       'graph-2', {
         label: 'neighbourhood-graph-2',
         options: {

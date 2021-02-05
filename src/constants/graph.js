@@ -23,3 +23,33 @@ export const NODE_FONT = {
 
 export const SUB_CLASS_OF_ID = 'http://www.w3.org/2000/01/rdf-schema#subclassof'
 export const SUB_CLASS_OF_LABEL = 'subClassOf'
+
+export const LOW_LEVEL_PROPERTIES = [
+  'rdfAbout',
+  'rdfsLabel',
+  'skosDefinition',
+  'skosComment'
+]
+
+export const MINIMAL_LOW_LEVEL_PROPERTIES = [
+  'rdfAbout',
+  'rdfsLabel',
+]
+
+export const REQUIRED_PROPERTIES = [
+  'rdfAbout',
+]
+
+export const UNIQUE_PROPERTY = 'rdfAbout'
+export const LABEL_PROPERTY = 'rdfsLabel'
+export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
+
+export const GRAPH_VERSION_STRUCTURE = {
+  classesFromApi: {},
+  objectPropertiesFromApi: {},
+  classesFromApiBackup: {},
+  objectPropertiesFromApiBackup: {},
+  deletedNodes: [],
+  addedNodes: [],
+  updatedNodes: []
+}

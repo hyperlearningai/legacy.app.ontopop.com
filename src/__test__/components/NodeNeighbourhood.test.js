@@ -7,7 +7,7 @@ import { OwlClasses } from '../fixtures/test-ontology-classes.json'
 const setup = () => {
   const props = {
     setStoreState: jest.fn(),
-    updateGraphData: jest.fn(),
+    addToObject: jest.fn(),
     classesFromApi: OwlClasses,
     selectedNeighbourNode: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
   }

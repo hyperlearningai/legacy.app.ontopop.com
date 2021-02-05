@@ -23,6 +23,7 @@ const getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
   availableNodesNormalised,
   availableEdgesNormalised,
+  deletedNodes: [],
   nodesIdsToDisplay: [
     'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
   ],
