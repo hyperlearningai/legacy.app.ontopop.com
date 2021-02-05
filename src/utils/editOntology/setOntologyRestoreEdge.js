@@ -9,7 +9,7 @@ import store from '../../store'
  * @param  {Function}       params.addToObject                Add to object action
  * @return {undefined}
  */
-const setOntologyRestoreNode = ({
+const setOntologyRestoreEdge = ({
   selectedElement,
   setStoreState,
   addToObject
@@ -17,6 +17,7 @@ const setOntologyRestoreNode = ({
   const {
     graphVersions,
     classesFromApi,
+    objectPropertiesFromApi,
     deletedNodes,
     deletedEdges,
     selectedGraphVersion,
@@ -25,44 +26,37 @@ const setOntologyRestoreNode = ({
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
-  const newClassesFromApiBackup = JSON.parse(JSON.stringify(newGraphVersion.classesFromApiBackup))
+  const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(newGraphVersion.objectPropertiesFromApiBackup))
+  const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
 
-  // Remove nodes from deletedNodes
-  const newDeletedNodes = deletedNodes.slice().filter((nodeId) => !selectedElement.includes(nodeId))
-
-  // restore node from backup to classesFromApi
+  // restore edge from backup to objectPropertiesFromApi
   for (let index = 0; index < selectedElement.length; index++) {
-    const nodeId = selectedElement[index]
+    const edgeId = selectedElement[index]
 
-    const nodeObjectBackup = newClassesFromApiBackup[nodeId]
+    const edgeObjectBackup = newObjectPropertiesFromApiBackup[edgeId]
 
-    // add only connections with existing nodes
-    const { rdfsSubClassOf } = nodeObjectBackup
-
-    const newRdfsSubClassOf = rdfsSubClassOf ? rdfsSubClassOf.filter((subClassOf) => !newDeletedNodes.includes(subClassOf.classRdfAbout)) : []
-
-    nodeObjectBackup.rdfsSubClassOf = newRdfsSubClassOf
-
-    newClassesFromApi[nodeId] = nodeObjectBackup
+    newObjectPropertiesFromApi[edgeId] = edgeObjectBackup
   }
 
-  const flatClassesFromApiBackup = flatten(newClassesFromApiBackup)
+  const flatClassesFromApiBackup = flatten(newGraphVersion.classesFromApiBackup)
 
-  // restore connections with deleted nodes
+  // Remove nodes from deletedNodes
+  const newDeletedEdges = deletedEdges.slice().filter((edgeId) => !selectedElement.includes(edgeId))
+
+  // restore connections with deleted edges
   for (let index = 0; index < Object.keys(flatClassesFromApiBackup).length; index++) {
     const flatKey = Object.keys(flatClassesFromApiBackup)[index]
     if (selectedElement.includes(flatClassesFromApiBackup[flatKey])
-    && flatKey.includes('rdfsSubClassOf')
-    && !flatKey.includes('owlRestriction')) {
+    && flatKey.includes('rdfsSubClassOf')) {
       const [elementId] = flatKey.split('.rdfsSubClassOf')
-      const { rdfsSubClassOf } = newClassesFromApiBackup[elementId]
+      const { rdfsSubClassOf } = newGraphVersion.classesFromApiBackup[elementId]
 
       if (rdfsSubClassOf && rdfsSubClassOf.length > 0) {
         const newRdfsSubClassOf = rdfsSubClassOf.filter((nodeConnection) => {
-          const isInDeletedNodes = newDeletedNodes.includes(nodeConnection.classRdfAbout)
+          const isInDeletedNodes = deletedNodes.includes(nodeConnection.classRdfAbout)
           if (!rdfsSubClassOf.owlRestriction) return !isInDeletedNodes
 
-          const isInDeletedEdges = deletedEdges.includes(nodeConnection.owlRestriction.objectPropertyRdfAbout)
+          const isInDeletedEdges = newDeletedEdges.includes(nodeConnection.owlRestriction.objectPropertyRdfAbout)
 
           return !isInDeletedNodes && !isInDeletedEdges
         })
@@ -75,10 +69,10 @@ const setOntologyRestoreNode = ({
   }
 
   newGraphVersion.classesFromApi = newClassesFromApi
-  newGraphVersion.deletedNodes = newDeletedNodes
+  newGraphVersion.deletedEdges = newDeletedEdges
 
   addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
-  setStoreState('deletedNodes', newDeletedNodes)
+  setStoreState('deletedEdges', newDeletedEdges)
 
   if (currentGraph !== 'graph-0') {
     return setStoreState('currentGraph', 'graph-0')
@@ -87,4 +81,4 @@ const setOntologyRestoreNode = ({
   return setStoreState('isOntologyUpdated', true)
 }
 
-export default setOntologyRestoreNode
+export default setOntologyRestoreEdge

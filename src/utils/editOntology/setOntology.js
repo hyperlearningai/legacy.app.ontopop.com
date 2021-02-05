@@ -5,6 +5,7 @@ import setOntologyRestoreNode from './setOntologyRestoreNode'
 import setOntologyAddEdge from './setOntologyAddEdge'
 import setOntologyUpdateEdge from './setOntologyUpdateEdge'
 import setOntologyDeleteEdge from './setOntologyDeleteEdge'
+import setOntologyRestoreEdge from './setOntologyRestoreEdge'
 
 /**
  * Set graph full data
@@ -28,6 +29,14 @@ const setOntology = ({
   if (operation === 'restore') {
     if (type === 'node') {
       setOntologyRestoreNode({
+        selectedElement,
+        setStoreState,
+        addToObject
+      })
+    }
+
+    if (type === 'edge') {
+      setOntologyRestoreEdge({
         selectedElement,
         setStoreState,
         addToObject
