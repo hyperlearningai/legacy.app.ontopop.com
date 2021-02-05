@@ -89,8 +89,6 @@ const NodesFilter = ({
                             property: e.target.value
                           }
 
-                          console.log(e.target.value)
-
                           let newNodesFilters = [
                             ...nodesFilters.slice(0, index),
                             newFilter,

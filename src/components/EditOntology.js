@@ -211,11 +211,7 @@ const EditOntology = ({
                 id="graph-select"
                 value={selectedElement}
                 options={type === 'node' ? availableNodes : availableEdges}
-                onChange={(e) => {
-                  console.log(e.value)
-
-                  setSelectedElement(e.value)
-                }}
+                onChange={(e) => setSelectedElement(e.value)}
                 placeholder={t('selectElement')}
               />
             </div>

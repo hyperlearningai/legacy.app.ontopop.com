@@ -24,7 +24,6 @@ const getNodesFromNodesFilters = ({
       for (let propertyIndex = 0; propertyIndex < nodesFilters.length; propertyIndex++) {
         const { property, value } = nodesFilters[propertyIndex]
 
-        console.log({ property })
         if (property === '') continue
         if (value === '') continue
 
