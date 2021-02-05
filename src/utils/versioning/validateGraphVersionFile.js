@@ -3,6 +3,12 @@ import {
   MINIMAL_LOW_LEVEL_PROPERTIES
 } from '../../constants/graph'
 
+/**
+ * Validate graph version json format
+ * @param  {Object}   params
+ * @param  {String}   params.graphVersion          Graph version name
+ * @return {Boolean}  isValid                      Json format validity
+\ */
 const validateGraphVersionFile = ({
   graphVersion
 }) => {
