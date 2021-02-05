@@ -35,10 +35,11 @@ describe('getNodesEdgesFromEdgesFilters', () => {
     )
 
     expect(nodesToDisplay).toEqual(
-      ['http://webprotege.stanford.edu/R2RFTG7iNuFjv3A8V7qHOb',
+      [
+        'http://webprotege.stanford.edu/R2RFTG7iNuFjv3A8V7qHOb',
+        'http://webprotege.stanford.edu/RB2wiyzebv6p4qrvJjgommU',
         'http://webprotege.stanford.edu/R7dcPTLwQrLcc9eK22R7swU',
         'http://webprotege.stanford.edu/RFNK6OsKMaap9LxxLXdLxR',
-        'http://webprotege.stanford.edu/RB2wiyzebv6p4qrvJjgommU',
         'http://webprotege.stanford.edu/R7pIV91w7fTKppAHSmrz8n',
         'http://webprotege.stanford.edu/R81y0gnn3Ar0DJ8FatMTqK3',
         'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',

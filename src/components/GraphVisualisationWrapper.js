@@ -13,6 +13,7 @@ import getNodeProperties from '../utils/getNodeProperties'
 import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
 import GraphContextMenu from './GraphContextMenu'
 import loadGraphVersionFromServer from '../utils/versioning/loadGraphVersionFromServer'
+import getEdgeProperties from '../utils/getEdgeProperties'
 
 const GraphVisualisationWrapper = ({
   currentGraph,
@@ -36,12 +37,21 @@ const GraphVisualisationWrapper = ({
       t
     })
 
+    // get nodes properties
     const nodesProperties = await getNodeProperties({
       setStoreState,
       t
     })
 
     setStoreState('nodesProperties', nodesProperties)
+
+    // get edges properties for editing ontology connections
+    const edgesProperties = await getEdgeProperties({
+      setStoreState,
+      t
+    })
+
+    setStoreState('edgesProperties', edgesProperties)
 
     // TODO: Should become async when API call instead of localstorage
     loadGraphVersionFromServer({

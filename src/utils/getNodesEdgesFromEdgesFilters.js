@@ -2,10 +2,12 @@ import { getEdgeAndNodes } from '../constants/functions'
 import store from '../store'
 
 /**
-* Get shortest path
+* Get nodes and edges to display from edges filter
  * @param  {Object}   params
  * @param  {Array}    params.edgesFilters              Array of node filters {property [string], value [string]}
- * @return {Array}    nodesToDisplay                   Array of node IDs strings
+ * @return {Object}   output
+ * @return {Array}    output.nodesToDisplay            Array of node IDs strings
+ * @return {Array}    output.edgesToDisplay            Array of edge IDs strings
  */
 const getNodesEdgesFromEdgesFilters = ({
   edgesFilters
@@ -14,6 +16,42 @@ const getNodesEdgesFromEdgesFilters = ({
     availableEdgesNormalised,
     objectPropertiesFromApi
   } = store.getState()
+
+  const objectPropertiesFromApiKeys = Object.keys(objectPropertiesFromApi)
+
+  const edgesMatchingFilters = []
+
+  for (let index = 0; index < objectPropertiesFromApiKeys.length; index++) {
+    const objectPropertyId = objectPropertiesFromApiKeys[index]
+    const objectProperty = objectPropertiesFromApi[objectPropertyId]
+
+    for (let index2 = 0; index2 < edgesFilters.length; index2++) {
+      const {
+        property,
+        value
+      } = edgesFilters[index2]
+
+      if (property === '') continue
+      if (value === '') continue
+      if (!objectProperty[property]) continue
+
+      const objectPropertyKeyValue = objectProperty[property]
+      const isObjectPropertyKeyValueMatching = objectPropertyKeyValue
+      && objectPropertyKeyValue.toLowerCase().includes(value.toLowerCase())
+
+      const isObjectPropertyOwlPropertyKeyValueMatching = objectProperty.owlAnnotationProperties
+      && objectProperty.owlAnnotationProperties[property]
+      && objectProperty.owlAnnotationProperties?.[property].toLowerCase().includes(value.toLowerCase())
+
+      const isEdgeToBeAdded = isObjectPropertyKeyValueMatching || isObjectPropertyOwlPropertyKeyValueMatching
+
+      if (isEdgeToBeAdded) {
+        edgesMatchingFilters.push(objectPropertyId)
+        // nodesToDisplay.push(nodeId)
+        break
+      }
+    }
+  }
 
   const edgesToDisplay = []
   const nodesToDisplay = []
@@ -27,6 +65,8 @@ const getNodesEdgesFromEdgesFilters = ({
     for (let index = 0; index < availableEdgesIds.length; index++) {
       const edgeId = availableEdgesIds[index]
       const [predicate, from, to] = getEdgeAndNodes(edgeId)
+
+      if (!edgesMatchingFilters.includes(predicate)) continue
 
       if (edgesAnalysedAndAdded.includes(predicate)) {
         if (!nodesToDisplay.includes(from)) {
@@ -44,38 +84,19 @@ const getNodesEdgesFromEdgesFilters = ({
         continue
       }
 
-      const predicateObject = objectPropertiesFromApi[predicate]
+      edgesAnalysed.push(predicate)
+      edgesAnalysedAndAdded.push(predicate)
 
-      for (let propertyIndex = 0; propertyIndex < edgesFilters.length; propertyIndex++) {
-        const { property, value } = edgesFilters[propertyIndex]
-        if (property === '') continue
-        if (value === '') continue
+      if (!nodesToDisplay.includes(from)) {
+        nodesToDisplay.push(from)
+      }
 
-        const isEdgeToBeAdded = predicateObject[property]
-          && predicateObject[property].toLowerCase().includes(value.toLowerCase())
+      if (!nodesToDisplay.includes(to)) {
+        nodesToDisplay.push(to)
+      }
 
-        if (isEdgeToBeAdded) {
-          edgesAnalysed.push(predicate)
-          edgesAnalysedAndAdded.push(predicate)
-
-          if (!nodesToDisplay.includes(from)) {
-            nodesToDisplay.push(from)
-          }
-
-          if (!nodesToDisplay.includes(from)) {
-            nodesToDisplay.push(from)
-          }
-
-          if (!edgesToDisplay.includes(predicate)) {
-            edgesToDisplay.push(predicate)
-          }
-
-          break
-        }
-
-        if (propertyIndex === edgesFilters.length - 1) {
-          edgesAnalysed.push(predicate)
-        }
+      if (!edgesToDisplay.includes(predicate)) {
+        edgesToDisplay.push(predicate)
       }
     }
   }

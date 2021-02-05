@@ -82,11 +82,14 @@ const NodesFilter = ({
                         options={nodesProperties}
                         optionValue="id"
                         optionLabel="label"
+                        filter
                         onChange={(e) => {
                           const newFilter = {
                             ...nodesFilters[index],
                             property: e.target.value
                           }
+
+                          console.log(e.target.value)
 
                           let newNodesFilters = [
                             ...nodesFilters.slice(0, index),

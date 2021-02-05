@@ -1,7 +1,7 @@
 import store from '../store'
 
 /**
-* Get shortest path
+* Get nodes to display from nodes filter
  * @param  {Object}   params
  * @param  {Array}    params.nodesFilters              Array of node filters {property [string], value [string]}
  * @return {Array}    nodesToDisplay                   Array of node IDs strings
@@ -24,6 +24,7 @@ const getNodesFromNodesFilters = ({
       for (let propertyIndex = 0; propertyIndex < nodesFilters.length; propertyIndex++) {
         const { property, value } = nodesFilters[propertyIndex]
 
+        console.log({ property })
         if (property === '') continue
         if (value === '') continue
 
