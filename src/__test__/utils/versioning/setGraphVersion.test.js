@@ -1,6 +1,6 @@
 /* eslint max-len:0 */
-import setGraphVersion from '../../utils/setGraphVersion'
-import store from '../../store'
+import setGraphVersion from '../../../utils/versioning/setGraphVersion'
+import store from '../../../store'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()

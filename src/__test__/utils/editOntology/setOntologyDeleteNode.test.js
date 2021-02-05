@@ -1,5 +1,5 @@
 /* eslint max-len:0 */
-import setOntologyDeleteNode from '../../../utils/setOntology/setOntologyDeleteNode'
+import setOntologyDeleteNode from '../../../utils/editOntology/setOntologyDeleteNode'
 import store from '../../../store'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { graphVersions } from '../../fixtures/graphVersions'

@@ -1,47 +1,44 @@
 /* eslint max-len:0 */
-import setOntologyRestoreNodeDeleteNode from '../../../utils/setOntology/setOntologyRestoreNode'
+import { DataSet } from 'vis-data'
+import setOntologyUpdateNode from '../../../utils/editOntology/setOntologyUpdateNode'
 import store from '../../../store'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { graphVersions } from '../../fixtures/graphVersions'
+import { availableNodesNormalised } from '../../fixtures/availableNodesNormalised'
 import {
   addToObjectFixture,
   setStoreStateFixture
-} from '../../fixtures/setOntologyRestoreNode'
+} from '../../fixtures/setOntologyUpdateNodes'
 
-const selectedElement = Object.keys(OwlClasses).slice(0, 2)
-const deletedNodes = Object.keys(OwlClasses).slice(0, 4)
-const newClassesFromApi = JSON.parse(JSON.stringify(OwlClasses))
-const newClassesFromApiBackup = JSON.parse(JSON.stringify(OwlClasses))
-
-deletedNodes.map((nodeId) => {
-  delete newClassesFromApi[nodeId]
-  return true
-})
-
+const selectedElementProperties = {
+  rdfAbout: 'http://test.com/node',
+  rdfsLabel: 'New node',
+  'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node'
+}
+const selectedElement = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
 
-describe('setOntologyRestoreNode', () => {
+describe('setOntologyUpdateNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
   it('should work correctly', async () => {
-    const currentGraph = 'graph-0'
-
     const getState = jest.fn().mockImplementationOnce(() => ({
       graphVersions,
-      classesFromApi: newClassesFromApi,
-      classesFromApiBackup: newClassesFromApiBackup, // OwlClasses,
-      deletedNodes,
+      classesFromApi: OwlClasses,
       selectedGraphVersion: 'original',
-      currentGraph
+      availableNodes: new DataSet({ id: 1, label: 'test' }),
+      updatedNodes: [],
+      availableNodesNormalised
     }))
     store.getState = getState
 
-    await setOntologyRestoreNodeDeleteNode({
-      selectedElement,
+    await setOntologyUpdateNode({
       setStoreState,
+      selectedElementProperties,
+      selectedElement,
       addToObject
     })
 

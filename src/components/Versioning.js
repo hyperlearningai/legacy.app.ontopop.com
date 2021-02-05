@@ -6,9 +6,13 @@ import { Button } from 'primereact/button'
 import { SelectButton } from 'primereact/selectbutton'
 import { Dropdown } from 'primereact/dropdown'
 import { InputText } from 'primereact/inputtext'
+import { FileUpload } from 'primereact/fileupload'
+import { ProgressSpinner } from 'primereact/progressspinner'
 import { SIDEBAR_VIEW_VERSIONING } from '../constants/views'
 import actions from '../store/actions'
-import setGraphVersion from '../utils/setGraphVersion'
+import setGraphVersion from '../utils/versioning/setGraphVersion'
+import saveGraphVersion from '../utils/versioning/saveGraphVersion'
+import loadGraphVersionFromFile from '../utils/versioning/loadGraphVersionFromFile'
 
 const Versioning = ({
   selectedGraphVersion,
@@ -19,8 +23,10 @@ const Versioning = ({
   const { t } = useTranslation()
 
   const [mode, setMode] = useState('search')
+  const [location, setLocation] = useState('server')
   const [selectedVersion, setSelectedVersion] = useState(selectedGraphVersion)
   const [versionName, setVersionName] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const newEditButtons = [{
     label: t('search'),
@@ -29,6 +35,24 @@ const Versioning = ({
   }, {
     value: 'new',
     label: t('new'),
+    icon: 'pi-file'
+  }, {
+    value: 'save',
+    label: t('save'),
+    icon: 'pi-download'
+  }, {
+    value: 'load',
+    label: t('load'),
+    icon: 'pi-upload'
+  }]
+
+  const localRemoteButtons = [{
+    label: t('server'),
+    value: 'server',
+    icon: 'pi-cloud'
+  }, {
+    value: 'file',
+    label: t('file'),
     icon: 'pi-file'
   }]
 
@@ -54,7 +78,7 @@ const Versioning = ({
           className="versioning-row"
         >
           <label htmlFor="type-select">
-            {t('chooseGraphVersion')}
+            {t('chooseOperation')}
           </label>
 
           <SelectButton
@@ -67,7 +91,8 @@ const Versioning = ({
         </div>
 
         {
-          mode === 'search' && (
+          (mode === 'search'
+          || mode === 'save') && (
             <div
               className="versioning-row"
             >
@@ -87,6 +112,26 @@ const Versioning = ({
         }
 
         {
+          mode === 'save' && (
+            <div
+              className="versioning-row"
+            >
+              <label htmlFor="location-select">
+                {t('chooseLocation')}
+              </label>
+
+              <SelectButton
+                id="location-selects"
+                value={location}
+                options={localRemoteButtons}
+                onChange={(e) => setLocation(e.value)}
+                itemTemplate={itemTemplate}
+              />
+            </div>
+          )
+        }
+
+        {
           mode === 'new' && (
             <>
               <div
@@ -99,7 +144,7 @@ const Versioning = ({
                 <InputText
                   id="graph-name"
                   value={versionName}
-                  placeholder={t('insertName')}
+                  placeholder={t('insertGraphVersion')}
                   onChange={(e) => setVersionName(e.target.value)}
                 />
               </div>
@@ -123,20 +168,72 @@ const Versioning = ({
         }
 
         <div className="versioning-row">
-          <Button
-            className="go-button"
-            tooltip={`${t('setGraph')}`}
-            onClick={() => setGraphVersion({
-              mode,
-              selectedVersion,
-              versionName,
-              setStoreState,
-              addToObject
-            })}
-            label={t('setGraph')}
-            icon="pi pi-chevron-right"
-            iconPos="right"
-          />
+          {
+            mode === 'load' && (
+              <>
+                {loading
+                  ? <ProgressSpinner />
+                  : (
+                    <FileUpload
+                      name="graphVersion"
+                      url={undefined}
+                      uploadHandler={(e) => loadGraphVersionFromFile({
+                        addToObject,
+                        files: e.files,
+                        setLoading,
+                        t
+                      })}
+                      customUpload
+                      auto
+                      uploadLabel={t('load')}
+                      accept="application/json"
+                      maxFileSize={1000000}
+                      emptyTemplate={<p className="p-m-0">{t('dragAndDrop')}</p>}
+                    />
+                  )}
+
+              </>
+            )
+          }
+
+          {
+            mode === 'save' && (
+              <Button
+                className="go-button"
+                tooltip={`${t('save')}`}
+                onClick={() => saveGraphVersion({
+                  location,
+                  selectedVersion,
+                  t
+                })}
+                label={t('save')}
+                icon="pi pi-chevron-right"
+                iconPos="right"
+              />
+            )
+          }
+
+          {
+            (
+              mode === 'search'
+              || mode === 'new') && (
+                <Button
+                  className="go-button"
+                  tooltip={`${t('setGraph')}`}
+                  onClick={() => setGraphVersion({
+                    mode,
+                    selectedVersion,
+                    versionName,
+                    setStoreState,
+                    addToObject
+                  })}
+                  label={t('setGraph')}
+                  icon="pi pi-chevron-right"
+                  iconPos="right"
+                />
+            )
+          }
+
         </div>
       </div>
     </>

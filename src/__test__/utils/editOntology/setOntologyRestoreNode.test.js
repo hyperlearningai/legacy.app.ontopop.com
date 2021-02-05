@@ -1,43 +1,47 @@
 /* eslint max-len:0 */
-import { DataSet } from 'vis-data'
-import setOntologyAddNode from '../../../utils/setOntology/setOntologyAddNode'
+import setOntologyRestoreNodeDeleteNode from '../../../utils/editOntology/setOntologyRestoreNode'
 import store from '../../../store'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { graphVersions } from '../../fixtures/graphVersions'
-import { availableNodesNormalised } from '../../fixtures/availableNodesNormalised'
 import {
   addToObjectFixture,
   setStoreStateFixture
-} from '../../fixtures/setOntologyAddNodes'
+} from '../../fixtures/setOntologyRestoreNode'
 
-const selectedElementProperties = {
-  rdfAbout: 'http://test.com/node',
-  rdfsLabel: 'New node',
-  'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node'
-}
+const selectedElement = Object.keys(OwlClasses).slice(0, 2)
+const deletedNodes = Object.keys(OwlClasses).slice(0, 4)
+const newClassesFromApi = JSON.parse(JSON.stringify(OwlClasses))
+const newClassesFromApiBackup = JSON.parse(JSON.stringify(OwlClasses))
+
+deletedNodes.map((nodeId) => {
+  delete newClassesFromApi[nodeId]
+  return true
+})
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
 
-describe('setOntologyAddNode', () => {
+describe('setOntologyRestoreNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
   it('should work correctly', async () => {
+    const currentGraph = 'graph-0'
+
     const getState = jest.fn().mockImplementationOnce(() => ({
       graphVersions,
-      classesFromApi: OwlClasses,
+      classesFromApi: newClassesFromApi,
+      classesFromApiBackup: newClassesFromApiBackup, // OwlClasses,
+      deletedNodes,
       selectedGraphVersion: 'original',
-      availableNodes: new DataSet({ id: 1, label: 'test' }),
-      addedNodes: [],
-      availableNodesNormalised
+      currentGraph
     }))
     store.getState = getState
 
-    await setOntologyAddNode({
+    await setOntologyRestoreNodeDeleteNode({
+      selectedElement,
       setStoreState,
-      selectedElementProperties,
       addToObject
     })
 

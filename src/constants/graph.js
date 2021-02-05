@@ -31,6 +31,11 @@ export const LOW_LEVEL_PROPERTIES = [
   'skosComment'
 ]
 
+export const MINIMAL_LOW_LEVEL_PROPERTIES = [
+  'rdfAbout',
+  'rdfsLabel',
+]
+
 export const REQUIRED_PROPERTIES = [
   'rdfAbout',
 ]
@@ -38,3 +43,13 @@ export const REQUIRED_PROPERTIES = [
 export const UNIQUE_PROPERTY = 'rdfAbout'
 export const LABEL_PROPERTY = 'rdfsLabel'
 export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
+
+export const GRAPH_VERSION_STRUCTURE = {
+  classesFromApi: {},
+  objectPropertiesFromApi: {},
+  classesFromApiBackup: {},
+  objectPropertiesFromApiBackup: {},
+  deletedNodes: [],
+  addedNodes: [],
+  updatedNodes: []
+}

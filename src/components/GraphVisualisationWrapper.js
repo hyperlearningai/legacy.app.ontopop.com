@@ -12,6 +12,7 @@ import getGraphData from '../utils/getGraphData'
 import getNodeProperties from '../utils/getNodeProperties'
 import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
 import GraphContextMenu from './GraphContextMenu'
+import loadGraphVersionFromServer from '../utils/versioning/loadGraphVersionFromServer'
 
 const GraphVisualisationWrapper = ({
   currentGraph,
@@ -41,6 +42,14 @@ const GraphVisualisationWrapper = ({
     })
 
     setStoreState('nodesProperties', nodesProperties)
+
+    // TODO: Should become async when API call instead of localstorage
+    loadGraphVersionFromServer({
+      setStoreState,
+      addToObject,
+      classes,
+      objectProperties
+    })
 
     // Set data from local file for debugging
     // const classesFromApi = jsonClasses.OwlClasses
