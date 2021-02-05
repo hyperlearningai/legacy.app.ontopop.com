@@ -22,7 +22,12 @@ const setGraphData = async ({
     objectPropertiesFromApi,
     deletedNodes,
     addedNodes,
-    updatedNodes
+    updatedNodes,
+    deletedEdges,
+    addedEdges,
+    updatedEdges,
+    addedConnections,
+    deletedConnections
   } = graphVersions[selectedGraphVersion]
 
   setStoreState('classesFromApi', classesFromApi)
@@ -30,6 +35,11 @@ const setGraphData = async ({
   setStoreState('deletedNodes', deletedNodes)
   setStoreState('addedNodes', addedNodes)
   setStoreState('updatedNodes', updatedNodes)
+  setStoreState('deletedEdges', deletedEdges)
+  setStoreState('addedEdges', addedEdges)
+  setStoreState('updatedEdges', updatedEdges)
+  setStoreState('addedConnections', addedConnections)
+  setStoreState('deletedConnections', deletedConnections)
 
   const classesIds = Object.keys(classesFromApi)
   const predicatesIds = Object.keys(objectPropertiesFromApi)

@@ -31,6 +31,7 @@ const getEdge = ({
     from,
     to
   })
+
   const edgeLabel = objectPropertiesFromApi[predicate].rdfsLabel
   const fromObject = classesFromApi[from]
   fromObject.id = from

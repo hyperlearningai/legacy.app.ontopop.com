@@ -93,6 +93,8 @@ const serialiseNodesEdges = ({
           to
         } = triple
 
+        if (!objectPropertiesFromApi[predicate]) return false
+
         const {
           edgeUniqueId,
           edgeConnection,

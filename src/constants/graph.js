@@ -44,6 +44,12 @@ export const UNIQUE_PROPERTY = 'rdfAbout'
 export const LABEL_PROPERTY = 'rdfsLabel'
 export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
 
+export const REQUIRED_PREDICATES = [
+  'rdfsSubClassOf',
+  'http://www.w3.org/2000/01/rdf-schema#subclassof',
+  'http://www.w3.org/2002/07/owl#topObjectProperty'
+]
+
 export const GRAPH_VERSION_STRUCTURE = {
   classesFromApi: {},
   objectPropertiesFromApi: {},

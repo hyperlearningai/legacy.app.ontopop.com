@@ -4,6 +4,7 @@ import setOntologyAddNode from './setOntologyAddNode'
 import setOntologyRestoreNode from './setOntologyRestoreNode'
 import setOntologyAddEdge from './setOntologyAddEdge'
 import setOntologyUpdateEdge from './setOntologyUpdateEdge'
+import setOntologyDeleteEdge from './setOntologyDeleteEdge'
 
 /**
  * Set graph full data
@@ -37,6 +38,14 @@ const setOntology = ({
   if (operation === 'delete') {
     if (type === 'node') {
       setOntologyDeleteNode({
+        selectedElement,
+        setStoreState,
+        addToObject
+      })
+    }
+
+    if (type === 'edge') {
+      setOntologyDeleteEdge({
         selectedElement,
         setStoreState,
         addToObject

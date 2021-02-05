@@ -6,6 +6,7 @@ import setOntologyAddNode from '../../../utils/editOntology/setOntologyAddNode'
 import setOntologyRestoreNode from '../../../utils/editOntology/setOntologyRestoreNode'
 import setOntologyUpdateEdge from '../../../utils/editOntology/setOntologyUpdateEdge'
 import setOntologyAddEdge from '../../../utils/editOntology/setOntologyAddEdge'
+import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
 
 jest.mock('../../../utils/editOntology/setOntologyDeleteNode')
 jest.mock('../../../utils/editOntology/setOntologyUpdateNode')
@@ -13,6 +14,7 @@ jest.mock('../../../utils/editOntology/setOntologyAddNode')
 jest.mock('../../../utils/editOntology/setOntologyRestoreNode')
 jest.mock('../../../utils/editOntology/setOntologyUpdateEdge')
 jest.mock('../../../utils/editOntology/setOntologyAddEdge')
+jest.mock('../../../utils/editOntology/setOntologyDeleteEdge')
 const selectedElement = 'id-123'
 const setStoreState = jest.fn()
 const selectedElementProperties = { rdfsLabel: 'id-123' }
@@ -141,6 +143,26 @@ describe('setOntology', () => {
     expect(setOntologyAddEdge).toHaveBeenCalledWith({
       setStoreState,
       selectedElementProperties,
+      addToObject
+    })
+  })
+
+  it('should work correctly when type edge and operation delete', async () => {
+    const operation = 'delete'
+    const type = 'edge'
+
+    await setOntology({
+      operation,
+      type,
+      selectedElement,
+      setStoreState,
+      selectedElementProperties,
+      addToObject
+    })
+
+    expect(setOntologyDeleteEdge).toHaveBeenCalledWith({
+      selectedElement,
+      setStoreState,
       addToObject
     })
   })

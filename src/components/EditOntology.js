@@ -10,7 +10,7 @@ import { SIDEBAR_VIEW_VERSIONING } from '../constants/views'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
-import { UNIQUE_PROPERTY } from '../constants/graph'
+import { REQUIRED_PREDICATES, UNIQUE_PROPERTY } from '../constants/graph'
 import restoreUpdatedElement from '../utils/restoreUpdatedElement'
 
 const EditOntology = ({
@@ -77,7 +77,7 @@ const EditOntology = ({
       value: edgeId,
       label: graphVersions[selectedGraphVersion].objectPropertiesFromApi[edgeId].rdfsLabel || edgeId
     })
-  )
+  ).filter((item) => !REQUIRED_PREDICATES.includes(item.value))
 
   const deletedNodes = graphVersions[selectedGraphVersion].deletedNodes?.map(
     (nodeId) => ({

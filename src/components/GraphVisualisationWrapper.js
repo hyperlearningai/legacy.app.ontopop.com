@@ -10,7 +10,7 @@ import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
 import setGraphData from '../utils/setGraphData'
 import getGraphData from '../utils/getGraphData'
 import getNodeProperties from '../utils/getNodeProperties'
-import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
+import { GRAPH_VERSION_STRUCTURE, SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
 import GraphContextMenu from './GraphContextMenu'
 import loadGraphVersionFromServer from '../utils/versioning/loadGraphVersionFromServer'
 import getEdgeProperties from '../utils/getEdgeProperties'
@@ -72,13 +72,11 @@ const GraphVisualisationWrapper = ({
     }
 
     addToObject('graphVersions', 'original', {
+      ...GRAPH_VERSION_STRUCTURE,
       classesFromApi: classes,
       objectPropertiesFromApi: objectProperties,
       classesFromApiBackup: classes,
       objectPropertiesFromApiBackup: objectProperties,
-      deletedNodes: [],
-      addedNodes: [],
-      updatedNodes: []
     })
 
     setGraphData({
