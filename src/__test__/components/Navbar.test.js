@@ -7,6 +7,7 @@ const setup = () => {
   const props = {
     availableEdgesNormalised: { 123: { id: '123' } },
     availableNodesNormalised: { 123: { id: '123' } },
+    selectedGraphVersion: 'original'
   }
 
   const component = shallow(<Navbar {...props} />)

@@ -16,6 +16,11 @@ const initialState = {
   objectPropertiesFromApi: {},
   triplesPerNode: {},
   network: undefined,
+  nodesProperties: [],
+  edgesProperties: [],
+  deletedNodes: [],
+  addedNodes: [],
+  updatedNodes: [],
 
   // netowrk graph loading
   isNetworkLoading: false,
@@ -65,14 +70,6 @@ const initialState = {
     nodeId: ''
   },
 
-  // Filter nodes
-  nodesProperties: [],
-  filterNodeByPropsData: {},
-  filterEdgeByPropsData: {},
-
-  // Filter edges
-  edgesProperties: [],
-
   // states to update at every view refresh
   // physics
   isPhysicsOn: false,
@@ -100,6 +97,24 @@ const initialState = {
     'g.V().hasLabel(\'class\').count()',
     'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()',
   ],
+
+  // new graph version
+  selectedGraphVersion: 'original',
+  isOntologyUpdated: false,
+  graphVersions: {
+    original: {
+      classesFromApi: {},
+      objectPropertiesFromApi: {},
+      classesFromApiBackup: {},
+      objectPropertiesFromApiBackup: {},
+      deletedNodes: [],
+      addedNodes: [],
+      updatedNodes: [],
+      deletedEdges: [],
+      addedEdges: [],
+      updatedEdges: [],
+    },
+  },
 
   // graphs data storage
   lastGraphIndex: 0,

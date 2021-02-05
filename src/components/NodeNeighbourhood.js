@@ -15,7 +15,7 @@ const NodeNeighbourhood = ({
   setStoreState,
   classesFromApi,
   selectedNeighbourNode,
-  updateGraphData,
+  addToObject,
 }) => {
   const { t } = useTranslation()
 
@@ -84,7 +84,7 @@ const NodeNeighbourhood = ({
           onClick={() => setNeighbourNodes({
             separationDegree,
             setStoreState,
-            updateGraphData
+            addToObject
           })}
         />
       </div>
@@ -96,7 +96,7 @@ NodeNeighbourhood.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   selectedNeighbourNode: PropTypes.string.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  updateGraphData: PropTypes.func.isRequired,
+  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

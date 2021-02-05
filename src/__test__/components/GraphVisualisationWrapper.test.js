@@ -18,6 +18,7 @@ const setup = ({
       }
     },
     setStoreState: jest.fn(),
+    addToObject: jest.fn(),
     showContextMenu,
     contextMenuData: {
       top: 0,
@@ -32,7 +33,9 @@ const setup = ({
       boundingBoxPosY: 100,
       boundingBoxWidth: 200,
       boundingBoxHeight: 200
-    }
+    },
+    selectedGraphVersion: 'original',
+    isOntologyUpdated: true
   }
 
   const component = shallow(<GraphVisualisationWrapper {...props} />)

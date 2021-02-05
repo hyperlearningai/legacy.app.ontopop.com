@@ -9,7 +9,7 @@ const setup = () => {
       property: 'rdfsLabel',
       value: 'road'
     }],
-    updateGraphData: jest.fn(),
+    addToObject: jest.fn(),
     setStoreState: jest.fn(),
   }
 

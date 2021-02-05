@@ -2,7 +2,7 @@ import setFilteredNodes from '../../utils/setFilteredNodes'
 import store from '../../store'
 
 const setStoreState = jest.fn()
-const updateGraphData = jest.fn()
+const addToObject = jest.fn()
 const lastGraphIndex = 1
 
 const getState = jest.fn().mockImplementation(() => ({
@@ -25,7 +25,7 @@ describe('setFilteredNodes', () => {
     await setFilteredNodes({
       setStoreState,
       nodesFilters,
-      updateGraphData
+      addToObject
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -42,7 +42,8 @@ describe('setFilteredNodes', () => {
         'networkGraphs',
       ],
     ])
-    expect(updateGraphData).toHaveBeenCalledWith(
+    expect(addToObject).toHaveBeenCalledWith(
+      'graphData',
       'graph-2', {
         label: 'nodes-filter-graph-2',
         options: {
