@@ -10,7 +10,7 @@ import { Dropdown } from 'primereact/dropdown'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
-import setFilteredNodes from '../utils/setFilteredNodes'
+import setFilteredNodes from '../utils/nodesFilter/setFilteredNodes'
 
 const NodesFilter = ({
   setStoreState,
@@ -157,7 +157,7 @@ const NodesFilter = ({
 
 NodesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  annotationProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   addToObject: PropTypes.func.isRequired,
 }
 

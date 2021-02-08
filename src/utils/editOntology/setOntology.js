@@ -24,7 +24,8 @@ const setOntology = ({
   selectedElement,
   setStoreState,
   selectedElementProperties,
-  addToObject
+  addToObject,
+  t
 }) => {
   if (operation === 'restore') {
     if (type === 'node') {
@@ -87,7 +88,8 @@ const setOntology = ({
       setOntologyAddNode({
         setStoreState,
         selectedElementProperties,
-        addToObject
+        addToObject,
+        t
       })
     }
 
@@ -95,7 +97,8 @@ const setOntology = ({
       setOntologyAddEdge({
         setStoreState,
         selectedElementProperties,
-        addToObject
+        addToObject,
+        t
       })
     }
   }

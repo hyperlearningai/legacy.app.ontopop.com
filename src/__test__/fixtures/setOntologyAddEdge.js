@@ -1,6 +1,5 @@
 import { OwlClasses } from './test-ontology-classes'
 import { OwlObjectProperties } from './test-ontology-object-properties'
-import { availableEdgesNormalised } from './availableEdgesNormalised'
 
 export const addToObjectFixture = {
   classesFromApi: OwlClasses,
@@ -27,19 +26,6 @@ export const addToObjectFixture = {
 }
 
 export const setStoreStateFixture = [
-  [
-    'availableEdgesNormalised', {
-      ...availableEdgesNormalised,
-      'http://test.com/edge': {
-        label: 'New edge',
-        id: 'http://test.com/edge',
-        owlAnnotationProperties: {
-          'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another edge',
-        },
-        rdfsLabel: 'New edge',
-      }
-    }
-  ],
   [
     'objectPropertiesFromApi',
     {

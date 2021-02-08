@@ -1,9 +1,7 @@
-import { connect } from 'redux-zero/react'
-import PropTypes from 'prop-types'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
-import actions from '../store/actions'
 import { SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import {
   EXPORT_GRAPH_OPTIONS,
@@ -11,21 +9,16 @@ import {
   EXPORT_PDF,
   EXPORT_CSV
 } from '../constants/export'
-import exportAsImage from '../utils/exportAsImage'
-import exportAsPdf from '../utils/exportAsPdf'
-import exportCsv from '../utils/exportCsv'
-import exportOwl from '../utils/exportOwl'
+import exportAsImage from '../utils/exportSettings/exportAsImage'
+import exportAsPdf from '../utils/exportSettings/exportAsPdf'
+import exportCsv from '../utils/exportSettings/exportCsv'
+import exportOwl from '../utils/exportSettings/exportOwl'
 
-const ExportSettings = ({
-  setStoreState,
-  exportFileName,
-  availableNodesNormalised,
-  availableEdgesNormalised,
-  objectPropertiesFromApi,
-  classesFromApi
-}) => {
+const ExportSettings = () => {
   const { t } = useTranslation()
-  const canvasElement = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
+  const [exportFileName, setFileName] = useState('network-graph')
+
+  const canvasElement = document.getElementById('network-graph') ? document.getElementById('network-graph').getElementsByTagName('canvas')[0] : null
 
   return (
     <>
@@ -45,7 +38,7 @@ const ExportSettings = ({
               onChange={(e) => {
                 const { value } = e.target
 
-                setStoreState('exportFileName', value)
+                setFileName(value)
               }}
             />
             {
@@ -102,16 +95,9 @@ const ExportSettings = ({
                   label={t(option)}
                   onClick={() => (option === EXPORT_CSV ? exportCsv({
                     exportFileName,
-                    availableNodesNormalised,
-                    availableEdgesNormalised,
-                    objectPropertiesFromApi,
                     t
                   }) : exportOwl({
                     exportFileName,
-                    availableNodesNormalised,
-                    availableEdgesNormalised,
-                    objectPropertiesFromApi,
-                    classesFromApi,
                     t
                   }))}
                 />
@@ -124,30 +110,4 @@ const ExportSettings = ({
   )
 }
 
-ExportSettings.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  exportFileName: PropTypes.string.isRequired,
-  availableNodesNormalised: PropTypes.shape().isRequired,
-  availableEdgesNormalised: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
-}
-
-const mapToProps = ({
-  exportFileName,
-  availableNodesNormalised,
-  availableEdgesNormalised,
-  objectPropertiesFromApi,
-  classesFromApi
-}) => ({
-  exportFileName,
-  availableNodesNormalised,
-  availableEdgesNormalised,
-  objectPropertiesFromApi,
-  classesFromApi
-})
-
-export default connect(
-  mapToProps,
-  actions
-)(ExportSettings)
+export default ExportSettings

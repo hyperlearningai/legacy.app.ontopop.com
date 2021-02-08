@@ -113,7 +113,7 @@ const EditOntologyForm = ({
 EditOntologyForm.propTypes = {
   selectedElementProperties: PropTypes.shape().isRequired,
   setSelectedElementProperties: PropTypes.func.isRequired,
-  annotationProperties: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   operation: PropTypes.string.isRequired,
   initialData: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,

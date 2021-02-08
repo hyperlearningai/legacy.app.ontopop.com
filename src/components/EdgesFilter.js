@@ -10,7 +10,7 @@ import { Dropdown } from 'primereact/dropdown'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_EDGES_FILTER } from '../constants/views'
-import setFilteredEdges from '../utils/setFilteredEdges'
+import setFilteredEdges from '../utils/edgesFilter/setFilteredEdges'
 
 const EdgesFilter = ({
   setStoreState,

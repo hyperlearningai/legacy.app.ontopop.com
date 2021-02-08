@@ -170,6 +170,7 @@ export default {
   restoreOriginal: 'Restore',
   idExists: 'ID already exists',
   noDeletedElements: 'No deleted elements to restore!',
+  nodeIdAlreadyExists: 'Node ID already exists',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',

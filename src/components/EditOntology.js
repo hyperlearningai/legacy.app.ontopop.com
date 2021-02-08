@@ -6,7 +6,7 @@ import { Button } from 'primereact/button'
 import { SelectButton } from 'primereact/selectbutton'
 import { Dropdown } from 'primereact/dropdown'
 import { MultiSelect } from 'primereact/multiselect'
-import { SIDEBAR_VIEW_VERSIONING } from '../constants/views'
+import { SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
@@ -96,7 +96,7 @@ const EditOntology = ({
   return (
     <>
       <div className="sidebar-main-title">
-        { t(SIDEBAR_VIEW_VERSIONING)}
+        { t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
       </div>
       <div className="ontology-edit">
         <div
@@ -312,7 +312,12 @@ const EditOntology = ({
               && (
                 !selectedElementProperties[UNIQUE_PROPERTY]
                 || selectedElementProperties[UNIQUE_PROPERTY] === ''
-                || classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]]
+                || (
+                  type === 'node' && classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]]
+                )
+                || (
+                  type === 'edge' && objectPropertiesFromApi[selectedElementProperties[UNIQUE_PROPERTY]
+                  ])
               )}
             onClick={() => {
               setOntology({
@@ -323,7 +328,8 @@ const EditOntology = ({
                 addToArray,
                 removeFromObject,
                 addToObject,
-                selectedElementProperties
+                selectedElementProperties,
+                t
               })
               setSelectedElement(undefined)
               setSelectedElementProperties({})

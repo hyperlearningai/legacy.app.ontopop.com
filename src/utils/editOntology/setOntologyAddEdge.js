@@ -23,15 +23,14 @@ const setOntologyAddEdge = ({
     objectPropertiesFromApi,
     selectedGraphVersion,
     addedEdges,
-    availableEdgesNormalised,
   } = store.getState()
 
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
   const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
 
-  const newNodeId = selectedElementProperties[UNIQUE_PROPERTY]
+  const newEdgeId = selectedElementProperties[UNIQUE_PROPERTY]
 
-  newObjectPropertiesFromApi[newNodeId] = {}
+  newObjectPropertiesFromApi[newEdgeId] = {}
 
   const selectedElementPropertiesKeys = Object.keys(selectedElementProperties)
 
@@ -41,17 +40,17 @@ const setOntologyAddEdge = ({
           && selectedElementProperties[propertyKey] !== ''
     ) {
       if (LOW_LEVEL_PROPERTIES.includes(propertyKey)) {
-        newObjectPropertiesFromApi[newNodeId][propertyKey] = selectedElementProperties[propertyKey]
+        newObjectPropertiesFromApi[newEdgeId][propertyKey] = selectedElementProperties[propertyKey]
       } else {
-        if (!newObjectPropertiesFromApi[newNodeId][OWL_ANNOTATION_PROPERTIES]) {
-          newObjectPropertiesFromApi[newNodeId][OWL_ANNOTATION_PROPERTIES] = {}
+        if (!newObjectPropertiesFromApi[newEdgeId][OWL_ANNOTATION_PROPERTIES]) {
+          newObjectPropertiesFromApi[newEdgeId][OWL_ANNOTATION_PROPERTIES] = {}
         }
 
-        newObjectPropertiesFromApi[newNodeId][OWL_ANNOTATION_PROPERTIES][propertyKey] = selectedElementProperties[propertyKey]
+        newObjectPropertiesFromApi[newEdgeId][OWL_ANNOTATION_PROPERTIES][propertyKey] = selectedElementProperties[propertyKey]
       }
 
       if (propertyKey === LABEL_PROPERTY) {
-        newObjectPropertiesFromApi[newNodeId].label = selectedElementProperties[propertyKey]
+        newObjectPropertiesFromApi[newEdgeId].label = selectedElementProperties[propertyKey]
       }
     }
 
@@ -60,19 +59,12 @@ const setOntologyAddEdge = ({
 
   const newAddedEdges = [
     ...addedEdges,
-    ...[newNodeId]
+    ...[newEdgeId]
   ]
 
   newGraphVersion.objectPropertiesFromApi = newObjectPropertiesFromApi
   newGraphVersion.addedEdges = newAddedEdges
 
-  setStoreState('availableEdgesNormalised', {
-    ...availableEdgesNormalised,
-    [newNodeId]: {
-      ...newObjectPropertiesFromApi[newNodeId],
-      id: newNodeId
-    }
-  })
   addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
   setStoreState('addedEdges', newAddedEdges)

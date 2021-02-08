@@ -11,7 +11,7 @@ import {
 } from 'react-icons/ri'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_BOUNDING_BOX } from '../constants/views'
-import setBoundingBoxNodes from '../utils/setBoundingBoxNodes'
+import setBoundingBoxNodes from '../utils/boundingBoxSelection/setBoundingBoxNodes'
 import getNodesFromBoundingBox from '../utils/canvasUtils/getNodesFromBoundingBox'
 import clearNodesSelection from '../utils/canvasUtils/clearNodesSelection'
 

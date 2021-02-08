@@ -26,7 +26,6 @@ const setOntologyUpdateEdge = ({
     updatedEdges,
     selectedGraphVersion,
     availableEdges,
-    availableEdgesNormalised
   } = store.getState()
 
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
@@ -74,14 +73,7 @@ const setOntologyUpdateEdge = ({
   newGraphVersion.updatedEdges = newUpdatedEdges
   addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
-  setStoreState('availableEdgesNormalised', {
-    ...availableEdgesNormalised,
-    [selectedElement]: {
 
-      ...availableEdgesNormalised[selectedElement],
-      ...newObjectPropertiesFromApi[selectedElement]
-    }
-  })
   setStoreState('updatedEdges', newUpdatedEdges)
 }
 

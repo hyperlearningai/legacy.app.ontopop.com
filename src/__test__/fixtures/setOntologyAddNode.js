@@ -1,6 +1,5 @@
 import { OwlClasses } from './test-ontology-classes'
 import { OwlObjectProperties } from './test-ontology-object-properties'
-import { availableNodesNormalised } from './availableNodesNormalised'
 
 export const addToObjectFixture = {
   classesFromApi: {
@@ -27,19 +26,6 @@ export const addToObjectFixture = {
 }
 
 export const setStoreStateFixture = [
-  [
-    'availableNodesNormalised', {
-      ...availableNodesNormalised,
-      'http://test.com/node': {
-        label: 'New node',
-        id: 'http://test.com/node',
-        owlAnnotationProperties: {
-          'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-        },
-        rdfsLabel: 'New node',
-      }
-    }
-  ],
   [
     'classesFromApi',
     {

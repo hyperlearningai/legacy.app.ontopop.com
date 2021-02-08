@@ -55,10 +55,10 @@ const getEdge = ({
 
   const edge = {
     ...edgeConnection,
+    ...objectPropertiesFromApi[predicate],
     label: edgeLabel,
     edgeId: predicate,
     id: edgeUniqueId,
-    ...objectPropertiesFromApi[predicate]
   }
 
   if (isNodeOverlay) {

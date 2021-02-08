@@ -9,14 +9,14 @@ import {
 import actions from '../store/actions'
 
 const EdgeSelectionDetailsRow = ({
-  availableNodesNormalised,
+  availableNodes,
   connection,
 }) => {
   const { t } = useTranslation()
 
   const [isExpanded, toggleExpanded] = useState(false)
 
-  const nodeKeys = Object.keys(availableNodesNormalised[connection.from]).filter((key) => typeof availableNodesNormalised[connection.from][key] !== 'object'
+  const nodeKeys = Object.keys(availableNodes.get(connection.from)).filter((key) => typeof availableNodes.get(connection.from)[key] !== 'object'
     && !key.includes('label')).sort()
 
   return (
@@ -41,7 +41,7 @@ const EdgeSelectionDetailsRow = ({
                 (
                   <Fragment key={`edge-node-from-${nodeKey}-${connection.fromLabel}-${connection.toLabel}`}>
                     <div className="edge-node-info-title">{nodeKey}</div>
-                    <div className="edge-node-info-value">{availableNodesNormalised[connection.from][nodeKey]}</div>
+                    <div className="edge-node-info-value">{availableNodes.get(connection.from)[nodeKey]}</div>
                   </Fragment>
                 )
               ))
@@ -60,7 +60,7 @@ const EdgeSelectionDetailsRow = ({
                 (
                   <Fragment key={`edge-node-to-${nodeKey}-${connection.fromLabel}-${connection.toLabel}`}>
                     <div className="edge-node-info-title">{nodeKey}</div>
-                    <div className="edge-node-info-value">{availableNodesNormalised[connection.to][nodeKey]}</div>
+                    <div className="edge-node-info-value">{availableNodes.get(connection.to)[nodeKey]}</div>
                   </Fragment>
                 )
               ))
@@ -73,14 +73,14 @@ const EdgeSelectionDetailsRow = ({
 }
 
 EdgeSelectionDetailsRow.propTypes = {
-  availableNodesNormalised: PropTypes.shape().isRequired,
+  availableNodes: PropTypes.shape().isRequired,
   connection: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
-  availableNodesNormalised,
+  availableNodes,
 }) => ({
-  availableNodesNormalised,
+  availableNodes,
 })
 
 export default connect(

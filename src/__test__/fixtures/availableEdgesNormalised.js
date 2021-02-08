@@ -1,3 +1,5 @@
+import { DataSet } from 'vis-data'
+
 export const availableEdgesNormalised = {
   'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ': {
     from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
@@ -3060,3 +3062,9 @@ export const availableEdgesNormalised = {
     id: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay___http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M___http://webprotege.stanford.edu/RxMK8BflSk74kqDWT4eHTy'
   }
 }
+
+export const availableEdges = new DataSet(
+  Object.keys(availableEdgesNormalised).map(
+    (edgeId) => availableEdgesNormalised[edgeId]
+  )
+)

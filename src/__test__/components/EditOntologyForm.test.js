@@ -13,7 +13,6 @@ const setup = ({
     selectedElementProperties: {},
     setSelectedElementProperties: jest.fn(),
     annotationProperties: [],
-    edgesProperties: [],
     operation,
     initialData: {},
     classesFromApi: OwlClasses,

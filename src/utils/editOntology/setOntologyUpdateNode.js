@@ -26,7 +26,6 @@ const setOntologyUpdateNode = ({
     updatedNodes,
     selectedGraphVersion,
     availableNodes,
-    availableNodesNormalised
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -67,14 +66,6 @@ const setOntologyUpdateNode = ({
   newGraphVersion.updatedNodes = newUpdatedNodes
   addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
   setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('availableNodesNormalised', {
-    ...availableNodesNormalised,
-    [selectedElement]: {
-
-      ...availableNodesNormalised[selectedElement],
-      ...newClassesFromApi[selectedElement]
-    }
-  })
   setStoreState('updatedNodes', newUpdatedNodes)
 }
 

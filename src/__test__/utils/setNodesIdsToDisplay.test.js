@@ -12,8 +12,8 @@ import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties
 import { algoTypeFull } from '../fixtures/setNodesIdsToDisplayResults'
 import { triplesPerNode } from '../fixtures/triplesPerNode'
 import store from '../../store'
-import { availableEdgesNormalised } from '../fixtures/availableEdgesNormalised'
-import { availableNodesNormalised } from '../fixtures/availableNodesNormalised'
+import { availableNodes } from '../fixtures/availableNodesNormalised'
+import { availableEdges } from '../fixtures/availableEdgesNormalised'
 
 const setStoreState = jest.fn()
 const classesFromApi = OwlClasses
@@ -21,9 +21,9 @@ const objectPropertiesFromApi = OwlObjectProperties
 const getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
   objectPropertiesFromApi,
-  availableNodesNormalised,
-  availableEdgesNormalised,
   deletedNodes: [],
+  availableNodes,
+  availableEdges,
   nodesIdsToDisplay: [
     'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
   ],

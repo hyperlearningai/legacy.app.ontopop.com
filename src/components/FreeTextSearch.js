@@ -6,14 +6,14 @@ import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_FREE_TEXT_SEARCH } from '../constants/views'
-import searchElement from '../utils/searchElement'
+import searchElement from '../utils/freeTextSearch/searchElement'
 import {
   NODE_BACKGROUND,
 } from '../constants/graph'
-import focusNode from '../utils/focusNode'
-import highlightEdge from '../utils/highlightEdge'
-import resetSearchSelection from '../utils/resetSearchSelection'
-import clearFreeTextSelection from '../utils/clearFreeTextSelection'
+import focusNode from '../utils/freeTextSearch/focusNode'
+import highlightEdge from '../utils/freeTextSearch/highlightEdge'
+import resetSearchSelection from '../utils/freeTextSearch/resetSearchSelection'
+import clearFreeTextSelection from '../utils/freeTextSearch/clearFreeTextSelection'
 
 const FreeTextSearch = ({
   availableNodes,
