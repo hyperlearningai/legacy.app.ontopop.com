@@ -86,7 +86,6 @@ const FreeTextSearch = ({
                 key={`freetext-search-row-${elementId}`}
               >
                 <div className="freetext-search-row-delete">
-
                   <Button
                     tooltip={`${t('removeGraph')}: ${elementId}`}
                     onClick={() => {

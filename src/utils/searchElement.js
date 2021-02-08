@@ -17,7 +17,7 @@ const searchElement = ({
     classesFromApi,
     edgesIdsToDisplay,
     objectPropertiesFromApi,
-    availableNodesNormalised
+    availableNodes
   } = store.getState()
 
   const elementsToDisplay = {}
@@ -26,11 +26,11 @@ const searchElement = ({
     return setStoreState('freeTextSelection', JSON.parse(JSON.stringify(elementsToDisplay)))
   }
 
-  const availableNodesNormalisedNodeIds = Object.keys(availableNodesNormalised)
+  const nodeIds = availableNodes.getIds()
 
-  if (availableNodesNormalisedNodeIds.length > 0) {
-    for (let index = 0; index < availableNodesNormalisedNodeIds.length; index++) {
-      const nodeId = availableNodesNormalisedNodeIds[index]
+  if (nodeIds.length > 0) {
+    for (let index = 0; index < nodeIds.length; index++) {
+      const nodeId = nodeIds[index]
       const nodeElement = classesFromApi[nodeId]
 
       // check content in low level properties

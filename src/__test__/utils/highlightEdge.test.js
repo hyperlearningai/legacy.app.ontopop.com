@@ -5,20 +5,13 @@ import store from '../../store'
 
 const setStoreState = jest.fn()
 const setPrevSelectedEdges = jest.fn()
-const availableEdges = new DataSet([{
-  id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
-  color: 'ffffff'
-}, {
-  id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM631234',
-  color: 'ffffff'
-}])
+const availableEdges = new DataSet(Object.keys(availableEdgesNormalised).map((elementId) => availableEdgesNormalised[elementId]))
 const fit = jest.fn()
 const network = {
   fit
 }
 const getState = jest.fn().mockImplementation(() => ({
   availableEdges,
-  availableEdgesNormalised,
   network,
 }))
 store.getState = getState

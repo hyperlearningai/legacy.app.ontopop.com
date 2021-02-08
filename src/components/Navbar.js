@@ -12,8 +12,8 @@ import {
 import actions from '../store/actions'
 
 const Navbar = ({
-  availableNodesNormalised,
-  availableEdgesNormalised,
+  availableNodesCount,
+  availableEdgesCount,
   selectedGraphVersion
 }) => {
   const { t } = useTranslation()
@@ -23,10 +23,10 @@ const Navbar = ({
       <div className="nav-left">
         <span>
           <BsFillCircleFill className="nodes-icon node m-r-5" />
-          {`${t('nodes')}: ${Object.keys(availableNodesNormalised).length}`}
+          {`${t('nodes')}: ${availableNodesCount}`}
           <span className="m-l-5 m-r-5">|</span>
           <BsArrowUpRight className="nodes-icon edge" />
-          {`${t('edges')}: ${Object.keys(availableEdgesNormalised).length}`}
+          {`${t('edges')}: ${availableEdgesCount}`}
         </span>
       </div>
 
@@ -41,18 +41,18 @@ const Navbar = ({
 }
 
 Navbar.propTypes = {
-  availableNodesNormalised: PropTypes.shape().isRequired,
-  availableEdgesNormalised: PropTypes.shape().isRequired,
+  availableNodesCount: PropTypes.number.isRequired,
+  availableEdgesCount: PropTypes.number.isRequired,
   selectedGraphVersion: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
-  availableNodesNormalised,
-  availableEdgesNormalised,
+  availableNodesCount,
+  availableEdgesCount,
   selectedGraphVersion
 }) => ({
-  availableNodesNormalised,
-  availableEdgesNormalised,
+  availableNodesCount,
+  availableEdgesCount,
   selectedGraphVersion
 })
 

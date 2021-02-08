@@ -1,14 +1,18 @@
 import { SELECTED_NODE_COLOR } from '../../../constants/graph'
 import addNode from '../../../utils/serialiseNodesEdges/addNode'
 
+const add = jest.fn()
+
 describe('addNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
   it('should work correctly', async () => {
-    const availableNodesNormalised = {}
-    const availableNodesList = []
+    const availableNodes = {
+      get: () => undefined,
+      add
+    }
     const addedNodes = []
     const highlightedNodes = []
     const nodeId = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
@@ -21,8 +25,7 @@ describe('addNode', () => {
 
     await addNode({
       addedNodes,
-      availableNodesList,
-      availableNodesNormalised,
+      availableNodes,
       isNodeOverlay,
       highlightedNodes,
       nodeId,
@@ -30,24 +33,20 @@ describe('addNode', () => {
       shortestPathNodes
     })
 
-    expect(availableNodesNormalised).toEqual({
-      'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M': {
-        id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-        label: 'test',
-      },
-    })
-    expect(availableNodesList).toEqual([
+    expect(add).toHaveBeenCalledWith(
       {
         id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
         label: 'test',
       },
-    ])
+    )
     expect(addedNodes).toEqual(['http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'])
   })
 
   it('should change node background if in highlightedNodes', async () => {
-    const availableNodesNormalised = {}
-    const availableNodesList = []
+    const availableNodes = {
+      get: () => undefined,
+      add
+    }
     const addedNodes = []
     const highlightedNodes = ['http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M']
     const nodeId = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
@@ -60,8 +59,7 @@ describe('addNode', () => {
 
     await addNode({
       addedNodes,
-      availableNodesList,
-      availableNodesNormalised,
+      availableNodes,
       isNodeOverlay,
       highlightedNodes,
       nodeId,
@@ -69,16 +67,7 @@ describe('addNode', () => {
       shortestPathNodes
     })
 
-    expect(availableNodesNormalised).toEqual({
-      'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M': {
-        id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-        label: 'test',
-        color: {
-          background: SELECTED_NODE_COLOR
-        }
-      },
-    })
-    expect(availableNodesList).toEqual([
+    expect(add).toHaveBeenCalledWith(
       {
         id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
         label: 'test',
@@ -86,13 +75,15 @@ describe('addNode', () => {
           background: SELECTED_NODE_COLOR
         }
       },
-    ])
+    )
     expect(addedNodes).toEqual(['http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'])
   })
 
   it('should change node background if isNodeOverlay and nodeid not in shortestPathNodes', async () => {
-    const availableNodesNormalised = {}
-    const availableNodesList = []
+    const availableNodes = {
+      get: () => undefined,
+      add
+    }
     const addedNodes = []
     const highlightedNodes = []
     const nodeId = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
@@ -105,8 +96,7 @@ describe('addNode', () => {
 
     await addNode({
       addedNodes,
-      availableNodesList,
-      availableNodesNormalised,
+      availableNodes,
       isNodeOverlay,
       highlightedNodes,
       nodeId,
@@ -114,20 +104,13 @@ describe('addNode', () => {
       shortestPathNodes
     })
 
-    expect(availableNodesNormalised).toEqual({
-      'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M': {
-        id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-        label: 'test',
-        opacity: 0.1,
-      },
-    })
-    expect(availableNodesList).toEqual([
+    expect(add).toHaveBeenCalledWith(
       {
         id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
         label: 'test',
         opacity: 0.1,
       },
-    ])
+    )
     expect(addedNodes).toEqual(['http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'])
   })
 })

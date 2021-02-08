@@ -1,9 +1,15 @@
+import { DataSet } from 'vis-data'
 import searchElement from '../../utils/searchElement'
 import { OwlClasses } from '../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties.json'
 import store from '../../store'
 
 const setStoreState = jest.fn()
+const classes = Object.keys(OwlClasses).map((elementId) => ({
+  ...OwlClasses[elementId],
+  id: elementId
+}))
+
 const getState = jest.fn().mockImplementation(() => ({
   classesFromApi: OwlClasses,
   edgesIdsToDisplay: [
@@ -11,8 +17,7 @@ const getState = jest.fn().mockImplementation(() => ({
     'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU'
   ],
   objectPropertiesFromApi: OwlObjectProperties,
-  availableNodesNormalised: OwlClasses,
-
+  availableNodes: new DataSet(classes),
   annotationProperties: [
     'rdfsLabel',
     'rdfAbout'

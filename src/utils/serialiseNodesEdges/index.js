@@ -50,10 +50,6 @@ const serialiseNodesEdges = ({
 
   const addedNodes = []
   const addedEdges = []
-  const availableNodesList = []
-  const availableEdgesList = []
-  const availableNodesNormalised = {}
-  const availableEdgesNormalised = {}
   const nodesConnections = {}
   const edgesConnections = {}
 
@@ -75,8 +71,7 @@ const serialiseNodesEdges = ({
       ? nodeIdObject.rdfsLabel.replace(/ /g, '\n') : ''
 
     addNode({
-      availableNodesNormalised,
-      availableNodesList,
+      availableNodes,
       addedNodes,
       isNodeOverlay,
       nodeId,
@@ -126,7 +121,7 @@ const serialiseNodesEdges = ({
             addedEdges,
             edgeUniqueId,
             edge,
-            availableEdgesList,
+            availableEdges,
             edgesConnections,
             edgeConnection,
             predicate,
@@ -135,12 +130,10 @@ const serialiseNodesEdges = ({
             nodesConnections,
             nodesIdsToDisplay,
             edgesIdsToDisplay,
-            availableEdgesNormalised,
           })
 
           addNode({
-            availableNodesNormalised,
-            availableNodesList,
+            availableNodes,
             addedNodes,
             highlightedNodes,
             isNodeOverlay,
@@ -150,8 +143,7 @@ const serialiseNodesEdges = ({
           })
 
           addNode({
-            availableNodesNormalised,
-            availableNodesList,
+            availableNodes,
             addedNodes,
             highlightedNodes,
             isNodeOverlay,
@@ -166,13 +158,10 @@ const serialiseNodesEdges = ({
     }
   }
 
-  setStoreState('availableNodesNormalised', availableNodesNormalised)
-  setStoreState('availableEdgesNormalised', availableEdgesNormalised)
+  setStoreState('availableNodesCount', availableNodes.length)
+  setStoreState('availableEdgesCount', availableEdges.length)
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
-
-  availableNodes.add(availableNodesList)
-  availableEdges.add(availableEdgesList)
 
   network?.redraw()
   network?.setOptions(getPhysicsOptions({
@@ -187,7 +176,6 @@ const serialiseNodesEdges = ({
     nodesConnections,
     triplesPerNode,
     availableNodes,
-    availableNodesNormalised
   })
 
   return true

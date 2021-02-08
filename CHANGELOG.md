@@ -32,6 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-47 Visualise subnetwork after dynamic bounding box selection
 
 ### Changed
+- ONTOLOGY-32 Removed availableNodesNormalised and availableEdgesNormalised and replaced with AvailableNodes and AvailableEdges DataSet
 
 ### Deprecated
 

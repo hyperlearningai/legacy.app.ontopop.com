@@ -16,14 +16,13 @@ const highlightEdge = ({
 }) => {
   const {
     availableEdges,
-    availableEdgesNormalised,
     network,
   } = store.getState()
 
-  const availableEdgesIds = Object.keys(availableEdgesNormalised)
+  const availableEdgesIds = availableEdges.getIds()
 
   if (availableEdgesIds.length > 0) {
-    const edgesToAdd = availableEdgesIds.filter((edge) => availableEdgesNormalised[edge].edgeId === elementId)
+    const edgesToAdd = availableEdgesIds.filter((edge) => availableEdges.get(edge).edgeId === elementId)
 
     edgesToAdd.map((edge) => {
       availableEdges.update(

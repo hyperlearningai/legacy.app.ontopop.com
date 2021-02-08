@@ -27,6 +27,8 @@ const initialState = {
   updatedEdges: [],
   deletedConnections: [],
   addedConnections: [],
+  availableNodesCount: 0,
+  availableEdgesCount: 0,
 
   // netowrk graph loading
   isNetworkLoading: false,
