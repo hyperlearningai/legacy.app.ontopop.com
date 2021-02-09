@@ -1,11 +1,13 @@
 import { SELECTED_NODE_COLOR } from '../../constants/graph'
+import getSpiralCoordinates from './getSpiralCoordinates'
+
+let step = 0
 
 /**
  * Add node to arrays/objects
  * @param  {Object}   params
  * @param  {Array}    params.addedNodes               Array of nodes IDs being added
- * @param  {Array}    params.availableNodesList       Array of available nodes
- * @param  {Object}   params.availableNodesNormalised Normalised list of available nodes
+ * @param  {Object}   params.availableNodes           Available nodes dataset
  * @param  {Array}    params.highlightedNodes         Array of nodes IDs to highlight
  * @param  {Boolean}  params.isNodeOverlay            Flag to make non-highlighted nodes transparent
  * @param  {String}   params.nodeId                   Node ID
@@ -15,15 +17,18 @@ import { SELECTED_NODE_COLOR } from '../../constants/graph'
  */
 const addNode = ({
   addedNodes,
-  availableNodesList,
-  availableNodesNormalised,
+  availableNodes,
   isNodeOverlay,
   highlightedNodes,
   nodeId,
   nodeIdObject,
   shortestPathNodes,
+  circleMax,
+  padding,
+  angle
 }) => {
   if (!addedNodes.includes(nodeId)
+  && availableNodes.get(nodeId) === null
   && nodeIdObject.label
   && nodeIdObject.label !== ''
   ) {
@@ -37,8 +42,17 @@ const addNode = ({
       extendedNodeObject.opacity = 0.1
     }
 
-    availableNodesNormalised[nodeId] = extendedNodeObject  // eslint-disable-line
-    availableNodesList.push(extendedNodeObject)
+    const { x, y } = getSpiralCoordinates({
+      circleMax,
+      padding,
+      step,
+      angle
+    })
+    extendedNodeObject.x = x
+    extendedNodeObject.y = y
+    step += 1
+
+    availableNodes.add(extendedNodeObject)
     addedNodes.push(nodeId)
   }
 }

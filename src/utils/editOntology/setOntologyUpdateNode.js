@@ -6,9 +6,9 @@ import {
   OWL_ANNOTATION_PROPERTIES
 } from '../../constants/graph'
 /**
- * Set graph full data
+ * Update ontology nodes
  * @param  {Object}         params
- * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
+ * @param  {String|Array}   params.selectedElement            Selected node ID
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.addToObject                Add to object action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
@@ -26,7 +26,6 @@ const setOntologyUpdateNode = ({
     updatedNodes,
     selectedGraphVersion,
     availableNodes,
-    availableNodesNormalised
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -67,14 +66,6 @@ const setOntologyUpdateNode = ({
   newGraphVersion.updatedNodes = newUpdatedNodes
   addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
   setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('availableNodesNormalised', {
-    ...availableNodesNormalised,
-    [selectedElement]: {
-
-      ...availableNodesNormalised[selectedElement],
-      ...newClassesFromApi[selectedElement]
-    }
-  })
   setStoreState('updatedNodes', newUpdatedNodes)
 }
 

@@ -4,6 +4,7 @@ import { store } from 'react-notifications-component'
 import saveGraphVersion from '../../../utils/versioning/saveGraphVersion'
 import en from '../../../i18n/en'
 import showNotification from '../../../utils/showNotification'
+import { GRAPH_VERSION_STRUCTURE } from '../../../constants/graph'
 
 const dom = new JSDOM()
 const currentDocument = global.document
@@ -96,7 +97,7 @@ describe('saveGraphVersion', () => {
     })
 
     expect(setItem).toHaveBeenCalledWith(
-      'graphVersions', '{"original":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[]}}'
+      'graphVersions', '{"original":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]}}'
     )
 
     expect(showNotification).toHaveBeenCalledWith(
@@ -130,18 +131,7 @@ describe('saveGraphVersion', () => {
     store.getState = getState
 
     const getItem = jest.fn().mockImplementationOnce(() => JSON.stringify({
-      test: {
-        classesFromApi: {},
-        objectPropertiesFromApi: {},
-        classesFromApiBackup: {},
-        objectPropertiesFromApiBackup: {},
-        deletedNodes: [],
-        addedNodes: [],
-        updatedNodes: [],
-        deletedEdges: [],
-        addedEdges: [],
-        updatedEdges: [],
-      },
+      test: GRAPH_VERSION_STRUCTURE,
     }))
 
     const setItem = jest.fn()
@@ -155,7 +145,7 @@ describe('saveGraphVersion', () => {
     })
 
     expect(setItem).toHaveBeenCalledWith(
-      'graphVersions', '{"test":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[]},"original":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[]}}'
+      'graphVersions', '{"test":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]},"original":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]}}'
     )
 
     expect(showNotification).toHaveBeenCalledWith(

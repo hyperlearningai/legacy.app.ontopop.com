@@ -39,7 +39,8 @@ describe('getEdge', () => {
         toLabel: 'Licence Holder',
         label: 'Provided to',
         edgeId: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-        id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
+        id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
+        ...objectPropertiesFromApi['http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp']
       },
       fromObject: {
         rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
@@ -152,7 +153,8 @@ describe('getEdge', () => {
         toLabel: 'Licence Holder',
         label: 'Provided to',
         edgeId: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-        id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
+        id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
+        ...objectPropertiesFromApi['http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp']
       },
       fromObject: {
         rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
@@ -260,7 +262,8 @@ describe('getEdge', () => {
         toLabel: 'Licence Holder',
         label: 'Provided to',
         edgeId: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-        id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
+        id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
+        ...objectPropertiesFromApi['http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp']
       },
       fromObject: {
         rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',

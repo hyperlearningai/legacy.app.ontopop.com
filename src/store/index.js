@@ -4,6 +4,7 @@ import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
 import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
+import { GRAPH_VERSION_STRUCTURE } from '../constants/graph'
 
 const initialState = {
   // view updates
@@ -16,11 +17,18 @@ const initialState = {
   objectPropertiesFromApi: {},
   triplesPerNode: {},
   network: undefined,
-  nodesProperties: [],
+  annotationProperties: [],
   edgesProperties: [],
   deletedNodes: [],
   addedNodes: [],
   updatedNodes: [],
+  deletedEdges: [],
+  addedEdges: [],
+  updatedEdges: [],
+  deletedConnections: [],
+  addedConnections: [],
+  availableNodesCount: 0,
+  availableEdgesCount: 0,
 
   // netowrk graph loading
   isNetworkLoading: false,
@@ -72,7 +80,7 @@ const initialState = {
 
   // states to update at every view refresh
   // physics
-  isPhysicsOn: false,
+  isPhysicsOn: true,
   physicsHierarchicalView: false,
   physicsRepulsion: true,
   physicsEdgeLength: 250,
@@ -81,9 +89,7 @@ const initialState = {
   nodesIdsToDisplay: [],
   edgesIdsToDisplay: [],
   availableNodes: new DataSet([]),
-  availableNodesNormalised: {},
   availableEdges: new DataSet([]),
-  availableEdgesNormalised: {},
   selectedNodes: [],
   selectedEdges: [],
   nodesConnections: {},
@@ -100,20 +106,8 @@ const initialState = {
 
   // new graph version
   selectedGraphVersion: 'original',
-  isOntologyUpdated: false,
   graphVersions: {
-    original: {
-      classesFromApi: {},
-      objectPropertiesFromApi: {},
-      classesFromApiBackup: {},
-      objectPropertiesFromApiBackup: {},
-      deletedNodes: [],
-      addedNodes: [],
-      updatedNodes: [],
-      deletedEdges: [],
-      addedEdges: [],
-      updatedEdges: [],
-    },
+    original: GRAPH_VERSION_STRUCTURE,
   },
 
   // graphs data storage

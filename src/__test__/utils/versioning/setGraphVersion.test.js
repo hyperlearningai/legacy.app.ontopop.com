@@ -1,6 +1,7 @@
 /* eslint max-len:0 */
 import setGraphVersion from '../../../utils/versioning/setGraphVersion'
 import store from '../../../store'
+import { GRAPH_VERSION_STRUCTURE } from '../../../constants/graph'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
@@ -58,13 +59,11 @@ describe('setGraphVersion', () => {
 
     expect(addToObject).toHaveBeenCalledWith(
       'graphVersions', 'test', {
+        ...GRAPH_VERSION_STRUCTURE,
         classesFromApi: {},
         objectPropertiesFromApi: {},
         classesFromApiBackup: {},
         objectPropertiesFromApiBackup: {},
-        deletedNodes: [],
-        addedNodes: [],
-        updatedNodes: []
       }
     )
   })

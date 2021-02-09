@@ -2,18 +2,19 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
+import { PROPERTIES_TO_IGNORE } from '../constants/graph'
 
 const NodesSelectionDetails = ({
   nodeId,
-  availableNodesNormalised,
+  availableNodes,
   nodesConnections,
 }) => {
   const { t } = useTranslation()
 
-  const selectedNode = availableNodesNormalised[nodeId]
+  const selectedNode = availableNodes.get(nodeId)
 
-  const tableRowNames = Object.keys(selectedNode).filter((key) => typeof selectedNode[key] !== 'object'
-    && !key.includes('label')).sort()
+  const tableRowNames = Object.keys(selectedNode).filter((key) => (typeof selectedNode[key] !== 'object'
+    && !PROPERTIES_TO_IGNORE.includes(key))).sort()
 
   let connections = []
 
@@ -24,7 +25,7 @@ const NodesSelectionDetails = ({
   return (
     <div className="nodes-selection-details m-t-10">
       <h3 className="">
-        {`${t('node')}: ${availableNodesNormalised[nodeId].label}`}
+        {`${t('node')}: ${availableNodes.get(nodeId).label}`}
       </h3>
       <div className="nodes-selection-details-title">
         {t('properties')}
@@ -106,15 +107,15 @@ const NodesSelectionDetails = ({
 
 NodesSelectionDetails.propTypes = {
   nodeId: PropTypes.string.isRequired,
-  availableNodesNormalised: PropTypes.shape().isRequired,
+  availableNodes: PropTypes.shape().isRequired,
   nodesConnections: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
-  availableNodesNormalised,
+  availableNodes,
   nodesConnections
 }) => ({
-  availableNodesNormalised,
+  availableNodes,
   nodesConnections
 })
 

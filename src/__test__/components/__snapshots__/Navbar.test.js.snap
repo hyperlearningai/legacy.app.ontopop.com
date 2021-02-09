@@ -14,20 +14,8 @@ exports[`Navbar should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  availableEdgesNormalised={
-    Object {
-      "123": Object {
-        "id": "123",
-      },
-    }
-  }
-  availableNodesNormalised={
-    Object {
-      "123": Object {
-        "id": "123",
-      },
-    }
-  }
+  availableEdgesCount={333}
+  availableNodesCount={200}
   mapToProps={[Function]}
   selectedGraphVersion="original"
 >

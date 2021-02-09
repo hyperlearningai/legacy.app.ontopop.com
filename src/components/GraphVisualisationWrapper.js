@@ -10,9 +10,10 @@ import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
 import setGraphData from '../utils/setGraphData'
 import getGraphData from '../utils/getGraphData'
 import getNodeProperties from '../utils/getNodeProperties'
-import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
+import { GRAPH_VERSION_STRUCTURE, SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../constants/graph'
 import GraphContextMenu from './GraphContextMenu'
 import loadGraphVersionFromServer from '../utils/versioning/loadGraphVersionFromServer'
+import getEdgeProperties from '../utils/getEdgeProperties'
 
 const GraphVisualisationWrapper = ({
   currentGraph,
@@ -22,12 +23,10 @@ const GraphVisualisationWrapper = ({
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   addToObject,
-  selectedGraphVersion,
-  isOntologyUpdated
+  selectedGraphVersion
 }) => {
   const { t } = useTranslation()
   const isInitialMountSelectedGraphVersion = useRef(true)
-  const isInitialMountOntologyUpdated = useRef(true)
   const isInitialMountCurrentGraph = useRef(true)
 
   useEffect(async () => {
@@ -36,12 +35,21 @@ const GraphVisualisationWrapper = ({
       t
     })
 
-    const nodesProperties = await getNodeProperties({
+    // get nodes properties
+    const annotationProperties = await getNodeProperties({
       setStoreState,
       t
     })
 
-    setStoreState('nodesProperties', nodesProperties)
+    setStoreState('annotationProperties', annotationProperties)
+
+    // get edges properties for editing ontology connections
+    const edgesProperties = await getEdgeProperties({
+      setStoreState,
+      t
+    })
+
+    setStoreState('edgesProperties', edgesProperties)
 
     // TODO: Should become async when API call instead of localstorage
     loadGraphVersionFromServer({
@@ -62,13 +70,11 @@ const GraphVisualisationWrapper = ({
     }
 
     addToObject('graphVersions', 'original', {
+      ...GRAPH_VERSION_STRUCTURE,
       classesFromApi: classes,
       objectPropertiesFromApi: objectProperties,
       classesFromApiBackup: classes,
       objectPropertiesFromApiBackup: objectProperties,
-      deletedNodes: [],
-      addedNodes: [],
-      updatedNodes: []
     })
 
     setGraphData({
@@ -88,21 +94,6 @@ const GraphVisualisationWrapper = ({
   },
   [
     selectedGraphVersion
-  ])
-
-  // Update nodes to display based on graph version when ontology is updated except at component mount
-  useEffect(() => {
-    if (isInitialMountOntologyUpdated.current) {
-      isInitialMountOntologyUpdated.current = false
-    } else if (isOntologyUpdated) {
-      setGraphData({
-        setStoreState,
-      })
-      setStoreState('isOntologyUpdated', false)
-    }
-  },
-  [
-    isOntologyUpdated
   ])
 
   useEffect(() => {
@@ -169,7 +160,6 @@ GraphVisualisationWrapper.propTypes = {
   boundingBoxGeometry: PropTypes.shape().isRequired,
   addToObject: PropTypes.func.isRequired,
   selectedGraphVersion: PropTypes.string.isRequired,
-  isOntologyUpdated: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
@@ -180,7 +170,6 @@ const mapToProps = ({
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   selectedGraphVersion,
-  isOntologyUpdated
 }) => ({
   currentGraph,
   graphData,
@@ -189,7 +178,6 @@ const mapToProps = ({
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   selectedGraphVersion,
-  isOntologyUpdated
 })
 
 export default connect(

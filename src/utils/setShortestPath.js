@@ -17,8 +17,6 @@ const setShortestPath = async ({
   addToObject,
 }) => {
   const {
-    availableEdgesNormalised,
-    availableNodesNormalised,
     lastGraphIndex,
     nodesConnections,
     shortestPathSelectedNodes,
@@ -26,8 +24,6 @@ const setShortestPath = async ({
 
   const shortestPathResults = await getShortestPath({
     shortestPathSelectedNodes,
-    availableEdgesNormalised,
-    availableNodesNormalised,
     nodesConnections
   })
 

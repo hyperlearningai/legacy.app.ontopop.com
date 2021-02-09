@@ -5,8 +5,11 @@ import {
   LABEL_PROPERTY,
   OWL_ANNOTATION_PROPERTIES
 } from '../../constants/graph'
+import showNotification from '../showNotification'
+import { NOTIFY_WARNING } from '../../constants/notifications'
+
 /**
- * Set graph full data
+ * ADd ontology nodes
  * @param  {Object}         params
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.addToObject                Add to object action
@@ -16,7 +19,8 @@ import {
 const setOntologyAddNode = ({
   setStoreState,
   selectedElementProperties,
-  addToObject
+  addToObject,
+  t
 }) => {
   const {
     graphVersions,
@@ -24,14 +28,21 @@ const setOntologyAddNode = ({
     selectedGraphVersion,
     availableNodes,
     addedNodes,
-    availableNodesNormalised
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  // const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
   const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
 
   const newNodeId = selectedElementProperties[UNIQUE_PROPERTY]
+
+  if (availableNodes.get(newNodeId)) {
+    const message = `${t('nodeIdAlreadyExists')}: newNodeId`
+
+    return showNotification({
+      message,
+      type: NOTIFY_WARNING
+    })
+  }
 
   newClassesFromApi[newNodeId] = {}
 
@@ -54,7 +65,11 @@ const setOntologyAddNode = ({
 
       if (propertyKey === LABEL_PROPERTY) {
         newClassesFromApi[newNodeId].label = selectedElementProperties[propertyKey]
-        availableNodes.add({ id: newNodeId, label: selectedElementProperties[propertyKey] })
+        availableNodes.add({
+          ...newClassesFromApi[newNodeId],
+          id: newNodeId,
+          label: selectedElementProperties[propertyKey]
+        })
       }
     }
 
@@ -69,13 +84,6 @@ const setOntologyAddNode = ({
   newGraphVersion.classesFromApi = newClassesFromApi
   newGraphVersion.addedNodes = newAddedNodes
 
-  setStoreState('availableNodesNormalised', {
-    ...availableNodesNormalised,
-    [newNodeId]: {
-      ...newClassesFromApi[newNodeId],
-      id: newNodeId
-    }
-  })
   addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('addedNodes', newAddedNodes)

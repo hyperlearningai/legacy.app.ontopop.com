@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.2.0]
 ### Added
+- ONTOLOGY-33 Added connections create-delete-restore operations in selected graph version
+- ONTOLOGY-33 Added edge create-update-delete-restore operations in selected graph version
 - ONTOLOGY-32 Added graph version save/upload functions, both to/from file and localStorage
 - ONTOLOGY-32 Added node create-update-delete-restore operations in selected graph version
 - ONTOLOGY-32 Added graph versioning tab and way to add/select version
@@ -30,12 +32,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-47 Visualise subnetwork after dynamic bounding box selection
 
 ### Changed
+- ONTOLOGY-33 Removed availableNodesNormalised and availableEdgesNormalised and replaced with AvailableNodes and AvailableEdges DataSet
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+- ONTOLOGY-33 Fixed edges filter, using annotation properties for property dropdown
 - ONTOLOGY-32 Added useRef constants in GraphVisualisationWrapper to avoid refreshing the graph multiple times at startup
 - ONTOLOGY-47 Removed highlight from free-text search selected node after sidebar section update
 

@@ -18,11 +18,11 @@ exports[`Versioning should match snapshot  1`] = `
     Object {
       "original": Object {
         "addedNodes": Array [],
+        "annotationProperties": Array [],
         "classesFromApi": Object {},
         "classesFromApiBackup": Object {},
         "deletedNodes": Array [],
         "edgesProperties": Array [],
-        "nodesProperties": Array [],
         "objectPropertiesFromApi": Object {},
         "objectPropertiesFromApiBackup": Object {},
         "updatedNodes": Array [],

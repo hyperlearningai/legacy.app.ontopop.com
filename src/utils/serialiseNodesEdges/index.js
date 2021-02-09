@@ -50,10 +50,6 @@ const serialiseNodesEdges = ({
 
   const addedNodes = []
   const addedEdges = []
-  const availableNodesList = []
-  const availableEdgesList = []
-  const availableNodesNormalised = {}
-  const availableEdgesNormalised = {}
   const nodesConnections = {}
   const edgesConnections = {}
 
@@ -66,6 +62,12 @@ const serialiseNodesEdges = ({
     shortestPathResults
   })
 
+  // spiral coordinates positions
+  const circleMax = 1
+  const padding = 1
+  const angle = 0
+  const step = 0
+
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId]
@@ -75,14 +77,17 @@ const serialiseNodesEdges = ({
       ? nodeIdObject.rdfsLabel.replace(/ /g, '\n') : ''
 
     addNode({
-      availableNodesNormalised,
-      availableNodesList,
+      availableNodes,
       addedNodes,
       isNodeOverlay,
       nodeId,
       nodeIdObject,
       highlightedNodes,
       shortestPathNodes,
+      circleMax,
+      padding,
+      step,
+      angle
     })
 
     if (triples && triples.length > 0) {
@@ -92,6 +97,8 @@ const serialiseNodesEdges = ({
           predicate,
           to
         } = triple
+
+        if (!objectPropertiesFromApi[predicate]) return false
 
         const {
           edgeUniqueId,
@@ -124,7 +131,7 @@ const serialiseNodesEdges = ({
             addedEdges,
             edgeUniqueId,
             edge,
-            availableEdgesList,
+            availableEdges,
             edgesConnections,
             edgeConnection,
             predicate,
@@ -133,29 +140,34 @@ const serialiseNodesEdges = ({
             nodesConnections,
             nodesIdsToDisplay,
             edgesIdsToDisplay,
-            availableEdgesNormalised,
           })
 
           addNode({
-            availableNodesNormalised,
-            availableNodesList,
+            availableNodes,
             addedNodes,
             highlightedNodes,
             isNodeOverlay,
             nodeId: to,
             nodeIdObject: toObject,
             shortestPathNodes,
+            circleMax,
+            padding,
+            step,
+            angle
           })
 
           addNode({
-            availableNodesNormalised,
-            availableNodesList,
+            availableNodes,
             addedNodes,
             highlightedNodes,
             isNodeOverlay,
             nodeId: from,
             nodeIdObject: fromObject,
             shortestPathNodes,
+            circleMax,
+            padding,
+            step,
+            angle
           })
         }
 
@@ -164,13 +176,10 @@ const serialiseNodesEdges = ({
     }
   }
 
-  setStoreState('availableNodesNormalised', availableNodesNormalised)
-  setStoreState('availableEdgesNormalised', availableEdgesNormalised)
+  setStoreState('availableNodesCount', availableNodes.length)
+  setStoreState('availableEdgesCount', availableEdges.length)
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
-
-  availableNodes.add(availableNodesList)
-  availableEdges.add(availableEdgesList)
 
   network?.redraw()
   network?.setOptions(getPhysicsOptions({
@@ -185,7 +194,6 @@ const serialiseNodesEdges = ({
     nodesConnections,
     triplesPerNode,
     availableNodes,
-    availableNodesNormalised
   })
 
   return true
