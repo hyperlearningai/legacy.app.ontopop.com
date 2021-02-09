@@ -7,6 +7,7 @@ import {
   BsCaretDownFill,
 } from 'react-icons/bs'
 import actions from '../store/actions'
+import { PROPERTIES_TO_IGNORE } from '../constants/graph'
 
 const EdgeSelectionDetailsRow = ({
   availableNodes,
@@ -17,7 +18,8 @@ const EdgeSelectionDetailsRow = ({
   const [isExpanded, toggleExpanded] = useState(false)
 
   const nodeKeys = Object.keys(availableNodes.get(connection.from)).filter((key) => typeof availableNodes.get(connection.from)[key] !== 'object'
-    && !key.includes('label')).sort()
+    && !key.includes('label')
+    && !PROPERTIES_TO_IGNORE.includes(key)).sort()
 
   return (
     <tr>

@@ -1,7 +1,7 @@
-import store from '../store'
+import store from '../../store'
 import {
   OWL_ANNOTATION_PROPERTIES
-} from '../constants/graph'
+} from '../../constants/graph'
 /**
  * Set graph full data
  * @param  {Object}         params

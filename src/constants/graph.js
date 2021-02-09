@@ -24,6 +24,12 @@ export const NODE_FONT = {
 export const SUB_CLASS_OF_ID = 'http://www.w3.org/2000/01/rdf-schema#subclassof'
 export const SUB_CLASS_OF_LABEL = 'subClassOf'
 
+export const SUB_CLASS_OF_OBJECT = {
+  id: SUB_CLASS_OF_ID,
+  label: SUB_CLASS_OF_LABEL,
+  value: SUB_CLASS_OF_ID
+}
+
 export const LOW_LEVEL_PROPERTIES = [
   'rdfAbout',
   'rdfsLabel',
@@ -42,7 +48,9 @@ export const REQUIRED_PROPERTIES = [
 
 export const UNIQUE_PROPERTY = 'rdfAbout'
 export const LABEL_PROPERTY = 'rdfsLabel'
+export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'
 export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
+export const OWL_RESTRICTION = 'owlRestriction'
 
 export const REQUIRED_PREDICATES = [
   'rdfsSubClassOf',
@@ -64,3 +72,10 @@ export const GRAPH_VERSION_STRUCTURE = {
   deletedConnections: [],
   addedConnections: [],
 }
+
+export const PROPERTIES_TO_IGNORE = [
+  'id',
+  'label',
+  'x',
+  'y'
+]

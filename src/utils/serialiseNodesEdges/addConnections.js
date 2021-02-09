@@ -29,7 +29,7 @@ const addConnections = ({
 }) => {
   addedEdges.push(edgeUniqueId)
 
-  if (!availableEdges.get(edge.id)) {
+  if (availableEdges.get(edge.id) === null) {
     availableEdges.add(edge)
   }
 

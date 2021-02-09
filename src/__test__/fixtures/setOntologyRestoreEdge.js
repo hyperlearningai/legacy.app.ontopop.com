@@ -18,7 +18,7 @@ deletedNodes.map((nodeId) => {
   return true
 })
 
-newClassesFromApi['http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'].rdfsSubClassOf = newClassesFromApi['http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'].rdfsSubClassOf.filter((item) => item.classRdfAbout !== 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M')
+// newClassesFromApi['http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'].rdfsSubClassOf = newClassesFromApi['http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'].rdfsSubClassOf.filter((item) => item.classRdfAbout !== 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M')
 
 newObjectPropertiesFromApi['http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8'] = {
   owlAnnotationProperties: {
@@ -75,7 +75,11 @@ export const setStoreStateFixture = [
     ],
   ],
   [
-    'isOntologyUpdated',
-    true,
+    'classesFromApi',
+    newClassesFromApi,
+  ],
+  [
+    'objectPropertiesFromApi',
+    newObjectPropertiesFromApi,
   ],
 ]

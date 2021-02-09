@@ -11,8 +11,8 @@ import highlightSpiderableNodes from '../../../utils/highlightSpiderableNodes'
 jest.mock('../../../utils/highlightSpiderableNodes')
 const setStoreState = jest.fn()
 
-const availableNodes = new DataSet([])
-const availableEdges = new DataSet([])
+const availableNodes = new DataSet()
+const availableEdges = new DataSet()
 const isNodeOverlay = true
 const nodesIdsToDisplay = [
   'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',

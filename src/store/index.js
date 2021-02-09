@@ -80,7 +80,7 @@ const initialState = {
 
   // states to update at every view refresh
   // physics
-  isPhysicsOn: false,
+  isPhysicsOn: true,
   physicsHierarchicalView: false,
   physicsRepulsion: true,
   physicsEdgeLength: 250,
@@ -106,7 +106,6 @@ const initialState = {
 
   // new graph version
   selectedGraphVersion: 'original',
-  isOntologyUpdated: false,
   graphVersions: {
     original: GRAPH_VERSION_STRUCTURE,
   },

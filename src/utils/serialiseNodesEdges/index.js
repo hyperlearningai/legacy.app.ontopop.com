@@ -62,6 +62,12 @@ const serialiseNodesEdges = ({
     shortestPathResults
   })
 
+  // spiral coordinates positions
+  const circleMax = 1
+  const padding = 1
+  const angle = 0
+  const step = 0
+
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId]
@@ -78,6 +84,10 @@ const serialiseNodesEdges = ({
       nodeIdObject,
       highlightedNodes,
       shortestPathNodes,
+      circleMax,
+      padding,
+      step,
+      angle
     })
 
     if (triples && triples.length > 0) {
@@ -140,6 +150,10 @@ const serialiseNodesEdges = ({
             nodeId: to,
             nodeIdObject: toObject,
             shortestPathNodes,
+            circleMax,
+            padding,
+            step,
+            angle
           })
 
           addNode({
@@ -150,6 +164,10 @@ const serialiseNodesEdges = ({
             nodeId: from,
             nodeIdObject: fromObject,
             shortestPathNodes,
+            circleMax,
+            padding,
+            step,
+            angle
           })
         }
 

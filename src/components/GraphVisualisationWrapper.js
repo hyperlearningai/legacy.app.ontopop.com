@@ -23,12 +23,10 @@ const GraphVisualisationWrapper = ({
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   addToObject,
-  selectedGraphVersion,
-  isOntologyUpdated
+  selectedGraphVersion
 }) => {
   const { t } = useTranslation()
   const isInitialMountSelectedGraphVersion = useRef(true)
-  const isInitialMountOntologyUpdated = useRef(true)
   const isInitialMountCurrentGraph = useRef(true)
 
   useEffect(async () => {
@@ -98,21 +96,6 @@ const GraphVisualisationWrapper = ({
     selectedGraphVersion
   ])
 
-  // Update nodes to display based on graph version when ontology is updated except at component mount
-  useEffect(() => {
-    if (isInitialMountOntologyUpdated.current) {
-      isInitialMountOntologyUpdated.current = false
-    } else if (isOntologyUpdated) {
-      setGraphData({
-        setStoreState,
-      })
-      setStoreState('isOntologyUpdated', false)
-    }
-  },
-  [
-    isOntologyUpdated
-  ])
-
   useEffect(() => {
     if (isInitialMountCurrentGraph.current) {
       isInitialMountCurrentGraph.current = false
@@ -177,7 +160,6 @@ GraphVisualisationWrapper.propTypes = {
   boundingBoxGeometry: PropTypes.shape().isRequired,
   addToObject: PropTypes.func.isRequired,
   selectedGraphVersion: PropTypes.string.isRequired,
-  isOntologyUpdated: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
@@ -188,7 +170,6 @@ const mapToProps = ({
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   selectedGraphVersion,
-  isOntologyUpdated
 }) => ({
   currentGraph,
   graphData,
@@ -197,7 +178,6 @@ const mapToProps = ({
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   selectedGraphVersion,
-  isOntologyUpdated
 })
 
 export default connect(

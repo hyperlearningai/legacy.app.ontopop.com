@@ -171,6 +171,12 @@ export default {
   idExists: 'ID already exists',
   noDeletedElements: 'No deleted elements to restore!',
   nodeIdAlreadyExists: 'Node ID already exists',
+  connection: 'Connection',
+  chooseElementsToConnect: 'Choose elements to connect',
+  fromNode: 'From node',
+  toNode: 'To node',
+  toAndFromNodesEqual: 'To and from nodes cannot be the same!',
+  connectionAlreadyExists: 'Connection already exists',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',
@@ -199,9 +205,9 @@ export default {
   properties: 'Properties',
   relationships: 'Relationships',
   from: 'From',
-  connection: 'Connection',
   to: 'to',
   nodesProperties: 'Nodes properties',
+  predicate: 'Predicate',
 
   // search
   search: 'Search',

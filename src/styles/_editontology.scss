@@ -1,4 +1,4 @@
-.ontology-edit {
+.edit-ontology {
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -7,6 +7,7 @@
   .p-dropdown,
   .p-multiselect {
     width: 100%;
+    white-space: normal;
 
     &-items-label {
       height: auto;
@@ -43,6 +44,7 @@
       .p-multiselect-item {
         width: 100%;
         min-width: 100px;
+        white-space: normal;
 
         span {
           width: 100%;
@@ -113,13 +115,14 @@
       }
     }
 
-    #operation-select {
+    #operation-select,
+    #type-select {
       width: 100%;
       text-align: center;
 
       .p-button {
         margin: 0.5px;
-        width: 40%;
+        width: 49%;
       }
     }
   }

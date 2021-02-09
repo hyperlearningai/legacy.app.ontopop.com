@@ -1,4 +1,7 @@
 import { SELECTED_NODE_COLOR } from '../../constants/graph'
+import getSpiralCoordinates from './getSpiralCoordinates'
+
+let step = 0
 
 /**
  * Add node to arrays/objects
@@ -20,9 +23,12 @@ const addNode = ({
   nodeId,
   nodeIdObject,
   shortestPathNodes,
+  circleMax,
+  padding,
+  angle
 }) => {
   if (!addedNodes.includes(nodeId)
-  && !availableNodes.get(nodeId)
+  && availableNodes.get(nodeId) === null
   && nodeIdObject.label
   && nodeIdObject.label !== ''
   ) {
@@ -35,6 +41,16 @@ const addNode = ({
     } else if (isNodeOverlay && !shortestPathNodes.includes(nodeId)) {
       extendedNodeObject.opacity = 0.1
     }
+
+    const { x, y } = getSpiralCoordinates({
+      circleMax,
+      padding,
+      step,
+      angle
+    })
+    extendedNodeObject.x = x
+    extendedNodeObject.y = y
+    step += 1
 
     availableNodes.add(extendedNodeObject)
     addedNodes.push(nodeId)

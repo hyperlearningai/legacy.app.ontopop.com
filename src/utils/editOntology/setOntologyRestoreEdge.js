@@ -1,5 +1,7 @@
 import flatten from 'flat'
+import { generatePredicateId } from '../../constants/functions'
 import store from '../../store'
+import getEdge from '../serialiseNodesEdges/getEdge'
 
 /**
  * Restore ontology nodes
@@ -18,10 +20,10 @@ const setOntologyRestoreEdge = ({
     graphVersions,
     classesFromApi,
     objectPropertiesFromApi,
-    deletedNodes,
+    availableEdges,
     deletedEdges,
     selectedGraphVersion,
-    currentGraph
+    availableNodes
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -29,56 +31,58 @@ const setOntologyRestoreEdge = ({
   const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(newGraphVersion.objectPropertiesFromApiBackup))
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
 
-  // restore edge from backup to objectPropertiesFromApi
-  for (let index = 0; index < selectedElement.length; index++) {
-    const edgeId = selectedElement[index]
+  // remove selected elements from deleted connection
+  const newDeletedEdges = deletedEdges.filter((edge) => !selectedElement.includes(edge))
+  setStoreState('deletedEdges', newDeletedEdges)
 
-    const edgeObjectBackup = newObjectPropertiesFromApiBackup[edgeId]
+  if (selectedElement.length > 0) {
+    // restore edge from backup to objectPropertiesFromApi
+    selectedElement.map((edgeId) => {
+      const edgeObjectBackup = newObjectPropertiesFromApiBackup[edgeId]
 
-    newObjectPropertiesFromApi[edgeId] = edgeObjectBackup
+      newObjectPropertiesFromApi[edgeId] = edgeObjectBackup
+      return true
+    })
   }
 
   const flatClassesFromApiBackup = flatten(newGraphVersion.classesFromApiBackup)
+  const flatObjectPropertiesKeys = Object.keys(flatClassesFromApiBackup).filter((flatKey) => flatKey.includes('objectPropertyRdfAbout') && selectedElement.includes(
+    flatClassesFromApiBackup[flatKey]
+  ))
 
-  // Remove nodes from deletedNodes
-  const newDeletedEdges = deletedEdges.slice().filter((edgeId) => !selectedElement.includes(edgeId))
+  flatObjectPropertiesKeys.map((flatObjectPropertiesKey) => {
+    const [from] = flatObjectPropertiesKey.split('.rdfsSubClassOf.')
+    const to = flatClassesFromApiBackup[flatObjectPropertiesKey.replace('objectPropertyRdfAbout', 'classRdfAbout')]
+    const predicate = flatClassesFromApiBackup[flatObjectPropertiesKey]
 
-  // restore connections with deleted edges
-  for (let index = 0; index < Object.keys(flatClassesFromApiBackup).length; index++) {
-    const flatKey = Object.keys(flatClassesFromApiBackup)[index]
-    if (selectedElement.includes(flatClassesFromApiBackup[flatKey])
-    && flatKey.includes('rdfsSubClassOf')) {
-      const [elementId] = flatKey.split('.rdfsSubClassOf')
-      const { rdfsSubClassOf } = newGraphVersion.classesFromApiBackup[elementId]
+    if (availableNodes.get(from) && availableNodes.get(to)) {
+      const edgeId = generatePredicateId({
+        from, predicate, to
+      })
 
-      if (rdfsSubClassOf && rdfsSubClassOf.length > 0) {
-        const newRdfsSubClassOf = rdfsSubClassOf.filter((nodeConnection) => {
-          const isInDeletedNodes = deletedNodes.includes(nodeConnection.classRdfAbout)
-          if (!rdfsSubClassOf.owlRestriction) return !isInDeletedNodes
-
-          const isInDeletedEdges = newDeletedEdges.includes(nodeConnection.owlRestriction.objectPropertyRdfAbout)
-
-          return !isInDeletedNodes && !isInDeletedEdges
+      if (availableEdges.get(edgeId) === null) {
+        const { edge } = getEdge({
+          classesFromApi,
+          from,
+          objectPropertiesFromApi: newObjectPropertiesFromApiBackup,
+          predicate,
+          to,
         })
 
-        if (newClassesFromApi[elementId]) {
-          newClassesFromApi[elementId].rdfsSubClassOf = newRdfsSubClassOf
-        }
+        availableEdges.add(edge)
       }
     }
-  }
+
+    return true
+  })
 
   newGraphVersion.classesFromApi = newClassesFromApi
+  newGraphVersion.objectPropertiesFromApi = newObjectPropertiesFromApi
   newGraphVersion.deletedEdges = newDeletedEdges
 
   addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
-  setStoreState('deletedEdges', newDeletedEdges)
-
-  if (currentGraph !== 'graph-0') {
-    return setStoreState('currentGraph', 'graph-0')
-  }
-
-  return setStoreState('isOntologyUpdated', true)
+  setStoreState('classesFromApi', newClassesFromApi)
+  setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
 }
 
 export default setOntologyRestoreEdge

@@ -18,7 +18,7 @@ describe('addConnections', () => {
     }
     const add = jest.fn()
     const availableEdges = {
-      get: () => undefined,
+      get: () => null,
       add
     }
     const edgesConnections = {}

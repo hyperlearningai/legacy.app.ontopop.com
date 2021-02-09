@@ -37,10 +37,6 @@ const setNetwork = ({
     },
     physicsSettings))
 
-  // after first draw, turn off physics and repulsion as default value
-  setStoreState('isPhysicsOn', false)
-  setStoreState('physicsRepulsion', false)
-
   const canvas = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
 
   canvas.addEventListener('mousedown', (e) => onMouseDown({

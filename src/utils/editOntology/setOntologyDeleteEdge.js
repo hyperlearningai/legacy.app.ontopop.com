@@ -1,5 +1,7 @@
 import flatten from 'flat'
 import store from '../../store'
+import { SUBCLASSOF_PROPERTY } from '../../constants/graph'
+import { generatePredicateId } from '../../constants/functions'
 
 /**
  * Delete ontology nodes
@@ -20,49 +22,52 @@ const setOntologyDeleteEdge = ({
     deletedEdges,
     selectedGraphVersion,
     classesFromApi,
-    currentGraph
+    availableEdges,
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
   const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
+  const newDeletedEdges = deletedEdges.slice()
 
-  // add deleted nodes to graph version and remove nodes from classes object
   if (selectedElement.length > 0) {
-    newGraphVersion.deletedEdges = [
-      ...newGraphVersion.deletedEdges,
-      ...selectedElement
-    ]
+    // delete edges from object properties
+    selectedElement.map((edgeId) => {
+      if (!newDeletedEdges.includes(edgeId)) {
+        newDeletedEdges.push(edgeId)
+      }
 
-    selectedElement.map((element) => {
-      delete newObjectPropertiesFromApi[element]
+      delete newObjectPropertiesFromApi[edgeId]
+      return true
+    })
 
+    const flatClassesFromApi = flatten(newClassesFromApi)
+    const flatPropertyKeys = Object.keys(flatClassesFromApi).filter((flatKey) => flatKey.includes('objectPropertyRdfAbout'))
+
+    // remove all edges connection in nodes
+    flatPropertyKeys.reverse().map((flatPropertyKey) => {
+      if (selectedElement.includes(flatClassesFromApi[flatPropertyKey])) {
+        const [from, subKeys] = flatPropertyKey.split('.rdfsSubClassOf.')
+        const predicate = flatClassesFromApi[flatPropertyKey]
+        const to = flatClassesFromApi[flatPropertyKey.replace('objectPropertyRdfAbout', 'classRdfAbout')]
+
+        const predicateArrayIndex = subKeys.split('.owlRestriction')[0]
+
+        // remove from node subclass
+        newClassesFromApi[from][SUBCLASSOF_PROPERTY].splice(predicateArrayIndex, 1)
+
+        // remove from graph
+        const edgeId = generatePredicateId({
+          from, predicate, to
+        })
+
+        if (availableEdges.get(edgeId)) {
+          availableEdges.remove(edgeId)
+        }
+      }
       return true
     })
   }
-
-  const flatClassesFromApi = flatten(newClassesFromApi)
-
-  // removes connections with deleted nodes
-  for (let index = 0; index < Object.keys(flatClassesFromApi).length; index++) {
-    const flatKey = Object.keys(flatClassesFromApi)[index]
-
-    if (selectedElement.includes(flatClassesFromApi[flatKey])) {
-      const [elementId, subKey] = flatKey.split('.rdfsSubClassOf')
-      const { rdfsSubClassOf } = newClassesFromApi[elementId]
-
-      const subClassIndex = subKey.split('.')[1]
-
-      rdfsSubClassOf.splice(subClassIndex, 1)
-
-      newClassesFromApi[elementId].rdfsSubClassOf = rdfsSubClassOf
-    }
-  }
-
-  const newDeletedEdges = [
-    ...deletedEdges,
-    ...selectedElement
-  ]
 
   newGraphVersion.classesFromApi = newClassesFromApi
   newGraphVersion.objectPropertiesFromApi = newObjectPropertiesFromApi
@@ -70,12 +75,8 @@ const setOntologyDeleteEdge = ({
 
   addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
   setStoreState('deletedEdges', newDeletedEdges)
-
-  if (currentGraph !== 'graph-0') {
-    return setStoreState('currentGraph', 'graph-0')
-  }
-
-  return setStoreState('isOntologyUpdated', true)
+  setStoreState('classesFromApi', newClassesFromApi)
+  setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
 }
 
 export default setOntologyDeleteEdge

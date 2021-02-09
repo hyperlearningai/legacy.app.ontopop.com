@@ -1,4 +1,5 @@
 /* eslint max-len:0 */
+import { DataSet } from 'vis-data'
 import setOntologyRestoreEdgeDeleteNode from '../../../utils/editOntology/setOntologyRestoreEdge'
 import store from '../../../store'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
@@ -14,7 +15,6 @@ const selectedElement = Object.keys(OwlObjectProperties).slice(0, 2)
 const deletedNodes = Object.keys(OwlClasses).slice(0, 4)
 const deletedEdges = Object.keys(OwlObjectProperties).slice(0, 4)
 const newClassesFromApi = JSON.parse(JSON.stringify(OwlClasses))
-const newClassesFromApiBackup = JSON.parse(JSON.stringify(OwlClasses))
 const objectPropertiesFromApi = JSON.parse(JSON.stringify(OwlObjectProperties))
 
 deletedNodes.map((nodeId) => {
@@ -31,16 +31,13 @@ describe('setOntologyRestoreEdge', () => {
   })
 
   it('should work correctly', async () => {
-    const currentGraph = 'graph-0'
-
     const getState = jest.fn().mockImplementationOnce(() => ({
       graphVersions,
       classesFromApi: newClassesFromApi,
-      classesFromApiBackup: newClassesFromApiBackup, // OwlClasses,
-      deletedNodes,
+      availableEdges: new DataSet([]),
+      availableNodes: new DataSet([]),
       deletedEdges,
       selectedGraphVersion: 'original',
-      currentGraph,
       objectPropertiesFromApi
     }))
     store.getState = getState

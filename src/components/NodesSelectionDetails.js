@@ -2,6 +2,7 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
+import { PROPERTIES_TO_IGNORE } from '../constants/graph'
 
 const NodesSelectionDetails = ({
   nodeId,
@@ -12,8 +13,8 @@ const NodesSelectionDetails = ({
 
   const selectedNode = availableNodes.get(nodeId)
 
-  const tableRowNames = Object.keys(selectedNode).filter((key) => typeof selectedNode[key] !== 'object'
-    && !key.includes('label')).sort()
+  const tableRowNames = Object.keys(selectedNode).filter((key) => (typeof selectedNode[key] !== 'object'
+    && !PROPERTIES_TO_IGNORE.includes(key))).sort()
 
   let connections = []
 

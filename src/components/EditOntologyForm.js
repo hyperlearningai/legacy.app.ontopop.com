@@ -59,7 +59,7 @@ const EditOntologyForm = ({
 
           return (
             <div
-              className="ontology-edit-row"
+              className="edit-ontology-row"
               key={`element-property-${id}`}
             >
               <label className="form-label" htmlFor={`element-property-${id}`}>

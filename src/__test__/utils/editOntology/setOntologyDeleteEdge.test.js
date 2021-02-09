@@ -1,4 +1,5 @@
 /* eslint max-len:0 */
+import { DataSet } from 'vis-data'
 import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
 import store from '../../../store'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
@@ -20,15 +21,19 @@ describe('setOntologyDeleteEdge', () => {
     jest.clearAllMocks()
   })
 
-  it('should work correctly when current graph is graph-0', async () => {
-    const currentGraph = 'graph-0'
+  it('should work correctly', async () => {
     const getState = jest.fn().mockImplementationOnce(() => ({
       graphVersions,
       objectPropertiesFromApi: OwlObjectProperties,
-      classesFromApi: OwlClasses,
       deletedEdges,
       selectedGraphVersion: 'original',
-      currentGraph
+      classesFromApi: OwlClasses,
+      availableEdges: new DataSet(
+        Object.keys(OwlObjectProperties).map((property) => ({
+          id: property,
+          label: OwlObjectProperties[property].rdfsLabel
+        }))
+      )
     }))
     store.getState = getState
 
@@ -45,42 +50,5 @@ describe('setOntologyDeleteEdge', () => {
     )
 
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
-  })
-
-  it('should work correctly when current graph is not graph-0', async () => {
-    const currentGraph = 'graph-1'
-    const getState = jest.fn().mockImplementationOnce(() => ({
-      graphVersions,
-      objectPropertiesFromApi: OwlObjectProperties,
-      classesFromApi: OwlClasses,
-      deletedEdges,
-      selectedGraphVersion: 'original',
-      currentGraph
-    }))
-    store.getState = getState
-
-    await setOntologyDeleteEdge({
-      selectedElement,
-      setStoreState,
-      addToObject
-    })
-
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphVersions',
-      'original',
-      addToObjectFixture
-    )
-
-    setStoreStateFixture.splice(-1, 1)
-
-    const setStoreStateOutput = [
-      ...setStoreStateFixture,
-      ...[
-        [
-          'currentGraph',
-          'graph-0']
-      ]
-    ]
-    expect(setStoreState.mock.calls).toEqual(setStoreStateOutput)
   })
 })

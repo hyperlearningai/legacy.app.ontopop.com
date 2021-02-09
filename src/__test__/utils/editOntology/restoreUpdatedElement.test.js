@@ -1,6 +1,6 @@
-import restoreUpdatedElement from '../../utils/restoreUpdatedElement'
-import store from '../../store'
-import { OwlClasses } from '../fixtures/test-ontology-classes.json'
+import restoreUpdatedElement from '../../../utils/editOntology/restoreUpdatedElement'
+import store from '../../../store'
+import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 
 const setSelectedElementProperties = jest.fn()
 const selectedElement = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
