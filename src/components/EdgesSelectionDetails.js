@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 import EdgeSelectionDetailsRow from './EdgeSelectionDetailsRow'
+import { PROPERTIES_TO_IGNORE } from '../constants/graph'
 
 const EdgesSelectionDetails = ({
   edgeId,
@@ -14,7 +15,8 @@ const EdgesSelectionDetails = ({
   const selectedEdge = objectPropertiesFromApi[edgeId]
 
   const tableRowNames = Object.keys(selectedEdge).filter((key) => typeof selectedEdge[key] !== 'object'
-    && !key.includes('label')).sort()
+    && !key.includes('label')
+    && !PROPERTIES_TO_IGNORE.includes(key)).sort()
 
   let connections = []
 

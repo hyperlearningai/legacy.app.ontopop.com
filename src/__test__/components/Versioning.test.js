@@ -13,7 +13,7 @@ const setup = () => {
         objectPropertiesFromApi: {},
         classesFromApiBackup: {},
         objectPropertiesFromApiBackup: {},
-        nodesProperties: [],
+        annotationProperties: [],
         edgesProperties: [],
         deletedNodes: [],
         addedNodes: [],

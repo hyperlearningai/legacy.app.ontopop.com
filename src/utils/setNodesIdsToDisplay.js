@@ -8,9 +8,9 @@ import {
 } from '../constants/algorithms'
 import getNodesEdgesFromPaths from './getNodesEdgesFromPaths'
 import getNeighbours from './getNeighbours'
-import getBoundingBoxEdges from './getBoundingBoxEdges'
-import getNodesFromNodesFilters from './getNodesFromNodesFilters'
-import getNodesEdgesFromEdgesFilters from './getNodesEdgesFromEdgesFilters'
+import getBoundingBoxEdges from './boundingBoxSelection/getBoundingBoxEdges'
+import getNodesFromNodesFilters from './nodesFilter/getNodesFromNodesFilters'
+import getNodesEdgesFromEdgesFilters from './edgesFilter/getNodesEdgesFromEdgesFilters'
 import store from '../store'
 
 /**

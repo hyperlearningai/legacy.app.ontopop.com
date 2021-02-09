@@ -1,5 +1,7 @@
 /* eslint max-len:0 */
 
+import { DataSet } from 'vis-data'
+
 export const availableNodesNormalised = {
   'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': {
     id: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
@@ -6755,3 +6757,12 @@ export const availableNodesNormalised = {
     label: 'Water\nQuality'
   }
 }
+
+export const availableNodes = new DataSet(
+  Object.keys(availableNodesNormalised).map(
+    (nodeId) => ({
+      ...availableNodesNormalised[nodeId],
+      id: nodeId
+    })
+  )
+)

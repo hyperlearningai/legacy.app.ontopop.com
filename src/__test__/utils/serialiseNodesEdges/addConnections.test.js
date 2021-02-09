@@ -16,8 +16,11 @@ describe('addConnections', () => {
       from,
       to
     }
-    const availableEdgesNormalised = {}
-    const availableEdgesList = []
+    const add = jest.fn()
+    const availableEdges = {
+      get: () => null,
+      add
+    }
     const edgesConnections = {}
     const edgeConnection = {
       ...edge
@@ -28,8 +31,7 @@ describe('addConnections', () => {
       addedEdges,
       edgeUniqueId,
       edge,
-      availableEdgesList,
-      availableEdgesNormalised,
+      availableEdges,
       edgesConnections,
       edgeConnection,
       predicate,
@@ -38,11 +40,7 @@ describe('addConnections', () => {
       nodesConnections
     })
 
-    expect(availableEdgesNormalised).toEqual({
-      pred_from_to: {
-        ...edge
-      }
-    })
+    expect(add).toHaveBeenCalledWith(edge)
     expect(edgesConnections).toEqual({
       'http://webprotege.stanford.edu/abc': [{
         ...edge

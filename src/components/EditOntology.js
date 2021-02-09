@@ -2,34 +2,28 @@ import { useState } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { Button } from 'primereact/button'
 import { SelectButton } from 'primereact/selectbutton'
-import { Dropdown } from 'primereact/dropdown'
-import { MultiSelect } from 'primereact/multiselect'
-import { SIDEBAR_VIEW_VERSIONING } from '../constants/views'
+import { SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
 import actions from '../store/actions'
-import setOntology from '../utils/editOntology/setOntology'
-import EditOntologyForm from './EditOntologyForm'
-import { UNIQUE_PROPERTY } from '../constants/graph'
-import restoreUpdatedElement from '../utils/restoreUpdatedElement'
+import { REQUIRED_PREDICATES } from '../constants/graph'
+import EditOntologyAddEdgeNode from './EditOntologyAddEdgeNode'
+import EditOntologyAddConnection from './EditOntologyAddConnection'
+import EditOntologyUpdateEdgeNode from './EditOntologyUpdateEdgeNode'
+import EditOntologyDeleteEdgeNode from './EditOntologyDeleteEdgeNode'
+import EditOntologyDeleteConnection from './EditOntologyDeleteConnection'
+import EditOntologyRestoreEdgeNode from './EditOntologyRestoreEdgeNode'
+import EditOntologyRestoreConnection from './EditOntologyRestoreConnection'
 
 const EditOntology = ({
   selectedGraphVersion,
   graphVersions,
-  setStoreState,
-  addToArray,
-  removeFromObject,
-  addToObject,
-  classesFromApi
 }) => {
   const { t } = useTranslation()
 
   const [operation, setOperation] = useState('add')
   const [type, setType] = useState('node')
-  const [selectedElement, setSelectedElement] = useState(undefined)
-  const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
-  const typeButtons = [{
+  const typeButtonsUpdate = [{
     label: t('node'),
     value: 'node',
     icon: 'pi-circle-off'
@@ -38,6 +32,14 @@ const EditOntology = ({
     label: t('edge'),
     icon: 'pi-arrow-right'
   }]
+
+  const typeButtons = [
+    ...typeButtonsUpdate,
+    {
+      value: 'connection',
+      label: t('connection'),
+      icon: 'pi-sort-alt'
+    }]
 
   const operationButtons = [{
     value: 'add',
@@ -58,7 +60,7 @@ const EditOntology = ({
   }]
 
   const itemTemplate = (option) => (
-    <span className="ontology-edit-row-select-option">
+    <span className="edit-ontology-row-select-option">
       <i className={`pi ${option.icon}`} />
       {` ${option.label}`}
     </span>
@@ -72,34 +74,34 @@ const EditOntology = ({
   )
 
   const availableEdges = Object.keys(graphVersions[selectedGraphVersion].objectPropertiesFromApi).map(
-    (nodeId) => ({
-      value: nodeId,
-      label: graphVersions[selectedGraphVersion].objectPropertiesFromApi[nodeId].rdfsLabel || nodeId
+    (edgeId) => ({
+      value: edgeId,
+      label: graphVersions[selectedGraphVersion].objectPropertiesFromApi[edgeId].rdfsLabel || edgeId
     })
-  )
+  ).filter((item) => !REQUIRED_PREDICATES.includes(item.value))
 
   const deletedNodes = graphVersions[selectedGraphVersion].deletedNodes?.map(
     (nodeId) => ({
       value: nodeId,
-      label: graphVersions[selectedGraphVersion].classesFromApiBackup[nodeId].rdfsLabel || nodeId
+      label: graphVersions[selectedGraphVersion].classesFromApiBackup[nodeId] ? graphVersions[selectedGraphVersion].classesFromApiBackup[nodeId].rdfsLabel : nodeId
     })
   )
 
   const deletedEdges = graphVersions[selectedGraphVersion].deletedEdges?.map(
     (edgeId) => ({
       value: edgeId,
-      label: graphVersions[selectedGraphVersion].objectPropertiesFromApiBackup[edgeId].rdfsLabel || edgeId
+      label: graphVersions[selectedGraphVersion].objectPropertiesFromApiBackup[edgeId] ? graphVersions[selectedGraphVersion].objectPropertiesFromApiBackup[edgeId].rdfsLabel : edgeId
     })
   )
 
   return (
     <>
       <div className="sidebar-main-title">
-        { t(SIDEBAR_VIEW_VERSIONING)}
+        { t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
       </div>
-      <div className="ontology-edit">
+      <div className="edit-ontology">
         <div
-          className="ontology-edit-row"
+          className="edit-ontology-row"
         >
           <label htmlFor="operation-select">
             {t('chooseOperation')}
@@ -109,8 +111,6 @@ const EditOntology = ({
             value={operation}
             options={operationButtons}
             onChange={(e) => {
-              setSelectedElement(undefined)
-              setSelectedElementProperties({})
               setOperation(e.value)
             }}
             itemTemplate={itemTemplate}
@@ -118,7 +118,7 @@ const EditOntology = ({
         </div>
 
         <div
-          className="ontology-edit-row"
+          className="edit-ontology-row"
         >
           <label htmlFor="type-select">
             {t('chooseElementType')}
@@ -126,10 +126,10 @@ const EditOntology = ({
           <SelectButton
             id="type-select"
             value={type}
-            options={typeButtons}
+            options={operation === 'update'
+              ? typeButtonsUpdate
+              : typeButtons}
             onChange={(e) => {
-              setSelectedElement(undefined)
-              setSelectedElementProperties({})
               setType(e.value)
             }}
             itemTemplate={itemTemplate}
@@ -137,142 +137,25 @@ const EditOntology = ({
         </div>
 
         {
-          operation === 'restore' && (
-            <div
-              className="ontology-edit-row"
-            >
-              {
-                (type === 'node'
-                  && deletedNodes.length === 0)
-                || (type === 'edge'
-                  && deletedEdges.length === 0)
-                  ? (
-                    <div>
-                      {t('noDeletedElements')}
-                    </div>
-                  ) : (
-                    <>
-                      <label htmlFor="element-select">
-                        {t('selectElement')}
-                      </label>
-
-                      <MultiSelect
-                        value={selectedElement}
-                        options={type === 'node' ? deletedNodes : deletedEdges}
-                        onChange={(e) => setSelectedElement(e.value)}
-                        placeholder={t('selectElement')}
-                        display="chip"
-                        filter
-                        showClear
-                        filterBy="label"
-                      />
-                    </>
-                  )
-              }
-
-            </div>
-          )
-        }
-
-        {
-          operation === 'delete' && (
-            <div
-              className="ontology-edit-row"
-            >
-              <label htmlFor="element-select">
-                {t('selectElement')}
-              </label>
-
-              <MultiSelect
-                value={selectedElement}
-                options={type === 'node' ? availableNodes : availableEdges}
-                onChange={(e) => setSelectedElement(e.value)}
-                placeholder={t('selectElement')}
-                display="chip"
-                filter
-                showClear
-                filterBy="label"
-              />
-            </div>
-          )
-        }
-
-        {
-          operation === 'update' && (
-            <div
-              className="ontology-edit-row"
-            >
-              <label htmlFor="graph-select">
-                {t('selectElement')}
-              </label>
-
-              <Dropdown
-                id="graph-select"
-                value={selectedElement}
-                options={type === 'node' ? availableNodes : availableEdges}
-                onChange={(e) => setSelectedElement(e.value)}
-                placeholder={t('selectElement')}
-              />
-            </div>
-          )
-        }
-
-        {
-          operation === 'update' && selectedElement
-          && (
-            <>
-              <div
-                className="ontology-edit-row"
-              >
-                <label htmlFor="graph-select">
-                  {t('insertProperties')}
-                </label>
-              </div>
-
-              <EditOntologyForm
-                selectedElementProperties={selectedElementProperties}
-                setSelectedElementProperties={setSelectedElementProperties}
-                initialData={classesFromApi[selectedElement]}
-                operation={operation}
-                type={type}
-              />
-            </>
-          )
-        }
-
-        {
           operation === 'add'
           && (
             <>
-              <div
-                className="ontology-edit-row"
-              >
-                <label htmlFor="graph-select">
-                  {t('insertProperties')}
-                </label>
-              </div>
-
-              <EditOntologyForm
-                selectedElement={selectedElement}
-                selectedElementProperties={selectedElementProperties}
-                setSelectedElementProperties={setSelectedElementProperties}
-                operation={operation}
-                type={type}
-              />
-
               {
-                classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]] && (
-                  <div
-                    className="ontology-edit-row"
-                  >
-                    <small
-                      id="username2-help"
-                      className="p-error p-d-block"
-                    >
-                      {t('idExists')}
-                    </small>
-                  </div>
-                )
+                type === 'connection'
+                  ? (
+                    <EditOntologyAddConnection
+                      optionNodes={availableNodes}
+                      optionEdges={availableEdges}
+                      type={type}
+                      operation={operation}
+                    />
+                  )
+                  : (
+                    <EditOntologyAddEdgeNode
+                      type={type}
+                      operation={operation}
+                    />
+                  )
               }
             </>
           )
@@ -280,54 +163,65 @@ const EditOntology = ({
 
         {
           operation === 'update'
-          && selectedElement
           && (
-            <div className="ontology-edit-row">
-              <Button
-                className="go-button"
-                tooltip={`${t(operation)}`}
-                onClick={() => restoreUpdatedElement({
-                  setSelectedElementProperties,
-                  type,
-                  selectedElement
-                })}
-                label={t('restoreOriginal')}
-                icon="pi pi-refresh"
-                iconPos="left"
-              />
-            </div>
+            <EditOntologyUpdateEdgeNode
+              type={type}
+              operation={operation}
+              optionNodes={availableNodes}
+              optionEdges={availableEdges}
+            />
           )
         }
 
-        <div className="ontology-edit-row">
-          <Button
-            className="go-button"
-            tooltip={`${t(operation)}`}
-            disabled={operation === 'add'
-              && (
-                !selectedElementProperties[UNIQUE_PROPERTY]
-                || selectedElementProperties[UNIQUE_PROPERTY] === ''
-                || classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]]
-              )}
-            onClick={() => {
-              setOntology({
-                operation,
-                type,
-                selectedElement,
-                setStoreState,
-                addToArray,
-                removeFromObject,
-                addToObject,
-                selectedElementProperties
-              })
-              setSelectedElement(undefined)
-              setSelectedElementProperties({})
-            }}
-            label={t(operation)}
-            icon="pi pi-chevron-right"
-            iconPos="right"
-          />
-        </div>
+        {
+          operation === 'delete'
+          && (
+            <>
+              {
+                type === 'connection'
+                  ? (
+                    <EditOntologyDeleteConnection
+                      type={type}
+                      operation={operation}
+                    />
+                  )
+                  : (
+                    <EditOntologyDeleteEdgeNode
+                      type={type}
+                      operation={operation}
+                      optionNodes={availableNodes}
+                      optionEdges={availableEdges}
+                    />
+                  )
+              }
+            </>
+          )
+        }
+
+        {
+          operation === 'restore'
+          && (
+            <>
+              {
+                type === 'connection'
+                  ? (
+                    <EditOntologyRestoreConnection
+                      type={type}
+                      operation={operation}
+                    />
+                  )
+                  : (
+                    <EditOntologyRestoreEdgeNode
+                      type={type}
+                      operation={operation}
+                      optionNodes={deletedNodes}
+                      optionEdges={deletedEdges}
+                    />
+                  )
+              }
+            </>
+          )
+        }
       </div>
     </>
   )
@@ -337,20 +231,19 @@ EditOntology.propTypes = {
   selectedGraphVersion: PropTypes.string.isRequired,
   graphVersions: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addToArray: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  objectPropertiesFromApi: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   selectedGraphVersion,
   graphVersions,
-  classesFromApi
+  classesFromApi,
+  objectPropertiesFromApi
 }) => ({
   selectedGraphVersion,
   graphVersions,
-  classesFromApi
+  classesFromApi,
+  objectPropertiesFromApi
 })
 
 export default connect(

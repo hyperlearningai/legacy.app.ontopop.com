@@ -1,0 +1,2165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditOntologyDeleteEdgeNode should match snapshot when type edge 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToArray={[MockFunction]}
+  addToObject={[MockFunction]}
+  mapToProps={[Function]}
+  opearation="add"
+  optionEdges={
+    Array [
+      Object {
+        "label": "Instantiation of",
+        "value": "http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM",
+      },
+      Object {
+        "label": "Proposed in",
+        "value": "http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd",
+      },
+      Object {
+        "label": "Selected in",
+        "value": "http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8",
+      },
+      Object {
+        "label": "Measured by",
+        "value": "http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC",
+      },
+      Object {
+        "label": "Summarised in",
+        "value": "http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu",
+      },
+      Object {
+        "label": "Created for",
+        "value": "http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi",
+      },
+      Object {
+        "label": "Advised by",
+        "value": "http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr",
+      },
+      Object {
+        "label": "Performed by",
+        "value": "http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ",
+      },
+      Object {
+        "label": "Issued through",
+        "value": "http://webprotege.stanford.edu/R7dYrsdk1L1bcLR0A9vS5QP",
+      },
+      Object {
+        "label": "Itemised by",
+        "value": "http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH",
+      },
+      Object {
+        "label": "Represented by",
+        "value": "http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio",
+      },
+      Object {
+        "label": "Detected by",
+        "value": "http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa",
+      },
+      Object {
+        "label": "Required for",
+        "value": "http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3",
+      },
+      Object {
+        "label": "Agreed with",
+        "value": "http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3",
+      },
+      Object {
+        "label": "Reviewed by",
+        "value": "http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7",
+      },
+      Object {
+        "label": "Affects",
+        "value": "http://webprotege.stanford.edu/R864k4trK0sb0XWCVmIQkLN",
+      },
+      Object {
+        "label": "Measured at",
+        "value": "http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW",
+      },
+      Object {
+        "label": "Employed by",
+        "value": "http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB",
+      },
+      Object {
+        "label": "Issued to",
+        "value": "http://webprotege.stanford.edu/R8Fp5FKHZWgNVNiLcHuAtPf",
+      },
+      Object {
+        "label": "Created by",
+        "value": "http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m",
+      },
+      Object {
+        "label": "Managed within",
+        "value": "http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd",
+      },
+      Object {
+        "label": "Controlled by",
+        "value": "http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF",
+      },
+      Object {
+        "label": "Improved through",
+        "value": "http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9",
+      },
+      Object {
+        "label": "Included in",
+        "value": "http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL",
+      },
+      Object {
+        "label": "Properties",
+        "value": "http://webprotege.stanford.edu/R8zMIKp038MgC2umoxwzWBJ",
+      },
+      Object {
+        "label": "Updated by",
+        "value": "http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I",
+      },
+      Object {
+        "label": "Operated by",
+        "value": "http://webprotege.stanford.edu/RB2lnkvVru2pLbt5iOaISSs",
+      },
+      Object {
+        "label": "Owned by",
+        "value": "http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG",
+      },
+      Object {
+        "label": "Completed before",
+        "value": "http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk",
+      },
+      Object {
+        "label": "Managed by",
+        "value": "http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay",
+      },
+      Object {
+        "label": "Identified by",
+        "value": "http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn",
+      },
+      Object {
+        "label": "Presented in",
+        "value": "http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3",
+      },
+      Object {
+        "label": "Requested by",
+        "value": "http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1",
+      },
+      Object {
+        "label": "Input into",
+        "value": "http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0",
+      },
+      Object {
+        "label": "Governed by",
+        "value": "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB",
+      },
+      Object {
+        "label": "Performed from",
+        "value": "http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx",
+      },
+      Object {
+        "label": "Recorded in",
+        "value": "http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM",
+      },
+      Object {
+        "label": "Triggered by",
+        "value": "http://webprotege.stanford.edu/RCK5ewyfmAkLZWg9Mwb7MY",
+      },
+      Object {
+        "label": "Paid through",
+        "value": "http://webprotege.stanford.edu/RCO41EY55jxxkXEYAsRnzul",
+      },
+      Object {
+        "label": "Issued by",
+        "value": "http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq",
+      },
+      Object {
+        "label": "Predicted by",
+        "value": "http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe",
+      },
+      Object {
+        "label": "Reconciled by",
+        "value": "http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen",
+      },
+      Object {
+        "label": "Provided by",
+        "value": "http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV",
+      },
+      Object {
+        "label": "Applied to",
+        "value": "http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9",
+      },
+      Object {
+        "label": "Caused by",
+        "value": "http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF",
+      },
+      Object {
+        "label": "is Affected by",
+        "value": "http://webprotege.stanford.edu/RD3fuHtzxeYkMf46qK7HAsD",
+      },
+      Object {
+        "label": "Used by",
+        "value": "http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go",
+      },
+      Object {
+        "label": "Attended by",
+        "value": "http://webprotege.stanford.edu/RDKQk63bgl4QNsF9Hoy84CF",
+      },
+      Object {
+        "label": "Informed by",
+        "value": "http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv",
+      },
+      Object {
+        "label": "Performed on",
+        "value": "http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g",
+      },
+      Object {
+        "label": "Operation of",
+        "value": "http://webprotege.stanford.edu/RDWUwRcLiaC4DTUFG8M99SF",
+      },
+      Object {
+        "label": "Obtained through",
+        "value": "http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8",
+      },
+      Object {
+        "label": "Used in",
+        "value": "http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065",
+      },
+      Object {
+        "label": "Conducted for",
+        "value": "http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw",
+      },
+      Object {
+        "label": "Bounded by",
+        "value": "http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx",
+      },
+      Object {
+        "label": "Monitored by",
+        "value": "http://webprotege.stanford.edu/RXKNigVZSAdET48254gS2w",
+      },
+      Object {
+        "label": "Provided to",
+        "value": "http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp",
+      },
+      Object {
+        "label": "Located at",
+        "value": "http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib",
+      },
+      Object {
+        "label": "Implemented through",
+        "value": "http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7",
+      },
+      Object {
+        "label": "Represented within",
+        "value": "http://webprotege.stanford.edu/RcNW56SFgi34icUZNpsOET",
+      },
+      Object {
+        "label": "Funded by",
+        "value": "http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX",
+      },
+      Object {
+        "label": "Composed of",
+        "value": "http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ",
+      },
+      Object {
+        "label": "Achieved by",
+        "value": "http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0",
+      },
+      Object {
+        "label": "Operated from",
+        "value": "http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN",
+      },
+    ]
+  }
+  optionNodes={
+    Array [
+      Object {
+        "label": "Communication Document",
+        "value": "http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY",
+      },
+      Object {
+        "label": "Programme",
+        "value": "http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M",
+      },
+      Object {
+        "label": "Low Level Design",
+        "value": "http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8",
+      },
+      Object {
+        "label": "External Factor",
+        "value": "http://webprotege.stanford.edu/R1CEYmOdNWhDr4n2yz9Lzf",
+      },
+      Object {
+        "label": "Financial Object",
+        "value": "http://webprotege.stanford.edu/R1qJMsQqC5KurNMw9vwNbf",
+      },
+      Object {
+        "label": "Specify",
+        "value": "http://webprotege.stanford.edu/R2RFTG7iNuFjv3A8V7qHOb",
+      },
+      Object {
+        "label": "Capacity",
+        "value": "http://webprotege.stanford.edu/R2mI7fMFtIsSHM8bOfJoEk",
+      },
+      Object {
+        "label": "Expenditure",
+        "value": "http://webprotege.stanford.edu/R38bVK9Zi5QjtDMV6gIvgv",
+      },
+      Object {
+        "label": "Acquisition",
+        "value": "http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1",
+      },
+      Object {
+        "label": "Accrual",
+        "value": "http://webprotege.stanford.edu/R57wpQtXmxYodxNBUKJoHw",
+      },
+      Object {
+        "label": "Deed",
+        "value": "http://webprotege.stanford.edu/R70aV3VB8Lz4m2Yc60vk1oL",
+      },
+      Object {
+        "label": "Maintenance",
+        "value": "http://webprotege.stanford.edu/R734t4iI6j8MPmpJsIqO2v4",
+      },
+      Object {
+        "label": "Geotechnical",
+        "value": "http://webprotege.stanford.edu/R735Cwtcs6mgZedTI2DBpFK",
+      },
+      Object {
+        "label": "Handover",
+        "value": "http://webprotege.stanford.edu/R79918d31mkj7gGPmR00us9",
+      },
+      Object {
+        "label": "Connectivity",
+        "value": "http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV",
+      },
+      Object {
+        "label": "High Level Design",
+        "value": "http://webprotege.stanford.edu/R7HiLUbGfj2jk0NdEMQOdqg",
+      },
+      Object {
+        "label": "Model",
+        "value": "http://webprotege.stanford.edu/R7IYZp3FDxOZ1LbVtJN3Z7J",
+      },
+      Object {
+        "label": "MetaData",
+        "value": "http://webprotege.stanford.edu/R7QCWoGMafG9zhjDYABQQgm",
+      },
+      Object {
+        "label": "Emissions",
+        "value": "http://webprotege.stanford.edu/R7QV72ON1DRX7lQMsI664VX",
+      },
+      Object {
+        "label": "Income",
+        "value": "http://webprotege.stanford.edu/R7QbRSvuFm0H5qc2dZOD3MT",
+      },
+      Object {
+        "label": "Training",
+        "value": "http://webprotege.stanford.edu/R7RDxuQpthew95SauxL9iOL",
+      },
+      Object {
+        "label": "Flood",
+        "value": "http://webprotege.stanford.edu/R7UAD7hI7XyoTLSlVXwBj3k",
+      },
+      Object {
+        "label": "Delay",
+        "value": "http://webprotege.stanford.edu/R7Wg79mGAA5scUqgNgmqBZP",
+      },
+      Object {
+        "label": "Facility",
+        "value": "http://webprotege.stanford.edu/R7YIZpydsaz383PdnJekN8S",
+      },
+      Object {
+        "label": "Transaction",
+        "value": "http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc",
+      },
+      Object {
+        "label": "Collate",
+        "value": "http://webprotege.stanford.edu/R7dcPTLwQrLcc9eK22R7swU",
+      },
+      Object {
+        "label": "Certification",
+        "value": "http://webprotege.stanford.edu/R7fkjcYjkZUMj82FPX7CNCo",
+      },
+      Object {
+        "label": "Drainage",
+        "value": "http://webprotege.stanford.edu/R7hlktFumJq5RpggEzEv2xi",
+      },
+      Object {
+        "label": "Representation",
+        "value": "http://webprotege.stanford.edu/R7kFYLBMrwSIReHdO0qWzl1",
+      },
+      Object {
+        "label": "Lighting",
+        "value": "http://webprotege.stanford.edu/R7l0LqjYK03DLCUM5XgsbGk",
+      },
+      Object {
+        "label": "Financial Value",
+        "value": "http://webprotege.stanford.edu/R7msJHfQBx9IyBoi6uDKJ2m",
+      },
+      Object {
+        "label": "Route",
+        "value": "http://webprotege.stanford.edu/R7pIV91w7fTKppAHSmrz8n",
+      },
+      Object {
+        "label": "Land Registration",
+        "value": "http://webprotege.stanford.edu/R7tAippJQB4pJXF1MzgDbKi",
+      },
+      Object {
+        "label": "Feedback",
+        "value": "http://webprotege.stanford.edu/R7uJCP2nLVqIuNUULKJdxDF",
+      },
+      Object {
+        "label": "Skill",
+        "value": "http://webprotege.stanford.edu/R7uyEOgEefntHVYBIC2NiKg",
+      },
+      Object {
+        "label": "Safety Risk Assessment",
+        "value": "http://webprotege.stanford.edu/R7xOxa2KHyXr6hfeRrQ83oY",
+      },
+      Object {
+        "label": "Drawing",
+        "value": "http://webprotege.stanford.edu/R7ziZlwBCU3dDShTGeoBjYR",
+      },
+      Object {
+        "label": "Qualification",
+        "value": "http://webprotege.stanford.edu/R807lspeQtxNAS1gwN1L2On",
+      },
+      Object {
+        "label": "Link",
+        "value": "http://webprotege.stanford.edu/R81y0gnn3Ar0DJ8FatMTqK3",
+      },
+      Object {
+        "label": "Depot",
+        "value": "http://webprotege.stanford.edu/R83KomHAvFWv2pVoHXCAC7M",
+      },
+      Object {
+        "label": "Voice Recording",
+        "value": "http://webprotege.stanford.edu/R83VJMr2iUDDav8mz3n6ZyH",
+      },
+      Object {
+        "label": "Emergency Services",
+        "value": "http://webprotege.stanford.edu/R85jgDJqHrr5qX3KrACpk4",
+      },
+      Object {
+        "label": "Budget",
+        "value": "http://webprotege.stanford.edu/R88oLttBTPxhZOBkekr7j10",
+      },
+      Object {
+        "label": "Spare Parts",
+        "value": "http://webprotege.stanford.edu/R89hr3L0oNOwO2C6z1V7rPS",
+      },
+      Object {
+        "label": "Safety",
+        "value": "http://webprotege.stanford.edu/R8EHiJLLiGn2iUnQEObykIx",
+      },
+      Object {
+        "label": "Flow",
+        "value": "http://webprotege.stanford.edu/R8InsmDsayORUpOGuBHWc4l",
+      },
+      Object {
+        "label": "Retire",
+        "value": "http://webprotege.stanford.edu/R8M5tsloLX3FmQ8zhHm557c",
+      },
+      Object {
+        "label": "Polyline",
+        "value": "http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw",
+      },
+      Object {
+        "label": "Customer Satisfaction",
+        "value": "http://webprotege.stanford.edu/R8MmTPbBMzS5oRDuNBE43G7",
+      },
+      Object {
+        "label": "Network Model",
+        "value": "http://webprotege.stanford.edu/R8MzvxsWzbT1CeZSELKf1Ku",
+      },
+      Object {
+        "label": "Activity",
+        "value": "http://webprotege.stanford.edu/R8N1a0K78gZZbVLw2P1NkTX",
+      },
+      Object {
+        "label": "Legal Document",
+        "value": "http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ",
+      },
+      Object {
+        "label": "Role",
+        "value": "http://webprotege.stanford.edu/R8QQzkUbCD5WRXDQQSl0vX8",
+      },
+      Object {
+        "label": "Data Lifecycle",
+        "value": "http://webprotege.stanford.edu/R8TAOW3SN06LeB0bwWcfIOM",
+      },
+      Object {
+        "label": "Structures",
+        "value": "http://webprotege.stanford.edu/R8VPKVDGeDVRPQznK4rL0ea",
+      },
+      Object {
+        "label": "Standards",
+        "value": "http://webprotege.stanford.edu/R8WBh27Gnp1NKNtna6SezKw",
+      },
+      Object {
+        "label": "Closure",
+        "value": "http://webprotege.stanford.edu/R8b0L4wjItcKJ8kcMOeuHsF",
+      },
+      Object {
+        "label": "Data Dictionary",
+        "value": "http://webprotege.stanford.edu/R8gKH7l4S0E9EHebS7t6It8",
+      },
+      Object {
+        "label": "Pavements",
+        "value": "http://webprotege.stanford.edu/R8mqmfFAtvpjQNyrdiVTAmG",
+      },
+      Object {
+        "label": "Monitoring",
+        "value": "http://webprotege.stanford.edu/R8oNiHimqYAWPxl0guoDLFp",
+      },
+      Object {
+        "label": "Hardware",
+        "value": "http://webprotege.stanford.edu/R8oR1UKjsuv62ve8vkf53U4",
+      },
+      Object {
+        "label": "Occurrent",
+        "value": "http://webprotege.stanford.edu/R8vPX062NwsvUg0z6NRZerH",
+      },
+      Object {
+        "label": "KPI",
+        "value": "http://webprotege.stanford.edu/R8x8fOmbMnQnR2JiBxkoWAv",
+      },
+      Object {
+        "label": "Competence",
+        "value": "http://webprotege.stanford.edu/R90aygbYv017nv5YsP99s5",
+      },
+      Object {
+        "label": "Stakeholder",
+        "value": "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n",
+      },
+      Object {
+        "label": "Failure Mode",
+        "value": "http://webprotege.stanford.edu/R94oKO9u1LgzfqODgcPAc8L",
+      },
+      Object {
+        "label": "System",
+        "value": "http://webprotege.stanford.edu/R9BdIrtS5xNdcAPHLf4JaEE",
+      },
+      Object {
+        "label": "Forecast",
+        "value": "http://webprotege.stanford.edu/R9Be61LJrP8iSlMxyobFOGy",
+      },
+      Object {
+        "label": "Data",
+        "value": "http://webprotege.stanford.edu/R9CEIYtS6EVWnP7kLOlZGYO",
+      },
+      Object {
+        "label": "Strategic Road Network Asset",
+        "value": "http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep",
+      },
+      Object {
+        "label": "Availability",
+        "value": "http://webprotege.stanford.edu/R9QC3za2HZdtzU3eCgwCNYj",
+      },
+      Object {
+        "label": "Event",
+        "value": "http://webprotege.stanford.edu/R9QL7GzNO6C7vUbpfDfCJk6",
+      },
+      Object {
+        "label": "Dataset",
+        "value": "http://webprotege.stanford.edu/R9REtfX1Mke5RINFMbbUI1J",
+      },
+      Object {
+        "label": "Vision",
+        "value": "http://webprotege.stanford.edu/R9SjJm6J7HbiocTcgtddm8d",
+      },
+      Object {
+        "label": "FOI",
+        "value": "http://webprotege.stanford.edu/R9UuC5ptRevqURhJa0PIBmB",
+      },
+      Object {
+        "label": "Project Document",
+        "value": "http://webprotege.stanford.edu/R9WIxkbvxYbhp8NthzYsXSx",
+      },
+      Object {
+        "label": "Hazard",
+        "value": "http://webprotege.stanford.edu/R9WpuntzJVMdVohpDA6Vw8a",
+      },
+      Object {
+        "label": "Bulletin",
+        "value": "http://webprotege.stanford.edu/R9Y5iEV0xhBtSZMrtzLdmwd",
+      },
+      Object {
+        "label": "Occupancy",
+        "value": "http://webprotege.stanford.edu/R9ixi0I9o1Re8bM8EK5V8ed",
+      },
+      Object {
+        "label": "External Document",
+        "value": "http://webprotege.stanford.edu/R9m2TK7H0BdyR4nqjg54jE0",
+      },
+      Object {
+        "label": "Headway",
+        "value": "http://webprotege.stanford.edu/R9r0DVvDkFW6GmN4bDUNsyl",
+      },
+      Object {
+        "label": "Air Quality",
+        "value": "http://webprotege.stanford.edu/R9rGNbOyamlUxw3GXZW6JNZ",
+      },
+      Object {
+        "label": "Asset Performance",
+        "value": "http://webprotege.stanford.edu/R9sA1G9BzdA86yphqD4fNjc",
+      },
+      Object {
+        "label": "Vehicle",
+        "value": "http://webprotege.stanford.edu/R9sbR69tmanyzKyA39GGMRD",
+      },
+      Object {
+        "label": "Financial Document",
+        "value": "http://webprotege.stanford.edu/R9stUOxlDBKRK0MNTXL6Rkp",
+      },
+      Object {
+        "label": "Lessons Learned",
+        "value": "http://webprotege.stanford.edu/R9uZJhZUKipFsqrD1TUaca1",
+      },
+      Object {
+        "label": "Instruction",
+        "value": "http://webprotege.stanford.edu/R9uvMZD48MrRf3iKMKAiNCj",
+      },
+      Object {
+        "label": "Biodiversity",
+        "value": "http://webprotege.stanford.edu/R9x2FGn2Yb9iaiedpwWEJVo",
+      },
+      Object {
+        "label": "Ledger",
+        "value": "http://webprotege.stanford.edu/R9yEJN7QRZGgDnJ1KJShD95",
+      },
+      Object {
+        "label": "IT",
+        "value": "http://webprotege.stanford.edu/R9yHLGw3z6gILmTwQSizzdi",
+      },
+      Object {
+        "label": "Environmental Incident",
+        "value": "http://webprotege.stanford.edu/R9yaUi67502d49oMbx70wiF",
+      },
+      Object {
+        "label": "Patrol",
+        "value": "http://webprotege.stanford.edu/RB0lf4hZ1CRIjB3tldwNYlq",
+      },
+      Object {
+        "label": "Contract",
+        "value": "http://webprotege.stanford.edu/RB1PjJpc3OQDXScPJQJpAj9",
+      },
+      Object {
+        "label": "Demolition",
+        "value": "http://webprotege.stanford.edu/RB1hQyhkkb26ULmQUnfG6ZU",
+      },
+      Object {
+        "label": "Collect",
+        "value": "http://webprotege.stanford.edu/RB2wiyzebv6p4qrvJjgommU",
+      },
+      Object {
+        "label": "Geometric Component",
+        "value": "http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg",
+      },
+      Object {
+        "label": "Water Flow",
+        "value": "http://webprotege.stanford.edu/RBAlLULVgXcsNnd1xsx2HSl",
+      },
+      Object {
+        "label": "Line",
+        "value": "http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd",
+      },
+      Object {
+        "label": "Road Restraint",
+        "value": "http://webprotege.stanford.edu/RBBDxx5ZaIbg5ASqGAeyKGg",
+      },
+      Object {
+        "label": "Node",
+        "value": "http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t",
+      },
+      Object {
+        "label": "Audit",
+        "value": "http://webprotege.stanford.edu/RBI4T4TkVNo6dzyvbPLMHbf",
+      },
+      Object {
+        "label": "Polygon",
+        "value": "http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm",
+      },
+      Object {
+        "label": "Customer",
+        "value": "http://webprotege.stanford.edu/RBJ3sWyEdjzo3HjkcABim8C",
+      },
+      Object {
+        "label": "Environmental",
+        "value": "http://webprotege.stanford.edu/RBKQgaabYcnNDy5hL7YKCKt",
+      },
+      Object {
+        "label": "Condition",
+        "value": "http://webprotege.stanford.edu/RBNRwyHYDJAexW4IAn1ebkS",
+      },
+      Object {
+        "label": "Funding Channel",
+        "value": "http://webprotege.stanford.edu/RBQ9bNT1jSrdUHMAQ1AjJbE",
+      },
+      Object {
+        "label": "Traffic Regulation Order",
+        "value": "http://webprotege.stanford.edu/RBXuwksHoHfSvl9WI689HWb",
+      },
+      Object {
+        "label": "Land",
+        "value": "http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D",
+      },
+      Object {
+        "label": "Assumption",
+        "value": "http://webprotege.stanford.edu/RBd3wT8jsLdCGapuQrUCMwO",
+      },
+      Object {
+        "label": "Progress",
+        "value": "http://webprotege.stanford.edu/RBeMHRpPtIj9w4fNQv66hnI",
+      },
+      Object {
+        "label": "Blueprint",
+        "value": "http://webprotege.stanford.edu/RBhZTpXvMJckgjC601QBKzJ",
+      },
+      Object {
+        "label": "Survey",
+        "value": "http://webprotege.stanford.edu/RBm7cF8aYrHL1CNgkiu5PNb",
+      },
+      Object {
+        "label": "Asset",
+        "value": "http://webprotege.stanford.edu/RBmqEHPuKuvpNznItviKdyK",
+      },
+      Object {
+        "label": "Measurement",
+        "value": "http://webprotege.stanford.edu/RBqifrmlk0euN7DLSAdEhDX",
+      },
+      Object {
+        "label": "Dispose",
+        "value": "http://webprotege.stanford.edu/RBzF9qwVtyzz358WQ0Iaxjs",
+      },
+      Object {
+        "label": "Office",
+        "value": "http://webprotege.stanford.edu/RC5ZXWmz7smNKNWCml5Qpag",
+      },
+      Object {
+        "label": "Archive",
+        "value": "http://webprotege.stanford.edu/RC714KfXzpEYi4lGyNUEbWI",
+      },
+      Object {
+        "label": "Principle",
+        "value": "http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6",
+      },
+      Object {
+        "label": "Network",
+        "value": "http://webprotege.stanford.edu/RCGrVyxcVdUB7rI7qGrKvTF",
+      },
+      Object {
+        "label": "Organisational Values",
+        "value": "http://webprotege.stanford.edu/RCKcLqulWWTzL6ScVnH2THQ",
+      },
+      Object {
+        "label": "IT Document",
+        "value": "http://webprotege.stanford.edu/RCLiKaIHnEwymIeVs5NA1jv",
+      },
+      Object {
+        "label": "Roadside Operational Technology",
+        "value": "http://webprotege.stanford.edu/RCOdkBizz0dWtRTEjZSfqP8",
+      },
+      Object {
+        "label": "Weather",
+        "value": "http://webprotege.stanford.edu/RCTsx4McKN1jh7Rr2zizjAf",
+      },
+      Object {
+        "label": "Strategy",
+        "value": "http://webprotege.stanford.edu/RCXzH6nTutSI75cTg53tH8q",
+      },
+      Object {
+        "label": "Use",
+        "value": "http://webprotege.stanford.edu/RCdB5m1RZhhIcJM0SpRcJvn",
+      },
+      Object {
+        "label": "Business Case",
+        "value": "http://webprotege.stanford.edu/RCdbVM6sx0TFJ2bA7j7XW9T",
+      },
+      Object {
+        "label": "Equipment",
+        "value": "http://webprotege.stanford.edu/RClp8LYLCEjhteHI1BoIOsw",
+      },
+      Object {
+        "label": "Supplier",
+        "value": "http://webprotege.stanford.edu/RCnRceKsHZf8Gt9UvDjM6We",
+      },
+      Object {
+        "label": "Experience",
+        "value": "http://webprotege.stanford.edu/RCpn3euDDZoEVpKziwFE4aj",
+      },
+      Object {
+        "label": "Carriageway Control",
+        "value": "http://webprotege.stanford.edu/RCrgRyMOzbaY6vxlnONgyzo",
+      },
+      Object {
+        "label": "Incident",
+        "value": "http://webprotege.stanford.edu/RCuUHUwF8sOhovt9F5cgPYA",
+      },
+      Object {
+        "label": "Regulation",
+        "value": "http://webprotege.stanford.edu/RCxwL4b8LCMbVkVPEbOn78g",
+      },
+      Object {
+        "label": "Material Continuant",
+        "value": "http://webprotege.stanford.edu/RDBlPj5mxo9Sheqo9njonK1",
+      },
+      Object {
+        "label": "Accident",
+        "value": "http://webprotege.stanford.edu/RDC5EKiryOl11nNkRsAOoeJ",
+      },
+      Object {
+        "label": "Sustainability",
+        "value": "http://webprotege.stanford.edu/RDE8IdD6V4U77NkZN35I7um",
+      },
+      Object {
+        "label": "Correspondence",
+        "value": "http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6",
+      },
+      Object {
+        "label": "Supply Chain",
+        "value": "http://webprotege.stanford.edu/RDEq6i5M8SGrbQ7vXzpqiI2",
+      },
+      Object {
+        "label": "Speed",
+        "value": "http://webprotege.stanford.edu/RDHWjhBCCAPiD1rreqlEMZh",
+      },
+      Object {
+        "label": "Journey",
+        "value": "http://webprotege.stanford.edu/RDIxodv8FKzm0NUvObC5ThP",
+      },
+      Object {
+        "label": "Inventory",
+        "value": "http://webprotege.stanford.edu/RDJpPq1h6rGjSoshUKgfI92",
+      },
+      Object {
+        "label": "Document",
+        "value": "http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u",
+      },
+      Object {
+        "label": "Policy",
+        "value": "http://webprotege.stanford.edu/RDOVqibcKPQJUgd5MLw7f9D",
+      },
+      Object {
+        "label": "Imperative",
+        "value": "http://webprotege.stanford.edu/RDQ3FIM55jTOW9ihNUws27R",
+      },
+      Object {
+        "label": "Project Phase",
+        "value": "http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS",
+      },
+      Object {
+        "label": "Consultation",
+        "value": "http://webprotege.stanford.edu/RDWl7SktPJhdQATIWmkeWP4",
+      },
+      Object {
+        "label": "Person",
+        "value": "http://webprotege.stanford.edu/RDXfAVuWRwr0N4TV6QEbADY",
+      },
+      Object {
+        "label": "Report",
+        "value": "http://webprotege.stanford.edu/RDZQxNkcGSsNALjBJH6keFD",
+      },
+      Object {
+        "label": "Digital Twin",
+        "value": "http://webprotege.stanford.edu/RDZVwEGYIdGxSF0y5yFOhwG",
+      },
+      Object {
+        "label": "Inspection",
+        "value": "http://webprotege.stanford.edu/RDpQmuXpzJOM9XhMdRRxaOJ",
+      },
+      Object {
+        "label": "Purchase Order",
+        "value": "http://webprotege.stanford.edu/RDwUtfvimhekfSyyuGXj6rw",
+      },
+      Object {
+        "label": "Pollution",
+        "value": "http://webprotege.stanford.edu/RDwvKVBMMMUesirDL2C2S1O",
+      },
+      Object {
+        "label": "Requirement",
+        "value": "http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb",
+      },
+      Object {
+        "label": "File",
+        "value": "http://webprotege.stanford.edu/REpB4vJ7ApbznwNWoNu6X9",
+      },
+      Object {
+        "label": "Schedule",
+        "value": "http://webprotege.stanford.edu/RF3YeWGVEQjj16Hy07lXyU",
+      },
+      Object {
+        "label": "Design",
+        "value": "http://webprotege.stanford.edu/RFC5Q9hfMGLXk65hXqNCzp",
+      },
+      Object {
+        "label": "Evaluate",
+        "value": "http://webprotege.stanford.edu/RFNK6OsKMaap9LxxLXdLxR",
+      },
+      Object {
+        "label": "Invoice",
+        "value": "http://webprotege.stanford.edu/RFwjTev6moOjE08akYHzWP",
+      },
+      Object {
+        "label": "Speed Limit Variation",
+        "value": "http://webprotege.stanford.edu/RGqbUUiG3LztL6ZF5nDRmT",
+      },
+      Object {
+        "label": "Noise Level",
+        "value": "http://webprotege.stanford.edu/RH0Rqaoh9tWxGJbhW433i9",
+      },
+      Object {
+        "label": "Analytical Model",
+        "value": "http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp",
+      },
+      Object {
+        "label": "Project",
+        "value": "http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9",
+      },
+      Object {
+        "label": "Network Incident",
+        "value": "http://webprotege.stanford.edu/RPNC02PMG2H4xSrrTiebi7",
+      },
+      Object {
+        "label": "Immaterial Continuant",
+        "value": "http://webprotege.stanford.edu/RTyCIe0sZbCvkp6VVWaYGs",
+      },
+      Object {
+        "label": "Work Site",
+        "value": "http://webprotege.stanford.edu/RUWwziHPSHb0QUR433d6n3",
+      },
+      Object {
+        "label": "Research",
+        "value": "http://webprotege.stanford.edu/RUcb0VtNgmp5CaG8hCLwNa",
+      },
+      Object {
+        "label": "Ticket",
+        "value": "http://webprotege.stanford.edu/RVEDTAVDTgNluHGUPlPX9J",
+      },
+      Object {
+        "label": "Diversion",
+        "value": "http://webprotege.stanford.edu/RVM8jhTPiNMgUTEhAMdNu7",
+      },
+      Object {
+        "label": "Database",
+        "value": "http://webprotege.stanford.edu/RXlFsBI0EcosvsoMwbZqeU",
+      },
+      Object {
+        "label": "Ancillary",
+        "value": "http://webprotege.stanford.edu/RXys68405bldLT5N3pTI0u",
+      },
+      Object {
+        "label": "Licence Holder",
+        "value": "http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ",
+      },
+      Object {
+        "label": "Social Media Post",
+        "value": "http://webprotege.stanford.edu/RYOFagzdcydXMf8mlO9vsG",
+      },
+      Object {
+        "label": "Congestion",
+        "value": "http://webprotege.stanford.edu/RZLjE2nTL9Nm4qChQqFEzB",
+      },
+      Object {
+        "label": "Manual",
+        "value": "http://webprotege.stanford.edu/RZZvs7EyCxdgLfuUREbiPY",
+      },
+      Object {
+        "label": "Development Consent Order (DCO)",
+        "value": "http://webprotege.stanford.edu/RbBV8PcIsbUoWpY4Tu9xUN",
+      },
+      Object {
+        "label": "Water Quality",
+        "value": "http://webprotege.stanford.edu/ReVBAW9BDkF6kpl6UmYCrZ",
+      },
+      Object {
+        "label": "Plan",
+        "value": "http://webprotege.stanford.edu/Ree4nJbmBksWE1ufpmuUfp",
+      },
+      Object {
+        "label": "Product",
+        "value": "http://webprotege.stanford.edu/Rf8re1EdmLU47EIlLtCpzx",
+      },
+      Object {
+        "label": "Engagement",
+        "value": "http://webprotege.stanford.edu/Rhx4iGF2ITGgrmcS2fHAN5",
+      },
+      Object {
+        "label": "Interface",
+        "value": "http://webprotege.stanford.edu/Ri0oPM0zRSfP4SuSH0S15c",
+      },
+      Object {
+        "label": "Road Safety Measure",
+        "value": "http://webprotege.stanford.edu/Rigjqi5P4ZscabU1Pot3hK",
+      },
+      Object {
+        "label": "Location",
+        "value": "http://webprotege.stanford.edu/Rj3NXx72nCWC2S8JjoFjon",
+      },
+      Object {
+        "label": "Asset Condition",
+        "value": "http://webprotege.stanford.edu/RjZNyX4570oeWiMHL21BBu",
+      },
+      Object {
+        "label": "Stage Gate",
+        "value": "http://webprotege.stanford.edu/RkuHSxIaFD91qBEbFsFiU4",
+      },
+      Object {
+        "label": "Environmental Condition",
+        "value": "http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw",
+      },
+      Object {
+        "label": "Complaint",
+        "value": "http://webprotege.stanford.edu/RmrjgvX01FgGHXkfTXE4MO",
+      },
+      Object {
+        "label": "Control Centre",
+        "value": "http://webprotege.stanford.edu/RnMK2vS5olvsw9Krge2Ymj",
+      },
+      Object {
+        "label": "Analyse",
+        "value": "http://webprotege.stanford.edu/RnzPd3Edkzo3UTz2B80djl",
+      },
+      Object {
+        "label": "Risk",
+        "value": "http://webprotege.stanford.edu/RpqwgnThbB1jmoXEUbPwkN",
+      },
+      Object {
+        "label": "Testing",
+        "value": "http://webprotege.stanford.edu/RqrTW48Q37Okpfre6W4ULW",
+      },
+      Object {
+        "label": "Documentation",
+        "value": "http://webprotege.stanford.edu/Rr1h75PEGwQbtbZKYXLp64",
+      },
+      Object {
+        "label": "Performance",
+        "value": "http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M",
+      },
+      Object {
+        "label": "Software",
+        "value": "http://webprotege.stanford.edu/RtN2Zu9OP2GsaPU9toX3UM",
+      },
+      Object {
+        "label": "Final Account",
+        "value": "http://webprotege.stanford.edu/RuAatmiCENCkgAWQlDVsZC",
+      },
+      Object {
+        "label": "Defect",
+        "value": "http://webprotege.stanford.edu/RxMK8BflSk74kqDWT4eHTy",
+      },
+      Object {
+        "label": "Option",
+        "value": "http://webprotege.stanford.edu/RxuHv1LeenSYiEIoMyhxzS",
+      },
+      Object {
+        "label": "http://www.w3.org/2002/07/owl#Thing",
+        "value": "http://www.w3.org/2002/07/owl#Thing",
+      },
+    ]
+  }
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+  type="node"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`EditOntologyDeleteEdgeNode should match snapshot when type node 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToArray={[MockFunction]}
+  addToObject={[MockFunction]}
+  mapToProps={[Function]}
+  opearation="add"
+  optionEdges={
+    Array [
+      Object {
+        "label": "Instantiation of",
+        "value": "http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM",
+      },
+      Object {
+        "label": "Proposed in",
+        "value": "http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd",
+      },
+      Object {
+        "label": "Selected in",
+        "value": "http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8",
+      },
+      Object {
+        "label": "Measured by",
+        "value": "http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC",
+      },
+      Object {
+        "label": "Summarised in",
+        "value": "http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu",
+      },
+      Object {
+        "label": "Created for",
+        "value": "http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi",
+      },
+      Object {
+        "label": "Advised by",
+        "value": "http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr",
+      },
+      Object {
+        "label": "Performed by",
+        "value": "http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ",
+      },
+      Object {
+        "label": "Issued through",
+        "value": "http://webprotege.stanford.edu/R7dYrsdk1L1bcLR0A9vS5QP",
+      },
+      Object {
+        "label": "Itemised by",
+        "value": "http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH",
+      },
+      Object {
+        "label": "Represented by",
+        "value": "http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio",
+      },
+      Object {
+        "label": "Detected by",
+        "value": "http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa",
+      },
+      Object {
+        "label": "Required for",
+        "value": "http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3",
+      },
+      Object {
+        "label": "Agreed with",
+        "value": "http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3",
+      },
+      Object {
+        "label": "Reviewed by",
+        "value": "http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7",
+      },
+      Object {
+        "label": "Affects",
+        "value": "http://webprotege.stanford.edu/R864k4trK0sb0XWCVmIQkLN",
+      },
+      Object {
+        "label": "Measured at",
+        "value": "http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW",
+      },
+      Object {
+        "label": "Employed by",
+        "value": "http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB",
+      },
+      Object {
+        "label": "Issued to",
+        "value": "http://webprotege.stanford.edu/R8Fp5FKHZWgNVNiLcHuAtPf",
+      },
+      Object {
+        "label": "Created by",
+        "value": "http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m",
+      },
+      Object {
+        "label": "Managed within",
+        "value": "http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd",
+      },
+      Object {
+        "label": "Controlled by",
+        "value": "http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF",
+      },
+      Object {
+        "label": "Improved through",
+        "value": "http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9",
+      },
+      Object {
+        "label": "Included in",
+        "value": "http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL",
+      },
+      Object {
+        "label": "Properties",
+        "value": "http://webprotege.stanford.edu/R8zMIKp038MgC2umoxwzWBJ",
+      },
+      Object {
+        "label": "Updated by",
+        "value": "http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I",
+      },
+      Object {
+        "label": "Operated by",
+        "value": "http://webprotege.stanford.edu/RB2lnkvVru2pLbt5iOaISSs",
+      },
+      Object {
+        "label": "Owned by",
+        "value": "http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG",
+      },
+      Object {
+        "label": "Completed before",
+        "value": "http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk",
+      },
+      Object {
+        "label": "Managed by",
+        "value": "http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay",
+      },
+      Object {
+        "label": "Identified by",
+        "value": "http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn",
+      },
+      Object {
+        "label": "Presented in",
+        "value": "http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3",
+      },
+      Object {
+        "label": "Requested by",
+        "value": "http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1",
+      },
+      Object {
+        "label": "Input into",
+        "value": "http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0",
+      },
+      Object {
+        "label": "Governed by",
+        "value": "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB",
+      },
+      Object {
+        "label": "Performed from",
+        "value": "http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx",
+      },
+      Object {
+        "label": "Recorded in",
+        "value": "http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM",
+      },
+      Object {
+        "label": "Triggered by",
+        "value": "http://webprotege.stanford.edu/RCK5ewyfmAkLZWg9Mwb7MY",
+      },
+      Object {
+        "label": "Paid through",
+        "value": "http://webprotege.stanford.edu/RCO41EY55jxxkXEYAsRnzul",
+      },
+      Object {
+        "label": "Issued by",
+        "value": "http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq",
+      },
+      Object {
+        "label": "Predicted by",
+        "value": "http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe",
+      },
+      Object {
+        "label": "Reconciled by",
+        "value": "http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen",
+      },
+      Object {
+        "label": "Provided by",
+        "value": "http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV",
+      },
+      Object {
+        "label": "Applied to",
+        "value": "http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9",
+      },
+      Object {
+        "label": "Caused by",
+        "value": "http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF",
+      },
+      Object {
+        "label": "is Affected by",
+        "value": "http://webprotege.stanford.edu/RD3fuHtzxeYkMf46qK7HAsD",
+      },
+      Object {
+        "label": "Used by",
+        "value": "http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go",
+      },
+      Object {
+        "label": "Attended by",
+        "value": "http://webprotege.stanford.edu/RDKQk63bgl4QNsF9Hoy84CF",
+      },
+      Object {
+        "label": "Informed by",
+        "value": "http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv",
+      },
+      Object {
+        "label": "Performed on",
+        "value": "http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g",
+      },
+      Object {
+        "label": "Operation of",
+        "value": "http://webprotege.stanford.edu/RDWUwRcLiaC4DTUFG8M99SF",
+      },
+      Object {
+        "label": "Obtained through",
+        "value": "http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8",
+      },
+      Object {
+        "label": "Used in",
+        "value": "http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065",
+      },
+      Object {
+        "label": "Conducted for",
+        "value": "http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw",
+      },
+      Object {
+        "label": "Bounded by",
+        "value": "http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx",
+      },
+      Object {
+        "label": "Monitored by",
+        "value": "http://webprotege.stanford.edu/RXKNigVZSAdET48254gS2w",
+      },
+      Object {
+        "label": "Provided to",
+        "value": "http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp",
+      },
+      Object {
+        "label": "Located at",
+        "value": "http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib",
+      },
+      Object {
+        "label": "Implemented through",
+        "value": "http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7",
+      },
+      Object {
+        "label": "Represented within",
+        "value": "http://webprotege.stanford.edu/RcNW56SFgi34icUZNpsOET",
+      },
+      Object {
+        "label": "Funded by",
+        "value": "http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX",
+      },
+      Object {
+        "label": "Composed of",
+        "value": "http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ",
+      },
+      Object {
+        "label": "Achieved by",
+        "value": "http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0",
+      },
+      Object {
+        "label": "Operated from",
+        "value": "http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN",
+      },
+    ]
+  }
+  optionNodes={
+    Array [
+      Object {
+        "label": "Communication Document",
+        "value": "http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY",
+      },
+      Object {
+        "label": "Programme",
+        "value": "http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M",
+      },
+      Object {
+        "label": "Low Level Design",
+        "value": "http://webprotege.stanford.edu/R1AD8Bb0IbQzZYE0Ee9Qa8",
+      },
+      Object {
+        "label": "External Factor",
+        "value": "http://webprotege.stanford.edu/R1CEYmOdNWhDr4n2yz9Lzf",
+      },
+      Object {
+        "label": "Financial Object",
+        "value": "http://webprotege.stanford.edu/R1qJMsQqC5KurNMw9vwNbf",
+      },
+      Object {
+        "label": "Specify",
+        "value": "http://webprotege.stanford.edu/R2RFTG7iNuFjv3A8V7qHOb",
+      },
+      Object {
+        "label": "Capacity",
+        "value": "http://webprotege.stanford.edu/R2mI7fMFtIsSHM8bOfJoEk",
+      },
+      Object {
+        "label": "Expenditure",
+        "value": "http://webprotege.stanford.edu/R38bVK9Zi5QjtDMV6gIvgv",
+      },
+      Object {
+        "label": "Acquisition",
+        "value": "http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1",
+      },
+      Object {
+        "label": "Accrual",
+        "value": "http://webprotege.stanford.edu/R57wpQtXmxYodxNBUKJoHw",
+      },
+      Object {
+        "label": "Deed",
+        "value": "http://webprotege.stanford.edu/R70aV3VB8Lz4m2Yc60vk1oL",
+      },
+      Object {
+        "label": "Maintenance",
+        "value": "http://webprotege.stanford.edu/R734t4iI6j8MPmpJsIqO2v4",
+      },
+      Object {
+        "label": "Geotechnical",
+        "value": "http://webprotege.stanford.edu/R735Cwtcs6mgZedTI2DBpFK",
+      },
+      Object {
+        "label": "Handover",
+        "value": "http://webprotege.stanford.edu/R79918d31mkj7gGPmR00us9",
+      },
+      Object {
+        "label": "Connectivity",
+        "value": "http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV",
+      },
+      Object {
+        "label": "High Level Design",
+        "value": "http://webprotege.stanford.edu/R7HiLUbGfj2jk0NdEMQOdqg",
+      },
+      Object {
+        "label": "Model",
+        "value": "http://webprotege.stanford.edu/R7IYZp3FDxOZ1LbVtJN3Z7J",
+      },
+      Object {
+        "label": "MetaData",
+        "value": "http://webprotege.stanford.edu/R7QCWoGMafG9zhjDYABQQgm",
+      },
+      Object {
+        "label": "Emissions",
+        "value": "http://webprotege.stanford.edu/R7QV72ON1DRX7lQMsI664VX",
+      },
+      Object {
+        "label": "Income",
+        "value": "http://webprotege.stanford.edu/R7QbRSvuFm0H5qc2dZOD3MT",
+      },
+      Object {
+        "label": "Training",
+        "value": "http://webprotege.stanford.edu/R7RDxuQpthew95SauxL9iOL",
+      },
+      Object {
+        "label": "Flood",
+        "value": "http://webprotege.stanford.edu/R7UAD7hI7XyoTLSlVXwBj3k",
+      },
+      Object {
+        "label": "Delay",
+        "value": "http://webprotege.stanford.edu/R7Wg79mGAA5scUqgNgmqBZP",
+      },
+      Object {
+        "label": "Facility",
+        "value": "http://webprotege.stanford.edu/R7YIZpydsaz383PdnJekN8S",
+      },
+      Object {
+        "label": "Transaction",
+        "value": "http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc",
+      },
+      Object {
+        "label": "Collate",
+        "value": "http://webprotege.stanford.edu/R7dcPTLwQrLcc9eK22R7swU",
+      },
+      Object {
+        "label": "Certification",
+        "value": "http://webprotege.stanford.edu/R7fkjcYjkZUMj82FPX7CNCo",
+      },
+      Object {
+        "label": "Drainage",
+        "value": "http://webprotege.stanford.edu/R7hlktFumJq5RpggEzEv2xi",
+      },
+      Object {
+        "label": "Representation",
+        "value": "http://webprotege.stanford.edu/R7kFYLBMrwSIReHdO0qWzl1",
+      },
+      Object {
+        "label": "Lighting",
+        "value": "http://webprotege.stanford.edu/R7l0LqjYK03DLCUM5XgsbGk",
+      },
+      Object {
+        "label": "Financial Value",
+        "value": "http://webprotege.stanford.edu/R7msJHfQBx9IyBoi6uDKJ2m",
+      },
+      Object {
+        "label": "Route",
+        "value": "http://webprotege.stanford.edu/R7pIV91w7fTKppAHSmrz8n",
+      },
+      Object {
+        "label": "Land Registration",
+        "value": "http://webprotege.stanford.edu/R7tAippJQB4pJXF1MzgDbKi",
+      },
+      Object {
+        "label": "Feedback",
+        "value": "http://webprotege.stanford.edu/R7uJCP2nLVqIuNUULKJdxDF",
+      },
+      Object {
+        "label": "Skill",
+        "value": "http://webprotege.stanford.edu/R7uyEOgEefntHVYBIC2NiKg",
+      },
+      Object {
+        "label": "Safety Risk Assessment",
+        "value": "http://webprotege.stanford.edu/R7xOxa2KHyXr6hfeRrQ83oY",
+      },
+      Object {
+        "label": "Drawing",
+        "value": "http://webprotege.stanford.edu/R7ziZlwBCU3dDShTGeoBjYR",
+      },
+      Object {
+        "label": "Qualification",
+        "value": "http://webprotege.stanford.edu/R807lspeQtxNAS1gwN1L2On",
+      },
+      Object {
+        "label": "Link",
+        "value": "http://webprotege.stanford.edu/R81y0gnn3Ar0DJ8FatMTqK3",
+      },
+      Object {
+        "label": "Depot",
+        "value": "http://webprotege.stanford.edu/R83KomHAvFWv2pVoHXCAC7M",
+      },
+      Object {
+        "label": "Voice Recording",
+        "value": "http://webprotege.stanford.edu/R83VJMr2iUDDav8mz3n6ZyH",
+      },
+      Object {
+        "label": "Emergency Services",
+        "value": "http://webprotege.stanford.edu/R85jgDJqHrr5qX3KrACpk4",
+      },
+      Object {
+        "label": "Budget",
+        "value": "http://webprotege.stanford.edu/R88oLttBTPxhZOBkekr7j10",
+      },
+      Object {
+        "label": "Spare Parts",
+        "value": "http://webprotege.stanford.edu/R89hr3L0oNOwO2C6z1V7rPS",
+      },
+      Object {
+        "label": "Safety",
+        "value": "http://webprotege.stanford.edu/R8EHiJLLiGn2iUnQEObykIx",
+      },
+      Object {
+        "label": "Flow",
+        "value": "http://webprotege.stanford.edu/R8InsmDsayORUpOGuBHWc4l",
+      },
+      Object {
+        "label": "Retire",
+        "value": "http://webprotege.stanford.edu/R8M5tsloLX3FmQ8zhHm557c",
+      },
+      Object {
+        "label": "Polyline",
+        "value": "http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw",
+      },
+      Object {
+        "label": "Customer Satisfaction",
+        "value": "http://webprotege.stanford.edu/R8MmTPbBMzS5oRDuNBE43G7",
+      },
+      Object {
+        "label": "Network Model",
+        "value": "http://webprotege.stanford.edu/R8MzvxsWzbT1CeZSELKf1Ku",
+      },
+      Object {
+        "label": "Activity",
+        "value": "http://webprotege.stanford.edu/R8N1a0K78gZZbVLw2P1NkTX",
+      },
+      Object {
+        "label": "Legal Document",
+        "value": "http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ",
+      },
+      Object {
+        "label": "Role",
+        "value": "http://webprotege.stanford.edu/R8QQzkUbCD5WRXDQQSl0vX8",
+      },
+      Object {
+        "label": "Data Lifecycle",
+        "value": "http://webprotege.stanford.edu/R8TAOW3SN06LeB0bwWcfIOM",
+      },
+      Object {
+        "label": "Structures",
+        "value": "http://webprotege.stanford.edu/R8VPKVDGeDVRPQznK4rL0ea",
+      },
+      Object {
+        "label": "Standards",
+        "value": "http://webprotege.stanford.edu/R8WBh27Gnp1NKNtna6SezKw",
+      },
+      Object {
+        "label": "Closure",
+        "value": "http://webprotege.stanford.edu/R8b0L4wjItcKJ8kcMOeuHsF",
+      },
+      Object {
+        "label": "Data Dictionary",
+        "value": "http://webprotege.stanford.edu/R8gKH7l4S0E9EHebS7t6It8",
+      },
+      Object {
+        "label": "Pavements",
+        "value": "http://webprotege.stanford.edu/R8mqmfFAtvpjQNyrdiVTAmG",
+      },
+      Object {
+        "label": "Monitoring",
+        "value": "http://webprotege.stanford.edu/R8oNiHimqYAWPxl0guoDLFp",
+      },
+      Object {
+        "label": "Hardware",
+        "value": "http://webprotege.stanford.edu/R8oR1UKjsuv62ve8vkf53U4",
+      },
+      Object {
+        "label": "Occurrent",
+        "value": "http://webprotege.stanford.edu/R8vPX062NwsvUg0z6NRZerH",
+      },
+      Object {
+        "label": "KPI",
+        "value": "http://webprotege.stanford.edu/R8x8fOmbMnQnR2JiBxkoWAv",
+      },
+      Object {
+        "label": "Competence",
+        "value": "http://webprotege.stanford.edu/R90aygbYv017nv5YsP99s5",
+      },
+      Object {
+        "label": "Stakeholder",
+        "value": "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n",
+      },
+      Object {
+        "label": "Failure Mode",
+        "value": "http://webprotege.stanford.edu/R94oKO9u1LgzfqODgcPAc8L",
+      },
+      Object {
+        "label": "System",
+        "value": "http://webprotege.stanford.edu/R9BdIrtS5xNdcAPHLf4JaEE",
+      },
+      Object {
+        "label": "Forecast",
+        "value": "http://webprotege.stanford.edu/R9Be61LJrP8iSlMxyobFOGy",
+      },
+      Object {
+        "label": "Data",
+        "value": "http://webprotege.stanford.edu/R9CEIYtS6EVWnP7kLOlZGYO",
+      },
+      Object {
+        "label": "Strategic Road Network Asset",
+        "value": "http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep",
+      },
+      Object {
+        "label": "Availability",
+        "value": "http://webprotege.stanford.edu/R9QC3za2HZdtzU3eCgwCNYj",
+      },
+      Object {
+        "label": "Event",
+        "value": "http://webprotege.stanford.edu/R9QL7GzNO6C7vUbpfDfCJk6",
+      },
+      Object {
+        "label": "Dataset",
+        "value": "http://webprotege.stanford.edu/R9REtfX1Mke5RINFMbbUI1J",
+      },
+      Object {
+        "label": "Vision",
+        "value": "http://webprotege.stanford.edu/R9SjJm6J7HbiocTcgtddm8d",
+      },
+      Object {
+        "label": "FOI",
+        "value": "http://webprotege.stanford.edu/R9UuC5ptRevqURhJa0PIBmB",
+      },
+      Object {
+        "label": "Project Document",
+        "value": "http://webprotege.stanford.edu/R9WIxkbvxYbhp8NthzYsXSx",
+      },
+      Object {
+        "label": "Hazard",
+        "value": "http://webprotege.stanford.edu/R9WpuntzJVMdVohpDA6Vw8a",
+      },
+      Object {
+        "label": "Bulletin",
+        "value": "http://webprotege.stanford.edu/R9Y5iEV0xhBtSZMrtzLdmwd",
+      },
+      Object {
+        "label": "Occupancy",
+        "value": "http://webprotege.stanford.edu/R9ixi0I9o1Re8bM8EK5V8ed",
+      },
+      Object {
+        "label": "External Document",
+        "value": "http://webprotege.stanford.edu/R9m2TK7H0BdyR4nqjg54jE0",
+      },
+      Object {
+        "label": "Headway",
+        "value": "http://webprotege.stanford.edu/R9r0DVvDkFW6GmN4bDUNsyl",
+      },
+      Object {
+        "label": "Air Quality",
+        "value": "http://webprotege.stanford.edu/R9rGNbOyamlUxw3GXZW6JNZ",
+      },
+      Object {
+        "label": "Asset Performance",
+        "value": "http://webprotege.stanford.edu/R9sA1G9BzdA86yphqD4fNjc",
+      },
+      Object {
+        "label": "Vehicle",
+        "value": "http://webprotege.stanford.edu/R9sbR69tmanyzKyA39GGMRD",
+      },
+      Object {
+        "label": "Financial Document",
+        "value": "http://webprotege.stanford.edu/R9stUOxlDBKRK0MNTXL6Rkp",
+      },
+      Object {
+        "label": "Lessons Learned",
+        "value": "http://webprotege.stanford.edu/R9uZJhZUKipFsqrD1TUaca1",
+      },
+      Object {
+        "label": "Instruction",
+        "value": "http://webprotege.stanford.edu/R9uvMZD48MrRf3iKMKAiNCj",
+      },
+      Object {
+        "label": "Biodiversity",
+        "value": "http://webprotege.stanford.edu/R9x2FGn2Yb9iaiedpwWEJVo",
+      },
+      Object {
+        "label": "Ledger",
+        "value": "http://webprotege.stanford.edu/R9yEJN7QRZGgDnJ1KJShD95",
+      },
+      Object {
+        "label": "IT",
+        "value": "http://webprotege.stanford.edu/R9yHLGw3z6gILmTwQSizzdi",
+      },
+      Object {
+        "label": "Environmental Incident",
+        "value": "http://webprotege.stanford.edu/R9yaUi67502d49oMbx70wiF",
+      },
+      Object {
+        "label": "Patrol",
+        "value": "http://webprotege.stanford.edu/RB0lf4hZ1CRIjB3tldwNYlq",
+      },
+      Object {
+        "label": "Contract",
+        "value": "http://webprotege.stanford.edu/RB1PjJpc3OQDXScPJQJpAj9",
+      },
+      Object {
+        "label": "Demolition",
+        "value": "http://webprotege.stanford.edu/RB1hQyhkkb26ULmQUnfG6ZU",
+      },
+      Object {
+        "label": "Collect",
+        "value": "http://webprotege.stanford.edu/RB2wiyzebv6p4qrvJjgommU",
+      },
+      Object {
+        "label": "Geometric Component",
+        "value": "http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg",
+      },
+      Object {
+        "label": "Water Flow",
+        "value": "http://webprotege.stanford.edu/RBAlLULVgXcsNnd1xsx2HSl",
+      },
+      Object {
+        "label": "Line",
+        "value": "http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd",
+      },
+      Object {
+        "label": "Road Restraint",
+        "value": "http://webprotege.stanford.edu/RBBDxx5ZaIbg5ASqGAeyKGg",
+      },
+      Object {
+        "label": "Node",
+        "value": "http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t",
+      },
+      Object {
+        "label": "Audit",
+        "value": "http://webprotege.stanford.edu/RBI4T4TkVNo6dzyvbPLMHbf",
+      },
+      Object {
+        "label": "Polygon",
+        "value": "http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm",
+      },
+      Object {
+        "label": "Customer",
+        "value": "http://webprotege.stanford.edu/RBJ3sWyEdjzo3HjkcABim8C",
+      },
+      Object {
+        "label": "Environmental",
+        "value": "http://webprotege.stanford.edu/RBKQgaabYcnNDy5hL7YKCKt",
+      },
+      Object {
+        "label": "Condition",
+        "value": "http://webprotege.stanford.edu/RBNRwyHYDJAexW4IAn1ebkS",
+      },
+      Object {
+        "label": "Funding Channel",
+        "value": "http://webprotege.stanford.edu/RBQ9bNT1jSrdUHMAQ1AjJbE",
+      },
+      Object {
+        "label": "Traffic Regulation Order",
+        "value": "http://webprotege.stanford.edu/RBXuwksHoHfSvl9WI689HWb",
+      },
+      Object {
+        "label": "Land",
+        "value": "http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D",
+      },
+      Object {
+        "label": "Assumption",
+        "value": "http://webprotege.stanford.edu/RBd3wT8jsLdCGapuQrUCMwO",
+      },
+      Object {
+        "label": "Progress",
+        "value": "http://webprotege.stanford.edu/RBeMHRpPtIj9w4fNQv66hnI",
+      },
+      Object {
+        "label": "Blueprint",
+        "value": "http://webprotege.stanford.edu/RBhZTpXvMJckgjC601QBKzJ",
+      },
+      Object {
+        "label": "Survey",
+        "value": "http://webprotege.stanford.edu/RBm7cF8aYrHL1CNgkiu5PNb",
+      },
+      Object {
+        "label": "Asset",
+        "value": "http://webprotege.stanford.edu/RBmqEHPuKuvpNznItviKdyK",
+      },
+      Object {
+        "label": "Measurement",
+        "value": "http://webprotege.stanford.edu/RBqifrmlk0euN7DLSAdEhDX",
+      },
+      Object {
+        "label": "Dispose",
+        "value": "http://webprotege.stanford.edu/RBzF9qwVtyzz358WQ0Iaxjs",
+      },
+      Object {
+        "label": "Office",
+        "value": "http://webprotege.stanford.edu/RC5ZXWmz7smNKNWCml5Qpag",
+      },
+      Object {
+        "label": "Archive",
+        "value": "http://webprotege.stanford.edu/RC714KfXzpEYi4lGyNUEbWI",
+      },
+      Object {
+        "label": "Principle",
+        "value": "http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6",
+      },
+      Object {
+        "label": "Network",
+        "value": "http://webprotege.stanford.edu/RCGrVyxcVdUB7rI7qGrKvTF",
+      },
+      Object {
+        "label": "Organisational Values",
+        "value": "http://webprotege.stanford.edu/RCKcLqulWWTzL6ScVnH2THQ",
+      },
+      Object {
+        "label": "IT Document",
+        "value": "http://webprotege.stanford.edu/RCLiKaIHnEwymIeVs5NA1jv",
+      },
+      Object {
+        "label": "Roadside Operational Technology",
+        "value": "http://webprotege.stanford.edu/RCOdkBizz0dWtRTEjZSfqP8",
+      },
+      Object {
+        "label": "Weather",
+        "value": "http://webprotege.stanford.edu/RCTsx4McKN1jh7Rr2zizjAf",
+      },
+      Object {
+        "label": "Strategy",
+        "value": "http://webprotege.stanford.edu/RCXzH6nTutSI75cTg53tH8q",
+      },
+      Object {
+        "label": "Use",
+        "value": "http://webprotege.stanford.edu/RCdB5m1RZhhIcJM0SpRcJvn",
+      },
+      Object {
+        "label": "Business Case",
+        "value": "http://webprotege.stanford.edu/RCdbVM6sx0TFJ2bA7j7XW9T",
+      },
+      Object {
+        "label": "Equipment",
+        "value": "http://webprotege.stanford.edu/RClp8LYLCEjhteHI1BoIOsw",
+      },
+      Object {
+        "label": "Supplier",
+        "value": "http://webprotege.stanford.edu/RCnRceKsHZf8Gt9UvDjM6We",
+      },
+      Object {
+        "label": "Experience",
+        "value": "http://webprotege.stanford.edu/RCpn3euDDZoEVpKziwFE4aj",
+      },
+      Object {
+        "label": "Carriageway Control",
+        "value": "http://webprotege.stanford.edu/RCrgRyMOzbaY6vxlnONgyzo",
+      },
+      Object {
+        "label": "Incident",
+        "value": "http://webprotege.stanford.edu/RCuUHUwF8sOhovt9F5cgPYA",
+      },
+      Object {
+        "label": "Regulation",
+        "value": "http://webprotege.stanford.edu/RCxwL4b8LCMbVkVPEbOn78g",
+      },
+      Object {
+        "label": "Material Continuant",
+        "value": "http://webprotege.stanford.edu/RDBlPj5mxo9Sheqo9njonK1",
+      },
+      Object {
+        "label": "Accident",
+        "value": "http://webprotege.stanford.edu/RDC5EKiryOl11nNkRsAOoeJ",
+      },
+      Object {
+        "label": "Sustainability",
+        "value": "http://webprotege.stanford.edu/RDE8IdD6V4U77NkZN35I7um",
+      },
+      Object {
+        "label": "Correspondence",
+        "value": "http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6",
+      },
+      Object {
+        "label": "Supply Chain",
+        "value": "http://webprotege.stanford.edu/RDEq6i5M8SGrbQ7vXzpqiI2",
+      },
+      Object {
+        "label": "Speed",
+        "value": "http://webprotege.stanford.edu/RDHWjhBCCAPiD1rreqlEMZh",
+      },
+      Object {
+        "label": "Journey",
+        "value": "http://webprotege.stanford.edu/RDIxodv8FKzm0NUvObC5ThP",
+      },
+      Object {
+        "label": "Inventory",
+        "value": "http://webprotege.stanford.edu/RDJpPq1h6rGjSoshUKgfI92",
+      },
+      Object {
+        "label": "Document",
+        "value": "http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u",
+      },
+      Object {
+        "label": "Policy",
+        "value": "http://webprotege.stanford.edu/RDOVqibcKPQJUgd5MLw7f9D",
+      },
+      Object {
+        "label": "Imperative",
+        "value": "http://webprotege.stanford.edu/RDQ3FIM55jTOW9ihNUws27R",
+      },
+      Object {
+        "label": "Project Phase",
+        "value": "http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS",
+      },
+      Object {
+        "label": "Consultation",
+        "value": "http://webprotege.stanford.edu/RDWl7SktPJhdQATIWmkeWP4",
+      },
+      Object {
+        "label": "Person",
+        "value": "http://webprotege.stanford.edu/RDXfAVuWRwr0N4TV6QEbADY",
+      },
+      Object {
+        "label": "Report",
+        "value": "http://webprotege.stanford.edu/RDZQxNkcGSsNALjBJH6keFD",
+      },
+      Object {
+        "label": "Digital Twin",
+        "value": "http://webprotege.stanford.edu/RDZVwEGYIdGxSF0y5yFOhwG",
+      },
+      Object {
+        "label": "Inspection",
+        "value": "http://webprotege.stanford.edu/RDpQmuXpzJOM9XhMdRRxaOJ",
+      },
+      Object {
+        "label": "Purchase Order",
+        "value": "http://webprotege.stanford.edu/RDwUtfvimhekfSyyuGXj6rw",
+      },
+      Object {
+        "label": "Pollution",
+        "value": "http://webprotege.stanford.edu/RDwvKVBMMMUesirDL2C2S1O",
+      },
+      Object {
+        "label": "Requirement",
+        "value": "http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb",
+      },
+      Object {
+        "label": "File",
+        "value": "http://webprotege.stanford.edu/REpB4vJ7ApbznwNWoNu6X9",
+      },
+      Object {
+        "label": "Schedule",
+        "value": "http://webprotege.stanford.edu/RF3YeWGVEQjj16Hy07lXyU",
+      },
+      Object {
+        "label": "Design",
+        "value": "http://webprotege.stanford.edu/RFC5Q9hfMGLXk65hXqNCzp",
+      },
+      Object {
+        "label": "Evaluate",
+        "value": "http://webprotege.stanford.edu/RFNK6OsKMaap9LxxLXdLxR",
+      },
+      Object {
+        "label": "Invoice",
+        "value": "http://webprotege.stanford.edu/RFwjTev6moOjE08akYHzWP",
+      },
+      Object {
+        "label": "Speed Limit Variation",
+        "value": "http://webprotege.stanford.edu/RGqbUUiG3LztL6ZF5nDRmT",
+      },
+      Object {
+        "label": "Noise Level",
+        "value": "http://webprotege.stanford.edu/RH0Rqaoh9tWxGJbhW433i9",
+      },
+      Object {
+        "label": "Analytical Model",
+        "value": "http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp",
+      },
+      Object {
+        "label": "Project",
+        "value": "http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9",
+      },
+      Object {
+        "label": "Network Incident",
+        "value": "http://webprotege.stanford.edu/RPNC02PMG2H4xSrrTiebi7",
+      },
+      Object {
+        "label": "Immaterial Continuant",
+        "value": "http://webprotege.stanford.edu/RTyCIe0sZbCvkp6VVWaYGs",
+      },
+      Object {
+        "label": "Work Site",
+        "value": "http://webprotege.stanford.edu/RUWwziHPSHb0QUR433d6n3",
+      },
+      Object {
+        "label": "Research",
+        "value": "http://webprotege.stanford.edu/RUcb0VtNgmp5CaG8hCLwNa",
+      },
+      Object {
+        "label": "Ticket",
+        "value": "http://webprotege.stanford.edu/RVEDTAVDTgNluHGUPlPX9J",
+      },
+      Object {
+        "label": "Diversion",
+        "value": "http://webprotege.stanford.edu/RVM8jhTPiNMgUTEhAMdNu7",
+      },
+      Object {
+        "label": "Database",
+        "value": "http://webprotege.stanford.edu/RXlFsBI0EcosvsoMwbZqeU",
+      },
+      Object {
+        "label": "Ancillary",
+        "value": "http://webprotege.stanford.edu/RXys68405bldLT5N3pTI0u",
+      },
+      Object {
+        "label": "Licence Holder",
+        "value": "http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ",
+      },
+      Object {
+        "label": "Social Media Post",
+        "value": "http://webprotege.stanford.edu/RYOFagzdcydXMf8mlO9vsG",
+      },
+      Object {
+        "label": "Congestion",
+        "value": "http://webprotege.stanford.edu/RZLjE2nTL9Nm4qChQqFEzB",
+      },
+      Object {
+        "label": "Manual",
+        "value": "http://webprotege.stanford.edu/RZZvs7EyCxdgLfuUREbiPY",
+      },
+      Object {
+        "label": "Development Consent Order (DCO)",
+        "value": "http://webprotege.stanford.edu/RbBV8PcIsbUoWpY4Tu9xUN",
+      },
+      Object {
+        "label": "Water Quality",
+        "value": "http://webprotege.stanford.edu/ReVBAW9BDkF6kpl6UmYCrZ",
+      },
+      Object {
+        "label": "Plan",
+        "value": "http://webprotege.stanford.edu/Ree4nJbmBksWE1ufpmuUfp",
+      },
+      Object {
+        "label": "Product",
+        "value": "http://webprotege.stanford.edu/Rf8re1EdmLU47EIlLtCpzx",
+      },
+      Object {
+        "label": "Engagement",
+        "value": "http://webprotege.stanford.edu/Rhx4iGF2ITGgrmcS2fHAN5",
+      },
+      Object {
+        "label": "Interface",
+        "value": "http://webprotege.stanford.edu/Ri0oPM0zRSfP4SuSH0S15c",
+      },
+      Object {
+        "label": "Road Safety Measure",
+        "value": "http://webprotege.stanford.edu/Rigjqi5P4ZscabU1Pot3hK",
+      },
+      Object {
+        "label": "Location",
+        "value": "http://webprotege.stanford.edu/Rj3NXx72nCWC2S8JjoFjon",
+      },
+      Object {
+        "label": "Asset Condition",
+        "value": "http://webprotege.stanford.edu/RjZNyX4570oeWiMHL21BBu",
+      },
+      Object {
+        "label": "Stage Gate",
+        "value": "http://webprotege.stanford.edu/RkuHSxIaFD91qBEbFsFiU4",
+      },
+      Object {
+        "label": "Environmental Condition",
+        "value": "http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw",
+      },
+      Object {
+        "label": "Complaint",
+        "value": "http://webprotege.stanford.edu/RmrjgvX01FgGHXkfTXE4MO",
+      },
+      Object {
+        "label": "Control Centre",
+        "value": "http://webprotege.stanford.edu/RnMK2vS5olvsw9Krge2Ymj",
+      },
+      Object {
+        "label": "Analyse",
+        "value": "http://webprotege.stanford.edu/RnzPd3Edkzo3UTz2B80djl",
+      },
+      Object {
+        "label": "Risk",
+        "value": "http://webprotege.stanford.edu/RpqwgnThbB1jmoXEUbPwkN",
+      },
+      Object {
+        "label": "Testing",
+        "value": "http://webprotege.stanford.edu/RqrTW48Q37Okpfre6W4ULW",
+      },
+      Object {
+        "label": "Documentation",
+        "value": "http://webprotege.stanford.edu/Rr1h75PEGwQbtbZKYXLp64",
+      },
+      Object {
+        "label": "Performance",
+        "value": "http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M",
+      },
+      Object {
+        "label": "Software",
+        "value": "http://webprotege.stanford.edu/RtN2Zu9OP2GsaPU9toX3UM",
+      },
+      Object {
+        "label": "Final Account",
+        "value": "http://webprotege.stanford.edu/RuAatmiCENCkgAWQlDVsZC",
+      },
+      Object {
+        "label": "Defect",
+        "value": "http://webprotege.stanford.edu/RxMK8BflSk74kqDWT4eHTy",
+      },
+      Object {
+        "label": "Option",
+        "value": "http://webprotege.stanford.edu/RxuHv1LeenSYiEIoMyhxzS",
+      },
+      Object {
+        "label": "http://www.w3.org/2002/07/owl#Thing",
+        "value": "http://www.w3.org/2002/07/owl#Thing",
+      },
+    ]
+  }
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+  type="node"
+>
+  <Component />
+</Connect>
+`;

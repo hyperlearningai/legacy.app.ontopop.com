@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditOntologyRestoreEdgeNode should match snapshot when type edge and no options 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToArray={[MockFunction]}
+  addToObject={[MockFunction]}
+  mapToProps={[Function]}
+  opearation="restore"
+  optionEdges={Array []}
+  optionNodes={Array []}
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+  type="edge"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`EditOntologyRestoreEdgeNode should match snapshot when type node and no options 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToArray={[MockFunction]}
+  addToObject={[MockFunction]}
+  mapToProps={[Function]}
+  opearation="restore"
+  optionEdges={Array []}
+  optionNodes={Array []}
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+  type="node"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`EditOntologyRestoreEdgeNode should match snapshot when type node and options 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToArray={[MockFunction]}
+  addToObject={[MockFunction]}
+  mapToProps={[Function]}
+  opearation="restore"
+  optionEdges={Array []}
+  optionNodes={
+    Array [
+      Object {
+        "label": "Test",
+        "value": "http://test.test/test",
+      },
+    ]
+  }
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+  type="node"
+>
+  <Component />
+</Connect>
+`;

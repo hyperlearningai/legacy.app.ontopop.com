@@ -19,9 +19,7 @@ const addNodesEdgesToGraph = ({
     triplesPerNode,
     classesFromApi,
     objectPropertiesFromApi,
-    availableNodesNormalised,
     availableEdges,
-    availableEdgesNormalised,
     nodesConnections,
     edgesConnections,
     isPhysicsOn
@@ -29,8 +27,6 @@ const addNodesEdgesToGraph = ({
 
   const triples = triplesPerNode[nodeId]
 
-  const newAvailableEdgesNormalised = JSON.parse(JSON.stringify(availableEdgesNormalised))
-  const newAvailableNodesNormalised = JSON.parse(JSON.stringify(availableNodesNormalised))
   const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
   const newEdgesConnections = JSON.parse(JSON.stringify(edgesConnections))
   let edgesAdded = false
@@ -40,8 +36,12 @@ const addNodesEdgesToGraph = ({
     triples.map((triple) => {
       const id = generatePredicateId(triple)
 
+      const isExisting = availableEdges.get({
+        filter: (item) => item.edgeId === id
+      })
+
       // check if edge exists
-      if (!newAvailableEdgesNormalised[id]) {
+      if (isExisting.length === 0) {
         const {
           predicate,
           from,
@@ -65,7 +65,9 @@ const addNodesEdgesToGraph = ({
         // check if node exists
         const nodeIdToCheck = from === nodeId ? to : from
 
-        if (!newAvailableNodesNormalised[nodeIdToCheck]) {
+        const isNodeAvailable = availableNodes.get(nodeIdToCheck)
+
+        if (!isNodeAvailable) {
           const nodeGraphObject = {
             id: nodeIdToCheck,
             label: classesFromApi[nodeIdToCheck]?.rdfsLabel.replace(/ /g, '\n') || ''
@@ -75,11 +77,6 @@ const addNodesEdgesToGraph = ({
 
           if (isNodePresent === null) {
             availableNodes.add(nodeGraphObject)
-
-            newAvailableNodesNormalised[nodeIdToCheck] = {
-              ...classesFromApi[nodeIdToCheck],
-              ...nodeGraphObject
-            }
 
             if (!newNodesConnections[nodeIdToCheck]) {
               newNodesConnections[nodeIdToCheck] = []
@@ -96,8 +93,6 @@ const addNodesEdgesToGraph = ({
         if (isEdgePresent === null) {
           availableEdges.add(edgeGraphObject)
 
-          newAvailableEdgesNormalised[id] = edgeObject
-
           if (!newEdgesConnections[predicate]) {
             newEdgesConnections[predicate] = []
           }
@@ -113,7 +108,6 @@ const addNodesEdgesToGraph = ({
 
   if (edgesAdded) {
     setStoreState('edgesConnections', newEdgesConnections)
-    setStoreState('availableEdgesNormalised', newAvailableEdgesNormalised)
   }
 
   if (nodesAdded) {
@@ -123,14 +117,12 @@ const addNodesEdgesToGraph = ({
       setStoreState('physicsRepulsion', false)
     }
 
-    setStoreState('availableNodesNormalised', newAvailableNodesNormalised)
     setStoreState('nodesConnections', newNodesConnections)
 
     highlightSpiderableNodes({
       nodesConnections,
       triplesPerNode,
-      availableNodes,
-      availableNodesNormalised
+      availableNodes
     })
 
     if (!isPhysicsOnNow) {

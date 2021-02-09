@@ -9,6 +9,11 @@ export const graphVersions = {
     objectPropertiesFromApiBackup: OwlObjectProperties,
     deletedNodes: [],
     addedNodes: [],
-    updatedNodes: []
+    updatedNodes: [],
+    deletedEdges: [],
+    addedEdges: [],
+    updatedEdges: [],
+    deletedConnections: [],
+    addedConnections: [],
   },
 }

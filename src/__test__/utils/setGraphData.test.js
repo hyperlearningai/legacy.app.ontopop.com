@@ -54,6 +54,26 @@ describe('setGraphData', () => {
         'updatedNodes',
         [],
       ],
+      [
+        'deletedEdges',
+        undefined,
+      ],
+      [
+        'addedEdges',
+        undefined,
+      ],
+      [
+        'updatedEdges',
+        undefined,
+      ],
+      [
+        'addedConnections',
+        undefined,
+      ],
+      [
+        'deletedConnections',
+        undefined,
+      ],
     ])
     expect(getAllTriplesPerNode).toHaveBeenCalledWith({
       classesIds: Object.keys(OwlClasses),

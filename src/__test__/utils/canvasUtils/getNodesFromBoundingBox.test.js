@@ -22,7 +22,7 @@ describe('getNodesFromBoundingBox', () => {
         boundingBoxHeight: 200
       },
       isBoundingBoxSelectionInternal: false,
-      availableNodesNormalised: {},
+      availableNodes: new DataSet(),
       network: {
         getPosition: () => ({
           x: 50,
@@ -32,9 +32,7 @@ describe('getNodesFromBoundingBox', () => {
           x: 50,
           y: 50
         }),
-        availableNodes: new DataSet()
       }
-
     }))
 
     await getNodesFromBoundingBox({
@@ -56,11 +54,13 @@ describe('getNodesFromBoundingBox', () => {
         boundingBoxHeight: 200
       },
       isBoundingBoxSelectionInternal: true,
-      availableNodesNormalised: {
-        'node-123': {
-          id: 'node-123'
-        }
-      },
+      availableNodes: new DataSet(
+        [
+          {
+            id: 'node-123'
+          }
+        ]
+      ),
       network: {
         getPosition: () => ({
           x: 200,
@@ -71,9 +71,6 @@ describe('getNodesFromBoundingBox', () => {
           y: 200
         }),
       },
-      availableNodes: new DataSet({
-        id: 'node-123'
-      })
     }))
 
     await getNodesFromBoundingBox({
@@ -98,25 +95,19 @@ describe('getNodesFromBoundingBox', () => {
         boundingBoxHeight: 200
       },
       isBoundingBoxSelectionInternal: false,
-      availableNodesNormalised: {
-        'node-123': {
-          id: 'node-123'
-        }
-      },
       network: {
         getPosition: () => ({
-          x: 50,
-          y: 50
+          x: 10,
+          y: 10
         }),
         canvasToDOM: () => ({
-          x: 50,
-          y: 50
+          x: 10,
+          y: 10
         }),
       },
-      availableNodes: new DataSet({
+      availableNodes: new DataSet([{
         id: 'node-123'
-      })
-
+      }])
     }))
 
     await getNodesFromBoundingBox({

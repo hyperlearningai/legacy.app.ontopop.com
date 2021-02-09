@@ -2,6 +2,13 @@ import setOntologyDeleteNode from './setOntologyDeleteNode'
 import setOntologyUpdateNode from './setOntologyUpdateNode'
 import setOntologyAddNode from './setOntologyAddNode'
 import setOntologyRestoreNode from './setOntologyRestoreNode'
+import setOntologyAddEdge from './setOntologyAddEdge'
+import setOntologyUpdateEdge from './setOntologyUpdateEdge'
+import setOntologyDeleteEdge from './setOntologyDeleteEdge'
+import setOntologyRestoreEdge from './setOntologyRestoreEdge'
+import setOntologyAddConnection from './setOntologyAddConnection'
+import setOntologyDeleteConnection from './setOntologyDeleteConnection'
+import setOntologyRestoreConnection from './setOntologyRestoreConnection'
 
 /**
  * Set graph full data
@@ -20,7 +27,8 @@ const setOntology = ({
   selectedElement,
   setStoreState,
   selectedElementProperties,
-  addToObject
+  addToObject,
+  t
 }) => {
   if (operation === 'restore') {
     if (type === 'node') {
@@ -28,6 +36,22 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         addToObject
+      })
+    }
+
+    if (type === 'edge') {
+      setOntologyRestoreEdge({
+        selectedElement,
+        setStoreState,
+        addToObject
+      })
+    }
+
+    if (type === 'connection') {
+      setOntologyRestoreConnection({
+        setStoreState,
+        selectedElement,
+        addToObject,
       })
     }
   }
@@ -38,6 +62,22 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         addToObject
+      })
+    }
+
+    if (type === 'edge') {
+      setOntologyDeleteEdge({
+        selectedElement,
+        setStoreState,
+        addToObject
+      })
+    }
+
+    if (type === 'connection') {
+      setOntologyDeleteConnection({
+        setStoreState,
+        selectedElement,
+        addToObject,
       })
     }
   }
@@ -51,6 +91,15 @@ const setOntology = ({
         addToObject
       })
     }
+
+    if (type === 'edge') {
+      setOntologyUpdateEdge({
+        selectedElement,
+        setStoreState,
+        selectedElementProperties,
+        addToObject
+      })
+    }
   }
 
   if (operation === 'add') {
@@ -58,7 +107,25 @@ const setOntology = ({
       setOntologyAddNode({
         setStoreState,
         selectedElementProperties,
-        addToObject
+        addToObject,
+        t
+      })
+    }
+
+    if (type === 'edge') {
+      setOntologyAddEdge({
+        setStoreState,
+        selectedElementProperties,
+        addToObject,
+        t
+      })
+    }
+
+    if (type === 'connection') {
+      setOntologyAddConnection({
+        setStoreState,
+        selectedElementProperties,
+        addToObject,
       })
     }
   }

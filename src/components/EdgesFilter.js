@@ -1,7 +1,6 @@
 /* eslint react/no-array-index-key:0 */
 import {
   useState,
-  useEffect
 } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
@@ -11,12 +10,11 @@ import { Dropdown } from 'primereact/dropdown'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_EDGES_FILTER } from '../constants/views'
-import setFilteredEdges from '../utils/setFilteredEdges'
-import getEdgesProperties from '../utils/getEdgesProperties'
+import setFilteredEdges from '../utils/edgesFilter/setFilteredEdges'
 
 const EdgesFilter = ({
   setStoreState,
-  edgesProperties,
+  annotationProperties,
   addToObject
 }) => {
   const { t } = useTranslation()
@@ -29,12 +27,6 @@ const EdgesFilter = ({
   const checkEmptyRow = (filters) => filters.filter((filter) => filter.property === '' && filter.value === '').length > 0
 
   const [edgesFilters, setEdgesFilters] = useState([defaultEdgeFilter])
-
-  useEffect(() => {
-    if (edgesProperties.length === 0) {
-      getEdgesProperties({ setStoreState })
-    }
-  }, [])
 
   return (
     <>
@@ -87,11 +79,12 @@ const EdgesFilter = ({
                       <Dropdown
                         id={selectId}
                         value={edgesFilters[index].property}
-                        options={edgesProperties}
+                        options={annotationProperties}
+                        filter
                         onChange={(e) => {
                           const newFilter = {
                             ...edgesFilters[index],
-                            property: e.target.value
+                            property: e.target.value.id
                           }
 
                           let newEdgesFilters = [
@@ -162,14 +155,14 @@ const EdgesFilter = ({
 
 EdgesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  edgesProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  edgesProperties
+  annotationProperties
 }) => ({
-  edgesProperties
+  annotationProperties
 })
 
 export default connect(

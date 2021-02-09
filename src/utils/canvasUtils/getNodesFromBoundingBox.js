@@ -14,14 +14,13 @@ const getNodesFromBoundingBox = ({
   const {
     boundingBoxGeometry,
     isBoundingBoxSelectionInternal,
-    availableNodesNormalised,
     availableNodes,
     network,
   } = store.getState()
 
   clearNodesSelection()
 
-  const availableNodesIds = Object.keys(availableNodesNormalised)
+  const availableNodesIds = availableNodes.getIds()
 
   if (availableNodesIds.length > 0) {
     const {

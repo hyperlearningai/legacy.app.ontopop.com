@@ -1,8 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import EdgesSelection from '../../components/EdgesSelection'
-import { OwlClasses } from '../fixtures/test-ontology-classes'
+import EditOntology from '../../components/EditOntology'
 
 const setup = () => {
   const props = {
@@ -18,14 +17,9 @@ const setup = () => {
         updatedNodes: []
       },
     },
-    setStoreState: jest.fn(),
-    addToArray: jest.fn(),
-    removeFromObject: jest.fn(),
-    addToObject: jest.fn(),
-    classesFromApi: OwlClasses
   }
 
-  const component = shallow(<EdgesSelection {...props} />)
+  const component = shallow(<EditOntology {...props} />)
 
   return {
     component,
@@ -33,7 +27,7 @@ const setup = () => {
   }
 }
 
-describe('EdgesSelection', () => {
+describe('EditOntology', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

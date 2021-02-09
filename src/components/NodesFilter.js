@@ -10,11 +10,11 @@ import { Dropdown } from 'primereact/dropdown'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
-import setFilteredNodes from '../utils/setFilteredNodes'
+import setFilteredNodes from '../utils/nodesFilter/setFilteredNodes'
 
 const NodesFilter = ({
   setStoreState,
-  nodesProperties,
+  annotationProperties,
   addToObject
 }) => {
   const { t } = useTranslation()
@@ -79,9 +79,10 @@ const NodesFilter = ({
                       <Dropdown
                         id={selectId}
                         value={nodesFilters[index].property}
-                        options={nodesProperties}
+                        options={annotationProperties}
                         optionValue="id"
                         optionLabel="label"
+                        filter
                         onChange={(e) => {
                           const newFilter = {
                             ...nodesFilters[index],
@@ -156,14 +157,14 @@ const NodesFilter = ({
 
 NodesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  nodesProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  nodesProperties
+  annotationProperties
 }) => ({
-  nodesProperties
+  annotationProperties
 })
 
 export default connect(

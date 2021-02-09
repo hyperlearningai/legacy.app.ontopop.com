@@ -8,16 +8,13 @@ import { availableNodesNormalised } from '../../fixtures/availableNodesNormalise
 import {
   addToObjectFixture,
   setStoreStateFixture
-} from '../../fixtures/setOntologyAddNodes'
-
-const selectedElementProperties = {
-  rdfAbout: 'http://test.com/node',
-  rdfsLabel: 'New node',
-  'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node'
-}
+} from '../../fixtures/setOntologyAddNode'
+import en from '../../../i18n/en'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
+const t = (id) => en[id]
+jest.mock('../../../utils/showNotification')
 
 describe('setOntologyAddNode', () => {
   afterEach(() => {
@@ -25,6 +22,12 @@ describe('setOntologyAddNode', () => {
   })
 
   it('should work correctly', async () => {
+    const selectedElementProperties = {
+      rdfAbout: 'http://test.com/node',
+      rdfsLabel: 'New node',
+      'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node'
+    }
+
     const getState = jest.fn().mockImplementationOnce(() => ({
       graphVersions,
       classesFromApi: OwlClasses,
@@ -38,7 +41,8 @@ describe('setOntologyAddNode', () => {
     await setOntologyAddNode({
       setStoreState,
       selectedElementProperties,
-      addToObject
+      addToObject,
+      t
     })
 
     expect(addToObject).toHaveBeenCalledWith(
