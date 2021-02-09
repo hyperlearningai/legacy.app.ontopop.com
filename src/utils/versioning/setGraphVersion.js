@@ -1,3 +1,4 @@
+import { GRAPH_VERSION_STRUCTURE } from '../../constants/graph'
 import store from '../../store'
 
 /**
@@ -31,13 +32,11 @@ const setGraphVersion = async ({
   } = graphVersions[selectedVersion]
 
   addToObject('graphVersions', versionName, {
+    ...GRAPH_VERSION_STRUCTURE,
     classesFromApi,
     objectPropertiesFromApi,
     classesFromApiBackup: classesFromApi,
     objectPropertiesFromApiBackup: objectPropertiesFromApi,
-    deletedNodes: [],
-    addedNodes: [],
-    updatedNodes: []
   })
   setStoreState('selectedGraphVersion', versionName)
 }
