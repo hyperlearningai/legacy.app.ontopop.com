@@ -1,4 +1,5 @@
 import { SELECTED_NODE_COLOR } from '../../constants/graph'
+import addNode from '../nodesEdgesUtils/addNode'
 import getSpiralCoordinates from './getSpiralCoordinates'
 
 let step = 0
@@ -15,7 +16,7 @@ let step = 0
  * @param  {Array}    params.shortestPathNodes        Array of nodes IDs in shortest path
  * @return { undefined }
  */
-const addNode = ({
+const appendNode = ({
   addedNodes,
   availableNodes,
   isNodeOverlay,
@@ -52,9 +53,9 @@ const addNode = ({
     extendedNodeObject.y = y
     step += 1
 
-    availableNodes.add(extendedNodeObject)
+    addNode(extendedNodeObject)
     addedNodes.push(nodeId)
   }
 }
 
-export default addNode
+export default appendNode

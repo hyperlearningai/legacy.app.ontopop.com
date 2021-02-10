@@ -5,6 +5,7 @@ import {
   LABEL_PROPERTY,
   OWL_ANNOTATION_PROPERTIES
 } from '../../constants/graph'
+import updateNodes from '../nodesEdgesUtils/updateNodes'
 /**
  * Update ontology nodes
  * @param  {Object}         params
@@ -25,7 +26,6 @@ const setOntologyUpdateNode = ({
     classesFromApi,
     updatedNodes,
     selectedGraphVersion,
-    availableNodes,
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -50,7 +50,7 @@ const setOntologyUpdateNode = ({
 
       if (propertyKey === LABEL_PROPERTY) {
         newClassesFromApi[selectedElement].label = selectedElementProperties[propertyKey]
-        availableNodes.update({ id: selectedElement, label: selectedElementProperties[propertyKey] })
+        updateNodes({ id: selectedElement, label: selectedElementProperties[propertyKey] })
       }
     }
 

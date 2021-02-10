@@ -14,40 +14,6 @@ exports[`NodesSelectionDetails should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  availableNodes={
-    DataSet {
-      "_data": Map {
-        "id" => Object {
-          "id": "id",
-          "label": "label",
-          "rdfAbout": "rdfAbout",
-          "skosComment": "skosComment",
-          "skosDefinition": "skosDefinition",
-          "skosExample": "skosExample",
-        },
-        "cde" => Object {
-          "id": "cde",
-          "label": "label2",
-          "rdfAbout": "rdfAbout",
-          "skosComment": "skosComment",
-          "skosDefinition": "skosDefinition",
-          "skosExample": "skosExample",
-        },
-      },
-      "_idProp": "id",
-      "_options": Object {},
-      "_queue": null,
-      "_subscribers": Object {
-        "*": Array [],
-        "add": Array [],
-        "remove": Array [],
-        "update": Array [],
-      },
-      "length": 2,
-      "subscribe": [Function],
-      "unsubscribe": [Function],
-    }
-  }
   mapToProps={[Function]}
   nodeId="abc"
   nodesConnections={

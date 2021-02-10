@@ -1,102 +1,124 @@
-import {
-  CLICK_NODE_BACKGROUND,
-  HIGHLIGHT_NODE_BORDER,
-  HOVER_NODE_BACKGROUND,
-  HOVER_NODE_BORDER,
-  NODE_BACKGROUND,
-  NODE_BORDER,
-  EDGE_COLOR,
-  NODE_FONT,
-} from '../constants/graph'
+import store from '../store'
 
 /**
  * Get visjs visualisation options
- * @param  {Object}   params
- * @param  {Boolean}  params.isPhysicsOn               physics on flag
- * @param  {Boolean}  params.physicsHierarchicalView   hierarchical view flag
- * @param  {Boolean}  params.physicsRepulsion          physics repulsion flag
- * @param  {Number}   params.physicsEdgeLength         edge length as integer
  * @return {Object}   output                           VisJs visualisation options
  */
-const getPhysicsOptions = ({
-  isPhysicsOn,
-  physicsHierarchicalView,
-  physicsRepulsion,
-  physicsEdgeLength
-}) => ({
-  edges: {
-    smooth: {
-      type: 'cubicBezier', // 'continuous'
-      forceDirection: 'none',
-      roundness: 0.45,
-    },
-    arrows: { to: true },
-    color: EDGE_COLOR,
-    labelHighlightBold: true,
-    selectionWidth: 3,
-  },
-  nodes: {
-    font: NODE_FONT,
-    shape: 'circle', // ellipse, circle, database, box, text, image, circularImage, diamond, dot, star, triangle, triangleDown, hexagon, square, icon
-    color: {
-      background: NODE_BACKGROUND,
-      border: NODE_BORDER,
-      highlight: {
-        background: CLICK_NODE_BACKGROUND,
-        border: HIGHLIGHT_NODE_BORDER,
+const getPhysicsOptions = () => {
+  const {
+    isPhysicsOn,
+    physicsHierarchicalView,
+    physicsRepulsion,
+    stylingEdgeLength,
+    stylingEdgeWidth,
+    stylingEdgeLineStyle,
+    stylingEdgeLineColor,
+    stylingEdgeLineColorHover,
+    stylingEdgeLineColorHighlight,
+    stylingNodeShape,
+    stylingNodeSize,
+    stylingNodeBorder,
+    stylingNodeBorderSelected,
+    stylingNodeBorderColor,
+    stylingNodeBackgroundColor,
+    stylingNodeTextColor,
+    stylingNodeHighlightBorderColor,
+    stylingNodeHighlightBackgroundColor,
+    stylingNodeHoverBackgroundColor,
+    stylingNodeHoverBorderColor
+  } = store.getState()
+
+  return ({
+    edges: {
+      smooth: {
+        type: 'cubicBezier', // 'continuous'
+        forceDirection: 'none',
+        roundness: 0.45,
       },
-      hover: {
-        background: HOVER_NODE_BACKGROUND,
-        border: HOVER_NODE_BORDER,
+      arrows: { to: true },
+      color: {
+        color: stylingEdgeLineColor,
+        highlight: stylingEdgeLineColorHighlight,
+        hover: stylingEdgeLineColorHover,
+        inherit: 'from',
+        opacity: 1.0
       },
+      labelHighlightBold: true,
+      selectionWidth: 3,
+      width: stylingEdgeWidth,
+      dashes: stylingEdgeLineStyle
     },
-  },
-  autoResize: true,
-  layout: {
-    hierarchical: {
-      enabled: physicsHierarchicalView,
-      sortMethod: 'hubsize', // 'directed'
-      levelSeparation: physicsEdgeLength / 2,
-      nodeSpacing: physicsEdgeLength,
-      treeSpacing: 115,
+    nodes: {
+      borderWidth: stylingNodeBorder,
+      borderWidthSelected: stylingNodeBorderSelected,
+      font: {
+        size: 12,
+        color: stylingNodeTextColor,
+        face: 'Montserrat',
+        bold: '700'
+      },
+      shape: stylingNodeShape,
+      color: {
+        background: stylingNodeBackgroundColor,
+        border: stylingNodeBorderColor,
+        highlight: {
+          background: stylingNodeHighlightBackgroundColor,
+          border: stylingNodeHighlightBorderColor,
+        },
+        hover: {
+          background: stylingNodeHoverBackgroundColor,
+          border: stylingNodeHoverBorderColor,
+        },
+      },
+      size: stylingNodeSize
     },
-    randomSeed: 333,
-    improvedLayout: false,
-  },
-  interaction: {
-    navigationButtons: true,
-    keyboard: true,
-    hideEdgesOnDrag: true,
-    hover: true,
-    // dragNodes: false, // do not allow dragging nodes
-    // zoomView: false, // do not allow zooming
-    // dragView: false // do not allow dragging
-  },
-  physics: isPhysicsOn ? {
-    enabled: !physicsHierarchicalView,
-    hierarchicalRepulsion: {
-      centralGravity: 0.5,
-      springLength: 120,
-      springConstant: 0.1,
-      nodeDistance: physicsEdgeLength,
-      damping: 0.12,
+    autoResize: true,
+    layout: {
+      hierarchical: {
+        enabled: physicsHierarchicalView,
+        sortMethod: 'hubsize', // 'directed'
+        levelSeparation: stylingEdgeLength / 2,
+        nodeSpacing: stylingEdgeLength,
+        treeSpacing: 115,
+      },
+      randomSeed: 333,
+      improvedLayout: false,
     },
-    barnesHut: {
-      gravitationalConstant: -2000,
-      centralGravity: 0.5,
-      springLength: physicsEdgeLength,
-      springConstant: 0.1,
-      damping: 0.19,
-      avoidOverlap: 0.16,
+    interaction: {
+      navigationButtons: true,
+      keyboard: true,
+      hideEdgesOnDrag: true,
+      hover: true,
+      // dragNodes: false, // do not allow dragging nodes
+      // zoomView: false, // do not allow zooming
+      // dragView: false // do not allow dragging
     },
-    minVelocity: 0.75,
-    solver: physicsRepulsion ? 'hierarchicalRepulsion' : 'barnesHut',
-    stabilization: {
-      enabled: true,
-      iterations: 2000,
-      updateInterval: 25,
-    },
-  } : false,
-})
+    physics: isPhysicsOn ? {
+      enabled: !physicsHierarchicalView,
+      hierarchicalRepulsion: {
+        centralGravity: 0.5,
+        springLength: 120,
+        springConstant: 0.1,
+        nodeDistance: stylingEdgeLength,
+        damping: 0.12,
+      },
+      barnesHut: {
+        gravitationalConstant: -2000,
+        centralGravity: 0.5,
+        springLength: stylingEdgeLength,
+        springConstant: 0.1,
+        damping: 0.19,
+        avoidOverlap: 0.16,
+      },
+      minVelocity: 0.75,
+      solver: physicsRepulsion ? 'hierarchicalRepulsion' : 'barnesHut',
+      stabilization: {
+        enabled: true,
+        iterations: 2000,
+        updateInterval: 25,
+      },
+    } : false,
+  })
+}
 
 export default getPhysicsOptions

@@ -22,7 +22,7 @@ describe('setOntologyRestoreNode', () => {
   })
 
   it('should work correctly', async () => {
-    const getState = jest.fn().mockImplementationOnce(() => ({
+    const getState = jest.fn().mockImplementation(() => ({
       graphVersions,
       classesFromApi: OwlClasses,
       objectPropertiesFromApi: OwlObjectProperties,

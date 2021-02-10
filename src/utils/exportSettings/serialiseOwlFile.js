@@ -3,6 +3,9 @@ import {
   uniq
 } from 'lodash'
 import store from '../../store'
+import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import getNodeIds from '../nodesEdgesUtils/getNodeIds'
+import getEdge from '../nodesEdgesUtils/getEdge'
 
 const owlTemplate = `<?xml version="1.0"?>
 <rdf:RDF xmlns="http://webprotege.stanford.edu/project/96Ytr9AQdNv8valtcgFhzp#"
@@ -191,15 +194,13 @@ $CLASSES
 \ */
 const serialiseOwlFile = () => {
   const {
-    availableNodes,
-    availableEdges,
     objectPropertiesFromApi,
     classesFromApi,
   } = store.getState()
 
-  const edgesIds = availableEdges.getIds()
+  const edgesIds = getEdgeIds()
 
-  const edgesUniqueIds = edgesIds.length === 0 ? [] : uniq(edgesIds.map((edge) => availableEdges.get(edge).edgeId))
+  const edgesUniqueIds = edgesIds.length === 0 ? [] : uniq(edgesIds.map((edge) => getEdge(edge).edgeId))
 
   // GET OBJECT PROPERTIES
   const objectProperties = []
@@ -246,7 +247,7 @@ const serialiseOwlFile = () => {
   // GET CLASSES
   const classes = []
 
-  const nodesIds = availableNodes.getIds()
+  const nodesIds = getNodeIds()
 
   for (let index = 0; index < nodesIds.length; index++) {
     const nodeId = nodesIds[index]

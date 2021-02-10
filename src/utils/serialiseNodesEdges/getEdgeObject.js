@@ -17,7 +17,7 @@ import { generatePredicateId, getPathEdges } from '../../constants/functions'
  * @return {Object}   output.fromObject              Subject node object
  * @return {Object}   output.toObject                Object node object
  */
-const getEdge = ({
+const getEdgeObject = ({
   classesFromApi,
   from,
   isNodeOverlay,
@@ -85,4 +85,4 @@ const getEdge = ({
   })
 }
 
-export default getEdge
+export default getEdgeObject

@@ -1,8 +1,8 @@
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties'
-import getEdge from '../../../utils/serialiseNodesEdges/getEdge'
+import getEdgeObject from '../../../utils/serialiseNodesEdges/getEdgeObject'
 
-describe('getEdge', () => {
+describe('getEdgeObject', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -16,7 +16,7 @@ describe('getEdge', () => {
     const isNodeOverlay = false
     const shortestPathResults = []
 
-    expect(getEdge({
+    expect(getEdgeObject({
       from,
       predicate,
       to,
@@ -123,7 +123,7 @@ describe('getEdge', () => {
     const isNodeOverlay = true
     const shortestPathResults = ['http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovTEST___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1234']
 
-    expect(getEdge({
+    expect(getEdgeObject({
       from,
       predicate,
       to,
@@ -237,7 +237,7 @@ describe('getEdge', () => {
     const isNodeOverlay = true
     const shortestPathResults = [`${predicate}___${from}___${to}`]
 
-    expect(getEdge({
+    expect(getEdgeObject({
       from,
       predicate,
       to,

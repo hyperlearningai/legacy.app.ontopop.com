@@ -28,7 +28,8 @@ import {
   FaRegHandPointer,
   FaRegCircle,
   FaFileExport,
-  FaGitAlt
+  FaGitAlt,
+  FaPaintBrush
 } from 'react-icons/fa'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
@@ -46,7 +47,8 @@ import {
   SIDEBAR_VIEW_EDGES_FILTER,
   SIDEBAR_VIEW_CUSTOM_QUERY,
   SIDEBAR_VIEW_VERSIONING,
-  SIDEBAR_VIEW_EDIT_ONTOLOGY
+  SIDEBAR_VIEW_EDIT_ONTOLOGY,
+  SIDEBAR_VIEW_STYLING
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
@@ -62,6 +64,7 @@ import EdgesFilter from './EdgesFilter'
 import CustomQuery from './CustomQuery'
 import Versioning from './Versioning'
 import EditOntology from './EditOntology'
+import NetworkStyling from './NetworkStyling'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -178,6 +181,13 @@ const Sidebar = ({
           <FiSettings />
         </Button>
         <Button
+          tooltip={t(SIDEBAR_VIEW_STYLING)}
+          className={sidebarView === SIDEBAR_VIEW_STYLING ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_STYLING)}
+        >
+          <FaPaintBrush />
+        </Button>
+        <Button
           tooltip={t(SIDEBAR_VIEW_EXPORT)}
           className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
           onClick={() => setView(SIDEBAR_VIEW_EXPORT)}
@@ -278,6 +288,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_SETTINGS && (
                 <NetworkSettings />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_STYLING && (
+                <NetworkStyling />
               )
             }
 

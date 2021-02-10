@@ -3,8 +3,9 @@ import {
   SUBCLASSOF_PROPERTY,
   SUB_CLASS_OF_ID
 } from '../../constants/graph'
-import getEdge from '../serialiseNodesEdges/getEdge'
+import getEdgeObject from '../serialiseNodesEdges/getEdgeObject'
 import { getEdgeAndNodes } from '../../constants/functions'
+import addEdge from '../nodesEdgesUtils/addEdge'
 /**
  * ADd ontology edge
  * @param  {Object}         params
@@ -23,7 +24,6 @@ const setOntologyRestoreConnection = ({
     classesFromApi,
     objectPropertiesFromApi,
     selectedGraphVersion,
-    availableEdges,
     deletedConnections,
   } = store.getState()
 
@@ -59,7 +59,7 @@ const setOntologyRestoreConnection = ({
       newClassesFromApi[from][SUBCLASSOF_PROPERTY].push(connectionOwlObject)
 
       // get edge object from objectPropertiesFromApi and add to graph
-      const { edge } = getEdge({
+      const { edge } = getEdgeObject({
         classesFromApi,
         from,
         objectPropertiesFromApi,
@@ -67,7 +67,7 @@ const setOntologyRestoreConnection = ({
         to,
       })
 
-      availableEdges.add(edge)
+      addEdge(edge)
 
       return true
     })

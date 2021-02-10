@@ -1,8 +1,10 @@
 import flatten from 'flat'
-import { generatePredicateId } from '../../constants/functions'
 import { SUBCLASSOF_PROPERTY, SUB_CLASS_OF_ID } from '../../constants/graph'
 import store from '../../store'
-import getEdge from '../serialiseNodesEdges/getEdge'
+import addEdge from '../nodesEdgesUtils/addEdge'
+import addNode from '../nodesEdgesUtils/addNode'
+import getNode from '../nodesEdgesUtils/getNode'
+import getEdgeObject from '../serialiseNodesEdges/getEdgeObject'
 
 /**
  * Restore ontology nodes
@@ -23,8 +25,6 @@ const setOntologyRestoreNode = ({
     deletedNodes,
     objectPropertiesFromApi,
     selectedGraphVersion,
-    availableNodes,
-    availableEdges
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -41,9 +41,7 @@ const setOntologyRestoreNode = ({
       nodeObject.id = nodeId
       nodeObject.label = nodeObject.rdfsLabel
 
-      if (availableNodes.get(nodeId) === null) {
-        availableNodes.add(nodeObject)
-      }
+      addNode(nodeObject)
 
       const { rdfsSubClassOf } = nodeObject
 
@@ -52,33 +50,27 @@ const setOntologyRestoreNode = ({
           const to = subClassOf.classRdfAbout
 
           if (!newDeletedNodes.includes(to)) {
-            if (availableNodes.get(to) === null) {
+            if (getNode(to) === null) {
               const toObject = newClassesFromApiBackup[to]
               toObject.id = to
               toObject.label = toObject.rdfsLabel
 
-              availableNodes.add(toObject)
+              addNode(toObject)
             }
 
             const { owlRestriction } = subClassOf
             const predicate = owlRestriction ? owlRestriction.objectPropertyRdfAbout : SUB_CLASS_OF_ID
 
             // add to graph
-            const edgeId = generatePredicateId({
-              from: nodeId, predicate, to
+            const { edge } = getEdgeObject({
+              classesFromApi,
+              from: nodeId,
+              objectPropertiesFromApi,
+              predicate,
+              to,
             })
 
-            if (availableEdges.get(edgeId) === null) {
-              const { edge } = getEdge({
-                classesFromApi,
-                from: nodeId,
-                objectPropertiesFromApi,
-                predicate,
-                to,
-              })
-
-              availableEdges.add(edge)
-            }
+            addEdge(edge)
           }
 
           return true
@@ -101,7 +93,7 @@ const setOntologyRestoreNode = ({
         const [from] = flatClassKey.split('.rdfsSubClassOf.')
         const to = flatClassesFromApi[flatClassKey]
 
-        if (availableNodes.get(from)) {
+        if (getNode(from) !== null) {
           const owlRestriction = flatClassesFromApi[flatClassKey.replace('classRdfAbout', 'owlRestriction')]
           const predicate = owlRestriction ? owlRestriction.objectPropertyRdfAbout : SUB_CLASS_OF_ID
 
@@ -121,21 +113,15 @@ const setOntologyRestoreNode = ({
           newClassesFromApi[from][SUBCLASSOF_PROPERTY].push(connectionOwlObject)
 
           // add to graph
-          const edgeId = generatePredicateId({
-            from, predicate, to
+          const { edge } = getEdgeObject({
+            classesFromApi,
+            from,
+            objectPropertiesFromApi,
+            predicate,
+            to,
           })
 
-          if (availableEdges.get(edgeId) === null) {
-            const { edge } = getEdge({
-              classesFromApi,
-              from,
-              objectPropertiesFromApi,
-              predicate,
-              to,
-            })
-
-            availableEdges.add(edge)
-          }
+          addEdge(edge)
         }
       }
       return true

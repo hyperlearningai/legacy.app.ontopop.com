@@ -12,7 +12,7 @@ describe('getNodesFromBoundingBox', () => {
   })
 
   it('should work correctly when no nodes', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       boundingBoxGeometry: {
         fixedPointX: 100,
         fixedPointY: 100,
@@ -44,7 +44,7 @@ describe('getNodesFromBoundingBox', () => {
   })
 
   it('should work correctly when nodes inside box', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       boundingBoxGeometry: {
         fixedPointX: 100,
         fixedPointY: 100,
@@ -85,7 +85,7 @@ describe('getNodesFromBoundingBox', () => {
   })
 
   it('should work correctly when nodes outside box', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       boundingBoxGeometry: {
         fixedPointX: 100,
         fixedPointY: 100,

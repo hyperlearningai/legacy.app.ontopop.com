@@ -97,7 +97,6 @@ export default {
 
   // Physics settings
   physicsSettings: 'Physics settings',
-  edgeLength: 'Edge length',
   hierachicalView: 'Hierarchical view',
   gravitationalView: 'Gravitational view',
   enableRepulsion: 'Enable repulsion',
@@ -105,6 +104,49 @@ export default {
   physics: 'Physics',
   repulsion: 'Repulsion',
   positioning: 'Positioning',
+  chooseColor: 'Click to change colour',
+
+  // Physics Edge
+  edgeStylingByProperty: 'Edge styling by property',
+  edgeStylingGlobal: 'Global edge Styling',
+  edgeStyling: 'Edge Styling',
+  edgeLength: 'Edge length',
+  edgeThickness: 'Edge Thickness',
+  edgeLineStyle: 'Edge Line Style',
+  edgeLineStyleColorChooseProperty: 'Choose Property',
+  edgeLineStyleColor: 'Colour',
+  edgeLineStyleLineColor: 'Line Colour',
+  edgeLineStyleHighlightColor: 'Highlight Colour',
+  edgeLineStyleHoverColor: 'Hover Colour',
+  edgeLineStyleCurrentColor: 'Current Colour',
+  edgeCaptionPosition: 'Edge Caption Position',
+  edgeCaptionProperties: 'Edge Caption Properties',
+  edgeByPropInstructions1: 'Choose the property you wish to style',
+  edgeByPropInstructions2: 'Then choose the styles below to update that property',
+  edgeLineColorInstructions: 'Click on a colour to open colour palette and change colour for that option',
+
+  nodeStylingByProperty: 'Node styling by property',
+  nodeStylingGlobal: 'Global node styling',
+  nodeSize: 'Node size',
+  nodeShape: 'Node shape',
+  nodeColor: 'Node colour',
+  nodeBorder: 'Node border',
+  nodeBorderLineWidth: 'Border width',
+  nodeBorderLineWidthHighlighted: 'Border width highlighted',
+  nodeBorderColor: 'Border colour',
+  nodeTextColor: 'Node text colour',
+  nodeBorderHighlightedColor: 'Border colour highlighted',
+  nodeBackgroundColor: 'Background colour',
+  nodeBackgroundHighlightedColor: 'Background colour highlighted',
+  nodeBackgroundHoverColor: 'Background colour on hover',
+  nodeBorderHoverColor: 'Border colour on hover',
+
+  nodeCaptionPosition: 'Node caption position',
+  nodeCaptionProperties: 'Node caption properties',
+  nodeShapeInstructions: 'Choose the node shape',
+
+  // Physics Node
+  nodeStyling: 'Node Styling',
   physicsOn: 'Physics on',
   physicsOff: 'Physics off',
 

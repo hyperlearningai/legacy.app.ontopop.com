@@ -1,14 +1,15 @@
 /* eslint max-len:0 */
-import { DataSet } from 'vis-data'
 import setOntologyUpdateEdge from '../../../utils/editOntology/setOntologyUpdateEdge'
 import store from '../../../store'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
 import { graphVersions } from '../../fixtures/graphVersions'
-import { availableEdgesNormalised } from '../../fixtures/availableEdgesNormalised'
 import {
   addToObjectFixture,
   setStoreStateFixture
 } from '../../fixtures/setOntologyUpdateEdge'
+import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
+
+jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 
 const selectedElementProperties = {
   rdfAbout: 'http://test.com/edge',
@@ -25,13 +26,13 @@ describe('setOntologyUpdateEdge', () => {
   })
 
   it('should work correctly', async () => {
-    const getState = jest.fn().mockImplementationOnce(() => ({
+    getEdge.mockImplementation(() => [])
+
+    const getState = jest.fn().mockImplementation(() => ({
       graphVersions,
       objectPropertiesFromApi: OwlObjectProperties,
       selectedGraphVersion: 'original',
-      availableEdges: new DataSet({ id: 1, label: 'test' }),
       updatedEdges: [],
-      availableEdgesNormalised
     }))
     store.getState = getState
 

@@ -1,5 +1,4 @@
 /* eslint max-len:0 */
-import { DataSet } from 'vis-data'
 import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
 import store from '../../../store'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
@@ -9,6 +8,9 @@ import {
   addToObjectFixture,
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteEdge'
+import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
+
+jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
 
 const selectedElement = Object.keys(OwlObjectProperties).slice(0, Object.keys(OwlObjectProperties).length - 2)
 
@@ -28,12 +30,6 @@ describe('setOntologyDeleteEdge', () => {
       deletedEdges,
       selectedGraphVersion: 'original',
       classesFromApi: OwlClasses,
-      availableEdges: new DataSet(
-        Object.keys(OwlObjectProperties).map((property) => ({
-          id: property,
-          label: OwlObjectProperties[property].rdfsLabel
-        }))
-      )
     }))
     store.getState = getState
 
@@ -43,6 +39,9 @@ describe('setOntologyDeleteEdge', () => {
       addToObject
     })
 
+    expect(removeEdge).toHaveBeenLastCalledWith(
+      'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
+    )
     expect(addToObject).toHaveBeenCalledWith(
       'graphVersions',
       'original',

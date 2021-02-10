@@ -1,6 +1,7 @@
 import { getEdgeUniqueId, getElementProperties } from '../../constants/functions'
 import { LOW_LEVEL_PROPERTIES } from '../../constants/graph'
 import store from '../../store'
+import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 
 /**
  * Search free-text in elements' properties
@@ -17,7 +18,6 @@ const searchElement = ({
     classesFromApi,
     edgesIdsToDisplay,
     objectPropertiesFromApi,
-    availableNodes
   } = store.getState()
 
   const elementsToDisplay = {}
@@ -26,7 +26,7 @@ const searchElement = ({
     return setStoreState('freeTextSelection', JSON.parse(JSON.stringify(elementsToDisplay)))
   }
 
-  const nodeIds = availableNodes.getIds()
+  const nodeIds = getNodeIds()
 
   if (nodeIds.length > 0) {
     for (let index = 0; index < nodeIds.length; index++) {

@@ -1,5 +1,8 @@
 import { EDGE_COLOR_HIGHLIGHTED } from '../../constants/graph'
 import store from '../../store'
+import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import updateEdges from '../nodesEdgesUtils/updateEdges'
+import getEdge from '../nodesEdgesUtils/getEdge'
 
 /**
  * Search free-text in elements' properties
@@ -15,23 +18,17 @@ const highlightEdge = ({
   setStoreState
 }) => {
   const {
-    availableEdges,
     network,
   } = store.getState()
 
-  const availableEdgesIds = availableEdges.getIds()
+  const availableEdgesIds = getEdgeIds()
 
   if (availableEdgesIds.length > 0) {
-    const edgesToAdd = availableEdgesIds.filter((edge) => availableEdges.get(edge).edgeId === elementId)
+    const edgesToAdd = availableEdgesIds.filter((edge) => getEdge(edge).edgeId === elementId)
 
-    edgesToAdd.map((edge) => {
-      availableEdges.update(
-        [{ id: edge, color: EDGE_COLOR_HIGHLIGHTED }]
-      )
-      return availableEdges.update(
-        [{ id: edge, width: 3 }]
-      )
-    })
+    edgesToAdd.map((edge) => updateEdges(
+      [{ id: edge, color: EDGE_COLOR_HIGHLIGHTED, width: 3 }]
+    ))
 
     setPrevSelectedEdges(edgesToAdd)
   }

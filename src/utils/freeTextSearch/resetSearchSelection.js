@@ -1,5 +1,6 @@
 import { EDGE_COLOR, NODE_BACKGROUND } from '../../constants/graph'
-import store from '../../store'
+import updateEdges from '../nodesEdgesUtils/updateEdges'
+import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
  * Search free-text in elements' properties
@@ -16,14 +17,9 @@ const resetSearchSelection = ({
   setPrevSelectedEdges,
   setPrevSelectedNode,
 }) => {
-  const {
-    availableEdges,
-    availableNodes,
-  } = store.getState()
-
   // reset nodes
   if (prevSelectedNode !== '') {
-    availableNodes.update(
+    updateNodes(
       [{ id: prevSelectedNode, color: { background: NODE_BACKGROUND } }]
     )
   }
@@ -32,14 +28,9 @@ const resetSearchSelection = ({
 
   // reset edges
   if (prevSelectedEdges && prevSelectedEdges.length > 0) {
-    prevSelectedEdges.map((edge) => {
-      availableEdges.update(
-        [{ id: edge, color: EDGE_COLOR }]
-      )
-      return availableEdges.update(
-        [{ id: edge, width: 1 }]
-      )
-    })
+    prevSelectedEdges.map((edge) => updateEdges(
+      [{ id: edge, color: EDGE_COLOR, width: 1 }]
+    ))
   }
 
   setPrevSelectedEdges([])

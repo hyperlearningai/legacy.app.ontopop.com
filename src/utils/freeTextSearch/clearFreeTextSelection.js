@@ -1,5 +1,6 @@
 import { NODE_BACKGROUND } from '../../constants/graph'
 import store from '../../store'
+import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
  * Clear free text selected nodes in canvas
@@ -7,7 +8,6 @@ import store from '../../store'
  */
 const clearFreeTextSelection = () => {
   const {
-    availableNodes,
     freeTextSelection
   } = store.getState()
 
@@ -16,7 +16,7 @@ const clearFreeTextSelection = () => {
       const elementType = freeTextSelection[elementId]
 
       if (elementType === 'node') {
-        availableNodes.update(
+        updateNodes(
           [{ id: elementId, color: { background: NODE_BACKGROUND } }]
         )
       }

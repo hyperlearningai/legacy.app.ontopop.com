@@ -14,9 +14,9 @@ import focusNode from '../utils/freeTextSearch/focusNode'
 import highlightEdge from '../utils/freeTextSearch/highlightEdge'
 import resetSearchSelection from '../utils/freeTextSearch/resetSearchSelection'
 import clearFreeTextSelection from '../utils/freeTextSearch/clearFreeTextSelection'
+import updateNodes from '../utils/nodesEdgesUtils/updateNodes'
 
 const FreeTextSearch = ({
-  availableNodes,
   classesFromApi,
   edgesIdsToDisplay,
   freeTextSelection,
@@ -90,7 +90,7 @@ const FreeTextSearch = ({
                     tooltip={`${t('removeGraph')}: ${elementId}`}
                     onClick={() => {
                       if (elementType === 'node') {
-                        availableNodes.update(
+                        updateNodes(
                           [{ id: elementId, color: { background: NODE_BACKGROUND } }]
                         )
                       }
@@ -151,7 +151,6 @@ FreeTextSearch.propTypes = {
   removeFromObject: PropTypes.func.isRequired,
   freeTextSelection: PropTypes.shape().isRequired,
   freeTextSelectedElement: PropTypes.string.isRequired,
-  availableNodes: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -165,7 +164,6 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  availableNodes,
 }) => ({
   freeTextSelection,
   freeTextSelectedElement,
@@ -173,7 +171,6 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  availableNodes,
 })
 
 export default connect(

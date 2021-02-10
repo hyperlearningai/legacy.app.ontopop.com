@@ -2,6 +2,7 @@ import flatten from 'flat'
 import store from '../../store'
 import { SUBCLASSOF_PROPERTY } from '../../constants/graph'
 import { generatePredicateId } from '../../constants/functions'
+import removeEdge from '../nodesEdgesUtils/removeEdge'
 
 /**
  * Delete ontology nodes
@@ -22,7 +23,6 @@ const setOntologyDeleteEdge = ({
     deletedEdges,
     selectedGraphVersion,
     classesFromApi,
-    availableEdges,
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -61,9 +61,7 @@ const setOntologyDeleteEdge = ({
           from, predicate, to
         })
 
-        if (availableEdges.get(edgeId)) {
-          availableEdges.remove(edgeId)
-        }
+        removeEdge(edgeId)
       }
       return true
     })

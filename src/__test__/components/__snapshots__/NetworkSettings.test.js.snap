@@ -16,7 +16,6 @@ exports[`NetworkSettings should match snapshot  1`] = `
   }
   isPhysicsOn={true}
   mapToProps={[Function]}
-  physicsEdgeLength={100}
   physicsHierarchicalView={true}
   physicsRepulsion={true}
   setStoreState={[MockFunction]}

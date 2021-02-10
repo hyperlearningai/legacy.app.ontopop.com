@@ -8,6 +8,7 @@ import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import { getEdgeAndNodes } from '../constants/functions'
 import { LABEL_PROPERTY, SUB_CLASS_OF_LABEL } from '../constants/graph'
+import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 
 const EditOntologyDeleteConnection = ({
   type,
@@ -16,7 +17,6 @@ const EditOntologyDeleteConnection = ({
   addToArray,
   removeFromObject,
   addToObject,
-  availableEdges,
   classesFromApi,
   objectPropertiesFromApi
 }) => {
@@ -25,7 +25,7 @@ const EditOntologyDeleteConnection = ({
   const [selectedElement, setSelectedElement] = useState(undefined)
   const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
-  const optionConnections = availableEdges.getIds().map((edgeId) => {
+  const optionConnections = getEdgeIds().map((edgeId) => {
     const [predicate, from, to] = getEdgeAndNodes(edgeId)
 
     const fromLabel = classesFromApi[from][LABEL_PROPERTY]
@@ -97,7 +97,6 @@ EditOntologyDeleteConnection.propTypes = {
   addToArray: PropTypes.func.isRequired,
   removeFromObject: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
-  availableEdges: PropTypes.shape.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
 }
@@ -105,13 +104,11 @@ EditOntologyDeleteConnection.propTypes = {
 const mapToProps = ({
   selectedGraphVersion,
   graphVersions,
-  availableEdges,
   classesFromApi,
   objectPropertiesFromApi
 }) => ({
   selectedGraphVersion,
   graphVersions,
-  availableEdges,
   classesFromApi,
   objectPropertiesFromApi
 })

@@ -14,14 +14,12 @@ import {
   IoFootballOutline,
   IoGitNetworkSharp
 } from 'react-icons/io5'
-import { Slider } from 'primereact/slider'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_SETTINGS } from '../constants/views'
 
 const NetworkSettings = ({
   setStoreState,
-  physicsEdgeLength,
   physicsRepulsion,
   physicsHierarchicalView,
   isPhysicsOn
@@ -34,22 +32,6 @@ const NetworkSettings = ({
         {t(SIDEBAR_VIEW_SETTINGS)}
       </div>
       <div className="network-settings">
-        <div className="network-settings-input">
-          <label htmlFor="rating">
-            {t('edgeLength')}
-          </label>
-          <div className="network-settings-item-input">
-            <Slider
-              min={0}
-              max={1000}
-              step={1}
-              id="rating"
-              value={physicsEdgeLength}
-              onChange={(e) => setStoreState('physicsEdgeLength', parseInt(e.value))}
-            />
-          </div>
-        </div>
-
         <div className="network-settings-input">
           <div className="label">
             {t('physics')}
@@ -120,19 +102,18 @@ const NetworkSettings = ({
 
 NetworkSettings.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  physicsEdgeLength: PropTypes.number.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
-  physicsEdgeLength,
+  stylingEdgeLength,
   physicsRepulsion,
   physicsHierarchicalView,
   isPhysicsOn
 }) => ({
-  physicsEdgeLength,
+  stylingEdgeLength,
   physicsRepulsion,
   physicsHierarchicalView,
   isPhysicsOn

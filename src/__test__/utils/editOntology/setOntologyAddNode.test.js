@@ -28,7 +28,7 @@ describe('setOntologyAddNode', () => {
       'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node'
     }
 
-    const getState = jest.fn().mockImplementationOnce(() => ({
+    const getState = jest.fn().mockImplementation(() => ({
       graphVersions,
       classesFromApi: OwlClasses,
       selectedGraphVersion: 'original',
