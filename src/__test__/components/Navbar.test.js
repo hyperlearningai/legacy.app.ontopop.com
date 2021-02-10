@@ -5,8 +5,9 @@ import Navbar from '../../components/Navbar'
 
 const setup = () => {
   const props = {
-    availableEdgesNormalised: { 123: { id: '123' } },
-    availableNodesNormalised: { 123: { id: '123' } },
+    availableEdgesCount: 333,
+    availableNodesCount: 200,
+    selectedGraphVersion: 'original'
   }
 
   const component = shallow(<Navbar {...props} />)

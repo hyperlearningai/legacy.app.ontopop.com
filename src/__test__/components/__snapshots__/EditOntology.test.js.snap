@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditOntology should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  graphVersions={
+    Object {
+      "original": Object {
+        "addedNodes": Array [],
+        "classesFromApi": Object {},
+        "classesFromApiBackup": Object {},
+        "deletedNodes": Array [],
+        "objectPropertiesFromApi": Object {},
+        "objectPropertiesFromApiBackup": Object {},
+        "updatedNodes": Array [],
+      },
+    }
+  }
+  mapToProps={[Function]}
+  selectedGraphVersion="original"
+>
+  <Component />
+</Connect>
+`;

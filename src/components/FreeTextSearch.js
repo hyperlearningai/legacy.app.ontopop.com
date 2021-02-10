@@ -6,17 +6,17 @@ import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_FREE_TEXT_SEARCH } from '../constants/views'
-import searchElement from '../utils/searchElement'
+import searchElement from '../utils/freeTextSearch/searchElement'
 import {
   NODE_BACKGROUND,
 } from '../constants/graph'
-import focusNode from '../utils/focusNode'
-import highlightEdge from '../utils/highlightEdge'
-import resetSearchSelection from '../utils/resetSearchSelection'
-import clearFreeTextSelection from '../utils/clearFreeTextSelection'
+import focusNode from '../utils/freeTextSearch/focusNode'
+import highlightEdge from '../utils/freeTextSearch/highlightEdge'
+import resetSearchSelection from '../utils/freeTextSearch/resetSearchSelection'
+import clearFreeTextSelection from '../utils/freeTextSearch/clearFreeTextSelection'
+import updateNodes from '../utils/nodesEdgesUtils/updateNodes'
 
 const FreeTextSearch = ({
-  availableNodes,
   classesFromApi,
   edgesIdsToDisplay,
   freeTextSelection,
@@ -86,12 +86,11 @@ const FreeTextSearch = ({
                 key={`freetext-search-row-${elementId}`}
               >
                 <div className="freetext-search-row-delete">
-
                   <Button
                     tooltip={`${t('removeGraph')}: ${elementId}`}
                     onClick={() => {
                       if (elementType === 'node') {
-                        availableNodes.update(
+                        updateNodes(
                           [{ id: elementId, color: { background: NODE_BACKGROUND } }]
                         )
                       }
@@ -152,7 +151,6 @@ FreeTextSearch.propTypes = {
   removeFromObject: PropTypes.func.isRequired,
   freeTextSelection: PropTypes.shape().isRequired,
   freeTextSelectedElement: PropTypes.string.isRequired,
-  availableNodes: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -166,7 +164,6 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  availableNodes,
 }) => ({
   freeTextSelection,
   freeTextSelectedElement,
@@ -174,7 +171,6 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
-  availableNodes,
 })
 
 export default connect(

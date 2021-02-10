@@ -8,17 +8,15 @@ import store from '../store'
  * @param  {Object}   params
  * @param  {Boolean}  params.isNodeOverlay              Display nodes outside path flag
  * @param  {Function} params.setStoreState              setStoreState action
- * @param  {Function} params.updateGraphData            Update graph data function
+ * @param  {Function} params.addToObject            Update graph data function
  * @return { undefined }
  */
 const setShortestPath = async ({
   isNodeOverlay,
   setStoreState,
-  updateGraphData,
+  addToObject,
 }) => {
   const {
-    availableEdgesNormalised,
-    availableNodesNormalised,
     lastGraphIndex,
     nodesConnections,
     shortestPathSelectedNodes,
@@ -26,8 +24,6 @@ const setShortestPath = async ({
 
   const shortestPathResults = await getShortestPath({
     shortestPathSelectedNodes,
-    availableEdgesNormalised,
-    availableNodesNormalised,
     nodesConnections
   })
 
@@ -46,7 +42,7 @@ const setShortestPath = async ({
     }
   }
 
-  updateGraphData(newCurrentGraph, graphValue)
+  addToObject('graphData', newCurrentGraph, graphValue)
   setStoreState('currentGraph', newCurrentGraph)
   setStoreState('lastGraphIndex', newGraphIndex)
   setStoreState('sidebarView', SIDEBAR_VIEW_GRAPHS)

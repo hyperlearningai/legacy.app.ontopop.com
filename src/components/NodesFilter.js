@@ -1,7 +1,6 @@
 /* eslint react/no-array-index-key:0 */
 import {
   useState,
-  useEffect
 } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
@@ -11,13 +10,12 @@ import { Dropdown } from 'primereact/dropdown'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
-import setFilteredNodes from '../utils/setFilteredNodes'
-import getNodesProperties from '../utils/getNodesProperties'
+import setFilteredNodes from '../utils/nodesFilter/setFilteredNodes'
 
 const NodesFilter = ({
   setStoreState,
-  nodesProperties,
-  updateGraphData
+  annotationProperties,
+  addToObject
 }) => {
   const { t } = useTranslation()
 
@@ -29,12 +27,6 @@ const NodesFilter = ({
   const checkEmptyRow = (filters) => filters.filter((filter) => filter.property === '' && filter.value === '').length > 0
 
   const [nodesFilters, setNodesFilters] = useState([defaultNodeFilter])
-
-  useEffect(() => {
-    if (nodesProperties.length === 0) {
-      getNodesProperties({ setStoreState })
-    }
-  }, [])
 
   return (
     <>
@@ -87,7 +79,10 @@ const NodesFilter = ({
                       <Dropdown
                         id={selectId}
                         value={nodesFilters[index].property}
-                        options={nodesProperties}
+                        options={annotationProperties}
+                        optionValue="id"
+                        optionLabel="label"
+                        filter
                         onChange={(e) => {
                           const newFilter = {
                             ...nodesFilters[index],
@@ -152,7 +147,7 @@ const NodesFilter = ({
           onClick={() => setFilteredNodes({
             setStoreState,
             nodesFilters,
-            updateGraphData
+            addToObject
           })}
         />
       </div>
@@ -162,14 +157,14 @@ const NodesFilter = ({
 
 NodesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  nodesProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateGraphData: PropTypes.func.isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
-  nodesProperties
+  annotationProperties
 }) => ({
-  nodesProperties
+  annotationProperties
 })
 
 export default connect(

@@ -4,15 +4,17 @@ exports[`GraphVisualisationWrapper should match snapshot when context menu and b
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
+  addToObject={[MockFunction]}
   boundingBoxGeometry={
     Object {
       "boundingBoxHeight": 200,
@@ -41,7 +43,9 @@ exports[`GraphVisualisationWrapper should match snapshot when context menu and b
     }
   }
   isBoundingBoxSelectable={true}
+  isOntologyUpdated={true}
   mapToProps={[Function]}
+  selectedGraphVersion="original"
   setStoreState={[MockFunction]}
   showContextMenu={true}
 >
@@ -53,15 +57,17 @@ exports[`GraphVisualisationWrapper should match snapshot when no context menu an
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
+  addToObject={[MockFunction]}
   boundingBoxGeometry={
     Object {
       "boundingBoxHeight": 200,
@@ -90,7 +96,9 @@ exports[`GraphVisualisationWrapper should match snapshot when no context menu an
     }
   }
   isBoundingBoxSelectable={false}
+  isOntologyUpdated={true}
   mapToProps={[Function]}
+  selectedGraphVersion="original"
   setStoreState={[MockFunction]}
   showContextMenu={false}
 >

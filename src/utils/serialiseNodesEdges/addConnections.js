@@ -1,11 +1,12 @@
 /* eslint no-param-reassign:0 */
 
+import addEdge from '../nodesEdgesUtils/addEdge'
+
 /**
  * Update edge and node-related arrays/objects with connections
  * @param  {Object}   params
  * @param  {Array}    params.addedEdges               Array of edges IDs being added
- * @param  {Array}    params.availableEdgesList       Array of available edges
- * @param  {Object}   params.availableEdgesNormalised Normalised list of available edges
+ * @param  {Object}   params.availableEdges           Available edges dataset
  * @param  {String}   params.edgeUniqueId             Unique edge id (predicate___from___to)
  * @param  {Object}   params.edge                     Edge object
  * @param  {Object}   params.edgesConnections         NOrmalised List of connections per edge
@@ -18,8 +19,6 @@
  */
 const addConnections = ({
   addedEdges,
-  availableEdgesList,
-  availableEdgesNormalised,
   edgeUniqueId,
   edge,
   edgesConnections,
@@ -30,8 +29,8 @@ const addConnections = ({
   to,
 }) => {
   addedEdges.push(edgeUniqueId)
-  availableEdgesList.push(edge)
-  availableEdgesNormalised[edgeUniqueId] = edge  // eslint-disable-line
+
+  addEdge(edge)
 
   if (edgesConnections[predicate] && !edgesConnections[predicate].includes(edge)) {
     edgesConnections[predicate].push(edgeConnection)

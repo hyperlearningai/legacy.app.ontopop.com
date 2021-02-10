@@ -6,10 +6,10 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import NodesSelectionDetails from './NodesSelectionDetails'
 import { SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
+import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const NodesSelection = ({
   removeFromArray,
-  availableNodesNormalised,
   selectedNodes,
   resetSelectedNodes
 }) => {
@@ -33,7 +33,7 @@ const NodesSelection = ({
                 icon="pi pi-chevron-left"
                 iconPos="left"
               />
-              {`${t('node')}: ${availableNodesNormalised[nodeId].label}`}
+              {`${t('node')}: ${getNode(nodeId).label}`}
             </>
           )}
       </div>
@@ -42,7 +42,7 @@ const NodesSelection = ({
           {
             selectedNodes.length > 0
               ? selectedNodes.map((selectedNode) => {
-                const { label } = availableNodesNormalised[selectedNode]
+                const { label } = getNode(selectedNode)
 
                 return (
                   <div
@@ -90,16 +90,13 @@ const NodesSelection = ({
 NodesSelection.propTypes = {
   selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   removeFromArray: PropTypes.func.isRequired,
-  availableNodesNormalised: PropTypes.shape().isRequired,
   resetSelectedNodes: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
   selectedNodes,
-  availableNodesNormalised,
 }) => ({
   selectedNodes,
-  availableNodesNormalised,
 })
 
 export default connect(

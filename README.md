@@ -73,7 +73,8 @@ When changes are ready:
 When code is ready for review, open a merge request.
 The code can be moved to done when:
   - linting and unit testing are passing
-  - The code changes match the ticket requirements
+  - The code changes match the ticket requirements.
 
+If minor requirements are not match for any reason agreed with them team, raise a tech debt in the backlog.
 
  

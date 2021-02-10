@@ -4,30 +4,20 @@ exports[`Navbar should match snapshot  1`] = `
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
-  availableEdgesNormalised={
-    Object {
-      "123": Object {
-        "id": "123",
-      },
-    }
-  }
-  availableNodesNormalised={
-    Object {
-      "123": Object {
-        "id": "123",
-      },
-    }
-  }
+  availableEdgesCount={333}
+  availableNodesCount={200}
   mapToProps={[Function]}
+  selectedGraphVersion="original"
 >
   <Component />
 </Connect>

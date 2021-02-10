@@ -7,24 +7,6 @@ const setup = () => {
   const props = {
     resetSelectedNodes: jest.fn(),
     removeFromArray: jest.fn(),
-    availableNodesNormalised: {
-      abc: {
-        id: 'abc',
-        label: 'label',
-        rdfAbout: 'rdfAbout',
-        skosComment: 'skosComment',
-        skosDefinition: 'skosDefinition',
-        skosExample: 'skosExample'
-      },
-      cde: {
-        id: 'cde',
-        label: 'label2',
-        rdfAbout: 'rdfAbout',
-        skosComment: 'skosComment',
-        skosDefinition: 'skosDefinition',
-        skosExample: 'skosExample'
-      }
-    },
     selectedNodes: ['abc']
   }
 

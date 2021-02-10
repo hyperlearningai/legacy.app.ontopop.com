@@ -11,14 +11,14 @@ import {
 } from 'react-icons/ri'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_BOUNDING_BOX } from '../constants/views'
-import setBoundingBoxNodes from '../utils/setBoundingBoxNodes'
+import setBoundingBoxNodes from '../utils/boundingBoxSelection/setBoundingBoxNodes'
 import getNodesFromBoundingBox from '../utils/canvasUtils/getNodesFromBoundingBox'
 import clearNodesSelection from '../utils/canvasUtils/clearNodesSelection'
 
 const BoundingBoxSelection = ({
   setStoreState,
   selectedBoundingBoxNodes,
-  updateGraphData,
+  addToObject,
   isBoundingBoxSelectionInternal,
 }) => {
   const { t } = useTranslation()
@@ -110,7 +110,7 @@ const BoundingBoxSelection = ({
           label={t('show')}
           onClick={() => setBoundingBoxNodes({
             setStoreState,
-            updateGraphData
+            addToObject
           })}
         />
       </div>
@@ -121,7 +121,7 @@ const BoundingBoxSelection = ({
 BoundingBoxSelection.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   selectedBoundingBoxNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateGraphData: PropTypes.func.isRequired,
+  addToObject: PropTypes.func.isRequired,
   isBoundingBoxSelectionInternal: PropTypes.bool.isRequired,
 }
 

@@ -5,11 +5,11 @@ import NodesFilter from '../../components/NodesFilter'
 
 const setup = () => {
   const props = {
-    nodesProperties: [{
+    annotationProperties: [{
       property: 'rdfsLabel',
       value: 'road'
     }],
-    updateGraphData: jest.fn(),
+    addToObject: jest.fn(),
     setStoreState: jest.fn(),
   }
 

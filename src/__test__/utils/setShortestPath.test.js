@@ -5,7 +5,7 @@ import { nodesConnections } from '../fixtures/nodesConnections'
 import store from '../../store'
 
 const setStoreState = jest.fn()
-const updateGraphData = jest.fn()
+const addToObject = jest.fn()
 const shortestPathSelectedNodes = [
   'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',
   'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
@@ -31,7 +31,7 @@ describe('setShortestPath', () => {
     await setShortestPath({
       isNodeOverlay,
       setStoreState,
-      updateGraphData,
+      addToObject,
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -48,7 +48,8 @@ describe('setShortestPath', () => {
         'networkGraphs',
       ],
     ])
-    expect(updateGraphData).toHaveBeenCalledWith(
+    expect(addToObject).toHaveBeenCalledWith(
+      'graphData',
       'graph-2', {
         label: 'shortest-path-graph-2',
         options: {

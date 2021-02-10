@@ -1,4 +1,7 @@
+import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import addConnections from '../../../utils/serialiseNodesEdges/addConnections'
+
+jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 
 describe('addConnections', () => {
   afterEach(() => {
@@ -16,8 +19,6 @@ describe('addConnections', () => {
       from,
       to
     }
-    const availableEdgesNormalised = {}
-    const availableEdgesList = []
     const edgesConnections = {}
     const edgeConnection = {
       ...edge
@@ -28,8 +29,6 @@ describe('addConnections', () => {
       addedEdges,
       edgeUniqueId,
       edge,
-      availableEdgesList,
-      availableEdgesNormalised,
       edgesConnections,
       edgeConnection,
       predicate,
@@ -38,11 +37,7 @@ describe('addConnections', () => {
       nodesConnections
     })
 
-    expect(availableEdgesNormalised).toEqual({
-      pred_from_to: {
-        ...edge
-      }
-    })
+    expect(addEdge).toHaveBeenCalledWith(edge)
     expect(edgesConnections).toEqual({
       'http://webprotege.stanford.edu/abc': [{
         ...edge

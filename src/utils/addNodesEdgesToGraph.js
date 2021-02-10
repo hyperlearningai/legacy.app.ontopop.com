@@ -2,6 +2,11 @@ import { generatePredicateId } from '../constants/functions'
 import { NODE_BORDER, NODE_BORDER_WIDTH, SUB_CLASS_OF_LABEL } from '../constants/graph'
 import store from '../store'
 import highlightSpiderableNodes from './highlightSpiderableNodes'
+import addEdge from './nodesEdgesUtils/addEdge'
+import addNode from './nodesEdgesUtils/addNode'
+import getNode from './nodesEdgesUtils/getNode'
+import updateNodes from './nodesEdgesUtils/updateNodes'
+import getEdge from './nodesEdgesUtils/getEdge'
 
 /**
  * Add nodes and/or edges to graph
@@ -15,13 +20,9 @@ const addNodesEdgesToGraph = ({
   setStoreState
 }) => {
   const {
-    availableNodes,
     triplesPerNode,
     classesFromApi,
     objectPropertiesFromApi,
-    availableNodesNormalised,
-    availableEdges,
-    availableEdgesNormalised,
     nodesConnections,
     edgesConnections,
     isPhysicsOn
@@ -29,8 +30,6 @@ const addNodesEdgesToGraph = ({
 
   const triples = triplesPerNode[nodeId]
 
-  const newAvailableEdgesNormalised = JSON.parse(JSON.stringify(availableEdgesNormalised))
-  const newAvailableNodesNormalised = JSON.parse(JSON.stringify(availableNodesNormalised))
   const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
   const newEdgesConnections = JSON.parse(JSON.stringify(edgesConnections))
   let edgesAdded = false
@@ -40,8 +39,10 @@ const addNodesEdgesToGraph = ({
     triples.map((triple) => {
       const id = generatePredicateId(triple)
 
+      const edgeObjectId = getEdge(id)
+
       // check if edge exists
-      if (!newAvailableEdgesNormalised[id]) {
+      if (edgeObjectId === null) {
         const {
           predicate,
           from,
@@ -65,38 +66,29 @@ const addNodesEdgesToGraph = ({
         // check if node exists
         const nodeIdToCheck = from === nodeId ? to : from
 
-        if (!newAvailableNodesNormalised[nodeIdToCheck]) {
+        const isNodeNotAvailable = getNode(nodeIdToCheck) === null
+
+        if (isNodeNotAvailable) {
           const nodeGraphObject = {
             id: nodeIdToCheck,
             label: classesFromApi[nodeIdToCheck]?.rdfsLabel.replace(/ /g, '\n') || ''
           }
 
-          const isNodePresent = availableNodes.get(nodeIdToCheck)
+          addNode(nodeGraphObject)
 
-          if (isNodePresent === null) {
-            availableNodes.add(nodeGraphObject)
-
-            newAvailableNodesNormalised[nodeIdToCheck] = {
-              ...classesFromApi[nodeIdToCheck],
-              ...nodeGraphObject
-            }
-
-            if (!newNodesConnections[nodeIdToCheck]) {
-              newNodesConnections[nodeIdToCheck] = []
-            }
-
-            newNodesConnections[nodeIdToCheck].push(edgeObject)
-
-            nodesAdded = true
+          if (!newNodesConnections[nodeIdToCheck]) {
+            newNodesConnections[nodeIdToCheck] = []
           }
+
+          newNodesConnections[nodeIdToCheck].push(edgeObject)
+
+          nodesAdded = true
         }
 
-        const isEdgePresent = availableEdges.get(id)
+        const isEdgePresent = getEdge(id)
 
         if (isEdgePresent === null) {
-          availableEdges.add(edgeGraphObject)
-
-          newAvailableEdgesNormalised[id] = edgeObject
+          addEdge(edgeGraphObject)
 
           if (!newEdgesConnections[predicate]) {
             newEdgesConnections[predicate] = []
@@ -113,7 +105,6 @@ const addNodesEdgesToGraph = ({
 
   if (edgesAdded) {
     setStoreState('edgesConnections', newEdgesConnections)
-    setStoreState('availableEdgesNormalised', newAvailableEdgesNormalised)
   }
 
   if (nodesAdded) {
@@ -123,14 +114,11 @@ const addNodesEdgesToGraph = ({
       setStoreState('physicsRepulsion', false)
     }
 
-    setStoreState('availableNodesNormalised', newAvailableNodesNormalised)
     setStoreState('nodesConnections', newNodesConnections)
 
     highlightSpiderableNodes({
       nodesConnections,
       triplesPerNode,
-      availableNodes,
-      availableNodesNormalised
     })
 
     if (!isPhysicsOnNow) {
@@ -141,14 +129,15 @@ const addNodesEdgesToGraph = ({
     }
   }
 
-  const nodeProperties = availableNodes.get(nodeId)
-  if (nodeProperties) {
+  const nodeProperties = getNode(nodeId)
+
+  if (nodeProperties !== null) {
     const { color } = nodeProperties
     const newColor = color ? JSON.parse(JSON.stringify(color)) : {}
     newColor.border = NODE_BORDER
     newColor.borderWidth = NODE_BORDER_WIDTH
 
-    availableNodes.update({
+    updateNodes({
       id: nodeId,
       color: newColor
     })

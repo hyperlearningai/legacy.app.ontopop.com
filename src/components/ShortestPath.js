@@ -19,7 +19,7 @@ const ShortestPath = ({
   removeFromArray,
   setStoreState,
   shortestPathSelectedNodes,
-  updateGraphData,
+  addToObject,
 }) => {
   const { t } = useTranslation()
 
@@ -82,7 +82,7 @@ const ShortestPath = ({
           onClick={() => setShortestPath({
             isNodeOverlay,
             setStoreState,
-            updateGraphData,
+            addToObject,
           })}
         />
       </div>
@@ -95,7 +95,7 @@ ShortestPath.propTypes = {
   removeFromArray: PropTypes.func.isRequired,
   setStoreState: PropTypes.func.isRequired,
   shortestPathSelectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateGraphData: PropTypes.func.isRequired,
+  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
@@ -103,13 +103,13 @@ const mapToProps = ({
   removeFromArray,
   setStoreState,
   shortestPathSelectedNodes,
-  updateGraphData,
+  addToObject,
 }) => ({
   classesFromApi,
   removeFromArray,
   setStoreState,
   shortestPathSelectedNodes,
-  updateGraphData,
+  addToObject,
 })
 
 export default connect(

@@ -4,6 +4,19 @@ import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
 import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
+import {
+  EDGE_COLOR,
+  EDGE_COLOR_HIGHLIGHTED,
+  NODE_TEXT_COLOR,
+  GRAPH_VERSION_STRUCTURE,
+  NODE_BORDER,
+  NODE_BACKGROUND,
+  CLICK_NODE_BACKGROUND,
+  HIGHLIGHT_NODE_BORDER,
+  NODE_DEFAULT_SHAPE,
+  HOVER_NODE_BORDER,
+  HOVER_NODE_BACKGROUND
+} from '../constants/graph'
 
 const initialState = {
   // view updates
@@ -16,28 +29,41 @@ const initialState = {
   objectPropertiesFromApi: {},
   triplesPerNode: {},
   network: undefined,
-
-  isInfoOpen: true,
-  isSearchOpen: false,
-  isEdgeFilterOpen: false,
-  isSettingsOpen: false,
-  edgesToIgnore: [],
-  physicsEdgeLineColor: '#070b11',
-  physicsEdgeLineColorHover: '#070b11',
-  physicsEdgeLineColorHighlight: '#ffcc00',
-  physicsEdgeLineStyle: false,
-  physicsEdgeWidth: 2,
-  physicsNodeSize: 25,
-  physicsNodeBorder: 1,
-  physicsNodeTextColor: '000000',
-  physicsNodeBorderSelected: 2,
-  physicsNodeBorderColor: '011e41',
-  physicsNodeBackgroundColor: 'adefd1',
-  physicsNodeHighlightBorderColor: '009688',
-  physicsNodeHighlightBackgroundColor: 'abd6df',
-  physicsNodeShape: 'circle',
-  edgeFilter: '',
+  annotationProperties: [],
+  edgesProperties: [],
   deletedNodes: [],
+  addedNodes: [],
+  updatedNodes: [],
+  deletedEdges: [],
+  addedEdges: [],
+  updatedEdges: [],
+  deletedConnections: [],
+  addedConnections: [],
+  availableNodesCount: 0,
+  availableEdgesCount: 0,
+
+  // nodes styling
+  stylingEdgeLineColor: EDGE_COLOR,
+  stylingEdgeLineColorHover: EDGE_COLOR,
+  stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+  stylingEdgeLineStyle: false,
+  stylingEdgeWidth: 2,
+  stylingEdgeCustom: [],
+  stylingEdgeLength: 250,
+
+  stylingNodeSize: 25,
+  stylingNodeBorder: 1,
+  stylingNodeTextColor: NODE_TEXT_COLOR,
+  stylingNodeBorderSelected: 2,
+  stylingNodeBorderColor: NODE_BORDER,
+  stylingNodeBackgroundColor: NODE_BACKGROUND,
+  stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
+  stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
+  stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
+  stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
+  stylingNodeShape: NODE_DEFAULT_SHAPE,
+  stylingNodeCustom: [],
+
   // netowrk graph loading
   isNetworkLoading: false,
   networkLoadingProgress: 0,
@@ -86,28 +112,16 @@ const initialState = {
     nodeId: ''
   },
 
-  // Filter nodes
-  nodesProperties: [],
-  filterNodeByPropsData: {},
-  filterEdgeByPropsData: {},
-
-  // Filter edges
-  edgesProperties: [],
-
-  // states to update at every view refresh
   // physics
-  isPhysicsOn: false,
+  isPhysicsOn: true,
   physicsHierarchicalView: false,
   physicsRepulsion: true,
-  physicsEdgeLength: 250,
 
   // Data visualisation
   nodesIdsToDisplay: [],
   edgesIdsToDisplay: [],
   availableNodes: new DataSet([]),
-  availableNodesNormalised: {},
   availableEdges: new DataSet([]),
-  availableEdgesNormalised: {},
   selectedNodes: [],
   selectedEdges: [],
   nodesConnections: {},
@@ -121,6 +135,12 @@ const initialState = {
     'g.V().hasLabel(\'class\').count()',
     'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()',
   ],
+
+  // new graph version
+  selectedGraphVersion: 'original',
+  graphVersions: {
+    original: GRAPH_VERSION_STRUCTURE,
+  },
 
   // graphs data storage
   lastGraphIndex: 0,

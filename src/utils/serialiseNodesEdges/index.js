@@ -1,12 +1,13 @@
 /* eslint no-param-reassign:0 */
-import getEdge from './getEdge'
+import getEdgeObject from './getEdgeObject'
 import showEdgeCheck from './showEdgeCheck'
 import addConnections from './addConnections'
-import addNode from './addNode'
 import store from '../../store'
 import getNodesEdgesFromPaths from '../getNodesEdgesFromPaths'
 import getPhysicsOptions from '../getPhysicsOptions'
 import highlightSpiderableNodes from '../highlightSpiderableNodes'
+import appendNode from './appendNode'
+
 /**
  * Update store and graph based on node IDs to display
  * @param  {Object}   params
@@ -38,10 +39,6 @@ const serialiseNodesEdges = ({
     objectPropertiesFromApi,
     shortestPathResults,
     triplesPerNode,
-    isPhysicsOn,
-    physicsHierarchicalView,
-    physicsRepulsion,
-    physicsEdgeLength
   } = store.getState()
 
   // reset nodes/edges (display at the end of the function)
@@ -50,10 +47,6 @@ const serialiseNodesEdges = ({
 
   const addedNodes = []
   const addedEdges = []
-  const availableNodesList = []
-  const availableEdgesList = []
-  const availableNodesNormalised = {}
-  const availableEdgesNormalised = {}
   const nodesConnections = {}
   const edgesConnections = {}
 
@@ -66,6 +59,12 @@ const serialiseNodesEdges = ({
     shortestPathResults
   })
 
+  // spiral coordinates positions
+  const circleMax = 1
+  const padding = 1
+  const angle = 0
+  const step = 0
+
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId]
@@ -74,15 +73,18 @@ const serialiseNodesEdges = ({
     nodeIdObject.label = nodeIdObject.rdfsLabel
       ? nodeIdObject.rdfsLabel.replace(/ /g, '\n') : ''
 
-    addNode({
-      availableNodesNormalised,
-      availableNodesList,
+    appendNode({
+      availableNodes,
       addedNodes,
       isNodeOverlay,
       nodeId,
       nodeIdObject,
       highlightedNodes,
       shortestPathNodes,
+      circleMax,
+      padding,
+      step,
+      angle
     })
 
     if (triples && triples.length > 0) {
@@ -93,13 +95,15 @@ const serialiseNodesEdges = ({
           to
         } = triple
 
+        if (!objectPropertiesFromApi[predicate]) return false
+
         const {
           edgeUniqueId,
           edgeConnection,
           edge,
           fromObject,
           toObject
-        } = getEdge({
+        } = getEdgeObject({
           from,
           predicate,
           to,
@@ -124,7 +128,7 @@ const serialiseNodesEdges = ({
             addedEdges,
             edgeUniqueId,
             edge,
-            availableEdgesList,
+            availableEdges,
             edgesConnections,
             edgeConnection,
             predicate,
@@ -133,29 +137,34 @@ const serialiseNodesEdges = ({
             nodesConnections,
             nodesIdsToDisplay,
             edgesIdsToDisplay,
-            availableEdgesNormalised,
           })
 
-          addNode({
-            availableNodesNormalised,
-            availableNodesList,
+          appendNode({
+            availableNodes,
             addedNodes,
             highlightedNodes,
             isNodeOverlay,
             nodeId: to,
             nodeIdObject: toObject,
             shortestPathNodes,
+            circleMax,
+            padding,
+            step,
+            angle
           })
 
-          addNode({
-            availableNodesNormalised,
-            availableNodesList,
+          appendNode({
+            availableNodes,
             addedNodes,
             highlightedNodes,
             isNodeOverlay,
             nodeId: from,
             nodeIdObject: fromObject,
             shortestPathNodes,
+            circleMax,
+            padding,
+            step,
+            angle
           })
         }
 
@@ -164,28 +173,19 @@ const serialiseNodesEdges = ({
     }
   }
 
-  setStoreState('availableNodesNormalised', availableNodesNormalised)
-  setStoreState('availableEdgesNormalised', availableEdgesNormalised)
+  setStoreState('availableNodesCount', availableNodes.length)
+  setStoreState('availableEdgesCount', availableEdges.length)
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
 
-  availableNodes.add(availableNodesList)
-  availableEdges.add(availableEdgesList)
-
   network?.redraw()
-  network?.setOptions(getPhysicsOptions({
-    isPhysicsOn,
-    physicsHierarchicalView,
-    physicsRepulsion,
-    physicsEdgeLength
-  }))
+  network?.setOptions(getPhysicsOptions())
 
   // check if all connection edges are present, otherwise make a different border to display that it's spidetable
   highlightSpiderableNodes({
     nodesConnections,
     triplesPerNode,
     availableNodes,
-    availableNodesNormalised
   })
 
   return true

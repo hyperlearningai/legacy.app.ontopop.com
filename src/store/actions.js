@@ -7,7 +7,8 @@ export default {
   /**
    * Reset selected edges and edge selectability
    * @param  {Object} state  Store state
-   * @return {undefined}   */
+   * @return {undefined}
+   */
   resetSelectedEdges: (state) => {
     const newSelectedEdges = state.selectedEdges.slice()
 
@@ -25,7 +26,8 @@ export default {
   /**
    * Reset selected nodes and nodes selectability
    * @param  {Object} state  Store state
-   * @return {undefined}   */
+   * @return {undefined}
+   */
   resetSelectedNodes: (state) => {
     const newSelectedNodes = state.selectedNodes.slice()
 
@@ -41,26 +43,44 @@ export default {
     })
   },
   /**
-   * Update cached graph data
+   * Add subkey to object
    * @param  {Object} state     Store state
-   * @param  {String} graphId   Graph ID
-   * @param  {Object} value     Graph ID udpated data object
-   * @return {undefined}   */
-  updateGraphData: (state, graphId, value) => {
-    const newGraphData = JSON.parse(JSON.stringify(state.graphData))
-
-    newGraphData[graphId] = value
-
-    return ({
-      graphData: newGraphData
-    })
-  },
+   * @param  {String} stateKey  State key to update
+   * @param  {String} key       key to add/update
+   * @param  {String} subkey    subkey to add/update
+   * @param  {*}      value     new subkey value
+   * @return {undefined}
+   */
+  addSubValueToObject: (state, stateKey, key, subkey, value) => ({
+    [stateKey]: {
+      ...state[stateKey],
+      [key]: {
+        ...state[stateKey][key],
+        [subkey]: value
+      }
+    }
+  }),
+  /**
+   * Add key from object
+   * @param  {Object} state     Store state
+   * @param  {String} stateKey  State key to update
+   * @param  {String} key       key to add/update
+   * @param  {*}      value     new key value
+   * @return {undefined}
+   */
+  addToObject: (state, stateKey, key, value) => ({
+    [stateKey]: {
+      ...state[stateKey],
+      [key]: value
+    }
+  }),
   /**
    * Remove key from object
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
    * @param  {String} id        key to remove from object
-   * @return {undefined}   */
+   * @return {undefined}
+   */
   removeFromObject: (state, stateKey, id) => {
     const newObject = JSON.parse(JSON.stringify(state[stateKey]))
 
@@ -75,7 +95,8 @@ export default {
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
    * @param  {String} id        ID to remove from array
-   * @return {undefined}   */
+   * @return {undefined}
+   */
   removeFromArray: (state, stateKey, id) => {
     const newArray = state[stateKey].slice()
 
@@ -101,16 +122,31 @@ export default {
    * Add ID to array
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
-   * @param  {String} id        ID to add to array
+   * @param  {String} value     Value to add to array
    * @param  {Object} [options] Additional options
-   * @return {undefined}   */
-  addToArray: (state, stateKey, id, options) => {
-    const newArray = state[stateKey].slice()
+   * @return {undefined}
+   */
+  addToArray: (state, stateKey, value, options) => {
+    if ((!options || !options.alwaysAdd) && state[stateKey].includes(value)) {
+      return ({
+        [stateKey]: state[stateKey]
+      })
+    }
 
-    if (options?.alwaysAdd || !newArray.includes(id)) newArray.push(id)
+    if (Array.isArray(value)) {
+      return ({
+        [stateKey]: [
+          ...state[stateKey],
+          ...value
+        ]
+      })
+    }
 
     return ({
-      [stateKey]: newArray
+      [stateKey]: [
+        ...state[stateKey],
+        value
+      ]
     })
   },
   /**
@@ -118,7 +154,8 @@ export default {
    * @param  {Object} state     Store state
    * @param  {String} field     State key to update
    * @param  {*}      value     ID to add to array
-   * @return {undefined}   */
+   * @return {undefined}
+   */
   setStoreState: (state, field, value) => ({
     [field]: value
   })

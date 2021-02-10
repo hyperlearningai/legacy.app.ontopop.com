@@ -4,18 +4,18 @@ exports[`NetworkSettings should match snapshot  1`] = `
 <Connect
   actions={
     Object {
+      "addSubValueToObject": [Function],
       "addToArray": [Function],
+      "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "resetSelectedEdges": [Function],
       "resetSelectedNodes": [Function],
       "setStoreState": [Function],
-      "updateGraphData": [Function],
     }
   }
   isPhysicsOn={true}
   mapToProps={[Function]}
-  physicsEdgeLength={100}
   physicsHierarchicalView={true}
   physicsRepulsion={true}
   setStoreState={[MockFunction]}

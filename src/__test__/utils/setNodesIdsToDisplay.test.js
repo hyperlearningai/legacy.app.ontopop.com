@@ -12,8 +12,8 @@ import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties
 import { algoTypeFull } from '../fixtures/setNodesIdsToDisplayResults'
 import { triplesPerNode } from '../fixtures/triplesPerNode'
 import store from '../../store'
-import { availableEdgesNormalised } from '../fixtures/availableEdgesNormalised'
-import { availableNodesNormalised } from '../fixtures/availableNodesNormalised'
+import { availableNodes } from '../fixtures/availableNodesNormalised'
+import { availableEdges } from '../fixtures/availableEdgesNormalised'
 
 const setStoreState = jest.fn()
 const classesFromApi = OwlClasses
@@ -21,8 +21,9 @@ const objectPropertiesFromApi = OwlObjectProperties
 const getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
   objectPropertiesFromApi,
-  availableNodesNormalised,
-  availableEdgesNormalised,
+  deletedNodes: [],
+  availableNodes,
+  availableEdges,
   nodesIdsToDisplay: [
     'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
   ],
@@ -341,9 +342,9 @@ describe('setNodesIdsToDisplay', () => {
         'nodesIdsToDisplay',
         [
           'http://webprotege.stanford.edu/R2RFTG7iNuFjv3A8V7qHOb',
+          'http://webprotege.stanford.edu/RB2wiyzebv6p4qrvJjgommU',
           'http://webprotege.stanford.edu/R7dcPTLwQrLcc9eK22R7swU',
           'http://webprotege.stanford.edu/RFNK6OsKMaap9LxxLXdLxR',
-          'http://webprotege.stanford.edu/RB2wiyzebv6p4qrvJjgommU',
           'http://webprotege.stanford.edu/R7pIV91w7fTKppAHSmrz8n',
           'http://webprotege.stanford.edu/R81y0gnn3Ar0DJ8FatMTqK3',
           'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',

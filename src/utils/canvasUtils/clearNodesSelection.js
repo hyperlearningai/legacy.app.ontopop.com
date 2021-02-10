@@ -1,5 +1,6 @@
 import { NODE_BACKGROUND } from '../../constants/graph'
 import store from '../../store'
+import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
  * Clear selected nodes in canvas
@@ -7,12 +8,11 @@ import store from '../../store'
  */
 const clearNodesSelection = () => {
   const {
-    availableNodes,
     selectedBoundingBoxNodes
   } = store.getState()
 
   if (selectedBoundingBoxNodes.length > 0) {
-    selectedBoundingBoxNodes.map((nodeId) => availableNodes.update(
+    selectedBoundingBoxNodes.map((nodeId) => updateNodes(
       [{ id: nodeId, color: { background: NODE_BACKGROUND } }]
     ))
   }

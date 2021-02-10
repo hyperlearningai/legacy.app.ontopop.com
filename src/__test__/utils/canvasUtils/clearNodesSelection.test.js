@@ -9,7 +9,7 @@ describe('clearNodesSelection', () => {
   })
 
   it('should not update if no selected nodes', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       availableNodes: {
         update
       },
@@ -22,7 +22,7 @@ describe('clearNodesSelection', () => {
   })
 
   it('should update if selected nodes', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       availableNodes: {
         update
       },

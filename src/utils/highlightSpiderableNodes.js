@@ -1,21 +1,20 @@
 import { SPIDERABLE_NODE_BORDER_COLOR, SPIDERABLE_NODE_BORDER_WIDTH } from '../constants/graph'
+import getNode from './nodesEdgesUtils/getNode'
+import getNodeIds from './nodesEdgesUtils/getNodeIds'
+import updateNodes from './nodesEdgesUtils/updateNodes'
 
 /**
  * Get shortest path
  * @param  {Object}   params
  * @param  {Object}   params.nodesConnections           Normalised array of nodes with related in and out connections
  * @param  {Object}   params.triplesPerNode             List of triples per node
- * @param  {Object}   params.availableNodes             VisJs Dataset of nodes IDs
- * @param  {Object}   params.availableNodesNormalised   Available nodes data
  * @return { undefined }
  */
 const highlightSpiderableNodes = ({
-  nodesConnections, // get id from it to check
+  nodesConnections,
   triplesPerNode,
-  availableNodes,
-  availableNodesNormalised
 }) => {
-  const availableNodesIDs = Object.keys(availableNodesNormalised)
+  const availableNodesIDs = getNodeIds()
 
   if (availableNodesIDs.length > 0) {
     availableNodesIDs.map((nodeId) => {
@@ -23,8 +22,7 @@ const highlightSpiderableNodes = ({
       const totalNodesConnections = triplesPerNode[nodeId]?.length
 
       if (currentNodeConnections < totalNodesConnections) {
-      // if (currentNodeConnections === totalNodesConnections) {
-        const currentNodeProperties = availableNodes.get(nodeId)
+        const currentNodeProperties = getNode(nodeId)
 
         let existingColorProperties
 
@@ -32,7 +30,7 @@ const highlightSpiderableNodes = ({
           existingColorProperties = currentNodeProperties.color
         }
 
-        availableNodes.update({
+        updateNodes({
           id: nodeId,
           color: {
             ...existingColorProperties,
