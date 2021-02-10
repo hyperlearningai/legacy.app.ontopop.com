@@ -8,16 +8,16 @@ import {
 } from 'react-icons/bs'
 import actions from '../store/actions'
 import { PROPERTIES_TO_IGNORE } from '../constants/graph'
+import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const EdgeSelectionDetailsRow = ({
-  availableNodes,
   connection,
 }) => {
   const { t } = useTranslation()
 
   const [isExpanded, toggleExpanded] = useState(false)
 
-  const nodeKeys = Object.keys(availableNodes.get(connection.from)).filter((key) => typeof availableNodes.get(connection.from)[key] !== 'object'
+  const nodeKeys = Object.keys(getNode(connection.from)).filter((key) => typeof getNode(connection.from)[key] !== 'object'
     && !key.includes('label')
     && !PROPERTIES_TO_IGNORE.includes(key)).sort()
 
@@ -43,7 +43,7 @@ const EdgeSelectionDetailsRow = ({
                 (
                   <Fragment key={`edge-node-from-${nodeKey}-${connection.fromLabel}-${connection.toLabel}`}>
                     <div className="edge-node-info-title">{nodeKey}</div>
-                    <div className="edge-node-info-value">{availableNodes.get(connection.from)[nodeKey]}</div>
+                    <div className="edge-node-info-value">{getNode(connection.from)[nodeKey]}</div>
                   </Fragment>
                 )
               ))
@@ -62,7 +62,7 @@ const EdgeSelectionDetailsRow = ({
                 (
                   <Fragment key={`edge-node-to-${nodeKey}-${connection.fromLabel}-${connection.toLabel}`}>
                     <div className="edge-node-info-title">{nodeKey}</div>
-                    <div className="edge-node-info-value">{availableNodes.get(connection.to)[nodeKey]}</div>
+                    <div className="edge-node-info-value">{getNode(connection.to)[nodeKey]}</div>
                   </Fragment>
                 )
               ))
@@ -75,17 +75,10 @@ const EdgeSelectionDetailsRow = ({
 }
 
 EdgeSelectionDetailsRow.propTypes = {
-  availableNodes: PropTypes.shape().isRequired,
   connection: PropTypes.shape().isRequired,
 }
 
-const mapToProps = ({
-  availableNodes,
-}) => ({
-  availableNodes,
-})
-
 export default connect(
-  mapToProps,
+  null,
   actions
 )(EdgeSelectionDetailsRow)

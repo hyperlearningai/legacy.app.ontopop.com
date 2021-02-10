@@ -7,6 +7,8 @@ import {
 } from '../../constants/graph'
 import showNotification from '../showNotification'
 import { NOTIFY_WARNING } from '../../constants/notifications'
+import addNode from '../nodesEdgesUtils/addNode'
+import getNode from '../nodesEdgesUtils/getNode'
 
 /**
  * ADd ontology nodes
@@ -26,7 +28,6 @@ const setOntologyAddNode = ({
     graphVersions,
     classesFromApi,
     selectedGraphVersion,
-    availableNodes,
     addedNodes,
   } = store.getState()
 
@@ -35,7 +36,7 @@ const setOntologyAddNode = ({
 
   const newNodeId = selectedElementProperties[UNIQUE_PROPERTY]
 
-  if (availableNodes.get(newNodeId)) {
+  if (getNode(newNodeId) !== null) {
     const message = `${t('nodeIdAlreadyExists')}: newNodeId`
 
     return showNotification({
@@ -65,7 +66,7 @@ const setOntologyAddNode = ({
 
       if (propertyKey === LABEL_PROPERTY) {
         newClassesFromApi[newNodeId].label = selectedElementProperties[propertyKey]
-        availableNodes.add({
+        addNode({
           ...newClassesFromApi[newNodeId],
           id: newNodeId,
           label: selectedElementProperties[propertyKey]

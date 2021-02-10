@@ -1,5 +1,8 @@
 import { IGNORED_PROPERTIES } from '../../constants/export'
 import store from '../../store'
+import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import getNode from '../nodesEdgesUtils/getNode'
+import getEdge from '../nodesEdgesUtils/getEdge'
 
 /**
  * Extract csv rows
@@ -13,15 +16,13 @@ const extractCsvRows = ({
   edgeKeys,
 }) => {
   const {
-    availableNodes,
-    availableEdges,
     objectPropertiesFromApi,
   } = store.getState()
 
   const basicData = []
   const fullData = []
 
-  const edgesIds = availableEdges.getIds()
+  const edgesIds = getEdgeIds()
 
   for (let index = 0; index < edgesIds.length; index++) {
     const currentEdgeId = edgesIds[index]
@@ -32,7 +33,7 @@ const extractCsvRows = ({
       fromLabel,
       to,
       toLabel
-    } = availableEdges.get(currentEdgeId)
+    } = getEdge(currentEdgeId)
 
     // basic csv data
     const basicCSv = {
@@ -49,8 +50,8 @@ const extractCsvRows = ({
     nodeKeys.map((key) => {
       if (IGNORED_PROPERTIES.includes(key)) return false
 
-      fullRow[`from:${key}`] = availableNodes.get(from) ? availableNodes.get(from)[key] : ''
-      fullRow[`to:${key}`] = availableNodes.get(to) ? availableNodes.get(to)[key] : ''
+      fullRow[`from:${key}`] = getNode(from) ? getNode(from)[key] : ''
+      fullRow[`to:${key}`] = getNode(to) ? getNode(to)[key] : ''
       return true
     })
 

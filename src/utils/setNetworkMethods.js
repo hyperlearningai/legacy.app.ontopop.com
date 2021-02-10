@@ -5,6 +5,9 @@ import {
 } from '../constants/graph'
 import store from '../store'
 import addNodesEdgesToGraph from './addNodesEdgesToGraph'
+import getNode from './nodesEdgesUtils/getNode'
+import updateEdges from './nodesEdgesUtils/updateEdges'
+import updateNodes from './nodesEdgesUtils/updateNodes'
 
 /**
  * Update VisJs network methods
@@ -21,7 +24,6 @@ const setNetworkMethods = async ({
 }) => {
   network?.on('selectNode', (event) => {
     const {
-      availableNodes,
       isNodeSelectable,
       isNeighbourNodeSelectable,
       isShortestPathNodeSelectable,
@@ -33,7 +35,7 @@ const setNetworkMethods = async ({
 
       if (isNodeSelectable) {
         addToArray('selectedNodes', nodeId)
-        availableNodes.update([{ id: nodeId, color: { background: HIGHLIGHT_NODE_BACKGROUND } }])
+        updateNodes([{ id: nodeId, color: { background: HIGHLIGHT_NODE_BACKGROUND } }])
       }
 
       if (isNeighbourNodeSelectable) {
@@ -51,14 +53,10 @@ const setNetworkMethods = async ({
   })
 
   network?.on('doubleClick', (event) => {
-    const {
-      availableNodes,
-    } = store.getState()
-
     if (event.nodes?.length === 1) {
       const nodeId = event.nodes[0]
 
-      const { color } = availableNodes.get(nodeId)
+      const { color } = getNode(nodeId)
 
       if (color?.border === SPIDERABLE_NODE_BORDER_COLOR) {
         addNodesEdgesToGraph({
@@ -88,7 +86,6 @@ const setNetworkMethods = async ({
   network?.on('selectEdge', (event) => {
     const {
       isEdgeSelectable,
-      availableEdges
     } = store.getState()
 
     if (event.edges?.length === 1) {
@@ -96,7 +93,7 @@ const setNetworkMethods = async ({
 
       if (isEdgeSelectable) {
         addToArray('selectedEdges', edgeId)
-        availableEdges.update([{ id: edgeId, color: EDGE_COLOR_SELECTED }])
+        updateEdges([{ id: edgeId, color: EDGE_COLOR_SELECTED }])
       }
     }
   })

@@ -1,5 +1,6 @@
 import { HIGHLIGHT_NODE_BACKGROUND } from '../../constants/graph'
 import store from '../../store'
+import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
  * Search free-text in elements' properties
@@ -16,10 +17,9 @@ const focusNode = ({
 }) => {
   const {
     network,
-    availableNodes,
   } = store.getState()
 
-  availableNodes.update(
+  updateNodes(
     [{ id: elementId, color: { background: HIGHLIGHT_NODE_BACKGROUND } }]
   )
   setPrevSelectedNode(elementId)

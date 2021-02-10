@@ -3,7 +3,9 @@ import {
   SUBCLASSOF_PROPERTY,
   SUB_CLASS_OF_ID
 } from '../../constants/graph'
-import getEdge from '../serialiseNodesEdges/getEdge'
+import getEdgeObject from '../serialiseNodesEdges/getEdgeObject'
+import addEdge from '../nodesEdgesUtils/addEdge'
+
 /**
  * ADd ontology edge
  * @param  {Object}         params
@@ -22,7 +24,6 @@ const setOntologyAddConnection = ({
     classesFromApi,
     objectPropertiesFromApi,
     selectedGraphVersion,
-    availableEdges,
     addedConnections,
   } = store.getState()
 
@@ -53,7 +54,7 @@ const setOntologyAddConnection = ({
   newClassesFromApi[from][SUBCLASSOF_PROPERTY].push(connectionOwlObject)
 
   // get edge object from objectPropertiesFromApi and add to graph
-  const { edge } = getEdge({
+  const { edge } = getEdgeObject({
     classesFromApi,
     from,
     objectPropertiesFromApi,
@@ -61,7 +62,7 @@ const setOntologyAddConnection = ({
     to,
   })
 
-  availableEdges.add(edge)
+  addEdge(edge)
 
   // add data
   const newAddedConnections = [

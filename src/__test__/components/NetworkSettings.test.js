@@ -6,7 +6,6 @@ import NetworkSettings from '../../components/NetworkSettings'
 const setup = () => {
   const props = {
     setStoreState: jest.fn(),
-    physicsEdgeLength: 100,
     physicsRepulsion: true,
     physicsHierarchicalView: true,
     isPhysicsOn: true,

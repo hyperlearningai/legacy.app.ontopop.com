@@ -1,5 +1,7 @@
 /* eslint no-param-reassign:0 */
 
+import addEdge from '../nodesEdgesUtils/addEdge'
+
 /**
  * Update edge and node-related arrays/objects with connections
  * @param  {Object}   params
@@ -17,7 +19,6 @@
  */
 const addConnections = ({
   addedEdges,
-  availableEdges,
   edgeUniqueId,
   edge,
   edgesConnections,
@@ -29,9 +30,7 @@ const addConnections = ({
 }) => {
   addedEdges.push(edgeUniqueId)
 
-  if (availableEdges.get(edge.id) === null) {
-    availableEdges.add(edge)
-  }
+  addEdge(edge)
 
   if (edgesConnections[predicate] && !edgesConnections[predicate].includes(edge)) {
     edgesConnections[predicate].push(edgeConnection)

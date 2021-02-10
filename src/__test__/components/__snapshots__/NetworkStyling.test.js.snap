@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NetworkStyling should match snapshot  1`] = `
+<Fragment>
+  <div
+    className="sidebar-main-title"
+  >
+    styling
+  </div>
+  <div
+    className="network-settings"
+  >
+    <div
+      className="card"
+    >
+      <ConnectWrapper />
+      <ConnectWrapper />
+    </div>
+  </div>
+</Fragment>
+`;

@@ -1,14 +1,15 @@
 /* eslint max-len:0 */
-import { DataSet } from 'vis-data'
 import setOntologyUpdateNode from '../../../utils/editOntology/setOntologyUpdateNode'
 import store from '../../../store'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { graphVersions } from '../../fixtures/graphVersions'
-import { availableNodesNormalised } from '../../fixtures/availableNodesNormalised'
 import {
   addToObjectFixture,
   setStoreStateFixture
 } from '../../fixtures/setOntologyUpdateNode'
+import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
+
+jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 
 const selectedElementProperties = {
   rdfAbout: 'http://test.com/node',
@@ -29,9 +30,7 @@ describe('setOntologyUpdateNode', () => {
       graphVersions,
       classesFromApi: OwlClasses,
       selectedGraphVersion: 'original',
-      availableNodes: new DataSet({ id: 1, label: 'test' }),
       updatedNodes: [],
-      availableNodesNormalised
     }))
     store.getState = getState
 
@@ -41,6 +40,10 @@ describe('setOntologyUpdateNode', () => {
       selectedElement,
       addToObject
     })
+
+    expect(updateNodes).toHaveBeenLastCalledWith(
+      { id: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY', label: 'New node' }
+    )
 
     expect(addToObject).toHaveBeenCalledWith(
       'graphVersions',

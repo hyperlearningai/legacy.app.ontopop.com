@@ -31,7 +31,7 @@ describe('setOntologyRestoreEdge', () => {
   })
 
   it('should work correctly', async () => {
-    const getState = jest.fn().mockImplementationOnce(() => ({
+    const getState = jest.fn().mockImplementation(() => ({
       graphVersions,
       classesFromApi: newClassesFromApi,
       availableEdges: new DataSet([]),

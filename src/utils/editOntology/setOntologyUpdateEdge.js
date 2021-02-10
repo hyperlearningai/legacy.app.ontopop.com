@@ -5,6 +5,8 @@ import {
   LABEL_PROPERTY,
   OWL_ANNOTATION_PROPERTIES
 } from '../../constants/graph'
+import updateEdges from '../nodesEdgesUtils/updateEdges'
+import getEdge from '../nodesEdgesUtils/getEdge'
 /**
  * Update ontology edges
  * @param  {Object}         params
@@ -25,7 +27,6 @@ const setOntologyUpdateEdge = ({
     objectPropertiesFromApi,
     updatedEdges,
     selectedGraphVersion,
-    availableEdges,
   } = store.getState()
 
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
@@ -51,12 +52,12 @@ const setOntologyUpdateEdge = ({
       if (propertyKey === LABEL_PROPERTY) {
         newObjectPropertiesFromApi[selectedElement].label = selectedElementProperties[propertyKey]
 
-        const items = availableEdges.get({
+        const items = getEdge({
           filter: (item) => item.id.includes(selectedElement)
         })
 
         if (items.length > 0) {
-          items.map((item) => availableEdges.update({ id: item.id, label: selectedElementProperties[propertyKey] }))
+          items.map((item) => updateEdges({ id: item.id, label: selectedElementProperties[propertyKey] }))
         }
       }
     }

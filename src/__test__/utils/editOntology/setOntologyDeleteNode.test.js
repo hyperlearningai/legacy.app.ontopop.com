@@ -9,6 +9,9 @@ import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteNode'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
+import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
+
+jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
 
 const selectedElement = Object.keys(OwlClasses).slice(0, Object.keys(OwlClasses).length - 2)
 
@@ -46,6 +49,10 @@ describe('setOntologyDeleteNode', () => {
       setStoreState,
       addToObject
     })
+
+    expect(removeEdge).toHaveBeenLastCalledWith(
+      'http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u'
+    )
 
     expect(addToObject).toHaveBeenCalledWith(
       'graphVersions',

@@ -1,12 +1,13 @@
 /* eslint no-param-reassign:0 */
-import getEdge from './getEdge'
+import getEdgeObject from './getEdgeObject'
 import showEdgeCheck from './showEdgeCheck'
 import addConnections from './addConnections'
-import addNode from './addNode'
 import store from '../../store'
 import getNodesEdgesFromPaths from '../getNodesEdgesFromPaths'
 import getPhysicsOptions from '../getPhysicsOptions'
 import highlightSpiderableNodes from '../highlightSpiderableNodes'
+import appendNode from './appendNode'
+
 /**
  * Update store and graph based on node IDs to display
  * @param  {Object}   params
@@ -38,10 +39,6 @@ const serialiseNodesEdges = ({
     objectPropertiesFromApi,
     shortestPathResults,
     triplesPerNode,
-    isPhysicsOn,
-    physicsHierarchicalView,
-    physicsRepulsion,
-    physicsEdgeLength
   } = store.getState()
 
   // reset nodes/edges (display at the end of the function)
@@ -76,7 +73,7 @@ const serialiseNodesEdges = ({
     nodeIdObject.label = nodeIdObject.rdfsLabel
       ? nodeIdObject.rdfsLabel.replace(/ /g, '\n') : ''
 
-    addNode({
+    appendNode({
       availableNodes,
       addedNodes,
       isNodeOverlay,
@@ -106,7 +103,7 @@ const serialiseNodesEdges = ({
           edge,
           fromObject,
           toObject
-        } = getEdge({
+        } = getEdgeObject({
           from,
           predicate,
           to,
@@ -142,7 +139,7 @@ const serialiseNodesEdges = ({
             edgesIdsToDisplay,
           })
 
-          addNode({
+          appendNode({
             availableNodes,
             addedNodes,
             highlightedNodes,
@@ -156,7 +153,7 @@ const serialiseNodesEdges = ({
             angle
           })
 
-          addNode({
+          appendNode({
             availableNodes,
             addedNodes,
             highlightedNodes,
@@ -182,12 +179,7 @@ const serialiseNodesEdges = ({
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
 
   network?.redraw()
-  network?.setOptions(getPhysicsOptions({
-    isPhysicsOn,
-    physicsHierarchicalView,
-    physicsRepulsion,
-    physicsEdgeLength
-  }))
+  network?.setOptions(getPhysicsOptions())
 
   // check if all connection edges are present, otherwise make a different border to display that it's spidetable
   highlightSpiderableNodes({

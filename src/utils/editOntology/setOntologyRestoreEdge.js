@@ -1,7 +1,8 @@
 import flatten from 'flat'
-import { generatePredicateId } from '../../constants/functions'
 import store from '../../store'
-import getEdge from '../serialiseNodesEdges/getEdge'
+import addEdge from '../nodesEdgesUtils/addEdge'
+import getNode from '../nodesEdgesUtils/getNode'
+import getEdgeObject from '../serialiseNodesEdges/getEdgeObject'
 
 /**
  * Restore ontology nodes
@@ -20,10 +21,8 @@ const setOntologyRestoreEdge = ({
     graphVersions,
     classesFromApi,
     objectPropertiesFromApi,
-    availableEdges,
     deletedEdges,
     selectedGraphVersion,
-    availableNodes
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -55,22 +54,17 @@ const setOntologyRestoreEdge = ({
     const to = flatClassesFromApiBackup[flatObjectPropertiesKey.replace('objectPropertyRdfAbout', 'classRdfAbout')]
     const predicate = flatClassesFromApiBackup[flatObjectPropertiesKey]
 
-    if (availableNodes.get(from) && availableNodes.get(to)) {
-      const edgeId = generatePredicateId({
-        from, predicate, to
+    if (getNode(from) !== null
+      && getNode(to) !== null) {
+      const { edge } = getEdgeObject({
+        classesFromApi,
+        from,
+        objectPropertiesFromApi: newObjectPropertiesFromApiBackup,
+        predicate,
+        to,
       })
 
-      if (availableEdges.get(edgeId) === null) {
-        const { edge } = getEdge({
-          classesFromApi,
-          from,
-          objectPropertiesFromApi: newObjectPropertiesFromApiBackup,
-          predicate,
-          to,
-        })
-
-        availableEdges.add(edge)
-      }
+      addEdge(edge)
     }
 
     return true

@@ -1,31 +1,40 @@
-import { DataSet } from 'vis-data'
+// import { DataSet } from 'vis-data'
 import addNodesEdgesToGraph from '../../utils/addNodesEdgesToGraph'
 import { OwlClasses } from '../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties.json'
 import { triplesPerNode } from '../fixtures/triplesPerNode'
 import store from '../../store'
+import getEdge from '../../utils/nodesEdgesUtils/getEdge'
+import addNode from '../../utils/nodesEdgesUtils/addNode'
+import getNode from '../../utils/nodesEdgesUtils/getNode'
+import addEdge from '../../utils/nodesEdgesUtils/addEdge'
+import highlightSpiderableNodes from '../../utils/highlightSpiderableNodes'
+
+jest.mock('../../utils/nodesEdgesUtils/getEdge')
+jest.mock('../../utils/nodesEdgesUtils/addNode')
+jest.mock('../../utils/nodesEdgesUtils/getNode')
+jest.mock('../../utils/nodesEdgesUtils/addEdge')
+jest.mock('../../utils/highlightSpiderableNodes')
 
 const setStoreState = jest.fn()
 const classesFromApi = OwlClasses
 const objectPropertiesFromApi = OwlObjectProperties
 const getState = jest.fn().mockImplementation(() => ({
-  availableNodes: new DataSet([{
-    id: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
-    color: {
-      border: '#000000'
-    }
-  }]),
   triplesPerNode,
   classesFromApi,
   objectPropertiesFromApi,
-  availableNodesNormalised: {},
-  availableEdges: new DataSet(),
-  availableEdgesNormalised: {},
   nodesConnections: {},
   edgesConnections: {},
   isPhysicsOn: false
 }))
 store.getState = getState
+
+// availableNodes: new DataSet([{
+//   id: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+//   color: {
+//     border: '#000000'
+//   }
+// }]),
 
 describe('addNodesEdgesToGraph', () => {
   afterEach(() => {
@@ -35,9 +44,28 @@ describe('addNodesEdgesToGraph', () => {
   it('should work correctly', async () => {
     const nodeId = 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
 
+    getEdge.mockImplementation(() => null)
+    getNode.mockImplementation(() => null)
+
     await addNodesEdgesToGraph({
       nodeId,
       setStoreState
+    })
+
+    expect(addNode).toHaveBeenLastCalledWith({
+      id:
+    'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+      label: 'Geometric\nComponent'
+    })
+    expect(addEdge).toHaveBeenLastCalledWith({
+      from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+      id: 'http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+      label: 'subClassOf',
+      to: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg'
+    })
+    expect(highlightSpiderableNodes).toHaveBeenCalledWith({
+      nodesConnections: {},
+      triplesPerNode,
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -88,6 +116,17 @@ describe('addNodesEdgesToGraph', () => {
       [
         'nodesConnections',
         {
+          'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg': [
+            {
+              edgeId: 'http://www.w3.org/2000/01/rdf-schema#subclassof',
+              from: 'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+              fromLabel: 'Polyline',
+              id: 'http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+              label: 'subClassOf',
+              to: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+              toLabel: 'Polyline',
+            },
+          ],
           'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd': [
             {
               edgeId: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',

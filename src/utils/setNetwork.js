@@ -6,8 +6,6 @@ import getPhysicsOptions from './getPhysicsOptions'
 /**
  * Update VisJs network in store
  * @param  {Object}   params
- * @param  {Boolean}  params.physicsHierarchicalView   hierarchical view flag
- * @param  {Number}   params.physicsEdgeLength         edge length as integer
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Object}   params.availableNodes            VisJs Dataset of nodes IDs
  * @param  {Object}   params.availableEdges            VisJs Dataset of edges IDs
@@ -19,23 +17,19 @@ const setNetwork = ({
   visJsRef,
   availableNodes,
   availableEdges,
-  physicsHierarchicalView,
-  physicsEdgeLength
 }) => {
   // at first canvas drawing, set physics and repulsion on for a better looking graph
-  const physicsSettings = getPhysicsOptions({
-    isPhysicsOn: true,
-    physicsHierarchicalView,
-    physicsRepulsion: true,
-    physicsEdgeLength
-  })
+  const physicsSettings = getPhysicsOptions()
 
   setStoreState('network', visJsRef.current
     && new Network(visJsRef.current, {
       nodes: availableNodes,
       edges: availableEdges
-    },
-    physicsSettings))
+    }, physicsSettings))
+
+  // after first draw, turn off physics and repulsion as default value
+  setStoreState('isPhysicsOn', false)
+  // setStoreState('physicsRepulsion', false)
 
   const canvas = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
 

@@ -10,6 +10,8 @@ import showNotification from '../showNotification'
 import extractCsvRows from './extractCsvRows'
 import downloadBlob from './downloadBlob'
 import store from '../../store'
+import getNodeIds from '../nodesEdgesUtils/getNodeIds'
+import getNode from '../nodesEdgesUtils/getNode'
 
 /**
  * Export data as csv
@@ -23,14 +25,13 @@ const exportCsv = async ({
   t
 }) => {
   const {
-    availableNodes,
     objectPropertiesFromApi,
   } = store.getState()
 
-  const nodeIds = availableNodes.getIds()
+  const nodeIds = getNodeIds()
   const edgeIds = Object.keys(objectPropertiesFromApi)
 
-  const firstNode = availableNodes.get(nodeIds[0])
+  const firstNode = getNode(nodeIds[0])
 
   const nodeKeys = Object.keys(firstNode)
     .filter((key) => key !== 'owlAnnotationProperties'

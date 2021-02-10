@@ -1,4 +1,5 @@
-import store from '../../store'
+import getNode from '../nodesEdgesUtils/getNode'
+import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 
 /**
 * Get nodes to display from nodes filter
@@ -9,13 +10,9 @@ import store from '../../store'
 const getNodesFromNodesFilters = ({
   nodesFilters
 }) => {
-  const {
-    availableNodes
-  } = store.getState()
-
   const nodesToDisplay = []
 
-  const availableNodesIds = availableNodes.getIds()
+  const availableNodesIds = getNodeIds()
 
   if (availableNodesIds.length > 0) {
     for (let index = 0; index < availableNodesIds.length; index++) {
@@ -27,7 +24,7 @@ const getNodesFromNodesFilters = ({
         if (property === '') continue
         if (value === '') continue
 
-        const nodeObject = availableNodes.get(nodeId)
+        const nodeObject = getNode(nodeId)
 
         const isNodeToBeAdded = (nodeObject[property]
         && nodeObject[property].toLowerCase().includes(value.toLowerCase())) || (

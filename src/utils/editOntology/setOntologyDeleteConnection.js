@@ -7,6 +7,7 @@ import {
 import {
   getEdgeAndNodes
 } from '../../constants/functions'
+import removeEdge from '../nodesEdgesUtils/removeEdge'
 
 /**
  * ADd ontology edge
@@ -25,7 +26,6 @@ const setOntologyDeleteConnection = ({
     graphVersions,
     classesFromApi,
     selectedGraphVersion,
-    availableEdges,
     deletedConnections,
   } = store.getState()
 
@@ -56,7 +56,7 @@ const setOntologyDeleteConnection = ({
             newClassesFromApi[from][SUBCLASSOF_PROPERTY]
               .splice((initialNodeConnectionsLength - 1) - index, 1)
 
-            availableEdges.remove(element)
+            removeEdge(element)
           }
         }
 

@@ -1,7 +1,8 @@
 import { SELECTED_NODE_COLOR } from '../../../constants/graph'
-import addNode from '../../../utils/serialiseNodesEdges/addNode'
+import appendNode from '../../../utils/serialiseNodesEdges/appendNode'
+import addNode from '../../../utils/nodesEdgesUtils/addNode'
 
-const add = jest.fn()
+jest.mock('../../../utils/nodesEdgesUtils/addNode')
 
 describe('addNode', () => {
   afterEach(() => {
@@ -11,7 +12,6 @@ describe('addNode', () => {
   it('should work correctly', async () => {
     const availableNodes = {
       get: () => null,
-      add
     }
     const addedNodes = []
     const highlightedNodes = []
@@ -23,7 +23,7 @@ describe('addNode', () => {
     const isNodeOverlay = false
     const shortestPathNodes = []
 
-    await addNode({
+    await appendNode({
       addedNodes,
       availableNodes,
       isNodeOverlay,
@@ -33,7 +33,7 @@ describe('addNode', () => {
       shortestPathNodes
     })
 
-    expect(add).toHaveBeenCalledWith(
+    expect(addNode).toHaveBeenCalledWith(
       {
         id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
         label: 'test',
@@ -47,7 +47,6 @@ describe('addNode', () => {
   it('should change node background if in highlightedNodes', async () => {
     const availableNodes = {
       get: () => null,
-      add
     }
     const addedNodes = []
     const highlightedNodes = ['http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M']
@@ -59,7 +58,7 @@ describe('addNode', () => {
     const isNodeOverlay = false
     const shortestPathNodes = []
 
-    await addNode({
+    await appendNode({
       addedNodes,
       availableNodes,
       isNodeOverlay,
@@ -69,7 +68,7 @@ describe('addNode', () => {
       shortestPathNodes
     })
 
-    expect(add).toHaveBeenCalledWith(
+    expect(addNode).toHaveBeenCalledWith(
       {
         id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
         label: 'test',
@@ -86,7 +85,6 @@ describe('addNode', () => {
   it('should change node background if isNodeOverlay and nodeid not in shortestPathNodes', async () => {
     const availableNodes = {
       get: () => null,
-      add
     }
     const addedNodes = []
     const highlightedNodes = []
@@ -98,7 +96,7 @@ describe('addNode', () => {
     const isNodeOverlay = true
     const shortestPathNodes = ['http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZ1234']
 
-    await addNode({
+    await appendNode({
       addedNodes,
       availableNodes,
       isNodeOverlay,
@@ -108,7 +106,7 @@ describe('addNode', () => {
       shortestPathNodes
     })
 
-    expect(add).toHaveBeenCalledWith(
+    expect(addNode).toHaveBeenCalledWith(
       {
         id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
         label: 'test',

@@ -16,6 +16,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.3.0]
+### Added
+- ONTOLOGY-19 Functions  for VisJs Dataset manipulation
+- ONTOLOGY-19 Edges styling
+- ONTOLOGY-19 Nodes styling
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+
+
 ## [0.2.0]
 ### Added
 - ONTOLOGY-33 Added connections create-delete-restore operations in selected graph version

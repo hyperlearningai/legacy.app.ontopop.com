@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EdgesSelectionDetails from '../../components/EdgesSelectionDetails'
-import { availableNodes } from '../fixtures/availableNodesNormalised'
 
 const setup = () => {
   const props = {
@@ -11,7 +10,6 @@ const setup = () => {
       predicate: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
       to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
     },
-    availableNodes
   }
 
   const component = shallow(<EdgesSelectionDetails {...props} />)

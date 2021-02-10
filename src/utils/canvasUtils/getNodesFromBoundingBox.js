@@ -1,5 +1,7 @@
 import { HIGHLIGHT_NODE_BACKGROUND } from '../../constants/graph'
 import store from '../../store'
+import getNodeIds from '../nodesEdgesUtils/getNodeIds'
+import updateNodes from '../nodesEdgesUtils/updateNodes'
 import clearNodesSelection from './clearNodesSelection'
 
 /**
@@ -14,13 +16,12 @@ const getNodesFromBoundingBox = ({
   const {
     boundingBoxGeometry,
     isBoundingBoxSelectionInternal,
-    availableNodes,
     network,
   } = store.getState()
 
   clearNodesSelection()
 
-  const availableNodesIds = availableNodes.getIds()
+  const availableNodesIds = getNodeIds()
 
   if (availableNodesIds.length > 0) {
     const {
@@ -48,7 +49,7 @@ const getNodesFromBoundingBox = ({
         const isHighlighted = isBoundingBoxSelectionInternal ? isInsideBox : !isInsideBox
 
         if (isHighlighted) {
-          availableNodes.update(
+          updateNodes(
             [{ id: nodeId, color: { background: HIGHLIGHT_NODE_BACKGROUND } }]
           )
         }

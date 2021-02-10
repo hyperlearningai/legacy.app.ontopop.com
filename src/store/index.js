@@ -4,7 +4,19 @@ import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
 import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
-import { GRAPH_VERSION_STRUCTURE } from '../constants/graph'
+import {
+  EDGE_COLOR,
+  EDGE_COLOR_HIGHLIGHTED,
+  NODE_TEXT_COLOR,
+  GRAPH_VERSION_STRUCTURE,
+  NODE_BORDER,
+  NODE_BACKGROUND,
+  CLICK_NODE_BACKGROUND,
+  HIGHLIGHT_NODE_BORDER,
+  NODE_DEFAULT_SHAPE,
+  HOVER_NODE_BORDER,
+  HOVER_NODE_BACKGROUND
+} from '../constants/graph'
 
 const initialState = {
   // view updates
@@ -29,6 +41,28 @@ const initialState = {
   addedConnections: [],
   availableNodesCount: 0,
   availableEdgesCount: 0,
+
+  // nodes styling
+  stylingEdgeLineColor: EDGE_COLOR,
+  stylingEdgeLineColorHover: EDGE_COLOR,
+  stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+  stylingEdgeLineStyle: false,
+  stylingEdgeWidth: 2,
+  stylingEdgeCustom: [],
+  stylingEdgeLength: 250,
+
+  stylingNodeSize: 25,
+  stylingNodeBorder: 1,
+  stylingNodeTextColor: NODE_TEXT_COLOR,
+  stylingNodeBorderSelected: 2,
+  stylingNodeBorderColor: NODE_BORDER,
+  stylingNodeBackgroundColor: NODE_BACKGROUND,
+  stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
+  stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
+  stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
+  stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
+  stylingNodeShape: NODE_DEFAULT_SHAPE,
+  stylingNodeCustom: [],
 
   // netowrk graph loading
   isNetworkLoading: false,
@@ -78,12 +112,10 @@ const initialState = {
     nodeId: ''
   },
 
-  // states to update at every view refresh
   // physics
   isPhysicsOn: true,
   physicsHierarchicalView: false,
   physicsRepulsion: true,
-  physicsEdgeLength: 250,
 
   // Data visualisation
   nodesIdsToDisplay: [],

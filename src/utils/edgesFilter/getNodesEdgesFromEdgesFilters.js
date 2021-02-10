@@ -1,5 +1,6 @@
 import { getEdgeAndNodes } from '../../constants/functions'
 import store from '../../store'
+import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
 
 /**
 * Get nodes and edges to display from edges filter
@@ -13,7 +14,6 @@ const getNodesEdgesFromEdgesFilters = ({
   edgesFilters
 }) => {
   const {
-    availableEdges,
     objectPropertiesFromApi
   } = store.getState()
 
@@ -58,7 +58,7 @@ const getNodesEdgesFromEdgesFilters = ({
   const edgesAnalysed = []
   const edgesAnalysedAndAdded = []
 
-  const availableEdgesIds = availableEdges.getIds()
+  const availableEdgesIds = getEdgeIds()
 
   if (availableEdgesIds?.length > 0) {
     for (let index = 0; index < availableEdgesIds.length; index++) {

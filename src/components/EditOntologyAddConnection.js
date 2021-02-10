@@ -8,6 +8,7 @@ import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import { SUB_CLASS_OF_OBJECT } from '../constants/graph'
 import { generatePredicateId } from '../constants/functions'
+import getEdge from '../utils/nodesEdgesUtils/getEdge'
 
 const EditOntologyAddConnection = ({
   type,
@@ -18,7 +19,6 @@ const EditOntologyAddConnection = ({
   addToArray,
   removeFromObject,
   addToObject,
-  availableEdges
 }) => {
   const { t } = useTranslation()
 
@@ -107,7 +107,7 @@ const EditOntologyAddConnection = ({
       }
 
       {
-        availableEdges.get(generatePredicateId({
+        getEdge(generatePredicateId({
           from: fromNode,
           predicate,
           to: toNode
@@ -133,7 +133,7 @@ const EditOntologyAddConnection = ({
             !fromNode
             || !predicate
             || !toNode
-            || availableEdges.get(generatePredicateId({
+            || getEdge(generatePredicateId({
               from: fromNode,
               predicate,
               to: toNode
@@ -170,7 +170,6 @@ const EditOntologyAddConnection = ({
 EditOntologyAddConnection.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
-  availableEdges: PropTypes.shape().isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
   setStoreState: PropTypes.func.isRequired,
