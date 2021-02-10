@@ -63,6 +63,8 @@ const initialState = {
   stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
   stylingNodeShape: NODE_DEFAULT_SHAPE,
   stylingNodeCustom: [],
+  stylingNodeTextFontSize: 12,
+  stylingNodeTextFontAlign: 'center',
 
   // netowrk graph loading
   isNetworkLoading: false,

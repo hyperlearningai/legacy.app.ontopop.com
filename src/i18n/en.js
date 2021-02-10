@@ -140,10 +140,25 @@ export default {
   nodeBackgroundHighlightedColor: 'Background colour highlighted',
   nodeBackgroundHoverColor: 'Background colour on hover',
   nodeBorderHoverColor: 'Border colour on hover',
-
+  nodeFontSize: 'Node font size',
   nodeCaptionPosition: 'Node caption position',
   nodeCaptionProperties: 'Node caption properties',
   nodeShapeInstructions: 'Choose the node shape',
+  nodeFontAlignment: 'Node font alignment',
+
+  ellipse: 'Ellipse',
+  circle: 'Circle',
+  database: 'Database',
+  box: 'Box',
+  text: 'Text',
+  diamond: 'Diamond',
+  dot: 'Dot',
+  star: 'Star',
+  triangle: 'Triangle',
+  triangleDown: 'Triangle Down',
+  hexagon: 'Hexagon',
+  square: 'Square',
+  onlyFollowingShapesAffected: 'Only the following node shapes are affected by size',
 
   // Physics Node
   nodeStyling: 'Node Styling',

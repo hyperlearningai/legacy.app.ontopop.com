@@ -39,6 +39,8 @@ describe('getPhysicsOptions', () => {
     const stylingNodeHoverBackgroundColor = HOVER_NODE_BACKGROUND
     const stylingNodeHoverBorderColor = HOVER_NODE_BORDER
     const stylingNodeShape = NODE_DEFAULT_SHAPE
+    const stylingNodeTextFontSize = 12
+    const stylingNodeTextFontAlign = 'center'
 
     const getState = jest.fn().mockImplementation(() => ({
       isPhysicsOn,
@@ -60,7 +62,9 @@ describe('getPhysicsOptions', () => {
       stylingNodeHighlightBorderColor,
       stylingNodeHighlightBackgroundColor,
       stylingNodeHoverBackgroundColor,
-      stylingNodeHoverBorderColor
+      stylingNodeHoverBorderColor,
+      stylingNodeTextFontSize,
+      stylingNodeTextFontAlign
     }))
 
     store.getState  = getState
@@ -122,10 +126,11 @@ describe('getPhysicsOptions', () => {
          },
        },
        "font":{
-         "bold": "700",
-         "color": "#000000",
-         "face": "Montserrat",
-         "size": 12,
+          "align": "center",
+          "bold": "700",
+          "color": "#000000",
+          "face": "Montserrat",
+          "size": 12,
        },
        "shape": "circle",
        "size": 25,

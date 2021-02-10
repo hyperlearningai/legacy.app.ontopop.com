@@ -25,7 +25,9 @@ const getPhysicsOptions = () => {
     stylingNodeHighlightBorderColor,
     stylingNodeHighlightBackgroundColor,
     stylingNodeHoverBackgroundColor,
-    stylingNodeHoverBorderColor
+    stylingNodeHoverBorderColor,
+    stylingNodeTextFontSize,
+    stylingNodeTextFontAlign
   } = store.getState()
 
   return ({
@@ -52,8 +54,9 @@ const getPhysicsOptions = () => {
       borderWidth: stylingNodeBorder,
       borderWidthSelected: stylingNodeBorderSelected,
       font: {
-        size: 12,
+        size: stylingNodeTextFontSize,
         color: stylingNodeTextColor,
+        align: stylingNodeTextFontAlign,
         face: 'Montserrat',
         bold: '700'
       },

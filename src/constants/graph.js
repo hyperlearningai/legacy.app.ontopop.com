@@ -15,13 +15,6 @@ export const EDGE_COLOR = '#070b11'
 export const EDGE_COLOR_SELECTED = '#03a9f4'
 export const EDGE_COLOR_HIGHLIGHTED = '#9c27b0'
 
-export const NODE_FONT = {
-  size: 12,
-  color: 'black',
-  face: 'Montserrat',
-  bold: '700'
-}
-
 export const SUB_CLASS_OF_ID = 'http://www.w3.org/2000/01/rdf-schema#subclassof'
 export const SUB_CLASS_OF_LABEL = 'subClassOf'
 
