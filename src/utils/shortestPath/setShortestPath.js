@@ -1,7 +1,7 @@
-import { ALGO_TYPE_SHORTEST_PATH } from '../constants/algorithms'
-import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { ALGO_TYPE_SHORTEST_PATH } from '../../constants/algorithms'
+import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import getShortestPath from './getShortestPath'
-import store from '../store'
+import store from '../../store'
 
 /**
  * Set shortest path

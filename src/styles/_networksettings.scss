@@ -3,7 +3,7 @@
   height: 100%;
   overflow-y: auto;
   text-align: center;
-  padding: 0;
+  padding: 20px 10px;
 
   .text-center {
     text-align: center;
@@ -100,114 +100,6 @@
       svg {
         color: $secondary !important;
         transition: $transition;
-      }
-    }
-  }
-
-  .p-accordion-tab {
-    &.p-accordion-tab-active {
-      .p-accordion-header-link {
-        text-align: left;
-        background: #32353c;
-        color: white;
-        border: 0 !important;
-        border-radius: 0 !important;
-
-        &:hover {
-          background: white;
-        }
-
-        border-top: 1px solid;
-      }
-    }
-
-    .p-accordion-header {
-      &.p-highlight {
-        .p-accordion-header-link {
-          font-weight: bold;
-        }
-      }
-
-      .p-accordion-header-link {
-        text-align: left;
-        background: #424350;
-        color: white;
-        border: 0;
-        border-radius: 0;
-        font-weight: 200;
-
-        &:hover {
-          background: white;
-        }
-
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-      }
-    }
-
-    .p-accordion-content {
-      text-align: left;
-      font-size: 14px;
-      border: 0;
-      background: #33343d;
-      color: white;
-      padding: 10px;
-      padding: 20px 10px 30px 10px;
-
-      .p-accordion-header {
-        font-weight: 200;
-
-        &.p-highlight {
-          a {
-            background: #32353c;
-            color: white;
-            font-weight: bold;
-          }
-        }
-      }
-
-      .p-accordion-content {
-        .p-accordion-header {
-          &.p-highlight {
-            a {
-              background: #0382c9;
-              color: white;
-            }
-          }
-        }
-      }
-
-      .p-selectbutton {
-        text-align: center;
-      }
-
-      .p-multiselect {
-        width: 100%;
-      }
-
-      .p-colorpicker {
-        width: 30px;
-        height: 30px;
-
-        input {
-          border: 1px solid white;
-        }
-      }
-
-      .p-accordion-header-link {
-        padding: 9px;
-        background: #32353c;
-        border-bottom: 1px solid white !important;
-        color: white;
-      }
-
-      .p-inputtext {
-        width: 100%;
-        border-radius: 0;
-        background: #33343d;
-        border: 0;
-        color: white;
-        text-align: center;
       }
     }
   }

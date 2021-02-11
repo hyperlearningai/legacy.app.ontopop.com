@@ -8,7 +8,7 @@ exports[`NetworkStyling should match snapshot  1`] = `
     styling
   </div>
   <div
-    className="network-settings"
+    className="network-styling"
   >
     <div
       className="card"

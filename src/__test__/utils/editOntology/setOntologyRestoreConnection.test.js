@@ -29,12 +29,13 @@ describe('setOntologyRestoreConnection', () => {
   })
 
   it('should work correctly', async () => {
-    const getState = jest.fn().mockImplementationOnce(() => ({
+    const getState = jest.fn().mockImplementation(() => ({
       graphVersions,
       classesFromApi: newOwlClasses,
       objectPropertiesFromApi: OwlObjectProperties,
       selectedGraphVersion: 'original',
       deletedConnections: [selectedElement[0]],
+      stylingNodeCaptionProperty: 'rdfsLabel'
     }))
     store.getState = getState
 

@@ -15,7 +15,8 @@ import {
   HIGHLIGHT_NODE_BORDER,
   NODE_DEFAULT_SHAPE,
   HOVER_NODE_BORDER,
-  HOVER_NODE_BACKGROUND
+  HOVER_NODE_BACKGROUND,
+  LABEL_PROPERTY
 } from '../constants/graph'
 
 const initialState = {
@@ -65,6 +66,7 @@ const initialState = {
   stylingNodeCustom: [],
   stylingNodeTextFontSize: 12,
   stylingNodeTextFontAlign: 'center',
+  stylingNodeCaptionProperty: LABEL_PROPERTY,
 
   // netowrk graph loading
   isNetworkLoading: false,

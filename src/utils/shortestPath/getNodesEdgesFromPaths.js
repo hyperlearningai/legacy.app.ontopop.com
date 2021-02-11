@@ -1,19 +1,20 @@
 import {
   getPathEdges,
   getEdgeAndNodes
-} from '../constants/functions'
+} from '../../constants/functions'
+import store from '../../store'
 
 /**
- * Get shortest path
- * @param  {Object}   params
- * @param  {Array}    params.shortestPathResults        Array of strings with concatenated nodes and edges
+ * Get nodes edges from shortest path
  * @return {Object}   output
  * @return {Array}    output.shortestPathEdges          Array of edges IDs strings
  * @return {Array}    output.shortestPathNodes          Array of node IDs strings
  */
-const getNodesEdgesFromPaths = ({
-  shortestPathResults
-}) => {
+const getNodesEdgesFromPaths = () => {
+  const {
+    shortestPathResults
+  } = store.getState()
+
   const shortestPathEdges = []
   const shortestPathNodes = []
 

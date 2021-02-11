@@ -145,6 +145,7 @@ export default {
   nodeCaptionProperties: 'Node caption properties',
   nodeShapeInstructions: 'Choose the node shape',
   nodeFontAlignment: 'Node font alignment',
+  nodeCaptionProperty: 'Node caption property',
 
   ellipse: 'Ellipse',
   circle: 'Circle',

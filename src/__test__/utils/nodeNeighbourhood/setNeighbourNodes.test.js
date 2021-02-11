@@ -1,7 +1,7 @@
-import setNeighbourNodes from '../../utils/setNeighbourNodes'
-import { OwlClasses } from '../fixtures/test-ontology-classes.json'
-import { triplesPerNode } from '../fixtures/triplesPerNode'
-import store from '../../store'
+import setNeighbourNodes from '../../../utils/nodeNeighbourhood/setNeighbourNodes'
+import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { triplesPerNode } from '../../fixtures/triplesPerNode'
+import store from '../../../store'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()

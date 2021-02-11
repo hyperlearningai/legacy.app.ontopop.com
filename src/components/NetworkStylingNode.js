@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
@@ -8,7 +8,9 @@ import { SelectButton } from 'primereact/selectbutton'
 import { RadioButton } from 'primereact/radiobutton'
 import { InputNumber } from 'primereact/inputnumber'
 import { Slider } from 'primereact/slider'
+import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
+import updateNodesStyle from '../utils/networkStyling/updateNodesStyle'
 
 const fontAlignmentTemplate = (option) => <i className={option.icon} />
 
@@ -26,9 +28,25 @@ const NetworkStylingNode = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextColor,
   stylingNodeTextFontSize,
-  stylingNodeTextFontAlign
+  stylingNodeTextFontAlign,
+  stylingNodeCaptionProperty,
+  annotationProperties,
+
 }) => {
+  const isInitialMountSelectedGraphVersion = useRef(true)
+
   const { t } = useTranslation()
+
+  useEffect(() => {
+    if (isInitialMountSelectedGraphVersion.current) {
+      isInitialMountSelectedGraphVersion.current = false
+    } else {
+      updateNodesStyle()
+    }
+  },
+  [
+    stylingNodeCaptionProperty
+  ])
 
   const fontAlignmentOptions = [
     { icon: 'pi pi-align-left', value: 'left' },
@@ -238,6 +256,19 @@ const NetworkStylingNode = ({
                   </span>
                 </div>
               </AccordionTab>
+
+              <AccordionTab header={t('nodeCaptionProperty')}>
+                <Dropdown
+                  value={stylingNodeCaptionProperty}
+                  options={annotationProperties}
+                  optionValue="id"
+                  optionLabel="label"
+                  filter
+                  onChange={(e) => setStoreState('stylingNodeCaptionProperty', e.value)}
+                  className="m-t-10"
+                  placeholder={t('selectProperty')}
+                />
+              </AccordionTab>
             </Accordion>
           </AccordionTab>
         </Accordion>
@@ -264,6 +295,8 @@ NetworkStylingNode.propTypes = {
   stylingNodeHoverBorderColor: PropTypes.string.isRequired,
   stylingNodeTextFontSize: PropTypes.number.isRequired,
   stylingNodeTextFontAlign: PropTypes.string.isRequired,
+  stylingNodeCaptionProperty: PropTypes.string.isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
 const mapToProps = ({
@@ -279,7 +312,9 @@ const mapToProps = ({
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
-  stylingNodeTextFontAlign
+  stylingNodeTextFontAlign,
+  stylingNodeCaptionProperty,
+  annotationProperties
 }) => ({
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
@@ -293,7 +328,9 @@ const mapToProps = ({
   stylingNodeTextColor,
   stylingNodeSize,
   stylingNodeTextFontSize,
-  stylingNodeTextFontAlign
+  stylingNodeTextFontAlign,
+  stylingNodeCaptionProperty,
+  annotationProperties
 })
 
 export default connect(

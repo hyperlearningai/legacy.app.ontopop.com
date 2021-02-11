@@ -6,7 +6,6 @@ import addEdge from '../nodesEdgesUtils/addEdge'
  * Update edge and node-related arrays/objects with connections
  * @param  {Object}   params
  * @param  {Array}    params.addedEdges               Array of edges IDs being added
- * @param  {Object}   params.availableEdges           Available edges dataset
  * @param  {String}   params.edgeUniqueId             Unique edge id (predicate___from___to)
  * @param  {Object}   params.edge                     Edge object
  * @param  {Object}   params.edgesConnections         NOrmalised List of connections per edge

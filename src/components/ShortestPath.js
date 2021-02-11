@@ -12,7 +12,7 @@ import actions from '../store/actions'
 import {
   SIDEBAR_VIEW_SHORTEST_PATH
 } from '../constants/views'
-import setShortestPath from '../utils/setShortestPath'
+import setShortestPath from '../utils/shortestPath/setShortestPath'
 
 const ShortestPath = ({
   classesFromApi,

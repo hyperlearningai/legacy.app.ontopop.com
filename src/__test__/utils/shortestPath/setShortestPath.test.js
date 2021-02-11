@@ -1,8 +1,8 @@
-import setShortestPath from '../../utils/setShortestPath'
-import { availableEdgesNormalised } from '../fixtures/availableEdgesNormalised'
-import { availableNodesNormalised } from '../fixtures/availableNodesNormalised'
-import { nodesConnections } from '../fixtures/nodesConnections'
-import store from '../../store'
+import setShortestPath from '../../../utils/shortestPath/setShortestPath'
+import { availableEdgesNormalised } from '../../fixtures/availableEdgesNormalised'
+import { availableNodesNormalised } from '../../fixtures/availableNodesNormalised'
+import { nodesConnections } from '../../fixtures/nodesConnections'
+import store from '../../../store'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
