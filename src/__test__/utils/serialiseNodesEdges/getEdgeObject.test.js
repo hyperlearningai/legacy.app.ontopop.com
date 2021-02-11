@@ -1,6 +1,7 @@
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties'
 import getEdgeObject from '../../../utils/serialiseNodesEdges/getEdgeObject'
+import store from '../../../store'
 
 describe('getEdgeObject', () => {
   afterEach(() => {
@@ -8,13 +9,23 @@ describe('getEdgeObject', () => {
   })
 
   it('should work correctly when no nodeOverlay', async () => {
-    const from = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
-    const predicate = 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp'
-    const to = 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
     const objectPropertiesFromApi = OwlObjectProperties
     const classesFromApi = OwlClasses
     const isNodeOverlay = false
     const shortestPathResults = []
+    const stylingNodeCaptionProperty = 'rdfsLabel'
+
+    store.getState = jest.fn().mockImplementationOnce(() => ({
+      stylingNodeCaptionProperty,
+      classesFromApi,
+      objectPropertiesFromApi,
+      isNodeOverlay,
+      shortestPathResults
+    }))
+
+    const from = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
+    const predicate = 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp'
+    const to = 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
 
     expect(getEdgeObject({
       from,
@@ -115,13 +126,23 @@ describe('getEdgeObject', () => {
   })
 
   it('should work correctly when nodeOverlay and not in path', async () => {
-    const from = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
-    const predicate = 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp'
-    const to = 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
     const objectPropertiesFromApi = OwlObjectProperties
     const classesFromApi = OwlClasses
     const isNodeOverlay = true
     const shortestPathResults = ['http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovTEST___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1234']
+    const stylingNodeCaptionProperty = 'rdfsLabel'
+
+    store.getState = jest.fn().mockImplementationOnce(() => ({
+      stylingNodeCaptionProperty,
+      classesFromApi,
+      objectPropertiesFromApi,
+      isNodeOverlay,
+      shortestPathResults
+    }))
+
+    const from = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
+    const predicate = 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp'
+    const to = 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
 
     expect(getEdgeObject({
       from,
@@ -232,10 +253,20 @@ describe('getEdgeObject', () => {
     const from = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
     const predicate = 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp'
     const to = 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
+
     const objectPropertiesFromApi = OwlObjectProperties
     const classesFromApi = OwlClasses
     const isNodeOverlay = true
     const shortestPathResults = [`${predicate}___${from}___${to}`]
+    const stylingNodeCaptionProperty = 'rdfsLabel'
+
+    store.getState = jest.fn().mockImplementationOnce(() => ({
+      stylingNodeCaptionProperty,
+      classesFromApi,
+      objectPropertiesFromApi,
+      isNodeOverlay,
+      shortestPathResults
+    }))
 
     expect(getEdgeObject({
       from,

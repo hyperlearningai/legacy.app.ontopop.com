@@ -1,6 +1,8 @@
 import { SELECTED_NODE_COLOR } from '../../constants/graph'
 import addNode from '../nodesEdgesUtils/addNode'
+import getNode from '../nodesEdgesUtils/getNode'
 import getSpiralCoordinates from './getSpiralCoordinates'
+import store from '../../store'
 
 let step = 0
 
@@ -8,9 +10,6 @@ let step = 0
  * Add node to arrays/objects
  * @param  {Object}   params
  * @param  {Array}    params.addedNodes               Array of nodes IDs being added
- * @param  {Object}   params.availableNodes           Available nodes dataset
- * @param  {Array}    params.highlightedNodes         Array of nodes IDs to highlight
- * @param  {Boolean}  params.isNodeOverlay            Flag to make non-highlighted nodes transparent
  * @param  {String}   params.nodeId                   Node ID
  * @param  {Object}   params.nodeIdObject             Node ID object
  * @param  {Array}    params.shortestPathNodes        Array of nodes IDs in shortest path
@@ -18,9 +17,6 @@ let step = 0
  */
 const appendNode = ({
   addedNodes,
-  availableNodes,
-  isNodeOverlay,
-  highlightedNodes,
   nodeId,
   nodeIdObject,
   shortestPathNodes,
@@ -28,8 +24,13 @@ const appendNode = ({
   padding,
   angle
 }) => {
+  const {
+    isNodeOverlay,
+    highlightedNodes,
+  } = store.getState()
+
   if (!addedNodes.includes(nodeId)
-  && availableNodes.get(nodeId) === null
+  && getNode(nodeId) === null
   && nodeIdObject.label
   && nodeIdObject.label !== ''
   ) {

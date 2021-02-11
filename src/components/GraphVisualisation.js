@@ -22,6 +22,10 @@ const GraphVisualisation = ({
   stylingEdgeLineColor,
   stylingEdgeLineColorHover,
   stylingEdgeLineColorHighlight,
+  stylingEdgeCaptionProperty,
+  stylingEdgeTextColor,
+  stylingEdgeTextSize,
+  stylingEdgeTextAlign,
   stylingNodeShape,
   stylingNodeSize,
   stylingNodeBorder,
@@ -33,6 +37,8 @@ const GraphVisualisation = ({
   stylingNodeTextColor,
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
+  stylingNodeTextFontSize,
+  stylingNodeTextFontAlign,
   setStoreState
 }) => {
   const visJsRef = useRef(null)
@@ -75,6 +81,16 @@ const GraphVisualisation = ({
     stylingEdgeLineColor,
     stylingEdgeLineColorHover,
     stylingEdgeLineColorHighlight,
+    stylingEdgeLength,
+    stylingEdgeWidth,
+    stylingEdgeLineStyle,
+    stylingEdgeLineColor,
+    stylingEdgeLineColorHover,
+    stylingEdgeLineColorHighlight,
+    stylingEdgeCaptionProperty,
+    stylingEdgeTextColor,
+    stylingEdgeTextSize,
+    stylingEdgeTextAlign,
     stylingNodeShape,
     stylingNodeSize,
     stylingNodeBorder,
@@ -86,6 +102,8 @@ const GraphVisualisation = ({
     stylingNodeTextColor,
     stylingNodeHoverBackgroundColor,
     stylingNodeHoverBorderColor,
+    stylingNodeTextFontSize,
+    stylingNodeTextFontAlign
   ])
 
   // set graph options
@@ -132,11 +150,17 @@ GraphVisualisation.propTypes = {
   stylingNodeSize: PropTypes.number.isRequired,
   stylingNodeBorder: PropTypes.number.isRequired,
   stylingNodeBorderSelected: PropTypes.number.isRequired,
+  stylingNodeTextFontSize: PropTypes.number.isRequired,
   stylingNodeHoverBackgroundColor: PropTypes.string.isRequired,
   stylingNodeHoverBorderColor: PropTypes.string.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
+  stylingNodeTextFontAlign: PropTypes.string.isRequired,
+  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
+  stylingEdgeTextColor: PropTypes.string.isRequired,
+  stylingEdgeTextSize: PropTypes.string.isRequired,
+  stylingEdgeTextAlign: PropTypes.string.isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -172,6 +196,12 @@ const mapToProps = ({
   isPhysicsOn,
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
+  stylingNodeTextFontSize,
+  stylingNodeTextFontAlign,
+  stylingEdgeCaptionProperty,
+  stylingEdgeTextColor,
+  stylingEdgeTextSize,
+  stylingEdgeTextAlign,
 }) => ({
   availableNodes,
   availableEdges,
@@ -201,6 +231,12 @@ const mapToProps = ({
   isPhysicsOn,
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
+  stylingNodeTextFontSize,
+  stylingNodeTextFontAlign,
+  stylingEdgeCaptionProperty,
+  stylingEdgeTextColor,
+  stylingEdgeTextSize,
+  stylingEdgeTextAlign,
 })
 
 export default connect(

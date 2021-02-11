@@ -12,7 +12,7 @@ const NetworkStyling = () => {
       <div className="sidebar-main-title">
         {t(SIDEBAR_VIEW_STYLING)}
       </div>
-      <div className="network-settings">
+      <div className="network-styling">
         <div className="card">
           <NetworkStylingNode />
           <NetworkStylingEdge />

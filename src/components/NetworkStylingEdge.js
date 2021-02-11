@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { ColorPicker } from 'primereact/colorpicker'
 import { SelectButton } from 'primereact/selectbutton'
-import { InputText } from 'primereact/inputtext'
 import { Slider } from 'primereact/slider'
+import { Dropdown } from 'primereact/dropdown'
+import { InputNumber } from 'primereact/inputnumber'
 import actions from '../store/actions'
+import updateEdgesStyle from '../utils/networkStyling/updateEdgesStyle'
 
 const NetworkStylingEdge = ({
   setStoreState,
@@ -17,10 +19,33 @@ const NetworkStylingEdge = ({
   stylingEdgeLineColor,
   stylingEdgeLineColorHover,
   stylingEdgeLineColorHighlight,
+  stylingEdgeCaptionProperty,
+  stylingEdgeTextColor,
+  stylingEdgeTextSize,
+  stylingEdgeTextAlign,
+  annotationProperties
 }) => {
+  const isInitialMount = useRef(true)
+
   const { t } = useTranslation()
-  const options = ['Left', 'Middle', 'Right']
-  const [value1, setValue1] = useState('Middle')
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false
+    } else {
+      updateEdgesStyle()
+    }
+  },
+  [
+    stylingEdgeCaptionProperty
+  ])
+
+  const alignmentOptions = ['horizontal', 'top', 'middle', 'bottom']
+
+  const captionAlignmentOptions = alignmentOptions.map((shape) => ({
+    label: t(shape),
+    value: shape
+  }))
 
   const edgeLineStyleOptions = [
     { icon: 'pi pi-ellipsis-h', value: true },
@@ -36,8 +61,9 @@ const NetworkStylingEdge = ({
             <Accordion>
               <AccordionTab header={t('edgeLength')}>
                 <div className="network-settings-input">
+                  <h4 className="m-t-5 m-b-10">{t('edgeLenghtOnlyWithPhysicsOn')}</h4>
                   <div className="network-settings-item-input">
-                    <InputText value={stylingEdgeLength} onChange={(e) => setStoreState('stylingEdgeLength', parseInt(e.value))} />
+                    <InputNumber value={stylingEdgeLength} onChange={(e) => setStoreState('stylingEdgeLength', parseInt(e.value))} />
                     <Slider
                       min={1}
                       max={1000}
@@ -50,7 +76,7 @@ const NetworkStylingEdge = ({
                 </div>
               </AccordionTab>
               <AccordionTab header={t('edgeThickness')}>
-                <InputText value={stylingEdgeWidth} onChange={(e) => setStoreState('stylingEdgeWidth', parseInt(e.value))} />
+                <InputNumber value={stylingEdgeWidth} onChange={(e) => setStoreState('stylingEdgeWidth', parseInt(e.value))} />
                 <Slider
                   min={1}
                   max={20}
@@ -62,35 +88,30 @@ const NetworkStylingEdge = ({
               </AccordionTab>
               <AccordionTab header={t('edgeLineStyleColor')}>
                 <h4 className="m-t-5 m-b-10">{t('edgeLineColorInstructions')}</h4>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingEdgeLineColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingEdgeLineColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
                     {t('edgeLineStyleLineColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingEdgeLineColorHighlight.replace('#', '')}
                     onChange={(e) => setStoreState('stylingEdgeLineColorHighlight', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('edgeLineStyleHighlightColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingEdgeLineColorHover.replace('#', '')}
                     onChange={(e) => setStoreState('stylingEdgeLineColorHover', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('edgeLineStyleHoverColor')}
                   </span>
                 </div>
@@ -103,12 +124,46 @@ const NetworkStylingEdge = ({
                   itemTemplate={edgeLineStyleTemplate}
                 />
               </AccordionTab>
-              <AccordionTab header={t('edgeCaptionPosition')} className="position-center">
-                <h3>Position of caption</h3>
-                <SelectButton value={value1} options={options} onChange={(e) => setValue1(e.value)} />
+              <AccordionTab header={t('edgeLineStyleTextSize')}>
+                <InputNumber value={stylingEdgeTextSize} onChange={(e) => setStoreState('stylingEdgeTextSize', parseInt(e.value))} />
+                <Slider
+                  min={1}
+                  max={200}
+                  step={1}
+                  id="edgeWidthSlider"
+                  value={stylingEdgeTextSize}
+                  onChange={(e) => setStoreState('stylingEdgeTextSize', parseInt(e.value))}
+                />
               </AccordionTab>
-              <AccordionTab header={t('edgeCaptionProperties')}>
-                here
+              <AccordionTab header={t('edgeLineStyleTextColor')}>
+                <div className="m-b-10 colorpicker">
+                  <ColorPicker
+                    value={stylingEdgeTextColor.replace('#', '')}
+                    onChange={(e) => setStoreState('stylingEdgeTextColor', `#${e.value}`)}
+                  />
+                  <span>
+                    {t('edgeLineStyleTextColor')}
+                  </span>
+                </div>
+              </AccordionTab>
+              <AccordionTab header={t('edgeLineStyleTextAlign')}>
+                <SelectButton
+                  value={stylingEdgeTextAlign}
+                  options={captionAlignmentOptions}
+                  onChange={(e) => setStoreState('stylingEdgeTextAlign', e.value)}
+                />
+              </AccordionTab>
+              <AccordionTab header={t('edgeCaptionProperty')}>
+                <Dropdown
+                  value={stylingEdgeCaptionProperty}
+                  options={annotationProperties}
+                  optionValue="id"
+                  optionLabel="label"
+                  filter
+                  onChange={(e) => setStoreState('stylingEdgeCaptionProperty', e.value)}
+                  className="m-t-10"
+                  placeholder={t('selectProperty')}
+                />
               </AccordionTab>
             </Accordion>
           </AccordionTab>
@@ -129,7 +184,7 @@ const NetworkStylingEdge = ({
               <AccordionTab header={t('edgeLength')}>
                 <div className="network-settings-input">
                   <div className="network-settings-item-input">
-                    <InputText value={stylingEdgeLength} onChange={(e) => setStoreState('stylingEdgeLength', parseInt(e.value))} />
+                    <InputNumber value={stylingEdgeLength} onChange={(e) => setStoreState('stylingEdgeLength', parseInt(e.value))} />
                     <Slider
                       min={0}
                       max={1000}
@@ -142,7 +197,7 @@ const NetworkStylingEdge = ({
                 </div>
               </AccordionTab>
               <AccordionTab header={t('edgeThickness')}>
-                <InputText value={stylingEdgeWidth} onChange={(e) => setStoreState('stylingEdgeWidth', parseInt(e.value))} />
+                <InputNumber value={stylingEdgeWidth} onChange={(e) => setStoreState('stylingEdgeWidth', parseInt(e.value))} />
                 <Slider
                   min={1}
                   max={20}
@@ -154,36 +209,30 @@ const NetworkStylingEdge = ({
               </AccordionTab>
               <AccordionTab header={t('edgeLineStyleColor')}>
                 <h4 className="m-t-5 m-b-10">{t('edgeLineColorInstructions')}</h4>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingEdgeLineColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingEdgeLineColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('edgeLineStyleLineColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingEdgeLineColorHighlight.replace('#', '')}
                     onChange={(e) => setStoreState('stylingEdgeLineColorHighlight', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('edgeLineStyleHighlightColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingEdgeLineColorHover.replace('#', '')}
                     onChange={(e) => setStoreState('stylingEdgeLineColorHover', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('edgeLineStyleHoverColor')}
                   </span>
                 </div>
@@ -195,12 +244,6 @@ const NetworkStylingEdge = ({
                   onChange={(e) => setStoreState('stylingEdgeLineStyle', e.value)}
                   itemTemplate={edgeLineStyleTemplate}
                 />
-              </AccordionTab>
-              <AccordionTab header={t('edgeCaptionPosition')}>
-                here
-              </AccordionTab>
-              <AccordionTab header={t('edgeCaptionProperties')}>
-                here
               </AccordionTab>
             </Accordion>
           </AccordionTab>
@@ -218,6 +261,12 @@ NetworkStylingEdge.propTypes = {
   stylingEdgeLineColor: PropTypes.string.isRequired,
   stylingEdgeLineColorHover: PropTypes.string.isRequired,
   stylingEdgeLineColorHighlight: PropTypes.string.isRequired,
+  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
+  stylingEdgeTextColor: PropTypes.string.isRequired,
+  stylingEdgeTextSize: PropTypes.string.isRequired,
+  stylingEdgeTextAlign: PropTypes.string.isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
+
 }
 
 const mapToProps = ({
@@ -227,6 +276,11 @@ const mapToProps = ({
   stylingEdgeLineColor,
   stylingEdgeLineColorHover,
   stylingEdgeLineColorHighlight,
+  stylingEdgeCaptionProperty,
+  annotationProperties,
+  stylingEdgeTextColor,
+  stylingEdgeTextSize,
+  stylingEdgeTextAlign,
 }) => ({
   stylingEdgeLength,
   stylingEdgeWidth,
@@ -234,6 +288,11 @@ const mapToProps = ({
   stylingEdgeLineColor,
   stylingEdgeLineColorHover,
   stylingEdgeLineColorHighlight,
+  stylingEdgeCaptionProperty,
+  annotationProperties,
+  stylingEdgeTextColor,
+  stylingEdgeTextSize,
+  stylingEdgeTextAlign,
 })
 
 export default connect(

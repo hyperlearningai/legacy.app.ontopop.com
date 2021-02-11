@@ -9,7 +9,7 @@ import { InputNumber } from 'primereact/inputnumber'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
-import setNeighbourNodes from '../utils/setNeighbourNodes'
+import setNeighbourNodes from '../utils/nodeNeighbourhood/setNeighbourNodes'
 
 const NodeNeighbourhood = ({
   setStoreState,

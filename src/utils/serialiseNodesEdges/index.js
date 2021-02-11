@@ -3,47 +3,37 @@ import getEdgeObject from './getEdgeObject'
 import showEdgeCheck from './showEdgeCheck'
 import addConnections from './addConnections'
 import store from '../../store'
-import getNodesEdgesFromPaths from '../getNodesEdgesFromPaths'
+import getNodesEdgesFromPaths from '../shortestPath/getNodesEdgesFromPaths'
 import getPhysicsOptions from '../getPhysicsOptions'
 import highlightSpiderableNodes from '../highlightSpiderableNodes'
 import appendNode from './appendNode'
+import clearNodes from '../nodesEdgesUtils/clearNodes'
+import clearEdges from '../nodesEdgesUtils/clearEdges'
+import countNodes from '../nodesEdgesUtils/countNodes'
+import countEdges from '../nodesEdgesUtils/countEdges'
 
 /**
  * Update store and graph based on node IDs to display
  * @param  {Object}   params
- * @param  {Object}   params.availableNodes          VisJs Dataset of nodes IDs
- * @param  {Object}   params.availableEdges          VisJs Dataset of edges IDs
- * @param  {Object}   params.classesFromApi          Nodes from initial OwlClasses
- * @param  {Array}    params.edgesIdsToDisplay       Array of edges IDs to display
- * @param  {Array}    params.highlightedNodes        Array of nodes IDs to highlight
- * @param  {Boolean}  params.isNodeOverlay           Flag to make non-highlighted nodes transparent
- * @param  {Object}   params.network                 VisJs network object
- * @param  {Array}    params.nodesIdsToDisplay       Array of nodes IDs to display
- * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
  * @param  {Function} params.setStoreState           setStoreState action
- * @param  {Object}   params.triplesPerNode          List of triples per node
  * @return { undefined }
  */
 const serialiseNodesEdges = ({
   setStoreState,
 }) => {
   const {
-    availableNodes,
-    availableEdges,
     classesFromApi,
     edgesIdsToDisplay,
-    highlightedNodes,
-    isNodeOverlay,
     network,
     nodesIdsToDisplay,
     objectPropertiesFromApi,
-    shortestPathResults,
     triplesPerNode,
+    stylingNodeCaptionProperty
   } = store.getState()
 
   // reset nodes/edges (display at the end of the function)
-  availableNodes.clear()
-  availableEdges.clear()
+  clearEdges()
+  clearNodes()
 
   const addedNodes = []
   const addedEdges = []
@@ -55,35 +45,28 @@ const serialiseNodesEdges = ({
   const {
     // shortestPathEdges,
     shortestPathNodes
-  } = getNodesEdgesFromPaths({
-    shortestPathResults
-  })
+  } = getNodesEdgesFromPaths()
 
   // spiral coordinates positions
   const circleMax = 1
   const padding = 1
   const angle = 0
-  const step = 0
 
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId]
     const triples = triplesPerNode[nodeId]
     nodeIdObject.id = nodeId
-    nodeIdObject.label = nodeIdObject.rdfsLabel
-      ? nodeIdObject.rdfsLabel.replace(/ /g, '\n') : ''
+    nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
+      ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
     appendNode({
-      availableNodes,
       addedNodes,
-      isNodeOverlay,
       nodeId,
       nodeIdObject,
-      highlightedNodes,
       shortestPathNodes,
       circleMax,
       padding,
-      step,
       angle
     })
 
@@ -106,11 +89,7 @@ const serialiseNodesEdges = ({
         } = getEdgeObject({
           from,
           predicate,
-          to,
-          objectPropertiesFromApi,
-          classesFromApi,
-          isNodeOverlay,
-          shortestPathResults
+          to
         })
 
         const isEdgeDisplayable = showEdgeCheck({
@@ -128,7 +107,6 @@ const serialiseNodesEdges = ({
             addedEdges,
             edgeUniqueId,
             edge,
-            availableEdges,
             edgesConnections,
             edgeConnection,
             predicate,
@@ -140,30 +118,22 @@ const serialiseNodesEdges = ({
           })
 
           appendNode({
-            availableNodes,
             addedNodes,
-            highlightedNodes,
-            isNodeOverlay,
             nodeId: to,
             nodeIdObject: toObject,
             shortestPathNodes,
             circleMax,
             padding,
-            step,
             angle
           })
 
           appendNode({
-            availableNodes,
             addedNodes,
-            highlightedNodes,
-            isNodeOverlay,
             nodeId: from,
             nodeIdObject: fromObject,
             shortestPathNodes,
             circleMax,
             padding,
-            step,
             angle
           })
         }
@@ -173,8 +143,8 @@ const serialiseNodesEdges = ({
     }
   }
 
-  setStoreState('availableNodesCount', availableNodes.length)
-  setStoreState('availableEdgesCount', availableEdges.length)
+  setStoreState('availableNodesCount', countNodes())
+  setStoreState('availableEdgesCount', countEdges())
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
 
@@ -185,7 +155,6 @@ const serialiseNodesEdges = ({
   highlightSpiderableNodes({
     nodesConnections,
     triplesPerNode,
-    availableNodes,
   })
 
   return true

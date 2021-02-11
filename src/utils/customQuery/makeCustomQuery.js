@@ -1,9 +1,9 @@
 import axios from 'axios'
 import {
   NOTIFY_WARNING
-} from '../constants/notifications'
-import showNotification from './showNotification'
-import { GET_GRAPH_QUERY } from '../constants/api'
+} from '../../constants/notifications'
+import showNotification from '../showNotification'
+import { GET_GRAPH_QUERY } from '../../constants/api'
 
 /**
  * Get graph data from API

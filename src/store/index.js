@@ -15,7 +15,8 @@ import {
   HIGHLIGHT_NODE_BORDER,
   NODE_DEFAULT_SHAPE,
   HOVER_NODE_BORDER,
-  HOVER_NODE_BACKGROUND
+  HOVER_NODE_BACKGROUND,
+  LABEL_PROPERTY
 } from '../constants/graph'
 
 const initialState = {
@@ -47,9 +48,13 @@ const initialState = {
   stylingEdgeLineColorHover: EDGE_COLOR,
   stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
   stylingEdgeLineStyle: false,
+  stylingEdgeTextColor: EDGE_COLOR,
+  stylingEdgeTextSize: 12,
+  stylingEdgeTextAlign: 'horizontal',
   stylingEdgeWidth: 2,
   stylingEdgeCustom: [],
   stylingEdgeLength: 250,
+  stylingEdgeCaptionProperty: LABEL_PROPERTY,
 
   stylingNodeSize: 25,
   stylingNodeBorder: 1,
@@ -63,6 +68,9 @@ const initialState = {
   stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
   stylingNodeShape: NODE_DEFAULT_SHAPE,
   stylingNodeCustom: [],
+  stylingNodeTextFontSize: 12,
+  stylingNodeTextFontAlign: 'center',
+  stylingNodeCaptionProperty: LABEL_PROPERTY,
 
   // netowrk graph loading
   isNetworkLoading: false,

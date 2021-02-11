@@ -1,5 +1,9 @@
 import store from '../../store'
 
+/**
+ * Get edge ids
+ * @return {Array} edgeIds    Array of edge IDs
+\ */
 const getEdgeIds = () => {
   const {
     availableEdges

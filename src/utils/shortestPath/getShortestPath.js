@@ -1,4 +1,4 @@
-import { getEdgeAndNodes } from '../constants/functions'
+import { getEdgeAndNodes } from '../../constants/functions'
 
 /**
  * Loop through neighbours

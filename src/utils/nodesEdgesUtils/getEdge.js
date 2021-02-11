@@ -1,5 +1,10 @@
 import store from '../../store'
 
+/**
+ * Get edge properties
+ * @param  {String}   edgeId    Edge id
+ * @return { undefined }
+\ */
 const getEdge = (edgeId) => {
   const {
     availableEdges
