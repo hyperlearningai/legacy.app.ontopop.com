@@ -24,6 +24,8 @@ describe('updateNodesStyle', () => {
 
     await updateNodesStyle()
 
-    expect(updateNodes).toHaveBeenLastCalledWith()
+    expect(updateNodes).toHaveBeenLastCalledWith(
+      { id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M', label: 'Programme' }
+    )
   })
 })

@@ -87,14 +87,21 @@
         width: 100%;
       }
 
-      .p-colorpicker {
-        width: 30px;
-        height: 30px;
+      .colorpicker {
+        .p-colorpicker {
+          width: 30px;
+          height: 30px;
 
-        input {
-          border: 1px solid white;
+          input {
+            border: 1px solid white;
+          }
+        }
+
+        span {
+          margin-left: 10px;
         }
       }
+
 
       .p-accordion-header-link {
         padding: 9px;

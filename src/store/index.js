@@ -48,9 +48,13 @@ const initialState = {
   stylingEdgeLineColorHover: EDGE_COLOR,
   stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
   stylingEdgeLineStyle: false,
+  stylingEdgeTextColor: EDGE_COLOR,
+  stylingEdgeTextSize: 12,
+  stylingEdgeTextAlign: 'horizontal',
   stylingEdgeWidth: 2,
   stylingEdgeCustom: [],
   stylingEdgeLength: 250,
+  stylingEdgeCaptionProperty: LABEL_PROPERTY,
 
   stylingNodeSize: 25,
   stylingNodeBorder: 1,

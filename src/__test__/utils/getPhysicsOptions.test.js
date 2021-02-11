@@ -41,6 +41,9 @@ describe('getPhysicsOptions', () => {
     const stylingNodeShape = NODE_DEFAULT_SHAPE
     const stylingNodeTextFontSize = 12
     const stylingNodeTextFontAlign = 'center'
+    const stylingEdgeTextColor = EDGE_COLOR
+    const stylingEdgeTextSize =12
+    const stylingEdgeTextAlign ='horizontal'
 
     const getState = jest.fn().mockImplementation(() => ({
       isPhysicsOn,
@@ -64,34 +67,42 @@ describe('getPhysicsOptions', () => {
       stylingNodeHoverBackgroundColor,
       stylingNodeHoverBorderColor,
       stylingNodeTextFontSize,
-      stylingNodeTextFontAlign
+      stylingNodeTextFontAlign,
+      stylingEdgeTextColor,
+      stylingEdgeTextSize,
+      stylingEdgeTextAlign,
     }))
 
     store.getState  = getState
 
 
     expect(getPhysicsOptions()).toEqual({
-     "autoResize": true,
-     "edges":{
-       "arrows":{
-         "to": true,
-       },
-       "color":{
-         "color": "#070b11",
-         "highlight": "#9c27b0",
-         "hover": "#070b11",
-         "inherit": "from",
-         "opacity": 1,
-       },
-       "dashes": false,
-       "labelHighlightBold": true,
-       "selectionWidth": 3,
-       "smooth":{
-         "forceDirection": "none",
-         "roundness": 0.45,
-         "type": "cubicBezier",
-       },
-       "width": 2,
+      "autoResize": true,
+      "edges":{
+        "arrows":{
+          "to": true,
+        },
+        "color":{
+          "color": "#070b11",
+          "highlight": "#9c27b0",
+          "hover": "#070b11",
+          "inherit": "from",
+          "opacity": 1,
+        },
+        "dashes": false,
+        "font":  {
+          "align": "horizontal",
+          "color": "#070b11",
+          "size": 12,
+        },    
+        "labelHighlightBold": true,
+        "selectionWidth": 3,
+        "smooth":{
+          "forceDirection": "none",
+          "roundness": 0.45,
+          "type": "cubicBezier",
+        },
+        "width": 2,
      },
      "interaction":{
        "hideEdgesOnDrag": true,

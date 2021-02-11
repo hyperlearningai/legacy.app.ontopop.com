@@ -31,15 +31,14 @@ const NetworkStylingNode = ({
   stylingNodeTextFontAlign,
   stylingNodeCaptionProperty,
   annotationProperties,
-
 }) => {
-  const isInitialMountSelectedGraphVersion = useRef(true)
+  const isInitialMount = useRef(true)
 
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (isInitialMountSelectedGraphVersion.current) {
-      isInitialMountSelectedGraphVersion.current = false
+    if (isInitialMount.current) {
+      isInitialMount.current = false
     } else {
       updateNodesStyle()
     }
@@ -180,78 +179,66 @@ const NetworkStylingNode = ({
               </AccordionTab>
               <AccordionTab header={t('nodeColor')}>
                 <h4 className="m-t-5 m-b-10">{t('edgeLineColorInstructions')}</h4>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeTextColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeTextColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
                     {t('nodeTextColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeBorderColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeBorderColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
                     {t('nodeBorderColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeHighlightBorderColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeHighlightBorderColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('nodeBorderHighlightedColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeBackgroundColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeBackgroundColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('nodeBackgroundColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeHighlightBackgroundColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeHighlightBackgroundColor', `#${e.value}`)}
                   />
                   <span>
-                     &nbsp;
-                    {' '}
                     {t('nodeBackgroundHighlightedColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeHoverBackgroundColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeHoverBackgroundColor', `#${e.value}`)}
                   />
                   <span>
-                     &nbsp;
-                    {' '}
                     {t('nodeBackgroundHoverColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeHoverBorderColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeHoverBorderColor', `#${e.value}`)}
                   />
                   <span>
-                     &nbsp;
-                    {' '}
                     {t('nodeBorderHoverColor')}
                   </span>
                 </div>

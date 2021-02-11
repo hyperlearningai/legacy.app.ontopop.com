@@ -15,6 +15,9 @@ const getPhysicsOptions = () => {
     stylingEdgeLineColor,
     stylingEdgeLineColorHover,
     stylingEdgeLineColorHighlight,
+    stylingEdgeTextColor,
+    stylingEdgeTextSize,
+    stylingEdgeTextAlign,
     stylingNodeShape,
     stylingNodeSize,
     stylingNodeBorder,
@@ -44,6 +47,11 @@ const getPhysicsOptions = () => {
         hover: stylingEdgeLineColorHover,
         inherit: 'from',
         opacity: 1.0
+      },
+      font: {
+        color: stylingEdgeTextColor,
+        size: stylingEdgeTextSize,
+        align: stylingEdgeTextAlign
       },
       labelHighlightBold: true,
       selectionWidth: 3,
