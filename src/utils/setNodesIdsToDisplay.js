@@ -6,8 +6,8 @@ import {
   ALGO_TYPE_NODES_FILTER,
   ALGO_TYPE_EDGES_FILTER
 } from '../constants/algorithms'
-import getNodesEdgesFromPaths from './getNodesEdgesFromPaths'
-import getNeighbours from './getNeighbours'
+import getNodesEdgesFromPaths from './shortestPath/getNodesEdgesFromPaths'
+import getNeighbours from './nodeNeighbourhood/getNeighbours'
 import getBoundingBoxEdges from './boundingBoxSelection/getBoundingBoxEdges'
 import getNodesFromNodesFilters from './nodesFilter/getNodesFromNodesFilters'
 import getNodesEdgesFromEdgesFilters from './edgesFilter/getNodesEdgesFromEdgesFilters'
@@ -96,12 +96,13 @@ const setNodesIdsToDisplay = async ({
       isNodeOverlay
     } = options
 
+    setStoreState('shortestPathResults', shortestPathResults)
+
     const {
       shortestPathEdges,
       shortestPathNodes
-    } = await getNodesEdgesFromPaths({ shortestPathResults })
+    } = await getNodesEdgesFromPaths()
 
-    setStoreState('shortestPathResults', shortestPathResults)
     setStoreState('isNodeOverlay', isNodeOverlay)
     setStoreState('highlightedNodes', shortestPathSelectedNodes.filter((nodeId) => !deletedNodes.includes(nodeId)))
 

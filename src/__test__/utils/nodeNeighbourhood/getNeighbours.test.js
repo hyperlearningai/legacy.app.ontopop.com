@@ -1,6 +1,6 @@
-import getNeighbours from '../../utils/getNeighbours'
-import { OwlClasses } from '../fixtures/test-ontology-classes.json'
-import { triplesPerNode } from '../fixtures/triplesPerNode.js'
+import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
+import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { triplesPerNode } from '../../fixtures/triplesPerNode.js'
 
 const selectedNodeId = 'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep'
 const classesFromApi = OwlClasses

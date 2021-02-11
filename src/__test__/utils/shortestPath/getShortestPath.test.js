@@ -1,5 +1,5 @@
-import getShortestPath from '../../utils/getShortestPath'
-import { nodesConnections } from '../fixtures/nodesConnections'
+import getShortestPath from '../../../utils/shortestPath/getShortestPath'
+import { nodesConnections } from '../../fixtures/nodesConnections'
 
 describe('getShortestPath', () => {
   afterEach(() => {

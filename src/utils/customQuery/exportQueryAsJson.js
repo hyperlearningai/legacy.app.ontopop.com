@@ -1,8 +1,8 @@
 import {
   NOTIFY_SUCCESS,
-} from '../constants/notifications'
-import showNotification from './showNotification'
-import store from '../store'
+} from '../../constants/notifications'
+import showNotification from '../showNotification'
+import store from '../../store'
 
 /**
  * Export data as owl

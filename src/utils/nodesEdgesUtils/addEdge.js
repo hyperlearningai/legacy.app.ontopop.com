@@ -1,5 +1,10 @@
 import store from '../../store'
 
+/**
+ * Add edge to graph
+ * @param  {Object}   edgeObject    Edge object with at least id and label keys
+ * @return { undefined }
+\ */
 const addEdge = (edgeObject) => {
   const {
     availableEdges

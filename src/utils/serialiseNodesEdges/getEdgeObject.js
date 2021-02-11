@@ -1,13 +1,10 @@
 import { generatePredicateId, getPathEdges } from '../../constants/functions'
+import store from '../../store'
 
 /**
  * Get edge info and related nodes
  * @param  {Object}   params
- * @param  {Object}   params.classesFromApi          Nodes from initial OwlClasses
  * @param  {String}   params.from                    Subject node ID
- * @param  {Boolean}  params.isNodeOverlay           Flag to make non-highlighted nodes transparent
- * @param  {Object}   params.objectPropertiesFromApi Edges from initial OwlObjectProperties
- * @param  {Array}    params.shortestPathResults     Array of strings with concatenated nodes and edges
  * @param  {String}   params.predicate               Predicate node ID
  * @param  {String}   params.to                      Object node ID
  * @return {Object}   output
@@ -18,33 +15,37 @@ import { generatePredicateId, getPathEdges } from '../../constants/functions'
  * @return {Object}   output.toObject                Object node object
  */
 const getEdgeObject = ({
-  classesFromApi,
   from,
-  isNodeOverlay,
-  objectPropertiesFromApi,
-  shortestPathResults,
   predicate,
   to,
 }) => {
+  const {
+    stylingNodeCaptionProperty,
+    classesFromApi,
+    objectPropertiesFromApi,
+    isNodeOverlay,
+    shortestPathResults
+  } = store.getState()
+
   const edgeUniqueId = generatePredicateId({
     predicate,
     from,
     to
   })
 
-  const edgeLabel = objectPropertiesFromApi[predicate].rdfsLabel
+  const edgeLabel = objectPropertiesFromApi[predicate][stylingNodeCaptionProperty]
   const fromObject = classesFromApi[from]
   fromObject.id = from
-  fromObject.label = fromObject.rdfsLabel
-    ? fromObject.rdfsLabel.replace(/ /g, '\n') : ''
+  fromObject.label = fromObject[stylingNodeCaptionProperty]
+    ? fromObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
-  const fromLabel = fromObject.rdfsLabel
+  const fromLabel = fromObject[stylingNodeCaptionProperty]
   const toObject = classesFromApi[to]
   toObject.id = to
-  toObject.label = toObject.rdfsLabel
-    ? toObject.rdfsLabel.replace(/ /g, '\n') : ''
+  toObject.label = toObject[stylingNodeCaptionProperty]
+    ? toObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
-  const toLabel = toObject.rdfsLabel
+  const toLabel = toObject[stylingNodeCaptionProperty]
 
   const edgeConnection = {
     from,

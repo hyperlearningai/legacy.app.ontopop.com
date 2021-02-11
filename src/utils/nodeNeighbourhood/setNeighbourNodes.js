@@ -1,6 +1,6 @@
-import { ALGO_TYPE_NEIGHBOURHOOD } from '../constants/algorithms'
-import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
-import store from '../store'
+import { ALGO_TYPE_NEIGHBOURHOOD } from '../../constants/algorithms'
+import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
+import store from '../../store'
 
 /**
  * Set neighbout nodes

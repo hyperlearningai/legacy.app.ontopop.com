@@ -14,6 +14,7 @@ const setStoreState = jest.fn()
 
 const availableNodes = new DataSet()
 const availableEdges = new DataSet()
+const stylingNodeCaptionProperty = 'rdfsLabel'
 const isNodeOverlay = true
 const nodesIdsToDisplay = [
   'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
@@ -45,17 +46,18 @@ const getState = jest.fn().mockImplementation(() => ({
   availableEdges,
   classesFromApi,
   edgesIdsToDisplay,
-  highlightedNodes,
-  isNodeOverlay,
   network,
   nodesIdsToDisplay,
   objectPropertiesFromApi,
-  shortestPathResults,
   triplesPerNode,
+  highlightedNodes,
+  isNodeOverlay,
+  shortestPathResults,
   isPhysicsOn,
   physicsHierarchicalView,
   physicsRepulsion,
-  physicsEdgeLength
+  physicsEdgeLength,
+  stylingNodeCaptionProperty,
 }))
 
 store.getState = getState
@@ -75,7 +77,6 @@ describe('serialiseNodesEdges', () => {
     expect(setOptions).toHaveBeenCalledWith(getPhysicsOptions())
     expect(highlightSpiderableNodes).toHaveBeenCalledWith({
       triplesPerNode,
-      availableNodes,
       nodesConnections: nodeConnections1
     })
   })

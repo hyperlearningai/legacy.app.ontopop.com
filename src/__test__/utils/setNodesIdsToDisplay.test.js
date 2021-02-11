@@ -27,7 +27,11 @@ const getState = jest.fn().mockImplementation(() => ({
   nodesIdsToDisplay: [
     'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
   ],
+  shortestPathResults: [
+    'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6|||http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY|||http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ|||http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ___http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ|||http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0___http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc___http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp|||http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0___http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw___http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp|||http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/ReVBAW9BDkF6kpl6UmYCrZ___http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw'
+  ]
 }))
+
 store.getState = getState
 
 describe('setNodesIdsToDisplay', () => {
@@ -40,9 +44,8 @@ describe('setNodesIdsToDisplay', () => {
 
     await setNodesIdsToDisplay({
       type,
-      classesFromApi,
-      objectPropertiesFromApi,
-      setStoreState
+      setStoreState,
+      options: {}
     })
 
     expect(setStoreState.mock.calls).toEqual(algoTypeFull)
@@ -248,28 +251,28 @@ describe('setNodesIdsToDisplay', () => {
       [
         'edgesIdsToDisplay',
         [
-          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-          'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
-          'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
-          'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+          'http://www.w3.org/2000/01/rdf-schema#subclassof',
+          'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+          'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+          'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
         ],
       ],
       [
         'nodesIdsToDisplay',
         [
-          'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-          'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
-          'http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm',
-          'http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D',
-          'http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1',
-          'http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS',
-          'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ',
+          'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6',
+          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
+          'http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc',
+          'http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp',
+          'http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw',
+          'http://webprotege.stanford.edu/ReVBAW9BDkF6kpl6UmYCrZ',
         ],
       ],
     ])
   })
 
-  it('should work correctly when ALGO_TYPE_NODES_FILTER and no overlay', async () => {
+  it('should work correctly when ALGO_TYPE_NODES_FILTER', async () => {
     const type = ALGO_TYPE_NODES_FILTER
 
     const options = {
@@ -306,7 +309,7 @@ describe('setNodesIdsToDisplay', () => {
     ])
   })
 
-  it('should work correctly when ALGO_TYPE_EDGES_FILTER and no overlay', async () => {
+  it('should work correctly when ALGO_TYPE_EDGES_FILTER', async () => {
     const type = ALGO_TYPE_EDGES_FILTER
 
     const options = {

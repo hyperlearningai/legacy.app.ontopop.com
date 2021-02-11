@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
@@ -6,9 +6,13 @@ import { Accordion, AccordionTab } from 'primereact/accordion'
 import { ColorPicker } from 'primereact/colorpicker'
 import { SelectButton } from 'primereact/selectbutton'
 import { RadioButton } from 'primereact/radiobutton'
-import { InputText } from 'primereact/inputtext'
+import { InputNumber } from 'primereact/inputnumber'
 import { Slider } from 'primereact/slider'
+import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
+import updateNodesStyle from '../utils/networkStyling/updateNodesStyle'
+
+const fontAlignmentTemplate = (option) => <i className={option.icon} />
 
 const NetworkStylingNode = ({
   setStoreState,
@@ -23,25 +27,50 @@ const NetworkStylingNode = ({
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
   stylingNodeTextColor,
+  stylingNodeTextFontSize,
+  stylingNodeTextFontAlign,
+  stylingNodeCaptionProperty,
+  annotationProperties,
 }) => {
-  const { t } = useTranslation()
-  const options = ['Left', 'Middle', 'Right']
-  const [value1, setValue1] = useState('Middle')
+  const isInitialMount = useRef(true)
 
-  const nodeShapeOptions = [
-    { name: 'Ellipse', value: 'ellipse' },
-    { name: 'Circle', value: 'circle' },
-    { name: 'Database', value: 'database' },
-    { name: 'Box', value: 'box' },
-    { name: 'Text', value: 'text' },
-    { name: 'Diamond', value: 'diamond' },
-    { name: 'Dot', value: 'dot' },
-    { name: 'Star', value: 'star' },
-    { name: 'Triangle', value: 'triangle' },
-    { name: 'Triangle Down', value: 'triangleDown' },
-    { name: 'Hexagon', value: 'hexagon' },
-    { name: 'Square', value: 'square' }
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false
+    } else {
+      updateNodesStyle()
+    }
+  },
+  [
+    stylingNodeCaptionProperty
+  ])
+
+  const fontAlignmentOptions = [
+    { icon: 'pi pi-align-left', value: 'left' },
+    { icon: 'pi pi-align-right', value: 'right' },
+    { icon: 'pi pi-align-center', value: 'center' },
+    { icon: 'pi pi-align-justify', value: 'justify' }
   ]
+
+  const shapesAffectedBySize = [
+    'diamond', 'dot', 'star', 'triangle', 'triangleDown', 'hexagon', 'square'
+  ]
+
+  const allShapes = [
+    ...shapesAffectedBySize,
+    'ellipse',
+    'circle',
+    'database',
+    'box',
+    'text'
+  ]
+
+  const nodeShapeOptions = allShapes.sort().map((shape) => ({
+    name: t(shape),
+    value: shape
+  }))
 
   return (
     <Accordion>
@@ -49,51 +78,6 @@ const NetworkStylingNode = ({
         <Accordion>
           <AccordionTab header={t('nodeStylingGlobal')}>
             <Accordion>
-              <AccordionTab header={t('nodeSize')}>
-                <div className="network-settings-input">
-                  <div className="network-settings-item-input">
-                    <InputText value={stylingNodeSize} onChange={(e) => setStoreState('stylingNodeSize', e.value)} />
-                    <Slider
-                      min={1}
-                      max={1000}
-                      step={1}
-                      id="nodeSize"
-                      value={stylingNodeSize}
-                      onChange={(e) => setStoreState('stylingNodeSize', e.value)}
-                    />
-                  </div>
-                </div>
-              </AccordionTab>
-              <AccordionTab header={t('nodeBorder')}>
-                <h4 className="m-t-0 m-b-0">{t('nodeBorderLineWidth')}</h4>
-                <div className="network-settings-input">
-                  <div className="network-settings-item-input">
-                    <InputText value={stylingNodeBorder} onChange={(e) => setStoreState('stylingNodeBorder', `#${e.value}`)} />
-                    <Slider
-                      min={1}
-                      max={10}
-                      step={0.5}
-                      id="stylingNodeBorder"
-                      value={stylingNodeBorder}
-                      onChange={(e) => setStoreState('stylingNodeBorder', e.value)}
-                    />
-                  </div>
-                </div>
-                <h4 className="m-t-20 m-b-0">{t('nodeBorderLineWidthHighlighted')}</h4>
-                <div className="network-settings-input">
-                  <div className="network-settings-item-input">
-                    <InputText value={stylingNodeBorderSelected} onChange={(e) => setStoreState('stylingNodeBorderSelected', `#${e.value}`)} />
-                    <Slider
-                      min={1}
-                      max={10}
-                      step={0.5}
-                      id="stylingNodeBorderSelected"
-                      value={stylingNodeBorderSelected}
-                      onChange={(e) => setStoreState('stylingNodeBorderSelected', e.value)}
-                    />
-                  </div>
-                </div>
-              </AccordionTab>
               <AccordionTab header={t('nodeShape')}>
                 <h4>{t('nodeShapeInstructions')}</h4>
                 {
@@ -111,87 +95,166 @@ const NetworkStylingNode = ({
                   ))
                 }
               </AccordionTab>
+
+              <AccordionTab header={t('nodeSize')}>
+                <div className="network-settings-input">
+                  <div className="network-settings-item-input">
+                    {
+                        shapesAffectedBySize.includes(stylingNodeShape) ? (
+                          <>
+                            <InputNumber value={stylingNodeSize} onChange={(e) => setStoreState('stylingNodeSize', e.value)} />
+                            <Slider
+                              min={1}
+                              max={1000}
+                              step={1}
+                              id="nodeSize"
+                              value={stylingNodeSize}
+                              onChange={(e) => setStoreState('stylingNodeSize', e.value)}
+                            />
+                          </>
+                        ) : (
+                          <span>
+                            {`${t('onlyFollowingShapesAffected')}: ${shapesAffectedBySize.map((shape) => t(shape)).join(', ')}`}
+                          </span>
+                        )
+                      }
+                  </div>
+                </div>
+              </AccordionTab>
+
+              <AccordionTab header={t('nodeFontSize')}>
+                <div className="network-settings-input">
+                  <div className="network-settings-item-input">
+                    <InputNumber value={stylingNodeTextFontSize} onChange={(e) => setStoreState('stylingNodeTextFontSize', e.value)} />
+                    <Slider
+                      min={1}
+                      max={200}
+                      step={1}
+                      id="nodeSize"
+                      value={stylingNodeTextFontSize}
+                      onChange={(e) => setStoreState('stylingNodeTextFontSize', e.value)}
+                    />
+                  </div>
+                </div>
+              </AccordionTab>
+
+              <AccordionTab header={t('nodeFontAlignment')}>
+                <SelectButton
+                  value={stylingNodeTextFontAlign}
+                  options={fontAlignmentOptions}
+                  itemTemplate={fontAlignmentTemplate}
+                  onChange={(e) => setStoreState('stylingNodeTextFontAlign', e.value)}
+                />
+              </AccordionTab>
+
+              <AccordionTab header={t('nodeBorder')}>
+                <h4 className="m-t-0 m-b-0">{t('nodeBorderLineWidth')}</h4>
+                <div className="network-settings-input">
+                  <div className="network-settings-item-input">
+                    <InputNumber value={stylingNodeBorder} onChange={(e) => setStoreState('stylingNodeBorder', `#${e.value}`)} />
+                    <Slider
+                      min={1}
+                      max={10}
+                      step={0.5}
+                      id="stylingNodeBorder"
+                      value={stylingNodeBorder}
+                      onChange={(e) => setStoreState('stylingNodeBorder', e.value)}
+                    />
+                  </div>
+                </div>
+                <h4 className="m-t-20 m-b-0">{t('nodeBorderLineWidthHighlighted')}</h4>
+                <div className="network-settings-input">
+                  <div className="network-settings-item-input">
+                    <InputNumber value={stylingNodeBorderSelected} onChange={(e) => setStoreState('stylingNodeBorderSelected', `#${e.value}`)} />
+                    <Slider
+                      min={1}
+                      max={10}
+                      step={0.5}
+                      id="stylingNodeBorderSelected"
+                      value={stylingNodeBorderSelected}
+                      onChange={(e) => setStoreState('stylingNodeBorderSelected', e.value)}
+                    />
+                  </div>
+                </div>
+              </AccordionTab>
               <AccordionTab header={t('nodeColor')}>
                 <h4 className="m-t-5 m-b-10">{t('edgeLineColorInstructions')}</h4>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeTextColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeTextColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
                     {t('nodeTextColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeBorderColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeBorderColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
                     {t('nodeBorderColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeHighlightBorderColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeHighlightBorderColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('nodeBorderHighlightedColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeBackgroundColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeBackgroundColor', `#${e.value}`)}
                   />
                   <span>
-                          &nbsp;
-                    {' '}
                     {t('nodeBackgroundColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeHighlightBackgroundColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeHighlightBackgroundColor', `#${e.value}`)}
                   />
                   <span>
-                     &nbsp;
-                    {' '}
                     {t('nodeBackgroundHighlightedColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeHoverBackgroundColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeHoverBackgroundColor', `#${e.value}`)}
                   />
                   <span>
-                     &nbsp;
-                    {' '}
                     {t('nodeBackgroundHoverColor')}
                   </span>
                 </div>
-                <div className="m-b-10">
+                <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeHoverBorderColor.replace('#', '')}
                     onChange={(e) => setStoreState('stylingNodeHoverBorderColor', `#${e.value}`)}
                   />
                   <span>
-                     &nbsp;
-                    {' '}
                     {t('nodeBorderHoverColor')}
                   </span>
                 </div>
               </AccordionTab>
-              <AccordionTab header={t('nodeCaptionProperties')} className="position-center">
-                <h3>Position of caption</h3>
-                <SelectButton value={value1} options={options} onChange={(e) => setValue1(e.value)} />
+
+              <AccordionTab header={t('nodeCaptionProperty')}>
+                <Dropdown
+                  value={stylingNodeCaptionProperty}
+                  options={annotationProperties}
+                  optionValue="id"
+                  optionLabel="label"
+                  filter
+                  onChange={(e) => setStoreState('stylingNodeCaptionProperty', e.value)}
+                  className="m-t-10"
+                  placeholder={t('selectProperty')}
+                />
               </AccordionTab>
             </Accordion>
           </AccordionTab>
@@ -217,6 +280,10 @@ NetworkStylingNode.propTypes = {
   stylingNodeSize: PropTypes.number.isRequired,
   stylingNodeHoverBackgroundColor: PropTypes.string.isRequired,
   stylingNodeHoverBorderColor: PropTypes.string.isRequired,
+  stylingNodeTextFontSize: PropTypes.number.isRequired,
+  stylingNodeTextFontAlign: PropTypes.string.isRequired,
+  stylingNodeCaptionProperty: PropTypes.string.isRequired,
+  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
 const mapToProps = ({
@@ -231,6 +298,10 @@ const mapToProps = ({
   stylingNodeSize,
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
+  stylingNodeTextFontSize,
+  stylingNodeTextFontAlign,
+  stylingNodeCaptionProperty,
+  annotationProperties
 }) => ({
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
@@ -243,6 +314,10 @@ const mapToProps = ({
   stylingNodeHighlightBackgroundColor,
   stylingNodeTextColor,
   stylingNodeSize,
+  stylingNodeTextFontSize,
+  stylingNodeTextFontAlign,
+  stylingNodeCaptionProperty,
+  annotationProperties
 })
 
 export default connect(

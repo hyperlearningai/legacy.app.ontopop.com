@@ -1,5 +1,10 @@
 import store from '../../store'
 
+/**
+ * Get node properties
+ * @param  {String}   nodeId    Node id
+ * @return { undefined }
+\ */
 const getNode = (nodeId) => {
   const {
     availableNodes
