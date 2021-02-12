@@ -16,6 +16,21 @@ exports[`NetworkStyling should match snapshot  1`] = `
       <ConnectWrapper />
       <ConnectWrapper />
     </div>
+    <div
+      className="network-styling-button m-t-20 m-b-20"
+    >
+      <Button
+        badge={null}
+        badgeClassName={null}
+        disabled={false}
+        icon="pi pi-save"
+        iconPos="left"
+        label="save"
+        onClick={[Function]}
+        tooltip={null}
+        tooltipOptions={null}
+      />
+    </div>
   </div>
 </Fragment>
 `;

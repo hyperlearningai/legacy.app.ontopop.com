@@ -3,6 +3,7 @@ import {
 } from '../../constants/notifications'
 import showNotification from '../showNotification'
 import store from '../../store'
+import { GRAPH_VERSIONS_LS } from '../../constants/localStorage'
 
 /**
  * Export graph version data as json or save to server
@@ -43,7 +44,7 @@ const saveGraphVersion = async ({
   }
 
   // TODO: replace local storage with API call once available
-  const currentGraphVersions = localStorage.getItem('graphVersions')
+  const currentGraphVersions = localStorage.getItem(GRAPH_VERSIONS_LS)
 
   let currentGraphVersionsObject = {
     [selectedVersion]: graphVersions[selectedVersion]
@@ -58,7 +59,7 @@ const saveGraphVersion = async ({
     }
   }
 
-  localStorage.setItem('graphVersions', JSON.stringify(currentGraphVersionsObject))
+  localStorage.setItem(GRAPH_VERSIONS_LS, JSON.stringify(currentGraphVersionsObject))
 
   return showNotification({
     message: t('storedToServer'),

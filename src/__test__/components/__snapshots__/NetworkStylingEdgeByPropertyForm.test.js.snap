@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NetworkStylingEdgeByPropertyForm should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  annotationProperties={
+    Array [
+      Object {
+        "property": "rdfsLabel",
+        "value": "rdfsLabel",
+      },
+    ]
+  }
+  index={0}
+  isDeleteAvailable={true}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  stylingProperty={
+    Object {
+      "filterType": "equal",
+      "filterValue": "subClassOf",
+      "property": "rdfsLabel",
+      "styleType": "stylingEdgeLineStyle",
+      "styleValue": true,
+    }
+  }
+>
+  <Component />
+</Connect>
+`;
