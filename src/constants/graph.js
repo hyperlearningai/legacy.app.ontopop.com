@@ -45,7 +45,15 @@ export const NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT = {
   styleValue: ''
 }
 
-const fontAlignmentTemplate = (option) => <i className={option.icon} />
+export const SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT = {
+  filterType: 'equal',
+  filterValue: 'subClassOf',
+  styleType: 'stylingEdgeLineStyle',
+  styleValue: true,
+  property: 'rdfsLabel'
+}
+
+export const FONT_ALIGNMENT_TEMPLATE = (option) => <i className={option.icon} />
 
 export const NODE_STYLING_PROPERTIES = {
   stylingNodeSize: {
@@ -130,7 +138,77 @@ export const NODE_STYLING_PROPERTIES = {
     defaultValue: 'center',
     options: FONT_ALIGNMENT_OPTIONS,
     label: 'stylingNodeTextFontAlign',
-    itemTemplate: fontAlignmentTemplate
+    itemTemplate: FONT_ALIGNMENT_TEMPLATE
+  },
+}
+
+export const EDGE_LINE_STYLE_TEMPLATE = (option) => <i className={option.icon} />
+
+export const EDGE_LINE_STYLE_OPTIONS = [
+  { icon: 'pi pi-ellipsis-h', value: true },
+  { icon: 'pi pi-minus', value: false }
+]
+
+export const EDGE_ALIGNMENT_OPTIONS = ['horizontal', 'top', 'middle', 'bottom']
+
+export const EDGE_STYLING_PROPERTIES = {
+  stylingEdgeLength: {
+    type: 'number',
+    defaultValue: 250,
+    min: 1,
+    max: 1000,
+    step: 1,
+    label: 'stylingEdgeLength'
+  },
+  stylingEdgeWidth: {
+    type: 'number',
+    defaultValue: 1,
+    min: 1,
+    max: 20,
+    step: 1,
+    label: 'stylingEdgeWidth'
+  },
+  stylingEdgeLineColor: {
+    type: 'color',
+    defaultValue: EDGE_COLOR.replace('#', ''),
+    label: 'stylingEdgeLineColor'
+  },
+  stylingEdgeLineColorHighlight: {
+    type: 'color',
+    defaultValue: EDGE_COLOR_HIGHLIGHTED.replace('#', ''),
+    label: 'stylingEdgeLineColorHighlight'
+  },
+  stylingEdgeLineColorHover: {
+    type: 'color',
+    defaultValue: EDGE_COLOR.replace('#', ''),
+    label: 'stylingEdgeLineColorHover'
+  },
+  stylingEdgeLineStyle: {
+    type: 'selectButton',
+    defaultValue: false,
+    options: EDGE_LINE_STYLE_OPTIONS,
+    label: 'stylingEdgeLineStyle',
+    itemTemplate: EDGE_LINE_STYLE_TEMPLATE
+  },
+  stylingEdgeTextSize: {
+    type: 'number',
+    defaultValue: 1,
+    min: 1,
+    max: 200,
+    step: 1,
+    label: 'stylingEdgeTextSize'
+  },
+  stylingEdgeTextColor: {
+    type: 'color',
+    defaultValue: CLICK_NODE_BACKGROUND.replace('#', ''),
+    label: 'stylingEdgeTextColor'
+  },
+  stylingEdgeTextAlign: {
+    type: 'selectButton',
+    defaultValue: 'horizontal',
+    options: EDGE_ALIGNMENT_OPTIONS,
+    label: 'stylingEdgeTextAlign',
+    needsI18n: true,
   },
 }
 

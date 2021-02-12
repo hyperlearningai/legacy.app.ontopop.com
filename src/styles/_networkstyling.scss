@@ -80,6 +80,18 @@
 
       .p-selectbutton {
         text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        .p-button {
+          width: 100px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
 
       .p-multiselect,
@@ -137,6 +149,26 @@
 
     .colorpicker {
       width: 100%;
+    }
+
+    .p-button {
+      text-align: center;
+    }
+
+    .p-selectbutton {
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+
+      .p-button {
+        width: 100px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }

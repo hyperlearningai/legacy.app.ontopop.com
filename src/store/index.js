@@ -17,7 +17,8 @@ import {
   HOVER_NODE_BORDER,
   HOVER_NODE_BACKGROUND,
   LABEL_PROPERTY,
-  NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT
+  NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT,
+  SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT
 } from '../constants/graph'
 
 const initialState = {
@@ -52,8 +53,11 @@ const initialState = {
   stylingEdgeTextColor: EDGE_COLOR,
   stylingEdgeTextSize: 12,
   stylingEdgeTextAlign: 'horizontal',
-  stylingEdgeWidth: 2,
-  stylingEdgeByProperty: [],
+  stylingEdgeWidth: 1,
+  stylingEdgeByProperty: [
+    JSON.parse(JSON.stringify(SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT)),
+    JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
+  ],
   stylingEdgeLength: 250,
   stylingEdgeCaptionProperty: LABEL_PROPERTY,
 

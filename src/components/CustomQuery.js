@@ -14,6 +14,7 @@ import exportQueryAsJson from '../utils/customQuery/exportQueryAsJson'
 import 'prismjs/components/prism-clike'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/themes/prism-coy.css'
+import { CUSTOM_QUERIES_LS } from '../constants/localStorage'
 
 const CustomQuery = ({
   customQueryOutput,
@@ -27,7 +28,7 @@ const CustomQuery = ({
   const [customQueryString, setCustomQueryString] = useState('g.')
 
   useEffect(() => () => {
-    const queryHistory = localStorage.getItem('queryHistory')
+    const queryHistory = localStorage.getItem(CUSTOM_QUERIES_LS)
 
     if (queryHistory) {
       setStoreState(
@@ -37,7 +38,7 @@ const CustomQuery = ({
     }
   }, [])
 
-  useEffect(() => localStorage.setItem('queryHistory', JSON.stringify({
+  useEffect(() => localStorage.setItem(CUSTOM_QUERIES_LS, JSON.stringify({
     data: customQueryStringHistory
   })), [customQueryStringHistory])
 
@@ -132,7 +133,7 @@ const CustomQuery = ({
             ) : (
               <div className="custom-query-input">
                 <div className="label">
-                  {t('queryHistory')}
+                  {t(CUSTOM_QUERIES_LS)}
                 </div>
 
                 {

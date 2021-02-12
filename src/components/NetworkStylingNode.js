@@ -13,7 +13,12 @@ import { uuid } from 'uuidv4'
 import actions from '../store/actions'
 import updateNodesStyle from '../utils/networkStyling/updateNodesStyle'
 import NetworkStylingNodeByPropertyForm from './NetworkStylingNodeByPropertyForm'
-import { FONT_ALIGNMENT_OPTIONS, NODE_SHAPES, NODE_SHAPES_AFFECTED_BY_SIZE } from '../constants/graph'
+import {
+  FONT_ALIGNMENT_OPTIONS,
+  FONT_ALIGNMENT_TEMPLATE,
+  NODE_SHAPES,
+  NODE_SHAPES_AFFECTED_BY_SIZE
+} from '../constants/graph'
 
 const NetworkStylingNode = ({
   setStoreState,
@@ -49,8 +54,6 @@ const NetworkStylingNode = ({
     stylingNodeCaptionProperty
   ])
 
-  const fontAlignmentTemplate = (option) => <i className={option.icon} />
-
   const nodeShapeOptions = NODE_SHAPES.sort().map((shape) => ({
     label: t(shape),
     value: shape
@@ -77,24 +80,24 @@ const NetworkStylingNode = ({
                 <div className="network -styling-input">
                   <div className="network -styling-item-input">
                     {
-                        NODE_SHAPES_AFFECTED_BY_SIZE.includes(stylingNodeShape) ? (
-                          <>
-                            <InputNumber value={stylingNodeSize} onChange={(e) => setStoreState('stylingNodeSize', e.value)} />
-                            <Slider
-                              min={1}
-                              max={1000}
-                              step={1}
-                              id="stylingNodeSize"
-                              value={stylingNodeSize}
-                              onChange={(e) => setStoreState('stylingNodeSize', e.value)}
-                            />
-                          </>
-                        ) : (
-                          <span>
-                            {`${t('onlyFollowingShapesAffected')}: ${NODE_SHAPES_AFFECTED_BY_SIZE.map((shape) => t(shape)).join(', ')}`}
-                          </span>
-                        )
-                      }
+                      NODE_SHAPES_AFFECTED_BY_SIZE.includes(stylingNodeShape) ? (
+                        <>
+                          <InputNumber value={stylingNodeSize} onChange={(e) => setStoreState('stylingNodeSize', e.value)} />
+                          <Slider
+                            min={1}
+                            max={1000}
+                            step={1}
+                            id="stylingNodeSize"
+                            value={stylingNodeSize}
+                            onChange={(e) => setStoreState('stylingNodeSize', e.value)}
+                          />
+                        </>
+                      ) : (
+                        <span>
+                          {`${t('onlyFollowingShapesAffected')}: ${NODE_SHAPES_AFFECTED_BY_SIZE.map((shape) => t(shape)).join(', ')}`}
+                        </span>
+                      )
+                    }
                   </div>
                 </div>
               </AccordionTab>
@@ -119,7 +122,7 @@ const NetworkStylingNode = ({
                 <SelectButton
                   value={stylingNodeTextFontAlign}
                   options={FONT_ALIGNMENT_OPTIONS}
-                  itemTemplate={fontAlignmentTemplate}
+                  itemTemplate={FONT_ALIGNMENT_TEMPLATE}
                   onChange={(e) => setStoreState('stylingNodeTextFontAlign', e.value)}
                 />
               </AccordionTab>
@@ -154,8 +157,7 @@ const NetworkStylingNode = ({
                   </div>
                 </div>
               </AccordionTab>
-              <AccordionTab header={t('stylingNodeTextColor')}>
-                <h4 className="m-t-5 m-b-10">{t('edgeLineColorInstructions')}</h4>
+              <AccordionTab header={t('nodeColor')}>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
                     value={stylingNodeTextColor.replace('#', '')}
@@ -240,7 +242,8 @@ const NetworkStylingNode = ({
           <AccordionTab header={t('stylingNodeByProperty')}>
             <Accordion>
               {
-                stylingNodeByProperty.map((stylingProperty, index) => (
+                stylingNodeByProperty.length > 0
+                && stylingNodeByProperty.map((stylingProperty, index) => (
                   <AccordionTab
                     key={uuid}
                     header={`${t('styleByProperty')} ${index}`}

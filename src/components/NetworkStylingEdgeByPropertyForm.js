@@ -11,9 +11,9 @@ import { Slider } from 'primereact/slider'
 import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
 import updateStylingByProperties from '../utils/networkStyling/updateStylingByProperties'
-import { FILTER_TYPE_OPTIONS, NODE_STYLING_PROPERTIES } from '../constants/graph'
+import { FILTER_TYPE_OPTIONS, EDGE_STYLING_PROPERTIES } from '../constants/graph'
 
-const NetworkStylingNodeByPropertyForm = ({
+const NetworkStylingEdgeByPropertyForm = ({
   setStoreState,
   index,
   stylingProperty,
@@ -33,7 +33,7 @@ const NetworkStylingNodeByPropertyForm = ({
     value
   }))
 
-  const nodeStylingProperties = Object.keys(NODE_STYLING_PROPERTIES).map((value) => ({
+  const edgeStylingProperties = Object.keys(EDGE_STYLING_PROPERTIES).map((value) => ({
     label: t(value),
     value
   }))
@@ -92,7 +92,7 @@ const NetworkStylingNodeByPropertyForm = ({
               <h4 className="m-t-0 m-b-0">{t('setNodeStyle')}</h4>
               <Dropdown
                 value={stylingPropertyObject.styleType}
-                options={nodeStylingProperties}
+                options={edgeStylingProperties}
                 filter
                 onChange={(e) => setStylingPropertyObject({
                   ...stylingPropertyObject,
@@ -106,7 +106,7 @@ const NetworkStylingNodeByPropertyForm = ({
 
             {
               stylingPropertyObject.styleType
-              && NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].type === 'number'
+              && EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].type === 'number'
               && (
                 <div className="network-styling-input">
                   <div className="network-styling-item-input">
@@ -116,9 +116,9 @@ const NetworkStylingNodeByPropertyForm = ({
                         ...stylingPropertyObject,
                         styleValue: e.value
                       })}
-                      min={NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].min || 1}
-                      step={NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].step || 1}
-                      max={NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].max || 1000}
+                      min={EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].min || 1}
+                      step={EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].step || 1}
+                      max={EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].max || 1000}
                     />
                     <Slider
                       min={1}
@@ -138,7 +138,7 @@ const NetworkStylingNodeByPropertyForm = ({
 
             {
               stylingPropertyObject.styleType
-              && NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].type === 'color'
+              && EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].type === 'color'
               && (
                 <div className="network-styling-property-form-row">
                   <div className="m-b-10 colorpicker">
@@ -153,7 +153,7 @@ const NetworkStylingNodeByPropertyForm = ({
                       }}
                     />
                     <span>
-                      {t(NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].label)}
+                      {t(EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].label)}
                     </span>
                   </div>
                 </div>
@@ -162,20 +162,20 @@ const NetworkStylingNodeByPropertyForm = ({
 
             {
               stylingPropertyObject.styleType
-              && NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].type === 'dropdown'
+              && EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].type === 'dropdown'
               && (
                 <div className="network-styling-property-form-row">
                   <Dropdown
                     value={stylingPropertyObject.styleValue}
-                    defaultValue={NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].defaultValue}
+                    defaultValue={EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].defaultValue}
                     options={
-                      NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].needsI18n
-                        ? NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].options.map(
+                      EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].needsI18n
+                        ? EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].options.map(
                           (value) => ({
                             label: t(value),
                             value
                           })
-                        ) : NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].options
+                        ) : EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].options
                     }
                     filter
                     onChange={(e) => setStylingPropertyObject({
@@ -183,7 +183,7 @@ const NetworkStylingNodeByPropertyForm = ({
                       styleValue: e.value
                     })}
                     className="m-t-10"
-                    placeholder={t(NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].placeholder)}
+                    placeholder={t(EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].placeholder)}
                   />
                 </div>
               )
@@ -191,22 +191,22 @@ const NetworkStylingNodeByPropertyForm = ({
 
             {
               stylingPropertyObject.styleType
-              && NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].type === 'selectButton'
+              && EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].type === 'selectButton'
               && (
                 <div className="network-styling-property-form-row">
                   <SelectButton
                     value={stylingPropertyObject.styleValue}
-                    defaultValue={NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].defaultValue}
+                    defaultValue={EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].defaultValue}
                     options={
-                      NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].needsI18n
-                        ? NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].options.map(
+                      EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].needsI18n
+                        ? EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].options.map(
                           (value) => ({
                             label: t(value),
                             value
                           })
-                        ) : NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].options
+                        ) : EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].options
                     }
-                    itemTemplate={NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].itemTemplate}
+                    itemTemplate={EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].itemTemplate}
                     onChange={(e) => setStylingPropertyObject({
                       ...stylingPropertyObject,
                       styleValue: e.value
@@ -222,13 +222,14 @@ const NetworkStylingNodeByPropertyForm = ({
       <div className="network-styling-property-form-row">
         <span className="p-buttonset">
           {
-            isDeleteAvailable && (
+            isDeleteAvailable
+            && stylingPropertyObject.styleValue && (
               <Button
                 label={t('delete')}
                 className="p-button-warning"
                 icon="pi pi-trash"
                 onClick={() => updateStylingByProperties({
-                  type: 'node',
+                  type: 'edge',
                   operation: 'delete',
                   index,
                   stylingPropertyObject,
@@ -245,7 +246,7 @@ const NetworkStylingNodeByPropertyForm = ({
               || stylingPropertyObject.styleValue.length === 0
               || stylingPropertyObject.styleValue === 0}
             onClick={() => updateStylingByProperties({
-              type: 'node',
+              type: 'edge',
               operation: 'save',
               index,
               stylingPropertyObject,
@@ -254,12 +255,11 @@ const NetworkStylingNodeByPropertyForm = ({
           />
         </span>
       </div>
-
     </div>
   )
 }
 
-NetworkStylingNodeByPropertyForm.propTypes = {
+NetworkStylingEdgeByPropertyForm.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   isDeleteAvailable: PropTypes.bool.isRequired,
@@ -304,4 +304,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(NetworkStylingNodeByPropertyForm)
+)(NetworkStylingEdgeByPropertyForm)
