@@ -16,7 +16,9 @@ import {
   NODE_DEFAULT_SHAPE,
   HOVER_NODE_BORDER,
   HOVER_NODE_BACKGROUND,
-  LABEL_PROPERTY
+  LABEL_PROPERTY,
+  NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT,
+  SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT
 } from '../constants/graph'
 
 const initialState = {
@@ -51,8 +53,11 @@ const initialState = {
   stylingEdgeTextColor: EDGE_COLOR,
   stylingEdgeTextSize: 12,
   stylingEdgeTextAlign: 'horizontal',
-  stylingEdgeWidth: 2,
-  stylingEdgeCustom: [],
+  stylingEdgeWidth: 1,
+  stylingEdgeByProperty: [
+    JSON.parse(JSON.stringify(SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT)),
+    JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
+  ],
   stylingEdgeLength: 250,
   stylingEdgeCaptionProperty: LABEL_PROPERTY,
 
@@ -67,10 +72,12 @@ const initialState = {
   stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
   stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
   stylingNodeShape: NODE_DEFAULT_SHAPE,
-  stylingNodeCustom: [],
   stylingNodeTextFontSize: 12,
   stylingNodeTextFontAlign: 'center',
   stylingNodeCaptionProperty: LABEL_PROPERTY,
+  stylingNodeByProperty: [
+    JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
+  ],
 
   // netowrk graph loading
   isNetworkLoading: false,

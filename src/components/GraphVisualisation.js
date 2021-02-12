@@ -159,7 +159,7 @@ GraphVisualisation.propTypes = {
   stylingNodeTextFontAlign: PropTypes.string.isRequired,
   stylingEdgeCaptionProperty: PropTypes.string.isRequired,
   stylingEdgeTextColor: PropTypes.string.isRequired,
-  stylingEdgeTextSize: PropTypes.string.isRequired,
+  stylingEdgeTextSize: PropTypes.number.isRequired,
   stylingEdgeTextAlign: PropTypes.string.isRequired,
 }
 

@@ -14,6 +14,7 @@ import { GRAPH_VERSION_STRUCTURE, SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '..
 import GraphContextMenu from './GraphContextMenu'
 import loadGraphVersionFromServer from '../utils/versioning/loadGraphVersionFromServer'
 import getEdgeProperties from '../utils/getEdgeProperties'
+import loadStyling from '../utils/networkStyling/loadStyling'
 
 const GraphVisualisationWrapper = ({
   currentGraph,
@@ -30,6 +31,11 @@ const GraphVisualisationWrapper = ({
   const isInitialMountCurrentGraph = useRef(true)
 
   useEffect(async () => {
+    // load saved styling options
+    loadStyling({
+      setStoreState
+    })
+
     const { classes, objectProperties } = await getGraphData({
       setStoreState,
       t

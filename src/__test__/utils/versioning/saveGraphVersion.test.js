@@ -5,6 +5,7 @@ import saveGraphVersion from '../../../utils/versioning/saveGraphVersion'
 import en from '../../../i18n/en'
 import showNotification from '../../../utils/showNotification'
 import { GRAPH_VERSION_STRUCTURE } from '../../../constants/graph'
+import { GRAPH_VERSIONS_LS } from '../../../constants/localStorage'
 
 const dom = new JSDOM()
 const currentDocument = global.document
@@ -97,7 +98,7 @@ describe('saveGraphVersion', () => {
     })
 
     expect(setItem).toHaveBeenCalledWith(
-      'graphVersions', '{"original":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]}}'
+      GRAPH_VERSIONS_LS, '{"original":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]}}'
     )
 
     expect(showNotification).toHaveBeenCalledWith(
@@ -145,7 +146,7 @@ describe('saveGraphVersion', () => {
     })
 
     expect(setItem).toHaveBeenCalledWith(
-      'graphVersions', '{"test":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]},"original":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]}}'
+      GRAPH_VERSIONS_LS, '{"test":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]},"original":{"classesFromApi":{},"objectPropertiesFromApi":{},"classesFromApiBackup":{},"objectPropertiesFromApiBackup":{},"deletedNodes":[],"addedNodes":[],"updatedNodes":[],"deletedEdges":[],"addedEdges":[],"updatedEdges":[],"deletedConnections":[],"addedConnections":[]}}'
     )
 
     expect(showNotification).toHaveBeenCalledWith(
