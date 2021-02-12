@@ -50,7 +50,7 @@
       text-align: left;
       font-size: 14px;
       border: 0;
-      background: #33343d;
+      background: $dark-grey;
       color: white;
       padding: 10px;
       padding: 20px 10px 30px 10px;
@@ -102,7 +102,6 @@
         }
       }
 
-
       .p-accordion-header-link {
         padding: 9px;
         background: #32353c;
@@ -113,11 +112,31 @@
       .p-inputtext {
         width: 100%;
         border-radius: 0;
-        background: #33343d;
+        background: $dark-grey;
         border: 0;
         color: white;
         text-align: center;
       }
+    }
+  }
+
+  &-property-form-row {
+    padding: 10px;
+
+    .p-inputtext {
+      background: $dark-grey;
+      border: 1px solid $white !important;
+    }
+
+    .p-buttonset {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .colorpicker {
+      width: 100%;
     }
   }
 }

@@ -60,9 +60,9 @@ const NetworkStylingEdge = ({
           <AccordionTab header={t('edgeStylingGlobal')}>
             <Accordion>
               <AccordionTab header={t('edgeLength')}>
-                <div className="network-settings-input">
+                <div className="network -styling-input">
                   <h4 className="m-t-5 m-b-10">{t('edgeLenghtOnlyWithPhysicsOn')}</h4>
-                  <div className="network-settings-item-input">
+                  <div className="network -styling-item-input">
                     <InputNumber value={stylingEdgeLength} onChange={(e) => setStoreState('stylingEdgeLength', parseInt(e.value))} />
                     <Slider
                       min={1}
@@ -182,8 +182,8 @@ const NetworkStylingEdge = ({
             </div>
             <Accordion>
               <AccordionTab header={t('edgeLength')}>
-                <div className="network-settings-input">
-                  <div className="network-settings-item-input">
+                <div className="network -styling-input">
+                  <div className="network -styling-item-input">
                     <InputNumber value={stylingEdgeLength} onChange={(e) => setStoreState('stylingEdgeLength', parseInt(e.value))} />
                     <Slider
                       min={0}
@@ -263,10 +263,9 @@ NetworkStylingEdge.propTypes = {
   stylingEdgeLineColorHighlight: PropTypes.string.isRequired,
   stylingEdgeCaptionProperty: PropTypes.string.isRequired,
   stylingEdgeTextColor: PropTypes.string.isRequired,
-  stylingEdgeTextSize: PropTypes.string.isRequired,
+  stylingEdgeTextSize: PropTypes.number.isRequired,
   stylingEdgeTextAlign: PropTypes.string.isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
-
 }
 
 const mapToProps = ({
