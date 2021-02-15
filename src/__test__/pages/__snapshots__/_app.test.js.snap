@@ -12,20 +12,9 @@ exports[`_app should match snapshot  1`] = `
     }
   }
 >
-  <ConnectWrapper />
-  <main
-    className="main-view"
-  >
-    <ConnectWrapper />
-    <div
-      className="main-view-area"
-    >
-      <ConnectWrapper
-        success={false}
-      />
-    </div>
-  </main>
-  <Container />
+  <ConnectWrapper
+    success={false}
+  />
 </Provider>
 `;
 
@@ -41,23 +30,12 @@ exports[`_app should match snapshot if error occurs 1`] = `
     }
   }
 >
-  <ConnectWrapper />
-  <main
-    className="main-view"
-  >
-    <ConnectWrapper />
-    <div
-      className="main-view-area"
-    >
-      <ConnectWrapper
-        error={
-          Object {
-            "statusCode": 400,
-          }
-        }
-      />
-    </div>
-  </main>
-  <Container />
+  <ConnectWrapper
+    error={
+      Object {
+        "statusCode": 400,
+      }
+    }
+  />
 </Provider>
 `;

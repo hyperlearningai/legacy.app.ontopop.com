@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login page should match snapshot 1`] = `
+<main
+  className="login"
+>
+  <div
+    className="login-container"
+  >
+    <div
+      className="logo"
+    >
+      <img
+        alt="Highways England"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
+      />
+    </div>
+    <h1
+      className="login-title"
+    >
+      signIn
+    </h1>
+    <div
+      className="login-input-container"
+    >
+      <label
+        className="login-label"
+        htmlFor="email"
+      >
+        email
+      </label>
+      <div
+        className="p-input-icon-left login-input"
+      >
+        <i
+          className="pi pi-user"
+        />
+        <InputText
+          id="email"
+          keyfilter={null}
+          onChange={[Function]}
+          onInput={null}
+          onKeyPress={null}
+          tooltip={null}
+          tooltipOptions={null}
+          type="email"
+          validateOnly={false}
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="login-input-container"
+    >
+      <label
+        className="login-label"
+        htmlFor="password"
+      >
+        password
+      </label>
+      <div
+        className="p-input-icon-left login-input"
+      >
+        <i
+          className="pi pi-key"
+        />
+        <InputText
+          id="password"
+          keyfilter={null}
+          onChange={[Function]}
+          onInput={null}
+          onKeyPress={null}
+          tooltip={null}
+          tooltipOptions={null}
+          type="password"
+          validateOnly={false}
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="login-error"
+      style={
+        Object {
+          "visibility": "hidden",
+        }
+      }
+    >
+      invalidEmailPassword
+    </div>
+    <div
+      className="login-links"
+    >
+      <Link
+        href="/forgotPassword"
+      >
+        forgotPasswordLink
+      </Link>
+    </div>
+    <Button
+      badge={null}
+      badgeClassName={null}
+      className="login-button m-t-20"
+      icon={null}
+      iconPos="left"
+      label="login"
+      onClick={[Function]}
+      tooltip={null}
+      tooltipOptions={null}
+    />
+    <Button
+      badge={null}
+      badgeClassName={null}
+      className="login-button m-t-20 p-button-secondary"
+      icon={null}
+      iconPos="left"
+      label="continueGuest"
+      tooltip={null}
+      tooltipOptions={null}
+    />
+  </div>
+</main>
+`;

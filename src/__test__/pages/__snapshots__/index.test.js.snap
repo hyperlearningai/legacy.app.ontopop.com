@@ -2,12 +2,23 @@
 
 exports[`Index page should match snapshot 1`] = `
 <Fragment>
-  <HeadTags
-    description="ontologyVisualisationDescription"
-    title=""
-  />
   <ConnectWrapper />
-  <ConnectWrapper />
-  <ConnectWrapper />
+  <main
+    className="main-view"
+  >
+    <ConnectWrapper />
+    <div
+      className="main-view-area"
+    >
+      <HeadTags
+        description="ontologyVisualisationDescription"
+        title=""
+      />
+      <ConnectWrapper />
+      <ConnectWrapper />
+      <ConnectWrapper />
+    </div>
+  </main>
+  <Container />
 </Fragment>
 `;
