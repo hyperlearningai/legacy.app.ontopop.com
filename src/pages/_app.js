@@ -1,5 +1,6 @@
 import App from 'next/app'
 import { Provider } from 'redux-zero/react'
+import ReactNotification from 'react-notifications-component'
 import store from '../store'
 import 'primereact/resources/themes/saga-blue/theme.css'
 import 'primereact/resources/primereact.min.css'
@@ -15,6 +16,7 @@ class MyApp extends App {
     return (
       <Provider store={store}>
         <Component {...pageProps} />
+        <ReactNotification />
       </Provider>
     )
   }

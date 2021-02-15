@@ -1,24 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index page should match snapshot 1`] = `
-<Fragment>
-  <ConnectWrapper />
-  <main
-    className="main-view"
-  >
-    <ConnectWrapper />
-    <div
-      className="main-view-area"
-    >
-      <HeadTags
-        description="ontologyVisualisationDescription"
-        title=""
-      />
-      <ConnectWrapper />
-      <ConnectWrapper />
-      <ConnectWrapper />
-    </div>
-  </main>
-  <Container />
-</Fragment>
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  mapToProps={[Function]}
+>
+  <Component />
+</Connect>
 `;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import Login from '../../pages/login'
+import ForgotPassword from '../../pages/forgot-password'
 
 const setup = ({
   loading
@@ -12,14 +12,14 @@ const setup = ({
     loading
   }
 
-  const component = shallow(<Login {...props} />)
+  const component = shallow(<ForgotPassword {...props} />)
 
   return {
     component
   }
 }
 
-describe('Login page', () => {
+describe('Forgot Password page', () => {
   it('should match snapshot when loading', () => {
     const { component } = setup({
       loading: true

@@ -1,65 +1,78 @@
 import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { connect } from 'redux-zero/react'
+import PropTypes from 'prop-types'
 import Navbar from '../components/Navbar'
 import GraphVisualisationWrapper from '../components/GraphVisualisationWrapper'
 import FooterComponent from '../components/FooterComponent'
 import HeadTags from '../components/HeadTags'
-import HeaderComponent from "../components/HeaderComponent";
-import Sidebar from "../components/Sidebar";
-import ReactNotification from "react-notifications-component";
-import { withIronSession } from "next-iron-session";
+import HeaderComponent from '../components/HeaderComponent'
+import Sidebar from '../components/Sidebar'
+import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
+import actions from '../store/actions'
 
-const SESSION_ID = '251f5c831459-4b14-8fc9-2b4a4594aec4e6';
-const COOKIE_NAME = 'HIGHWAYS_COOKIE';
-
-export const getServerSideProps =withIronSession(
-  async ({ req, res }) => {
-    const user = req.session.get('user');
-
-    if (!user) {
-      return {
-        redirect: {
-          destination: '/login',
-          permanent: false,
-        },
-      }
-    }
-
-    return {
-      props: { user }
-    };
-  },
-  {
-    cookieName: COOKIE_NAME,
-    cookieOptions: {
-      secure: false
-    },
-    password: SESSION_ID
-  }
-);
-
-const Index = ({ user }) => {
+const Index = ({
+  addToObject,
+  user
+}) => {
   const { t } = useTranslation()
+
+  const router = useRouter()
+
+  // check if authenticated, otherwise redirect to login
+  useEffect(() => {
+    if (!user.isGuest && user.email === '') {
+      checkAuthAtStartup({
+        router,
+        addToObject
+      })
+    }
+  }, [])
 
   return (
     <>
-      <HeaderComponent />
-      <main className="main-view">
+      <HeadTags
+        title=""
+        description={t('ontologyVisualisationDescription')}
+      />
 
-        <Sidebar />
-        <div className="main-view-area">
-          <HeadTags
-            title=""
-            description={t('ontologyVisualisationDescription')}
-          />
-          <Navbar />
-          <GraphVisualisationWrapper />
-          <FooterComponent />
-        </div>
+      {
+        (user.email !== ''
+        || user.isGuest) && (
+          <>
+            <HeaderComponent />
+            <main className="main-view">
 
-      </main>
-      <ReactNotification />
+              <Sidebar />
+              <div className="main-view-area">
+
+                <Navbar />
+                <GraphVisualisationWrapper />
+                <FooterComponent />
+              </div>
+
+            </main>
+          </>
+        )
+      }
+
     </>
   )
 }
 
-export default Index
+Index.propTypes = {
+  addToObject: PropTypes.func.isRequired,
+  user: PropTypes.shape().isRequired,
+}
+
+const mapPropsToState = ({
+  user
+}) => ({
+  user
+})
+
+export default connect(
+  mapPropsToState,
+  actions
+)(Index)

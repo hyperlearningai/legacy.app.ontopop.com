@@ -3,6 +3,9 @@ export default {
   // titles & descriptions
   ontologyVisualisationDescription: 'Highways England ontology visualisation web app',
 
+  // header
+  signOut: 'Sign out',
+
   // navbar
   hideSidebar: 'Hide sidebar',
   showSidebar: 'Show sidebar',
@@ -301,12 +304,14 @@ export default {
   login: 'Login',
   email: 'Email',
   password: 'Password',
-  invalidEmailPassword: "Invalid Email or Password",
-  forgotPasswordLink: "Forgot Password?",
-  continueGuest: "Continue as Guest",
+  invalidEmailPassword: 'Invalid Email or Password',
+  forgotPasswordLink: 'Forgot Password?',
+  continueGuest: 'Continue as Guest',
 
-  //forgot password
-  forgotPassword: "Forgot Password",
-  enterEmail: "Enter your email",
-  send: "Send",
+  // forgot password
+  forgotPassword: 'Forgot Password',
+  enterEmail: 'Enter your email',
+  send: 'Send',
+  backToLogin: 'Back to sign in',
+  resetPasswordAtEmail: 'Reset password sent at email'
 }

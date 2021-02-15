@@ -15,6 +15,7 @@ exports[`_app should match snapshot  1`] = `
   <ConnectWrapper
     success={false}
   />
+  <Container />
 </Provider>
 `;
 
@@ -37,5 +38,6 @@ exports[`_app should match snapshot if error occurs 1`] = `
       }
     }
   />
+  <Container />
 </Provider>
 `;
