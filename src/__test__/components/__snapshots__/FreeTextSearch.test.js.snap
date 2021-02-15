@@ -14,28 +14,6 @@ exports[`FreeTextSearch should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  availableNodes={
-    DataSet {
-      "_data": Map {
-        "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n" => Object {
-          "color": "ffffff",
-          "id": "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n",
-        },
-      },
-      "_idProp": "id",
-      "_options": Object {},
-      "_queue": null,
-      "_subscribers": Object {
-        "*": Array [],
-        "add": Array [],
-        "remove": Array [],
-        "update": Array [],
-      },
-      "length": 1,
-      "subscribe": [Function],
-      "unsubscribe": [Function],
-    }
-  }
   classesFromApi={
     Object {
       "http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY": Object {
@@ -6788,6 +6766,8 @@ Four subdomains have been created to cover all the universals related to each of
   }
   removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
+  stylingEdgeCaptionProperty="rdfsLabel"
+  stylingNodeCaptionProperty="rdfsLabel"
 >
   <Component />
 </Connect>

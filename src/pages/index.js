@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import Navbar from '../components/Navbar'
-import GraphVisualisationWrapper from '../components/GraphVisualisationWrapper'
+import GraphVisualisation from '../components/GraphVisualisation'
 import FooterComponent from '../components/FooterComponent'
 import HeadTags from '../components/HeadTags'
 
@@ -14,7 +14,7 @@ const Index = () => {
         description={t('ontologyVisualisationDescription')}
       />
       <Navbar />
-      <GraphVisualisationWrapper />
+      <GraphVisualisation />
       <FooterComponent />
     </>
   )

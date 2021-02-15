@@ -52,7 +52,7 @@ const setGraphData = async ({
     classesFromApi
   })
 
-  // show full view when
+  // show full view when starting
   setNodesIdsToDisplay({
     type: ALGO_TYPE_FULL,
     classesFromApi,

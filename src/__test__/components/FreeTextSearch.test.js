@@ -1,17 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import { DataSet } from 'vis-data'
 import FreeTextSearch from '../../components/FreeTextSearch'
 import { OwlClasses } from '../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
 
 const setup = () => {
   const props = {
-    availableNodes: new DataSet([{
-      id: 'http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n',
-      color: 'ffffff'
-    }]),
     classesFromApi: OwlClasses,
     edgesIdsToDisplay: [
       'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
@@ -27,6 +22,8 @@ const setup = () => {
     objectPropertiesFromApi: OwlObjectProperties,
     removeFromObject: jest.fn(),
     setStoreState: jest.fn(),
+    stylingNodeCaptionProperty: 'rdfsLabel',
+    stylingEdgeCaptionProperty: 'rdfsLabel',
   }
 
   const component = shallow(<FreeTextSearch {...props} />)

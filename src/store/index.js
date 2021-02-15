@@ -87,6 +87,7 @@ const initialState = {
   searchFilter: '',
   freeTextSelection: {},
   freeTextSelectedElement: '',
+  freeTextPrevSelectedElement: undefined,
 
   // node/edge selection
   isNodeSelectable: false,
@@ -128,7 +129,7 @@ const initialState = {
   },
 
   // physics
-  isPhysicsOn: true,
+  isPhysicsOn: false,
   physicsHierarchicalView: false,
   physicsRepulsion: true,
 

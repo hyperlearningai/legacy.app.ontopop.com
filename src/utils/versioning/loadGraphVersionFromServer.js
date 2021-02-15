@@ -1,4 +1,4 @@
-import { GRAPH_VERSION_STRUCTURE } from '../../constants/graph'
+import { GRAPH_VERSION_STRUCTURE, SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../../constants/graph'
 import { GRAPH_VERSIONS_LS } from '../../constants/localStorage'
 
 /**
@@ -18,16 +18,35 @@ const loadGraphVersionFromServer = ({
 }) => {
   const currentGraphVersions = localStorage.getItem(GRAPH_VERSIONS_LS)
 
+  // add subClassOf to avoid missing links between nodes
+  const newObjectProperties = {
+    ...objectProperties,
+    [SUB_CLASS_OF_ID]: {
+      rdfAbout: SUB_CLASS_OF_ID,
+      rdfsLabel: SUB_CLASS_OF_LABEL
+    }
+  }
+
   // TODO: Replace localstorage with API call when available
   if (currentGraphVersions) {
     setStoreState('graphVersions', JSON.parse(currentGraphVersions))
+
+    if (!currentGraphVersions.original) {
+      addToObject('graphVersions', 'original', {
+        ...GRAPH_VERSION_STRUCTURE,
+        classesFromApi: classes,
+        objectPropertiesFromApi: newObjectProperties,
+        classesFromApiBackup: classes,
+        objectPropertiesFromApiBackup: newObjectProperties,
+      })
+    }
   } else {
     addToObject('graphVersions', 'original', {
       ...GRAPH_VERSION_STRUCTURE,
       classesFromApi: classes,
-      objectPropertiesFromApi: objectProperties,
+      objectPropertiesFromApi: newObjectProperties,
       classesFromApiBackup: classes,
-      objectPropertiesFromApiBackup: objectProperties,
+      objectPropertiesFromApiBackup: newObjectProperties,
     })
   }
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
@@ -7,14 +7,8 @@ import { InputText } from 'primereact/inputtext'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_FREE_TEXT_SEARCH } from '../constants/views'
 import searchElement from '../utils/freeTextSearch/searchElement'
-import {
-  NODE_BACKGROUND,
-} from '../constants/graph'
-import focusNode from '../utils/freeTextSearch/focusNode'
-import highlightEdge from '../utils/freeTextSearch/highlightEdge'
-import resetSearchSelection from '../utils/freeTextSearch/resetSearchSelection'
-import clearFreeTextSelection from '../utils/freeTextSearch/clearFreeTextSelection'
-import updateNodes from '../utils/nodesEdgesUtils/updateNodes'
+import clearElement from '../utils/freeTextSearch/clearElement'
+import highlightElement from '../utils/freeTextSearch/highlightElement'
 
 const FreeTextSearch = ({
   classesFromApi,
@@ -25,25 +19,32 @@ const FreeTextSearch = ({
   objectPropertiesFromApi,
   removeFromObject,
   setStoreState,
+  stylingNodeCaptionProperty,
+  stylingEdgeCaptionProperty
 }) => {
   const { t } = useTranslation()
+  const isInitialMount = useRef(true)
 
   const [search, setSearch] = useState('')
-  const [prevSelectedNode, setPrevSelectedNode] = useState('')
-  const [prevSelectedEdges, setPrevSelectedEdges] = useState([])
-
   useEffect(() => () => {
-    clearFreeTextSelection()
+    clearElement()
 
-    searchElement({
-      search: '',
-      nodesIdsToDisplay,
-      edgesIdsToDisplay,
-      classesFromApi,
-      objectPropertiesFromApi,
-      setStoreState
-    })
+    setStoreState('freeTextSelection', [])
+    setStoreState('freeTextSelectedElement', '')
+    setStoreState('freeTextPrevSelectedElement', undefined)
   }, [])
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false
+    } else {
+      clearElement()
+
+      highlightElement({
+        setStoreState,
+      })
+    }
+  }, [freeTextSelectedElement])
 
   return (
     <>
@@ -77,8 +78,8 @@ const FreeTextSearch = ({
             const elementType = freeTextSelection[elementId]
 
             const elementLabel = elementType === 'node'
-              ? classesFromApi[elementId].rdfsLabel
-              : objectPropertiesFromApi[elementId].rdfsLabel
+              ? classesFromApi[elementId][stylingNodeCaptionProperty]
+              : objectPropertiesFromApi[elementId][stylingEdgeCaptionProperty]
 
             return (
               <div
@@ -89,13 +90,9 @@ const FreeTextSearch = ({
                   <Button
                     tooltip={`${t('removeGraph')}: ${elementId}`}
                     onClick={() => {
-                      if (elementType === 'node') {
-                        updateNodes(
-                          [{ id: elementId, color: { background: NODE_BACKGROUND } }]
-                        )
-                      }
-
                       removeFromObject('freeTextSelection', elementId)
+
+                      if (elementId === freeTextSelectedElement) setStoreState('freeTextSelectedElement', '')
                     }}
                     icon="pi pi-times"
                   />
@@ -106,28 +103,7 @@ const FreeTextSearch = ({
                   <Button
                     tooltip={`${t('focusElement')}: ${elementLabel}`}
                     disabled={elementId === freeTextSelectedElement}
-                    onClick={() => {
-                      resetSearchSelection({
-                        prevSelectedEdges,
-                        setPrevSelectedEdges,
-                        prevSelectedNode,
-                        setPrevSelectedNode,
-                      })
-
-                      if (elementType === 'edge') {
-                        return highlightEdge({
-                          setPrevSelectedEdges,
-                          elementId,
-                          setStoreState,
-                        })
-                      }
-
-                      return focusNode({
-                        setPrevSelectedNode,
-                        elementId,
-                        setStoreState
-                      })
-                    }}
+                    onClick={() => setStoreState('freeTextSelectedElement', elementId)}
                   >
                     <span>
                       <i className={`pi pi-${elementType === 'node' ? 'circle-off' : 'arrow-up'}`} />
@@ -155,6 +131,8 @@ FreeTextSearch.propTypes = {
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
+  stylingNodeCaptionProperty: PropTypes.string.isRequired,
+  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
@@ -164,6 +142,8 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
+  stylingNodeCaptionProperty,
+  stylingEdgeCaptionProperty
 }) => ({
   freeTextSelection,
   freeTextSelectedElement,
@@ -171,6 +151,8 @@ const mapToProps = ({
   objectPropertiesFromApi,
   nodesIdsToDisplay,
   edgesIdsToDisplay,
+  stylingNodeCaptionProperty,
+  stylingEdgeCaptionProperty
 })
 
 export default connect(

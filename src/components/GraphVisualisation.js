@@ -1,13 +1,29 @@
-import { useRef, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
+// import jsonClasses from '../assets/json/test-ontology-classes.json'
+// import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import actions from '../store/actions'
-import serialiseNodesEdges from '../utils/serialiseNodesEdges'
+import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
+import setGraphData from '../utils/setGraphData'
+import GraphContextMenu from './GraphContextMenu'
+import startupActions from '../utils/graphVisualisation/startupActions'
 import setNetwork from '../utils/setNetwork'
+// import serialiseNodesEdges from '../utils/serialiseNodesEdges'
 import setNetworkMethods from '../utils/setNetworkMethods'
 import getPhysicsOptions from '../utils/getPhysicsOptions'
+import addElementsToGraph from '../utils/graphVisualisation/addElementsToGraph'
 
 const GraphVisualisation = ({
+  currentGraph,
+  graphData,
+  setStoreState,
+  showContextMenu,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry,
+  addToObject,
+  selectedGraphVersion,
   availableNodes,
   availableEdges,
   addToArray,
@@ -22,7 +38,6 @@ const GraphVisualisation = ({
   stylingEdgeLineColor,
   stylingEdgeLineColorHover,
   stylingEdgeLineColorHighlight,
-  stylingEdgeCaptionProperty,
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
@@ -39,9 +54,18 @@ const GraphVisualisation = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
-  setStoreState
 }) => {
+  const { t } = useTranslation()
+  const isInitialMountSelectedGraphVersion = useRef(true)
+  const isInitialMountCurrentGraph = useRef(true)
+
   const visJsRef = useRef(null)
+
+  useEffect(() => startupActions({
+    setStoreState,
+    addToObject,
+    t
+  }), [])
 
   // set new Network
   useEffect(() => setNetwork({
@@ -58,12 +82,49 @@ const GraphVisualisation = ({
     if (network) {
       setStoreState('isNetworkLoading', true)
 
-      serialiseNodesEdges({
+      addElementsToGraph({
         setStoreState,
       })
+
+      // serialiseNodesEdges({
+      //   setStoreState,
+      // })
     }
   }, [
     nodesIdsToDisplay,
+  ])
+
+  // Update nodes to display based on graph version except at component mount
+  useEffect(() => {
+    if (isInitialMountSelectedGraphVersion.current) {
+      isInitialMountSelectedGraphVersion.current = false
+    } else {
+      setGraphData({
+        setStoreState
+      })
+    }
+  },
+  [
+    selectedGraphVersion
+  ])
+
+  useEffect(() => {
+    if (isInitialMountCurrentGraph.current) {
+      isInitialMountCurrentGraph.current = false
+    } else {
+      const {
+        type,
+        options
+      } = graphData[currentGraph]
+
+      setNodesIdsToDisplay({
+        type,
+        setStoreState,
+        options
+      })
+    }
+  }, [
+    currentGraph
   ])
 
   // set graph options
@@ -87,7 +148,6 @@ const GraphVisualisation = ({
     stylingEdgeLineColor,
     stylingEdgeLineColorHover,
     stylingEdgeLineColorHighlight,
-    stylingEdgeCaptionProperty,
     stylingEdgeTextColor,
     stylingEdgeTextSize,
     stylingEdgeTextAlign,
@@ -116,19 +176,58 @@ const GraphVisualisation = ({
     nodesIdsToDisplay
   ])
 
+  const {
+    boundingBoxPosX,
+    boundingBoxPosY,
+    boundingBoxWidth,
+    boundingBoxHeight
+  } = boundingBoxGeometry
+
   return (
-    <div
-      id="network-graph"
-      ref={visJsRef}
-      style={{
-        height: '100%',
-        width: '100%'
-      }}
-    />
+    <div className="graph-container">
+      <div
+        id="network-graph"
+        ref={visJsRef}
+        style={{
+          height: '100%',
+          width: '100%'
+        }}
+      />
+
+      {
+        isBoundingBoxSelectable
+        && (
+          <div
+            style={{
+              top: boundingBoxPosY,
+              left: boundingBoxPosX,
+              width: boundingBoxWidth,
+              height: boundingBoxHeight
+            }}
+            className="bounding-box-wrapper"
+          />
+        )
+      }
+
+      {
+        showContextMenu
+        && (
+          <GraphContextMenu />
+        )
+      }
+    </div>
   )
 }
 
 GraphVisualisation.propTypes = {
+  currentGraph: PropTypes.string.isRequired,
+  graphData: PropTypes.shape().isRequired,
+  setStoreState: PropTypes.func.isRequired,
+  showContextMenu: PropTypes.bool.isRequired,
+  isBoundingBoxSelectable: PropTypes.bool.isRequired,
+  boundingBoxGeometry: PropTypes.shape().isRequired,
+  addToObject: PropTypes.func.isRequired,
+  selectedGraphVersion: PropTypes.string.isRequired,
   addToArray: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
@@ -155,9 +254,7 @@ GraphVisualisation.propTypes = {
   stylingNodeHoverBorderColor: PropTypes.string.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
-  setStoreState: PropTypes.func.isRequired,
   stylingNodeTextFontAlign: PropTypes.string.isRequired,
-  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
   stylingEdgeTextColor: PropTypes.string.isRequired,
   stylingEdgeTextSize: PropTypes.number.isRequired,
   stylingEdgeTextAlign: PropTypes.string.isRequired,
@@ -168,6 +265,13 @@ GraphVisualisation.defaultProps = {
 }
 
 const mapToProps = ({
+  currentGraph,
+  graphData,
+  showContextMenu,
+  contextMenuData,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry,
+  selectedGraphVersion,
   availableNodes,
   availableEdges,
   network,
@@ -198,11 +302,17 @@ const mapToProps = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
-  stylingEdgeCaptionProperty,
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
 }) => ({
+  currentGraph,
+  graphData,
+  showContextMenu,
+  contextMenuData,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry,
+  selectedGraphVersion,
   availableNodes,
   availableEdges,
   network,
@@ -233,7 +343,6 @@ const mapToProps = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
-  stylingEdgeCaptionProperty,
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
