@@ -295,4 +295,18 @@ export default {
   queryGraph: 'queryGraph',
   expandNode: 'Expand node',
   close: 'Close',
+
+  // login
+  signIn: 'Sign In',
+  login: 'Login',
+  email: 'Email',
+  password: 'Password',
+  invalidEmailPassword: "Invalid Email or Password",
+  forgotPasswordLink: "Forgot Password?",
+  continueGuest: "Continue as Guest",
+
+  //forgot password
+  forgotPassword: "Forgot Password",
+  enterEmail: "Enter your email",
+  send: "Send",
 }
