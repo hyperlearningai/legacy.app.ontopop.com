@@ -3,6 +3,11 @@ export default {
   // titles & descriptions
   ontologyVisualisationDescription: 'Highways England ontology visualisation web app',
 
+  // header
+  signOut: 'Sign out',
+  alphaVersion: 'Alpha version',
+  betaVersion: 'Beta version',
+
   // navbar
   hideSidebar: 'Hide sidebar',
   showSidebar: 'Show sidebar',
@@ -295,4 +300,20 @@ export default {
   queryGraph: 'queryGraph',
   expandNode: 'Expand node',
   close: 'Close',
+
+  // login
+  signIn: 'Sign In',
+  login: 'Login',
+  email: 'Email',
+  password: 'Password',
+  invalidEmailPassword: 'Invalid Email or Password',
+  forgotPasswordLink: 'Forgot Password?',
+  continueGuest: 'Continue as Guest',
+
+  // forgot password
+  forgotPassword: 'Forgot Password',
+  enterEmail: 'Enter your email',
+  send: 'Send',
+  backToLogin: 'Back to sign in',
+  resetPasswordAtEmail: 'Reset password sent at email'
 }

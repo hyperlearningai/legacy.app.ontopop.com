@@ -27,6 +27,15 @@ const initialState = {
   sidebarView: SIDEBAR_VIEW_GRAPHS,
   loading: false,
 
+  // user
+  user: {
+    email: 'a@b.c',
+    firstName: '',
+    lastName: '',
+    company: '',
+    isGuest: false
+  },
+
   // data loaded at startup
   classesFromApi: {},
   objectPropertiesFromApi: {},
@@ -89,9 +98,15 @@ const initialState = {
   freeTextSelectedElement: '',
   freeTextPrevSelectedElement: undefined,
 
-  // node/edge selection
+  // node selection
   isNodeSelectable: false,
+  selectedNode: '',
+  prevSelectedNode: undefined,
+
+  // edge selection
   isEdgeSelectable: false,
+  selectedEdge: '',
+  prevSelectedEdges: undefined,
 
   // bounding box
   selectedBoundingBoxNodes: [],
@@ -138,7 +153,7 @@ const initialState = {
   edgesIdsToDisplay: [],
   availableNodes: new DataSet([]),
   availableEdges: new DataSet([]),
-  selectedNodes: [],
+  // selectedNodes: [],
   selectedEdges: [],
   nodesConnections: {},
   edgesConnections: {},

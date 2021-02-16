@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 import EdgeSelectionDetailsRow from './EdgeSelectionDetailsRow'
 import { PROPERTIES_TO_IGNORE } from '../constants/graph'
+import { getEdgeUniqueId } from '../constants/functions'
 
 const EdgesSelectionDetails = ({
   edgeId,
@@ -12,7 +13,8 @@ const EdgesSelectionDetails = ({
 }) => {
   const { t } = useTranslation()
 
-  const selectedEdge = objectPropertiesFromApi[edgeId]
+  const edgeUniqueId = getEdgeUniqueId(edgeId)
+  const selectedEdge = objectPropertiesFromApi[edgeUniqueId]
 
   const tableRowNames = Object.keys(selectedEdge).filter((key) => typeof selectedEdge[key] !== 'object'
     && !key.includes('label')
@@ -20,8 +22,8 @@ const EdgesSelectionDetails = ({
 
   let connections = []
 
-  if (edgesConnections[edgeId]) {
-    connections = edgesConnections[edgeId]
+  if (edgesConnections[edgeUniqueId]) {
+    connections = edgesConnections[edgeUniqueId]
   }
 
   return (

@@ -128,7 +128,7 @@ describe('getPhysicsOptions', () => {
          "background": "#adefd1",
          "border": "#011e41",
          "highlight":{
-           "background": "#abd6df",
+           "background": "#ffed00",
            "border": "#009688",
          },
          "hover":{

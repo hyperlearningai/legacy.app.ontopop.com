@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NodesSelection should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  mapToProps={[Function]}
+  removeFromArray={[MockFunction]}
+  resetSelectedNodes={[MockFunction]}
+  selectedNodes={
+    Array [
+      "abc",
+    ]
+  }
+>
+  <Component />
+</Connect>
+`;

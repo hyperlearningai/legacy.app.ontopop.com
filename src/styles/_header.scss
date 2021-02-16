@@ -4,7 +4,7 @@ header {
   padding-right: 20px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 
   .loader-box {
     width: 50px;
@@ -18,5 +18,18 @@ header {
   .logo {
     width: 140px;
     padding-top: 10px;
+  }
+
+  .p-chip {
+    background: $primary;
+    color: $white;
+  }
+
+  .header {
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }

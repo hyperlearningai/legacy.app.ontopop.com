@@ -24,9 +24,6 @@ const NodesSelectionDetails = ({
 
   return (
     <div className="nodes-selection-details m-t-10">
-      <h3 className="">
-        {`${t('node')}: ${getNode(nodeId).label}`}
-      </h3>
       <div className="nodes-selection-details-title">
         {t('properties')}
       </div>

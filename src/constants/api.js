@@ -14,3 +14,5 @@ export const GET_PROPERTIES_OBJECTS = `${GET_PROPERTIES}/objects`
 export const GET_PROPERTIES_OBJECT = `${GET_PROPERTIES}/objects/{id}`
 export const GET_PROPERTIES_ANNOTATIONS = `${GET_PROPERTIES}/annotations`
 export const GET_PROPERTIES_ANNOTATION = `${GET_PROPERTIES}/annotations/{id}`
+
+export const AUTH_SIGN_IN = `${API_ENDPOINT}/login`

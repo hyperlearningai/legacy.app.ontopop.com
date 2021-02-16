@@ -1,10 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeaderComponent should match snapshot  1`] = `
+exports[`HeaderComponent should match snapshot when user logged in and loading 1`] = `
 <Connect
-  actions={Object {}}
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
   loading={true}
   mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  user={
+    Object {
+      "email": "test@test.com",
+      "isGuest": false,
+    }
+  }
+>
+  <Component />
+</Connect>
+`;
+
+exports[`HeaderComponent should match snapshot when user not logged in and not loading 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "resetSelectedEdges": [Function],
+      "resetSelectedNodes": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  loading={false}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  user={
+    Object {
+      "email": "",
+      "isGuest": false,
+    }
+  }
 >
   <Component />
 </Connect>
