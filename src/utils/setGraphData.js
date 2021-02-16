@@ -13,33 +13,9 @@ const setGraphData = async ({
   setStoreState,
 }) => {
   const {
-    graphVersions,
-    selectedGraphVersion
-  } = store.getState()
-
-  const {
     classesFromApi,
-    objectPropertiesFromApi,
-    deletedNodes,
-    addedNodes,
-    updatedNodes,
-    deletedEdges,
-    addedEdges,
-    updatedEdges,
-    addedConnections,
-    deletedConnections
-  } = graphVersions[selectedGraphVersion]
-
-  setStoreState('classesFromApi', classesFromApi)
-  setStoreState('objectPropertiesFromApi', objectPropertiesFromApi)
-  setStoreState('deletedNodes', deletedNodes)
-  setStoreState('addedNodes', addedNodes)
-  setStoreState('updatedNodes', updatedNodes)
-  setStoreState('deletedEdges', deletedEdges)
-  setStoreState('addedEdges', addedEdges)
-  setStoreState('updatedEdges', updatedEdges)
-  setStoreState('addedConnections', addedConnections)
-  setStoreState('deletedConnections', deletedConnections)
+    objectPropertiesFromApi
+  } = store.getState()
 
   const classesIds = Object.keys(classesFromApi)
   const predicatesIds = Object.keys(objectPropertiesFromApi)
@@ -55,8 +31,6 @@ const setGraphData = async ({
   // show full view when starting
   setNodesIdsToDisplay({
     type: ALGO_TYPE_FULL,
-    classesFromApi,
-    objectPropertiesFromApi,
     setStoreState
   })
 }

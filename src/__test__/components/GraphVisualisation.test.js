@@ -35,7 +35,6 @@ const setup = () => {
     nodesIdsToDisplay: [],
     physicsHierarchicalView: true,
     physicsRepulsion: true,
-    selectedGraphVersion: 'original',
     setStoreState: jest.fn(),
     showContextMenu: true,
     stylingEdgeLineColor: EDGE_COLOR,

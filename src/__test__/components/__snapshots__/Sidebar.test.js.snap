@@ -344,26 +344,3 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STYLIN
   <Component />
 </Connect>
 `;
-
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_VERSIONING 1`] = `
-<Connect
-  actions={
-    Object {
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
-      "setStoreState": [Function],
-    }
-  }
-  isSidebarOpen={true}
-  mapToProps={[Function]}
-  setStoreState={[MockFunction]}
-  sidebarView="versioning"
->
-  <Component />
-</Connect>
-`;

@@ -76,7 +76,6 @@ exports[`GraphVisualisation should match snapshot  1`] = `
   nodesIdsToDisplay={Array []}
   physicsHierarchicalView={true}
   physicsRepulsion={true}
-  selectedGraphVersion="original"
   setStoreState={[MockFunction]}
   showContextMenu={true}
   stylingEdgeLength={250}

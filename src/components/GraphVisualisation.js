@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next'
 // import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import actions from '../store/actions'
 import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
-import setGraphData from '../utils/setGraphData'
 import GraphContextMenu from './GraphContextMenu'
 import startupActions from '../utils/graphVisualisation/startupActions'
 import setNetwork from '../utils/setNetwork'
@@ -23,7 +22,6 @@ const GraphVisualisation = ({
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   addToObject,
-  selectedGraphVersion,
   availableNodes,
   availableEdges,
   network,
@@ -55,7 +53,6 @@ const GraphVisualisation = ({
   stylingNodeTextFontAlign,
 }) => {
   const { t } = useTranslation()
-  const isInitialMountSelectedGraphVersion = useRef(true)
   const isInitialMountCurrentGraph = useRef(true)
 
   const visJsRef = useRef(null)
@@ -87,20 +84,6 @@ const GraphVisualisation = ({
     }
   }, [
     nodesIdsToDisplay,
-  ])
-
-  // Update nodes to display based on graph version except at component mount
-  useEffect(() => {
-    if (isInitialMountSelectedGraphVersion.current) {
-      isInitialMountSelectedGraphVersion.current = false
-    } else {
-      setGraphData({
-        setStoreState
-      })
-    }
-  },
-  [
-    selectedGraphVersion
   ])
 
   useEffect(() => {
@@ -221,7 +204,6 @@ GraphVisualisation.propTypes = {
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
   addToObject: PropTypes.func.isRequired,
-  selectedGraphVersion: PropTypes.string.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,
@@ -264,7 +246,6 @@ const mapToProps = ({
   contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
-  selectedGraphVersion,
   availableNodes,
   availableEdges,
   network,
@@ -305,7 +286,6 @@ const mapToProps = ({
   contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
-  selectedGraphVersion,
   availableNodes,
   availableEdges,
   network,

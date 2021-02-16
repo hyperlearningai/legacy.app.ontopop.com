@@ -249,21 +249,6 @@ export const REQUIRED_PREDICATES = [
   'http://www.w3.org/2002/07/owl#topObjectProperty'
 ]
 
-export const GRAPH_VERSION_STRUCTURE = {
-  classesFromApi: {},
-  objectPropertiesFromApi: {},
-  classesFromApiBackup: {},
-  objectPropertiesFromApiBackup: {},
-  deletedNodes: [],
-  addedNodes: [],
-  updatedNodes: [],
-  deletedEdges: [],
-  addedEdges: [],
-  updatedEdges: [],
-  deletedConnections: [],
-  addedConnections: [],
-}
-
 export const PROPERTIES_TO_IGNORE = [
   'id',
   'label',

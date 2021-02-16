@@ -8,7 +8,6 @@ import {
   EDGE_COLOR,
   EDGE_COLOR_HIGHLIGHTED,
   NODE_TEXT_COLOR,
-  GRAPH_VERSION_STRUCTURE,
   NODE_BORDER,
   NODE_BACKGROUND,
   CLICK_NODE_BACKGROUND,
@@ -173,12 +172,6 @@ const initialState = {
     'g.V().hasLabel(\'class\').count()',
     'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()',
   ],
-
-  // new graph version
-  selectedGraphVersion: 'original',
-  graphVersions: {
-    original: GRAPH_VERSION_STRUCTURE,
-  },
 
   // graphs data storage
   lastGraphIndex: 0,

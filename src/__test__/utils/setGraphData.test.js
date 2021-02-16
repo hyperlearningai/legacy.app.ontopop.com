@@ -12,16 +12,8 @@ jest.mock('../../utils/setNodesIdsToDisplay')
 const setStoreState = jest.fn()
 
 const getState = jest.fn().mockImplementation(() => ({
-  selectedGraphVersion: 'original',
-  graphVersions: {
-    original: {
-      classesFromApi: OwlClasses,
-      objectPropertiesFromApi: OwlObjectProperties,
-      deletedNodes: [],
-      addedNodes: [],
-      updatedNodes: []
-    }
-  }
+  classesFromApi: OwlClasses,
+  objectPropertiesFromApi: OwlObjectProperties,
 }))
 store.getState = getState
 
@@ -35,46 +27,6 @@ describe('setGraphData', () => {
       setStoreState
     })
 
-    expect(setStoreState.mock.calls).toEqual([
-      [
-        'classesFromApi', OwlClasses
-      ],
-      [
-        'objectPropertiesFromApi', OwlObjectProperties
-      ],
-      [
-        'deletedNodes',
-        [],
-      ],
-      [
-        'addedNodes',
-        [],
-      ],
-      [
-        'updatedNodes',
-        [],
-      ],
-      [
-        'deletedEdges',
-        undefined,
-      ],
-      [
-        'addedEdges',
-        undefined,
-      ],
-      [
-        'updatedEdges',
-        undefined,
-      ],
-      [
-        'addedConnections',
-        undefined,
-      ],
-      [
-        'deletedConnections',
-        undefined,
-      ],
-    ])
     expect(getAllTriplesPerNode).toHaveBeenCalledWith({
       classesIds: Object.keys(OwlClasses),
       predicatesIds: Object.keys(OwlObjectProperties),
@@ -83,8 +35,6 @@ describe('setGraphData', () => {
     })
     expect(setNodesIdsToDisplay).toHaveBeenCalledWith({
       type: ALGO_TYPE_FULL,
-      classesFromApi: OwlClasses,
-      objectPropertiesFromApi: OwlObjectProperties,
       setStoreState
     })
   })

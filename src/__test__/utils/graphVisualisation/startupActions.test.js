@@ -3,7 +3,6 @@ import store from '../../../store'
 import getGraphData from '../../../utils/getGraphData'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
-import loadGraphVersionFromServer from '../../../utils/versioning/loadGraphVersionFromServer'
 import setGraphData from '../../../utils/setGraphData'
 import getNodeProperties from '../../../utils/getNodeProperties'
 import getEdgeProperties from '../../../utils/getEdgeProperties'
@@ -11,7 +10,6 @@ import getEdgeProperties from '../../../utils/getEdgeProperties'
 jest.mock('../../../utils/getGraphData')
 jest.mock('../../../utils/getNodeProperties')
 jest.mock('../../../utils/getEdgeProperties')
-jest.mock('../../../utils/versioning/loadGraphVersionFromServer')
 jest.mock('../../../utils/setGraphData')
 
 const setStoreState = jest.fn()
@@ -64,14 +62,12 @@ describe('startupActions', () => {
 
     expect(setStoreState.mock.calls).toEqual(
       [['annotationProperties', [{ id: 'annotation-123' }]],
-        ['edgesProperties', [{ id: 'edge-prop-123' }]]]
+        ['edgesProperties', [{ id: 'edge-prop-123' }]],
+        ['classesFromApi', classes],
+        ['objectPropertiesFromApi', objectProperties],
+      ],
+
     )
-    expect(loadGraphVersionFromServer).toHaveBeenCalledWith({
-      setStoreState,
-      addToObject,
-      classes,
-      objectProperties
-    })
 
     expect(setGraphData).toHaveBeenCalledWith({ setStoreState })
   })

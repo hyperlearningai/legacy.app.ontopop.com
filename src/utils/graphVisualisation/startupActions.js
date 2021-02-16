@@ -1,23 +1,21 @@
 // import jsonClasses from '../../assets/json/test-ontology-classes.json'
 // import jsonObjectProperties from '../../assets/json/test-ontology-object-properties.json'
-import loadGraphVersionFromServer from '../versioning/loadGraphVersionFromServer'
 import getEdgeProperties from '../getEdgeProperties'
 import loadStyling from '../networkStyling/loadStyling'
 import getGraphData from '../getGraphData'
 import getNodeProperties from '../getNodeProperties'
 import setGraphData from '../setGraphData'
+import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../../constants/graph'
 
 /**
- * Export graph version data as json or save to server
+ * Graph data loading at startup
  * @param  {Object}     params
- * @param  {Function}   params.addToObject        AddToObject action
  * @param  {Function}   params.t                  Internationalisation function
  * @param  {Function}   params.setStoreState      setStoreState action
  * @return { undefined }
 \ */
 const startupActions = async ({
   setStoreState,
-  addToObject,
   t
 }) => {
   // load saved styling options
@@ -51,13 +49,27 @@ const startupActions = async ({
 
   setStoreState('edgesProperties', edgesProperties)
 
-  // TODO: Should become async when API call instead of localstorage
-  loadGraphVersionFromServer({
-    setStoreState,
-    addToObject,
-    classes,
-    objectProperties
-  })
+  // TODO: this should be loaded at start once auth in place
+  // set all initial graph data
+
+  const newObjectProperties = {
+    ...objectProperties,
+    [SUB_CLASS_OF_ID]: {
+      rdfAbout: SUB_CLASS_OF_ID,
+      rdfsLabel: SUB_CLASS_OF_LABEL
+    }
+  }
+
+  setStoreState('classesFromApi', classes)
+  setStoreState('objectPropertiesFromApi', newObjectProperties)
+  // setStoreState('deletedNodes', deletedNodes)
+  // setStoreState('addedNodes', addedNodes)
+  // setStoreState('updatedNodes', updatedNodes)
+  // setStoreState('deletedEdges', deletedEdges)
+  // setStoreState('addedEdges', addedEdges)
+  // setStoreState('updatedEdges', updatedEdges)
+  // setStoreState('addedConnections', addedConnections)
+  // setStoreState('deletedConnections', deletedConnections)
 
   setGraphData({
     setStoreState,
