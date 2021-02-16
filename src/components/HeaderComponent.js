@@ -79,7 +79,7 @@ const HeaderComponent = ({
 HeaderComponent.propTypes = {
   loading: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  user: PropTypes.shape.isRequired,
+  user: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
