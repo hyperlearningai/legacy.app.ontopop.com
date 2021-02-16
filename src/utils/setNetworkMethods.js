@@ -33,6 +33,10 @@ const setNetworkMethods = async ({
         return setStoreState('selectedNode', nodeId)
       }
 
+      console.log({
+        nodeId,
+        isNeighbourNodeSelectable
+      })
       if (isNeighbourNodeSelectable) {
         return setStoreState('selectedNeighbourNode', nodeId)
       }

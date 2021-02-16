@@ -68,7 +68,6 @@ const setNodesIdsToDisplay = async ({
     const {
       selectedNodeId,
       separationDegree,
-      triplesPerNode
     } = options
 
     const {
@@ -77,13 +76,11 @@ const setNodesIdsToDisplay = async ({
     } = getNeighbours({
       selectedNodeId,
       separationDegree,
-      classesFromApi,
-      triplesPerNode
     })
 
     setStoreState('highlightedNodes', [selectedNodeId])
     setStoreState('edgesIdsToDisplay', neighbourEdges)
-    setStoreState('nodesIdsToDisplay', neighbourNodes.filter((nodeId) => !deletedNodes.includes(nodeId)))
+    setStoreState('nodesIdsToDisplay', neighbourNodes)
   }
 
   if (type === ALGO_TYPE_SHORTEST_PATH) {

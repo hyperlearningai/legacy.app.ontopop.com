@@ -19,7 +19,6 @@ const setNeighbourNodes = ({
     classesFromApi,
     selectedNeighbourNode,
     lastGraphIndex,
-    triplesPerNode,
   } = store.getState()
 
   const newGraphIndex = lastGraphIndex + 1
@@ -35,7 +34,6 @@ const setNeighbourNodes = ({
     options: {
       selectedNodeId,
       separationDegree,
-      triplesPerNode
     }
   }
 

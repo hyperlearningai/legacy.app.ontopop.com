@@ -85,10 +85,6 @@ const GraphVisualisation = ({
       addElementsToGraph({
         setStoreState,
       })
-
-      // serialiseNodesEdges({
-      //   setStoreState,
-      // })
     }
   }, [
     nodesIdsToDisplay,

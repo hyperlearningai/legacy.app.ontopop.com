@@ -95,6 +95,7 @@ export default {
   separationDegree: 'Separation degree',
   selectedNode: 'Selected node',
   insertNumber: 'Insert number',
+  showNeighbourhood: 'Show neighbourhood',
 
   // shortest path
   selectNodesFromGraph: 'Select nodes from graph',
