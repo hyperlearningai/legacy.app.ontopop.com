@@ -3,9 +3,14 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import HeaderComponent from '../../components/HeaderComponent'
 
-const setup = () => {
+const setup = ({
+  user,
+  loading
+}) => {
   const props = {
-    loading: true
+    loading,
+    setStoreState: jest.fn(),
+    user
   }
 
   const component = shallow(<HeaderComponent {...props} />)
@@ -17,10 +22,30 @@ const setup = () => {
 }
 
 describe('HeaderComponent', () => {
-  it('should match snapshot ', () => {
+  it('should match snapshot when user not logged in and not loading', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      user: {
+        email: '',
+        isGuest: false
+      },
+      loading: false
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when user logged in and loading', () => {
+    const {
+      component
+    } = setup({
+      user: {
+        email: 'test@test.com',
+        isGuest: false
+      },
+      loading: true
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })
