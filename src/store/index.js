@@ -27,6 +27,15 @@ const initialState = {
   sidebarView: SIDEBAR_VIEW_GRAPHS,
   loading: false,
 
+  // user
+  user: {
+    email: '',
+    firstName: '',
+    lastName: '',
+    company: '',
+    isGuest: false
+  },
+
   // data loaded at startup
   classesFromApi: {},
   objectPropertiesFromApi: {},
