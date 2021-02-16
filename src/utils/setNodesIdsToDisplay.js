@@ -35,6 +35,7 @@ const setNodesIdsToDisplay = async ({
 
   setStoreState('highlightedNodes', [])
   setStoreState('isNodeOverlay', false)
+  setStoreState('shortestPathNodes', [])
 
   if (type === ALGO_TYPE_FULL) {
     const classesIds = Object.keys(classesFromApi)
@@ -100,14 +101,15 @@ const setNodesIdsToDisplay = async ({
     } = await getNodesEdgesFromPaths()
 
     setStoreState('isNodeOverlay', isNodeOverlay)
-    setStoreState('highlightedNodes', shortestPathSelectedNodes.filter((nodeId) => !deletedNodes.includes(nodeId)))
+    setStoreState('highlightedNodes', shortestPathSelectedNodes)
 
     if (!isNodeOverlay) {
       setStoreState('edgesIdsToDisplay', shortestPathEdges)
-      setStoreState('nodesIdsToDisplay', shortestPathNodes.filter((nodeId) => !deletedNodes.includes(nodeId)))
+      setStoreState('nodesIdsToDisplay', shortestPathNodes)
     } else {
       // duplicated array to trigger new graph
-      setStoreState('nodesIdsToDisplay', nodesIdsToDisplay.slice().filter((nodeId) => !deletedNodes.includes(nodeId)))
+      setStoreState('shortestPathNodes', shortestPathNodes)
+      setStoreState('nodesIdsToDisplay', nodesIdsToDisplay.slice())
     }
   }
 

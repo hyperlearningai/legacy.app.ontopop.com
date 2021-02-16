@@ -75,6 +75,10 @@ describe('setNodesIdsToDisplay', () => {
         false,
       ],
       [
+        'shortestPathNodes',
+        [],
+      ],
+      [
         'highlightedNodes',
         [],
       ],
@@ -114,6 +118,10 @@ describe('setNodesIdsToDisplay', () => {
       [
         'isNodeOverlay',
         false,
+      ],
+      [
+        'shortestPathNodes',
+        [],
       ],
       [
         'highlightedNodes',
@@ -177,6 +185,10 @@ describe('setNodesIdsToDisplay', () => {
         false,
       ],
       [
+        'shortestPathNodes',
+        [],
+      ],
+      [
         'shortestPathResults',
         [
           'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS',
@@ -191,6 +203,17 @@ describe('setNodesIdsToDisplay', () => {
         [
           'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
           'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ',
+        ],
+      ],
+      ['shortestPathNodes',
+        [
+          'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6',
+          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
+          'http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc',
+          'http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp',
+          'http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw',
+          'http://webprotege.stanford.edu/ReVBAW9BDkF6kpl6UmYCrZ',
         ],
       ],
       [
@@ -230,6 +253,10 @@ describe('setNodesIdsToDisplay', () => {
       [
         'isNodeOverlay',
         false,
+      ],
+      [
+        'shortestPathNodes',
+        [],
       ],
       [
         'shortestPathResults',
@@ -298,6 +325,10 @@ describe('setNodesIdsToDisplay', () => {
         false,
       ],
       [
+        'shortestPathNodes',
+        [],
+      ],
+      [
         'nodesIdsToDisplay',
         [
           'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep',
@@ -333,6 +364,10 @@ describe('setNodesIdsToDisplay', () => {
       [
         'isNodeOverlay',
         false,
+      ],
+      [
+        'shortestPathNodes',
+        [],
       ],
       [
         'edgesIdsToDisplay',

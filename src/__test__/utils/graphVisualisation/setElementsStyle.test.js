@@ -5,10 +5,12 @@ import resetEdgesStyles from '../../../utils/graphVisualisation/resetEdgesStyles
 import setHighlightedNodes from '../../../utils/graphVisualisation/setHighlightedNodes'
 import styleNodesByProperty from '../../../utils/graphVisualisation/styleNodesByProperty'
 import styleEdgesByProperty from '../../../utils/graphVisualisation/styleEdgesByProperty'
+import setNodeOverlay from '../../../utils/graphVisualisation/setNodeOverlay'
 
 jest.mock('../../../utils/graphVisualisation/resetNodesStyles')
 jest.mock('../../../utils/graphVisualisation/resetEdgesStyles')
 jest.mock('../../../utils/graphVisualisation/setHighlightedNodes')
+jest.mock('../../../utils/graphVisualisation/setNodeOverlay')
 jest.mock('../../../utils/graphVisualisation/styleNodesByProperty')
 jest.mock('../../../utils/graphVisualisation/styleEdgesByProperty')
 
@@ -50,6 +52,7 @@ describe('setElementsStyle', () => {
       { property: { filterValue: 'road', styleValue: '#000' } }
     )
     expect(setHighlightedNodes).toHaveBeenCalledWith()
+    expect(setNodeOverlay).toHaveBeenCalledWith()
     expect(setTimeout).toHaveBeenCalledWith(
       expect.any(Function), 3000
     )

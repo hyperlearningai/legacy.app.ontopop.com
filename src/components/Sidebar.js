@@ -162,7 +162,10 @@ const Sidebar = ({
         <Button
           tooltip={t(SIDEBAR_VIEW_SHORTEST_PATH)}
           className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_SHORTEST_PATH)}
+          onClick={() => {
+            setStoreState('isShortestPathNode1Selectable', true)
+            setView(SIDEBAR_VIEW_SHORTEST_PATH)
+          }}
         >
           <IoGitNetwork />
         </Button>

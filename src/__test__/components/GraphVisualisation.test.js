@@ -10,7 +10,6 @@ import {
 
 const setup = () => {
   const props = {
-    addToArray: jest.fn(),
     addToObject: jest.fn(),
     availableEdges: new DataSet([]),
     availableNodes: new DataSet([]),

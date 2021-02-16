@@ -87,6 +87,7 @@ const initialState = {
   stylingNodeByProperty: [
     JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
   ],
+  stylingNodeOverlayOpacity: 0.1,
 
   // netowrk graph loading
   isNetworkLoading: false,
@@ -131,9 +132,15 @@ const initialState = {
 
   // shortest path
   isShortestPathNodeSelectable: false,
-  shortestPathSelectedNodes: [],
+  isShortestPathNode1Selectable: false,
+  isShortestPathNode2Selectable: false,
+  shortestPathNode1Object: undefined,
+  shortestPathNode1: '',
+  shortestPathNode2Object: undefined,
+  shortestPathNode2: '',
   shortestPathResults: [],
   isNodeOverlay: false,
+  shortestPathNodes: [],
 
   // context menu
   showContextMenu: false,

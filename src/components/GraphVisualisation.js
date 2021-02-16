@@ -26,7 +26,6 @@ const GraphVisualisation = ({
   selectedGraphVersion,
   availableNodes,
   availableEdges,
-  addToArray,
   network,
   nodesIdsToDisplay,
   physicsHierarchicalView,
@@ -166,7 +165,6 @@ const GraphVisualisation = ({
   useEffect(() => setNetworkMethods({
     setStoreState,
     network,
-    addToArray,
   }), [
     network,
     nodesIdsToDisplay
@@ -224,7 +222,6 @@ GraphVisualisation.propTypes = {
   boundingBoxGeometry: PropTypes.shape().isRequired,
   addToObject: PropTypes.func.isRequired,
   selectedGraphVersion: PropTypes.string.isRequired,
-  addToArray: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,

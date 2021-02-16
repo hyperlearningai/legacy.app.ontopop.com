@@ -99,8 +99,10 @@ export default {
 
   // shortest path
   selectNodesFromGraph: 'Select nodes from graph',
-  isNodeOverlay: 'Show all nodes',
-  isNotNodeOverlay: 'Show only path',
+  isNodeOverlay: 'Show path over nodes',
+  isNotNodeOverlay: 'Show path only',
+  selectStartingNode: 'Select starting node',
+  selectEndingNode: 'Select ending node',
 
   // Physics settings
   physicsSettings: 'Physics settings',

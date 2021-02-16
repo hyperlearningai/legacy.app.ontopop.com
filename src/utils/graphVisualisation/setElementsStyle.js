@@ -2,6 +2,7 @@ import store from '../../store'
 import resetEdgesStyles from './resetEdgesStyles'
 import resetNodesStyles from './resetNodesStyles'
 import setHighlightedNodes from './setHighlightedNodes'
+import setNodeOverlay from './setNodeOverlay'
 import styleEdgesByProperty from './styleEdgesByProperty'
 import styleNodesByProperty from './styleNodesByProperty'
 
@@ -15,7 +16,6 @@ const setElementsStyle = ({
   setStoreState,
 }) => {
   const {
-    // highlightedNodes,
     // shortestPathNodes,
     // isNodeOverlay,
     isPhysicsOn,
@@ -37,6 +37,7 @@ const setElementsStyle = ({
       const {
         styleValue, filterValue
       } = property
+
       if (
         styleValue
         && styleValue !== ''
@@ -75,10 +76,8 @@ const setElementsStyle = ({
   // check if highlighted nodes
   setHighlightedNodes()
 
-  // // node overlay
-  // if (isNodeOverlay && !shortestPathNodes.includes(nodeId)) {
-  //   extendedNodeObject.opacity = 0.1
-  // }
+  // node overlay
+  setNodeOverlay()
 
   // check if all connection edges are present, otherwise make a different border to display that it's spidetable
   // highlightSpiderableNodes({

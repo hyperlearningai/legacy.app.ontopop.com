@@ -4,26 +4,25 @@ import {
 import store from '../store'
 import addNodesEdgesToGraph from './addNodesEdgesToGraph'
 import getNode from './nodesEdgesUtils/getNode'
+import setShortestPathNode from './shortestPath/setShortestPathNode'
 
 /**
  * Update VisJs network methods
  * @param  {Object}   params
  * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Function} params.addToArray                addToArray action
  * @param  {Object}   params.network                   VisJs network object
  * @return { undefined }
  */
 const setNetworkMethods = async ({
   setStoreState,
-  addToArray,
   network,
 }) => {
   network?.on('selectNode', (event) => {
     const {
       isNodeSelectable,
       isNeighbourNodeSelectable,
-      isShortestPathNodeSelectable,
-      shortestPathSelectedNodes
+      isShortestPathNode1Selectable,
+      isShortestPathNode2Selectable,
     } = store.getState()
 
     if (event.nodes?.length === 1) {
@@ -33,16 +32,24 @@ const setNetworkMethods = async ({
         return setStoreState('selectedNode', nodeId)
       }
 
-      console.log({
-        nodeId,
-        isNeighbourNodeSelectable
-      })
       if (isNeighbourNodeSelectable) {
         return setStoreState('selectedNeighbourNode', nodeId)
       }
 
-      if (isShortestPathNodeSelectable && shortestPathSelectedNodes.length < 2) {
-        return addToArray('shortestPathSelectedNodes', nodeId)
+      if (isShortestPathNode1Selectable) {
+        return setShortestPathNode({
+          setStoreState,
+          state: 'shortestPathNode1',
+          nodeId
+        })
+      }
+
+      if (isShortestPathNode2Selectable) {
+        return setShortestPathNode({
+          setStoreState,
+          state: 'shortestPathNode2',
+          nodeId
+        })
       }
     }
   })

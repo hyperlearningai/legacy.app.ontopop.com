@@ -13,27 +13,24 @@ import {
   SIDEBAR_VIEW_SHORTEST_PATH
 } from '../constants/views'
 import setShortestPath from '../utils/shortestPath/setShortestPath'
+import getNode from '../utils/nodesEdgesUtils/getNode'
+import resetShortestPathNodes from '../utils/shortestPath/resetShortestPathNodes'
 
 const ShortestPath = ({
-  classesFromApi,
-  removeFromArray,
   setStoreState,
-  shortestPathSelectedNodes,
   addToObject,
+  shortestPathNode1,
+  shortestPathNode2,
+  isShortestPathNode1Selectable,
+  isShortestPathNode2Selectable
 }) => {
   const { t } = useTranslation()
 
   const [isNodeOverlay, setNodeOverlay] = useState(false)
 
-  useEffect(() => {
-    setStoreState('isShortestPathNodeSelectable', true)
-    setStoreState('shortestPathSelectedNodes', [])
-
-    return () => {
-      setStoreState('isShortestPathNodeSelectable', false)
-      setStoreState('shortestPathSelectedNodes', [])
-    }
-  }, [])
+  useEffect(() => () => resetShortestPathNodes({
+    setStoreState
+  }), [])
 
   return (
     <>
@@ -45,20 +42,55 @@ const ShortestPath = ({
           {t('selectNodesFromGraph')}
         </div>
 
-        {
-          shortestPathSelectedNodes?.length > 0 && (
-            <div className="shortest-path-nodes-list">
-              {shortestPathSelectedNodes.map((node) => (
-                <Chip
-                  key={`shortest-path-node-${node}`}
-                  label={classesFromApi[node].label}
-                  removable
-                  onRemove={() => removeFromArray('shortestPathSelectedNodes', node)}
-                />
-              ))}
-            </div>
-          )
-        }
+        <div className="shortest-path-button">
+          <Button
+            label={t('selectStartingNode')}
+            icon={isShortestPathNode1Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
+            onClick={() => {
+              setStoreState('isShortestPathNode2Selectable', false)
+              setStoreState('isShortestPathNode1Selectable', true)
+            }}
+          />
+        </div>
+
+        <div className="shortest-path-node">
+          {
+            shortestPathNode1 !== ''
+            && (
+              <Chip
+                label={getNode(shortestPathNode1).label}
+                removable
+                onRemove={() => {
+                  setStoreState('shortestPathNode1', '')
+                }}
+              />
+            )
+          }
+        </div>
+
+        <div className="shortest-path-button">
+          <Button
+            label={t('selectEndingNode')}
+            icon={isShortestPathNode2Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
+            onClick={() => {
+              setStoreState('isShortestPathNode1Selectable', false)
+              setStoreState('isShortestPathNode2Selectable', true)
+            }}
+          />
+        </div>
+
+        <div className="shortest-path-node">
+          {
+            shortestPathNode2 !== ''
+            && (
+              <Chip
+                label={getNode(shortestPathNode2).label}
+                removable
+                onRemove={() => setStoreState('shortestPathNode2', '')}
+              />
+            )
+          }
+        </div>
 
         <div className="shortest-path-toggle">
           <ToggleButton
@@ -75,7 +107,7 @@ const ShortestPath = ({
         <Button
           tooltip={t('showNeighbourhood')}
           className="shortest-path-button"
-          disabled={shortestPathSelectedNodes.length < 2}
+          disabled={shortestPathNode1 === '' || shortestPathNode2 === ''}
           icon="pi pi-chevron-right"
           iconPos="right"
           label={t('show')}
@@ -91,25 +123,30 @@ const ShortestPath = ({
 }
 
 ShortestPath.propTypes = {
-  classesFromApi: PropTypes.shape().isRequired,
-  removeFromArray: PropTypes.func.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  shortestPathSelectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   addToObject: PropTypes.func.isRequired,
+  shortestPathNode1: PropTypes.string.isRequired,
+  shortestPathNode2: PropTypes.string.isRequired,
+  isShortestPathNode1Selectable: PropTypes.bool.isRequired,
+  isShortestPathNode2Selectable: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
   classesFromApi,
-  removeFromArray,
   setStoreState,
-  shortestPathSelectedNodes,
   addToObject,
+  shortestPathNode1,
+  shortestPathNode2,
+  isShortestPathNode1Selectable,
+  isShortestPathNode2Selectable
 }) => ({
   classesFromApi,
-  removeFromArray,
   setStoreState,
-  shortestPathSelectedNodes,
   addToObject,
+  shortestPathNode1,
+  shortestPathNode2,
+  isShortestPathNode1Selectable,
+  isShortestPathNode2Selectable
 })
 
 export default connect(
