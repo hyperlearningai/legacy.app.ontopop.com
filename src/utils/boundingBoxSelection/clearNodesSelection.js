@@ -1,4 +1,3 @@
-import { NODE_BACKGROUND } from '../../constants/graph'
 import store from '../../store'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
@@ -8,13 +7,22 @@ import updateNodes from '../nodesEdgesUtils/updateNodes'
  */
 const clearNodesSelection = () => {
   const {
-    selectedBoundingBoxNodes
+    selectedBoundingBoxNodes,
+    stylingNodeBackgroundColor
   } = store.getState()
 
   if (selectedBoundingBoxNodes.length > 0) {
-    selectedBoundingBoxNodes.map((nodeId) => updateNodes(
-      [{ id: nodeId, color: { background: NODE_BACKGROUND } }]
-    ))
+    selectedBoundingBoxNodes.map((node) => {
+      const color = node.color || { }
+      color.background = stylingNodeBackgroundColor
+
+      return updateNodes(
+        [{
+          id: node.id,
+          color
+        }]
+      )
+    })
   }
 }
 

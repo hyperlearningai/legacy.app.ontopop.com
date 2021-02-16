@@ -24,6 +24,7 @@ const getState = jest.fn().mockImplementation(() => ({
   deletedNodes: [],
   availableNodes,
   availableEdges,
+  triplesPerNode,
   nodesIdsToDisplay: [
     'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
   ],
@@ -55,8 +56,7 @@ describe('setNodesIdsToDisplay', () => {
     const type = ALGO_TYPE_BOUNDING_BOX
 
     const options = {
-      selectedBoundingBoxNodes: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
-      triplesPerNode
+      selectedBoundingBoxNodes: [{ id: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY' }],
     }
 
     await setNodesIdsToDisplay({

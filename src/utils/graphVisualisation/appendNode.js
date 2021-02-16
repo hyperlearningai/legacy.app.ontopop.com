@@ -19,7 +19,11 @@ const appendNode = ({
     && nodeIdObject.label
     && nodeIdObject.label !== ''
   ) {
-    addNode(JSON.parse(JSON.stringify(nodeIdObject)))
+    addNode(JSON.parse(JSON.stringify({
+      ...nodeIdObject,
+      x: Math.floor((Math.random() * 100) + 1),
+      y: Math.floor((Math.random() * 100) + 1),
+    })))
     addedNodes.push(nodeId)
   }
 }

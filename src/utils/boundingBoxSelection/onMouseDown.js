@@ -27,10 +27,6 @@ const onMouseDown = ({
     const newBoundingBoxGeometry = JSON.parse(JSON.stringify(boundingBoxGeometry))
 
     if (isBoundingBoxDrawableNow) {
-      clearNodesSelection()
-
-      setStoreState('selectedBoundingBoxNodes', [])
-
       const {
         offsetX,
         offsetY,
@@ -45,6 +41,8 @@ const onMouseDown = ({
 
       setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
     } else {
+      clearNodesSelection()
+
       getNodesFromBoundingBox({
         setStoreState
       })

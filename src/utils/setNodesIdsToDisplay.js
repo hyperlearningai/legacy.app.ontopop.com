@@ -49,18 +49,17 @@ const setNodesIdsToDisplay = async ({
 
     const {
       selectedBoundingBoxNodes,
-      triplesPerNode
     } = options
 
+    const selectedBoundingBoxNodesIds = selectedBoundingBoxNodes.map((node) => node.id)
+
     const boundingBoxEdges = getBoundingBoxEdges({
-      selectedBoundingBoxNodes,
-      classesFromApi,
-      triplesPerNode
+      selectedBoundingBoxNodesIds,
     })
 
     setStoreState('highlightedNodes', [])
     setStoreState('edgesIdsToDisplay', boundingBoxEdges)
-    setStoreState('nodesIdsToDisplay', selectedBoundingBoxNodes.filter((nodeId) => !deletedNodes.includes(nodeId)))
+    setStoreState('nodesIdsToDisplay', selectedBoundingBoxNodesIds)
   }
 
   if (type === ALGO_TYPE_NEIGHBOURHOOD) {

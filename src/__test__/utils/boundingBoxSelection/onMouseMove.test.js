@@ -1,4 +1,4 @@
-import onMouseMove from '../../../utils/canvasUtils/onMouseMove'
+import onMouseMove from '../../../utils/boundingBoxSelection/onMouseMove'
 import store from '../../../store'
 
 const setStoreState = jest.fn()

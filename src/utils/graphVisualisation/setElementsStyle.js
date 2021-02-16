@@ -31,11 +31,6 @@ const setElementsStyle = ({
   // reset edges styles previously modified
   resetEdgesStyles()
 
-  // turn physics on to scatter nodes around
-  if (!currentPhysicsOnState) {
-    setStoreState('isPhysicsOn', true)
-  }
-
   // update node style
   if (stylingNodeByProperty.length > 0) {
     stylingNodeByProperty.map((property) => {
@@ -90,6 +85,14 @@ const setElementsStyle = ({
   //   nodesConnections,
   //   triplesPerNode,
   // })
+
+  // turn physics on to scatter nodes around
+  if (!currentPhysicsOnState) {
+    setStoreState('isPhysicsOn', true)
+  } else {
+    setStoreState('isPhysicsOn', false)
+    setStoreState('isPhysicsOn', true)
+  }
 
   // restore isPhysicsOn state
   setTimeout(() => {

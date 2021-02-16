@@ -1,6 +1,6 @@
 import { Network } from 'vis-network'
-import onMouseDown from './canvasUtils/onMouseDown'
-import onMouseMove from './canvasUtils/onMouseMove'
+import onMouseDown from './boundingBoxSelection/onMouseDown'
+import onMouseMove from './boundingBoxSelection/onMouseMove'
 import getPhysicsOptions from './getPhysicsOptions'
 
 /**
@@ -18,7 +18,6 @@ const setNetwork = ({
   availableNodes,
   availableEdges,
 }) => {
-  // at first canvas drawing, set physics and repulsion on for a better looking graph
   const physicsSettings = getPhysicsOptions()
 
   setStoreState('network', visJsRef.current
@@ -26,10 +25,6 @@ const setNetwork = ({
       nodes: availableNodes,
       edges: availableEdges
     }, physicsSettings))
-
-  // after first draw, turn off physics and repulsion as default value
-  setStoreState('isPhysicsOn', false)
-  // setStoreState('physicsRepulsion', false)
 
   const canvas = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
 

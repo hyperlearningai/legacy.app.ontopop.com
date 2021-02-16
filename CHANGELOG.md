@@ -25,7 +25,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-19 Nodes styling
 
 ### Changed
-- ONTOLOGY-20 Changes nodes and edges selection logic to single view rather than multi-view
+- ONTOLOGY-20 Changed bounding box selection styling logic
+- ONTOLOGY-20 Changed nodes and edges selection logic to single view rather than multi-view
+- ONTOLOGY-20 Changed free-text selection styling logic
 
 ### Deprecated
 
