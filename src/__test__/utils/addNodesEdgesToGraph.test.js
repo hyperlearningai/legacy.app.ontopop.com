@@ -19,22 +19,16 @@ jest.mock('../../utils/highlightSpiderableNodes')
 const setStoreState = jest.fn()
 const classesFromApi = OwlClasses
 const objectPropertiesFromApi = OwlObjectProperties
-const getState = jest.fn().mockImplementation(() => ({
+
+store.getState = jest.fn().mockImplementation(() => ({
   triplesPerNode,
   classesFromApi,
   objectPropertiesFromApi,
   nodesConnections: {},
   edgesConnections: {},
-  isPhysicsOn: false
+  isPhysicsOn: false,
+  stylingNodeCaptionProperty: 'rdfsLabel'
 }))
-store.getState = getState
-
-// availableNodes: new DataSet([{
-//   id: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
-//   color: {
-//     border: '#000000'
-//   }
-// }]),
 
 describe('addNodesEdgesToGraph', () => {
   afterEach(() => {

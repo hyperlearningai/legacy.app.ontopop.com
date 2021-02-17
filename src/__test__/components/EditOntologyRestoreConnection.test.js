@@ -10,19 +10,16 @@ const setup = ({
 }) => {
   const props = {
     type: 'connection',
-    opearation: 'restore',
+    operation: 'restore',
     setStoreState: jest.fn(),
     addToArray: jest.fn(),
     removeFromObject: jest.fn(),
     addToObject: jest.fn(),
     classesFromApi: OwlClasses,
     objectPropertiesFromApi: OwlObjectProperties,
-    selectedGraphVersion: 'original',
-    graphVersions: {
-      original: {
-        deletedConnections
-      }
-    }
+    deletedConnections,
+    deletedEdges: [],
+    deletedNodes: [],
   }
 
   const component = shallow(<EditOntologyRestoreEdgeNode {...props} />)

@@ -9,8 +9,6 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -32,8 +30,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -55,8 +51,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -78,8 +72,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -101,8 +93,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -124,8 +114,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_O
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -147,8 +135,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -170,8 +156,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_T
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -193,8 +177,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -216,8 +198,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -239,8 +219,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -262,8 +240,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -285,8 +261,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -308,8 +282,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -331,8 +303,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STYLIN
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }

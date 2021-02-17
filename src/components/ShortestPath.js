@@ -26,7 +26,7 @@ const ShortestPath = ({
 }) => {
   const { t } = useTranslation()
 
-  const [isNodeOverlay, setNodeOverlay] = useState(false)
+  const [isNodeOverlay, setNodesOverlay] = useState(false)
 
   useEffect(() => () => resetShortestPathNodes({
     setStoreState
@@ -95,7 +95,7 @@ const ShortestPath = ({
         <div className="shortest-path-toggle">
           <ToggleButton
             checked={isNodeOverlay}
-            onChange={() => setNodeOverlay(!isNodeOverlay)}
+            onChange={() => setNodesOverlay(!isNodeOverlay)}
             onLabel={t('isNodeOverlay')}
             offLabel={t('isNotNodeOverlay')}
             onIcon="pi pi-check"

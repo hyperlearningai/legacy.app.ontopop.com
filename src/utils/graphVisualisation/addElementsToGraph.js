@@ -7,7 +7,7 @@ import clearNodes from '../nodesEdgesUtils/clearNodes'
 import clearEdges from '../nodesEdgesUtils/clearEdges'
 import countNodes from '../nodesEdgesUtils/countNodes'
 import countEdges from '../nodesEdgesUtils/countEdges'
-import setElementsStyle from './setElementsStyle'
+import setElementsStyle from '../networkStyling/setElementsStyle'
 
 /**
  * Update store and graph based on node IDs to display
@@ -24,7 +24,8 @@ const addElementsToGraph = ({
     nodesIdsToDisplay,
     objectPropertiesFromApi,
     triplesPerNode,
-    stylingNodeCaptionProperty
+    stylingNodeCaptionProperty,
+    isPhysicsOn
   } = store.getState()
 
   // reset nodes/edges (display at the end of the function)
@@ -63,7 +64,7 @@ const addElementsToGraph = ({
         if (!objectPropertiesFromApi[predicate]) return false
 
         const {
-          edgeUniqueId,
+          id,
           edgeConnection,
           edge,
           fromObject,
@@ -76,8 +77,8 @@ const addElementsToGraph = ({
 
         const isEdgeDisplayable = showEdgeCheck({
           addedEdges,
-          edgeUniqueId,
-          edgeId: edge.edgeId,
+          id,
+          predicate,
           from,
           to,
           edgesIdsToDisplay,
@@ -87,7 +88,7 @@ const addElementsToGraph = ({
         if (isEdgeDisplayable) {
           addConnections({
             addedEdges,
-            edgeUniqueId,
+            id,
             edge,
             edgesConnections,
             edgeConnection,
@@ -122,9 +123,25 @@ const addElementsToGraph = ({
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
 
-  setElementsStyle({
-    setStoreState
-  })
+  // set styles and scatter nodes in graph
+  const currentPhysicsOnState = isPhysicsOn
+
+  setElementsStyle()
+
+  // turn physics on to scatter nodes around
+  if (!currentPhysicsOnState) {
+    setStoreState('isPhysicsOn', true)
+  } else {
+    setStoreState('isPhysicsOn', false)
+    setStoreState('isPhysicsOn', true)
+  }
+
+  // restore isPhysicsOn state
+  setTimeout(() => {
+    if (!currentPhysicsOnState) {
+      setStoreState('isPhysicsOn', false)
+    }
+  }, 3000)
 }
 
 export default addElementsToGraph

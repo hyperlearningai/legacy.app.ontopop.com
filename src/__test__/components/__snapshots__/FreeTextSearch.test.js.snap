@@ -9,8 +9,6 @@ exports[`FreeTextSearch should match snapshot  1`] = `
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -5878,12 +5876,6 @@ Four subdomains have been created to cover all the universals related to each of
       },
     }
   }
-  edgesIdsToDisplay={
-    Array [
-      "http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB",
-      "http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU",
-    ]
-  }
   freeTextSelectedElement="http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay"
   freeTextSelection={
     Object {
@@ -5893,7 +5885,6 @@ Four subdomains have been created to cover all the universals related to each of
     }
   }
   mapToProps={[Function]}
-  nodesIdsToDisplay={Array []}
   objectPropertiesFromApi={
     Object {
       "http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM": Object {

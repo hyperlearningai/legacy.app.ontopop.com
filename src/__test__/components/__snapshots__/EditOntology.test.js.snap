@@ -9,26 +9,18 @@ exports[`EditOntology should match snapshot  1`] = `
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
-  graphVersions={
-    Object {
-      "original": Object {
-        "addedNodes": Array [],
-        "classesFromApi": Object {},
-        "classesFromApiBackup": Object {},
-        "deletedNodes": Array [],
-        "objectPropertiesFromApi": Object {},
-        "objectPropertiesFromApiBackup": Object {},
-        "updatedNodes": Array [],
-      },
-    }
-  }
+  classesFromApi={Object {}}
+  classesFromApiBackup={Object {}}
+  deletedEdges={Array []}
+  deletedNodes={Array []}
   mapToProps={[Function]}
-  selectedGraphVersion="original"
+  objectPropertiesFromApi={Object {}}
+  objectPropertiesFromApiBackup={Object {}}
+  stylingEdgeCaptionProperty="rdfsLabel"
+  stylingNodeCaptionProperty="rdfsLabel"
 >
   <Component />
 </Connect>

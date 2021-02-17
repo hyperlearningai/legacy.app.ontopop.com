@@ -25,7 +25,7 @@ const getEdgeObject = ({
     objectPropertiesFromApi,
   } = store.getState()
 
-  const edgeUniqueId = generatePredicateId({
+  const id = generatePredicateId({
     predicate,
     from,
     to
@@ -37,31 +37,26 @@ const getEdgeObject = ({
   fromObject.label = fromObject[stylingNodeCaptionProperty]
     ? fromObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
-  const fromLabel = fromObject[stylingNodeCaptionProperty]
   const toObject = classesFromApi[to]
   toObject.id = to
   toObject.label = toObject[stylingNodeCaptionProperty]
     ? toObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
-  const toLabel = toObject[stylingNodeCaptionProperty]
-
   const edgeConnection = {
     from,
-    fromLabel,
     to,
-    toLabel,
   }
 
   const edge = {
     ...edgeConnection,
     ...objectPropertiesFromApi[predicate],
     label: edgeLabel,
-    edgeId: predicate,
-    id: edgeUniqueId,
+    predicate,
+    id,
   }
 
   return ({
-    edgeUniqueId,
+    id,
     edgeConnection,
     edge,
     fromObject,

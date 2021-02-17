@@ -9,8 +9,6 @@ exports[`EditOntologyDeleteEdgeNode should match snapshot when type edge 1`] = `
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -1091,8 +1089,6 @@ exports[`EditOntologyDeleteEdgeNode should match snapshot when type node 1`] = `
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }

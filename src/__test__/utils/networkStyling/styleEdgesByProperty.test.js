@@ -1,4 +1,4 @@
-import styleEdgesByProperty from '../../../utils/graphVisualisation/styleEdgesByProperty'
+import styleEdgesByProperty from '../../../utils/networkStyling/styleEdgesByProperty'
 import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 

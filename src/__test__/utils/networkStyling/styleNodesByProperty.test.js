@@ -1,4 +1,4 @@
-import styleNodesByProperty from '../../../utils/graphVisualisation/styleNodesByProperty'
+import styleNodesByProperty from '../../../utils/networkStyling/styleNodesByProperty'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 

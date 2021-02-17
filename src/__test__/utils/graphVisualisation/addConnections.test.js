@@ -10,12 +10,12 @@ describe('addConnections', () => {
 
   it('should work correctly', async () => {
     const addedEdges = []
-    const edgeUniqueId = 'pred_from_to'
+    const id = 'pred_from_to'
     const from = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
     const to = 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6'
     const predicate = 'http://webprotege.stanford.edu/abc'
     const edge = {
-      id: edgeUniqueId,
+      predicate: id,
       from,
       to
     }
@@ -27,14 +27,14 @@ describe('addConnections', () => {
 
     await addConnections({
       addedEdges,
-      edgeUniqueId,
+      id,
       edge,
       edgesConnections,
       edgeConnection,
-      predicate,
       from,
+      nodesConnections,
+      predicate,
       to,
-      nodesConnections
     })
 
     expect(addEdge).toHaveBeenCalledWith(edge)
@@ -47,17 +47,17 @@ describe('addConnections', () => {
       'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M': [
         {
           from: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-          id: 'pred_from_to',
-          to: 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6'
-        }
+          predicate: 'http://webprotege.stanford.edu/abc',
+          to: 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6',
+        },
       ],
       'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6': [
         {
           from: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-          id: 'pred_from_to',
-          to: 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6'
-        }
-      ]
+          predicate: 'http://webprotege.stanford.edu/abc',
+          to: 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6',
+        },
+      ],
     })
   })
 })

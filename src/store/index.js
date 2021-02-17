@@ -38,6 +38,8 @@ const initialState = {
   // data loaded at startup
   classesFromApi: {},
   objectPropertiesFromApi: {},
+  classesFromApiBackup: {},
+  objectPropertiesFromApiBackup: {},
   triplesPerNode: {},
   network: undefined,
   annotationProperties: [],
@@ -52,6 +54,15 @@ const initialState = {
   addedConnections: [],
   availableNodesCount: 0,
   availableEdgesCount: 0,
+
+  // Data visualisation
+  nodesIdsToDisplay: [],
+  edgesIdsToDisplay: [],
+  availableNodes: new DataSet([]),
+  availableEdges: new DataSet([]),
+  nodesConnections: {},
+  edgesConnections: {},
+  highlightedNodes: [],
 
   // nodes styling
   stylingEdgeLineColor: EDGE_COLOR,
@@ -153,17 +164,6 @@ const initialState = {
   isPhysicsOn: false,
   physicsHierarchicalView: false,
   physicsRepulsion: true,
-
-  // Data visualisation
-  nodesIdsToDisplay: [],
-  edgesIdsToDisplay: [],
-  availableNodes: new DataSet([]),
-  availableEdges: new DataSet([]),
-  // selectedNodes: [],
-  selectedEdges: [],
-  nodesConnections: {},
-  edgesConnections: {},
-  highlightedNodes: [],
 
   // custom query
   customQueryOutput: undefined,

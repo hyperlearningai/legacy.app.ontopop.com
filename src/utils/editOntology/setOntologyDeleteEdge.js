@@ -3,38 +3,81 @@ import store from '../../store'
 import { SUBCLASSOF_PROPERTY } from '../../constants/graph'
 import { generatePredicateId } from '../../constants/functions'
 import removeEdge from '../nodesEdgesUtils/removeEdge'
+import setElementsStyle from '../networkStyling/setElementsStyle'
 
 /**
- * Delete ontology nodes
+ * Delete ontology edges
  * @param  {Object}         params
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Function}       params.addToObject                Add to object action
  * @return {undefined}
  */
 const setOntologyDeleteEdge = ({
   selectedElement,
   setStoreState,
-  addToObject
 }) => {
   const {
-    graphVersions,
     objectPropertiesFromApi,
     deletedEdges,
-    selectedGraphVersion,
     classesFromApi,
+    nodesConnections,
+    triplesPerNode,
+    edgesConnections
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
-  const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
   const newDeletedEdges = deletedEdges.slice()
+  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
+  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
+  const newEdgesConnections = JSON.parse(JSON.stringify(edgesConnections))
 
   if (selectedElement.length > 0) {
     // delete edges from object properties
     selectedElement.map((edgeId) => {
       if (!newDeletedEdges.includes(edgeId)) {
         newDeletedEdges.push(edgeId)
+      }
+
+      // remove connection with edge
+      if (newEdgesConnections[edgeId]) {
+        const connections = newEdgesConnections[edgeId]
+
+        connections.map((connection) => {
+          const {
+            from,
+            predicate,
+            to
+          } = connection
+
+          if (newNodesConnections[from]) {
+            const updatedConnections = newNodesConnections[from].filter((triple) => (triple.predicate !== predicate))
+
+            newNodesConnections[from] = updatedConnections
+          }
+
+          if (newTriplesPerNode[from]) {
+            const updatedConnections = newTriplesPerNode[from].filter((triple) => (triple.predicate !== predicate))
+
+            newTriplesPerNode[from] = updatedConnections
+          }
+
+          if (newNodesConnections[to]) {
+            const updatedConnections = newNodesConnections[to].filter((triple) => (triple.predicate !== predicate))
+
+            newNodesConnections[to] = updatedConnections
+          }
+
+          if (newTriplesPerNode[to]) {
+            const updatedConnections = newTriplesPerNode[to].filter((triple) => (triple.predicate !== predicate))
+
+            newTriplesPerNode[to] = updatedConnections
+          }
+
+          return true
+        })
+
+        delete newEdgesConnections[edgeId]
       }
 
       delete newObjectPropertiesFromApi[edgeId]
@@ -67,14 +110,13 @@ const setOntologyDeleteEdge = ({
     })
   }
 
-  newGraphVersion.classesFromApi = newClassesFromApi
-  newGraphVersion.objectPropertiesFromApi = newObjectPropertiesFromApi
-  newGraphVersion.deletedEdges = newDeletedEdges
-
-  addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
+  setStoreState('nodesConnections', newNodesConnections)
+  setStoreState('edgesConnections', newEdgesConnections)
+  setStoreState('triplesPerNode', newTriplesPerNode)
   setStoreState('deletedEdges', newDeletedEdges)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
+  setElementsStyle()
 }
 
 export default setOntologyDeleteEdge

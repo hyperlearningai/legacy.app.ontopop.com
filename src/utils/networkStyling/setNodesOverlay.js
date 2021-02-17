@@ -3,10 +3,10 @@ import getNode from '../nodesEdgesUtils/getNode'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
- * Set node overlay
+ * Set nodes overlay
  * @return { undefined }
  */
-const setNodeOverlay = () => {
+const setNodesOverlay = () => {
   const {
     shortestPathNodes,
     isNodeOverlay,
@@ -33,4 +33,4 @@ const setNodeOverlay = () => {
   }
 }
 
-export default setNodeOverlay
+export default setNodesOverlay

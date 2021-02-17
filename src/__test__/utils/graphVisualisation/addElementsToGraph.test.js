@@ -5,9 +5,9 @@ import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties'
 import { graphVisualisationResults } from '../../fixtures/graphVisualisationResults'
 import store from '../../../store'
-import setElementsStyle from '../../../utils/graphVisualisation/setElementsStyle'
+import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 
-jest.mock('../../../utils/graphVisualisation/setElementsStyle')
+jest.mock('../../../utils/networkStyling/setElementsStyle')
 const setStoreState = jest.fn()
 
 const availableNodes = new DataSet()
@@ -36,9 +36,12 @@ const getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
   triplesPerNode,
   stylingNodeCaptionProperty,
+  isPhysicsOn: false,
 }))
 
 store.getState = getState
+
+jest.useFakeTimers()
 
 describe('addElementsToGraph', () => {
   afterEach(() => {
@@ -51,8 +54,9 @@ describe('addElementsToGraph', () => {
     })
 
     expect(setStoreState.mock.calls).toEqual(graphVisualisationResults)
-    expect(setElementsStyle).toHaveBeenCalledWith({
-      setStoreState
-    })
+    expect(setElementsStyle).toHaveBeenCalledWith()
+    expect(setTimeout).toHaveBeenCalledWith(
+      expect.any(Function), 3000
+    )
   })
 })

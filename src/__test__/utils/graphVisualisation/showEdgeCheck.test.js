@@ -12,25 +12,25 @@ describe('showEdgeCheck', () => {
       'http://webprotege.stanford.edu/RCxwL4b8LCMbVkVPEbOn78g'
     ]
 
-    const to = 'not-present'
+    const to = 'present'
     const addedEdges = []
-    const edgeUniqueId = ''
-    const edgeId = ''
+    const predicate = ''
+    const id = ''
     const from = ''
     const edgesIdsToDisplay = []
 
     expect(showEdgeCheck({
       addedEdges,
-      edgeUniqueId,
-      edgeId,
-      from,
-      to,
+      predicate,
       edgesIdsToDisplay,
-      nodesIdsToDisplay
+      id,
+      from,
+      nodesIdsToDisplay,
+      to,
     })).toEqual(false)
   })
 
-  it('should return false when edgeId not in edgesIdsToDisplay', async () => {
+  it('should return false when id not in edgesIdsToDisplay', async () => {
     const nodesIdsToDisplay = [
       'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
       'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6',
@@ -39,23 +39,25 @@ describe('showEdgeCheck', () => {
 
     const to = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
     const addedEdges = []
-    const edgeUniqueId = ''
-    const edgeId = 'not-present'
+    const predicate = ''
+    const id = 'not-present'
     const from = 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6'
-    const edgesIdsToDisplay = ['http://webprotege.stanford.edu/edgeabc']
+    const edgesIdsToDisplay = [
+      'http://webprotege.stanford.edu/edgeabc'
+    ]
 
     expect(showEdgeCheck({
       addedEdges,
-      edgeUniqueId,
-      edgeId,
-      from,
-      to,
+      predicate,
       edgesIdsToDisplay,
-      nodesIdsToDisplay
+      id,
+      from,
+      nodesIdsToDisplay,
+      to,
     })).toEqual(false)
   })
 
-  it('should return false when edgeUniqueId in addedEdges', async () => {
+  it('should return false when predicate in addedEdges', async () => {
     const nodesIdsToDisplay = [
       'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
       'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6',
@@ -63,24 +65,24 @@ describe('showEdgeCheck', () => {
     ]
 
     const to = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
-    const addedEdges = ['http://unique-edge-id']
-    const edgeUniqueId = 'http://unique-edge-id'
-    const edgeId = 'not-present'
     const from = 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6'
+    const predicate = 'http://unique-edge-id'
+    const id = `${predicate}___${from}___${to}`
+    const addedEdges = ['http://unique-edge-id']
     const edgesIdsToDisplay = ['http://webprotege.stanford.edu/edgeabc']
 
     expect(showEdgeCheck({
       addedEdges,
-      edgeUniqueId,
-      edgeId,
-      from,
-      to,
+      predicate,
       edgesIdsToDisplay,
-      nodesIdsToDisplay
+      id,
+      from,
+      nodesIdsToDisplay,
+      to,
     })).toEqual(false)
   })
 
-  it('should return true when edgeUniqueId in addedEdges', async () => {
+  it('should return true when predicate not in addedEdges', async () => {
     const nodesIdsToDisplay = [
       'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
       'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6',
@@ -88,20 +90,20 @@ describe('showEdgeCheck', () => {
     ]
 
     const to = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
-    const addedEdges = ['http://unique-edge-id']
-    const edgeUniqueId = 'http://unique-edge-id-not-present'
-    const edgeId = 'http://webprotege.stanford.edu/edgeabc'
     const from = 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6'
+    const predicate = 'http://webprotege.stanford.edu/edgeabc'
+    const id = `${predicate}___${from}___${to}`
+    const addedEdges = ['http://olde-dge']
     const edgesIdsToDisplay = ['http://webprotege.stanford.edu/edgeabc']
 
     expect(showEdgeCheck({
       addedEdges,
-      edgeUniqueId,
-      edgeId,
-      from,
-      to,
+      predicate,
       edgesIdsToDisplay,
-      nodesIdsToDisplay
+      id,
+      from,
+      nodesIdsToDisplay,
+      to,
     })).toEqual(true)
   })
 })

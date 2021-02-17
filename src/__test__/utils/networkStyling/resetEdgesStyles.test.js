@@ -1,4 +1,4 @@
-import resetEdgesStyles from '../../../utils/graphVisualisation/resetEdgesStyles'
+import resetEdgesStyles from '../../../utils/networkStyling/resetEdgesStyles'
 import store from '../../../store'
 import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'

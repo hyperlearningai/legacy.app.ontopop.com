@@ -9,8 +9,6 @@ exports[`EditOntologyForm should match snapshot when add operation and edge type
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -6769,8 +6767,6 @@ exports[`EditOntologyForm should match snapshot when add operation and node type
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -13529,8 +13525,6 @@ exports[`EditOntologyForm should match snapshot when update operation and edge t
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -20289,8 +20283,6 @@ exports[`EditOntologyForm should match snapshot when update operation and node t
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }

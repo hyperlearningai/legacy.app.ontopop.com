@@ -15,8 +15,14 @@ import EditOntologyRestoreEdgeNode from './EditOntologyRestoreEdgeNode'
 import EditOntologyRestoreConnection from './EditOntologyRestoreConnection'
 
 const EditOntology = ({
-  selectedGraphVersion,
-  graphVersions,
+  classesFromApi,
+  objectPropertiesFromApi,
+  classesFromApiBackup,
+  objectPropertiesFromApiBackup,
+  deletedNodes,
+  deletedEdges,
+  stylingNodeCaptionProperty,
+  stylingEdgeCaptionProperty
 }) => {
   const { t } = useTranslation()
 
@@ -66,31 +72,31 @@ const EditOntology = ({
     </span>
   )
 
-  const availableNodes = Object.keys(graphVersions[selectedGraphVersion].classesFromApi).map(
+  const availableNodes = Object.keys(classesFromApi).map(
     (nodeId) => ({
       value: nodeId,
-      label: graphVersions[selectedGraphVersion].classesFromApi[nodeId].rdfsLabel || nodeId
+      label: classesFromApi[nodeId][stylingNodeCaptionProperty] || nodeId
     })
   )
 
-  const availableEdges = Object.keys(graphVersions[selectedGraphVersion].objectPropertiesFromApi).map(
+  const availableEdges = Object.keys(objectPropertiesFromApi).map(
     (edgeId) => ({
       value: edgeId,
-      label: graphVersions[selectedGraphVersion].objectPropertiesFromApi[edgeId].rdfsLabel || edgeId
+      label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || edgeId
     })
   ).filter((item) => !REQUIRED_PREDICATES.includes(item.value))
 
-  const deletedNodes = graphVersions[selectedGraphVersion].deletedNodes?.map(
+  const deletedNodesList = deletedNodes?.map(
     (nodeId) => ({
       value: nodeId,
-      label: graphVersions[selectedGraphVersion].classesFromApiBackup[nodeId] ? graphVersions[selectedGraphVersion].classesFromApiBackup[nodeId].rdfsLabel : nodeId
+      label: classesFromApiBackup[nodeId] ? classesFromApiBackup[nodeId][stylingNodeCaptionProperty] : nodeId
     })
   )
 
-  const deletedEdges = graphVersions[selectedGraphVersion].deletedEdges?.map(
+  const deletedEdgesList = deletedEdges?.map(
     (edgeId) => ({
       value: edgeId,
-      label: graphVersions[selectedGraphVersion].objectPropertiesFromApiBackup[edgeId] ? graphVersions[selectedGraphVersion].objectPropertiesFromApiBackup[edgeId].rdfsLabel : edgeId
+      label: objectPropertiesFromApiBackup[edgeId] ? objectPropertiesFromApiBackup[edgeId][stylingEdgeCaptionProperty] : edgeId
     })
   )
 
@@ -214,8 +220,8 @@ const EditOntology = ({
                     <EditOntologyRestoreEdgeNode
                       type={type}
                       operation={operation}
-                      optionNodes={deletedNodes}
-                      optionEdges={deletedEdges}
+                      optionNodes={deletedNodesList}
+                      optionEdges={deletedEdgesList}
                     />
                   )
               }
@@ -228,22 +234,34 @@ const EditOntology = ({
 }
 
 EditOntology.propTypes = {
-  selectedGraphVersion: PropTypes.string.isRequired,
-  graphVersions: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
+  classesFromApiBackup: PropTypes.shape().isRequired,
+  objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
+  deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
+  stylingNodeCaptionProperty: PropTypes.string.isRequired,
+  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
-  selectedGraphVersion,
-  graphVersions,
   classesFromApi,
-  objectPropertiesFromApi
+  objectPropertiesFromApi,
+  classesFromApiBackup,
+  objectPropertiesFromApiBackup,
+  deletedNodes,
+  deletedEdges,
+  stylingNodeCaptionProperty,
+  stylingEdgeCaptionProperty
 }) => ({
-  selectedGraphVersion,
-  graphVersions,
   classesFromApi,
-  objectPropertiesFromApi
+  objectPropertiesFromApi,
+  classesFromApiBackup,
+  objectPropertiesFromApiBackup,
+  deletedNodes,
+  deletedEdges,
+  stylingNodeCaptionProperty,
+  stylingEdgeCaptionProperty
 })
 
 export default connect(

@@ -18,16 +18,28 @@ const EditOntologyRestoreConnection = ({
   addToObject,
   classesFromApi,
   objectPropertiesFromApi,
-  selectedGraphVersion,
-  graphVersions,
+  deletedConnections,
+  deletedEdges,
+  deletedNodes
 }) => {
   const { t } = useTranslation()
 
   const [selectedElement, setSelectedElement] = useState(undefined)
   const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
-  const optionConnections = graphVersions[selectedGraphVersion].deletedConnections.length > 0
-    ? graphVersions[selectedGraphVersion].deletedConnections.map((edgeId) => {
+  const optionConnections = deletedConnections.length > 0
+    ? deletedConnections.filter(
+      (edgeId) => {
+        const [predicate, from, to] = getEdgeAndNodes(edgeId)
+
+        const isPredicateDeleted = deletedEdges.includes(predicate)
+        const isFromNodeDeleted = deletedNodes.includes(from)
+        const isToNodeDeleted = deletedNodes.includes(to)
+
+        const isVisible = !isPredicateDeleted && !isFromNodeDeleted && !isToNodeDeleted
+        return isVisible
+      }
+    ).map((edgeId) => {
       const [predicate, from, to] = getEdgeAndNodes(edgeId)
 
       const fromLabel = classesFromApi[from][LABEL_PROPERTY]
@@ -112,20 +124,23 @@ EditOntologyRestoreConnection.propTypes = {
   addToObject: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
-  graphVersions: PropTypes.shape().isRequired,
-  selectedGraphVersion: PropTypes.string.isRequired,
+  deletedConnections: PropTypes.arrayOf(PropTypes.string).isRequired,
+  deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
+  deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 const mapToProps = ({
-  selectedGraphVersion,
-  graphVersions,
   classesFromApi,
-  objectPropertiesFromApi
+  objectPropertiesFromApi,
+  deletedConnections,
+  deletedEdges,
+  deletedNodes
 }) => ({
-  selectedGraphVersion,
-  graphVersions,
   classesFromApi,
-  objectPropertiesFromApi
+  objectPropertiesFromApi,
+  deletedConnections,
+  deletedEdges,
+  deletedNodes
 })
 
 export default connect(

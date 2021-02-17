@@ -1,4 +1,4 @@
-import resetNodesStyles from '../../../utils/graphVisualisation/resetNodesStyles'
+import resetNodesStyles from '../../../utils/networkStyling/resetNodesStyles'
 import store from '../../../store'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'

@@ -17,6 +17,7 @@ import {
   EDGE_LINE_STYLE_OPTIONS,
   EDGE_LINE_STYLE_TEMPLATE
 } from '../constants/graph'
+import setEdgesStylesByProperty from '../utils/networkStyling/setEdgesStylesByProperty'
 
 const NetworkStylingEdge = ({
   setStoreState,
@@ -34,6 +35,7 @@ const NetworkStylingEdge = ({
   stylingEdgeByProperty
 }) => {
   const isInitialMount = useRef(true)
+  const isInitialMountByProperties = useRef(true)
 
   const { t } = useTranslation()
 
@@ -46,6 +48,17 @@ const NetworkStylingEdge = ({
   },
   [
     stylingEdgeCaptionProperty
+  ])
+
+  useEffect(() => {
+    if (isInitialMountByProperties.current) {
+      isInitialMountByProperties.current = false
+    } else {
+      setEdgesStylesByProperty()
+    }
+  },
+  [
+    stylingEdgeByProperty
   ])
 
   const captionAlignmentOptions = EDGE_ALIGNMENT_OPTIONS.map((shape) => ({

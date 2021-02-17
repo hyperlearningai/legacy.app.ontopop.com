@@ -2,10 +2,15 @@ import axios from 'axios'
 import getNodeProperties from '../../utils/getNodeProperties'
 import en from '../../i18n/en'
 import showNotification from '../../utils/showNotification'
+import store from '../../store'
 
 jest.mock('../../utils/showNotification')
 const t = (id) => en[id]
 const setStoreState = jest.fn()
+
+store.getState = jest.fn().mockImplementation(() => ({
+  stylingNodeCaptionProperty: 'rdfsLabel'
+}))
 
 describe('getNodeProperties', () => {
   afterEach(() => {

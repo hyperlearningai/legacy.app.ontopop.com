@@ -12,10 +12,8 @@ import highlightElement from '../utils/freeTextSearch/highlightElement'
 
 const FreeTextSearch = ({
   classesFromApi,
-  edgesIdsToDisplay,
   freeTextSelection,
   freeTextSelectedElement,
-  nodesIdsToDisplay,
   objectPropertiesFromApi,
   removeFromObject,
   setStoreState,
@@ -60,10 +58,6 @@ const FreeTextSearch = ({
             setSearch(e.target.value)
             searchElement({
               search: e.target.value,
-              nodesIdsToDisplay,
-              edgesIdsToDisplay,
-              classesFromApi,
-              objectPropertiesFromApi,
               setStoreState
             })
           }}
@@ -129,8 +123,6 @@ FreeTextSearch.propTypes = {
   freeTextSelectedElement: PropTypes.string.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
-  nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  edgesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
   stylingNodeCaptionProperty: PropTypes.string.isRequired,
   stylingEdgeCaptionProperty: PropTypes.string.isRequired,
 }
@@ -140,8 +132,6 @@ const mapToProps = ({
   freeTextSelectedElement,
   classesFromApi,
   objectPropertiesFromApi,
-  nodesIdsToDisplay,
-  edgesIdsToDisplay,
   stylingNodeCaptionProperty,
   stylingEdgeCaptionProperty
 }) => ({
@@ -149,8 +139,6 @@ const mapToProps = ({
   freeTextSelectedElement,
   classesFromApi,
   objectPropertiesFromApi,
-  nodesIdsToDisplay,
-  edgesIdsToDisplay,
   stylingNodeCaptionProperty,
   stylingEdgeCaptionProperty
 })

@@ -1,4 +1,4 @@
-import setNodeOverlay from '../../../utils/graphVisualisation/setNodeOverlay'
+import setNodesOverlay from '../../../utils/networkStyling/setNodesOverlay'
 import store from '../../../store'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
@@ -8,7 +8,7 @@ jest.mock('../../../utils/nodesEdgesUtils/getNode')
 
 const setStoreState = jest.fn()
 
-describe('setNodeOverlay', () => {
+describe('setNodesOverlay', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -24,7 +24,7 @@ describe('setNodeOverlay', () => {
       id: 'node-123',
     }]))
 
-    await setNodeOverlay({
+    await setNodesOverlay({
       setStoreState
     })
 
@@ -42,7 +42,7 @@ describe('setNodeOverlay', () => {
       id: 'node-123',
     }]))
 
-    await setNodeOverlay({
+    await setNodesOverlay({
       setStoreState
     })
 

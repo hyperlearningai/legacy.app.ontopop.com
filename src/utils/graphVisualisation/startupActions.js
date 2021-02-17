@@ -62,6 +62,8 @@ const startupActions = async ({
 
   setStoreState('classesFromApi', classes)
   setStoreState('objectPropertiesFromApi', newObjectProperties)
+  setStoreState('classesFromApiBackup', classes)
+  setStoreState('objectPropertiesFromApiBackup', newObjectProperties)
   // setStoreState('deletedNodes', deletedNodes)
   // setStoreState('addedNodes', addedNodes)
   // setStoreState('updatedNodes', updatedNodes)

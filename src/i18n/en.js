@@ -251,6 +251,7 @@ export default {
   idExists: 'ID already exists',
   noDeletedElements: 'No deleted elements to restore!',
   nodeIdAlreadyExists: 'Node ID already exists',
+  edgeIdAlreadyExists: 'Edge ID already exists',
   connection: 'Connection',
   chooseElementsToConnect: 'Choose elements to connect',
   fromNode: 'From node',

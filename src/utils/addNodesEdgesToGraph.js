@@ -25,7 +25,8 @@ const addNodesEdgesToGraph = ({
     objectPropertiesFromApi,
     nodesConnections,
     edgesConnections,
-    isPhysicsOn
+    isPhysicsOn,
+    stylingNodeCaptionProperty
   } = store.getState()
 
   const triples = triplesPerNode[nodeId]
@@ -53,14 +54,16 @@ const addNodesEdgesToGraph = ({
           from,
           to,
           id,
-          label: objectPropertiesFromApi[predicate]?.rdfsLabel || SUB_CLASS_OF_LABEL,
+          label: objectPropertiesFromApi[predicate]
+            ? objectPropertiesFromApi[predicate][stylingNodeCaptionProperty]
+            : SUB_CLASS_OF_LABEL,
         }
 
         const edgeObject = {
           ...edgeGraphObject,
           edgeId: predicate,
-          fromLabel: classesFromApi[from].rdfsLabel,
-          toLabel: classesFromApi[from].rdfsLabel,
+          fromLabel: classesFromApi[from][stylingNodeCaptionProperty],
+          toLabel: classesFromApi[from][stylingNodeCaptionProperty],
         }
 
         // check if node exists
@@ -71,7 +74,9 @@ const addNodesEdgesToGraph = ({
         if (isNodeNotAvailable) {
           const nodeGraphObject = {
             id: nodeIdToCheck,
-            label: classesFromApi[nodeIdToCheck]?.rdfsLabel.replace(/ /g, '\n') || ''
+            label: classesFromApi[nodeIdToCheck]
+              && classesFromApi[nodeIdToCheck][stylingNodeCaptionProperty]
+              ? classesFromApi[nodeIdToCheck][stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
           }
 
           addNode(nodeGraphObject)

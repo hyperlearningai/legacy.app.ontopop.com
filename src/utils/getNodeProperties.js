@@ -8,6 +8,7 @@ import {
   REQUIRED_PROPERTIES,
   UNIQUE_PROPERTY
 } from '../constants/graph'
+import store from '../store'
 
 /**
  * Get node properties from API
@@ -20,6 +21,10 @@ const getNodeProperties = async ({
   setStoreState,
   t
 }) => {
+  const {
+    stylingNodeCaptionProperty
+  } = store.getState()
+
   setStoreState('loading', true)
 
   try {
@@ -42,7 +47,7 @@ const getNodeProperties = async ({
     if (annotationProperties.length === 0) return []
 
     const propertiesList = annotationProperties.map((property) => {
-      const label = data[property].rdfsLabel || property?.split('/').pop()
+      const label = data[property][stylingNodeCaptionProperty] || property?.split('/').pop()
 
       return ({
         id: property,

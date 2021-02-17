@@ -9,7 +9,6 @@ import setNodesIdsToDisplay from '../utils/setNodesIdsToDisplay'
 import GraphContextMenu from './GraphContextMenu'
 import startupActions from '../utils/graphVisualisation/startupActions'
 import setNetwork from '../utils/setNetwork'
-// import serialiseNodesEdges from '../utils/serialiseNodesEdges'
 import setNetworkMethods from '../utils/setNetworkMethods'
 import getPhysicsOptions from '../utils/getPhysicsOptions'
 import addElementsToGraph from '../utils/graphVisualisation/addElementsToGraph'
@@ -268,7 +267,6 @@ const mapToProps = ({
   stylingNodeHighlightBackgroundColor,
   stylingNodeTextColor,
   searchFilter,
-  selectedEdges,
   selectedNeighbourNode,
   selectedNodes,
   isPhysicsOn,
@@ -308,7 +306,6 @@ const mapToProps = ({
   stylingNodeHighlightBackgroundColor,
   stylingNodeTextColor,
   searchFilter,
-  selectedEdges,
   selectedNeighbourNode,
   selectedNodes,
   isPhysicsOn,

@@ -6,7 +6,7 @@ import addEdge from '../nodesEdgesUtils/addEdge'
  * Update edge and node-related arrays/objects with connections
  * @param  {Object}   params
  * @param  {Array}    params.addedEdges               Array of edges IDs being added
- * @param  {String}   params.edgeUniqueId             Unique edge id (predicate___from___to)
+ * @param  {String}   params.id                       Unique edge id (predicate___from___to)
  * @param  {Object}   params.edge                     Edge object
  * @param  {Object}   params.edgesConnections         NOrmalised List of connections per edge
  * @param  {Array}    params.edgeConnection           Array of connections per edge
@@ -18,7 +18,7 @@ import addEdge from '../nodesEdgesUtils/addEdge'
  */
 const addConnections = ({
   addedEdges,
-  edgeUniqueId,
+  id,
   edge,
   edgesConnections,
   edgeConnection,
@@ -27,9 +27,14 @@ const addConnections = ({
   predicate,
   to,
 }) => {
-  addedEdges.push(edgeUniqueId)
+  addedEdges.push(id)
 
   addEdge(edge)
+
+  const edgeConnectionWithPredicate = {
+    ...edgeConnection,
+    predicate
+  }
 
   if (edgesConnections[predicate] && !edgesConnections[predicate].includes(edge)) {
     edgesConnections[predicate].push(edgeConnection)
@@ -38,15 +43,15 @@ const addConnections = ({
   }
 
   if (nodesConnections[from] && !nodesConnections[from].includes(edge)) {
-    nodesConnections[from].push(edge)
+    nodesConnections[from].push(edgeConnectionWithPredicate)
   } else {
-    nodesConnections[from] = [edge]
+    nodesConnections[from] = [edgeConnectionWithPredicate]
   }
 
   if (nodesConnections[to] && !nodesConnections[to].includes(edge)) {
-    nodesConnections[to].push(edge)
+    nodesConnections[to].push(edgeConnectionWithPredicate)
   } else {
-    nodesConnections[to] = [edge]
+    nodesConnections[to] = [edgeConnectionWithPredicate]
   }
 }
 

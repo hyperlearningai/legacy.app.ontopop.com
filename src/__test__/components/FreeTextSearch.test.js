@@ -8,17 +8,12 @@ import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties
 const setup = () => {
   const props = {
     classesFromApi: OwlClasses,
-    edgesIdsToDisplay: [
-      'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-      'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU'
-    ],
     freeTextSelection: {
       'http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n': 'node',
       'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay': 'edge',
       'http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M': 'node',
     },
     freeTextSelectedElement: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    nodesIdsToDisplay: [],
     objectPropertiesFromApi: OwlObjectProperties,
     removeFromObject: jest.fn(),
     setStoreState: jest.fn(),

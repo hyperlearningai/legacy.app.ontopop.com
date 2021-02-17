@@ -1,4 +1,4 @@
-import setHighlightedNodes from '../../../utils/graphVisualisation/setHighlightedNodes'
+import setHighlightedNodes from '../../../utils/networkStyling/setHighlightedNodes'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import store from '../../../store'

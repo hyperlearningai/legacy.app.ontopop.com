@@ -65,6 +65,8 @@ describe('startupActions', () => {
         ['edgesProperties', [{ id: 'edge-prop-123' }]],
         ['classesFromApi', classes],
         ['objectPropertiesFromApi', objectProperties],
+        ['classesFromApiBackup', classes],
+        ['objectPropertiesFromApiBackup', objectProperties],
       ],
 
     )
