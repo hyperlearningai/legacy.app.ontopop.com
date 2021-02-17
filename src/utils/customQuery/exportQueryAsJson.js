@@ -1,7 +1,7 @@
 import {
   NOTIFY_SUCCESS,
 } from '../../constants/notifications'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 import store from '../../store'
 
 /**

@@ -1,6 +1,6 @@
-import getAllTriplesPerNode from '../../utils/getAllTriplesPerNode'
-import { OwlClasses } from '../fixtures/test-ontology-classes.json'
-import { triplesPerNode } from '../fixtures/triplesPerNode'
+import getAllTriplesPerNode from '../../../utils/graphVisualisation/getAllTriplesPerNode'
+import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { triplesPerNode } from '../../fixtures/triplesPerNode'
 
 const setStoreState = jest.fn()
 const classesFromApi = OwlClasses

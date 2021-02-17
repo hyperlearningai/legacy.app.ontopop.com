@@ -1,5 +1,5 @@
-import store from '../../store'
-import getPhysicsOptions from '../../utils/getPhysicsOptions'
+import store from '../../../store'
+import getPhysicsOptions from '../../../utils/graphVisualisation/getPhysicsOptions'
 import {
   EDGE_COLOR,
   EDGE_COLOR_HIGHLIGHTED,
@@ -11,7 +11,7 @@ import {
   NODE_DEFAULT_SHAPE,
   HOVER_NODE_BORDER,
   HOVER_NODE_BACKGROUND
-} from '../../constants/graph'
+} from '../../../constants/graph'
 
 describe('getPhysicsOptions', () => {
   afterEach(() => {

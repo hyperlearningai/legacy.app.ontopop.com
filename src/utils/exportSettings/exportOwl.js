@@ -3,7 +3,7 @@
 import {
   NOTIFY_SUCCESS,
 } from '../../constants/notifications'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 import serialiseOwlFile from './serialiseOwlFile'
 
 /**

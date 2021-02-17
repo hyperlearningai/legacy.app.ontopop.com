@@ -1,16 +1,16 @@
 import startupActions from '../../../utils/graphVisualisation/startupActions'
 import store from '../../../store'
-import getGraphData from '../../../utils/getGraphData'
+import getGraphData from '../../../utils/apiCalls/getGraphData'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
-import setGraphData from '../../../utils/setGraphData'
-import getNodeProperties from '../../../utils/getNodeProperties'
-import getEdgeProperties from '../../../utils/getEdgeProperties'
+import setGraphData from '../../../utils/graphVisualisation/setGraphData'
+import getNodeProperties from '../../../utils/apiCalls/getNodeProperties'
+import getEdgeProperties from '../../../utils/apiCalls/getEdgeProperties'
 
-jest.mock('../../../utils/getGraphData')
-jest.mock('../../../utils/getNodeProperties')
-jest.mock('../../../utils/getEdgeProperties')
-jest.mock('../../../utils/setGraphData')
+jest.mock('../../../utils/apiCalls/getGraphData')
+jest.mock('../../../utils/apiCalls/getNodeProperties')
+jest.mock('../../../utils/apiCalls/getEdgeProperties')
+jest.mock('../../../utils/graphVisualisation/setGraphData')
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()

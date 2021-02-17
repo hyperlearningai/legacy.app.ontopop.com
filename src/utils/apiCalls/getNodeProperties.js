@@ -1,14 +1,14 @@
 import axios from 'axios'
 import {
   NOTIFY_WARNING
-} from '../constants/notifications'
-import showNotification from './showNotification'
-import { GET_PROPERTIES_ANNOTATIONS } from '../constants/api'
+} from '../../constants/notifications'
+import showNotification from '../notifications/showNotification'
+import { GET_PROPERTIES_ANNOTATIONS } from '../../constants/api'
 import {
   REQUIRED_PROPERTIES,
   UNIQUE_PROPERTY
-} from '../constants/graph'
-import store from '../store'
+} from '../../constants/graph'
+import store from '../../store'
 
 /**
  * Get node properties from API

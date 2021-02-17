@@ -1,6 +1,6 @@
 import { Network } from 'vis-network'
 import { JSDOM } from 'jsdom'
-import setNetwork from '../../utils/setNetwork'
+import setNetwork from '../../../utils/graphVisualisation/setNetwork'
 
 const setStoreState = jest.fn()
 

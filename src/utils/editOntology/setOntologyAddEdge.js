@@ -4,7 +4,7 @@ import {
   LOW_LEVEL_PROPERTIES,
   OWL_ANNOTATION_PROPERTIES
 } from '../../constants/graph'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 import { NOTIFY_WARNING } from '../../constants/notifications'
 
 /**

@@ -1,6 +1,6 @@
 import { store } from 'react-notifications-component'
-import showNotification from '../../utils/showNotification'
-import { NOTIFY_SUCCESS } from '../../constants/notifications'
+import showNotification from '../../../utils/notifications/showNotification'
+import { NOTIFY_SUCCESS } from '../../../constants/notifications'
 
 const addNotification = jest.fn()
 store.addNotification = addNotification

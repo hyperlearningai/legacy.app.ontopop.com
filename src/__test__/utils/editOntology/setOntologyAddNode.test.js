@@ -5,13 +5,13 @@ import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import en from '../../../i18n/en'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import { LABEL_PROPERTY, UNIQUE_PROPERTY } from '../../../constants/graph'
-import showNotification from '../../../utils/showNotification'
+import showNotification from '../../../utils/notifications/showNotification'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
-jest.mock('../../../utils/showNotification')
+jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setNodeStyle')

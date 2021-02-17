@@ -1,4 +1,4 @@
-import { SUB_CLASS_OF_ID } from '../constants/graph'
+import { SUB_CLASS_OF_ID } from '../../constants/graph'
 
 /**
  * Update triplesPerNode (normalised list of nodes with related values) in store

@@ -3,13 +3,13 @@ import setOntologyAddEdge from '../../../utils/editOntology/setOntologyAddEdge'
 import store from '../../../store'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
 import en from '../../../i18n/en'
-import showNotification from '../../../utils/showNotification'
+import showNotification from '../../../utils/notifications/showNotification'
 import { LABEL_PROPERTY } from '../../../constants/graph'
 
 const t = (id) => en[id]
 const setStoreState = jest.fn()
 
-jest.mock('../../../utils/showNotification')
+jest.mock('../../../utils/notifications/showNotification')
 
 describe('setOntologyAddEdge', () => {
   afterEach(() => {

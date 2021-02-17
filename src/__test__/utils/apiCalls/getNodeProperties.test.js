@@ -1,10 +1,10 @@
 import axios from 'axios'
-import getNodeProperties from '../../utils/getNodeProperties'
-import en from '../../i18n/en'
-import showNotification from '../../utils/showNotification'
-import store from '../../store'
+import getNodeProperties from '../../../utils/apiCalls/getNodeProperties'
+import en from '../../../i18n/en'
+import showNotification from '../../../utils/notifications/showNotification'
+import store from '../../../store'
 
-jest.mock('../../utils/showNotification')
+jest.mock('../../../utils/notifications/showNotification')
 const t = (id) => en[id]
 const setStoreState = jest.fn()
 

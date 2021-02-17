@@ -1,9 +1,9 @@
 import axios from 'axios'
-import getEdgeProperties from '../../utils/getEdgeProperties'
-import en from '../../i18n/en'
-import showNotification from '../../utils/showNotification'
+import getEdgeProperties from '../../../utils/apiCalls/getEdgeProperties'
+import en from '../../../i18n/en'
+import showNotification from '../../../utils/notifications/showNotification'
 
-jest.mock('../../utils/showNotification')
+jest.mock('../../../utils/notifications/showNotification')
 const t = (id) => en[id]
 const setStoreState = jest.fn()
 

@@ -5,15 +5,15 @@ import {
   ALGO_TYPE_BOUNDING_BOX,
   ALGO_TYPE_NODES_FILTER,
   ALGO_TYPE_EDGES_FILTER
-} from '../../constants/algorithms'
-import setNodesIdsToDisplay from '../../utils/setNodesIdsToDisplay'
-import { OwlClasses } from '../fixtures/test-ontology-classes.json'
-import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties.json'
-import { algoTypeFull } from '../fixtures/setNodesIdsToDisplayResults'
-import { triplesPerNode } from '../fixtures/triplesPerNode'
-import store from '../../store'
-import { availableNodes } from '../fixtures/availableNodesNormalised'
-import { availableEdges } from '../fixtures/availableEdgesNormalised'
+} from '../../../constants/algorithms'
+import setNodesIdsToDisplay from '../../../utils/graphVisualisation/setNodesIdsToDisplay'
+import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
+import { algoTypeFull } from '../../fixtures/setNodesIdsToDisplayResults'
+import { triplesPerNode } from '../../fixtures/triplesPerNode'
+import store from '../../../store'
+import { availableNodes } from '../../fixtures/availableNodesNormalised'
+import { availableEdges } from '../../fixtures/availableEdgesNormalised'
 
 const setStoreState = jest.fn()
 const classesFromApi = OwlClasses

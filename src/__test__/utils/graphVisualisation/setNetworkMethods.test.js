@@ -1,4 +1,4 @@
-import setNetworkMethods from '../../utils/setNetworkMethods'
+import setNetworkMethods from '../../../utils/graphVisualisation/setNetworkMethods'
 
 const setStoreState = jest.fn()
 const addToArray = jest.fn()

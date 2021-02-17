@@ -6,7 +6,7 @@ import {
 import getEdgeObject from '../graphVisualisation/getEdgeObject'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import getEdge from '../nodesEdgesUtils/getEdge'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 import { NOTIFY_WARNING } from '../../constants/notifications'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import setEdgeStylesByProperty from '../networkStyling/setEdgeStylesByProperty'

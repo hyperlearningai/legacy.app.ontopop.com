@@ -1,7 +1,7 @@
-import { ALGO_TYPE_FULL } from '../constants/algorithms'
+import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 import setNodesIdsToDisplay from './setNodesIdsToDisplay'
 import getAllTriplesPerNode from './getAllTriplesPerNode'
-import store from '../store'
+import store from '../../store'
 
 /**
  * Set graph full data

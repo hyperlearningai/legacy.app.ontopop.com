@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { store } from 'react-notifications-component'
-import getGraphData from '../../utils/getGraphData'
-import en from '../../i18n/en'
+import getGraphData from '../../../utils/apiCalls/getGraphData'
+import en from '../../../i18n/en'
 
 const t = (id) => en[id]
 const setStoreState = jest.fn()

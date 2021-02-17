@@ -1,6 +1,6 @@
 /* eslint no-param-reassign:0 */
 import { NOTIFY_SUCCESS } from '../../constants/notifications'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 
 /**
  * Export canvas as image

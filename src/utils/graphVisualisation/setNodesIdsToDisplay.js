@@ -5,13 +5,13 @@ import {
   ALGO_TYPE_BOUNDING_BOX,
   ALGO_TYPE_NODES_FILTER,
   ALGO_TYPE_EDGES_FILTER
-} from '../constants/algorithms'
-import getNodesEdgesFromPaths from './shortestPath/getNodesEdgesFromPaths'
-import getNeighbours from './nodeNeighbourhood/getNeighbours'
-import getBoundingBoxEdges from './boundingBoxSelection/getBoundingBoxEdges'
-import getNodesFromNodesFilters from './nodesFilter/getNodesFromNodesFilters'
-import getNodesEdgesFromEdgesFilters from './edgesFilter/getNodesEdgesFromEdgesFilters'
-import store from '../store'
+} from '../../constants/algorithms'
+import getNodesEdgesFromPaths from '../shortestPath/getNodesEdgesFromPaths'
+import getNeighbours from '../nodeNeighbourhood/getNeighbours'
+import getBoundingBoxEdges from '../boundingBoxSelection/getBoundingBoxEdges'
+import getNodesFromNodesFilters from '../nodesFilter/getNodesFromNodesFilters'
+import getNodesEdgesFromEdgesFilters from '../edgesFilter/getNodesEdgesFromEdgesFilters'
+import store from '../../store'
 
 /**
  * Updates nodes and edges to display

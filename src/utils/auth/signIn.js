@@ -2,7 +2,7 @@
 // import { AUTH_SIGN_IN } from '../../constants/api'
 // import { NOTIFY_WARNING } from '../../constants/notifications'
 import { ROUTE_INDEX } from '../../constants/routes'
-// import showNotification from '../showNotification'
+// import showNotification from '../notifications/showNotification'
 import {
   AUTH_COOKIE,
   VALID_EMAIL,

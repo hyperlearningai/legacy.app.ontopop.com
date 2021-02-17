@@ -1,13 +1,13 @@
-import { generatePredicateId } from '../constants/functions'
-import { NODE_BORDER, NODE_BORDER_WIDTH, SUB_CLASS_OF_LABEL } from '../constants/graph'
-import store from '../store'
-import highlightSpiderableNodes from './highlightSpiderableNodes'
-import addEdge from './nodesEdgesUtils/addEdge'
-import addNode from './nodesEdgesUtils/addNode'
-import getNode from './nodesEdgesUtils/getNode'
-import updateNodes from './nodesEdgesUtils/updateNodes'
-import getEdge from './nodesEdgesUtils/getEdge'
-
+import { generatePredicateId } from '../../constants/functions'
+import {
+  SUB_CLASS_OF_LABEL
+} from '../../constants/graph'
+import store from '../../store'
+import addEdge from '../nodesEdgesUtils/addEdge'
+import addNode from '../nodesEdgesUtils/addNode'
+import getNode from '../nodesEdgesUtils/getNode'
+import getEdge from '../nodesEdgesUtils/getEdge'
+import setElementsStyle from '../networkStyling/setElementsStyle'
 /**
  * Add nodes and/or edges to graph
  * @param  {Object}   params
@@ -33,6 +33,7 @@ const addNodesEdgesToGraph = ({
 
   const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
   const newEdgesConnections = JSON.parse(JSON.stringify(edgesConnections))
+
   let edgesAdded = false
   let nodesAdded = false
 
@@ -54,16 +55,10 @@ const addNodesEdgesToGraph = ({
           from,
           to,
           id,
+          predicate,
           label: objectPropertiesFromApi[predicate]
             ? objectPropertiesFromApi[predicate][stylingNodeCaptionProperty]
             : SUB_CLASS_OF_LABEL,
-        }
-
-        const edgeObject = {
-          ...edgeGraphObject,
-          edgeId: predicate,
-          fromLabel: classesFromApi[from][stylingNodeCaptionProperty],
-          toLabel: classesFromApi[from][stylingNodeCaptionProperty],
         }
 
         // check if node exists
@@ -85,7 +80,12 @@ const addNodesEdgesToGraph = ({
             newNodesConnections[nodeIdToCheck] = []
           }
 
-          newNodesConnections[nodeIdToCheck].push(edgeObject)
+          if (!newNodesConnections[nodeId]) {
+            newNodesConnections[nodeId] = []
+          }
+
+          newNodesConnections[nodeIdToCheck].push(triple)
+          newNodesConnections[nodeId].push(triple)
 
           nodesAdded = true
         }
@@ -99,7 +99,7 @@ const addNodesEdgesToGraph = ({
             newEdgesConnections[predicate] = []
           }
 
-          newEdgesConnections[predicate].push(edgeObject)
+          newEdgesConnections[predicate].push(triple)
 
           edgesAdded = true
         }
@@ -121,11 +121,6 @@ const addNodesEdgesToGraph = ({
 
     setStoreState('nodesConnections', newNodesConnections)
 
-    highlightSpiderableNodes({
-      nodesConnections,
-      triplesPerNode,
-    })
-
     if (!isPhysicsOnNow) {
       setTimeout(() => {
         setStoreState('isPhysicsOn', false)
@@ -134,19 +129,7 @@ const addNodesEdgesToGraph = ({
     }
   }
 
-  const nodeProperties = getNode(nodeId)
-
-  if (nodeProperties !== null) {
-    const { color } = nodeProperties
-    const newColor = color ? JSON.parse(JSON.stringify(color)) : {}
-    newColor.border = NODE_BORDER
-    newColor.borderWidth = NODE_BORDER_WIDTH
-
-    updateNodes({
-      id: nodeId,
-      color: newColor
-    })
-  }
+  setElementsStyle()
 }
 
 export default addNodesEdgesToGraph

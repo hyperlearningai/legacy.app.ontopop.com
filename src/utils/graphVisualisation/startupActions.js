@@ -1,10 +1,10 @@
 // import jsonClasses from '../../assets/json/test-ontology-classes.json'
 // import jsonObjectProperties from '../../assets/json/test-ontology-object-properties.json'
-import getEdgeProperties from '../getEdgeProperties'
+import getEdgeProperties from '../apiCalls/getEdgeProperties'
 import loadStyling from '../networkStyling/loadStyling'
-import getGraphData from '../getGraphData'
-import getNodeProperties from '../getNodeProperties'
-import setGraphData from '../setGraphData'
+import getGraphData from '../apiCalls/getGraphData'
+import getNodeProperties from '../apiCalls/getNodeProperties'
+import setGraphData from './setGraphData'
 import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../../constants/graph'
 
 /**

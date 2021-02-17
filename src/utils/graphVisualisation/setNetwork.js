@@ -1,6 +1,6 @@
 import { Network } from 'vis-network'
-import onMouseDown from './boundingBoxSelection/onMouseDown'
-import onMouseMove from './boundingBoxSelection/onMouseMove'
+import onMouseDown from '../boundingBoxSelection/onMouseDown'
+import onMouseMove from '../boundingBoxSelection/onMouseMove'
 import getPhysicsOptions from './getPhysicsOptions'
 
 /**

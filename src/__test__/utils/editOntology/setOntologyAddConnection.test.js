@@ -7,7 +7,7 @@ import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyAddConnection'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
-import showNotification from '../../../utils/showNotification'
+import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
 import { LABEL_PROPERTY } from '../../../constants/graph'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
@@ -17,7 +17,7 @@ import { generatePredicateId } from '../../../constants/functions'
 
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
-jest.mock('../../../utils/showNotification')
+jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/networkStyling/setEdgeStylesByProperty')
 

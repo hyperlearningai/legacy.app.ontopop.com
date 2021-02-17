@@ -1,10 +1,10 @@
 import {
   SPIDERABLE_NODE_BORDER_COLOR,
-} from '../constants/graph'
-import store from '../store'
+} from '../../constants/graph'
+import store from '../../store'
 import addNodesEdgesToGraph from './addNodesEdgesToGraph'
-import getNode from './nodesEdgesUtils/getNode'
-import setShortestPathNode from './shortestPath/setShortestPathNode'
+import getNode from '../nodesEdgesUtils/getNode'
+import setShortestPathNode from '../shortestPath/setShortestPathNode'
 
 /**
  * Update VisJs network methods
