@@ -15,7 +15,7 @@ const nodeIds = [
   'http://webprotege.stanford.edu/R8QQzkUbCD5WRXDQQSl0vX8'
 ]
 
-const edgeIds = [
+const predicates = [
   'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv___http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb___http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n',
   'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi___http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb___http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9',
   'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi___http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb___http://webprotege.stanford.edu/R7RDxuQpthew95SauxL9iOL',
@@ -38,19 +38,19 @@ describe('serialiseOwlFile', () => {
         [
           {
             id: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv___http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb___http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n',
-            edgeId: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv'
+            predicate: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv'
           },
           {
             id: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi___http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb___http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9',
-            edgeId: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi'
+            predicate: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi'
           },
           {
             id: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi___http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb___http://webprotege.stanford.edu/R7RDxuQpthew95SauxL9iOL',
-            edgeId: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi'
+            predicate: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi'
           },
           {
             id: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m___http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb___http://webprotege.stanford.edu/R8QQzkUbCD5WRXDQQSl0vX8',
-            edgeId: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m'
+            predicate: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m'
           },
         ]
       ),
@@ -63,7 +63,7 @@ describe('serialiseOwlFile', () => {
     })
     store.getState = getState
 
-    getEdgeIds.mockImplementation(() => edgeIds)
+    getEdgeIds.mockImplementation(() => predicates)
     getNodeIds.mockImplementation(() => nodeIds)
 
     const output = `<?xml version="1.0"?>

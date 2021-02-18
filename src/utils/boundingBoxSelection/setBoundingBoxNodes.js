@@ -15,7 +15,6 @@ const setBoundingBoxNodes = ({
 }) => {
   const {
     lastGraphIndex,
-    triplesPerNode,
     selectedBoundingBoxNodes
   } = store.getState()
 
@@ -30,7 +29,6 @@ const setBoundingBoxNodes = ({
     type: ALGO_TYPE_BOUNDING_BOX,
     options: {
       selectedBoundingBoxNodes,
-      triplesPerNode
     }
   }
 

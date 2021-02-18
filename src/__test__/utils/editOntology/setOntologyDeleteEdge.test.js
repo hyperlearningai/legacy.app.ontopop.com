@@ -3,19 +3,21 @@ import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDelete
 import store from '../../../store'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
-import { graphVersions } from '../../fixtures/graphVersions'
 import {
-  addToObjectFixture,
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
+import { nodesConnections } from '../../fixtures/nodesConnections'
+import { triplesPerNode } from '../../fixtures/triplesPerNode'
+import { edgesConnections } from '../../fixtures/edgesConnections'
+import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 
 jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
+jest.mock('../../../utils/networkStyling/setElementsStyle')
 
 const selectedElement = Object.keys(OwlObjectProperties).slice(0, Object.keys(OwlObjectProperties).length - 2)
 
 const setStoreState = jest.fn()
-const addToObject = jest.fn()
 const deletedEdges = []
 
 describe('setOntologyDeleteEdge', () => {
@@ -25,28 +27,25 @@ describe('setOntologyDeleteEdge', () => {
 
   it('should work correctly', async () => {
     const getState = jest.fn().mockImplementationOnce(() => ({
-      graphVersions,
       objectPropertiesFromApi: OwlObjectProperties,
       deletedEdges,
-      selectedGraphVersion: 'original',
       classesFromApi: OwlClasses,
+      nodesConnections,
+      triplesPerNode,
+      edgesConnections
     }))
     store.getState = getState
 
     await setOntologyDeleteEdge({
       selectedElement,
       setStoreState,
-      addToObject
     })
 
     expect(removeEdge).toHaveBeenLastCalledWith(
       'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
     )
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphVersions',
-      'original',
-      addToObjectFixture
-    )
+
+    expect(setElementsStyle).toHaveBeenCalledWith()
 
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
   })

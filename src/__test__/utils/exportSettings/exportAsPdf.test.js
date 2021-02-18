@@ -1,11 +1,11 @@
 import { JSDOM } from 'jsdom'
 import { jsPDF } from 'jspdf'
-import showNotification from '../../../utils/showNotification'
+import showNotification from '../../../utils/notifications/showNotification'
 import exportAsPdf from '../../../utils/exportSettings/exportAsPdf'
 import en from '../../../i18n/en'
 
 jest.mock('jspdf')
-jest.mock('../../../utils/showNotification')
+jest.mock('../../../utils/notifications/showNotification')
 const dom = new JSDOM()
 const currentDocument = global.document
 const currentWindow = global.window

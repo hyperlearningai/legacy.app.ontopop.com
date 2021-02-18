@@ -37,3 +37,4 @@ docs
 .serverless
 .serverless_nextjs
 .serverless_nextjs/*
+test.json

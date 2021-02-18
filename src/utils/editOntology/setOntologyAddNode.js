@@ -2,42 +2,43 @@ import store from '../../store'
 import {
   UNIQUE_PROPERTY,
   LOW_LEVEL_PROPERTIES,
-  LABEL_PROPERTY,
   OWL_ANNOTATION_PROPERTIES
 } from '../../constants/graph'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 import { NOTIFY_WARNING } from '../../constants/notifications'
 import addNode from '../nodesEdgesUtils/addNode'
 import getNode from '../nodesEdgesUtils/getNode'
+import setNodeStyle from '../networkStyling/setNodeStyle'
 
 /**
  * ADd ontology nodes
  * @param  {Object}         params
  * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Function}       params.addToObject                Add to object action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
+ * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyAddNode = ({
   setStoreState,
   selectedElementProperties,
-  addToObject,
   t
 }) => {
   const {
-    graphVersions,
+    nodesConnections,
     classesFromApi,
-    selectedGraphVersion,
     addedNodes,
+    stylingNodeCaptionProperty,
+    triplesPerNode
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
+  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
+  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
 
   const newNodeId = selectedElementProperties[UNIQUE_PROPERTY]
 
   if (getNode(newNodeId) !== null) {
-    const message = `${t('nodeIdAlreadyExists')}: newNodeId`
+    const message = `${t('nodeIdAlreadyExists')}: ${newNodeId}`
 
     return showNotification({
       message,
@@ -50,6 +51,13 @@ const setOntologyAddNode = ({
   const selectedElementPropertiesKeys = Object.keys(selectedElementProperties)
 
   selectedElementPropertiesKeys.map((propertyKey) => {
+    // add new node connection as empty array
+    if (propertyKey === UNIQUE_PROPERTY) {
+      const id = selectedElementProperties[propertyKey]
+      newNodesConnections[id] = []
+      newTriplesPerNode[id] = []
+    }
+
     if (propertyKey !== UNIQUE_PROPERTY
           && selectedElementProperties[propertyKey]
           && selectedElementProperties[propertyKey] !== ''
@@ -64,7 +72,7 @@ const setOntologyAddNode = ({
         newClassesFromApi[newNodeId][OWL_ANNOTATION_PROPERTIES][propertyKey] = selectedElementProperties[propertyKey]
       }
 
-      if (propertyKey === LABEL_PROPERTY) {
+      if (propertyKey === stylingNodeCaptionProperty) {
         newClassesFromApi[newNodeId].label = selectedElementProperties[propertyKey]
         addNode({
           ...newClassesFromApi[newNodeId],
@@ -82,12 +90,13 @@ const setOntologyAddNode = ({
     ...[newNodeId]
   ]
 
-  newGraphVersion.classesFromApi = newClassesFromApi
-  newGraphVersion.addedNodes = newAddedNodes
-
-  addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
+  setStoreState('nodesConnections', newNodesConnections)
+  setStoreState('triplesPerNode', newTriplesPerNode)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('addedNodes', newAddedNodes)
+  setNodeStyle({
+    nodeId: newNodeId,
+  })
 }
 
 export default setOntologyAddNode

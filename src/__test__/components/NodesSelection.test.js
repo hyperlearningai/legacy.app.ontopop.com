@@ -3,11 +3,12 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import NodesSelection from '../../components/NodesSelection'
 
-const setup = () => {
+const setup = ({
+  selectedNode
+}) => {
   const props = {
-    resetSelectedNodes: jest.fn(),
-    removeFromArray: jest.fn(),
-    selectedNodes: ['abc']
+    setStoreState: jest.fn(),
+    selectedNode
   }
 
   const component = shallow(<NodesSelection {...props} />)
@@ -23,10 +24,22 @@ describe('NodesSelection', () => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot ', () => {
+  it('should match snapshot when no selected node', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      selectedNode: undefined
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when selected node', () => {
+    const {
+      component
+    } = setup({
+      selectedNode: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

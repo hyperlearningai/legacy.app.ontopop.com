@@ -1,24 +1,45 @@
-import { useState, useEffect } from 'react'
+import {
+  useEffect
+} from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { Button } from 'primereact/button'
+// import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import NodesSelectionDetails from './NodesSelectionDetails'
 import { SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
 import getNode from '../utils/nodesEdgesUtils/getNode'
+import resetSelectedNode from '../utils/nodesSelection/resetSelectedNode'
+import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
 
 const NodesSelection = ({
-  removeFromArray,
-  selectedNodes,
-  resetSelectedNodes
+  selectedNode,
+  setStoreState
 }) => {
   const { t } = useTranslation()
 
-  const [isNodeSelected, toggleNodeSelected] = useState(false)
-  const [nodeId, setNodeId] = useState('')
+  useEffect(() => () => {
+    setStoreState('selectedNode', undefined)
 
-  useEffect(() => () => resetSelectedNodes(), [])
+    resetSelectedNode({
+      setStoreState
+    })
+  }, [])
+
+  useEffect(() => {
+    if (selectedNode && selectedNode !== '') {
+      resetSelectedNode({
+        setStoreState
+      })
+
+      highlightSelectedNode({
+        setStoreState,
+        selectedNode
+      })
+    }
+  }, [selectedNode])
+
+  const isNodeSelected = selectedNode && selectedNode !== ''
 
   return (
     <>
@@ -27,60 +48,19 @@ const NodesSelection = ({
           ? t(SIDEBAR_VIEW_NODES_SELECTION)
           : (
             <>
-              <Button
-                tooltip={t('goBack')}
-                onClick={() => toggleNodeSelected(false)}
-                icon="pi pi-chevron-left"
-                iconPos="left"
-              />
-              {`${t('node')}: ${getNode(nodeId).label}`}
+              {`${t('node')}: ${getNode(selectedNode).label}`}
             </>
           )}
       </div>
       {!isNodeSelected ? (
         <div className="nodes-selection">
-          {
-            selectedNodes.length > 0
-              ? selectedNodes.map((selectedNode) => {
-                const { label } = getNode(selectedNode)
-
-                return (
-                  <div
-                    className="nodes-selection-row"
-                    key={`selected-node-row-${selectedNode}`}
-                  >
-                    <div className="nodes-selection-row-delete">
-                      <Button
-                        tooltip={`${t('removeNode')}: ${label}`}
-                        onClick={() => removeFromArray('selectedNodes', selectedNode)}
-                        icon="pi pi-times"
-                      />
-                    </div>
-
-                    <div className="nodes-selection-row-main">
-                      <Button
-                        tooltip={`${t('viewNode')}: ${label}`}
-                        onClick={() => {
-                          setNodeId(selectedNode)
-                          toggleNodeSelected(true)
-                        }}
-                        label={label}
-                        icon="pi pi-chevron-right"
-                        iconPos="right"
-                      />
-                    </div>
-                  </div>
-                )
-              }) : (
-                <div className="nodes-selection-message">
-                  {t('selectNodeFromGraph')}
-                </div>
-              )
-          }
+          <div className="nodes-selection-message">
+            {t('selectNodeFromGraph')}
+          </div>
         </div>
       ) : (
         <NodesSelectionDetails
-          nodeId={nodeId}
+          nodeId={selectedNode}
         />
       )}
     </>
@@ -88,15 +68,18 @@ const NodesSelection = ({
 }
 
 NodesSelection.propTypes = {
-  selectedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  removeFromArray: PropTypes.func.isRequired,
-  resetSelectedNodes: PropTypes.func.isRequired,
+  selectedNode: PropTypes.string,
+  setStoreState: PropTypes.func.isRequired,
+}
+
+NodesSelection.defaultProps = {
+  selectedNode: undefined
 }
 
 const mapToProps = ({
-  selectedNodes,
+  selectedNode,
 }) => ({
-  selectedNodes,
+  selectedNode,
 })
 
 export default connect(

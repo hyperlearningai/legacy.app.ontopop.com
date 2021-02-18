@@ -2,21 +2,18 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EditOntology from '../../components/EditOntology'
+import { LABEL_PROPERTY } from '../../constants/graph'
 
 const setup = () => {
   const props = {
-    selectedGraphVersion: 'original',
-    graphVersions: {
-      original: {
-        classesFromApi: {},
-        objectPropertiesFromApi: {},
-        classesFromApiBackup: {},
-        objectPropertiesFromApiBackup: {},
-        deletedNodes: [],
-        addedNodes: [],
-        updatedNodes: []
-      },
-    },
+    classesFromApi: {},
+    objectPropertiesFromApi: {},
+    classesFromApiBackup: {},
+    objectPropertiesFromApiBackup: {},
+    deletedNodes: [],
+    deletedEdges: [],
+    stylingNodeCaptionProperty: LABEL_PROPERTY,
+    stylingEdgeCaptionProperty: LABEL_PROPERTY
   }
 
   const component = shallow(<EditOntology {...props} />)

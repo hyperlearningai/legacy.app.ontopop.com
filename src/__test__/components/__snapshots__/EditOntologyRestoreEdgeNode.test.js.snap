@@ -9,8 +9,6 @@ exports[`EditOntologyRestoreEdgeNode should match snapshot when type edge and no
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -37,8 +35,6 @@ exports[`EditOntologyRestoreEdgeNode should match snapshot when type node and no
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -65,8 +61,6 @@ exports[`EditOntologyRestoreEdgeNode should match snapshot when type node and op
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }

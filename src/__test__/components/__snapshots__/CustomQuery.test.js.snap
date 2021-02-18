@@ -9,8 +9,6 @@ exports[`EdgesSelection should match snapshot when customQueryOutput  1`] = `
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -38,8 +36,6 @@ exports[`EdgesSelection should match snapshot when no customQueryOutput  1`] = `
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }

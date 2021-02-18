@@ -1,4 +1,4 @@
-import { getEdgeAndNodes } from '../../constants/functions'
+import { generatePredicateId, getEdgeAndNodes } from '../../constants/functions'
 
 /**
  * Loop through neighbours
@@ -40,8 +40,10 @@ const loopThroughNeighbours = ({
       && nodesConnections[from]
     ) {
       nodesConnections[from].map((triple) => {
-        if (!nextEdgesToExplore.includes(triple.id)) {
-          nextEdgesToExplore.push(triple.id)
+        const tripleId = generatePredicateId(triple)
+
+        if (!nextEdgesToExplore.includes(tripleId)) {
+          nextEdgesToExplore.push(tripleId)
           nextPathRoots.push(nextPathRoot)
         }
         return true
@@ -55,8 +57,10 @@ const loopThroughNeighbours = ({
       && nodesConnections[to]
     ) {
       nodesConnections[to].map((triple) => {
-        if (!nextEdgesToExplore.includes(triple.id)) {
-          nextEdgesToExplore.push(triple.id)
+        const tripleId = generatePredicateId(triple)
+
+        if (!nextEdgesToExplore.includes(tripleId)) {
+          nextEdgesToExplore.push(tripleId)
           nextPathRoots.push(nextPathRoot)
         }
         return true
@@ -101,8 +105,7 @@ const getShortestPath = async ({
   if (!nodeConnections || nodeConnections.length === 0) return []
 
   const exploredNodes = [startNode]
-  const startNodeConnectedEdges = nodeConnections.map((triple) => triple.id)
-  const edgesToExplore = startNodeConnectedEdges
+  const edgesToExplore = nodeConnections.map((triple) => generatePredicateId(triple))
   const pathRoots = edgesToExplore.map(() => startNode)
 
   return loopThroughNeighbours({

@@ -54,7 +54,6 @@ describe('setOntology', () => {
     expect(setOntologyRestoreNode).toHaveBeenCalledWith({
       selectedElement,
       setStoreState,
-      addToObject
     })
   })
 
@@ -75,7 +74,6 @@ describe('setOntology', () => {
     expect(setOntologyRestoreEdge).toHaveBeenCalledWith({
       selectedElement,
       setStoreState,
-      addToObject
     })
   })
 
@@ -96,7 +94,6 @@ describe('setOntology', () => {
     expect(setOntologyDeleteNode).toHaveBeenCalledWith({
       selectedElement,
       setStoreState,
-      addToObject
     })
   })
 
@@ -139,7 +136,6 @@ describe('setOntology', () => {
     expect(setOntologyAddNode).toHaveBeenCalledWith({
       setStoreState,
       selectedElementProperties,
-      addToObject,
       t
     })
   })
@@ -183,7 +179,6 @@ describe('setOntology', () => {
     expect(setOntologyAddEdge).toHaveBeenCalledWith({
       setStoreState,
       selectedElementProperties,
-      addToObject,
       t
     })
   })
@@ -205,7 +200,6 @@ describe('setOntology', () => {
     expect(setOntologyDeleteEdge).toHaveBeenCalledWith({
       selectedElement,
       setStoreState,
-      addToObject
     })
   })
 
@@ -226,7 +220,7 @@ describe('setOntology', () => {
     expect(setOntologyAddConnection).toHaveBeenCalledWith({
       selectedElementProperties,
       setStoreState,
-      addToObject
+      t
     })
   })
 
@@ -245,9 +239,8 @@ describe('setOntology', () => {
     })
 
     expect(setOntologyDeleteConnection).toHaveBeenCalledWith({
-      selectedElement,
       setStoreState,
-      addToObject
+      selectedElement,
     })
   })
 
@@ -268,7 +261,6 @@ describe('setOntology', () => {
     expect(setOntologyRestoreConnection).toHaveBeenCalledWith({
       selectedElement,
       setStoreState,
-      addToObject
     })
   })
 })

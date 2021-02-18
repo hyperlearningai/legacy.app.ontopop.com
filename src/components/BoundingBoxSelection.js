@@ -12,8 +12,8 @@ import {
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_BOUNDING_BOX } from '../constants/views'
 import setBoundingBoxNodes from '../utils/boundingBoxSelection/setBoundingBoxNodes'
-import getNodesFromBoundingBox from '../utils/canvasUtils/getNodesFromBoundingBox'
-import clearNodesSelection from '../utils/canvasUtils/clearNodesSelection'
+import getNodesFromBoundingBox from '../utils/boundingBoxSelection/getNodesFromBoundingBox'
+import clearNodesSelection from '../utils/boundingBoxSelection/clearNodesSelection'
 
 const BoundingBoxSelection = ({
   setStoreState,
@@ -43,9 +43,15 @@ const BoundingBoxSelection = ({
     }
   }, [])
 
-  useEffect(() => getNodesFromBoundingBox({
-    setStoreState
-  }), [isBoundingBoxSelectionInternal])
+  useEffect(() => {
+    clearNodesSelection()
+
+    getNodesFromBoundingBox({
+      setStoreState
+    })
+  }, [
+    isBoundingBoxSelectionInternal,
+  ])
 
   return (
     <>
@@ -120,7 +126,7 @@ const BoundingBoxSelection = ({
 
 BoundingBoxSelection.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  selectedBoundingBoxNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedBoundingBoxNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   addToObject: PropTypes.func.isRequired,
   isBoundingBoxSelectionInternal: PropTypes.bool.isRequired,
 }

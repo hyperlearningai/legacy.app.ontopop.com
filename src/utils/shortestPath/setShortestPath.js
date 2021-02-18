@@ -19,8 +19,14 @@ const setShortestPath = async ({
   const {
     lastGraphIndex,
     nodesConnections,
-    shortestPathSelectedNodes,
+    shortestPathNode1,
+    shortestPathNode2
   } = store.getState()
+
+  const shortestPathSelectedNodes = [
+    shortestPathNode1,
+    shortestPathNode2
+  ]
 
   const shortestPathResults = await getShortestPath({
     shortestPathSelectedNodes,

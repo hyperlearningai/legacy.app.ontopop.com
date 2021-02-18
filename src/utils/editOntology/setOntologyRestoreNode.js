@@ -4,7 +4,8 @@ import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import addNode from '../nodesEdgesUtils/addNode'
 import getNode from '../nodesEdgesUtils/getNode'
-import getEdgeObject from '../serialiseNodesEdges/getEdgeObject'
+import getEdgeObject from '../graphVisualisation/getEdgeObject'
+import setElementsStyle from '../networkStyling/setElementsStyle'
 
 /**
  * Restore ontology nodes
@@ -17,83 +18,124 @@ import getEdgeObject from '../serialiseNodesEdges/getEdgeObject'
 const setOntologyRestoreNode = ({
   selectedElement,
   setStoreState,
-  addToObject
 }) => {
   const {
-    graphVersions,
+    classesFromApiBackup,
     classesFromApi,
     deletedNodes,
     objectPropertiesFromApi,
-    selectedGraphVersion,
+    stylingNodeCaptionProperty,
+    nodesConnections,
+    triplesPerNode,
+    edgesConnections
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
-  const newClassesFromApiBackup = JSON.parse(JSON.stringify(newGraphVersion.classesFromApiBackup))
+  const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
+  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
+  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
+  const newEdgesConnections = JSON.parse(JSON.stringify(edgesConnections))
 
   // Remove nodes from deletedNodes
   const newDeletedNodes = deletedNodes.slice().filter((nodeId) => !selectedElement.includes(nodeId))
 
+  // add from and to connections back
+  const flatClassesFromApi = flatten(newClassesFromApiBackup)
+
   if (selectedElement.length > 0) {
-    // add node and related connections back
+    // first add node and related connections back
     selectedElement.map((nodeId) => {
-      const nodeObject = newClassesFromApiBackup[nodeId]
+      const nodeObject = newClassesFromApiBackup[nodeId] || {}
+      newClassesFromApi[nodeId] = JSON.parse(JSON.stringify(nodeObject))
+
       nodeObject.id = nodeId
-      nodeObject.label = nodeObject.rdfsLabel
+      nodeObject.label = nodeObject[stylingNodeCaptionProperty]
 
       addNode(nodeObject)
 
+      // add connection back
+      newNodesConnections[nodeId] = []
+      newTriplesPerNode[nodeId] = []
+
+      return true
+    })
+
+    // needed to make getEdgeObject work
+    setStoreState('classesFromApi', newClassesFromApi)
+
+    // then add connections
+    selectedElement.map((nodeId) => {
+      const nodeObject = newClassesFromApiBackup[nodeId]
+
+      // add from connections back
       const { rdfsSubClassOf } = nodeObject
 
       if (rdfsSubClassOf && rdfsSubClassOf.length > 0) {
         rdfsSubClassOf.map((subClassOf) => {
           const to = subClassOf.classRdfAbout
 
-          if (!newDeletedNodes.includes(to)) {
-            if (getNode(to) === null) {
-              const toObject = newClassesFromApiBackup[to]
-              toObject.id = to
-              toObject.label = toObject.rdfsLabel
+          if (newDeletedNodes.includes(to)) return false
 
-              addNode(toObject)
+          const { owlRestriction } = subClassOf
+          const predicate = owlRestriction ? owlRestriction.objectPropertyRdfAbout : SUB_CLASS_OF_ID
+
+          const {
+            edge,
+            edgeConnection
+          } = getEdgeObject({
+            classesFromApi,
+            from: nodeId,
+            objectPropertiesFromApi,
+            predicate,
+            to,
+          })
+
+          const edgeConnectionWithPredicate = {
+            ...edgeConnection,
+            predicate
+          }
+
+          if (newTriplesPerNode[nodeId]) {
+            newTriplesPerNode[nodeId].push(edgeConnectionWithPredicate)
+          }
+
+          if (newTriplesPerNode[to]) {
+            newTriplesPerNode[to].push(edgeConnectionWithPredicate)
+          }
+
+          // add to graph and to visible connections if to node on canvas
+          if (getNode(to) !== null) {
+            addEdge(edge)
+
+            // add connections
+            if (newEdgesConnections[predicate]) {
+              newEdgesConnections[predicate].push(edgeConnection)
             }
 
-            const { owlRestriction } = subClassOf
-            const predicate = owlRestriction ? owlRestriction.objectPropertyRdfAbout : SUB_CLASS_OF_ID
+            if (newNodesConnections[nodeId]) {
+              newNodesConnections[nodeId].push(edgeConnectionWithPredicate)
+            }
 
-            // add to graph
-            const { edge } = getEdgeObject({
-              classesFromApi,
-              from: nodeId,
-              objectPropertiesFromApi,
-              predicate,
-              to,
-            })
-
-            addEdge(edge)
+            if (newNodesConnections[to]) {
+              newNodesConnections[to].push(edgeConnectionWithPredicate)
+            }
           }
 
           return true
         })
       }
 
-      return true
-    })
+      // add to connections back
+      const flatClassKeysWithToConnections = Object.keys(flatClassesFromApi).filter((flatKey) => flatKey.includes('classRdfAbout')
+      && !flatKey.includes('owlRestriction') && flatClassesFromApi[flatKey] === nodeId)
 
-    // add related connections back
-    const flatClassesFromApi = flatten(newClassesFromApiBackup)
-    const flatClassKeys = Object.keys(flatClassesFromApi).filter((flatKey) => flatKey.includes('classRdfAbout')
-      && !flatKey.includes('owlRestriction') && selectedElement.includes(
-      flatClassesFromApi[flatKey]
-    ))
+      flatClassKeysWithToConnections.reverse().map((flatClassKey) => {
+        if (selectedElement.includes(flatClassesFromApi[flatClassKey])) {
+          const [from] = flatClassKey.split('.rdfsSubClassOf.')
+          const to = nodeId
 
-    // remove all edges connection in nodes
-    flatClassKeys.reverse().map((flatClassKey) => {
-      if (selectedElement.includes(flatClassesFromApi[flatClassKey])) {
-        const [from] = flatClassKey.split('.rdfsSubClassOf.')
-        const to = flatClassesFromApi[flatClassKey]
+          if (newDeletedNodes.includes(from)) return false
 
-        if (getNode(from) !== null) {
           const owlRestriction = flatClassesFromApi[flatClassKey.replace('classRdfAbout', 'owlRestriction')]
           const predicate = owlRestriction ? owlRestriction.objectPropertyRdfAbout : SUB_CLASS_OF_ID
 
@@ -109,11 +151,13 @@ const setOntologyRestoreNode = ({
             }
           }
 
-          // remove from node subclass
+          // add relationships
           newClassesFromApi[from][SUBCLASSOF_PROPERTY].push(connectionOwlObject)
 
-          // add to graph
-          const { edge } = getEdgeObject({
+          const {
+            edge,
+            edgeConnection
+          } = getEdgeObject({
             classesFromApi,
             from,
             objectPropertiesFromApi,
@@ -121,19 +165,50 @@ const setOntologyRestoreNode = ({
             to,
           })
 
-          addEdge(edge)
+          const edgeConnectionWithPredicate = {
+            ...edgeConnection,
+            predicate
+          }
+
+          if (newTriplesPerNode[from]) {
+            newTriplesPerNode[from].push(edgeConnectionWithPredicate)
+          }
+
+          if (newTriplesPerNode[to]) {
+            newTriplesPerNode[to].push(edgeConnectionWithPredicate)
+          }
+
+          // add to graph and to visible connections if from node on canvas
+          if (getNode(from) !== null) {
+            addEdge(edge)
+
+            // add edge connections
+            if (newEdgesConnections[predicate]) {
+              newEdgesConnections[predicate].push(edgeConnection)
+            }
+
+            if (newNodesConnections[from]) {
+              newNodesConnections[from].push(edgeConnectionWithPredicate)
+            }
+
+            if (newNodesConnections[to]) {
+              newNodesConnections[to].push(edgeConnectionWithPredicate)
+            }
+          }
         }
-      }
+        return true
+      })
+
       return true
     })
   }
 
-  newGraphVersion.classesFromApi = newClassesFromApi
-  newGraphVersion.deletedNodes = newDeletedNodes
-
-  addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
+  setStoreState('nodesConnections', newNodesConnections)
+  setStoreState('edgesConnections', newEdgesConnections)
+  setStoreState('triplesPerNode', newTriplesPerNode)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('deletedNodes', newDeletedNodes)
+  setElementsStyle()
 }
 
 export default setOntologyRestoreNode

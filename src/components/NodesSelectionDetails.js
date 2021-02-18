@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 import { PROPERTIES_TO_IGNORE } from '../constants/graph'
 import getNode from '../utils/nodesEdgesUtils/getNode'
+import getEdge from '../utils/nodesEdgesUtils/getEdge'
+import { generatePredicateId } from '../constants/functions'
 
 const NodesSelectionDetails = ({
   nodeId,
@@ -24,9 +26,6 @@ const NodesSelectionDetails = ({
 
   return (
     <div className="nodes-selection-details m-t-10">
-      <h3 className="">
-        {`${t('node')}: ${getNode(nodeId).label}`}
-      </h3>
       <div className="nodes-selection-details-title">
         {t('properties')}
       </div>
@@ -75,21 +74,28 @@ const NodesSelectionDetails = ({
               </thead>
               <tbody>
                 {
-                connections.map((triple) => (
-                  <tr
-                    key={`relationship-row-${triple.from}-${triple.label}-${triple.to}`}
-                  >
-                    <td className={`${triple.from === selectedNode.id ? 'bold italic' : ''}`}>
-                      {triple.fromLabel}
-                    </td>
-                    <td>
-                      {triple.label}
-                    </td>
-                    <td className={`${triple.to === selectedNode.id ? 'bold italic' : ''}`}>
-                      {triple.toLabel}
-                    </td>
-                  </tr>
-                ))
+                connections.map((triple) => {
+                  const edgeId = generatePredicateId(triple)
+                  const fromLabel = getNode(triple.from).label
+                  const toLabel = getNode(triple.to).label
+                  const predicateLabel = getEdge(edgeId).label
+
+                  return (
+                    <tr
+                      key={`relationship-row-${triple.from}-${triple.label}-${triple.to}`}
+                    >
+                      <td className={`${triple.from === selectedNode.id ? 'bold italic' : ''}`}>
+                        {fromLabel}
+                      </td>
+                      <td>
+                        {predicateLabel}
+                      </td>
+                      <td className={`${triple.to === selectedNode.id ? 'bold italic' : ''}`}>
+                        {toLabel}
+                      </td>
+                    </tr>
+                  )
+                })
             }
               </tbody>
             </table>

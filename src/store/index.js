@@ -8,7 +8,6 @@ import {
   EDGE_COLOR,
   EDGE_COLOR_HIGHLIGHTED,
   NODE_TEXT_COLOR,
-  GRAPH_VERSION_STRUCTURE,
   NODE_BORDER,
   NODE_BACKGROUND,
   CLICK_NODE_BACKGROUND,
@@ -29,7 +28,7 @@ const initialState = {
 
   // user
   user: {
-    email: '',
+    email: 'a@b.c',
     firstName: '',
     lastName: '',
     company: '',
@@ -39,6 +38,8 @@ const initialState = {
   // data loaded at startup
   classesFromApi: {},
   objectPropertiesFromApi: {},
+  classesFromApiBackup: {},
+  objectPropertiesFromApiBackup: {},
   triplesPerNode: {},
   network: undefined,
   annotationProperties: [],
@@ -53,6 +54,15 @@ const initialState = {
   addedConnections: [],
   availableNodesCount: 0,
   availableEdgesCount: 0,
+
+  // Data visualisation
+  nodesIdsToDisplay: [],
+  edgesIdsToDisplay: [],
+  availableNodes: new DataSet([]),
+  availableEdges: new DataSet([]),
+  nodesConnections: {},
+  edgesConnections: {},
+  highlightedNodes: [],
 
   // nodes styling
   stylingEdgeLineColor: EDGE_COLOR,
@@ -87,6 +97,7 @@ const initialState = {
   stylingNodeByProperty: [
     JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
   ],
+  stylingNodeOverlayOpacity: 0.1,
 
   // netowrk graph loading
   isNetworkLoading: false,
@@ -96,10 +107,17 @@ const initialState = {
   searchFilter: '',
   freeTextSelection: {},
   freeTextSelectedElement: '',
+  freeTextPrevSelectedElement: undefined,
 
-  // node/edge selection
+  // node selection
   isNodeSelectable: false,
+  selectedNode: '',
+  prevSelectedNode: undefined,
+
+  // edge selection
   isEdgeSelectable: false,
+  selectedEdge: '',
+  prevSelectedEdges: undefined,
 
   // bounding box
   selectedBoundingBoxNodes: [],
@@ -124,9 +142,15 @@ const initialState = {
 
   // shortest path
   isShortestPathNodeSelectable: false,
-  shortestPathSelectedNodes: [],
+  isShortestPathNode1Selectable: false,
+  isShortestPathNode2Selectable: false,
+  shortestPathNode1Object: undefined,
+  shortestPathNode1: '',
+  shortestPathNode2Object: undefined,
+  shortestPathNode2: '',
   shortestPathResults: [],
   isNodeOverlay: false,
+  shortestPathNodes: [],
 
   // context menu
   showContextMenu: false,
@@ -137,20 +161,9 @@ const initialState = {
   },
 
   // physics
-  isPhysicsOn: true,
+  isPhysicsOn: false,
   physicsHierarchicalView: false,
   physicsRepulsion: true,
-
-  // Data visualisation
-  nodesIdsToDisplay: [],
-  edgesIdsToDisplay: [],
-  availableNodes: new DataSet([]),
-  availableEdges: new DataSet([]),
-  selectedNodes: [],
-  selectedEdges: [],
-  nodesConnections: {},
-  edgesConnections: {},
-  highlightedNodes: [],
 
   // custom query
   customQueryOutput: undefined,
@@ -159,12 +172,6 @@ const initialState = {
     'g.V().hasLabel(\'class\').count()',
     'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()',
   ],
-
-  // new graph version
-  selectedGraphVersion: 'original',
-  graphVersions: {
-    original: GRAPH_VERSION_STRUCTURE,
-  },
 
   // graphs data storage
   lastGraphIndex: 0,

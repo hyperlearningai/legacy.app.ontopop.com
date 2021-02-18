@@ -1,19 +1,23 @@
+import store from '../../store'
+
 /**
  * Get edges connecting bounding box nodes
  * @param  {Object}   params
- * @param  {Object}   params.triplesPerNode             List of triples per node
  * @param  {String}   params.selectedBoundingBoxNodes   Array of selected bounding box nodes
  * @return {Array}    boundingBoxEdges                  Array of edges related to bounding box nodes
  */
 const getBoundingBoxEdges = ({
-  selectedBoundingBoxNodes,
-  triplesPerNode
+  selectedBoundingBoxNodesIds,
 }) => {
+  const {
+    triplesPerNode
+  } = store.getState()
+
   const boundingBoxEdges = []
 
-  if (!selectedBoundingBoxNodes || selectedBoundingBoxNodes.length < 1) return boundingBoxEdges
+  if (!selectedBoundingBoxNodesIds || selectedBoundingBoxNodesIds.length === 0) return boundingBoxEdges
 
-  selectedBoundingBoxNodes.map((nodeId) => {
+  selectedBoundingBoxNodesIds.map((nodeId) => {
     const listOfTriples = triplesPerNode[nodeId]
 
     if (listOfTriples && listOfTriples.length > 0) {
@@ -26,7 +30,7 @@ const getBoundingBoxEdges = ({
 
         const newNode = from === nodeId ? to : from
 
-        if (selectedBoundingBoxNodes.includes(newNode)
+        if (selectedBoundingBoxNodesIds.includes(newNode)
         && !boundingBoxEdges.includes(predicate)) {
           boundingBoxEdges.push(predicate)
         }

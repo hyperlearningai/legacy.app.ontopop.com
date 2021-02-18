@@ -1,9 +1,9 @@
 import { JSDOM } from 'jsdom'
-import showNotification from '../../../utils/showNotification'
+import showNotification from '../../../utils/notifications/showNotification'
 import exportAsImage from '../../../utils/exportSettings/exportAsImage'
 import en from '../../../i18n/en'
 
-jest.mock('../../../utils/showNotification')
+jest.mock('../../../utils/notifications/showNotification')
 const dom = new JSDOM()
 const currentDocument = global.document
 const currentWindow = global.window

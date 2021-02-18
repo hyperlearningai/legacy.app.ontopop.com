@@ -2,14 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EdgesSelection from '../../components/EdgesSelection'
-import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
 
 const setup = () => {
   const props = {
-    resetSelectedEdges: jest.fn(),
-    removeFromArray: jest.fn(),
-    objectPropertiesFromApi: OwlObjectProperties,
-    selectedEdges: ['http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM']
+    setStoreState: jest.fn(),
+    selectedEdge: 'edge-123'
   }
 
   const component = shallow(<EdgesSelection {...props} />)

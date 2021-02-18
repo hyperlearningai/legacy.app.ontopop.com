@@ -1,6 +1,5 @@
 import setNeighbourNodes from '../../../utils/nodeNeighbourhood/setNeighbourNodes'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
-import { triplesPerNode } from '../../fixtures/triplesPerNode'
 import store from '../../../store'
 
 const setStoreState = jest.fn()
@@ -14,7 +13,6 @@ const getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
   selectedNeighbourNode,
   lastGraphIndex,
-  triplesPerNode,
 }))
 store.getState = getState
 
@@ -51,7 +49,6 @@ describe('setNeighbourNodes', () => {
         options: {
           selectedNodeId: undefined,
           separationDegree: 1,
-          triplesPerNode
         },
         type: 'neighbourhood'
       }

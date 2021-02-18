@@ -5,6 +5,8 @@ export default {
 
   // header
   signOut: 'Sign out',
+  alphaVersion: 'Alpha version',
+  betaVersion: 'Beta version',
 
   // navbar
   hideSidebar: 'Hide sidebar',
@@ -93,11 +95,14 @@ export default {
   separationDegree: 'Separation degree',
   selectedNode: 'Selected node',
   insertNumber: 'Insert number',
+  showNeighbourhood: 'Show neighbourhood',
 
   // shortest path
   selectNodesFromGraph: 'Select nodes from graph',
-  isNodeOverlay: 'Show all nodes',
-  isNotNodeOverlay: 'Show only path',
+  isNodeOverlay: 'Show path over nodes',
+  isNotNodeOverlay: 'Show path only',
+  selectStartingNode: 'Select starting node',
+  selectEndingNode: 'Select ending node',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -246,6 +251,7 @@ export default {
   idExists: 'ID already exists',
   noDeletedElements: 'No deleted elements to restore!',
   nodeIdAlreadyExists: 'Node ID already exists',
+  edgeIdAlreadyExists: 'Edge ID already exists',
   connection: 'Connection',
   chooseElementsToConnect: 'Choose elements to connect',
   fromNode: 'From node',

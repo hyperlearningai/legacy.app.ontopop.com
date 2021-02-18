@@ -1,7 +1,7 @@
 /* eslint no-console:0 */
 import { NOTIFY_SUCCESS } from '../../constants/notifications'
 import { ROUTE_LOGIN } from '../../constants/routes'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 
 const getPasswordReset = ({
   email,

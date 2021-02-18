@@ -1,16 +1,28 @@
-import { useRef, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
+// import jsonClasses from '../assets/json/test-ontology-classes.json'
+// import jsonObjectProperties from '../assets/json/test-ontology-object-properties.json'
 import actions from '../store/actions'
-import serialiseNodesEdges from '../utils/serialiseNodesEdges'
-import setNetwork from '../utils/setNetwork'
-import setNetworkMethods from '../utils/setNetworkMethods'
-import getPhysicsOptions from '../utils/getPhysicsOptions'
+import setNodesIdsToDisplay from '../utils/graphVisualisation/setNodesIdsToDisplay'
+import GraphContextMenu from './GraphContextMenu'
+import startupActions from '../utils/graphVisualisation/startupActions'
+import setNetwork from '../utils/graphVisualisation/setNetwork'
+import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
+import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
+import addElementsToGraph from '../utils/graphVisualisation/addElementsToGraph'
 
 const GraphVisualisation = ({
+  currentGraph,
+  graphData,
+  setStoreState,
+  showContextMenu,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry,
+  addToObject,
   availableNodes,
   availableEdges,
-  addToArray,
   network,
   nodesIdsToDisplay,
   physicsHierarchicalView,
@@ -22,7 +34,6 @@ const GraphVisualisation = ({
   stylingEdgeLineColor,
   stylingEdgeLineColorHover,
   stylingEdgeLineColorHighlight,
-  stylingEdgeCaptionProperty,
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
@@ -39,9 +50,17 @@ const GraphVisualisation = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
-  setStoreState
 }) => {
+  const { t } = useTranslation()
+  const isInitialMountCurrentGraph = useRef(true)
+
   const visJsRef = useRef(null)
+
+  useEffect(() => startupActions({
+    setStoreState,
+    addToObject,
+    t
+  }), [])
 
   // set new Network
   useEffect(() => setNetwork({
@@ -58,12 +77,31 @@ const GraphVisualisation = ({
     if (network) {
       setStoreState('isNetworkLoading', true)
 
-      serialiseNodesEdges({
+      addElementsToGraph({
         setStoreState,
       })
     }
   }, [
     nodesIdsToDisplay,
+  ])
+
+  useEffect(() => {
+    if (isInitialMountCurrentGraph.current) {
+      isInitialMountCurrentGraph.current = false
+    } else {
+      const {
+        type,
+        options
+      } = graphData[currentGraph]
+
+      setNodesIdsToDisplay({
+        type,
+        setStoreState,
+        options
+      })
+    }
+  }, [
+    currentGraph
   ])
 
   // set graph options
@@ -87,7 +125,6 @@ const GraphVisualisation = ({
     stylingEdgeLineColor,
     stylingEdgeLineColorHover,
     stylingEdgeLineColorHighlight,
-    stylingEdgeCaptionProperty,
     stylingEdgeTextColor,
     stylingEdgeTextSize,
     stylingEdgeTextAlign,
@@ -110,26 +147,62 @@ const GraphVisualisation = ({
   useEffect(() => setNetworkMethods({
     setStoreState,
     network,
-    addToArray,
   }), [
     network,
     nodesIdsToDisplay
   ])
 
+  const {
+    boundingBoxPosX,
+    boundingBoxPosY,
+    boundingBoxWidth,
+    boundingBoxHeight
+  } = boundingBoxGeometry
+
   return (
-    <div
-      id="network-graph"
-      ref={visJsRef}
-      style={{
-        height: '100%',
-        width: '100%'
-      }}
-    />
+    <div className="graph-container">
+      <div
+        id="network-graph"
+        ref={visJsRef}
+        style={{
+          height: '100%',
+          width: '100%'
+        }}
+      />
+
+      {
+        isBoundingBoxSelectable
+        && (
+          <div
+            style={{
+              top: boundingBoxPosY,
+              left: boundingBoxPosX,
+              width: boundingBoxWidth,
+              height: boundingBoxHeight
+            }}
+            className="bounding-box-wrapper"
+          />
+        )
+      }
+
+      {
+        showContextMenu
+        && (
+          <GraphContextMenu />
+        )
+      }
+    </div>
   )
 }
 
 GraphVisualisation.propTypes = {
-  addToArray: PropTypes.func.isRequired,
+  currentGraph: PropTypes.string.isRequired,
+  graphData: PropTypes.shape().isRequired,
+  setStoreState: PropTypes.func.isRequired,
+  showContextMenu: PropTypes.bool.isRequired,
+  isBoundingBoxSelectable: PropTypes.bool.isRequired,
+  boundingBoxGeometry: PropTypes.shape().isRequired,
+  addToObject: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,
@@ -155,9 +228,7 @@ GraphVisualisation.propTypes = {
   stylingNodeHoverBorderColor: PropTypes.string.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
-  setStoreState: PropTypes.func.isRequired,
   stylingNodeTextFontAlign: PropTypes.string.isRequired,
-  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
   stylingEdgeTextColor: PropTypes.string.isRequired,
   stylingEdgeTextSize: PropTypes.number.isRequired,
   stylingEdgeTextAlign: PropTypes.string.isRequired,
@@ -168,6 +239,12 @@ GraphVisualisation.defaultProps = {
 }
 
 const mapToProps = ({
+  currentGraph,
+  graphData,
+  showContextMenu,
+  contextMenuData,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry,
   availableNodes,
   availableEdges,
   network,
@@ -190,7 +267,6 @@ const mapToProps = ({
   stylingNodeHighlightBackgroundColor,
   stylingNodeTextColor,
   searchFilter,
-  selectedEdges,
   selectedNeighbourNode,
   selectedNodes,
   isPhysicsOn,
@@ -198,11 +274,16 @@ const mapToProps = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
-  stylingEdgeCaptionProperty,
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
 }) => ({
+  currentGraph,
+  graphData,
+  showContextMenu,
+  contextMenuData,
+  isBoundingBoxSelectable,
+  boundingBoxGeometry,
   availableNodes,
   availableEdges,
   network,
@@ -225,7 +306,6 @@ const mapToProps = ({
   stylingNodeHighlightBackgroundColor,
   stylingNodeTextColor,
   searchFilter,
-  selectedEdges,
   selectedNeighbourNode,
   selectedNodes,
   isPhysicsOn,
@@ -233,7 +313,6 @@ const mapToProps = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
-  stylingEdgeCaptionProperty,
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
