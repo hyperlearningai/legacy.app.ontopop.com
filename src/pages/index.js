@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import Navbar from '../components/Navbar'
-import GraphVisualisationWrapper from '../components/GraphVisualisationWrapper'
+import GraphVisualisation from '../components/GraphVisualisation'
 import FooterComponent from '../components/FooterComponent'
 import HeadTags from '../components/HeadTags'
 import HeaderComponent from '../components/HeaderComponent'
@@ -48,7 +48,7 @@ const Index = ({
               <div className="main-view-area">
 
                 <Navbar />
-                <GraphVisualisationWrapper />
+                <GraphVisualisation />
                 <FooterComponent />
               </div>
 

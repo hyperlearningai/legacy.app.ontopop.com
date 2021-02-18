@@ -6,7 +6,7 @@ import {
   NOTIFY_SUCCESS,
   NOTIFY_WARNING
 } from '../../constants/notifications'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 import extractCsvRows from './extractCsvRows'
 import downloadBlob from './downloadBlob'
 import store from '../../store'

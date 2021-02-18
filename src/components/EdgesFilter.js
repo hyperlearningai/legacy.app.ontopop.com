@@ -53,7 +53,7 @@ const EdgesFilter = ({
                   >
                     {
                       edgesFilters.length > 1 && (
-                      <div className="p-field remove-button p-col-12 p-md-3">
+                      <div className="p-field remove-button p-col-12">
                         <Button
                           icon="pi pi-times"
                           className="p-button-rounded p-button-danger"
@@ -74,7 +74,7 @@ const EdgesFilter = ({
                       )
                     }
 
-                    <div className="p-field p-col-12 p-md-3">
+                    <div className="p-field p-col-12">
                       <label htmlFor={selectId}>{t('selectProperty')}</label>
                       <Dropdown
                         id={selectId}
@@ -107,7 +107,7 @@ const EdgesFilter = ({
                       />
                     </div>
 
-                    <div className="p-field p-col-12 p-md-3 m-t-20">
+                    <div className="p-field p-col-12 m-t-20">
                       <label htmlFor={inputTextId}>{t('searchString')}</label>
                       <InputText
                         id={inputTextId}

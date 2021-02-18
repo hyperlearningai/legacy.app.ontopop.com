@@ -1,47 +1,4 @@
-import {
-  NODE_BACKGROUND,
-  EDGE_COLOR
-} from '../constants/graph'
-
 export default {
-  /**
-   * Reset selected edges and edge selectability
-   * @param  {Object} state  Store state
-   * @return {undefined}
-   */
-  resetSelectedEdges: (state) => {
-    const newSelectedEdges = state.selectedEdges.slice()
-
-    newSelectedEdges.map((id) => state.availableEdges.update(
-      [{ id, color: { background: EDGE_COLOR } }]
-    ))
-
-    newSelectedEdges.length = 0
-
-    return ({
-      selectedEdges: newSelectedEdges,
-      isEdgeSelectable: false
-    })
-  },
-  /**
-   * Reset selected nodes and nodes selectability
-   * @param  {Object} state  Store state
-   * @return {undefined}
-   */
-  resetSelectedNodes: (state) => {
-    const newSelectedNodes = state.selectedNodes.slice()
-
-    newSelectedNodes.map((id) => state.availableNodes.update(
-      [{ id, color: { background: NODE_BACKGROUND } }]
-    ))
-
-    newSelectedNodes.length = 0
-
-    return ({
-      selectedNodes: newSelectedNodes,
-      isNodeSelectable: false
-    })
-  },
   /**
    * Add subkey to object
    * @param  {Object} state     Store state
@@ -99,18 +56,6 @@ export default {
    */
   removeFromArray: (state, stateKey, id) => {
     const newArray = state[stateKey].slice()
-
-    if (stateKey === 'selectedNodes') {
-      state.availableNodes.update(
-        [{ id, color: { background: NODE_BACKGROUND } }]
-      )
-    }
-
-    if (stateKey === 'selectedEdges') {
-      state.availableEdges.update(
-        [{ id, color: { background: EDGE_COLOR } }]
-      )
-    }
 
     newArray.splice(newArray.indexOf(id), 1)
 

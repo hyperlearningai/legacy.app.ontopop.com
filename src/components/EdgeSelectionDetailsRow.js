@@ -21,6 +21,9 @@ const EdgeSelectionDetailsRow = ({
     && !key.includes('label')
     && !PROPERTIES_TO_IGNORE.includes(key)).sort()
 
+  const fromLabel = getNode(connection.from).label
+  const toLabel = getNode(connection.to).label
+
   return (
     <tr>
       <td className="icon-cell">
@@ -34,14 +37,14 @@ const EdgeSelectionDetailsRow = ({
       </td>
       <td className="edge-node-cell-from">
         <span>
-          {connection.fromLabel}
+          {fromLabel}
         </span>
         <div className="edge-node-info">
           {
             isExpanded && (
               nodeKeys.map((nodeKey) => (
                 (
-                  <Fragment key={`edge-node-from-${nodeKey}-${connection.fromLabel}-${connection.toLabel}`}>
+                  <Fragment key={`edge-node-from-${nodeKey}-${connection.from}-${connection.to}`}>
                     <div className="edge-node-info-title">{nodeKey}</div>
                     <div className="edge-node-info-value">{getNode(connection.from)[nodeKey]}</div>
                   </Fragment>
@@ -53,14 +56,14 @@ const EdgeSelectionDetailsRow = ({
       </td>
       <td className="edge-node-cell-to">
         <span>
-          {connection.toLabel}
+          {toLabel}
         </span>
         <div className="edge-node-info">
           {
             isExpanded && (
               nodeKeys.map((nodeKey) => (
                 (
-                  <Fragment key={`edge-node-to-${nodeKey}-${connection.fromLabel}-${connection.toLabel}`}>
+                  <Fragment key={`edge-node-to-${nodeKey}-${connection.from}-${connection.to}`}>
                     <div className="edge-node-info-title">{nodeKey}</div>
                     <div className="edge-node-info-value">{getNode(connection.to)[nodeKey]}</div>
                   </Fragment>

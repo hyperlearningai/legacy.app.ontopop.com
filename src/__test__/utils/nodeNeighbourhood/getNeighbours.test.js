@@ -1,9 +1,14 @@
+import store from '../../../store'
 import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { triplesPerNode } from '../../fixtures/triplesPerNode.js'
 
 const selectedNodeId = 'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep'
-const classesFromApi = OwlClasses
+const deletedNodes = []
+
+store.getState = jest.fn().mockImplementation(() => ({
+  triplesPerNode,
+  deletedNodes
+}))
 
 describe('getNeighbours', () => {
   afterEach(() => {
@@ -16,11 +21,14 @@ describe('getNeighbours', () => {
     const result = getNeighbours({
       selectedNodeId,
       separationDegree,
-      classesFromApi,
-      triplesPerNode
     })
 
-    expect(result).toEqual(['http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep'])
+    expect(result).toEqual(
+      {
+        neighbourEdges: [],
+        neighbourNodes: ['http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep']
+      }
+    )
   })
 
   it('should work correctly when separationDegree = 1', async () => {
@@ -29,8 +37,6 @@ describe('getNeighbours', () => {
     const result = getNeighbours({
       selectedNodeId,
       separationDegree,
-      classesFromApi,
-      triplesPerNode
     })
 
     expect(result).toEqual(
@@ -93,8 +99,6 @@ describe('getNeighbours', () => {
     const result = getNeighbours({
       selectedNodeId,
       separationDegree,
-      classesFromApi,
-      triplesPerNode
     })
 
     expect(result).toEqual(
@@ -118,32 +122,23 @@ describe('getNeighbours', () => {
           'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
           'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
           'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-          'http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7',
-          'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
           'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
           'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
           'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
-          'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-          'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
           'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
-          'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
           'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
           'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
           'http://webprotege.stanford.edu/R8Fp5FKHZWgNVNiLcHuAtPf',
-          'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-          'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
           'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
+          'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
           'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
           'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+          'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
           'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
-          'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
-          'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+          'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
           'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-          'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-          'http://webprotege.stanford.edu/R7dYrsdk1L1bcLR0A9vS5QP',
-          'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
-          'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-          'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+          'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+          'http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7',
         ],
         neighbourNodes: [
           'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep',
@@ -263,7 +258,6 @@ describe('getNeighbours', () => {
         ],
 
       }
-
     )
   })
 })

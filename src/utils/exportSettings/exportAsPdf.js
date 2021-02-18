@@ -2,7 +2,7 @@
 /* eslint new-cap:0 */
 import { jsPDF } from 'jspdf'
 import { NOTIFY_SUCCESS } from '../../constants/notifications'
-import showNotification from '../showNotification'
+import showNotification from '../notifications/showNotification'
 
 /**
  * Export canvas as pdf

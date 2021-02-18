@@ -3,25 +3,31 @@ import setOntologyRestoreConnection from '../../../utils/editOntology/setOntolog
 import store from '../../../store'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
 import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
-import { graphVersions } from '../../fixtures/graphVersions'
+import { nodesConnections } from '../../fixtures/nodesConnections'
+import { triplesPerNode } from '../../fixtures/triplesPerNode'
+import { edgesConnections } from '../../fixtures/edgesConnections'
 import {
-  addToObjectFixture,
   setStoreStateFixture
 } from '../../fixtures/setOntologyRestoreConnection'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
-
-jest.mock('../../../utils/nodesEdgesUtils/addEdge')
+import setEdgeStylesByProperty from '../../../utils/networkStyling/setEdgeStylesByProperty'
+import getNode from '../../../utils/nodesEdgesUtils/getNode'
+import getEdgeObject from '../../../utils/graphVisualisation/getEdgeObject'
 
 const selectedElement = [
   'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
 ]
 const setStoreState = jest.fn()
-const addToObject = jest.fn()
 const newOwlClasses = JSON.parse(JSON.stringify(OwlClasses))
 newOwlClasses['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'].rdfsSubClassOf = [{
   classRdfAbout: 'http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u',
   owlRestriction: null
 }]
+
+jest.mock('../../../utils/nodesEdgesUtils/getNode')
+jest.mock('../../../utils/networkStyling/setEdgeStylesByProperty')
+jest.mock('../../../utils/graphVisualisation/getEdgeObject')
+jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 
 describe('setOntologyRestoreConnection', () => {
   afterEach(() => {
@@ -29,42 +35,38 @@ describe('setOntologyRestoreConnection', () => {
   })
 
   it('should work correctly', async () => {
-    const getState = jest.fn().mockImplementation(() => ({
-      graphVersions,
+    store.getState = jest.fn().mockImplementation(() => ({
       classesFromApi: newOwlClasses,
       objectPropertiesFromApi: OwlObjectProperties,
-      selectedGraphVersion: 'original',
       deletedConnections: [selectedElement[0]],
-      stylingNodeCaptionProperty: 'rdfsLabel'
+      stylingNodeCaptionProperty: 'rdfsLabel',
+      deletedNodes: [],
+      classesFromApiBackup: OwlClasses,
+      nodesConnections,
+      triplesPerNode,
+      edgesConnections
     }))
-    store.getState = getState
+
+    getEdgeObject.mockImplementation(() => ({
+      edge: { id: 'node-123' },
+      edgeConnection: {
+        to: 'node-123',
+        from: 'node-234'
+      }
+    }))
+    getNode.mockImplementation(() => ({ id: '123' }))
 
     await setOntologyRestoreConnection({
       selectedElement,
       setStoreState,
-      addToObject
     })
 
     expect(addEdge).toHaveBeenLastCalledWith({
-      edgeId: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-      fromLabel: 'Communication Document',
-      id: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
-      label: 'Provided to',
-      owlAnnotationProperties: { 'http://webprotege.stanford.edu/RtMeQat8p1tL74b64dS2qs': 'Transfer', 'http://www.w3.org/2004/02/skos/core#comment': 'The difference with "Issued to" is that "Issued to" implies there is a legal or contractural arrangement applied.', 'http://www.w3.org/2004/02/skos/core#definition': 'Relationship that specifies the receiver of an Entity that has been sent out or put forth.' },
-      rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      rdfsLabel: 'Provided to',
-      rdfsSubPropertyOf: ['http://webprotege.stanford.edu/R864k4trK0sb0XWCVmIQkLN'],
-      skosComment: 'The difference with "Issued to" is that "Issued to" implies there is a legal or contractural arrangement applied.',
-      skosDefinition: 'Relationship that specifies the receiver of an Entity that has been sent out or put forth.',
-      to: 'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
-      toLabel: 'Licence Holder'
+      id: 'node-123',
     })
 
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphVersions',
-      'original',
-      addToObjectFixture
+    expect(setEdgeStylesByProperty).toHaveBeenLastCalledWith(
+      { edgeId: 'node-123' }
     )
 
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)

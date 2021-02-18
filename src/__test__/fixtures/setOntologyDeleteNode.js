@@ -1,7 +1,4 @@
 /* eslint max-len:0 */
-import { OwlClasses } from './test-ontology-classes.json'
-import { OwlObjectProperties } from './test-ontology-object-properties.json'
-
 const deletedNodes = [
   'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
   'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
@@ -2707,22 +2704,29 @@ const newClassesFromApi = {
   },
 }
 
-export const addToObjectFixture = {
-  classesFromApi: newClassesFromApi,
-  objectPropertiesFromApi: OwlObjectProperties,
-  classesFromApiBackup: OwlClasses,
-  objectPropertiesFromApiBackup: OwlObjectProperties,
-  deletedNodes,
-  addedNodes: [],
-  updatedNodes: [],
-  deletedEdges: [],
-  addedEdges: [],
-  updatedEdges: [],
-  deletedConnections: [],
-  addedConnections: [],
-}
-
 export const setStoreStateFixture = [
+  [
+    'nodesConnections',
+    {
+      'http://webprotege.stanford.edu/RxuHv1LeenSYiEIoMyhxzS': [],
+    },
+  ],
+  [
+    'edgesConnections',
+    {},
+  ],
+  [
+    'triplesPerNode',
+    {
+      'http://webprotege.stanford.edu/RxuHv1LeenSYiEIoMyhxzS': [
+        {
+          from: 'http://webprotege.stanford.edu/RxuHv1LeenSYiEIoMyhxzS',
+          predicate: 'http://www.w3.org/2000/01/rdf-schema#subclassof',
+          to: 'http://webprotege.stanford.edu/R9WIxkbvxYbhp8NthzYsXSx',
+        },
+      ],
+    },
+  ],
   [
     'deletedNodes',
     deletedNodes,

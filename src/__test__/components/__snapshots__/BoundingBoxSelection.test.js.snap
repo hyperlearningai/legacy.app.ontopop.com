@@ -9,8 +9,6 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -33,8 +31,6 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }

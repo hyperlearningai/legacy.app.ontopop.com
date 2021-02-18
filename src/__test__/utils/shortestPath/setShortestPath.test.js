@@ -1,24 +1,19 @@
 import setShortestPath from '../../../utils/shortestPath/setShortestPath'
-import { availableEdgesNormalised } from '../../fixtures/availableEdgesNormalised'
-import { availableNodesNormalised } from '../../fixtures/availableNodesNormalised'
 import { nodesConnections } from '../../fixtures/nodesConnections'
 import store from '../../../store'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
-const shortestPathSelectedNodes = [
-  'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',
-  'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
-]
+const shortestPathNode1 = 'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV'
+const shortestPathNode2 = 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
 const lastGraphIndex = 1
-const getState = jest.fn().mockImplementation(() => ({
-  availableEdgesNormalised,
-  availableNodesNormalised,
+
+store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
   nodesConnections,
-  shortestPathSelectedNodes,
+  shortestPathNode1,
+  shortestPathNode2
 }))
-store.getState = getState
 
 describe('setShortestPath', () => {
   afterEach(() => {

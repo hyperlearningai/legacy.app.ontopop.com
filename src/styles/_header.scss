@@ -19,4 +19,17 @@ header {
     width: 140px;
     padding-top: 10px;
   }
+
+  .p-chip {
+    background: $red;
+    color: $white;
+  }
+
+  .header {
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }

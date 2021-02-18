@@ -7,12 +7,12 @@ import { OwlObjectProperties } from '../../fixtures/test-ontology-object-propert
 import { availableNodes } from '../../fixtures/availableNodesNormalised'
 import { availableEdges } from '../../fixtures/availableEdgesNormalised'
 import en from '../../../i18n/en'
-import showNotification from '../../../utils/showNotification'
+import showNotification from '../../../utils/notifications/showNotification'
 
 const fileMock = jest.fn()
 const generateAsyncMock = jest.fn()
 
-jest.mock('../../../utils/showNotification')
+jest.mock('../../../utils/notifications/showNotification')
 jest.mock('jszip')
 
 const getState = jest.fn().mockImplementation(() => ({

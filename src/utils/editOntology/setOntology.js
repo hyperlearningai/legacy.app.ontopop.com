@@ -35,7 +35,6 @@ const setOntology = ({
       setOntologyRestoreNode({
         selectedElement,
         setStoreState,
-        addToObject
       })
     }
 
@@ -43,15 +42,13 @@ const setOntology = ({
       setOntologyRestoreEdge({
         selectedElement,
         setStoreState,
-        addToObject
       })
     }
 
     if (type === 'connection') {
       setOntologyRestoreConnection({
-        setStoreState,
         selectedElement,
-        addToObject,
+        setStoreState,
       })
     }
   }
@@ -61,7 +58,6 @@ const setOntology = ({
       setOntologyDeleteNode({
         selectedElement,
         setStoreState,
-        addToObject
       })
     }
 
@@ -69,7 +65,6 @@ const setOntology = ({
       setOntologyDeleteEdge({
         selectedElement,
         setStoreState,
-        addToObject
       })
     }
 
@@ -77,7 +72,6 @@ const setOntology = ({
       setOntologyDeleteConnection({
         setStoreState,
         selectedElement,
-        addToObject,
       })
     }
   }
@@ -107,7 +101,6 @@ const setOntology = ({
       setOntologyAddNode({
         setStoreState,
         selectedElementProperties,
-        addToObject,
         t
       })
     }
@@ -116,7 +109,6 @@ const setOntology = ({
       setOntologyAddEdge({
         setStoreState,
         selectedElementProperties,
-        addToObject,
         t
       })
     }
@@ -125,7 +117,7 @@ const setOntology = ({
       setOntologyAddConnection({
         setStoreState,
         selectedElementProperties,
-        addToObject,
+        t,
       })
     }
   }

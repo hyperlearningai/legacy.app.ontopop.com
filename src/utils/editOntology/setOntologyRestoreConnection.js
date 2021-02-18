@@ -3,9 +3,11 @@ import {
   SUBCLASSOF_PROPERTY,
   SUB_CLASS_OF_ID
 } from '../../constants/graph'
-import getEdgeObject from '../serialiseNodesEdges/getEdgeObject'
+import getEdgeObject from '../graphVisualisation/getEdgeObject'
 import { getEdgeAndNodes } from '../../constants/functions'
 import addEdge from '../nodesEdgesUtils/addEdge'
+import getNode from '../nodesEdgesUtils/getNode'
+import setEdgeStylesByProperty from '../networkStyling/setEdgeStylesByProperty'
 /**
  * ADd ontology edge
  * @param  {Object}         params
@@ -17,18 +19,20 @@ import addEdge from '../nodesEdgesUtils/addEdge'
 const setOntologyRestoreConnection = ({
   setStoreState,
   selectedElement,
-  addToObject
 }) => {
   const {
-    graphVersions,
     classesFromApi,
     objectPropertiesFromApi,
-    selectedGraphVersion,
     deletedConnections,
+    nodesConnections,
+    triplesPerNode,
+    edgesConnections
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
+  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
+  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
+  const newEdgesConnections = JSON.parse(JSON.stringify(edgesConnections))
 
   // remove selected elements from deleted connection
   const newDeletedConnections = deletedConnections.filter((connection) => !selectedElement.includes(connection))
@@ -59,7 +63,10 @@ const setOntologyRestoreConnection = ({
       newClassesFromApi[from][SUBCLASSOF_PROPERTY].push(connectionOwlObject)
 
       // get edge object from objectPropertiesFromApi and add to graph
-      const { edge } = getEdgeObject({
+      const {
+        edge,
+        edgeConnection
+      } = getEdgeObject({
         classesFromApi,
         from,
         objectPropertiesFromApi,
@@ -67,17 +74,50 @@ const setOntologyRestoreConnection = ({
         to,
       })
 
-      addEdge(edge)
+      const edgeConnectionWithPredicate = {
+        ...edgeConnection,
+        predicate
+      }
+
+      if (newTriplesPerNode[from]) {
+        newTriplesPerNode[from].push(edgeConnectionWithPredicate)
+      }
+
+      if (newTriplesPerNode[to]) {
+        newTriplesPerNode[to].push(edgeConnectionWithPredicate)
+      }
+
+      if (
+        getNode(from) !== null
+        && getNode(to) !== null) {
+        addEdge(edge)
+
+        // add connections
+        if (newEdgesConnections[predicate]) {
+          newEdgesConnections[predicate].push(edgeConnection)
+        }
+
+        if (newNodesConnections[from]) {
+          newNodesConnections[from].push(edgeConnectionWithPredicate)
+        }
+
+        if (newNodesConnections[to]) {
+          newNodesConnections[to].push(edgeConnectionWithPredicate)
+        }
+
+        setEdgeStylesByProperty({
+          edgeId: edge.id
+        })
+      }
 
       return true
     })
   }
 
   // add data
-  newGraphVersion.classesFromApi = newClassesFromApi
-  newGraphVersion.deletedConnections = newDeletedConnections
-
-  addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
+  setStoreState('nodesConnections', newNodesConnections)
+  setStoreState('edgesConnections', newEdgesConnections)
+  setStoreState('triplesPerNode', newTriplesPerNode)
   setStoreState('classesFromApi', newClassesFromApi)
 }
 

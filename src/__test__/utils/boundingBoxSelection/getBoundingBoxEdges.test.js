@@ -1,5 +1,10 @@
+import store from '../../../store'
 import getBoundingBoxEdges from '../../../utils/boundingBoxSelection/getBoundingBoxEdges'
 import { triplesPerNode } from '../../fixtures/triplesPerNode.js'
+
+store.getState = jest.fn().mockImplementation(() => ({
+  triplesPerNode
+}))
 
 describe('getBoundingBoxEdges', () => {
   afterEach(() => {
@@ -7,18 +12,17 @@ describe('getBoundingBoxEdges', () => {
   })
 
   it('should work correctly when no nodes', async () => {
-    const selectedBoundingBoxNodes = []
+    const selectedBoundingBoxNodesIds = []
 
     const result = getBoundingBoxEdges({
-      selectedBoundingBoxNodes,
-      triplesPerNode
+      selectedBoundingBoxNodesIds,
     })
 
     expect(result).toEqual([])
   })
 
   it('should work correctly', async () => {
-    const selectedBoundingBoxNodes = [
+    const selectedBoundingBoxNodesIds = [
       'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep',
       'http://webprotege.stanford.edu/R734t4iI6j8MPmpJsIqO2v4',
       'http://webprotege.stanford.edu/R735Cwtcs6mgZedTI2DBpFK',
@@ -31,8 +35,7 @@ describe('getBoundingBoxEdges', () => {
     ]
 
     const result = getBoundingBoxEdges({
-      selectedBoundingBoxNodes,
-      triplesPerNode
+      selectedBoundingBoxNodesIds
     })
 
     expect(result).toEqual([

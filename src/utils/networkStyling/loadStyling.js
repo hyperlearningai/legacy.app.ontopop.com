@@ -13,12 +13,7 @@ const loadStyling = ({
   if (savedStyle) {
     const savedStyleJson = JSON.parse(savedStyle)
 
-    Object.keys(savedStyleJson).map((option) => {
-      if (savedStyleJson[option]) {
-        setStoreState(option, savedStyleJson[option])
-      }
-      return true
-    })
+    Object.keys(savedStyleJson).map((option) => setStoreState(option, savedStyleJson[option]))
   }
 
   return true

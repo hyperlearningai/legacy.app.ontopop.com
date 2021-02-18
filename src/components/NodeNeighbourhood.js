@@ -10,10 +10,10 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import setNeighbourNodes from '../utils/nodeNeighbourhood/setNeighbourNodes'
+import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const NodeNeighbourhood = ({
   setStoreState,
-  classesFromApi,
   selectedNeighbourNode,
   addToObject,
 }) => {
@@ -34,7 +34,7 @@ const NodeNeighbourhood = ({
       <div className="node-neighbourhood">
         <div className="node-neighbourhood-selection">
           {t('selectNodeFromGraph')}
-          <div className="p-field p-col-12 p-md-3 m-t-20">
+          <div className="p-field p-col-12 m-t-20">
             <label htmlFor="separationDegree">{t('separationDegree')}</label>
             <InputNumber
               id="separationDegree"
@@ -62,11 +62,11 @@ const NodeNeighbourhood = ({
                 <tbody>
                   <tr>
                     <td className="bold">{t('label')}</td>
-                    <td>{classesFromApi[selectedNeighbourNode].label}</td>
+                    <td>{getNode(selectedNeighbourNode).label}</td>
                   </tr>
                   <tr>
                     <td className="bold">{t('id')}</td>
-                    <td>{classesFromApi[selectedNeighbourNode].id}</td>
+                    <td>{getNode(selectedNeighbourNode).id}</td>
                   </tr>
                 </tbody>
               </table>
@@ -95,19 +95,16 @@ const NodeNeighbourhood = ({
 NodeNeighbourhood.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   selectedNeighbourNode: PropTypes.string.isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
   addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
   graphData,
   currentGraph,
-  classesFromApi,
   selectedNeighbourNode,
 }) => ({
   graphData,
   currentGraph,
-  classesFromApi,
   selectedNeighbourNode,
 })
 

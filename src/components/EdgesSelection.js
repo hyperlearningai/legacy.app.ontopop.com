@@ -1,25 +1,42 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import EdgesSelectionDetails from './EdgesSelectionDetails'
 import { SIDEBAR_VIEW_EDGES_SELECTION } from '../constants/views'
-import { getEdgeUniqueId } from '../constants/functions'
+import getEdge from '../utils/nodesEdgesUtils/getEdge'
+import resetSelectedEdges from '../utils/edgesSelection/resetSelectedEdges'
+import highlightSelectedEdge from '../utils/edgesSelection/highlightSelectedEdge'
 
 const EdgesSelection = ({
-  removeFromArray,
-  objectPropertiesFromApi,
-  selectedEdges,
-  resetSelectedEdges
+  selectedEdge,
+  setStoreState
 }) => {
   const { t } = useTranslation()
 
-  const [isEdgeSelected, toggleEdgeSelected] = useState(false)
-  const [edgeId, setEdgeId] = useState('')
+  useEffect(() => () => {
+    setStoreState('selectedEdge', undefined)
 
-  useEffect(() => () => resetSelectedEdges(), [])
+    resetSelectedEdges({
+      setStoreState
+    })
+  }, [])
+
+  useEffect(() => {
+    if (selectedEdge && selectedEdge !== '') {
+      resetSelectedEdges({
+        setStoreState
+      })
+
+      highlightSelectedEdge({
+        setStoreState,
+        selectedEdge
+      })
+    }
+  }, [selectedEdge])
+
+  const isEdgeSelected = selectedEdge && selectedEdge !== ''
 
   return (
     <>
@@ -28,62 +45,19 @@ const EdgesSelection = ({
           ? t(SIDEBAR_VIEW_EDGES_SELECTION)
           : (
             <>
-              <Button
-                tooltip={t('goBack')}
-                onClick={() => toggleEdgeSelected(false)}
-                icon="pi pi-chevron-left"
-                iconPos="left"
-              />
-              {`${t('edge')}: ${objectPropertiesFromApi[edgeId].rdfsLabel}`}
+              {`${t('edge')}: ${getEdge(selectedEdge).label}`}
             </>
           )}
       </div>
       {!isEdgeSelected ? (
         <div className="edges-selection">
-          {
-            selectedEdges.length > 0
-              ? selectedEdges.map((selectedEdge) => {
-                const edgeUniqueId = getEdgeUniqueId(selectedEdge)
-
-                const { rdfsLabel } = objectPropertiesFromApi[edgeUniqueId]
-
-                return (
-                  <div
-                    className="edges-selection-row"
-                    key={`selected-edge-row-${selectedEdge}`}
-                  >
-                    <div className="edges-selection-row-delete">
-                      <Button
-                        tooltip={`${t('removeEdge')}: ${rdfsLabel}`}
-                        onClick={() => removeFromArray('selectedEdges', selectedEdge)}
-                        icon="pi pi-times"
-                      />
-                    </div>
-
-                    <div className="edges-selection-row-main">
-                      <Button
-                        tooltip={`${t('viewEdge')}: ${rdfsLabel}`}
-                        onClick={() => {
-                          setEdgeId(edgeUniqueId)
-                          toggleEdgeSelected(true)
-                        }}
-                        label={rdfsLabel}
-                        icon="pi pi-chevron-right"
-                        iconPos="right"
-                      />
-                    </div>
-                  </div>
-                )
-              }) : (
-                <div className="edges-selection-message">
-                  {t('selectEdgeFromGraph')}
-                </div>
-              )
-          }
+          <div className="edges-selection-message">
+            {t('selectEdgeFromGraph')}
+          </div>
         </div>
       ) : (
         <EdgesSelectionDetails
-          edgeId={edgeId}
+          edgeId={selectedEdge}
         />
       )}
     </>
@@ -91,18 +65,18 @@ const EdgesSelection = ({
 }
 
 EdgesSelection.propTypes = {
-  resetSelectedEdges: PropTypes.func.isRequired,
-  selectedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
-  removeFromArray: PropTypes.func.isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
+  selectedEdge: PropTypes.string,
+  setStoreState: PropTypes.func.isRequired,
+}
+
+EdgesSelection.defaultProps = {
+  selectedEdge: undefined
 }
 
 const mapToProps = ({
-  selectedEdges,
-  objectPropertiesFromApi
+  selectedEdge,
 }) => ({
-  selectedEdges,
-  objectPropertiesFromApi
+  selectedEdge,
 })
 
 export default connect(

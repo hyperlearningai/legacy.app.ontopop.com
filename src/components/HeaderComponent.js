@@ -6,6 +6,7 @@ import { Button } from 'primereact/button'
 import { OverlayPanel } from 'primereact/overlaypanel'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
+import { Chip } from 'primereact/chip'
 import logo from '../assets/images/logo.svg'
 import logout from '../utils/auth/logout'
 import actions from '../store/actions'
@@ -41,7 +42,9 @@ const HeaderComponent = ({
         </div>
       </div>
 
-      <div>
+      <div className="header-right">
+        <Chip label={t('alphaVersion')} className="p-mr-2" icon="pi pi-info-circle" />
+
         <Button
           type="button"
           icon="pi pi-user"
@@ -79,7 +82,7 @@ const HeaderComponent = ({
 HeaderComponent.propTypes = {
   loading: PropTypes.bool.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  user: PropTypes.shape.isRequired,
+  user: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({

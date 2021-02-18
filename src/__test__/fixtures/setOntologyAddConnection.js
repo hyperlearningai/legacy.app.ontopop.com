@@ -1,6 +1,5 @@
 import { SUBCLASSOF_PROPERTY } from '../../constants/graph'
 import { OwlClasses } from './test-ontology-classes'
-import { OwlObjectProperties } from './test-ontology-object-properties'
 
 const newClassesFromApi = {
   ...OwlClasses,
@@ -29,22 +28,56 @@ const newClassesFromApiBackup = { ...OwlClasses }
 newClassesFromApiBackup['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'].id = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
 newClassesFromApiBackup['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'].label = 'Communication\nDocument'
 
-export const addToObjectFixture = {
-  classesFromApi: newClassesFromApi,
-  classesFromApiBackup: newClassesFromApiBackup,
-  deletedNodes: [],
-  objectPropertiesFromApi: OwlObjectProperties,
-  objectPropertiesFromApiBackup: OwlObjectProperties,
-  addedConnections: ['http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'],
-  updatedNodes: [],
-  deletedEdges: [],
-  addedEdges: [],
-  updatedEdges: [],
-  deletedConnections: [],
-  addedNodes: [],
-}
-
 export const setStoreStateFixture = [
+  [
+    'edgesConnections',
+    {
+      'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8': [
+        {
+          from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+        },
+      ],
+    },
+  ],
+  [
+    'nodesConnections',
+    {
+      'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': [
+        {
+          from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          predicate: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
+          to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+        },
+      ],
+      'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M': [
+        {
+          from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          predicate: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
+          to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+        },
+      ],
+    },
+  ],
+  [
+    'triplesPerNode',
+    {
+      'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': [
+        {
+          from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          predicate: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
+          to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+        },
+      ],
+      'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M': [
+        {
+          from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          predicate: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
+          to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+        },
+      ],
+    }
+  ],
   [
     'classesFromApi',
     newClassesFromApi,

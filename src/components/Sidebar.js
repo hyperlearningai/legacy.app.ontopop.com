@@ -28,7 +28,6 @@ import {
   FaRegHandPointer,
   FaRegCircle,
   FaFileExport,
-  FaGitAlt,
   FaPaintBrush
 } from 'react-icons/fa'
 import { Button } from 'primereact/button'
@@ -46,7 +45,6 @@ import {
   SIDEBAR_VIEW_NODES_FILTER,
   SIDEBAR_VIEW_EDGES_FILTER,
   SIDEBAR_VIEW_CUSTOM_QUERY,
-  SIDEBAR_VIEW_VERSIONING,
   SIDEBAR_VIEW_EDIT_ONTOLOGY,
   SIDEBAR_VIEW_STYLING
 } from '../constants/views'
@@ -62,7 +60,6 @@ import BoundingBoxSelection from './BoundingBoxSelection'
 import NodesFilter from './NodesFilter'
 import EdgesFilter from './EdgesFilter'
 import CustomQuery from './CustomQuery'
-import Versioning from './Versioning'
 import EditOntology from './EditOntology'
 import NetworkStyling from './NetworkStyling'
 
@@ -162,7 +159,10 @@ const Sidebar = ({
         <Button
           tooltip={t(SIDEBAR_VIEW_SHORTEST_PATH)}
           className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_SHORTEST_PATH)}
+          onClick={() => {
+            setStoreState('isShortestPathNode1Selectable', true)
+            setView(SIDEBAR_VIEW_SHORTEST_PATH)
+          }}
         >
           <IoGitNetwork />
         </Button>
@@ -193,13 +193,6 @@ const Sidebar = ({
           onClick={() => setView(SIDEBAR_VIEW_EXPORT)}
         >
           <FaFileExport />
-        </Button>
-        <Button
-          tooltip={t(SIDEBAR_VIEW_VERSIONING)}
-          className={sidebarView === SIDEBAR_VIEW_VERSIONING ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_VERSIONING)}
-        >
-          <FaGitAlt />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
@@ -300,12 +293,6 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_EXPORT && (
                 <ExportSettings />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_VERSIONING && (
-                <Versioning />
               )
             }
 

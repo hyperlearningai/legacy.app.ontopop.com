@@ -2,17 +2,14 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import ShortestPath from '../../components/ShortestPath'
-import { OwlClasses } from '../fixtures/test-ontology-classes.json'
 
 const setup = () => {
   const props = {
-    classesFromApi: OwlClasses,
-    removeFromArray: jest.fn(),
+    shortestPathNode1: 'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',
+    shortestPathNode2: 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9',
+    isShortestPathNode1Selectable: false,
+    isShortestPathNode2Selectable: true,
     setStoreState: jest.fn(),
-    shortestPathSelectedNodes: [
-      'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',
-      'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
-    ],
     addToObject: jest.fn(),
   }
 

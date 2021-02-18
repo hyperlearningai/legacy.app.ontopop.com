@@ -2,6 +2,7 @@ import flatten from 'flat'
 import { generatePredicateId } from '../../constants/functions'
 import { SUBCLASSOF_PROPERTY, SUB_CLASS_OF_ID } from '../../constants/graph'
 import store from '../../store'
+import setElementsStyle from '../networkStyling/setElementsStyle'
 import removeEdge from '../nodesEdgesUtils/removeEdge'
 import removeNode from '../nodesEdgesUtils/removeNode'
 
@@ -16,17 +17,19 @@ import removeNode from '../nodesEdgesUtils/removeNode'
 const setOntologyDeleteNode = ({
   selectedElement,
   setStoreState,
-  addToObject
 }) => {
   const {
-    graphVersions,
     classesFromApi,
     deletedNodes,
-    selectedGraphVersion,
+    nodesConnections,
+    triplesPerNode,
+    edgesConnections
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
+  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
+  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
+  const newEdgesConnections = JSON.parse(JSON.stringify(edgesConnections))
   const newDeletedNodes = deletedNodes.slice()
 
   if (selectedElement.length > 0) {
@@ -65,6 +68,48 @@ const setOntologyDeleteNode = ({
         newDeletedNodes.push(nodeId)
       }
 
+      // remove connection with node
+      if (newNodesConnections[nodeId]) {
+        const connections = newNodesConnections[nodeId]
+
+        connections.map((connection) => {
+          const {
+            from,
+            predicate,
+            to
+          } = connection
+
+          const isFrom = from === nodeId
+          const nodeIdToCheck = isFrom ? to : from
+
+          if (newNodesConnections[nodeIdToCheck]) {
+            const updatedConnections = newNodesConnections[nodeIdToCheck].filter((triple) => (isFrom ? triple.from !== nodeId : triple.to !== nodeId))
+
+            newNodesConnections[nodeIdToCheck] = updatedConnections
+          }
+
+          if (newTriplesPerNode[nodeIdToCheck]) {
+            const updatedConnections = newTriplesPerNode[nodeIdToCheck].filter((triple) => (isFrom ? triple.from !== nodeId : triple.to !== nodeId))
+
+            newTriplesPerNode[nodeIdToCheck] = updatedConnections
+          }
+
+          if (newEdgesConnections[predicate]) {
+            const updatedConnections = newEdgesConnections[predicate].filter((triple) => (triple.from !== nodeId && triple.to !== nodeId))
+
+            newEdgesConnections[predicate] = updatedConnections
+          }
+
+          return true
+        })
+
+        delete newNodesConnections[nodeId]
+      }
+
+      if (newTriplesPerNode[nodeId]) {
+        delete newTriplesPerNode[nodeId]
+      }
+
       if (newClassesFromApi[selectedElement]) {
         const { rdfsSubClassOf } = newClassesFromApi[selectedElement]
 
@@ -74,9 +119,15 @@ const setOntologyDeleteNode = ({
             const { owlRestriction } = subClassOf
             const predicate = owlRestriction ? owlRestriction.objectPropertyRdfAbout : SUB_CLASS_OF_ID
 
+            const connection = {
+              from: nodeId,
+              predicate,
+              to
+            }
+
             // remove from graph
             const edgeId = generatePredicateId({
-              from: nodeId, predicate, to
+              connection
             })
 
             removeEdge(edgeId)
@@ -86,18 +137,20 @@ const setOntologyDeleteNode = ({
         }
 
         removeNode(nodeId)
+
+        delete newClassesFromApi[selectedElement]
       }
 
       return true
     })
   }
 
-  newGraphVersion.classesFromApi = newClassesFromApi
-  newGraphVersion.deletedNodes = newDeletedNodes
-
-  addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
+  setStoreState('nodesConnections', newNodesConnections)
+  setStoreState('edgesConnections', newEdgesConnections)
+  setStoreState('triplesPerNode', newTriplesPerNode)
   setStoreState('deletedNodes', newDeletedNodes)
   setStoreState('classesFromApi', newClassesFromApi)
+  setElementsStyle()
 }
 
 export default setOntologyDeleteNode

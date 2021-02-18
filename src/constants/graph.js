@@ -1,8 +1,8 @@
 export const NODE_BACKGROUND = '#adefd1' // 'adefd1' // '03a9f4' // '2B7CE9',
 export const NODE_BORDER = '#011e41' // 'D2E5FF',
 export const NODE_BORDER_WIDTH = 1
-export const CLICK_NODE_BACKGROUND = '#abd6df'
-export const HIGHLIGHT_NODE_BACKGROUND = '#ffe715'
+export const CLICK_NODE_BACKGROUND = '#ffed00' // '#abd6df'
+export const HIGHLIGHT_NODE_BACKGROUND = '#ffef00'
 export const HIGHLIGHT_NODE_BORDER = '#009688'
 export const HOVER_NODE_BACKGROUND = '#f2f2f2'
 export const HOVER_NODE_BORDER = '#607d8b'
@@ -248,21 +248,6 @@ export const REQUIRED_PREDICATES = [
   'http://www.w3.org/2000/01/rdf-schema#subclassof',
   'http://www.w3.org/2002/07/owl#topObjectProperty'
 ]
-
-export const GRAPH_VERSION_STRUCTURE = {
-  classesFromApi: {},
-  objectPropertiesFromApi: {},
-  classesFromApiBackup: {},
-  objectPropertiesFromApiBackup: {},
-  deletedNodes: [],
-  addedNodes: [],
-  updatedNodes: [],
-  deletedEdges: [],
-  addedEdges: [],
-  updatedEdges: [],
-  deletedConnections: [],
-  addedConnections: [],
-}
 
 export const PROPERTIES_TO_IGNORE = [
   'id',

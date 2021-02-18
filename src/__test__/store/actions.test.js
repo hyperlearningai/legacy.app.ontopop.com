@@ -2,40 +2,6 @@ import { DataSet } from 'vis-data'
 import actions from '../../store/actions'
 
 describe('Actions', () => {
-  it('resetSelectedEdges should work correctly', () => {
-    const state = {
-      selectedEdges: ['abc'],
-      availableEdges: new DataSet([{
-        id: 'abc',
-        color: { background: 'ffffff' }
-      }])
-    }
-
-    const newState = {
-      selectedEdges: [],
-      isEdgeSelectable: false
-    }
-
-    expect(actions.resetSelectedEdges(state)).toEqual(newState)
-  })
-
-  it('resetSelectedNodes should work correctly', () => {
-    const state = {
-      selectedNodes: ['abc'],
-      availableNodes: new DataSet([{
-        id: 'abc',
-        color: 'ffffff'
-      }])
-    }
-
-    const newState = {
-      selectedNodes: [],
-      isNodeSelectable: false
-    }
-
-    expect(actions.resetSelectedNodes(state)).toEqual(newState)
-  })
-
   it('addSubValueToObject should work correctly', () => {
     const state = {
       graphData: {

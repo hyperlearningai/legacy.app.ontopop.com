@@ -1,7 +1,10 @@
+import store from '../../store'
+
 /**
  * Update neighbourNodes and neighbourEdges recursively
  * @param  {Object}   params
  * @param  {Object}   params.triplesPerNode   List of triples per node
+ * @param  {Object}   params.deletedNodes     List of deleted nodes IDs
  * @param  {Object}   params.nextIds          Array of node IDs to loop through
  * @param  {Array}    params.neighbourNodes   Array of neighbour nodes IDs
  * @param  {Array}    params.neighbourEdges   Array of neighbour edges IDs
@@ -15,6 +18,7 @@ const loopThroughNodes = ({
   neighbourEdges,
   triplesPerNode,
   separationDegree,
+  deletedNodes,
   round
 }) => {
   const nextIdsLoop = []
@@ -32,16 +36,17 @@ const loopThroughNodes = ({
 
         const newNode = from === nodeId ? to : from
 
-        if (!neighbourNodes.includes(newNode)) {
+        if (!neighbourNodes.includes(newNode)
+        && !deletedNodes.includes(newNode)) {
           neighbourNodes.push(newNode)
 
           if (!nextIdsLoop.includes(newNode)) {
             nextIdsLoop.push(newNode)
           }
-        }
 
-        if (!neighbourEdges.includes(predicate)) {
-          neighbourEdges.push(predicate)
+          if (!neighbourEdges.includes(predicate)) {
+            neighbourEdges.push(predicate)
+          }
         }
 
         return true
@@ -60,6 +65,7 @@ const loopThroughNodes = ({
       neighbourEdges,
       triplesPerNode,
       separationDegree,
+      deletedNodes,
       round: nextRound
     })
   }
@@ -79,23 +85,31 @@ const loopThroughNodes = ({
 const getNeighbours = ({
   selectedNodeId,
   separationDegree,
-  classesFromApi,
-  triplesPerNode
 }) => {
+  const {
+    triplesPerNode,
+    deletedNodes
+  } = store.getState()
+
   const neighbourNodes = [selectedNodeId]
   const neighbourEdges = []
   const nextIds = [selectedNodeId]
   const round = 0
 
-  if (!selectedNodeId || !triplesPerNode || !separationDegree || separationDegree < 1) return neighbourNodes
+  if (!selectedNodeId || !triplesPerNode || !separationDegree || separationDegree < 1) {
+    return {
+      neighbourNodes,
+      neighbourEdges
+    }
+  }
 
   loopThroughNodes({
     nextIds,
     neighbourNodes,
     neighbourEdges,
     triplesPerNode,
-    classesFromApi,
     separationDegree,
+    deletedNodes,
     round
   })
 

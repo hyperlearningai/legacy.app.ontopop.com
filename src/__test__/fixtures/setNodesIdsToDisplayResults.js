@@ -8,6 +8,10 @@ export const algoTypeFull = [
     false,
   ],
   [
+    'shortestPathNodes',
+    [],
+  ],
+  [
     'edgesIdsToDisplay',
     [
       'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',

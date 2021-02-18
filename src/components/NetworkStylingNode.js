@@ -19,6 +19,10 @@ import {
   NODE_SHAPES,
   NODE_SHAPES_AFFECTED_BY_SIZE
 } from '../constants/graph'
+import setNodesStylesByProperty from '../utils/networkStyling/setNodesStylesByProperty'
+import setHighlightedNodes from '../utils/networkStyling/setHighlightedNodes'
+import setNodesOverlay from '../utils/networkStyling/setNodesOverlay'
+import highlightSpiderableNodes from '../utils/networkStyling/highlightSpiderableNodes'
 
 const NetworkStylingNode = ({
   setStoreState,
@@ -40,6 +44,7 @@ const NetworkStylingNode = ({
   annotationProperties,
 }) => {
   const isInitialMount = useRef(true)
+  const isInitialMountByProperties = useRef(true)
 
   const { t } = useTranslation()
 
@@ -52,6 +57,20 @@ const NetworkStylingNode = ({
   },
   [
     stylingNodeCaptionProperty
+  ])
+
+  useEffect(() => {
+    if (isInitialMountByProperties.current) {
+      isInitialMountByProperties.current = false
+    } else {
+      setNodesStylesByProperty()
+      setHighlightedNodes()
+      setNodesOverlay()
+      highlightSpiderableNodes()
+    }
+  },
+  [
+    stylingNodeByProperty
   ])
 
   const nodeShapeOptions = NODE_SHAPES.sort().map((shape) => ({

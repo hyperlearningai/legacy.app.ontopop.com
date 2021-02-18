@@ -6,15 +6,11 @@ import {
   BsFillCircleFill,
   BsArrowUpRight
 } from 'react-icons/bs'
-import {
-  FaGitAlt
-} from 'react-icons/fa'
 import actions from '../store/actions'
 
 const Navbar = ({
   availableNodesCount,
   availableEdgesCount,
-  selectedGraphVersion
 }) => {
   const { t } = useTranslation()
 
@@ -29,13 +25,6 @@ const Navbar = ({
           {`${t('edges')}: ${availableEdgesCount}`}
         </span>
       </div>
-
-      <div className="nav-right">
-        <span>
-          <FaGitAlt className="nodes-icon m-r-5" />
-          {`${t('version')}: ${selectedGraphVersion}`}
-        </span>
-      </div>
     </nav>
   )
 }
@@ -43,17 +32,14 @@ const Navbar = ({
 Navbar.propTypes = {
   availableNodesCount: PropTypes.number.isRequired,
   availableEdgesCount: PropTypes.number.isRequired,
-  selectedGraphVersion: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
   availableNodesCount,
   availableEdgesCount,
-  selectedGraphVersion
 }) => ({
   availableNodesCount,
   availableEdgesCount,
-  selectedGraphVersion
 })
 
 export default connect(

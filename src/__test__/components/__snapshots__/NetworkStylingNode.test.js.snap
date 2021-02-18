@@ -9,8 +9,6 @@ exports[`NetworkStylingNode should match snapshot  1`] = `
       "addToObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
-      "resetSelectedEdges": [Function],
-      "resetSelectedNodes": [Function],
       "setStoreState": [Function],
     }
   }
@@ -39,7 +37,7 @@ exports[`NetworkStylingNode should match snapshot  1`] = `
     ]
   }
   stylingNodeCaptionProperty="rdfsLabel"
-  stylingNodeHighlightBackgroundColor="#abd6df"
+  stylingNodeHighlightBackgroundColor="#ffed00"
   stylingNodeHighlightBorderColor="#009688"
   stylingNodeHoverBackgroundColor="#f2f2f2"
   stylingNodeHoverBorderColor="#607d8b"
