@@ -7,6 +7,7 @@ export default {
   signOut: 'Sign out',
   alphaVersion: 'Alpha version',
   betaVersion: 'Beta version',
+  alphaVersionInviteOnly: 'Alpha version | Invite only!',
 
   // navbar
   hideSidebar: 'Hide sidebar',

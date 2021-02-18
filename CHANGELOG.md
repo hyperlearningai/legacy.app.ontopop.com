@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.3.0]
 ### Added
+- ONTOLOGY-62 Added multiple URL endpoints based on stage
+- ONTOLOGY-62 Added alpha label to sign in
 - ONTOLOGY-20 Edges styling by property
 - ONTOLOGY-19 Nodes styling by property
 - ONTOLOGY-19 Functions  for VisJs Dataset manipulation
@@ -25,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-19 Nodes styling
 
 ### Changed
+- ONTOLOGY-62 Made login page anonymous for alpha version
 - ONTOLOGY-20 Refactoring of Edit Ontology
 - ONTOLOGY-20 Refactoring of shortest path logic
 - ONTOLOGY-20 Minor refactoring of the neighbour nodes logic
@@ -36,6 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-20 Removed versioning
 
 ### Removed
+- ONTOLOGY-62 Removed forgot password page
 
 ### Fixed
 

@@ -28,7 +28,7 @@ const initialState = {
 
   // user
   user: {
-    email: 'a@b.c',
+    email: '',
     firstName: '',
     lastName: '',
     company: '',
@@ -64,7 +64,7 @@ const initialState = {
   edgesConnections: {},
   highlightedNodes: [],
 
-  // nodes styling
+  // network styling
   stylingEdgeLineColor: EDGE_COLOR,
   stylingEdgeLineColorHover: EDGE_COLOR,
   stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
@@ -141,7 +141,6 @@ const initialState = {
   isNeighbourNodeSelectable: false,
 
   // shortest path
-  isShortestPathNodeSelectable: false,
   isShortestPathNode1Selectable: false,
   isShortestPathNode2Selectable: false,
   shortestPathNode1Object: undefined,
