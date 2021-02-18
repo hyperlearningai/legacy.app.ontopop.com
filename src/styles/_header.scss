@@ -6,30 +6,36 @@ header {
   align-items: center;
   justify-content: space-between;
 
-  .loader-box {
-    width: 50px;
-
-    .spinner {
-      width: 50px;
-      height: 50px;
-    }
-  }
-
-  .logo {
-    width: 140px;
-    padding-top: 10px;
-  }
-
-  .p-chip {
-    background: $red;
-    color: $white;
-  }
-
   .header {
+    &-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .loader-box {
+        width: 50px;
+
+        .spinner {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .logo {
+        width: 140px;
+        padding-top: 10px;
+      }
+    }
+
     &-right {
       display: flex;
       align-items: center;
       justify-content: center;
+
+      .p-chip {
+        background: $red;
+        color: $white;
+      }
     }
   }
 }

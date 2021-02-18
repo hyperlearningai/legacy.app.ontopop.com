@@ -45,4 +45,13 @@
     justify-content: center;
     margin-top: 20px;
   }
+
+  .p-chip {
+    display: block;
+    background: $red;
+    color: $white;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+  }
 }

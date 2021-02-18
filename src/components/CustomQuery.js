@@ -3,10 +3,10 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
-// import { InputTextarea } from 'primereact/inputtextarea'
 import ReactJson from 'react-json-view'
 import Editor from 'react-simple-code-editor'
 import { highlight, languages } from 'prismjs/components/prism-core'
+import { v4 } from 'uuid'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_CUSTOM_QUERY } from '../constants/views'
 import makeCustomQuery from '../utils/customQuery/makeCustomQuery'
@@ -57,20 +57,6 @@ const CustomQuery = ({
             padding={10}
             className="custom-query-editor"
           />
-
-          {/* TODO: left as fallback in case editor giving issues
-          <InputTextarea
-            value={customQueryString}
-            onChange={(e) => {
-              const { value } = e.target
-
-              setCustomQueryString(value.length < 3 ? 'g.' : value)
-            }}
-            placeholder={t('insertGremlinQueries')}
-            rows={5}
-            cols={22}
-            autoResize
-          /> */}
         </div>
 
         <div className="custom-query-buttons">
@@ -140,7 +126,7 @@ const CustomQuery = ({
                   customQueryStringHistory.map((query) => (
                     <div
                       className="custom-query-row"
-                      key={`custom-query-row-${query.replace(/[^a-z0-9]/gi, '')}`}
+                      key={`custom-query-row-${v4()}`}
                     >
                       <div className="custom-query-row-delete">
                         <Button
@@ -181,7 +167,7 @@ CustomQuery.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   removeFromArray: PropTypes.func.isRequired,
   addToArray: PropTypes.func.isRequired,
-  customQueryOutput: PropTypes.shape(),
+  customQueryOutput: PropTypes.arrayOf(PropTypes.any),
   customQueryStringHistory: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 

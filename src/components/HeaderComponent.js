@@ -23,7 +23,7 @@ const HeaderComponent = ({
 
   return (
     <header>
-      <div>
+      <div className="header-left">
         {
           loading && (
             <div className="loader-box">

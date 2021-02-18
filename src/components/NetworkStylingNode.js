@@ -9,7 +9,7 @@ import { SelectButton } from 'primereact/selectbutton'
 import { InputNumber } from 'primereact/inputnumber'
 import { Slider } from 'primereact/slider'
 import { Dropdown } from 'primereact/dropdown'
-import { uuid } from 'uuidv4'
+import { v4 } from 'uuid'
 import actions from '../store/actions'
 import updateNodesStyle from '../utils/networkStyling/updateNodesStyle'
 import NetworkStylingNodeByPropertyForm from './NetworkStylingNodeByPropertyForm'
@@ -264,7 +264,7 @@ const NetworkStylingNode = ({
                 stylingNodeByProperty.length > 0
                 && stylingNodeByProperty.map((stylingProperty, index) => (
                   <AccordionTab
-                    key={uuid}
+                    key={`node-style-property-tab-${v4()}`}
                     header={`${t('styleByProperty')} ${index}`}
                   >
                     <NetworkStylingNodeByPropertyForm

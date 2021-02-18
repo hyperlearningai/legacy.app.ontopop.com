@@ -28,6 +28,13 @@ const addElementsToGraph = ({
     isPhysicsOn
   } = store.getState()
 
+  const currentPhysicsOnState = isPhysicsOn
+
+  // turn physics off to speed up loading time when restoring large graphsa
+  if (currentPhysicsOnState) {
+    setStoreState('isPhysicsOn', false)
+  }
+
   // reset nodes/edges (display at the end of the function)
   clearEdges()
   clearNodes()
@@ -123,18 +130,11 @@ const addElementsToGraph = ({
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
   setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
 
-  // set styles and scatter nodes in graph
-  const currentPhysicsOnState = isPhysicsOn
-
+  // set styles
   setElementsStyle()
 
   // turn physics on to scatter nodes around
-  if (!currentPhysicsOnState) {
-    setStoreState('isPhysicsOn', true)
-  } else {
-    setStoreState('isPhysicsOn', false)
-    setStoreState('isPhysicsOn', true)
-  }
+  setStoreState('isPhysicsOn', true)
 
   // restore isPhysicsOn state
   setTimeout(() => {

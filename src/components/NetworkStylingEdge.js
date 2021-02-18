@@ -8,7 +8,7 @@ import { SelectButton } from 'primereact/selectbutton'
 import { Slider } from 'primereact/slider'
 import { Dropdown } from 'primereact/dropdown'
 import { InputNumber } from 'primereact/inputnumber'
-import { uuid } from 'uuidv4'
+import { v4 } from 'uuid'
 import actions from '../store/actions'
 import updateEdgesStyle from '../utils/networkStyling/updateEdgesStyle'
 import NetworkStylingEdgeByPropertyForm from './NetworkStylingEdgeByPropertyForm'
@@ -186,7 +186,7 @@ const NetworkStylingEdge = ({
                   stylingEdgeByProperty.length > 0
                   && stylingEdgeByProperty.map((stylingProperty, index) => (
                     <AccordionTab
-                      key={uuid}
+                      key={`edge-style-property-tab-${v4()}`}
                       header={`${t('styleByProperty')} ${index}`}
                     >
                       <NetworkStylingEdgeByPropertyForm

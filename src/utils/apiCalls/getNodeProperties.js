@@ -5,10 +5,10 @@ import {
 import showNotification from '../notifications/showNotification'
 import { GET_PROPERTIES_ANNOTATIONS } from '../../constants/api'
 import {
+  LABEL_PROPERTY,
   REQUIRED_PROPERTIES,
   UNIQUE_PROPERTY
 } from '../../constants/graph'
-import store from '../../store'
 
 /**
  * Get node properties from API
@@ -21,10 +21,6 @@ const getNodeProperties = async ({
   setStoreState,
   t
 }) => {
-  const {
-    stylingNodeCaptionProperty
-  } = store.getState()
-
   setStoreState('loading', true)
 
   try {
@@ -47,7 +43,7 @@ const getNodeProperties = async ({
     if (annotationProperties.length === 0) return []
 
     const propertiesList = annotationProperties.map((property) => {
-      const label = data[property][stylingNodeCaptionProperty] || property?.split('/').pop()
+      const label = data[property][LABEL_PROPERTY] || property?.split('/').pop()
 
       return ({
         id: property,
