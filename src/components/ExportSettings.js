@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import {
+  useState,
+  useEffect
+} from 'react'
 import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
@@ -13,13 +16,22 @@ import exportAsImage from '../utils/exportSettings/exportAsImage'
 import exportAsPdf from '../utils/exportSettings/exportAsPdf'
 import exportCsv from '../utils/exportSettings/exportCsv'
 import exportOwl from '../utils/exportSettings/exportOwl'
-import printOWL from '../utils/exportSettings/printOwl'
+import printCanvas from '../utils/exportSettings/printCanvas'
 
 const ExportSettings = () => {
   const { t } = useTranslation()
   const [exportFileName, setFileName] = useState('network-graph')
 
   const canvasElement = document.getElementById('network-graph') ? document.getElementById('network-graph').getElementsByTagName('canvas')[0] : null
+
+  let printFunction
+
+  useEffect(() => {
+    // eslint-disable-next-line
+    const print = require('print-js')
+
+    printFunction = (imgSrc) => print(imgSrc, 'image') //    ('network-graph', 'html')
+  }, [])
 
   return (
     <>
@@ -117,8 +129,9 @@ const ExportSettings = () => {
               tooltip={t('print')}
               tooltipOptions={{ position: 'top' }}
               label={t('print')}
-              onClick={() => printOWL({
+              onClick={() => printCanvas({
                 canvasElement,
+                printFunction,
                 t
               })}
             />
