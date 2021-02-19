@@ -12,7 +12,13 @@ exports[`Profile page should match snapshot 1`] = `
       "setStoreState": [Function],
     }
   }
+  addToObject={[MockFunction]}
   mapToProps={[Function]}
+  user={
+    Object {
+      "email": "a@b.c",
+    }
+  }
 >
   <Component />
 </Connect>

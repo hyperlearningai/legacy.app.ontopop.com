@@ -11,10 +11,12 @@ import HeaderComponent from '../components/HeaderComponent'
 import Sidebar from '../components/Sidebar'
 import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
+import resetGraphData from '../utils/graphVisualisation/resetGraphData'
 
 const Index = ({
   addToObject,
-  user
+  user,
+  setStoreState
 }) => {
   const { t } = useTranslation()
 
@@ -28,6 +30,10 @@ const Index = ({
         addToObject
       })
     }
+
+    return () => resetGraphData({
+      setStoreState
+    })
   }, [])
 
   return (
@@ -64,6 +70,7 @@ const Index = ({
 Index.propTypes = {
   addToObject: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
+  setStoreState: PropTypes.func.isRequired,
 }
 
 const mapPropsToState = ({

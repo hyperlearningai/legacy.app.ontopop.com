@@ -62,41 +62,41 @@ const Profile = ({
           <div className="profile-input-container">
             <p className="profile-label">{t('firstName')}</p>
             {
-                    editingFirstName ? (
-                      <div className="p-inputgroup ">
-                        <InputText
-                          id="firstName"
-                          value={firstName}
-                          type="text"
-                          onChange={(e) => {
-                            setFirstName(e.target.value)
-                          }}
-                        />
-                        <Button
-                          icon="pi pi-check"
-                          onClick={() => setEditingFirstName(false)}
-                          className="p-button-success"
-                        />
-                        <Button
-                          onClick={() => {
-                            setFirstName(user.firstName)
-                            setEditingFirstName(false)
-                          }}
-                          icon="pi pi-times"
-                          className="p-button-danger"
-                        />
-                      </div>
-                    ) : (
-                      <p className="profile-value">
-                        {firstName}
-                        <Button
-                          icon="pi pi-pencil"
-                          onClick={() => setEditingFirstName(true)}
-                          className="p-button-rounded p-button-text p-button-plain"
-                        />
-                      </p>
-                    )
-                  }
+              editingFirstName ? (
+                <div className="p-inputgroup ">
+                  <InputText
+                    id="firstName"
+                    value={firstName}
+                    type="text"
+                    onChange={(e) => {
+                      setFirstName(e.target.value)
+                    }}
+                  />
+                  <Button
+                    icon="pi pi-check"
+                    onClick={() => setEditingFirstName(false)}
+                    className="p-button-success"
+                  />
+                  <Button
+                    onClick={() => {
+                      setFirstName(user.firstName)
+                      setEditingFirstName(false)
+                    }}
+                    icon="pi pi-times"
+                    className="p-button-danger"
+                  />
+                </div>
+              ) : (
+                <p className="profile-value">
+                  {firstName}
+                  <Button
+                    icon="pi pi-pencil"
+                    onClick={() => setEditingFirstName(true)}
+                    className="p-button-rounded p-button-text p-button-plain"
+                  />
+                </p>
+              )
+            }
           </div>
 
           <div className="profile-input-container">

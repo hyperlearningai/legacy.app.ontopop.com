@@ -4,7 +4,13 @@ import toJson from 'enzyme-to-json'
 import Index from '../../pages/index'
 
 const setup = () => {
-  const component = shallow(<Index />)
+  const props = {
+    addToObject: jest.fn(),
+    user: {
+      email: 'a@b.c'
+    }
+  }
+  const component = shallow(<Index {...props} />)
 
   return {
     component
@@ -12,6 +18,10 @@ const setup = () => {
 }
 
 describe('Profile page', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should match snapshot', () => {
     const { component } = setup()
     expect(toJson(component)).toMatchSnapshot()
