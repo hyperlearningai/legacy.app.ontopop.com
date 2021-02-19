@@ -1,0 +1,26 @@
+# Node.js
+
+trigger:
+- develop
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    sed -i 's/http:\/\/localhost:8080/https:\/\/ontology-api.azurewebsites.net' next.config.js
+    npm run build
+    npm run export
+  displayName: 'Install and build'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'out'
+    artifact: 'OntologyVisualisation'
+    publishLocation: 'pipeline'
