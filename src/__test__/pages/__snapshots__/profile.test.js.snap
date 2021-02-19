@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile page should match snapshot 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToObject={[MockFunction]}
+  mapToProps={[Function]}
+  user={
+    Object {
+      "email": "a@b.c",
+    }
+  }
+>
+  <Component />
+</Connect>
+`;

@@ -1,6 +1,6 @@
 export const API_ENDPOINT = `${process.env.endpointUrl}/api` // 'http://localhost:8080/api'
 
-export const GET_GRAPH = `${API_ENDPOINT}/graph`
+export const GET_GRAPH = `${API_ENDPOINT}/ontology`
 export const GET_GRAPH_QUERY = `${GET_GRAPH}/query`
 
 export const GET_EDGES = `${GET_GRAPH}/edges`

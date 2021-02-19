@@ -27,6 +27,10 @@
   &-input {
     display: block;
     margin-top: 2px;
+
+    input {
+      width: 100%;
+    }
   }
 
   &-error {

@@ -51,6 +51,7 @@ const GraphVisualisation = ({
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
+  const isInitialMountNodesToDisplay = useRef(true)
 
   const visJsRef = useRef(null)
 
@@ -72,7 +73,9 @@ const GraphVisualisation = ({
 
   // update available nodes/edges according to view
   useEffect(() => {
-    if (network) {
+    if (isInitialMountNodesToDisplay.current) {
+      isInitialMountNodesToDisplay.current = false
+    } else if (network) {
       setStoreState('isNetworkLoading', true)
 
       addElementsToGraph({
