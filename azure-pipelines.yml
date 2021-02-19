@@ -8,6 +8,7 @@ strategy:
 
 trigger:
 - develop
+- main
 
 pool:
   vmImage: $(imageName)
