@@ -8,6 +8,7 @@ export default {
   alphaVersion: 'Alpha version',
   betaVersion: 'Beta version',
   alphaVersionInviteOnly: 'Alpha version | Invite only!',
+  home: 'Home',
 
   // navbar
   hideSidebar: 'Hide sidebar',
@@ -320,5 +321,12 @@ export default {
   enterEmail: 'Enter your email',
   send: 'Send',
   backToLogin: 'Back to sign in',
-  resetPasswordAtEmail: 'Reset password sent at email'
+  resetPasswordAtEmail: 'Reset password sent at email',
+
+  // profile
+  profile: 'Profile',
+  firstName: 'First Name',
+  lastName: 'Last Name',
+  company: 'Company',
+  changePassword: 'Change Password'
 }

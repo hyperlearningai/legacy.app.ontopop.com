@@ -1,0 +1,40 @@
+.profile {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  text-align: left;
+  padding: 24px;
+  display: flex;
+  background-color: $mid-grey;
+
+  &-container {
+    width: 400px;
+    align-self: flex-start;
+  }
+
+  &-title {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 40px;
+  }
+
+  &-label {
+    margin: 2rem 0 0;
+  }
+
+  &-value {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: bold;
+
+    .pi-pencil {
+      margin-left: 10px;
+      margin-bottom: -5px;
+    }
+  }
+
+
+
+
+}
