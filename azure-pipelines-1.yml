@@ -1,19 +1,27 @@
 # Node.js
 
+strategy:
+  matrix:
+    linux-node-latest:
+      imageName: 'ubuntu-latest'
+      nodeVersion: '>=12.x'
+
 trigger:
 - develop
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: $(imageName)
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '12.x'
+    versionSpec: $(nodeVersion)
   displayName: 'Install Node.js'
 
 - script: |
     npm install
+    npm run lint
+    npm run test
     sed -i 's/http:\/\/localhost:8080/https:\/\/ontology-api.azurewebsites.net' next.config.js
     npm run build
     npm run export
