@@ -33,23 +33,6 @@ const printCanvas = ({
 
   printFunction(imageDataUpdated)
 
-  // let windowContent = '<!DOCTYPE html>'
-  // windowContent += '<html>'
-  // windowContent += '<head><title>Print canvas</title></head>'
-  // windowContent += '<body>'
-  // windowContent += `<img width="700" src="${imageDataUpdated}">`
-  // windowContent += '</body>'
-  // windowContent += '</html>'
-  // const printWin = window.open('', '')
-  // printWin.document.open()
-  // printWin.document.write(windowContent)
-
-  // setTimeout(
-  //   () => printWin.print(),
-  //   1000
-  // )
-  // window.close()
-
   showNotification({
     message: t('fileCanBePrinted'),
     type: NOTIFY_SUCCESS,
