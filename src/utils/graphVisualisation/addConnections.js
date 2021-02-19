@@ -1,5 +1,4 @@
 /* eslint no-param-reassign:0 */
-
 import addEdge from '../nodesEdgesUtils/addEdge'
 
 /**
@@ -36,22 +35,22 @@ const addConnections = ({
     predicate
   }
 
-  if (edgesConnections[predicate] && !edgesConnections[predicate].includes(edge)) {
-    edgesConnections[predicate].push(edgeConnection)
+  if (edgesConnections[predicate.toString()] && !edgesConnections[predicate.toString()].includes(edge)) {
+    edgesConnections[predicate.toString()].push(edgeConnection)
   } else {
-    edgesConnections[predicate] = [edgeConnection]
+    edgesConnections[predicate.toString()] = [edgeConnection]
   }
 
-  if (nodesConnections[from] && !nodesConnections[from].includes(edge)) {
-    nodesConnections[from].push(edgeConnectionWithPredicate)
+  if (nodesConnections[from.toString()] && !nodesConnections[from.toString()].includes(edge)) {
+    nodesConnections[from.toString()].push(edgeConnectionWithPredicate)
   } else {
-    nodesConnections[from] = [edgeConnectionWithPredicate]
+    nodesConnections[from.toString()] = [edgeConnectionWithPredicate]
   }
 
-  if (nodesConnections[to] && !nodesConnections[to].includes(edge)) {
-    nodesConnections[to].push(edgeConnectionWithPredicate)
+  if (nodesConnections[to.toString()] && !nodesConnections[to.toString()].includes(edge)) {
+    nodesConnections[to.toString()].push(edgeConnectionWithPredicate)
   } else {
-    nodesConnections[to] = [edgeConnectionWithPredicate]
+    nodesConnections[to.toString()] = [edgeConnectionWithPredicate]
   }
 }
 

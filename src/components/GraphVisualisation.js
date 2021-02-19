@@ -10,6 +10,7 @@ import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
 import addElementsToGraph from '../utils/graphVisualisation/addElementsToGraph'
+import setGraphData from '../utils/graphVisualisation/setGraphData'
 
 const GraphVisualisation = ({
   currentGraph,
@@ -48,6 +49,7 @@ const GraphVisualisation = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
+  triplesPerNode
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
@@ -70,6 +72,11 @@ const GraphVisualisation = ({
   }), [
     visJsRef,
   ])
+
+  // set graph data after triplesPerNodes is available
+  useEffect(() => setGraphData({
+    setStoreState,
+  }), [triplesPerNode])
 
   // update available nodes/edges according to view
   useEffect(() => {
@@ -233,6 +240,7 @@ GraphVisualisation.propTypes = {
   stylingEdgeTextColor: PropTypes.string.isRequired,
   stylingEdgeTextSize: PropTypes.number.isRequired,
   stylingEdgeTextAlign: PropTypes.string.isRequired,
+  triplesPerNode: PropTypes.shape().isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -278,6 +286,7 @@ const mapToProps = ({
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
+  triplesPerNode
 }) => ({
   currentGraph,
   graphData,
@@ -317,6 +326,7 @@ const mapToProps = ({
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
+  triplesPerNode
 })
 
 export default connect(

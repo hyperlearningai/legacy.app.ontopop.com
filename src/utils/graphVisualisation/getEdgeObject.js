@@ -1,4 +1,3 @@
-import { generatePredicateId } from '../../constants/functions'
 import store from '../../store'
 
 /**
@@ -25,12 +24,6 @@ const getEdgeObject = ({
     objectPropertiesFromApi,
   } = store.getState()
 
-  const id = generatePredicateId({
-    predicate,
-    from,
-    to
-  })
-
   const edgeLabel = objectPropertiesFromApi[predicate][stylingNodeCaptionProperty]
   const fromObject = classesFromApi[from]
   fromObject.id = from
@@ -47,6 +40,7 @@ const getEdgeObject = ({
     to,
   }
 
+  const id = predicate
   const edge = {
     ...edgeConnection,
     ...objectPropertiesFromApi[predicate],

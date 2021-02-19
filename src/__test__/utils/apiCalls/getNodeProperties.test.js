@@ -15,7 +15,7 @@ describe('getNodeProperties', () => {
   it('should catch error', async () => {
     axios.get = jest.fn().mockImplementationOnce(() => new Error('error'))
 
-    const output = await getNodeProperties({
+    await getNodeProperties({
       setStoreState,
       t
     })
@@ -25,9 +25,23 @@ describe('getNodeProperties', () => {
       type: 'warning',
     })
     expect(setStoreState.mock.calls).toEqual(
-      [['loading', true], ['loading', false]]
+      [
+        ['loading', true],
+        ['loading', false],
+        [
+          'annotationProperties',
+          [],
+        ],
+        [
+          'loading',
+          false,
+        ],
+        [
+          'annotationProperties',
+          [],
+        ]
+      ]
     )
-    expect(output).toEqual([])
   })
 
   it('should return error if status 400 and no data', async () => {
@@ -35,7 +49,7 @@ describe('getNodeProperties', () => {
       status: 400,
     }))
 
-    const output = await getNodeProperties({
+    await getNodeProperties({
       setStoreState,
       t
     })
@@ -45,9 +59,46 @@ describe('getNodeProperties', () => {
       type: 'warning',
     })
     expect(setStoreState.mock.calls).toEqual(
-      [['loading', true], ['loading', false]]
+      [
+        ['loading', true],
+        ['loading', false],
+        [
+          'annotationProperties',
+          [],
+        ],
+        [
+          'loading',
+          false,
+        ],
+        [
+          'annotationProperties',
+          [],
+        ]
+      ]
     )
-    expect(output).toEqual([])
+  })
+
+  it('should return error if empty data', async () => {
+    axios.get = jest.fn().mockImplementationOnce(() => ({
+      status: 200,
+      data: {}
+    }))
+
+    await getNodeProperties({
+      setStoreState,
+      t
+    })
+
+    expect(setStoreState.mock.calls).toEqual(
+      [
+        ['loading', true],
+        ['loading', false],
+        [
+          'annotationProperties',
+          [],
+        ],
+      ]
+    )
   })
 
   it('should return data', async () => {
@@ -71,57 +122,60 @@ describe('getNodeProperties', () => {
       }
     }))
 
-    const output = await getNodeProperties({
+    await getNodeProperties({
       setStoreState,
       t
     })
 
     expect(setStoreState.mock.calls).toEqual(
-      [['loading', true], ['loading', false]]
+      [
+        ['loading', true],
+        ['loading', false],
+        ['annotationProperties', [
+          {
+            id: 'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4',
+            isRequired: false,
+            isUnique: false,
+            label: 'Synonym',
+            search: 'synonym',
+          },
+          {
+            id: 'http://www.w3.org/2004/02/skos/core#note',
+            isRequired: false,
+            isUnique: false,
+            label: 'core#note',
+            search: 'core#note',
+          },
+          {
+            id: 'rdfAbout',
+            isRequired: true,
+            isUnique: true,
+            label: 'rdfAbout',
+            search: 'rdfabout',
+          },
+          {
+            id: 'rdfsLabel',
+            isRequired: false,
+            isUnique: false,
+            label: 'rdfsLabel',
+            search: 'rdfslabel',
+          },
+          {
+            id: 'skosComment',
+            isRequired: false,
+            isUnique: false,
+            label: 'skosComment',
+            search: 'skoscomment',
+          },
+          {
+            id: 'skosDefinition',
+            isRequired: false,
+            isUnique: false,
+            label: 'skosDefinition',
+            search: 'skosdefinition',
+          },
+        ]]
+      ]
     )
-    expect(output).toEqual([
-      {
-        id: 'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4',
-        isRequired: false,
-        isUnique: false,
-        label: 'Synonym',
-        search: 'synonym',
-      },
-      {
-        id: 'http://www.w3.org/2004/02/skos/core#note',
-        isRequired: false,
-        isUnique: false,
-        label: 'core#note',
-        search: 'core#note',
-      },
-      {
-        id: 'rdfAbout',
-        isRequired: true,
-        isUnique: true,
-        label: 'rdfAbout',
-        search: 'rdfabout',
-      },
-      {
-        id: 'rdfsLabel',
-        isRequired: false,
-        isUnique: false,
-        label: 'rdfsLabel',
-        search: 'rdfslabel',
-      },
-      {
-        id: 'skosComment',
-        isRequired: false,
-        isUnique: false,
-        label: 'skosComment',
-        search: 'skoscomment',
-      },
-      {
-        id: 'skosDefinition',
-        isRequired: false,
-        isUnique: false,
-        label: 'skosDefinition',
-        search: 'skosdefinition',
-      },
-    ])
   })
 })

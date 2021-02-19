@@ -34,13 +34,13 @@ const getNodeProperties = async ({
         type: NOTIFY_WARNING
       })
 
-      return []
+      setStoreState('annotationProperties', [])
     }
 
     const { data } = response
     const annotationProperties = Object.keys(data)
 
-    if (annotationProperties.length === 0) return []
+    if (annotationProperties.length === 0) return setStoreState('annotationProperties', [])
 
     const propertiesList = annotationProperties.map((property) => {
       const label = data[property][LABEL_PROPERTY] || property?.split('/').pop()
@@ -64,10 +64,10 @@ const getNodeProperties = async ({
         isUnique: UNIQUE_PROPERTY === property
       }))
 
-    return [
+    setStoreState('annotationProperties', [
       ...propertiesList,
       ...basicProperties
-    ]
+    ])
   } catch (error) {
     setStoreState('loading', false)
     showNotification({
@@ -75,7 +75,7 @@ const getNodeProperties = async ({
       type: NOTIFY_WARNING
     })
 
-    return []
+    setStoreState('annotationProperties', [])
   }
 }
 

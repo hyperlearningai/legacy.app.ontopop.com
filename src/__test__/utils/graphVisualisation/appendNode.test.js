@@ -12,9 +12,9 @@ describe('appendNode', () => {
 
   it('should work correctly', async () => {
     const addedNodes = []
-    const nodeId = 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
+    const nodeId = 1
     const nodeIdObject = {
-      id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+      id: 1,
       label: 'test'
     }
 
@@ -26,7 +26,7 @@ describe('appendNode', () => {
       nodeIdObject,
     })
 
-    expect(addNode.mock.calls[0][0].id).toEqual('http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M')
-    expect(addedNodes).toEqual(['http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'])
+    expect(addNode.mock.calls[0][0].id).toEqual(1)
+    expect(addedNodes).toEqual(['1'])
   })
 })

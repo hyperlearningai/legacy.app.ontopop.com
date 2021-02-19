@@ -4,15 +4,16 @@ import {
 } from '../../constants/notifications'
 import showNotification from '../notifications/showNotification'
 import { GET_GRAPH } from '../../constants/api'
+import setClassesFromApi from './setClassesFromApi'
+import getTriplesFromApi from './getTriplesFromApi'
+import setObjectPropertiesFromApi from './setObjectPropertiesFromApi'
 
 /**
  * Get graph data from API
  * @param  {Object}   params
  * @param  {Function} params.setStoreState              setStoreState action
  * @param  {Function} params.t                          i18n translation function
- * @return {Object}   output
- * @return {Array}    output.classes                    Array of classes
- * @return {Array}    output.objectProperties           Array of object properties
+ * @return {undefined}
  */
 const getGraphData = async ({
   setStoreState,
@@ -26,37 +27,43 @@ const getGraphData = async ({
     setStoreState('loading', false)
 
     if (response.status !== 200) {
-      showNotification({
+      return showNotification({
         message: t('couldNotQueryGraph'),
         type: NOTIFY_WARNING
-      })
-
-      return ({
-        classes: [],
-        objectProperties: []
       })
     }
 
     const {
-      // owlAnnotationPropertyMap,
-      owlObjectPropertyMap,
-      owlClassMap
+      nodes,
+      edges
     } = response.data
 
-    return ({
-      classes: owlClassMap,
-      objectProperties: owlObjectPropertyMap
+    if (!nodes || !edges) {
+      return showNotification({
+        message: t('couldNotQueryGraph'),
+        type: NOTIFY_WARNING
+      })
+    }
+
+    setClassesFromApi({
+      setStoreState,
+      nodes
+    })
+
+    setObjectPropertiesFromApi({
+      setStoreState,
+      edges
+    })
+
+    getTriplesFromApi({
+      setStoreState,
+      edges
     })
   } catch (error) {
     setStoreState('loading', false)
-    showNotification({
+    return showNotification({
       message: t('couldNotQueryGraph'),
       type: NOTIFY_WARNING
-    })
-
-    return ({
-      classes: [],
-      objectProperties: []
     })
   }
 }

@@ -48,9 +48,9 @@ const addElementsToGraph = ({
 
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
-    const nodeIdObject = classesFromApi[nodeId]
-    const triples = triplesPerNode[nodeId]
-    nodeIdObject.id = nodeId
+    const nodeIdObject = classesFromApi[nodeId.toString()]
+    const triples = triplesPerNode[nodeId.toString()]
+
     nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
       ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
@@ -62,13 +62,18 @@ const addElementsToGraph = ({
 
     if (triples && triples.length > 0) {
       triples.map((triple) => {
-        const {
-          from,
-          predicate,
-          to
-        } = triple
+        const edgeObject = objectPropertiesFromApi[triple.toString()]
 
-        if (!objectPropertiesFromApi[predicate]) return false
+        if (!edgeObject) return false
+
+        const {
+          sourceNodeId,
+          targetNodeId
+        } = edgeObject
+
+        const predicate = triple
+        const from = sourceNodeId
+        const to = targetNodeId
 
         const {
           id,

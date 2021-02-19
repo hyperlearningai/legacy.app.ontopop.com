@@ -64,7 +64,7 @@ describe('setOntologyAddConnection', () => {
 
     expect(showNotification).toHaveBeenCalledWith(
       {
-        message: 'Connection already exists: http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+        message: 'Connection already exists: http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
         type: 'warning'
       }
     )
@@ -106,7 +106,7 @@ describe('setOntologyAddConnection', () => {
     expect(addEdge).toHaveBeenLastCalledWith({
       predicate: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
       from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-      id: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+      id: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
       label: 'Selected in',
       owlAnnotationProperties: { 'http://webprotege.stanford.edu/RtMeQat8p1tL74b64dS2qs': 'Causality', 'http://www.w3.org/2004/02/skos/core#definition': 'Relationship that specifies when or where another Entity has been chosen.' },
       rdfAbout: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',

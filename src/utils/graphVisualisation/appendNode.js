@@ -14,7 +14,7 @@ const appendNode = ({
   nodeId,
   nodeIdObject,
 }) => {
-  if (!addedNodes.includes(nodeId)
+  if (!addedNodes.includes(nodeId.toString())
     && getNode(nodeId) === null
     && nodeIdObject.label
     && nodeIdObject.label !== ''
@@ -24,7 +24,7 @@ const appendNode = ({
       x: Math.floor((Math.random() * 100) + 1),
       y: Math.floor((Math.random() * 100) + 1),
     })))
-    addedNodes.push(nodeId)
+    addedNodes.push(nodeId.toString())
   }
 }
 

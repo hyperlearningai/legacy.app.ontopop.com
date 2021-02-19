@@ -7,6 +7,7 @@ import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 import {
   CLICK_NODE_BACKGROUND, EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED, HIGHLIGHT_NODE_BORDER, HOVER_NODE_BACKGROUND, HOVER_NODE_BORDER, NODE_BACKGROUND, NODE_BORDER, NODE_DEFAULT_SHAPE, NODE_TEXT_COLOR
 } from '../../constants/graph'
+import triplesPerNode from '../fixtures/triplesPerNode'
 
 const setup = () => {
   const props = {
@@ -59,6 +60,7 @@ const setup = () => {
     stylingNodeShape: NODE_DEFAULT_SHAPE,
     stylingNodeTextFontSize: 12,
     stylingNodeTextFontAlign: 'center',
+    triplesPerNode
   }
 
   const component = shallow(<GraphVisualisation {...props} />)
