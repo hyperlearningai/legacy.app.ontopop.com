@@ -13,6 +13,7 @@ import exportAsImage from '../utils/exportSettings/exportAsImage'
 import exportAsPdf from '../utils/exportSettings/exportAsPdf'
 import exportCsv from '../utils/exportSettings/exportCsv'
 import exportOwl from '../utils/exportSettings/exportOwl'
+import printOWL from '../utils/exportSettings/printOwl'
 
 const ExportSettings = () => {
   const { t } = useTranslation()
@@ -103,6 +104,24 @@ const ExportSettings = () => {
                 />
               ))
             }
+          </div>
+        </div>
+
+        <div className="export-settings-input">
+          <div className="label">
+            {t('PrintGraph')}
+          </div>
+          <div className="export-settings-buttons">
+            <Button
+              key="export-btn-print"
+              tooltip={t('print')}
+              tooltipOptions={{ position: 'top' }}
+              label={t('print')}
+              onClick={() => printOWL({
+                canvasElement,
+                t
+              })}
+            />
           </div>
         </div>
       </div>
