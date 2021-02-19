@@ -1,5 +1,4 @@
 import { JSDOM } from 'jsdom'
-import { jsPDF } from 'jspdf'
 import showNotification from '../../../utils/notifications/showNotification'
 import printCanvas from '../../../utils/exportSettings/printCanvas'
 import en from '../../../i18n/en'
@@ -12,7 +11,6 @@ const currentWindow = global.window
 global.document = dom.window.document
 global.window = dom.window
 
-const exportFileName = 'filename'
 const t = (id) => en[id]
 const toDataURL = jest.fn()
 const drawImage = jest.fn()
