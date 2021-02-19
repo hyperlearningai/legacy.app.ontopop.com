@@ -10,7 +10,7 @@ import { Chip } from 'primereact/chip'
 import logo from '../assets/images/logo.svg'
 import logout from '../utils/auth/logout'
 import actions from '../store/actions'
-import { ROUTE_LOGIN } from '../constants/routes'
+import { ROUTE_INDEX, ROUTE_LOGIN, ROUTE_PROFILE } from '../constants/routes'
 
 const HeaderComponent = ({
   loading,
@@ -47,11 +47,28 @@ const HeaderComponent = ({
 
         <Button
           type="button"
-          icon="pi pi-user"
+          icon="pi pi-align-justify"
           onClick={(e) => overlay.current.toggle(e)}
         />
 
         <OverlayPanel ref={overlay}>
+          {
+            router.asPath === ROUTE_PROFILE ? (
+              <Button
+                icon="pi pi-home"
+                label={t('home')}
+                className="p-button-secondary"
+                onClick={() => router.push(ROUTE_INDEX)}
+              />
+            ) : (
+              <Button
+                icon="pi pi-user"
+                label={t('profile')}
+                className="p-button-secondary"
+                onClick={() => router.push(ROUTE_PROFILE)}
+              />
+            )
+          }
           {
             user.isGuest ? (
               <Button
