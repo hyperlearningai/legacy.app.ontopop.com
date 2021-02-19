@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 import { InputText } from 'primereact/inputtext'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import { ProgressSpinner } from 'primereact/progressspinner'
-import logo from '../assets/images/logo.svg'
+import { Chip } from 'primereact/chip'
+// import logo from '../assets/images/logo.svg'
 import HeadTags from '../components/HeadTags'
 import signIn from '../utils/auth/signIn'
-import { ROUTE_FORGOT_PASSWORD, ROUTE_INDEX } from '../constants/routes'
+// import { ROUTE_INDEX } from '../constants/routes'
 import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
 
@@ -39,17 +39,19 @@ const Login = ({
         description={t('ontologyVisualisationDescription')}
       />
 
-      <main className="login">
+      <main className="auth">
         <div className="auth-container">
 
-          <div className="logo">
+          {/* <div className="logo">
             <img
               src={logo}
               alt="Highways England"
             />
-          </div>
+          </div> */}
 
           <h1 className="auth-title">{t('signIn')}</h1>
+
+          <Chip label={t('alphaVersion')} className="p-mr-2" icon="pi pi-info-circle" />
 
           <div className="auth-input-container">
             <label htmlFor="email" className="auth-label">{t('email')}</label>
@@ -91,14 +93,6 @@ const Login = ({
             )
           }
 
-          <div className="auth-links">
-            <Link href={ROUTE_FORGOT_PASSWORD}>
-              <a>
-                {t('forgotPasswordLink')}
-              </a>
-            </Link>
-          </div>
-
           {
             loading ? (
               <div className="auth-loader">
@@ -122,14 +116,14 @@ const Login = ({
                   })}
                 />
 
-                <Button
+                {/* <Button
                   className="auth-button m-t-20 p-button-secondary"
                   label={t('continueGuest')}
                   onClick={() => {
                     addToObject('user', 'isGuest', true)
                     router.push(ROUTE_INDEX)
                   }}
-                />
+                /> */}
               </>
             )
           }

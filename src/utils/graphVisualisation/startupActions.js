@@ -51,7 +51,6 @@ const startupActions = async ({
 
   // TODO: this should be loaded at start once auth in place
   // set all initial graph data
-
   const newObjectProperties = {
     ...objectProperties,
     [SUB_CLASS_OF_ID]: {
