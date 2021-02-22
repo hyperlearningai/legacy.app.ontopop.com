@@ -18,8 +18,7 @@
     "lint:style": "npm run stylelint src/styles/*.scss",
     "lint:commitmsg:ci": "echo $CI_COMMIT_MESSAGE | npm run commitlint",
     "dev": "next",
-    "build": "next build",
-    "export": "next export",
+    "build": "next build && next export",
     "start": "next start",
     "audit": "npm audit",
     "build-docs": "jsdoc src/utils/*.js -d docs"
