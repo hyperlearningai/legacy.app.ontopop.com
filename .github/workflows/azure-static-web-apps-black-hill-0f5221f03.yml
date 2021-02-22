@@ -33,12 +33,6 @@ jobs:
 
       - name: Testing
         run: npm run test
-
-      - name: Compile build
-        run: npm run build
-
-      - name: Export build
-        run: npm run export
     
       - name: Build And Deploy
         id: builddeploy
