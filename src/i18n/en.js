@@ -200,7 +200,10 @@ export default {
   exportDataAs: 'Export data as',
   csv: 'CSV',
   owl: 'OWL',
+  PrintGraph: 'Print graph',
+  print: 'Print',
   fileCanBeDownloaded: 'File can now be downloaded, check your browser!',
+  fileCanBePrinted: 'File can now be printed, check your browser!',
   couldNotDownloadCsv: 'Could not download CSV!',
   insertFileName: 'Insert file name.',
 

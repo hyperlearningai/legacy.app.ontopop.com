@@ -1,5 +1,7 @@
 # Ontology Visualisation
 
+[![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/hyperlearningai.ontology-visualisation?branchName=develop)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=3&branchName=develop)
+
 ## Introduction
 
 Ontology visualisation web app based on NextJs/React/Redux-zero with internationalisation i18n support.

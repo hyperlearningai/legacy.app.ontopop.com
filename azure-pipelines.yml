@@ -1,7 +1,4 @@
 # Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 strategy:
   matrix:
@@ -11,6 +8,7 @@ strategy:
 
 trigger:
 - develop
+- main
 
 pool:
   vmImage: $(imageName)
@@ -25,6 +23,14 @@ steps:
     npm install
     npm run lint
     npm run test
+    echo $(API_ENDPOINT)
+    sed -i 's/http:\/\/localhost:8080/$(API_ENDPOINT)' next.config.js
     npm run build
     npm run export
-  displayName: 'npm install and build'
+  displayName: 'Install and build'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'out'
+    artifact: 'OntologyVisualisation'
+    publishLocation: 'pipeline'
