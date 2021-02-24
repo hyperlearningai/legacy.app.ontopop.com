@@ -15,9 +15,10 @@ import NetworkStylingEdgeByPropertyForm from './NetworkStylingEdgeByPropertyForm
 import {
   EDGE_ALIGNMENT_OPTIONS,
   EDGE_LINE_STYLE_OPTIONS,
-  EDGE_LINE_STYLE_TEMPLATE
+  EDGE_LINE_STYLE_TEMPLATE,
+  EDGE_PROPERTIES_DROPDOWN
 } from '../constants/graph'
-import setEdgesStylesByProperty from '../utils/networkStyling/setEdgesStylesByProperty'
+import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
 
 const NetworkStylingEdge = ({
   setStoreState,
@@ -31,7 +32,6 @@ const NetworkStylingEdge = ({
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
-  annotationProperties,
   stylingEdgeByProperty
 }) => {
   const isInitialMount = useRef(true)
@@ -54,7 +54,7 @@ const NetworkStylingEdge = ({
     if (isInitialMountByProperties.current) {
       isInitialMountByProperties.current = false
     } else {
-      setEdgesStylesByProperty()
+      setEdgesStyle()
     }
   },
   [
@@ -166,9 +166,7 @@ const NetworkStylingEdge = ({
               <AccordionTab header={t('stylingEdgeCaptionProperty')}>
                 <Dropdown
                   value={stylingEdgeCaptionProperty}
-                  options={annotationProperties}
-                  optionValue="id"
-                  optionLabel="label"
+                  options={EDGE_PROPERTIES_DROPDOWN}
                   filter
                   onChange={(e) => setStoreState('stylingEdgeCaptionProperty', e.value)}
                   className="m-t-10"
@@ -217,7 +215,6 @@ NetworkStylingEdge.propTypes = {
   stylingEdgeTextColor: PropTypes.string.isRequired,
   stylingEdgeTextSize: PropTypes.number.isRequired,
   stylingEdgeTextAlign: PropTypes.string.isRequired,
-  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   stylingEdgeByProperty: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
@@ -229,7 +226,6 @@ const mapToProps = ({
   stylingEdgeLineColorHover,
   stylingEdgeLineColorHighlight,
   stylingEdgeCaptionProperty,
-  annotationProperties,
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
@@ -242,7 +238,6 @@ const mapToProps = ({
   stylingEdgeLineColorHover,
   stylingEdgeLineColorHighlight,
   stylingEdgeCaptionProperty,
-  annotationProperties,
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,

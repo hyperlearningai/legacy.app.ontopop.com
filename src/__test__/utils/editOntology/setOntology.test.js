@@ -4,10 +4,6 @@ import setOntologyDeleteNode from '../../../utils/editOntology/setOntologyDelete
 import setOntologyUpdateNode from '../../../utils/editOntology/setOntologyUpdateNode'
 import setOntologyAddNode from '../../../utils/editOntology/setOntologyAddNode'
 import setOntologyRestoreNode from '../../../utils/editOntology/setOntologyRestoreNode'
-import setOntologyUpdateEdge from '../../../utils/editOntology/setOntologyUpdateEdge'
-import setOntologyAddEdge from '../../../utils/editOntology/setOntologyAddEdge'
-import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
-import setOntologyRestoreEdge from '../../../utils/editOntology/setOntologyRestoreEdge'
 import setOntologyAddConnection from '../../../utils/editOntology/setOntologyAddConnection'
 import setOntologyDeleteConnection from '../../../utils/editOntology/setOntologyDeleteConnection'
 import setOntologyRestoreConnection from '../../../utils/editOntology/setOntologyRestoreConnection'
@@ -18,10 +14,6 @@ jest.mock('../../../utils/editOntology/setOntologyDeleteNode')
 jest.mock('../../../utils/editOntology/setOntologyUpdateNode')
 jest.mock('../../../utils/editOntology/setOntologyAddNode')
 jest.mock('../../../utils/editOntology/setOntologyRestoreNode')
-jest.mock('../../../utils/editOntology/setOntologyUpdateEdge')
-jest.mock('../../../utils/editOntology/setOntologyAddEdge')
-jest.mock('../../../utils/editOntology/setOntologyDeleteEdge')
-jest.mock('../../../utils/editOntology/setOntologyRestoreEdge')
 jest.mock('../../../utils/editOntology/setOntologyAddConnection')
 jest.mock('../../../utils/editOntology/setOntologyDeleteConnection')
 jest.mock('../../../utils/editOntology/setOntologyRestoreConnection')
@@ -52,26 +44,6 @@ describe('setOntology', () => {
     })
 
     expect(setOntologyRestoreNode).toHaveBeenCalledWith({
-      selectedElement,
-      setStoreState,
-    })
-  })
-
-  it('should work correctly when type edge and operation restore', async () => {
-    const operation = 'restore'
-    const type = 'edge'
-
-    await setOntology({
-      operation,
-      type,
-      selectedElement,
-      setStoreState,
-      selectedElementProperties,
-      addToObject,
-      t
-    })
-
-    expect(setOntologyRestoreEdge).toHaveBeenCalledWith({
       selectedElement,
       setStoreState,
     })
@@ -137,69 +109,6 @@ describe('setOntology', () => {
       setStoreState,
       selectedElementProperties,
       t
-    })
-  })
-
-  it('should work correctly when type edge and operation update', async () => {
-    const operation = 'update'
-    const type = 'edge'
-
-    await setOntology({
-      operation,
-      type,
-      selectedElement,
-      setStoreState,
-      selectedElementProperties,
-      addToObject,
-      t
-    })
-
-    expect(setOntologyUpdateEdge).toHaveBeenCalledWith({
-      selectedElement,
-      setStoreState,
-      selectedElementProperties,
-      addToObject
-    })
-  })
-
-  it('should work correctly when type edge and operation add', async () => {
-    const operation = 'add'
-    const type = 'edge'
-
-    await setOntology({
-      operation,
-      type,
-      selectedElement,
-      setStoreState,
-      selectedElementProperties,
-      addToObject,
-      t
-    })
-
-    expect(setOntologyAddEdge).toHaveBeenCalledWith({
-      setStoreState,
-      selectedElementProperties,
-      t
-    })
-  })
-
-  it('should work correctly when type edge and operation delete', async () => {
-    const operation = 'delete'
-    const type = 'edge'
-
-    await setOntology({
-      operation,
-      type,
-      selectedElement,
-      setStoreState,
-      selectedElementProperties,
-      addToObject,
-      t
-    })
-
-    expect(setOntologyDeleteEdge).toHaveBeenCalledWith({
-      selectedElement,
-      setStoreState,
     })
   })
 

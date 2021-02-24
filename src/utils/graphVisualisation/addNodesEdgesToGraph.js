@@ -1,13 +1,10 @@
-import { generatePredicateId } from '../../constants/functions'
-import {
-  SUB_CLASS_OF_LABEL
-} from '../../constants/graph'
 import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import addNode from '../nodesEdgesUtils/addNode'
 import getNode from '../nodesEdgesUtils/getNode'
 import getEdge from '../nodesEdgesUtils/getEdge'
 import setElementsStyle from '../networkStyling/setElementsStyle'
+import getEdgeObject from './getEdgeObject'
 /**
  * Add nodes and/or edges to graph
  * @param  {Object}   params
@@ -24,7 +21,6 @@ const addNodesEdgesToGraph = ({
     classesFromApi,
     objectPropertiesFromApi,
     nodesConnections,
-    edgesConnections,
     isPhysicsOn,
     stylingNodeCaptionProperty
   } = store.getState()
@@ -32,34 +28,30 @@ const addNodesEdgesToGraph = ({
   const triples = triplesPerNode[nodeId]
 
   const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
-  const newEdgesConnections = JSON.parse(JSON.stringify(edgesConnections))
 
-  let edgesAdded = false
   let nodesAdded = false
 
   if (triples?.length > 0) {
     triples.map((triple) => {
-      const id = generatePredicateId(triple)
-
-      const edgeObjectId = getEdge(id)
+      const edgeCheck = getEdge(triple)
 
       // check if edge exists
-      if (edgeObjectId === null) {
-        const {
-          predicate,
-          from,
-          to
-        } = triple
+      if (edgeCheck === null) {
+        const edgeObject = objectPropertiesFromApi[triple.toString()]
 
-        const edgeGraphObject = {
-          from,
-          to,
-          id,
-          predicate,
-          label: objectPropertiesFromApi[predicate]
-            ? objectPropertiesFromApi[predicate][stylingNodeCaptionProperty]
-            : SUB_CLASS_OF_LABEL,
-        }
+        if (!edgeObject) return false
+
+        const edge = getEdgeObject({
+          edge: edgeObject
+        })
+
+        const {
+          sourceNodeId,
+          targetNodeId
+        } = edgeObject
+
+        const from = sourceNodeId.toString()
+        const to = targetNodeId.toString()
 
         // check if node exists
         const nodeIdToCheck = from === nodeId ? to : from
@@ -67,14 +59,15 @@ const addNodesEdgesToGraph = ({
         const isNodeNotAvailable = getNode(nodeIdToCheck) === null
 
         if (isNodeNotAvailable) {
-          const nodeGraphObject = {
-            id: nodeIdToCheck,
-            label: classesFromApi[nodeIdToCheck]
-              && classesFromApi[nodeIdToCheck][stylingNodeCaptionProperty]
-              ? classesFromApi[nodeIdToCheck][stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
-          }
+          const nodeIdObject = classesFromApi[nodeIdToCheck.toString()]
 
-          addNode(nodeGraphObject)
+          nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
+            ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+
+          nodeIdObject.x = Math.floor((Math.random() * 100) + 1)
+          nodeIdObject.y = Math.floor((Math.random() * 100) + 1)
+
+          addNode(nodeIdObject)
 
           if (!newNodesConnections[nodeIdToCheck]) {
             newNodesConnections[nodeIdToCheck] = []
@@ -90,26 +83,10 @@ const addNodesEdgesToGraph = ({
           nodesAdded = true
         }
 
-        const isEdgePresent = getEdge(id)
-
-        if (isEdgePresent === null) {
-          addEdge(edgeGraphObject)
-
-          if (!newEdgesConnections[predicate]) {
-            newEdgesConnections[predicate] = []
-          }
-
-          newEdgesConnections[predicate].push(triple)
-
-          edgesAdded = true
-        }
+        addEdge(edge)
       }
       return true
     })
-  }
-
-  if (edgesAdded) {
-    setStoreState('edgesConnections', newEdgesConnections)
   }
 
   if (nodesAdded) {
@@ -125,7 +102,7 @@ const addNodesEdgesToGraph = ({
       setTimeout(() => {
         setStoreState('isPhysicsOn', false)
         setStoreState('physicsRepulsion', false)
-      }, 4000)
+      }, 2000)
     }
   }
 

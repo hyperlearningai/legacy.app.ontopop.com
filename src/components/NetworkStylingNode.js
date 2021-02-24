@@ -19,10 +19,7 @@ import {
   NODE_SHAPES,
   NODE_SHAPES_AFFECTED_BY_SIZE
 } from '../constants/graph'
-import setNodesStylesByProperty from '../utils/networkStyling/setNodesStylesByProperty'
-import setHighlightedNodes from '../utils/networkStyling/setHighlightedNodes'
-import setNodesOverlay from '../utils/networkStyling/setNodesOverlay'
-import highlightSpiderableNodes from '../utils/networkStyling/highlightSpiderableNodes'
+import setNodesStyle from '../utils/networkStyling/setNodesStyle'
 
 const NetworkStylingNode = ({
   setStoreState,
@@ -63,10 +60,7 @@ const NetworkStylingNode = ({
     if (isInitialMountByProperties.current) {
       isInitialMountByProperties.current = false
     } else {
-      setNodesStylesByProperty()
-      setHighlightedNodes()
-      setNodesOverlay()
-      highlightSpiderableNodes()
+      setNodesStyle()
     }
   },
   [
@@ -246,8 +240,6 @@ const NetworkStylingNode = ({
                 <Dropdown
                   value={stylingNodeCaptionProperty}
                   options={annotationProperties}
-                  optionValue="id"
-                  optionLabel="label"
                   filter
                   onChange={(e) => setStoreState('stylingNodeCaptionProperty', e.value)}
                   className="m-t-10"

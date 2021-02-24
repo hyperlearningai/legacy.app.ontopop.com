@@ -6,7 +6,7 @@ import { Button } from 'primereact/button'
 import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
-import { SUB_CLASS_OF_OBJECT } from '../constants/graph'
+// import { SUB_CLASS_OF_OBJECT } from '../constants/graph'
 import { generatePredicateId } from '../constants/functions'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 
@@ -64,11 +64,10 @@ const EditOntologyAddConnection = ({
           id="graph-select"
           value={predicate}
           filter
-          options={[
-            ...optionEdges,
-            SUB_CLASS_OF_OBJECT
-          ]}
-          onChange={(e) => setPredicate(e.value)}
+          options={optionEdges}
+          onChange={(e) => {
+            setPredicate(e.value)
+          }}
           placeholder={t('selectElement')}
         />
       </div>
@@ -106,7 +105,7 @@ const EditOntologyAddConnection = ({
         )
       }
 
-      {
+      {/* {
         getEdge(generatePredicateId({
           from: fromNode,
           predicate,
@@ -123,7 +122,7 @@ const EditOntologyAddConnection = ({
             </small>
           </div>
         )
-      }
+      } */}
 
       <div className="edit-ontology-row">
         <Button
@@ -150,7 +149,8 @@ const EditOntologyAddConnection = ({
               selectedElementProperties: {
                 from: fromNode,
                 predicate,
-                to: toNode
+                to: toNode,
+                optionEdges
               },
               t
             })

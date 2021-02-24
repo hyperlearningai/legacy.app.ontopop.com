@@ -1,7 +1,7 @@
-import { getEdgeUniqueId, getElementProperties } from '../../constants/functions'
-import { LOW_LEVEL_PROPERTIES } from '../../constants/graph'
+import { RESERVED_PROPERTIES } from '../../constants/graph'
 import store from '../../store'
 import getNodeIds from '../nodesEdgesUtils/getNodeIds'
+import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
 
 /**
  * Search free-text in elements' properties
@@ -16,7 +16,6 @@ const searchElement = ({
 }) => {
   const {
     classesFromApi,
-    edgesIdsToDisplay,
     objectPropertiesFromApi,
   } = store.getState()
 
@@ -33,22 +32,12 @@ const searchElement = ({
       const nodeId = nodeIds[index]
       const nodeElement = classesFromApi[nodeId]
 
-      // check content in low level properties
-      const isLowLevelPropertyContainingSearch = LOW_LEVEL_PROPERTIES.some((property) => nodeElement[property]
-        && nodeElement[property].toString().toLowerCase().includes(search.toLowerCase()))
-
-      if (isLowLevelPropertyContainingSearch) {
-        elementsToDisplay[nodeId] = 'node'
-        continue
-      }
-
-      // check in annotation properties
-      const annotationProperties = Object.keys(nodeElement.owlAnnotationProperties)
+      const annotationProperties = Object.keys(nodeElement).filter((property) => !RESERVED_PROPERTIES.includes(property))
 
       if (annotationProperties.length === 0) continue
 
-      const isAnnotationPropertyContainingSearch = annotationProperties.some((property) => nodeElement.owlAnnotationProperties[property]
-      && nodeElement.owlAnnotationProperties[property].toString().toLowerCase().includes(search.toLowerCase()))
+      const isAnnotationPropertyContainingSearch = annotationProperties.some((property) => nodeElement[property]
+      && nodeElement[property].toString().toLowerCase().includes(search.toLowerCase()))
 
       if (isAnnotationPropertyContainingSearch) {
         elementsToDisplay[nodeId] = 'node'
@@ -57,18 +46,21 @@ const searchElement = ({
     }
   }
 
-  if (edgesIdsToDisplay.length > 0) {
-    for (let index = 0; index < edgesIdsToDisplay.length; index++) {
-      const edgeId = edgesIdsToDisplay[index]
+  const edgesIds = getEdgeIds()
 
-      const edgeUniqueId = getEdgeUniqueId(edgeId)
-      const edgeElement = objectPropertiesFromApi[edgeUniqueId]
+  if (edgesIds.length > 0) {
+    for (let index = 0; index < edgesIds.length; index++) {
+      const edgeId = edgesIds[index]
 
-      const elementKeys = getElementProperties(edgeElement)
+      const edgeElement = objectPropertiesFromApi[edgeId]
 
-      if (elementKeys.length === 0) continue
+      const annotationProperties = Object.keys(edgeElement).filter((property) => typeof edgeElement[property] !== 'object'
+      && !RESERVED_PROPERTIES.includes(property))
 
-      const isContainingSearch = elementKeys.some((key) => edgeElement[key] && edgeElement[key].toString().toLowerCase().includes(search.toLowerCase()))
+      if (annotationProperties.length === 0) continue
+
+      const isContainingSearch = annotationProperties.some((property) => edgeElement[property]
+      && edgeElement[property].toString().toLowerCase().includes(search.toLowerCase()))
 
       if (isContainingSearch) {
         elementsToDisplay[edgeId] = 'edge'

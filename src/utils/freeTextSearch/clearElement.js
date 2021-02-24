@@ -10,32 +10,29 @@ const clearElement = () => {
   const {
     stylingNodeBackgroundColor,
     stylingEdgeLineColor,
-    freeTextPrevSelectedElement
+    freeTextPrevSelectedElement,
+    freeTextSelection
   } = store.getState()
 
   if (!freeTextPrevSelectedElement) return false
 
-  // check if edge
-  if (Array.isArray(freeTextPrevSelectedElement)
-  && freeTextPrevSelectedElement.length > 0
-  ) {
-    return freeTextPrevSelectedElement.map((edge) => {
-      const color = edge.color || {}
-      color.color = stylingEdgeLineColor
+  const { id } = freeTextPrevSelectedElement
+  const color = freeTextPrevSelectedElement.color || {}
 
-      return updateEdges(
-        {
-          id: edge.id,
-          color,
-          width: 1
-        }
-      )
-    })
+  const type = freeTextSelection[id]
+
+  if (type === 'edge') {
+    color.color = stylingEdgeLineColor
+
+    return updateEdges(
+      {
+        id,
+        color,
+        width: 1
+      }
+    )
   }
 
-  const { id } = freeTextPrevSelectedElement
-
-  const color = freeTextPrevSelectedElement.color || {}
   color.background = stylingNodeBackgroundColor
 
   return updateNodes({

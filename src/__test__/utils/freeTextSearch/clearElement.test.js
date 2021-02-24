@@ -16,6 +16,7 @@ describe('clearElement', () => {
       stylingNodeBackgroundColor: '#000',
       stylingEdgeLineColor: '#000',
       freeTextPrevSelectedElement: undefined,
+      freeTextSelection: {}
     }))
 
     await clearElement()
@@ -31,6 +32,9 @@ describe('clearElement', () => {
       freeTextPrevSelectedElement: {
         id: 'node-123'
       },
+      freeTextSelection: {
+        'node-123': 'node'
+      }
     }))
 
     await clearElement()
@@ -45,15 +49,18 @@ describe('clearElement', () => {
     store.getState = jest.fn().mockImplementationOnce(() => ({
       stylingNodeBackgroundColor: '#000',
       stylingEdgeLineColor: '#000',
-      freeTextPrevSelectedElement: [{
-        id: 'node-123'
-      }],
+      freeTextPrevSelectedElement: {
+        id: 'edge-123'
+      },
+      freeTextSelection: {
+        'edge-123': 'edge'
+      }
     }))
 
     await clearElement()
 
     expect(updateEdges).toHaveBeenCalledWith(
-      { color: { color: '#000' }, id: 'node-123', width: 1 }
+      { color: { color: '#000' }, id: 'edge-123', width: 1 }
     )
     expect(updateNodes).toHaveBeenCalledTimes(0)
   })

@@ -1,22 +1,19 @@
 /* eslint max-len:0 */
 import setOntologyAddConnection from '../../../utils/editOntology/setOntologyAddConnection'
 import store from '../../../store'
-import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
-import {
-  setStoreStateFixture
-} from '../../fixtures/setOntologyAddConnection'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
+import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
-import { LABEL_PROPERTY } from '../../../constants/graph'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import setEdgeStylesByProperty from '../../../utils/networkStyling/setEdgeStylesByProperty'
-import { generatePredicateId } from '../../../constants/functions'
+import getNode from '../../../utils/nodesEdgesUtils/getNode'
 
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
+jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/networkStyling/setEdgeStylesByProperty')
@@ -31,29 +28,25 @@ describe('setOntologyAddConnection', () => {
 
   it('should work correctly when node exists', async () => {
     const selectedElementProperties = {
-      from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-      predicate: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
-      to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
+      from: '1',
+      predicate: '11',
+      to: '141',
+      optionEdges: [
+        {
+          value: '11',
+          label: 'Provided to'
+        }
+      ]
     }
 
     getEdge.mockImplementationOnce(() => ({ id: '123' }))
 
     store.getState = jest.fn().mockImplementation(() => ({
-      classesFromApi: OwlClasses,
-      objectPropertiesFromApi: OwlObjectProperties,
+      objectPropertiesFromApi,
+      objectPropertiesFromApiBackup: objectPropertiesFromApi,
       addedConnections: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY,
-      nodesConnections: {
-        [selectedElementProperties.from]: [],
-        [selectedElementProperties.to]: []
-      },
-      triplesPerNode: {
-        [selectedElementProperties.from]: [],
-        [selectedElementProperties.to]: []
-      },
-      edgesConnections: {
-        [selectedElementProperties.predicate]: []
-      }
+      nodesConnections: {},
+      triplesPerNode
     }))
 
     await setOntologyAddConnection({
@@ -62,39 +55,34 @@ describe('setOntologyAddConnection', () => {
       t
     })
 
-    expect(showNotification).toHaveBeenCalledWith(
-      {
-        message: 'Connection already exists: http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-        type: 'warning'
-      }
-    )
+    expect(showNotification.mock.calls[0][0].message.includes('Connection already exists')).toEqual(true)
   })
 
   it('should work correctly', async () => {
     const selectedElementProperties = {
-      from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-      predicate: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
-      to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
+      from: '1',
+      predicate: '11',
+      to: '141',
+      optionEdges: [
+        {
+          value: '11',
+          label: 'Provided to'
+        }
+      ]
     }
 
     getEdge.mockImplementationOnce(() => null)
+    getNode.mockImplementation(() => ({ id: 123 }))
 
     store.getState = jest.fn().mockImplementation(() => ({
-      classesFromApi: OwlClasses,
-      objectPropertiesFromApi: OwlObjectProperties,
+      objectPropertiesFromApi,
+      objectPropertiesFromApiBackup: objectPropertiesFromApi,
       addedConnections: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY,
-      triplesPerNode: {
-        [selectedElementProperties.from]: [],
-        [selectedElementProperties.to]: []
-      },
       nodesConnections: {
-        [selectedElementProperties.from]: [],
-        [selectedElementProperties.to]: []
+        1: [],
+        141: []
       },
-      edgesConnections: {
-        [selectedElementProperties.predicate]: []
-      }
+      triplesPerNode
     }))
 
     await setOntologyAddConnection({
@@ -103,33 +91,28 @@ describe('setOntologyAddConnection', () => {
       t
     })
 
-    expect(addEdge).toHaveBeenLastCalledWith({
-      predicate: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
-      from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-      id: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-      label: 'Selected in',
-      owlAnnotationProperties: { 'http://webprotege.stanford.edu/RtMeQat8p1tL74b64dS2qs': 'Causality', 'http://www.w3.org/2004/02/skos/core#definition': 'Relationship that specifies when or where another Entity has been chosen.' },
-      rdfAbout: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
-      rdfsLabel: 'Selected in',
-      rdfsSubPropertyOf: ['http://webprotege.stanford.edu/RD3fuHtzxeYkMf46qK7HAsD'],
-      skosComment: null,
-      skosDefinition: 'Relationship that specifies when or where another Entity has been chosen.',
-      to: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-    })
+    expect(addEdge.mock.calls[0][0].label).toEqual('Provided to')
 
     expect(setNodeStyle.mock.calls).toEqual([
       [
-        { nodeId: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY' }
+        {
+          nodeId: '1',
+        },
       ],
       [
-        { nodeId: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M' }
-      ]
+        {
+          nodeId: '141',
+        },
+      ],
     ])
 
-    expect(setEdgeStylesByProperty).toHaveBeenCalledWith({
-      edgeId: generatePredicateId(selectedElementProperties)
-    })
+    expect(setEdgeStylesByProperty.mock.calls[0][0].edgeId !== '').toEqual(true)
 
-    expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
+    const setStoreStateCalls = setStoreState.mock.calls
+    expect(setStoreStateCalls[0][0]).toEqual('objectPropertiesFromApi')
+    expect(setStoreStateCalls[1][0]).toEqual('objectPropertiesFromApiBackup')
+    expect(setStoreStateCalls[2][0]).toEqual('nodesConnections')
+    expect(setStoreStateCalls[3][0]).toEqual('triplesPerNode')
+    expect(setStoreStateCalls[4][0]).toEqual('addedConnections')
   })
 })

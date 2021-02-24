@@ -23,6 +23,7 @@ const GraphVisualisation = ({
   availableEdges,
   network,
   nodesIdsToDisplay,
+  removeFromObject,
   physicsHierarchicalView,
   physicsRepulsion,
   isPhysicsOn,
@@ -98,7 +99,10 @@ const GraphVisualisation = ({
       setNodesIdsToDisplay({
         type,
         setStoreState,
-        options
+        options,
+        currentGraph,
+        removeFromObject,
+        t
       })
     }
   }, [
@@ -203,6 +207,7 @@ GraphVisualisation.propTypes = {
   showContextMenu: PropTypes.bool.isRequired,
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
+  removeFromObject: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,

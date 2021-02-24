@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditOntologyRestoreEdgeNode should match snapshot when no options 1`] = `
+exports[`EditOntologyRestoreNode should match snapshot when no options 1`] = `
 <Connect
   actions={
     Object {
@@ -6761,7 +6761,7 @@ Four subdomains have been created to cover all the universals related to each of
 </Connect>
 `;
 
-exports[`EditOntologyRestoreEdgeNode should match snapshot when type node and options 1`] = `
+exports[`EditOntologyRestoreNode should match snapshot when type node and options 1`] = `
 <Connect
   actions={
     Object {

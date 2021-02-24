@@ -27,7 +27,7 @@ const FreeTextSearch = ({
   useEffect(() => () => {
     clearElement()
 
-    setStoreState('freeTextSelection', [])
+    setStoreState('freeTextSelection', {})
     setStoreState('freeTextSelectedElement', '')
     setStoreState('freeTextPrevSelectedElement', undefined)
   }, [])

@@ -3,19 +3,20 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { SelectButton } from 'primereact/selectbutton'
+import { orderBy, uniqBy } from 'lodash'
 import { SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
 import actions from '../store/actions'
-import { REQUIRED_PREDICATES } from '../constants/graph'
-import EditOntologyAddEdgeNode from './EditOntologyAddEdgeNode'
+import EditOntologyAddNode from './EditOntologyAddNode'
 import EditOntologyAddConnection from './EditOntologyAddConnection'
-import EditOntologyUpdateEdgeNode from './EditOntologyUpdateEdgeNode'
-import EditOntologyDeleteEdgeNode from './EditOntologyDeleteEdgeNode'
+import EditOntologyUpdateNode from './EditOntologyUpdateNode'
+import EditOntologyDeleteNode from './EditOntologyDeleteNode'
 import EditOntologyDeleteConnection from './EditOntologyDeleteConnection'
-import EditOntologyRestoreEdgeNode from './EditOntologyRestoreEdgeNode'
+import EditOntologyRestoreNode from './EditOntologyRestoreNode'
 import EditOntologyRestoreConnection from './EditOntologyRestoreConnection'
+import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
+import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const EditOntology = ({
-  classesFromApi,
   objectPropertiesFromApi,
   classesFromApiBackup,
   objectPropertiesFromApiBackup,
@@ -33,18 +34,14 @@ const EditOntology = ({
     label: t('node'),
     value: 'node',
     icon: 'pi-circle-off'
-  }, {
-    value: 'edge',
-    label: t('edge'),
-    icon: 'pi-arrow-right'
   }]
 
   const typeButtons = [
     ...typeButtonsUpdate,
     {
       value: 'connection',
-      label: t('connection'),
-      icon: 'pi-sort-alt'
+      label: t('edge'),
+      icon: 'pi-arrow-right' // 'pi-sort-alt'
     }]
 
   const operationButtons = [{
@@ -72,19 +69,34 @@ const EditOntology = ({
     </span>
   )
 
-  const availableNodes = Object.keys(classesFromApi).map(
-    (nodeId) => ({
-      value: nodeId,
-      label: classesFromApi[nodeId][stylingNodeCaptionProperty] || nodeId
-    })
-  )
+  const availableNodeIds = getNodeIds()
 
-  const availableEdges = Object.keys(objectPropertiesFromApi).map(
-    (edgeId) => ({
-      value: edgeId,
-      label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || edgeId
-    })
-  ).filter((item) => !REQUIRED_PREDICATES.includes(item.value))
+  const availableNodes = availableNodeIds.length > 0 ? availableNodeIds.map(
+    (nodeId) => {
+      const node = getNode(nodeId)
+
+      const label = node[stylingNodeCaptionProperty]
+
+      return ({
+        value: nodeId,
+        label: label || nodeId
+      })
+    }
+  ) : []
+
+  const availableEdges = orderBy(uniqBy(Object.keys(objectPropertiesFromApi).map(
+    (edgeId) => {
+      const {
+        objectPropertyRdfAbout,
+        objectPropertyRdfsLabel
+      } = objectPropertiesFromApi[edgeId].edgeProperties
+
+      return ({
+        value: objectPropertyRdfAbout,
+        label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || objectPropertyRdfsLabel
+      })
+    }
+  ), 'label'), ['label'], ['asc'])
 
   const deletedNodesList = deletedNodes?.map(
     (nodeId) => ({
@@ -131,7 +143,7 @@ const EditOntology = ({
           </label>
           <SelectButton
             id="type-select"
-            value={type}
+            value={operation === 'update' ? 'node' : type}
             options={operation === 'update'
               ? typeButtonsUpdate
               : typeButtons}
@@ -157,7 +169,7 @@ const EditOntology = ({
                     />
                   )
                   : (
-                    <EditOntologyAddEdgeNode
+                    <EditOntologyAddNode
                       type={type}
                       operation={operation}
                     />
@@ -170,7 +182,7 @@ const EditOntology = ({
         {
           operation === 'update'
           && (
-            <EditOntologyUpdateEdgeNode
+            <EditOntologyUpdateNode
               type={type}
               operation={operation}
               optionNodes={availableNodes}
@@ -192,7 +204,7 @@ const EditOntology = ({
                     />
                   )
                   : (
-                    <EditOntologyDeleteEdgeNode
+                    <EditOntologyDeleteNode
                       type={type}
                       operation={operation}
                       optionNodes={availableNodes}
@@ -217,7 +229,7 @@ const EditOntology = ({
                     />
                   )
                   : (
-                    <EditOntologyRestoreEdgeNode
+                    <EditOntologyRestoreNode
                       type={type}
                       operation={operation}
                       optionNodes={deletedNodesList}
@@ -234,7 +246,6 @@ const EditOntology = ({
 }
 
 EditOntology.propTypes = {
-  classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   classesFromApiBackup: PropTypes.shape().isRequired,
   objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
@@ -245,7 +256,6 @@ EditOntology.propTypes = {
 }
 
 const mapToProps = ({
-  classesFromApi,
   objectPropertiesFromApi,
   classesFromApiBackup,
   objectPropertiesFromApiBackup,
@@ -254,7 +264,6 @@ const mapToProps = ({
   stylingNodeCaptionProperty,
   stylingEdgeCaptionProperty
 }) => ({
-  classesFromApi,
   objectPropertiesFromApi,
   classesFromApiBackup,
   objectPropertiesFromApiBackup,

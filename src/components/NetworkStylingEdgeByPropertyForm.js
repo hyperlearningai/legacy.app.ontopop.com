@@ -11,14 +11,17 @@ import { Slider } from 'primereact/slider'
 import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
 import updateStylingByProperties from '../utils/networkStyling/updateStylingByProperties'
-import { FILTER_TYPE_OPTIONS, EDGE_STYLING_PROPERTIES } from '../constants/graph'
+import {
+  FILTER_TYPE_OPTIONS,
+  EDGE_STYLING_PROPERTIES,
+  EDGE_PROPERTIES_DROPDOWN
+} from '../constants/graph'
 
 const NetworkStylingEdgeByPropertyForm = ({
   setStoreState,
   index,
   stylingProperty,
   isDeleteAvailable,
-  annotationProperties,
 }) => {
   const { t } = useTranslation()
 
@@ -44,9 +47,7 @@ const NetworkStylingEdgeByPropertyForm = ({
         <h4 className="m-t-0 m-b-0">{t('ifNodeHasProperty')}</h4>
         <Dropdown
           value={stylingPropertyObject.property}
-          options={annotationProperties}
-          optionValue="id"
-          optionLabel="label"
+          options={EDGE_PROPERTIES_DROPDOWN}
           filter
           onChange={(e) => setStylingPropertyObject({
             ...stylingPropertyObject,
@@ -261,7 +262,6 @@ const NetworkStylingEdgeByPropertyForm = ({
 
 NetworkStylingEdgeByPropertyForm.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   isDeleteAvailable: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
   stylingProperty: PropTypes.shape().isRequired,
@@ -282,7 +282,6 @@ const mapToProps = ({
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
   stylingNodeCaptionProperty,
-  annotationProperties
 }) => ({
   stylingNodeHoverBackgroundColor,
   stylingNodeHoverBorderColor,
@@ -298,7 +297,6 @@ const mapToProps = ({
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
   stylingNodeCaptionProperty,
-  annotationProperties
 })
 
 export default connect(

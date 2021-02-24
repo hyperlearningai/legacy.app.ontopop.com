@@ -47,7 +47,7 @@ export const NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT = {
 
 export const SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT = {
   filterType: 'equal',
-  filterValue: 'subClassOf',
+  filterValue: 'Subclass of',
   styleType: 'stylingEdgeLineStyle',
   styleValue: true,
   property: 'rdfsLabel'
@@ -221,16 +221,32 @@ export const SUB_CLASS_OF_OBJECT = {
   value: SUB_CLASS_OF_ID
 }
 
-export const LOW_LEVEL_PROPERTIES = [
-  'rdfAbout',
-  'rdfsLabel',
-  'skosDefinition',
-  'skosComment'
+export const USER_DEFINED_PROPERTY = 'userDefined'
+
+export const RESERVED_PROPERTIES = [
+  'id',
+  'label',
+  'nodeId',
+  'edgeId',
+  USER_DEFINED_PROPERTY,
+  'x',
+  'y'
 ]
 
-export const MINIMAL_LOW_LEVEL_PROPERTIES = [
+export const EDGE_PROPERTIES = [
   'rdfAbout',
   'rdfsLabel',
+]
+
+export const EDGE_PROPERTIES_DROPDOWN = EDGE_PROPERTIES.map((property) => ({
+  value: property,
+  label: property,
+}))
+
+export const LOW_LEVEL_PROPERTIES = [
+  ...EDGE_PROPERTIES,
+  'skosDefinition',
+  'skosComment'
 ]
 
 export const REQUIRED_PROPERTIES = [
@@ -239,12 +255,15 @@ export const REQUIRED_PROPERTIES = [
 
 export const UNIQUE_PROPERTY = 'rdfAbout'
 export const LABEL_PROPERTY = 'rdfsLabel'
+export const EDGE_LABEL_PROPERTY = 'rdfsLabel'
+
 export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'
 export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
 export const OWL_RESTRICTION = 'owlRestriction'
 
 export const REQUIRED_PREDICATES = [
   'rdfsSubClassOf',
+  'Subclass of',
   'http://www.w3.org/2000/01/rdf-schema#subclassof',
   'http://www.w3.org/2002/07/owl#topObjectProperty'
 ]

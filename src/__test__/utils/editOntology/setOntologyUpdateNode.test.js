@@ -2,9 +2,7 @@
 import setOntologyUpdateNode from '../../../utils/editOntology/setOntologyUpdateNode'
 import store from '../../../store'
 import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
-import { graphVersions } from '../../fixtures/graphVersions'
 import {
-  addToObjectFixture,
   setStoreStateFixture
 } from '../../fixtures/setOntologyUpdateNode'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
@@ -27,9 +25,8 @@ describe('setOntologyUpdateNode', () => {
 
   it('should work correctly', async () => {
     const getState = jest.fn().mockImplementationOnce(() => ({
-      graphVersions,
+      stylingNodeCaptionProperty: 'rdfsLabel',
       classesFromApi: OwlClasses,
-      selectedGraphVersion: 'original',
       updatedNodes: [],
     }))
     store.getState = getState
@@ -42,13 +39,12 @@ describe('setOntologyUpdateNode', () => {
     })
 
     expect(updateNodes).toHaveBeenLastCalledWith(
-      { id: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY', label: 'New node' }
-    )
-
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphVersions',
-      'original',
-      addToObjectFixture
+      {
+        id: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+        label: 'New node',
+        'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
+        rdfsLabel: 'New node'
+      }
     )
 
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)

@@ -5,10 +5,6 @@ import EdgesFilter from '../../components/EdgesFilter'
 
 const setup = () => {
   const props = {
-    edgesProperties: [{
-      property: 'rdfsLabel',
-      value: 'is composed of'
-    }],
     addToObject: jest.fn(),
     setStoreState: jest.fn(),
   }

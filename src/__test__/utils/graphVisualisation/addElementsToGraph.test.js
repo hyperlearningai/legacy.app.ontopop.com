@@ -1,9 +1,8 @@
 import { DataSet } from 'vis-data'
 import addElementsToGraph from '../../../utils/graphVisualisation/addElementsToGraph'
-import { triplesPerNode } from '../../fixtures/triplesPerNode'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
-import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties'
-import { graphVisualisationResults } from '../../fixtures/graphVisualisationResults'
+import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import { classesFromApi } from '../../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 
@@ -14,18 +13,14 @@ const availableNodes = new DataSet()
 const availableEdges = new DataSet()
 const stylingNodeCaptionProperty = 'rdfsLabel'
 const nodesIdsToDisplay = [
-  'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-  'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6',
-  'http://webprotege.stanford.edu/RCxwL4b8LCMbVkVPEbOn78g',
-  'http://webprotege.stanford.edu/R1CEYmOdNWhDr4n2yz9Lzf'
+  '1',
+  '170',
+  '141'
 ]
 const edgesIdsToDisplay = [
-  'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-  'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU'
+  '11',
+  '12'
 ]
-
-const classesFromApi = OwlClasses
-const objectPropertiesFromApi = OwlObjectProperties
 
 const getState = jest.fn().mockImplementation(() => ({
   availableNodes,
@@ -53,7 +48,23 @@ describe('addElementsToGraph', () => {
       setStoreState
     })
 
-    expect(setStoreState.mock.calls).toEqual(graphVisualisationResults)
+    expect(setStoreState.mock.calls).toEqual(
+      [['availableNodesCount', 3],
+        ['availableEdgesCount', 2],
+        ['nodesConnections', {
+          1: [
+            '11',
+            '12',
+          ],
+          141: [
+            '11',
+          ],
+          170: [
+            '12',
+          ],
+        }],
+        ['isPhysicsOn', true]]
+    )
     expect(setElementsStyle).toHaveBeenCalledWith()
     expect(setTimeout).toHaveBeenCalledWith(
       expect.any(Function), 3000

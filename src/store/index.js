@@ -17,7 +17,8 @@ import {
   HOVER_NODE_BACKGROUND,
   LABEL_PROPERTY,
   NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT,
-  SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT
+  SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT,
+  EDGE_LABEL_PROPERTY
 } from '../constants/graph'
 
 const initialState = {
@@ -41,9 +42,9 @@ const initialState = {
   classesFromApiBackup: {},
   objectPropertiesFromApiBackup: {},
   triplesPerNode: {},
+  triplesPerNodeBackup: {},
   network: undefined,
   annotationProperties: [],
-  edgesProperties: [],
   deletedNodes: [],
   addedNodes: [],
   updatedNodes: [],
@@ -78,7 +79,7 @@ const initialState = {
     JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
   ],
   stylingEdgeLength: 250,
-  stylingEdgeCaptionProperty: LABEL_PROPERTY,
+  stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
 
   stylingNodeSize: 25,
   stylingNodeBorder: 1,

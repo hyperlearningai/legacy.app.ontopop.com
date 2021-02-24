@@ -11,10 +11,12 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_EDGES_FILTER } from '../constants/views'
 import setFilteredEdges from '../utils/edgesFilter/setFilteredEdges'
+import {
+  EDGE_PROPERTIES_DROPDOWN
+} from '../constants/graph'
 
 const EdgesFilter = ({
   setStoreState,
-  annotationProperties,
   addToObject
 }) => {
   const { t } = useTranslation()
@@ -42,7 +44,7 @@ const EdgesFilter = ({
         >
           {
             edgesFilters.map(
-              (edgefilter, index) => {
+              (edgeFilter, index) => {
                 const selectId = `edges-filter-property-${index}`
                 const inputTextId = `edges-filter-value-${index}`
 
@@ -79,12 +81,12 @@ const EdgesFilter = ({
                       <Dropdown
                         id={selectId}
                         value={edgesFilters[index].property}
-                        options={annotationProperties}
+                        options={EDGE_PROPERTIES_DROPDOWN}
                         filter
                         onChange={(e) => {
                           const newFilter = {
                             ...edgesFilters[index],
-                            property: e.target.value.id
+                            property: e.value
                           }
 
                           let newEdgesFilters = [
@@ -155,17 +157,10 @@ const EdgesFilter = ({
 
 EdgesFilter.propTypes = {
   setStoreState: PropTypes.func.isRequired,
-  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   addToObject: PropTypes.func.isRequired,
 }
 
-const mapToProps = ({
-  annotationProperties
-}) => ({
-  annotationProperties
-})
-
 export default connect(
-  mapToProps,
+  null,
   actions
 )(EdgesFilter)

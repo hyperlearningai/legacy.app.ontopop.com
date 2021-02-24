@@ -13,15 +13,7 @@ exports[`EdgesFilter should match snapshot  1`] = `
     }
   }
   addToObject={[MockFunction]}
-  edgesProperties={
-    Array [
-      Object {
-        "property": "rdfsLabel",
-        "value": "is composed of",
-      },
-    ]
-  }
-  mapToProps={[Function]}
+  mapToProps={null}
   setStoreState={[MockFunction]}
 >
   <Component />

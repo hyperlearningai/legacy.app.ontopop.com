@@ -1,11 +1,9 @@
 import store from '../../store'
 import {
   UNIQUE_PROPERTY,
-  LOW_LEVEL_PROPERTIES,
-  LABEL_PROPERTY,
-  OWL_ANNOTATION_PROPERTIES
 } from '../../constants/graph'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
+
 /**
  * Update ontology nodes
  * @param  {Object}         params
@@ -19,52 +17,46 @@ const setOntologyUpdateNode = ({
   selectedElement,
   setStoreState,
   selectedElementProperties,
-  addToObject
 }) => {
   const {
-    graphVersions,
     classesFromApi,
     updatedNodes,
-    selectedGraphVersion,
+    stylingNodeCaptionProperty
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  const newGraphVersion = JSON.parse(JSON.stringify(graphVersions[selectedGraphVersion]))
-
   const selectedElementPropertiesKeys = Object.keys(selectedElementProperties)
+
+  const options = {}
 
   selectedElementPropertiesKeys.map((propertyKey) => {
     if (propertyKey !== UNIQUE_PROPERTY
           && selectedElementProperties[propertyKey]
           && selectedElementProperties[propertyKey] !== ''
     ) {
-      if (LOW_LEVEL_PROPERTIES.includes(propertyKey)) {
-        newClassesFromApi[selectedElement][propertyKey] = selectedElementProperties[propertyKey]
-      } else {
-        if (!newClassesFromApi[selectedElement][OWL_ANNOTATION_PROPERTIES]) {
-          newClassesFromApi[selectedElement][OWL_ANNOTATION_PROPERTIES] = {}
-        }
+      options[propertyKey] = selectedElementProperties[propertyKey]
+      newClassesFromApi[selectedElement][propertyKey] = selectedElementProperties[propertyKey]
 
-        newClassesFromApi[selectedElement][OWL_ANNOTATION_PROPERTIES][propertyKey] = selectedElementProperties[propertyKey]
-      }
-
-      if (propertyKey === LABEL_PROPERTY) {
-        newClassesFromApi[selectedElement].label = selectedElementProperties[propertyKey]
-        updateNodes({ id: selectedElement, label: selectedElementProperties[propertyKey] })
+      if (propertyKey === stylingNodeCaptionProperty) {
+        options.label = selectedElementProperties[propertyKey]
       }
     }
 
     return true
   })
 
+  newClassesFromApi[selectedElement] = {
+    ...newClassesFromApi[selectedElement],
+    ...options
+  }
+
+  updateNodes({ id: selectedElement, ...options })
+
   const newUpdatedNodes = [
     ...updatedNodes,
     ...[selectedElement]
   ]
 
-  newGraphVersion.classesFromApi = newClassesFromApi
-  newGraphVersion.updatedNodes = newUpdatedNodes
-  addToObject('graphVersions', selectedGraphVersion, newGraphVersion)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('updatedNodes', newUpdatedNodes)
 }
