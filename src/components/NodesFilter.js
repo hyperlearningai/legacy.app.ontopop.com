@@ -80,13 +80,11 @@ const NodesFilter = ({
                         id={selectId}
                         value={nodesFilters[index].property}
                         options={annotationProperties}
-                        optionValue="id"
-                        optionLabel="label"
                         filter
                         onChange={(e) => {
                           const newFilter = {
                             ...nodesFilters[index],
-                            property: e.target.value
+                            property: e.value
                           }
 
                           let newNodesFilters = [
@@ -147,7 +145,8 @@ const NodesFilter = ({
           onClick={() => setFilteredNodes({
             setStoreState,
             nodesFilters,
-            addToObject
+            addToObject,
+            t
           })}
         />
       </div>

@@ -26,10 +26,8 @@ const getNodesFromNodesFilters = ({
 
         const nodeObject = getNode(nodeId)
 
-        const isNodeToBeAdded = (nodeObject[property]
-        && nodeObject[property].toLowerCase().includes(value.toLowerCase())) || (
-          nodeObject.owlAnnotationProperties[property]
-        && nodeObject.owlAnnotationProperties?.[property].toLowerCase().includes(value.toLowerCase()))
+        const isNodeToBeAdded = nodeObject[property]
+          && nodeObject[property].toLowerCase().includes(value.toLowerCase())
 
         if (isNodeToBeAdded) {
           nodesToDisplay.push(nodeId)

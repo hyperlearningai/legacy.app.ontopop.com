@@ -7,33 +7,28 @@ import {
   ALGO_TYPE_EDGES_FILTER
 } from '../../../constants/algorithms'
 import setNodesIdsToDisplay from '../../../utils/graphVisualisation/setNodesIdsToDisplay'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
-import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
-import { algoTypeFull } from '../../fixtures/setNodesIdsToDisplayResults'
+import { classesFromApi } from '../../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import { triplesPerNode } from '../../fixtures/triplesPerNode'
 import store from '../../../store'
-import { availableNodes } from '../../fixtures/availableNodesNormalised'
-import { availableEdges } from '../../fixtures/availableEdgesNormalised'
+import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
+import getNodesFromPaths from '../../../utils/shortestPath/getNodesFromPaths'
+import getNodesFromNodesFilters from '../../../utils/nodesFilter/getNodesFromNodesFilters'
+import getNodesEdgesFromEdgesFilters from '../../../utils/edgesFilter/getNodesEdgesFromEdgesFilters'
 
 const setStoreState = jest.fn()
-const classesFromApi = OwlClasses
-const objectPropertiesFromApi = OwlObjectProperties
-const getState = jest.fn().mockImplementation(() => ({
+
+jest.mock('../../../utils/nodeNeighbourhood/getNeighbours')
+jest.mock('../../../utils/shortestPath/getNodesFromPaths')
+jest.mock('../../../utils/nodesFilter/getNodesFromNodesFilters')
+jest.mock('../../../utils/edgesFilter/getNodesEdgesFromEdgesFilters')
+
+store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
   objectPropertiesFromApi,
-  deletedNodes: [],
-  availableNodes,
-  availableEdges,
-  triplesPerNode,
-  nodesIdsToDisplay: [
-    'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw'
-  ],
-  shortestPathResults: [
-    'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6|||http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY|||http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ|||http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ___http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ|||http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0___http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc___http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp|||http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0___http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw___http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp|||http://www.w3.org/2000/01/rdf-schema#subclassof___http://webprotege.stanford.edu/ReVBAW9BDkF6kpl6UmYCrZ___http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw'
-  ]
+  nodesIdsToDisplay: ['123'],
+  deletedNodes: []
 }))
-
-store.getState = getState
 
 describe('setNodesIdsToDisplay', () => {
   afterEach(() => {
@@ -49,124 +44,234 @@ describe('setNodesIdsToDisplay', () => {
       options: {}
     })
 
-    expect(setStoreState.mock.calls).toEqual(algoTypeFull)
+    expect(setStoreState.mock.calls).toEqual(
+      [
+        [
+          'highlightedNodes',
+          [],
+        ],
+        [
+          'isNodeOverlay',
+          false,
+        ],
+        [
+          'shortestPathNodes',
+          [],
+        ],
+        [
+          'shortestPathResults',
+          [],
+        ],
+        [
+          'nodesIdsToDisplay',
+          [
+            '1',
+            '2',
+            '3',
+            '4',
+            '5',
+            '6',
+            '7',
+            '8',
+            '9',
+            '10',
+            '11',
+            '12',
+            '13',
+            '14',
+            '15',
+            '16',
+            '17',
+            '18',
+            '19',
+            '20',
+            '21',
+            '22',
+            '23',
+            '24',
+            '25',
+            '26',
+            '27',
+            '28',
+            '29',
+            '30',
+            '31',
+            '32',
+            '33',
+            '34',
+            '35',
+            '36',
+            '37',
+            '38',
+            '39',
+            '40',
+            '41',
+            '42',
+            '43',
+            '44',
+            '45',
+            '46',
+            '47',
+            '48',
+            '49',
+            '50',
+            '51',
+            '52',
+            '53',
+            '54',
+            '55',
+            '56',
+            '57',
+            '58',
+            '59',
+            '60',
+            '61',
+            '62',
+            '63',
+            '64',
+            '65',
+            '66',
+            '67',
+            '68',
+            '69',
+            '70',
+            '71',
+            '72',
+            '73',
+            '74',
+            '75',
+            '76',
+            '77',
+            '78',
+            '79',
+            '80',
+            '81',
+            '82',
+            '83',
+            '84',
+            '85',
+            '86',
+            '87',
+            '88',
+            '89',
+            '90',
+            '91',
+            '92',
+            '93',
+            '94',
+            '95',
+            '96',
+            '97',
+            '98',
+            '99',
+            '100',
+            '101',
+            '102',
+            '103',
+            '104',
+            '105',
+            '106',
+            '107',
+            '108',
+            '109',
+            '110',
+            '111',
+            '112',
+            '113',
+            '114',
+            '115',
+            '116',
+            '117',
+            '118',
+            '119',
+            '120',
+            '121',
+            '122',
+            '123',
+            '124',
+            '125',
+            '126',
+            '127',
+            '128',
+            '129',
+            '130',
+            '131',
+            '132',
+            '133',
+            '134',
+            '135',
+            '136',
+            '137',
+            '138',
+            '139',
+            '140',
+            '141',
+            '142',
+            '143',
+            '144',
+            '145',
+            '146',
+            '147',
+            '148',
+            '149',
+            '150',
+            '151',
+            '152',
+            '153',
+            '154',
+            '155',
+            '156',
+            '157',
+            '158',
+            '159',
+            '160',
+            '161',
+            '162',
+            '163',
+            '164',
+            '165',
+            '166',
+            '167',
+            '168',
+            '169',
+            '170',
+            '171',
+            '172',
+            '173',
+            '174',
+            '175',
+            '176',
+            '177',
+            '178',
+            '179',
+            '180',
+            '181',
+            '182',
+            '183',
+            '184',
+            '185',
+            '186',
+            '187',
+            '188',
+            '189',
+            '190',
+            '191',
+            '192',
+            '193',
+            '194',
+            '195',
+            '196',
+          ],
+        ],
+      ]
+    )
   })
 
   it('should work correctly when ALGO_TYPE_BOUNDING_BOX', async () => {
     const type = ALGO_TYPE_BOUNDING_BOX
 
     const options = {
-      selectedBoundingBoxNodes: [{ id: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY' }],
-    }
-
-    await setNodesIdsToDisplay({
-      type,
-      setStoreState,
-      options
-    })
-
-    expect(setStoreState.mock.calls).toEqual([
-      [
-        'highlightedNodes',
-        [],
-      ],
-      [
-        'isNodeOverlay',
-        false,
-      ],
-      [
-        'shortestPathNodes',
-        [],
-      ],
-      [
-        'highlightedNodes',
-        [],
-      ],
-      [
-        'edgesIdsToDisplay',
-        [],
-      ],
-      [
-        'nodesIdsToDisplay',
-        [
-          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-        ],
-      ],
-    ])
-  })
-
-  it('should work correctly when ALGO_TYPE_NEIGHBOURHOOD', async () => {
-    const type = ALGO_TYPE_NEIGHBOURHOOD
-
-    const options = {
-      selectedNodeId: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-      separationDegree: 1,
-      triplesPerNode
-    }
-
-    await setNodesIdsToDisplay({
-      type,
-      setStoreState,
-      options
-    })
-
-    expect(setStoreState.mock.calls).toEqual([
-      [
-        'highlightedNodes',
-        [],
-      ],
-      [
-        'isNodeOverlay',
-        false,
-      ],
-      [
-        'shortestPathNodes',
-        [],
-      ],
-      [
-        'highlightedNodes',
-        [
-          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-        ],
-      ],
-      [
-        'edgesIdsToDisplay',
-        [
-          'http://www.w3.org/2000/01/rdf-schema#subclassof',
-          'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-          'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-        ],
-      ],
-      [
-        'nodesIdsToDisplay',
-        [
-          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-          'http://webprotege.stanford.edu/RDLUE0UQz6th3NduA1L3n3u',
-          'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
-          'http://webprotege.stanford.edu/R83VJMr2iUDDav8mz3n6ZyH',
-          'http://webprotege.stanford.edu/R9UuC5ptRevqURhJa0PIBmB',
-          'http://webprotege.stanford.edu/R9Y5iEV0xhBtSZMrtzLdmwd',
-          'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6',
-          'http://webprotege.stanford.edu/RYOFagzdcydXMf8mlO9vsG',
-          'http://webprotege.stanford.edu/Rhx4iGF2ITGgrmcS2fHAN5',
-          'http://webprotege.stanford.edu/RmrjgvX01FgGHXkfTXE4MO',
-        ],
-      ],
-    ])
-  })
-
-  it('should work correctly when ALGO_TYPE_SHORTEST_PATH', async () => {
-    const type = ALGO_TYPE_SHORTEST_PATH
-
-    const options = {
-      shortestPathSelectedNodes: [
-        'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-        'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ'
-      ],
-      shortestPathResults: [
-        'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS'
-      ],
-      isNodeOverlay: true
+      selectedBoundingBoxNodes: [{ id: '12' }, { id: '24' }],
     }
 
     await setNodesIdsToDisplay({
@@ -190,8 +295,100 @@ describe('setNodesIdsToDisplay', () => {
       ],
       [
         'shortestPathResults',
+        [],
+      ],
+      [
+        'nodesIdsToDisplay',
         [
-          'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS',
+          '12',
+          '24',
+        ],
+      ],
+    ])
+  })
+
+  it('should work correctly when ALGO_TYPE_NEIGHBOURHOOD', async () => {
+    const type = ALGO_TYPE_NEIGHBOURHOOD
+
+    const options = {
+      selectedNodeId: '12',
+      separationDegree: 1,
+      triplesPerNode
+    }
+
+    getNeighbours.mockImplementation(() => ({
+      neighbourNodes: ['24', '36'],
+      neighbourEdges: ['111']
+    }))
+
+    await setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options
+    })
+
+    expect(setStoreState.mock.calls).toEqual([
+      [
+        'highlightedNodes',
+        [],
+      ],
+      [
+        'isNodeOverlay',
+        false,
+      ],
+      [
+        'shortestPathNodes',
+        [],
+      ],
+      [
+        'shortestPathResults',
+        [],
+      ],
+      [
+        'nodesIdsToDisplay',
+        {
+          neighbourEdges: [
+            '111',
+          ],
+          neighbourNodes: [
+            '24',
+            '36',
+          ],
+        },
+      ],
+    ])
+  })
+
+  it('should work correctly when ALGO_TYPE_SHORTEST_PATH', async () => {
+    const type = ALGO_TYPE_SHORTEST_PATH
+
+    const options = {
+      shortestPathSelectedNodes: [
+        '24', '48'
+      ],
+      shortestPathResults: [
+        '111_112'
+      ],
+      isNodeOverlay: true
+    }
+
+    getNodesFromPaths.mockImplementation(() => ({
+      shortestPathNodes: ['24', '36', '48'],
+      shortestPathEdges: ['111', '112']
+    }))
+
+    await setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options
+    })
+
+    expect(setStoreState.mock.calls).toEqual([
+      [
+        'highlightedNodes',
+        [
+          '24',
+          '48',
         ],
       ],
       [
@@ -199,27 +396,29 @@ describe('setNodesIdsToDisplay', () => {
         true,
       ],
       [
-        'highlightedNodes',
-        [
-          'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-          'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ',
-        ],
+        'shortestPathNodes',
+        {
+          shortestPathEdges: [
+            '111',
+            '112',
+          ],
+          shortestPathNodes: [
+            '24',
+            '36',
+            '48',
+          ],
+        },
       ],
-      ['shortestPathNodes',
+      [
+        'shortestPathResults',
         [
-          'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6',
-          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-          'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
-          'http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc',
-          'http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp',
-          'http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw',
-          'http://webprotege.stanford.edu/ReVBAW9BDkF6kpl6UmYCrZ',
+          '111_112',
         ],
       ],
       [
         'nodesIdsToDisplay',
         [
-          'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
+          '123',
         ],
       ],
     ])
@@ -230,14 +429,18 @@ describe('setNodesIdsToDisplay', () => {
 
     const options = {
       shortestPathSelectedNodes: [
-        'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-        'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ'
+        '24', '48'
       ],
       shortestPathResults: [
-        'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS'
+        '111_112'
       ],
       isNodeOverlay: false
     }
+
+    getNodesFromPaths.mockImplementation(() => ({
+      shortestPathNodes: ['24', '36', '48'],
+      shortestPathEdges: ['111', '112']
+    }))
 
     await setNodesIdsToDisplay({
       type,
@@ -248,7 +451,10 @@ describe('setNodesIdsToDisplay', () => {
     expect(setStoreState.mock.calls).toEqual([
       [
         'highlightedNodes',
-        [],
+        [
+          '24',
+          '48',
+        ],
       ],
       [
         'isNodeOverlay',
@@ -261,40 +467,22 @@ describe('setNodesIdsToDisplay', () => {
       [
         'shortestPathResults',
         [
-          'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm___http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t|||http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm|||http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8___http://webprotege.stanford.edu/RBcXX4d5QQiXpD9Uvmk1E7D___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R3WvW1lERMZ6UCSsaAdkx1___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS|||http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3___http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ___http://webprotege.stanford.edu/RDUwHG4VnwQTyDDhhsWSwgS',
-        ],
-      ],
-      [
-        'isNodeOverlay',
-        false,
-      ],
-      [
-        'highlightedNodes',
-        [
-          'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-          'http://webprotege.stanford.edu/R8PzvuuoJlhu0qdom6r1qRQ',
-        ],
-      ],
-      [
-        'edgesIdsToDisplay',
-        [
-          'http://www.w3.org/2000/01/rdf-schema#subclassof',
-          'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-          'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-          'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+          '111_112',
         ],
       ],
       [
         'nodesIdsToDisplay',
-        [
-          'http://webprotege.stanford.edu/RDElsJe5LORtLxEeWbSDg6',
-          'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-          'http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ',
-          'http://webprotege.stanford.edu/R7aUPF2nCTl0LhxRiIVdzpc',
-          'http://webprotege.stanford.edu/RJ4FstTjtD6dNQx4agULMp',
-          'http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw',
-          'http://webprotege.stanford.edu/ReVBAW9BDkF6kpl6UmYCrZ',
-        ],
+        {
+          shortestPathEdges: [
+            '111',
+            '112',
+          ],
+          shortestPathNodes: [
+            '24',
+            '36',
+            '48',
+          ],
+        },
       ],
     ])
   })
@@ -309,6 +497,11 @@ describe('setNodesIdsToDisplay', () => {
       }]
     }
 
+    getNodesFromNodesFilters.mockImplementation(() => ([
+      '12',
+      '14'
+    ]))
+
     await setNodesIdsToDisplay({
       type,
       setStoreState,
@@ -329,12 +522,14 @@ describe('setNodesIdsToDisplay', () => {
         [],
       ],
       [
+        'shortestPathResults',
+        [],
+      ],
+      [
         'nodesIdsToDisplay',
         [
-          'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep',
-          'http://webprotege.stanford.edu/RCOdkBizz0dWtRTEjZSfqP8',
-          'http://webprotege.stanford.edu/RBBDxx5ZaIbg5ASqGAeyKGg',
-          'http://webprotege.stanford.edu/Rigjqi5P4ZscabU1Pot3hK',
+          '12',
+          '14',
         ],
       ],
     ])
@@ -350,6 +545,8 @@ describe('setNodesIdsToDisplay', () => {
       }]
     }
 
+    getNodesEdgesFromEdgesFilters.mockImplementation(() => (['11', '12']))
+
     await setNodesIdsToDisplay({
       type,
       setStoreState,
@@ -370,34 +567,14 @@ describe('setNodesIdsToDisplay', () => {
         [],
       ],
       [
-        'edgesIdsToDisplay',
-        [
-          'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-          'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-        ],
+        'shortestPathResults',
+        [],
       ],
       [
         'nodesIdsToDisplay',
         [
-          'http://webprotege.stanford.edu/R2RFTG7iNuFjv3A8V7qHOb',
-          'http://webprotege.stanford.edu/RB2wiyzebv6p4qrvJjgommU',
-          'http://webprotege.stanford.edu/R7dcPTLwQrLcc9eK22R7swU',
-          'http://webprotege.stanford.edu/RFNK6OsKMaap9LxxLXdLxR',
-          'http://webprotege.stanford.edu/R7pIV91w7fTKppAHSmrz8n',
-          'http://webprotege.stanford.edu/R81y0gnn3Ar0DJ8FatMTqK3',
-          'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
-          'http://webprotege.stanford.edu/R8M82pvFZ3JUmp6uMUwitfw',
-          'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
-          'http://webprotege.stanford.edu/RBB5dovsXWSPzlLSNMC5gyd',
-          'http://webprotege.stanford.edu/Ree4nJbmBksWE1ufpmuUfp',
-          'http://webprotege.stanford.edu/R8N1a0K78gZZbVLw2P1NkTX',
-          'http://webprotege.stanford.edu/RCGrVyxcVdUB7rI7qGrKvTF',
-          'http://webprotege.stanford.edu/R9H3QGGtwC0XhV4Mfk6Ceep',
-          'http://webprotege.stanford.edu/RBIjxceqTozVOeG26dY0Msm',
-          'http://webprotege.stanford.edu/RC714KfXzpEYi4lGyNUEbWI',
-          'http://webprotege.stanford.edu/RBzF9qwVtyzz358WQ0Iaxjs',
-          'http://webprotege.stanford.edu/RCdB5m1RZhhIcJM0SpRcJvn',
-          'http://webprotege.stanford.edu/RnzPd3Edkzo3UTz2B80djl',
+          '11',
+          '12',
         ],
       ],
     ])

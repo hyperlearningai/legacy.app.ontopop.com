@@ -9,9 +9,8 @@ import {
 import showNotification from '../notifications/showNotification'
 import extractCsvRows from './extractCsvRows'
 import downloadBlob from './downloadBlob'
+import { EDGE_PROPERTIES } from '../../constants/graph'
 import store from '../../store'
-import getNodeIds from '../nodesEdgesUtils/getNodeIds'
-import getNode from '../nodesEdgesUtils/getNode'
 
 /**
  * Export data as csv
@@ -25,27 +24,14 @@ const exportCsv = async ({
   t
 }) => {
   const {
-    objectPropertiesFromApi,
+    annotationProperties
   } = store.getState()
 
-  const nodeIds = getNodeIds()
-  const edgeIds = Object.keys(objectPropertiesFromApi)
-
-  const firstNode = getNode(nodeIds[0])
-
-  const nodeKeys = Object.keys(firstNode)
-    .filter((key) => key !== 'owlAnnotationProperties'
-      && key !== 'rdfsSubClassOf').sort()
-
-  const firstEdge = objectPropertiesFromApi[edgeIds[0]]
-  const edgeKeys = Object.keys(firstEdge)
-    .filter((key) => (
-      key !== 'owlAnnotationProperties'
-      && key !== 'rdfsSubPropertyOf')).sort()
+  const nodeKeys = annotationProperties.map((property) => property.value).sort()
 
   const { basicData, fullData } = extractCsvRows({
     nodeKeys,
-    edgeKeys,
+    edgeKeys: EDGE_PROPERTIES,
   })
 
   const zip = new JSZip()

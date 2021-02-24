@@ -45,8 +45,6 @@ const NetworkStylingNodeByPropertyForm = ({
         <Dropdown
           value={stylingPropertyObject.property}
           options={annotationProperties}
-          optionValue="id"
-          optionLabel="label"
           filter
           onChange={(e) => setStylingPropertyObject({
             ...stylingPropertyObject,

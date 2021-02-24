@@ -1,7 +1,8 @@
 /* eslint max-len:0 */
 import setOntologyAddNode from '../../../utils/editOntology/setOntologyAddNode'
 import store from '../../../store'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { classesFromApi } from '../../fixtures/classesFromApi'
+import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
 import en from '../../../i18n/en'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import { LABEL_PROPERTY, UNIQUE_PROPERTY } from '../../../constants/graph'
@@ -32,10 +33,12 @@ describe('setOntologyAddNode', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       nodesConnections: {},
-      triplesPerNode: {},
-      classesFromApi: OwlClasses,
+      triplesPerNode,
+      triplesPerNodeBackup: triplesPerNode,
+      classesFromApi,
+      classesFromApiBackup: classesFromApi,
       addedNodes: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY
+      stylingNodeCaptionProperty: LABEL_PROPERTY,
     }))
 
     await setOntologyAddNode({
@@ -63,10 +66,12 @@ describe('setOntologyAddNode', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       nodesConnections: {},
-      triplesPerNode: {},
-      classesFromApi: OwlClasses,
+      triplesPerNode,
+      triplesPerNodeBackup: triplesPerNode,
+      classesFromApi,
+      classesFromApiBackup: classesFromApi,
       addedNodes: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY
+      stylingNodeCaptionProperty: LABEL_PROPERTY,
     }))
 
     await setOntologyAddNode({
@@ -76,7 +81,13 @@ describe('setOntologyAddNode', () => {
     })
 
     expect(addNode).toHaveBeenCalledWith(
-      { id: 'http://test.com/node', label: 'New node', rdfsLabel: 'New node' }
+      {
+        id: 'http://test.com/node',
+        'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
+        label: 'New node',
+        rdfsLabel: 'New node',
+        userDefined: true,
+      }
     )
 
     expect(setNodeStyle).toHaveBeenCalledWith(
@@ -94,6 +105,14 @@ describe('setOntologyAddNode', () => {
         [
           'triplesPerNode',
           {
+            ...triplesPerNode,
+            'http://test.com/node': []
+          }
+        ],
+        [
+          'triplesPerNodeBackup',
+          {
+            ...triplesPerNode,
             'http://test.com/node': []
           }
         ],
@@ -102,12 +121,23 @@ describe('setOntologyAddNode', () => {
           {
             'http://test.com/node': {
               label: 'New node',
-              owlAnnotationProperties: {
-                'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              },
+              'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
               rdfsLabel: 'New node',
+              userDefined: true
             },
-            ...OwlClasses
+            ...classesFromApi
+          },
+        ],
+        [
+          'classesFromApiBackup',
+          {
+            'http://test.com/node': {
+              label: 'New node',
+              'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
+              rdfsLabel: 'New node',
+              userDefined: true
+            },
+            ...classesFromApi
           },
         ],
         [

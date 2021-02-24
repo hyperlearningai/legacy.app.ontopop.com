@@ -21,6 +21,7 @@ const highlightElement = ({
     network
   } = store.getState()
 
+  if (!freeTextSelectedElement) return false
   const elementType = freeTextSelection[freeTextSelectedElement]
 
   if (elementType === 'node') {
@@ -43,31 +44,27 @@ const highlightElement = ({
     )
   }
 
-  const edges = getEdge({
-    filter: (edge) => edge.id.includes(freeTextSelectedElement)
-  })
+  const edge = getEdge(freeTextSelectedElement)
 
-  if (edges && edges.length > 0) {
-    setStoreState('freeTextPrevSelectedElement', edges)
+  setStoreState('freeTextPrevSelectedElement', edge)
 
-    edges.map((edge) => {
-      const color = edge.color || {}
+  const color = edge.color || {}
 
-      color.color = stylingEdgeLineColorHighlight
+  color.color = stylingEdgeLineColorHighlight
 
-      return updateEdges(
-        {
-          id: edge.id,
-          color,
-          width: 3
-        }
-      )
-    })
+  updateEdges(
+    {
+      id: freeTextSelectedElement,
+      color,
+      width: 3
+    }
+  )
 
-    network.fit({
+  network.focus(edge.from,
+    {
+      scale: 1,
       animation: true
     })
-  }
 
   return true
 }

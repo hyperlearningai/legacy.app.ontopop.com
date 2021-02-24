@@ -4,142 +4,139 @@ import {
   ALGO_TYPE_SHORTEST_PATH,
   ALGO_TYPE_BOUNDING_BOX,
   ALGO_TYPE_NODES_FILTER,
-  ALGO_TYPE_EDGES_FILTER
 } from '../../constants/algorithms'
-import getNodesEdgesFromPaths from '../shortestPath/getNodesEdgesFromPaths'
+import getNodesFromPaths from '../shortestPath/getNodesFromPaths'
 import getNeighbours from '../nodeNeighbourhood/getNeighbours'
-import getBoundingBoxEdges from '../boundingBoxSelection/getBoundingBoxEdges'
 import getNodesFromNodesFilters from '../nodesFilter/getNodesFromNodesFilters'
 import getNodesEdgesFromEdgesFilters from '../edgesFilter/getNodesEdgesFromEdgesFilters'
 import store from '../../store'
+import showNotification from '../notifications/showNotification'
+import {
+  NOTIFY_WARNING
+} from '../../constants/notifications'
 
 /**
  * Updates nodes and edges to display
- * @param  {Object}   params
- * @param  {Function} params.setStoreState             setStoreState action
- * @param  {String}   params.type                      type of algorithm to use
- * @param  {Object}   params.options                   additional options
+ * @param  {Object}     params
+ * @param  {Function}   params.setStoreState             setStoreState action
+ * @param  {String}     params.type                      type of algorithm to use
+ * @param  {Object}     params.options                   additional options
+ * @param  {Function}   params.removeFromObject          removeFromObject action
+ * @param  {Function}   params.t                         i18n internationalisazion function
  * @return { undefined }
  */
 const setNodesIdsToDisplay = async ({
   type,
   setStoreState,
-  options
+  options,
+  removeFromObject,
+  t
 }) => {
   const {
     classesFromApi,
-    objectPropertiesFromApi,
     nodesIdsToDisplay,
-    deletedNodes
+    deletedNodes,
+    currentGraph
   } = store.getState()
 
-  setStoreState('highlightedNodes', [])
-  setStoreState('isNodeOverlay', false)
-  setStoreState('shortestPathNodes', [])
+  if (type !== ALGO_TYPE_FULL && !options) return false
 
-  if (type === ALGO_TYPE_FULL) {
-    const classesIds = Object.keys(classesFromApi)
-    const predicatesIds = Object.keys(objectPropertiesFromApi)
+  let nodesToDisplay = [] //eslint-disable-line
+  let highlightedNodesNew = []
+  let isNodeOverlayNew = false
+  let shortestPathNodesNew = []
+  let shortestPathResultsNew = []
 
-    setStoreState('edgesIdsToDisplay', predicatesIds)
-    setStoreState('nodesIdsToDisplay', classesIds.filter((nodeId) => !deletedNodes.includes(nodeId)))
+  switch (type) {
+    case ALGO_TYPE_FULL:
+      nodesToDisplay = Object.keys(classesFromApi).filter((nodeId) => !deletedNodes.includes(nodeId)) //eslint-disable-line
+      break
+
+    case ALGO_TYPE_BOUNDING_BOX:
+      const {
+        selectedBoundingBoxNodes,
+      } = options
+
+      nodesToDisplay = selectedBoundingBoxNodes.map((node) => node.id)
+      break
+
+    case ALGO_TYPE_NEIGHBOURHOOD:
+      const {
+        selectedNodeId,
+        separationDegree,
+      } = options
+
+      nodesToDisplay = getNeighbours({
+        selectedNodeId,
+        separationDegree,
+      })
+
+      break
+
+    case ALGO_TYPE_SHORTEST_PATH:
+      const {
+        shortestPathSelectedNodes,
+        shortestPathResults,
+        isNodeOverlay
+      } = options
+
+      shortestPathResultsNew = shortestPathResults
+
+      const shortestPathNodes = await getNodesFromPaths({
+        shortestPathResults
+      })
+
+      isNodeOverlayNew = isNodeOverlay
+      highlightedNodesNew = shortestPathSelectedNodes
+
+      if (!isNodeOverlay) {
+        nodesToDisplay = shortestPathNodes
+      } else {
+        // duplicated array to trigger new graph
+        shortestPathNodesNew = shortestPathNodes
+        nodesToDisplay = nodesIdsToDisplay.slice()
+      }
+      break
+
+    case ALGO_TYPE_NODES_FILTER:
+      const {
+        nodesFilters
+      } = options
+
+      const filteredNodes = await getNodesFromNodesFilters({ nodesFilters })
+      if (filteredNodes.length === 0) break
+
+      nodesToDisplay = filteredNodes.filter((nodeId) => !deletedNodes.includes(nodeId))
+      break
+
+    default:
+      const {
+        edgesFilters
+      } = options
+
+      const nodesFiltered = await getNodesEdgesFromEdgesFilters({ edgesFilters })
+
+      if (nodesFiltered.length === 0) break
+      nodesToDisplay = nodesFiltered.filter((nodeId) => !deletedNodes.includes(nodeId))
+
+      break
   }
 
-  if (type === ALGO_TYPE_BOUNDING_BOX) {
-    if (!options) return false
+  if (!nodesToDisplay || nodesToDisplay.length === 0) {
+    setStoreState('currentGraph', 'graph-0')
+    removeFromObject('graphData', currentGraph)
 
-    const {
-      selectedBoundingBoxNodes,
-    } = options
-
-    const selectedBoundingBoxNodesIds = selectedBoundingBoxNodes.map((node) => node.id)
-
-    const boundingBoxEdges = getBoundingBoxEdges({
-      selectedBoundingBoxNodesIds,
+    return showNotification({
+      message: t('noNodesToDisplay'),
+      type: NOTIFY_WARNING
     })
-
-    setStoreState('highlightedNodes', [])
-    setStoreState('edgesIdsToDisplay', boundingBoxEdges)
-    setStoreState('nodesIdsToDisplay', selectedBoundingBoxNodesIds)
   }
 
-  if (type === ALGO_TYPE_NEIGHBOURHOOD) {
-    if (!options) return false
-
-    const {
-      selectedNodeId,
-      separationDegree,
-    } = options
-
-    const {
-      neighbourNodes,
-      neighbourEdges
-    } = getNeighbours({
-      selectedNodeId,
-      separationDegree,
-    })
-
-    setStoreState('highlightedNodes', [selectedNodeId])
-    setStoreState('edgesIdsToDisplay', neighbourEdges)
-    setStoreState('nodesIdsToDisplay', neighbourNodes)
-  }
-
-  if (type === ALGO_TYPE_SHORTEST_PATH) {
-    if (!options) return false
-
-    const {
-      shortestPathSelectedNodes,
-      shortestPathResults,
-      isNodeOverlay
-    } = options
-
-    setStoreState('shortestPathResults', shortestPathResults)
-
-    const {
-      shortestPathEdges,
-      shortestPathNodes
-    } = await getNodesEdgesFromPaths()
-
-    setStoreState('isNodeOverlay', isNodeOverlay)
-    setStoreState('highlightedNodes', shortestPathSelectedNodes)
-
-    if (!isNodeOverlay) {
-      setStoreState('edgesIdsToDisplay', shortestPathEdges)
-      setStoreState('nodesIdsToDisplay', shortestPathNodes)
-    } else {
-      // duplicated array to trigger new graph
-      setStoreState('shortestPathNodes', shortestPathNodes)
-      setStoreState('nodesIdsToDisplay', nodesIdsToDisplay.slice())
-    }
-  }
-
-  if (type === ALGO_TYPE_NODES_FILTER) {
-    if (!options) return false
-
-    const {
-      nodesFilters
-    } = options
-
-    const nodesToDisplay = await getNodesFromNodesFilters({ nodesFilters })
-
-    setStoreState('nodesIdsToDisplay', nodesToDisplay.filter((nodeId) => !deletedNodes.includes(nodeId)))
-  }
-
-  if (type === ALGO_TYPE_EDGES_FILTER) {
-    if (!options) return false
-
-    const {
-      edgesFilters
-    } = options
-
-    const {
-      edgesToDisplay,
-      nodesToDisplay
-    } = await getNodesEdgesFromEdgesFilters({ edgesFilters })
-
-    setStoreState('edgesIdsToDisplay', edgesToDisplay)
-    setStoreState('nodesIdsToDisplay', nodesToDisplay.filter((nodeId) => !deletedNodes.includes(nodeId)))
-  }
+  setStoreState('highlightedNodes', highlightedNodesNew)
+  setStoreState('isNodeOverlay', isNodeOverlayNew)
+  setStoreState('shortestPathNodes', shortestPathNodesNew)
+  setStoreState('shortestPathResults', shortestPathResultsNew)
+  setStoreState('nodesIdsToDisplay', nodesToDisplay)
 
   return true
 }

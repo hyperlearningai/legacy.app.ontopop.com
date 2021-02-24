@@ -12,14 +12,6 @@ exports[`NetworkStylingEdge should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  annotationProperties={
-    Array [
-      Object {
-        "property": "rdfsLabel",
-        "value": "rdfsLabel",
-      },
-    ]
-  }
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   stylingEdgeByProperty={Array []}

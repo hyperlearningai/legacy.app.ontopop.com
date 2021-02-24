@@ -4,6 +4,7 @@ import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
@@ -56,18 +57,20 @@ describe('highlightElement', () => {
   })
 
   it('should update edge', async () => {
-    getEdge.mockImplementationOnce(() => ([{
+    getEdge.mockImplementationOnce(() => ({
       color: {},
-      id: 'id-123___node1___node2'
-    }]))
+      id: '11',
+      from: '1'
+    }))
 
     store.getState = jest.fn().mockImplementation(() => ({
       freeTextSelection: {
         'id-123': 'node',
-        'id-234': 'edge'
+        11: 'edge'
       },
-      freeTextSelectedElement: 'id-234',
+      freeTextSelectedElement: '11',
       stylingNodeHighlightBackgroundColor: '#000',
+      objectPropertiesFromApi,
       stylingEdgeLineColorHighlight: '#000',
       network
     }))
@@ -77,10 +80,14 @@ describe('highlightElement', () => {
     })
 
     expect(updateEdges).toHaveBeenCalledWith(
-      { color: { color: '#000' }, id: 'id-123___node1___node2', width: 3 }
+      {
+        color: { color: '#000' }, id: '11', width: 3,
+      }
     )
     expect(setStoreState).toHaveBeenCalledWith('freeTextPrevSelectedElement',
-      [{ color: { color: '#000' }, id: 'id-123___node1___node2' }])
-    expect(fit).toHaveBeenCalledWith({ animation: true })
+      { color: { color: '#000' }, id: '11', from: '1' })
+    expect(focus).toHaveBeenCalledWith(
+      '1', { animation: true, scale: 1 }
+    )
   })
 })

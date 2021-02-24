@@ -84,6 +84,6 @@ export const setStoreStateFixture = [
   ],
   [
     'addedConnections',
-    ['http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M']
+    ['http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8']
   ]
 ]

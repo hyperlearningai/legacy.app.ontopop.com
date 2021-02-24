@@ -1,6 +1,5 @@
-import { getEdgeAndNodes } from '../../constants/functions'
-import store from '../../store'
 import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import getEdge from '../nodesEdgesUtils/getEdge'
 
 /**
 * Get nodes and edges to display from edges filter
@@ -8,55 +7,11 @@ import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
  * @param  {Array}    params.edgesFilters              Array of node filters {property [string], value [string]}
  * @return {Object}   output
  * @return {Array}    output.nodesToDisplay            Array of node IDs strings
- * @return {Array}    output.edgesToDisplay            Array of edge IDs strings
  */
 const getNodesEdgesFromEdgesFilters = ({
-  edgesFilters
+  edgesFilters,
 }) => {
-  const {
-    objectPropertiesFromApi
-  } = store.getState()
-
-  const objectPropertiesFromApiKeys = Object.keys(objectPropertiesFromApi)
-
-  const edgesMatchingFilters = []
-
-  for (let index = 0; index < objectPropertiesFromApiKeys.length; index++) {
-    const objectPropertyId = objectPropertiesFromApiKeys[index]
-    const objectProperty = objectPropertiesFromApi[objectPropertyId]
-
-    for (let index2 = 0; index2 < edgesFilters.length; index2++) {
-      const {
-        property,
-        value
-      } = edgesFilters[index2]
-
-      if (property === '') continue
-      if (value === '') continue
-      if (!objectProperty[property]) continue
-
-      const objectPropertyKeyValue = objectProperty[property]
-      const isObjectPropertyKeyValueMatching = objectPropertyKeyValue
-      && objectPropertyKeyValue.toLowerCase().includes(value.toLowerCase())
-
-      const isObjectPropertyOwlPropertyKeyValueMatching = objectProperty.owlAnnotationProperties
-      && objectProperty.owlAnnotationProperties[property]
-      && objectProperty.owlAnnotationProperties?.[property].toLowerCase().includes(value.toLowerCase())
-
-      const isEdgeToBeAdded = isObjectPropertyKeyValueMatching || isObjectPropertyOwlPropertyKeyValueMatching
-
-      if (isEdgeToBeAdded) {
-        edgesMatchingFilters.push(objectPropertyId)
-        break
-      }
-    }
-  }
-
-  const edgesToDisplay = []
   const nodesToDisplay = []
-
-  const edgesAnalysed = []
-  const edgesAnalysedAndAdded = []
 
   const availableEdgesIds = getEdgeIds()
 
@@ -64,47 +19,26 @@ const getNodesEdgesFromEdgesFilters = ({
     for (let index = 0; index < availableEdgesIds.length; index++) {
       const edgeId = availableEdgesIds[index]
 
-      const [predicate, from, to] = getEdgeAndNodes(edgeId)
+      const edge = getEdge(edgeId)
 
-      if (!edgesMatchingFilters.includes(predicate)) continue
+      const isDisplayable = edgesFilters.some((filter) => filter.property !== ''
+        && filter.value !== ''
+        && edge[filter.property]
+        && edge[filter.property].toLowerCase().includes(filter.value.toLowerCase()))
 
-      if (edgesAnalysedAndAdded.includes(predicate)) {
-        if (!nodesToDisplay.includes(from)) {
-          nodesToDisplay.push(from)
+      if (isDisplayable) {
+        if (!nodesToDisplay.includes(edge.from)) {
+          nodesToDisplay.push(edge.from)
         }
 
-        if (!nodesToDisplay.includes(to)) {
-          nodesToDisplay.push(to)
+        if (!nodesToDisplay.includes(edge.to)) {
+          nodesToDisplay.push(edge.to)
         }
-
-        continue
-      }
-
-      if (edgesAnalysed.includes(predicate)) {
-        continue
-      }
-
-      edgesAnalysed.push(predicate)
-      edgesAnalysedAndAdded.push(predicate)
-
-      if (!nodesToDisplay.includes(from)) {
-        nodesToDisplay.push(from)
-      }
-
-      if (!nodesToDisplay.includes(to)) {
-        nodesToDisplay.push(to)
-      }
-
-      if (!edgesToDisplay.includes(predicate)) {
-        edgesToDisplay.push(predicate)
       }
     }
   }
 
-  return {
-    edgesToDisplay,
-    nodesToDisplay
-  }
+  return nodesToDisplay
 }
 
 export default getNodesEdgesFromEdgesFilters

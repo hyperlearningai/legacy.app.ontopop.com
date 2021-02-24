@@ -1,11 +1,7 @@
 /* eslint max-len:0 */
 /* eslint new-cap:0 */
 import JSZip from 'jszip'
-import store from '../../../store'
 import exportCsv from '../../../utils/exportSettings/exportCsv'
-import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties'
-import { availableNodes } from '../../fixtures/availableNodesNormalised'
-import { availableEdges } from '../../fixtures/availableEdgesNormalised'
 import en from '../../../i18n/en'
 import showNotification from '../../../utils/notifications/showNotification'
 
@@ -14,13 +10,6 @@ const generateAsyncMock = jest.fn()
 
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('jszip')
-
-const getState = jest.fn().mockImplementation(() => ({
-  availableNodes,
-  availableEdges,
-  objectPropertiesFromApi: OwlObjectProperties
-}))
-store.getState = getState
 
 describe('exportCsv', () => {
   afterEach(() => {
