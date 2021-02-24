@@ -1,11 +1,12 @@
 import startupActions from '../../../utils/graphVisualisation/startupActions'
 import getGraphData from '../../../utils/apiCalls/getGraphData'
 import loadStyling from '../../../utils/networkStyling/loadStyling'
-import getNodeProperties from '../../../utils/apiCalls/getNodeProperties'
+import setNodesIdsToDisplay from '../../../utils/graphVisualisation/setNodesIdsToDisplay'
+import { ALGO_TYPE_FULL } from '../../../constants/algorithms'
 
 jest.mock('../../../utils/networkStyling/loadStyling')
-jest.mock('../../../utils/apiCalls/getNodeProperties')
 jest.mock('../../../utils/apiCalls/getGraphData')
+jest.mock('../../../utils/graphVisualisation/setNodesIdsToDisplay')
 
 const setStoreState = jest.fn()
 const t = jest.fn()
@@ -25,12 +26,13 @@ describe('startupActions', () => {
       setStoreState,
     })
 
-    expect(getNodeProperties).toHaveBeenCalledWith({
+    expect(getGraphData).toHaveBeenCalledWith({
       setStoreState,
       t
     })
 
-    expect(getGraphData).toHaveBeenCalledWith({
+    expect(setNodesIdsToDisplay).toHaveBeenCalledWith({
+      type: ALGO_TYPE_FULL,
       setStoreState,
       t
     })

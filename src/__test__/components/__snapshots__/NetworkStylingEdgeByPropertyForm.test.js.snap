@@ -12,14 +12,6 @@ exports[`NetworkStylingEdgeByPropertyForm should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  annotationProperties={
-    Array [
-      Object {
-        "property": "rdfsLabel",
-        "value": "rdfsLabel",
-      },
-    ]
-  }
   index={0}
   isDeleteAvailable={true}
   mapToProps={[Function]}
@@ -27,7 +19,7 @@ exports[`NetworkStylingEdgeByPropertyForm should match snapshot  1`] = `
   stylingProperty={
     Object {
       "filterType": "equal",
-      "filterValue": "subClassOf",
+      "filterValue": "Subclass of",
       "property": "rdfsLabel",
       "styleType": "stylingEdgeLineStyle",
       "styleValue": true,

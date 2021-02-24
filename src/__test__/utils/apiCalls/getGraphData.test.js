@@ -5,6 +5,7 @@ import en from '../../../i18n/en'
 import setClassesFromApi from '../../../utils/apiCalls/setClassesFromApi'
 import setObjectPropertiesFromApi from '../../../utils/apiCalls/setObjectPropertiesFromApi'
 import getTriplesFromApi from '../../../utils/apiCalls/getTriplesFromApi'
+import setAnnotationProperties from '../../../utils/apiCalls/setAnnotationProperties'
 
 const t = (id) => en[id]
 const setStoreState = jest.fn()
@@ -14,6 +15,7 @@ store.addNotification = addNotification
 jest.mock('../../../utils/apiCalls/setClassesFromApi')
 jest.mock('../../../utils/apiCalls/setObjectPropertiesFromApi')
 jest.mock('../../../utils/apiCalls/getTriplesFromApi')
+jest.mock('../../../utils/apiCalls/setAnnotationProperties')
 
 describe('getGraphData', () => {
   afterEach(() => {
@@ -123,6 +125,10 @@ describe('getGraphData', () => {
     expect(setStoreState.mock.calls).toEqual(
       [['loading', true], ['loading', false]]
     )
+    expect(setAnnotationProperties).toHaveBeenCalledWith({
+      setStoreState,
+      nodes
+    })
     expect(setClassesFromApi).toHaveBeenCalledWith({
       setStoreState,
       nodes

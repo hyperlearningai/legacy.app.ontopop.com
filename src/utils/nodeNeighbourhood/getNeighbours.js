@@ -1,4 +1,5 @@
 import store from '../../store'
+import getEdge from '../nodesEdgesUtils/getEdge'
 
 /**
  * Update neighbourNodes and neighbourEdges recursively
@@ -7,7 +8,6 @@ import store from '../../store'
  * @param  {Object}   params.deletedNodes     List of deleted nodes IDs
  * @param  {Object}   params.nextIds          Array of node IDs to loop through
  * @param  {Array}    params.neighbourNodes   Array of neighbour nodes IDs
- * @param  {Array}    params.neighbourEdges   Array of neighbour edges IDs
  * @param  {Number}   params.separationDegree Neighbourhood separation degree as integer
  * @param  {Number}   params.round            Current loop round as integer
  * @return { undefined }
@@ -15,7 +15,6 @@ import store from '../../store'
 const loopThroughNodes = ({
   nextIds,
   neighbourNodes,
-  neighbourEdges,
   triplesPerNode,
   separationDegree,
   deletedNodes,
@@ -30,9 +29,8 @@ const loopThroughNodes = ({
       listOfTriples.map((triple) => {
         const {
           from,
-          predicate,
           to
-        } = triple
+        } = getEdge(triple)
 
         const newNode = from === nodeId ? to : from
 
@@ -42,10 +40,6 @@ const loopThroughNodes = ({
 
           if (!nextIdsLoop.includes(newNode)) {
             nextIdsLoop.push(newNode)
-          }
-
-          if (!neighbourEdges.includes(predicate)) {
-            neighbourEdges.push(predicate)
           }
         }
 
@@ -62,7 +56,6 @@ const loopThroughNodes = ({
     loopThroughNodes({
       neighbourNodes,
       nextIds: nextIdsLoop,
-      neighbourEdges,
       triplesPerNode,
       separationDegree,
       deletedNodes,
@@ -74,13 +67,9 @@ const loopThroughNodes = ({
 /**
  * Get neighbour nodes and related edges
  * @param  {Object}   params
- * @param  {Object}   params.triplesPerNode   List of triples per node
- * @param  {Object}   params.classesFromApi   Nodes from initial OwlClasses
  * @param  {Number}   params.separationDegree Neighbourhood separation degree as integer
  * @param  {String}   params.selectedNodeId   Selected node ID
- * @return {Object}   output
- * @return {Array}    output.neighbourNodes   Array of neighbour nodes IDs
- * @return {Array}    output.neighbourEdges   Array of neighbour edges IDs
+ * @return {Array}    neighbourNodes          Array of neighbour nodes IDs
  */
 const getNeighbours = ({
   selectedNodeId,
@@ -92,31 +81,23 @@ const getNeighbours = ({
   } = store.getState()
 
   const neighbourNodes = [selectedNodeId]
-  const neighbourEdges = []
   const nextIds = [selectedNodeId]
   const round = 0
 
   if (!selectedNodeId || !triplesPerNode || !separationDegree || separationDegree < 1) {
-    return {
-      neighbourNodes,
-      neighbourEdges
-    }
+    return neighbourNodes
   }
 
   loopThroughNodes({
     nextIds,
     neighbourNodes,
-    neighbourEdges,
     triplesPerNode,
     separationDegree,
     deletedNodes,
     round
   })
 
-  return {
-    neighbourNodes,
-    neighbourEdges
-  }
+  return neighbourNodes
 }
 
 export default getNeighbours

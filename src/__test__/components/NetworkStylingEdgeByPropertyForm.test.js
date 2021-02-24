@@ -10,10 +10,6 @@ const setup = () => {
     index: 0,
     stylingProperty: JSON.parse(JSON.stringify(SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT)),
     isDeleteAvailable: true,
-    annotationProperties: [{
-      property: 'rdfsLabel',
-      value: 'rdfsLabel'
-    }],
   }
 
   const component = shallow(<NetworkStylingEdgeByPropertyForm {...props} />)

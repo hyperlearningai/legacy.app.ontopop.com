@@ -6,9 +6,9 @@ const newClassesFromApi = {
   'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': {
     ...OwlClasses['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
     label: 'New node',
+    'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
     owlAnnotationProperties: {
       ...OwlClasses['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'].owlAnnotationProperties,
-      'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
     },
     rdfsLabel: 'New node',
   },

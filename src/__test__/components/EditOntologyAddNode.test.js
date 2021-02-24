@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import EditOntologyAddEdgeNode from '../../components/EditOntologyAddEdgeNode'
+import EditOntologyAddNode from '../../components/EditOntologyAddNode'
 import { OwlClasses } from '../fixtures/test-ontology-classes'
 import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
 
@@ -17,7 +17,7 @@ const setup = () => {
     objectPropertiesFromApi: OwlObjectProperties
   }
 
-  const component = shallow(<EditOntologyAddEdgeNode {...props} />)
+  const component = shallow(<EditOntologyAddNode {...props} />)
 
   return {
     component,
@@ -25,7 +25,7 @@ const setup = () => {
   }
 }
 
-describe('EditOntologyAddEdgeNode', () => {
+describe('EditOntologyAddNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

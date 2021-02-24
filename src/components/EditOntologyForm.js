@@ -4,7 +4,7 @@ import { InputTextarea } from 'primereact/inputtextarea'
 import { orderBy } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
-import { OWL_ANNOTATION_PROPERTIES, UNIQUE_PROPERTY } from '../constants/graph'
+import { UNIQUE_PROPERTY } from '../constants/graph'
 
 const EditOntologyForm = ({
   selectedElementProperties,
@@ -13,8 +13,6 @@ const EditOntologyForm = ({
   operation,
   initialData,
   classesFromApi,
-  objectPropertiesFromApi,
-  type
 }) => {
   const { t } = useTranslation()
 
@@ -22,31 +20,25 @@ const EditOntologyForm = ({
     <>
       {
         annotationProperties.length > 0
-        && orderBy(annotationProperties, ['search'], ['asc']).map((property) => {
-          const {
-            id,
-            label,
-            isRequired
-          } = property
+        && orderBy(annotationProperties.map((property) => ({
+          ...property,
+          search: property.value.toLowerCase()
+        })), ['search'], ['asc']).map((property) => {
+          const id = property.value
+          const label = property.value
+          const isRequired = property.value === UNIQUE_PROPERTY
 
           const elementId = selectedElementProperties[UNIQUE_PROPERTY]
           const isValid = operation === 'add' && isRequired ? selectedElementProperties[id]?.length > 0 : true
-          const isExisting = operation === 'add' && (
-            (type === 'node'
-            && classesFromApi[elementId])
-            || (
-              type === 'edge'
-            && objectPropertiesFromApi[elementId]
-            )
-          )
+          const isExisting = operation === 'add' && classesFromApi[elementId]
 
           const isDisabled = operation === 'update' && isRequired
 
           const initialDataValue = initialData ? (initialData[id]
             || (
-              initialData[OWL_ANNOTATION_PROPERTIES]
-              && initialData[OWL_ANNOTATION_PROPERTIES][id]
-                ? initialData[OWL_ANNOTATION_PROPERTIES][id]
+              initialData
+              && initialData[id]
+                ? initialData[id]
                 : ''
             )) : ''
 
@@ -117,20 +109,14 @@ EditOntologyForm.propTypes = {
   operation: PropTypes.string.isRequired,
   initialData: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
-  type: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
   annotationProperties,
   classesFromApi,
-  objectPropertiesFromApi,
-  type
 }) => ({
   annotationProperties,
   classesFromApi,
-  objectPropertiesFromApi,
-  type
 })
 
 export default connect(

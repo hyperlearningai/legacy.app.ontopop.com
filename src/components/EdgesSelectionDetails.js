@@ -1,30 +1,32 @@
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { useState, Fragment } from 'react'
+import {
+  BsCaretRightFill,
+  BsCaretDownFill,
+} from 'react-icons/bs'
 import actions from '../store/actions'
-import EdgeSelectionDetailsRow from './EdgeSelectionDetailsRow'
-import { PROPERTIES_TO_IGNORE } from '../constants/graph'
-import { getEdgeUniqueId } from '../constants/functions'
+import { EDGE_PROPERTIES, RESERVED_PROPERTIES } from '../constants/graph'
+import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const EdgesSelectionDetails = ({
   edgeId,
   objectPropertiesFromApi,
-  edgesConnections,
 }) => {
   const { t } = useTranslation()
+  const [isExpanded, toggleExpanded] = useState(false)
 
-  const edgeUniqueId = getEdgeUniqueId(edgeId)
-  const selectedEdge = objectPropertiesFromApi[edgeUniqueId]
+  const edge = objectPropertiesFromApi[edgeId]
+  const {
+    sourceNodeId,
+    targetNodeId
+  } = edge
 
-  const tableRowNames = Object.keys(selectedEdge).filter((key) => typeof selectedEdge[key] !== 'object'
-    && !key.includes('label')
-    && !PROPERTIES_TO_IGNORE.includes(key)).sort()
+  const from = getNode(sourceNodeId.toString())
+  const to = getNode(targetNodeId.toString())
 
-  let connections = []
-
-  if (edgesConnections[edgeUniqueId]) {
-    connections = edgesConnections[edgeUniqueId]
-  }
+  const tableRowNames = EDGE_PROPERTIES.sort()
 
   return (
     <div className="edges-selection-details m-t-10">
@@ -42,18 +44,22 @@ const EdgesSelectionDetails = ({
           </thead>
           <tbody>
             {
-              tableRowNames.map((tableRowName) => (
-                <tr
-                  key={`details-row-${tableRowName}`}
-                >
-                  <td>
-                    {tableRowName}
-                  </td>
-                  <td>
-                    {selectedEdge[tableRowName] || t('null')}
-                  </td>
-                </tr>
-              ))
+              tableRowNames.map((tableRowName) => {
+                if (!edge[tableRowName]) return null
+
+                return (
+                  <tr
+                    key={`details-row-${tableRowName}`}
+                  >
+                    <td>
+                      {tableRowName}
+                    </td>
+                    <td>
+                      {edge[tableRowName] || t('null')}
+                    </td>
+                  </tr>
+                )
+              })
             }
           </tbody>
         </table>
@@ -63,36 +69,68 @@ const EdgesSelectionDetails = ({
         {t('nodesProperties')}
       </div>
 
-      {
-        connections.length > 0 ? (
-          <div className="edges-selection-details-table">
-            <table>
-              <thead>
-                <tr>
-                  <th />
-                  <th>{t('from')}</th>
-                  <th>{t('to')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  connections.map((connection) => (
-                    <EdgeSelectionDetailsRow
-                      key={`edge-relationship-row-${connection.from}-${connection.to}`}
-                      connection={connection}
-                    />
-                  ))
-                }
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <>
-            {t('noRelationships')}
-          </>
-        )
-      }
-
+      <div className="edges-selection-details-table">
+        <table>
+          <thead>
+            <tr>
+              <th />
+              <th>{t('from')}</th>
+              <th>{t('to')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="icon-cell">
+                <button
+                  type="button"
+                  title={t('removeSelectedEdge')}
+                  onClick={() => toggleExpanded(!isExpanded)}
+                >
+                  {isExpanded ? <BsCaretDownFill /> : <BsCaretRightFill />}
+                </button>
+              </td>
+              <td className="edge-node-cell-from">
+                <span>
+                  {from.label}
+                </span>
+                <div className="edge-node-info">
+                  {
+                    isExpanded && (
+                      Object.keys(from).filter((key) => !RESERVED_PROPERTIES.includes(key)).sort().map((nodeKey) => (
+                        (
+                          <Fragment key={`edge-node-from-${nodeKey}-${sourceNodeId}-${targetNodeId}`}>
+                            <div className="edge-node-info-title">{nodeKey}</div>
+                            <div className="edge-node-info-value">{from[nodeKey]}</div>
+                          </Fragment>
+                        )
+                      ))
+                    )
+                  }
+                </div>
+              </td>
+              <td className="edge-node-cell-to">
+                <span>
+                  {to.label}
+                </span>
+                <div className="edge-node-info">
+                  {
+                    isExpanded && (
+                      Object.keys(to).filter((key) => !RESERVED_PROPERTIES.includes(key)).sort().map((nodeKey) => (
+                        (
+                          <Fragment key={`edge-node-to-${nodeKey}-${sourceNodeId}-${targetNodeId}`}>
+                            <div className="edge-node-info-title">{nodeKey}</div>
+                            <div className="edge-node-info-value">{to[nodeKey]}</div>
+                          </Fragment>
+                        )
+                      ))
+                    )
+                  }
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
@@ -100,15 +138,12 @@ const EdgesSelectionDetails = ({
 EdgesSelectionDetails.propTypes = {
   edgeId: PropTypes.string.isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
-  edgesConnections: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   objectPropertiesFromApi,
-  edgesConnections
 }) => ({
   objectPropertiesFromApi,
-  edgesConnections
 })
 
 export default connect(

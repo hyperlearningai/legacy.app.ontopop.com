@@ -1,26 +1,23 @@
 /**
  * Check if edge is displayable
  * @param  {Object}   params
- * @param  {Array}    params.edgesIdsToDisplay       Array of edges IDs to display
- * @param  {String}   params.predicate               Predicate id
- * @param  {String}   params.from                    Subject node ID
+ * @param  {Object}   params.edge                    Edge object
  * @param  {Array}    params.nodesIdsToDisplay       Array of nodes IDs to display
- * @param  {String}   params.to                      Object node ID
  * @return {Boolean}  output                         edge displaybility flag
  */
 const showEdgeCheck = ({
-  predicate,
-  edgesIdsToDisplay,
-  from,
+  edge,
   nodesIdsToDisplay,
-  to,
 }) => {
+  const {
+    from,
+    to,
+  } = edge
+
   if (
     !nodesIdsToDisplay.includes(to.toString())
     || !nodesIdsToDisplay.includes(from.toString())
   ) return false
-
-  if (!edgesIdsToDisplay.includes(predicate.toString())) return false
 
   return true
 }

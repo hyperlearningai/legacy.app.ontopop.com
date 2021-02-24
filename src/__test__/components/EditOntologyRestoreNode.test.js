@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import EditOntologyRestoreEdgeNode from '../../components/EditOntologyRestoreEdgeNode'
+import EditOntologyRestoreNode from '../../components/EditOntologyRestoreNode'
 
 const setup = ({
   type,
@@ -19,7 +19,7 @@ const setup = ({
     optionEdges
   }
 
-  const component = shallow(<EditOntologyRestoreEdgeNode {...props} />)
+  const component = shallow(<EditOntologyRestoreNode {...props} />)
 
   return {
     component,
@@ -27,7 +27,7 @@ const setup = ({
   }
 }
 
-describe('EditOntologyRestoreEdgeNode', () => {
+describe('EditOntologyRestoreNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

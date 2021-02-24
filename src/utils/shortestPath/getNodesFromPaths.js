@@ -1,21 +1,17 @@
 import {
   getPathEdges,
-  getEdgeAndNodes
 } from '../../constants/functions'
-import store from '../../store'
+import getEdge from '../nodesEdgesUtils/getEdge'
 
 /**
- * Get nodes edges from shortest path
- * @return {Object}   output
- * @return {Array}    output.shortestPathEdges          Array of edges IDs strings
- * @return {Array}    output.shortestPathNodes          Array of node IDs strings
+ * Get nodes from shortest path
+ * @param  {Object}   params
+ * @param  {Array}    params.shortestPathResults Shortest paths
+ * @return {Array}    shortestPathNodes          Array of node IDs strings
  */
-const getNodesEdgesFromPaths = () => {
-  const {
-    shortestPathResults
-  } = store.getState()
-
-  const shortestPathEdges = []
+const getNodesFromPaths = ({
+  shortestPathResults
+}) => {
   const shortestPathNodes = []
 
   if (shortestPathResults?.length > 0) {
@@ -29,9 +25,9 @@ const getNodesEdgesFromPaths = () => {
             return shortestPathNodes.push(edge)
           }
 
-          const [edgeUniqueId, from, to] = getEdgeAndNodes(edge)
+          // eslint-disable-next-line
+          const {from, to} = getEdge(edge)
 
-          if (!shortestPathEdges.includes(edgeUniqueId)) shortestPathEdges.push(edgeUniqueId)
           if (!shortestPathNodes.includes(from)) shortestPathNodes.push(from)
           if (!shortestPathNodes.includes(to)) shortestPathNodes.push(to)
 
@@ -43,10 +39,7 @@ const getNodesEdgesFromPaths = () => {
     })
   }
 
-  return {
-    shortestPathEdges,
-    shortestPathNodes
-  }
+  return shortestPathNodes
 }
 
-export default getNodesEdgesFromPaths
+export default getNodesFromPaths

@@ -1,106 +1,118 @@
 export const objectPropertiesFromApi = {
   11: {
     edgeId: 11,
-    role: 'Provided to',
+    role: 'Subclass of',
     edgeProperties: {
       id: 11,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      objectPropertyRdfsLabel: 'Provided to',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 11
     },
     sourceNodeId: 1,
-    targetNodeId: 170,
-    id: 11,
-    label: 'Provided to'
+    targetNodeId: 141,
+    id: '11',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   12: {
     edgeId: 12,
-    role: 'Subclass of',
+    role: 'Provided to',
     edgeProperties: {
       id: 12,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+      objectPropertyRdfsLabel: 'Provided to',
       edgeId: 12
     },
     sourceNodeId: 1,
-    targetNodeId: 141,
-    id: 12,
-    label: 'Subclass of'
+    targetNodeId: 170,
+    id: '12',
+    rdfsLabel: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    label: 'Provided to'
   },
   21: {
     edgeId: 21,
-    role: 'Managed by',
+    role: 'Governed by',
     edgeProperties: {
       id: 21,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
-      objectPropertyRdfsLabel: 'Managed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+      objectPropertyRdfsLabel: 'Governed by',
       edgeId: 21
     },
     sourceNodeId: 2,
-    targetNodeId: 53,
-    id: 21,
-    label: 'Managed by'
+    targetNodeId: 132,
+    id: '21',
+    rdfsLabel: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+    label: 'Governed by'
   },
   22: {
     edgeId: 22,
-    role: 'Governed by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 22,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-      objectPropertyRdfsLabel: 'Governed by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 22
     },
     sourceNodeId: 2,
-    targetNodeId: 132,
-    id: 22,
-    label: 'Governed by'
+    targetNodeId: 163,
+    id: '22',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   23: {
     edgeId: 23,
-    role: 'Affected by',
+    role: 'Governed by',
     edgeProperties: {
       id: 23,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+      objectPropertyRdfsLabel: 'Governed by',
       edgeId: 23
     },
     sourceNodeId: 2,
-    targetNodeId: 4,
-    id: 23,
-    label: 'Affected by'
+    targetNodeId: 118,
+    id: '23',
+    rdfsLabel: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+    label: 'Governed by'
   },
   24: {
     edgeId: 24,
-    role: 'Subclass of',
+    role: 'Managed by',
     edgeProperties: {
       id: 24,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
+      objectPropertyRdfsLabel: 'Managed by',
       edgeId: 24
     },
     sourceNodeId: 2,
-    targetNodeId: 163,
-    id: 24,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '24',
+    rdfsLabel: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
+    label: 'Managed by'
   },
   25: {
     edgeId: 25,
-    role: 'Governed by',
+    role: 'Affected by',
     edgeProperties: {
       id: 25,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-      objectPropertyRdfsLabel: 'Governed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 25
     },
     sourceNodeId: 2,
-    targetNodeId: 118,
-    id: 25,
-    label: 'Governed by'
+    targetNodeId: 4,
+    id: '25',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   31: {
     edgeId: 31,
@@ -113,7 +125,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 3,
     targetNodeId: 76,
-    id: 31,
+    id: '31',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   41: {
@@ -127,7 +140,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 4,
     targetNodeId: 163,
-    id: 41,
+    id: '41',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   42: {
@@ -142,7 +156,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 4,
     targetNodeId: 160,
-    id: 42,
+    id: '42',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
     label: 'Input into'
   },
   51: {
@@ -156,7 +172,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 5,
     targetNodeId: 163,
-    id: 51,
+    id: '51',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   61: {
@@ -170,7 +187,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 6,
     targetNodeId: 54,
-    id: 61,
+    id: '61',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   62: {
@@ -185,38 +203,44 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 6,
     targetNodeId: 95,
-    id: 62,
+    id: '62',
+    rdfsLabel: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
     label: 'Completed before'
   },
   71: {
     edgeId: 71,
-    role: 'Input into',
+    role: 'Improved through',
     edgeProperties: {
       id: 71,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-      objectPropertyRdfsLabel: 'Input into',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+      objectPropertyRdfsLabel: 'Improved through',
       edgeId: 71
     },
     sourceNodeId: 7,
-    targetNodeId: 160,
-    id: 71,
-    label: 'Input into'
+    targetNodeId: 161,
+    id: '71',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    label: 'Improved through'
   },
   72: {
     edgeId: 72,
-    role: 'Improved through',
+    role: 'Input into',
     edgeProperties: {
       id: 72,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-      objectPropertyRdfsLabel: 'Improved through',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+      objectPropertyRdfsLabel: 'Input into',
       edgeId: 72
     },
     sourceNodeId: 7,
-    targetNodeId: 161,
-    id: 72,
-    label: 'Improved through'
+    targetNodeId: 160,
+    id: '72',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    label: 'Input into'
   },
   73: {
     edgeId: 73,
@@ -229,82 +253,92 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 7,
     targetNodeId: 191,
-    id: 73,
+    id: '73',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   81: {
     edgeId: 81,
-    role: 'Itemised by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 81,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
-      objectPropertyRdfsLabel: 'Itemised by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 81
     },
     sourceNodeId: 8,
-    targetNodeId: 25,
-    id: 81,
-    label: 'Itemised by'
+    targetNodeId: 5,
+    id: '81',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   82: {
     edgeId: 82,
-    role: 'Subclass of',
+    role: 'Itemised by',
     edgeProperties: {
       id: 82,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
+      objectPropertyRdfsLabel: 'Itemised by',
       edgeId: 82
     },
     sourceNodeId: 8,
-    targetNodeId: 5,
-    id: 82,
-    label: 'Subclass of'
+    targetNodeId: 25,
+    id: '82',
+    rdfsLabel: 'Itemised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
+    label: 'Itemised by'
   },
   91: {
     edgeId: 91,
-    role: 'Implemented through',
+    role: 'Performed by',
     edgeProperties: {
       id: 91,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7',
-      objectPropertyRdfsLabel: 'Implemented through',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 91
     },
     sourceNodeId: 9,
-    targetNodeId: 25,
-    id: 91,
-    label: 'Implemented through'
+    targetNodeId: 170,
+    id: '91',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   92: {
     edgeId: 92,
-    role: 'Required for',
+    role: 'Implemented through',
     edgeProperties: {
       id: 92,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7',
+      objectPropertyRdfsLabel: 'Implemented through',
       edgeId: 92
     },
     sourceNodeId: 9,
-    targetNodeId: 144,
-    id: 92,
-    label: 'Required for'
+    targetNodeId: 25,
+    id: '92',
+    rdfsLabel: 'Implemented through',
+    rdfAbout: 'http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7',
+    label: 'Implemented through'
   },
   93: {
     edgeId: 93,
-    role: 'Performed by',
+    role: 'Required for',
     edgeProperties: {
       id: 93,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 93
     },
     sourceNodeId: 9,
-    targetNodeId: 65,
-    id: 93,
-    label: 'Performed by'
+    targetNodeId: 144,
+    id: '93',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   94: {
     edgeId: 94,
@@ -317,8 +351,10 @@ export const objectPropertiesFromApi = {
       edgeId: 94
     },
     sourceNodeId: 9,
-    targetNodeId: 170,
-    id: 94,
+    targetNodeId: 65,
+    id: '94',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     label: 'Performed by'
   },
   95: {
@@ -332,7 +368,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 9,
     targetNodeId: 51,
-    id: 95,
+    id: '95',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   101: {
@@ -346,7 +383,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 10,
     targetNodeId: 85,
-    id: 101,
+    id: '101',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   111: {
@@ -360,7 +398,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 11,
     targetNodeId: 52,
-    id: 111,
+    id: '111',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   112: {
@@ -375,7 +414,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 11,
     targetNodeId: 9,
-    id: 112,
+    id: '112',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
     label: 'Required for'
   },
   121: {
@@ -390,7 +431,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 12,
     targetNodeId: 105,
-    id: 121,
+    id: '121',
+    rdfsLabel: 'Triggered by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCK5ewyfmAkLZWg9Mwb7MY',
     label: 'Triggered by'
   },
   122: {
@@ -404,7 +447,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 12,
     targetNodeId: 51,
-    id: 122,
+    id: '122',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   123: {
@@ -419,7 +463,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 12,
     targetNodeId: 70,
-    id: 123,
+    id: '123',
+    rdfsLabel: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
     label: 'Performed on'
   },
   124: {
@@ -434,7 +480,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 12,
     targetNodeId: 53,
-    id: 124,
+    id: '124',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     label: 'Performed by'
   },
   131: {
@@ -448,37 +496,41 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 13,
     targetNodeId: 70,
-    id: 131,
+    id: '131',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   141: {
     edgeId: 141,
-    role: 'Subclass of',
+    role: 'Required for',
     edgeProperties: {
       id: 141,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 141
     },
     sourceNodeId: 14,
-    targetNodeId: 76,
-    id: 141,
-    label: 'Subclass of'
+    targetNodeId: 144,
+    id: '141',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   142: {
     edgeId: 142,
-    role: 'Required for',
+    role: 'Subclass of',
     edgeProperties: {
       id: 142,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 142
     },
     sourceNodeId: 14,
-    targetNodeId: 144,
-    id: 142,
-    label: 'Required for'
+    targetNodeId: 76,
+    id: '142',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   151: {
     edgeId: 151,
@@ -491,7 +543,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 15,
     targetNodeId: 191,
-    id: 151,
+    id: '151',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   152: {
@@ -506,7 +559,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 15,
     targetNodeId: 161,
-    id: 152,
+    id: '152',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     label: 'Improved through'
   },
   161: {
@@ -520,23 +575,26 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 16,
     targetNodeId: 76,
-    id: 161,
+    id: '161',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   171: {
     edgeId: 171,
-    role: 'Presented in',
+    role: 'Informed by',
     edgeProperties: {
       id: 171,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-      objectPropertyRdfsLabel: 'Presented in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+      objectPropertyRdfsLabel: 'Informed by',
       edgeId: 171
     },
     sourceNodeId: 17,
-    targetNodeId: 145,
-    id: 171,
-    label: 'Presented in'
+    targetNodeId: 155,
+    id: '171',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    label: 'Informed by'
   },
   172: {
     edgeId: 172,
@@ -549,53 +607,60 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 17,
     targetNodeId: 29,
-    id: 172,
+    id: '172',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   173: {
     edgeId: 173,
-    role: 'Informed by',
+    role: 'Presented in',
     edgeProperties: {
       id: 173,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-      objectPropertyRdfsLabel: 'Informed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+      objectPropertyRdfsLabel: 'Presented in',
       edgeId: 173
     },
     sourceNodeId: 17,
-    targetNodeId: 155,
-    id: 173,
-    label: 'Informed by'
+    targetNodeId: 145,
+    id: '173',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    label: 'Presented in'
   },
   174: {
     edgeId: 174,
-    role: 'Requested by',
+    role: 'Required for',
     edgeProperties: {
       id: 174,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
-      objectPropertyRdfsLabel: 'Requested by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 174
     },
     sourceNodeId: 17,
-    targetNodeId: 65,
-    id: 174,
-    label: 'Requested by'
+    targetNodeId: 144,
+    id: '174',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   175: {
     edgeId: 175,
-    role: 'Required for',
+    role: 'Requested by',
     edgeProperties: {
       id: 175,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+      objectPropertyRdfsLabel: 'Requested by',
       edgeId: 175
     },
     sourceNodeId: 17,
-    targetNodeId: 144,
-    id: 175,
-    label: 'Required for'
+    targetNodeId: 65,
+    id: '175',
+    rdfsLabel: 'Requested by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+    label: 'Requested by'
   },
   181: {
     edgeId: 181,
@@ -608,7 +673,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 18,
     targetNodeId: 69,
-    id: 181,
+    id: '181',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   191: {
@@ -622,81 +688,92 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 19,
     targetNodeId: 91,
-    id: 191,
+    id: '191',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   201: {
     edgeId: 201,
-    role: 'Subclass of',
+    role: 'Funded by',
     edgeProperties: {
       id: 201,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
+      objectPropertyRdfsLabel: 'Funded by',
       edgeId: 201
     },
     sourceNodeId: 20,
-    targetNodeId: 5,
-    id: 201,
-    label: 'Subclass of'
+    targetNodeId: 65,
+    id: '201',
+    rdfsLabel: 'Funded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
+    label: 'Funded by'
   },
   202: {
     edgeId: 202,
-    role: 'Funded by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 202,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
-      objectPropertyRdfsLabel: 'Funded by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 202
     },
     sourceNodeId: 20,
-    targetNodeId: 128,
-    id: 202,
-    label: 'Funded by'
+    targetNodeId: 5,
+    id: '202',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   203: {
     edgeId: 203,
-    role: 'Funded by',
+    role: 'Itemised by',
     edgeProperties: {
       id: 203,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
-      objectPropertyRdfsLabel: 'Funded by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
+      objectPropertyRdfsLabel: 'Itemised by',
       edgeId: 203
     },
     sourceNodeId: 20,
-    targetNodeId: 65,
-    id: 203,
-    label: 'Funded by'
+    targetNodeId: 25,
+    id: '203',
+    rdfsLabel: 'Itemised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
+    label: 'Itemised by'
   },
   204: {
     edgeId: 204,
-    role: 'Itemised by',
+    role: 'Funded by',
     edgeProperties: {
       id: 204,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
-      objectPropertyRdfsLabel: 'Itemised by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
+      objectPropertyRdfsLabel: 'Funded by',
       edgeId: 204
     },
     sourceNodeId: 20,
-    targetNodeId: 25,
-    id: 204,
-    label: 'Itemised by'
+    targetNodeId: 128,
+    id: '204',
+    rdfsLabel: 'Funded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
+    label: 'Funded by'
   },
   211: {
     edgeId: 211,
-    role: 'Subclass of',
+    role: 'Included in',
     edgeProperties: {
       id: 211,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+      objectPropertyRdfsLabel: 'Included in',
       edgeId: 211
     },
     sourceNodeId: 21,
-    targetNodeId: 51,
-    id: 211,
-    label: 'Subclass of'
+    targetNodeId: 154,
+    id: '211',
+    rdfsLabel: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    label: 'Included in'
   },
   212: {
     edgeId: 212,
@@ -710,23 +787,25 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 21,
     targetNodeId: 146,
-    id: 212,
+    id: '212',
+    rdfsLabel: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
     label: 'Provided to'
   },
   213: {
     edgeId: 213,
-    role: 'Included in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 213,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-      objectPropertyRdfsLabel: 'Included in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 213
     },
     sourceNodeId: 21,
-    targetNodeId: 154,
-    id: 213,
-    label: 'Included in'
+    targetNodeId: 51,
+    id: '213',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   221: {
     edgeId: 221,
@@ -739,22 +818,26 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 22,
     targetNodeId: 91,
-    id: 221,
+    id: '221',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   231: {
     edgeId: 231,
-    role: 'Subclass of',
+    role: 'Predicted by',
     edgeProperties: {
       id: 231,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
+      objectPropertyRdfsLabel: 'Predicted by',
       edgeId: 231
     },
     sourceNodeId: 23,
-    targetNodeId: 162,
-    id: 231,
-    label: 'Subclass of'
+    targetNodeId: 68,
+    id: '231',
+    rdfsLabel: 'Predicted by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
+    label: 'Predicted by'
   },
   232: {
     edgeId: 232,
@@ -768,23 +851,25 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 23,
     targetNodeId: 162,
-    id: 232,
+    id: '232',
+    rdfsLabel: 'Caused by',
+    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
     label: 'Caused by'
   },
   233: {
     edgeId: 233,
-    role: 'Predicted by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 233,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
-      objectPropertyRdfsLabel: 'Predicted by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 233
     },
     sourceNodeId: 23,
-    targetNodeId: 68,
-    id: 233,
-    label: 'Predicted by'
+    targetNodeId: 162,
+    id: '233',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   241: {
     edgeId: 241,
@@ -797,7 +882,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 24,
     targetNodeId: 113,
-    id: 241,
+    id: '241',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   242: {
@@ -812,68 +898,78 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 24,
     targetNodeId: 181,
-    id: 242,
+    id: '242',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
     label: 'Located at'
   },
   251: {
     edgeId: 251,
-    role: 'Created by',
+    role: 'Input into',
     edgeProperties: {
       id: 251,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-      objectPropertyRdfsLabel: 'Created by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+      objectPropertyRdfsLabel: 'Input into',
       edgeId: 251
     },
     sourceNodeId: 25,
-    targetNodeId: 67,
-    id: 251,
-    label: 'Created by'
+    targetNodeId: 160,
+    id: '251',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    label: 'Input into'
   },
   252: {
     edgeId: 252,
-    role: 'Reviewed by',
+    role: 'Recorded in',
     edgeProperties: {
       id: 252,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-      objectPropertyRdfsLabel: 'Reviewed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+      objectPropertyRdfsLabel: 'Recorded in',
       edgeId: 252
     },
     sourceNodeId: 25,
-    targetNodeId: 53,
-    id: 252,
-    label: 'Reviewed by'
+    targetNodeId: 67,
+    id: '252',
+    rdfsLabel: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    label: 'Recorded in'
   },
   253: {
     edgeId: 253,
-    role: 'Input into',
+    role: 'Created by',
     edgeProperties: {
       id: 253,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-      objectPropertyRdfsLabel: 'Input into',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+      objectPropertyRdfsLabel: 'Created by',
       edgeId: 253
     },
     sourceNodeId: 25,
-    targetNodeId: 160,
-    id: 253,
-    label: 'Input into'
+    targetNodeId: 67,
+    id: '253',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    label: 'Created by'
   },
   254: {
     edgeId: 254,
-    role: 'Reconciled by',
+    role: 'Summarised in',
     edgeProperties: {
       id: 254,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
-      objectPropertyRdfsLabel: 'Reconciled by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+      objectPropertyRdfsLabel: 'Summarised in',
       edgeId: 254
     },
     sourceNodeId: 25,
-    targetNodeId: 67,
-    id: 254,
-    label: 'Reconciled by'
+    targetNodeId: 147,
+    id: '254',
+    rdfsLabel: 'Summarised in',
+    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+    label: 'Summarised in'
   },
   255: {
     edgeId: 255,
@@ -886,82 +982,92 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 25,
     targetNodeId: 51,
-    id: 255,
+    id: '255',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   256: {
     edgeId: 256,
-    role: 'Performed by',
+    role: 'Reconciled by',
     edgeProperties: {
       id: 256,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
+      objectPropertyRdfsLabel: 'Reconciled by',
       edgeId: 256
     },
     sourceNodeId: 25,
-    targetNodeId: 170,
-    id: 256,
-    label: 'Performed by'
+    targetNodeId: 67,
+    id: '256',
+    rdfsLabel: 'Reconciled by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
+    label: 'Reconciled by'
   },
   257: {
     edgeId: 257,
-    role: 'Recorded in',
+    role: 'Performed by',
     edgeProperties: {
       id: 257,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-      objectPropertyRdfsLabel: 'Recorded in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 257
     },
     sourceNodeId: 25,
-    targetNodeId: 67,
-    id: 257,
-    label: 'Recorded in'
+    targetNodeId: 170,
+    id: '257',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   258: {
     edgeId: 258,
-    role: 'Summarised in',
+    role: 'Reviewed by',
     edgeProperties: {
       id: 258,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
-      objectPropertyRdfsLabel: 'Summarised in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+      objectPropertyRdfsLabel: 'Reviewed by',
       edgeId: 258
     },
     sourceNodeId: 25,
-    targetNodeId: 147,
-    id: 258,
-    label: 'Summarised in'
+    targetNodeId: 53,
+    id: '258',
+    rdfsLabel: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    label: 'Reviewed by'
   },
   261: {
     edgeId: 261,
-    role: 'Subclass of',
+    role: 'Completed before',
     edgeProperties: {
       id: 261,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+      objectPropertyRdfsLabel: 'Completed before',
       edgeId: 261
     },
     sourceNodeId: 26,
-    targetNodeId: 54,
-    id: 261,
-    label: 'Subclass of'
+    targetNodeId: 156,
+    id: '261',
+    rdfsLabel: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    label: 'Completed before'
   },
   262: {
     edgeId: 262,
-    role: 'Completed before',
+    role: 'Subclass of',
     edgeProperties: {
       id: 262,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-      objectPropertyRdfsLabel: 'Completed before',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 262
     },
     sourceNodeId: 26,
-    targetNodeId: 156,
-    id: 262,
-    label: 'Completed before'
+    targetNodeId: 54,
+    id: '262',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   271: {
     edgeId: 271,
@@ -974,7 +1080,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 27,
     targetNodeId: 52,
-    id: 271,
+    id: '271',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   281: {
@@ -988,7 +1095,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 28,
     targetNodeId: 70,
-    id: 281,
+    id: '281',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   291: {
@@ -1002,7 +1110,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 29,
     targetNodeId: 62,
-    id: 291,
+    id: '291',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   301: {
@@ -1016,66 +1125,73 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 30,
     targetNodeId: 70,
-    id: 301,
+    id: '301',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   311: {
     edgeId: 311,
-    role: 'Subclass of',
+    role: 'Achieved by',
     edgeProperties: {
       id: 311,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+      objectPropertyRdfsLabel: 'Achieved by',
       edgeId: 311
     },
     sourceNodeId: 31,
-    targetNodeId: 5,
-    id: 311,
-    label: 'Subclass of'
+    targetNodeId: 161,
+    id: '311',
+    rdfsLabel: 'Achieved by',
+    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+    label: 'Achieved by'
   },
   312: {
     edgeId: 312,
-    role: 'Achieved by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 312,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
-      objectPropertyRdfsLabel: 'Achieved by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 312
     },
     sourceNodeId: 31,
-    targetNodeId: 161,
-    id: 312,
-    label: 'Achieved by'
+    targetNodeId: 5,
+    id: '312',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   321: {
     edgeId: 321,
-    role: 'Composed of',
+    role: 'Subclass of',
     edgeProperties: {
       id: 321,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-      objectPropertyRdfsLabel: 'Composed of',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 321
     },
     sourceNodeId: 32,
-    targetNodeId: 39,
-    id: 321,
-    label: 'Composed of'
+    targetNodeId: 119,
+    id: '321',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   322: {
     edgeId: 322,
-    role: 'Subclass of',
+    role: 'Composed of',
     edgeProperties: {
       id: 322,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+      objectPropertyRdfsLabel: 'Composed of',
       edgeId: 322
     },
     sourceNodeId: 32,
-    targetNodeId: 119,
-    id: 322,
-    label: 'Subclass of'
+    targetNodeId: 39,
+    id: '322',
+    rdfsLabel: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    label: 'Composed of'
   },
   331: {
     edgeId: 331,
@@ -1088,7 +1204,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 33,
     targetNodeId: 51,
-    id: 331,
+    id: '331',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   332: {
@@ -1103,7 +1220,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 33,
     targetNodeId: 65,
-    id: 332,
+    id: '332',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     label: 'Performed by'
   },
   341: {
@@ -1117,7 +1236,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 34,
     targetNodeId: 147,
-    id: 341,
+    id: '341',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   342: {
@@ -1132,7 +1252,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 34,
     targetNodeId: 53,
-    id: 342,
+    id: '342',
+    rdfsLabel: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
     label: 'Reviewed by'
   },
   351: {
@@ -1146,7 +1268,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 35,
     targetNodeId: 38,
-    id: 351,
+    id: '351',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   361: {
@@ -1161,7 +1284,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 36,
     targetNodeId: 161,
-    id: 361,
+    id: '361',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
     label: 'Required for'
   },
   362: {
@@ -1175,7 +1300,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 36,
     targetNodeId: 147,
-    id: 362,
+    id: '362',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   371: {
@@ -1189,83 +1315,94 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 37,
     targetNodeId: 155,
-    id: 371,
+    id: '371',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   381: {
     edgeId: 381,
-    role: 'Associated with',
+    role: 'Obtained through',
     edgeProperties: {
       id: 381,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+      objectPropertyRdfsLabel: 'Obtained through',
       edgeId: 381
     },
     sourceNodeId: 38,
-    targetNodeId: 146,
-    id: 381,
-    label: 'Associated with'
+    targetNodeId: 21,
+    id: '381',
+    rdfsLabel: 'Obtained through',
+    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+    label: 'Obtained through'
   },
   382: {
     edgeId: 382,
-    role: 'Required for',
+    role: 'Presented in',
     edgeProperties: {
       id: 382,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+      objectPropertyRdfsLabel: 'Presented in',
       edgeId: 382
     },
     sourceNodeId: 38,
-    targetNodeId: 53,
-    id: 382,
-    label: 'Required for'
+    targetNodeId: 27,
+    id: '382',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    label: 'Presented in'
   },
   383: {
     edgeId: 383,
-    role: 'Presented in',
+    role: 'Associated with',
     edgeProperties: {
       id: 383,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-      objectPropertyRdfsLabel: 'Presented in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 383
     },
     sourceNodeId: 38,
-    targetNodeId: 27,
-    id: 383,
-    label: 'Presented in'
+    targetNodeId: 146,
+    id: '383',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   384: {
     edgeId: 384,
-    role: 'Associated with',
+    role: 'Achieved by',
     edgeProperties: {
       id: 384,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+      objectPropertyRdfsLabel: 'Achieved by',
       edgeId: 384
     },
     sourceNodeId: 38,
-    targetNodeId: 128,
-    id: 384,
-    label: 'Associated with'
+    targetNodeId: 146,
+    id: '384',
+    rdfsLabel: 'Achieved by',
+    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+    label: 'Achieved by'
   },
   385: {
     edgeId: 385,
-    role: 'Achieved by',
+    role: 'Associated with',
     edgeProperties: {
       id: 385,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
-      objectPropertyRdfsLabel: 'Achieved by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 385
     },
     sourceNodeId: 38,
-    targetNodeId: 146,
-    id: 385,
-    label: 'Achieved by'
+    targetNodeId: 128,
+    id: '385',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   386: {
     edgeId: 386,
@@ -1278,38 +1415,43 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 38,
     targetNodeId: 163,
-    id: 386,
+    id: '386',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   387: {
     edgeId: 387,
-    role: 'Obtained through',
+    role: 'Required for',
     edgeProperties: {
       id: 387,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
-      objectPropertyRdfsLabel: 'Obtained through',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 387
     },
     sourceNodeId: 38,
-    targetNodeId: 21,
-    id: 387,
-    label: 'Obtained through'
+    targetNodeId: 53,
+    id: '387',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   391: {
     edgeId: 391,
-    role: 'Located at',
+    role: 'Used by',
     edgeProperties: {
       id: 391,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-      objectPropertyRdfsLabel: 'Located at',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+      objectPropertyRdfsLabel: 'Used by',
       edgeId: 391
     },
     sourceNodeId: 39,
-    targetNodeId: 181,
-    id: 391,
-    label: 'Located at'
+    targetNodeId: 84,
+    id: '391',
+    rdfsLabel: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    label: 'Used by'
   },
   392: {
     edgeId: 392,
@@ -1322,53 +1464,60 @@ export const objectPropertiesFromApi = {
       edgeId: 392
     },
     sourceNodeId: 39,
-    targetNodeId: 84,
-    id: 392,
+    targetNodeId: 103,
+    id: '392',
+    rdfsLabel: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
     label: 'Used by'
   },
   393: {
     edgeId: 393,
-    role: 'Composed of',
+    role: 'Located at',
     edgeProperties: {
       id: 393,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-      objectPropertyRdfsLabel: 'Composed of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+      objectPropertyRdfsLabel: 'Located at',
       edgeId: 393
     },
     sourceNodeId: 39,
-    targetNodeId: 96,
-    id: 393,
-    label: 'Composed of'
+    targetNodeId: 181,
+    id: '393',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    label: 'Located at'
   },
   394: {
     edgeId: 394,
-    role: 'Used by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 394,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-      objectPropertyRdfsLabel: 'Used by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 394
     },
     sourceNodeId: 39,
-    targetNodeId: 103,
-    id: 394,
-    label: 'Used by'
+    targetNodeId: 50,
+    id: '394',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   395: {
     edgeId: 395,
-    role: 'Subclass of',
+    role: 'Composed of',
     edgeProperties: {
       id: 395,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+      objectPropertyRdfsLabel: 'Composed of',
       edgeId: 395
     },
     sourceNodeId: 39,
-    targetNodeId: 50,
-    id: 395,
-    label: 'Subclass of'
+    targetNodeId: 96,
+    id: '395',
+    rdfsLabel: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    label: 'Composed of'
   },
   401: {
     edgeId: 401,
@@ -1381,7 +1530,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 40,
     targetNodeId: 24,
-    id: 401,
+    id: '401',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   411: {
@@ -1395,67 +1545,75 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 41,
     targetNodeId: 1,
-    id: 411,
+    id: '411',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   421: {
     edgeId: 421,
-    role: 'Requested by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 421,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
-      objectPropertyRdfsLabel: 'Requested by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 421
     },
     sourceNodeId: 42,
-    targetNodeId: 53,
-    id: 421,
-    label: 'Requested by'
+    targetNodeId: 163,
+    id: '421',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   422: {
     edgeId: 422,
-    role: 'Subclass of',
+    role: 'Requested by',
     edgeProperties: {
       id: 422,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+      objectPropertyRdfsLabel: 'Requested by',
       edgeId: 422
     },
     sourceNodeId: 42,
-    targetNodeId: 163,
-    id: 422,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '422',
+    rdfsLabel: 'Requested by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+    label: 'Requested by'
   },
   431: {
     edgeId: 431,
-    role: 'Affected by',
+    role: 'Informed by',
     edgeProperties: {
       id: 431,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+      objectPropertyRdfsLabel: 'Informed by',
       edgeId: 431
     },
     sourceNodeId: 43,
-    targetNodeId: 106,
-    id: 431,
-    label: 'Affected by'
+    targetNodeId: 20,
+    id: '431',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    label: 'Informed by'
   },
   432: {
     edgeId: 432,
-    role: 'Informed by',
+    role: 'Affected by',
     edgeProperties: {
       id: 432,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-      objectPropertyRdfsLabel: 'Informed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 432
     },
     sourceNodeId: 43,
-    targetNodeId: 20,
-    id: 432,
-    label: 'Informed by'
+    targetNodeId: 106,
+    id: '432',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   433: {
     edgeId: 433,
@@ -1469,7 +1627,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 43,
     targetNodeId: 8,
-    id: 433,
+    id: '433',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
     label: 'Informed by'
   },
   434: {
@@ -1483,37 +1643,41 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 43,
     targetNodeId: 5,
-    id: 434,
+    id: '434',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   441: {
     edgeId: 441,
-    role: 'Used in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 441,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-      objectPropertyRdfsLabel: 'Used in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 441
     },
     sourceNodeId: 44,
-    targetNodeId: 12,
-    id: 441,
-    label: 'Used in'
+    targetNodeId: 113,
+    id: '441',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   442: {
     edgeId: 442,
-    role: 'Subclass of',
+    role: 'Used in',
     edgeProperties: {
       id: 442,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+      objectPropertyRdfsLabel: 'Used in',
       edgeId: 442
     },
     sourceNodeId: 44,
-    targetNodeId: 113,
-    id: 442,
-    label: 'Subclass of'
+    targetNodeId: 12,
+    id: '442',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    label: 'Used in'
   },
   443: {
     edgeId: 443,
@@ -1527,7 +1691,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 44,
     targetNodeId: 140,
-    id: 443,
+    id: '443',
+    rdfsLabel: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
     label: 'Recorded in'
   },
   451: {
@@ -1541,7 +1707,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 45,
     targetNodeId: 118,
-    id: 451,
+    id: '451',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   452: {
@@ -1556,97 +1723,110 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 45,
     targetNodeId: 161,
-    id: 452,
+    id: '452',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     label: 'Improved through'
   },
   461: {
     edgeId: 461,
-    role: 'Measured at',
+    role: 'Predicted by',
     edgeProperties: {
       id: 461,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
-      objectPropertyRdfsLabel: 'Measured at',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
+      objectPropertyRdfsLabel: 'Predicted by',
       edgeId: 461
     },
     sourceNodeId: 46,
-    targetNodeId: 181,
-    id: 461,
-    label: 'Measured at'
+    targetNodeId: 160,
+    id: '461',
+    rdfsLabel: 'Predicted by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
+    label: 'Predicted by'
   },
   462: {
     edgeId: 462,
-    role: 'Measured by',
+    role: 'Improved through',
     edgeProperties: {
       id: 462,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-      objectPropertyRdfsLabel: 'Measured by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+      objectPropertyRdfsLabel: 'Improved through',
       edgeId: 462
     },
     sourceNodeId: 46,
-    targetNodeId: 122,
-    id: 462,
-    label: 'Measured by'
+    targetNodeId: 161,
+    id: '462',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    label: 'Improved through'
   },
   463: {
     edgeId: 463,
-    role: 'Affected by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 463,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 463
     },
     sourceNodeId: 46,
-    targetNodeId: 131,
-    id: 463,
-    label: 'Affected by'
+    targetNodeId: 191,
+    id: '463',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   464: {
     edgeId: 464,
-    role: 'Predicted by',
+    role: 'Measured by',
     edgeProperties: {
       id: 464,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
-      objectPropertyRdfsLabel: 'Predicted by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+      objectPropertyRdfsLabel: 'Measured by',
       edgeId: 464
     },
     sourceNodeId: 46,
-    targetNodeId: 160,
-    id: 464,
-    label: 'Predicted by'
+    targetNodeId: 122,
+    id: '464',
+    rdfsLabel: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    label: 'Measured by'
   },
   465: {
     edgeId: 465,
-    role: 'Subclass of',
+    role: 'Affected by',
     edgeProperties: {
       id: 465,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 465
     },
     sourceNodeId: 46,
-    targetNodeId: 191,
-    id: 465,
-    label: 'Subclass of'
+    targetNodeId: 131,
+    id: '465',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   466: {
     edgeId: 466,
-    role: 'Improved through',
+    role: 'Measured at',
     edgeProperties: {
       id: 466,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-      objectPropertyRdfsLabel: 'Improved through',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
+      objectPropertyRdfsLabel: 'Measured at',
       edgeId: 466
     },
     sourceNodeId: 46,
-    targetNodeId: 161,
-    id: 466,
-    label: 'Improved through'
+    targetNodeId: 181,
+    id: '466',
+    rdfsLabel: 'Measured at',
+    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
+    label: 'Measured at'
   },
   471: {
     edgeId: 471,
@@ -1659,37 +1839,41 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 47,
     targetNodeId: 51,
-    id: 471,
+    id: '471',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   481: {
     edgeId: 481,
-    role: 'Subclass of',
+    role: 'Composed of',
     edgeProperties: {
       id: 481,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+      objectPropertyRdfsLabel: 'Composed of',
       edgeId: 481
     },
     sourceNodeId: 48,
-    targetNodeId: 96,
-    id: 481,
-    label: 'Subclass of'
+    targetNodeId: 98,
+    id: '481',
+    rdfsLabel: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    label: 'Composed of'
   },
   482: {
     edgeId: 482,
-    role: 'Composed of',
+    role: 'Subclass of',
     edgeProperties: {
       id: 482,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-      objectPropertyRdfsLabel: 'Composed of',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 482
     },
     sourceNodeId: 48,
-    targetNodeId: 100,
-    id: 482,
-    label: 'Composed of'
+    targetNodeId: 96,
+    id: '482',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   483: {
     edgeId: 483,
@@ -1702,38 +1886,45 @@ export const objectPropertiesFromApi = {
       edgeId: 483
     },
     sourceNodeId: 48,
-    targetNodeId: 98,
-    id: 483,
+    targetNodeId: 100,
+    id: '483',
+    rdfsLabel: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
     label: 'Composed of'
   },
   491: {
     edgeId: 491,
-    role: 'Subclass of',
+    role: 'Measured by',
     edgeProperties: {
       id: 491,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+      objectPropertyRdfsLabel: 'Measured by',
       edgeId: 491
     },
     sourceNodeId: 49,
-    targetNodeId: 191,
-    id: 491,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '491',
+    rdfsLabel: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    label: 'Measured by'
   },
   492: {
     edgeId: 492,
-    role: 'Measured by',
+    role: 'Associated with',
     edgeProperties: {
       id: 492,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-      objectPropertyRdfsLabel: 'Measured by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 492
     },
     sourceNodeId: 49,
-    targetNodeId: 53,
-    id: 492,
-    label: 'Measured by'
+    targetNodeId: 103,
+    id: '492',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   493: {
     edgeId: 493,
@@ -1747,52 +1938,57 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 49,
     targetNodeId: 161,
-    id: 493,
+    id: '493',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     label: 'Improved through'
   },
   494: {
     edgeId: 494,
-    role: 'Associated with',
+    role: 'Subclass of',
     edgeProperties: {
       id: 494,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 494
     },
     sourceNodeId: 49,
-    targetNodeId: 103,
-    id: 494,
-    label: 'Associated with'
+    targetNodeId: 191,
+    id: '494',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   501: {
     edgeId: 501,
-    role: 'Subclass of',
+    role: 'Located at',
     edgeProperties: {
       id: 501,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+      objectPropertyRdfsLabel: 'Located at',
       edgeId: 501
     },
     sourceNodeId: 50,
-    targetNodeId: 17,
-    id: 501,
-    label: 'Subclass of'
+    targetNodeId: 181,
+    id: '501',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    label: 'Located at'
   },
   502: {
     edgeId: 502,
-    role: 'Located at',
+    role: 'Subclass of',
     edgeProperties: {
       id: 502,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-      objectPropertyRdfsLabel: 'Located at',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 502
     },
     sourceNodeId: 50,
-    targetNodeId: 181,
-    id: 502,
-    label: 'Located at'
+    targetNodeId: 17,
+    id: '502',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   503: {
     edgeId: 503,
@@ -1806,96 +2002,108 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 50,
     targetNodeId: 70,
-    id: 503,
+    id: '503',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
     label: 'Associated with'
   },
   511: {
     edgeId: 511,
-    role: 'Performed by',
+    role: 'Performed on',
     edgeProperties: {
       id: 511,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+      objectPropertyRdfsLabel: 'Performed on',
       edgeId: 511
     },
     sourceNodeId: 51,
-    targetNodeId: 53,
-    id: 511,
-    label: 'Performed by'
+    targetNodeId: 50,
+    id: '511',
+    rdfsLabel: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+    label: 'Performed on'
   },
   512: {
     edgeId: 512,
-    role: 'Performed on',
+    role: 'Subclass of',
     edgeProperties: {
       id: 512,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
-      objectPropertyRdfsLabel: 'Performed on',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 512
     },
     sourceNodeId: 51,
-    targetNodeId: 50,
-    id: 512,
-    label: 'Performed on'
+    targetNodeId: 62,
+    id: '512',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   513: {
     edgeId: 513,
-    role: 'Subclass of',
+    role: 'Performed by',
     edgeProperties: {
       id: 513,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 513
     },
     sourceNodeId: 51,
-    targetNodeId: 62,
-    id: 513,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '513',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   521: {
     edgeId: 521,
-    role: 'Subclass of',
+    role: 'Required for',
     edgeProperties: {
       id: 521,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 521
     },
     sourceNodeId: 52,
-    targetNodeId: 141,
-    id: 521,
-    label: 'Subclass of'
+    targetNodeId: 144,
+    id: '521',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   522: {
     edgeId: 522,
-    role: 'Required for',
+    role: 'Subclass of',
     edgeProperties: {
       id: 522,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 522
     },
     sourceNodeId: 52,
-    targetNodeId: 144,
-    id: 522,
-    label: 'Required for'
+    targetNodeId: 141,
+    id: '522',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   531: {
     edgeId: 531,
-    role: 'Informed by',
+    role: 'Performed by',
     edgeProperties: {
       id: 531,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-      objectPropertyRdfsLabel: 'Informed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 531
     },
     sourceNodeId: 53,
-    targetNodeId: 192,
-    id: 531,
-    label: 'Informed by'
+    targetNodeId: 146,
+    id: '531',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   532: {
     edgeId: 532,
@@ -1909,7 +2117,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 53,
     targetNodeId: 24,
-    id: 532,
+    id: '532',
+    rdfsLabel: 'Performed from',
+    rdfAbout: 'http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx',
     label: 'Performed from'
   },
   533: {
@@ -1923,23 +2133,26 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 53,
     targetNodeId: 163,
-    id: 533,
+    id: '533',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   534: {
     edgeId: 534,
-    role: 'Performed by',
+    role: 'Informed by',
     edgeProperties: {
       id: 534,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+      objectPropertyRdfsLabel: 'Informed by',
       edgeId: 534
     },
     sourceNodeId: 53,
-    targetNodeId: 146,
-    id: 534,
-    label: 'Performed by'
+    targetNodeId: 192,
+    id: '534',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    label: 'Informed by'
   },
   541: {
     edgeId: 541,
@@ -1952,7 +2165,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 54,
     targetNodeId: 62,
-    id: 541,
+    id: '541',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   551: {
@@ -1966,7 +2180,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 55,
     targetNodeId: 70,
-    id: 551,
+    id: '551',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   561: {
@@ -1980,52 +2195,58 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 56,
     targetNodeId: 132,
-    id: 561,
+    id: '561',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   571: {
     edgeId: 571,
-    role: 'Bounded by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 571,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
-      objectPropertyRdfsLabel: 'Bounded by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 571
     },
     sourceNodeId: 57,
-    targetNodeId: 100,
-    id: 571,
-    label: 'Bounded by'
+    targetNodeId: 87,
+    id: '571',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   572: {
     edgeId: 572,
-    role: 'Applied to',
+    role: 'Bounded by',
     edgeProperties: {
       id: 572,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-      objectPropertyRdfsLabel: 'Applied to',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+      objectPropertyRdfsLabel: 'Bounded by',
       edgeId: 572
     },
     sourceNodeId: 57,
-    targetNodeId: 39,
-    id: 572,
-    label: 'Applied to'
+    targetNodeId: 100,
+    id: '572',
+    rdfsLabel: 'Bounded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+    label: 'Bounded by'
   },
   573: {
     edgeId: 573,
-    role: 'Subclass of',
+    role: 'Applied to',
     edgeProperties: {
       id: 573,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+      objectPropertyRdfsLabel: 'Applied to',
       edgeId: 573
     },
     sourceNodeId: 57,
-    targetNodeId: 87,
-    id: 573,
-    label: 'Subclass of'
+    targetNodeId: 39,
+    id: '573',
+    rdfsLabel: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    label: 'Applied to'
   },
   581: {
     edgeId: 581,
@@ -2039,7 +2260,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 58,
     targetNodeId: 18,
-    id: 581,
+    id: '581',
+    rdfsLabel: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
     label: 'Created for'
   },
   582: {
@@ -2054,7 +2277,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 58,
     targetNodeId: 67,
-    id: 582,
+    id: '582',
+    rdfsLabel: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
     label: 'Used by'
   },
   583: {
@@ -2069,37 +2294,42 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 58,
     targetNodeId: 168,
-    id: 583,
+    id: '583',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
     label: 'Used in'
   },
   584: {
     edgeId: 584,
-    role: 'Created by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 584,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-      objectPropertyRdfsLabel: 'Created by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 584
     },
     sourceNodeId: 58,
-    targetNodeId: 53,
-    id: 584,
-    label: 'Created by'
+    targetNodeId: 69,
+    id: '584',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   585: {
     edgeId: 585,
-    role: 'Subclass of',
+    role: 'Created by',
     edgeProperties: {
       id: 585,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+      objectPropertyRdfsLabel: 'Created by',
       edgeId: 585
     },
     sourceNodeId: 58,
-    targetNodeId: 69,
-    id: 585,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '585',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    label: 'Created by'
   },
   591: {
     edgeId: 591,
@@ -2112,37 +2342,41 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 59,
     targetNodeId: 70,
-    id: 591,
+    id: '591',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   601: {
     edgeId: 601,
-    role: 'Subclass of',
+    role: 'Operated from',
     edgeProperties: {
       id: 601,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+      objectPropertyRdfsLabel: 'Operated from',
       edgeId: 601
     },
     sourceNodeId: 60,
-    targetNodeId: 51,
-    id: 601,
-    label: 'Subclass of'
+    targetNodeId: 186,
+    id: '601',
+    rdfsLabel: 'Operated from',
+    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+    label: 'Operated from'
   },
   602: {
     edgeId: 602,
-    role: 'Operated from',
+    role: 'Subclass of',
     edgeProperties: {
       id: 602,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
-      objectPropertyRdfsLabel: 'Operated from',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 602
     },
     sourceNodeId: 60,
-    targetNodeId: 186,
-    id: 602,
-    label: 'Operated from'
+    targetNodeId: 51,
+    id: '602',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   603: {
     edgeId: 603,
@@ -2156,7 +2390,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 60,
     targetNodeId: 70,
-    id: 603,
+    id: '603',
+    rdfsLabel: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
     label: 'Performed on'
   },
   611: {
@@ -2170,7 +2406,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 61,
     targetNodeId: 90,
-    id: 611,
+    id: '611',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   612: {
@@ -2185,23 +2422,25 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 61,
     targetNodeId: 24,
-    id: 612,
+    id: '612',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
     label: 'Located at'
   },
   631: {
     edgeId: 631,
-    role: 'Presented in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 631,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-      objectPropertyRdfsLabel: 'Presented in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 631
     },
     sourceNodeId: 63,
-    targetNodeId: 147,
-    id: 631,
-    label: 'Presented in'
+    targetNodeId: 191,
+    id: '631',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   632: {
     edgeId: 632,
@@ -2215,22 +2454,27 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 63,
     targetNodeId: 161,
-    id: 632,
+    id: '632',
+    rdfsLabel: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
     label: 'Managed within'
   },
   633: {
     edgeId: 633,
-    role: 'Subclass of',
+    role: 'Presented in',
     edgeProperties: {
       id: 633,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+      objectPropertyRdfsLabel: 'Presented in',
       edgeId: 633
     },
     sourceNodeId: 63,
-    targetNodeId: 191,
-    id: 633,
-    label: 'Subclass of'
+    targetNodeId: 147,
+    id: '633',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    label: 'Presented in'
   },
   641: {
     edgeId: 641,
@@ -2243,7 +2487,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 64,
     targetNodeId: 38,
-    id: 641,
+    id: '641',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   651: {
@@ -2257,214 +2502,241 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 65,
     targetNodeId: 163,
-    id: 651,
+    id: '651',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   661: {
     edgeId: 661,
-    role: 'Subclass of',
+    role: 'Associated with',
     edgeProperties: {
       id: 661,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 661
     },
     sourceNodeId: 66,
-    targetNodeId: 163,
-    id: 661,
-    label: 'Subclass of'
+    targetNodeId: 70,
+    id: '661',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   662: {
     edgeId: 662,
-    role: 'Associated with',
+    role: 'Input into',
     edgeProperties: {
       id: 662,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+      objectPropertyRdfsLabel: 'Input into',
       edgeId: 662
     },
     sourceNodeId: 66,
-    targetNodeId: 70,
-    id: 662,
-    label: 'Associated with'
+    targetNodeId: 160,
+    id: '662',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    label: 'Input into'
   },
   663: {
     edgeId: 663,
-    role: 'Input into',
+    role: 'Subclass of',
     edgeProperties: {
       id: 663,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-      objectPropertyRdfsLabel: 'Input into',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 663
     },
     sourceNodeId: 66,
-    targetNodeId: 160,
-    id: 663,
-    label: 'Input into'
+    targetNodeId: 163,
+    id: '663',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   671: {
     edgeId: 671,
-    role: 'Subclass of',
+    role: 'Owned by',
     edgeProperties: {
       id: 671,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+      objectPropertyRdfsLabel: 'Owned by',
       edgeId: 671
     },
     sourceNodeId: 67,
-    targetNodeId: 192,
-    id: 671,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '671',
+    rdfsLabel: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    label: 'Owned by'
   },
   672: {
     edgeId: 672,
-    role: 'Instantiation of',
+    role: 'Subclass of',
     edgeProperties: {
       id: 672,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
-      objectPropertyRdfsLabel: 'Instantiation of',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 672
     },
     sourceNodeId: 67,
-    targetNodeId: 177,
-    id: 672,
-    label: 'Instantiation of'
+    targetNodeId: 192,
+    id: '672',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   673: {
     edgeId: 673,
-    role: 'Owned by',
+    role: 'Instantiation of',
     edgeProperties: {
       id: 673,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-      objectPropertyRdfsLabel: 'Owned by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+      objectPropertyRdfsLabel: 'Instantiation of',
       edgeId: 673
     },
     sourceNodeId: 67,
-    targetNodeId: 53,
-    id: 673,
-    label: 'Owned by'
+    targetNodeId: 177,
+    id: '673',
+    rdfsLabel: 'Instantiation of',
+    rdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+    label: 'Instantiation of'
   },
   681: {
     edgeId: 681,
-    role: 'Subclass of',
+    role: 'Predicted by',
     edgeProperties: {
       id: 681,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
+      objectPropertyRdfsLabel: 'Predicted by',
       edgeId: 681
     },
     sourceNodeId: 68,
-    targetNodeId: 163,
-    id: 681,
-    label: 'Subclass of'
+    targetNodeId: 160,
+    id: '681',
+    rdfsLabel: 'Predicted by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
+    label: 'Predicted by'
   },
   682: {
     edgeId: 682,
-    role: 'Predicted by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 682,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
-      objectPropertyRdfsLabel: 'Predicted by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 682
     },
     sourceNodeId: 68,
-    targetNodeId: 160,
-    id: 682,
-    label: 'Predicted by'
+    targetNodeId: 163,
+    id: '682',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   691: {
     edgeId: 691,
-    role: 'Subclass of',
+    role: 'Provided to',
     edgeProperties: {
       id: 691,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+      objectPropertyRdfsLabel: 'Provided to',
       edgeId: 691
     },
     sourceNodeId: 69,
-    targetNodeId: 113,
-    id: 691,
-    label: 'Subclass of'
+    targetNodeId: 192,
+    id: '691',
+    rdfsLabel: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    label: 'Provided to'
   },
   692: {
     edgeId: 692,
-    role: 'Managed within',
+    role: 'Reviewed by',
     edgeProperties: {
       id: 692,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
-      objectPropertyRdfsLabel: 'Managed within',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+      objectPropertyRdfsLabel: 'Reviewed by',
       edgeId: 692
     },
     sourceNodeId: 69,
-    targetNodeId: 54,
-    id: 692,
-    label: 'Managed within'
+    targetNodeId: 67,
+    id: '692',
+    rdfsLabel: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    label: 'Reviewed by'
   },
   693: {
     edgeId: 693,
-    role: 'Used in',
+    role: 'Managed within',
     edgeProperties: {
       id: 693,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-      objectPropertyRdfsLabel: 'Used in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+      objectPropertyRdfsLabel: 'Managed within',
       edgeId: 693
     },
     sourceNodeId: 69,
-    targetNodeId: 147,
-    id: 693,
-    label: 'Used in'
+    targetNodeId: 67,
+    id: '693',
+    rdfsLabel: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+    label: 'Managed within'
   },
   694: {
     edgeId: 694,
-    role: 'Managed within',
+    role: 'Provided by',
     edgeProperties: {
       id: 694,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
-      objectPropertyRdfsLabel: 'Managed within',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+      objectPropertyRdfsLabel: 'Provided by',
       edgeId: 694
     },
     sourceNodeId: 69,
-    targetNodeId: 67,
-    id: 694,
-    label: 'Managed within'
+    targetNodeId: 65,
+    id: '694',
+    rdfsLabel: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+    label: 'Provided by'
   },
   695: {
     edgeId: 695,
-    role: 'Reviewed by',
+    role: 'Provided by',
     edgeProperties: {
       id: 695,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-      objectPropertyRdfsLabel: 'Reviewed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+      objectPropertyRdfsLabel: 'Provided by',
       edgeId: 695
     },
     sourceNodeId: 69,
-    targetNodeId: 67,
-    id: 695,
-    label: 'Reviewed by'
+    targetNodeId: 192,
+    id: '695',
+    rdfsLabel: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+    label: 'Provided by'
   },
   696: {
     edgeId: 696,
-    role: 'Provided by',
+    role: 'Managed within',
     edgeProperties: {
       id: 696,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
-      objectPropertyRdfsLabel: 'Provided by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+      objectPropertyRdfsLabel: 'Managed within',
       edgeId: 696
     },
     sourceNodeId: 69,
-    targetNodeId: 65,
-    id: 696,
-    label: 'Provided by'
+    targetNodeId: 54,
+    id: '696',
+    rdfsLabel: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+    label: 'Managed within'
   },
   697: {
     edgeId: 697,
@@ -2478,38 +2750,42 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 69,
     targetNodeId: 114,
-    id: 697,
+    id: '697',
+    rdfsLabel: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
     label: 'Provided by'
   },
   698: {
     edgeId: 698,
-    role: 'Provided by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 698,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
-      objectPropertyRdfsLabel: 'Provided by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 698
     },
     sourceNodeId: 69,
-    targetNodeId: 192,
-    id: 698,
-    label: 'Provided by'
+    targetNodeId: 113,
+    id: '698',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   699: {
     edgeId: 699,
-    role: 'Provided to',
+    role: 'Used in',
     edgeProperties: {
       id: 699,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      objectPropertyRdfsLabel: 'Provided to',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+      objectPropertyRdfsLabel: 'Used in',
       edgeId: 699
     },
     sourceNodeId: 69,
-    targetNodeId: 192,
-    id: 699,
-    label: 'Provided to'
+    targetNodeId: 147,
+    id: '699',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    label: 'Used in'
   },
   701: {
     edgeId: 701,
@@ -2523,171 +2799,193 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 70,
     targetNodeId: 144,
-    id: 701,
+    id: '701',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
     label: 'Used in'
   },
   702: {
     edgeId: 702,
-    role: 'Affected by',
+    role: 'Input into',
     edgeProperties: {
       id: 702,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+      objectPropertyRdfsLabel: 'Input into',
       edgeId: 702
     },
     sourceNodeId: 70,
-    targetNodeId: 91,
-    id: 702,
-    label: 'Affected by'
+    targetNodeId: 160,
+    id: '702',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    label: 'Input into'
   },
   703: {
     edgeId: 703,
-    role: 'Input into',
+    role: 'Owned by',
     edgeProperties: {
       id: 703,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-      objectPropertyRdfsLabel: 'Input into',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+      objectPropertyRdfsLabel: 'Owned by',
       edgeId: 703
     },
     sourceNodeId: 70,
-    targetNodeId: 160,
-    id: 703,
-    label: 'Input into'
+    targetNodeId: 170,
+    id: '703',
+    rdfsLabel: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    label: 'Owned by'
   },
   704: {
     edgeId: 704,
-    role: 'Represented by',
+    role: 'Improved through',
     edgeProperties: {
       id: 704,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
-      objectPropertyRdfsLabel: 'Represented by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+      objectPropertyRdfsLabel: 'Improved through',
       edgeId: 704
     },
     sourceNodeId: 70,
-    targetNodeId: 148,
-    id: 704,
-    label: 'Represented by'
+    targetNodeId: 161,
+    id: '704',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    label: 'Improved through'
   },
   705: {
     edgeId: 705,
-    role: 'Obtained through',
+    role: 'Subclass of',
     edgeProperties: {
       id: 705,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
-      objectPropertyRdfsLabel: 'Obtained through',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 705
     },
     sourceNodeId: 70,
-    targetNodeId: 9,
-    id: 705,
-    label: 'Obtained through'
+    targetNodeId: 113,
+    id: '705',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   706: {
     edgeId: 706,
-    role: 'Represented within',
+    role: 'Obtained through',
     edgeProperties: {
       id: 706,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RcNW56SFgi34icUZNpsOET',
-      objectPropertyRdfsLabel: 'Represented within',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+      objectPropertyRdfsLabel: 'Obtained through',
       edgeId: 706
     },
     sourceNodeId: 70,
-    targetNodeId: 155,
-    id: 706,
-    label: 'Represented within'
+    targetNodeId: 9,
+    id: '706',
+    rdfsLabel: 'Obtained through',
+    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+    label: 'Obtained through'
   },
   707: {
     edgeId: 707,
-    role: 'Owned by',
+    role: 'Affected by',
     edgeProperties: {
       id: 707,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-      objectPropertyRdfsLabel: 'Owned by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 707
     },
     sourceNodeId: 70,
-    targetNodeId: 170,
-    id: 707,
-    label: 'Owned by'
+    targetNodeId: 91,
+    id: '707',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   708: {
     edgeId: 708,
-    role: 'Located at',
+    role: 'Represented within',
     edgeProperties: {
       id: 708,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-      objectPropertyRdfsLabel: 'Located at',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RcNW56SFgi34icUZNpsOET',
+      objectPropertyRdfsLabel: 'Represented within',
       edgeId: 708
     },
     sourceNodeId: 70,
-    targetNodeId: 181,
-    id: 708,
-    label: 'Located at'
+    targetNodeId: 155,
+    id: '708',
+    rdfsLabel: 'Represented within',
+    rdfAbout: 'http://webprotege.stanford.edu/RcNW56SFgi34icUZNpsOET',
+    label: 'Represented within'
   },
   709: {
     edgeId: 709,
-    role: 'Improved through',
+    role: 'Represented by',
     edgeProperties: {
       id: 709,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-      objectPropertyRdfsLabel: 'Improved through',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+      objectPropertyRdfsLabel: 'Represented by',
       edgeId: 709
     },
     sourceNodeId: 70,
-    targetNodeId: 161,
-    id: 709,
-    label: 'Improved through'
+    targetNodeId: 148,
+    id: '709',
+    rdfsLabel: 'Represented by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+    label: 'Represented by'
   },
   711: {
     edgeId: 711,
-    role: 'Required for',
+    role: 'Subclass of',
     edgeProperties: {
       id: 711,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 711
     },
     sourceNodeId: 71,
-    targetNodeId: 137,
-    id: 711,
-    label: 'Required for'
+    targetNodeId: 191,
+    id: '711',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   712: {
     edgeId: 712,
-    role: 'Subclass of',
+    role: 'Required for',
     edgeProperties: {
       id: 712,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 712
     },
     sourceNodeId: 71,
-    targetNodeId: 191,
-    id: 712,
-    label: 'Subclass of'
+    targetNodeId: 137,
+    id: '712',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   721: {
     edgeId: 721,
-    role: 'Subclass of',
+    role: 'Managed by',
     edgeProperties: {
       id: 721,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
+      objectPropertyRdfsLabel: 'Managed by',
       edgeId: 721
     },
     sourceNodeId: 72,
-    targetNodeId: 62,
-    id: 721,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '721',
+    rdfsLabel: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
+    label: 'Managed by'
   },
   722: {
     edgeId: 722,
@@ -2701,67 +2999,74 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 72,
     targetNodeId: 181,
-    id: 722,
+    id: '722',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
     label: 'Located at'
   },
   723: {
     edgeId: 723,
-    role: 'Managed by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 723,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
-      objectPropertyRdfsLabel: 'Managed by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 723
     },
     sourceNodeId: 72,
-    targetNodeId: 53,
-    id: 723,
-    label: 'Managed by'
+    targetNodeId: 62,
+    id: '723',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   731: {
     edgeId: 731,
-    role: 'Subclass of',
+    role: 'Managed within',
     edgeProperties: {
       id: 731,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+      objectPropertyRdfsLabel: 'Managed within',
       edgeId: 731
     },
     sourceNodeId: 73,
-    targetNodeId: 69,
-    id: 731,
-    label: 'Subclass of'
+    targetNodeId: 67,
+    id: '731',
+    rdfsLabel: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+    label: 'Managed within'
   },
   732: {
     edgeId: 732,
-    role: 'Managed within',
+    role: 'Recorded in',
     edgeProperties: {
       id: 732,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
-      objectPropertyRdfsLabel: 'Managed within',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+      objectPropertyRdfsLabel: 'Recorded in',
       edgeId: 732
     },
     sourceNodeId: 73,
-    targetNodeId: 67,
-    id: 732,
-    label: 'Managed within'
+    targetNodeId: 153,
+    id: '732',
+    rdfsLabel: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    label: 'Recorded in'
   },
   733: {
     edgeId: 733,
-    role: 'Recorded in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 733,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-      objectPropertyRdfsLabel: 'Recorded in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 733
     },
     sourceNodeId: 73,
-    targetNodeId: 153,
-    id: 733,
-    label: 'Recorded in'
+    targetNodeId: 69,
+    id: '733',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   734: {
     edgeId: 734,
@@ -2775,7 +3080,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 73,
     targetNodeId: 103,
-    id: 734,
+    id: '734',
+    rdfsLabel: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
     label: 'Provided by'
   },
   741: {
@@ -2789,7 +3096,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 74,
     targetNodeId: 118,
-    id: 741,
+    id: '741',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   742: {
@@ -2804,7 +3112,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 74,
     targetNodeId: 176,
-    id: 742,
+    id: '742',
+    rdfsLabel: 'Implemented through',
+    rdfAbout: 'http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7',
     label: 'Implemented through'
   },
   751: {
@@ -2818,7 +3128,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 75,
     targetNodeId: 1,
-    id: 751,
+    id: '751',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   752: {
@@ -2833,7 +3144,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 75,
     targetNodeId: 103,
-    id: 752,
+    id: '752',
+    rdfsLabel: 'Requested by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
     label: 'Requested by'
   },
   761: {
@@ -2847,37 +3160,41 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 76,
     targetNodeId: 141,
-    id: 761,
+    id: '761',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   771: {
     edgeId: 771,
-    role: 'Subclass of',
+    role: 'Presented in',
     edgeProperties: {
       id: 771,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+      objectPropertyRdfsLabel: 'Presented in',
       edgeId: 771
     },
     sourceNodeId: 77,
-    targetNodeId: 163,
-    id: 771,
-    label: 'Subclass of'
+    targetNodeId: 190,
+    id: '771',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    label: 'Presented in'
   },
   772: {
     edgeId: 772,
-    role: 'Presented in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 772,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-      objectPropertyRdfsLabel: 'Presented in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 772
     },
     sourceNodeId: 77,
-    targetNodeId: 190,
-    id: 772,
-    label: 'Presented in'
+    targetNodeId: 163,
+    id: '772',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   781: {
     edgeId: 781,
@@ -2890,7 +3207,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 78,
     targetNodeId: 1,
-    id: 781,
+    id: '781',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   791: {
@@ -2904,7 +3222,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 79,
     targetNodeId: 191,
-    id: 791,
+    id: '791',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   792: {
@@ -2919,7 +3238,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 79,
     targetNodeId: 131,
-    id: 792,
+    id: '792',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     label: 'Affected by'
   },
   793: {
@@ -2934,7 +3255,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 79,
     targetNodeId: 181,
-    id: 793,
+    id: '793',
+    rdfsLabel: 'Measured at',
+    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
     label: 'Measured at'
   },
   794: {
@@ -2949,7 +3272,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 79,
     targetNodeId: 160,
-    id: 794,
+    id: '794',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
     label: 'Input into'
   },
   795: {
@@ -2964,7 +3289,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 79,
     targetNodeId: 122,
-    id: 795,
+    id: '795',
+    rdfsLabel: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
     label: 'Measured by'
   },
   801: {
@@ -2978,7 +3305,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 80,
     targetNodeId: 141,
-    id: 801,
+    id: '801',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   811: {
@@ -2993,23 +3321,25 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 81,
     targetNodeId: 122,
-    id: 811,
+    id: '811',
+    rdfsLabel: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
     label: 'Measured by'
   },
   812: {
     edgeId: 812,
-    role: 'Affected by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 812,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 812
     },
     sourceNodeId: 81,
-    targetNodeId: 131,
-    id: 812,
-    label: 'Affected by'
+    targetNodeId: 191,
+    id: '812',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   813: {
     edgeId: 813,
@@ -3023,22 +3353,27 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 81,
     targetNodeId: 181,
-    id: 813,
+    id: '813',
+    rdfsLabel: 'Measured at',
+    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
     label: 'Measured at'
   },
   814: {
     edgeId: 814,
-    role: 'Subclass of',
+    role: 'Affected by',
     edgeProperties: {
       id: 814,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 814
     },
     sourceNodeId: 81,
-    targetNodeId: 191,
-    id: 814,
-    label: 'Subclass of'
+    targetNodeId: 131,
+    id: '814',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   821: {
     edgeId: 821,
@@ -3051,7 +3386,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 82,
     targetNodeId: 184,
-    id: 821,
+    id: '821',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   831: {
@@ -3065,7 +3401,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 83,
     targetNodeId: 191,
-    id: 831,
+    id: '831',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   841: {
@@ -3080,23 +3417,27 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 84,
     targetNodeId: 103,
-    id: 841,
+    id: '841',
+    rdfsLabel: 'Operated by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB2lnkvVru2pLbt5iOaISSs',
     label: 'Operated by'
   },
   842: {
     edgeId: 842,
-    role: 'Owned by',
+    role: 'Used in',
     edgeProperties: {
       id: 842,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-      objectPropertyRdfsLabel: 'Owned by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+      objectPropertyRdfsLabel: 'Used in',
       edgeId: 842
     },
     sourceNodeId: 84,
-    targetNodeId: 170,
-    id: 842,
-    label: 'Owned by'
+    targetNodeId: 92,
+    id: '842',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    label: 'Used in'
   },
   843: {
     edgeId: 843,
@@ -3109,68 +3450,77 @@ export const objectPropertiesFromApi = {
       edgeId: 843
     },
     sourceNodeId: 84,
-    targetNodeId: 146,
-    id: 843,
+    targetNodeId: 170,
+    id: '843',
+    rdfsLabel: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
     label: 'Owned by'
   },
   844: {
     edgeId: 844,
-    role: 'Subclass of',
+    role: 'Owned by',
     edgeProperties: {
       id: 844,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+      objectPropertyRdfsLabel: 'Owned by',
       edgeId: 844
     },
     sourceNodeId: 84,
-    targetNodeId: 133,
-    id: 844,
-    label: 'Subclass of'
+    targetNodeId: 146,
+    id: '844',
+    rdfsLabel: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    label: 'Owned by'
   },
   845: {
     edgeId: 845,
-    role: 'Used in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 845,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-      objectPropertyRdfsLabel: 'Used in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 845
     },
     sourceNodeId: 84,
-    targetNodeId: 92,
-    id: 845,
-    label: 'Used in'
+    targetNodeId: 133,
+    id: '845',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   851: {
     edgeId: 851,
-    role: 'Created by',
+    role: 'Reviewed by',
     edgeProperties: {
       id: 851,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-      objectPropertyRdfsLabel: 'Created by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+      objectPropertyRdfsLabel: 'Reviewed by',
       edgeId: 851
     },
     sourceNodeId: 85,
-    targetNodeId: 177,
-    id: 851,
-    label: 'Created by'
+    targetNodeId: 53,
+    id: '851',
+    rdfsLabel: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    label: 'Reviewed by'
   },
   852: {
     edgeId: 852,
-    role: 'Reviewed by',
+    role: 'Created by',
     edgeProperties: {
       id: 852,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-      objectPropertyRdfsLabel: 'Reviewed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+      objectPropertyRdfsLabel: 'Created by',
       edgeId: 852
     },
     sourceNodeId: 85,
-    targetNodeId: 53,
-    id: 852,
-    label: 'Reviewed by'
+    targetNodeId: 177,
+    id: '852',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    label: 'Created by'
   },
   853: {
     edgeId: 853,
@@ -3183,7 +3533,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 85,
     targetNodeId: 141,
-    id: 853,
+    id: '853',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   861: {
@@ -3197,7 +3548,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 86,
     targetNodeId: 76,
-    id: 861,
+    id: '861',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   862: {
@@ -3211,8 +3563,10 @@ export const objectPropertiesFromApi = {
       edgeId: 862
     },
     sourceNodeId: 86,
-    targetNodeId: 144,
-    id: 862,
+    targetNodeId: 161,
+    id: '862',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
     label: 'Used in'
   },
   863: {
@@ -3226,83 +3580,94 @@ export const objectPropertiesFromApi = {
       edgeId: 863
     },
     sourceNodeId: 86,
-    targetNodeId: 161,
-    id: 863,
+    targetNodeId: 144,
+    id: '863',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
     label: 'Used in'
   },
   871: {
     edgeId: 871,
-    role: 'Applied to',
+    role: 'Subclass of',
     edgeProperties: {
       id: 871,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-      objectPropertyRdfsLabel: 'Applied to',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 871
     },
     sourceNodeId: 87,
-    targetNodeId: 39,
-    id: 871,
-    label: 'Applied to'
+    targetNodeId: 51,
+    id: '871',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   872: {
     edgeId: 872,
-    role: 'Issued by',
+    role: 'Applied to',
     edgeProperties: {
       id: 872,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
-      objectPropertyRdfsLabel: 'Issued by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+      objectPropertyRdfsLabel: 'Applied to',
       edgeId: 872
     },
     sourceNodeId: 87,
-    targetNodeId: 192,
-    id: 872,
-    label: 'Issued by'
+    targetNodeId: 39,
+    id: '872',
+    rdfsLabel: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    label: 'Applied to'
   },
   873: {
     edgeId: 873,
-    role: 'Issued through',
+    role: 'Located at',
     edgeProperties: {
       id: 873,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7dYrsdk1L1bcLR0A9vS5QP',
-      objectPropertyRdfsLabel: 'Issued through',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+      objectPropertyRdfsLabel: 'Located at',
       edgeId: 873
     },
     sourceNodeId: 87,
-    targetNodeId: 122,
-    id: 873,
-    label: 'Issued through'
+    targetNodeId: 181,
+    id: '873',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    label: 'Located at'
   },
   874: {
     edgeId: 874,
-    role: 'Located at',
+    role: 'Issued through',
     edgeProperties: {
       id: 874,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-      objectPropertyRdfsLabel: 'Located at',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7dYrsdk1L1bcLR0A9vS5QP',
+      objectPropertyRdfsLabel: 'Issued through',
       edgeId: 874
     },
     sourceNodeId: 87,
-    targetNodeId: 181,
-    id: 874,
-    label: 'Located at'
+    targetNodeId: 122,
+    id: '874',
+    rdfsLabel: 'Issued through',
+    rdfAbout: 'http://webprotege.stanford.edu/R7dYrsdk1L1bcLR0A9vS5QP',
+    label: 'Issued through'
   },
   875: {
     edgeId: 875,
-    role: 'Subclass of',
+    role: 'Issued by',
     edgeProperties: {
       id: 875,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
+      objectPropertyRdfsLabel: 'Issued by',
       edgeId: 875
     },
     sourceNodeId: 87,
-    targetNodeId: 51,
-    id: 875,
-    label: 'Subclass of'
+    targetNodeId: 192,
+    id: '875',
+    rdfsLabel: 'Issued by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
+    label: 'Issued by'
   },
   876: {
     edgeId: 876,
@@ -3316,7 +3681,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 87,
     targetNodeId: 53,
-    id: 876,
+    id: '876',
+    rdfsLabel: 'Issued by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
     label: 'Issued by'
   },
   881: {
@@ -3330,7 +3697,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 88,
     targetNodeId: 184,
-    id: 881,
+    id: '881',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   891: {
@@ -3344,7 +3712,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 89,
     targetNodeId: 85,
-    id: 891,
+    id: '891',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   901: {
@@ -3358,7 +3727,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 90,
     targetNodeId: 113,
-    id: 901,
+    id: '901',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   902: {
@@ -3373,37 +3743,42 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 90,
     targetNodeId: 53,
-    id: 902,
+    id: '902',
+    rdfsLabel: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
     label: 'Managed by'
   },
   911: {
     edgeId: 911,
-    role: 'Subclass of',
+    role: 'Associated with',
     edgeProperties: {
       id: 911,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 911
     },
     sourceNodeId: 91,
-    targetNodeId: 131,
-    id: 911,
-    label: 'Subclass of'
+    targetNodeId: 4,
+    id: '911',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   912: {
     edgeId: 912,
-    role: 'Associated with',
+    role: 'Subclass of',
     edgeProperties: {
       id: 912,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 912
     },
     sourceNodeId: 91,
-    targetNodeId: 4,
-    id: 912,
-    label: 'Associated with'
+    targetNodeId: 131,
+    id: '912',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   921: {
     edgeId: 921,
@@ -3417,7 +3792,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 92,
     targetNodeId: 53,
-    id: 921,
+    id: '921',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     label: 'Performed by'
   },
   922: {
@@ -3431,23 +3808,24 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 92,
     targetNodeId: 51,
-    id: 922,
+    id: '922',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   931: {
     edgeId: 931,
-    role: 'Agreed with',
+    role: 'Subclass of',
     edgeProperties: {
       id: 931,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
-      objectPropertyRdfsLabel: 'Agreed with',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 931
     },
     sourceNodeId: 93,
-    targetNodeId: 128,
-    id: 931,
-    label: 'Agreed with'
+    targetNodeId: 52,
+    id: '931',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   932: {
     edgeId: 932,
@@ -3460,38 +3838,45 @@ export const objectPropertiesFromApi = {
       edgeId: 932
     },
     sourceNodeId: 93,
-    targetNodeId: 65,
-    id: 932,
+    targetNodeId: 128,
+    id: '932',
+    rdfsLabel: 'Agreed with',
+    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
     label: 'Agreed with'
   },
   933: {
     edgeId: 933,
-    role: 'Created for',
+    role: 'Agreed with',
     edgeProperties: {
       id: 933,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-      objectPropertyRdfsLabel: 'Created for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+      objectPropertyRdfsLabel: 'Agreed with',
       edgeId: 933
     },
     sourceNodeId: 93,
-    targetNodeId: 161,
-    id: 933,
-    label: 'Created for'
+    targetNodeId: 65,
+    id: '933',
+    rdfsLabel: 'Agreed with',
+    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+    label: 'Agreed with'
   },
   934: {
     edgeId: 934,
-    role: 'Subclass of',
+    role: 'Created for',
     edgeProperties: {
       id: 934,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+      objectPropertyRdfsLabel: 'Created for',
       edgeId: 934
     },
     sourceNodeId: 93,
-    targetNodeId: 52,
-    id: 934,
-    label: 'Subclass of'
+    targetNodeId: 161,
+    id: '934',
+    rdfsLabel: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    label: 'Created for'
   },
   941: {
     edgeId: 941,
@@ -3504,7 +3889,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 94,
     targetNodeId: 51,
-    id: 941,
+    id: '941',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   951: {
@@ -3518,7 +3904,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 95,
     targetNodeId: 54,
-    id: 951,
+    id: '951',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   952: {
@@ -3533,7 +3920,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 95,
     targetNodeId: 26,
-    id: 952,
+    id: '952',
+    rdfsLabel: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
     label: 'Completed before'
   },
   961: {
@@ -3547,7 +3936,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 96,
     targetNodeId: 17,
-    id: 961,
+    id: '961',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   971: {
@@ -3561,7 +3951,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 97,
     targetNodeId: 184,
-    id: 971,
+    id: '971',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   981: {
@@ -3575,7 +3966,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 98,
     targetNodeId: 96,
-    id: 981,
+    id: '981',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   991: {
@@ -3589,7 +3981,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 99,
     targetNodeId: 70,
-    id: 991,
+    id: '991',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1001: {
@@ -3603,67 +3996,75 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 100,
     targetNodeId: 96,
-    id: 1001,
+    id: '1001',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1011: {
     edgeId: 1011,
-    role: 'Performed by',
+    role: 'Included in',
     edgeProperties: {
       id: 1011,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+      objectPropertyRdfsLabel: 'Included in',
       edgeId: 1011
     },
     sourceNodeId: 101,
-    targetNodeId: 53,
-    id: 1011,
-    label: 'Performed by'
+    targetNodeId: 154,
+    id: '1011',
+    rdfsLabel: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    label: 'Included in'
   },
   1012: {
     edgeId: 1012,
-    role: 'Included in',
+    role: 'Performed by',
     edgeProperties: {
       id: 1012,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-      objectPropertyRdfsLabel: 'Included in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 1012
     },
     sourceNodeId: 101,
-    targetNodeId: 154,
-    id: 1012,
-    label: 'Included in'
+    targetNodeId: 53,
+    id: '1012',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   1013: {
     edgeId: 1013,
-    role: 'Performed on',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1013,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
-      objectPropertyRdfsLabel: 'Performed on',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1013
     },
     sourceNodeId: 101,
-    targetNodeId: 108,
-    id: 1013,
-    label: 'Performed on'
+    targetNodeId: 51,
+    id: '1013',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1014: {
     edgeId: 1014,
-    role: 'Subclass of',
+    role: 'Performed on',
     edgeProperties: {
       id: 1014,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+      objectPropertyRdfsLabel: 'Performed on',
       edgeId: 1014
     },
     sourceNodeId: 101,
-    targetNodeId: 51,
-    id: 1014,
-    label: 'Subclass of'
+    targetNodeId: 108,
+    id: '1014',
+    rdfsLabel: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+    label: 'Performed on'
   },
   1021: {
     edgeId: 1021,
@@ -3676,7 +4077,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 102,
     targetNodeId: 96,
-    id: 1021,
+    id: '1021',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1022: {
@@ -3690,8 +4092,10 @@ export const objectPropertiesFromApi = {
       edgeId: 1022
     },
     sourceNodeId: 102,
-    targetNodeId: 98,
-    id: 1022,
+    targetNodeId: 100,
+    id: '1022',
+    rdfsLabel: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
     label: 'Composed of'
   },
   1023: {
@@ -3705,38 +4109,45 @@ export const objectPropertiesFromApi = {
       edgeId: 1023
     },
     sourceNodeId: 102,
-    targetNodeId: 100,
-    id: 1023,
+    targetNodeId: 98,
+    id: '1023',
+    rdfsLabel: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
     label: 'Composed of'
   },
   1031: {
     edgeId: 1031,
-    role: 'Affected by',
+    role: 'Associated with',
     edgeProperties: {
       id: 1031,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 1031
     },
     sourceNodeId: 103,
-    targetNodeId: 107,
-    id: 1031,
-    label: 'Affected by'
+    targetNodeId: 146,
+    id: '1031',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   1032: {
     edgeId: 1032,
-    role: 'Subclass of',
+    role: 'Affected by',
     edgeProperties: {
       id: 1032,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1032
     },
     sourceNodeId: 103,
-    targetNodeId: 163,
-    id: 1032,
-    label: 'Subclass of'
+    targetNodeId: 57,
+    id: '1032',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1033: {
     edgeId: 1033,
@@ -3749,24 +4160,28 @@ export const objectPropertiesFromApi = {
       edgeId: 1033
     },
     sourceNodeId: 103,
-    targetNodeId: 131,
-    id: 1033,
+    targetNodeId: 107,
+    id: '1033',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     label: 'Affected by'
   },
   1034: {
     edgeId: 1034,
-    role: 'Advised by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1034,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
-      objectPropertyRdfsLabel: 'Advised by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1034
     },
     sourceNodeId: 103,
-    targetNodeId: 122,
-    id: 1034,
-    label: 'Advised by'
+    targetNodeId: 131,
+    id: '1034',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1035: {
     edgeId: 1035,
@@ -3780,38 +4195,42 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 103,
     targetNodeId: 158,
-    id: 1035,
+    id: '1035',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     label: 'Affected by'
   },
   1036: {
     edgeId: 1036,
-    role: 'Associated with',
+    role: 'Advised by',
     edgeProperties: {
       id: 1036,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+      objectPropertyRdfsLabel: 'Advised by',
       edgeId: 1036
     },
     sourceNodeId: 103,
-    targetNodeId: 146,
-    id: 1036,
-    label: 'Associated with'
+    targetNodeId: 122,
+    id: '1036',
+    rdfsLabel: 'Advised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+    label: 'Advised by'
   },
   1037: {
     edgeId: 1037,
-    role: 'Affected by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1037,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1037
     },
     sourceNodeId: 103,
-    targetNodeId: 57,
-    id: 1037,
-    label: 'Affected by'
+    targetNodeId: 163,
+    id: '1037',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1041: {
     edgeId: 1041,
@@ -3824,7 +4243,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 104,
     targetNodeId: 70,
-    id: 1041,
+    id: '1041',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1051: {
@@ -3838,97 +4258,109 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 105,
     targetNodeId: 114,
-    id: 1051,
+    id: '1051',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1052: {
     edgeId: 1052,
-    role: 'Identified by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1052,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
-      objectPropertyRdfsLabel: 'Identified by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1052
     },
     sourceNodeId: 105,
-    targetNodeId: 149,
-    id: 1052,
-    label: 'Identified by'
+    targetNodeId: 194,
+    id: '1052',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1053: {
     edgeId: 1053,
-    role: 'Input into',
+    role: 'Improved through',
     edgeProperties: {
       id: 1053,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-      objectPropertyRdfsLabel: 'Input into',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+      objectPropertyRdfsLabel: 'Improved through',
       edgeId: 1053
     },
     sourceNodeId: 105,
-    targetNodeId: 160,
-    id: 1053,
-    label: 'Input into'
+    targetNodeId: 12,
+    id: '1053',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    label: 'Improved through'
   },
   1054: {
     edgeId: 1054,
-    role: 'Improved through',
+    role: 'Input into',
     edgeProperties: {
       id: 1054,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-      objectPropertyRdfsLabel: 'Improved through',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+      objectPropertyRdfsLabel: 'Input into',
       edgeId: 1054
     },
     sourceNodeId: 105,
-    targetNodeId: 12,
-    id: 1054,
-    label: 'Improved through'
+    targetNodeId: 160,
+    id: '1054',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    label: 'Input into'
   },
   1055: {
     edgeId: 1055,
-    role: 'Affected by',
+    role: 'Identified by',
     edgeProperties: {
       id: 1055,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
+      objectPropertyRdfsLabel: 'Identified by',
       edgeId: 1055
     },
     sourceNodeId: 105,
-    targetNodeId: 194,
-    id: 1055,
-    label: 'Affected by'
+    targetNodeId: 149,
+    id: '1055',
+    rdfsLabel: 'Identified by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
+    label: 'Identified by'
   },
   1061: {
     edgeId: 1061,
-    role: 'Subclass of',
+    role: 'Advised by',
     edgeProperties: {
       id: 1061,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+      objectPropertyRdfsLabel: 'Advised by',
       edgeId: 1061
     },
     sourceNodeId: 106,
-    targetNodeId: 5,
-    id: 1061,
-    label: 'Subclass of'
+    targetNodeId: 124,
+    id: '1061',
+    rdfsLabel: 'Advised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+    label: 'Advised by'
   },
   1062: {
     edgeId: 1062,
-    role: 'Advised by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1062,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
-      objectPropertyRdfsLabel: 'Advised by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1062
     },
     sourceNodeId: 106,
-    targetNodeId: 124,
-    id: 1062,
-    label: 'Advised by'
+    targetNodeId: 5,
+    id: '1062',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1071: {
     edgeId: 1071,
@@ -3941,127 +4373,143 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 107,
     targetNodeId: 52,
-    id: 1071,
+    id: '1071',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1081: {
     edgeId: 1081,
-    role: 'Owned by',
+    role: 'Recorded in',
     edgeProperties: {
       id: 1081,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-      objectPropertyRdfsLabel: 'Owned by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+      objectPropertyRdfsLabel: 'Recorded in',
       edgeId: 1081
     },
     sourceNodeId: 108,
-    targetNodeId: 170,
-    id: 1081,
-    label: 'Owned by'
+    targetNodeId: 33,
+    id: '1081',
+    rdfsLabel: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    label: 'Recorded in'
   },
   1082: {
     edgeId: 1082,
-    role: 'Subclass of',
+    role: 'Represented by',
     edgeProperties: {
       id: 1082,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+      objectPropertyRdfsLabel: 'Represented by',
       edgeId: 1082
     },
     sourceNodeId: 108,
-    targetNodeId: 133,
-    id: 1082,
-    label: 'Subclass of'
+    targetNodeId: 102,
+    id: '1082',
+    rdfsLabel: 'Represented by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+    label: 'Represented by'
   },
   1083: {
     edgeId: 1083,
-    role: 'Represented by',
+    role: 'Owned by',
     edgeProperties: {
       id: 1083,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
-      objectPropertyRdfsLabel: 'Represented by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+      objectPropertyRdfsLabel: 'Owned by',
       edgeId: 1083
     },
     sourceNodeId: 108,
-    targetNodeId: 102,
-    id: 1083,
-    label: 'Represented by'
+    targetNodeId: 170,
+    id: '1083',
+    rdfsLabel: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    label: 'Owned by'
   },
   1084: {
     edgeId: 1084,
-    role: 'Recorded in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1084,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-      objectPropertyRdfsLabel: 'Recorded in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1084
     },
     sourceNodeId: 108,
-    targetNodeId: 67,
-    id: 1084,
-    label: 'Recorded in'
+    targetNodeId: 133,
+    id: '1084',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1085: {
     edgeId: 1085,
-    role: 'Located at',
+    role: 'Obtained through',
     edgeProperties: {
       id: 1085,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-      objectPropertyRdfsLabel: 'Located at',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+      objectPropertyRdfsLabel: 'Obtained through',
       edgeId: 1085
     },
     sourceNodeId: 108,
-    targetNodeId: 181,
-    id: 1085,
-    label: 'Located at'
+    targetNodeId: 9,
+    id: '1085',
+    rdfsLabel: 'Obtained through',
+    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+    label: 'Obtained through'
   },
   1086: {
     edgeId: 1086,
-    role: 'Recorded in',
+    role: 'Owned by',
     edgeProperties: {
       id: 1086,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-      objectPropertyRdfsLabel: 'Recorded in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+      objectPropertyRdfsLabel: 'Owned by',
       edgeId: 1086
     },
     sourceNodeId: 108,
-    targetNodeId: 33,
-    id: 1086,
-    label: 'Recorded in'
+    targetNodeId: 65,
+    id: '1086',
+    rdfsLabel: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    label: 'Owned by'
   },
   1087: {
     edgeId: 1087,
-    role: 'Owned by',
+    role: 'Recorded in',
     edgeProperties: {
       id: 1087,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-      objectPropertyRdfsLabel: 'Owned by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+      objectPropertyRdfsLabel: 'Recorded in',
       edgeId: 1087
     },
     sourceNodeId: 108,
-    targetNodeId: 65,
-    id: 1087,
-    label: 'Owned by'
+    targetNodeId: 67,
+    id: '1087',
+    rdfsLabel: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    label: 'Recorded in'
   },
   1088: {
     edgeId: 1088,
-    role: 'Obtained through',
+    role: 'Located at',
     edgeProperties: {
       id: 1088,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
-      objectPropertyRdfsLabel: 'Obtained through',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+      objectPropertyRdfsLabel: 'Located at',
       edgeId: 1088
     },
     sourceNodeId: 108,
-    targetNodeId: 9,
-    id: 1088,
-    label: 'Obtained through'
+    targetNodeId: 181,
+    id: '1088',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    label: 'Located at'
   },
   1091: {
     edgeId: 1091,
@@ -4074,7 +4522,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 109,
     targetNodeId: 163,
-    id: 1091,
+    id: '1091',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1092: {
@@ -4089,52 +4538,59 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 109,
     targetNodeId: 155,
-    id: 1092,
+    id: '1092',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
     label: 'Used in'
   },
   1101: {
     edgeId: 1101,
-    role: 'Presented in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1101,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-      objectPropertyRdfsLabel: 'Presented in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1101
     },
     sourceNodeId: 110,
-    targetNodeId: 147,
-    id: 1101,
-    label: 'Presented in'
+    targetNodeId: 191,
+    id: '1101',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1102: {
     edgeId: 1102,
-    role: 'Subclass of',
+    role: 'Required for',
     edgeProperties: {
       id: 1102,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 1102
     },
     sourceNodeId: 110,
-    targetNodeId: 191,
-    id: 1102,
-    label: 'Subclass of'
+    targetNodeId: 137,
+    id: '1102',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   1103: {
     edgeId: 1103,
-    role: 'Required for',
+    role: 'Presented in',
     edgeProperties: {
       id: 1103,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+      objectPropertyRdfsLabel: 'Presented in',
       edgeId: 1103
     },
     sourceNodeId: 110,
-    targetNodeId: 137,
-    id: 1103,
-    label: 'Required for'
+    targetNodeId: 147,
+    id: '1103',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    label: 'Presented in'
   },
   1111: {
     edgeId: 1111,
@@ -4147,7 +4603,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 111,
     targetNodeId: 155,
-    id: 1111,
+    id: '1111',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1121: {
@@ -4162,52 +4619,59 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 112,
     targetNodeId: 103,
-    id: 1121,
+    id: '1121',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     label: 'Performed by'
   },
   1122: {
     edgeId: 1122,
-    role: 'Required for',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1122,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1122
     },
     sourceNodeId: 112,
-    targetNodeId: 161,
-    id: 1122,
-    label: 'Required for'
+    targetNodeId: 51,
+    id: '1122',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1123: {
     edgeId: 1123,
-    role: 'Input into',
+    role: 'Required for',
     edgeProperties: {
       id: 1123,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-      objectPropertyRdfsLabel: 'Input into',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 1123
     },
     sourceNodeId: 112,
-    targetNodeId: 160,
-    id: 1123,
-    label: 'Input into'
+    targetNodeId: 161,
+    id: '1123',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   1124: {
     edgeId: 1124,
-    role: 'Subclass of',
+    role: 'Input into',
     edgeProperties: {
       id: 1124,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+      objectPropertyRdfsLabel: 'Input into',
       edgeId: 1124
     },
     sourceNodeId: 112,
-    targetNodeId: 51,
-    id: 1124,
-    label: 'Subclass of'
+    targetNodeId: 160,
+    id: '1124',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    label: 'Input into'
   },
   1131: {
     edgeId: 1131,
@@ -4221,96 +4685,108 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 113,
     targetNodeId: 177,
-    id: 1131,
+    id: '1131',
+    rdfsLabel: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
     label: 'Recorded in'
   },
   1132: {
     edgeId: 1132,
-    role: 'Recorded in',
+    role: 'Represented by',
     edgeProperties: {
       id: 1132,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-      objectPropertyRdfsLabel: 'Recorded in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+      objectPropertyRdfsLabel: 'Represented by',
       edgeId: 1132
     },
     sourceNodeId: 113,
-    targetNodeId: 67,
-    id: 1132,
-    label: 'Recorded in'
+    targetNodeId: 155,
+    id: '1132',
+    rdfsLabel: 'Represented by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+    label: 'Represented by'
   },
   1133: {
     edgeId: 1133,
-    role: 'Subclass of',
+    role: 'Recorded in',
     edgeProperties: {
       id: 1133,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+      objectPropertyRdfsLabel: 'Recorded in',
       edgeId: 1133
     },
     sourceNodeId: 113,
-    targetNodeId: 133,
-    id: 1133,
-    label: 'Subclass of'
+    targetNodeId: 67,
+    id: '1133',
+    rdfsLabel: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    label: 'Recorded in'
   },
   1134: {
     edgeId: 1134,
-    role: 'Represented by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1134,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
-      objectPropertyRdfsLabel: 'Represented by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1134
     },
     sourceNodeId: 113,
-    targetNodeId: 155,
-    id: 1134,
-    label: 'Represented by'
+    targetNodeId: 133,
+    id: '1134',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1141: {
     edgeId: 1141,
-    role: 'Provided to',
+    role: 'Performed by',
     edgeProperties: {
       id: 1141,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      objectPropertyRdfsLabel: 'Provided to',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 1141
     },
     sourceNodeId: 114,
-    targetNodeId: 192,
-    id: 1141,
-    label: 'Provided to'
+    targetNodeId: 122,
+    id: '1141',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   1142: {
     edgeId: 1142,
-    role: 'Performed by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1142,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1142
     },
     sourceNodeId: 114,
-    targetNodeId: 122,
-    id: 1142,
-    label: 'Performed by'
+    targetNodeId: 163,
+    id: '1142',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1143: {
     edgeId: 1143,
-    role: 'Subclass of',
+    role: 'Provided to',
     edgeProperties: {
       id: 1143,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+      objectPropertyRdfsLabel: 'Provided to',
       edgeId: 1143
     },
     sourceNodeId: 114,
-    targetNodeId: 163,
-    id: 1143,
-    label: 'Subclass of'
+    targetNodeId: 192,
+    id: '1143',
+    rdfsLabel: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    label: 'Provided to'
   },
   1151: {
     edgeId: 1151,
@@ -4323,7 +4799,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 115,
     targetNodeId: 51,
-    id: 1151,
+    id: '1151',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1161: {
@@ -4337,37 +4814,41 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 116,
     targetNodeId: 24,
-    id: 1161,
+    id: '1161',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1171: {
     edgeId: 1171,
-    role: 'Subclass of',
+    role: 'Completed before',
     edgeProperties: {
       id: 1171,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+      objectPropertyRdfsLabel: 'Completed before',
       edgeId: 1171
     },
     sourceNodeId: 117,
-    targetNodeId: 54,
-    id: 1171,
-    label: 'Subclass of'
+    targetNodeId: 115,
+    id: '1171',
+    rdfsLabel: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    label: 'Completed before'
   },
   1172: {
     edgeId: 1172,
-    role: 'Completed before',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1172,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-      objectPropertyRdfsLabel: 'Completed before',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1172
     },
     sourceNodeId: 117,
-    targetNodeId: 115,
-    id: 1172,
-    label: 'Completed before'
+    targetNodeId: 54,
+    id: '1172',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1181: {
     edgeId: 1181,
@@ -4380,7 +4861,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 118,
     targetNodeId: 163,
-    id: 1181,
+    id: '1181',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1191: {
@@ -4394,38 +4876,43 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 119,
     targetNodeId: 163,
-    id: 1191,
+    id: '1191',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1192: {
     edgeId: 1192,
-    role: 'Composed of',
+    role: 'Represented by',
     edgeProperties: {
       id: 1192,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-      objectPropertyRdfsLabel: 'Composed of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+      objectPropertyRdfsLabel: 'Represented by',
       edgeId: 1192
     },
     sourceNodeId: 119,
-    targetNodeId: 70,
-    id: 1192,
-    label: 'Composed of'
+    targetNodeId: 50,
+    id: '1192',
+    rdfsLabel: 'Represented by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+    label: 'Represented by'
   },
   1193: {
     edgeId: 1193,
-    role: 'Represented by',
+    role: 'Composed of',
     edgeProperties: {
       id: 1193,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
-      objectPropertyRdfsLabel: 'Represented by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+      objectPropertyRdfsLabel: 'Composed of',
       edgeId: 1193
     },
     sourceNodeId: 119,
-    targetNodeId: 50,
-    id: 1193,
-    label: 'Represented by'
+    targetNodeId: 70,
+    id: '1193',
+    rdfsLabel: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    label: 'Composed of'
   },
   1201: {
     edgeId: 1201,
@@ -4438,7 +4925,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 120,
     targetNodeId: 118,
-    id: 1201,
+    id: '1201',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1211: {
@@ -4452,23 +4940,26 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 121,
     targetNodeId: 141,
-    id: 1211,
+    id: '1211',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1221: {
     edgeId: 1221,
-    role: 'Controlled by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1221,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
-      objectPropertyRdfsLabel: 'Controlled by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1221
     },
     sourceNodeId: 122,
-    targetNodeId: 53,
-    id: 1221,
-    label: 'Controlled by'
+    targetNodeId: 123,
+    id: '1221',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1222: {
     edgeId: 1222,
@@ -4481,24 +4972,28 @@ export const objectPropertiesFromApi = {
       edgeId: 1222
     },
     sourceNodeId: 122,
-    targetNodeId: 192,
-    id: 1222,
+    targetNodeId: 53,
+    id: '1222',
+    rdfsLabel: 'Controlled by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
     label: 'Controlled by'
   },
   1223: {
     edgeId: 1223,
-    role: 'Affected by',
+    role: 'Controlled by',
     edgeProperties: {
       id: 1223,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
+      objectPropertyRdfsLabel: 'Controlled by',
       edgeId: 1223
     },
     sourceNodeId: 122,
-    targetNodeId: 123,
-    id: 1223,
-    label: 'Affected by'
+    targetNodeId: 192,
+    id: '1223',
+    rdfsLabel: 'Controlled by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
+    label: 'Controlled by'
   },
   1224: {
     edgeId: 1224,
@@ -4511,7 +5006,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 122,
     targetNodeId: 70,
-    id: 1224,
+    id: '1224',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1231: {
@@ -4525,23 +5021,26 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 123,
     targetNodeId: 91,
-    id: 1231,
+    id: '1231',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1241: {
     edgeId: 1241,
-    role: 'Informed by',
+    role: 'Conducted for',
     edgeProperties: {
       id: 1241,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-      objectPropertyRdfsLabel: 'Informed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
+      objectPropertyRdfsLabel: 'Conducted for',
       edgeId: 1241
     },
     sourceNodeId: 124,
-    targetNodeId: 68,
-    id: 1241,
-    label: 'Informed by'
+    targetNodeId: 176,
+    id: '1241',
+    rdfsLabel: 'Conducted for',
+    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
+    label: 'Conducted for'
   },
   1242: {
     edgeId: 1242,
@@ -4555,7 +5054,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 124,
     targetNodeId: 165,
-    id: 1242,
+    id: '1242',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
     label: 'Informed by'
   },
   1243: {
@@ -4570,7 +5071,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 124,
     targetNodeId: 20,
-    id: 1243,
+    id: '1243',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     label: 'Affected by'
   },
   1244: {
@@ -4584,81 +5087,90 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 124,
     targetNodeId: 118,
-    id: 1244,
+    id: '1244',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1245: {
     edgeId: 1245,
-    role: 'Conducted for',
+    role: 'Informed by',
     edgeProperties: {
       id: 1245,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
-      objectPropertyRdfsLabel: 'Conducted for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+      objectPropertyRdfsLabel: 'Informed by',
       edgeId: 1245
     },
     sourceNodeId: 124,
-    targetNodeId: 176,
-    id: 1245,
-    label: 'Conducted for'
+    targetNodeId: 68,
+    id: '1245',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    label: 'Informed by'
   },
   1251: {
     edgeId: 1251,
-    role: 'Completed before',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1251,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-      objectPropertyRdfsLabel: 'Completed before',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1251
     },
     sourceNodeId: 125,
-    targetNodeId: 117,
-    id: 1251,
-    label: 'Completed before'
+    targetNodeId: 54,
+    id: '1251',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1252: {
     edgeId: 1252,
-    role: 'Subclass of',
+    role: 'Completed before',
     edgeProperties: {
       id: 1252,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+      objectPropertyRdfsLabel: 'Completed before',
       edgeId: 1252
     },
     sourceNodeId: 125,
-    targetNodeId: 54,
-    id: 1252,
-    label: 'Subclass of'
+    targetNodeId: 117,
+    id: '1252',
+    rdfsLabel: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    label: 'Completed before'
   },
   1261: {
     edgeId: 1261,
-    role: 'Created by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1261,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-      objectPropertyRdfsLabel: 'Created by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1261
     },
     sourceNodeId: 126,
-    targetNodeId: 53,
-    id: 1261,
-    label: 'Created by'
+    targetNodeId: 76,
+    id: '1261',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1262: {
     edgeId: 1262,
-    role: 'Subclass of',
+    role: 'Created by',
     edgeProperties: {
       id: 1262,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+      objectPropertyRdfsLabel: 'Created by',
       edgeId: 1262
     },
     sourceNodeId: 126,
-    targetNodeId: 76,
-    id: 1262,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '1262',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    label: 'Created by'
   },
   1271: {
     edgeId: 1271,
@@ -4672,7 +5184,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 127,
     targetNodeId: 53,
-    id: 1271,
+    id: '1271',
+    rdfsLabel: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
     label: 'Used by'
   },
   1272: {
@@ -4687,7 +5201,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 127,
     targetNodeId: 12,
-    id: 1272,
+    id: '1272',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
     label: 'Used in'
   },
   1273: {
@@ -4701,52 +5217,58 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 127,
     targetNodeId: 113,
-    id: 1273,
+    id: '1273',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1281: {
     edgeId: 1281,
-    role: 'Subclass of',
+    role: 'Employed by',
     edgeProperties: {
       id: 1281,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
+      objectPropertyRdfsLabel: 'Employed by',
       edgeId: 1281
     },
     sourceNodeId: 128,
-    targetNodeId: 163,
-    id: 1281,
-    label: 'Subclass of'
+    targetNodeId: 170,
+    id: '1281',
+    rdfsLabel: 'Employed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
+    label: 'Employed by'
   },
   1282: {
     edgeId: 1282,
-    role: 'Required for',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1282,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1282
     },
     sourceNodeId: 128,
-    targetNodeId: 137,
-    id: 1282,
-    label: 'Required for'
+    targetNodeId: 163,
+    id: '1282',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1283: {
     edgeId: 1283,
-    role: 'Employed by',
+    role: 'Required for',
     edgeProperties: {
       id: 1283,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
-      objectPropertyRdfsLabel: 'Employed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 1283
     },
     sourceNodeId: 128,
-    targetNodeId: 170,
-    id: 1283,
-    label: 'Employed by'
+    targetNodeId: 137,
+    id: '1283',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   1291: {
     edgeId: 1291,
@@ -4759,7 +5281,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 129,
     targetNodeId: 38,
-    id: 1291,
+    id: '1291',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1301: {
@@ -4773,37 +5296,43 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 130,
     targetNodeId: 70,
-    id: 1301,
+    id: '1301',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1311: {
     edgeId: 1311,
-    role: 'Subclass of',
+    role: 'Located at',
     edgeProperties: {
       id: 1311,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+      objectPropertyRdfsLabel: 'Located at',
       edgeId: 1311
     },
     sourceNodeId: 131,
-    targetNodeId: 62,
-    id: 1311,
-    label: 'Subclass of'
+    targetNodeId: 39,
+    id: '1311',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    label: 'Located at'
   },
   1312: {
     edgeId: 1312,
-    role: 'Located at',
+    role: 'Detected by',
     edgeProperties: {
       id: 1312,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-      objectPropertyRdfsLabel: 'Located at',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
+      objectPropertyRdfsLabel: 'Detected by',
       edgeId: 1312
     },
     sourceNodeId: 131,
-    targetNodeId: 39,
-    id: 1312,
-    label: 'Located at'
+    targetNodeId: 192,
+    id: '1312',
+    rdfsLabel: 'Detected by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
+    label: 'Detected by'
   },
   1313: {
     edgeId: 1313,
@@ -4817,53 +5346,59 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 131,
     targetNodeId: 181,
-    id: 1313,
+    id: '1313',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
     label: 'Located at'
   },
   1314: {
     edgeId: 1314,
-    role: 'Attended by',
+    role: 'Detected by',
     edgeProperties: {
       id: 1314,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDKQk63bgl4QNsF9Hoy84CF',
-      objectPropertyRdfsLabel: 'Attended by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
+      objectPropertyRdfsLabel: 'Detected by',
       edgeId: 1314
     },
     sourceNodeId: 131,
-    targetNodeId: 42,
-    id: 1314,
-    label: 'Attended by'
+    targetNodeId: 53,
+    id: '1314',
+    rdfsLabel: 'Detected by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
+    label: 'Detected by'
   },
   1315: {
     edgeId: 1315,
-    role: 'Detected by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1315,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
-      objectPropertyRdfsLabel: 'Detected by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1315
     },
     sourceNodeId: 131,
-    targetNodeId: 53,
-    id: 1315,
-    label: 'Detected by'
+    targetNodeId: 62,
+    id: '1315',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1316: {
     edgeId: 1316,
-    role: 'Detected by',
+    role: 'Attended by',
     edgeProperties: {
       id: 1316,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
-      objectPropertyRdfsLabel: 'Detected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDKQk63bgl4QNsF9Hoy84CF',
+      objectPropertyRdfsLabel: 'Attended by',
       edgeId: 1316
     },
     sourceNodeId: 131,
-    targetNodeId: 192,
-    id: 1316,
-    label: 'Detected by'
+    targetNodeId: 42,
+    id: '1316',
+    rdfsLabel: 'Attended by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDKQk63bgl4QNsF9Hoy84CF',
+    label: 'Attended by'
   },
   1321: {
     edgeId: 1321,
@@ -4876,7 +5411,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 132,
     targetNodeId: 163,
-    id: 1321,
+    id: '1321',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1322: {
@@ -4891,7 +5427,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 132,
     targetNodeId: 176,
-    id: 1322,
+    id: '1322',
+    rdfsLabel: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
     label: 'Applied to'
   },
   1341: {
@@ -4905,7 +5443,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 134,
     targetNodeId: 162,
-    id: 1341,
+    id: '1341',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1351: {
@@ -4919,7 +5458,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 135,
     targetNodeId: 118,
-    id: 1351,
+    id: '1351',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1361: {
@@ -4933,7 +5473,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 136,
     targetNodeId: 1,
-    id: 1361,
+    id: '1361',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1371: {
@@ -4948,7 +5489,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 137,
     targetNodeId: 144,
-    id: 1371,
+    id: '1371',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
     label: 'Required for'
   },
   1372: {
@@ -4962,23 +5505,26 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 137,
     targetNodeId: 163,
-    id: 1372,
+    id: '1372',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1381: {
     edgeId: 1381,
-    role: 'Affected by',
+    role: 'Associated with',
     edgeProperties: {
       id: 1381,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 1381
     },
     sourceNodeId: 138,
-    targetNodeId: 131,
-    id: 1381,
-    label: 'Affected by'
+    targetNodeId: 84,
+    id: '1381',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   1382: {
     edgeId: 1382,
@@ -4992,22 +5538,27 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 138,
     targetNodeId: 160,
-    id: 1382,
+    id: '1382',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
     label: 'Input into'
   },
   1383: {
     edgeId: 1383,
-    role: 'Subclass of',
+    role: 'Measured at',
     edgeProperties: {
       id: 1383,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
+      objectPropertyRdfsLabel: 'Measured at',
       edgeId: 1383
     },
     sourceNodeId: 138,
-    targetNodeId: 191,
-    id: 1383,
-    label: 'Subclass of'
+    targetNodeId: 181,
+    id: '1383',
+    rdfsLabel: 'Measured at',
+    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
+    label: 'Measured at'
   },
   1384: {
     edgeId: 1384,
@@ -5021,143 +5572,159 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 138,
     targetNodeId: 122,
-    id: 1384,
+    id: '1384',
+    rdfsLabel: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
     label: 'Measured by'
   },
   1385: {
     edgeId: 1385,
-    role: 'Associated with',
+    role: 'Affected by',
     edgeProperties: {
       id: 1385,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1385
     },
     sourceNodeId: 138,
-    targetNodeId: 84,
-    id: 1385,
-    label: 'Associated with'
+    targetNodeId: 131,
+    id: '1385',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1386: {
     edgeId: 1386,
-    role: 'Measured at',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1386,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
-      objectPropertyRdfsLabel: 'Measured at',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1386
     },
     sourceNodeId: 138,
-    targetNodeId: 181,
-    id: 1386,
-    label: 'Measured at'
+    targetNodeId: 191,
+    id: '1386',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1391: {
     edgeId: 1391,
-    role: 'Affected by',
+    role: 'Performed from',
     edgeProperties: {
       id: 1391,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx',
+      objectPropertyRdfsLabel: 'Performed from',
       edgeId: 1391
     },
     sourceNodeId: 139,
-    targetNodeId: 87,
-    id: 1391,
-    label: 'Affected by'
+    targetNodeId: 84,
+    id: '1391',
+    rdfsLabel: 'Performed from',
+    rdfAbout: 'http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx',
+    label: 'Performed from'
   },
   1392: {
     edgeId: 1392,
-    role: 'Affected by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1392,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1392
     },
     sourceNodeId: 139,
-    targetNodeId: 123,
-    id: 1392,
-    label: 'Affected by'
+    targetNodeId: 62,
+    id: '1392',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1393: {
     edgeId: 1393,
-    role: 'Performed by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1393,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1393
     },
     sourceNodeId: 139,
-    targetNodeId: 103,
-    id: 1393,
-    label: 'Performed by'
+    targetNodeId: 72,
+    id: '1393',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1394: {
     edgeId: 1394,
-    role: 'Performed from',
+    role: 'Bounded by',
     edgeProperties: {
       id: 1394,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx',
-      objectPropertyRdfsLabel: 'Performed from',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+      objectPropertyRdfsLabel: 'Bounded by',
       edgeId: 1394
     },
     sourceNodeId: 139,
-    targetNodeId: 84,
-    id: 1394,
-    label: 'Performed from'
+    targetNodeId: 181,
+    id: '1394',
+    rdfsLabel: 'Bounded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+    label: 'Bounded by'
   },
   1395: {
     edgeId: 1395,
-    role: 'Bounded by',
+    role: 'Measured by',
     edgeProperties: {
       id: 1395,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
-      objectPropertyRdfsLabel: 'Bounded by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+      objectPropertyRdfsLabel: 'Measured by',
       edgeId: 1395
     },
     sourceNodeId: 139,
-    targetNodeId: 181,
-    id: 1395,
-    label: 'Bounded by'
+    targetNodeId: 122,
+    id: '1395',
+    rdfsLabel: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    label: 'Measured by'
   },
   1396: {
     edgeId: 1396,
-    role: 'Measured by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1396,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-      objectPropertyRdfsLabel: 'Measured by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1396
     },
     sourceNodeId: 139,
-    targetNodeId: 122,
-    id: 1396,
-    label: 'Measured by'
+    targetNodeId: 123,
+    id: '1396',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1397: {
     edgeId: 1397,
-    role: 'Affected by',
+    role: 'Achieved by',
     edgeProperties: {
       id: 1397,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+      objectPropertyRdfsLabel: 'Achieved by',
       edgeId: 1397
     },
     sourceNodeId: 139,
-    targetNodeId: 72,
-    id: 1397,
-    label: 'Affected by'
+    targetNodeId: 32,
+    id: '1397',
+    rdfsLabel: 'Achieved by',
+    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+    label: 'Achieved by'
   },
   1398: {
     edgeId: 1398,
@@ -5171,38 +5738,44 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 139,
     targetNodeId: 131,
-    id: 1398,
+    id: '1398',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     label: 'Affected by'
   },
   1399: {
     edgeId: 1399,
-    role: 'Achieved by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1399,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
-      objectPropertyRdfsLabel: 'Achieved by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1399
     },
     sourceNodeId: 139,
-    targetNodeId: 32,
-    id: 1399,
-    label: 'Achieved by'
+    targetNodeId: 87,
+    id: '1399',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1401: {
     edgeId: 1401,
-    role: 'Used in',
+    role: 'Summarised in',
     edgeProperties: {
       id: 1401,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-      objectPropertyRdfsLabel: 'Used in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+      objectPropertyRdfsLabel: 'Summarised in',
       edgeId: 1401
     },
     sourceNodeId: 140,
-    targetNodeId: 137,
-    id: 1401,
-    label: 'Used in'
+    targetNodeId: 147,
+    id: '1401',
+    rdfsLabel: 'Summarised in',
+    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+    label: 'Summarised in'
   },
   1402: {
     edgeId: 1402,
@@ -5216,53 +5789,59 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 140,
     targetNodeId: 144,
-    id: 1402,
+    id: '1402',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
     label: 'Required for'
   },
   1403: {
     edgeId: 1403,
-    role: 'Used in',
+    role: 'Updated by',
     edgeProperties: {
       id: 1403,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-      objectPropertyRdfsLabel: 'Used in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
+      objectPropertyRdfsLabel: 'Updated by',
       edgeId: 1403
     },
     sourceNodeId: 140,
-    targetNodeId: 12,
-    id: 1403,
-    label: 'Used in'
+    targetNodeId: 53,
+    id: '1403',
+    rdfsLabel: 'Updated by',
+    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
+    label: 'Updated by'
   },
   1404: {
     edgeId: 1404,
-    role: 'Updated by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1404,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
-      objectPropertyRdfsLabel: 'Updated by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1404
     },
     sourceNodeId: 140,
-    targetNodeId: 53,
-    id: 1404,
-    label: 'Updated by'
+    targetNodeId: 147,
+    id: '1404',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1405: {
     edgeId: 1405,
-    role: 'Summarised in',
+    role: 'Used in',
     edgeProperties: {
       id: 1405,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
-      objectPropertyRdfsLabel: 'Summarised in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+      objectPropertyRdfsLabel: 'Used in',
       edgeId: 1405
     },
     sourceNodeId: 140,
-    targetNodeId: 147,
-    id: 1405,
-    label: 'Summarised in'
+    targetNodeId: 12,
+    id: '1405',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    label: 'Used in'
   },
   1406: {
     edgeId: 1406,
@@ -5276,22 +5855,27 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 140,
     targetNodeId: 67,
-    id: 1406,
+    id: '1406',
+    rdfsLabel: 'Updated by',
+    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
     label: 'Updated by'
   },
   1407: {
     edgeId: 1407,
-    role: 'Subclass of',
+    role: 'Used in',
     edgeProperties: {
       id: 1407,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+      objectPropertyRdfsLabel: 'Used in',
       edgeId: 1407
     },
     sourceNodeId: 140,
-    targetNodeId: 147,
-    id: 1407,
-    label: 'Subclass of'
+    targetNodeId: 137,
+    id: '1407',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    label: 'Used in'
   },
   1411: {
     edgeId: 1411,
@@ -5305,7 +5889,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 141,
     targetNodeId: 67,
-    id: 1411,
+    id: '1411',
+    rdfsLabel: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
     label: 'Managed within'
   },
   1412: {
@@ -5320,7 +5906,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 141,
     targetNodeId: 53,
-    id: 1412,
+    id: '1412',
+    rdfsLabel: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
     label: 'Managed by'
   },
   1413: {
@@ -5334,7 +5922,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 141,
     targetNodeId: 133,
-    id: 1413,
+    id: '1413',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1421: {
@@ -5348,7 +5937,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 142,
     targetNodeId: 132,
-    id: 1421,
+    id: '1421',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1431: {
@@ -5362,126 +5952,141 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 143,
     targetNodeId: 118,
-    id: 1431,
+    id: '1431',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1441: {
     edgeId: 1441,
-    role: 'Subclass of',
+    role: 'Summarised in',
     edgeProperties: {
       id: 1441,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+      objectPropertyRdfsLabel: 'Summarised in',
       edgeId: 1441
     },
     sourceNodeId: 144,
-    targetNodeId: 161,
-    id: 1441,
-    label: 'Subclass of'
+    targetNodeId: 147,
+    id: '1441',
+    rdfsLabel: 'Summarised in',
+    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+    label: 'Summarised in'
   },
   1442: {
     edgeId: 1442,
-    role: 'Controlled by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1442,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
-      objectPropertyRdfsLabel: 'Controlled by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1442
     },
     sourceNodeId: 144,
-    targetNodeId: 183,
-    id: 1442,
-    label: 'Controlled by'
+    targetNodeId: 36,
+    id: '1442',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1443: {
     edgeId: 1443,
-    role: 'Affected by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1443,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1443
     },
     sourceNodeId: 144,
-    targetNodeId: 36,
-    id: 1443,
-    label: 'Affected by'
+    targetNodeId: 161,
+    id: '1443',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1444: {
     edgeId: 1444,
-    role: 'Summarised in',
+    role: 'Controlled by',
     edgeProperties: {
       id: 1444,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
-      objectPropertyRdfsLabel: 'Summarised in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
+      objectPropertyRdfsLabel: 'Controlled by',
       edgeId: 1444
     },
     sourceNodeId: 144,
-    targetNodeId: 147,
-    id: 1444,
-    label: 'Summarised in'
+    targetNodeId: 183,
+    id: '1444',
+    rdfsLabel: 'Controlled by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
+    label: 'Controlled by'
   },
   1445: {
     edgeId: 1445,
-    role: 'Governed by',
+    role: 'Performed by',
     edgeProperties: {
       id: 1445,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-      objectPropertyRdfsLabel: 'Governed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 1445
     },
     sourceNodeId: 144,
-    targetNodeId: 142,
-    id: 1445,
-    label: 'Governed by'
+    targetNodeId: 53,
+    id: '1445',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   1446: {
     edgeId: 1446,
-    role: 'Performed by',
+    role: 'Governed by',
     edgeProperties: {
       id: 1446,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+      objectPropertyRdfsLabel: 'Governed by',
       edgeId: 1446
     },
     sourceNodeId: 144,
-    targetNodeId: 53,
-    id: 1446,
-    label: 'Performed by'
+    targetNodeId: 142,
+    id: '1446',
+    rdfsLabel: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+    label: 'Governed by'
   },
   1451: {
     edgeId: 1451,
-    role: 'Conducted for',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1451,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
-      objectPropertyRdfsLabel: 'Conducted for',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1451
     },
     sourceNodeId: 145,
-    targetNodeId: 161,
-    id: 1451,
-    label: 'Conducted for'
+    targetNodeId: 178,
+    id: '1451',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1452: {
     edgeId: 1452,
-    role: 'Subclass of',
+    role: 'Conducted for',
     edgeProperties: {
       id: 1452,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
+      objectPropertyRdfsLabel: 'Conducted for',
       edgeId: 1452
     },
     sourceNodeId: 145,
-    targetNodeId: 178,
-    id: 1452,
-    label: 'Subclass of'
+    targetNodeId: 103,
+    id: '1452',
+    rdfsLabel: 'Conducted for',
+    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
+    label: 'Conducted for'
   },
   1453: {
     edgeId: 1453,
@@ -5494,8 +6099,10 @@ export const objectPropertiesFromApi = {
       edgeId: 1453
     },
     sourceNodeId: 145,
-    targetNodeId: 103,
-    id: 1453,
+    targetNodeId: 161,
+    id: '1453',
+    rdfsLabel: 'Conducted for',
+    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
     label: 'Conducted for'
   },
   1454: {
@@ -5510,22 +6117,27 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 145,
     targetNodeId: 65,
-    id: 1454,
+    id: '1454',
+    rdfsLabel: 'Conducted for',
+    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
     label: 'Conducted for'
   },
   1461: {
     edgeId: 1461,
-    role: 'Subclass of',
+    role: 'Employed by',
     edgeProperties: {
       id: 1461,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
+      objectPropertyRdfsLabel: 'Employed by',
       edgeId: 1461
     },
     sourceNodeId: 146,
-    targetNodeId: 133,
-    id: 1461,
-    label: 'Subclass of'
+    targetNodeId: 170,
+    id: '1461',
+    rdfsLabel: 'Employed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
+    label: 'Employed by'
   },
   1462: {
     edgeId: 1462,
@@ -5539,52 +6151,59 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 146,
     targetNodeId: 25,
-    id: 1462,
+    id: '1462',
+    rdfsLabel: 'Paid through',
+    rdfAbout: 'http://webprotege.stanford.edu/RCO41EY55jxxkXEYAsRnzul',
     label: 'Paid through'
   },
   1463: {
     edgeId: 1463,
-    role: 'Employed by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1463,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
-      objectPropertyRdfsLabel: 'Employed by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1463
     },
     sourceNodeId: 146,
-    targetNodeId: 170,
-    id: 1463,
-    label: 'Employed by'
+    targetNodeId: 133,
+    id: '1463',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1471: {
     edgeId: 1471,
-    role: 'Subclass of',
+    role: 'Provided to',
     edgeProperties: {
       id: 1471,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+      objectPropertyRdfsLabel: 'Provided to',
       edgeId: 1471
     },
     sourceNodeId: 147,
-    targetNodeId: 141,
-    id: 1471,
-    label: 'Subclass of'
+    targetNodeId: 65,
+    id: '1471',
+    rdfsLabel: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    label: 'Provided to'
   },
   1472: {
     edgeId: 1472,
-    role: 'Provided to',
+    role: 'Requested by',
     edgeProperties: {
       id: 1472,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      objectPropertyRdfsLabel: 'Provided to',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+      objectPropertyRdfsLabel: 'Requested by',
       edgeId: 1472
     },
     sourceNodeId: 147,
-    targetNodeId: 170,
-    id: 1472,
-    label: 'Provided to'
+    targetNodeId: 65,
+    id: '1472',
+    rdfsLabel: 'Requested by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+    label: 'Requested by'
   },
   1473: {
     edgeId: 1473,
@@ -5598,127 +6217,142 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 147,
     targetNodeId: 53,
-    id: 1473,
+    id: '1473',
+    rdfsLabel: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
     label: 'Reviewed by'
   },
   1474: {
     edgeId: 1474,
-    role: 'Provided to',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1474,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      objectPropertyRdfsLabel: 'Provided to',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1474
     },
     sourceNodeId: 147,
-    targetNodeId: 65,
-    id: 1474,
-    label: 'Provided to'
+    targetNodeId: 141,
+    id: '1474',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1475: {
     edgeId: 1475,
-    role: 'Requested by',
+    role: 'Provided to',
     edgeProperties: {
       id: 1475,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
-      objectPropertyRdfsLabel: 'Requested by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+      objectPropertyRdfsLabel: 'Provided to',
       edgeId: 1475
     },
     sourceNodeId: 147,
-    targetNodeId: 65,
-    id: 1475,
-    label: 'Requested by'
+    targetNodeId: 170,
+    id: '1475',
+    rdfsLabel: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    label: 'Provided to'
   },
   1481: {
     edgeId: 1481,
-    role: 'Created by',
+    role: 'Required for',
     edgeProperties: {
       id: 1481,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-      objectPropertyRdfsLabel: 'Created by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 1481
     },
     sourceNodeId: 148,
-    targetNodeId: 53,
-    id: 1481,
-    label: 'Created by'
+    targetNodeId: 144,
+    id: '1481',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   1482: {
     edgeId: 1482,
-    role: 'Subclass of',
+    role: 'Created by',
     edgeProperties: {
       id: 1482,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+      objectPropertyRdfsLabel: 'Created by',
       edgeId: 1482
     },
     sourceNodeId: 148,
-    targetNodeId: 29,
-    id: 1482,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '1482',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    label: 'Created by'
   },
   1483: {
     edgeId: 1483,
-    role: 'Required for',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1483,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1483
     },
     sourceNodeId: 148,
-    targetNodeId: 144,
-    id: 1483,
-    label: 'Required for'
+    targetNodeId: 29,
+    id: '1483',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1491: {
     edgeId: 1491,
-    role: 'Included in',
+    role: 'Performed by',
     edgeProperties: {
       id: 1491,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-      objectPropertyRdfsLabel: 'Included in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 1491
     },
     sourceNodeId: 149,
-    targetNodeId: 154,
-    id: 1491,
-    label: 'Included in'
+    targetNodeId: 53,
+    id: '1491',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   1492: {
     edgeId: 1492,
-    role: 'Performed on',
+    role: 'Included in',
     edgeProperties: {
       id: 1492,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
-      objectPropertyRdfsLabel: 'Performed on',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+      objectPropertyRdfsLabel: 'Included in',
       edgeId: 1492
     },
     sourceNodeId: 149,
-    targetNodeId: 70,
-    id: 1492,
-    label: 'Performed on'
+    targetNodeId: 154,
+    id: '1492',
+    rdfsLabel: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    label: 'Included in'
   },
   1493: {
     edgeId: 1493,
-    role: 'Performed by',
+    role: 'Performed on',
     edgeProperties: {
       id: 1493,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+      objectPropertyRdfsLabel: 'Performed on',
       edgeId: 1493
     },
     sourceNodeId: 149,
-    targetNodeId: 53,
-    id: 1493,
-    label: 'Performed by'
+    targetNodeId: 70,
+    id: '1493',
+    rdfsLabel: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+    label: 'Performed on'
   },
   1494: {
     edgeId: 1494,
@@ -5731,7 +6365,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 149,
     targetNodeId: 51,
-    id: 1494,
+    id: '1494',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1501: {
@@ -5745,7 +6380,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 150,
     targetNodeId: 85,
-    id: 1501,
+    id: '1501',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1502: {
@@ -5760,7 +6396,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 150,
     targetNodeId: 128,
-    id: 1502,
+    id: '1502',
+    rdfsLabel: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
     label: 'Provided to'
   },
   1511: {
@@ -5774,38 +6412,41 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 151,
     targetNodeId: 91,
-    id: 1511,
+    id: '1511',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1521: {
     edgeId: 1521,
-    role: 'Created for',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1521,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-      objectPropertyRdfsLabel: 'Created for',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1521
     },
     sourceNodeId: 152,
-    targetNodeId: 161,
-    id: 1521,
-    label: 'Created for'
+    targetNodeId: 76,
+    id: '1521',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1522: {
     edgeId: 1522,
-    role: 'Created by',
+    role: 'Created for',
     edgeProperties: {
       id: 1522,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-      objectPropertyRdfsLabel: 'Created by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+      objectPropertyRdfsLabel: 'Created for',
       edgeId: 1522
     },
     sourceNodeId: 152,
-    targetNodeId: 53,
-    id: 1522,
-    label: 'Created by'
+    targetNodeId: 21,
+    id: '1522',
+    rdfsLabel: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    label: 'Created for'
   },
   1523: {
     edgeId: 1523,
@@ -5818,38 +6459,45 @@ export const objectPropertiesFromApi = {
       edgeId: 1523
     },
     sourceNodeId: 152,
-    targetNodeId: 21,
-    id: 1523,
+    targetNodeId: 161,
+    id: '1523',
+    rdfsLabel: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
     label: 'Created for'
   },
   1524: {
     edgeId: 1524,
-    role: 'Informed by',
+    role: 'Created by',
     edgeProperties: {
       id: 1524,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-      objectPropertyRdfsLabel: 'Informed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+      objectPropertyRdfsLabel: 'Created by',
       edgeId: 1524
     },
     sourceNodeId: 152,
-    targetNodeId: 65,
-    id: 1524,
-    label: 'Informed by'
+    targetNodeId: 53,
+    id: '1524',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    label: 'Created by'
   },
   1525: {
     edgeId: 1525,
-    role: 'Subclass of',
+    role: 'Informed by',
     edgeProperties: {
       id: 1525,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+      objectPropertyRdfsLabel: 'Informed by',
       edgeId: 1525
     },
     sourceNodeId: 152,
-    targetNodeId: 76,
-    id: 1525,
-    label: 'Subclass of'
+    targetNodeId: 65,
+    id: '1525',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    label: 'Informed by'
   },
   1531: {
     edgeId: 1531,
@@ -5862,52 +6510,58 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 153,
     targetNodeId: 69,
-    id: 1531,
+    id: '1531',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1541: {
     edgeId: 1541,
-    role: 'Required for',
+    role: 'Created for',
     edgeProperties: {
       id: 1541,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-      objectPropertyRdfsLabel: 'Required for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+      objectPropertyRdfsLabel: 'Created for',
       edgeId: 1541
     },
     sourceNodeId: 154,
-    targetNodeId: 137,
-    id: 1541,
-    label: 'Required for'
+    targetNodeId: 161,
+    id: '1541',
+    rdfsLabel: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    label: 'Created for'
   },
   1542: {
     edgeId: 1542,
-    role: 'Subclass of',
+    role: 'Agreed with',
     edgeProperties: {
       id: 1542,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+      objectPropertyRdfsLabel: 'Agreed with',
       edgeId: 1542
     },
     sourceNodeId: 154,
-    targetNodeId: 176,
-    id: 1542,
-    label: 'Subclass of'
+    targetNodeId: 65,
+    id: '1542',
+    rdfsLabel: 'Agreed with',
+    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+    label: 'Agreed with'
   },
   1543: {
     edgeId: 1543,
-    role: 'Agreed with',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1543,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
-      objectPropertyRdfsLabel: 'Agreed with',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1543
     },
     sourceNodeId: 154,
-    targetNodeId: 65,
-    id: 1543,
-    label: 'Agreed with'
+    targetNodeId: 176,
+    id: '1543',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1544: {
     edgeId: 1544,
@@ -5920,39 +6574,45 @@ export const objectPropertiesFromApi = {
       edgeId: 1544
     },
     sourceNodeId: 154,
-    targetNodeId: 144,
-    id: 1544,
+    targetNodeId: 137,
+    id: '1544',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
     label: 'Required for'
   },
   1545: {
     edgeId: 1545,
-    role: 'Created for',
+    role: 'Required for',
     edgeProperties: {
       id: 1545,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-      objectPropertyRdfsLabel: 'Created for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+      objectPropertyRdfsLabel: 'Required for',
       edgeId: 1545
     },
     sourceNodeId: 154,
-    targetNodeId: 161,
-    id: 1545,
-    label: 'Created for'
+    targetNodeId: 144,
+    id: '1545',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    label: 'Required for'
   },
   1551: {
     edgeId: 1551,
-    role: 'Created for',
+    role: 'Reviewed by',
     edgeProperties: {
       id: 1551,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-      objectPropertyRdfsLabel: 'Created for',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+      objectPropertyRdfsLabel: 'Reviewed by',
       edgeId: 1551
     },
     sourceNodeId: 155,
-    targetNodeId: 195,
-    id: 1551,
-    label: 'Created for'
+    targetNodeId: 65,
+    id: '1551',
+    rdfsLabel: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    label: 'Reviewed by'
   },
   1552: {
     edgeId: 1552,
@@ -5966,140 +6626,157 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 155,
     targetNodeId: 144,
-    id: 1552,
+    id: '1552',
+    rdfsLabel: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
     label: 'Created for'
   },
   1553: {
     edgeId: 1553,
-    role: 'Subclass of',
+    role: 'Created for',
     edgeProperties: {
       id: 1553,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+      objectPropertyRdfsLabel: 'Created for',
       edgeId: 1553
     },
     sourceNodeId: 155,
-    targetNodeId: 29,
-    id: 1553,
-    label: 'Subclass of'
+    targetNodeId: 195,
+    id: '1553',
+    rdfsLabel: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    label: 'Created for'
   },
   1554: {
     edgeId: 1554,
-    role: 'Reviewed by',
+    role: 'Created by',
     edgeProperties: {
       id: 1554,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-      objectPropertyRdfsLabel: 'Reviewed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+      objectPropertyRdfsLabel: 'Created by',
       edgeId: 1554
     },
     sourceNodeId: 155,
-    targetNodeId: 65,
-    id: 1554,
-    label: 'Reviewed by'
+    targetNodeId: 53,
+    id: '1554',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    label: 'Created by'
   },
   1555: {
     edgeId: 1555,
-    role: 'Created by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1555,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-      objectPropertyRdfsLabel: 'Created by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1555
     },
     sourceNodeId: 155,
-    targetNodeId: 53,
-    id: 1555,
-    label: 'Created by'
+    targetNodeId: 29,
+    id: '1555',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1561: {
     edgeId: 1561,
-    role: 'Completed before',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1561,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-      objectPropertyRdfsLabel: 'Completed before',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1561
     },
     sourceNodeId: 156,
-    targetNodeId: 187,
-    id: 1561,
-    label: 'Completed before'
+    targetNodeId: 54,
+    id: '1561',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1562: {
     edgeId: 1562,
-    role: 'Subclass of',
+    role: 'Completed before',
     edgeProperties: {
       id: 1562,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+      objectPropertyRdfsLabel: 'Completed before',
       edgeId: 1562
     },
     sourceNodeId: 156,
-    targetNodeId: 54,
-    id: 1562,
-    label: 'Subclass of'
+    targetNodeId: 187,
+    id: '1562',
+    rdfsLabel: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    label: 'Completed before'
   },
   1571: {
     edgeId: 1571,
-    role: 'Subclass of',
+    role: 'Issued by',
     edgeProperties: {
       id: 1571,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
+      objectPropertyRdfsLabel: 'Issued by',
       edgeId: 1571
     },
     sourceNodeId: 157,
-    targetNodeId: 85,
-    id: 1571,
-    label: 'Subclass of'
+    targetNodeId: 128,
+    id: '1571',
+    rdfsLabel: 'Issued by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
+    label: 'Issued by'
   },
   1572: {
     edgeId: 1572,
-    role: 'Issued to',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1572,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Fp5FKHZWgNVNiLcHuAtPf',
-      objectPropertyRdfsLabel: 'Issued to',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1572
     },
     sourceNodeId: 157,
-    targetNodeId: 170,
-    id: 1572,
-    label: 'Issued to'
+    targetNodeId: 85,
+    id: '1572',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1573: {
     edgeId: 1573,
-    role: 'Reconciled by',
+    role: 'Issued to',
     edgeProperties: {
       id: 1573,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
-      objectPropertyRdfsLabel: 'Reconciled by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Fp5FKHZWgNVNiLcHuAtPf',
+      objectPropertyRdfsLabel: 'Issued to',
       edgeId: 1573
     },
     sourceNodeId: 157,
-    targetNodeId: 25,
-    id: 1573,
-    label: 'Reconciled by'
+    targetNodeId: 170,
+    id: '1573',
+    rdfsLabel: 'Issued to',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Fp5FKHZWgNVNiLcHuAtPf',
+    label: 'Issued to'
   },
   1574: {
     edgeId: 1574,
-    role: 'Issued by',
+    role: 'Reconciled by',
     edgeProperties: {
       id: 1574,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
-      objectPropertyRdfsLabel: 'Issued by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
+      objectPropertyRdfsLabel: 'Reconciled by',
       edgeId: 1574
     },
     sourceNodeId: 157,
-    targetNodeId: 128,
-    id: 1574,
-    label: 'Issued by'
+    targetNodeId: 25,
+    id: '1574',
+    rdfsLabel: 'Reconciled by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
+    label: 'Reconciled by'
   },
   1581: {
     edgeId: 1581,
@@ -6112,38 +6789,43 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 158,
     targetNodeId: 87,
-    id: 1581,
+    id: '1581',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1582: {
     edgeId: 1582,
-    role: 'Updated by',
+    role: 'Applied to',
     edgeProperties: {
       id: 1582,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
-      objectPropertyRdfsLabel: 'Updated by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+      objectPropertyRdfsLabel: 'Applied to',
       edgeId: 1582
     },
     sourceNodeId: 158,
-    targetNodeId: 53,
-    id: 1582,
-    label: 'Updated by'
+    targetNodeId: 39,
+    id: '1582',
+    rdfsLabel: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    label: 'Applied to'
   },
   1583: {
     edgeId: 1583,
-    role: 'Applied to',
+    role: 'Updated by',
     edgeProperties: {
       id: 1583,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-      objectPropertyRdfsLabel: 'Applied to',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
+      objectPropertyRdfsLabel: 'Updated by',
       edgeId: 1583
     },
     sourceNodeId: 158,
-    targetNodeId: 39,
-    id: 1583,
-    label: 'Applied to'
+    targetNodeId: 53,
+    id: '1583',
+    rdfsLabel: 'Updated by',
+    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
+    label: 'Updated by'
   },
   1584: {
     edgeId: 1584,
@@ -6157,7 +6839,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 158,
     targetNodeId: 67,
-    id: 1584,
+    id: '1584',
+    rdfsLabel: 'Updated by',
+    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
     label: 'Updated by'
   },
   1591: {
@@ -6171,7 +6855,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 159,
     targetNodeId: 184,
-    id: 1591,
+    id: '1591',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1601: {
@@ -6185,171 +6870,192 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 160,
     targetNodeId: 192,
-    id: 1601,
+    id: '1601',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1611: {
     edgeId: 1611,
-    role: 'Bounded by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1611,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
-      objectPropertyRdfsLabel: 'Bounded by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1611
     },
     sourceNodeId: 161,
-    targetNodeId: 144,
-    id: 1611,
-    label: 'Bounded by'
+    targetNodeId: 31,
+    id: '1611',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1612: {
     edgeId: 1612,
-    role: 'Subclass of',
+    role: 'Bounded by',
     edgeProperties: {
       id: 1612,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+      objectPropertyRdfsLabel: 'Bounded by',
       edgeId: 1612
     },
     sourceNodeId: 161,
-    targetNodeId: 2,
-    id: 1612,
-    label: 'Subclass of'
+    targetNodeId: 144,
+    id: '1612',
+    rdfsLabel: 'Bounded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+    label: 'Bounded by'
   },
   1613: {
     edgeId: 1613,
-    role: 'Affected by',
+    role: 'Operated from',
     edgeProperties: {
       id: 1613,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+      objectPropertyRdfsLabel: 'Operated from',
       edgeId: 1613
     },
     sourceNodeId: 161,
-    targetNodeId: 31,
-    id: 1613,
-    label: 'Affected by'
+    targetNodeId: 164,
+    id: '1613',
+    rdfsLabel: 'Operated from',
+    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+    label: 'Operated from'
   },
   1614: {
     edgeId: 1614,
-    role: 'Operated from',
+    role: 'Affected by',
     edgeProperties: {
       id: 1614,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
-      objectPropertyRdfsLabel: 'Operated from',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1614
     },
     sourceNodeId: 161,
-    targetNodeId: 164,
-    id: 1614,
-    label: 'Operated from'
+    targetNodeId: 176,
+    id: '1614',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1615: {
     edgeId: 1615,
-    role: 'Affected by',
+    role: 'Proposed in',
     edgeProperties: {
       id: 1615,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
+      objectPropertyRdfsLabel: 'Proposed in',
       edgeId: 1615
     },
     sourceNodeId: 161,
-    targetNodeId: 176,
-    id: 1615,
-    label: 'Affected by'
+    targetNodeId: 126,
+    id: '1615',
+    rdfsLabel: 'Proposed in',
+    rdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
+    label: 'Proposed in'
   },
   1616: {
     edgeId: 1616,
-    role: 'Advised by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1616,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
-      objectPropertyRdfsLabel: 'Advised by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1616
     },
     sourceNodeId: 161,
-    targetNodeId: 65,
-    id: 1616,
-    label: 'Advised by'
+    targetNodeId: 188,
+    id: '1616',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1617: {
     edgeId: 1617,
-    role: 'Proposed in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1617,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
-      objectPropertyRdfsLabel: 'Proposed in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1617
     },
     sourceNodeId: 161,
-    targetNodeId: 126,
-    id: 1617,
-    label: 'Proposed in'
+    targetNodeId: 2,
+    id: '1617',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1618: {
     edgeId: 1618,
-    role: 'Affected by',
+    role: 'Advised by',
     edgeProperties: {
       id: 1618,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+      objectPropertyRdfsLabel: 'Advised by',
       edgeId: 1618
     },
     sourceNodeId: 161,
-    targetNodeId: 188,
-    id: 1618,
-    label: 'Affected by'
+    targetNodeId: 65,
+    id: '1618',
+    rdfsLabel: 'Advised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+    label: 'Advised by'
   },
   1621: {
     edgeId: 1621,
-    role: 'Located at',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1621,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-      objectPropertyRdfsLabel: 'Located at',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1621
     },
     sourceNodeId: 162,
-    targetNodeId: 39,
-    id: 1621,
-    label: 'Located at'
+    targetNodeId: 131,
+    id: '1621',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1622: {
     edgeId: 1622,
-    role: 'Subclass of',
+    role: 'Caused by',
     edgeProperties: {
       id: 1622,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
+      objectPropertyRdfsLabel: 'Caused by',
       edgeId: 1622
     },
     sourceNodeId: 162,
-    targetNodeId: 131,
-    id: 1622,
-    label: 'Subclass of'
+    targetNodeId: 123,
+    id: '1622',
+    rdfsLabel: 'Caused by',
+    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
+    label: 'Caused by'
   },
   1623: {
     edgeId: 1623,
-    role: 'Caused by',
+    role: 'Located at',
     edgeProperties: {
       id: 1623,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
-      objectPropertyRdfsLabel: 'Caused by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+      objectPropertyRdfsLabel: 'Located at',
       edgeId: 1623
     },
     sourceNodeId: 162,
-    targetNodeId: 123,
-    id: 1623,
-    label: 'Caused by'
+    targetNodeId: 39,
+    id: '1623',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    label: 'Located at'
   },
   1641: {
     edgeId: 1641,
@@ -6362,7 +7068,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 164,
     targetNodeId: 24,
-    id: 1641,
+    id: '1641',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1651: {
@@ -6376,7 +7083,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 165,
     targetNodeId: 51,
-    id: 1651,
+    id: '1651',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1652: {
@@ -6391,7 +7099,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 165,
     targetNodeId: 68,
-    id: 1652,
+    id: '1652',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
     label: 'Informed by'
   },
   1661: {
@@ -6405,52 +7115,58 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 166,
     targetNodeId: 80,
-    id: 1661,
+    id: '1661',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1671: {
     edgeId: 1671,
-    role: 'Applied to',
+    role: 'Bounded by',
     edgeProperties: {
       id: 1671,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-      objectPropertyRdfsLabel: 'Applied to',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+      objectPropertyRdfsLabel: 'Bounded by',
       edgeId: 1671
     },
     sourceNodeId: 167,
-    targetNodeId: 39,
-    id: 1671,
-    label: 'Applied to'
+    targetNodeId: 100,
+    id: '1671',
+    rdfsLabel: 'Bounded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+    label: 'Bounded by'
   },
   1672: {
     edgeId: 1672,
-    role: 'Bounded by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1672,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
-      objectPropertyRdfsLabel: 'Bounded by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1672
     },
     sourceNodeId: 167,
-    targetNodeId: 100,
-    id: 1672,
-    label: 'Bounded by'
+    targetNodeId: 87,
+    id: '1672',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1673: {
     edgeId: 1673,
-    role: 'Subclass of',
+    role: 'Applied to',
     edgeProperties: {
       id: 1673,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+      objectPropertyRdfsLabel: 'Applied to',
       edgeId: 1673
     },
     sourceNodeId: 167,
-    targetNodeId: 87,
-    id: 1673,
-    label: 'Subclass of'
+    targetNodeId: 39,
+    id: '1673',
+    rdfsLabel: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    label: 'Applied to'
   },
   1681: {
     edgeId: 1681,
@@ -6463,7 +7179,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 168,
     targetNodeId: 69,
-    id: 1681,
+    id: '1681',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1691: {
@@ -6477,7 +7194,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 169,
     targetNodeId: 70,
-    id: 1691,
+    id: '1691',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1701: {
@@ -6491,23 +7209,28 @@ export const objectPropertiesFromApi = {
       edgeId: 1701
     },
     sourceNodeId: 170,
-    targetNodeId: 118,
-    id: 1701,
+    targetNodeId: 132,
+    id: '1701',
+    rdfsLabel: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
     label: 'Governed by'
   },
   1702: {
     edgeId: 1702,
-    role: 'Subclass of',
+    role: 'Governed by',
     edgeProperties: {
       id: 1702,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+      objectPropertyRdfsLabel: 'Governed by',
       edgeId: 1702
     },
     sourceNodeId: 170,
-    targetNodeId: 163,
-    id: 1702,
-    label: 'Subclass of'
+    targetNodeId: 118,
+    id: '1702',
+    rdfsLabel: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+    label: 'Governed by'
   },
   1703: {
     edgeId: 1703,
@@ -6521,23 +7244,25 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 170,
     targetNodeId: 65,
-    id: 1703,
+    id: '1703',
+    rdfsLabel: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
     label: 'Governed by'
   },
   1704: {
     edgeId: 1704,
-    role: 'Governed by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1704,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-      objectPropertyRdfsLabel: 'Governed by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1704
     },
     sourceNodeId: 170,
-    targetNodeId: 132,
-    id: 1704,
-    label: 'Governed by'
+    targetNodeId: 163,
+    id: '1704',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1711: {
     edgeId: 1711,
@@ -6550,7 +7275,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 171,
     targetNodeId: 1,
-    id: 1711,
+    id: '1711',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1712: {
@@ -6565,7 +7291,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 171,
     targetNodeId: 53,
-    id: 1712,
+    id: '1712',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
     label: 'Created by'
   },
   1721: {
@@ -6579,7 +7307,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 172,
     targetNodeId: 162,
-    id: 1721,
+    id: '1721',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1722: {
@@ -6594,7 +7323,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 172,
     targetNodeId: 162,
-    id: 1722,
+    id: '1722',
+    rdfsLabel: 'Caused by',
+    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
     label: 'Caused by'
   },
   1731: {
@@ -6608,7 +7339,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 173,
     targetNodeId: 190,
-    id: 1731,
+    id: '1731',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1741: {
@@ -6622,7 +7354,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 174,
     targetNodeId: 52,
-    id: 1741,
+    id: '1741',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1742: {
@@ -6637,7 +7370,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 174,
     targetNodeId: 144,
-    id: 1742,
+    id: '1742',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
     label: 'Required for'
   },
   1751: {
@@ -6651,67 +7386,77 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 175,
     targetNodeId: 184,
-    id: 1751,
+    id: '1751',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1761: {
     edgeId: 1761,
-    role: 'Created by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1761,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-      objectPropertyRdfsLabel: 'Created by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1761
     },
     sourceNodeId: 176,
-    targetNodeId: 170,
-    id: 1761,
-    label: 'Created by'
+    targetNodeId: 70,
+    id: '1761',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1762: {
     edgeId: 1762,
-    role: 'Applied to',
+    role: 'Affected by',
     edgeProperties: {
       id: 1762,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-      objectPropertyRdfsLabel: 'Applied to',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1762
     },
     sourceNodeId: 176,
-    targetNodeId: 161,
-    id: 1762,
-    label: 'Applied to'
+    targetNodeId: 72,
+    id: '1762',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1763: {
     edgeId: 1763,
-    role: 'Affected by',
+    role: 'Created by',
     edgeProperties: {
       id: 1763,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+      objectPropertyRdfsLabel: 'Created by',
       edgeId: 1763
     },
     sourceNodeId: 176,
-    targetNodeId: 123,
-    id: 1763,
-    label: 'Affected by'
+    targetNodeId: 170,
+    id: '1763',
+    rdfsLabel: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    label: 'Created by'
   },
   1764: {
     edgeId: 1764,
-    role: 'Subclass of',
+    role: 'Affected by',
     edgeProperties: {
       id: 1764,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1764
     },
     sourceNodeId: 176,
-    targetNodeId: 163,
-    id: 1764,
-    label: 'Subclass of'
+    targetNodeId: 123,
+    id: '1764',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1765: {
     edgeId: 1765,
@@ -6724,8 +7469,10 @@ export const objectPropertiesFromApi = {
       edgeId: 1765
     },
     sourceNodeId: 176,
-    targetNodeId: 137,
-    id: 1765,
+    targetNodeId: 43,
+    id: '1765',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     label: 'Affected by'
   },
   1766: {
@@ -6739,54 +7486,62 @@ export const objectPropertiesFromApi = {
       edgeId: 1766
     },
     sourceNodeId: 176,
-    targetNodeId: 71,
-    id: 1766,
+    targetNodeId: 4,
+    id: '1766',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     label: 'Affected by'
   },
   1767: {
     edgeId: 1767,
-    role: 'Affected by',
+    role: 'Used in',
     edgeProperties: {
       id: 1767,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+      objectPropertyRdfsLabel: 'Used in',
       edgeId: 1767
     },
     sourceNodeId: 176,
-    targetNodeId: 43,
-    id: 1767,
-    label: 'Affected by'
+    targetNodeId: 144,
+    id: '1767',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    label: 'Used in'
   },
   1768: {
     edgeId: 1768,
-    role: 'Informed by',
+    role: 'Affected by',
     edgeProperties: {
       id: 1768,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-      objectPropertyRdfsLabel: 'Informed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1768
     },
     sourceNodeId: 176,
-    targetNodeId: 68,
-    id: 1768,
-    label: 'Informed by'
+    targetNodeId: 71,
+    id: '1768',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1769: {
     edgeId: 1769,
-    role: 'Affected by',
+    role: 'Informed by',
     edgeProperties: {
       id: 1769,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+      objectPropertyRdfsLabel: 'Informed by',
       edgeId: 1769
     },
     sourceNodeId: 176,
-    targetNodeId: 4,
-    id: 1769,
-    label: 'Affected by'
+    targetNodeId: 68,
+    id: '1769',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    label: 'Informed by'
   },
   1771: {
     edgeId: 1771,
@@ -6799,23 +7554,26 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 177,
     targetNodeId: 192,
-    id: 1771,
+    id: '1771',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1781: {
     edgeId: 1781,
-    role: 'Provided by',
+    role: 'Performed by',
     edgeProperties: {
       id: 1781,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
-      objectPropertyRdfsLabel: 'Provided by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 1781
     },
     sourceNodeId: 178,
-    targetNodeId: 67,
-    id: 1781,
-    label: 'Provided by'
+    targetNodeId: 53,
+    id: '1781',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   1782: {
     edgeId: 1782,
@@ -6828,8 +7586,10 @@ export const objectPropertiesFromApi = {
       edgeId: 1782
     },
     sourceNodeId: 178,
-    targetNodeId: 103,
-    id: 1782,
+    targetNodeId: 65,
+    id: '1782',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     label: 'Performed by'
   },
   1783: {
@@ -6843,24 +7603,28 @@ export const objectPropertiesFromApi = {
       edgeId: 1783
     },
     sourceNodeId: 178,
-    targetNodeId: 53,
-    id: 1783,
+    targetNodeId: 103,
+    id: '1783',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     label: 'Performed by'
   },
   1784: {
     edgeId: 1784,
-    role: 'Included in',
+    role: 'Presented in',
     edgeProperties: {
       id: 1784,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-      objectPropertyRdfsLabel: 'Included in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+      objectPropertyRdfsLabel: 'Presented in',
       edgeId: 1784
     },
     sourceNodeId: 178,
-    targetNodeId: 154,
-    id: 1784,
-    label: 'Included in'
+    targetNodeId: 1,
+    id: '1784',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    label: 'Presented in'
   },
   1785: {
     edgeId: 1785,
@@ -6873,82 +7637,92 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 178,
     targetNodeId: 51,
-    id: 1785,
+    id: '1785',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1786: {
     edgeId: 1786,
-    role: 'Performed by',
+    role: 'Included in',
     edgeProperties: {
       id: 1786,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-      objectPropertyRdfsLabel: 'Performed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+      objectPropertyRdfsLabel: 'Included in',
       edgeId: 1786
     },
     sourceNodeId: 178,
-    targetNodeId: 65,
-    id: 1786,
-    label: 'Performed by'
+    targetNodeId: 154,
+    id: '1786',
+    rdfsLabel: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    label: 'Included in'
   },
   1787: {
     edgeId: 1787,
-    role: 'Presented in',
+    role: 'Provided by',
     edgeProperties: {
       id: 1787,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-      objectPropertyRdfsLabel: 'Presented in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+      objectPropertyRdfsLabel: 'Provided by',
       edgeId: 1787
     },
     sourceNodeId: 178,
-    targetNodeId: 1,
-    id: 1787,
-    label: 'Presented in'
+    targetNodeId: 67,
+    id: '1787',
+    rdfsLabel: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+    label: 'Provided by'
   },
   1791: {
     edgeId: 1791,
-    role: 'Applied to',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1791,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-      objectPropertyRdfsLabel: 'Applied to',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1791
     },
     sourceNodeId: 179,
-    targetNodeId: 67,
-    id: 1791,
-    label: 'Applied to'
+    targetNodeId: 192,
+    id: '1791',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1792: {
     edgeId: 1792,
-    role: 'Used by',
+    role: 'Applied to',
     edgeProperties: {
       id: 1792,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-      objectPropertyRdfsLabel: 'Used by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+      objectPropertyRdfsLabel: 'Applied to',
       edgeId: 1792
     },
     sourceNodeId: 179,
-    targetNodeId: 53,
-    id: 1792,
-    label: 'Used by'
+    targetNodeId: 67,
+    id: '1792',
+    rdfsLabel: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    label: 'Applied to'
   },
   1793: {
     edgeId: 1793,
-    role: 'Subclass of',
+    role: 'Used by',
     edgeProperties: {
       id: 1793,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+      objectPropertyRdfsLabel: 'Used by',
       edgeId: 1793
     },
     sourceNodeId: 179,
-    targetNodeId: 192,
-    id: 1793,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '1793',
+    rdfsLabel: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    label: 'Used by'
   },
   1801: {
     edgeId: 1801,
@@ -6961,7 +7735,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 180,
     targetNodeId: 176,
-    id: 1801,
+    id: '1801',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1802: {
@@ -6976,37 +7751,42 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 180,
     targetNodeId: 144,
-    id: 1802,
+    id: '1802',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
     label: 'Used in'
   },
   1811: {
     edgeId: 1811,
-    role: 'Subclass of',
+    role: 'Associated with',
     edgeProperties: {
       id: 1811,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 1811
     },
     sourceNodeId: 181,
-    targetNodeId: 163,
-    id: 1811,
-    label: 'Subclass of'
+    targetNodeId: 39,
+    id: '1811',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   1812: {
     edgeId: 1812,
-    role: 'Associated with',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1812,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1812
     },
     sourceNodeId: 181,
-    targetNodeId: 39,
-    id: 1812,
-    label: 'Associated with'
+    targetNodeId: 163,
+    id: '1812',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1821: {
     edgeId: 1821,
@@ -7019,7 +7799,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 182,
     targetNodeId: 105,
-    id: 1821,
+    id: '1821',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1822: {
@@ -7034,7 +7815,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 182,
     targetNodeId: 12,
-    id: 1822,
+    id: '1822',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     label: 'Improved through'
   },
   1831: {
@@ -7048,7 +7831,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 183,
     targetNodeId: 161,
-    id: 1831,
+    id: '1831',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1841: {
@@ -7063,23 +7847,25 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 184,
     targetNodeId: 122,
-    id: 1841,
+    id: '1841',
+    rdfsLabel: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
     label: 'Measured by'
   },
   1842: {
     edgeId: 1842,
-    role: 'Input into',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1842,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-      objectPropertyRdfsLabel: 'Input into',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1842
     },
     sourceNodeId: 184,
-    targetNodeId: 160,
-    id: 1842,
-    label: 'Input into'
+    targetNodeId: 105,
+    id: '1842',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1843: {
     edgeId: 1843,
@@ -7093,66 +7879,76 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 184,
     targetNodeId: 161,
-    id: 1843,
+    id: '1843',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     label: 'Improved through'
   },
   1844: {
     edgeId: 1844,
-    role: 'Subclass of',
+    role: 'Input into',
     edgeProperties: {
       id: 1844,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+      objectPropertyRdfsLabel: 'Input into',
       edgeId: 1844
     },
     sourceNodeId: 184,
-    targetNodeId: 105,
-    id: 1844,
-    label: 'Subclass of'
+    targetNodeId: 160,
+    id: '1844',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    label: 'Input into'
   },
   1851: {
     edgeId: 1851,
-    role: 'Presented in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1851,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-      objectPropertyRdfsLabel: 'Presented in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1851
     },
     sourceNodeId: 185,
-    targetNodeId: 147,
-    id: 1851,
-    label: 'Presented in'
+    targetNodeId: 1,
+    id: '1851',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1852: {
     edgeId: 1852,
-    role: 'Subclass of',
+    role: 'Provided by',
     edgeProperties: {
       id: 1852,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+      objectPropertyRdfsLabel: 'Provided by',
       edgeId: 1852
     },
     sourceNodeId: 185,
-    targetNodeId: 1,
-    id: 1852,
-    label: 'Subclass of'
+    targetNodeId: 103,
+    id: '1852',
+    rdfsLabel: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+    label: 'Provided by'
   },
   1853: {
     edgeId: 1853,
-    role: 'Provided by',
+    role: 'Presented in',
     edgeProperties: {
       id: 1853,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
-      objectPropertyRdfsLabel: 'Provided by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+      objectPropertyRdfsLabel: 'Presented in',
       edgeId: 1853
     },
     sourceNodeId: 185,
-    targetNodeId: 103,
-    id: 1853,
-    label: 'Provided by'
+    targetNodeId: 147,
+    id: '1853',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    label: 'Presented in'
   },
   1861: {
     edgeId: 1861,
@@ -7165,7 +7961,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 186,
     targetNodeId: 24,
-    id: 1861,
+    id: '1861',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1871: {
@@ -7180,7 +7977,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 187,
     targetNodeId: 125,
-    id: 1871,
+    id: '1871',
+    rdfsLabel: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
     label: 'Completed before'
   },
   1872: {
@@ -7194,7 +7993,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 187,
     targetNodeId: 54,
-    id: 1872,
+    id: '1872',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1881: {
@@ -7209,23 +8009,27 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 188,
     targetNodeId: 53,
-    id: 1881,
+    id: '1881',
+    rdfsLabel: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
     label: 'Managed by'
   },
   1882: {
     edgeId: 1882,
-    role: 'Associated with',
+    role: 'Affected by',
     edgeProperties: {
       id: 1882,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 1882
     },
     sourceNodeId: 188,
-    targetNodeId: 77,
-    id: 1882,
-    label: 'Associated with'
+    targetNodeId: 66,
+    id: '1882',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   1883: {
     edgeId: 1883,
@@ -7239,7 +8043,9 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 188,
     targetNodeId: 147,
-    id: 1883,
+    id: '1883',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
     label: 'Presented in'
   },
   1884: {
@@ -7254,67 +8060,76 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 188,
     targetNodeId: 36,
-    id: 1884,
+    id: '1884',
+    rdfsLabel: 'Identified by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
     label: 'Identified by'
   },
   1885: {
     edgeId: 1885,
-    role: 'Associated with',
+    role: 'Informed by',
     edgeProperties: {
       id: 1885,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+      objectPropertyRdfsLabel: 'Informed by',
       edgeId: 1885
     },
     sourceNodeId: 188,
-    targetNodeId: 176,
-    id: 1885,
-    label: 'Associated with'
+    targetNodeId: 68,
+    id: '1885',
+    rdfsLabel: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    label: 'Informed by'
   },
   1886: {
     edgeId: 1886,
-    role: 'Affected by',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1886,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1886
     },
     sourceNodeId: 188,
-    targetNodeId: 66,
-    id: 1886,
-    label: 'Affected by'
+    targetNodeId: 114,
+    id: '1886',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1887: {
     edgeId: 1887,
-    role: 'Informed by',
+    role: 'Associated with',
     edgeProperties: {
       id: 1887,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-      objectPropertyRdfsLabel: 'Informed by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 1887
     },
     sourceNodeId: 188,
-    targetNodeId: 68,
-    id: 1887,
-    label: 'Informed by'
+    targetNodeId: 176,
+    id: '1887',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   1888: {
     edgeId: 1888,
-    role: 'Subclass of',
+    role: 'Associated with',
     edgeProperties: {
       id: 1888,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 1888
     },
     sourceNodeId: 188,
-    targetNodeId: 114,
-    id: 1888,
-    label: 'Subclass of'
+    targetNodeId: 77,
+    id: '1888',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   1891: {
     edgeId: 1891,
@@ -7328,67 +8143,76 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 189,
     targetNodeId: 53,
-    id: 1891,
+    id: '1891',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     label: 'Performed by'
   },
   1892: {
     edgeId: 1892,
-    role: 'Subclass of',
+    role: 'Performed on',
     edgeProperties: {
       id: 1892,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+      objectPropertyRdfsLabel: 'Performed on',
       edgeId: 1892
     },
     sourceNodeId: 189,
-    targetNodeId: 51,
-    id: 1892,
-    label: 'Subclass of'
+    targetNodeId: 70,
+    id: '1892',
+    rdfsLabel: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+    label: 'Performed on'
   },
   1893: {
     edgeId: 1893,
-    role: 'Operated from',
+    role: 'Included in',
     edgeProperties: {
       id: 1893,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
-      objectPropertyRdfsLabel: 'Operated from',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+      objectPropertyRdfsLabel: 'Included in',
       edgeId: 1893
     },
     sourceNodeId: 189,
-    targetNodeId: 186,
-    id: 1893,
-    label: 'Operated from'
+    targetNodeId: 154,
+    id: '1893',
+    rdfsLabel: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    label: 'Included in'
   },
   1894: {
     edgeId: 1894,
-    role: 'Included in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1894,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-      objectPropertyRdfsLabel: 'Included in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1894
     },
     sourceNodeId: 189,
-    targetNodeId: 154,
-    id: 1894,
-    label: 'Included in'
+    targetNodeId: 51,
+    id: '1894',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1895: {
     edgeId: 1895,
-    role: 'Performed on',
+    role: 'Operated from',
     edgeProperties: {
       id: 1895,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
-      objectPropertyRdfsLabel: 'Performed on',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+      objectPropertyRdfsLabel: 'Operated from',
       edgeId: 1895
     },
     sourceNodeId: 189,
-    targetNodeId: 70,
-    id: 1895,
-    label: 'Performed on'
+    targetNodeId: 186,
+    id: '1895',
+    rdfsLabel: 'Operated from',
+    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+    label: 'Operated from'
   },
   1901: {
     edgeId: 1901,
@@ -7401,7 +8225,8 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 190,
     targetNodeId: 141,
-    id: 1901,
+    id: '1901',
+    rdfsLabel: 'Subclass of',
     label: 'Subclass of'
   },
   1911: {
@@ -7416,52 +8241,59 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 191,
     targetNodeId: 12,
-    id: 1911,
+    id: '1911',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     label: 'Improved through'
   },
   1912: {
     edgeId: 1912,
-    role: 'Monitored by',
+    role: 'Improved through',
     edgeProperties: {
       id: 1912,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXKNigVZSAdET48254gS2w',
-      objectPropertyRdfsLabel: 'Monitored by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+      objectPropertyRdfsLabel: 'Improved through',
       edgeId: 1912
     },
     sourceNodeId: 191,
-    targetNodeId: 53,
-    id: 1912,
-    label: 'Monitored by'
+    targetNodeId: 161,
+    id: '1912',
+    rdfsLabel: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    label: 'Improved through'
   },
   1913: {
     edgeId: 1913,
-    role: 'Subclass of',
+    role: 'Monitored by',
     edgeProperties: {
       id: 1913,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXKNigVZSAdET48254gS2w',
+      objectPropertyRdfsLabel: 'Monitored by',
       edgeId: 1913
     },
     sourceNodeId: 191,
-    targetNodeId: 114,
-    id: 1913,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '1913',
+    rdfsLabel: 'Monitored by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXKNigVZSAdET48254gS2w',
+    label: 'Monitored by'
   },
   1914: {
     edgeId: 1914,
-    role: 'Improved through',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1914,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-      objectPropertyRdfsLabel: 'Improved through',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1914
     },
     sourceNodeId: 191,
-    targetNodeId: 161,
-    id: 1914,
-    label: 'Improved through'
+    targetNodeId: 114,
+    id: '1914',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1915: {
     edgeId: 1915,
@@ -7475,96 +8307,108 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 191,
     targetNodeId: 194,
-    id: 1915,
+    id: '1915',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     label: 'Affected by'
   },
   1921: {
     edgeId: 1921,
-    role: 'Operated from',
+    role: 'Used in',
     edgeProperties: {
       id: 1921,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
-      objectPropertyRdfsLabel: 'Operated from',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+      objectPropertyRdfsLabel: 'Used in',
       edgeId: 1921
     },
     sourceNodeId: 192,
-    targetNodeId: 61,
-    id: 1921,
-    label: 'Operated from'
+    targetNodeId: 161,
+    id: '1921',
+    rdfsLabel: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    label: 'Used in'
   },
   1922: {
     edgeId: 1922,
-    role: 'Subclass of',
+    role: 'Used by',
     edgeProperties: {
       id: 1922,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+      objectPropertyRdfsLabel: 'Used by',
       edgeId: 1922
     },
     sourceNodeId: 192,
-    targetNodeId: 90,
-    id: 1922,
-    label: 'Subclass of'
+    targetNodeId: 53,
+    id: '1922',
+    rdfsLabel: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    label: 'Used by'
   },
   1923: {
     edgeId: 1923,
-    role: 'Used by',
+    role: 'Operated from',
     edgeProperties: {
       id: 1923,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-      objectPropertyRdfsLabel: 'Used by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+      objectPropertyRdfsLabel: 'Operated from',
       edgeId: 1923
     },
     sourceNodeId: 192,
-    targetNodeId: 53,
-    id: 1923,
-    label: 'Used by'
+    targetNodeId: 61,
+    id: '1923',
+    rdfsLabel: 'Operated from',
+    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+    label: 'Operated from'
   },
   1924: {
     edgeId: 1924,
-    role: 'Used in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1924,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-      objectPropertyRdfsLabel: 'Used in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1924
     },
     sourceNodeId: 192,
-    targetNodeId: 161,
-    id: 1924,
-    label: 'Used in'
+    targetNodeId: 90,
+    id: '1924',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1931: {
     edgeId: 1931,
-    role: 'Subclass of',
+    role: 'Agreed with',
     edgeProperties: {
       id: 1931,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+      objectPropertyRdfsLabel: 'Agreed with',
       edgeId: 1931
     },
     sourceNodeId: 193,
-    targetNodeId: 85,
-    id: 1931,
-    label: 'Subclass of'
+    targetNodeId: 128,
+    id: '1931',
+    rdfsLabel: 'Agreed with',
+    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+    label: 'Agreed with'
   },
   1932: {
     edgeId: 1932,
-    role: 'Agreed with',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1932,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
-      objectPropertyRdfsLabel: 'Agreed with',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1932
     },
     sourceNodeId: 193,
-    targetNodeId: 128,
-    id: 1932,
-    label: 'Agreed with'
+    targetNodeId: 85,
+    id: '1932',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1933: {
     edgeId: 1933,
@@ -7578,38 +8422,42 @@ export const objectPropertiesFromApi = {
     },
     sourceNodeId: 193,
     targetNodeId: 144,
-    id: 1933,
+    id: '1933',
+    rdfsLabel: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
     label: 'Required for'
   },
   1941: {
     edgeId: 1941,
-    role: 'Associated with',
+    role: 'Presented in',
     edgeProperties: {
       id: 1941,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-      objectPropertyRdfsLabel: 'Associated with',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+      objectPropertyRdfsLabel: 'Presented in',
       edgeId: 1941
     },
     sourceNodeId: 194,
-    targetNodeId: 66,
-    id: 1941,
-    label: 'Associated with'
+    targetNodeId: 14,
+    id: '1941',
+    rdfsLabel: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    label: 'Presented in'
   },
   1942: {
     edgeId: 1942,
-    role: 'Input into',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1942,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-      objectPropertyRdfsLabel: 'Input into',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1942
     },
     sourceNodeId: 194,
-    targetNodeId: 160,
-    id: 1942,
-    label: 'Input into'
+    targetNodeId: 62,
+    id: '1942',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1943: {
     edgeId: 1943,
@@ -7622,169 +8470,193 @@ export const objectPropertiesFromApi = {
       edgeId: 1943
     },
     sourceNodeId: 194,
-    targetNodeId: 70,
-    id: 1943,
+    targetNodeId: 66,
+    id: '1943',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
     label: 'Associated with'
   },
   1944: {
     edgeId: 1944,
-    role: 'Subclass of',
+    role: 'Associated with',
     edgeProperties: {
       id: 1944,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+      objectPropertyRdfsLabel: 'Associated with',
       edgeId: 1944
     },
     sourceNodeId: 194,
-    targetNodeId: 62,
-    id: 1944,
-    label: 'Subclass of'
+    targetNodeId: 70,
+    id: '1944',
+    rdfsLabel: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    label: 'Associated with'
   },
   1945: {
     edgeId: 1945,
-    role: 'Presented in',
+    role: 'Input into',
     edgeProperties: {
       id: 1945,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-      objectPropertyRdfsLabel: 'Presented in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+      objectPropertyRdfsLabel: 'Input into',
       edgeId: 1945
     },
     sourceNodeId: 194,
-    targetNodeId: 14,
-    id: 1945,
-    label: 'Presented in'
+    targetNodeId: 160,
+    id: '1945',
+    rdfsLabel: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    label: 'Input into'
   },
   1951: {
     edgeId: 1951,
-    role: 'Proposed in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 1951,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
-      objectPropertyRdfsLabel: 'Proposed in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 1951
     },
     sourceNodeId: 195,
-    targetNodeId: 144,
-    id: 1951,
-    label: 'Proposed in'
+    targetNodeId: 76,
+    id: '1951',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   },
   1952: {
     edgeId: 1952,
-    role: 'Selected in',
+    role: 'Proposed in',
     edgeProperties: {
       id: 1952,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
-      objectPropertyRdfsLabel: 'Selected in',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
+      objectPropertyRdfsLabel: 'Proposed in',
       edgeId: 1952
     },
     sourceNodeId: 195,
     targetNodeId: 144,
-    id: 1952,
-    label: 'Selected in'
+    id: '1952',
+    rdfsLabel: 'Proposed in',
+    rdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
+    label: 'Proposed in'
   },
   1953: {
     edgeId: 1953,
-    role: 'Subclass of',
+    role: 'Selected in',
     edgeProperties: {
       id: 1953,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
+      objectPropertyRdfsLabel: 'Selected in',
       edgeId: 1953
     },
     sourceNodeId: 195,
-    targetNodeId: 76,
-    id: 1953,
-    label: 'Subclass of'
+    targetNodeId: 144,
+    id: '1953',
+    rdfsLabel: 'Selected in',
+    rdfAbout: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
+    label: 'Selected in'
   },
   7010: {
     edgeId: 7010,
-    role: 'Subclass of',
+    role: 'Located at',
     edgeProperties: {
       id: 7010,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+      objectPropertyRdfsLabel: 'Located at',
       edgeId: 7010
     },
     sourceNodeId: 70,
-    targetNodeId: 113,
-    id: 7010,
-    label: 'Subclass of'
+    targetNodeId: 181,
+    id: '7010',
+    rdfsLabel: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    label: 'Located at'
   },
   13910: {
     edgeId: 13910,
-    role: 'Subclass of',
+    role: 'Performed by',
     edgeProperties: {
       id: 13910,
       label: 'subclass',
-      objectPropertyRdfsLabel: 'Subclass of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+      objectPropertyRdfsLabel: 'Performed by',
       edgeId: 13910
     },
     sourceNodeId: 139,
-    targetNodeId: 62,
-    id: 13910,
-    label: 'Subclass of'
+    targetNodeId: 103,
+    id: '13910',
+    rdfsLabel: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    label: 'Performed by'
   },
   17610: {
     edgeId: 17610,
-    role: 'Composed of',
+    role: 'Affected by',
     edgeProperties: {
       id: 17610,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-      objectPropertyRdfsLabel: 'Composed of',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+      objectPropertyRdfsLabel: 'Affected by',
       edgeId: 17610
     },
     sourceNodeId: 176,
-    targetNodeId: 51,
-    id: 17610,
-    label: 'Composed of'
+    targetNodeId: 137,
+    id: '17610',
+    rdfsLabel: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    label: 'Affected by'
   },
   17611: {
     edgeId: 17611,
-    role: 'Affected by',
+    role: 'Applied to',
     edgeProperties: {
       id: 17611,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+      objectPropertyRdfsLabel: 'Applied to',
       edgeId: 17611
     },
     sourceNodeId: 176,
-    targetNodeId: 72,
-    id: 17611,
-    label: 'Affected by'
+    targetNodeId: 161,
+    id: '17611',
+    rdfsLabel: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    label: 'Applied to'
   },
   17612: {
     edgeId: 17612,
-    role: 'Affected by',
+    role: 'Composed of',
     edgeProperties: {
       id: 17612,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-      objectPropertyRdfsLabel: 'Affected by',
+      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+      objectPropertyRdfsLabel: 'Composed of',
       edgeId: 17612
     },
     sourceNodeId: 176,
-    targetNodeId: 70,
-    id: 17612,
-    label: 'Affected by'
+    targetNodeId: 51,
+    id: '17612',
+    rdfsLabel: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    label: 'Composed of'
   },
   17613: {
     edgeId: 17613,
-    role: 'Used in',
+    role: 'Subclass of',
     edgeProperties: {
       id: 17613,
       label: 'subclass',
-      objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-      objectPropertyRdfsLabel: 'Used in',
+      objectPropertyRdfsLabel: 'Subclass of',
       edgeId: 17613
     },
     sourceNodeId: 176,
-    targetNodeId: 144,
-    id: 17613,
-    label: 'Used in'
+    targetNodeId: 163,
+    id: '17613',
+    rdfsLabel: 'Subclass of',
+    label: 'Subclass of'
   }
 }

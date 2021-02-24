@@ -1,22 +1,21 @@
 /* eslint max-len:0 */
 import setOntologyRestoreNode from '../../../utils/editOntology/setOntologyRestoreNode'
 import store from '../../../store'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
-import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
+import { classesFromApi } from '../../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyRestoreNode'
-import { nodesConnections } from '../../fixtures/nodesConnections'
-import { triplesPerNode } from '../../fixtures/triplesPerNode'
-import { edgesConnections } from '../../fixtures/edgesConnections'
+import { nodesConnections } from '../../fixtures/nodesConnectionsNew'
+import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import getEdgeObject from '../../../utils/graphVisualisation/getEdgeObject'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 
-const selectedElement = Object.keys(OwlClasses).slice(0, 2)
-const deletedNodes = Object.keys(OwlClasses).slice(0, 4)
+const selectedElement = ['100', '40']
+const deletedNodes = ['100', '33', '21', '40']
 
 const setStoreState = jest.fn()
 
@@ -32,24 +31,31 @@ describe('setOntologyRestoreNode', () => {
   })
 
   it('should work correctly', async () => {
+    const classesFromApiLatest = JSON.parse(JSON.stringify(classesFromApi))
+    deletedNodes.map((nodeId) => delete classesFromApiLatest[nodeId])
+
     store.getState = jest.fn().mockImplementation(() => ({
-      objectPropertiesFromApi: OwlObjectProperties,
+      classesFromApiBackup: classesFromApi,
+      classesFromApi,
       deletedNodes,
-      classesFromApiBackup: OwlClasses,
-      classesFromApi: OwlClasses,
+      objectPropertiesFromApi,
       stylingNodeCaptionProperty: 'rdfsLabel',
+      objectPropertiesFromApiBackup: objectPropertiesFromApi,
       nodesConnections,
       triplesPerNode,
-      edgesConnections
+      triplesPerNodeBackup: triplesPerNode
     }))
 
     getNode.mockImplementation(() => ({ id: '123' }))
+
     getEdgeObject.mockImplementation(() => ({
-      edge: { id: 'node-123' },
-      edgeConnection: {
-        to: 'node-123',
-        from: 'node-234'
-      }
+      rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+      rdfsLabel: 'Provided to',
+      label: 'Provided to',
+      predicate: '11',
+      id: '11',
+      from: '1',
+      to: '141',
     }))
 
     await setOntologyRestoreNode({
@@ -60,20 +66,28 @@ describe('setOntologyRestoreNode', () => {
     expect(setElementsStyle).toHaveBeenCalledWith()
     expect(addNode).toHaveBeenLastCalledWith(
       {
-        id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-        label: 'Programme',
-        owlAnnotationProperties: {
-          'http://webprotege.stanford.edu/RkKVruwOD8lCCdsbyX0lwY': 'Maintain Plan', 'http://www.w3.org/2004/02/skos/core#comment': 'A strategic goal that is achieved through a number of projects.', 'http://www.w3.org/2004/02/skos/core#definition': 'A collection of projects or tasks undertaken to realise a strategic goal.', 'http://www.w3.org/2004/02/skos/core#example': 'Develop connectivity between London and Inverness.'
-        },
-        rdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-        rdfsLabel: 'Programme',
-        rdfsSubClassOf: [{ classRdfAbout: 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6', owlRestriction: { classRdfAbout: 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6', objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB' } }, { classRdfAbout: 'http://webprotege.stanford.edu/RCxwL4b8LCMbVkVPEbOn78g', owlRestriction: { classRdfAbout: 'http://webprotege.stanford.edu/RCxwL4b8LCMbVkVPEbOn78g', objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB' } }, { classRdfAbout: 'http://webprotege.stanford.edu/R8QQzkUbCD5WRXDQQSl0vX8', owlRestriction: { classRdfAbout: 'http://webprotege.stanford.edu/R8QQzkUbCD5WRXDQQSl0vX8', objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU' } }, { classRdfAbout: 'http://webprotege.stanford.edu/R1CEYmOdNWhDr4n2yz9Lzf', owlRestriction: { classRdfAbout: 'http://webprotege.stanford.edu/R1CEYmOdNWhDr4n2yz9Lzf', objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay' } }, { classRdfAbout: 'http://webprotege.stanford.edu/RTyCIe0sZbCvkp6VVWaYGs', owlRestriction: null }],
-        skosComment: 'A strategic goal that is achieved through a number of projects.',
-        skosDefinition: 'A collection of projects or tasks undertaken to realise a strategic goal.',
-        skosExample: 'Develop connectivity between London and Inverness.'
+        'Business Area': 'Maintain Operate',
+        Synonym: 'Warehouse',
+        id: '40',
+        label: 'Depot',
+        nodeId: 40,
+        rdfAbout: 'http://webprotege.stanford.edu/R83KomHAvFWv2pVoHXCAC7M',
+        rdfsLabel: 'Depot',
+        skosDefinition: 'A facility used by the License Holder or supplier for the purpose of storing the fleet and equipment to enable the maintenance and operation of the Strategic Road Network Assets.',
+        userDefined: false,
       }
     )
-    expect(addEdge).toHaveBeenLastCalledWith({ id: 'node-123' })
+    expect(addEdge).toHaveBeenLastCalledWith(
+      {
+        from: '1',
+        id: '11',
+        label: 'Provided to',
+        predicate: '11',
+        rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+        rdfsLabel: 'Provided to',
+        to: '141'
+      }
+    )
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
   })
 })

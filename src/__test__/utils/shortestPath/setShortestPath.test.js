@@ -1,12 +1,15 @@
 import setShortestPath from '../../../utils/shortestPath/setShortestPath'
 import { nodesConnections } from '../../fixtures/nodesConnections'
 import store from '../../../store'
+import getShortestPath from '../../../utils/shortestPath/getShortestPath'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
-const shortestPathNode1 = 'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV'
-const shortestPathNode2 = 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
+const shortestPathNode1 = '33'
+const shortestPathNode2 = '40'
 const lastGraphIndex = 1
+
+jest.mock('../../../utils/shortestPath/getShortestPath')
 
 store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
@@ -23,6 +26,9 @@ describe('setShortestPath', () => {
   it('should work correctly', async () => {
     const isNodeOverlay = false
 
+    getShortestPath.mockImplementation(() => ([
+      '33|||40'
+    ]))
     await setShortestPath({
       isNodeOverlay,
       setStoreState,
@@ -50,13 +56,14 @@ describe('setShortestPath', () => {
         options: {
           isNodeOverlay: false,
           shortestPathResults: [
-            'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV|||http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9___http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV___http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'],
+            '33|||40',
+          ],
           shortestPathSelectedNodes: [
-            'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',
-            'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
-          ]
+            '33',
+            '40',
+          ],
         },
-        type: 'shortest-path'
+        type: 'shortest-path',
       }
     )
   })

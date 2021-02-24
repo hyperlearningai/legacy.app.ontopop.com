@@ -50,7 +50,9 @@ describe('setObjectPropertiesFromApi', () => {
             objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
             objectPropertyRdfsLabel: 'Provided to'
           },
-          id: 11,
+          rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+          rdfsLabel: 'Provided to',
+          id: '11',
           label: 'Provided to',
           role: 'Provided to',
           sourceNodeId: 1,
@@ -64,7 +66,9 @@ describe('setObjectPropertiesFromApi', () => {
             label: 'subclass',
             objectPropertyRdfsLabel: 'Subclass of'
           },
-          id: 12,
+          rdfAbout: undefined,
+          rdfsLabel: 'Subclass of',
+          id: '12',
           label: 'Subclass of',
           role: 'Subclass of',
           sourceNodeId: 1,
@@ -81,7 +85,9 @@ describe('setObjectPropertiesFromApi', () => {
             objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
             objectPropertyRdfsLabel: 'Provided to'
           },
-          id: 11,
+          id: '11',
+          rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+          rdfsLabel: 'Provided to',
           label: 'Provided to',
           role: 'Provided to',
           sourceNodeId: 1,
@@ -95,9 +101,11 @@ describe('setObjectPropertiesFromApi', () => {
             label: 'subclass',
             objectPropertyRdfsLabel: 'Subclass of'
           },
-          id: 12,
+          id: '12',
           label: 'Subclass of',
           role: 'Subclass of',
+          rdfAbout: undefined,
+          rdfsLabel: 'Subclass of',
           sourceNodeId: 1,
           targetNodeId: 141
         }

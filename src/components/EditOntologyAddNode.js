@@ -8,15 +8,14 @@ import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
 import { UNIQUE_PROPERTY } from '../constants/graph'
 
-const EditOntologyAddEdgeNode = ({
+const EditOntologyAddNode = ({
   type,
   operation,
   setStoreState,
   addToArray,
   removeFromObject,
   addToObject,
-  classesFromApi,
-  objectPropertiesFromApi
+  classesFromApi
 }) => {
   const { t } = useTranslation()
 
@@ -42,21 +41,19 @@ const EditOntologyAddEdgeNode = ({
       />
 
       {
-        ((type === 'node'
-        && classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]])
-        || (type === 'edge'
-        && objectPropertiesFromApi[selectedElementProperties[UNIQUE_PROPERTY]])) && (
-          <div
-            className="edit-ontology-row"
-          >
-            <small
-              id="username2-help"
-              className="p-error p-d-block"
-            >
-              {t('idExists')}
-            </small>
-          </div>
-        )
+        classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]]
+         && (
+         <div
+           className="edit-ontology-row"
+         >
+           <small
+             id="username2-help"
+             className="p-error p-d-block"
+           >
+             {t('idExists')}
+           </small>
+         </div>
+         )
       }
 
       <div className="edit-ontology-row">
@@ -70,9 +67,6 @@ const EditOntologyAddEdgeNode = ({
                 || (
                   type === 'node' && classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]]
                 )
-                || (
-                  type === 'edge' && objectPropertiesFromApi[selectedElementProperties[UNIQUE_PROPERTY]
-                  ])
               )}
           onClick={() => {
             setOntology({
@@ -98,7 +92,7 @@ const EditOntologyAddEdgeNode = ({
   )
 }
 
-EditOntologyAddEdgeNode.propTypes = {
+EditOntologyAddNode.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
@@ -106,22 +100,19 @@ EditOntologyAddEdgeNode.propTypes = {
   addToArray: PropTypes.func.isRequired,
   removeFromObject: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   selectedGraphVersion,
   graphVersions,
   classesFromApi,
-  objectPropertiesFromApi
 }) => ({
   selectedGraphVersion,
   graphVersions,
   classesFromApi,
-  objectPropertiesFromApi
 })
 
 export default connect(
   mapToProps,
   actions
-)(EditOntologyAddEdgeNode)
+)(EditOntologyAddNode)

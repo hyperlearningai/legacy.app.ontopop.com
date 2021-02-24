@@ -6,8 +6,6 @@ import { Button } from 'primereact/button'
 import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
-import { getEdgeAndNodes } from '../constants/functions'
-import { LABEL_PROPERTY, SUB_CLASS_OF_LABEL } from '../constants/graph'
 
 const EditOntologyRestoreConnection = ({
   type,
@@ -16,11 +14,11 @@ const EditOntologyRestoreConnection = ({
   addToArray,
   removeFromObject,
   addToObject,
-  classesFromApi,
-  objectPropertiesFromApi,
+  classesFromApiBackup,
+  objectPropertiesFromApiBackup,
   deletedConnections,
-  deletedEdges,
-  deletedNodes
+  deletedNodes,
+  stylingNodeCaptionProperty
 }) => {
   const { t } = useTranslation()
 
@@ -30,27 +28,38 @@ const EditOntologyRestoreConnection = ({
   const optionConnections = deletedConnections.length > 0
     ? deletedConnections.filter(
       (edgeId) => {
-        const [predicate, from, to] = getEdgeAndNodes(edgeId)
+        const {
+          sourceNodeId,
+          targetNodeId
+        } = objectPropertiesFromApiBackup[edgeId]
 
-        const isPredicateDeleted = deletedEdges.includes(predicate)
+        const from = sourceNodeId.toString()
+        const to = targetNodeId.toString()
+
         const isFromNodeDeleted = deletedNodes.includes(from)
         const isToNodeDeleted = deletedNodes.includes(to)
 
-        const isVisible = !isPredicateDeleted && !isFromNodeDeleted && !isToNodeDeleted
+        const isVisible = !isFromNodeDeleted && !isToNodeDeleted
         return isVisible
       }
     ).map((edgeId) => {
-      const [predicate, from, to] = getEdgeAndNodes(edgeId)
+      const {
+        sourceNodeId,
+        targetNodeId,
+        label
+      } = objectPropertiesFromApiBackup[edgeId]
 
-      const fromLabel = classesFromApi[from][LABEL_PROPERTY]
-      const toLabel = classesFromApi[to][LABEL_PROPERTY]
-      const predicateLabel = objectPropertiesFromApi[predicate] ? objectPropertiesFromApi[predicate][LABEL_PROPERTY] : SUB_CLASS_OF_LABEL
+      const from = sourceNodeId.toString()
+      const to = targetNodeId.toString()
 
-      const label = `${fromLabel} => (${predicateLabel}) => ${toLabel}`
+      const fromLabel = classesFromApiBackup[from][stylingNodeCaptionProperty]
+      const toLabel = classesFromApiBackup[to][stylingNodeCaptionProperty]
+
+      const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
 
       return ({
         value: edgeId,
-        label
+        label: connectionLabel
       })
     }) : []
 
@@ -122,25 +131,25 @@ EditOntologyRestoreConnection.propTypes = {
   addToArray: PropTypes.func.isRequired,
   removeFromObject: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
+  classesFromApiBackup: PropTypes.shape().isRequired,
+  objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
   deletedConnections: PropTypes.arrayOf(PropTypes.string).isRequired,
-  deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  stylingNodeCaptionProperty: PropTypes.string.isRequired
 }
 
 const mapToProps = ({
-  classesFromApi,
-  objectPropertiesFromApi,
+  classesFromApiBackup,
   deletedConnections,
-  deletedEdges,
-  deletedNodes
+  deletedNodes,
+  stylingNodeCaptionProperty,
+  objectPropertiesFromApiBackup
 }) => ({
-  classesFromApi,
-  objectPropertiesFromApi,
+  classesFromApiBackup,
   deletedConnections,
-  deletedEdges,
-  deletedNodes
+  deletedNodes,
+  stylingNodeCaptionProperty,
+  objectPropertiesFromApiBackup
 })
 
 export default connect(

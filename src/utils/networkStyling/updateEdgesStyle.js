@@ -1,5 +1,5 @@
-import { getEdgeUniqueId } from '../../constants/functions'
 import store from '../../store'
+import getEdge from '../nodesEdgesUtils/getEdge'
 import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
 import updateEdges from '../nodesEdgesUtils/updateEdges'
 
@@ -10,20 +10,19 @@ import updateEdges from '../nodesEdgesUtils/updateEdges'
 const updateEdgesStyle = () => {
   const {
     stylingEdgeCaptionProperty,
-    objectPropertiesFromApi
   } = store.getState()
 
   const availableEdgesIds = getEdgeIds()
 
   if (availableEdgesIds.length > 0) {
     availableEdgesIds.map((edgeId) => {
-      const predicate = getEdgeUniqueId(edgeId)
+      const edge = getEdge(edgeId)
 
-      const label = objectPropertiesFromApi[predicate][stylingEdgeCaptionProperty]
+      const label = edge[stylingEdgeCaptionProperty] ? edge[stylingEdgeCaptionProperty] : ''
 
       const edgeUpdatedObject = {
         id: edgeId,
-        label: label ? label.split(/ /g).join('\n') : ''
+        label
       }
 
       updateEdges(edgeUpdatedObject)

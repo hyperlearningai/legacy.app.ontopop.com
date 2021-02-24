@@ -2,12 +2,14 @@ import getEdgeObject from './getEdgeObject'
 import showEdgeCheck from './showEdgeCheck'
 import addConnections from './addConnections'
 import store from '../../store'
-import appendNode from './appendNode'
 import clearNodes from '../nodesEdgesUtils/clearNodes'
 import clearEdges from '../nodesEdgesUtils/clearEdges'
 import countNodes from '../nodesEdgesUtils/countNodes'
 import countEdges from '../nodesEdgesUtils/countEdges'
 import setElementsStyle from '../networkStyling/setElementsStyle'
+import addNode from '../nodesEdgesUtils/addNode'
+import getEdge from '../nodesEdgesUtils/getEdge'
+import { EDGE_LABEL_PROPERTY } from '../../constants/graph'
 
 /**
  * Update store and graph based on node IDs to display
@@ -20,7 +22,6 @@ const addElementsToGraph = ({
 }) => {
   const {
     classesFromApi,
-    edgesIdsToDisplay,
     nodesIdsToDisplay,
     objectPropertiesFromApi,
     triplesPerNode,
@@ -39,10 +40,7 @@ const addElementsToGraph = ({
   clearEdges()
   clearNodes()
 
-  const addedNodes = []
-  const addedEdges = []
   const nodesConnections = {}
-  const edgesConnections = {}
 
   if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
 
@@ -51,18 +49,22 @@ const addElementsToGraph = ({
     const nodeIdObject = classesFromApi[nodeId.toString()]
     const triples = triplesPerNode[nodeId.toString()]
 
+    if (!nodeIdObject[EDGE_LABEL_PROPERTY]) continue
+
     nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
       ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
-    appendNode({
-      addedNodes,
-      nodeId,
-      nodeIdObject,
+    addNode({
+      ...nodeIdObject,
+      x: Math.floor((Math.random() * 100) + 1), // for scattering when in physics mode
+      y: Math.floor((Math.random() * 100) + 1),
     })
 
     if (triples && triples.length > 0) {
       triples.map((triple) => {
-        const edgeObject = objectPropertiesFromApi[triple.toString()]
+        const predicate = triple.toString()
+
+        const edgeObject = objectPropertiesFromApi[predicate]
 
         if (!edgeObject) return false
 
@@ -71,57 +73,38 @@ const addElementsToGraph = ({
           targetNodeId
         } = edgeObject
 
-        const predicate = triple
-        const from = sourceNodeId
-        const to = targetNodeId
-
-        const {
-          id,
-          edgeConnection,
-          edge,
-          fromObject,
-          toObject
-        } = getEdgeObject({
-          from,
-          predicate,
-          to
+        const edge = getEdgeObject({
+          edge: objectPropertiesFromApi[predicate]
         })
 
+        const isEdgeExisting = getEdge(predicate) !== null
+
+        if (isEdgeExisting) return false
+
         const isEdgeDisplayable = showEdgeCheck({
-          addedEdges,
-          id,
-          predicate,
-          from,
-          to,
-          edgesIdsToDisplay,
+          edge,
           nodesIdsToDisplay
         })
 
         if (isEdgeDisplayable) {
           addConnections({
-            addedEdges,
-            id,
             edge,
-            edgesConnections,
-            edgeConnection,
-            predicate,
-            from,
-            to,
             nodesConnections,
-            nodesIdsToDisplay,
-            edgesIdsToDisplay,
           })
 
-          appendNode({
-            addedNodes,
-            nodeId: to,
-            nodeIdObject: toObject,
-          })
+          const nodeToAdd = sourceNodeId.toString() === nodeId.toString()
+            ? targetNodeId.toString()
+            : sourceNodeId.toString()
 
-          appendNode({
-            addedNodes,
-            nodeId: from,
-            nodeIdObject: fromObject,
+          const noteToAddObject = classesFromApi[nodeToAdd]
+
+          noteToAddObject.label = noteToAddObject[stylingNodeCaptionProperty]
+            ? noteToAddObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+
+          addNode({
+            ...noteToAddObject,
+            x: Math.floor((Math.random() * 100) + 1), // for scattering when in physics mode
+            y: Math.floor((Math.random() * 100) + 1),
           })
         }
 
@@ -133,7 +116,6 @@ const addElementsToGraph = ({
   setStoreState('availableNodesCount', countNodes())
   setStoreState('availableEdgesCount', countEdges())
   setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
-  setStoreState('edgesConnections', JSON.parse(JSON.stringify(edgesConnections)))
 
   // set styles
   setElementsStyle()

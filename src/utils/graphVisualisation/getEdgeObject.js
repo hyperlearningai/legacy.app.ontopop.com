@@ -1,61 +1,39 @@
 import store from '../../store'
 
 /**
- * Get edge info and related nodes
+ * Get edge object
  * @param  {Object}   params
- * @param  {String}   params.from                    Subject node ID
- * @param  {String}   params.predicate               Predicate node ID
- * @param  {String}   params.to                      Object node ID
- * @return {Object}   output
- * @return {String}   output.edgeUniqueID            Edge unique ID
- * @return {Object}   output.edgeConnection          Edge connection containing nodes IDs and labels
- * @return {Object}   output.edge                    Edge object
- * @return {Object}   output.fromObject              Subject node object
- * @return {Object}   output.toObject                Object node object
+ * @param  {Object}   params.edge                 Edge object
+ * @return {Object}   edgeObject                  Updated edge object
  */
 const getEdgeObject = ({
-  from,
-  predicate,
-  to,
+  edge,
 }) => {
   const {
-    stylingNodeCaptionProperty,
-    classesFromApi,
-    objectPropertiesFromApi,
+    stylingEdgeCaptionProperty,
   } = store.getState()
 
-  const edgeLabel = objectPropertiesFromApi[predicate][stylingNodeCaptionProperty]
-  const fromObject = classesFromApi[from]
-  fromObject.id = from
-  fromObject.label = fromObject[stylingNodeCaptionProperty]
-    ? fromObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+  const {
+    edgeProperties,
+    sourceNodeId,
+    targetNodeId,
+    edgeId
+  } = edge
 
-  const toObject = classesFromApi[to]
-  toObject.id = to
-  toObject.label = toObject[stylingNodeCaptionProperty]
-    ? toObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+  const edgeLabel = edge[stylingEdgeCaptionProperty]
+  const id = edgeId.toString()
 
-  const edgeConnection = {
-    from,
-    to,
-  }
-
-  const id = predicate
-  const edge = {
-    ...edgeConnection,
-    ...objectPropertiesFromApi[predicate],
+  const edgeObject = {
+    rdfAbout: edgeProperties.objectPropertyRdfAbout || '',
+    rdfsLabel: edgeProperties.objectPropertyRdfsLabel || '',
     label: edgeLabel,
-    predicate,
+    predicate: id,
     id,
+    from: sourceNodeId.toString(),
+    to: targetNodeId.toString(),
   }
 
-  return ({
-    id,
-    edgeConnection,
-    edge,
-    fromObject,
-    toObject
-  })
+  return edgeObject
 }
 
 export default getEdgeObject

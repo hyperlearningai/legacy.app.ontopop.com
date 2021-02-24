@@ -1,19 +1,22 @@
 /* eslint max-len:0 */
 import setOntologyDeleteConnection from '../../../utils/editOntology/setOntologyDeleteConnection'
 import store from '../../../store'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { classesFromApi } from '../../fixtures/classesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteConnection'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
-import { nodesConnections } from '../../fixtures/nodesConnections'
-import { triplesPerNode } from '../../fixtures/triplesPerNode'
-import { edgesConnections } from '../../fixtures/edgesConnections'
+import { nodesConnections } from '../../fixtures/nodesConnectionsNew'
+import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
+import getNode from '../../../utils/nodesEdgesUtils/getNode'
 
 jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
+jest.mock('../../../utils/nodesEdgesUtils/getEdge')
+jest.mock('../../../utils/nodesEdgesUtils/getNode')
 
 const selectedElement = [
-  'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
+  '11'
 ]
 const setStoreState = jest.fn()
 
@@ -23,14 +26,20 @@ describe('setOntologyDeleteConnection', () => {
   })
 
   it('should work correctly', async () => {
-    const getState = jest.fn().mockImplementationOnce(() => ({
-      classesFromApi: OwlClasses,
+    getEdge.mockImplementation(() => ({
+      from: '1',
+      to: '141'
+    }))
+    getNode.mockImplementation(() => ({
+      id: '1',
+    }))
+
+    store.getState = jest.fn().mockImplementationOnce(() => ({
+      classesFromApi,
       deletedConnections: [],
       nodesConnections,
       triplesPerNode,
-      edgesConnections
     }))
-    store.getState = getState
 
     await setOntologyDeleteConnection({
       setStoreState,
@@ -38,7 +47,7 @@ describe('setOntologyDeleteConnection', () => {
     })
 
     expect(removeEdge).toHaveBeenLastCalledWith(
-      'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp___http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY___http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ'
+      '11'
     )
 
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)

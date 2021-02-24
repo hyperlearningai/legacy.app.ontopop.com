@@ -136,6 +136,34 @@ exports[`ExportSettings should match snapshot  1`] = `
         />
       </div>
     </div>
+    <div
+      className="export-settings-input"
+    >
+      <div
+        className="label"
+      >
+        PrintGraph
+      </div>
+      <div
+        className="export-settings-buttons"
+      >
+        <Button
+          badge={null}
+          badgeClassName={null}
+          icon={null}
+          iconPos="left"
+          key="export-btn-print"
+          label="print"
+          onClick={[Function]}
+          tooltip="print"
+          tooltipOptions={
+            Object {
+              "position": "top",
+            }
+          }
+        />
+      </div>
+    </div>
   </div>
 </Fragment>
 `;

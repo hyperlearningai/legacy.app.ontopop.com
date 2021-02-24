@@ -7,7 +7,7 @@ import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 
-const EditOntologyRestoreEdgeNode = ({
+const EditOntologyRestoreNode = ({
   type,
   operation,
   setStoreState,
@@ -87,7 +87,7 @@ const EditOntologyRestoreEdgeNode = ({
   )
 }
 
-EditOntologyRestoreEdgeNode.propTypes = {
+EditOntologyRestoreNode.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
@@ -109,4 +109,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(EditOntologyRestoreEdgeNode)
+)(EditOntologyRestoreNode)

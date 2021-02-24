@@ -45,6 +45,7 @@ export default {
   couldNotQueryGraph: 'Could not query graph!',
   couldNotQueryAnnotationProperties: 'Could not query annotation properties!',
   couldNotQueryEdgeProperties: 'Could not query object properties!',
+  noNodesToDisplay: 'No nodes to display!',
 
   // node selection
   node: 'Node',
@@ -201,7 +202,10 @@ export default {
   exportDataAs: 'Export data as',
   csv: 'CSV',
   owl: 'OWL',
+  PrintGraph: 'Print graph',
+  print: 'Print',
   fileCanBeDownloaded: 'File can now be downloaded, check your browser!',
+  fileCanBePrinted: 'File can now be printed, check your browser!',
   couldNotDownloadCsv: 'Could not download CSV!',
   insertFileName: 'Insert file name.',
 

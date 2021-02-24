@@ -9,7 +9,7 @@ import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
 import restoreUpdatedElement from '../utils/editOntology/restoreUpdatedElement'
 
-const EditOntologyUpdateEdgeNode = ({
+const EditOntologyUpdateNode = ({
   type,
   operation,
   setStoreState,
@@ -17,7 +17,6 @@ const EditOntologyUpdateEdgeNode = ({
   removeFromObject,
   addToObject,
   optionNodes,
-  optionEdges,
   classesFromApi,
   objectPropertiesFromApi,
 }) => {
@@ -39,7 +38,7 @@ const EditOntologyUpdateEdgeNode = ({
           id="graph-select"
           value={selectedElement}
           filter
-          options={type === 'node' ? optionNodes : optionEdges}
+          options={optionNodes}
           onChange={(e) => setSelectedElement(e.value)}
           placeholder={t('selectElement')}
         />
@@ -112,14 +111,13 @@ const EditOntologyUpdateEdgeNode = ({
   )
 }
 
-EditOntologyUpdateEdgeNode.propTypes = {
+EditOntologyUpdateNode.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
   addToArray: PropTypes.func.isRequired,
   removeFromObject: PropTypes.func.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
   addToObject: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
@@ -140,4 +138,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(EditOntologyUpdateEdgeNode)
+)(EditOntologyUpdateNode)

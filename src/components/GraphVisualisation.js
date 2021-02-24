@@ -10,7 +10,6 @@ import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
 import addElementsToGraph from '../utils/graphVisualisation/addElementsToGraph'
-import setGraphData from '../utils/graphVisualisation/setGraphData'
 
 const GraphVisualisation = ({
   currentGraph,
@@ -24,6 +23,7 @@ const GraphVisualisation = ({
   availableEdges,
   network,
   nodesIdsToDisplay,
+  removeFromObject,
   physicsHierarchicalView,
   physicsRepulsion,
   isPhysicsOn,
@@ -49,7 +49,6 @@ const GraphVisualisation = ({
   stylingNodeHoverBorderColor,
   stylingNodeTextFontSize,
   stylingNodeTextFontAlign,
-  triplesPerNode
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
@@ -72,11 +71,6 @@ const GraphVisualisation = ({
   }), [
     visJsRef,
   ])
-
-  // set graph data after triplesPerNodes is available
-  useEffect(() => setGraphData({
-    setStoreState,
-  }), [triplesPerNode])
 
   // update available nodes/edges according to view
   useEffect(() => {
@@ -105,7 +99,10 @@ const GraphVisualisation = ({
       setNodesIdsToDisplay({
         type,
         setStoreState,
-        options
+        options,
+        currentGraph,
+        removeFromObject,
+        t
       })
     }
   }, [
@@ -210,6 +207,7 @@ GraphVisualisation.propTypes = {
   showContextMenu: PropTypes.bool.isRequired,
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
+  removeFromObject: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
@@ -240,7 +238,6 @@ GraphVisualisation.propTypes = {
   stylingEdgeTextColor: PropTypes.string.isRequired,
   stylingEdgeTextSize: PropTypes.number.isRequired,
   stylingEdgeTextAlign: PropTypes.string.isRequired,
-  triplesPerNode: PropTypes.shape().isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -286,7 +283,6 @@ const mapToProps = ({
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
-  triplesPerNode
 }) => ({
   currentGraph,
   graphData,
@@ -326,7 +322,6 @@ const mapToProps = ({
   stylingEdgeTextColor,
   stylingEdgeTextSize,
   stylingEdgeTextAlign,
-  triplesPerNode
 })
 
 export default connect(

@@ -16,6 +16,7 @@ const setClassesFromApi = ({
 
     classes[id] = {
       ...node,
+      id: id.toString(),
       label: rdfsLabel
     }
 

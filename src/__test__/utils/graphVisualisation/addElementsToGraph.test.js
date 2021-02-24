@@ -52,53 +52,16 @@ describe('addElementsToGraph', () => {
       [['availableNodesCount', 3],
         ['availableEdgesCount', 2],
         ['nodesConnections', {
-          1: [{
-            from: 1,
-            predicate: 11,
-            to: 170
-          }, {
-            from: 1,
-            predicate:
-            12,
-            to: 141
-          }, {
-            from: 1,
-            predicate: 11,
-            to: 170
-          }, {
-            from: 1,
-            predicate:
-            12,
-            to: 141
-          }],
-          141: [{
-            from: 1,
-            predicate:
-             12,
-            to: 141
-          }, {
-            from: 1,
-            predicate: 12,
-            to: 141
-          }],
-          170: [{
-            from: 1,
-            predicate: 11,
-            to: 170
-          }, {
-            from: 1,
-            predicate: 11,
-            to: 170
-          }]
-        }], ['edgesConnections', {
-          11: [{
-            from: 1,
-            to: 170
-          }, { from: 1, to: 170 }],
-          12: [{
-            from: 1,
-            to: 141
-          }, { from: 1, to: 141 }]
+          1: [
+            '11',
+            '12',
+          ],
+          141: [
+            '11',
+          ],
+          170: [
+            '12',
+          ],
         }],
         ['isPhysicsOn', true]]
     )

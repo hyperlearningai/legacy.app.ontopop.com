@@ -61,12 +61,8 @@ const NodeNeighbourhood = ({
               <table>
                 <tbody>
                   <tr>
-                    <td className="bold">{t('label')}</td>
+                    <td className="bold">{t('selectedNode')}</td>
                     <td>{getNode(selectedNeighbourNode).label}</td>
-                  </tr>
-                  <tr>
-                    <td className="bold">{t('id')}</td>
-                    <td>{getNode(selectedNeighbourNode).id}</td>
                   </tr>
                 </tbody>
               </table>

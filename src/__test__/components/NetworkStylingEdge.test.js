@@ -22,10 +22,6 @@ const setup = () => {
     stylingEdgeByProperty: [],
     stylingEdgeLength: 250,
     stylingEdgeCaptionProperty: LABEL_PROPERTY,
-    annotationProperties: [{
-      property: 'rdfsLabel',
-      value: 'rdfsLabel'
-    }],
   }
 
   const component = shallow(<NetworkStylingEdge {...props} />)

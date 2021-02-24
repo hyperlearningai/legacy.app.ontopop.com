@@ -7,6 +7,7 @@ import { GET_GRAPH } from '../../constants/api'
 import setClassesFromApi from './setClassesFromApi'
 import getTriplesFromApi from './getTriplesFromApi'
 import setObjectPropertiesFromApi from './setObjectPropertiesFromApi'
+import setAnnotationProperties from './setAnnotationProperties'
 
 /**
  * Get graph data from API
@@ -44,6 +45,11 @@ const getGraphData = async ({
         type: NOTIFY_WARNING
       })
     }
+
+    setAnnotationProperties({
+      setStoreState,
+      nodes
+    })
 
     setClassesFromApi({
       setStoreState,

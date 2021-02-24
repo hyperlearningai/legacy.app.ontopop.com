@@ -1,4 +1,6 @@
-export const API_ENDPOINT = `${process.env.endpointUrl}/api` // 'http://localhost:8080/api'
+export const ENDPOINT_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080'
+  : 'https://ontology-api.azurewebsites.net'
+export const API_ENDPOINT = `${ENDPOINT_URL}/api`
 
 export const GET_ONTOLOGY = `${API_ENDPOINT}/ontology`
 export const GET_GRAPH = `${API_ENDPOINT}/graph`

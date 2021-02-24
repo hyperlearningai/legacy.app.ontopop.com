@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import EditOntologyRestoreEdgeNode from '../../components/EditOntologyRestoreEdgeNode'
+import EditOntologyRestoreNode from '../../components/EditOntologyRestoreNode'
 import { OwlClasses } from '../fixtures/test-ontology-classes'
 import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
 
@@ -22,7 +22,7 @@ const setup = ({
     deletedNodes: [],
   }
 
-  const component = shallow(<EditOntologyRestoreEdgeNode {...props} />)
+  const component = shallow(<EditOntologyRestoreNode {...props} />)
 
   return {
     component,
@@ -30,7 +30,7 @@ const setup = ({
   }
 }
 
-describe('EditOntologyRestoreEdgeNode', () => {
+describe('EditOntologyRestoreNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

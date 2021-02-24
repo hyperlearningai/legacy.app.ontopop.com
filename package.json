@@ -18,8 +18,7 @@
     "lint:style": "npm run stylelint src/styles/*.scss",
     "lint:commitmsg:ci": "echo $CI_COMMIT_MESSAGE | npm run commitlint",
     "dev": "next",
-    "build": "next build",
-    "export": "next export",
+    "build": "next build && next export",
     "start": "next start",
     "audit": "npm audit",
     "build-docs": "jsdoc src/utils/*.js -d docs"
@@ -110,6 +109,7 @@
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primereact": "^6.0.0",
+    "print-js": "^1.6.0",
     "prismjs": "^1.23.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

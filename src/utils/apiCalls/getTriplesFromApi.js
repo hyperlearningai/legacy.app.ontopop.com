@@ -14,22 +14,25 @@ const getTriplesFromApi = ({
   edges.map((edge) => {
     const { sourceNodeId, targetNodeId, edgeId } = edge
 
+    const id = edgeId.toString()
+
     if (!triplesPerNode[sourceNodeId.toString()]) {
-      triplesPerNode[sourceNodeId.toString()] = [edgeId]
-    } else if (!triplesPerNode[sourceNodeId.toString()].includes(edgeId)) {
-      triplesPerNode[sourceNodeId.toString()].push(edgeId)
+      triplesPerNode[sourceNodeId.toString()] = [id]
+    } else if (!triplesPerNode[sourceNodeId.toString()].includes(id)) {
+      triplesPerNode[sourceNodeId.toString()].push(id)
     }
 
     if (!triplesPerNode[targetNodeId.toString()]) {
-      triplesPerNode[targetNodeId.toString()] = [edgeId]
-    } else if (!triplesPerNode[targetNodeId.toString()].includes(edgeId)) {
-      triplesPerNode[targetNodeId.toString()].push(edgeId)
+      triplesPerNode[targetNodeId.toString()] = [id]
+    } else if (!triplesPerNode[targetNodeId.toString()].includes(id)) {
+      triplesPerNode[targetNodeId.toString()].push(id)
     }
 
     return true
   })
 
   setStoreState('triplesPerNode', triplesPerNode)
+  setStoreState('triplesPerNodeBackup', triplesPerNode)
 }
 
 export default getTriplesFromApi

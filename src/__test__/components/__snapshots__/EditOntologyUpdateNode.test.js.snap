@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditOntologyUpdateEdgeNode should match snapshot 1`] = `
+exports[`EditOntologyUpdateNode should match snapshot 1`] = `
 <Connect
   actions={
     Object {

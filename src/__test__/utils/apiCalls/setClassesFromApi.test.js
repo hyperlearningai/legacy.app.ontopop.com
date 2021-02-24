@@ -10,7 +10,7 @@ describe('setClassesFromApi', () => {
   it('should return data', async () => {
     const nodes = [
       {
-        id: 1,
+        id: '1',
         label: 'class',
         rdfsLabel: 'Communication Document',
         'Business Area': 'Communications',
@@ -21,7 +21,7 @@ describe('setClassesFromApi', () => {
         nodeId: 1
       },
       {
-        id: 2,
+        id: '2',
         label: 'class',
         rdfsLabel: 'Programme',
         skosExample: 'Develop connectivity between London and Inverness.',
@@ -43,7 +43,7 @@ describe('setClassesFromApi', () => {
       [['classesFromApi', {
         1: {
           'Business Area': 'Communications',
-          id: 1,
+          id: '1',
           label: 'Communication Document',
           nodeId: 1,
           rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
@@ -54,7 +54,7 @@ describe('setClassesFromApi', () => {
         },
         2: {
           'Business Area': 'Maintain Plan',
-          id: 2,
+          id: '2',
           label: 'Programme',
           nodeId: 2,
           rdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
@@ -68,7 +68,7 @@ describe('setClassesFromApi', () => {
       ['classesFromApiBackup', {
         1: {
           'Business Area': 'Communications',
-          id: 1,
+          id: '1',
           label: 'Communication Document',
           nodeId: 1,
           rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
@@ -79,7 +79,7 @@ describe('setClassesFromApi', () => {
         },
         2: {
           'Business Area': 'Maintain Plan',
-          id: 2,
+          id: '2',
           label: 'Programme',
           nodeId: 2,
           rdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',

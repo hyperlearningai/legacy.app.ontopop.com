@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditOntologyDeleteEdgeNode should match snapshot when type edge 1`] = `
+exports[`EditOntologyDeleteNode should match snapshot when type edge 1`] = `
 <Connect
   actions={
     Object {
@@ -1080,7 +1080,7 @@ exports[`EditOntologyDeleteEdgeNode should match snapshot when type edge 1`] = `
 </Connect>
 `;
 
-exports[`EditOntologyDeleteEdgeNode should match snapshot when type node 1`] = `
+exports[`EditOntologyDeleteNode should match snapshot when type node 1`] = `
 <Connect
   actions={
     Object {

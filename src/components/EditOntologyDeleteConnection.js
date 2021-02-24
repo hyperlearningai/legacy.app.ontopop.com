@@ -6,9 +6,9 @@ import { Button } from 'primereact/button'
 import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
-import { getEdgeAndNodes } from '../constants/functions'
-import { LABEL_PROPERTY, SUB_CLASS_OF_LABEL } from '../constants/graph'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
+import getEdge from '../utils/nodesEdgesUtils/getEdge'
+import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const EditOntologyDeleteConnection = ({
   type,
@@ -17,8 +17,7 @@ const EditOntologyDeleteConnection = ({
   addToArray,
   removeFromObject,
   addToObject,
-  classesFromApi,
-  objectPropertiesFromApi
+  stylingNodeCaptionProperty
 }) => {
   const { t } = useTranslation()
 
@@ -26,17 +25,19 @@ const EditOntologyDeleteConnection = ({
   const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
   const optionConnections = getEdgeIds().map((edgeId) => {
-    const [predicate, from, to] = getEdgeAndNodes(edgeId)
+    const { label, from, to } = getEdge(edgeId)
 
-    const fromLabel = classesFromApi[from][LABEL_PROPERTY]
-    const toLabel = classesFromApi[to][LABEL_PROPERTY]
-    const predicateLabel = objectPropertiesFromApi[predicate] ? objectPropertiesFromApi[predicate][LABEL_PROPERTY] : SUB_CLASS_OF_LABEL
+    const fromNode = getNode(from)
+    const fromLabel = fromNode ? fromNode[stylingNodeCaptionProperty] : ''
 
-    const label = `${fromLabel} => (${predicateLabel}) => ${toLabel}`
+    const toNode = getNode(to)
+    const toLabel = toNode ? toNode[stylingNodeCaptionProperty] : ''
+
+    const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
 
     return ({
       value: edgeId,
-      label
+      label: connectionLabel
     })
   })
 
@@ -97,20 +98,17 @@ EditOntologyDeleteConnection.propTypes = {
   addToArray: PropTypes.func.isRequired,
   removeFromObject: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
+  stylingNodeCaptionProperty: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
   selectedGraphVersion,
   graphVersions,
-  classesFromApi,
-  objectPropertiesFromApi
+  stylingNodeCaptionProperty
 }) => ({
   selectedGraphVersion,
   graphVersions,
-  classesFromApi,
-  objectPropertiesFromApi
+  stylingNodeCaptionProperty
 })
 
 export default connect(

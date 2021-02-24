@@ -12,11 +12,17 @@ const setObjectPropertiesFromApi = ({
   const objectProperties = {}
 
   edges.map((edge) => {
-    const { edgeId, role } = edge
+    const {
+      edgeId,
+      role,
+      edgeProperties
+    } = edge
 
     objectProperties[edgeId] = {
       ...edge,
-      id: edgeId,
+      id: edgeId.toString(),
+      rdfsLabel: edgeProperties.objectPropertyRdfsLabel,
+      rdfAbout: edgeProperties.objectPropertyRdfAbout,
       label: role
     }
 

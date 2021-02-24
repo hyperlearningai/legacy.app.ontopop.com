@@ -1,41 +1,19 @@
-import { DataSet } from 'vis-data'
 import searchElement from '../../../utils/freeTextSearch/searchElement'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
-import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties.json'
+import { classesFromApi } from '../../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
+import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
+import getEdgeIds from '../../../utils/nodesEdgesUtils/getEdgeIds'
 
 const setStoreState = jest.fn()
-const classes = Object.keys(OwlClasses).map((elementId) => ({
-  ...OwlClasses[elementId],
-  id: elementId
+
+store.getState = jest.fn().mockImplementation(() => ({
+  classesFromApi,
+  objectPropertiesFromApi,
 }))
 
-const getState = jest.fn().mockImplementation(() => ({
-  classesFromApi: OwlClasses,
-  edgesIdsToDisplay: [
-    'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-    'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU'
-  ],
-  objectPropertiesFromApi: OwlObjectProperties,
-  availableNodes: new DataSet(classes),
-  annotationProperties: [
-    'rdfsLabel',
-    'rdfAbout'
-  ],
-  selectedGraphVersion: 'original',
-  graphVersions: {
-    original: {
-      classesFromApi: {
-
-      },
-      objectPropertiesFromApi: {
-
-      },
-      classesFromApiBackup: OwlClasses,
-    }
-  }
-}))
-store.getState = getState
+jest.mock('../../../utils/nodesEdgesUtils/getNodeIds')
+jest.mock('../../../utils/nodesEdgesUtils/getEdgeIds')
 
 describe('searchElement', () => {
   afterEach(() => {
@@ -55,8 +33,17 @@ describe('searchElement', () => {
     )
   })
 
-  it('should set freeTextSelection when node found', async () => {
-    const search = 'projects or tasks'
+  it('should set freeTextSelection', async () => {
+    const search = 'pro'
+
+    getNodeIds.mockImplementation(() => ([
+      '1',
+      '2'
+    ]))
+    getEdgeIds.mockImplementation(() => ([
+      '11',
+      '12'
+    ]))
 
     await searchElement({
       search,
@@ -64,20 +51,7 @@ describe('searchElement', () => {
     })
 
     expect(setStoreState).toHaveBeenCalledWith(
-      'freeTextSelection', { 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M': 'node' }
-    )
-  })
-
-  it('should set freeTextSelection when edge found', async () => {
-    const search = 'specify the Entity'
-
-    await searchElement({
-      search,
-      setStoreState
-    })
-
-    expect(setStoreState).toHaveBeenCalledWith(
-      'freeTextSelection', { 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB': 'edge' }
+      'freeTextSelection', { 1: 'node', 12: 'edge', 2: 'node' }
     )
   })
 })

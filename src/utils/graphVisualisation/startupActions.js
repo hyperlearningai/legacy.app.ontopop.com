@@ -1,10 +1,7 @@
-// import jsonClasses from '../../assets/json/test-ontology-classes.json'
-// import jsonObjectProperties from '../../assets/json/test-ontology-object-properties.json'
 import loadStyling from '../networkStyling/loadStyling'
 import getGraphData from '../apiCalls/getGraphData'
-import getNodeProperties from '../apiCalls/getNodeProperties'
-// import setGraphData from './setGraphData'
-// import { SUB_CLASS_OF_ID, SUB_CLASS_OF_LABEL } from '../../constants/graph'
+import { ALGO_TYPE_FULL } from '../../constants/algorithms'
+import setNodesIdsToDisplay from './setNodesIdsToDisplay'
 
 /**
  * Graph data loading at startup
@@ -22,14 +19,14 @@ const startupActions = async ({
     setStoreState
   })
 
-  // get and set annotation properties
-  getNodeProperties({
+  // get graph data
+  await getGraphData({
     setStoreState,
     t
   })
 
-  // get graph data
-  getGraphData({
+  setNodesIdsToDisplay({
+    type: ALGO_TYPE_FULL,
     setStoreState,
     t
   })
