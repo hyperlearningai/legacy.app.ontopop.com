@@ -1,6 +1,6 @@
 # Ontology Visualisation
 
-[![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/hyperlearningai.ontology-visualisation?branchName=develop)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=3&branchName=develop)
+[![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Dev?branchName=develop)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=4&branchName=develop)
 
 ## Introduction
 
