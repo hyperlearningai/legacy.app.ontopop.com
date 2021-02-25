@@ -1,6 +1,12 @@
 # Ontology Visualisation
 
-[![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/hyperlearningai.ontology-visualisation?branchName=develop)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=3&branchName=develop)
+## Build status
+
+
+| Development  | Main  |
+| :----------: | :---: |
+| [![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Dev?branchName=develop)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=4&branchName=develop) | [![Build status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Production)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=5) |
+
 
 ## Introduction
 
@@ -17,7 +23,6 @@ Ontology visualisation web app based on NextJs/React/Redux-zero with internation
 ## Build
 
 `npm run build`
-`npm run export`  # for generating the bundle to deploy
 
 ## Run API server
 
@@ -28,8 +33,10 @@ Unzip and from the root folder run
 
 ## Run dev server
 
-
 `npm run dev` # opens on http://localhost:3000
+
+To test the build output:
+ `npm run start` # opens on http://localhost:3000
 
 ## Testing and Linting
 
