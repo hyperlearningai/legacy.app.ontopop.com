@@ -9,6 +9,7 @@ import getTriplesFromApi from './getTriplesFromApi'
 import setObjectPropertiesFromApi from './setObjectPropertiesFromApi'
 import setAnnotationProperties from './setAnnotationProperties'
 import { AUTH_COOKIE } from '../../constants/auth'
+import { ROUTE_INDEX } from '../../constants/routes'
 
 /**
  * Get graph data from API
@@ -29,12 +30,11 @@ const getGraphData = async ({
 
     const config = {
       headers: {
-        Authorization: `Bearer ${bearer}`
+        Authorization: bearer
       }
     }
 
     const response = await axios.get(GET_GRAPH, config)
-
     setStoreState('loading', false)
 
     if (response.status !== 200) {
@@ -77,6 +77,13 @@ const getGraphData = async ({
     })
   } catch (error) {
     setStoreState('loading', false)
+
+    setTimeout(()=>{
+      localStorage.removeItem(AUTH_COOKIE)
+      window.location.replace(ROUTE_INDEX)
+    }, 2000)
+
+
     return showNotification({
       message: t('couldNotQueryGraph'),
       type: NOTIFY_WARNING
