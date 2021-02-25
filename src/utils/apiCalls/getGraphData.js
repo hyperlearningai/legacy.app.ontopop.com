@@ -8,6 +8,7 @@ import setClassesFromApi from './setClassesFromApi'
 import getTriplesFromApi from './getTriplesFromApi'
 import setObjectPropertiesFromApi from './setObjectPropertiesFromApi'
 import setAnnotationProperties from './setAnnotationProperties'
+import { AUTH_COOKIE } from '../../constants/auth'
 
 /**
  * Get graph data from API
@@ -23,7 +24,16 @@ const getGraphData = async ({
   setStoreState('loading', true)
 
   try {
-    const response = await axios.get(GET_GRAPH)
+    const authCookie = localStorage.getItem(AUTH_COOKIE)
+    const { bearer } = JSON.parse(authCookie)
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${bearer}`
+      }
+    }
+
+    const response = await axios.get(GET_GRAPH, config)
 
     setStoreState('loading', false)
 

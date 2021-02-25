@@ -117,6 +117,11 @@ describe('getGraphData', () => {
       }
     }))
 
+    const getItem = jest.fn().mockImplementationOnce(() => JSON.stringify({
+      bearer: '12345'
+    }))
+    Storage.prototype.getItem = getItem
+
     await getGraphData({
       setStoreState,
       t
