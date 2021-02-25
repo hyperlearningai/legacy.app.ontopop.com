@@ -78,11 +78,10 @@ const getGraphData = async ({
   } catch (error) {
     setStoreState('loading', false)
 
-    setTimeout(()=>{
+    setTimeout(() => {
       localStorage.removeItem(AUTH_COOKIE)
       window.location.replace(ROUTE_INDEX)
     }, 2000)
-
 
     return showNotification({
       message: t('couldNotQueryGraph'),
