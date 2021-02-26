@@ -1,21 +1,25 @@
 import axios from 'axios'
-import { store } from 'react-notifications-component'
+import store from '../../../store'
 import getGraphData from '../../../utils/apiCalls/getGraphData'
 import en from '../../../i18n/en'
 import setClassesFromApi from '../../../utils/apiCalls/setClassesFromApi'
 import setObjectPropertiesFromApi from '../../../utils/apiCalls/setObjectPropertiesFromApi'
 import getTriplesFromApi from '../../../utils/apiCalls/getTriplesFromApi'
 import setAnnotationProperties from '../../../utils/apiCalls/setAnnotationProperties'
+import showNotification from '../../../utils/notifications/showNotification'
 
 const t = (id) => en[id]
 const setStoreState = jest.fn()
-const addNotification = jest.fn()
-store.addNotification = addNotification
+
+store.getState = jest.fn().mockImplementation(() => ({
+  user: { token: 'ewj123' }
+}))
 
 jest.mock('../../../utils/apiCalls/setClassesFromApi')
 jest.mock('../../../utils/apiCalls/setObjectPropertiesFromApi')
 jest.mock('../../../utils/apiCalls/getTriplesFromApi')
 jest.mock('../../../utils/apiCalls/setAnnotationProperties')
+jest.mock('../../../utils/notifications/showNotification')
 
 describe('getGraphData', () => {
   afterEach(() => {
@@ -30,14 +34,8 @@ describe('getGraphData', () => {
       t
     })
 
-    expect(addNotification).toHaveBeenCalledWith({
-      animationIn: ['animated', 'fadeIn'],
-      animationOut: ['animated', 'fadeOut'],
-      container: 'bottom-left',
-      dismiss: { duration: 3000, onScreen: true },
-      insert: 'top',
+    expect(showNotification).toHaveBeenCalledWith({
       message: 'Could not query graph!',
-      title: '',
       type: 'warning'
     })
     expect(setStoreState.mock.calls).toEqual(
@@ -55,14 +53,8 @@ describe('getGraphData', () => {
       t
     })
 
-    expect(addNotification).toHaveBeenCalledWith({
-      animationIn: ['animated', 'fadeIn'],
-      animationOut: ['animated', 'fadeOut'],
-      container: 'bottom-left',
-      dismiss: { duration: 3000, onScreen: true },
-      insert: 'top',
+    expect(showNotification).toHaveBeenCalledWith({
       message: 'Could not query graph!',
-      title: '',
       type: 'warning'
     })
     expect(setStoreState.mock.calls).toEqual(
@@ -83,14 +75,8 @@ describe('getGraphData', () => {
       t
     })
 
-    expect(addNotification).toHaveBeenCalledWith({
-      animationIn: ['animated', 'fadeIn'],
-      animationOut: ['animated', 'fadeOut'],
-      container: 'bottom-left',
-      dismiss: { duration: 3000, onScreen: true },
-      insert: 'top',
+    expect(showNotification).toHaveBeenCalledWith({
       message: 'Could not query graph!',
-      title: '',
       type: 'warning'
     })
     expect(setStoreState.mock.calls).toEqual(
@@ -116,6 +102,11 @@ describe('getGraphData', () => {
         edges: JSON.stringify({})
       }
     }))
+
+    const getItem = jest.fn().mockImplementationOnce(() => JSON.stringify({
+      bearer: '12345'
+    }))
+    Storage.prototype.getItem = getItem
 
     await getGraphData({
       setStoreState,

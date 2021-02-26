@@ -34,7 +34,8 @@ const Index = ({
     return () => resetGraphData({
       setStoreState
     })
-  }, [])
+  },
+  [])
 
   return (
     <>

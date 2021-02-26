@@ -8,10 +8,12 @@ import setNodesIdsToDisplay from './setNodesIdsToDisplay'
  * @param  {Object}     params
  * @param  {Function}   params.t                  Internationalisation function
  * @param  {Function}   params.setStoreState      setStoreState action
+ * @param  {Function}   params.removeFromObject   removeFromObject action
  * @return { undefined }
 \ */
 const startupActions = async ({
   setStoreState,
+  removeFromObject,
   t
 }) => {
   // load saved styling options
@@ -28,6 +30,7 @@ const startupActions = async ({
   setNodesIdsToDisplay({
     type: ALGO_TYPE_FULL,
     setStoreState,
+    removeFromObject,
     t
   })
 }

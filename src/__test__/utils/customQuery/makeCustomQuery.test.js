@@ -2,12 +2,17 @@ import axios from 'axios'
 import makeCustomQuery from '../../../utils/customQuery/makeCustomQuery'
 import en from '../../../i18n/en'
 import showNotification from '../../../utils/notifications/showNotification'
+import store from '../../../store'
 
 jest.mock('../../../utils/notifications/showNotification')
 
 const t = (id) => en[id]
 const setStoreState = jest.fn()
 const addToArray = jest.fn()
+
+store.getState = jest.fn().mockImplementation(() => ({
+  user: { token: 'ewj123' }
+}))
 
 describe('makeCustomQuery', () => {
   afterEach(() => {
