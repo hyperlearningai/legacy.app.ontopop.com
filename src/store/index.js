@@ -101,11 +101,15 @@ const initialState = {
   isNetworkLoading: false,
   networkLoadingProgress: 0,
 
-  // free text selection
-  searchFilter: '',
+  // free text search
   freeTextSelection: {},
   freeTextSelectedElement: '',
   freeTextPrevSelectedElement: undefined,
+
+  // Structured search
+  structuredSelection: {},
+  structuredSelectedElement: '',
+  structuredPrevSelectedElement: undefined,
 
   // node selection
   isNodeSelectable: false,

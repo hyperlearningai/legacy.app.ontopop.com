@@ -1,0 +1,72 @@
+import store from '../../store'
+import getEdge from '../nodesEdgesUtils/getEdge'
+import getNode from '../nodesEdgesUtils/getNode'
+import updateEdges from '../nodesEdgesUtils/updateEdges'
+import updateNodes from '../nodesEdgesUtils/updateNodes'
+
+/**
+ * Highlight selected element
+ * @param  {Object}   params
+ * @param  {Function} params.setStoreState           setStoreState action
+ * @return { undefined }
+ */
+const highlightStructuredSearchElement = ({
+  setStoreState
+}) => {
+  const {
+    structuredSelection,
+    structuredSelectedElement,
+    stylingNodeHighlightBackgroundColor,
+    stylingEdgeLineColorHighlight,
+    network
+  } = store.getState()
+
+  if (!structuredSelectedElement) return false
+  const elementType = structuredSelection[structuredSelectedElement]
+
+  if (elementType === 'node') {
+    const node = getNode(structuredSelectedElement)
+
+    setStoreState('structuredPrevSelectedElement', node)
+
+    const color = node.color || {}
+
+    color.background = stylingNodeHighlightBackgroundColor
+
+    network.focus(structuredSelectedElement,
+      {
+        scale: 2,
+        animation: true
+      })
+
+    return updateNodes(
+      { id: structuredSelectedElement, color }
+    )
+  }
+
+  const edge = getEdge(structuredSelectedElement)
+
+  setStoreState('structuredPrevSelectedElement', edge)
+
+  const color = edge.color || {}
+
+  color.color = stylingEdgeLineColorHighlight
+
+  updateEdges(
+    {
+      id: structuredSelectedElement,
+      color,
+      width: 3
+    }
+  )
+
+  network.focus(edge.from,
+    {
+      scale: 1,
+      animation: true
+    })
+
+  return true
+}
+
+export default highlightStructuredSearchElement

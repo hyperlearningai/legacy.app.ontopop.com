@@ -22,7 +22,8 @@ import {
   AiOutlineArrowRight
 } from 'react-icons/ai'
 import {
-  IoGitNetwork
+  IoGitNetwork,
+  IoBuildSharp
 } from 'react-icons/io5'
 import {
   FaRegHandPointer,
@@ -46,7 +47,8 @@ import {
   SIDEBAR_VIEW_EDGES_FILTER,
   SIDEBAR_VIEW_CUSTOM_QUERY,
   SIDEBAR_VIEW_EDIT_ONTOLOGY,
-  SIDEBAR_VIEW_STYLING
+  SIDEBAR_VIEW_STYLING,
+  SIDEBAR_VIEW_STRUCTURED_SEARCH
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
@@ -62,6 +64,7 @@ import EdgesFilter from './EdgesFilter'
 import CustomQuery from './CustomQuery'
 import EditOntology from './EditOntology'
 import NetworkStyling from './NetworkStyling'
+import StructuredSearch from './StructuredSearch'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -91,6 +94,14 @@ const Sidebar = ({
           onClick={() => setView(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
         >
           <BsSearch />
+        </Button>
+        <Button
+          tooltip={t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
+          className={sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => setView(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
+        >
+          <BsSearch />
+          <IoBuildSharp />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_NODES_SELECTION)}
@@ -227,6 +238,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH && (
                 <FreeTextSearch />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH && (
+                <StructuredSearch />
               )
             }
 
