@@ -10,7 +10,6 @@ import EditOntologyForm from './EditOntologyForm'
 import restoreUpdatedElement from '../utils/editOntology/restoreUpdatedElement'
 
 const EditOntologyUpdateNode = ({
-  type,
   operation,
   setStoreState,
   addToArray,
@@ -18,12 +17,13 @@ const EditOntologyUpdateNode = ({
   addToObject,
   optionNodes,
   classesFromApi,
-  objectPropertiesFromApi,
 }) => {
   const { t } = useTranslation()
 
   const [selectedElement, setSelectedElement] = useState(undefined)
   const [selectedElementProperties, setSelectedElementProperties] = useState({})
+
+  const type = 'node'
 
   return (
     <>
@@ -61,7 +61,7 @@ const EditOntologyUpdateNode = ({
               operation={operation}
               type={type}
               setSelectedElementProperties={setSelectedElementProperties}
-              initialData={type === 'node' ? classesFromApi[selectedElement] : objectPropertiesFromApi[selectedElement]}
+              initialData={classesFromApi[selectedElement]}
             />
 
             <div className="edit-ontology-row">
@@ -112,7 +112,6 @@ const EditOntologyUpdateNode = ({
 }
 
 EditOntologyUpdateNode.propTypes = {
-  type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
   addToArray: PropTypes.func.isRequired,
@@ -120,19 +119,16 @@ EditOntologyUpdateNode.propTypes = {
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   addToObject: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   selectedGraphVersion,
   graphVersions,
   classesFromApi,
-  objectPropertiesFromApi
 }) => ({
   selectedGraphVersion,
   graphVersions,
   classesFromApi,
-  objectPropertiesFromApi
 })
 
 export default connect(

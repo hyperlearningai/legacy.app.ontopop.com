@@ -1,5 +1,5 @@
 import updateNodesStyle from '../../../utils/networkStyling/updateNodesStyle'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { classesFromApi } from '../../fixtures/classesFromApi'
 import store from '../../../store'
 import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
@@ -14,18 +14,17 @@ describe('updateNodesStyle', () => {
 
   it('should work correctly', async () => {
     getNodeIds.mockImplementationOnce(() => ([
-      'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-      'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M'
+      '1'
     ]))
     store.getState = jest.fn().mockImplementation(() => ({
       stylingNodeCaptionProperty: 'rdfsLabel',
-      classesFromApi: OwlClasses
+      classesFromApi
     }))
 
     await updateNodesStyle()
 
     expect(updateNodes).toHaveBeenLastCalledWith(
-      { id: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M', label: 'Programme' }
+      { id: '1', label: 'Communication\nDocument' }
     )
   })
 })

@@ -7,7 +7,7 @@ import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 
-const EditOntologyRestoreConnection = ({
+const EditOntologyRestoreEdge = ({
   type,
   operation,
   setStoreState,
@@ -16,7 +16,7 @@ const EditOntologyRestoreConnection = ({
   addToObject,
   classesFromApiBackup,
   objectPropertiesFromApiBackup,
-  deletedConnections,
+  deletedEdges,
   deletedNodes,
   stylingNodeCaptionProperty
 }) => {
@@ -25,16 +25,13 @@ const EditOntologyRestoreConnection = ({
   const [selectedElement, setSelectedElement] = useState(undefined)
   const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
-  const optionConnections = deletedConnections.length > 0
-    ? deletedConnections.filter(
+  const optionEdges = deletedEdges.length > 0
+    ? deletedEdges.filter(
       (edgeId) => {
         const {
-          sourceNodeId,
-          targetNodeId
+          from,
+          to
         } = objectPropertiesFromApiBackup[edgeId]
-
-        const from = sourceNodeId.toString()
-        const to = targetNodeId.toString()
 
         const isFromNodeDeleted = deletedNodes.includes(from)
         const isToNodeDeleted = deletedNodes.includes(to)
@@ -44,13 +41,10 @@ const EditOntologyRestoreConnection = ({
       }
     ).map((edgeId) => {
       const {
-        sourceNodeId,
-        targetNodeId,
+        from,
+        to,
         label
       } = objectPropertiesFromApiBackup[edgeId]
-
-      const from = sourceNodeId.toString()
-      const to = targetNodeId.toString()
 
       const fromLabel = classesFromApiBackup[from][stylingNodeCaptionProperty]
       const toLabel = classesFromApiBackup[to][stylingNodeCaptionProperty]
@@ -66,65 +60,63 @@ const EditOntologyRestoreConnection = ({
   return (
     <>
       {
-      optionConnections.length === 0
-        ? (
-          <div>
-            {t('noDeletedElements')}
-          </div>
-        ) : (
-          <>
-            <div
-              className="edit-ontology-row"
-            >
-              <label htmlFor="element-select">
-                {t('selectElement')}
-              </label>
-
-              <MultiSelect
-                value={selectedElement}
-                options={optionConnections}
-                onChange={(e) => setSelectedElement(e.value)}
-                placeholder={t('selectElement')}
-                display="chip"
-                filter
-                showClear
-                filterBy="label"
-              />
-            </div>
-
+        optionEdges.length === 0
+          ? (
             <div className="edit-ontology-row">
-              <Button
-                className="go-button"
-                tooltip={`${t(operation)}`}
-                disabled={!selectedElement}
-                onClick={() => {
-                  setOntology({
-                    operation,
-                    type,
-                    selectedElement,
-                    setStoreState,
-                    addToArray,
-                    removeFromObject,
-                    addToObject,
-                    selectedElementProperties,
-                    t
-                  })
-                  setSelectedElement(undefined)
-                  setSelectedElementProperties({})
-                }}
-                label={t(operation)}
-                icon="pi pi-chevron-right"
-                iconPos="right"
-              />
+              {t('noDeletedElements')}
             </div>
-          </>
-        )
+          ) : (
+            <>
+              <div className="edit-ontology-row">
+                <label htmlFor="element-select">
+                  {t('selectElement')}
+                </label>
+
+                <MultiSelect
+                  value={selectedElement}
+                  options={optionEdges}
+                  onChange={(e) => setSelectedElement(e.value)}
+                  placeholder={t('selectElement')}
+                  display="chip"
+                  filter
+                  showClear
+                  filterBy="label"
+                />
+              </div>
+
+              <div className="edit-ontology-row">
+                <Button
+                  className="go-button"
+                  tooltip={`${t(operation)}`}
+                  disabled={!selectedElement}
+                  onClick={() => {
+                    setOntology({
+                      operation,
+                      type,
+                      selectedElement,
+                      setStoreState,
+                      addToArray,
+                      removeFromObject,
+                      addToObject,
+                      selectedElementProperties,
+                      t
+                    })
+                    setSelectedElement(undefined)
+                    setSelectedElementProperties({})
+                  }}
+                  label={t(operation)}
+                  icon="pi pi-chevron-right"
+                  iconPos="right"
+                />
+              </div>
+            </>
+          )
       }
     </>
   )
 }
 
-EditOntologyRestoreConnection.propTypes = {
+EditOntologyRestoreEdge.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
@@ -133,20 +125,20 @@ EditOntologyRestoreConnection.propTypes = {
   addToObject: PropTypes.func.isRequired,
   classesFromApiBackup: PropTypes.shape().isRequired,
   objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
-  deletedConnections: PropTypes.arrayOf(PropTypes.string).isRequired,
+  deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   stylingNodeCaptionProperty: PropTypes.string.isRequired
 }
 
 const mapToProps = ({
   classesFromApiBackup,
-  deletedConnections,
+  deletedEdges,
   deletedNodes,
   stylingNodeCaptionProperty,
   objectPropertiesFromApiBackup
 }) => ({
   classesFromApiBackup,
-  deletedConnections,
+  deletedEdges,
   deletedNodes,
   stylingNodeCaptionProperty,
   objectPropertiesFromApiBackup
@@ -155,4 +147,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(EditOntologyRestoreConnection)
+)(EditOntologyRestoreEdge)

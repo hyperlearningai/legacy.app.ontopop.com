@@ -13,24 +13,11 @@ const getEdgeObject = ({
     stylingEdgeCaptionProperty,
   } = store.getState()
 
-  const {
-    edgeProperties,
-    sourceNodeId,
-    targetNodeId,
-    edgeId
-  } = edge
-
   const edgeLabel = edge[stylingEdgeCaptionProperty]
-  const id = edgeId.toString()
 
   const edgeObject = {
-    rdfAbout: edgeProperties.objectPropertyRdfAbout || '',
-    rdfsLabel: edgeProperties.objectPropertyRdfsLabel || '',
+    ...edge,
     label: edgeLabel,
-    predicate: id,
-    id,
-    from: sourceNodeId.toString(),
-    to: targetNodeId.toString(),
   }
 
   return edgeObject

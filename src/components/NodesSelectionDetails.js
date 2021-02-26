@@ -8,7 +8,7 @@ import getEdge from '../utils/nodesEdgesUtils/getEdge'
 
 const NodesSelectionDetails = ({
   nodeId,
-  nodesConnections,
+  nodesEdges,
 }) => {
   const { t } = useTranslation()
 
@@ -18,8 +18,8 @@ const NodesSelectionDetails = ({
 
   let connections = []
 
-  if (selectedNode.id && nodesConnections[selectedNode.id]) {
-    connections = nodesConnections[selectedNode.id]
+  if (selectedNode.id && nodesEdges[selectedNode.id]) {
+    connections = nodesEdges[selectedNode.id]
   }
 
   return (
@@ -66,7 +66,7 @@ const NodesSelectionDetails = ({
               <thead>
                 <tr>
                   <th>{t('from')}</th>
-                  <th>{t('connection')}</th>
+                  <th>{t('edge')}</th>
                   <th>{t('to')}</th>
                 </tr>
               </thead>
@@ -115,13 +115,13 @@ const NodesSelectionDetails = ({
 
 NodesSelectionDetails.propTypes = {
   nodeId: PropTypes.string.isRequired,
-  nodesConnections: PropTypes.shape().isRequired,
+  nodesEdges: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
-  nodesConnections
+  nodesEdges
 }) => ({
-  nodesConnections
+  nodesEdges
 })
 
 export default connect(

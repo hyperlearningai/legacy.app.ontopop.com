@@ -3,6 +3,7 @@ export const API_ENDPOINT = `${ENDPOINT_URL}/api`
 
 export const GET_ONTOLOGY = `${API_ENDPOINT}/ontology`
 export const GET_GRAPH = `${API_ENDPOINT}/graph`
+export const GET_GRAPH_MODEL_1 = `${GET_GRAPH}?model=1`
 export const GET_GRAPH_QUERY = `${GET_GRAPH}/query`
 
 export const GET_EDGES = `${GET_GRAPH}/edges`
@@ -17,4 +18,4 @@ export const GET_PROPERTIES_OBJECT = `${GET_PROPERTIES}/objects/{id}`
 export const GET_PROPERTIES_ANNOTATIONS = `${GET_PROPERTIES}/annotations`
 export const GET_PROPERTIES_ANNOTATION = `${GET_PROPERTIES}/annotations/{id}`
 
-export const AUTH_SIGN_IN = `${API_ENDPOINT}/login`
+export const AUTH_SIGN_IN = `${API_ENDPOINT}/auth/login`

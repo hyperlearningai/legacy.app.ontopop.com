@@ -9,29 +9,21 @@ describe('getTriplesFromApi', () => {
 
   it('should work correctly', async () => {
     const edges = [{
-      edgeId: 11,
+      id: '11',
       role: 'Provided to',
-      edgeProperties: {
-        id: 11,
-        label: 'subclass',
-        objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-        objectPropertyRdfsLabel: 'Provided to',
-        edgeId: 11
-      },
-      sourceNodeId: 1,
-      targetNodeId: 170
+      label: 'subclass',
+      rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+      rdfsLabel: 'Provided to',
+      from: '1',
+      to: '170'
     },
     {
-      edgeId: 12,
+      id: '12',
       role: 'Subclass of',
-      edgeProperties: {
-        id: 12,
-        label: 'subclass',
-        objectPropertyRdfsLabel: 'Subclass of',
-        edgeId: 12
-      },
-      sourceNodeId: 1,
-      targetNodeId: 141
+      label: 'subclass',
+      rdfsLabel: 'Subclass of',
+      from: '1',
+      to: '141'
     }]
 
     await getTriplesFromApi({
@@ -40,7 +32,7 @@ describe('getTriplesFromApi', () => {
     })
 
     expect(setStoreState).toHaveBeenCalledWith(
-      'triplesPerNode', {
+      'edgesPerNode', {
         1: ['11', '12'],
         141: ['12'],
         170: ['11']

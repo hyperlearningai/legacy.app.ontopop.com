@@ -13,17 +13,10 @@ exports[`NodesSelectionDetails should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
-  nodeId="abc"
-  nodesConnections={
+  nodeId="3"
+  nodesEdges={
     Array [
-      Object {
-        "edgeId": "abc",
-        "from": "abc",
-        "fromLabel": "label",
-        "label": "is child of",
-        "to": "cde",
-        "toLabel": "label2",
-      },
+      "12",
     ]
   }
 >

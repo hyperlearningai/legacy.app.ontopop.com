@@ -1,11 +1,10 @@
 import setNeighbourNodes from '../../../utils/nodeNeighbourhood/setNeighbourNodes'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { classesFromApi } from '../../fixtures/classesFromApi'
 import store from '../../../store'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
-const classesFromApi = OwlClasses
-const selectedNeighbourNode = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
+const selectedNeighbourNode = '1'
 const separationDegree = 1
 const lastGraphIndex = 1
 
@@ -47,7 +46,7 @@ describe('setNeighbourNodes', () => {
       'graph-2', {
         label: 'neighbourhood-graph-2',
         options: {
-          selectedNodeId: undefined,
+          selectedNodeId: '1',
           separationDegree: 1,
         },
         type: 'neighbourhood'

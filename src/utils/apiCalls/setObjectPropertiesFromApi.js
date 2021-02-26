@@ -9,21 +9,24 @@ const setObjectPropertiesFromApi = ({
   setStoreState,
   edges
 }) => {
-  const objectProperties = {}
+  const objectProperties = edges
 
-  edges.map((edge) => {
+  Object.keys(objectProperties).map((edgeId) => {
+    const edge = objectProperties[edgeId]
+
     const {
-      edgeId,
-      role,
-      edgeProperties
+      from,
+      to,
+      id,
+      rdfsLabel
     } = edge
 
     objectProperties[edgeId] = {
       ...edge,
-      id: edgeId.toString(),
-      rdfsLabel: edgeProperties.objectPropertyRdfsLabel,
-      rdfAbout: edgeProperties.objectPropertyRdfAbout,
-      label: role
+      id: id.toString(),
+      label: rdfsLabel,
+      from: from.toString(),
+      to: to.toString()
     }
 
     return true

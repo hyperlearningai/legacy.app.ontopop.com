@@ -6,8 +6,8 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyRestoreNode'
-import { nodesConnections } from '../../fixtures/nodesConnectionsNew'
-import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import getEdgeObject from '../../../utils/graphVisualisation/getEdgeObject'
@@ -16,6 +16,7 @@ import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 
 const selectedElement = ['100', '40']
 const deletedNodes = ['100', '33', '21', '40']
+const deletedEdges = ['11', '33', '21', '40']
 
 const setStoreState = jest.fn()
 
@@ -38,12 +39,13 @@ describe('setOntologyRestoreNode', () => {
       classesFromApiBackup: classesFromApi,
       classesFromApi,
       deletedNodes,
+      deletedEdges,
       objectPropertiesFromApi,
       stylingNodeCaptionProperty: 'rdfsLabel',
       objectPropertiesFromApiBackup: objectPropertiesFromApi,
-      nodesConnections,
-      triplesPerNode,
-      triplesPerNodeBackup: triplesPerNode
+      nodesEdges,
+      edgesPerNode,
+      edgesPerNodeBackup: edgesPerNode
     }))
 
     getNode.mockImplementation(() => ({ id: '123' }))

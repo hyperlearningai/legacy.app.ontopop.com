@@ -59,6 +59,7 @@ const GraphVisualisation = ({
   useEffect(() => startupActions({
     setStoreState,
     addToObject,
+    removeFromObject,
     t
   }), [])
 
@@ -100,7 +101,6 @@ const GraphVisualisation = ({
         type,
         setStoreState,
         options,
-        currentGraph,
         removeFromObject,
         t
       })
@@ -148,7 +148,7 @@ const GraphVisualisation = ({
     stylingNodeTextFontAlign
   ])
 
-  // set graph options
+  // // set graph options
   useEffect(() => setNetworkMethods({
     setStoreState,
     network,

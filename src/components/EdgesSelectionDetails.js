@@ -9,22 +9,22 @@ import {
 import actions from '../store/actions'
 import { EDGE_PROPERTIES, RESERVED_PROPERTIES } from '../constants/graph'
 import getNode from '../utils/nodesEdgesUtils/getNode'
+import getEdge from '../utils/nodesEdgesUtils/getEdge'
 
 const EdgesSelectionDetails = ({
   edgeId,
-  objectPropertiesFromApi,
 }) => {
   const { t } = useTranslation()
   const [isExpanded, toggleExpanded] = useState(false)
 
-  const edge = objectPropertiesFromApi[edgeId]
+  const edge = getEdge(edgeId)
   const {
-    sourceNodeId,
-    targetNodeId
+    from,
+    to
   } = edge
 
-  const from = getNode(sourceNodeId.toString())
-  const to = getNode(targetNodeId.toString())
+  const fromObject = getNode(from)
+  const toObject = getNode(to)
 
   const tableRowNames = EDGE_PROPERTIES.sort()
 
@@ -91,16 +91,16 @@ const EdgesSelectionDetails = ({
               </td>
               <td className="edge-node-cell-from">
                 <span>
-                  {from.label}
+                  {fromObject.label}
                 </span>
                 <div className="edge-node-info">
                   {
                     isExpanded && (
-                      Object.keys(from).filter((key) => !RESERVED_PROPERTIES.includes(key)).sort().map((nodeKey) => (
+                      Object.keys(fromObject).filter((key) => !RESERVED_PROPERTIES.includes(key)).sort().map((nodeKey) => (
                         (
-                          <Fragment key={`edge-node-from-${nodeKey}-${sourceNodeId}-${targetNodeId}`}>
+                          <Fragment key={`edge-node-from-${nodeKey}-${from}-${to}`}>
                             <div className="edge-node-info-title">{nodeKey}</div>
-                            <div className="edge-node-info-value">{from[nodeKey]}</div>
+                            <div className="edge-node-info-value">{fromObject[nodeKey]}</div>
                           </Fragment>
                         )
                       ))
@@ -110,16 +110,16 @@ const EdgesSelectionDetails = ({
               </td>
               <td className="edge-node-cell-to">
                 <span>
-                  {to.label}
+                  {toObject.label}
                 </span>
                 <div className="edge-node-info">
                   {
                     isExpanded && (
-                      Object.keys(to).filter((key) => !RESERVED_PROPERTIES.includes(key)).sort().map((nodeKey) => (
+                      Object.keys(toObject).filter((key) => !RESERVED_PROPERTIES.includes(key)).sort().map((nodeKey) => (
                         (
-                          <Fragment key={`edge-node-to-${nodeKey}-${sourceNodeId}-${targetNodeId}`}>
+                          <Fragment key={`edge-node-to-${nodeKey}-${from}-${to}`}>
                             <div className="edge-node-info-title">{nodeKey}</div>
-                            <div className="edge-node-info-value">{to[nodeKey]}</div>
+                            <div className="edge-node-info-value">{toObject[nodeKey]}</div>
                           </Fragment>
                         )
                       ))
@@ -137,16 +137,9 @@ const EdgesSelectionDetails = ({
 
 EdgesSelectionDetails.propTypes = {
   edgeId: PropTypes.string.isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
 }
 
-const mapToProps = ({
-  objectPropertiesFromApi,
-}) => ({
-  objectPropertiesFromApi,
-})
-
 export default connect(
-  mapToProps,
+  null,
   actions
 )(EdgesSelectionDetails)

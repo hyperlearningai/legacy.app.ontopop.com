@@ -14,26 +14,24 @@ describe('getEdgeObject', () => {
     }))
 
     const edge = {
-      edgeProperties: {
-        objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-        objectPropertyRdfsLabel: 'Provided to',
-      },
+      rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
       rdfsLabel: 'Provided to',
-      sourceNodeId: 40,
-      targetNodeId: 20,
-      edgeId: '11'
+      to: '40',
+      from: '20',
+      edgeId: '11',
+      id: '11',
     }
 
     expect(getEdgeObject({
       edge
     })).toEqual({
-      from: '40',
+      edgeId: '11',
+      from: '20',
       id: '11',
       label: 'Provided to',
-      predicate: '11',
       rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
       rdfsLabel: 'Provided to',
-      to: '20',
+      to: '40',
     })
   })
 })

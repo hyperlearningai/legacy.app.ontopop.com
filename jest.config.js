@@ -1,5 +1,4 @@
 module.exports = {
-  verbose: true,
   setupFiles: [
     'jest-canvas-mock',
     './setupTests.js'

@@ -9,30 +9,35 @@ const getTriplesFromApi = ({
   setStoreState,
   edges
 }) => {
-  const triplesPerNode = {}
+  const edgesPerNode = {}
 
-  edges.map((edge) => {
-    const { sourceNodeId, targetNodeId, edgeId } = edge
+  Object.keys(edges).map((edgeId) => {
+    const edge = edges[edgeId]
 
-    const id = edgeId.toString()
+    const {
+      from,
+      to,
+    } = edge
 
-    if (!triplesPerNode[sourceNodeId.toString()]) {
-      triplesPerNode[sourceNodeId.toString()] = [id]
-    } else if (!triplesPerNode[sourceNodeId.toString()].includes(id)) {
-      triplesPerNode[sourceNodeId.toString()].push(id)
+    const id = edge.id.toString()
+
+    if (!edgesPerNode[from.toString()]) {
+      edgesPerNode[from.toString()] = [id]
+    } else if (!edgesPerNode[from.toString()].includes(id)) {
+      edgesPerNode[from.toString()].push(id)
     }
 
-    if (!triplesPerNode[targetNodeId.toString()]) {
-      triplesPerNode[targetNodeId.toString()] = [id]
-    } else if (!triplesPerNode[targetNodeId.toString()].includes(id)) {
-      triplesPerNode[targetNodeId.toString()].push(id)
+    if (!edgesPerNode[to.toString()]) {
+      edgesPerNode[to.toString()] = [id]
+    } else if (!edgesPerNode[to.toString()].includes(id)) {
+      edgesPerNode[to.toString()].push(id)
     }
 
     return true
   })
 
-  setStoreState('triplesPerNode', triplesPerNode)
-  setStoreState('triplesPerNodeBackup', triplesPerNode)
+  setStoreState('edgesPerNode', edgesPerNode)
+  setStoreState('edgesPerNodeBackup', edgesPerNode)
 }
 
 export default getTriplesFromApi

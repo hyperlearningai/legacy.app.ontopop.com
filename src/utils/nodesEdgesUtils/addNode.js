@@ -10,9 +10,9 @@ const addNode = (nodeObject) => {
     availableNodes
   } = store.getState()
 
-  const nodeIdObject = availableNodes.get(nodeObject.id)
+  const isNodeNotVisible = availableNodes.get(nodeObject.id) === null
 
-  if (nodeIdObject === null) {
+  if (isNodeNotVisible) {
     availableNodes.add(nodeObject)
   }
 }

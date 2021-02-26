@@ -10,18 +10,18 @@ import updateNodes from '../nodesEdgesUtils/updateNodes'
  */
 const highlightSpiderableNodes = () => {
   const {
-    nodesConnections,
-    triplesPerNode,
+    nodesEdges,
+    edgesPerNode,
   } = store.getState()
 
   const availableNodesIDs = getNodeIds()
 
   if (availableNodesIDs.length > 0) {
     availableNodesIDs.map((nodeId) => {
-      const currentNodeConnections = nodesConnections[nodeId]?.length
-      const totalNodesConnections = triplesPerNode[nodeId]?.length
+      const currentNodeConnections = nodesEdges[nodeId]?.length
+      const totalNodesEdges = edgesPerNode[nodeId]?.length
 
-      if (currentNodeConnections < totalNodesConnections) {
+      if (currentNodeConnections < totalNodesEdges) {
         const currentNodeProperties = getNode(nodeId)
 
         let existingColorProperties

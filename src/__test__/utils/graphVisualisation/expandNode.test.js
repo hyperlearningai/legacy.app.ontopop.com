@@ -1,8 +1,7 @@
-// import { DataSet } from 'vis-data'
-import addNodesEdgesToGraph from '../../../utils/graphVisualisation/addNodesEdgesToGraph'
+import expandNode from '../../../utils/graphVisualisation/expandNode'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
 import store from '../../../store'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
@@ -20,15 +19,15 @@ jest.mock('../../../utils/networkStyling/setElementsStyle')
 const setStoreState = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
-  triplesPerNode,
+  edgesPerNode,
   classesFromApi,
   objectPropertiesFromApi,
-  nodesConnections: {},
+  nodesEdges: {},
   isPhysicsOn: false,
   stylingNodeCaptionProperty: 'rdfsLabel'
 }))
 
-describe('addNodesEdgesToGraph', () => {
+describe('expandNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -39,7 +38,7 @@ describe('addNodesEdgesToGraph', () => {
     getEdge.mockImplementation(() => null)
     getNode.mockImplementation(() => null)
 
-    await addNodesEdgesToGraph({
+    await expandNode({
       nodeId,
       setStoreState
     })
@@ -48,13 +47,14 @@ describe('addNodesEdgesToGraph', () => {
     expect(setElementsStyle).toHaveBeenLastCalledWith()
 
     expect(addEdge).toHaveBeenLastCalledWith({
+      edgeId: 1711,
       from: '171',
       id: '1711',
       label: undefined,
-      predicate: '1711',
-      rdfAbout: '',
       rdfsLabel: 'Subclass of',
-      to: '1'
+      role: 'Subclass of',
+      to: '1',
+      userDefined: false,
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -67,7 +67,7 @@ describe('addNodesEdgesToGraph', () => {
         false,
       ],
       [
-        'nodesConnections',
+        'nodesEdges',
         {
           1: [
             '11',

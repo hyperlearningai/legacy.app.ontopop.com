@@ -3,11 +3,11 @@ import { objectPropertiesFromApi } from './objectPropertiesFromApi'
 
 export const setStoreStateFixture = [
   [
-    'deletedConnections',
+    'deletedEdges',
     [],
   ],
   [
-    'nodesConnections',
+    'nodesEdges',
     {
       1: [
         '11',
@@ -18,7 +18,7 @@ export const setStoreStateFixture = [
     },
   ],
   [
-    'triplesPerNode',
+    'edgesPerNode',
     {
       1: [
         '11',

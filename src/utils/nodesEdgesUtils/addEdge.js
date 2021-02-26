@@ -10,9 +10,9 @@ const addEdge = (edgeObject) => {
     availableEdges
   } = store.getState()
 
-  const edgeIdObject = availableEdges.get(edgeObject.id)
+  const isEdgeNotVisible = availableEdges.get(edgeObject.id) === null
 
-  if (edgeIdObject === null) {
+  if (isEdgeNotVisible) {
     availableEdges.add(edgeObject)
   }
 }

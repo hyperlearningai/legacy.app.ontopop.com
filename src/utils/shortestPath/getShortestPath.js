@@ -6,7 +6,7 @@ import getEdge from '../nodesEdgesUtils/getEdge'
  * @param  {Array}    params.edgesToExplore            Array of edges IDs
  * @param  {String}   params.endNode                   End node id
  * @param  {Array}    params.exploredNodes             Array of objects containing nodes IDs already explored
- * @param  {Object}   params.nodesConnections          Normalised array of nodes with related in and out connections
+ * @param  {Object}   params.nodesEdges          Normalised array of nodes with related in and out connections
  * @param  {Array}    params.pathRoots                 Array of strings with path root at same index of edgesToExplore edge ID
  * @return {Array}    paths                            Array of strings concatenating triples
  */
@@ -14,7 +14,7 @@ const loopThroughNeighbours = ({
   edgesToExplore,
   endNode,
   exploredNodes,
-  nodesConnections,
+  nodesEdges,
   pathRoots,
 }) => {
   const paths = []
@@ -37,9 +37,9 @@ const loopThroughNeighbours = ({
 
     if (
       !exploredNodes.includes(from)
-      && nodesConnections[from]
+      && nodesEdges[from]
     ) {
-      nodesConnections[from].map((triple) => {
+      nodesEdges[from].map((triple) => {
         if (!nextEdgesToExplore.includes(triple)) {
           nextEdgesToExplore.push(triple)
           nextPathRoots.push(nextPathRoot)
@@ -52,9 +52,9 @@ const loopThroughNeighbours = ({
 
     if (
       !exploredNodes.includes(to)
-      && nodesConnections[to]
+      && nodesEdges[to]
     ) {
-      nodesConnections[to].map((triple) => {
+      nodesEdges[to].map((triple) => {
         if (!nextEdgesToExplore.includes(triple)) {
           nextEdgesToExplore.push(triple)
           nextPathRoots.push(nextPathRoot)
@@ -80,7 +80,7 @@ const loopThroughNeighbours = ({
     exploredNodes,
     edgesToExplore: nextEdgesToExplore,
     pathRoots: nextPathRoots,
-    nodesConnections,
+    nodesEdges,
   })
 }
 
@@ -88,15 +88,15 @@ const loopThroughNeighbours = ({
  * Get shortest path
  * @param  {Object}   params
  * @param  {Array}    params.shortestPathSelectedNodes Array of strings with selected nodes IDs
- * @param  {Object}   params.nodesConnections          Normalised array of nodes with related in and out connections
+ * @param  {Object}   params.nodesEdges          Normalised array of nodes with related in and out connections
  * @return {Array}    paths                            Array of strings concatenating triples
  */
 const getShortestPath = async ({
   shortestPathSelectedNodes,
-  nodesConnections
+  nodesEdges
 }) => {
   const [startNode, endNode] = shortestPathSelectedNodes
-  const nodeConnections = nodesConnections[startNode]
+  const nodeConnections = nodesEdges[startNode]
 
   if (!nodeConnections || nodeConnections.length === 0) return []
 
@@ -109,7 +109,7 @@ const getShortestPath = async ({
     exploredNodes,
     edgesToExplore,
     pathRoots,
-    nodesConnections,
+    nodesEdges,
   })
 }
 

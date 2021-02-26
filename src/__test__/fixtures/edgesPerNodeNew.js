@@ -1,4 +1,4 @@
-export const triplesPerNode = {
+export const edgesPerNode = {
   1: [
     '11',
     '12',

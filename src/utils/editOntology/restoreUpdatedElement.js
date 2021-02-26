@@ -1,7 +1,5 @@
 import store from '../../store'
-import {
-  OWL_ANNOTATION_PROPERTIES
-} from '../../constants/graph'
+
 /**
  * Set graph full data
  * @param  {Object}         params
@@ -16,15 +14,13 @@ const restoreUpdatedElement = async ({
   selectedElement
 }) => {
   const {
-    graphVersions,
-    selectedGraphVersion,
+    classesFromApiBackup,
     annotationProperties,
   } = store.getState()
 
   const elementProperties = {}
 
   if (type === 'node') {
-    const { classesFromApiBackup } = graphVersions[selectedGraphVersion]
     const nodeBackup = classesFromApiBackup[selectedElement]
 
     annotationProperties.map((nodeProperty) => {
@@ -33,8 +29,8 @@ const restoreUpdatedElement = async ({
         return true
       }
 
-      if (nodeBackup[OWL_ANNOTATION_PROPERTIES][nodeProperty]) {
-        elementProperties[nodeProperty] = nodeBackup[OWL_ANNOTATION_PROPERTIES][nodeProperty]
+      if (nodeBackup[nodeProperty]) {
+        elementProperties[nodeProperty] = nodeBackup[nodeProperty]
         return true
       }
 

@@ -7,8 +7,8 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteNode'
-import { nodesConnections } from '../../fixtures/nodesConnectionsNew'
-import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 
@@ -29,9 +29,9 @@ describe('setOntologyDeleteNode', () => {
     const getState = jest.fn().mockImplementation(() => ({
       classesFromApi,
       deletedNodes: [],
-      deletedConnections: [],
-      nodesConnections,
-      triplesPerNode,
+      deletedEdges: [],
+      nodesEdges,
+      edgesPerNode,
       availableNodes: new DataSet(
         Object.keys(classesFromApi).map((property) => ({
           ...classesFromApi[property],
@@ -40,8 +40,8 @@ describe('setOntologyDeleteNode', () => {
       availableEdges: new DataSet(
         Object.keys(objectPropertiesFromApi).map((property) => ({
           ...objectPropertiesFromApi[property],
-          from: objectPropertiesFromApi[property].sourceNodeId.toString(),
-          to: objectPropertiesFromApi[property].targetNodeId.toString(),
+          from: objectPropertiesFromApi[property].to.toString(),
+          to: objectPropertiesFromApi[property].from.toString(),
         }))
       )
     }))
@@ -54,7 +54,7 @@ describe('setOntologyDeleteNode', () => {
     })
 
     expect(removeEdge).toHaveBeenLastCalledWith(
-      '1942'
+      '1913'
     )
 
     expect(setElementsStyle).toHaveBeenCalledWith()

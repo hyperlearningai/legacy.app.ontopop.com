@@ -1,13 +1,11 @@
-// import axios from 'axios'
-// import { AUTH_SIGN_IN } from '../../constants/api'
-// import { NOTIFY_WARNING } from '../../constants/notifications'
+import axios from 'axios'
 import { ROUTE_INDEX } from '../../constants/routes'
-// import showNotification from '../notifications/showNotification'
 import {
   AUTH_COOKIE,
-  VALID_EMAIL,
-  VALID_PASSWORD
 } from '../../constants/auth'
+import { AUTH_SIGN_IN } from '../../constants/api'
+import { NOTIFY_WARNING } from '../../constants/notifications'
+import showNotification from '../notifications/showNotification'
 
 const signIn = async ({
   router,
@@ -15,59 +13,48 @@ const signIn = async ({
   setStoreState,
   email,
   password,
-  setShowError
+  setShowError,
+  t
 }) => {
   setStoreState('loading', true)
 
-  setTimeout(() => {
-    const isEmailCorrect = email === VALID_EMAIL
-    const isPasswordCorrect = password === VALID_PASSWORD
+  try {
+    const response = await axios.post(AUTH_SIGN_IN, {
+      username: email,
+      password
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
 
-    setStoreState('loading', false)
+    const { data } = response
 
-    if (isEmailCorrect && isPasswordCorrect) {
-      addToObject('user', 'email', email)
-      localStorage.setItem(AUTH_COOKIE, JSON.stringify({ email }))
-      return router.push(ROUTE_INDEX)
+    if (!data || !data.token) {
+      setStoreState('loading', false)
+
+      return showNotification({
+        message: t(response),
+        type: NOTIFY_WARNING
+      })
     }
 
+    const { token } = data
+
+    addToObject('user', 'email', email)
+    addToObject('user', 'token', token)
+    localStorage.setItem(AUTH_COOKIE, JSON.stringify({ email, token }))
+
+    return router.push(ROUTE_INDEX)
+  } catch (error) {
+    showNotification({
+      message: t(error.message),
+      type: NOTIFY_WARNING
+    })
+
     setShowError(true)
-  }, 3000)
-
-  // try {
-  //   const response = await axios.post(AUTH_SIGN_IN, {
-  //     email,
-  //     password
-  //   }, {
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-
-  //   const { data } = response
-
-  //   if (!data) {
-  //     setStoreState('loading', false)
-
-  //     return showNotification({
-  //       message: t(error.message),
-  //       type: NOTIFY_WARNING
-  //     })
-  //   }
-
-  //   addToObject('user', 'email', email)
-
-  //   return router.push(ROUTE_INDEX)
-  // } catch (error) {
-  //   console.log(error)
-
-  //   showNotification({
-  //     message: t(error.message),
-  //     type: NOTIFY_WARNING
-  //   })
-
-  //   setStoreState('loading', false)
-  // }
+    setStoreState('loading', false)
+  }
 }
 
 export default signIn

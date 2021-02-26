@@ -1,19 +1,17 @@
-import { OwlClasses } from './test-ontology-classes.json'
-import { OwlObjectProperties } from './test-ontology-object-properties.json'
+import { classesFromApi } from './classesFromApi'
+import { objectPropertiesFromApi } from './objectPropertiesFromApi'
 
 export const graphVersions = {
   original: {
-    classesFromApi: OwlClasses,
-    objectPropertiesFromApi: OwlObjectProperties,
-    classesFromApiBackup: OwlClasses,
-    objectPropertiesFromApiBackup: OwlObjectProperties,
+    classesFromApi,
+    objectPropertiesFromApi,
+    classesFromApiBackup: classesFromApi,
+    objectPropertiesFromApiBackup: objectPropertiesFromApi,
     deletedNodes: [],
     addedNodes: [],
     updatedNodes: [],
     deletedEdges: [],
     addedEdges: [],
     updatedEdges: [],
-    deletedConnections: [],
-    addedConnections: [],
   },
 }

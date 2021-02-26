@@ -13,10 +13,10 @@ import { USER_DEFINED_PROPERTY } from '../../constants/graph'
  * @param  {Object}         params
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.t                          i18n function
- * @param  {Object}         params.selectedElementProperties  Element properties with from,to,predicate keys
+ * @param  {Object}         params.selectedElementProperties  Element properties with from,to,edge keys
  * @return {undefined}
  */
-const setOntologyAddConnection = ({
+const setOntologyAddEdge = ({
   setStoreState,
   selectedElementProperties,
   t
@@ -24,47 +24,36 @@ const setOntologyAddConnection = ({
   const {
     objectPropertiesFromApi,
     objectPropertiesFromApiBackup,
-    addedConnections,
-    nodesConnections,
-    triplesPerNode
+    addedEdges,
+    nodesEdges,
+    edgesPerNode
   } = store.getState()
 
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
   const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(objectPropertiesFromApiBackup))
-  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
-  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
+  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
 
   const {
     from,
     to,
-    predicate,
+    edge: edgeId,
     optionEdges
   } = selectedElementProperties
 
-  const predicateLabel = optionEdges.find((option) => option.value === predicate).label
+  const edgeLabel = optionEdges.find((option) => option.value === edgeId).label
 
   const id = Math.floor((Math.random() * 1000000) + 1).toString()
 
   const edge = {
     from,
-    predicate,
     to,
     edgeId: id,
     id,
-    role: predicateLabel,
-    label: predicateLabel,
-    rdfsLabel: predicateLabel,
-    rdfAbout: predicate,
+    label: edgeLabel,
+    rdfsLabel: edgeLabel,
+    rdfAbout: edgeId,
     [USER_DEFINED_PROPERTY]: true,
-    edgeProperties: {
-      id,
-      label: 'subclass',
-      objectPropertyRdfAbout: predicate,
-      objectPropertyRdfsLabel: predicateLabel,
-      edgeId: id
-    },
-    sourceNodeId: from,
-    targetNodeId: from,
   }
 
   if (getEdge(id) !== null) {
@@ -80,8 +69,8 @@ const setOntologyAddConnection = ({
   newObjectPropertiesFromApiBackup[id] = edge
 
   // add to triples
-  newTriplesPerNode[from].push(id)
-  newTriplesPerNode[to].push(id)
+  newEdgesPerNode[from].push(id)
+  newEdgesPerNode[to].push(id)
 
   const isFromVisible = getNode(from) !== null
   const isToVisible = getNode(from) !== null
@@ -89,21 +78,21 @@ const setOntologyAddConnection = ({
   if (isFromVisible && isToVisible) {
     addEdge(edge)
 
-    newNodesConnections[from].push(id)
-    newNodesConnections[to].push(id)
+    newNodesEdges[from].push(id)
+    newNodesEdges[to].push(id)
   }
 
   // add data
-  const newAddedConnections = [
-    ...addedConnections,
+  const newAddedEdges = [
+    ...addedEdges,
     ...[id]
   ]
 
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
   setStoreState('objectPropertiesFromApiBackup', newObjectPropertiesFromApiBackup)
-  setStoreState('nodesConnections', newNodesConnections)
-  setStoreState('triplesPerNode', newTriplesPerNode)
-  setStoreState('addedConnections', newAddedConnections)
+  setStoreState('nodesEdges', newNodesEdges)
+  setStoreState('edgesPerNode', newEdgesPerNode)
+  setStoreState('addedEdges', newAddedEdges)
 
   // add edge to graph and style
   setNodeStyle({
@@ -118,4 +107,4 @@ const setOntologyAddConnection = ({
   })
 }
 
-export default setOntologyAddConnection
+export default setOntologyAddEdge

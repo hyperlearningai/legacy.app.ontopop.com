@@ -1,6 +1,6 @@
 import getEdgeObject from './getEdgeObject'
 import showEdgeCheck from './showEdgeCheck'
-import addConnections from './addConnections'
+import addNodesEdges from './addNodesEdges'
 import store from '../../store'
 import clearNodes from '../nodesEdgesUtils/clearNodes'
 import clearEdges from '../nodesEdgesUtils/clearEdges'
@@ -24,7 +24,7 @@ const addElementsToGraph = ({
     classesFromApi,
     nodesIdsToDisplay,
     objectPropertiesFromApi,
-    triplesPerNode,
+    edgesPerNode,
     stylingNodeCaptionProperty,
     isPhysicsOn
   } = store.getState()
@@ -40,14 +40,14 @@ const addElementsToGraph = ({
   clearEdges()
   clearNodes()
 
-  const nodesConnections = {}
+  const nodesEdges = {}
 
   if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
 
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId.toString()]
-    const triples = triplesPerNode[nodeId.toString()]
+    const triples = edgesPerNode[nodeId.toString()]
 
     if (!nodeIdObject[EDGE_LABEL_PROPERTY]) continue
 
@@ -61,23 +61,19 @@ const addElementsToGraph = ({
     })
 
     if (triples && triples.length > 0) {
-      triples.map((triple) => {
-        const predicate = triple.toString()
-
-        const edgeObject = objectPropertiesFromApi[predicate]
-
-        if (!edgeObject) return false
-
+      triples.map((edgeId) => {
         const {
-          sourceNodeId,
-          targetNodeId
-        } = edgeObject
+          from,
+          to
+        } = objectPropertiesFromApi[edgeId]
+
+        if (!from || !to) return false
 
         const edge = getEdgeObject({
-          edge: objectPropertiesFromApi[predicate]
+          edge: objectPropertiesFromApi[edgeId]
         })
 
-        const isEdgeExisting = getEdge(predicate) !== null
+        const isEdgeExisting = getEdge(edgeId) !== null
 
         if (isEdgeExisting) return false
 
@@ -87,14 +83,14 @@ const addElementsToGraph = ({
         })
 
         if (isEdgeDisplayable) {
-          addConnections({
+          addNodesEdges({
             edge,
-            nodesConnections,
+            nodesEdges,
           })
 
-          const nodeToAdd = sourceNodeId.toString() === nodeId.toString()
-            ? targetNodeId.toString()
-            : sourceNodeId.toString()
+          const nodeToAdd = to.toString() === nodeId.toString()
+            ? from.toString()
+            : to.toString()
 
           const noteToAddObject = classesFromApi[nodeToAdd]
 
@@ -115,7 +111,7 @@ const addElementsToGraph = ({
 
   setStoreState('availableNodesCount', countNodes())
   setStoreState('availableEdgesCount', countEdges())
-  setStoreState('nodesConnections', JSON.parse(JSON.stringify(nodesConnections)))
+  setStoreState('nodesEdges', JSON.parse(JSON.stringify(nodesEdges)))
 
   // set styles
   setElementsStyle()

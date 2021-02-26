@@ -2,7 +2,7 @@
 import setOntologyAddNode from '../../../utils/editOntology/setOntologyAddNode'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
-import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
 import en from '../../../i18n/en'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import { LABEL_PROPERTY, UNIQUE_PROPERTY } from '../../../constants/graph'
@@ -32,9 +32,9 @@ describe('setOntologyAddNode', () => {
     getNode.mockImplementationOnce(() => ({ id: 'http://test.com/node' }))
 
     store.getState = jest.fn().mockImplementation(() => ({
-      nodesConnections: {},
-      triplesPerNode,
-      triplesPerNodeBackup: triplesPerNode,
+      nodesEdges: {},
+      edgesPerNode,
+      edgesPerNodeBackup: edgesPerNode,
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
@@ -65,9 +65,9 @@ describe('setOntologyAddNode', () => {
     getNode.mockImplementationOnce(() => null)
 
     store.getState = jest.fn().mockImplementation(() => ({
-      nodesConnections: {},
-      triplesPerNode,
-      triplesPerNodeBackup: triplesPerNode,
+      nodesEdges: {},
+      edgesPerNode,
+      edgesPerNodeBackup: edgesPerNode,
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
@@ -97,22 +97,22 @@ describe('setOntologyAddNode', () => {
     expect(setStoreState.mock.calls).toEqual(
       [
         [
-          'nodesConnections',
+          'nodesEdges',
           {
             'http://test.com/node': []
           }
         ],
         [
-          'triplesPerNode',
+          'edgesPerNode',
           {
-            ...triplesPerNode,
+            ...edgesPerNode,
             'http://test.com/node': []
           }
         ],
         [
-          'triplesPerNodeBackup',
+          'edgesPerNodeBackup',
           {
-            ...triplesPerNode,
+            ...edgesPerNode,
             'http://test.com/node': []
           }
         ],

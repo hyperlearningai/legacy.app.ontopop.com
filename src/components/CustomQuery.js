@@ -119,7 +119,7 @@ const CustomQuery = ({
             ) : (
               <div className="custom-query-input">
                 <div className="label">
-                  {t(CUSTOM_QUERIES_LS)}
+                  {t('queryHistory')}
                 </div>
 
                 {

@@ -30,6 +30,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
     React: 'writable',
+    localStorage: true
   },
   rules: {
     'import/prefer-default-export': 0,
