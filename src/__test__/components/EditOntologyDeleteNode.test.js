@@ -2,21 +2,21 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EditOntologyDeleteNode from '../../components/EditOntologyDeleteNode'
-import { OwlClasses } from '../fixtures/test-ontology-classes'
-import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
+import { classesFromApi } from '../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../fixtures/objectPropertiesFromApi'
 import { REQUIRED_PREDICATES } from '../../constants/graph'
 
-const optionNodes = Object.keys(OwlClasses).map(
+const optionNodes = Object.keys(classesFromApi).map(
   (nodeId) => ({
     value: nodeId,
-    label: OwlClasses[nodeId].rdfsLabel || nodeId
+    label: classesFromApi[nodeId].rdfsLabel || nodeId
   })
 )
 
-const optionEdges = Object.keys(OwlObjectProperties).map(
+const optionEdges = Object.keys(objectPropertiesFromApi).map(
   (edgeId) => ({
     value: edgeId,
-    label: OwlObjectProperties[edgeId].rdfsLabel || edgeId
+    label: objectPropertiesFromApi[edgeId].rdfsLabel || edgeId
   })
 ).filter((item) => !REQUIRED_PREDICATES.includes(item.value))
 

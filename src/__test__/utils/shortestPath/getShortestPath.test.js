@@ -1,7 +1,7 @@
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
 import { availableEdges } from '../../fixtures/availableEdges'
-import { nodesConnections } from '../../fixtures/nodesConnectionsNew'
+import { nodesEdges } from '../../fixtures/nodesEdgesNew'
 
 store.getState = () => ({
   availableEdges
@@ -19,7 +19,7 @@ describe('getShortestPath', () => {
 
     const paths = await getShortestPath({
       shortestPathSelectedNodes,
-      nodesConnections: []
+      nodesEdges: []
     })
 
     expect(paths).toEqual([])
@@ -33,15 +33,15 @@ describe('getShortestPath', () => {
 
     const paths = await getShortestPath({
       shortestPathSelectedNodes,
-      nodesConnections
+      nodesEdges
     })
 
     expect(paths).toEqual([
-      '174|||1741|||934|||1843'
+      '174|||1742|||862|||1843'
     ])
   })
 
-  it('should return 4 paths', async () => {
+  it('should return 2 paths', async () => {
     const shortestPathSelectedNodes = [
       '191',
       '51'
@@ -49,14 +49,12 @@ describe('getShortestPath', () => {
 
     const paths = await getShortestPath({
       shortestPathSelectedNodes,
-      nodesConnections
+      nodesEdges
     })
 
     expect(paths).toEqual([
-      '191|||1911|||122',
-      '191|||1913|||512',
-      '191|||1913|||922',
-      '191|||1913|||1894',
+      '191|||1914|||121',
+      '191|||1914|||512',
     ])
   })
 })

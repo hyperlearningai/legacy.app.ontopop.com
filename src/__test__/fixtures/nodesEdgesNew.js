@@ -1,4 +1,4 @@
-export const nodesConnections = {
+export const nodesEdges = {
   1: [
     '11',
     '12',

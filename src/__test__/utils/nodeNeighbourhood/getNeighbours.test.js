@@ -2,7 +2,7 @@ import { DataSet } from 'vis-data'
 import store from '../../../store'
 import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { triplesPerNode } from '../../fixtures/triplesPerNodeNew.js'
+import { edgesPerNode } from '../../fixtures/edgesPerNodeNew.js'
 
 const selectedNodeId = '12'
 const deletedNodes = []
@@ -10,12 +10,12 @@ const deletedNodes = []
 const edges = Object.keys(objectPropertiesFromApi).map((property) => ({
   ...objectPropertiesFromApi[property],
   predicate: objectPropertiesFromApi[property].id.toString(),
-  from: objectPropertiesFromApi[property].sourceNodeId.toString(),
-  to: objectPropertiesFromApi[property].targetNodeId.toString(),
+  from: objectPropertiesFromApi[property].from.toString(),
+  to: objectPropertiesFromApi[property].to.toString(),
 }))
 
 store.getState = jest.fn().mockImplementation(() => ({
-  triplesPerNode,
+  edgesPerNode,
   availableEdges: new DataSet(edges),
   deletedNodes
 }))
@@ -45,7 +45,7 @@ describe('getNeighbours', () => {
     })
 
     expect(result).toEqual(
-      ['12', '105', '51', '70', '53', '191', '127', '44', '140', '182']
+      ['12', '51', '53', '70', '105', '191', '127', '44', '140', '182']
     )
   })
 
@@ -58,17 +58,17 @@ describe('getNeighbours', () => {
     })
 
     expect(result).toEqual(
-      [
-        '12', '105', '51', '70', '53', '191', '127',
-        '44', '140', '182', '114', '194', '160', '149', '184',
-        '9', '21', '25', '33', '47', '50', '62', '112', '189', '87',
-        '176', '94', '165', '101', '178', '60', '92', '115', '13', '28',
-        '30', '55', '59', '66', '161', '113', '181', '91', '155', '148',
-        '144', '170', '122', '119', '104', '130', '169', '99', '2', '24',
-        '34', '38', '42', '49', '146', '163', '192', '147', '179', '141',
-        '90', '58', '72', '85', '188', '67', '131', '126', '158', '171', '152',
-        '7', '15', '46', '63', '71', '79', '81', '83', '110', '138', '137'
-      ]
+      ['12', '51', '53', '70', '105', '191', '127',
+        '44', '140', '182', '9', '21', '25', '33', '47',
+        '50', '62', '112', '189', '87', '176', '94', '165',
+        '101', '149', '178', '60', '92', '115', '2', '146',
+        '34', '38', '42', '49', '24', '163', '192', '147',
+        '179', '141', '90', '122', '58', '148', '72', '155',
+        '85', '188', '67', '131', '144', '126', '158', '171',
+        '152', '13', '28', '30', '55', '59', '66', '113', '160',
+        '181', '91', '161', '170', '119', '104', '130', '194', '169',
+        '99', '114', '184', '7', '15', '46', '63', '71', '79', '81', '83',
+        '110', '138', '137']
     )
   })
 })

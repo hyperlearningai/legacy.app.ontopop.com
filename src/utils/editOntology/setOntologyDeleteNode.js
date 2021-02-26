@@ -19,16 +19,16 @@ const setOntologyDeleteNode = ({
   const {
     classesFromApi,
     deletedNodes,
-    deletedConnections,
-    nodesConnections,
-    triplesPerNode,
+    deletedEdges,
+    nodesEdges,
+    edgesPerNode,
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
-  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
+  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
   const newDeletedNodes = deletedNodes.slice()
-  const newDeletedConnections = deletedConnections.slice()
+  const newDeletedEdges = deletedEdges.slice()
 
   if (selectedElement.length > 0) {
     // on each selected node, first remove connection then remove node
@@ -39,8 +39,8 @@ const setOntologyDeleteNode = ({
       }
 
       // remove connection with node
-      if (newNodesConnections[nodeId]) {
-        const connections = newNodesConnections[nodeId]
+      if (newNodesEdges[nodeId]) {
+        const connections = newNodesEdges[nodeId]
 
         connections.map((connection) => {
           const {
@@ -51,38 +51,38 @@ const setOntologyDeleteNode = ({
           const isFrom = from === nodeId
           const nodeIdToCheck = isFrom ? to : from
 
-          if (newNodesConnections[nodeIdToCheck]) {
-            const connectionIndex = newNodesConnections[nodeIdToCheck].indexOf(connection)
+          if (newNodesEdges[nodeIdToCheck]) {
+            const connectionIndex = newNodesEdges[nodeIdToCheck].indexOf(connection)
 
-            const updatedConnections = newNodesConnections[nodeIdToCheck].splice(connectionIndex, 1)
+            const updatedConnections = newNodesEdges[nodeIdToCheck].splice(connectionIndex, 1)
 
-            newNodesConnections[nodeIdToCheck] = updatedConnections
+            newNodesEdges[nodeIdToCheck] = updatedConnections
           }
 
-          if (newTriplesPerNode[nodeIdToCheck]) {
-            const connectionIndex = newTriplesPerNode[nodeIdToCheck].indexOf(connection)
+          if (newEdgesPerNode[nodeIdToCheck]) {
+            const connectionIndex = newEdgesPerNode[nodeIdToCheck].indexOf(connection)
 
-            const updatedConnections = newTriplesPerNode[nodeIdToCheck].splice(connectionIndex, 1)
+            const updatedConnections = newEdgesPerNode[nodeIdToCheck].splice(connectionIndex, 1)
 
-            newTriplesPerNode[nodeIdToCheck] = updatedConnections
+            newEdgesPerNode[nodeIdToCheck] = updatedConnections
           }
 
           // remove edge from graph
           removeEdge(connection)
 
           // add to deleted connections
-          if (!newDeletedConnections.includes(connection)) {
-            newDeletedConnections.push(connection)
+          if (!newDeletedEdges.includes(connection)) {
+            newDeletedEdges.push(connection)
           }
 
           return true
         })
 
-        delete newNodesConnections[nodeId]
+        delete newNodesEdges[nodeId]
       }
 
-      if (newTriplesPerNode[nodeId]) {
-        delete newTriplesPerNode[nodeId]
+      if (newEdgesPerNode[nodeId]) {
+        delete newEdgesPerNode[nodeId]
       }
 
       delete newClassesFromApi[nodeId]
@@ -93,10 +93,10 @@ const setOntologyDeleteNode = ({
     })
   }
 
-  setStoreState('nodesConnections', newNodesConnections)
-  setStoreState('triplesPerNode', newTriplesPerNode)
+  setStoreState('nodesEdges', newNodesEdges)
+  setStoreState('edgesPerNode', newEdgesPerNode)
   setStoreState('deletedNodes', newDeletedNodes)
-  setStoreState('deletedConnections', newDeletedConnections)
+  setStoreState('deletedEdges', newDeletedEdges)
   setStoreState('classesFromApi', newClassesFromApi)
   setElementsStyle()
 }

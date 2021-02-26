@@ -2,12 +2,10 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EditOntologyUpdateNode from '../../components/EditOntologyUpdateNode'
-import { OwlClasses } from '../fixtures/test-ontology-classes'
-import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
+import { classesFromApi } from '../fixtures/classesFromApi'
 
 const setup = () => {
   const props = {
-    type: 'node',
     opearation: 'update',
     setStoreState: jest.fn(),
     addToArray: jest.fn(),
@@ -17,12 +15,7 @@ const setup = () => {
       label: 'Node',
       value: 'node'
     }],
-    optionEdges: [{
-      label: 'Edge',
-      value: 'edge'
-    }],
-    classesFromApi: OwlClasses,
-    objectPropertiesFromApi: OwlObjectProperties
+    classesFromApi,
   }
 
   const component = shallow(<EditOntologyUpdateNode {...props} />)

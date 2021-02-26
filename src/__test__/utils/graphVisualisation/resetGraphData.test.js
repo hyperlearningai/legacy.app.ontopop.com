@@ -35,8 +35,8 @@ describe('resetGraphData', () => {
       ['deletedEdges', []],
       ['addedEdges', []],
       ['updatedEdges', []],
-      ['addedConnections', []],
-      ['deletedConnections', []]
+      ['addedEdges', []],
+      ['deletedEdges', []]
     ])
   })
 })

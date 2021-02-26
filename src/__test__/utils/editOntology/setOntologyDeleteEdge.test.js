@@ -1,13 +1,13 @@
 /* eslint max-len:0 */
-import setOntologyDeleteConnection from '../../../utils/editOntology/setOntologyDeleteConnection'
+import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import {
   setStoreStateFixture
-} from '../../fixtures/setOntologyDeleteConnection'
+} from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
-import { nodesConnections } from '../../fixtures/nodesConnectionsNew'
-import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 
@@ -20,7 +20,7 @@ const selectedElement = [
 ]
 const setStoreState = jest.fn()
 
-describe('setOntologyDeleteConnection', () => {
+describe('setOntologyDeleteEdge', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -36,12 +36,12 @@ describe('setOntologyDeleteConnection', () => {
 
     store.getState = jest.fn().mockImplementationOnce(() => ({
       classesFromApi,
-      deletedConnections: [],
-      nodesConnections,
-      triplesPerNode,
+      deletedEdges: [],
+      nodesEdges,
+      edgesPerNode,
     }))
 
-    await setOntologyDeleteConnection({
+    await setOntologyDeleteEdge({
       setStoreState,
       selectedElement,
     })

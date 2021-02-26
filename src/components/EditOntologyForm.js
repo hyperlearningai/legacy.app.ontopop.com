@@ -107,8 +107,12 @@ EditOntologyForm.propTypes = {
   setSelectedElementProperties: PropTypes.func.isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   operation: PropTypes.string.isRequired,
-  initialData: PropTypes.shape().isRequired,
+  initialData: PropTypes.shape(),
   classesFromApi: PropTypes.shape().isRequired,
+}
+
+EditOntologyForm.defaultProps = {
+  initialData: undefined
 }
 
 const mapToProps = ({

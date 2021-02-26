@@ -22,20 +22,20 @@ const setOntologyAddNode = ({
   t
 }) => {
   const {
-    nodesConnections,
+    nodesEdges,
     classesFromApi,
     classesFromApiBackup,
     addedNodes,
     stylingNodeCaptionProperty,
-    triplesPerNode,
-    triplesPerNodeBackup,
+    edgesPerNode,
+    edgesPerNodeBackup,
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
-  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
-  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
-  const newTriplesPerNodeBackup = JSON.parse(JSON.stringify(triplesPerNodeBackup))
+  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
 
   const newNodeId = selectedElementProperties[UNIQUE_PROPERTY]
 
@@ -61,9 +61,9 @@ const setOntologyAddNode = ({
     // add new node connection as empty array
     if (propertyKey === UNIQUE_PROPERTY) {
       const id = selectedElementProperties[propertyKey]
-      newNodesConnections[id] = []
-      newTriplesPerNode[id] = []
-      newTriplesPerNodeBackup[id] = []
+      newNodesEdges[id] = []
+      newEdgesPerNode[id] = []
+      newEdgesPerNodeBackup[id] = []
     }
 
     if (propertyKey !== UNIQUE_PROPERTY
@@ -93,9 +93,9 @@ const setOntologyAddNode = ({
     ...[newNodeId]
   ]
 
-  setStoreState('nodesConnections', newNodesConnections)
-  setStoreState('triplesPerNode', newTriplesPerNode)
-  setStoreState('triplesPerNodeBackup', newTriplesPerNodeBackup)
+  setStoreState('nodesEdges', newNodesEdges)
+  setStoreState('edgesPerNode', newEdgesPerNode)
+  setStoreState('edgesPerNodeBackup', newEdgesPerNodeBackup)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('classesFromApiBackup', newClassesFromApiBackup)
   setStoreState('addedNodes', newAddedNodes)

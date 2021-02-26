@@ -2,9 +2,9 @@ import setOntologyDeleteNode from './setOntologyDeleteNode'
 import setOntologyUpdateNode from './setOntologyUpdateNode'
 import setOntologyAddNode from './setOntologyAddNode'
 import setOntologyRestoreNode from './setOntologyRestoreNode'
-import setOntologyAddConnection from './setOntologyAddConnection'
-import setOntologyDeleteConnection from './setOntologyDeleteConnection'
-import setOntologyRestoreConnection from './setOntologyRestoreConnection'
+import setOntologyAddEdge from './setOntologyAddEdge'
+import setOntologyDeleteEdge from './setOntologyDeleteEdge'
+import setOntologyRestoreEdge from './setOntologyRestoreEdge'
 
 /**
  * Set graph full data
@@ -34,8 +34,8 @@ const setOntology = ({
       })
     }
 
-    if (type === 'connection') {
-      setOntologyRestoreConnection({
+    if (type === 'edge') {
+      setOntologyRestoreEdge({
         selectedElement,
         setStoreState,
       })
@@ -50,8 +50,8 @@ const setOntology = ({
       })
     }
 
-    if (type === 'connection') {
-      setOntologyDeleteConnection({
+    if (type === 'edge') {
+      setOntologyDeleteEdge({
         setStoreState,
         selectedElement,
       })
@@ -78,8 +78,8 @@ const setOntology = ({
       })
     }
 
-    if (type === 'connection') {
-      setOntologyAddConnection({
+    if (type === 'edge') {
+      setOntologyAddEdge({
         setStoreState,
         selectedElementProperties,
         t,

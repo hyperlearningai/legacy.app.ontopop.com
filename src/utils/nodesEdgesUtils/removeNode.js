@@ -10,9 +10,9 @@ const removeNode = (nodeId) => {
     availableNodes
   } = store.getState()
 
-  const nodeIdObject = availableNodes.get(nodeId)
+  const isNodeVisible = availableNodes.get(nodeId) !== null
 
-  if (nodeIdObject !== null) {
+  if (isNodeVisible) {
     availableNodes.remove(nodeId)
   }
 }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EdgesSelectionDetails should match snapshot  1`] = `
+exports[`EditOntologyDeleteEdge should match snapshot 1`] = `
 <Connect
   actions={
     Object {
@@ -12,8 +12,14 @@ exports[`EdgesSelectionDetails should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  edgeId="http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM"
-  mapToProps={null}
+  addToArray={[MockFunction]}
+  addToObject={[MockFunction]}
+  mapToProps={[Function]}
+  opearation="delete"
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+  stylingNodeCaptionProperty="rfdsLabel"
+  type="edge"
 >
   <Component />
 </Connect>

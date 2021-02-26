@@ -13,7 +13,9 @@ const setAnnotationProperties = ({
 }) => {
   let annotationProperties = []
 
-  nodes.map((node) => {
+  Object.keys(nodes).map((nodeId) => {
+    const node = nodes[nodeId]
+
     const properties = Object.keys(node).filter(
       (key) => !annotationProperties.includes(key)
       && !RESERVED_PROPERTIES.includes(key)

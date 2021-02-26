@@ -200,7 +200,7 @@ const serialiseOwlFile = () => {
 
   const edgesIds = getEdgeIds()
 
-  const edgesUniqueIds = edgesIds.length === 0 ? [] : uniq(edgesIds.map((edge) => getEdge(edge).predicate))
+  const edgesUniqueIds = edgesIds.length === 0 ? [] : uniq(edgesIds.map((edge) => getEdge(edge).id))
 
   // GET OBJECT PROPERTIES
   const objectProperties = []

@@ -6,11 +6,9 @@ import { Button } from 'primereact/button'
 import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
-// import { SUB_CLASS_OF_OBJECT } from '../constants/graph'
-import { generatePredicateId } from '../constants/functions'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 
-const EditOntologyAddConnection = ({
+const EditOntologyAddEdge = ({
   type,
   operation,
   optionNodes,
@@ -23,7 +21,7 @@ const EditOntologyAddConnection = ({
   const { t } = useTranslation()
 
   const [fromNode, setFromNode] = useState(undefined)
-  const [predicate, setPredicate] = useState(undefined)
+  const [edge, setEdge] = useState(undefined)
   const [toNode, setToNode] = useState(undefined)
 
   return (
@@ -57,16 +55,16 @@ const EditOntologyAddConnection = ({
         className="edit-ontology-row"
       >
         <label htmlFor="graph-select">
-          {t('predicate')}
+          {t('edge')}
         </label>
 
         <Dropdown
           id="graph-select"
-          value={predicate}
+          value={edge}
           filter
           options={optionEdges}
           onChange={(e) => {
-            setPredicate(e.value)
+            setEdge(e.value)
           }}
           placeholder={t('selectElement')}
         />
@@ -105,38 +103,15 @@ const EditOntologyAddConnection = ({
         )
       }
 
-      {/* {
-        getEdge(generatePredicateId({
-          from: fromNode,
-          predicate,
-          to: toNode
-        })) && (
-          <div
-            className="edit-ontology-row"
-          >
-            <small
-              id="username2-help"
-              className="p-error p-d-block"
-            >
-              {t('connectionAlreadyExists')}
-            </small>
-          </div>
-        )
-      } */}
-
       <div className="edit-ontology-row">
         <Button
           className="go-button"
           tooltip={`${t(operation)}`}
           disabled={
             !fromNode
-            || !predicate
+            || !edge
             || !toNode
-            || getEdge(generatePredicateId({
-              from: fromNode,
-              predicate,
-              to: toNode
-            }))
+            || getEdge(edge) !== null
           }
           onClick={() => {
             setOntology({
@@ -148,14 +123,14 @@ const EditOntologyAddConnection = ({
               addToObject,
               selectedElementProperties: {
                 from: fromNode,
-                predicate,
+                edge,
                 to: toNode,
                 optionEdges
               },
               t
             })
             setFromNode(undefined)
-            setPredicate(undefined)
+            setEdge(undefined)
             setToNode(undefined)
           }}
           label={t(operation)}
@@ -167,7 +142,7 @@ const EditOntologyAddConnection = ({
   )
 }
 
-EditOntologyAddConnection.propTypes = {
+EditOntologyAddEdge.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
@@ -191,4 +166,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(EditOntologyAddConnection)
+)(EditOntologyAddEdge)

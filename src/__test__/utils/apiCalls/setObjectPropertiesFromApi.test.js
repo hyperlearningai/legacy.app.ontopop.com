@@ -8,31 +8,26 @@ describe('setObjectPropertiesFromApi', () => {
   })
 
   it('should return data', async () => {
-    const edges = [{
-      edgeId: 11,
-      role: 'Provided to',
-      edgeProperties: {
+    const edges = {
+      11: {
+        edgeId: 11,
         id: 11,
+        role: 'Provided to',
         label: 'subclass',
-        objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-        objectPropertyRdfsLabel: 'Provided to',
-        edgeId: 11
+        rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+        rdfsLabel: 'Provided to',
+        from: 1,
+        to: 170
       },
-      sourceNodeId: 1,
-      targetNodeId: 170
-    },
-    {
-      edgeId: 12,
-      role: 'Subclass of',
-      edgeProperties: {
+      12: {
+        edgeId: 12,
+        role: 'Subclass of',
+        dfsLabel: 'Subclass of',
         id: 12,
-        label: 'subclass',
-        objectPropertyRdfsLabel: 'Subclass of',
-        edgeId: 12
-      },
-      sourceNodeId: 1,
-      targetNodeId: 141
-    }]
+        from: 1,
+        to: 141
+      }
+    }
 
     await setObjectPropertiesFromApi({
       setStoreState,
@@ -41,73 +36,45 @@ describe('setObjectPropertiesFromApi', () => {
 
     expect(setStoreState.mock.calls).toEqual(
       [['objectPropertiesFromApi', {
-        11: {
-          edgeId: 11,
-          edgeProperties: {
-            edgeId: 11,
-            id: 11,
-            label: 'subclass',
-            objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-            objectPropertyRdfsLabel: 'Provided to'
-          },
-          rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-          rdfsLabel: 'Provided to',
-          id: '11',
-          label: 'Provided to',
-          role: 'Provided to',
-          sourceNodeId: 1,
-          targetNodeId: 170
-        },
+        11:
+      {
+        edgeId: 11,
+        from: '1',
+        id: '11',
+        label: 'Provided to',
+        rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+        rdfsLabel: 'Provided to',
+        role: 'Provided to',
+        to: '170'
+      },
         12: {
+          dfsLabel: 'Subclass of',
           edgeId: 12,
-          edgeProperties: {
-            edgeId: 12,
-            id: 12,
-            label: 'subclass',
-            objectPropertyRdfsLabel: 'Subclass of'
-          },
-          rdfAbout: undefined,
-          rdfsLabel: 'Subclass of',
+          from: '1',
           id: '12',
-          label: 'Subclass of',
+          label: undefined,
           role: 'Subclass of',
-          sourceNodeId: 1,
-          targetNodeId: 141
+          to: '141'
         }
-      }],
-      ['objectPropertiesFromApiBackup', {
+      }], ['objectPropertiesFromApiBackup', {
         11: {
           edgeId: 11,
-          edgeProperties: {
-            edgeId: 11,
-            id: 11,
-            label: 'subclass',
-            objectPropertyRdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-            objectPropertyRdfsLabel: 'Provided to'
-          },
+          from: '1',
           id: '11',
+          label: 'Provided to',
           rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
           rdfsLabel: 'Provided to',
-          label: 'Provided to',
           role: 'Provided to',
-          sourceNodeId: 1,
-          targetNodeId: 170
+          to: '170'
         },
         12: {
+          dfsLabel: 'Subclass of',
           edgeId: 12,
-          edgeProperties: {
-            edgeId: 12,
-            id: 12,
-            label: 'subclass',
-            objectPropertyRdfsLabel: 'Subclass of'
-          },
+          from: '1',
           id: '12',
-          label: 'Subclass of',
+          label: undefined,
           role: 'Subclass of',
-          rdfAbout: undefined,
-          rdfsLabel: 'Subclass of',
-          sourceNodeId: 1,
-          targetNodeId: 141
+          to: '141'
         }
       }]]
     )

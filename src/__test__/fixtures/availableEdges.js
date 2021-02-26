@@ -8,8 +8,8 @@ export const availableEdges = new DataSet(
     (edgeId) => ({
       ...objectPropertiesFromApi[edgeId],
       id: edgeId.toString(),
-      from: objectPropertiesFromApi[edgeId].targetNodeId.toString(),
-      to: objectPropertiesFromApi[edgeId].sourceNodeId.toString(),
+      from: objectPropertiesFromApi[edgeId].from.toString(),
+      to: objectPropertiesFromApi[edgeId].to.toString(),
     })
   )
 )

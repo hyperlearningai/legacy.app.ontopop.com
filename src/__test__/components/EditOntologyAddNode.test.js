@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EditOntologyAddNode from '../../components/EditOntologyAddNode'
-import { OwlClasses } from '../fixtures/test-ontology-classes'
-import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
+import { classesFromApi } from '../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../fixtures/objectPropertiesFromApi'
 
 const setup = () => {
   const props = {
@@ -13,8 +13,8 @@ const setup = () => {
     addToArray: jest.fn(),
     removeFromObject: jest.fn(),
     addToObject: jest.fn(),
-    classesFromApi: OwlClasses,
-    objectPropertiesFromApi: OwlObjectProperties
+    classesFromApi,
+    objectPropertiesFromApi
   }
 
   const component = shallow(<EditOntologyAddNode {...props} />)

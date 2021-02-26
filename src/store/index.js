@@ -41,8 +41,8 @@ const initialState = {
   objectPropertiesFromApi: {},
   classesFromApiBackup: {},
   objectPropertiesFromApiBackup: {},
-  triplesPerNode: {},
-  triplesPerNodeBackup: {},
+  edgesPerNode: {},
+  edgesPerNodeBackup: {},
   network: undefined,
   annotationProperties: [],
   deletedNodes: [],
@@ -50,9 +50,6 @@ const initialState = {
   updatedNodes: [],
   deletedEdges: [],
   addedEdges: [],
-  updatedEdges: [],
-  deletedConnections: [],
-  addedConnections: [],
   availableNodesCount: 0,
   availableEdgesCount: 0,
 
@@ -61,8 +58,7 @@ const initialState = {
   edgesIdsToDisplay: [],
   availableNodes: new DataSet([]),
   availableEdges: new DataSet([]),
-  nodesConnections: {},
-  edgesConnections: {},
+  nodesEdges: {},
   highlightedNodes: [],
 
   // network styling

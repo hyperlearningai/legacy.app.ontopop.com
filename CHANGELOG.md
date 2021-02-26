@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-19 Nodes styling
 
 ### Changed
+- ONTOLOGY-104 Refactored using graph API model 1
 - ONTOLOGY-75 Refactored using latest API response
 - ONTOLOGY-75 List only available nodes/edges in Edit ontology
 - ONTOLOGY-62 Made login page anonymous for alpha version
@@ -44,6 +45,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-62 Removed forgot password page
 
 ### Fixed
+- ONTOLOGY-104 Fixed styling of ontology restore edge when no edges available
 - ONTOLOGY-75 Fixed styling when edge or node styling by property is removed
 
 ### Security

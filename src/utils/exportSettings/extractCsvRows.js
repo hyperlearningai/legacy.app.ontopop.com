@@ -27,7 +27,7 @@ const extractCsvRows = ({
   for (let index = 0; index < edgesIds.length; index++) {
     const currentEdgeId = edgesIds[index]
     const {
-      predicate,
+      id,
       label,
       from,
       to,
@@ -39,7 +39,7 @@ const extractCsvRows = ({
     // basic csv data
     const basicCSv = {
       from: fromLabel ? fromLabel.replace(/\n/g, ' ') : '',
-      predicate: label,
+      edge: label,
       to: toLabel ? toLabel.replace(/\n/g, ' ') : ''
     }
 
@@ -62,7 +62,7 @@ const extractCsvRows = ({
     edgeKeys.map((key) => {
       if (IGNORED_PROPERTIES.includes(key)) return false
 
-      fullRow[`predicate:${key}`] = objectPropertiesFromApi[predicate][key]
+      fullRow[`edge:${key}`] = objectPropertiesFromApi[id][key]
       return true
     })
 

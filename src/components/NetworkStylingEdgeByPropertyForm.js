@@ -224,7 +224,10 @@ const NetworkStylingEdgeByPropertyForm = ({
         <span className="p-buttonset">
           {
             isDeleteAvailable
-            && stylingPropertyObject.styleValue && (
+            && (
+              stylingPropertyObject.styleType === 'stylingEdgeLineStyle'
+              || stylingPropertyObject.styleValue
+            ) && (
               <Button
                 label={t('delete')}
                 className="p-button-warning"
@@ -243,9 +246,9 @@ const NetworkStylingEdgeByPropertyForm = ({
           <Button
             label={t('save')}
             icon="pi pi-check"
-            disabled={!stylingPropertyObject.styleValue
+            disabled={stylingPropertyObject.styleType === 'stylingEdgeLineStyle' ? false : (!stylingPropertyObject.styleValue
               || stylingPropertyObject.styleValue.length === 0
-              || stylingPropertyObject.styleValue === 0}
+              || stylingPropertyObject.styleValue === 0)}
             onClick={() => updateStylingByProperties({
               type: 'edge',
               operation: 'save',

@@ -1,6 +1,6 @@
 import { DataSet } from 'vis-data'
 import addElementsToGraph from '../../../utils/graphVisualisation/addElementsToGraph'
-import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
@@ -29,7 +29,7 @@ const getState = jest.fn().mockImplementation(() => ({
   edgesIdsToDisplay,
   nodesIdsToDisplay,
   objectPropertiesFromApi,
-  triplesPerNode,
+  edgesPerNode,
   stylingNodeCaptionProperty,
   isPhysicsOn: false,
 }))
@@ -51,7 +51,7 @@ describe('addElementsToGraph', () => {
     expect(setStoreState.mock.calls).toEqual(
       [['availableNodesCount', 3],
         ['availableEdgesCount', 2],
-        ['nodesConnections', {
+        ['nodesEdges', {
           1: [
             '11',
             '12',
