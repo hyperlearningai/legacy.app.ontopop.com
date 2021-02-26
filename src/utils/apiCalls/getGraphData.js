@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '../../store'
 import {
   NOTIFY_WARNING
 } from '../../constants/notifications'
@@ -22,19 +23,21 @@ const getGraphData = async ({
   setStoreState,
   t
 }) => {
+  const {
+    user
+  } = store.getState()
+
   setStoreState('loading', true)
 
   try {
-    const authCookie = localStorage.getItem(AUTH_COOKIE)
-    const { bearer } = JSON.parse(authCookie)
-
     const config = {
       headers: {
-        Authorization: bearer
+        Authorization: user.token
       }
     }
 
     const response = await axios.get(GET_GRAPH, config)
+
     setStoreState('loading', false)
 
     if (response.status !== 200) {
@@ -56,24 +59,27 @@ const getGraphData = async ({
       })
     }
 
+    const nodesObjects = JSON.parse(nodes)
+    const edgesObjects = JSON.parse(edges)
+
     setAnnotationProperties({
       setStoreState,
-      nodes
+      nodes: nodesObjects
     })
 
     setClassesFromApi({
       setStoreState,
-      nodes
+      nodes: nodesObjects
     })
 
     setObjectPropertiesFromApi({
       setStoreState,
-      edges
+      edges: edgesObjects
     })
 
     getTriplesFromApi({
       setStoreState,
-      edges
+      edges: edgesObjects
     })
   } catch (error) {
     setStoreState('loading', false)

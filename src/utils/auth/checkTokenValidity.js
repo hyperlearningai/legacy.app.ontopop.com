@@ -13,10 +13,11 @@ const checkTokenValidity = ({
       ? router.push(ROUTE_LOGIN) : false
   }
 
-  // TODO: Add api endpoint to check cookie token validity
-  const { email } = JSON.parse(authCookie)
+  // // TODO: Add api endpoint to check cookie token validity
+  const { email, token } = JSON.parse(authCookie)
 
   addToObject('user', 'email', email)
+  addToObject('user', 'token', token)
 }
 
 export default checkTokenValidity

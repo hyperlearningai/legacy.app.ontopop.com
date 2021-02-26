@@ -7,7 +7,7 @@ import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import HeadTags from '../components/HeadTags'
 import HeaderComponent from '../components/HeaderComponent'
-import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
+import checkTokenValidity from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
 
 const Profile = ({
@@ -40,7 +40,7 @@ const Profile = ({
   // check if authenticated, otherwise redirect to login
   useEffect(() => {
     if (!user.isGuest && user.email === '') {
-      checkAuthAtStartup({
+      checkTokenValidity({
         router,
         addToObject
       })

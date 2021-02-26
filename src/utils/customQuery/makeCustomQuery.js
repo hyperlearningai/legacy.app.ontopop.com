@@ -4,6 +4,7 @@ import {
 } from '../../constants/notifications'
 import showNotification from '../notifications/showNotification'
 import { GET_GRAPH_QUERY } from '../../constants/api'
+import store from '../../store'
 
 /**
  * Get graph data from API
@@ -18,6 +19,10 @@ const makeCustomQuery = async ({
   addToArray,
   t
 }) => {
+  const {
+    user
+  } = store.getState()
+
   setStoreState('loading', true)
 
   setStoreState('customQueryFromLatestOutput', '')
@@ -26,6 +31,10 @@ const makeCustomQuery = async ({
   try {
     const response = await axios.post(GET_GRAPH_QUERY, {
       query: customQueryString
+    }, {
+      headers: {
+        Authorization: user.token
+      }
     })
 
     setStoreState('loading', false)

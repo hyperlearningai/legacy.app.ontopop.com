@@ -30,7 +30,7 @@ const signIn = async ({
 
     const { data } = response
 
-    if (!data) {
+    if (!data || !data.token) {
       setStoreState('loading', false)
 
       return showNotification({
@@ -39,8 +39,12 @@ const signIn = async ({
       })
     }
 
+    const { token } = data
+
     addToObject('user', 'email', email)
-    localStorage.setItem(AUTH_COOKIE, JSON.stringify({ email, bearer: data.token }))
+    addToObject('user', 'token', token)
+    localStorage.setItem(AUTH_COOKIE, JSON.stringify({ email, token }))
+
     return router.push(ROUTE_INDEX)
   } catch (error) {
     showNotification({
