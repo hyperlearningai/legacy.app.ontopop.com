@@ -1,4 +1,3 @@
-import axios from 'axios'
 import store from '../../../store'
 import getGraphData from '../../../utils/apiCalls/getGraphData'
 import en from '../../../i18n/en'
@@ -7,6 +6,7 @@ import setObjectPropertiesFromApi from '../../../utils/apiCalls/setObjectPropert
 import getTriplesFromApi from '../../../utils/apiCalls/getTriplesFromApi'
 import setAnnotationProperties from '../../../utils/apiCalls/setAnnotationProperties'
 import showNotification from '../../../utils/notifications/showNotification'
+import httpCall from '../../../utils/apiCalls/httpCall'
 
 const t = (id) => en[id]
 const setStoreState = jest.fn()
@@ -20,6 +20,7 @@ jest.mock('../../../utils/apiCalls/setObjectPropertiesFromApi')
 jest.mock('../../../utils/apiCalls/getTriplesFromApi')
 jest.mock('../../../utils/apiCalls/setAnnotationProperties')
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/apiCalls/httpCall')
 
 describe('getGraphData', () => {
   afterEach(() => {
@@ -27,7 +28,9 @@ describe('getGraphData', () => {
   })
 
   it('should catch error', async () => {
-    axios.get = jest.fn().mockImplementationOnce(() => new Error('error'))
+    httpCall.mockImplementationOnce(() => (
+      { error: 'apiRequestError' }
+    ))
 
     await getGraphData({
       setStoreState,
@@ -38,33 +41,10 @@ describe('getGraphData', () => {
       message: 'Could not query graph!',
       type: 'warning'
     })
-    expect(setStoreState.mock.calls).toEqual(
-      [['loading', true], ['loading', false]]
-    )
-  })
-
-  it('should return error if status 400 and no data', async () => {
-    axios.get = jest.fn().mockImplementationOnce(() => ({
-      status: 400,
-    }))
-
-    await getGraphData({
-      setStoreState,
-      t
-    })
-
-    expect(showNotification).toHaveBeenCalledWith({
-      message: 'Could not query graph!',
-      type: 'warning'
-    })
-    expect(setStoreState.mock.calls).toEqual(
-      [['loading', true], ['loading', false]]
-    )
   })
 
   it('should return error if missing nodes', async () => {
-    axios.get = jest.fn().mockImplementationOnce(() => ({
-      status: 200,
+    httpCall.mockImplementationOnce(() => ({
       data: {
         edges: []
       }
@@ -79,9 +59,6 @@ describe('getGraphData', () => {
       message: 'Could not query graph!',
       type: 'warning'
     })
-    expect(setStoreState.mock.calls).toEqual(
-      [['loading', true], ['loading', false]]
-    )
   })
 
   it('should return data', async () => {
@@ -91,8 +68,7 @@ describe('getGraphData', () => {
       }
     }
 
-    axios.get = jest.fn().mockImplementationOnce(() => ({
-      status: 200,
+    httpCall.mockImplementationOnce(() => ({
       data: {
         nodes: JSON.stringify({
           1: {
@@ -113,9 +89,6 @@ describe('getGraphData', () => {
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual(
-      [['loading', true], ['loading', false]]
-    )
     expect(setAnnotationProperties).toHaveBeenCalledWith({
       setStoreState,
       nodes

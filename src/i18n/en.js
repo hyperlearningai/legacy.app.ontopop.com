@@ -340,5 +340,8 @@ export default {
   firstName: 'First Name',
   lastName: 'Last Name',
   company: 'Company',
-  changePassword: 'Change Password'
+  changePassword: 'Change Password',
+
+  // api calls
+  apiCallNotValid: 'Invalid http request',
 }
