@@ -26,6 +26,7 @@ export default {
   // sidebar
   networkGraphs: 'Network graphs',
   nodeNeighbourhood: 'Node neighbourhood',
+  structuredSearch: 'Structured search',
   ontologyFilter: 'Ontology filter',
   shortestPath: 'Shortest path',
   toggleSidebar: 'Toggle sidebar',
@@ -51,6 +52,13 @@ export default {
   node: 'Node',
   noRelationships: 'No relationships found',
   selectNodeFromGraph: 'Select node from graph',
+
+  // structured search
+  filterElementsByArbitraryPropsCombination: 'Filter nodes or adges by any arbitrary combination of one or more node property values',
+  and: 'And',
+  or: 'Or',
+  chooseLogic: 'Choose logic',
+  elementsFound: 'Elements found',
 
   // filter
   filterNodesByNodeProps: 'Filter Nodes by Node Properties',

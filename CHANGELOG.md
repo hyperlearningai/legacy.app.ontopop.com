@@ -16,6 +16,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.4.0]
+### Added
+- ONTOLOGY-26 Structured search
+- ONTOLOGY-78 Login page with login endpoint
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+- ONTOLOGY-78 Added beared token to API requests
+
+
 ## [0.3.0]
 ### Added
 - ONTOLOGY-62 Added multiple URL endpoints based on stage

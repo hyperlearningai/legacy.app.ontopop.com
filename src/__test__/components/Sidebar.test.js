@@ -16,7 +16,8 @@ import {
   SIDEBAR_VIEW_CUSTOM_QUERY,
   SIDEBAR_VIEW_EXPORT,
   SIDEBAR_VIEW_EDIT_ONTOLOGY,
-  SIDEBAR_VIEW_STYLING
+  SIDEBAR_VIEW_STYLING,
+  SIDEBAR_VIEW_STRUCTURED_SEARCH
 } from '../../constants/views'
 
 const setup = ({
@@ -198,6 +199,17 @@ describe('Sidebar', () => {
     } = setup({
       isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_EDIT_ONTOLOGY
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_STRUCTURED_SEARCH', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: true,
+      sidebarView: SIDEBAR_VIEW_STRUCTURED_SEARCH
     })
 
     expect(toJson(component)).toMatchSnapshot()
