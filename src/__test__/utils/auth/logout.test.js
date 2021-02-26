@@ -27,7 +27,8 @@ describe('logout', () => {
         firstName: '',
         lastName: '',
         company: '',
-        isGuest: false
+        isGuest: false,
+        token: '',
       }
     )
 

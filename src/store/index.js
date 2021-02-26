@@ -33,7 +33,8 @@ const initialState = {
     firstName: '',
     lastName: '',
     company: '',
-    isGuest: false
+    isGuest: false,
+    token: ''
   },
 
   // data loaded at startup

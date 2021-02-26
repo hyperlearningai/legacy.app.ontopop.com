@@ -10,7 +10,8 @@ const logout = ({
     firstName: '',
     lastName: '',
     company: '',
-    isGuest: false
+    isGuest: false,
+    token: ''
   })
 
   localStorage.removeItem(AUTH_COOKIE)
