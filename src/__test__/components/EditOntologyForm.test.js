@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EditOntologyForm from '../../components/EditOntologyForm'
-import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
-import { OwlClasses } from '../fixtures/test-ontology-classes'
+import { objectPropertiesFromApi } from '../fixtures/objectPropertiesFromApi'
+import { classesFromApi } from '../fixtures/classesFromApi'
 
 const setup = ({
   operation,
@@ -15,9 +15,9 @@ const setup = ({
     annotationProperties: [],
     operation,
     initialData: {},
-    classesFromApi: OwlClasses,
+    classesFromApi,
     type,
-    objectPropertiesFromApi: OwlObjectProperties
+    objectPropertiesFromApi
   }
 
   const component = shallow(<EditOntologyForm {...props} />)

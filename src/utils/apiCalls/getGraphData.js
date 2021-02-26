@@ -4,7 +4,7 @@ import {
   NOTIFY_WARNING
 } from '../../constants/notifications'
 import showNotification from '../notifications/showNotification'
-import { GET_GRAPH } from '../../constants/api'
+import { GET_GRAPH_MODEL_1 } from '../../constants/api'
 import setClassesFromApi from './setClassesFromApi'
 import getTriplesFromApi from './getTriplesFromApi'
 import setObjectPropertiesFromApi from './setObjectPropertiesFromApi'
@@ -36,7 +36,7 @@ const getGraphData = async ({
       }
     }
 
-    const response = await axios.get(GET_GRAPH, config)
+    const response = await axios.get(GET_GRAPH_MODEL_1, config)
 
     setStoreState('loading', false)
 
@@ -59,27 +59,27 @@ const getGraphData = async ({
       })
     }
 
-    const nodesObjects = JSON.parse(nodes)
-    const edgesObjects = JSON.parse(edges)
+    const nodesJson = JSON.parse(nodes)
+    const edgesJson = JSON.parse(edges)
 
     setAnnotationProperties({
       setStoreState,
-      nodes: nodesObjects
+      nodes: nodesJson
     })
 
     setClassesFromApi({
       setStoreState,
-      nodes: nodesObjects
+      nodes: nodesJson
     })
 
     setObjectPropertiesFromApi({
       setStoreState,
-      edges: edgesObjects
+      edges: edgesJson
     })
 
     getTriplesFromApi({
       setStoreState,
-      edges: edgesObjects
+      edges: edgesJson
     })
   } catch (error) {
     setStoreState('loading', false)

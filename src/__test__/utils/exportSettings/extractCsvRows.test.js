@@ -1,15 +1,15 @@
 /* eslint max-len:0 */
 import extractCsvRows from '../../../utils/exportSettings/extractCsvRows'
-import { OwlObjectProperties } from '../../fixtures/test-ontology-object-properties'
-import { availableEdges } from '../../fixtures/availableEdgesNormalised'
-import { availableNodes } from '../../fixtures/availableNodesNormalised'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
+import { availableEdges } from '../../fixtures/availableEdges'
+import { availableNodes } from '../../fixtures/availableNodes'
 import { extractCsvRowsFixture } from '../../fixtures/extractCsvRows'
 import store from '../../../store'
 
 const getState = () => ({
   availableNodes,
   availableEdges,
-  objectPropertiesFromApi: OwlObjectProperties,
+  objectPropertiesFromApi,
 })
 
 store.getState = getState

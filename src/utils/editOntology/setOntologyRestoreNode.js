@@ -20,27 +20,29 @@ const setOntologyRestoreNode = ({
     classesFromApiBackup,
     classesFromApi,
     deletedNodes,
+    deletedEdges,
     objectPropertiesFromApi,
     stylingNodeCaptionProperty,
     objectPropertiesFromApiBackup,
-    nodesConnections,
-    triplesPerNode,
-    triplesPerNodeBackup
+    nodesEdges,
+    edgesPerNode,
+    edgesPerNodeBackup
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
   const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(objectPropertiesFromApiBackup))
-  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
-  const newTriplesPerNode = JSON.parse(JSON.stringify(triplesPerNode))
-  const newTriplesPerNodeBackup = JSON.parse(JSON.stringify(triplesPerNodeBackup))
+  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
+  const newDeletedEdges = deletedEdges.slice()
+  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
 
   // Remove nodes from deletedNodes
   const newDeletedNodes = deletedNodes.slice().filter((nodeId) => !selectedElement.includes(nodeId))
 
   if (selectedElement.length > 0) {
-    // first add node and related connections back
+    // first add node back
     selectedElement.map((nodeId) => {
       const nodeObject = newClassesFromApiBackup[nodeId] || {}
       newClassesFromApi[nodeId] = JSON.parse(JSON.stringify(nodeObject))
@@ -51,52 +53,55 @@ const setOntologyRestoreNode = ({
       addNode(nodeObject)
 
       // add connection back
-      newNodesConnections[nodeId] = []
-      newTriplesPerNode[nodeId] = []
+      newNodesEdges[nodeId] = []
+      newEdgesPerNode[nodeId] = []
 
       return true
     })
 
-    // then add connections
+    // then add edges
     selectedElement.map((nodeId) => {
-      const connections = newTriplesPerNodeBackup[nodeId]
+      const edges = newEdgesPerNodeBackup[nodeId]
 
-      if (connections.length > 0) {
-        connections.map((connection) => {
+      if (edges.length > 0) {
+        edges.map((edgeId) => {
           const {
-            sourceNodeId,
-            targetNodeId
-          } = newObjectPropertiesFromApiBackup[connection]
-
-          const from = sourceNodeId.toString()
-          const to = targetNodeId.toString()
+            from,
+            to
+          } = newObjectPropertiesFromApiBackup[edgeId]
 
           if (newDeletedNodes.includes(from) || newDeletedNodes.includes(to)) return false
 
           const edge = getEdgeObject({
-            edge: newObjectPropertiesFromApiBackup[connection]
+            edge: newObjectPropertiesFromApiBackup[edgeId]
           })
 
-          // add connection to triple
-          if (!newTriplesPerNode[from].includes(connection)) {
-            newTriplesPerNode[from].push(connection)
+          // add edgeId to triple
+          if (!newEdgesPerNode[from].includes(edgeId)) {
+            newEdgesPerNode[from].push(edgeId)
           }
 
-          if (!newTriplesPerNode[to].includes(connection)) {
-            newTriplesPerNode[to].push(connection)
+          if (!newEdgesPerNode[to].includes(edgeId)) {
+            newEdgesPerNode[to].push(edgeId)
           }
 
-          const fromOnCanvas = getNode(from)
-          const toOnCanvas = getNode(to)
+          const isFromVisible = getNode(from) !== null
+          const isToVisible = getNode(to) !== null
 
-          if (fromOnCanvas !== null && toOnCanvas !== null) {
-            // add to nodes connections
-            if (!newNodesConnections[from].includes(connection)) {
-              newNodesConnections[from].push(connection)
+          if (isFromVisible && isToVisible) {
+            // add to nodes edges
+            if (!newNodesEdges[from].includes(edgeId)) {
+              newNodesEdges[from].push(edgeId)
             }
 
-            if (!newNodesConnections[to].includes(connection)) {
-              newNodesConnections[to].push(connection)
+            if (!newNodesEdges[to].includes(edgeId)) {
+              newNodesEdges[to].push(edgeId)
+            }
+
+            const deletedEdgeIndex = newDeletedEdges.indexOf(edgeId)
+
+            if (deletedEdgeIndex > -1) {
+              newDeletedEdges.splice(deletedEdgeIndex, 1)
             }
 
             addEdge(edge)
@@ -110,11 +115,12 @@ const setOntologyRestoreNode = ({
     })
   }
 
-  setStoreState('nodesConnections', newNodesConnections)
-  setStoreState('triplesPerNode', newTriplesPerNode)
+  setStoreState('nodesEdges', newNodesEdges)
+  setStoreState('edgesPerNode', newEdgesPerNode)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
   setStoreState('deletedNodes', newDeletedNodes)
+  setStoreState('deletedEdges', newDeletedEdges)
   setElementsStyle()
 }
 

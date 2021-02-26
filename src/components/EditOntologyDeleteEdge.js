@@ -10,7 +10,7 @@ import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 
-const EditOntologyDeleteConnection = ({
+const EditOntologyDeleteEdge = ({
   type,
   operation,
   setStoreState,
@@ -24,7 +24,7 @@ const EditOntologyDeleteConnection = ({
   const [selectedElement, setSelectedElement] = useState(undefined)
   const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
-  const optionConnections = getEdgeIds().map((edgeId) => {
+  const optionEdges = getEdgeIds().map((edgeId) => {
     const { label, from, to } = getEdge(edgeId)
 
     const fromNode = getNode(from)
@@ -52,7 +52,7 @@ const EditOntologyDeleteConnection = ({
 
         <MultiSelect
           value={selectedElement}
-          options={optionConnections}
+          options={optionEdges}
           onChange={(e) => setSelectedElement(e.value)}
           placeholder={t('selectElement')}
           display="chip"
@@ -91,7 +91,7 @@ const EditOntologyDeleteConnection = ({
   )
 }
 
-EditOntologyDeleteConnection.propTypes = {
+EditOntologyDeleteEdge.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
@@ -114,4 +114,4 @@ const mapToProps = ({
 export default connect(
   mapToProps,
   actions
-)(EditOntologyDeleteConnection)
+)(EditOntologyDeleteEdge)

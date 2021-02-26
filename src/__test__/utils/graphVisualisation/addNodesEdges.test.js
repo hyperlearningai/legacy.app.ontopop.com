@@ -1,42 +1,34 @@
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
-import addConnections from '../../../utils/graphVisualisation/addConnections'
+import addNodesEdges from '../../../utils/graphVisualisation/addNodesEdges'
 
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 
-describe('addConnections', () => {
+describe('addNodesEdges', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
   it('should work correctly', async () => {
-    const addedEdges = []
     const id = '151'
     const from = '12'
     const to = '24'
-    const predicate = '151'
     const edge = {
-      predicate: id,
+      id,
       from,
       to
     }
-    const edgeConnection = {
-      ...edge
+    const nodesEdges = {
+      [from]: [],
+      [to]: [],
     }
-    const nodesConnections = {}
 
-    await addConnections({
-      addedEdges,
-      id,
+    await addNodesEdges({
       edge,
-      edgeConnection,
-      from,
-      nodesConnections,
-      predicate,
-      to,
+      nodesEdges,
     })
 
     expect(addEdge).toHaveBeenCalledWith(edge)
-    expect(nodesConnections).toEqual({
+    expect(nodesEdges).toEqual({
       12: [
         '151',
       ],

@@ -3,6 +3,7 @@ export const API_ENDPOINT = `${ENDPOINT_URL}/api`
 
 export const GET_ONTOLOGY = `${API_ENDPOINT}/ontology`
 export const GET_GRAPH = `${API_ENDPOINT}/graph`
+export const GET_GRAPH_MODEL_1 = `${GET_GRAPH}?model=1`
 export const GET_GRAPH_QUERY = `${GET_GRAPH}/query`
 
 export const GET_EDGES = `${GET_GRAPH}/edges`

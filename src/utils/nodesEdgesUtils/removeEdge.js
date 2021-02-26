@@ -10,9 +10,9 @@ const removeEdge = (edgeId) => {
     availableEdges
   } = store.getState()
 
-  const edgeIdObject = availableEdges.get(edgeId)
+  const isEdgeVisible = availableEdges.get(edgeId) !== null
 
-  if (edgeIdObject !== null) {
+  if (isEdgeVisible) {
     availableEdges.remove(edgeId)
   }
 }

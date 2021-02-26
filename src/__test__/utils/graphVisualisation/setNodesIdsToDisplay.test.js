@@ -9,7 +9,7 @@ import {
 import setNodesIdsToDisplay from '../../../utils/graphVisualisation/setNodesIdsToDisplay'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { triplesPerNode } from '../../fixtures/triplesPerNode'
+import { edgesPerNode } from '../../fixtures/edgesPerNode'
 import store from '../../../store'
 import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
 import getNodesFromPaths from '../../../utils/shortestPath/getNodesFromPaths'
@@ -313,7 +313,7 @@ describe('setNodesIdsToDisplay', () => {
     const options = {
       selectedNodeId: '12',
       separationDegree: 1,
-      triplesPerNode
+      edgesPerNode
     }
 
     getNeighbours.mockImplementation(() => ({

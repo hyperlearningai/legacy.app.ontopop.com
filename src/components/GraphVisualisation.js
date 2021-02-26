@@ -101,7 +101,6 @@ const GraphVisualisation = ({
         type,
         setStoreState,
         options,
-        currentGraph,
         removeFromObject,
         t
       })

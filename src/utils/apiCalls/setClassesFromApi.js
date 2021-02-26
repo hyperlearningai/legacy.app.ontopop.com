@@ -9,15 +9,21 @@ const setClassesFromApi = ({
   setStoreState,
   nodes
 }) => {
-  const classes = {}
+  const classes = nodes
 
-  nodes.map((node) => {
-    const { id, rdfsLabel } = node
+  Object.keys(classes).map((nodeId) => {
+    const nodeObject = classes[nodeId]
+
+    const {
+      id,
+      rdfsLabel,
+
+    } = nodeObject
 
     classes[id] = {
-      ...node,
+      ...nodeObject,
       id: id.toString(),
-      label: rdfsLabel
+      label: rdfsLabel,
     }
 
     return true

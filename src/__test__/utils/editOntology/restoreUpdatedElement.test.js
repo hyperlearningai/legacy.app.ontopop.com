@@ -1,26 +1,15 @@
 import restoreUpdatedElement from '../../../utils/editOntology/restoreUpdatedElement'
 import store from '../../../store'
-import { OwlClasses } from '../../fixtures/test-ontology-classes.json'
+import { classesFromApi } from '../../fixtures/classesFromApi'
 
 const setSelectedElementProperties = jest.fn()
-const selectedElement = 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
+const selectedElement = '1'
 const getState = jest.fn().mockImplementation(() => ({
   annotationProperties: [
     'rdfsLabel',
     'rdfAbout'
   ],
-  selectedGraphVersion: 'original',
-  graphVersions: {
-    original: {
-      classesFromApi: {
-
-      },
-      objectPropertiesFromApi: {
-
-      },
-      classesFromApiBackup: OwlClasses,
-    }
-  }
+  classesFromApiBackup: classesFromApi,
 }))
 store.getState = getState
 

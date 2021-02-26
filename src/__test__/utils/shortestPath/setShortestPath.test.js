@@ -1,5 +1,5 @@
 import setShortestPath from '../../../utils/shortestPath/setShortestPath'
-import { nodesConnections } from '../../fixtures/nodesConnections'
+import { nodesEdges } from '../../fixtures/nodesEdges'
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
 
@@ -13,7 +13,7 @@ jest.mock('../../../utils/shortestPath/getShortestPath')
 
 store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
-  nodesConnections,
+  nodesEdges,
   shortestPathNode1,
   shortestPathNode2
 }))

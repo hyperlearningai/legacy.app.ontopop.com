@@ -1,4 +1,4 @@
-export const nodesConnections = {
+export const nodesEdges = {
   'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': [
     {
       from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',

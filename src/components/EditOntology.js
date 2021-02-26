@@ -7,12 +7,12 @@ import { orderBy, uniqBy } from 'lodash'
 import { SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
 import actions from '../store/actions'
 import EditOntologyAddNode from './EditOntologyAddNode'
-import EditOntologyAddConnection from './EditOntologyAddConnection'
+import EditOntologyAddEdge from './EditOntologyAddEdge'
 import EditOntologyUpdateNode from './EditOntologyUpdateNode'
 import EditOntologyDeleteNode from './EditOntologyDeleteNode'
-import EditOntologyDeleteConnection from './EditOntologyDeleteConnection'
+import EditOntologyDeleteEdge from './EditOntologyDeleteEdge'
 import EditOntologyRestoreNode from './EditOntologyRestoreNode'
-import EditOntologyRestoreConnection from './EditOntologyRestoreConnection'
+import EditOntologyRestoreEdge from './EditOntologyRestoreEdge'
 import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 
@@ -39,7 +39,7 @@ const EditOntology = ({
   const typeButtons = [
     ...typeButtonsUpdate,
     {
-      value: 'connection',
+      value: 'edge',
       label: t('edge'),
       icon: 'pi-arrow-right' // 'pi-sort-alt'
     }]
@@ -87,13 +87,17 @@ const EditOntology = ({
   const availableEdges = orderBy(uniqBy(Object.keys(objectPropertiesFromApi).map(
     (edgeId) => {
       const {
-        objectPropertyRdfAbout,
-        objectPropertyRdfsLabel
-      } = objectPropertiesFromApi[edgeId].edgeProperties
+        rdfAbout,
+        rdfsLabel
+        // objectPropertyRdfAbout,
+        // objectPropertyRdfsLabel
+      } = objectPropertiesFromApi[edgeId] // .edgeProperties
 
       return ({
-        value: objectPropertyRdfAbout,
-        label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || objectPropertyRdfsLabel
+        value: rdfAbout,
+        label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || rdfsLabel
+        // value: objectPropertyRdfAbout,
+        // label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || objectPropertyRdfsLabel
       })
     }
   ), 'label'), ['label'], ['asc'])
@@ -159,9 +163,9 @@ const EditOntology = ({
           && (
             <>
               {
-                type === 'connection'
+                type === 'edge'
                   ? (
-                    <EditOntologyAddConnection
+                    <EditOntologyAddEdge
                       optionNodes={availableNodes}
                       optionEdges={availableEdges}
                       type={type}
@@ -183,7 +187,6 @@ const EditOntology = ({
           operation === 'update'
           && (
             <EditOntologyUpdateNode
-              type={type}
               operation={operation}
               optionNodes={availableNodes}
               optionEdges={availableEdges}
@@ -196,9 +199,9 @@ const EditOntology = ({
           && (
             <>
               {
-                type === 'connection'
+                type === 'edge'
                   ? (
-                    <EditOntologyDeleteConnection
+                    <EditOntologyDeleteEdge
                       type={type}
                       operation={operation}
                     />
@@ -221,9 +224,9 @@ const EditOntology = ({
           && (
             <>
               {
-                type === 'connection'
+                type === 'edge'
                   ? (
-                    <EditOntologyRestoreConnection
+                    <EditOntologyRestoreEdge
                       type={type}
                       operation={operation}
                     />

@@ -1,5 +1,5 @@
 /* eslint max-len:0 */
-import { triplesPerNode } from '../../fixtures/triplesPerNode'
+import { edgesPerNode } from '../../fixtures/edgesPerNode'
 import highlightSpiderableNode from '../../../utils/networkStyling/highlightSpiderableNode'
 import { SUB_CLASS_OF_ID } from '../../../constants/graph'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
@@ -35,7 +35,7 @@ describe('highlightSpiderableNode', () => {
       }
     ))
 
-    const nodesConnections = {
+    const nodesEdges = {
       'http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb': [{
         from: 'http://webprotege.stanford.edu/RDzcOYLZOUKQWbhik8oL6wb',
         to: 'http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n',
@@ -55,8 +55,8 @@ describe('highlightSpiderableNode', () => {
     }
 
     store.getState = jest.fn().mockImplementationOnce(() => ({
-      nodesConnections,
-      triplesPerNode,
+      nodesEdges,
+      edgesPerNode,
     }))
 
     await highlightSpiderableNode({

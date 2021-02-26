@@ -30,7 +30,7 @@ const ExportSettings = () => {
     // eslint-disable-next-line
     const print = require('print-js')
 
-    printFunction = (imgSrc) => print(imgSrc, 'image') //    ('network-graph', 'html')
+    printFunction = (imgSrc) => print(imgSrc, 'image')
   }, [])
 
   return (

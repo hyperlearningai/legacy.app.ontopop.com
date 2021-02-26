@@ -85,21 +85,21 @@ describe('getGraphData', () => {
   })
 
   it('should return data', async () => {
-    const nodes = [{
+    const nodes = {
       1: {
         id: 1
       }
-    }]
+    }
 
     axios.get = jest.fn().mockImplementationOnce(() => ({
       status: 200,
       data: {
-        nodes: JSON.stringify([{
+        nodes: JSON.stringify({
           1: {
             id: 1
           }
-        }]),
-        edges: JSON.stringify([])
+        }),
+        edges: JSON.stringify({})
       }
     }))
 
@@ -126,11 +126,11 @@ describe('getGraphData', () => {
     })
     expect(setObjectPropertiesFromApi).toHaveBeenCalledWith({
       setStoreState,
-      edges: []
+      edges: {}
     })
     expect(getTriplesFromApi).toHaveBeenCalledWith({
       setStoreState,
-      edges: []
+      edges: {}
     })
   })
 })

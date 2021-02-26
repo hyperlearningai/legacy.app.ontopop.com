@@ -4,9 +4,9 @@ import setOntologyDeleteNode from '../../../utils/editOntology/setOntologyDelete
 import setOntologyUpdateNode from '../../../utils/editOntology/setOntologyUpdateNode'
 import setOntologyAddNode from '../../../utils/editOntology/setOntologyAddNode'
 import setOntologyRestoreNode from '../../../utils/editOntology/setOntologyRestoreNode'
-import setOntologyAddConnection from '../../../utils/editOntology/setOntologyAddConnection'
-import setOntologyDeleteConnection from '../../../utils/editOntology/setOntologyDeleteConnection'
-import setOntologyRestoreConnection from '../../../utils/editOntology/setOntologyRestoreConnection'
+import setOntologyAddEdge from '../../../utils/editOntology/setOntologyAddEdge'
+import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
+import setOntologyRestoreEdge from '../../../utils/editOntology/setOntologyRestoreEdge'
 
 import en from '../../../i18n/en'
 
@@ -14,9 +14,9 @@ jest.mock('../../../utils/editOntology/setOntologyDeleteNode')
 jest.mock('../../../utils/editOntology/setOntologyUpdateNode')
 jest.mock('../../../utils/editOntology/setOntologyAddNode')
 jest.mock('../../../utils/editOntology/setOntologyRestoreNode')
-jest.mock('../../../utils/editOntology/setOntologyAddConnection')
-jest.mock('../../../utils/editOntology/setOntologyDeleteConnection')
-jest.mock('../../../utils/editOntology/setOntologyRestoreConnection')
+jest.mock('../../../utils/editOntology/setOntologyAddEdge')
+jest.mock('../../../utils/editOntology/setOntologyDeleteEdge')
+jest.mock('../../../utils/editOntology/setOntologyRestoreEdge')
 
 const selectedElement = 'id-123'
 const setStoreState = jest.fn()
@@ -114,7 +114,7 @@ describe('setOntology', () => {
 
   it('should work correctly when type connection and operation add', async () => {
     const operation = 'add'
-    const type = 'connection'
+    const type = 'edge'
 
     await setOntology({
       operation,
@@ -126,7 +126,7 @@ describe('setOntology', () => {
       t
     })
 
-    expect(setOntologyAddConnection).toHaveBeenCalledWith({
+    expect(setOntologyAddEdge).toHaveBeenCalledWith({
       selectedElementProperties,
       setStoreState,
       t
@@ -135,7 +135,7 @@ describe('setOntology', () => {
 
   it('should work correctly when type connection and operation delete', async () => {
     const operation = 'delete'
-    const type = 'connection'
+    const type = 'edge'
 
     await setOntology({
       operation,
@@ -147,7 +147,7 @@ describe('setOntology', () => {
       t
     })
 
-    expect(setOntologyDeleteConnection).toHaveBeenCalledWith({
+    expect(setOntologyDeleteEdge).toHaveBeenCalledWith({
       setStoreState,
       selectedElement,
     })
@@ -155,7 +155,7 @@ describe('setOntology', () => {
 
   it('should work correctly when type connection and operation restore', async () => {
     const operation = 'restore'
-    const type = 'connection'
+    const type = 'edge'
 
     await setOntology({
       operation,
@@ -167,7 +167,7 @@ describe('setOntology', () => {
       t
     })
 
-    expect(setOntologyRestoreConnection).toHaveBeenCalledWith({
+    expect(setOntologyRestoreEdge).toHaveBeenCalledWith({
       selectedElement,
       setStoreState,
     })

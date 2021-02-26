@@ -2,7 +2,7 @@ import {
   SPIDERABLE_NODE_BORDER_COLOR,
 } from '../../constants/graph'
 import store from '../../store'
-import addNodesEdgesToGraph from './addNodesEdgesToGraph'
+import expandNode from './expandNode'
 import getNode from '../nodesEdgesUtils/getNode'
 import setShortestPathNode from '../shortestPath/setShortestPathNode'
 
@@ -63,7 +63,7 @@ const setNetworkMethods = async ({
       const { color } = getNode(nodeId)
 
       if (color?.border === SPIDERABLE_NODE_BORDER_COLOR) {
-        addNodesEdgesToGraph({
+        expandNode({
           nodeId,
           setStoreState
         })

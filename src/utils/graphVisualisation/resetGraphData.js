@@ -35,8 +35,8 @@ const resetGraphData = ({
   setStoreState('deletedEdges', [])
   setStoreState('addedEdges', [])
   setStoreState('updatedEdges', [])
-  setStoreState('addedConnections', [])
-  setStoreState('deletedConnections', [])
+  setStoreState('addedEdges', [])
+  setStoreState('deletedEdges', [])
 }
 
 export default resetGraphData

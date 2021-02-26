@@ -1,29 +1,28 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import { DataSet } from 'vis-data'
-import EditOntologyAddConnection from '../../components/EditOntologyAddConnection'
-import { OwlClasses } from '../fixtures/test-ontology-classes'
-import { OwlObjectProperties } from '../fixtures/test-ontology-object-properties'
+import EditOntologyAddEdge from '../../components/EditOntologyAddEdge'
+import { classesFromApi } from '../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../fixtures/objectPropertiesFromApi'
 import { REQUIRED_PREDICATES } from '../../constants/graph'
 
-const optionNodes = Object.keys(OwlClasses).map(
+const optionNodes = Object.keys(classesFromApi).map(
   (nodeId) => ({
     value: nodeId,
-    label: OwlClasses[nodeId].rdfsLabel || nodeId
+    label: classesFromApi[nodeId].rdfsLabel || nodeId
   })
 )
 
-const optionEdges = Object.keys(OwlObjectProperties).map(
+const optionEdges = Object.keys(objectPropertiesFromApi).map(
   (edgeId) => ({
     value: edgeId,
-    label: OwlObjectProperties[edgeId].rdfsLabel || edgeId
+    label: objectPropertiesFromApi[edgeId].rdfsLabel || edgeId
   })
 ).filter((item) => !REQUIRED_PREDICATES.includes(item.value))
 
 const setup = () => {
   const props = {
-    type: 'node',
+    type: 'edge',
     opearation: 'add',
     optionNodes,
     optionEdges,
@@ -31,10 +30,9 @@ const setup = () => {
     addToArray: jest.fn(),
     removeFromObject: jest.fn(),
     addToObject: jest.fn(),
-    availableEdges: new DataSet([])
   }
 
-  const component = shallow(<EditOntologyAddConnection {...props} />)
+  const component = shallow(<EditOntologyAddEdge {...props} />)
 
   return {
     component,
@@ -42,7 +40,7 @@ const setup = () => {
   }
 }
 
-describe('EditOntologyAddConnection', () => {
+describe('EditOntologyAddEdge', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

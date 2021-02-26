@@ -295,7 +295,6 @@ export default {
   from: 'From',
   to: 'to',
   nodesProperties: 'Nodes properties',
-  predicate: 'Predicate',
 
   // search
   search: 'Search',

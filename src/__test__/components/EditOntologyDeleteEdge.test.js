@@ -1,18 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import NodeNeighbourhood from '../../components/NodeNeighbourhood'
-import { classesFromApi } from '../fixtures/classesFromApi'
+import EditOntologyDeleteEdge from '../../components/EditOntologyDeleteEdge'
 
 const setup = () => {
   const props = {
+    type: 'edge',
+    opearation: 'delete',
     setStoreState: jest.fn(),
+    addToArray: jest.fn(),
+    removeFromObject: jest.fn(),
     addToObject: jest.fn(),
-    classesFromApi,
-    selectedNeighbourNode: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
+    stylingNodeCaptionProperty: 'rfdsLabel'
   }
 
-  const component = shallow(<NodeNeighbourhood {...props} />)
+  const component = shallow(<EditOntologyDeleteEdge {...props} />)
 
   return {
     component,
@@ -20,12 +22,12 @@ const setup = () => {
   }
 }
 
-describe('NodeNeighbourhood', () => {
+describe('EditOntologyDeleteEdge', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot ', () => {
+  it('should match snapshot', () => {
     const {
       component
     } = setup()

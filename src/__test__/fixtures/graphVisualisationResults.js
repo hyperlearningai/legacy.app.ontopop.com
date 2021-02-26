@@ -38,23 +38,8 @@ export const graphVisualisationResults = [
     2
   ],
   [
-    'nodesConnections',
+    'nodesEdges',
     nodeConnections
-  ],
-  [
-    'edgesConnections',
-    {
-      'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB': [
-        {
-          from: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-          to: 'http://webprotege.stanford.edu/RCCNbe0sG8e3ngkdoP9cSl6',
-        },
-        {
-          from: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
-          to: 'http://webprotege.stanford.edu/RCxwL4b8LCMbVkVPEbOn78g',
-        },
-      ],
-    },
   ],
   [
     'isPhysicsOn', true

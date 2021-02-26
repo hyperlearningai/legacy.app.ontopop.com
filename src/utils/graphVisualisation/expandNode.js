@@ -12,22 +12,22 @@ import getEdgeObject from './getEdgeObject'
  * @param  {Function} params.setStoreState    setStoreState action
  * @return {undefined}
  */
-const addNodesEdgesToGraph = ({
+const expandNode = ({
   nodeId,
   setStoreState
 }) => {
   const {
-    triplesPerNode,
+    edgesPerNode,
     classesFromApi,
     objectPropertiesFromApi,
-    nodesConnections,
+    nodesEdges,
     isPhysicsOn,
     stylingNodeCaptionProperty
   } = store.getState()
 
-  const triples = triplesPerNode[nodeId]
+  const triples = edgesPerNode[nodeId]
 
-  const newNodesConnections = JSON.parse(JSON.stringify(nodesConnections))
+  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
 
   let nodesAdded = false
 
@@ -46,12 +46,9 @@ const addNodesEdgesToGraph = ({
         })
 
         const {
-          sourceNodeId,
-          targetNodeId
+          from,
+          to
         } = edgeObject
-
-        const from = sourceNodeId.toString()
-        const to = targetNodeId.toString()
 
         // check if node exists
         const nodeIdToCheck = from === nodeId ? to : from
@@ -69,16 +66,16 @@ const addNodesEdgesToGraph = ({
 
           addNode(nodeIdObject)
 
-          if (!newNodesConnections[nodeIdToCheck]) {
-            newNodesConnections[nodeIdToCheck] = []
+          if (!newNodesEdges[nodeIdToCheck]) {
+            newNodesEdges[nodeIdToCheck] = []
           }
 
-          if (!newNodesConnections[nodeId]) {
-            newNodesConnections[nodeId] = []
+          if (!newNodesEdges[nodeId]) {
+            newNodesEdges[nodeId] = []
           }
 
-          newNodesConnections[nodeIdToCheck].push(triple)
-          newNodesConnections[nodeId].push(triple)
+          newNodesEdges[nodeIdToCheck].push(triple)
+          newNodesEdges[nodeId].push(triple)
 
           nodesAdded = true
         }
@@ -96,7 +93,7 @@ const addNodesEdgesToGraph = ({
       setStoreState('physicsRepulsion', false)
     }
 
-    setStoreState('nodesConnections', newNodesConnections)
+    setStoreState('nodesEdges', newNodesEdges)
 
     if (!isPhysicsOnNow) {
       setTimeout(() => {
@@ -109,4 +106,4 @@ const addNodesEdgesToGraph = ({
   setElementsStyle()
 }
 
-export default addNodesEdgesToGraph
+export default expandNode

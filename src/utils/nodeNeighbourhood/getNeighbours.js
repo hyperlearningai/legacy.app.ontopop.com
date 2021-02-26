@@ -4,7 +4,7 @@ import getEdge from '../nodesEdgesUtils/getEdge'
 /**
  * Update neighbourNodes and neighbourEdges recursively
  * @param  {Object}   params
- * @param  {Object}   params.triplesPerNode   List of triples per node
+ * @param  {Object}   params.edgesPerNode   List of triples per node
  * @param  {Object}   params.deletedNodes     List of deleted nodes IDs
  * @param  {Object}   params.nextIds          Array of node IDs to loop through
  * @param  {Array}    params.neighbourNodes   Array of neighbour nodes IDs
@@ -15,7 +15,7 @@ import getEdge from '../nodesEdgesUtils/getEdge'
 const loopThroughNodes = ({
   nextIds,
   neighbourNodes,
-  triplesPerNode,
+  edgesPerNode,
   separationDegree,
   deletedNodes,
   round
@@ -23,7 +23,7 @@ const loopThroughNodes = ({
   const nextIdsLoop = []
 
   nextIds.map((nodeId) => {
-    const listOfTriples = triplesPerNode[nodeId]
+    const listOfTriples = edgesPerNode[nodeId]
 
     if (listOfTriples && listOfTriples.length > 0) {
       listOfTriples.map((triple) => {
@@ -56,7 +56,7 @@ const loopThroughNodes = ({
     loopThroughNodes({
       neighbourNodes,
       nextIds: nextIdsLoop,
-      triplesPerNode,
+      edgesPerNode,
       separationDegree,
       deletedNodes,
       round: nextRound
@@ -76,7 +76,7 @@ const getNeighbours = ({
   separationDegree,
 }) => {
   const {
-    triplesPerNode,
+    edgesPerNode,
     deletedNodes
   } = store.getState()
 
@@ -84,14 +84,14 @@ const getNeighbours = ({
   const nextIds = [selectedNodeId]
   const round = 0
 
-  if (!selectedNodeId || !triplesPerNode || !separationDegree || separationDegree < 1) {
+  if (!selectedNodeId || !edgesPerNode || !separationDegree || separationDegree < 1) {
     return neighbourNodes
   }
 
   loopThroughNodes({
     nextIds,
     neighbourNodes,
-    triplesPerNode,
+    edgesPerNode,
     separationDegree,
     deletedNodes,
     round

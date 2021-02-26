@@ -1,8 +1,8 @@
 /* eslint max-len:0 */
-import setOntologyAddConnection from '../../../utils/editOntology/setOntologyAddConnection'
+import setOntologyAddEdge from '../../../utils/editOntology/setOntologyAddEdge'
 import store from '../../../store'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { triplesPerNode } from '../../fixtures/triplesPerNodeNew'
+import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
@@ -21,7 +21,7 @@ jest.mock('../../../utils/networkStyling/setEdgeStylesByProperty')
 const setStoreState = jest.fn()
 const t = (id) => en[id]
 
-describe('setOntologyAddConnection', () => {
+describe('setOntologyAddEdge', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -29,7 +29,7 @@ describe('setOntologyAddConnection', () => {
   it('should work correctly when node exists', async () => {
     const selectedElementProperties = {
       from: '1',
-      predicate: '11',
+      edge: '11',
       to: '141',
       optionEdges: [
         {
@@ -44,12 +44,12 @@ describe('setOntologyAddConnection', () => {
     store.getState = jest.fn().mockImplementation(() => ({
       objectPropertiesFromApi,
       objectPropertiesFromApiBackup: objectPropertiesFromApi,
-      addedConnections: [],
-      nodesConnections: {},
-      triplesPerNode
+      addedEdges: [],
+      nodesEdges: {},
+      edgesPerNode
     }))
 
-    await setOntologyAddConnection({
+    await setOntologyAddEdge({
       setStoreState,
       selectedElementProperties,
       t
@@ -61,7 +61,7 @@ describe('setOntologyAddConnection', () => {
   it('should work correctly', async () => {
     const selectedElementProperties = {
       from: '1',
-      predicate: '11',
+      edge: '11',
       to: '141',
       optionEdges: [
         {
@@ -77,15 +77,15 @@ describe('setOntologyAddConnection', () => {
     store.getState = jest.fn().mockImplementation(() => ({
       objectPropertiesFromApi,
       objectPropertiesFromApiBackup: objectPropertiesFromApi,
-      addedConnections: [],
-      nodesConnections: {
+      addedEdges: [],
+      nodesEdges: {
         1: [],
         141: []
       },
-      triplesPerNode
+      edgesPerNode
     }))
 
-    await setOntologyAddConnection({
+    await setOntologyAddEdge({
       setStoreState,
       selectedElementProperties,
       t
@@ -111,8 +111,8 @@ describe('setOntologyAddConnection', () => {
     const setStoreStateCalls = setStoreState.mock.calls
     expect(setStoreStateCalls[0][0]).toEqual('objectPropertiesFromApi')
     expect(setStoreStateCalls[1][0]).toEqual('objectPropertiesFromApiBackup')
-    expect(setStoreStateCalls[2][0]).toEqual('nodesConnections')
-    expect(setStoreStateCalls[3][0]).toEqual('triplesPerNode')
-    expect(setStoreStateCalls[4][0]).toEqual('addedConnections')
+    expect(setStoreStateCalls[2][0]).toEqual('nodesEdges')
+    expect(setStoreStateCalls[3][0]).toEqual('edgesPerNode')
+    expect(setStoreStateCalls[4][0]).toEqual('addedEdges')
   })
 })
