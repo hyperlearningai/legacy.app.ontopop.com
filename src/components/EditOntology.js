@@ -15,6 +15,8 @@ import EditOntologyRestoreNode from './EditOntologyRestoreNode'
 import EditOntologyRestoreEdge from './EditOntologyRestoreEdge'
 import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import getNode from '../utils/nodesEdgesUtils/getNode'
+import getEdge from '../utils/nodesEdgesUtils/getEdge'
+import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 
 const EditOntology = ({
   objectPropertiesFromApi,
@@ -79,25 +81,48 @@ const EditOntology = ({
 
       return ({
         value: nodeId,
-        label: label || nodeId
+        label: label || nodeId,
+        userDefined: node.userDefined
       })
     }
   ) : []
+
+  const availableEdgeIds = getEdgeIds()
+
+  const optionEdges = availableEdgeIds.length > 0 ? availableEdgeIds.map((edgeId) => {
+    const {
+      label,
+      from, to,
+      userDefined
+    } = getEdge(edgeId)
+
+    const fromNode = getNode(from)
+    const fromLabel = fromNode ? fromNode[stylingNodeCaptionProperty] : ''
+
+    const toNode = getNode(to)
+    const toLabel = toNode ? toNode[stylingNodeCaptionProperty] : ''
+
+    const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
+
+    return ({
+      value: edgeId,
+      label: connectionLabel,
+      userDefined
+    })
+  }) : 0
 
   const availableEdges = orderBy(uniqBy(Object.keys(objectPropertiesFromApi).map(
     (edgeId) => {
       const {
         rdfAbout,
-        rdfsLabel
-        // objectPropertyRdfAbout,
-        // objectPropertyRdfsLabel
-      } = objectPropertiesFromApi[edgeId] // .edgeProperties
+        rdfsLabel,
+        userDefined
+      } = objectPropertiesFromApi[edgeId]
 
       return ({
         value: rdfAbout,
-        label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || rdfsLabel
-        // value: objectPropertyRdfAbout,
-        // label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || objectPropertyRdfsLabel
+        label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || rdfsLabel,
+        userDefined
       })
     }
   ), 'label'), ['label'], ['asc'])
@@ -204,6 +229,7 @@ const EditOntology = ({
                     <EditOntologyDeleteEdge
                       type={type}
                       operation={operation}
+                      optionEdges={optionEdges}
                     />
                   )
                   : (
@@ -211,7 +237,6 @@ const EditOntology = ({
                       type={type}
                       operation={operation}
                       optionNodes={availableNodes}
-                      optionEdges={availableEdges}
                     />
                   )
               }

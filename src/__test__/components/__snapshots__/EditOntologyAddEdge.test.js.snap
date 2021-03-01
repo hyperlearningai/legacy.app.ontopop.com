@@ -15,7 +15,7 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
   addToArray={[MockFunction]}
   addToObject={[MockFunction]}
   mapToProps={[Function]}
-  opearation="add"
+  operation="add"
   optionEdges={
     Array [
       Object {

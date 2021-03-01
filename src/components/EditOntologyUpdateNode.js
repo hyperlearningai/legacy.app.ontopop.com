@@ -25,6 +25,10 @@ const EditOntologyUpdateNode = ({
 
   const type = 'node'
 
+  const userDefinedNodes = optionNodes && optionNodes.length > 0
+    ? optionNodes.filter((node) => node.userDefined)
+    : []
+
   return (
     <>
       <div
@@ -38,7 +42,7 @@ const EditOntologyUpdateNode = ({
           id="graph-select"
           value={selectedElement}
           filter
-          options={optionNodes}
+          options={userDefinedNodes}
           onChange={(e) => setSelectedElement(e.value)}
           placeholder={t('selectElement')}
         />
@@ -70,7 +74,6 @@ const EditOntologyUpdateNode = ({
                 tooltip={`${t(operation)}`}
                 onClick={() => restoreUpdatedElement({
                   setSelectedElementProperties,
-                  type,
                   selectedElement
                 })}
                 label={t('restoreOriginal')}

@@ -6,7 +6,6 @@ import { LABEL_PROPERTY } from '../../constants/graph'
 
 const setup = () => {
   const props = {
-    classesFromApi: {},
     objectPropertiesFromApi: {},
     classesFromApiBackup: {},
     objectPropertiesFromApiBackup: {},

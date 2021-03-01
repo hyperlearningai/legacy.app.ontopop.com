@@ -8,7 +8,7 @@ import { objectPropertiesFromApi } from '../fixtures/objectPropertiesFromApi'
 const setup = () => {
   const props = {
     type: 'node',
-    opearation: 'add',
+    operation: 'add',
     setStoreState: jest.fn(),
     addToArray: jest.fn(),
     removeFromObject: jest.fn(),

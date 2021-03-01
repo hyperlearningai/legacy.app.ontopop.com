@@ -12,7 +12,6 @@ exports[`EditOntology should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  classesFromApi={Object {}}
   classesFromApiBackup={Object {}}
   deletedEdges={Array []}
   deletedNodes={Array []}
