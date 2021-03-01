@@ -161,6 +161,37 @@ const initialState = {
     nodeId: ''
   },
 
+  //notes
+  notes: {
+    "1": {
+      "id": 1,
+      "type": "node",
+      "nodeId": 104,
+      "userId": "username@domain.tld",
+      "contents": "My first note",
+      "dateCreated": "2021-01-02 10:20:13",
+      "dateLastUpdated": "2021-02-02 10:20:13",
+    },
+    "2": {
+      "id": 2,
+      "type": "node",
+      "nodeId": 101,
+      "userId": "username@domain.tld",
+      "contents": "My second note",
+      "dateCreated": "2021-01-15 10:30:13",
+      "dateLastUpdated": "2021-02-10 09:20:13",
+    },
+    "3": {
+      "id": 3,
+      "type": "node",
+      "nodeId": 102,
+      "userId": "username@domain.tld",
+      "contents": "My third note",
+      "dateCreated": "2021-02-02 16:20:13",
+      "dateLastUpdated": "2021-02-21 14:20:13",
+    }
+  },
+
   // physics
   isPhysicsOn: false,
   physicsHierarchicalView: false,

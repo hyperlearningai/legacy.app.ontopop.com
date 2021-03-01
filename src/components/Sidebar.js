@@ -29,7 +29,8 @@ import {
   FaRegHandPointer,
   FaRegCircle,
   FaFileExport,
-  FaPaintBrush
+  FaPaintBrush,
+  FaStickyNote
 } from 'react-icons/fa'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
@@ -48,6 +49,7 @@ import {
   SIDEBAR_VIEW_CUSTOM_QUERY,
   SIDEBAR_VIEW_EDIT_ONTOLOGY,
   SIDEBAR_VIEW_STYLING,
+  SIDEBAR_VIEW_NOTES,
   SIDEBAR_VIEW_STRUCTURED_SEARCH
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
@@ -65,6 +67,7 @@ import CustomQuery from './CustomQuery'
 import EditOntology from './EditOntology'
 import NetworkStyling from './NetworkStyling'
 import StructuredSearch from './StructuredSearch'
+import NotesList from "./NotesList";
 
 const Sidebar = ({
   isSidebarOpen,
@@ -199,6 +202,16 @@ const Sidebar = ({
           <FaPaintBrush />
         </Button>
         <Button
+          tooltip={t(SIDEBAR_VIEW_NOTES)}
+          className={sidebarView === SIDEBAR_VIEW_NOTES ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setStoreState('isNodeSelectable', true)
+            setView(SIDEBAR_VIEW_NOTES)
+          }}
+        >
+          <FaStickyNote />
+        </Button>
+        <Button
           tooltip={t(SIDEBAR_VIEW_EXPORT)}
           className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
           onClick={() => setView(SIDEBAR_VIEW_EXPORT)}
@@ -304,6 +317,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_STYLING && (
                 <NetworkStyling />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_NOTES && (
+                <NotesList />
               )
             }
 

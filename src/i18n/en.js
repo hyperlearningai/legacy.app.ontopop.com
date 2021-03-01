@@ -38,6 +38,7 @@ export default {
   selectEdges: 'Select edges',
   settings: 'Settings',
   styling: 'Styling',
+  notes: 'Notes',
   export: 'Export',
   freeTextSearch: 'Free-text search',
   versioning: 'Versioning',
@@ -340,5 +341,10 @@ export default {
   firstName: 'First Name',
   lastName: 'Last Name',
   company: 'Company',
-  changePassword: 'Change Password'
+  changePassword: 'Change Password',
+
+  // notes
+  dateCreated: 'Created:',
+  dateLastUpdated: 'Updated:',
+  userId: 'User ID:'
 }
