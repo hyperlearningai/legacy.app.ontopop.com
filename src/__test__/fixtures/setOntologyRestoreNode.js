@@ -971,10 +971,7 @@ export const setStoreStateFixture = [
         '1767',
         '911',
       ],
-      40: [
-        '1001',
-        '401',
-      ],
+      40: [],
       41: [
         '411',
       ],
@@ -2434,10 +2431,7 @@ export const setStoreStateFixture = [
         '1766',
         '911',
       ],
-      40: [
-        '1001',
-        '401',
-      ],
+      40: [],
       41: [
         '411',
       ],
@@ -10690,8 +10684,10 @@ export const setStoreStateFixture = [
   [
     'deletedNodes',
     [
+      '100',
       '33',
       '21',
+      '40'
     ],
   ],
   [

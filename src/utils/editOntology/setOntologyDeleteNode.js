@@ -155,7 +155,7 @@ const setOntologyDeleteNode = async ({
   setElementsStyle()
 
   if (nodesDeleted.length > 0) {
-    const message = `${t('nodeDeleted')}: ${selectedElement}`
+    const message = `${t('nodesDeleted')}: ${nodesDeleted.join(', ')}`
     showNotification({
       message,
       type: NOTIFY_SUCCESS

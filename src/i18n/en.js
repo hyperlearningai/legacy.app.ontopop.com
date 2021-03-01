@@ -291,6 +291,8 @@ export default {
   edgeRestored: 'Edge restored',
   nodesDeleted: 'Nodes deleted',
   nodesRestored: 'Nodes restored',
+  edgesDeleted: 'Edges deleted',
+  edgesRestored: 'Edges restored',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',

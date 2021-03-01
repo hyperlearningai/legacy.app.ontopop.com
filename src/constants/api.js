@@ -9,14 +9,18 @@ export const GET_GRAPH_MODEL_1 = `${GET_GRAPH}${MODEL_1}`
 export const GET_GRAPH_QUERY = `${GET_GRAPH}/query`
 
 export const GET_EDGES = `${GET_GRAPH}/edges`
-export const GET_EDGE = `${GET_GRAPH}/edges/{id}`
+export const GET_EDGE = `${GET_EDGES}/{id}`
+
+export const POST_CREATE_EDGE = `${GET_EDGES}/create${MODEL_1}`
+export const PATCH_UPDATE_EDGE = `${GET_EDGES}/{id}${MODEL_1}`
+export const DELETE_EDGE = `${GET_EDGES}/{id}${MODEL_1}`
 
 export const GET_NODES = `${GET_GRAPH}/nodes`
 export const GET_NODE = `${GET_GRAPH}/nodes/{id}`
 
 export const POST_CREATE_NODE = `${GET_NODES}/create${MODEL_1}`
 export const PATCH_UPDATE_NODE = `${GET_NODES}/{id}${MODEL_1}`
-export const DELETE_NODE = `${GET_NODES}/{id}`
+export const DELETE_NODE = `${GET_NODES}/{id}${MODEL_1}`
 
 export const GET_PROPERTIES = `${GET_ONTOLOGY}/properties`
 export const GET_PROPERTIES_OBJECTS = `${GET_PROPERTIES}/objects`

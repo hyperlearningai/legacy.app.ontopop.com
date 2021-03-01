@@ -44,7 +44,7 @@ const setOntologyRestoreNode = async ({
   const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
   const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
 
-  const selectedElementsAdded = []
+  const restoredNodes = []
 
   if (selectedElement.length > 0) {
     // first add node back
@@ -104,7 +104,7 @@ const setOntologyRestoreNode = async ({
       newNodesEdges[id] = []
       newEdgesPerNode[id] = []
 
-      selectedElementsAdded.push({
+      restoredNodes.push({
         id,
         oldId,
       })
@@ -112,11 +112,11 @@ const setOntologyRestoreNode = async ({
   }
 
   // Remove nodes from deletedNodes
-  const newDeletedNodes = deletedNodes.slice().filter((nodeId) => !selectedElement.includes(nodeId))
+  const newDeletedNodes = deletedNodes.slice().filter((nodeId) => !restoredNodes.includes(nodeId))
 
-  if (selectedElementsAdded.length > 0) {
+  if (restoredNodes.length > 0) {
     // then add edges
-    selectedElementsAdded.map((node) => {
+    restoredNodes.map((node) => {
       const {
         id,
         oldId,
@@ -183,7 +183,7 @@ const setOntologyRestoreNode = async ({
       return true
     })
 
-    const message = `${t('nodesRestored')}: ${selectedElementsAdded.join(', ')}`
+    const message = `${t('nodesRestored')}: ${restoredNodes.join(', ')}`
     showNotification({
       message,
       type: NOTIFY_SUCCESS
