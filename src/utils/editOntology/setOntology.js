@@ -13,7 +13,6 @@ import setOntologyRestoreEdge from './setOntologyRestoreEdge'
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {String}         params.type                       Element type (node / edge)
  * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Function}       params.addToObject                Add to object action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @return {undefined}
  */
@@ -23,7 +22,6 @@ const setOntology = ({
   selectedElement,
   setStoreState,
   selectedElementProperties,
-  addToObject,
   t
 }) => {
   if (operation === 'restore') {
@@ -31,6 +29,7 @@ const setOntology = ({
       setOntologyRestoreNode({
         selectedElement,
         setStoreState,
+        t
       })
     }
 
@@ -38,6 +37,7 @@ const setOntology = ({
       setOntologyRestoreEdge({
         selectedElement,
         setStoreState,
+        t
       })
     }
   }
@@ -47,6 +47,7 @@ const setOntology = ({
       setOntologyDeleteNode({
         selectedElement,
         setStoreState,
+        t
       })
     }
 
@@ -54,6 +55,7 @@ const setOntology = ({
       setOntologyDeleteEdge({
         setStoreState,
         selectedElement,
+        t
       })
     }
   }
@@ -64,7 +66,7 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         selectedElementProperties,
-        addToObject
+        t
       })
     }
   }

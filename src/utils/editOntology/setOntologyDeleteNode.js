@@ -1,8 +1,15 @@
+import { DELETE_NODE } from '../../constants/api'
+import {
+  NOTIFY_SUCCESS,
+  NOTIFY_WARNING
+} from '../../constants/notifications'
 import store from '../../store'
+import httpCall from '../apiCalls/httpCall'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import getEdge from '../nodesEdgesUtils/getEdge'
 import removeEdge from '../nodesEdgesUtils/removeEdge'
 import removeNode from '../nodesEdgesUtils/removeNode'
+import showNotification from '../notifications/showNotification'
 
 /**
  * Delete ontology nodes
@@ -10,11 +17,13 @@ import removeNode from '../nodesEdgesUtils/removeNode'
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.addToObject                Add to object action
+ * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
-const setOntologyDeleteNode = ({
+const setOntologyDeleteNode = async ({
   selectedElement,
   setStoreState,
+  t
 }) => {
   const {
     classesFromApi,
@@ -30,9 +39,48 @@ const setOntologyDeleteNode = ({
   const newDeletedNodes = deletedNodes.slice()
   const newDeletedEdges = deletedEdges.slice()
 
+  const nodesDeleted = []
+
   if (selectedElement.length > 0) {
     // on each selected node, first remove connection then remove node
-    selectedElement.map((nodeId) => {
+    for (let index = 0; index < selectedElement.length; index++) {
+      const nodeId = selectedElement[index]
+
+      const response = await httpCall({
+        setStoreState,
+        withAuth: true,
+        route: DELETE_NODE.replace('{id}', nodeId),
+        method: 'delete',
+        body: {},
+        t
+      })
+
+      const {
+        error, data
+      } = response
+
+      const message = t('couldNotDeleteNode')
+
+      if (error) {
+        showNotification({
+          message,
+          type: NOTIFY_WARNING
+        })
+
+        continue
+      }
+
+      if (!data || Object.keys(data).length !== 1) {
+        showNotification({
+          message,
+          type: NOTIFY_WARNING
+        })
+
+        continue
+      }
+
+      nodesDeleted.push(nodeId)
+
       // add to deleted nodes
       if (!newDeletedNodes.includes(nodeId)) {
         newDeletedNodes.push(nodeId)
@@ -88,8 +136,14 @@ const setOntologyDeleteNode = ({
       delete newClassesFromApi[nodeId]
 
       removeNode(nodeId)
+    }
+  }
 
-      return true
+  if (nodesDeleted.length > 0) {
+    const message = `${t('nodesDeleted')}: ${nodesDeleted.join(', ')}`
+    showNotification({
+      message,
+      type: NOTIFY_SUCCESS
     })
   }
 
@@ -99,6 +153,14 @@ const setOntologyDeleteNode = ({
   setStoreState('deletedEdges', newDeletedEdges)
   setStoreState('classesFromApi', newClassesFromApi)
   setElementsStyle()
+
+  if (nodesDeleted.length > 0) {
+    const message = `${t('nodesDeleted')}: ${nodesDeleted.join(', ')}`
+    showNotification({
+      message,
+      type: NOTIFY_SUCCESS
+    })
+  }
 }
 
 export default setOntologyDeleteNode

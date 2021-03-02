@@ -1,10 +1,11 @@
-import axios from 'axios'
 import makeCustomQuery from '../../../utils/customQuery/makeCustomQuery'
 import en from '../../../i18n/en'
 import showNotification from '../../../utils/notifications/showNotification'
 import store from '../../../store'
+import httpCall from '../../../utils/apiCalls/httpCall'
 
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/apiCalls/httpCall')
 
 const t = (id) => en[id]
 const setStoreState = jest.fn()
@@ -20,7 +21,9 @@ describe('makeCustomQuery', () => {
   })
 
   it('should catch error', async () => {
-    axios.post = jest.fn().mockImplementationOnce(() => new Error('error'))
+    httpCall.mockImplementationOnce(() => (
+      { error: 'apiRequestError' }
+    ))
 
     const customQueryString = ''
 
@@ -40,50 +43,17 @@ describe('makeCustomQuery', () => {
     )
     expect(setStoreState.mock.calls).toEqual(
       [
-        ['loading', true],
         ['customQueryFromLatestOutput',
           '',
         ],
-        ['loading', false],
       ]
-    )
-  })
-
-  it('should return error if status 400 and no data', async () => {
-    const customQueryString = 'q.V()'
-
-    axios.post = jest.fn().mockImplementationOnce(() => ({
-      status: 400,
-    }))
-
-    await makeCustomQuery({
-      customQueryString,
-      setStoreState,
-      addToArray,
-      t
-    })
-
-    expect(showNotification).toHaveBeenCalledWith({
-      message: 'Could not query graph!',
-      type: 'warning'
-    })
-    expect(addToArray).toHaveBeenCalledWith(
-      'customQueryStringHistory', 'q.V()', { alwaysAdd: true }
-    )
-    expect(setStoreState.mock.calls).toEqual(
-      [['loading', true],
-        ['customQueryFromLatestOutput',
-          '',
-        ],
-        ['loading', false]]
     )
   })
 
   it('should return data', async () => {
     const customQueryString = 'q.E()'
 
-    axios.post = jest.fn().mockImplementationOnce(() => ({
-      status: 200,
+    httpCall.mockImplementationOnce(() => ({
       data: {
         owlClassMap: [],
         owlObjectPropertyMap: []
@@ -102,12 +72,10 @@ describe('makeCustomQuery', () => {
     )
     expect(setStoreState.mock.calls).toEqual(
       [
-        ['loading', true],
         [
           'customQueryFromLatestOutput',
           '',
         ],
-        ['loading', false],
         [
           'customQueryFromLatestOutput',
           'q.E()',

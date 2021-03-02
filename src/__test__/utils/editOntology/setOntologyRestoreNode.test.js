@@ -13,39 +13,85 @@ import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import getEdgeObject from '../../../utils/graphVisualisation/getEdgeObject'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
+import en from '../../../i18n/en'
+import httpCall from '../../../utils/apiCalls/httpCall'
+import showNotification from '../../../utils/notifications/showNotification'
 
 const selectedElement = ['100', '40']
 const deletedNodes = ['100', '33', '21', '40']
 const deletedEdges = ['11', '33', '21', '40']
 
 const setStoreState = jest.fn()
+const t = (id) => en[id]
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
 jest.mock('../../../utils/graphVisualisation/getEdgeObject')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
+jest.mock('../../../utils/apiCalls/httpCall')
+jest.mock('../../../utils/notifications/showNotification')
+
+store.getState = jest.fn().mockImplementation(() => ({
+  classesFromApiBackup: classesFromApi,
+  classesFromApi,
+  deletedNodes,
+  deletedEdges,
+  objectPropertiesFromApi,
+  stylingNodeCaptionProperty: 'rdfsLabel',
+  objectPropertiesFromApiBackup: objectPropertiesFromApi,
+  nodesEdges,
+  edgesPerNode,
+  edgesPerNodeBackup: edgesPerNode
+}))
 
 describe('setOntologyRestoreNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
+  it('should work correctly when error', async () => {
+    httpCall.mockImplementation(() => ({ error: true }))
+
+    await setOntologyRestoreNode({
+      selectedElement,
+      setStoreState,
+      t
+    })
+
+    expect(showNotification).toHaveBeenLastCalledWith(
+      {
+        message: 'Could not restore node: 40',
+        type: 'warning'
+      }
+    )
+  })
+
+  it('should work correctly when no data', async () => {
+    httpCall.mockImplementation(() => ({ data: {} }))
+
+    await setOntologyRestoreNode({
+      selectedElement,
+      setStoreState,
+      t
+    })
+
+    expect(showNotification).toHaveBeenLastCalledWith(
+      {
+        message: 'Could not restore node: 40',
+        type: 'warning'
+      }
+    )
+  })
+
   it('should work correctly', async () => {
     const classesFromApiLatest = JSON.parse(JSON.stringify(classesFromApi))
     deletedNodes.map((nodeId) => delete classesFromApiLatest[nodeId])
 
-    store.getState = jest.fn().mockImplementation(() => ({
-      classesFromApiBackup: classesFromApi,
-      classesFromApi,
-      deletedNodes,
-      deletedEdges,
-      objectPropertiesFromApi,
-      stylingNodeCaptionProperty: 'rdfsLabel',
-      objectPropertiesFromApiBackup: objectPropertiesFromApi,
-      nodesEdges,
-      edgesPerNode,
-      edgesPerNodeBackup: edgesPerNode
+    httpCall.mockImplementation(() => ({
+      data: {
+        40: { id: '40' }
+      }
     }))
 
     getNode.mockImplementation(() => ({ id: '123' }))
@@ -63,19 +109,21 @@ describe('setOntologyRestoreNode', () => {
     await setOntologyRestoreNode({
       selectedElement,
       setStoreState,
+      t
     })
 
     expect(setElementsStyle).toHaveBeenCalledWith()
     expect(addNode).toHaveBeenLastCalledWith(
       {
         'Business Area': 'Maintain Operate',
-        Synonym: 'Warehouse',
+        Synonym: 'Point, Feature',
         id: '40',
-        label: 'Depot',
-        nodeId: 40,
-        rdfAbout: 'http://webprotege.stanford.edu/R83KomHAvFWv2pVoHXCAC7M',
-        rdfsLabel: 'Depot',
-        skosDefinition: 'A facility used by the License Holder or supplier for the purpose of storing the fleet and equipment to enable the maintenance and operation of the Strategic Road Network Assets.',
+        label: 'Node',
+        nodeId: 100,
+        rdfAbout: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
+        rdfsLabel: 'Node',
+        skosComment: 'A Node can also be defined as a point in a network or diagram at which lines or pathways intersect or branch.',
+        skosDefinition: 'A zero dimensional Entity with a position but no volume that is usually represented by a small round dot.',
         userDefined: false,
       }
     )

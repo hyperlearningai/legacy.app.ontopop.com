@@ -229,6 +229,7 @@ export const RESERVED_PROPERTIES = [
   'nodeId',
   'edgeId',
   USER_DEFINED_PROPERTY,
+  'userId',
   'x',
   'y'
 ]

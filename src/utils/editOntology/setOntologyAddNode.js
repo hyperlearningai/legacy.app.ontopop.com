@@ -1,12 +1,10 @@
 import store from '../../store'
-import {
-  UNIQUE_PROPERTY, USER_DEFINED_PROPERTY,
-} from '../../constants/graph'
 import showNotification from '../notifications/showNotification'
-import { NOTIFY_WARNING } from '../../constants/notifications'
+import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import addNode from '../nodesEdgesUtils/addNode'
-import getNode from '../nodesEdgesUtils/getNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
+import { POST_CREATE_NODE } from '../../constants/api'
+import httpCall from '../apiCalls/httpCall'
 
 /**
  * ADd ontology nodes
@@ -16,7 +14,7 @@ import setNodeStyle from '../networkStyling/setNodeStyle'
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
-const setOntologyAddNode = ({
+const setOntologyAddNode = async ({
   setStoreState,
   selectedElementProperties,
   t
@@ -37,60 +35,65 @@ const setOntologyAddNode = ({
   const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
   const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
 
-  const newNodeId = selectedElementProperties[UNIQUE_PROPERTY]
+  const body = JSON.parse(JSON.stringify(selectedElementProperties))
+  body.label = 'class'
 
-  if (getNode(newNodeId) !== null) {
-    const message = `${t('nodeIdAlreadyExists')}: ${newNodeId}`
+  const response = await httpCall({
+    setStoreState,
+    withAuth: true,
+    route: POST_CREATE_NODE,
+    method: 'post',
+    body,
+    t
+  })
 
+  const {
+    error, data
+  } = response
+
+  let message = t('couldNotAddNode')
+  if (error) {
     return showNotification({
       message,
       type: NOTIFY_WARNING
     })
   }
 
-  newClassesFromApi[newNodeId] = {
-    [USER_DEFINED_PROPERTY]: true
+  if (!data || Object.keys(data).length !== 1) {
+    return showNotification({
+      message,
+      type: NOTIFY_WARNING
+    })
   }
-  newClassesFromApiBackup[newNodeId] = {
-    [USER_DEFINED_PROPERTY]: true
+
+  const { id, userDefined } = data[Object.keys(data)[0]]
+
+  // add to classesFromApi
+  newClassesFromApi[id] = {
+    ...selectedElementProperties,
+    userDefined,
+    id
   }
 
-  const selectedElementPropertiesKeys = Object.keys(selectedElementProperties)
+  // add label
+  newClassesFromApi[id].label = selectedElementProperties[stylingNodeCaptionProperty]
+    ? selectedElementProperties[stylingNodeCaptionProperty].split(' ').join(' ') : ''
 
-  selectedElementPropertiesKeys.map((propertyKey) => {
-    // add new node connection as empty array
-    if (propertyKey === UNIQUE_PROPERTY) {
-      const id = selectedElementProperties[propertyKey]
-      newNodesEdges[id] = []
-      newEdgesPerNode[id] = []
-      newEdgesPerNodeBackup[id] = []
-    }
+  // add array for new node in nodes edges connections
+  newNodesEdges[id] = []
+  newEdgesPerNode[id] = []
+  newEdgesPerNodeBackup[id] = []
 
-    if (propertyKey !== UNIQUE_PROPERTY
-          && selectedElementProperties[propertyKey]
-          && selectedElementProperties[propertyKey] !== ''
-    ) {
-      newClassesFromApi[newNodeId][propertyKey] = selectedElementProperties[propertyKey]
-      newClassesFromApiBackup[newNodeId][propertyKey] = selectedElementProperties[propertyKey]
-
-      if (propertyKey === stylingNodeCaptionProperty) {
-        newClassesFromApi[newNodeId].label = selectedElementProperties[propertyKey]
-        newClassesFromApiBackup[newNodeId].label = selectedElementProperties[propertyKey]
-      }
-    }
-
-    return true
-  })
+  // add as backup
+  newClassesFromApiBackup[id] = newClassesFromApi[id]
 
   addNode({
-    ...newClassesFromApi[newNodeId],
-    id: newNodeId,
-    label: newClassesFromApi[newNodeId][stylingNodeCaptionProperty]
+    ...newClassesFromApi[id],
   })
 
   const newAddedNodes = [
     ...addedNodes,
-    ...[newNodeId]
+    ...[id]
   ]
 
   setStoreState('nodesEdges', newNodesEdges)
@@ -100,7 +103,14 @@ const setOntologyAddNode = ({
   setStoreState('classesFromApiBackup', newClassesFromApiBackup)
   setStoreState('addedNodes', newAddedNodes)
   setNodeStyle({
-    nodeId: newNodeId,
+    nodeId: id,
+  })
+
+  message = `${t('nodeAdded')}: ${id}`
+
+  showNotification({
+    message,
+    type: NOTIFY_SUCCESS
   })
 }
 

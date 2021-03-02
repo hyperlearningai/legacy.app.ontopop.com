@@ -23,7 +23,7 @@ const optionEdges = Object.keys(objectPropertiesFromApi).map(
 const setup = () => {
   const props = {
     type: 'edge',
-    opearation: 'add',
+    operation: 'add',
     optionNodes,
     optionEdges,
     setStoreState: jest.fn(),
