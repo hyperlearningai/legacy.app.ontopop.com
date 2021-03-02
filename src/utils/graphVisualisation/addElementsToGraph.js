@@ -9,7 +9,6 @@ import countEdges from '../nodesEdgesUtils/countEdges'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import addNode from '../nodesEdgesUtils/addNode'
 import getEdge from '../nodesEdgesUtils/getEdge'
-import { EDGE_LABEL_PROPERTY } from '../../constants/graph'
 
 /**
  * Update store and graph based on node IDs to display
@@ -48,8 +47,6 @@ const addElementsToGraph = ({
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId.toString()]
     const triples = edgesPerNode[nodeId.toString()]
-
-    if (!nodeIdObject[EDGE_LABEL_PROPERTY]) continue
 
     nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
       ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''

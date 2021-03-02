@@ -18,7 +18,11 @@ export const setStoreStateFixture = [
         '101',
       ],
       100: [
+        '483',
+        '572',
         '1001',
+        '1673',
+        '1022',
       ],
       101: [
         '1013',
@@ -967,9 +971,7 @@ export const setStoreStateFixture = [
         '1767',
         '911',
       ],
-      40: [
-        '401',
-      ],
+      40: [],
       41: [
         '411',
       ],
@@ -1476,7 +1478,11 @@ export const setStoreStateFixture = [
         '101',
       ],
       100: [
+        '483',
+        '572',
         '1001',
+        '1671',
+        '1022',
       ],
       101: [
         '1013',
@@ -2425,9 +2431,7 @@ export const setStoreStateFixture = [
         '1766',
         '911',
       ],
-      40: [
-        '401',
-      ],
+      40: [],
       41: [
         '411',
       ],
@@ -4325,13 +4329,14 @@ export const setStoreStateFixture = [
       },
       40: {
         'Business Area': 'Maintain Operate',
-        Synonym: 'Warehouse',
+        Synonym: 'Point, Feature',
         id: '40',
-        label: 'Depot',
-        nodeId: 40,
-        rdfAbout: 'http://webprotege.stanford.edu/R83KomHAvFWv2pVoHXCAC7M',
-        rdfsLabel: 'Depot',
-        skosDefinition: 'A facility used by the License Holder or supplier for the purpose of storing the fleet and equipment to enable the maintenance and operation of the Strategic Road Network Assets.',
+        label: 'Node',
+        nodeId: 100,
+        rdfAbout: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
+        rdfsLabel: 'Node',
+        skosComment: 'A Node can also be defined as a point in a network or diagram at which lines or pathways intersect or branch.',
+        skosDefinition: 'A zero dimensional Entity with a position but no volume that is usually represented by a small round dot.',
         userDefined: false,
       },
       41: {
@@ -10679,8 +10684,10 @@ export const setStoreStateFixture = [
   [
     'deletedNodes',
     [
+      '100',
       '33',
       '21',
+      '40'
     ],
   ],
   [

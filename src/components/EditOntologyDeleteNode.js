@@ -15,12 +15,15 @@ const EditOntologyDeleteNode = ({
   removeFromObject,
   addToObject,
   optionNodes,
-  optionEdges
 }) => {
   const { t } = useTranslation()
 
   const [selectedElement, setSelectedElement] = useState(undefined)
   const [selectedElementProperties, setSelectedElementProperties] = useState(undefined)
+
+  const userDefinedNodes = optionNodes && optionNodes.length > 0
+    ? optionNodes.filter((node) => node.userDefined)
+    : []
 
   return (
     <>
@@ -33,7 +36,7 @@ const EditOntologyDeleteNode = ({
 
         <MultiSelect
           value={selectedElement}
-          options={type === 'node' ? optionNodes : optionEdges}
+          options={userDefinedNodes}
           onChange={(e) => setSelectedElement(e.value)}
           placeholder={t('selectElement')}
           display="chip"
@@ -80,7 +83,6 @@ EditOntologyDeleteNode.propTypes = {
   removeFromObject: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
 const mapToProps = ({

@@ -15,7 +15,7 @@ exports[`EditOntologyRestoreNode should match snapshot when type edge and no opt
   addToArray={[MockFunction]}
   addToObject={[MockFunction]}
   mapToProps={[Function]}
-  opearation="restore"
+  operation="restore"
   optionEdges={Array []}
   optionNodes={Array []}
   removeFromObject={[MockFunction]}
@@ -41,7 +41,7 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and no opt
   addToArray={[MockFunction]}
   addToObject={[MockFunction]}
   mapToProps={[Function]}
-  opearation="restore"
+  operation="restore"
   optionEdges={Array []}
   optionNodes={Array []}
   removeFromObject={[MockFunction]}
@@ -67,7 +67,7 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and option
   addToArray={[MockFunction]}
   addToObject={[MockFunction]}
   mapToProps={[Function]}
-  opearation="restore"
+  operation="restore"
   optionEdges={Array []}
   optionNodes={
     Array [

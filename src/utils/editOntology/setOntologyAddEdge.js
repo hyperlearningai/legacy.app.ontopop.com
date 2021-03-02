@@ -1,12 +1,12 @@
 import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
-import getEdge from '../nodesEdgesUtils/getEdge'
 import showNotification from '../notifications/showNotification'
-import { NOTIFY_WARNING } from '../../constants/notifications'
+import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import setEdgeStylesByProperty from '../networkStyling/setEdgeStylesByProperty'
 import getNode from '../nodesEdgesUtils/getNode'
-import { USER_DEFINED_PROPERTY } from '../../constants/graph'
+import { POST_CREATE_EDGE } from '../../constants/api'
+import httpCall from '../apiCalls/httpCall'
 
 /**
  * ADd ontology edge
@@ -16,7 +16,7 @@ import { USER_DEFINED_PROPERTY } from '../../constants/graph'
  * @param  {Object}         params.selectedElementProperties  Element properties with from,to,edge keys
  * @return {undefined}
  */
-const setOntologyAddEdge = ({
+const setOntologyAddEdge = async ({
   setStoreState,
   selectedElementProperties,
   t
@@ -43,7 +43,41 @@ const setOntologyAddEdge = ({
 
   const edgeLabel = optionEdges.find((option) => option.value === edgeId).label
 
-  const id = Math.floor((Math.random() * 1000000) + 1).toString()
+  const body = {
+    edgeLabel,
+    sourceVertexId: parseInt(from),
+    targetVertexId: parseInt(to),
+  }
+
+  const response = await httpCall({
+    setStoreState,
+    withAuth: true,
+    route: POST_CREATE_EDGE,
+    method: 'post',
+    body,
+    t
+  })
+
+  const {
+    error, data
+  } = response
+
+  let message = t('couldNotAddEdge')
+  if (error) {
+    return showNotification({
+      message,
+      type: NOTIFY_WARNING
+    })
+  }
+
+  if (!data || Object.keys(data).length !== 1) {
+    return showNotification({
+      message,
+      type: NOTIFY_WARNING
+    })
+  }
+
+  const { id, userDefined } = data[Object.keys(data)[0]]
 
   const edge = {
     from,
@@ -53,16 +87,7 @@ const setOntologyAddEdge = ({
     label: edgeLabel,
     rdfsLabel: edgeLabel,
     rdfAbout: edgeId,
-    [USER_DEFINED_PROPERTY]: true,
-  }
-
-  if (getEdge(id) !== null) {
-    const message = `${t('connectionAlreadyExists')}: ${id}`
-
-    return showNotification({
-      message,
-      type: NOTIFY_WARNING
-    })
+    userDefined
   }
 
   newObjectPropertiesFromApi[id] = edge
@@ -104,6 +129,13 @@ const setOntologyAddEdge = ({
 
   setEdgeStylesByProperty({
     edgeId: id
+  })
+
+  message = `${t('edgeAdded')}: ${id}`
+
+  showNotification({
+    message,
+    type: NOTIFY_SUCCESS
   })
 }
 

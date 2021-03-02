@@ -10,7 +10,7 @@ const setup = ({
 }) => {
   const props = {
     type,
-    opearation: 'restore',
+    operation: 'restore',
     setStoreState: jest.fn(),
     addToArray: jest.fn(),
     removeFromObject: jest.fn(),

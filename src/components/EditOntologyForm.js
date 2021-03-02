@@ -12,7 +12,6 @@ const EditOntologyForm = ({
   annotationProperties,
   operation,
   initialData,
-  classesFromApi,
 }) => {
   const { t } = useTranslation()
 
@@ -28,11 +27,7 @@ const EditOntologyForm = ({
           const label = property.value
           const isRequired = property.value === UNIQUE_PROPERTY
 
-          const elementId = selectedElementProperties[UNIQUE_PROPERTY]
           const isValid = operation === 'add' && isRequired ? selectedElementProperties[id]?.length > 0 : true
-          const isExisting = operation === 'add' && classesFromApi[elementId]
-
-          const isDisabled = operation === 'update' && isRequired
 
           const initialDataValue = initialData ? (initialData[id]
             || (
@@ -62,7 +57,7 @@ const EditOntologyForm = ({
                 id={`element-property-${id}`}
                 value={value}
                 className={!isValid ? 'p-invalid' : ''}
-                disabled={isDisabled}
+                // disabled={isDisabled}
                 onChange={(e) => {
                   const elementProperties = JSON.parse(JSON.stringify(selectedElementProperties))
 
@@ -82,18 +77,6 @@ const EditOntologyForm = ({
                   </small>
                 )
               }
-
-              {
-                id === UNIQUE_PROPERTY
-                && isExisting && (
-                  <small
-                    id="username2-help"
-                    className="p-error p-d-block"
-                  >
-                    {t('idExists')}
-                  </small>
-                )
-              }
             </div>
           )
         })
@@ -108,7 +91,6 @@ EditOntologyForm.propTypes = {
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   operation: PropTypes.string.isRequired,
   initialData: PropTypes.shape(),
-  classesFromApi: PropTypes.shape().isRequired,
 }
 
 EditOntologyForm.defaultProps = {

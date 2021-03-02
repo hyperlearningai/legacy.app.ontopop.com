@@ -273,6 +273,26 @@ export default {
   toNode: 'To node',
   toAndFromNodesEqual: 'To and from nodes cannot be the same!',
   connectionAlreadyExists: 'Connection already exists',
+  couldNotAddNode: 'Could not add node',
+  couldNotUpdateNode: 'Could not update node',
+  couldNotDeleteNode: 'Could not delete node',
+  couldNotRestoreNode: 'Could not restore node',
+  couldNotAddEdge: 'Could not add edge',
+  couldNotUpdateEdge: 'Could not update edge',
+  couldNotDeleteEdge: 'Could not delete edge',
+  couldNotRestoreEdge: 'Could not restore edge',
+  nodeAdded: 'Node added',
+  nodeUpdated: 'Node updated',
+  nodeDeleted: 'Node deleted',
+  nodeRestored: 'Node restored',
+  edgeAdded: 'Edge added',
+  edgeUpdated: 'Edge updated',
+  edgeDeleted: 'Edge deleted',
+  edgeRestored: 'Edge restored',
+  nodesDeleted: 'Nodes deleted',
+  nodesRestored: 'Nodes restored',
+  edgesDeleted: 'Edges deleted',
+  edgesRestored: 'Edges restored',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',
@@ -340,5 +360,8 @@ export default {
   firstName: 'First Name',
   lastName: 'Last Name',
   company: 'Company',
-  changePassword: 'Change Password'
+  changePassword: 'Change Password',
+
+  // api calls
+  apiCallNotValid: 'Invalid http request',
 }
