@@ -17,7 +17,8 @@ const edges = Object.keys(objectPropertiesFromApi).map((property) => ({
 store.getState = jest.fn().mockImplementation(() => ({
   edgesPerNode,
   availableEdges: new DataSet(edges),
-  deletedNodes
+  deletedNodes,
+  objectPropertiesFromApi
 }))
 
 describe('getNeighbours', () => {

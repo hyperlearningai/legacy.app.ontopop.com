@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.4.0]
 ### Added
+- ONTOLOGY-92 Search as entry point after sign in
 - ONTOLOGY-93 API endpoints to create/update/delete edges
 - ONTOLOGY-93 API endpoints to create/update/delete nodes
 - ONTOLOGY-93 Added httpCall function

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index page should match snapshot 1`] = `
+exports[`MainArea should match snapshot 1`] = `
 <Connect
   actions={
     Object {
@@ -12,16 +12,22 @@ exports[`Index page should match snapshot 1`] = `
       "setStoreState": [Function],
     }
   }
-  addToObject={[MockFunction]}
+  annotationProperties={
+    Array [
+      Object {
+        "label": "rdfAbout",
+        "value": "rdfAbout",
+      },
+    ]
+  }
+  entrySearchAnnotationProperties={
+    Array [
+      "rdfAbout",
+    ]
+  }
+  entrySearchFilter="all"
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
-  user={
-    Object {
-      "email": "a@b.c",
-      "isGuest": false,
-      "token": "123",
-    }
-  }
 >
   <Component />
 </Connect>
