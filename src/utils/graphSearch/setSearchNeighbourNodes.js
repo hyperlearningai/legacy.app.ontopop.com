@@ -8,7 +8,7 @@ import store from '../../store'
  * @param  {Number}   params.separationDegree          Separation degree integer
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Function} params.addToObject               Add to object action
- * @param  {Function} params.addToObject               Add to object action
+ * @param  {Object}   params.searchResult              Selected node or edge object
  * @return { undefined }
  */
 const setSearchNeighbourNodes = ({
