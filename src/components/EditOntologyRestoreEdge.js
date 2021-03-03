@@ -18,7 +18,8 @@ const EditOntologyRestoreEdge = ({
   objectPropertiesFromApiBackup,
   deletedEdges,
   deletedNodes,
-  stylingNodeCaptionProperty
+  userDefinedNodeStyling,
+  globalNodeStyling
 }) => {
   const { t } = useTranslation()
 
@@ -46,8 +47,11 @@ const EditOntologyRestoreEdge = ({
         label
       } = objectPropertiesFromApiBackup[edgeId]
 
-      const fromLabel = classesFromApiBackup[from][stylingNodeCaptionProperty]
-      const toLabel = classesFromApiBackup[to][stylingNodeCaptionProperty]
+      const { stylingNodeCaptionProperty: fromStylingNodeCaptionProperty } = classesFromApiBackup[from].userDefined ? userDefinedNodeStyling : globalNodeStyling
+      const { stylingNodeCaptionProperty: toStylingNodeCaptionProperty } = classesFromApiBackup[to].userDefined ? userDefinedNodeStyling : globalNodeStyling
+
+      const fromLabel = classesFromApiBackup[from][fromStylingNodeCaptionProperty]
+      const toLabel = classesFromApiBackup[to][toStylingNodeCaptionProperty]
 
       const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
 
@@ -127,7 +131,8 @@ EditOntologyRestoreEdge.propTypes = {
   objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  stylingNodeCaptionProperty: PropTypes.string.isRequired
+  userDefinedNodeStyling: PropTypes.shape().isRequired,
+  globalNodeStyling: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -135,13 +140,16 @@ const mapToProps = ({
   deletedEdges,
   deletedNodes,
   stylingNodeCaptionProperty,
-  objectPropertiesFromApiBackup
+  objectPropertiesFromApiBackup, userDefinedNodeStyling,
+  globalNodeStyling
 }) => ({
   classesFromApiBackup,
   deletedEdges,
   deletedNodes,
   stylingNodeCaptionProperty,
-  objectPropertiesFromApiBackup
+  objectPropertiesFromApiBackup,
+  userDefinedNodeStyling,
+  globalNodeStyling
 })
 
 export default connect(

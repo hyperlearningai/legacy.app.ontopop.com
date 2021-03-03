@@ -25,13 +25,18 @@ const edgesIdsToDisplay = [
 const getState = jest.fn().mockImplementation(() => ({
   availableNodes,
   availableEdges,
+  edgesPerNode,
   classesFromApi,
+  objectPropertiesFromApi,
   edgesIdsToDisplay,
   nodesIdsToDisplay,
-  objectPropertiesFromApi,
-  edgesPerNode,
-  stylingNodeCaptionProperty,
   isPhysicsOn: false,
+  globalNodeStyling: {
+    stylingNodeCaptionProperty,
+  },
+  userDefinedNodeStyling: {
+    stylingNodeCaptionProperty,
+  },
 }))
 
 store.getState = getState

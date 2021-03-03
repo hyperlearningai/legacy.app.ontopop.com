@@ -38,7 +38,7 @@ describe('setOntologyAddNode', () => {
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY,
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: LABEL_PROPERTY },
     }))
 
     await setOntologyAddNode({
@@ -71,7 +71,7 @@ describe('setOntologyAddNode', () => {
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY,
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: LABEL_PROPERTY },
     }))
 
     await setOntologyAddNode({
@@ -111,7 +111,7 @@ describe('setOntologyAddNode', () => {
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY,
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: LABEL_PROPERTY },
     }))
 
     await setOntologyAddNode({
@@ -122,11 +122,34 @@ describe('setOntologyAddNode', () => {
 
     expect(addNode).toHaveBeenCalledWith(
       {
-        id: '123',
+        borderWidth: undefined,
+        borderWidthSelected: undefined,
+        color: {
+          background: undefined,
+          border: undefined,
+          highlight: {
+            background: undefined,
+            border: undefined,
+          },
+          hover: {
+            background: undefined,
+            border: undefined,
+          },
+        },
+        font: {
+          align: undefined,
+          bold: '700',
+          color: undefined,
+          face: 'Montserrat',
+          size: undefined,
+        },
         'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-        label: 'New node',
-        rdfsLabel: 'New node',
+        id: '123',
+        label: 'New\nnode',
         rdfAbout: '123',
+        rdfsLabel: 'New node',
+        shape: undefined,
+        size: undefined,
         userDefined: true,
       }
     )
@@ -164,7 +187,7 @@ describe('setOntologyAddNode', () => {
             123: {
               id: '123',
               'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              label: 'New node',
+              label: 'New\nnode',
               rdfAbout: '123',
               rdfsLabel: 'New node',
               userDefined: true,
@@ -178,7 +201,7 @@ describe('setOntologyAddNode', () => {
             123: {
               id: '123',
               'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              label: 'New node',
+              label: 'New\nnode',
               rdfAbout: '123',
               rdfsLabel: 'New node',
               userDefined: true,

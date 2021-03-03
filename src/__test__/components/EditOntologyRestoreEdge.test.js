@@ -15,13 +15,16 @@ const setup = ({
     addToArray: jest.fn(),
     removeFromObject: jest.fn(),
     addToObject: jest.fn(),
-    classesFromApi,
     classesFromApiBackup: classesFromApi,
-    objectPropertiesFromApi,
     objectPropertiesFromApiBackup: objectPropertiesFromApi,
     deletedEdges,
     deletedNodes: [],
-    stylingNodeCaptionProperty: 'rdfsLabel'
+    userDefinedNodeStyling: {
+      stylingNodeCaptionProperty: 'rdfsLabel'
+    },
+    globalNodeStyling: {
+      stylingNodeCaptionProperty: 'rdfsLabel'
+    },
   }
 
   const component = shallow(<EditOntologyRestoreEdge {...props} />)

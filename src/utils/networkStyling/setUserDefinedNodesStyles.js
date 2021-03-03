@@ -1,20 +1,20 @@
-import updateNodes from '../nodesEdgesUtils/updateNodes'
+import { USER_DEFINED_PROPERTY } from '../../constants/graph'
 import store from '../../store'
 import getNode from '../nodesEdgesUtils/getNode'
-import { USER_DEFINED_PROPERTY } from '../../constants/graph'
+import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
- * Reset nodes which have been styled
+ * Set user defined nodes styles
  * @return { undefined }
  */
-const resetNodesStyles = () => {
+const setUserDefinedNodesStyles = () => {
   const {
-    globalNodeStyling,
+    userDefinedNodeStyling,
     classesFromApi
   } = store.getState()
 
   const availableNodes = getNode({
-    filter: (node) => !node[USER_DEFINED_PROPERTY]
+    filter: (node) => node[USER_DEFINED_PROPERTY] === true
   })
 
   if (availableNodes.length === 0) return false
@@ -34,7 +34,7 @@ const resetNodesStyles = () => {
     stylingNodeHoverBorderColor,
     stylingNodeSize,
     stylingNodeCaptionProperty,
-  } = globalNodeStyling
+  } = userDefinedNodeStyling
 
   const nodeStyle = {
     borderWidth: stylingNodeBorder,
@@ -72,4 +72,4 @@ const resetNodesStyles = () => {
   }))
 }
 
-export default resetNodesStyles
+export default setUserDefinedNodesStyles

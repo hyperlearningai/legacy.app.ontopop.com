@@ -270,39 +270,7 @@ NetworkStylingEdgeByPropertyForm.propTypes = {
   stylingProperty: PropTypes.shape().isRequired,
 }
 
-const mapToProps = ({
-  stylingNodeShape,
-  stylingNodeBorder,
-  stylingNodeBorderSelected,
-  stylingNodeBorderColor,
-  stylingNodeBackgroundColor,
-  stylingNodeHighlightBorderColor,
-  stylingNodeHighlightBackgroundColor,
-  stylingNodeTextColor,
-  stylingNodeSize,
-  stylingNodeHoverBackgroundColor,
-  stylingNodeHoverBorderColor,
-  stylingNodeTextFontSize,
-  stylingNodeTextFontAlign,
-  stylingNodeCaptionProperty,
-}) => ({
-  stylingNodeHoverBackgroundColor,
-  stylingNodeHoverBorderColor,
-  stylingNodeShape,
-  stylingNodeBorder,
-  stylingNodeBorderSelected,
-  stylingNodeBorderColor,
-  stylingNodeBackgroundColor,
-  stylingNodeHighlightBorderColor,
-  stylingNodeHighlightBackgroundColor,
-  stylingNodeTextColor,
-  stylingNodeSize,
-  stylingNodeTextFontSize,
-  stylingNodeTextFontAlign,
-  stylingNodeCaptionProperty,
-})
-
 export default connect(
-  mapToProps,
+  null,
   actions
 )(NetworkStylingEdgeByPropertyForm)

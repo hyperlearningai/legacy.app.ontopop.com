@@ -10,18 +10,33 @@ import {
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
-    stylingEdgeLineColor: EDGE_COLOR,
-    stylingEdgeLineColorHover: EDGE_COLOR,
-    stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
-    stylingEdgeLineStyle: false,
-    stylingEdgeTextColor: EDGE_COLOR,
-    stylingEdgeTextSize: 12,
-    stylingEdgeTextAlign: 'horizontal',
-    stylingEdgeWidth: 2,
+    addToObject: jest.fn(),
+    globalEdgeStyling: {
+      stylingEdgeLineColor: EDGE_COLOR,
+      stylingEdgeLineColorHover: EDGE_COLOR,
+      stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+      stylingEdgeLineStyle: false,
+      stylingEdgeTextColor: EDGE_COLOR,
+      stylingEdgeTextSize: 12,
+      stylingEdgeTextAlign: 'horizontal',
+      stylingEdgeWidth: 2,
+      stylingEdgeLength: 250,
+      stylingEdgeCaptionProperty: LABEL_PROPERTY,
+    },
+    userDefinedEdgeStyling: {
+      stylingEdgeLineColor: EDGE_COLOR,
+      stylingEdgeLineColorHover: EDGE_COLOR,
+      stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+      stylingEdgeLineStyle: false,
+      stylingEdgeTextColor: EDGE_COLOR,
+      stylingEdgeTextSize: 12,
+      stylingEdgeTextAlign: 'horizontal',
+      stylingEdgeWidth: 2,
+      stylingEdgeLength: 250,
+      stylingEdgeCaptionProperty: LABEL_PROPERTY,
+    },
     stylingEdgeByProperty: [],
-    stylingEdgeLength: 250,
-    stylingEdgeCaptionProperty: LABEL_PROPERTY,
+
   }
 
   const component = shallow(<NetworkStylingEdge {...props} />)

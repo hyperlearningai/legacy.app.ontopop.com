@@ -16,20 +16,24 @@ const highlightElement = ({
   const {
     freeTextSelection,
     freeTextSelectedElement,
-    stylingNodeHighlightBackgroundColor,
-    stylingEdgeLineColorHighlight,
+    globalEdgeStyling,
+    globalNodeStyling,
+    userDefinedEdgeStyling,
+    userDefinedNodeStyling,
     network
   } = store.getState()
 
   if (!freeTextSelectedElement) return false
-  const elementType = freeTextSelection[freeTextSelectedElement]
+  const { type, userDefined } = freeTextSelection[freeTextSelectedElement]
 
-  if (elementType === 'node') {
+  if (type === 'node') {
     const node = getNode(freeTextSelectedElement)
 
     setStoreState('freeTextPrevSelectedElement', node)
 
     const color = node.color || {}
+
+    const { stylingNodeHighlightBackgroundColor } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
     color.background = stylingNodeHighlightBackgroundColor
 
@@ -49,6 +53,8 @@ const highlightElement = ({
   setStoreState('freeTextPrevSelectedElement', edge)
 
   const color = edge.color || {}
+
+  const { stylingEdgeLineColorHighlight } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
 
   color.color = stylingEdgeLineColorHighlight
 

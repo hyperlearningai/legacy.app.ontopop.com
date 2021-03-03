@@ -130,6 +130,7 @@ export default {
   // Physics Edge
   stylingEdgeByProperty: 'Edge styling by property',
   edgeStylingGlobal: 'Global edge styling',
+  edgeStylingUserDefined: 'User-defined edge styling',
   edgeStyling: 'Edge styling',
   stylingEdgeLength: 'Edge length',
   stylingEdgeWidth: 'Edge thickness',
@@ -154,6 +155,7 @@ export default {
   nodeStyling: 'Node styling',
   stylingNodeByProperty: 'Node styling by property',
   nodeStylingGlobal: 'Global node styling',
+  nodeStylingUserDefined: 'User-defined node styling',
   stylingNodeSize: 'Node size',
   stylingNodeShape: 'Node shape',
   nodeColor: 'Node colour',

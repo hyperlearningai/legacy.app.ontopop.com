@@ -17,8 +17,18 @@ const setup = () => {
     objectPropertiesFromApi,
     removeFromObject: jest.fn(),
     setStoreState: jest.fn(),
-    stylingNodeCaptionProperty: 'rdfsLabel',
-    stylingEdgeCaptionProperty: 'rdfsLabel',
+    globalEdgeStyling: {
+      stylingEdgeCaptionProperty: 'rdfsLabel',
+    },
+    userDefinedEdgeStyling: {
+      stylingEdgeCaptionProperty: 'rdfsLabel',
+    },
+    globalNodeStyling: {
+      stylingNodeCaptionProperty: 'rdfsLabel',
+    },
+    userDefinedNodeStyling: {
+      stylingNodeCaptionProperty: 'rdfsLabel',
+    },
   }
 
   const component = shallow(<FreeTextSearch {...props} />)

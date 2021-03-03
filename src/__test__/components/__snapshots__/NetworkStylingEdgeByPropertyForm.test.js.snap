@@ -14,7 +14,7 @@ exports[`NetworkStylingEdgeByPropertyForm should match snapshot  1`] = `
   }
   index={0}
   isDeleteAvailable={true}
-  mapToProps={[Function]}
+  mapToProps={null}
   setStoreState={[MockFunction]}
   stylingProperty={
     Object {

@@ -12,6 +12,7 @@ import { SIDEBAR_VIEW_STRUCTURED_SEARCH } from '../constants/views'
 import structuredSearchElement from '../utils/structuredSearch/structuredSearchElement'
 import highlightStructuredSearchElement from '../utils/structuredSearch/highlightStructuredSearchElement'
 import clearStructuredSearchElement from '../utils/structuredSearch/clearStructuredSearchElement'
+import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const StructuredSearch = ({
   classesFromApi,
@@ -20,8 +21,10 @@ const StructuredSearch = ({
   objectPropertiesFromApi,
   removeFromObject,
   setStoreState,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty,
+  globalEdgeStyling,
+  userDefinedEdgeStyling,
+  globalNodeStyling,
+  userDefinedNodeStyling,
   annotationProperties,
 }) => {
   const { t } = useTranslation()
@@ -101,11 +104,27 @@ const StructuredSearch = ({
                 {
                   Object.keys(structuredSelection).length > 0
                   && Object.keys(structuredSelection).map((elementId) => {
-                    const elementType = structuredSelection[elementId]
+                    const {
+                      type, userDefined, from, to
+                    } = structuredSelection[elementId]
 
-                    const elementLabel = elementType === 'node'
-                      ? classesFromApi[elementId][stylingNodeCaptionProperty]
-                      : objectPropertiesFromApi[elementId][stylingEdgeCaptionProperty]
+                    let elementLabel
+
+                    if (type === 'node') {
+                      const { stylingNodeCaptionProperty } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+                      elementLabel = classesFromApi[elementId][stylingNodeCaptionProperty]
+                    } else {
+                      const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
+                      const edge = objectPropertiesFromApi[elementId][stylingEdgeCaptionProperty]
+
+                      const fromNode = getNode(from)
+                      const fromNodeLabel = fromNode[fromNode.userDefined ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty]
+
+                      const toNode = getNode(to)
+                      const toNodeLabel = toNode[toNode.userDefined ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty]
+
+                      elementLabel = `${fromNodeLabel} => ${edge} => ${toNodeLabel}`
+                    }
 
                     return (
                       <div
@@ -132,7 +151,7 @@ const StructuredSearch = ({
                             onClick={() => setStoreState('structuredSelectedElement', elementId)}
                           >
                             <span>
-                              <i className={`pi pi-${elementType === 'node' ? 'circle-off' : 'arrow-up'}`} />
+                              <i className={`pi pi-${type === 'node' ? 'circle-off' : 'arrow-up'}`} />
                               {' '}
                               {elementLabel}
                             </span>
@@ -170,98 +189,98 @@ const StructuredSearch = ({
                   className="structured-search-selection"
                 >
                   {
-                  filters.map(
-                    (nodefilter, index) => {
-                      const selectId = `structured-search-property-${index}`
-                      const inputTextId = `structured-search-value-${index}`
+                    filters.map(
+                      (nodefilter, index) => {
+                        const selectId = `structured-search-property-${index}`
+                        const inputTextId = `structured-search-value-${index}`
 
-                      return (
-                        <div
-                          className="structured-search-selection-row"
-                          key={`structured-search-${index}`}
-                        >
-                          {
-                            filters.length > 1 && (
-                            <div className="p-field remove-button p-col-12">
-                              <Button
-                                icon="pi pi-times"
-                                className="p-button-rounded p-button-danger"
-                                tooltip={t('removeFilter')}
-                                onClick={() => {
-                                  const newNodeFilter = filters.slice()
+                        return (
+                          <div
+                            className="structured-search-selection-row"
+                            key={`structured-search-${index}`}
+                          >
+                            {
+                              filters.length > 1 && (
+                                <div className="p-field remove-button p-col-12">
+                                  <Button
+                                    icon="pi pi-times"
+                                    className="p-button-rounded p-button-danger"
+                                    tooltip={t('removeFilter')}
+                                    onClick={() => {
+                                      const newNodeFilter = filters.slice()
 
-                                  newNodeFilter.splice(index, 1)
+                                      newNodeFilter.splice(index, 1)
 
-                                  if (!checkEmptyRow(newNodeFilter)) {
-                                    newNodeFilter.push(JSON.parse(JSON.stringify(defaultNodeFilter)))
+                                      if (!checkEmptyRow(newNodeFilter)) {
+                                        newNodeFilter.push(JSON.parse(JSON.stringify(defaultNodeFilter)))
+                                      }
+
+                                      setFilters(newNodeFilter)
+                                    }}
+                                  />
+                                </div>
+                              )
+                            }
+
+                            <div className="p-field p-col-12">
+                              <label htmlFor={selectId}>{t('selectProperty')}</label>
+                              <Dropdown
+                                id={selectId}
+                                value={filters[index].property}
+                                options={annotationProperties}
+                                filter
+                                onChange={(e) => {
+                                  const newFilter = {
+                                    ...filters[index],
+                                    property: e.value
                                   }
 
-                                  setFilters(newNodeFilter)
+                                  let newNodesFilters = [
+                                    ...filters.slice(0, index),
+                                    newFilter,
+                                    ...filters.slice(index + 1),
+                                  ]
+
+                                  if (!checkEmptyRow(newNodesFilters)) {
+                                    newNodesFilters = [
+                                      ...newNodesFilters,
+                                      JSON.parse(JSON.stringify(defaultNodeFilter))
+                                    ]
+                                  }
+
+                                  setFilters(newNodesFilters)
                                 }}
+                                className="m-t-10"
+                                placeholder={t('selectProperty')}
                               />
                             </div>
-                            )
-                          }
 
-                          <div className="p-field p-col-12">
-                            <label htmlFor={selectId}>{t('selectProperty')}</label>
-                            <Dropdown
-                              id={selectId}
-                              value={filters[index].property}
-                              options={annotationProperties}
-                              filter
-                              onChange={(e) => {
-                                const newFilter = {
-                                  ...filters[index],
-                                  property: e.value
-                                }
+                            <div className="p-field p-col-12 m-t-20">
+                              <label htmlFor={inputTextId}>{t('searchString')}</label>
+                              <InputText
+                                id={inputTextId}
+                                value={filters[index].value}
+                                placeholder={t('searchString')}
+                                onChange={(e) => {
+                                  const newFilter = {
+                                    ...filters[index],
+                                    value: e.target.value
+                                  }
 
-                                let newNodesFilters = [
-                                  ...filters.slice(0, index),
-                                  newFilter,
-                                  ...filters.slice(index + 1),
-                                ]
-
-                                if (!checkEmptyRow(newNodesFilters)) {
-                                  newNodesFilters = [
-                                    ...newNodesFilters,
-                                    JSON.parse(JSON.stringify(defaultNodeFilter))
-                                  ]
-                                }
-
-                                setFilters(newNodesFilters)
-                              }}
-                              className="m-t-10"
-                              placeholder={t('selectProperty')}
-                            />
+                                  setFilters([
+                                    ...filters.slice(0, index),
+                                    newFilter,
+                                    ...filters.slice(index + 1)
+                                  ])
+                                }}
+                                className="m-t-10"
+                              />
+                            </div>
                           </div>
-
-                          <div className="p-field p-col-12 m-t-20">
-                            <label htmlFor={inputTextId}>{t('searchString')}</label>
-                            <InputText
-                              id={inputTextId}
-                              value={filters[index].value}
-                              placeholder={t('searchString')}
-                              onChange={(e) => {
-                                const newFilter = {
-                                  ...filters[index],
-                                  value: e.target.value
-                                }
-
-                                setFilters([
-                                  ...filters.slice(0, index),
-                                  newFilter,
-                                  ...filters.slice(index + 1)
-                                ])
-                              }}
-                              className="m-t-10"
-                            />
-                          </div>
-                        </div>
-                      )
-                    }
-                  )
-                }
+                        )
+                      }
+                    )
+                  }
                 </div>
 
                 <div className="structured-search-button-wrapper">
@@ -280,7 +299,9 @@ const StructuredSearch = ({
                   />
                 </div>
 
-                <div className="structured-search-text-lower">{`${t('elementsFound')}: ${structuredSelection ? Object.keys(structuredSelection).length : 0}`}</div>
+                <div className="structured-search-text-lower">
+                  {`${t('elementsFound')}: ${structuredSelection ? Object.keys(structuredSelection).length : 0}`}
+                </div>
               </>
             )
         }
@@ -296,8 +317,10 @@ StructuredSearch.propTypes = {
   structuredSelectedElement: PropTypes.string.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
-  stylingNodeCaptionProperty: PropTypes.string.isRequired,
-  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
+  globalEdgeStyling: PropTypes.shape().isRequired,
+  userDefinedEdgeStyling: PropTypes.shape().isRequired,
+  globalNodeStyling: PropTypes.shape().isRequired,
+  userDefinedNodeStyling: PropTypes.shape().isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
@@ -306,16 +329,20 @@ const mapToProps = ({
   structuredSelectedElement,
   classesFromApi,
   objectPropertiesFromApi,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty,
   annotationProperties,
+  globalEdgeStyling,
+  userDefinedEdgeStyling,
+  globalNodeStyling,
+  userDefinedNodeStyling,
 }) => ({
   structuredSelection,
   structuredSelectedElement,
   classesFromApi,
   objectPropertiesFromApi,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty,
+  globalEdgeStyling,
+  userDefinedEdgeStyling,
+  globalNodeStyling,
+  userDefinedNodeStyling,
   annotationProperties,
 })
 

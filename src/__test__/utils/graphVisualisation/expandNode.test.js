@@ -24,7 +24,12 @@ store.getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
   nodesEdges: {},
   isPhysicsOn: false,
-  stylingNodeCaptionProperty: 'rdfsLabel'
+  globalNodeStyling: {
+    stylingNodeCaptionProperty: 'rdfsLabel'
+  },
+  userDefinedNodeStyling: {
+    stylingNodeCaptionProperty: 'rdfsLabel'
+  },
 }))
 
 describe('expandNode', () => {

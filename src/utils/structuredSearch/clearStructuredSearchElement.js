@@ -3,35 +3,43 @@ import updateEdges from '../nodesEdgesUtils/updateEdges'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
- * Clear free text selected elements in canvas
+ * Clear structured search selected elements in canvas
  * @return { undefined }
  */
 const clearStructuredSearchElement = () => {
   const {
-    stylingNodeBackgroundColor,
-    stylingEdgeLineColor,
+    userDefinedNodeStyling,
+    globalNodeStyling,
+    userDefinedEdgeStyling,
+    globalEdgeStyling,
     structuredPrevSelectedElement,
     structuredSelection
   } = store.getState()
 
   if (!structuredPrevSelectedElement) return false
 
-  const { id } = structuredPrevSelectedElement
+  const { id, userDefined } = structuredPrevSelectedElement
   const color = structuredPrevSelectedElement.color || {}
+  const width = structuredPrevSelectedElement.width || 1
 
-  const type = structuredSelection[id]
+  if (!structuredSelection[id]) return false
+
+  const { type } = structuredSelection[id]
 
   if (type === 'edge') {
+    const { stylingEdgeLineColor } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
     color.color = stylingEdgeLineColor
 
     return updateEdges(
       {
         id,
         color,
-        width: 1
+        width
       }
     )
   }
+
+  const { stylingNodeBackgroundColor } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
   color.background = stylingNodeBackgroundColor
 

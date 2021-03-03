@@ -24,10 +24,27 @@ const setOntologyAddNode = async ({
     classesFromApi,
     classesFromApiBackup,
     addedNodes,
-    stylingNodeCaptionProperty,
     edgesPerNode,
     edgesPerNodeBackup,
+    userDefinedNodeStyling
   } = store.getState()
+
+  const {
+    stylingNodeBorder,
+    stylingNodeBorderSelected,
+    stylingNodeTextFontSize,
+    stylingNodeTextColor,
+    stylingNodeTextFontAlign,
+    stylingNodeShape,
+    stylingNodeBackgroundColor,
+    stylingNodeBorderColor,
+    stylingNodeHighlightBackgroundColor,
+    stylingNodeHighlightBorderColor,
+    stylingNodeHoverBackgroundColor,
+    stylingNodeHoverBorderColor,
+    stylingNodeSize,
+    stylingNodeCaptionProperty,
+  } = userDefinedNodeStyling
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
@@ -77,7 +94,7 @@ const setOntologyAddNode = async ({
 
   // add label
   newClassesFromApi[id].label = selectedElementProperties[stylingNodeCaptionProperty]
-    ? selectedElementProperties[stylingNodeCaptionProperty].split(' ').join(' ') : ''
+    ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
   // add array for new node in nodes edges connections
   newNodesEdges[id] = []
@@ -87,8 +104,36 @@ const setOntologyAddNode = async ({
   // add as backup
   newClassesFromApiBackup[id] = newClassesFromApi[id]
 
+  // add node style
+  const nodeStyle = {
+    borderWidth: stylingNodeBorder,
+    borderWidthSelected: stylingNodeBorderSelected,
+    font: {
+      size: stylingNodeTextFontSize,
+      color: stylingNodeTextColor,
+      align: stylingNodeTextFontAlign,
+      face: 'Montserrat',
+      bold: '700'
+    },
+    shape: stylingNodeShape,
+    color: {
+      background: stylingNodeBackgroundColor,
+      border: stylingNodeBorderColor,
+      highlight: {
+        background: stylingNodeHighlightBackgroundColor,
+        border: stylingNodeHighlightBorderColor,
+      },
+      hover: {
+        background: stylingNodeHoverBackgroundColor,
+        border: stylingNodeHoverBorderColor,
+      },
+    },
+    size: stylingNodeSize
+  }
+
   addNode({
     ...newClassesFromApi[id],
+    ...nodeStyle
   })
 
   const newAddedNodes = [

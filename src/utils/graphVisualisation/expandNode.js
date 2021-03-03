@@ -22,7 +22,8 @@ const expandNode = ({
     objectPropertiesFromApi,
     nodesEdges,
     isPhysicsOn,
-    stylingNodeCaptionProperty
+    globalNodeStyling,
+    userDefinedNodeStyling
   } = store.getState()
 
   const triples = edgesPerNode[nodeId]
@@ -57,6 +58,8 @@ const expandNode = ({
 
         if (isNodeNotAvailable) {
           const nodeIdObject = classesFromApi[nodeIdToCheck.toString()]
+
+          const { stylingNodeCaptionProperty } = nodeIdObject.userDefined ? userDefinedNodeStyling : globalNodeStyling
 
           nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
             ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''

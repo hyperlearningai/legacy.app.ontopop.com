@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.4.0]
 ### Added
+- ONTOLOGY-93 User-defined nodes and edges styles
 - ONTOLOGY-93 API endpoints to create/update/delete edges
 - ONTOLOGY-93 API endpoints to create/update/delete nodes
 - ONTOLOGY-93 Added httpCall function
@@ -25,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-78 Login page with login endpoint
 
 ### Changed
+- ONTOLOGY-93 Refactored several utils and components to use user-defined nodes and edges styles
 - ONTOLOGY-93 Refactored edge management components and utils
 - ONTOLOGY-93 Refactored node management components and utils
 - ONTOLOGY-93 Refactored functions with api calls to use the httpCall function
