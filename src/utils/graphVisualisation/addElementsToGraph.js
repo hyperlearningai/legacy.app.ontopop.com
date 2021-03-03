@@ -8,7 +8,6 @@ import countNodes from '../nodesEdgesUtils/countNodes'
 import countEdges from '../nodesEdgesUtils/countEdges'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import addNode from '../nodesEdgesUtils/addNode'
-import getEdge from '../nodesEdgesUtils/getEdge'
 
 /**
  * Update store and graph based on node IDs to display
@@ -41,6 +40,8 @@ const addElementsToGraph = ({
 
   const nodesEdges = {}
 
+  const processedEdges = []
+
   if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
 
   for (let i = 0; i < nodesIdsToDisplay.length; i++) {
@@ -70,9 +71,11 @@ const addElementsToGraph = ({
           edge: objectPropertiesFromApi[edgeId]
         })
 
-        const isEdgeExisting = getEdge(edgeId) !== null
+        const isEdgeExisting = processedEdges.includes(edgeId)
 
         if (isEdgeExisting) return false
+
+        processedEdges.push(edgeId)
 
         const isEdgeDisplayable = showEdgeCheck({
           edge,
@@ -121,7 +124,7 @@ const addElementsToGraph = ({
     if (!currentPhysicsOnState) {
       setStoreState('isPhysicsOn', false)
     }
-  }, 3000)
+  }, 5000)
 }
 
 export default addElementsToGraph

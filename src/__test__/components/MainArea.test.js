@@ -1,20 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import Navbar from '../../components/Navbar'
+import MainArea from '../../components/MainArea'
 import { MAIN_VIEW_GRAPH, MAIN_VIEW_SEARCH } from '../../constants/views'
 
 const setup = ({
   mainVisualisation
 }) => {
   const props = {
-    availableEdgesCount: 333,
-    availableNodesCount: 200,
-    mainVisualisation,
-    entrySearchResults: [{ id: '123' }]
+    setStoreState: jest.fn(),
+    addToObject: jest.fn(),
+    removeFromObject: jest.fn(),
+    mainVisualisation
   }
 
-  const component = shallow(<Navbar {...props} />)
+  const component = shallow(<MainArea {...props} />)
 
   return {
     component,
@@ -22,7 +22,11 @@ const setup = ({
   }
 }
 
-describe('Navbar', () => {
+describe('MainArea', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should match snapshot when MAIN_VIEW_SEARCH', () => {
     const {
       component
@@ -39,7 +43,6 @@ describe('Navbar', () => {
     } = setup({
       mainVisualisation: MAIN_VIEW_GRAPH
     })
-
     expect(toJson(component)).toMatchSnapshot()
   })
 })

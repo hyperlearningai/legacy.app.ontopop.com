@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar should match snapshot when MAIN_VIEW_GRAPH 1`] = `
+exports[`GraphSearch should match snapshot when isQueried false 1`] = `
 <Connect
   actions={
     Object {
@@ -12,8 +12,6 @@ exports[`Navbar should match snapshot when MAIN_VIEW_GRAPH 1`] = `
       "setStoreState": [Function],
     }
   }
-  availableEdgesCount={333}
-  availableNodesCount={200}
   entrySearchResults={
     Array [
       Object {
@@ -21,14 +19,15 @@ exports[`Navbar should match snapshot when MAIN_VIEW_GRAPH 1`] = `
       },
     ]
   }
-  mainVisualisation="graph"
+  isQueried={false}
   mapToProps={[Function]}
+  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>
 `;
 
-exports[`Navbar should match snapshot when MAIN_VIEW_SEARCH 1`] = `
+exports[`GraphSearch should match snapshot when isQueried true 1`] = `
 <Connect
   actions={
     Object {
@@ -40,8 +39,6 @@ exports[`Navbar should match snapshot when MAIN_VIEW_SEARCH 1`] = `
       "setStoreState": [Function],
     }
   }
-  availableEdgesCount={333}
-  availableNodesCount={200}
   entrySearchResults={
     Array [
       Object {
@@ -49,8 +46,9 @@ exports[`Navbar should match snapshot when MAIN_VIEW_SEARCH 1`] = `
       },
     ]
   }
-  mainVisualisation="search"
+  isQueried={true}
   mapToProps={[Function]}
+  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>

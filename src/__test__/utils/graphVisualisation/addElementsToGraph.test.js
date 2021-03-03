@@ -67,7 +67,7 @@ describe('addElementsToGraph', () => {
     )
     expect(setElementsStyle).toHaveBeenCalledWith()
     expect(setTimeout).toHaveBeenCalledWith(
-      expect.any(Function), 3000
+      expect.any(Function), 5000
     )
   })
 })

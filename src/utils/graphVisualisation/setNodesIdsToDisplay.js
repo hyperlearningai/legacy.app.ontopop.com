@@ -1,9 +1,11 @@
+import { uniq } from 'lodash'
 import {
   ALGO_TYPE_FULL,
   ALGO_TYPE_NEIGHBOURHOOD,
   ALGO_TYPE_SHORTEST_PATH,
   ALGO_TYPE_BOUNDING_BOX,
   ALGO_TYPE_NODES_FILTER,
+  ALGO_TYPE_SEARCH_NEIGHBOURHOOD,
 } from '../../constants/algorithms'
 import getNodesFromPaths from '../shortestPath/getNodesFromPaths'
 import getNeighbours from '../nodeNeighbourhood/getNeighbours'
@@ -43,6 +45,7 @@ const setNodesIdsToDisplay = async ({
 
   let nodesToDisplay = [] //eslint-disable-line
   let highlightedNodesNew = []
+  let highlightedEdgesNew = []
   let isNodeOverlayNew = false
   let shortestPathNodesNew = []
   let shortestPathResultsNew = []
@@ -60,6 +63,43 @@ const setNodesIdsToDisplay = async ({
       nodesToDisplay = selectedBoundingBoxNodes.map((node) => node.id)
       break
 
+    case ALGO_TYPE_SEARCH_NEIGHBOURHOOD:
+      const {
+        selectedNodesId,
+        selectedEdgesId,
+        separationDegree: searchSeparationDegree,
+      } = options
+
+      if (selectedNodesId.length > 0) {
+        let allNeighbourNodes = []
+
+        selectedNodesId.map((selectedNodeId) => {
+          const neighbourNodes = getNeighbours({
+            selectedNodeId,
+            separationDegree: searchSeparationDegree,
+          })
+
+          if (neighbourNodes.length > 0) {
+            allNeighbourNodes = [
+              ...allNeighbourNodes,
+              ...neighbourNodes
+            ]
+          }
+
+          return true
+        })
+
+        nodesToDisplay = uniq(allNeighbourNodes)
+
+        highlightedNodesNew = selectedNodesId
+      }
+
+      if (selectedEdgesId.length > 0) {
+        highlightedEdgesNew = selectedEdgesId
+      }
+
+      break
+
     case ALGO_TYPE_NEIGHBOURHOOD:
       const {
         selectedNodeId,
@@ -70,6 +110,8 @@ const setNodesIdsToDisplay = async ({
         selectedNodeId,
         separationDegree,
       })
+
+      highlightedNodesNew = [selectedNodeId]
 
       break
 
@@ -133,6 +175,7 @@ const setNodesIdsToDisplay = async ({
   }
 
   setStoreState('highlightedNodes', highlightedNodesNew)
+  setStoreState('highlightedEdges', highlightedEdgesNew)
   setStoreState('isNodeOverlay', isNodeOverlayNew)
   setStoreState('shortestPathNodes', shortestPathNodesNew)
   setStoreState('shortestPathResults', shortestPathResultsNew)
