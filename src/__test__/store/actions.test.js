@@ -2,6 +2,20 @@ import { DataSet } from 'vis-data'
 import actions from '../../store/actions'
 
 describe('Actions', () => {
+  it('addNumber should work correctly', () => {
+    const state = {
+      activeLoaders: 0
+    }
+
+    const newState = {
+      activeLoaders: 2
+    }
+
+    const value = 2
+
+    expect(actions.addNumber(state, 'activeLoaders', value)).toEqual(newState)
+  })
+
   it('addSubValueToObject should work correctly', () => {
     const state = {
       graphData: {

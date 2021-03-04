@@ -1,5 +1,15 @@
 export default {
   /**
+   * Add number to key
+   * @param  {Object} state     Store state
+   * @param  {String} stateKey  State key to update
+   * @param  {Number} value     new subkey value
+   * @return {undefined}
+   */
+  addNumber: (state, stateKey, value) => ({
+    [stateKey]: state[stateKey] + value
+  }),
+  /**
    * Add subkey to object
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update

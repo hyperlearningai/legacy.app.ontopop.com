@@ -14,12 +14,14 @@ import countNodes from '../nodesEdgesUtils/countNodes'
 /**
  * Restore ontology nodes
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyRestoreNode = async ({
+  addNumber,
   selectedElement,
   setStoreState,
   t
@@ -106,7 +108,7 @@ const setOntologyRestoreNode = async ({
       body.label = 'class'
 
       const response = await httpCall({
-        setStoreState,
+        addNumber,
         withAuth: true,
         route: POST_CREATE_NODE,
         method: 'post',

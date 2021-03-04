@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-78 Login page with login endpoint
 
 ### Changed
+- ONTOLOGY-110 Added activeLoaders to replace loading in store
 - ONTOLOGY-93 Refactored several utils and components to use user-defined nodes and edges styles
 - ONTOLOGY-93 Refactored edge management components and utils
 - ONTOLOGY-93 Refactored node management components and utils
@@ -35,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-110 Removed redux loading middleware
 - ONTOLOGY-93 Removed boundingBoxSelection clearNodesSelection util
 
 ### Fixed

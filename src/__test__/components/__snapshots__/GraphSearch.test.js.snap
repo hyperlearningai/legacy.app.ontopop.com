@@ -4,6 +4,7 @@ exports[`GraphSearch should match snapshot when isQueried false 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -31,6 +32,7 @@ exports[`GraphSearch should match snapshot when isQueried true 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],

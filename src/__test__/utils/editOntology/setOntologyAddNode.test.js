@@ -13,6 +13,8 @@ import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const setStoreState = jest.fn()
+const addNumber = jest.fn()
+
 const t = (id) => en[id]
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
@@ -49,6 +51,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -82,6 +85,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -122,6 +126,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t

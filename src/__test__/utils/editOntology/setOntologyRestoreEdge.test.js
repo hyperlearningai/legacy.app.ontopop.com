@@ -20,6 +20,7 @@ const selectedElement = [
 ]
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setEdgeStylesByProperty')
@@ -55,6 +56,7 @@ describe('setOntologyRestoreEdge', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyRestoreEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t
@@ -72,6 +74,7 @@ describe('setOntologyRestoreEdge', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyRestoreEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t
@@ -95,6 +98,7 @@ describe('setOntologyRestoreEdge', () => {
     }))
 
     await setOntologyRestoreEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t

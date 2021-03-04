@@ -4,6 +4,7 @@ exports[`MainArea should match snapshot when MAIN_VIEW_GRAPH 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,6 +13,7 @@ exports[`MainArea should match snapshot when MAIN_VIEW_GRAPH 1`] = `
       "setStoreState": [Function],
     }
   }
+  addNumber={[MockFunction]}
   addToObject={[MockFunction]}
   mainVisualisation="graph"
   mapToProps={[Function]}
@@ -26,6 +28,7 @@ exports[`MainArea should match snapshot when MAIN_VIEW_SEARCH 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -34,6 +37,7 @@ exports[`MainArea should match snapshot when MAIN_VIEW_SEARCH 1`] = `
       "setStoreState": [Function],
     }
   }
+  addNumber={[MockFunction]}
   addToObject={[MockFunction]}
   mainVisualisation="search"
   mapToProps={[Function]}

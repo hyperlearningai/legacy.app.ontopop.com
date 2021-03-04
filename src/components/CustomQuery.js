@@ -17,11 +17,13 @@ import 'prismjs/themes/prism-coy.css'
 import { CUSTOM_QUERIES_LS } from '../constants/localStorage'
 
 const CustomQuery = ({
+  addNumber,
   customQueryOutput,
   customQueryStringHistory,
   setStoreState,
   addToArray,
-  removeFromArray
+  removeFromArray,
+  activeLoaders
 }) => {
   const { t } = useTranslation()
 
@@ -77,11 +79,12 @@ const CustomQuery = ({
             tooltip={t('query')}
             tooltipOptions={{ position: 'top' }}
             className="custom-query-buttons-button"
-            disabled={customQueryString.length < 4}
+            disabled={customQueryString.length < 4 || activeLoaders > 0}
             icon="pi pi-chevron-right"
             iconPos="right"
             label={t('query')}
             onClick={() => makeCustomQuery({
+              addNumber,
               customQueryString,
               setStoreState,
               addToArray,
@@ -166,7 +169,9 @@ const CustomQuery = ({
 CustomQuery.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   removeFromArray: PropTypes.func.isRequired,
+  addNumber: PropTypes.func.isRequired,
   addToArray: PropTypes.func.isRequired,
+  activeLoaders: PropTypes.number.isRequired,
   customQueryOutput: PropTypes.arrayOf(PropTypes.any),
   customQueryStringHistory: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
@@ -178,9 +183,11 @@ CustomQuery.defaultProps = {
 const mapToProps = ({
   customQueryOutput,
   customQueryStringHistory,
+  activeLoaders
 }) => ({
   customQueryOutput,
   customQueryStringHistory,
+  activeLoaders
 })
 
 export default connect(

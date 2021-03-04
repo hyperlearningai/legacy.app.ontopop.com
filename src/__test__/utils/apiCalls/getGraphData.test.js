@@ -10,6 +10,7 @@ import httpCall from '../../../utils/apiCalls/httpCall'
 
 const t = (id) => en[id]
 const setStoreState = jest.fn()
+const addNumber = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   user: { token: 'ewj123' }
@@ -33,6 +34,7 @@ describe('getGraphData', () => {
     ))
 
     await getGraphData({
+      addNumber,
       setStoreState,
       t
     })
@@ -51,6 +53,7 @@ describe('getGraphData', () => {
     }))
 
     await getGraphData({
+      addNumber,
       setStoreState,
       t
     })
@@ -85,6 +88,7 @@ describe('getGraphData', () => {
     Storage.prototype.getItem = getItem
 
     await getGraphData({
+      addNumber,
       setStoreState,
       t
     })

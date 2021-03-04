@@ -4,6 +4,7 @@ exports[`EditOntologyUpdateNode should match snapshot 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,8 +13,7 @@ exports[`EditOntologyUpdateNode should match snapshot 1`] = `
       "setStoreState": [Function],
     }
   }
-  addToArray={[MockFunction]}
-  addToObject={[MockFunction]}
+  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -2130,7 +2130,6 @@ matter’ is understood in the broadest possible sense to include also undetache
       },
     ]
   }
-  removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
 >
   <Component />

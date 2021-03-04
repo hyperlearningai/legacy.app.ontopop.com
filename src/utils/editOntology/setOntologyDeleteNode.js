@@ -15,6 +15,7 @@ import showNotification from '../notifications/showNotification'
 /**
  * Delete ontology nodes
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.addToObject                Add to object action
@@ -22,6 +23,7 @@ import showNotification from '../notifications/showNotification'
  * @return {undefined}
  */
 const setOntologyDeleteNode = async ({
+  addNumber,
   selectedElement,
   setStoreState,
   t
@@ -49,7 +51,7 @@ const setOntologyDeleteNode = async ({
       const nodeId = selectedElement[index]
 
       const response = await httpCall({
-        setStoreState,
+        addNumber,
         withAuth: true,
         route: DELETE_NODE.replace('{id}', nodeId),
         method: 'delete',

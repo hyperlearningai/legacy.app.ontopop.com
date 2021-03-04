@@ -4,6 +4,7 @@ exports[`EditOntologyForm should match snapshot when add operation 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -27,6 +28,7 @@ exports[`EditOntologyForm should match snapshot when update operation 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],

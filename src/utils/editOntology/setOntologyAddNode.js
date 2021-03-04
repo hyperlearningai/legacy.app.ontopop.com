@@ -10,12 +10,14 @@ import countNodes from '../nodesEdgesUtils/countNodes'
 /**
  * ADd ontology nodes
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyAddNode = async ({
+  addNumber,
   setStoreState,
   selectedElementProperties,
   t
@@ -57,7 +59,7 @@ const setOntologyAddNode = async ({
   body.label = 'class'
 
   const response = await httpCall({
-    setStoreState,
+    addNumber,
     withAuth: true,
     route: POST_CREATE_NODE,
     method: 'post',

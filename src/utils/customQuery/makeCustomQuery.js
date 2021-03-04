@@ -11,12 +11,14 @@ import httpCall from '../apiCalls/httpCall'
  * Get graph data from API
  * @param  {Object}   params
  * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.addNumber                  addNumber action
  * @param  {Function} params.addToArray                 addToArray action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
 const makeCustomQuery = async ({
   customQueryString,
+  addNumber,
   setStoreState,
   addToArray,
   t
@@ -31,7 +33,7 @@ const makeCustomQuery = async ({
   const withAuth = !!user.token
 
   const response = await httpCall({
-    setStoreState,
+    addNumber,
     withAuth,
     body: {
       query: customQueryString

@@ -4,7 +4,7 @@ import httpCall from '../../../utils/apiCalls/httpCall'
 import en from '../../../i18n/en'
 
 const t = (id) => en[id]
-const setStoreState = jest.fn()
+const addNumber = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   user: { token: 'ewj123' }
@@ -30,7 +30,7 @@ describe('httpCall', () => {
     const withAuth = false
 
     const response = await httpCall({
-      setStoreState,
+      addNumber,
       withAuth,
       body,
       route,
@@ -38,6 +38,9 @@ describe('httpCall', () => {
       t
     })
 
+    expect(addNumber.mock.calls).toEqual(
+      [['activeLoaders', 1], ['activeLoaders', -1]]
+    )
     expect(response).toEqual(
       { error: 'Invalid http request' }
     )
@@ -54,7 +57,7 @@ describe('httpCall', () => {
     const withAuth = false
 
     const response = await httpCall({
-      setStoreState,
+      addNumber,
       withAuth,
       body,
       route,
@@ -62,6 +65,9 @@ describe('httpCall', () => {
       t
     })
 
+    expect(addNumber.mock.calls).toEqual(
+      [['activeLoaders', 1], ['activeLoaders', -1]]
+    )
     expect(response).toEqual(
       { error: 'Invalid http request' }
     )
@@ -86,7 +92,7 @@ describe('httpCall', () => {
     const withAuth = false
 
     const response = await httpCall({
-      setStoreState,
+      addNumber,
       withAuth,
       body,
       route,
@@ -94,6 +100,9 @@ describe('httpCall', () => {
       t
     })
 
+    expect(addNumber.mock.calls).toEqual(
+      [['activeLoaders', 1], ['activeLoaders', -1]]
+    )
     expect(response).toEqual(
       { data: { edges: '{}', nodes: '{"1":{"id":1}}' } }
     )
@@ -118,7 +127,7 @@ describe('httpCall', () => {
     const withAuth = true
 
     const response = await httpCall({
-      setStoreState,
+      addNumber,
       withAuth,
       body,
       route,
@@ -126,6 +135,9 @@ describe('httpCall', () => {
       t
     })
 
+    expect(addNumber.mock.calls).toEqual(
+      [['activeLoaders', 1], ['activeLoaders', -1]]
+    )
     expect(response).toEqual(
       { data: { edges: '{}', nodes: '{"1":{"id":1}}' } }
     )

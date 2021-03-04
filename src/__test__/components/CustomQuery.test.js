@@ -10,6 +10,8 @@ const setup = ({ customQueryOutput }) => {
     setStoreState: jest.fn(),
     addToArray: jest.fn(),
     removeFromArray: jest.fn(),
+    addNumber: jest.fn(),
+    activeLoaders: 0
   }
 
   const component = shallow(<EdgesSelection {...props} />)

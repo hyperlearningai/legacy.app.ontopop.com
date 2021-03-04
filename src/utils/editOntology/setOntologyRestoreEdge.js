@@ -12,12 +12,14 @@ import countEdges from '../nodesEdgesUtils/countEdges'
 /**
  * ADd ontology edge
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Object}         params.selectedElement  Element properties with from,to,edge keys
+ * @param  {Object}         params.selectedElement            Element properties with from,to,edge keys
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyRestoreEdge = async ({
+  addNumber,
   setStoreState,
   selectedElement,
   t
@@ -51,7 +53,7 @@ const setOntologyRestoreEdge = async ({
       body.label = 'subclass'
 
       const response = await httpCall({
-        setStoreState,
+        addNumber,
         withAuth: true,
         route: POST_CREATE_EDGE,
         method: 'post',

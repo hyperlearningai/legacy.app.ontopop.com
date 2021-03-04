@@ -28,6 +28,8 @@ newClassesFromApi[selectedElement] = {
 }
 
 const t = (id) => en[id]
+const addNumber = jest.fn()
+
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
@@ -48,6 +50,7 @@ describe('setOntologyUpdateNode', () => {
     }))
 
     await setOntologyUpdateNode({
+      addNumber,
       selectedElement,
       setStoreState,
       selectedElementProperties,
@@ -72,6 +75,7 @@ describe('setOntologyUpdateNode', () => {
     }))
 
     await setOntologyUpdateNode({
+      addNumber,
       selectedElement,
       setStoreState,
       selectedElementProperties,
@@ -103,6 +107,7 @@ describe('setOntologyUpdateNode', () => {
     }))
 
     await setOntologyUpdateNode({
+      addNumber,
       selectedElement,
       setStoreState,
       selectedElementProperties,

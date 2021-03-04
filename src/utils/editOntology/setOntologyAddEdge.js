@@ -12,12 +12,14 @@ import httpCall from '../apiCalls/httpCall'
 /**
  * ADd ontology edge
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.t                          i18n function
  * @param  {Object}         params.selectedElementProperties  Element properties with from,to,edge keys
  * @return {undefined}
  */
 const setOntologyAddEdge = async ({
+  addNumber,
   setStoreState,
   selectedElementProperties,
   t
@@ -53,7 +55,7 @@ const setOntologyAddEdge = async ({
   }
 
   const response = await httpCall({
-    setStoreState,
+    addNumber,
     withAuth: true,
     route: POST_CREATE_EDGE,
     method: 'post',

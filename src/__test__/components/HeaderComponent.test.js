@@ -30,7 +30,7 @@ describe('HeaderComponent', () => {
         email: '',
         isGuest: false
       },
-      loading: false
+      loading: 0
     })
 
     expect(toJson(component)).toMatchSnapshot()
@@ -44,7 +44,7 @@ describe('HeaderComponent', () => {
         email: 'test@test.com',
         isGuest: false
       },
-      loading: true
+      loading: 1
     })
 
     expect(toJson(component)).toMatchSnapshot()

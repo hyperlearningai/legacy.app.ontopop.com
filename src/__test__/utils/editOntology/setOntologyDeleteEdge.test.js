@@ -33,6 +33,7 @@ const selectedElement = [
 ]
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
 
 getEdge.mockImplementation(() => ({
   from: '1',
@@ -59,6 +60,7 @@ describe('setOntologyDeleteEdge', () => {
     httpCall.mockImplementationOnce(() => ({ error: true }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t
@@ -76,6 +78,7 @@ describe('setOntologyDeleteEdge', () => {
     httpCall.mockImplementationOnce(() => ({ data: {} }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t
@@ -99,6 +102,7 @@ describe('setOntologyDeleteEdge', () => {
     }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t

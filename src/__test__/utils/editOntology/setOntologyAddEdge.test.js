@@ -24,6 +24,7 @@ jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
 
 const selectedElementProperties = {
   from: '1',
@@ -60,6 +61,7 @@ describe('setOntologyAddEdge', () => {
     httpCall.mockImplementationOnce(() => ({ error: true }))
 
     await setOntologyAddEdge({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -77,6 +79,7 @@ describe('setOntologyAddEdge', () => {
     httpCall.mockImplementationOnce(() => ({ data: {} }))
 
     await setOntologyAddEdge({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -103,6 +106,7 @@ describe('setOntologyAddEdge', () => {
     }))
 
     await setOntologyAddEdge({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t

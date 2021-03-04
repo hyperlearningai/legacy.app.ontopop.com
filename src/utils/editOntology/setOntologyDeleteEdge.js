@@ -11,12 +11,14 @@ import countNodes from '../nodesEdgesUtils/countNodes'
 /**
  * Remove connection from ontology
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  setStoreState action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElement            Array of edge IDs
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyDeleteEdge = async ({
+  addNumber,
   setStoreState,
   selectedElement,
   t
@@ -42,7 +44,7 @@ const setOntologyDeleteEdge = async ({
       const edgeId = selectedElement[index]
 
       const response = await httpCall({
-        setStoreState,
+        addNumber,
         withAuth: true,
         route: DELETE_EDGE.replace('{id}', edgeId),
         method: 'delete',

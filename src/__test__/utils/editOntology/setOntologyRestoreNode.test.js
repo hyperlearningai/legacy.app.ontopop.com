@@ -26,6 +26,7 @@ const deletedEdges = ['11', '33', '21', '40']
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
@@ -86,6 +87,7 @@ describe('setOntologyRestoreNode', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyRestoreNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t
@@ -103,6 +105,7 @@ describe('setOntologyRestoreNode', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyRestoreNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t
@@ -139,6 +142,7 @@ describe('setOntologyRestoreNode', () => {
     }))
 
     await setOntologyRestoreNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t

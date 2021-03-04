@@ -19,6 +19,8 @@ import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
+
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
@@ -63,6 +65,7 @@ describe('setOntologyDeleteNode', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyDeleteNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t
@@ -80,6 +83,7 @@ describe('setOntologyDeleteNode', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyDeleteNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t
@@ -103,6 +107,7 @@ describe('setOntologyDeleteNode', () => {
     }))
 
     await setOntologyDeleteNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t

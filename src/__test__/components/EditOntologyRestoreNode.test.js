@@ -12,9 +12,7 @@ const setup = ({
     type,
     operation: 'restore',
     setStoreState: jest.fn(),
-    addToArray: jest.fn(),
-    removeFromObject: jest.fn(),
-    addToObject: jest.fn(),
+    addNumber: jest.fn(),
     optionNodes,
     optionEdges
   }
