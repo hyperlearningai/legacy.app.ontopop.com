@@ -1,3 +1,4 @@
+export const SIDEBAR_VIEW_ENTRY_SEARCH = 'entrySearch'
 export const SIDEBAR_VIEW_GRAPHS = 'networkGraphs'
 export const SIDEBAR_VIEW_FREE_TEXT_SEARCH = 'freeTextSearch'
 export const SIDEBAR_VIEW_STRUCTURED_SEARCH = 'structuredSearch'
@@ -13,3 +14,6 @@ export const SIDEBAR_VIEW_STYLING = 'styling'
 export const SIDEBAR_VIEW_EXPORT = 'export'
 export const SIDEBAR_VIEW_CUSTOM_QUERY = 'customQuery'
 export const SIDEBAR_VIEW_EDIT_ONTOLOGY = 'editOntology'
+
+export const MAIN_VIEW_SEARCH = 'search'
+export const MAIN_VIEW_GRAPH = 'graph'

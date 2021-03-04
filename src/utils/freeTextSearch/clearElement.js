@@ -16,7 +16,7 @@ const clearElement = () => {
     freeTextSelection
   } = store.getState()
 
-  if (!freeTextPrevSelectedElement) return false
+  if (!freeTextPrevSelectedElement || !freeTextSelection) return false
 
   const { id, userDefined } = freeTextPrevSelectedElement
   const color = freeTextPrevSelectedElement.color || {}

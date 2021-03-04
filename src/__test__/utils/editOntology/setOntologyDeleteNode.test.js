@@ -14,6 +14,8 @@ import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
+import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
+import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
@@ -23,11 +25,17 @@ jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
+jest.mock('../../../utils/nodesEdgesUtils/countEdges')
+jest.mock('../../../utils/nodesEdgesUtils/countNodes')
 
 const selectedElement = Object.keys(classesFromApi).slice(0, Object.keys(classesFromApi).length - 2)
 
+countEdges.mockImplementation(() => 1)
+countNodes.mockImplementation(() => 1)
+
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
+  objectPropertiesFromApi,
   deletedNodes: [],
   deletedEdges: [],
   nodesEdges,
@@ -101,7 +109,7 @@ describe('setOntologyDeleteNode', () => {
     })
 
     expect(removeEdge).toHaveBeenLastCalledWith(
-      '1913'
+      '1942'
     )
 
     expect(setElementsStyle).toHaveBeenCalledWith()

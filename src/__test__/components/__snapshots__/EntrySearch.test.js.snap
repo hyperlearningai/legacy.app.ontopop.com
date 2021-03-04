@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainArea should match snapshot 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  annotationProperties={
+    Array [
+      Object {
+        "label": "rdfAbout",
+        "value": "rdfAbout",
+      },
+    ]
+  }
+  entrySearchAnnotationProperties={
+    Array [
+      "rdfAbout",
+    ]
+  }
+  entrySearchFilter="all"
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

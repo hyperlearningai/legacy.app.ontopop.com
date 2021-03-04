@@ -19,7 +19,6 @@ const setup = () => {
         type: ALGO_TYPE_FULL
       }
     },
-    addToObject: jest.fn(),
     availableEdges: new DataSet([]),
     availableNodes: new DataSet([]),
     boundingBoxGeometry: {

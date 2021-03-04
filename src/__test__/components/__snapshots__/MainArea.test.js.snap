@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainArea should match snapshot when MAIN_VIEW_GRAPH 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToObject={[MockFunction]}
+  mainVisualisation="graph"
+  mapToProps={[Function]}
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`MainArea should match snapshot when MAIN_VIEW_SEARCH 1`] = `
+<Connect
+  actions={
+    Object {
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToObject={[MockFunction]}
+  mainVisualisation="search"
+  mapToProps={[Function]}
+  removeFromObject={[MockFunction]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

@@ -8,6 +8,8 @@ import httpCall from '../apiCalls/httpCall'
 import { POST_CREATE_NODE } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
+import countEdges from '../nodesEdgesUtils/countEdges'
+import countNodes from '../nodesEdgesUtils/countNodes'
 
 /**
  * Restore ontology nodes
@@ -286,6 +288,8 @@ const setOntologyRestoreNode = async ({
   setStoreState('deletedNodes', newDeletedNodes)
   setStoreState('deletedEdges', newDeletedEdges)
   setElementsStyle()
+  setStoreState('availableNodesCount', countNodes())
+  setStoreState('availableEdgesCount', countEdges())
 }
 
 export default setOntologyRestoreNode

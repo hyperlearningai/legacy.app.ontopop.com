@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 import setNodesIdsToDisplay from '../utils/graphVisualisation/setNodesIdsToDisplay'
 import GraphContextMenu from './GraphContextMenu'
-import startupActions from '../utils/graphVisualisation/startupActions'
 import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
@@ -18,7 +17,6 @@ const GraphVisualisation = ({
   showContextMenu,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
-  addToObject,
   availableNodes,
   availableEdges,
   network,
@@ -31,16 +29,8 @@ const GraphVisualisation = ({
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
-  const isInitialMountNodesToDisplay = useRef(true)
 
   const visJsRef = useRef(null)
-
-  useEffect(() => startupActions({
-    setStoreState,
-    addToObject,
-    removeFromObject,
-    t
-  }), [])
 
   // set new Network
   useEffect(() => setNetwork({
@@ -54,9 +44,9 @@ const GraphVisualisation = ({
 
   // update available nodes/edges according to view
   useEffect(() => {
-    if (isInitialMountNodesToDisplay.current) {
-      isInitialMountNodesToDisplay.current = false
-    } else if (network) {
+    if (isInitialMountCurrentGraph.current) {
+      isInitialMountCurrentGraph.current = false
+    } else if (nodesIdsToDisplay.length > 0) {
       setStoreState('isNetworkLoading', true)
 
       addElementsToGraph({
@@ -68,22 +58,18 @@ const GraphVisualisation = ({
   ])
 
   useEffect(() => {
-    if (isInitialMountCurrentGraph.current) {
-      isInitialMountCurrentGraph.current = false
-    } else {
-      const {
-        type,
-        options
-      } = graphData[currentGraph]
+    const {
+      type,
+      options
+    } = graphData[currentGraph]
 
-      setNodesIdsToDisplay({
-        type,
-        setStoreState,
-        options,
-        removeFromObject,
-        t
-      })
-    }
+    setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options,
+      removeFromObject,
+      t
+    })
   }, [
     currentGraph
   ])
@@ -160,7 +146,6 @@ GraphVisualisation.propTypes = {
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
   removeFromObject: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,

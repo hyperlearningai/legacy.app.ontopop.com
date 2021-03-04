@@ -87,7 +87,11 @@ const StructuredSearch = ({
               <Button
                 icon="pi pi-arrow-left"
                 tooltip={t('goBack')}
-                onClick={() => setStoreState('structuredSelection', undefined)}
+                onClick={() => {
+                  clearStructuredSearchElement()
+
+                  setStoreState('structuredSelection', undefined)
+                }}
               />
             ) : ''
         }

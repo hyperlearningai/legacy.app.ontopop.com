@@ -23,7 +23,12 @@ describe('getNodesFromBoundingBox', () => {
         boundingBoxHeight: 200
       },
       isBoundingBoxSelectionInternal: false,
-      stylingNodeHighlightBackgroundColor: '#ffff00',
+      globalNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#ffff00',
+      },
+      userDefinedNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#ffff00',
+      },
       network: {
         getPosition: () => ({
           x: 50,
@@ -66,13 +71,18 @@ describe('getNodesFromBoundingBox', () => {
           y: 200
         }),
       },
-      stylingNodeHighlightBackgroundColor: '#ffff00',
+      globalNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#ffff00',
+      },
+      userDefinedNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#ffff00',
+      }
     }))
 
     getNode.mockImplementationOnce(() => ([{
-      id: 'node-123'
+      id: '123'
     }, {
-      id: 'node-234'
+      id: '234'
     }]))
 
     await getNodesFromBoundingBox({
@@ -83,24 +93,22 @@ describe('getNodesFromBoundingBox', () => {
       [[{
         color: {
           background: '#ffff00',
-          color: {}
         },
-        id: 'node-123'
+        id: '123'
       }], [{
         color: {
           background:
       '#ffff00',
-          color: {}
         },
-        id: 'node-234'
+        id: '234'
       }]]
     )
     expect(setStoreState).toHaveBeenCalledWith('selectedBoundingBoxNodes', [
       {
-        id: 'node-123',
+        id: '123',
       },
       {
-        id: 'node-234',
+        id: '234',
       },
     ])
   })

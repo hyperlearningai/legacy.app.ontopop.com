@@ -16,7 +16,7 @@ const clearStructuredSearchElement = () => {
     structuredSelection
   } = store.getState()
 
-  if (!structuredPrevSelectedElement) return false
+  if (!structuredPrevSelectedElement || !structuredSelection) return false
 
   const { id, userDefined } = structuredPrevSelectedElement
   const color = structuredPrevSelectedElement.color || {}

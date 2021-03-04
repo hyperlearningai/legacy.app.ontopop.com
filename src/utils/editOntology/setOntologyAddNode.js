@@ -5,6 +5,7 @@ import addNode from '../nodesEdgesUtils/addNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import { POST_CREATE_NODE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
+import countNodes from '../nodesEdgesUtils/countNodes'
 
 /**
  * ADd ontology nodes
@@ -157,6 +158,8 @@ const setOntologyAddNode = async ({
     message,
     type: NOTIFY_SUCCESS
   })
+
+  setStoreState('availableNodesCount', countNodes())
 }
 
 export default setOntologyAddNode

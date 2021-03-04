@@ -12,7 +12,6 @@ exports[`GraphVisualisation should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  addToObject={[MockFunction]}
   availableEdges={
     DataSet {
       "_data": Map {},

@@ -2,6 +2,7 @@
 import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteEdge'
@@ -13,12 +14,19 @@ import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
+import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
+import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/nodesEdgesUtils/countEdges')
+jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+
+countEdges.mockImplementation(() => 1)
+countNodes.mockImplementation(() => 1)
 
 const selectedElement = [
   '11'
@@ -39,6 +47,7 @@ store.getState = jest.fn().mockImplementation(() => ({
   deletedEdges: [],
   nodesEdges,
   edgesPerNode,
+  objectPropertiesFromApi
 }))
 
 describe('setOntologyDeleteEdge', () => {
@@ -57,7 +66,7 @@ describe('setOntologyDeleteEdge', () => {
 
     expect(showNotification).toHaveBeenCalledWith(
       {
-        message: 'Could not delete node: 11',
+        message: 'Could not delete edge: 11',
         type: 'warning'
       }
     )
@@ -74,7 +83,7 @@ describe('setOntologyDeleteEdge', () => {
 
     expect(showNotification).toHaveBeenLastCalledWith(
       {
-        message: 'Could not delete node: 11',
+        message: 'Could not delete edge: 11',
         type: 'warning'
       }
     )

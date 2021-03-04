@@ -12,6 +12,8 @@ import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
+import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
+import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const selectedElement = [
   '11'
@@ -24,6 +26,8 @@ jest.mock('../../../utils/networkStyling/setEdgeStylesByProperty')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/nodesEdgesUtils/countEdges')
+jest.mock('../../../utils/nodesEdgesUtils/countNodes')
 
 store.getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
@@ -38,6 +42,9 @@ store.getState = jest.fn().mockImplementation(() => ({
 }))
 
 getNode.mockImplementation(() => ({ id: '123' }))
+
+countEdges.mockImplementation(() => 1)
+countNodes.mockImplementation(() => 1)
 
 describe('setOntologyRestoreEdge', () => {
   afterEach(() => {

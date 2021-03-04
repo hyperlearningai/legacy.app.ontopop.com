@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [0.4.0]
 ### Added
 - ONTOLOGY-93 User-defined nodes and edges styles
+- ONTOLOGY-92 Search as entry point after sign in
 - ONTOLOGY-93 API endpoints to create/update/delete edges
 - ONTOLOGY-93 API endpoints to create/update/delete nodes
 - ONTOLOGY-93 Added httpCall function
@@ -34,8 +35,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-93 Removed boundingBoxSelection clearNodesSelection util
 
 ### Fixed
+- ONTOLOGY-93 Node selection bug when in shortest path or node neighbourhood mode after nodes filter/nodes selection mode
+- ONTOLOGY-93 Node/edge count update after ontology management operations
 
 ### Security
 - ONTOLOGY-78 Added beared token to API requests

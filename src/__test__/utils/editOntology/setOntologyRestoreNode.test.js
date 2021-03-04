@@ -17,6 +17,8 @@ import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import { EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED, EDGE_LABEL_PROPERTY } from '../../../constants/graph'
+import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
+import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const selectedElement = ['100', '40']
 const deletedNodes = ['100', '33', '21', '40']
@@ -32,6 +34,8 @@ jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/nodesEdgesUtils/countEdges')
+jest.mock('../../../utils/nodesEdgesUtils/countNodes')
 
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApiBackup: classesFromApi,
@@ -69,6 +73,9 @@ store.getState = jest.fn().mockImplementation(() => ({
     stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
   },
 }))
+
+countEdges.mockImplementation(() => 1)
+countNodes.mockImplementation(() => 1)
 
 describe('setOntologyRestoreNode', () => {
   afterEach(() => {

@@ -1,10 +1,10 @@
 import onMouseDown from '../../../utils/boundingBoxSelection/onMouseDown'
 import store from '../../../store'
 import getNodesFromBoundingBox from '../../../utils/boundingBoxSelection/getNodesFromBoundingBox'
-import clearNodesSelection from '../../../utils/boundingBoxSelection/clearNodesSelection'
+import resetNodesStyles from '../../../utils/networkStyling/resetNodesStyles'
 
 jest.mock('../../../utils/boundingBoxSelection/getNodesFromBoundingBox')
-jest.mock('../../../utils/boundingBoxSelection/clearNodesSelection')
+jest.mock('../../../utils/networkStyling/resetNodesStyles')
 
 const setStoreState = jest.fn()
 const e = {
@@ -75,7 +75,7 @@ describe('onMouseDown', () => {
       setStoreState
     })
 
-    expect(clearNodesSelection).toHaveBeenCalled()
+    expect(resetNodesStyles).toHaveBeenCalled()
     expect(setStoreState).toHaveBeenCalledWith('isBoundingBoxDrawable', false)
     expect(getNodesFromBoundingBox).toHaveBeenCalledWith({
       setStoreState

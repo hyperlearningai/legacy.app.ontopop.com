@@ -1,15 +1,15 @@
 import store from '../../store'
-import getEdge from '../nodesEdgesUtils/getEdge'
 
 /**
  * Update neighbourNodes and neighbourEdges recursively
  * @param  {Object}   params
- * @param  {Object}   params.edgesPerNode   List of triples per node
- * @param  {Object}   params.deletedNodes     List of deleted nodes IDs
- * @param  {Object}   params.nextIds          Array of node IDs to loop through
- * @param  {Array}    params.neighbourNodes   Array of neighbour nodes IDs
- * @param  {Number}   params.separationDegree Neighbourhood separation degree as integer
- * @param  {Number}   params.round            Current loop round as integer
+ * @param  {Object}   params.edgesPerNode               List of triples per node
+ * @param  {Object}   params.deletedNodes               List of deleted nodes IDs
+ * @param  {Object}   params.nextIds                    Array of node IDs to loop through
+ * @param  {Array}    params.neighbourNodes             Array of neighbour nodes IDs
+ * @param  {Pbject}   params.objectPropertiesFromApi    Normalised array of all available edges
+ * @param  {Number}   params.separationDegree           Neighbourhood separation degree as integer
+ * @param  {Number}   params.round                      Current loop round as integer
  * @return { undefined }
 \ */
 const loopThroughNodes = ({
@@ -18,6 +18,7 @@ const loopThroughNodes = ({
   edgesPerNode,
   separationDegree,
   deletedNodes,
+  objectPropertiesFromApi,
   round
 }) => {
   const nextIdsLoop = []
@@ -30,7 +31,7 @@ const loopThroughNodes = ({
         const {
           from,
           to
-        } = getEdge(triple)
+        } = objectPropertiesFromApi[triple]
 
         const newNode = from === nodeId ? to : from
 
@@ -58,6 +59,7 @@ const loopThroughNodes = ({
       nextIds: nextIdsLoop,
       edgesPerNode,
       separationDegree,
+      objectPropertiesFromApi,
       deletedNodes,
       round: nextRound
     })
@@ -77,7 +79,8 @@ const getNeighbours = ({
 }) => {
   const {
     edgesPerNode,
-    deletedNodes
+    deletedNodes,
+    objectPropertiesFromApi
   } = store.getState()
 
   const neighbourNodes = [selectedNodeId]
@@ -94,6 +97,7 @@ const getNeighbours = ({
     edgesPerNode,
     separationDegree,
     deletedNodes,
+    objectPropertiesFromApi,
     round
   })
 

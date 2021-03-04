@@ -2,7 +2,7 @@ import createStore from 'redux-zero'
 import { applyMiddleware } from 'redux-zero/middleware'
 import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
-import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { MAIN_VIEW_SEARCH, SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import {
   EDGE_COLOR,
@@ -24,8 +24,9 @@ import {
 const initialState = {
   // view updates
   isSidebarOpen: true,
-  sidebarView: SIDEBAR_VIEW_GRAPHS,
+  sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH,
   loading: false,
+  mainVisualisation: MAIN_VIEW_SEARCH,
 
   // user
   user: {
@@ -61,6 +62,7 @@ const initialState = {
   availableEdges: new DataSet([]),
   nodesEdges: {},
   highlightedNodes: [],
+  highlightedEdges: [],
 
   // network styling
   globalEdgeStyling: {
@@ -137,6 +139,12 @@ const initialState = {
   // netowrk graph loading
   isNetworkLoading: false,
   networkLoadingProgress: 0,
+
+  // entry search
+  entrySearchFilter: 'all',
+  entrySearchResults: [],
+  entrySearchAnnotationProperties: [],
+  isQueried: false,
 
   // free text search
   freeTextSelection: {},

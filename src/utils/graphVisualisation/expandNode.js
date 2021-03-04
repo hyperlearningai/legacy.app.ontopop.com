@@ -5,6 +5,8 @@ import getNode from '../nodesEdgesUtils/getNode'
 import getEdge from '../nodesEdgesUtils/getEdge'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import getEdgeObject from './getEdgeObject'
+import countNodes from '../nodesEdgesUtils/countNodes'
+import countEdges from '../nodesEdgesUtils/countEdges'
 /**
  * Add nodes and/or edges to graph
  * @param  {Object}   params
@@ -107,6 +109,8 @@ const expandNode = ({
   }
 
   setElementsStyle()
+  setStoreState('availableNodesCount', countNodes())
+  setStoreState('availableEdgesCount', countEdges())
 }
 
 export default expandNode
