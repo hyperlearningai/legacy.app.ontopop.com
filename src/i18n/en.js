@@ -325,6 +325,19 @@ export default {
   to: 'to',
   nodesProperties: 'Nodes properties',
 
+  // entry search
+  advancedSearchOptions: 'Advanced search options',
+  entrySearch: 'Search',
+  searchGraph: 'Search graph',
+  sidebarForAdvancedOptions: 'You can set advanced options on the sidebar',
+  resultsType: 'Results\' types to show',
+  all: 'All',
+  advancedSearch: 'Advanced search',
+  showAdvancedSearch: 'Show advanced search',
+  searchResults: 'Search results',
+  moreInfo: 'More info',
+  lessInfo: 'Less info',
+
   // search
   search: 'Search',
   focusElement: 'Focus element',

@@ -231,7 +231,8 @@ export const RESERVED_PROPERTIES = [
   USER_DEFINED_PROPERTY,
   'userId',
   'x',
-  'y'
+  'y',
+  'type'
 ]
 
 export const EDGE_PROPERTIES = [
