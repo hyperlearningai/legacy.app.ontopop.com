@@ -41,12 +41,15 @@ const structuredSearchElement = ({
       const nodeId = nodeIds[index]
       const nodeElement = classesFromApi[nodeId]
 
-      const isMatching = queryLogic === 'and'
+      const isMatching = queryLogic === 'or'
         ? filtersToUse.some((filter) => filterFunction(filter, nodeElement))
         : filtersToUse.every((filter) => filterFunction(filter, nodeElement))
 
       if (isMatching) {
-        elementsToDisplay[nodeId] = 'node'
+        elementsToDisplay[nodeId] = {
+          ...nodeElement,
+          type: 'node',
+        }
         continue
       }
     }
@@ -60,12 +63,15 @@ const structuredSearchElement = ({
 
       const edgeElement = objectPropertiesFromApi[edgeId]
 
-      const isMatching = queryLogic === 'and'
+      const isMatching = queryLogic === 'or'
         ? filtersToUse.some((filter) => filterFunction(filter, edgeElement))
         : filtersToUse.every((filter) => filterFunction(filter, edgeElement))
 
       if (isMatching) {
-        elementsToDisplay[edgeId] = 'edge'
+        elementsToDisplay[edgeId] = {
+          ...edgeElement,
+          type: 'edge'
+        }
         continue
       }
     }

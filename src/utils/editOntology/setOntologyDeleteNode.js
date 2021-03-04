@@ -6,7 +6,8 @@ import {
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
 import setElementsStyle from '../networkStyling/setElementsStyle'
-import getEdge from '../nodesEdgesUtils/getEdge'
+import countEdges from '../nodesEdgesUtils/countEdges'
+import countNodes from '../nodesEdgesUtils/countNodes'
 import removeEdge from '../nodesEdgesUtils/removeEdge'
 import removeNode from '../nodesEdgesUtils/removeNode'
 import showNotification from '../notifications/showNotification'
@@ -31,6 +32,7 @@ const setOntologyDeleteNode = async ({
     deletedEdges,
     nodesEdges,
     edgesPerNode,
+    objectPropertiesFromApi
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -94,7 +96,7 @@ const setOntologyDeleteNode = async ({
           const {
             from,
             to
-          } = getEdge(connection)
+          } = objectPropertiesFromApi[connection]
 
           const isFrom = from === nodeId
           const nodeIdToCheck = isFrom ? to : from
@@ -160,6 +162,9 @@ const setOntologyDeleteNode = async ({
       message,
       type: NOTIFY_SUCCESS
     })
+
+    setStoreState('availableNodesCount', countNodes())
+    setStoreState('availableEdgesCount', countEdges())
   }
 }
 

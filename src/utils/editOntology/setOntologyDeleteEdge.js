@@ -1,11 +1,12 @@
 import store from '../../store'
 import removeEdge from '../nodesEdgesUtils/removeEdge'
-import getEdge from '../nodesEdgesUtils/getEdge'
 import getNode from '../nodesEdgesUtils/getNode'
 import httpCall from '../apiCalls/httpCall'
 import { DELETE_EDGE } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
+import countEdges from '../nodesEdgesUtils/countEdges'
+import countNodes from '../nodesEdgesUtils/countNodes'
 
 /**
  * Remove connection from ontology
@@ -25,6 +26,7 @@ const setOntologyDeleteEdge = async ({
     deletedEdges,
     nodesEdges,
     edgesPerNode,
+    objectPropertiesFromApi
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -52,7 +54,7 @@ const setOntologyDeleteEdge = async ({
         error, data
       } = response
 
-      const message = `${t('couldNotDeleteNode')}: ${edgeId}`
+      const message = `${t('couldNotDeleteEdge')}: ${edgeId}`
 
       if (error) {
         showNotification({
@@ -81,7 +83,7 @@ const setOntologyDeleteEdge = async ({
       const {
         from,
         to
-      } = getEdge(edgeId)
+      } = objectPropertiesFromApi[edgeId]
 
       // delete from triples
       const fromPredicateIndex = newEdgesPerNode[from].indexOf(edgeId)
@@ -130,6 +132,9 @@ const setOntologyDeleteEdge = async ({
       message,
       type: NOTIFY_SUCCESS
     })
+
+    setStoreState('availableNodesCount', countNodes())
+    setStoreState('availableEdgesCount', countEdges())
   }
 }
 

@@ -15,7 +15,8 @@ const getNodesFromBoundingBox = async ({
     boundingBoxGeometry,
     isBoundingBoxSelectionInternal,
     network,
-    stylingNodeHighlightBackgroundColor
+    globalNodeStyling,
+    userDefinedNodeStyling
   } = store.getState()
 
   const {
@@ -48,7 +49,10 @@ const getNodesFromBoundingBox = async ({
   if (availableNodes.length === 0) setStoreState('selectedBoundingBoxNodes', [])
 
   availableNodes.map((node) => {
-    const color = node.color || { color: {} }
+    const color = node.color || {}
+
+    const { stylingNodeHighlightBackgroundColor } = node.userDefined ? userDefinedNodeStyling : globalNodeStyling
+
     color.background = stylingNodeHighlightBackgroundColor
 
     return updateNodes(

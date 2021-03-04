@@ -9,6 +9,7 @@ import { SIDEBAR_VIEW_FREE_TEXT_SEARCH } from '../constants/views'
 import searchElement from '../utils/freeTextSearch/searchElement'
 import clearElement from '../utils/freeTextSearch/clearElement'
 import highlightElement from '../utils/freeTextSearch/highlightElement'
+import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const FreeTextSearch = ({
   classesFromApi,
@@ -17,8 +18,10 @@ const FreeTextSearch = ({
   objectPropertiesFromApi,
   removeFromObject,
   setStoreState,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  globalEdgeStyling,
+  userDefinedEdgeStyling,
+  globalNodeStyling,
+  userDefinedNodeStyling,
 }) => {
   const { t } = useTranslation()
   const isInitialMount = useRef(true)
@@ -69,11 +72,27 @@ const FreeTextSearch = ({
         {
           Object.keys(freeTextSelection).length > 0
           && Object.keys(freeTextSelection).map((elementId) => {
-            const elementType = freeTextSelection[elementId]
+            const {
+              type, userDefined, from, to
+            } = freeTextSelection[elementId]
 
-            const elementLabel = elementType === 'node'
-              ? classesFromApi[elementId][stylingNodeCaptionProperty]
-              : objectPropertiesFromApi[elementId][stylingEdgeCaptionProperty]
+            let elementLabel
+
+            if (type === 'node') {
+              const { stylingNodeCaptionProperty } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+              elementLabel = classesFromApi[elementId][stylingNodeCaptionProperty]
+            } else {
+              const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
+              const edge = objectPropertiesFromApi[elementId][stylingEdgeCaptionProperty]
+
+              const fromNode = getNode(from)
+              const fromNodeLabel = fromNode[fromNode.userDefined ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty]
+
+              const toNode = getNode(to)
+              const toNodeLabel = toNode[toNode.userDefined ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty]
+
+              elementLabel = `${fromNodeLabel} => ${edge} => ${toNodeLabel}`
+            }
 
             return (
               <div
@@ -100,7 +119,7 @@ const FreeTextSearch = ({
                     onClick={() => setStoreState('freeTextSelectedElement', elementId)}
                   >
                     <span>
-                      <i className={`pi pi-${elementType === 'node' ? 'circle-off' : 'arrow-up'}`} />
+                      <i className={`pi pi-${type === 'node' ? 'circle-off' : 'arrow-up'}`} />
                       {' '}
                       {elementLabel}
                     </span>
@@ -123,8 +142,10 @@ FreeTextSearch.propTypes = {
   freeTextSelectedElement: PropTypes.string.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
-  stylingNodeCaptionProperty: PropTypes.string.isRequired,
-  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
+  globalEdgeStyling: PropTypes.shape().isRequired,
+  userDefinedEdgeStyling: PropTypes.shape().isRequired,
+  globalNodeStyling: PropTypes.shape().isRequired,
+  userDefinedNodeStyling: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -133,14 +154,22 @@ const mapToProps = ({
   classesFromApi,
   objectPropertiesFromApi,
   stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  stylingEdgeCaptionProperty,
+  globalEdgeStyling,
+  userDefinedEdgeStyling,
+  globalNodeStyling,
+  userDefinedNodeStyling,
 }) => ({
   freeTextSelection,
   freeTextSelectedElement,
   classesFromApi,
   objectPropertiesFromApi,
   stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  stylingEdgeCaptionProperty,
+  globalEdgeStyling,
+  userDefinedEdgeStyling,
+  globalNodeStyling,
+  userDefinedNodeStyling,
 })
 
 export default connect(

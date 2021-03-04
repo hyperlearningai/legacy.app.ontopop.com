@@ -2126,6 +2126,16 @@ matter’ is understood in the broadest possible sense to include also undetache
       },
     }
   }
+  globalEdgeStyling={
+    Object {
+      "stylingEdgeCaptionProperty": "rdfsLabel",
+    }
+  }
+  globalNodeStyling={
+    Object {
+      "stylingNodeCaptionProperty": "rdfsLabel",
+    }
+  }
   mapToProps={[Function]}
   objectPropertiesFromApi={
     Object {
@@ -7794,8 +7804,16 @@ matter’ is understood in the broadest possible sense to include also undetache
   removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
   structuredSelectedElement="33"
-  stylingEdgeCaptionProperty="rdfsLabel"
-  stylingNodeCaptionProperty="rdfsLabel"
+  userDefinedEdgeStyling={
+    Object {
+      "stylingEdgeCaptionProperty": "rdfsLabel",
+    }
+  }
+  userDefinedNodeStyling={
+    Object {
+      "stylingNodeCaptionProperty": "rdfsLabel",
+    }
+  }
 >
   <Component />
 </Connect>
@@ -9925,6 +9943,16 @@ matter’ is understood in the broadest possible sense to include also undetache
         "skosDefinition": "Assets designed to contain, slow down, and stop errant vehicles, and to protect other Assets and Customers from errant Vehicles.",
         "userDefined": false,
       },
+    }
+  }
+  globalEdgeStyling={
+    Object {
+      "stylingEdgeCaptionProperty": "rdfsLabel",
+    }
+  }
+  globalNodeStyling={
+    Object {
+      "stylingNodeCaptionProperty": "rdfsLabel",
     }
   }
   mapToProps={[Function]}
@@ -15602,8 +15630,16 @@ matter’ is understood in the broadest possible sense to include also undetache
       "33": "node",
     }
   }
-  stylingEdgeCaptionProperty="rdfsLabel"
-  stylingNodeCaptionProperty="rdfsLabel"
+  userDefinedEdgeStyling={
+    Object {
+      "stylingEdgeCaptionProperty": "rdfsLabel",
+    }
+  }
+  userDefinedNodeStyling={
+    Object {
+      "stylingNodeCaptionProperty": "rdfsLabel",
+    }
+  }
 >
   <Component />
 </Connect>

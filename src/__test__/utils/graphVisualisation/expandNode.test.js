@@ -8,11 +8,15 @@ import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
+import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
+import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
+jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
 
@@ -24,8 +28,16 @@ store.getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
   nodesEdges: {},
   isPhysicsOn: false,
-  stylingNodeCaptionProperty: 'rdfsLabel'
+  globalNodeStyling: {
+    stylingNodeCaptionProperty: 'rdfsLabel'
+  },
+  userDefinedNodeStyling: {
+    stylingNodeCaptionProperty: 'rdfsLabel'
+  },
 }))
+
+countNodes.mockImplementation(() => 10)
+countEdges.mockImplementation(() => 10)
 
 describe('expandNode', () => {
   afterEach(() => {
@@ -108,6 +120,14 @@ describe('expandNode', () => {
             '781',
           ],
         },
+      ],
+      [
+        'availableNodesCount',
+        10,
+      ],
+      [
+        'availableEdgesCount',
+        10,
       ],
     ])
   })

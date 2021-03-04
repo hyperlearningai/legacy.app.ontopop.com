@@ -16,6 +16,9 @@ import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
+import { EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED, EDGE_LABEL_PROPERTY } from '../../../constants/graph'
+import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
+import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const selectedElement = ['100', '40']
 const deletedNodes = ['100', '33', '21', '40']
@@ -31,6 +34,8 @@ jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/nodesEdgesUtils/countEdges')
+jest.mock('../../../utils/nodesEdgesUtils/countNodes')
 
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApiBackup: classesFromApi,
@@ -38,12 +43,39 @@ store.getState = jest.fn().mockImplementation(() => ({
   deletedNodes,
   deletedEdges,
   objectPropertiesFromApi,
-  stylingNodeCaptionProperty: 'rdfsLabel',
+  userDefinedNodeStyling: { stylingNodeCaptionProperty: 'rdfsLabel' },
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
   nodesEdges,
   edgesPerNode,
-  edgesPerNodeBackup: edgesPerNode
+  edgesPerNodeBackup: edgesPerNode,
+  globalEdgeStyling: {
+    stylingEdgeLineColor: EDGE_COLOR,
+    stylingEdgeLineColorHover: EDGE_COLOR,
+    stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+    stylingEdgeLineStyle: false,
+    stylingEdgeTextColor: EDGE_COLOR,
+    stylingEdgeTextSize: 12,
+    stylingEdgeTextAlign: 'horizontal',
+    stylingEdgeWidth: 1,
+    stylingEdgeLength: 250,
+    stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
+  },
+  userDefinedEdgeStyling: {
+    stylingEdgeLineColor: EDGE_COLOR,
+    stylingEdgeLineColorHover: EDGE_COLOR,
+    stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+    stylingEdgeLineStyle: false,
+    stylingEdgeTextColor: EDGE_COLOR,
+    stylingEdgeTextSize: 12,
+    stylingEdgeTextAlign: 'horizontal',
+    stylingEdgeWidth: 1,
+    stylingEdgeLength: 250,
+    stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
+  },
 }))
+
+countEdges.mockImplementation(() => 1)
+countNodes.mockImplementation(() => 1)
 
 describe('setOntologyRestoreNode', () => {
   afterEach(() => {
@@ -117,11 +149,34 @@ describe('setOntologyRestoreNode', () => {
       {
         'Business Area': 'Maintain Operate',
         Synonym: 'Point, Feature',
+        borderWidth: undefined,
+        borderWidthSelected: undefined,
+        color: {
+          background: undefined,
+          border: undefined,
+          highlight: {
+            background: undefined,
+            border: undefined,
+          },
+          hover: {
+            background: undefined,
+            border: undefined,
+          },
+        },
+        font: {
+          align: undefined,
+          bold: '700',
+          color: undefined,
+          face: 'Montserrat',
+          size: undefined,
+        },
         id: '40',
         label: 'Node',
         nodeId: 100,
         rdfAbout: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
         rdfsLabel: 'Node',
+        shape: undefined,
+        size: undefined,
         skosComment: 'A Node can also be defined as a point in a network or diagram at which lines or pathways intersect or branch.',
         skosDefinition: 'A zero dimensional Entity with a position but no volume that is usually represented by a small round dot.',
         userDefined: false,
@@ -129,13 +184,37 @@ describe('setOntologyRestoreNode', () => {
     )
     expect(addEdge).toHaveBeenLastCalledWith(
       {
+        arrows: {
+          to: true,
+        },
+        color: {
+          color: '#070b11',
+          highlight: '#9c27b0',
+          hover: '#070b11',
+          inherit: 'from',
+          opacity: 1,
+        },
+        dashes: false,
+        font: {
+          align: 'horizontal',
+          color: '#070b11',
+          size: 12,
+        },
         from: '1',
         id: '11',
         label: 'Provided to',
+        labelHighlightBold: true,
         predicate: '11',
         rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
         rdfsLabel: 'Provided to',
-        to: '141'
+        selectionWidth: 3,
+        smooth: {
+          forceDirection: 'none',
+          roundness: 0.45,
+          type: 'cubicBezier',
+        },
+        to: '141',
+        width: 1,
       }
     )
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)

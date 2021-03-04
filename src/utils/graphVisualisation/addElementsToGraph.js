@@ -8,6 +8,7 @@ import countNodes from '../nodesEdgesUtils/countNodes'
 import countEdges from '../nodesEdgesUtils/countEdges'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import addNode from '../nodesEdgesUtils/addNode'
+import { USER_DEFINED_PROPERTY } from '../../constants/graph'
 
 /**
  * Update store and graph based on node IDs to display
@@ -23,7 +24,8 @@ const addElementsToGraph = ({
     nodesIdsToDisplay,
     objectPropertiesFromApi,
     edgesPerNode,
-    stylingNodeCaptionProperty,
+    globalNodeStyling,
+    userDefinedNodeStyling,
     isPhysicsOn
   } = store.getState()
 
@@ -48,6 +50,8 @@ const addElementsToGraph = ({
     const nodeId = nodesIdsToDisplay[i]
     const nodeIdObject = classesFromApi[nodeId.toString()]
     const triples = edgesPerNode[nodeId.toString()]
+
+    const { stylingNodeCaptionProperty } = nodeIdObject[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling : globalNodeStyling
 
     nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
       ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
@@ -94,8 +98,10 @@ const addElementsToGraph = ({
 
           const noteToAddObject = classesFromApi[nodeToAdd]
 
-          noteToAddObject.label = noteToAddObject[stylingNodeCaptionProperty]
-            ? noteToAddObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+          const captionProperty = noteToAddObject[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty
+
+          noteToAddObject.label = noteToAddObject[captionProperty]
+            ? noteToAddObject[captionProperty].replace(/ /g, '\n') : ''
 
           addNode({
             ...noteToAddObject,

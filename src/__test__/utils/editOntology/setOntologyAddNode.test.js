@@ -9,6 +9,8 @@ import { LABEL_PROPERTY, UNIQUE_PROPERTY } from '../../../constants/graph'
 import showNotification from '../../../utils/notifications/showNotification'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
+import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
+import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
@@ -16,6 +18,11 @@ jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/apiCalls/httpCall')
+jest.mock('../../../utils/nodesEdgesUtils/countEdges')
+jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+
+countEdges.mockImplementation(() => 1)
+countNodes.mockImplementation(() => 1)
 
 describe('setOntologyAddNode', () => {
   afterEach(() => {
@@ -38,7 +45,7 @@ describe('setOntologyAddNode', () => {
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY,
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: LABEL_PROPERTY },
     }))
 
     await setOntologyAddNode({
@@ -71,7 +78,7 @@ describe('setOntologyAddNode', () => {
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY,
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: LABEL_PROPERTY },
     }))
 
     await setOntologyAddNode({
@@ -111,7 +118,7 @@ describe('setOntologyAddNode', () => {
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
-      stylingNodeCaptionProperty: LABEL_PROPERTY,
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: LABEL_PROPERTY },
     }))
 
     await setOntologyAddNode({
@@ -122,11 +129,34 @@ describe('setOntologyAddNode', () => {
 
     expect(addNode).toHaveBeenCalledWith(
       {
-        id: '123',
+        borderWidth: undefined,
+        borderWidthSelected: undefined,
+        color: {
+          background: undefined,
+          border: undefined,
+          highlight: {
+            background: undefined,
+            border: undefined,
+          },
+          hover: {
+            background: undefined,
+            border: undefined,
+          },
+        },
+        font: {
+          align: undefined,
+          bold: '700',
+          color: undefined,
+          face: 'Montserrat',
+          size: undefined,
+        },
         'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-        label: 'New node',
-        rdfsLabel: 'New node',
+        id: '123',
+        label: 'New\nnode',
         rdfAbout: '123',
+        rdfsLabel: 'New node',
+        shape: undefined,
+        size: undefined,
         userDefined: true,
       }
     )
@@ -164,7 +194,7 @@ describe('setOntologyAddNode', () => {
             123: {
               id: '123',
               'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              label: 'New node',
+              label: 'New\nnode',
               rdfAbout: '123',
               rdfsLabel: 'New node',
               userDefined: true,
@@ -178,7 +208,7 @@ describe('setOntologyAddNode', () => {
             123: {
               id: '123',
               'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              label: 'New node',
+              label: 'New\nnode',
               rdfAbout: '123',
               rdfsLabel: 'New node',
               userDefined: true,
@@ -188,7 +218,11 @@ describe('setOntologyAddNode', () => {
         [
           'addedNodes',
           ['123']
-        ]
+        ],
+        [
+          'availableNodesCount',
+          1,
+        ],
       ]
     )
   })

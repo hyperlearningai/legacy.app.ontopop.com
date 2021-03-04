@@ -1,5 +1,5 @@
 import store from '../../store'
-import clearNodesSelection from './clearNodesSelection'
+import resetNodesStyles from '../networkStyling/resetNodesStyles'
 import getNodesFromBoundingBox from './getNodesFromBoundingBox'
 
 /**
@@ -41,7 +41,7 @@ const onMouseDown = ({
 
       setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
     } else {
-      clearNodesSelection()
+      resetNodesStyles()
 
       getNodesFromBoundingBox({
         setStoreState

@@ -3,6 +3,7 @@ import setHighlightedNodes from './setHighlightedNodes'
 import setNodesOverlay from './setNodesOverlay'
 import setNodesStylesByProperty from './setNodesStylesByProperty'
 import highlightSpiderableNodes from './highlightSpiderableNodes'
+import setUserDefinedNodesStyles from './setUserDefinedNodesStyles'
 
 /**
  * Update node styles
@@ -10,6 +11,8 @@ import highlightSpiderableNodes from './highlightSpiderableNodes'
  */
 const setNodesStyle = () => {
   resetNodesStyles()
+
+  setUserDefinedNodesStyles()
 
   setNodesStylesByProperty()
 

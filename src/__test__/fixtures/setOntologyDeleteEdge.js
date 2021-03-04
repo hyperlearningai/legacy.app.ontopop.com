@@ -5015,4 +5015,12 @@ export const setStoreStateFixture = [
       '11',
     ],
   ],
+  [
+    'availableNodesCount',
+    1,
+  ],
+  [
+    'availableEdgesCount',
+    1,
+  ],
 ]

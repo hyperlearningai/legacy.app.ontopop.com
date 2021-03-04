@@ -5,6 +5,7 @@ import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import setEdgeStylesByProperty from '../networkStyling/setEdgeStylesByProperty'
 import getNode from '../nodesEdgesUtils/getNode'
+import countEdges from '../nodesEdgesUtils/countEdges'
 import { POST_CREATE_EDGE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 
@@ -26,12 +27,14 @@ const setOntologyAddEdge = async ({
     objectPropertiesFromApiBackup,
     addedEdges,
     nodesEdges,
-    edgesPerNode
+    edgesPerNode,
+    edgesPerNodeBackup
   } = store.getState()
 
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
   const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(objectPropertiesFromApiBackup))
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
   const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
 
   const {
@@ -95,7 +98,9 @@ const setOntologyAddEdge = async ({
 
   // add to triples
   newEdgesPerNode[from].push(id)
+  newEdgesPerNodeBackup[from].push(id)
   newEdgesPerNode[to].push(id)
+  newEdgesPerNodeBackup[to].push(id)
 
   const isFromVisible = getNode(from) !== null
   const isToVisible = getNode(from) !== null
@@ -117,6 +122,7 @@ const setOntologyAddEdge = async ({
   setStoreState('objectPropertiesFromApiBackup', newObjectPropertiesFromApiBackup)
   setStoreState('nodesEdges', newNodesEdges)
   setStoreState('edgesPerNode', newEdgesPerNode)
+  setStoreState('edgesPerNodeBackup', newEdgesPerNodeBackup)
   setStoreState('addedEdges', newAddedEdges)
 
   // add edge to graph and style
@@ -137,6 +143,8 @@ const setOntologyAddEdge = async ({
     message,
     type: NOTIFY_SUCCESS
   })
+
+  setStoreState('availableEdgesCount', countEdges())
 }
 
 export default setOntologyAddEdge

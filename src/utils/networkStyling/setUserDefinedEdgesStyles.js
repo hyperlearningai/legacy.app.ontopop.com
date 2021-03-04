@@ -4,17 +4,17 @@ import store from '../../store'
 import { USER_DEFINED_PROPERTY } from '../../constants/graph'
 
 /**
- * Reset edges which have been styled
+ * Set user defined edges styles
  * @return { undefined }
  */
-const resetEdgesStyles = () => {
+const setUserDefinedEdgesStyles = () => {
   const {
-    globalEdgeStyling,
+    userDefinedEdgeStyling,
     objectPropertiesFromApi
   } = store.getState()
 
   const availableEdges = getEdge({
-    filter: (edge) => !edge[USER_DEFINED_PROPERTY]
+    filter: (edge) => edge[USER_DEFINED_PROPERTY] === true
   })
 
   if (availableEdges.length === 0) return false
@@ -29,7 +29,7 @@ const resetEdgesStyles = () => {
     stylingEdgeWidth,
     stylingEdgeLineStyle,
     stylingEdgeCaptionProperty,
-  } = globalEdgeStyling
+  } = userDefinedEdgeStyling
 
   const edgeStyle = {
     smooth: {
@@ -66,4 +66,4 @@ const resetEdgesStyles = () => {
   }))
 }
 
-export default resetEdgesStyles
+export default setUserDefinedEdgesStyles

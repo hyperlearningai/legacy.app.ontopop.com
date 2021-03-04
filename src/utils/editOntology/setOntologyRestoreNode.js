@@ -8,6 +8,8 @@ import httpCall from '../apiCalls/httpCall'
 import { POST_CREATE_NODE } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
+import countEdges from '../nodesEdgesUtils/countEdges'
+import countNodes from '../nodesEdgesUtils/countNodes'
 
 /**
  * Restore ontology nodes
@@ -28,12 +30,58 @@ const setOntologyRestoreNode = async ({
     deletedNodes,
     deletedEdges,
     objectPropertiesFromApi,
-    stylingNodeCaptionProperty,
     objectPropertiesFromApiBackup,
     nodesEdges,
     edgesPerNode,
-    edgesPerNodeBackup
+    edgesPerNodeBackup,
+    userDefinedNodeStyling,
+    globalEdgeStyling,
+    userDefinedEdgeStyling
   } = store.getState()
+
+  const {
+    stylingNodeBorder,
+    stylingNodeBorderSelected,
+    stylingNodeTextFontSize,
+    stylingNodeTextColor,
+    stylingNodeTextFontAlign,
+    stylingNodeShape,
+    stylingNodeBackgroundColor,
+    stylingNodeBorderColor,
+    stylingNodeHighlightBackgroundColor,
+    stylingNodeHighlightBorderColor,
+    stylingNodeHoverBackgroundColor,
+    stylingNodeHoverBorderColor,
+    stylingNodeSize,
+    stylingNodeCaptionProperty,
+  } = userDefinedNodeStyling
+
+  // add node style
+  const nodeStyle = {
+    borderWidth: stylingNodeBorder,
+    borderWidthSelected: stylingNodeBorderSelected,
+    font: {
+      size: stylingNodeTextFontSize,
+      color: stylingNodeTextColor,
+      align: stylingNodeTextFontAlign,
+      face: 'Montserrat',
+      bold: '700'
+    },
+    shape: stylingNodeShape,
+    color: {
+      background: stylingNodeBackgroundColor,
+      border: stylingNodeBorderColor,
+      highlight: {
+        background: stylingNodeHighlightBackgroundColor,
+        border: stylingNodeHighlightBorderColor,
+      },
+      hover: {
+        background: stylingNodeHoverBackgroundColor,
+        border: stylingNodeHoverBorderColor,
+      },
+    },
+    size: stylingNodeSize
+  }
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
@@ -96,9 +144,12 @@ const setOntologyRestoreNode = async ({
 
       newClassesFromApi[id].id = id
       newClassesFromApi[id].label = newClassesFromApi[id][stylingNodeCaptionProperty]
-        ? newClassesFromApi[id][stylingNodeCaptionProperty].split(' ').join(' ') : ''
+        ? newClassesFromApi[id][stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
-      addNode(newClassesFromApi[id])
+      addNode({
+        ...newClassesFromApi[id],
+        ...nodeStyle
+      })
 
       // add connection back
       newNodesEdges[id] = []
@@ -136,10 +187,47 @@ const setOntologyRestoreNode = async ({
 
           const {
             from,
-            to
+            to,
+            userDefined
           } = newObjectPropertiesFromApiBackup[edgeId]
 
           if (newDeletedNodes.includes(from) || newDeletedNodes.includes(to)) return false
+
+          const {
+            stylingEdgeLineColor,
+            stylingEdgeLineColorHover,
+            stylingEdgeLineColorHighlight,
+            stylingEdgeLineStyle,
+            stylingEdgeTextColor,
+            stylingEdgeTextSize,
+            stylingEdgeTextAlign,
+            stylingEdgeWidth,
+          } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
+
+          const edgeStyle = {
+            smooth: {
+              type: 'cubicBezier', // 'continuous'
+              forceDirection: 'none',
+              roundness: 0.45,
+            },
+            arrows: { to: true },
+            color: {
+              color: stylingEdgeLineColor,
+              highlight: stylingEdgeLineColorHighlight,
+              hover: stylingEdgeLineColorHover,
+              inherit: 'from',
+              opacity: 1.0
+            },
+            font: {
+              color: stylingEdgeTextColor,
+              size: stylingEdgeTextSize,
+              align: stylingEdgeTextAlign
+            },
+            labelHighlightBold: true,
+            selectionWidth: 3,
+            width: stylingEdgeWidth,
+            dashes: stylingEdgeLineStyle
+          }
 
           const edge = getEdgeObject({
             edge: newObjectPropertiesFromApiBackup[edgeId]
@@ -173,7 +261,10 @@ const setOntologyRestoreNode = async ({
               newDeletedEdges.splice(deletedEdgeIndex, 1)
             }
 
-            addEdge(edge)
+            addEdge({
+              ...edge,
+              ...edgeStyle
+            })
           }
 
           return true
@@ -197,6 +288,8 @@ const setOntologyRestoreNode = async ({
   setStoreState('deletedNodes', newDeletedNodes)
   setStoreState('deletedEdges', newDeletedEdges)
   setElementsStyle()
+  setStoreState('availableNodesCount', countNodes())
+  setStoreState('availableEdgesCount', countEdges())
 }
 
 export default setOntologyRestoreNode

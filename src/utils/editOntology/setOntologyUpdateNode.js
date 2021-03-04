@@ -24,7 +24,7 @@ const setOntologyUpdateNode = async ({
   const {
     classesFromApi,
     updatedNodes,
-    stylingNodeCaptionProperty
+    userDefinedNodeStyling
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -65,8 +65,10 @@ const setOntologyUpdateNode = async ({
     ...selectedElementProperties
   }
 
+  const { stylingNodeCaptionProperty } = userDefinedNodeStyling
+
   newClassesFromApi[selectedElement].label = selectedElementProperties[stylingNodeCaptionProperty]
-    ? selectedElementProperties[stylingNodeCaptionProperty].split(' ').join(' ') : ''
+    ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
   updateNodes({ id: selectedElement, ...newClassesFromApi[selectedElement] })
 

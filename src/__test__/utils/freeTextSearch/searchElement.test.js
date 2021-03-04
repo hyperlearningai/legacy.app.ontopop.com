@@ -51,7 +51,45 @@ describe('searchElement', () => {
     })
 
     expect(setStoreState).toHaveBeenCalledWith(
-      'freeTextSelection', { 1: 'node', 12: 'edge', 2: 'node' }
+      'freeTextSelection', {
+        1: {
+          'Business Area': 'Communications',
+          id: '1',
+          label: 'Communication Document',
+          nodeId: 1,
+          rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          rdfsLabel: 'Communication Document',
+          skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
+          skosDefinition: 'Document storing the information conveyed between two or more parties.',
+          type: 'node',
+          userDefined: false,
+        },
+        12: {
+          edgeId: 12,
+          from: '1',
+          id: '12',
+          label: 'Provided to',
+          rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+          rdfsLabel: 'Provided to',
+          role: 'Provided to',
+          to: '170',
+          type: 'edge',
+          userDefined: false,
+        },
+        2: {
+          'Business Area': 'Maintain Plan',
+          id: '2',
+          label: 'Programme',
+          nodeId: 2,
+          rdfAbout: 'http://webprotege.stanford.edu/R0qk59fxFmgNbyUncZoU8M',
+          rdfsLabel: 'Programme',
+          skosComment: 'A strategic goal that is achieved through a number of projects.',
+          skosDefinition: 'A collection of projects or tasks undertaken to realise a strategic goal.',
+          skosExample: 'Develop connectivity between London and Inverness.',
+          type: 'node',
+          userDefined: false,
+        },
+      }
     )
   })
 })

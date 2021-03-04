@@ -2,6 +2,7 @@ import resetEdgesStyles from '../../../utils/networkStyling/resetEdgesStyles'
 import store from '../../../store'
 import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 
 jest.mock('../../../utils/nodesEdgesUtils/updateEdges')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
@@ -13,37 +14,53 @@ describe('resetEdgesStyles', () => {
 
   it('should work correctly', async () => {
     store.getState = jest.fn().mockImplementation(() => ({
-      stylingEdgeLineColor: '#000',
-      stylingEdgeLineColorHighlight: '#000',
-      stylingEdgeLineColorHover: '#000',
-      stylingEdgeTextColor: '#000',
-      stylingEdgeTextSize: 12,
-      stylingEdgeTextAlign: 'horizontal',
-      stylingEdgeWidth: 3,
-      stylingEdgeLineStyle: true
+      objectPropertiesFromApi,
+      globalEdgeStyling: {
+        stylingEdgeLineColor: '#000',
+        stylingEdgeLineColorHighlight: '#000',
+        stylingEdgeLineColorHover: '#000',
+        stylingEdgeTextColor: '#000',
+        stylingEdgeTextSize: 12,
+        stylingEdgeTextAlign: 'horizontal',
+        stylingEdgeWidth: 3,
+        stylingEdgeLineStyle: true
+      }
     }))
 
     getEdge.mockImplementationOnce(() => ([{
-      id: 'edge-123'
+      id: '111'
     }]))
 
     await resetEdgesStyles()
 
     expect(updateEdges).toHaveBeenCalledWith(
       {
+        arrows: {
+          to: true,
+        },
         color: {
           color: '#000',
           highlight: '#000',
           hover: '#000',
           inherit: 'from',
-          opacity: 1
+          opacity: 1,
         },
         dashes: true,
-        font: { align: 'horizontal', color: '#000', size: 12 },
-        id: 'edge-123',
+        font: {
+          align: 'horizontal',
+          color: '#000',
+          size: 12,
+        },
+        id: '111',
+        label: '',
         labelHighlightBold: true,
         selectionWidth: 3,
-        width: 3
+        smooth: {
+          forceDirection: 'none',
+          roundness: 0.45,
+          type: 'cubicBezier',
+        },
+        width: 3,
       }
     )
   })

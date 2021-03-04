@@ -5,11 +5,20 @@ import { DataSet } from 'vis-data'
 import GraphVisualisation from '../../components/GraphVisualisation'
 import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 import {
-  CLICK_NODE_BACKGROUND, EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED, HIGHLIGHT_NODE_BORDER, HOVER_NODE_BACKGROUND, HOVER_NODE_BORDER, NODE_BACKGROUND, NODE_BORDER, NODE_DEFAULT_SHAPE, NODE_TEXT_COLOR
+  EDGE_COLOR,
+  EDGE_COLOR_HIGHLIGHTED,
 } from '../../constants/graph'
 
 const setup = () => {
   const props = {
+    currentGraph: 'graph-0',
+    graphData: {
+      'graph-0': {
+        label: 'Main',
+        noDelete: true,
+        type: ALGO_TYPE_FULL
+      }
+    },
     availableEdges: new DataSet([]),
     availableNodes: new DataSet([]),
     boundingBoxGeometry: {
@@ -20,14 +29,6 @@ const setup = () => {
       boundingBoxWidth: 200,
       boundingBoxHeight: 200
     },
-    currentGraph: 'graph-0',
-    graphData: {
-      'graph-0': {
-        label: 'Main',
-        noDelete: true,
-        type: ALGO_TYPE_FULL
-      }
-    },
     isBoundingBoxSelectable: true,
     isPhysicsOn: true,
     network: {},
@@ -36,28 +37,18 @@ const setup = () => {
     physicsRepulsion: true,
     setStoreState: jest.fn(),
     showContextMenu: true,
-    stylingEdgeLineColor: EDGE_COLOR,
-    stylingEdgeLineColorHover: EDGE_COLOR,
-    stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
-    stylingEdgeLineStyle: false,
-    stylingEdgeTextColor: EDGE_COLOR,
-    stylingEdgeTextSize: 12,
-    stylingEdgeTextAlign: 'horizontal',
-    stylingEdgeWidth: 1,
-    stylingEdgeLength: 250,
-    stylingNodeSize: 25,
-    stylingNodeBorder: 1,
-    stylingNodeTextColor: NODE_TEXT_COLOR,
-    stylingNodeBorderSelected: 2,
-    stylingNodeBorderColor: NODE_BORDER,
-    stylingNodeBackgroundColor: NODE_BACKGROUND,
-    stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
-    stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
-    stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
-    stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
-    stylingNodeShape: NODE_DEFAULT_SHAPE,
-    stylingNodeTextFontSize: 12,
-    stylingNodeTextFontAlign: 'center',
+    removeFromObject: jest.fn(),
+    globalEdgeStyling: {
+      stylingEdgeLineColor: EDGE_COLOR,
+      stylingEdgeLineColorHover: EDGE_COLOR,
+      stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+      stylingEdgeLineStyle: false,
+      stylingEdgeTextColor: EDGE_COLOR,
+      stylingEdgeTextSize: 12,
+      stylingEdgeTextAlign: 'horizontal',
+      stylingEdgeWidth: 1,
+      stylingEdgeLength: 250,
+    }
   }
 
   const component = shallow(<GraphVisualisation {...props} />)

@@ -13,7 +13,7 @@ import actions from '../store/actions'
 import { SIDEBAR_VIEW_BOUNDING_BOX } from '../constants/views'
 import setBoundingBoxNodes from '../utils/boundingBoxSelection/setBoundingBoxNodes'
 import getNodesFromBoundingBox from '../utils/boundingBoxSelection/getNodesFromBoundingBox'
-import clearNodesSelection from '../utils/boundingBoxSelection/clearNodesSelection'
+import resetNodesStyles from '../utils/networkStyling/resetNodesStyles'
 
 const BoundingBoxSelection = ({
   setStoreState,
@@ -27,7 +27,7 @@ const BoundingBoxSelection = ({
     setStoreState('isBoundingBoxSelectable', true)
 
     return () => {
-      clearNodesSelection()
+      resetNodesStyles()
       setStoreState('isBoundingBoxSelectable', false)
       setStoreState('isBoundingBoxDrawable', false)
       setStoreState('isBoundingBoxSelectionInternal', true)
@@ -44,7 +44,7 @@ const BoundingBoxSelection = ({
   }, [])
 
   useEffect(() => {
-    clearNodesSelection()
+    resetNodesStyles()
 
     getNodesFromBoundingBox({
       setStoreState

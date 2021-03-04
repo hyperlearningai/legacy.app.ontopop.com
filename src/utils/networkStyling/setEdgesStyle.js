@@ -1,5 +1,6 @@
 import resetEdgesStyles from './resetEdgesStyles'
 import setEdgesStylesByProperty from './setEdgesStylesByProperty'
+import setUserDefinedEdgesStyles from './setUserDefinedEdgesStyles'
 import setHighlightedEdges from './setHighlightedEdges'
 
 /**
@@ -8,6 +9,8 @@ import setHighlightedEdges from './setHighlightedEdges'
  */
 const setEdgesStyle = () => {
   resetEdgesStyles()
+
+  setUserDefinedEdgesStyles()
 
   setEdgesStylesByProperty()
 
