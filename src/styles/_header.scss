@@ -33,8 +33,9 @@ header {
       justify-content: center;
 
       .p-chip {
-        background: $red;
+        background: $primary;
         color: $white;
+        height: 40px;
       }
 
       .p-button-secondary {
