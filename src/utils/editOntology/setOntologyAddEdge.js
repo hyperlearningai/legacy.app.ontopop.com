@@ -3,7 +3,7 @@ import addEdge from '../nodesEdgesUtils/addEdge'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import setNodeStyle from '../networkStyling/setNodeStyle'
-import setEdgeStylesByProperty from '../networkStyling/setEdgeStylesByProperty'
+import setEdgeStyleByProperty from '../networkStyling/setEdgeStyleByProperty'
 import getNode from '../nodesEdgesUtils/getNode'
 import countEdges from '../nodesEdgesUtils/countEdges'
 import { POST_CREATE_EDGE } from '../../constants/api'
@@ -135,7 +135,7 @@ const setOntologyAddEdge = async ({
     nodeId: to,
   })
 
-  setEdgeStylesByProperty({
+  setEdgeStyleByProperty({
     edgeId: id
   })
 

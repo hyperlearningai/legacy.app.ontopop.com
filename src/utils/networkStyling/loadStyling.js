@@ -1,5 +1,4 @@
 import { STYLING_LS } from '../../constants/localStorage'
-
 /**
  * Load saved styling options
  * @param  {Function} params.setStoreState           setStoreState action

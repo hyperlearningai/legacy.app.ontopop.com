@@ -1,11 +1,8 @@
 import resetNodesStyles from '../../../utils/networkStyling/resetNodesStyles'
 import store from '../../../store'
-import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
-import getNode from '../../../utils/nodesEdgesUtils/getNode'
-import { classesFromApi } from '../../fixtures/classesFromApi'
+import getPhysicsOptions from '../../../utils/graphVisualisation/getPhysicsOptions'
 
-jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
-jest.mock('../../../utils/nodesEdgesUtils/getNode')
+jest.mock('../../../utils/graphVisualisation/getPhysicsOptions')
 
 describe('resetNodesStyles', () => {
   afterEach(() => {
@@ -13,60 +10,23 @@ describe('resetNodesStyles', () => {
   })
 
   it('should work correctly', async () => {
-    store.getState = jest.fn().mockImplementation(() => ({
-      globalNodeStyling: {
-        stylingNodeBorder: '#000',
-        stylingNodeBorderSelected: '#000',
-        stylingNodeTextFontSize: 12,
-        stylingNodeTextColor: '#000',
-        stylingNodeTextFontAlign: 'center',
-        stylingNodeShape: 'circle',
-        stylingNodeBackgroundColor: '#000',
-        stylingNodeBorderColor: '#000',
-        stylingNodeHighlightBackgroundColor: '#000',
-        stylingNodeHighlightBorderColor: '#000',
-        stylingNodeHoverBackgroundColor: '#000',
-        stylingNodeHoverBorderColor: '#000',
-        stylingNodeSize: 12,
-        stylingNodeCaptionProperty: 'rdfsLabel'
+    const setOptions = jest.fn()
+
+    store.getState = jest.fn().mockImplementationOnce(() => ({
+      network: {
+        setOptions
       },
-      classesFromApi
     }))
 
-    getNode.mockImplementationOnce(() => ([{
-      id: '12'
-    }]))
+    getPhysicsOptions.mockImplementationOnce(() => ({
+      physics: true
+    }))
 
     await resetNodesStyles()
 
-    expect(updateNodes).toHaveBeenCalledWith(
+    expect(setOptions).toHaveBeenCalledWith(
       {
-        borderWidth: '#000',
-        borderWidthSelected: '#000',
-        color: {
-          background: '#000',
-          border:
-          '#000',
-          highlight: {
-            background: '#000',
-            border: '#000'
-          },
-          hover: {
-            background: '#000',
-            border: '#000'
-          }
-        },
-        font: {
-          align: 'center',
-          bold: '700',
-          color: '#000',
-          face: 'Montserrat',
-          size: 12
-        },
-        id: '12',
-        label: 'Maintenance',
-        shape: 'circle',
-        size: 12
+        physics: true
       }
     )
   })

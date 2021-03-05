@@ -55,7 +55,6 @@ const initialState = {
 
   // Data visualisation
   nodesIdsToDisplay: [],
-  edgesIdsToDisplay: [],
   availableNodes: new DataSet([]),
   availableEdges: new DataSet([]),
   nodesEdges: {},
@@ -133,10 +132,6 @@ const initialState = {
   stylingNodeByProperty: [
     JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
   ],
-
-  // netowrk graph loading
-  isNetworkLoading: false,
-  networkLoadingProgress: 0,
 
   // entry search
   entrySearchFilter: 'all',

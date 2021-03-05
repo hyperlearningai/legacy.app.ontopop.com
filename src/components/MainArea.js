@@ -3,10 +3,10 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
-import startupActions from '../utils/graphVisualisation/startupActions'
 import GraphVisualisation from './GraphVisualisation'
 import GraphSearch from './GraphSearch'
 import { MAIN_VIEW_GRAPH, MAIN_VIEW_SEARCH } from '../constants/views'
+import startupActions from '../utils/graphVisualisation/startupActions'
 
 const MainArea = ({
   setStoreState,
@@ -17,13 +17,15 @@ const MainArea = ({
 }) => {
   const { t } = useTranslation()
 
-  useEffect(() => startupActions({
-    addNumber,
-    setStoreState,
-    addToObject,
-    removeFromObject,
-    t
-  }), [])
+  useEffect(() => {
+    startupActions({
+      addNumber,
+      setStoreState,
+      addToObject,
+      removeFromObject,
+      t
+    })
+  }, [])
 
   return (
     <>

@@ -100,8 +100,10 @@ describe('getPhysicsOptions', () => {
           "size": 12,
         },    
         "labelHighlightBold": true,
+        "physics": true,
         "selectionWidth": 3,
         "smooth":{
+          "enabled": true,
           "forceDirection": "none",
           "roundness": 0.45,
           "type": "cubicBezier",

@@ -1,11 +1,8 @@
 import resetEdgesStyles from '../../../utils/networkStyling/resetEdgesStyles'
 import store from '../../../store'
-import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
-import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
-import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
+import getPhysicsOptions from '../../../utils/graphVisualisation/getPhysicsOptions'
 
-jest.mock('../../../utils/nodesEdgesUtils/updateEdges')
-jest.mock('../../../utils/nodesEdgesUtils/getEdge')
+jest.mock('../../../utils/graphVisualisation/getPhysicsOptions')
 
 describe('resetEdgesStyles', () => {
   afterEach(() => {
@@ -13,54 +10,23 @@ describe('resetEdgesStyles', () => {
   })
 
   it('should work correctly', async () => {
-    store.getState = jest.fn().mockImplementation(() => ({
-      objectPropertiesFromApi,
-      globalEdgeStyling: {
-        stylingEdgeLineColor: '#000',
-        stylingEdgeLineColorHighlight: '#000',
-        stylingEdgeLineColorHover: '#000',
-        stylingEdgeTextColor: '#000',
-        stylingEdgeTextSize: 12,
-        stylingEdgeTextAlign: 'horizontal',
-        stylingEdgeWidth: 3,
-        stylingEdgeLineStyle: true
-      }
+    const setOptions = jest.fn()
+
+    store.getState = jest.fn().mockImplementationOnce(() => ({
+      network: {
+        setOptions
+      },
     }))
 
-    getEdge.mockImplementationOnce(() => ([{
-      id: '111'
-    }]))
+    getPhysicsOptions.mockImplementationOnce(() => ({
+      physics: true
+    }))
 
     await resetEdgesStyles()
 
-    expect(updateEdges).toHaveBeenCalledWith(
+    expect(setOptions).toHaveBeenCalledWith(
       {
-        arrows: {
-          to: true,
-        },
-        color: {
-          color: '#000',
-          highlight: '#000',
-          hover: '#000',
-          inherit: 'from',
-          opacity: 1,
-        },
-        dashes: true,
-        font: {
-          align: 'horizontal',
-          color: '#000',
-          size: 12,
-        },
-        id: '111',
-        label: '',
-        labelHighlightBold: true,
-        selectionWidth: 3,
-        smooth: {
-          forceDirection: 'none',
-          roundness: 0.45,
-          type: 'cubicBezier',
-        },
-        width: 3,
+        physics: true
       }
     )
   })

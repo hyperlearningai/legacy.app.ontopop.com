@@ -43,10 +43,12 @@ const getPhysicsOptions = () => {
 
   const edges = {
     smooth: {
-      type: 'cubicBezier', // 'continuous'
+      type: 'cubicBezier', //'cubicBezier', // 'continuous'
       forceDirection: 'none',
       roundness: 0.45,
+      enabled: true //false
     },
+    physics: true, //false,
     arrows: { to: true },
     color: {
       color: stylingEdgeLineColor,
@@ -105,7 +107,7 @@ const getPhysicsOptions = () => {
         treeSpacing: 115,
       },
       randomSeed: 333,
-      improvedLayout: false,
+      improvedLayout: false, // true,
     },
     interaction: {
       navigationButtons: true,
@@ -125,6 +127,13 @@ const getPhysicsOptions = () => {
         nodeDistance: stylingEdgeLength,
         damping: 0.12,
       },
+      forceAtlas2Based: {
+        gravitationalConstant: -26,
+        centralGravity: 0.005,
+        springLength: 230,
+        springConstant: 0.18,
+        avoidOverlap: 1.5
+      },
       barnesHut: {
         gravitationalConstant: -2000,
         centralGravity: 0.5,
@@ -134,10 +143,12 @@ const getPhysicsOptions = () => {
         avoidOverlap: 0.16,
       },
       minVelocity: 0.75,
-      solver: physicsRepulsion ? 'hierarchicalRepulsion' : 'barnesHut',
+      maxVelocity: 146,
+      timestep: 0.5,
+      solver: physicsRepulsion ? 'hierarchicalRepulsion' : 'barnesHut', //'repulsion', //'forceAtlas2Based', //'barnesHut',
       stabilization: {
         enabled: true,
-        iterations: 2000,
+        iterations: 2000, //1000, //2000,
         updateInterval: 25,
       },
     } : false,

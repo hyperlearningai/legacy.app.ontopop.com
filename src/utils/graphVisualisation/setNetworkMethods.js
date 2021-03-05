@@ -101,23 +101,6 @@ const setNetworkMethods = async ({
     }
   })
 
-  network?.on('stabilizationProgress', (params) => {
-    const {
-      nodesIdsToDisplay,
-    } = store.getState()
-
-    if (nodesIdsToDisplay) {
-      const percentage = parseFloat(params.iterations / params.total).toFixed(2)
-
-      setStoreState('networkLoadingProgress', percentage * 100)
-    }
-  })
-
-  network?.once('stabilizationIterationsDone', () => {
-    setStoreState('networkLoadingProgress', 0)
-    setStoreState('isNetworkLoading', false)
-  })
-
   await network?.stabilize(2000)
 
   network?.fit({

@@ -8,7 +8,7 @@ import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
-import setEdgeStylesByProperty from '../../../utils/networkStyling/setEdgeStylesByProperty'
+import setEdgeStyleByProperty from '../../../utils/networkStyling/setEdgeStyleByProperty'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
@@ -18,7 +18,7 @@ jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
-jest.mock('../../../utils/networkStyling/setEdgeStylesByProperty')
+jest.mock('../../../utils/networkStyling/setEdgeStyleByProperty')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 
@@ -132,7 +132,7 @@ describe('setOntologyAddEdge', () => {
       ]
     )
 
-    expect(setEdgeStylesByProperty.mock.calls).toEqual(
+    expect(setEdgeStyleByProperty.mock.calls).toEqual(
       [[{ edgeId: '123' }]]
     )
 

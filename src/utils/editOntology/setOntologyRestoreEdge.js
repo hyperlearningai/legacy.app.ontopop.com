@@ -1,7 +1,7 @@
 import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import getNode from '../nodesEdgesUtils/getNode'
-import setEdgeStylesByProperty from '../networkStyling/setEdgeStylesByProperty'
+import setEdgeStyleByProperty from '../networkStyling/setEdgeStyleByProperty'
 import { POST_CREATE_EDGE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import showNotification from '../notifications/showNotification'
@@ -124,7 +124,7 @@ const setOntologyRestoreEdge = async ({
           newNodesEdges[to].push(id)
         }
 
-        setEdgeStylesByProperty({
+        setEdgeStyleByProperty({
           edgeId: edge.id
         })
       }

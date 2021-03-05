@@ -1,10 +1,10 @@
-import setEdgeStylesByProperty from '../../../utils/networkStyling/setEdgeStylesByProperty'
+import setEdgeStyleByProperty from '../../../utils/networkStyling/setEdgeStyleByProperty'
 import store from '../../../store'
 import styleEdgeByProperty from '../../../utils/networkStyling/styleEdgeByProperty'
 
 jest.mock('../../../utils/networkStyling/styleEdgeByProperty')
 
-describe('setEdgeStylesByProperty', () => {
+describe('setEdgeStyleByProperty', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -16,7 +16,7 @@ describe('setEdgeStylesByProperty', () => {
 
     const edgeId = 'predicate___from___to'
 
-    await setEdgeStylesByProperty({
+    await setEdgeStyleByProperty({
       edgeId
     })
 
@@ -31,9 +31,9 @@ describe('setEdgeStylesByProperty', () => {
       }],
     }))
 
-    const edgeId = 'predicate___from___to'
+    const edgeId = '123'
 
-    await setEdgeStylesByProperty({
+    await setEdgeStyleByProperty({
       edgeId
     })
 

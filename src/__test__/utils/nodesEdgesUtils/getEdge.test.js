@@ -1,12 +1,12 @@
 import { DataSet } from 'vis-data'
-import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
+import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import store from '../../../store'
 
-describe('addEdge', () => {
-  it('should not add edge if existing correctly', async () => {
+describe('getEdge', () => {
+  it('should get edge if existing correctly', async () => {
     const availableEdges = new DataSet([
       {
-        id: 'edge-123'
+        id: '123'
       }
     ])
 
@@ -14,23 +14,23 @@ describe('addEdge', () => {
       availableEdges
     })
 
-    await addEdge({
-      id: 'edge-123'
+    expect(getEdge('123')).toEqual({
+      id: '123'
     })
-
-    expect(availableEdges.length).toEqual(1)
   })
 
-  it('should add edge correctly', async () => {
+  it('should return undefined is not existing', async () => {
     const availableEdges = new DataSet()
     store.getState = () => ({
       availableEdges
     })
 
-    await addEdge({
-      id: 'edge-123'
+    await getEdge({
+      id: '234'
     })
 
-    expect(availableEdges.length).toEqual(1)
+    expect(getEdge({
+      id: '234'
+    })).toEqual([])
   })
 })

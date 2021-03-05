@@ -34,6 +34,12 @@ store.getState = jest.fn().mockImplementation(() => ({
   userDefinedNodeStyling: {
     stylingNodeCaptionProperty: 'rdfsLabel'
   },
+  globalEdgeStyling: {
+    stylingEdgeCaptionProperty: 'rdfsLabel'
+  },
+  userDefinedEdgeStyling: {
+    stylingEdgeCaptionProperty: 'rdfsLabel'
+  },
 }))
 
 countNodes.mockImplementation(() => 10)
@@ -62,7 +68,7 @@ describe('expandNode', () => {
       edgeId: 1711,
       from: '171',
       id: '1711',
-      label: undefined,
+      label: 'Subclass of',
       rdfsLabel: 'Subclass of',
       role: 'Subclass of',
       to: '1',

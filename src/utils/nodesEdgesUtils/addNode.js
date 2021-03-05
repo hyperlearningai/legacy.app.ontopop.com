@@ -1,4 +1,5 @@
 import store from '../../store'
+import setNodeStyle from '../networkStyling/setNodeStyle'
 
 /**
  * Add node to graph
@@ -14,6 +15,7 @@ const addNode = (nodeObject) => {
 
   if (isNodeNotVisible) {
     availableNodes.add(nodeObject)
+    setNodeStyle({ nodeId: nodeObject.id })
   }
 }
 
