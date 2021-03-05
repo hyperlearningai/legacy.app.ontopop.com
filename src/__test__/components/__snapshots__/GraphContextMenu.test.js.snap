@@ -13,6 +13,7 @@ exports[`GraphContextMenu should match snapshot 1`] = `
       "setStoreState": [Function],
     }
   }
+  addNumber={[MockFunction]}
   contextMenuData={
     Object {
       "left": 100,

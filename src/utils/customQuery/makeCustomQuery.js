@@ -13,6 +13,7 @@ import httpCall from '../apiCalls/httpCall'
  * @param  {Function} params.setStoreState              setStoreState action
  * @param  {Function} params.addNumber                  addNumber action
  * @param  {Function} params.addToArray                 addToArray action
+ * @param  {Function} params.setLoader                  set query loader
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
@@ -21,12 +22,14 @@ const makeCustomQuery = async ({
   addNumber,
   setStoreState,
   addToArray,
+  setLoader,
   t
 }) => {
   const {
     user
   } = store.getState()
 
+  setLoader(true)
   setStoreState('customQueryFromLatestOutput', '')
   addToArray('customQueryStringHistory', customQueryString, { alwaysAdd: true })
 
@@ -42,6 +45,8 @@ const makeCustomQuery = async ({
     method: 'post',
     t
   })
+
+  setLoader(false)
 
   const {
     error,

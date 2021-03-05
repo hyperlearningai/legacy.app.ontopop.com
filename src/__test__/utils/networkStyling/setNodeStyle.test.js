@@ -4,7 +4,9 @@ import setNodeStylesByProperty from '../../../utils/networkStyling/setNodeStyles
 import setNodeOverlay from '../../../utils/networkStyling/setNodeOverlay'
 import highlightSpiderableNode from '../../../utils/networkStyling/highlightSpiderableNode'
 import setUserDefinedNodeStyle from '../../../utils/networkStyling/setUserDefinedNodeStyle'
+import resetNodeStyle from '../../../utils/networkStyling/resetNodeStyle'
 
+jest.mock('../../../utils/networkStyling/resetNodeStyle')
 jest.mock('../../../utils/networkStyling/setHighlightedNode')
 jest.mock('../../../utils/networkStyling/setNodeOverlay')
 jest.mock('../../../utils/networkStyling/setNodeStylesByProperty')
@@ -16,27 +18,53 @@ describe('setNodeStyle', () => {
     jest.clearAllMocks()
   })
 
-  it('should work correctly', async () => {
-    const nodeId = 'node-123'
+  it('should work correctly when user defined and skip', async () => {
+    const node = { id: '123', userDefined: true }
 
     await setNodeStyle({
-      nodeId
+      node,
+      skipSpider: true
     })
 
     expect(setUserDefinedNodeStyle).toHaveBeenCalledWith({
-      nodeId
+      node
     })
     expect(setNodeStylesByProperty).toHaveBeenCalledWith({
-      nodeId
+      nodeId: node.id
     })
-    expect(highlightSpiderableNode).toHaveBeenCalledWith({
-      nodeId
-    })
+    expect(highlightSpiderableNode).toHaveBeenCalledTimes(0)
     expect(setHighlightedNode).toHaveBeenCalledWith({
-      nodeId
+      node
     })
     expect(setNodeOverlay).toHaveBeenCalledWith({
-      nodeId
+      nodeId: node.id
+    })
+  })
+
+  it('should work correctly', async () => {
+    const node = { id: '123', userDefined: false }
+
+    await setNodeStyle({
+      node
+    })
+
+    expect(resetNodeStyle).toHaveBeenCalledWith({
+      node
+    })
+    // expect(setUserDefinedNodeStyle).toHaveBeenCalledWith({
+    //   node
+    // })
+    expect(setNodeStylesByProperty).toHaveBeenCalledWith({
+      nodeId: node.id
+    })
+    expect(highlightSpiderableNode).toHaveBeenCalledWith({
+      node
+    })
+    expect(setHighlightedNode).toHaveBeenCalledWith({
+      node
+    })
+    expect(setNodeOverlay).toHaveBeenCalledWith({
+      nodeId: node.id
     })
   })
 })

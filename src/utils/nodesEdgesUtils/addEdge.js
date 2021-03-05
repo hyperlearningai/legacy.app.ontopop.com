@@ -1,5 +1,4 @@
 import store from '../../store'
-import setEdgeStyle from '../networkStyling/setEdgeStyle'
 
 /**
  * Add edge to graph
@@ -15,7 +14,6 @@ const addEdge = (edgeObject) => {
 
   if (isEdgeNotVisible) {
     availableEdges.add(edgeObject)
-    setEdgeStyle({ edgeId: edgeObject.id })
   }
 }
 

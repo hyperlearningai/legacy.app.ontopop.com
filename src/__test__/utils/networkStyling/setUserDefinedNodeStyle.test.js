@@ -12,10 +12,8 @@ import {
   NODE_DEFAULT_SHAPE,
   NODE_TEXT_COLOR
 } from '../../../constants/graph'
-import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 
-jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 
 describe('setUserDefinedNodeStyle', () => {
@@ -23,13 +21,11 @@ describe('setUserDefinedNodeStyle', () => {
     jest.clearAllMocks()
   })
   it('should work correctly when node not userDefined', async () => {
-    const nodeId = '12'
-
-    getNode.mockImplementationOnce(() => ({
+    const node = {
       id: '12',
       rdfsLabel: 'linked to',
       userDefined: false
-    }))
+    }
 
     store.getState = jest.fn().mockImplementation(() => ({
       classesFromApi,
@@ -53,20 +49,35 @@ describe('setUserDefinedNodeStyle', () => {
     }))
 
     await setUserDefinedNodeStyle({
-      nodeId
+      node
     })
 
-    expect(updateNodes).toHaveBeenCalledTimes(0)
+    expect(updateNodes).toHaveBeenCalledWith(
+      {
+        borderWidth: 1,
+        borderWidthSelected: 2,
+        color: {
+          background: '#adefd1', border: '#011e41', highlight: { background: '#ffed00', border: '#009688' }, hover: { background: '#f2f2f2', border: '#607d8b' }
+        },
+        font: {
+          align: 'center', bold: '700', color: '#000000', face: 'Montserrat', size: 12
+        },
+        id: '12',
+        label: 'Maintenance',
+        rdfsLabel: 'linked to',
+        shape: 'circle',
+        size: 25,
+        userDefined: false
+      }
+    )
   })
 
   it('should work correctly', async () => {
-    const nodeId = '12'
-
-    getNode.mockImplementationOnce(() => ({
+    const node = {
       id: '12',
       rdfsLabel: 'linked to',
       userDefined: true
-    }))
+    }
 
     store.getState = jest.fn().mockImplementation(() => ({
       classesFromApi,
@@ -90,7 +101,7 @@ describe('setUserDefinedNodeStyle', () => {
     }))
 
     await setUserDefinedNodeStyle({
-      nodeId
+      node
     })
 
     expect(updateNodes).toHaveBeenCalledWith(

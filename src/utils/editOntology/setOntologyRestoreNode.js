@@ -34,8 +34,8 @@ const setOntologyRestoreNode = async ({
     objectPropertiesFromApi,
     objectPropertiesFromApiBackup,
     nodesEdges,
-    edgesPerNode,
-    edgesPerNodeBackup,
+    totalEdgesPerNode,
+    totalEdgesPerNodeBackup,
     userDefinedNodeStyling,
     globalEdgeStyling,
     userDefinedEdgeStyling
@@ -91,8 +91,8 @@ const setOntologyRestoreNode = async ({
   const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(objectPropertiesFromApiBackup))
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
   const newDeletedEdges = deletedEdges.slice()
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
-  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(totalEdgesPerNodeBackup))
 
   const restoredNodes = []
 
@@ -284,7 +284,7 @@ const setOntologyRestoreNode = async ({
   }
 
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
   setStoreState('deletedNodes', newDeletedNodes)

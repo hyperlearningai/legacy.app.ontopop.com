@@ -1,6 +1,6 @@
 import { DataSet } from 'vis-data'
 import queueGraphElements from '../../../utils/graphVisualisation/queueGraphElements'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
@@ -33,7 +33,7 @@ describe('queueGraphElements', () => {
     store.getState = jest.fn().mockImplementation(() => ({
       availableNodes,
       availableEdges,
-      edgesPerNode,
+      totalEdgesPerNode,
       classesFromApi,
       objectPropertiesFromApi,
       nodesIdsToDisplay: [],
@@ -58,7 +58,7 @@ describe('queueGraphElements', () => {
     store.getState = jest.fn().mockImplementation(() => ({
       availableNodes,
       availableEdges,
-      edgesPerNode,
+      totalEdgesPerNode,
       classesFromApi,
       objectPropertiesFromApi,
       nodesIdsToDisplay,

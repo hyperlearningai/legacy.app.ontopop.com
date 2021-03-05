@@ -8,7 +8,7 @@ import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteNode'
 import { nodesEdges } from '../../fixtures/nodesEdgesNew'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
@@ -41,7 +41,7 @@ store.getState = jest.fn().mockImplementation(() => ({
   deletedNodes: [],
   deletedEdges: [],
   nodesEdges,
-  edgesPerNode,
+  totalEdgesPerNode,
   availableNodes: new DataSet(
     Object.keys(classesFromApi).map((property) => ({
       ...classesFromApi[property],

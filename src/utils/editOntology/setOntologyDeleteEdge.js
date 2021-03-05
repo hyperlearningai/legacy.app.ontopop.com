@@ -27,14 +27,14 @@ const setOntologyDeleteEdge = async ({
     classesFromApi,
     deletedEdges,
     nodesEdges,
-    edgesPerNode,
+    totalEdgesPerNode,
     objectPropertiesFromApi
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newDeletedEdges = deletedEdges.slice()
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
 
   const edgesDeleted = []
 
@@ -124,7 +124,7 @@ const setOntologyDeleteEdge = async ({
   }
 
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('deletedEdges', newDeletedEdges)
 

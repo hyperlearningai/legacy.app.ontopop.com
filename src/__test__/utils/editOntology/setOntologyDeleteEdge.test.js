@@ -8,7 +8,7 @@ import {
 } from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import { nodesEdges } from '../../fixtures/nodesEdgesNew'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import en from '../../../i18n/en'
@@ -47,7 +47,7 @@ store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
   deletedEdges: [],
   nodesEdges,
-  edgesPerNode,
+  totalEdgesPerNode,
   objectPropertiesFromApi
 }))
 

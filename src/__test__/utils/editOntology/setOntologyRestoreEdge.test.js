@@ -2,7 +2,7 @@
 import setOntologyRestoreEdge from '../../../utils/editOntology/setOntologyRestoreEdge'
 import store from '../../../store'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyRestoreEdge'
@@ -37,7 +37,7 @@ store.getState = jest.fn().mockImplementation(() => ({
     1: [],
     141: [],
   },
-  edgesPerNode,
+  totalEdgesPerNode,
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
   stylingEdgeCaptionProperty: 'rdfsLabel',
 }))

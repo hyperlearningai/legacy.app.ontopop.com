@@ -1,13 +1,13 @@
 import { classesFromApi } from './classesFromApi'
 import { nodesEdges } from './nodesEdgesNew'
-import { edgesPerNode } from './edgesPerNodeNew'
+import { totalEdgesPerNode } from './totalEdgesPerNode'
 
 const newClassesFromApi = {
   ...classesFromApi,
 }
 
 const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
+const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
 
 newEdgesPerNode['1'].splice(0, 1)
 newEdgesPerNode['1'].splice(0, 1)
@@ -19,7 +19,7 @@ export const setStoreStateFixture = [
   ],
 
   [
-    'edgesPerNode', newEdgesPerNode
+    'totalEdgesPerNode', newEdgesPerNode
   ],
   [
     'classesFromApi',

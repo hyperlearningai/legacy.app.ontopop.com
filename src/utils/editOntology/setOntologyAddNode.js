@@ -27,8 +27,8 @@ const setOntologyAddNode = async ({
     classesFromApi,
     classesFromApiBackup,
     addedNodes,
-    edgesPerNode,
-    edgesPerNodeBackup,
+    totalEdgesPerNode,
+    totalEdgesPerNodeBackup,
     userDefinedNodeStyling
   } = store.getState()
 
@@ -52,8 +52,8 @@ const setOntologyAddNode = async ({
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
-  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(totalEdgesPerNodeBackup))
 
   const body = JSON.parse(JSON.stringify(selectedElementProperties))
   body.label = 'class'
@@ -145,8 +145,8 @@ const setOntologyAddNode = async ({
   ]
 
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
-  setStoreState('edgesPerNodeBackup', newEdgesPerNodeBackup)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('classesFromApiBackup', newClassesFromApiBackup)
   setStoreState('addedNodes', newAddedNodes)

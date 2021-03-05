@@ -2,16 +2,16 @@ import updateEdges from '../nodesEdgesUtils/updateEdges'
 import store from '../../store'
 
 /**
- * Set user defined edge style
+ * Reset edges which have been styled
  * @param  {Object}   params
- * @param  {String}   params.edge           Edge object
+ * @param  {String}   params.edgeId           Edge Id
  * @return { undefined }
  */
-const setUserDefinedEdgeStyle = ({
+const resetEdgeStyle = ({
   edge
 }) => {
   const {
-    userDefinedEdgeStyling,
+    globalEdgeStyling,
     objectPropertiesFromApi
   } = store.getState()
 
@@ -25,7 +25,7 @@ const setUserDefinedEdgeStyle = ({
     stylingEdgeWidth,
     stylingEdgeLineStyle,
     stylingEdgeCaptionProperty,
-  } = userDefinedEdgeStyling
+  } = globalEdgeStyling
 
   const edgeStyle = {
     smooth: {
@@ -53,7 +53,7 @@ const setUserDefinedEdgeStyle = ({
   }
 
   // update edge style
-  updateEdges({
+  return updateEdges({
     ...edge,
     ...edgeStyle,
     label: objectPropertiesFromApi[edge.id][stylingEdgeCaptionProperty]
@@ -62,4 +62,4 @@ const setUserDefinedEdgeStyle = ({
   })
 }
 
-export default setUserDefinedEdgeStyle
+export default resetEdgeStyle

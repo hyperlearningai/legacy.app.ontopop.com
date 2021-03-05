@@ -1,17 +1,17 @@
-import store from '../../store'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
+import store from '../../store'
 
 /**
- * Set user defined node style
+ * Reset nodes which have been styled
  * @param  {Object}   params
- * @param  {String}   params.node           Node object
+ * @param  {String}   params.node  Node object
  * @return { undefined }
  */
-const setUserDefinedNodeStyle = ({
+const resetNodeStyle = ({
   node
 }) => {
   const {
-    userDefinedNodeStyling,
+    globalNodeStyling,
     classesFromApi
   } = store.getState()
 
@@ -30,7 +30,7 @@ const setUserDefinedNodeStyle = ({
     stylingNodeHoverBorderColor,
     stylingNodeSize,
     stylingNodeCaptionProperty,
-  } = userDefinedNodeStyling
+  } = globalNodeStyling
 
   const nodeStyle = {
     borderWidth: stylingNodeBorder,
@@ -72,4 +72,4 @@ const setUserDefinedNodeStyle = ({
   })
 }
 
-export default setUserDefinedNodeStyle
+export default resetNodeStyle

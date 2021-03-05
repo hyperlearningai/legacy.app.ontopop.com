@@ -2,7 +2,7 @@
 import setOntologyAddNode from '../../../utils/editOntology/setOntologyAddNode'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import en from '../../../i18n/en'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import { LABEL_PROPERTY, UNIQUE_PROPERTY } from '../../../constants/graph'
@@ -42,8 +42,8 @@ describe('setOntologyAddNode', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       nodesEdges: {},
-      edgesPerNode,
-      edgesPerNodeBackup: edgesPerNode,
+      totalEdgesPerNode,
+      totalEdgesPerNodeBackup: totalEdgesPerNode,
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
@@ -76,8 +76,8 @@ describe('setOntologyAddNode', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       nodesEdges: {},
-      edgesPerNode,
-      edgesPerNodeBackup: edgesPerNode,
+      totalEdgesPerNode,
+      totalEdgesPerNodeBackup: totalEdgesPerNode,
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
@@ -117,8 +117,8 @@ describe('setOntologyAddNode', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       nodesEdges: {},
-      edgesPerNode,
-      edgesPerNodeBackup: edgesPerNode,
+      totalEdgesPerNode,
+      totalEdgesPerNodeBackup: totalEdgesPerNode,
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
@@ -179,16 +179,16 @@ describe('setOntologyAddNode', () => {
           }
         ],
         [
-          'edgesPerNode',
+          'totalEdgesPerNode',
           {
-            ...edgesPerNode,
+            ...totalEdgesPerNode,
             123: []
           }
         ],
         [
-          'edgesPerNodeBackup',
+          'totalEdgesPerNodeBackup',
           {
-            ...edgesPerNode,
+            ...totalEdgesPerNode,
             123: []
           }
         ],

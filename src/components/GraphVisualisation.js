@@ -92,6 +92,7 @@ const GraphVisualisation = ({
   useEffect(() => setNetworkMethods({
     setStoreState,
     network,
+    addNumber
   }), [
     network,
     nodesIdsToDisplay

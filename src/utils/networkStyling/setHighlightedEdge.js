@@ -1,29 +1,30 @@
-import { USER_DEFINED_PROPERTY } from '../../constants/graph'
 import store from '../../store'
-import getEdge from '../nodesEdgesUtils/getEdge'
 import updateEdges from '../nodesEdgesUtils/updateEdges'
 
 /**
  * Set edge color as highlighted
  * @param  {Object}   params
- * @param  {String}   params.edgeId           Edge Id
+ * @param  {String}   params.edge           Edge object
  * @return { undefined }
  */
-const setHighlightedEdges = ({
-  edgeId
+const setHighlightedEdge = ({
+  edge
 }) => {
   const {
     highlightedEdges,
-    stylingEdgeLineColorHighlight
+    globalEdgeStyling,
+    userDefinedEdgeStyling
   } = store.getState()
 
   if (highlightedEdges.length === 0) return false
 
-  const edge = getEdge(edgeId)
+  const isHighlighted = highlightedEdges.includes(edge.id)
 
-  if (!edge || !edge[USER_DEFINED_PROPERTY]) return false
+  if (!isHighlighted) return false
 
   const color = edge.color || {}
+
+  const { stylingEdgeLineColorHighlight } = edge.userDefined ? userDefinedEdgeStyling : globalEdgeStyling
 
   color.color = stylingEdgeLineColorHighlight
 
@@ -33,4 +34,4 @@ const setHighlightedEdges = ({
   })
 }
 
-export default setHighlightedEdges
+export default setHighlightedEdge

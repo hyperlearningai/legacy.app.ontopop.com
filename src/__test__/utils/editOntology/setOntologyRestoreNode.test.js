@@ -7,7 +7,7 @@ import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyRestoreNode'
 import { nodesEdges } from '../../fixtures/nodesEdgesNew'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import getEdgeObject from '../../../utils/graphVisualisation/getEdgeObject'
@@ -47,8 +47,8 @@ store.getState = jest.fn().mockImplementation(() => ({
   userDefinedNodeStyling: { stylingNodeCaptionProperty: 'rdfsLabel' },
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
   nodesEdges,
-  edgesPerNode,
-  edgesPerNodeBackup: edgesPerNode,
+  totalEdgesPerNode,
+  totalEdgesPerNodeBackup: totalEdgesPerNode,
   globalEdgeStyling: {
     stylingEdgeLineColor: EDGE_COLOR,
     stylingEdgeLineColorHover: EDGE_COLOR,

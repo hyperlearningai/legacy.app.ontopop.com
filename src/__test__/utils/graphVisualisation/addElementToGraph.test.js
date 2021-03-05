@@ -1,9 +1,12 @@
 import { DataSet } from 'vis-data'
 import addElementToGraph from '../../../utils/graphVisualisation/addElementToGraph'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
+import actionAfterNodesAdded from '../../../utils/graphVisualisation/actionAfterNodesAdded'
+import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
+import setEdgeStyle from '../../../utils/networkStyling/setEdgeStyle'
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
@@ -16,11 +19,27 @@ const nodesIdsToDisplay = [
   '170',
   '141'
 ]
+const nodesEdges = {
+  1: [
+    '11',
+    '12',
+  ],
+  141: [
+    '11',
+  ],
+  170: [
+    '12',
+  ],
+}
+
+jest.mock('../../../utils/graphVisualisation/actionAfterNodesAdded')
+jest.mock('../../../utils/networkStyling/setNodeStyle')
+jest.mock('../../../utils/networkStyling/setEdgeStyle')
 
 store.getState = jest.fn().mockImplementation(() => ({
   availableNodes,
   availableEdges,
-  edgesPerNode,
+  totalEdgesPerNode,
   classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay,
@@ -35,21 +54,8 @@ store.getState = jest.fn().mockImplementation(() => ({
   },
   highlightedNodes: [],
   highlightedEdges: [],
-  nodesEdges: {
-    1: [
-      '11',
-      '12',
-    ],
-    141: [
-      '11',
-    ],
-    170: [
-      '12',
-    ],
-  }
+  nodesEdges
 }))
-
-jest.useFakeTimers()
 
 describe('addElementToGraph', () => {
   afterEach(() => {
@@ -61,7 +67,7 @@ describe('addElementToGraph', () => {
       classesFromApi,
       nodesIdsToDisplay,
       objectPropertiesFromApi,
-      edgesPerNode,
+      totalEdgesPerNode,
       globalNodeStyling: {
         stylingNodeCaptionProperty,
       },
@@ -79,46 +85,48 @@ describe('addElementToGraph', () => {
       i: 2,
       nodeIdsLength: 3,
       processedEdges: [],
-      nodesEdges: {
-        1: [
-          '11',
-          '12',
-        ],
-        141: [
-          '11',
-        ],
-        170: [
-          '12',
-        ],
-      },
+      nodesEdges,
       currentPhysicsOnState: false,
       network: {
         fit
       }
     })
 
-    expect(setStoreState.mock.calls).toEqual(
-      [['availableNodesCount', 2],
-        ['availableEdgesCount', 1],
-        ['nodesEdges', {
-          1: [
-            '11',
-            '12',
-          ],
-          141: [
-            '11',
-          ],
-          170: [
-            '12',
-          ],
-        }],
-        ['isPhysicsOn', true]]
+    expect(setNodeStyle).toHaveBeenLastCalledWith(
+      {
+        node: {
+          'Business Area': 'Communications',
+          id: '1',
+          label: 'Communication\nDocument',
+          nodeId: 1,
+          rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+          rdfsLabel: 'Communication Document',
+          skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
+          skosDefinition: 'Document storing the information conveyed between two or more parties.',
+          userDefined: false
+        },
+        skipSpider: true
+      }
+    )
+    expect(setEdgeStyle).toHaveBeenLastCalledWith(
+      {
+        edge: {
+          edgeId: 11,
+          from: '1',
+          id: '11',
+          label: undefined,
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '141',
+          userDefined: false
+        }
+      }
     )
 
-    expect(addNumber).toHaveBeenCalledWith('activeLoaders', -1)
-
-    expect(setTimeout).toHaveBeenCalledWith(
-      expect.any(Function), 3000
-    )
+    expect(actionAfterNodesAdded).toHaveBeenCalledWith({
+      setStoreState,
+      addNumber,
+      nodesEdges,
+    })
   })
 })

@@ -1,13 +1,12 @@
-import resetNodesStyles from '../../../utils/networkStyling/resetNodesStyles'
+import resetNodeStyle from '../../../utils/networkStyling/resetNodeStyle'
 import store from '../../../store'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
-import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 
-describe('resetNodesStyles', () => {
+describe('resetNodeStyle', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -33,11 +32,13 @@ describe('resetNodesStyles', () => {
       classesFromApi
     }))
 
-    getNode.mockImplementationOnce(() => ([{
+    const node = {
       id: '12'
-    }]))
+    }
 
-    await resetNodesStyles()
+    await resetNodeStyle({
+      node
+    })
 
     expect(updateNodes).toHaveBeenCalledWith(
       {

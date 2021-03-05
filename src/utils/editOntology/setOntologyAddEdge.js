@@ -29,15 +29,15 @@ const setOntologyAddEdge = async ({
     objectPropertiesFromApiBackup,
     addedEdges,
     nodesEdges,
-    edgesPerNode,
-    edgesPerNodeBackup
+    totalEdgesPerNode,
+    totalEdgesPerNodeBackup
   } = store.getState()
 
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
   const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(objectPropertiesFromApiBackup))
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(totalEdgesPerNodeBackup))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
 
   const {
     from,
@@ -123,8 +123,8 @@ const setOntologyAddEdge = async ({
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
   setStoreState('objectPropertiesFromApiBackup', newObjectPropertiesFromApiBackup)
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
-  setStoreState('edgesPerNodeBackup', newEdgesPerNodeBackup)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
   setStoreState('addedEdges', newAddedEdges)
 
   // add edge to graph and style

@@ -9,6 +9,7 @@ import { SIDEBAR_VIEW_CUSTOM_QUERY } from '../constants/views'
 const GraphContextMenu = ({
   setStoreState,
   contextMenuData,
+  addNumber,
 }) => {
   const { t } = useTranslation()
 
@@ -44,7 +45,8 @@ const GraphContextMenu = ({
       command: () => {
         expandNode({
           nodeId,
-          setStoreState
+          setStoreState,
+          addNumber,
         })
         setStoreState('showContextMenu', false)
       }
@@ -62,13 +64,14 @@ const GraphContextMenu = ({
 
 GraphContextMenu.propTypes = {
   setStoreState: PropTypes.func.isRequired,
+  addNumber: PropTypes.func.isRequired,
   contextMenuData: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   contextMenuData,
 }) => ({
-  contextMenuData
+  contextMenuData,
 })
 
 export default connect(

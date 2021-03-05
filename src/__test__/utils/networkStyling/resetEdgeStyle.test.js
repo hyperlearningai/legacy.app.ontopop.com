@@ -1,13 +1,12 @@
-import resetEdgesStyles from '../../../utils/networkStyling/resetEdgesStyles'
+import resetEdgeStyle from '../../../utils/networkStyling/resetEdgeStyle'
 import store from '../../../store'
 import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
-import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 
 jest.mock('../../../utils/nodesEdgesUtils/updateEdges')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 
-describe('resetEdgesStyles', () => {
+describe('resetEdgeStyle', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -27,11 +26,13 @@ describe('resetEdgesStyles', () => {
       }
     }))
 
-    getEdge.mockImplementationOnce(() => ([{
+    const edge = {
       id: '111'
-    }]))
+    }
 
-    await resetEdgesStyles()
+    await resetEdgeStyle({
+      edge
+    })
 
     expect(updateEdges).toHaveBeenCalledWith(
       {

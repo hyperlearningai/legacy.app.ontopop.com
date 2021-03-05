@@ -1,4 +1,4 @@
-export const edgesPerNode = {
+export const totalEdgesPerNode = {
   'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY': [
     {
       from: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',

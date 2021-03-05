@@ -2,7 +2,7 @@
 import setOntologyAddEdge from '../../../utils/editOntology/setOntologyAddEdge'
 import store from '../../../store'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
@@ -46,8 +46,8 @@ store.getState = jest.fn().mockImplementation(() => ({
     1: [],
     141: []
   },
-  edgesPerNode,
-  edgesPerNodeBackup: edgesPerNode
+  totalEdgesPerNode,
+  totalEdgesPerNodeBackup: totalEdgesPerNode
 }))
 
 countEdges.mockImplementation(() => 1)
@@ -169,7 +169,7 @@ describe('setOntologyAddEdge', () => {
           }
         ],
         [
-          'edgesPerNode',
+          'totalEdgesPerNode',
           {
             1: [
               '11',
@@ -1630,7 +1630,7 @@ describe('setOntologyAddEdge', () => {
           },
         ],
         [
-          'edgesPerNodeBackup',
+          'totalEdgesPerNodeBackup',
           {
             1: [
               '11',

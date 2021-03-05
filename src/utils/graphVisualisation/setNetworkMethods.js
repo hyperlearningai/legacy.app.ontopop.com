@@ -9,6 +9,7 @@ import setShortestPathNode from '../shortestPath/setShortestPathNode'
 /**
  * Update VisJs network methods
  * @param  {Object}   params
+ * @param  {Function} params.addNumber                 addNumber action
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Object}   params.network                   VisJs network object
  * @return { undefined }
@@ -16,6 +17,7 @@ import setShortestPathNode from '../shortestPath/setShortestPathNode'
 const setNetworkMethods = async ({
   setStoreState,
   network,
+  addNumber
 }) => {
   network?.on('selectNode', (event) => {
     const {
@@ -65,7 +67,8 @@ const setNetworkMethods = async ({
       if (color?.border === SPIDERABLE_NODE_BORDER_COLOR) {
         expandNode({
           nodeId,
-          setStoreState
+          setStoreState,
+          addNumber
         })
       }
     }

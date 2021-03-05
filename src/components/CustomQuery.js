@@ -7,6 +7,7 @@ import ReactJson from 'react-json-view'
 import Editor from 'react-simple-code-editor'
 import { highlight, languages } from 'prismjs/components/prism-core'
 import { v4 } from 'uuid'
+import { ProgressSpinner } from 'primereact/progressspinner'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_CUSTOM_QUERY } from '../constants/views'
 import makeCustomQuery from '../utils/customQuery/makeCustomQuery'
@@ -23,11 +24,11 @@ const CustomQuery = ({
   setStoreState,
   addToArray,
   removeFromArray,
-  activeLoaders
 }) => {
   const { t } = useTranslation()
 
   const [customQueryString, setCustomQueryString] = useState('g.')
+  const [isLoading, setLoader] = useState(false)
 
   useEffect(() => () => {
     const queryHistory = localStorage.getItem(CUSTOM_QUERIES_LS)
@@ -75,22 +76,35 @@ const CustomQuery = ({
             }}
           />
 
-          <Button
-            tooltip={t('query')}
-            tooltipOptions={{ position: 'top' }}
-            className="custom-query-buttons-button"
-            disabled={customQueryString.length < 4 || activeLoaders > 0}
-            icon="pi pi-chevron-right"
-            iconPos="right"
-            label={t('query')}
-            onClick={() => makeCustomQuery({
-              addNumber,
-              customQueryString,
-              setStoreState,
-              addToArray,
-              t
-            })}
-          />
+          {
+            isLoading ? (
+              <div className="custom-query-loader">
+                <ProgressSpinner
+                  className="spinner"
+                  strokeWidth="4"
+                />
+              </div>
+            ) : (
+              <Button
+                tooltip={t('query')}
+                tooltipOptions={{ position: 'top' }}
+                className="custom-query-buttons-button"
+                disabled={customQueryString.length < 4}
+                icon="pi pi-chevron-right"
+                iconPos="right"
+                label={t('query')}
+                onClick={() => makeCustomQuery({
+                  addNumber,
+                  customQueryString,
+                  setStoreState,
+                  addToArray,
+                  setLoader,
+                  t
+                })}
+              />
+            )
+          }
+
         </div>
 
         <div className="custom-query-info">
@@ -171,7 +185,6 @@ CustomQuery.propTypes = {
   removeFromArray: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
   addToArray: PropTypes.func.isRequired,
-  activeLoaders: PropTypes.number.isRequired,
   customQueryOutput: PropTypes.arrayOf(PropTypes.any),
   customQueryStringHistory: PropTypes.arrayOf(PropTypes.string).isRequired,
 }

@@ -18,13 +18,12 @@ const queueGraphElements = ({
     classesFromApi,
     nodesIdsToDisplay,
     objectPropertiesFromApi,
-    edgesPerNode,
+    totalEdgesPerNode,
     globalNodeStyling,
     userDefinedNodeStyling,
     globalEdgeStyling,
     userDefinedEdgeStyling,
     isPhysicsOn,
-    network
   } = store.getState()
 
   if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
@@ -52,7 +51,7 @@ const queueGraphElements = ({
       classesFromApi,
       nodesIdsToDisplay,
       objectPropertiesFromApi,
-      edgesPerNode,
+      totalEdgesPerNode,
       globalNodeStyling,
       userDefinedNodeStyling,
       globalEdgeStyling,
@@ -62,9 +61,7 @@ const queueGraphElements = ({
       nodeIdsLength,
       nodesEdges,
       processedEdges,
-      currentPhysicsOnState,
       addNumber,
-      network
     }), 1)
   }
 }
