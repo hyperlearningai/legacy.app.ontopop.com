@@ -9,6 +9,7 @@ export default {
   betaVersion: 'Beta version',
   alphaVersionInviteOnly: 'Alpha version | Invite only!',
   home: 'Home',
+  sendFeedback: 'Send feedback',
 
   // navbar
   hideSidebar: 'Hide sidebar',

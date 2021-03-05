@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 - ONTOLOGY-110 Added timeouts to expandNode to avoid browser freezing
 - ONTOLOGY-110 Added timeouts to queueGraphElements to avoid browser freezing
+- ONTOLOGY-108 Added alpha banner and feedback link
 - ONTOLOGY-93 User-defined nodes and edges styles
 - ONTOLOGY-92 Search as entry point after sign in
 - ONTOLOGY-93 API endpoints to create/update/delete edges

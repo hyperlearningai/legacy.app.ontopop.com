@@ -10,7 +10,9 @@ import { Chip } from 'primereact/chip'
 import logo from '../assets/images/logo.svg'
 import logout from '../utils/auth/logout'
 import actions from '../store/actions'
-import { ROUTE_INDEX, ROUTE_LOGIN, ROUTE_PROFILE } from '../constants/routes'
+import {
+  FORM_LINK, ROUTE_INDEX, ROUTE_LOGIN, ROUTE_PROFILE
+} from '../constants/routes'
 
 const HeaderComponent = ({
   activeLoaders,
@@ -43,7 +45,13 @@ const HeaderComponent = ({
       </div>
 
       <div className="header-right">
-        <Chip label={t('alphaVersion')} className="p-mr-2" icon="pi pi-info-circle" />
+        <a
+          href={FORM_LINK}
+          rel="noopener noreferrer nofollow"
+          target="_blank"
+        >
+          <Chip label={`${t('alphaVersion')} | ${t('sendFeedback')}`} className="p-mr-2" icon="pi pi-info-circle" />
+        </a>
 
         <Button
           type="button"
