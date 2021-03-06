@@ -10,6 +10,8 @@ jest.mock('../../../utils/apiCalls/httpCall')
 const t = (id) => en[id]
 const setStoreState = jest.fn()
 const addToArray = jest.fn()
+const addNumber = jest.fn()
+const setLoader = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   user: { token: 'ewj123' }
@@ -29,8 +31,10 @@ describe('makeCustomQuery', () => {
 
     await makeCustomQuery({
       customQueryString,
+      addNumber,
       setStoreState,
       addToArray,
+      setLoader,
       t
     })
 
@@ -40,6 +44,9 @@ describe('makeCustomQuery', () => {
     })
     expect(addToArray).toHaveBeenCalledWith(
       'customQueryStringHistory', '', { alwaysAdd: true }
+    )
+    expect(setLoader.mock.calls).toEqual(
+      [[true], [false]]
     )
     expect(setStoreState.mock.calls).toEqual(
       [
@@ -62,13 +69,18 @@ describe('makeCustomQuery', () => {
 
     await makeCustomQuery({
       customQueryString,
+      addNumber,
       setStoreState,
       addToArray,
+      setLoader,
       t
     })
 
     expect(addToArray).toHaveBeenCalledWith(
       'customQueryStringHistory', 'q.E()', { alwaysAdd: true }
+    )
+    expect(setLoader.mock.calls).toEqual(
+      [[true], [false]]
     )
     expect(setStoreState.mock.calls).toEqual(
       [

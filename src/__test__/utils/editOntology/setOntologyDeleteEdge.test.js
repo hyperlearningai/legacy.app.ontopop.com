@@ -2,29 +2,38 @@
 import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
+import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import { nodesEdges } from '../../fixtures/nodesEdgesNew'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
+import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
+import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/nodesEdgesUtils/countEdges')
+jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+
+countEdges.mockImplementation(() => 1)
+countNodes.mockImplementation(() => 1)
 
 const selectedElement = [
   '11'
 ]
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
 
 getEdge.mockImplementation(() => ({
   from: '1',
@@ -38,7 +47,8 @@ store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
   deletedEdges: [],
   nodesEdges,
-  edgesPerNode,
+  totalEdgesPerNode,
+  objectPropertiesFromApi
 }))
 
 describe('setOntologyDeleteEdge', () => {
@@ -50,6 +60,7 @@ describe('setOntologyDeleteEdge', () => {
     httpCall.mockImplementationOnce(() => ({ error: true }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t
@@ -57,7 +68,7 @@ describe('setOntologyDeleteEdge', () => {
 
     expect(showNotification).toHaveBeenCalledWith(
       {
-        message: 'Could not delete node: 11',
+        message: 'Could not delete edge: 11',
         type: 'warning'
       }
     )
@@ -67,6 +78,7 @@ describe('setOntologyDeleteEdge', () => {
     httpCall.mockImplementationOnce(() => ({ data: {} }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t
@@ -74,7 +86,7 @@ describe('setOntologyDeleteEdge', () => {
 
     expect(showNotification).toHaveBeenLastCalledWith(
       {
-        message: 'Could not delete node: 11',
+        message: 'Could not delete edge: 11',
         type: 'warning'
       }
     )
@@ -90,6 +102,7 @@ describe('setOntologyDeleteEdge', () => {
     }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t

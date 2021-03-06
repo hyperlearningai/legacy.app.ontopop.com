@@ -4,6 +4,7 @@ exports[`EditOntologyRestoreNode should match snapshot when type edge and no opt
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,13 +13,11 @@ exports[`EditOntologyRestoreNode should match snapshot when type edge and no opt
       "setStoreState": [Function],
     }
   }
-  addToArray={[MockFunction]}
-  addToObject={[MockFunction]}
+  addNumber={[MockFunction]}
   mapToProps={[Function]}
   operation="restore"
   optionEdges={Array []}
   optionNodes={Array []}
-  removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
   type="edge"
 >
@@ -30,6 +29,7 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and no opt
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -38,13 +38,11 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and no opt
       "setStoreState": [Function],
     }
   }
-  addToArray={[MockFunction]}
-  addToObject={[MockFunction]}
+  addNumber={[MockFunction]}
   mapToProps={[Function]}
   operation="restore"
   optionEdges={Array []}
   optionNodes={Array []}
-  removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
   type="node"
 >
@@ -56,6 +54,7 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and option
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -64,8 +63,7 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and option
       "setStoreState": [Function],
     }
   }
-  addToArray={[MockFunction]}
-  addToObject={[MockFunction]}
+  addNumber={[MockFunction]}
   mapToProps={[Function]}
   operation="restore"
   optionEdges={Array []}
@@ -77,7 +75,6 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and option
       },
     ]
   }
-  removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
   type="node"
 >

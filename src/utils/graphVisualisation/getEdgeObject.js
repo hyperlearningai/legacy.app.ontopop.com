@@ -10,8 +10,11 @@ const getEdgeObject = ({
   edge,
 }) => {
   const {
-    stylingEdgeCaptionProperty,
+    globalEdgeStyling,
+    userDefinedEdgeStyling,
   } = store.getState()
+
+  const { stylingEdgeCaptionProperty } = edge.userDefined ? userDefinedEdgeStyling : globalEdgeStyling
 
   const edgeLabel = edge[stylingEdgeCaptionProperty]
 

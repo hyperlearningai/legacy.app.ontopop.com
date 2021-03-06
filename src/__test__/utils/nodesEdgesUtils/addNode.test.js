@@ -6,7 +6,7 @@ describe('addNode', () => {
   it('should not add node if existing correctly', async () => {
     const availableNodes = new DataSet([
       {
-        id: 'node-123'
+        id: '123'
       }
     ])
 
@@ -15,7 +15,7 @@ describe('addNode', () => {
     })
 
     await addNode({
-      id: 'node-123'
+      id: '123'
     })
 
     expect(availableNodes.length).toEqual(1)
@@ -28,7 +28,7 @@ describe('addNode', () => {
     })
 
     await addNode({
-      id: 'node-123'
+      id: '123'
     })
 
     expect(availableNodes.length).toEqual(1)

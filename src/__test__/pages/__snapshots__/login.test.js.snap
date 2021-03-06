@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login page should match snapshot when loading 1`] = `
+exports[`Login page should match snapshot when activeLoaders 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,19 +13,20 @@ exports[`Login page should match snapshot when loading 1`] = `
       "setStoreState": [Function],
     }
   }
+  activeLoaders={1}
+  addNumber={[MockFunction]}
   addToObject={[MockFunction]}
-  loading={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>
 `;
 
-exports[`Login page should match snapshot when not loading 1`] = `
+exports[`Login page should match snapshot when no activeLoaders 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -33,10 +35,10 @@ exports[`Login page should match snapshot when not loading 1`] = `
       "setStoreState": [Function],
     }
   }
+  activeLoaders={0}
+  addNumber={[MockFunction]}
   addToObject={[MockFunction]}
-  loading={false}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
 >
   <Component />
 </Connect>

@@ -1,12 +1,12 @@
 import { DataSet } from 'vis-data'
-import addNode from '../../../utils/nodesEdgesUtils/addNode'
+import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import store from '../../../store'
 
-describe('addNode', () => {
+describe('updateNodes', () => {
   it('should not add node if existing correctly', async () => {
     const availableNodes = new DataSet([
       {
-        id: 'node-123'
+        id: '123'
       }
     ])
 
@@ -14,8 +14,8 @@ describe('addNode', () => {
       availableNodes
     })
 
-    await addNode({
-      id: 'node-123'
+    await updateNodes({
+      id: '123'
     })
 
     expect(availableNodes.length).toEqual(1)
@@ -27,8 +27,8 @@ describe('addNode', () => {
       availableNodes
     })
 
-    await addNode({
-      id: 'node-123'
+    await updateNodes({
+      id: '123'
     })
 
     expect(availableNodes.length).toEqual(1)

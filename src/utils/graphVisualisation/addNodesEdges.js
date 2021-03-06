@@ -1,4 +1,5 @@
 /* eslint no-param-reassign:0 */
+import setEdgeStyle from '../networkStyling/setEdgeStyle'
 import addEdge from '../nodesEdgesUtils/addEdge'
 
 /**
@@ -12,13 +13,16 @@ const addNodesEdges = ({
   edge,
   nodesEdges,
 }) => {
-  addEdge(edge)
-
   const {
     from,
     to,
     id
   } = edge
+
+  addEdge(edge)
+  setEdgeStyle({
+    edge
+  })
 
   if (nodesEdges[from]) {
     const index = nodesEdges[from].indexOf(id)

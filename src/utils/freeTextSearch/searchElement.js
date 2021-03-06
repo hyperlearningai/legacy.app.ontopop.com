@@ -40,7 +40,10 @@ const searchElement = ({
       && nodeElement[property].toString().toLowerCase().includes(search.toLowerCase()))
 
       if (isAnnotationPropertyContainingSearch) {
-        elementsToDisplay[nodeId] = 'node'
+        elementsToDisplay[nodeId] = {
+          ...nodeElement,
+          type: 'node',
+        }
         continue
       }
     }
@@ -63,7 +66,10 @@ const searchElement = ({
       && edgeElement[property].toString().toLowerCase().includes(search.toLowerCase()))
 
       if (isContainingSearch) {
-        elementsToDisplay[edgeId] = 'edge'
+        elementsToDisplay[edgeId] = {
+          ...edgeElement,
+          type: 'edge'
+        }
       }
     }
   }

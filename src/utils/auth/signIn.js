@@ -7,10 +7,22 @@ import { NOTIFY_WARNING } from '../../constants/notifications'
 import showNotification from '../notifications/showNotification'
 import httpCall from '../apiCalls/httpCall'
 
+/**
+ * Http call function
+ * @param  {Object}   params
+ * @param  {Function} params.addNumber                  addNumber action
+ * @param  {Class}    params.router                     NextJs router class
+ * @param  {Function} params.addToObject                addToObject action
+ * @param  {String}   params.email                      Email
+ * @param  {String}   params.password                   Password
+ * @param  {Function} params.setShowError               setShowError state function
+ * @param  {Function} params.t                          i18n translation function
+ * @return {*}        response
+ */
 const signIn = async ({
   router,
   addToObject,
-  setStoreState,
+  addNumber,
   email,
   password,
   setShowError,
@@ -19,7 +31,7 @@ const signIn = async ({
   const withAuth = false
 
   const response = await httpCall({
-    setStoreState,
+    addNumber,
     withAuth,
     body: {
       username: email,

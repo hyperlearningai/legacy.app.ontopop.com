@@ -28,6 +28,8 @@ newClassesFromApi[selectedElement] = {
 }
 
 const t = (id) => en[id]
+const addNumber = jest.fn()
+
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
@@ -42,12 +44,13 @@ describe('setOntologyUpdateNode', () => {
     httpCall.mockImplementationOnce(() => ({ error: true }))
 
     store.getState = jest.fn().mockImplementation(() => ({
-      stylingNodeCaptionProperty: 'rdfsLabel',
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: 'rdfsLabel' },
       classesFromApi,
       updatedNodes: [],
     }))
 
     await setOntologyUpdateNode({
+      addNumber,
       selectedElement,
       setStoreState,
       selectedElementProperties,
@@ -66,12 +69,13 @@ describe('setOntologyUpdateNode', () => {
     httpCall.mockImplementationOnce(() => ({ data: {} }))
 
     store.getState = jest.fn().mockImplementation(() => ({
-      stylingNodeCaptionProperty: 'rdfsLabel',
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: 'rdfsLabel' },
       classesFromApi,
       updatedNodes: [],
     }))
 
     await setOntologyUpdateNode({
+      addNumber,
       selectedElement,
       setStoreState,
       selectedElementProperties,
@@ -97,12 +101,13 @@ describe('setOntologyUpdateNode', () => {
     }))
 
     store.getState = jest.fn().mockImplementationOnce(() => ({
-      stylingNodeCaptionProperty: 'rdfsLabel',
+      userDefinedNodeStyling: { stylingNodeCaptionProperty: 'rdfsLabel' },
       classesFromApi,
       updatedNodes: [],
     }))
 
     await setOntologyUpdateNode({
+      addNumber,
       selectedElement,
       setStoreState,
       selectedElementProperties,
@@ -112,7 +117,7 @@ describe('setOntologyUpdateNode', () => {
     expect(updateNodes).toHaveBeenLastCalledWith(
       {
         id: '1',
-        label: 'New node',
+        label: 'New\nnode',
         rdfsLabel: 'New node',
         'Business Area': 'Communications',
         nodeId: 1,
@@ -123,10 +128,13 @@ describe('setOntologyUpdateNode', () => {
       }
     )
 
+    const classesFromApiOutput = JSON.parse(JSON.stringify(newClassesFromApi))
+    classesFromApiOutput['1'].label = 'New\nnode'
+
     expect(setStoreState.mock.calls).toEqual([
       [
         'classesFromApi',
-        newClassesFromApi
+        classesFromApiOutput
       ],
       [
         'updatedNodes',

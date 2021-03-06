@@ -8,9 +8,7 @@ const setup = () => {
   const props = {
     operation: 'update',
     setStoreState: jest.fn(),
-    addToArray: jest.fn(),
-    removeFromObject: jest.fn(),
-    addToObject: jest.fn(),
+    addNumber: jest.fn(),
     optionNodes: [{
       label: 'Node',
       value: 'node'

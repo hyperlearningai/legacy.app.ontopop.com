@@ -4,6 +4,7 @@ exports[`NetworkGraphList should match snapshot  1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],

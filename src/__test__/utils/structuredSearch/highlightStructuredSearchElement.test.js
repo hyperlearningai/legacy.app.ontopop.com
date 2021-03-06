@@ -32,13 +32,27 @@ describe('highlightStructuredSearchElement', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       structuredSelection: {
-        'id-123': 'node',
-        'id-234': 'edge'
+        12: {
+          type: 'node'
+        },
+        111: {
+          type: 'edge'
+        },
       },
-      structuredSelectedElement: 'id-123',
-      stylingNodeHighlightBackgroundColor: '#000',
-      stylingEdgeLineColorHighlight: '#000',
-      network
+      structuredSelectedElement: '12',
+      network,
+      globalEdgeStyling: {
+        stylingEdgeLineColorHighlight: '#000',
+      },
+      globalNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#000',
+      },
+      userDefinedEdgeStyling: {
+        stylingEdgeLineColorHighlight: '#000',
+      },
+      userDefinedNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#000',
+      },
     }))
 
     await highlightStructuredSearchElement({
@@ -46,32 +60,46 @@ describe('highlightStructuredSearchElement', () => {
     })
 
     expect(updateNodes).toHaveBeenCalledWith(
-      { color: { background: '#000' }, id: 'id-123' }
+      { color: { background: '#000' }, id: '12' }
     )
     expect(setStoreState).toHaveBeenCalledWith('structuredPrevSelectedElement', {
       color: {
         background: '#000',
       },
     })
-    expect(focus).toHaveBeenCalledWith('id-123', { animation: true, scale: 2 })
+    expect(focus).toHaveBeenCalledWith('12', { animation: true, scale: 2 })
   })
 
   it('should update edge', async () => {
     getEdge.mockImplementationOnce(() => ({
       color: {},
-      id: '11',
+      id: '111',
       from: '1'
     }))
 
     store.getState = jest.fn().mockImplementation(() => ({
       structuredSelection: {
-        'id-123': 'node',
-        11: 'edge'
+        12: {
+          type: 'node'
+        },
+        111: {
+          type: 'edge'
+        },
       },
-      structuredSelectedElement: '11',
-      stylingNodeHighlightBackgroundColor: '#000',
+      structuredSelectedElement: '111',
+      globalEdgeStyling: {
+        stylingEdgeLineColorHighlight: '#000',
+      },
+      globalNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#000',
+      },
+      userDefinedEdgeStyling: {
+        stylingEdgeLineColorHighlight: '#000',
+      },
+      userDefinedNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#000',
+      },
       objectPropertiesFromApi,
-      stylingEdgeLineColorHighlight: '#000',
       network
     }))
 
@@ -81,11 +109,11 @@ describe('highlightStructuredSearchElement', () => {
 
     expect(updateEdges).toHaveBeenCalledWith(
       {
-        color: { color: '#000' }, id: '11', width: 3,
+        color: { color: '#000' }, id: '111', width: 3,
       }
     )
     expect(setStoreState).toHaveBeenCalledWith('structuredPrevSelectedElement',
-      { color: { color: '#000' }, id: '11', from: '1' })
+      { color: { color: '#000' }, id: '111', from: '1' })
     expect(focus).toHaveBeenCalledWith(
       '1', { animation: true, scale: 1 }
     )

@@ -6,7 +6,7 @@ describe('addEdge', () => {
   it('should not add edge if existing correctly', async () => {
     const availableEdges = new DataSet([
       {
-        id: 'edge-123'
+        id: '123'
       }
     ])
 
@@ -15,7 +15,7 @@ describe('addEdge', () => {
     })
 
     await addEdge({
-      id: 'edge-123'
+      id: '123'
     })
 
     expect(availableEdges.length).toEqual(1)
@@ -28,7 +28,7 @@ describe('addEdge', () => {
     })
 
     await addEdge({
-      id: 'edge-123'
+      id: '123'
     })
 
     expect(availableEdges.length).toEqual(1)

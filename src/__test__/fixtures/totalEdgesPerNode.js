@@ -1,4 +1,4 @@
-export const edgesPerNode = {
+export const totalEdgesPerNode = {
   1: [
     '11',
     '12',

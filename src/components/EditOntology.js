@@ -24,8 +24,10 @@ const EditOntology = ({
   objectPropertiesFromApiBackup,
   deletedNodes,
   deletedEdges,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 }) => {
   const { t } = useTranslation()
 
@@ -77,6 +79,8 @@ const EditOntology = ({
     (nodeId) => {
       const node = getNode(nodeId)
 
+      const { stylingNodeCaptionProperty } = node.userDefined ? userDefinedNodeStyling : globalNodeStyling
+
       const label = node[stylingNodeCaptionProperty]
 
       return ({
@@ -97,10 +101,12 @@ const EditOntology = ({
     } = getEdge(edgeId)
 
     const fromNode = getNode(from)
-    const fromLabel = fromNode ? fromNode[stylingNodeCaptionProperty] : ''
+    const { stylingNodeCaptionProperty: fromStylingNodeCaptionProperty } = from.userDefined ? userDefinedNodeStyling : globalNodeStyling
+    const fromLabel = fromNode ? fromNode[fromStylingNodeCaptionProperty] : ''
 
     const toNode = getNode(to)
-    const toLabel = toNode ? toNode[stylingNodeCaptionProperty] : ''
+    const { stylingNodeCaptionProperty: toStylingNodeCaptionProperty } = from.userDefined ? userDefinedNodeStyling : globalNodeStyling
+    const toLabel = toNode ? toNode[toStylingNodeCaptionProperty] : ''
 
     const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
 
@@ -119,6 +125,8 @@ const EditOntology = ({
         userDefined
       } = objectPropertiesFromApi[edgeId]
 
+      const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
+
       return ({
         value: rdfAbout,
         label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || rdfsLabel,
@@ -128,17 +136,29 @@ const EditOntology = ({
   ), 'label'), ['label'], ['asc'])
 
   const deletedNodesList = deletedNodes?.map(
-    (nodeId) => ({
-      value: nodeId,
-      label: classesFromApiBackup[nodeId] ? classesFromApiBackup[nodeId][stylingNodeCaptionProperty] : nodeId
-    })
+    (nodeId) => {
+      const node = classesFromApiBackup[nodeId]
+
+      const { stylingNodeCaptionProperty } = node && node.userDefined ? userDefinedNodeStyling : globalNodeStyling
+
+      return ({
+        value: nodeId,
+        label: node && node[stylingNodeCaptionProperty] ? node[stylingNodeCaptionProperty] : nodeId
+      })
+    }
   )
 
   const deletedEdgesList = deletedEdges?.map(
-    (edgeId) => ({
-      value: edgeId,
-      label: objectPropertiesFromApiBackup[edgeId] ? objectPropertiesFromApiBackup[edgeId][stylingEdgeCaptionProperty] : edgeId
-    })
+    (edgeId) => {
+      const edge = objectPropertiesFromApiBackup[edgeId]
+
+      const { stylingEdgeCaptionProperty } = edge && edge.userDefined ? userDefinedEdgeStyling : globalEdgeStyling
+
+      return ({
+        value: edgeId,
+        label: edge && edge[stylingEdgeCaptionProperty] ? edge[stylingEdgeCaptionProperty] : edgeId
+      })
+    }
   )
 
   return (
@@ -279,8 +299,10 @@ EditOntology.propTypes = {
   objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
-  stylingNodeCaptionProperty: PropTypes.string.isRequired,
-  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
+  globalNodeStyling: PropTypes.shape().isRequired,
+  userDefinedNodeStyling: PropTypes.shape().isRequired,
+  globalEdgeStyling: PropTypes.shape().isRequired,
+  userDefinedEdgeStyling: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -289,16 +311,20 @@ const mapToProps = ({
   objectPropertiesFromApiBackup,
   deletedNodes,
   deletedEdges,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 }) => ({
   objectPropertiesFromApi,
   classesFromApiBackup,
   objectPropertiesFromApiBackup,
   deletedNodes,
   deletedEdges,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 })
 
 export default connect(

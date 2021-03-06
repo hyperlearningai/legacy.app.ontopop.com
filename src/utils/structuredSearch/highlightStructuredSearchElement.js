@@ -16,20 +16,24 @@ const highlightStructuredSearchElement = ({
   const {
     structuredSelection,
     structuredSelectedElement,
-    stylingNodeHighlightBackgroundColor,
-    stylingEdgeLineColorHighlight,
+    globalEdgeStyling,
+    globalNodeStyling,
+    userDefinedEdgeStyling,
+    userDefinedNodeStyling,
     network
   } = store.getState()
 
   if (!structuredSelectedElement) return false
-  const elementType = structuredSelection[structuredSelectedElement]
+  const { type, userDefined } = structuredSelection[structuredSelectedElement]
 
-  if (elementType === 'node') {
+  if (type === 'node') {
     const node = getNode(structuredSelectedElement)
 
     setStoreState('structuredPrevSelectedElement', node)
 
     const color = node.color || {}
+
+    const { stylingNodeHighlightBackgroundColor } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
     color.background = stylingNodeHighlightBackgroundColor
 
@@ -49,6 +53,8 @@ const highlightStructuredSearchElement = ({
   setStoreState('structuredPrevSelectedElement', edge)
 
   const color = edge.color || {}
+
+  const { stylingEdgeLineColorHighlight } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
 
   color.color = stylingEdgeLineColorHighlight
 

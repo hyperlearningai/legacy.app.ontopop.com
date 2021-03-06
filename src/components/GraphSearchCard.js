@@ -13,14 +13,22 @@ const GraphSearchCard = ({
   setStoreState,
   addToObject,
   searchResult,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 }) => {
   const { t } = useTranslation()
 
   const [isShowMore, setShowMore] = useState(false)
-  const { type } = searchResult
-  const label = searchResult[type === 'node' ? stylingNodeCaptionProperty : stylingEdgeCaptionProperty]
+  const { type, userDefined } = searchResult
+
+  const { stylingNodeCaptionProperty } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+  const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
+
+  const captionProperty = type === 'edge' ? stylingEdgeCaptionProperty : stylingNodeCaptionProperty
+
+  const label = searchResult[captionProperty]
 
   const properties = Object.keys(searchResult).filter((property) => !RESERVED_PROPERTIES.includes(property))
 
@@ -81,20 +89,30 @@ GraphSearchCard.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
   searchResult: PropTypes.shape().isRequired,
-  stylingNodeCaptionProperty: PropTypes.string.isRequired,
-  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
+  globalNodeStyling: PropTypes.shape().isRequired,
+  userDefinedNodeStyling: PropTypes.shape().isRequired,
+  globalEdgeStyling: PropTypes.shape().isRequired,
+  userDefinedEdgeStyling: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   entrySearchResults,
   isQueried,
   stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  stylingEdgeCaptionProperty,
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 }) => ({
   entrySearchResults,
   isQueried,
   stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  stylingEdgeCaptionProperty,
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 })
 
 export default connect(

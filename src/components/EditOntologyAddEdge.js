@@ -14,9 +14,7 @@ const EditOntologyAddEdge = ({
   optionNodes,
   optionEdges,
   setStoreState,
-  addToArray,
-  removeFromObject,
-  addToObject,
+  addNumber,
 }) => {
   const { t } = useTranslation()
 
@@ -118,9 +116,7 @@ const EditOntologyAddEdge = ({
               operation,
               type,
               setStoreState,
-              addToArray,
-              removeFromObject,
-              addToObject,
+              addNumber,
               selectedElementProperties: {
                 from: fromNode,
                 edge,
@@ -148,9 +144,7 @@ EditOntologyAddEdge.propTypes = {
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
   setStoreState: PropTypes.func.isRequired,
-  addToArray: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  addNumber: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

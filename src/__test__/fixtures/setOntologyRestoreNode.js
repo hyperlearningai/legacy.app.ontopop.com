@@ -1461,7 +1461,7 @@ export const setStoreStateFixture = [
     },
   ],
   [
-    'edgesPerNode',
+    'totalEdgesPerNode',
     {
       1: [
         '11',
@@ -10698,5 +10698,13 @@ export const setStoreStateFixture = [
       '21',
       '40',
     ],
+  ],
+  [
+    'availableNodesCount',
+    1,
+  ],
+  [
+    'availableEdgesCount',
+    1,
   ],
 ]

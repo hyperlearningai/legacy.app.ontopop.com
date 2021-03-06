@@ -5,7 +5,7 @@ exports[`_app should match snapshot  1`] = `
   store={
     Object {
       "getState": [Function],
-      "middleware": [Function],
+      "middleware": null,
       "reset": [Function],
       "setState": [Function],
       "subscribe": [Function],
@@ -24,7 +24,7 @@ exports[`_app should match snapshot if error occurs 1`] = `
   store={
     Object {
       "getState": [Function],
-      "middleware": [Function],
+      "middleware": null,
       "reset": [Function],
       "setState": [Function],
       "subscribe": [Function],

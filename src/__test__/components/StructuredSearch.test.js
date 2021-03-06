@@ -8,13 +8,23 @@ import { objectPropertiesFromApi } from '../fixtures/objectPropertiesFromApi'
 const setup = ({ structuredSelection }) => {
   const props = {
     classesFromApi,
-    objectPropertiesFromApi,
     structuredSelection,
     structuredSelectedElement: '33',
+    objectPropertiesFromApi,
     removeFromObject: jest.fn(),
     setStoreState: jest.fn(),
-    stylingNodeCaptionProperty: 'rdfsLabel',
-    stylingEdgeCaptionProperty: 'rdfsLabel',
+    globalEdgeStyling: {
+      stylingEdgeCaptionProperty: 'rdfsLabel',
+    },
+    userDefinedEdgeStyling: {
+      stylingEdgeCaptionProperty: 'rdfsLabel',
+    },
+    globalNodeStyling: {
+      stylingNodeCaptionProperty: 'rdfsLabel',
+    },
+    userDefinedNodeStyling: {
+      stylingNodeCaptionProperty: 'rdfsLabel',
+    },
     annotationProperties: [{
       value: 'rdfAbout',
       label: 'rdfAbout'

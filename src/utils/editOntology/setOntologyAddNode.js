@@ -5,16 +5,19 @@ import addNode from '../nodesEdgesUtils/addNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import { POST_CREATE_NODE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
+import countNodes from '../nodesEdgesUtils/countNodes'
 
 /**
  * ADd ontology nodes
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyAddNode = async ({
+  addNumber,
   setStoreState,
   selectedElementProperties,
   t
@@ -24,22 +27,39 @@ const setOntologyAddNode = async ({
     classesFromApi,
     classesFromApiBackup,
     addedNodes,
-    stylingNodeCaptionProperty,
-    edgesPerNode,
-    edgesPerNodeBackup,
+    totalEdgesPerNode,
+    totalEdgesPerNodeBackup,
+    userDefinedNodeStyling
   } = store.getState()
+
+  const {
+    stylingNodeBorder,
+    stylingNodeBorderSelected,
+    stylingNodeTextFontSize,
+    stylingNodeTextColor,
+    stylingNodeTextFontAlign,
+    stylingNodeShape,
+    stylingNodeBackgroundColor,
+    stylingNodeBorderColor,
+    stylingNodeHighlightBackgroundColor,
+    stylingNodeHighlightBorderColor,
+    stylingNodeHoverBackgroundColor,
+    stylingNodeHoverBorderColor,
+    stylingNodeSize,
+    stylingNodeCaptionProperty,
+  } = userDefinedNodeStyling
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
-  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(totalEdgesPerNodeBackup))
 
   const body = JSON.parse(JSON.stringify(selectedElementProperties))
   body.label = 'class'
 
   const response = await httpCall({
-    setStoreState,
+    addNumber,
     withAuth: true,
     route: POST_CREATE_NODE,
     method: 'post',
@@ -77,7 +97,7 @@ const setOntologyAddNode = async ({
 
   // add label
   newClassesFromApi[id].label = selectedElementProperties[stylingNodeCaptionProperty]
-    ? selectedElementProperties[stylingNodeCaptionProperty].split(' ').join(' ') : ''
+    ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
   // add array for new node in nodes edges connections
   newNodesEdges[id] = []
@@ -87,8 +107,36 @@ const setOntologyAddNode = async ({
   // add as backup
   newClassesFromApiBackup[id] = newClassesFromApi[id]
 
+  // add node style
+  const nodeStyle = {
+    borderWidth: stylingNodeBorder,
+    borderWidthSelected: stylingNodeBorderSelected,
+    font: {
+      size: stylingNodeTextFontSize,
+      color: stylingNodeTextColor,
+      align: stylingNodeTextFontAlign,
+      face: 'Montserrat',
+      bold: '700'
+    },
+    shape: stylingNodeShape,
+    color: {
+      background: stylingNodeBackgroundColor,
+      border: stylingNodeBorderColor,
+      highlight: {
+        background: stylingNodeHighlightBackgroundColor,
+        border: stylingNodeHighlightBorderColor,
+      },
+      hover: {
+        background: stylingNodeHoverBackgroundColor,
+        border: stylingNodeHoverBorderColor,
+      },
+    },
+    size: stylingNodeSize
+  }
+
   addNode({
     ...newClassesFromApi[id],
+    ...nodeStyle
   })
 
   const newAddedNodes = [
@@ -97,8 +145,8 @@ const setOntologyAddNode = async ({
   ]
 
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
-  setStoreState('edgesPerNodeBackup', newEdgesPerNodeBackup)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('classesFromApiBackup', newClassesFromApiBackup)
   setStoreState('addedNodes', newAddedNodes)
@@ -112,6 +160,8 @@ const setOntologyAddNode = async ({
     message,
     type: NOTIFY_SUCCESS
   })
+
+  setStoreState('availableNodesCount', countNodes())
 }
 
 export default setOntologyAddNode

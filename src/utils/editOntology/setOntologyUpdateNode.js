@@ -8,14 +8,15 @@ import httpCall from '../apiCalls/httpCall'
 /**
  * Update ontology nodes
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {String|Array}   params.selectedElement            Selected node ID
  * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Function}       params.addToObject                Add to object action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyUpdateNode = async ({
+  addNumber,
   selectedElement,
   setStoreState,
   selectedElementProperties,
@@ -24,7 +25,7 @@ const setOntologyUpdateNode = async ({
   const {
     classesFromApi,
     updatedNodes,
-    stylingNodeCaptionProperty
+    userDefinedNodeStyling
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
@@ -32,7 +33,7 @@ const setOntologyUpdateNode = async ({
   const body = JSON.parse(JSON.stringify(selectedElementProperties))
 
   const response = await httpCall({
-    setStoreState,
+    addNumber,
     withAuth: true,
     route: PATCH_UPDATE_NODE.replace('{id}', selectedElement),
     method: 'patch',
@@ -65,8 +66,10 @@ const setOntologyUpdateNode = async ({
     ...selectedElementProperties
   }
 
+  const { stylingNodeCaptionProperty } = userDefinedNodeStyling
+
   newClassesFromApi[selectedElement].label = selectedElementProperties[stylingNodeCaptionProperty]
-    ? selectedElementProperties[stylingNodeCaptionProperty].split(' ').join(' ') : ''
+    ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
   updateNodes({ id: selectedElement, ...newClassesFromApi[selectedElement] })
 

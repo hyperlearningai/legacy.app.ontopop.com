@@ -1,21 +1,25 @@
 import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import getNode from '../nodesEdgesUtils/getNode'
-import setEdgeStylesByProperty from '../networkStyling/setEdgeStylesByProperty'
+import setEdgeStyleByProperty from '../networkStyling/setEdgeStyleByProperty'
 import { POST_CREATE_EDGE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
+import countNodes from '../nodesEdgesUtils/countNodes'
+import countEdges from '../nodesEdgesUtils/countEdges'
 
 /**
  * ADd ontology edge
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Object}         params.selectedElement  Element properties with from,to,edge keys
+ * @param  {Object}         params.selectedElement            Element properties with from,to,edge keys
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyRestoreEdge = async ({
+  addNumber,
   setStoreState,
   selectedElement,
   t
@@ -24,7 +28,7 @@ const setOntologyRestoreEdge = async ({
     objectPropertiesFromApi,
     deletedEdges,
     nodesEdges,
-    edgesPerNode,
+    totalEdgesPerNode,
     objectPropertiesFromApiBackup,
     stylingEdgeCaptionProperty
   } = store.getState()
@@ -33,7 +37,7 @@ const setOntologyRestoreEdge = async ({
   const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(objectPropertiesFromApiBackup))
 
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
 
   const restoredEdges = {}
 
@@ -49,7 +53,7 @@ const setOntologyRestoreEdge = async ({
       body.label = 'subclass'
 
       const response = await httpCall({
-        setStoreState,
+        addNumber,
         withAuth: true,
         route: POST_CREATE_EDGE,
         method: 'post',
@@ -120,7 +124,7 @@ const setOntologyRestoreEdge = async ({
           newNodesEdges[to].push(id)
         }
 
-        setEdgeStylesByProperty({
+        setEdgeStyleByProperty({
           edgeId: edge.id
         })
       }
@@ -135,7 +139,7 @@ const setOntologyRestoreEdge = async ({
 
   // add data
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
 
   const restoredEdgesOldIds = Object.keys(restoredEdges)
@@ -148,6 +152,9 @@ const setOntologyRestoreEdge = async ({
       message,
       type: NOTIFY_SUCCESS
     })
+
+    setStoreState('availableNodesCount', countNodes())
+    setStoreState('availableEdgesCount', countEdges())
   }
 }
 

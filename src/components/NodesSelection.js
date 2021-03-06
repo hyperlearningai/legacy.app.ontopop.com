@@ -4,7 +4,6 @@ import {
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-// import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import NodesSelectionDetails from './NodesSelectionDetails'
 import { SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
@@ -20,6 +19,7 @@ const NodesSelection = ({
 
   useEffect(() => () => {
     setStoreState('selectedNode', undefined)
+    setStoreState('isNodeSelectable', false)
 
     resetSelectedNode({
       setStoreState

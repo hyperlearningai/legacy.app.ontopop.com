@@ -32,12 +32,22 @@ describe('highlightElement', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       freeTextSelection: {
-        'id-123': 'node',
-        'id-234': 'edge'
+        12: { type: 'node' },
+        111: { type: 'edge' }
       },
-      freeTextSelectedElement: 'id-123',
-      stylingNodeHighlightBackgroundColor: '#000',
-      stylingEdgeLineColorHighlight: '#000',
+      freeTextSelectedElement: '12',
+      globalEdgeStyling: {
+        stylingEdgeLineColorHighlight: '#000',
+      },
+      globalNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#000'
+      },
+      userDefinedEdgeStyling: {
+        stylingEdgeLineColorHighlight: '#000',
+      },
+      userDefinedNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#000'
+      },
       network
     }))
 
@@ -46,14 +56,14 @@ describe('highlightElement', () => {
     })
 
     expect(updateNodes).toHaveBeenCalledWith(
-      { color: { background: '#000' }, id: 'id-123' }
+      { color: { background: '#000' }, id: '12' }
     )
     expect(setStoreState).toHaveBeenCalledWith('freeTextPrevSelectedElement', {
       color: {
         background: '#000',
       },
     })
-    expect(focus).toHaveBeenCalledWith('id-123', { animation: true, scale: 2 })
+    expect(focus).toHaveBeenCalledWith('12', { animation: true, scale: 2 })
   })
 
   it('should update edge', async () => {
@@ -65,13 +75,23 @@ describe('highlightElement', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       freeTextSelection: {
-        'id-123': 'node',
-        11: 'edge'
+        12: { type: 'node' },
+        11: { type: 'edge' }
       },
       freeTextSelectedElement: '11',
-      stylingNodeHighlightBackgroundColor: '#000',
+      globalEdgeStyling: {
+        stylingEdgeLineColorHighlight: '#000',
+      },
+      globalNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#000'
+      },
+      userDefinedEdgeStyling: {
+        stylingEdgeLineColorHighlight: '#000',
+      },
+      userDefinedNodeStyling: {
+        stylingNodeHighlightBackgroundColor: '#000'
+      },
       objectPropertiesFromApi,
-      stylingEdgeLineColorHighlight: '#000',
       network
     }))
 

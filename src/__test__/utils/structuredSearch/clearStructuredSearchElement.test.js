@@ -13,8 +13,18 @@ describe('clearStructuredSearchElement', () => {
 
   it('should return if no previous selection', async () => {
     store.getState = jest.fn().mockImplementationOnce(() => ({
-      stylingNodeBackgroundColor: '#000',
-      stylingEdgeLineColor: '#000',
+      userDefinedNodeStyling: {
+        stylingNodeBackgroundColor: '#000',
+      },
+      globalNodeStyling: {
+        stylingNodeBackgroundColor: '#000',
+      },
+      userDefinedEdgeStyling: {
+        stylingEdgeLineColor: '#000',
+      },
+      globalEdgeStyling: {
+        stylingEdgeLineColor: '#000',
+      },
       structuredPrevSelectedElement: undefined,
       structuredSelection: {}
     }))
@@ -27,13 +37,23 @@ describe('clearStructuredSearchElement', () => {
 
   it('should updateNodes', async () => {
     store.getState = jest.fn().mockImplementationOnce(() => ({
-      stylingNodeBackgroundColor: '#000',
-      stylingEdgeLineColor: '#000',
+      userDefinedNodeStyling: {
+        stylingNodeBackgroundColor: '#000',
+      },
+      globalNodeStyling: {
+        stylingNodeBackgroundColor: '#000',
+      },
+      userDefinedEdgeStyling: {
+        stylingEdgeLineColor: '#000',
+      },
+      globalEdgeStyling: {
+        stylingEdgeLineColor: '#000',
+      },
       structuredPrevSelectedElement: {
-        id: 'node-123'
+        id: '12'
       },
       structuredSelection: {
-        'node-123': 'node'
+        12: { type: 'node' }
       }
     }))
 
@@ -41,26 +61,36 @@ describe('clearStructuredSearchElement', () => {
 
     expect(updateEdges).toHaveBeenCalledTimes(0)
     expect(updateNodes).toHaveBeenCalledWith(
-      { color: { background: '#000' }, id: 'node-123' }
+      { color: { background: '#000' }, id: '12' }
     )
   })
 
   it('should updateEdges', async () => {
     store.getState = jest.fn().mockImplementationOnce(() => ({
-      stylingNodeBackgroundColor: '#000',
-      stylingEdgeLineColor: '#000',
+      userDefinedNodeStyling: {
+        stylingNodeBackgroundColor: '#000',
+      },
+      globalNodeStyling: {
+        stylingNodeBackgroundColor: '#000',
+      },
+      userDefinedEdgeStyling: {
+        stylingEdgeLineColor: '#000',
+      },
+      globalEdgeStyling: {
+        stylingEdgeLineColor: '#000',
+      },
       structuredPrevSelectedElement: {
-        id: 'edge-123'
+        id: '111'
       },
       structuredSelection: {
-        'edge-123': 'edge'
+        111: { type: 'edge' }
       }
     }))
 
     await clearStructuredSearchElement()
 
     expect(updateEdges).toHaveBeenCalledWith(
-      { color: { color: '#000' }, id: 'edge-123', width: 1 }
+      { color: { color: '#000' }, id: '111', width: 1 }
     )
     expect(updateNodes).toHaveBeenCalledTimes(0)
   })

@@ -232,7 +232,13 @@ export const RESERVED_PROPERTIES = [
   'userId',
   'x',
   'y',
-  'type'
+  'type',
+  'color',
+  'font',
+  'shape',
+  'size',
+  'borderWidth',
+  'borderWidthSelected'
 ]
 
 export const EDGE_PROPERTIES = [
