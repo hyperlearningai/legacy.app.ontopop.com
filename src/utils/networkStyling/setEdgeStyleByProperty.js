@@ -7,7 +7,7 @@ import styleEdgeByProperty from './styleEdgeByProperty'
  * @param  {String}   params.edgeId             Edge ID
  * @return { undefined }
  */
-const setEdgeStylesByProperty = ({
+const setEdgeStyleByProperty = ({
   edgeId
 }) => {
   const {
@@ -39,4 +39,4 @@ const setEdgeStylesByProperty = ({
   })
 }
 
-export default setEdgeStylesByProperty
+export default setEdgeStyleByProperty

@@ -8,9 +8,7 @@ const setup = () => {
     type: 'edge',
     operation: 'delete',
     setStoreState: jest.fn(),
-    addToArray: jest.fn(),
-    removeFromObject: jest.fn(),
-    addToObject: jest.fn(),
+    addNumber: jest.fn(),
     stylingNodeCaptionProperty: 'rfdsLabel'
   }
 

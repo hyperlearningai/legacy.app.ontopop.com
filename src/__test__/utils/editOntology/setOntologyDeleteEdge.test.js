@@ -8,7 +8,7 @@ import {
 } from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import { nodesEdges } from '../../fixtures/nodesEdgesNew'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import en from '../../../i18n/en'
@@ -33,6 +33,7 @@ const selectedElement = [
 ]
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
 
 getEdge.mockImplementation(() => ({
   from: '1',
@@ -46,7 +47,7 @@ store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
   deletedEdges: [],
   nodesEdges,
-  edgesPerNode,
+  totalEdgesPerNode,
   objectPropertiesFromApi
 }))
 
@@ -59,6 +60,7 @@ describe('setOntologyDeleteEdge', () => {
     httpCall.mockImplementationOnce(() => ({ error: true }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t
@@ -76,6 +78,7 @@ describe('setOntologyDeleteEdge', () => {
     httpCall.mockImplementationOnce(() => ({ data: {} }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t
@@ -99,6 +102,7 @@ describe('setOntologyDeleteEdge', () => {
     }))
 
     await setOntologyDeleteEdge({
+      addNumber,
       setStoreState,
       selectedElement,
       t

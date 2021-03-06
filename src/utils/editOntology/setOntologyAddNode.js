@@ -10,12 +10,14 @@ import countNodes from '../nodesEdgesUtils/countNodes'
 /**
  * ADd ontology nodes
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyAddNode = async ({
+  addNumber,
   setStoreState,
   selectedElementProperties,
   t
@@ -25,8 +27,8 @@ const setOntologyAddNode = async ({
     classesFromApi,
     classesFromApiBackup,
     addedNodes,
-    edgesPerNode,
-    edgesPerNodeBackup,
+    totalEdgesPerNode,
+    totalEdgesPerNodeBackup,
     userDefinedNodeStyling
   } = store.getState()
 
@@ -50,14 +52,14 @@ const setOntologyAddNode = async ({
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
-  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(totalEdgesPerNodeBackup))
 
   const body = JSON.parse(JSON.stringify(selectedElementProperties))
   body.label = 'class'
 
   const response = await httpCall({
-    setStoreState,
+    addNumber,
     withAuth: true,
     route: POST_CREATE_NODE,
     method: 'post',
@@ -143,8 +145,8 @@ const setOntologyAddNode = async ({
   ]
 
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
-  setStoreState('edgesPerNodeBackup', newEdgesPerNodeBackup)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('classesFromApiBackup', newClassesFromApiBackup)
   setStoreState('addedNodes', newAddedNodes)

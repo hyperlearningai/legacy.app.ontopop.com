@@ -48,10 +48,7 @@ describe('setNetworkMethods', () => {
     expect(on.mock.calls[4][0]).toEqual(
       'selectEdge'
     )
-    expect(on.mock.calls[5][0]).toEqual(
-      'stabilizationProgress'
-    )
-    expect(once).toHaveBeenCalled()
+
     expect(stabilize).toHaveBeenCalledWith(2000)
     expect(fit).toHaveBeenCalled()
   })

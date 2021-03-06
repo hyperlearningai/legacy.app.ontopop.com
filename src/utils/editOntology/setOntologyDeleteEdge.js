@@ -11,12 +11,14 @@ import countNodes from '../nodesEdgesUtils/countNodes'
 /**
  * Remove connection from ontology
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  setStoreState action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElement            Array of edge IDs
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyDeleteEdge = async ({
+  addNumber,
   setStoreState,
   selectedElement,
   t
@@ -25,14 +27,14 @@ const setOntologyDeleteEdge = async ({
     classesFromApi,
     deletedEdges,
     nodesEdges,
-    edgesPerNode,
+    totalEdgesPerNode,
     objectPropertiesFromApi
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newDeletedEdges = deletedEdges.slice()
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
 
   const edgesDeleted = []
 
@@ -42,7 +44,7 @@ const setOntologyDeleteEdge = async ({
       const edgeId = selectedElement[index]
 
       const response = await httpCall({
-        setStoreState,
+        addNumber,
         withAuth: true,
         route: DELETE_EDGE.replace('{id}', edgeId),
         method: 'delete',
@@ -122,7 +124,7 @@ const setOntologyDeleteEdge = async ({
   }
 
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('deletedEdges', newDeletedEdges)
 

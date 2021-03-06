@@ -8,7 +8,7 @@ import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteNode'
 import { nodesEdges } from '../../fixtures/nodesEdgesNew'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
@@ -19,6 +19,8 @@ import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
+
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
@@ -39,7 +41,7 @@ store.getState = jest.fn().mockImplementation(() => ({
   deletedNodes: [],
   deletedEdges: [],
   nodesEdges,
-  edgesPerNode,
+  totalEdgesPerNode,
   availableNodes: new DataSet(
     Object.keys(classesFromApi).map((property) => ({
       ...classesFromApi[property],
@@ -63,6 +65,7 @@ describe('setOntologyDeleteNode', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyDeleteNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t
@@ -80,6 +83,7 @@ describe('setOntologyDeleteNode', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyDeleteNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t
@@ -103,6 +107,7 @@ describe('setOntologyDeleteNode', () => {
     }))
 
     await setOntologyDeleteNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t

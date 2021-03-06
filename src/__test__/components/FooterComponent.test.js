@@ -4,10 +4,7 @@ import toJson from 'enzyme-to-json'
 import FooterComponent from '../../components/FooterComponent'
 
 const setup = () => {
-  const props = {
-    networkLoadingProgress: 50,
-    isNetworkLoading: true
-  }
+  const props = { }
 
   const component = shallow(<FooterComponent {...props} />)
 

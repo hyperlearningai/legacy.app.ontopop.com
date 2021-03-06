@@ -11,9 +11,7 @@ const EditOntologyDeleteNode = ({
   type,
   operation,
   setStoreState,
-  addToArray,
-  removeFromObject,
-  addToObject,
+  addNumber,
   optionNodes,
 }) => {
   const { t } = useTranslation()
@@ -57,9 +55,7 @@ const EditOntologyDeleteNode = ({
               type,
               selectedElement,
               setStoreState,
-              addToArray,
-              removeFromObject,
-              addToObject,
+              addNumber,
               selectedElementProperties,
               t
             })
@@ -79,9 +75,7 @@ EditOntologyDeleteNode.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  addToArray: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  addNumber: PropTypes.func.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 

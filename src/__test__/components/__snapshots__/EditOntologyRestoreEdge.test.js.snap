@@ -4,6 +4,7 @@ exports[`EditOntologyRestoreEdge should match snapshot when deleted edges 1`] = 
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,8 +13,7 @@ exports[`EditOntologyRestoreEdge should match snapshot when deleted edges 1`] = 
       "setStoreState": [Function],
     }
   }
-  addToArray={[MockFunction]}
-  addToObject={[MockFunction]}
+  addNumber={[MockFunction]}
   classesFromApiBackup={
     Object {
       "1": Object {
@@ -7797,7 +7797,6 @@ matter’ is understood in the broadest possible sense to include also undetache
     }
   }
   operation="restore"
-  removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
   type="edge"
   userDefinedNodeStyling={
@@ -7814,6 +7813,7 @@ exports[`EditOntologyRestoreEdge should match snapshot when no deleted edges 1`]
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -7822,8 +7822,7 @@ exports[`EditOntologyRestoreEdge should match snapshot when no deleted edges 1`]
       "setStoreState": [Function],
     }
   }
-  addToArray={[MockFunction]}
-  addToObject={[MockFunction]}
+  addNumber={[MockFunction]}
   classesFromApiBackup={
     Object {
       "1": Object {
@@ -15603,7 +15602,6 @@ matter’ is understood in the broadest possible sense to include also undetache
     }
   }
   operation="restore"
-  removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
   type="edge"
   userDefinedNodeStyling={

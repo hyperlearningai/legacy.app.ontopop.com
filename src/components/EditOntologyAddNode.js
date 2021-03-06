@@ -12,9 +12,7 @@ const EditOntologyAddNode = ({
   type,
   operation,
   setStoreState,
-  addToArray,
-  removeFromObject,
-  addToObject,
+  addNumber,
   classesFromApi
 }) => {
   const { t } = useTranslation()
@@ -74,9 +72,7 @@ const EditOntologyAddNode = ({
               type,
               selectedElement,
               setStoreState,
-              addToArray,
-              removeFromObject,
-              addToObject,
+              addNumber,
               selectedElementProperties,
               t
             })
@@ -97,9 +93,7 @@ EditOntologyAddNode.propTypes = {
   operation: PropTypes.string.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   setStoreState: PropTypes.func.isRequired,
-  addToArray: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  addNumber: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

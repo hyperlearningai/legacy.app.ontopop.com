@@ -15,9 +15,9 @@ import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
 
 const Login = ({
-  setStoreState,
+  addNumber,
   addToObject,
-  loading
+  activeLoaders
 }) => {
   const { t } = useTranslation()
   const [email, setEmail] = useState('')
@@ -94,7 +94,7 @@ const Login = ({
           }
 
           {
-            loading ? (
+            activeLoaders > 0 ? (
               <div className="auth-loader">
                 <ProgressSpinner
                   className="spinner"
@@ -109,7 +109,7 @@ const Login = ({
                   onClick={() => signIn({
                     router,
                     addToObject,
-                    setStoreState,
+                    addNumber,
                     email,
                     password,
                     setShowError,
@@ -136,15 +136,15 @@ const Login = ({
 }
 
 Login.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  addNumber: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  activeLoaders: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = ({
-  loading
+  activeLoaders
 }) => ({
-  loading
+  activeLoaders
 })
 
 export default connect(

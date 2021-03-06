@@ -1,116 +1,58 @@
 import store from '../../store'
-import addEdge from '../nodesEdgesUtils/addEdge'
-import addNode from '../nodesEdgesUtils/addNode'
-import getNode from '../nodesEdgesUtils/getNode'
+import addExpandedNode from './addExpandedNode'
 import getEdge from '../nodesEdgesUtils/getEdge'
-import setElementsStyle from '../networkStyling/setElementsStyle'
-import getEdgeObject from './getEdgeObject'
-import countNodes from '../nodesEdgesUtils/countNodes'
-import countEdges from '../nodesEdgesUtils/countEdges'
 /**
  * Add nodes and/or edges to graph
  * @param  {Object}   params
  * @param  {Number}   params.nodeId           Selected node id
  * @param  {Function} params.setStoreState    setStoreState action
+ * @param  {Function} params.addNumber        addNumber action
+
  * @return {undefined}
  */
 const expandNode = ({
   nodeId,
-  setStoreState
+  setStoreState,
+  addNumber,
 }) => {
   const {
-    edgesPerNode,
-    classesFromApi,
+    totalEdgesPerNode,
     objectPropertiesFromApi,
     nodesEdges,
-    isPhysicsOn,
+    classesFromApi,
     globalNodeStyling,
     userDefinedNodeStyling
   } = store.getState()
 
-  const triples = edgesPerNode[nodeId]
+  const edges = totalEdgesPerNode[nodeId]
 
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
 
-  let nodesAdded = false
+  if (edges?.length > 0) {
+    addNumber('activeLoaders', 1)
 
-  if (triples?.length > 0) {
-    triples.map((triple) => {
-      const edgeCheck = getEdge(triple)
+    for (let index = 0; index < edges.length; index++) {
+      const edgeId = edges[index]
+      const edge = getEdge(edgeId)
 
-      // check if edge exists
-      if (edgeCheck === null) {
-        const edgeObject = objectPropertiesFromApi[triple.toString()]
+      if (edge !== null) continue
 
-        if (!edgeObject) return false
+      const edgeObject = objectPropertiesFromApi[edgeId]
 
-        const edge = getEdgeObject({
-          edge: edgeObject
-        })
-
-        const {
-          from,
-          to
-        } = edgeObject
-
-        // check if node exists
-        const nodeIdToCheck = from === nodeId ? to : from
-
-        const isNodeNotAvailable = getNode(nodeIdToCheck) === null
-
-        if (isNodeNotAvailable) {
-          const nodeIdObject = classesFromApi[nodeIdToCheck.toString()]
-
-          const { stylingNodeCaptionProperty } = nodeIdObject.userDefined ? userDefinedNodeStyling : globalNodeStyling
-
-          nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
-            ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
-
-          nodeIdObject.x = Math.floor((Math.random() * 100) + 1)
-          nodeIdObject.y = Math.floor((Math.random() * 100) + 1)
-
-          addNode(nodeIdObject)
-
-          if (!newNodesEdges[nodeIdToCheck]) {
-            newNodesEdges[nodeIdToCheck] = []
-          }
-
-          if (!newNodesEdges[nodeId]) {
-            newNodesEdges[nodeId] = []
-          }
-
-          newNodesEdges[nodeIdToCheck].push(triple)
-          newNodesEdges[nodeId].push(triple)
-
-          nodesAdded = true
-        }
-
-        addEdge(edge)
-      }
-      return true
-    })
-  }
-
-  if (nodesAdded) {
-    const isPhysicsOnNow = isPhysicsOn
-    if (!isPhysicsOnNow) {
-      setStoreState('isPhysicsOn', true)
-      setStoreState('physicsRepulsion', false)
-    }
-
-    setStoreState('nodesEdges', newNodesEdges)
-
-    if (!isPhysicsOnNow) {
-      setTimeout(() => {
-        setStoreState('isPhysicsOn', false)
-        setStoreState('physicsRepulsion', false)
-      }, 2000)
+      setTimeout(() => addExpandedNode({
+        nodeId,
+        index,
+        edgesNumber: edges.length,
+        edge: edgeObject,
+        nodesEdges: newNodesEdges,
+        setStoreState,
+        classesFromApi,
+        globalNodeStyling,
+        userDefinedNodeStyling,
+        addNumber,
+      }), 1)
     }
   }
-
-  setElementsStyle()
-  setStoreState('availableNodesCount', countNodes())
-  setStoreState('availableEdgesCount', countEdges())
 }
 
 export default expandNode

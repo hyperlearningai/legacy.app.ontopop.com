@@ -2,7 +2,7 @@
 import setOntologyAddNode from '../../../utils/editOntology/setOntologyAddNode'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import en from '../../../i18n/en'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import { LABEL_PROPERTY, UNIQUE_PROPERTY } from '../../../constants/graph'
@@ -13,6 +13,8 @@ import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const setStoreState = jest.fn()
+const addNumber = jest.fn()
+
 const t = (id) => en[id]
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
@@ -40,8 +42,8 @@ describe('setOntologyAddNode', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       nodesEdges: {},
-      edgesPerNode,
-      edgesPerNodeBackup: edgesPerNode,
+      totalEdgesPerNode,
+      totalEdgesPerNodeBackup: totalEdgesPerNode,
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
@@ -49,6 +51,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -73,8 +76,8 @@ describe('setOntologyAddNode', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       nodesEdges: {},
-      edgesPerNode,
-      edgesPerNodeBackup: edgesPerNode,
+      totalEdgesPerNode,
+      totalEdgesPerNodeBackup: totalEdgesPerNode,
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
@@ -82,6 +85,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -113,8 +117,8 @@ describe('setOntologyAddNode', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       nodesEdges: {},
-      edgesPerNode,
-      edgesPerNodeBackup: edgesPerNode,
+      totalEdgesPerNode,
+      totalEdgesPerNodeBackup: totalEdgesPerNode,
       classesFromApi,
       classesFromApiBackup: classesFromApi,
       addedNodes: [],
@@ -122,6 +126,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -174,16 +179,16 @@ describe('setOntologyAddNode', () => {
           }
         ],
         [
-          'edgesPerNode',
+          'totalEdgesPerNode',
           {
-            ...edgesPerNode,
+            ...totalEdgesPerNode,
             123: []
           }
         ],
         [
-          'edgesPerNodeBackup',
+          'totalEdgesPerNodeBackup',
           {
-            ...edgesPerNode,
+            ...totalEdgesPerNode,
             123: []
           }
         ],

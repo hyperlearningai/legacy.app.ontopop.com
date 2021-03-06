@@ -18,7 +18,7 @@ describe('signIn', () => {
     const router = { push }
 
     const addToObject = jest.fn()
-    const setStoreState = jest.fn()
+    const addNumber = jest.fn()
     const email = 'test@test.com'
     const password = 'test'
     const setShowError = jest.fn()
@@ -31,7 +31,7 @@ describe('signIn', () => {
     await signIn({
       router,
       addToObject,
-      setStoreState,
+      addNumber,
       email,
       password,
       setShowError,
@@ -49,7 +49,7 @@ describe('signIn', () => {
     const router = { push }
 
     const addToObject = jest.fn()
-    const setStoreState = jest.fn()
+    const addNumber = jest.fn()
     const email = 'test@test.com'
     const password = 'test'
     const token = '12345'
@@ -69,7 +69,7 @@ describe('signIn', () => {
     await signIn({
       router,
       addToObject,
-      setStoreState,
+      addNumber,
       email,
       password,
       setShowError,

@@ -4,12 +4,12 @@ import toJson from 'enzyme-to-json'
 import Login from '../../pages/login'
 
 const setup = ({
-  loading
+  activeLoaders
 }) => {
   const props = {
-    setStoreState: jest.fn(),
+    addNumber: jest.fn(),
     addToObject: jest.fn(),
-    loading
+    activeLoaders
   }
 
   const component = shallow(<Login {...props} />)
@@ -20,16 +20,16 @@ const setup = ({
 }
 
 describe('Login page', () => {
-  it('should match snapshot when loading', () => {
+  it('should match snapshot when activeLoaders', () => {
     const { component } = setup({
-      loading: true
+      activeLoaders: 1
     })
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when not loading', () => {
+  it('should match snapshot when no activeLoaders', () => {
     const { component } = setup({
-      loading: false
+      activeLoaders: 0
     })
     expect(toJson(component)).toMatchSnapshot()
   })

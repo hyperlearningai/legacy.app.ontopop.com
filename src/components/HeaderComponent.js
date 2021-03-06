@@ -15,7 +15,7 @@ import {
 } from '../constants/routes'
 
 const HeaderComponent = ({
-  loading,
+  activeLoaders,
   setStoreState,
   user
 }) => {
@@ -27,7 +27,7 @@ const HeaderComponent = ({
     <header>
       <div className="header-left">
         {
-          loading && (
+          activeLoaders > 0 && (
             <div className="loader-box">
               <ProgressSpinner
                 className="spinner"
@@ -105,16 +105,16 @@ const HeaderComponent = ({
 }
 
 HeaderComponent.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  activeLoaders: PropTypes.number.isRequired,
   setStoreState: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
-  loading,
+  activeLoaders,
   user
 }) => ({
-  loading,
+  activeLoaders,
   user
 })
 

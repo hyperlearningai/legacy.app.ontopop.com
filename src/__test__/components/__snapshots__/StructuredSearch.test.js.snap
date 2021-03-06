@@ -4,6 +4,7 @@ exports[`StructuredSearch should match snapshot when no results 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -7823,6 +7824,7 @@ exports[`StructuredSearch should match snapshot when results 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],

@@ -1,6 +1,4 @@
 import createStore from 'redux-zero'
-import { applyMiddleware } from 'redux-zero/middleware'
-import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
 import { MAIN_VIEW_SEARCH, SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
@@ -25,7 +23,7 @@ const initialState = {
   // view updates
   isSidebarOpen: true,
   sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH,
-  loading: false,
+  activeLoaders: 0,
   mainVisualisation: MAIN_VIEW_SEARCH,
 
   // user
@@ -43,8 +41,8 @@ const initialState = {
   objectPropertiesFromApi: {},
   classesFromApiBackup: {},
   objectPropertiesFromApiBackup: {},
-  edgesPerNode: {},
-  edgesPerNodeBackup: {},
+  totalEdgesPerNode: {},
+  totalEdgesPerNodeBackup: {},
   network: undefined,
   annotationProperties: [],
   deletedNodes: [],
@@ -57,7 +55,6 @@ const initialState = {
 
   // Data visualisation
   nodesIdsToDisplay: [],
-  edgesIdsToDisplay: [],
   availableNodes: new DataSet([]),
   availableEdges: new DataSet([]),
   nodesEdges: {},
@@ -135,10 +132,6 @@ const initialState = {
   stylingNodeByProperty: [
     JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
   ],
-
-  // netowrk graph loading
-  isNetworkLoading: false,
-  networkLoadingProgress: 0,
 
   // entry search
   entrySearchFilter: 'all',
@@ -231,7 +224,6 @@ const initialState = {
   }
 }
 
-const middlewares = applyMiddleware(loadingMiddleware)
-const store = createStore(initialState, middlewares)
+const store = createStore(initialState)
 
 export default store

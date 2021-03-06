@@ -9,7 +9,8 @@ import updateEdges from '../nodesEdgesUtils/updateEdges'
 const setHighlightedEdges = () => {
   const {
     highlightedEdges,
-    stylingEdgeLineColorHighlight
+    globalEdgeStyling,
+    userDefinedEdgeStyling
   } = store.getState()
 
   if (highlightedEdges.length === 0) return false
@@ -22,6 +23,8 @@ const setHighlightedEdges = () => {
 
   highlightedEdgesObjects.map((edge) => {
     const color = edge.color || {}
+
+    const { stylingEdgeLineColorHighlight } = edge.userDefined ? userDefinedEdgeStyling : globalEdgeStyling
 
     color.color = stylingEdgeLineColorHighlight
 

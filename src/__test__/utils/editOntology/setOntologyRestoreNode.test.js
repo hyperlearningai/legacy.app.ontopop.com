@@ -7,7 +7,7 @@ import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyRestoreNode'
 import { nodesEdges } from '../../fixtures/nodesEdgesNew'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import getEdgeObject from '../../../utils/graphVisualisation/getEdgeObject'
@@ -26,6 +26,7 @@ const deletedEdges = ['11', '33', '21', '40']
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
@@ -46,8 +47,8 @@ store.getState = jest.fn().mockImplementation(() => ({
   userDefinedNodeStyling: { stylingNodeCaptionProperty: 'rdfsLabel' },
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
   nodesEdges,
-  edgesPerNode,
-  edgesPerNodeBackup: edgesPerNode,
+  totalEdgesPerNode,
+  totalEdgesPerNodeBackup: totalEdgesPerNode,
   globalEdgeStyling: {
     stylingEdgeLineColor: EDGE_COLOR,
     stylingEdgeLineColorHover: EDGE_COLOR,
@@ -86,6 +87,7 @@ describe('setOntologyRestoreNode', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyRestoreNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t
@@ -103,6 +105,7 @@ describe('setOntologyRestoreNode', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyRestoreNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t
@@ -139,6 +142,7 @@ describe('setOntologyRestoreNode', () => {
     }))
 
     await setOntologyRestoreNode({
+      addNumber,
       selectedElement,
       setStoreState,
       t

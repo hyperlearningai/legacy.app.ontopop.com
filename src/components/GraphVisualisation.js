@@ -8,7 +8,7 @@ import GraphContextMenu from './GraphContextMenu'
 import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
-import addElementsToGraph from '../utils/graphVisualisation/addElementsToGraph'
+import queueGraphElements from '../utils/graphVisualisation/queueGraphElements'
 
 const GraphVisualisation = ({
   currentGraph,
@@ -25,7 +25,8 @@ const GraphVisualisation = ({
   physicsHierarchicalView,
   physicsRepulsion,
   isPhysicsOn,
-  globalEdgeStyling
+  globalEdgeStyling,
+  addNumber
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
@@ -49,8 +50,9 @@ const GraphVisualisation = ({
     } else if (nodesIdsToDisplay.length > 0) {
       setStoreState('isNetworkLoading', true)
 
-      addElementsToGraph({
+      queueGraphElements({
         setStoreState,
+        addNumber
       })
     }
   }, [
@@ -90,6 +92,7 @@ const GraphVisualisation = ({
   useEffect(() => setNetworkMethods({
     setStoreState,
     network,
+    addNumber
   }), [
     network,
     nodesIdsToDisplay
@@ -154,6 +157,7 @@ GraphVisualisation.propTypes = {
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
   globalEdgeStyling: PropTypes.shape().isRequired,
+  addNumber: PropTypes.func.isRequired,
 }
 
 GraphVisualisation.defaultProps = {

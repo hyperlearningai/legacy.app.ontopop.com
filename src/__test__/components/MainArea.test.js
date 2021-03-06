@@ -11,6 +11,7 @@ const setup = ({
     setStoreState: jest.fn(),
     addToObject: jest.fn(),
     removeFromObject: jest.fn(),
+    addNumber: jest.fn(),
     mainVisualisation
   }
 

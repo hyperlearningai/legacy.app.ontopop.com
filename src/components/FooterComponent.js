@@ -1,36 +1,12 @@
 import React from 'react'
-import { connect } from 'redux-zero/react'
-import PropTypes from 'prop-types'
-import { ProgressBar } from 'primereact/progressbar'
+import { version } from '../../package.json'
 
-const FooterComponent = ({
-  networkLoadingProgress,
-  isNetworkLoading
-}) => (
+const FooterComponent = () => (
   <footer>
-    {isNetworkLoading
-      ? (
-        <ProgressBar
-          showValue={false}
-          value={networkLoadingProgress.toFixed(0)}
-        />
-      ) : null}
+    <div className="footer-right">
+      {`Ontology Visualisation v${version}`}
+    </div>
   </footer>
 )
 
-FooterComponent.propTypes = {
-  isNetworkLoading: PropTypes.bool.isRequired,
-  networkLoadingProgress: PropTypes.number.isRequired,
-}
-
-const mapToProps = ({
-  networkLoadingProgress,
-  isNetworkLoading
-}) => ({
-  networkLoadingProgress,
-  isNetworkLoading
-})
-
-export default connect(
-  mapToProps
-)(FooterComponent)
+export default FooterComponent

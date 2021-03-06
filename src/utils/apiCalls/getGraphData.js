@@ -16,11 +16,13 @@ import httpCall from './httpCall'
 /**
  * Get graph data from API
  * @param  {Object}   params
+ * @param  {Function} params.addNumber                  addNumber action
  * @param  {Function} params.setStoreState              setStoreState action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
 const getGraphData = async ({
+  addNumber,
   setStoreState,
   t
 }) => {
@@ -31,7 +33,7 @@ const getGraphData = async ({
   const withAuth = !!user.token
 
   const response = await httpCall({
-    setStoreState,
+    addNumber,
     withAuth,
     route: GET_GRAPH_MODEL_1,
     method: 'get',

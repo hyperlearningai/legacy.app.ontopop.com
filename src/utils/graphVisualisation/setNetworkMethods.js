@@ -9,6 +9,7 @@ import setShortestPathNode from '../shortestPath/setShortestPathNode'
 /**
  * Update VisJs network methods
  * @param  {Object}   params
+ * @param  {Function} params.addNumber                 addNumber action
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Object}   params.network                   VisJs network object
  * @return { undefined }
@@ -16,6 +17,7 @@ import setShortestPathNode from '../shortestPath/setShortestPathNode'
 const setNetworkMethods = async ({
   setStoreState,
   network,
+  addNumber
 }) => {
   network?.on('selectNode', (event) => {
     const {
@@ -65,7 +67,8 @@ const setNetworkMethods = async ({
       if (color?.border === SPIDERABLE_NODE_BORDER_COLOR) {
         expandNode({
           nodeId,
-          setStoreState
+          setStoreState,
+          addNumber
         })
       }
     }
@@ -99,23 +102,6 @@ const setNetworkMethods = async ({
         return setStoreState('selectedEdge', edgeId)
       }
     }
-  })
-
-  network?.on('stabilizationProgress', (params) => {
-    const {
-      nodesIdsToDisplay,
-    } = store.getState()
-
-    if (nodesIdsToDisplay) {
-      const percentage = parseFloat(params.iterations / params.total).toFixed(2)
-
-      setStoreState('networkLoadingProgress', percentage * 100)
-    }
-  })
-
-  network?.once('stabilizationIterationsDone', () => {
-    setStoreState('networkLoadingProgress', 0)
-    setStoreState('isNetworkLoading', false)
   })
 
   await network?.stabilize(2000)

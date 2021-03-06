@@ -59,6 +59,8 @@ const FreeTextSearch = ({
           value={search}
           onChange={(e) => {
             setSearch(e.target.value)
+            clearElement()
+
             searchElement({
               search: e.target.value,
               setStoreState
@@ -105,7 +107,11 @@ const FreeTextSearch = ({
                     onClick={() => {
                       removeFromObject('freeTextSelection', elementId)
 
-                      if (elementId === freeTextSelectedElement) setStoreState('freeTextSelectedElement', '')
+                      if (elementId === freeTextSelectedElement) {
+                        clearElement()
+
+                        setStoreState('freeTextSelectedElement', '')
+                      }
                     }}
                     icon="pi pi-times"
                   />

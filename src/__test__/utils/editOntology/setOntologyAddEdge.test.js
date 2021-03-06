@@ -2,13 +2,13 @@
 import setOntologyAddEdge from '../../../utils/editOntology/setOntologyAddEdge'
 import store from '../../../store'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
-import setEdgeStylesByProperty from '../../../utils/networkStyling/setEdgeStylesByProperty'
+import setEdgeStyleByProperty from '../../../utils/networkStyling/setEdgeStyleByProperty'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
@@ -18,12 +18,13 @@ jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
-jest.mock('../../../utils/networkStyling/setEdgeStylesByProperty')
+jest.mock('../../../utils/networkStyling/setEdgeStyleByProperty')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
+const addNumber = jest.fn()
 
 const selectedElementProperties = {
   from: '1',
@@ -45,8 +46,8 @@ store.getState = jest.fn().mockImplementation(() => ({
     1: [],
     141: []
   },
-  edgesPerNode,
-  edgesPerNodeBackup: edgesPerNode
+  totalEdgesPerNode,
+  totalEdgesPerNodeBackup: totalEdgesPerNode
 }))
 
 countEdges.mockImplementation(() => 1)
@@ -60,6 +61,7 @@ describe('setOntologyAddEdge', () => {
     httpCall.mockImplementationOnce(() => ({ error: true }))
 
     await setOntologyAddEdge({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -77,6 +79,7 @@ describe('setOntologyAddEdge', () => {
     httpCall.mockImplementationOnce(() => ({ data: {} }))
 
     await setOntologyAddEdge({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -103,6 +106,7 @@ describe('setOntologyAddEdge', () => {
     }))
 
     await setOntologyAddEdge({
+      addNumber,
       setStoreState,
       selectedElementProperties,
       t
@@ -128,7 +132,7 @@ describe('setOntologyAddEdge', () => {
       ]
     )
 
-    expect(setEdgeStylesByProperty.mock.calls).toEqual(
+    expect(setEdgeStyleByProperty.mock.calls).toEqual(
       [[{ edgeId: '123' }]]
     )
 
@@ -165,7 +169,7 @@ describe('setOntologyAddEdge', () => {
           }
         ],
         [
-          'edgesPerNode',
+          'totalEdgesPerNode',
           {
             1: [
               '11',
@@ -1626,7 +1630,7 @@ describe('setOntologyAddEdge', () => {
           },
         ],
         [
-          'edgesPerNodeBackup',
+          'totalEdgesPerNodeBackup',
           {
             1: [
               '11',

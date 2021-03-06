@@ -38,6 +38,7 @@ const setup = () => {
     setStoreState: jest.fn(),
     showContextMenu: true,
     removeFromObject: jest.fn(),
+    addNumber: jest.fn(),
     globalEdgeStyling: {
       stylingEdgeLineColor: EDGE_COLOR,
       stylingEdgeLineColorHover: EDGE_COLOR,

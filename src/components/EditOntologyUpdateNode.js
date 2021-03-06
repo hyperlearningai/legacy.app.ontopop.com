@@ -12,9 +12,7 @@ import restoreUpdatedElement from '../utils/editOntology/restoreUpdatedElement'
 const EditOntologyUpdateNode = ({
   operation,
   setStoreState,
-  addToArray,
-  removeFromObject,
-  addToObject,
+  addNumber,
   optionNodes,
   classesFromApi,
 }) => {
@@ -92,9 +90,7 @@ const EditOntologyUpdateNode = ({
                     type,
                     selectedElement,
                     setStoreState,
-                    addToArray,
-                    removeFromObject,
-                    addToObject,
+                    addNumber,
                     selectedElementProperties,
                     t
                   })
@@ -117,10 +113,8 @@ const EditOntologyUpdateNode = ({
 EditOntologyUpdateNode.propTypes = {
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  addToArray: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
+  addNumber: PropTypes.func.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  addToObject: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
 }
 
