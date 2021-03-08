@@ -46,6 +46,7 @@ export default {
 
   // data loading
   couldNotQueryGraph: 'Could not query graph!',
+  couldNotQueryNotes: 'Could not query notes!',
   couldNotQueryAnnotationProperties: 'Could not query annotation properties!',
   couldNotQueryEdgeProperties: 'Could not query object properties!',
   noNodesToDisplay: 'No nodes to display!',
@@ -382,8 +383,20 @@ export default {
   // notes
   dateCreated: 'Created:',
   dateLastUpdated: 'Updated:',
-  userId: 'User ID:'
-
+  userId: 'User ID:',
+  graph: 'Graph',
+  noteText: 'Note Text',
+  addNote: 'Add Note',
+  addNewNote: 'Add New Note',
+  addGraphNote: 'Add Graph Note',
+  addNodeNote: 'Add Node Note',
+  addEdgeNote: 'Add Edge Note',
+  forNode: 'For Node',
+  forEdge: 'For Edge',
+  nodeId: 'Node ID:',
+  highlightNotes: 'Highlight Notes',
+  noteCreated: 'Note Created',
+  couldNotCreateNote: 'Could Not Create Note',
 
   // api calls
   apiCallNotValid: 'Invalid http request',

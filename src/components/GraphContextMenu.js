@@ -53,6 +53,21 @@ const GraphContextMenu = ({
     }
   }
 
+  if (nodeId) {
+    menu[2] = {
+      label: t('addNote'),
+      icon: 'pi pi-fw pi-plus',
+      command: () => {
+        expandNode({
+          nodeId,
+          setStoreState,
+          addNumber,
+        })
+        setStoreState('showContextMenu', false)
+      }
+    }
+  }
+
   return (
     <Menu
       className="context-menu"

@@ -53,9 +53,8 @@ import {
   SIDEBAR_VIEW_STYLING,
   SIDEBAR_VIEW_STRUCTURED_SEARCH,
   MAIN_VIEW_SEARCH,
-  MAIN_VIEW_GRAPH
-  SIDEBAR_VIEW_NOTES,
-  SIDEBAR_VIEW_STRUCTURED_SEARCH
+  MAIN_VIEW_GRAPH,
+  SIDEBAR_VIEW_NOTES
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
@@ -72,7 +71,7 @@ import CustomQuery from './CustomQuery'
 import EditOntology from './EditOntology'
 import NetworkStyling from './NetworkStyling'
 import StructuredSearch from './StructuredSearch'
-import NotesList from "./NotesList";
+import NotesList from './NotesList'
 import EntrySearch from './EntrySearch'
 
 const Sidebar = ({
@@ -247,8 +246,8 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_NOTES)}
           className={sidebarView === SIDEBAR_VIEW_NOTES ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            setStoreState('isNodeSelectable', true)
             setView(SIDEBAR_VIEW_NOTES)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
           }}
         >
           <FaStickyNote />
