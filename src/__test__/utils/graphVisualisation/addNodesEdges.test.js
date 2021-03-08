@@ -1,8 +1,6 @@
-import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import addNodesEdges from '../../../utils/graphVisualisation/addNodesEdges'
 import setEdgeStyle from '../../../utils/networkStyling/setEdgeStyle'
 
-jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/networkStyling/setEdgeStyle')
 
 describe('addNodesEdges', () => {
@@ -29,7 +27,6 @@ describe('addNodesEdges', () => {
       nodesEdges,
     })
 
-    expect(addEdge).toHaveBeenCalledWith(edge)
     expect(setEdgeStyle).toHaveBeenCalledWith({ edge })
 
     expect(nodesEdges).toEqual({

@@ -4,8 +4,6 @@ import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
-import clearEdges from '../../../utils/nodesEdgesUtils/clearEdges'
-import clearNodes from '../../../utils/nodesEdgesUtils/clearNodes'
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
@@ -18,9 +16,6 @@ const nodesIdsToDisplay = [
   '170',
   '141'
 ]
-
-jest.mock('../../../utils/nodesEdgesUtils/clearEdges')
-jest.mock('../../../utils/nodesEdgesUtils/clearNodes')
 
 jest.useFakeTimers()
 
@@ -78,11 +73,11 @@ describe('queueGraphElements', () => {
 
     expect(setStoreState.mock.calls).toEqual(
       [
+        ['availableNodesCount', 0],
+        ['availableEdgesCount', 0],
         ['isPhysicsOn', false]
       ]
     )
-    expect(clearEdges).toHaveBeenCalledWith()
-    expect(clearNodes).toHaveBeenCalledWith()
     expect(addNumber).toHaveBeenCalledWith('activeLoaders', 1)
     expect(setTimeout.mock.calls).toEqual([
       [expect.any(Function), 1],

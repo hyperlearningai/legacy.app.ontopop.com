@@ -2,8 +2,6 @@ import actionAfterNodesAdded from '../../../utils/graphVisualisation/actionAfter
 import store from '../../../store'
 import highlightSpiderableNodes from '../../../utils/networkStyling/highlightSpiderableNodes'
 import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
-import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
-import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
@@ -32,12 +30,8 @@ store.getState = jest.fn().mockImplementation(() => ({
 
 jest.mock('../../../utils/nodesEdgesUtils/getNodeIds')
 jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
-jest.mock('../../../utils/nodesEdgesUtils/countNodes')
-jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 
 getNodeIds.mockImplementationOnce(() => ['111'])
-countNodes.mockImplementationOnce(() => 111)
-countEdges.mockImplementationOnce(() => 111)
 
 jest.useFakeTimers()
 
@@ -54,8 +48,7 @@ describe('actionAfterNodesAdded', () => {
     })
 
     expect(setStoreState.mock.calls).toEqual(
-      [['availableNodesCount', 111],
-        ['availableEdgesCount', 111],
+      [
         ['nodesEdges', {
           1: [
             '11',

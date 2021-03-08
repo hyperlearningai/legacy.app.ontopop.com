@@ -11,7 +11,6 @@ import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import setEdgeStyleByProperty from '../../../utils/networkStyling/setEdgeStyleByProperty'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import httpCall from '../../../utils/apiCalls/httpCall'
-import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
@@ -20,7 +19,6 @@ jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/networkStyling/setEdgeStyleByProperty')
 jest.mock('../../../utils/apiCalls/httpCall')
-jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]
@@ -49,8 +47,6 @@ store.getState = jest.fn().mockImplementation(() => ({
   totalEdgesPerNode,
   totalEdgesPerNodeBackup: totalEdgesPerNode
 }))
-
-countEdges.mockImplementation(() => 1)
 
 describe('setOntologyAddEdge', () => {
   afterEach(() => {
@@ -114,14 +110,17 @@ describe('setOntologyAddEdge', () => {
 
     expect(addEdge.mock.calls).toEqual(
       [[{
-        edgeId: '123',
-        from: '1',
-        id: '123',
-        label: 'Provided to',
-        rdfAbout: '11',
-        rdfsLabel: 'Provided to',
-        to: '141',
-        userDefined: true
+        addNumber,
+        edge: {
+          edgeId: '123',
+          from: '1',
+          id: '123',
+          label: 'Provided to',
+          rdfAbout: '11',
+          rdfsLabel: 'Provided to',
+          to: '141',
+          userDefined: true
+        }
       }]]
     )
 
@@ -3094,10 +3093,6 @@ describe('setOntologyAddEdge', () => {
           'addedEdges', [
             '123',
           ]
-        ],
-        [
-          'availableEdgesCount',
-          1,
         ],
       ]
     )

@@ -28,6 +28,10 @@ const queueGraphElements = ({
 
   if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
 
+  // reset nodes and edges count
+  setStoreState('availableNodesCount', 0)
+  setStoreState('availableEdgesCount', 0)
+
   const currentPhysicsOnState = isPhysicsOn
 
   // turn physics off to speed up loading time when restoring large graphsa

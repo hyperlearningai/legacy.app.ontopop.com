@@ -97,7 +97,6 @@ GraphSearchCard.propTypes = {
 
 const mapToProps = ({
   entrySearchResults,
-  isQueried,
   stylingNodeCaptionProperty,
   stylingEdgeCaptionProperty,
   globalNodeStyling,
@@ -106,7 +105,6 @@ const mapToProps = ({
   userDefinedEdgeStyling
 }) => ({
   entrySearchResults,
-  isQueried,
   stylingNodeCaptionProperty,
   stylingEdgeCaptionProperty,
   globalNodeStyling,
