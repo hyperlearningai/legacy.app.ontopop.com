@@ -57,7 +57,7 @@ describe('addExpandedNode', () => {
     expect(setNodeStyle).toHaveBeenCalledTimes(1)
 
     expect(addEdge).toHaveBeenLastCalledWith(
-      edge
+      { edge, addNumber }
     )
 
     expect(actionAfterNodesAdded).toHaveBeenCalledWith({

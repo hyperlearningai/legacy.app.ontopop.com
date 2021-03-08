@@ -3,6 +3,7 @@ import addNode from '../nodesEdgesUtils/addNode'
 import { USER_DEFINED_PROPERTY } from '../../constants/graph'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import actionAfterNodesAdded from './actionAfterNodesAdded'
+import addEdge from '../nodesEdgesUtils/addEdge'
 
 /**
  * Node queue to avoid browser freezing
@@ -49,9 +50,12 @@ const addElementToGraph = ({
     ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
   addNode({
-    ...nodeIdObject,
-    x: Math.random() * 1500, // for scattering when in physics mode
-    y: Math.random() * 1500,
+    node: {
+      ...nodeIdObject,
+      x: Math.random() * 1500, // for scattering when in physics mode
+      y: Math.random() * 1500,
+    },
+    addNumber
   })
   setNodeStyle({ node: nodeIdObject, skipSpider: true })
 
@@ -81,6 +85,8 @@ const addElementToGraph = ({
       && nodesIdsToDisplay.includes(from.toString())
 
       if (isEdgeDisplayable) {
+        addEdge({ edge, addNumber })
+
         addNodesEdges({
           edge,
           nodesEdges,
@@ -98,9 +104,12 @@ const addElementToGraph = ({
           ? nodeToAddObject[captionProperty].replace(/ /g, '\n') : ''
 
         addNode({
-          ...nodeToAddObject,
-          x: Math.random() * 1500, // for scattering when in physics mode
-          y: Math.random() * 1500,
+          node: {
+            ...nodeToAddObject,
+            x: Math.random() * 1500, // for scattering when in physics mode
+            y: Math.random() * 1500,
+          },
+          addNumber
         })
         setNodeStyle({ node: nodeToAddObject, skipSpider: true })
       }

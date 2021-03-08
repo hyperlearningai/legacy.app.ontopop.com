@@ -151,74 +151,80 @@ describe('setOntologyRestoreNode', () => {
     expect(setElementsStyle).toHaveBeenCalledWith()
     expect(addNode).toHaveBeenLastCalledWith(
       {
-        'Business Area': 'Maintain Operate',
-        Synonym: 'Point, Feature',
-        borderWidth: undefined,
-        borderWidthSelected: undefined,
-        color: {
-          background: undefined,
-          border: undefined,
-          highlight: {
+        addNumber,
+        node: {
+          'Business Area': 'Maintain Operate',
+          Synonym: 'Point, Feature',
+          borderWidth: undefined,
+          borderWidthSelected: undefined,
+          color: {
             background: undefined,
             border: undefined,
+            highlight: {
+              background: undefined,
+              border: undefined,
+            },
+            hover: {
+              background: undefined,
+              border: undefined,
+            },
           },
-          hover: {
-            background: undefined,
-            border: undefined,
+          font: {
+            align: undefined,
+            bold: '700',
+            color: undefined,
+            face: 'Montserrat',
+            size: undefined,
           },
-        },
-        font: {
-          align: undefined,
-          bold: '700',
-          color: undefined,
-          face: 'Montserrat',
+          id: '40',
+          label: 'Node',
+          nodeId: 100,
+          rdfAbout: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
+          rdfsLabel: 'Node',
+          shape: undefined,
           size: undefined,
-        },
-        id: '40',
-        label: 'Node',
-        nodeId: 100,
-        rdfAbout: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
-        rdfsLabel: 'Node',
-        shape: undefined,
-        size: undefined,
-        skosComment: 'A Node can also be defined as a point in a network or diagram at which lines or pathways intersect or branch.',
-        skosDefinition: 'A zero dimensional Entity with a position but no volume that is usually represented by a small round dot.',
-        userDefined: false,
+          skosComment: 'A Node can also be defined as a point in a network or diagram at which lines or pathways intersect or branch.',
+          skosDefinition: 'A zero dimensional Entity with a position but no volume that is usually represented by a small round dot.',
+          userDefined: false,
+        }
       }
     )
     expect(addEdge).toHaveBeenLastCalledWith(
       {
-        arrows: {
-          to: true,
-        },
-        color: {
-          color: '#070b11',
-          highlight: '#9c27b0',
-          hover: '#070b11',
-          inherit: 'from',
-          opacity: 1,
-        },
-        dashes: false,
-        font: {
-          align: 'horizontal',
-          color: '#070b11',
-          size: 12,
-        },
-        from: '1',
-        id: '11',
-        label: 'Provided to',
-        labelHighlightBold: true,
-        predicate: '11',
-        rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-        rdfsLabel: 'Provided to',
-        selectionWidth: 3,
-        smooth: {
-          forceDirection: 'none',
-          roundness: 0.45,
-          type: 'cubicBezier',
-        },
-        to: '141',
-        width: 1,
+        addNumber,
+        edge: {
+          arrows: {
+            to: true,
+          },
+          color: {
+            color: '#070b11',
+            highlight: '#9c27b0',
+            hover: '#070b11',
+            inherit: 'from',
+            opacity: 1,
+          },
+          dashes: false,
+          font: {
+            align: 'horizontal',
+            color: '#070b11',
+            size: 12,
+          },
+          from: '1',
+          id: '11',
+          label: 'Provided to',
+          labelHighlightBold: true,
+          predicate: '11',
+          rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+          rdfsLabel: 'Provided to',
+          selectionWidth: 3,
+          smooth: {
+            forceDirection: 'none',
+            roundness: 0.45,
+            type: 'cubicBezier',
+          },
+          to: '141',
+          width: 1,
+        }
       }
     )
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)

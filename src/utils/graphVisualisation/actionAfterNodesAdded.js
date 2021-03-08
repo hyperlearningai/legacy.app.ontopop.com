@@ -1,5 +1,3 @@
-import countNodes from '../nodesEdgesUtils/countNodes'
-import countEdges from '../nodesEdgesUtils/countEdges'
 import highlightSpiderableNodes from '../networkStyling/highlightSpiderableNodes'
 import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import store from '../../store'
@@ -26,8 +24,6 @@ const actionAfterNodesAdded = ({
   const currentPhysicsOnState = isPhysicsOn
   const currentPhysicsRepulsionState = physicsRepulsion
 
-  setStoreState('availableNodesCount', countNodes())
-  setStoreState('availableEdgesCount', countEdges())
   setStoreState('nodesEdges', JSON.parse(JSON.stringify(nodesEdges)))
 
   // turn physics on to scatter nodes around

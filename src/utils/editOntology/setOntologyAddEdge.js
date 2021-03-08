@@ -5,7 +5,6 @@ import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import setEdgeStyleByProperty from '../networkStyling/setEdgeStyleByProperty'
 import getNode from '../nodesEdgesUtils/getNode'
-import countEdges from '../nodesEdgesUtils/countEdges'
 import { POST_CREATE_EDGE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 
@@ -108,7 +107,7 @@ const setOntologyAddEdge = async ({
   const isToVisible = getNode(from) !== null
 
   if (isFromVisible && isToVisible) {
-    addEdge(edge)
+    addEdge({ edge, addNumber })
 
     newNodesEdges[from].push(id)
     newNodesEdges[to].push(id)
@@ -145,8 +144,6 @@ const setOntologyAddEdge = async ({
     message,
     type: NOTIFY_SUCCESS
   })
-
-  setStoreState('availableEdgesCount', countEdges())
 }
 
 export default setOntologyAddEdge

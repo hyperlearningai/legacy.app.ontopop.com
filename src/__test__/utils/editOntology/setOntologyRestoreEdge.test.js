@@ -105,14 +105,17 @@ describe('setOntologyRestoreEdge', () => {
     })
 
     expect(addEdge).toHaveBeenLastCalledWith({
-      edgeId: 11,
-      from: '1',
-      id: '11',
-      label: 'Subclass of',
-      rdfsLabel: 'Subclass of',
-      role: 'Subclass of',
-      to: '141',
-      userDefined: false,
+      addNumber,
+      edge: {
+        edgeId: 11,
+        from: '1',
+        id: '11',
+        label: 'Subclass of',
+        rdfsLabel: 'Subclass of',
+        role: 'Subclass of',
+        to: '141',
+        userDefined: false,
+      }
     })
 
     expect(setEdgeStyleByProperty).toHaveBeenLastCalledWith(
