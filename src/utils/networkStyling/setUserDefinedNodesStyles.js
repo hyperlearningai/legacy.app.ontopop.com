@@ -36,7 +36,7 @@ const setUserDefinedNodesStyles = () => {
     stylingNodeCaptionProperty,
   } = userDefinedNodeStyling
 
-  const nodeStyle = {
+  const nodeStyle = JSON.parse(JSON.stringify({
     borderWidth: stylingNodeBorder,
     borderWidthSelected: stylingNodeBorderSelected,
     font: {
@@ -60,8 +60,12 @@ const setUserDefinedNodesStyles = () => {
       },
     },
     size: stylingNodeSize
-  }
+  }))
 
+  console.log({
+    nodeStyle,
+    availableNodes
+  })
   // update node style
   availableNodes.map((node) => {
     const nodeWithoutCoordinates = JSON.parse(JSON.stringify(node))

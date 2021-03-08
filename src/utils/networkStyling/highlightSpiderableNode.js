@@ -31,18 +31,11 @@ const highlightSpiderableNode = ({
   const currentNodeConnections = nodesEdges[id]?.length
   const totalNodesEdges = totalEdgesPerNode[id]?.length
 
-  let existingColorProperties
-
-  if (node.color) {
-    existingColorProperties = node.color
-  }
-
   const isSpiderable = currentNodeConnections < totalNodesEdges
 
   updateNodes({
     id,
     color: {
-      ...existingColorProperties,
       border: isSpiderable
         ? SPIDERABLE_NODE_BORDER_COLOR : stylingNodeBorderColor
     },

@@ -45,6 +45,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-93 Removed boundingBoxSelection clearNodesSelection util
 
 ### Fixed
+- ONTOLOGY-110 Fixed bug: all nodes were highlighted after changing node background color, now working properly
 - ONTOLOGY-93 Node selection bug when in shortest path or node neighbourhood mode after nodes filter/nodes selection mode
 - ONTOLOGY-93 Node/edge count update after ontology management operations
 
