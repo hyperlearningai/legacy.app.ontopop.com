@@ -11,6 +11,7 @@ const setup = () => {
       nodeId: 'node-123'
     },
     setStoreState: jest.fn(),
+    addNumber: jest.fn(),
   }
 
   const component = shallow(<GraphContextMenu {...props} />)

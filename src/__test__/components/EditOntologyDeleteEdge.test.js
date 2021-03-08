@@ -6,11 +6,9 @@ import EditOntologyDeleteEdge from '../../components/EditOntologyDeleteEdge'
 const setup = () => {
   const props = {
     type: 'edge',
-    opearation: 'delete',
+    operation: 'delete',
     setStoreState: jest.fn(),
-    addToArray: jest.fn(),
-    removeFromObject: jest.fn(),
-    addToObject: jest.fn(),
+    addNumber: jest.fn(),
     stylingNodeCaptionProperty: 'rfdsLabel'
   }
 

@@ -22,46 +22,46 @@ const NetworkGraphList = ({
       </div>
       <div className="network-graph-list">
         {
-        graphViewsKeys.map((graphViewsKey) => {
-          const { label, noDelete } = graphData[graphViewsKey]
+          graphViewsKeys.map((graphViewsKey) => {
+            const { label, noDelete } = graphData[graphViewsKey]
 
-          return (
-            <div
-              className={`network-graph-list-row ${currentGraph === graphViewsKey ? 'network-graph-list-row-selected' : ''}`}
-              key={`selected-node-row-${graphViewsKey}`}
-            >
-              <div className="network-graph-list-row-delete">
-                {
-                  !noDelete && (
-                    <Button
-                      tooltip={`${t('removeGraph')}: ${label}`}
-                      onClick={() => {
-                        if (currentGraph === graphViewsKey) {
-                          setStoreState('currentGraph', 'graph-0')
-                        }
+            return (
+              <div
+                className={`network-graph-list-row ${currentGraph === graphViewsKey ? 'network-graph-list-row-selected' : ''}`}
+                key={`selected-node-row-${graphViewsKey}`}
+              >
+                <div className="network-graph-list-row-delete">
+                  {
+                    !noDelete && (
+                      <Button
+                        tooltip={`${t('removeGraph')}: ${label}`}
+                        onClick={() => {
+                          if (currentGraph === graphViewsKey) {
+                            setStoreState('currentGraph', 'graph-0')
+                          }
 
-                        removeFromObject('graphData', graphViewsKey)
-                      }}
-                      icon="pi pi-times"
-                    />
-                  )
-                }
+                          removeFromObject('graphData', graphViewsKey)
+                        }}
+                        icon="pi pi-times"
+                      />
+                    )
+                  }
+                </div>
+
+                <div className="network-graph-list-row-main">
+                  <Button
+                    tooltip={`${t('viewGraph')}: ${label}`}
+                    disabled={currentGraph === graphViewsKey}
+                    onClick={() => setStoreState('currentGraph', graphViewsKey)}
+                    label={label}
+                    icon="pi pi-chevron-right"
+                    iconPos="right"
+                  />
+                </div>
               </div>
-
-              <div className="network-graph-list-row-main">
-                <Button
-                  tooltip={`${t('viewGraph')}: ${label}`}
-                  disabled={currentGraph === graphViewsKey}
-                  onClick={() => setStoreState('currentGraph', graphViewsKey)}
-                  label={label}
-                  icon="pi pi-chevron-right"
-                  iconPos="right"
-                />
-              </div>
-            </div>
-          )
-        })
-      }
+            )
+          })
+        }
       </div>
     </>
   )

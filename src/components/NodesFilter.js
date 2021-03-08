@@ -1,5 +1,6 @@
 /* eslint react/no-array-index-key:0 */
 import {
+  useEffect,
   useState,
 } from 'react'
 import { connect } from 'redux-zero/react'
@@ -18,6 +19,10 @@ const NodesFilter = ({
   addToObject
 }) => {
   const { t } = useTranslation()
+
+  useEffect(() => () => {
+    setStoreState('isNodeSelectable', false)
+  }, [])
 
   const defaultNodeFilter = {
     property: '',

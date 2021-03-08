@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 import store from '../../store'
 import {
   NOTIFY_WARNING
@@ -11,15 +11,18 @@ import setObjectPropertiesFromApi from './setObjectPropertiesFromApi'
 import setAnnotationProperties from './setAnnotationProperties'
 import { AUTH_COOKIE } from '../../constants/auth'
 import { ROUTE_INDEX } from '../../constants/routes'
+import httpCall from './httpCall'
 
 /**
  * Get graph data from API
  * @param  {Object}   params
+ * @param  {Function} params.addNumber                  addNumber action
  * @param  {Function} params.setStoreState              setStoreState action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
 const getGraphData = async ({
+  addNumber,
   setStoreState,
   t
 }) => {
@@ -27,63 +30,22 @@ const getGraphData = async ({
     user
   } = store.getState()
 
-  setStoreState('loading', true)
+  const withAuth = !!user.token
 
-  try {
-    const config = {
-      headers: {
-        Authorization: user.token
-      }
-    }
+  const response = await httpCall({
+    addNumber,
+    withAuth,
+    route: GET_GRAPH_MODEL_1,
+    method: 'get',
+    t
+  })
 
-    const response = await axios.get(GET_GRAPH_MODEL_1, config)
+  const {
+    error,
+    data
+  } = response
 
-    setStoreState('loading', false)
-
-    if (response.status !== 200) {
-      return showNotification({
-        message: t('couldNotQueryGraph'),
-        type: NOTIFY_WARNING
-      })
-    }
-
-    const {
-      nodes,
-      edges
-    } = response.data
-
-    if (!nodes || !edges) {
-      return showNotification({
-        message: t('couldNotQueryGraph'),
-        type: NOTIFY_WARNING
-      })
-    }
-
-    const nodesJson = JSON.parse(nodes)
-    const edgesJson = JSON.parse(edges)
-
-    setAnnotationProperties({
-      setStoreState,
-      nodes: nodesJson
-    })
-
-    setClassesFromApi({
-      setStoreState,
-      nodes: nodesJson
-    })
-
-    setObjectPropertiesFromApi({
-      setStoreState,
-      edges: edgesJson
-    })
-
-    getTriplesFromApi({
-      setStoreState,
-      edges: edgesJson
-    })
-  } catch (error) {
-    setStoreState('loading', false)
-
+  if (error) {
     setTimeout(() => {
       localStorage.removeItem(AUTH_COOKIE)
       window.location.replace(ROUTE_INDEX)
@@ -94,6 +56,41 @@ const getGraphData = async ({
       type: NOTIFY_WARNING
     })
   }
+
+  const {
+    nodes,
+    edges
+  } = data
+
+  if (!nodes || !edges) {
+    return showNotification({
+      message: t('couldNotQueryGraph'),
+      type: NOTIFY_WARNING
+    })
+  }
+
+  const nodesJson = JSON.parse(nodes)
+  const edgesJson = JSON.parse(edges)
+
+  setAnnotationProperties({
+    setStoreState,
+    nodes: nodesJson
+  })
+
+  setClassesFromApi({
+    setStoreState,
+    nodes: nodesJson
+  })
+
+  setObjectPropertiesFromApi({
+    setStoreState,
+    edges: edgesJson
+  })
+
+  getTriplesFromApi({
+    setStoreState,
+    edges: edgesJson
+  })
 }
 
 export default getGraphData

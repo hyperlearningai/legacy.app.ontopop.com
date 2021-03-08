@@ -1,43 +1,48 @@
 import { SPIDERABLE_NODE_BORDER_COLOR, SPIDERABLE_NODE_BORDER_WIDTH } from '../../constants/graph'
 import store from '../../store'
-import getNode from '../nodesEdgesUtils/getNode'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
  * Highlight spiderable node borders
  * @param  {Object}   params
- * @param  {String}   params.nodeId           Node ID
+ * @param  {String}   params.node           Node object
  * @return { undefined }
  */
 const highlightSpiderableNode = ({
-  nodeId
+  node
 }) => {
   const {
     nodesEdges,
-    edgesPerNode,
+    totalEdgesPerNode,
+    globalNodeStyling,
+    userDefinedNodeStyling
   } = store.getState()
 
-  const currentNodeConnections = nodesEdges[nodeId]?.length
-  const totalNodesEdges = edgesPerNode[nodeId]?.length
+  const {
+    id,
+    userDefined
+  } = node
 
-  if (currentNodeConnections < totalNodesEdges) {
-    const currentNodeProperties = getNode(nodeId)
+  const {
+    stylingNodeBorderColor,
+    stylingNodeBorder
+  } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
-    let existingColorProperties
+  const currentNodeConnections = nodesEdges[id]?.length
+  const totalNodesEdges = totalEdgesPerNode[id]?.length
 
-    if (currentNodeProperties.color) {
-      existingColorProperties = currentNodeProperties.color
-    }
+  const isSpiderable = currentNodeConnections < totalNodesEdges
 
-    updateNodes({
-      id: nodeId,
-      color: {
-        ...existingColorProperties,
-        border: SPIDERABLE_NODE_BORDER_COLOR
-      },
-      borderWidth: SPIDERABLE_NODE_BORDER_WIDTH
-    })
-  }
+  updateNodes({
+    id,
+    color: {
+      border: isSpiderable
+        ? SPIDERABLE_NODE_BORDER_COLOR : stylingNodeBorderColor
+    },
+    borderWidth: isSpiderable
+      ? SPIDERABLE_NODE_BORDER_WIDTH
+      : stylingNodeBorder
+  })
 }
 
 export default highlightSpiderableNode

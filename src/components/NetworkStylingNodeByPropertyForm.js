@@ -266,36 +266,8 @@ NetworkStylingNodeByPropertyForm.propTypes = {
 }
 
 const mapToProps = ({
-  stylingNodeShape,
-  stylingNodeBorder,
-  stylingNodeBorderSelected,
-  stylingNodeBorderColor,
-  stylingNodeBackgroundColor,
-  stylingNodeHighlightBorderColor,
-  stylingNodeHighlightBackgroundColor,
-  stylingNodeTextColor,
-  stylingNodeSize,
-  stylingNodeHoverBackgroundColor,
-  stylingNodeHoverBorderColor,
-  stylingNodeTextFontSize,
-  stylingNodeTextFontAlign,
-  stylingNodeCaptionProperty,
-  annotationProperties
+  annotationProperties,
 }) => ({
-  stylingNodeHoverBackgroundColor,
-  stylingNodeHoverBorderColor,
-  stylingNodeShape,
-  stylingNodeBorder,
-  stylingNodeBorderSelected,
-  stylingNodeBorderColor,
-  stylingNodeBackgroundColor,
-  stylingNodeHighlightBorderColor,
-  stylingNodeHighlightBackgroundColor,
-  stylingNodeTextColor,
-  stylingNodeSize,
-  stylingNodeTextFontSize,
-  stylingNodeTextFontAlign,
-  stylingNodeCaptionProperty,
   annotationProperties
 })
 

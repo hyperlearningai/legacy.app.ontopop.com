@@ -10,10 +10,12 @@ import { Chip } from 'primereact/chip'
 import logo from '../assets/images/logo.svg'
 import logout from '../utils/auth/logout'
 import actions from '../store/actions'
-import { ROUTE_INDEX, ROUTE_LOGIN, ROUTE_PROFILE } from '../constants/routes'
+import {
+  FORM_LINK, ROUTE_INDEX, ROUTE_LOGIN, ROUTE_PROFILE
+} from '../constants/routes'
 
 const HeaderComponent = ({
-  loading,
+  activeLoaders,
   setStoreState,
   user
 }) => {
@@ -25,7 +27,7 @@ const HeaderComponent = ({
     <header>
       <div className="header-left">
         {
-          loading && (
+          activeLoaders > 0 && (
             <div className="loader-box">
               <ProgressSpinner
                 className="spinner"
@@ -43,7 +45,13 @@ const HeaderComponent = ({
       </div>
 
       <div className="header-right">
-        <Chip label={t('alphaVersion')} className="p-mr-2" icon="pi pi-info-circle" />
+        <a
+          href={FORM_LINK}
+          rel="noopener noreferrer nofollow"
+          target="_blank"
+        >
+          <Chip label={`${t('alphaVersion')} | ${t('sendFeedback')}`} className="p-mr-2" icon="pi pi-info-circle" />
+        </a>
 
         <Button
           type="button"
@@ -97,16 +105,16 @@ const HeaderComponent = ({
 }
 
 HeaderComponent.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  activeLoaders: PropTypes.number.isRequired,
   setStoreState: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
-  loading,
+  activeLoaders,
   user
 }) => ({
-  loading,
+  activeLoaders,
   user
 })
 

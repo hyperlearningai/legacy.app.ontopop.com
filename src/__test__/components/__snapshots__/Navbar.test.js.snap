@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar should match snapshot  1`] = `
+exports[`Navbar should match snapshot when MAIN_VIEW_GRAPH 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -14,8 +15,44 @@ exports[`Navbar should match snapshot  1`] = `
   }
   availableEdgesCount={333}
   availableNodesCount={200}
+  entrySearchResults={
+    Array [
+      Object {
+        "id": "123",
+      },
+    ]
+  }
+  mainVisualisation="graph"
   mapToProps={[Function]}
-  selectedGraphVersion="original"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Navbar should match snapshot when MAIN_VIEW_SEARCH 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  availableEdgesCount={333}
+  availableNodesCount={200}
+  entrySearchResults={
+    Array [
+      Object {
+        "id": "123",
+      },
+    ]
+  }
+  mainVisualisation="search"
+  mapToProps={[Function]}
 >
   <Component />
 </Connect>

@@ -16,6 +16,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.4.0]
+### Added
+- ONTOLOGY-110 Turned search into form to allow pressing enter on search
+- ONTOLOGY-110 Added timeouts to expandNode to avoid browser freezing
+- ONTOLOGY-110 Added timeouts to queueGraphElements to avoid browser freezing
+- ONTOLOGY-108 Added alpha banner and feedback link
+- ONTOLOGY-93 User-defined nodes and edges styles
+- ONTOLOGY-92 Search as entry point after sign in
+- ONTOLOGY-93 API endpoints to create/update/delete edges
+- ONTOLOGY-93 API endpoints to create/update/delete nodes
+- ONTOLOGY-93 Added httpCall function
+- ONTOLOGY-26 Structured search
+- ONTOLOGY-78 Login page with login endpoint
+
+### Changed
+- ONTOLOGY-110 Sequential node/adge count update after node/edge added
+- ONTOLOGY-110 Node styling now performed to each node during queue processing to avoid browser freezing
+- ONTOLOGY-110 Added activeLoaders to replace loading in store
+- ONTOLOGY-93 Refactored several utils and components to use user-defined nodes and edges styles
+- ONTOLOGY-93 Refactored edge management components and utils
+- ONTOLOGY-93 Refactored node management components and utils
+- ONTOLOGY-93 Refactored functions with api calls to use the httpCall function
+
+### Deprecated
+
+### Removed
+- ONTOLOGY-110 Removed redux loading middleware
+- ONTOLOGY-93 Removed boundingBoxSelection clearNodesSelection util
+
+### Fixed
+- ONTOLOGY-110 Fixed bug: all nodes were highlighted after changing node background color, now working properly
+- ONTOLOGY-93 Node selection bug when in shortest path or node neighbourhood mode after nodes filter/nodes selection mode
+- ONTOLOGY-93 Node/edge count update after ontology management operations
+
+### Security
+- ONTOLOGY-78 Added beared token to API requests
+
+
 ## [0.3.0]
 ### Added
 - ONTOLOGY-62 Added multiple URL endpoints based on stage

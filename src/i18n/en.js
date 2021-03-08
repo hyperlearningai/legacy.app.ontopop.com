@@ -9,6 +9,7 @@ export default {
   betaVersion: 'Beta version',
   alphaVersionInviteOnly: 'Alpha version | Invite only!',
   home: 'Home',
+  sendFeedback: 'Send feedback',
 
   // navbar
   hideSidebar: 'Hide sidebar',
@@ -26,6 +27,7 @@ export default {
   // sidebar
   networkGraphs: 'Network graphs',
   nodeNeighbourhood: 'Node neighbourhood',
+  structuredSearch: 'Structured search',
   ontologyFilter: 'Ontology filter',
   shortestPath: 'Shortest path',
   toggleSidebar: 'Toggle sidebar',
@@ -51,6 +53,13 @@ export default {
   node: 'Node',
   noRelationships: 'No relationships found',
   selectNodeFromGraph: 'Select node from graph',
+
+  // structured search
+  filterElementsByArbitraryPropsCombination: 'Filter nodes or adges by any arbitrary combination of one or more node property values',
+  and: 'And',
+  or: 'Or',
+  chooseLogic: 'Choose logic',
+  elementsFound: 'Elements found',
 
   // filter
   filterNodesByNodeProps: 'Filter Nodes by Node Properties',
@@ -122,6 +131,7 @@ export default {
   // Physics Edge
   stylingEdgeByProperty: 'Edge styling by property',
   edgeStylingGlobal: 'Global edge styling',
+  edgeStylingUserDefined: 'User-defined edge styling',
   edgeStyling: 'Edge styling',
   stylingEdgeLength: 'Edge length',
   stylingEdgeWidth: 'Edge thickness',
@@ -146,6 +156,7 @@ export default {
   nodeStyling: 'Node styling',
   stylingNodeByProperty: 'Node styling by property',
   nodeStylingGlobal: 'Global node styling',
+  nodeStylingUserDefined: 'User-defined node styling',
   stylingNodeSize: 'Node size',
   stylingNodeShape: 'Node shape',
   nodeColor: 'Node colour',
@@ -265,6 +276,26 @@ export default {
   toNode: 'To node',
   toAndFromNodesEqual: 'To and from nodes cannot be the same!',
   connectionAlreadyExists: 'Connection already exists',
+  couldNotAddNode: 'Could not add node',
+  couldNotUpdateNode: 'Could not update node',
+  couldNotDeleteNode: 'Could not delete node',
+  couldNotRestoreNode: 'Could not restore node',
+  couldNotAddEdge: 'Could not add edge',
+  couldNotUpdateEdge: 'Could not update edge',
+  couldNotDeleteEdge: 'Could not delete edge',
+  couldNotRestoreEdge: 'Could not restore edge',
+  nodeAdded: 'Node added',
+  nodeUpdated: 'Node updated',
+  nodeDeleted: 'Node deleted',
+  nodeRestored: 'Node restored',
+  edgeAdded: 'Edge added',
+  edgeUpdated: 'Edge updated',
+  edgeDeleted: 'Edge deleted',
+  edgeRestored: 'Edge restored',
+  nodesDeleted: 'Nodes deleted',
+  nodesRestored: 'Nodes restored',
+  edgesDeleted: 'Edges deleted',
+  edgesRestored: 'Edges restored',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',
@@ -295,6 +326,19 @@ export default {
   from: 'From',
   to: 'to',
   nodesProperties: 'Nodes properties',
+
+  // entry search
+  advancedSearchOptions: 'Advanced search options',
+  entrySearch: 'Search',
+  searchGraph: 'Search graph',
+  sidebarForAdvancedOptions: 'You can set advanced options on the sidebar',
+  resultsType: 'Results\' types to show',
+  all: 'All',
+  advancedSearch: 'Advanced search',
+  showAdvancedSearch: 'Show advanced search',
+  searchResults: 'Search results',
+  moreInfo: 'More info',
+  lessInfo: 'Less info',
 
   // search
   search: 'Search',
@@ -332,5 +376,8 @@ export default {
   firstName: 'First Name',
   lastName: 'Last Name',
   company: 'Company',
-  changePassword: 'Change Password'
+  changePassword: 'Change Password',
+
+  // api calls
+  apiCallNotValid: 'Invalid http request',
 }

@@ -11,7 +11,9 @@ import updateNodes from '../nodesEdgesUtils/updateNodes'
 const highlightSpiderableNodes = () => {
   const {
     nodesEdges,
-    edgesPerNode,
+    totalEdgesPerNode,
+    globalNodeStyling,
+    userDefinedNodeStyling
   } = store.getState()
 
   const availableNodesIDs = getNodeIds()
@@ -19,28 +21,29 @@ const highlightSpiderableNodes = () => {
   if (availableNodesIDs.length > 0) {
     availableNodesIDs.map((nodeId) => {
       const currentNodeConnections = nodesEdges[nodeId]?.length
-      const totalNodesEdges = edgesPerNode[nodeId]?.length
+      const totalNodesEdges = totalEdgesPerNode[nodeId]?.length
 
-      if (currentNodeConnections < totalNodesEdges) {
-        const currentNodeProperties = getNode(nodeId)
+      const node = getNode(nodeId)
 
-        let existingColorProperties
+      const { userDefined } = node
 
-        if (currentNodeProperties.color) {
-          existingColorProperties = currentNodeProperties.color
-        }
+      const {
+        stylingNodeBorderColor,
+        stylingNodeBorder
+      } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
-        updateNodes({
-          id: nodeId,
-          color: {
-            ...existingColorProperties,
-            border: SPIDERABLE_NODE_BORDER_COLOR
-          },
-          borderWidth: SPIDERABLE_NODE_BORDER_WIDTH
-        })
-      }
+      const isSpiderable = currentNodeConnections < totalNodesEdges
 
-      return true
+      return updateNodes({
+        id: nodeId,
+        color: {
+          border: isSpiderable
+            ? SPIDERABLE_NODE_BORDER_COLOR : stylingNodeBorderColor
+        },
+        borderWidth: isSpiderable
+          ? SPIDERABLE_NODE_BORDER_WIDTH
+          : stylingNodeBorder
+      })
     })
   }
 }

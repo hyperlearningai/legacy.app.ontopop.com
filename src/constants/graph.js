@@ -229,8 +229,16 @@ export const RESERVED_PROPERTIES = [
   'nodeId',
   'edgeId',
   USER_DEFINED_PROPERTY,
+  'userId',
   'x',
-  'y'
+  'y',
+  'type',
+  'color',
+  'font',
+  'shape',
+  'size',
+  'borderWidth',
+  'borderWidthSelected'
 ]
 
 export const EDGE_PROPERTIES = [

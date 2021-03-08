@@ -1,24 +1,32 @@
 import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import getNode from '../nodesEdgesUtils/getNode'
-import setEdgeStylesByProperty from '../networkStyling/setEdgeStylesByProperty'
+import setEdgeStyleByProperty from '../networkStyling/setEdgeStyleByProperty'
+import { POST_CREATE_EDGE } from '../../constants/api'
+import httpCall from '../apiCalls/httpCall'
+import showNotification from '../notifications/showNotification'
+import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 
 /**
  * ADd ontology edge
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Object}         params.selectedElement  Element properties with from,to,edge keys
+ * @param  {Object}         params.selectedElement            Element properties with from,to,edge keys
+ * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
-const setOntologyRestoreEdge = ({
+const setOntologyRestoreEdge = async ({
+  addNumber,
   setStoreState,
   selectedElement,
+  t
 }) => {
   const {
     objectPropertiesFromApi,
     deletedEdges,
     nodesEdges,
-    edgesPerNode,
+    totalEdgesPerNode,
     objectPropertiesFromApiBackup,
     stylingEdgeCaptionProperty
   } = store.getState()
@@ -27,17 +35,54 @@ const setOntologyRestoreEdge = ({
   const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(objectPropertiesFromApiBackup))
 
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
 
-  // remove selected elements from deleted connection
-  const newDeletedEdges = deletedEdges.filter((connection) => !selectedElement.includes(connection))
-  setStoreState('deletedEdges', newDeletedEdges)
+  const restoredEdges = {}
 
   // restore connections from graph
   if (selectedElement.length > 0) {
-    selectedElement.map((element) => {
+    for (let index = 0; index < selectedElement.length; index++) {
+      const oldId = selectedElement[index]
+
+      const body = newObjectPropertiesFromApiBackup[oldId] ? JSON.parse(JSON.stringify(newObjectPropertiesFromApiBackup[oldId])) : undefined
+
+      if (!body) return false
+
+      body.label = 'subclass'
+
+      const response = await httpCall({
+        addNumber,
+        withAuth: true,
+        route: POST_CREATE_EDGE,
+        method: 'post',
+        body,
+        t
+      })
+
+      const {
+        error, data
+      } = response
+
+      const message = `${t('couldNotRestoreNode')}: ${oldId}`
+      if (error) {
+        showNotification({
+          message,
+          type: NOTIFY_WARNING
+        })
+        continue
+      }
+
+      if (!data || Object.keys(data).length !== 1) {
+        showNotification({
+          message,
+          type: NOTIFY_WARNING
+        })
+        continue
+      }
+
+      const { id } = data[Object.keys(data)[0]]
+
       // add to object properties
-      const id = element
       newObjectPropertiesFromApi[id] = newObjectPropertiesFromApiBackup[id]
 
       const {
@@ -66,7 +111,7 @@ const setOntologyRestoreEdge = ({
       if (
         isFromVisible
         && isToVisible) {
-        addEdge(edge)
+        addEdge({ edge, addNumber })
 
         // add connections
         if (!newNodesEdges[from].includes(id)) {
@@ -77,19 +122,35 @@ const setOntologyRestoreEdge = ({
           newNodesEdges[to].push(id)
         }
 
-        setEdgeStylesByProperty({
+        setEdgeStyleByProperty({
           edgeId: edge.id
         })
       }
 
-      return true
-    })
+      restoredEdges[id] = oldId
+    }
   }
+
+  // remove selected elements from deleted connection
+  const newDeletedEdges = deletedEdges.filter((connection) => !restoredEdges[connection])
+  setStoreState('deletedEdges', newDeletedEdges)
 
   // add data
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
+
+  const restoredEdgesOldIds = Object.keys(restoredEdges)
+
+  if (restoredEdgesOldIds.length > 0) {
+    const restoredEdgesIds = restoredEdgesOldIds.map((edgeId) => restoredEdgesOldIds[edgeId])
+
+    const message = `${t('edgesRestored')}: ${restoredEdgesIds.join(', ')}`
+    showNotification({
+      message,
+      type: NOTIFY_SUCCESS
+    })
+  }
 }
 
 export default setOntologyRestoreEdge

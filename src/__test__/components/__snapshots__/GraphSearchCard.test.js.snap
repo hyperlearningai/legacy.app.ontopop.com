@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphSearchCard should match snapshot 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addToObject={[MockFunction]}
+  mapToProps={[Function]}
+  searchResult={
+    Object {
+      "id": "123",
+      "rdfAbout": "http://test.test/test",
+      "rdfsLabel": "test",
+    }
+  }
+  setStoreState={[MockFunction]}
+  stylingEdgeCaptionProperty="rdfsLabel"
+  stylingNodeCaptionProperty="rdfsLabel"
+>
+  <Component />
+</Connect>
+`;

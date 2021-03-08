@@ -9,11 +9,11 @@ import setOntologyRestoreEdge from './setOntologyRestoreEdge'
 /**
  * Set graph full data
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {String}         params.operation                  Operation mode [add / update / delete / restore]
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {String}         params.type                       Element type (node / edge)
  * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Function}       params.addToObject                Add to object action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @return {undefined}
  */
@@ -23,7 +23,7 @@ const setOntology = ({
   selectedElement,
   setStoreState,
   selectedElementProperties,
-  addToObject,
+  addNumber,
   t
 }) => {
   if (operation === 'restore') {
@@ -31,6 +31,8 @@ const setOntology = ({
       setOntologyRestoreNode({
         selectedElement,
         setStoreState,
+        addNumber,
+        t
       })
     }
 
@@ -38,6 +40,8 @@ const setOntology = ({
       setOntologyRestoreEdge({
         selectedElement,
         setStoreState,
+        addNumber,
+        t
       })
     }
   }
@@ -47,6 +51,8 @@ const setOntology = ({
       setOntologyDeleteNode({
         selectedElement,
         setStoreState,
+        addNumber,
+        t
       })
     }
 
@@ -54,6 +60,8 @@ const setOntology = ({
       setOntologyDeleteEdge({
         setStoreState,
         selectedElement,
+        addNumber,
+        t
       })
     }
   }
@@ -64,7 +72,8 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         selectedElementProperties,
-        addToObject
+        addNumber,
+        t
       })
     }
   }
@@ -74,6 +83,7 @@ const setOntology = ({
       setOntologyAddNode({
         setStoreState,
         selectedElementProperties,
+        addNumber,
         t
       })
     }
@@ -82,6 +92,7 @@ const setOntology = ({
       setOntologyAddEdge({
         setStoreState,
         selectedElementProperties,
+        addNumber,
         t,
       })
     }

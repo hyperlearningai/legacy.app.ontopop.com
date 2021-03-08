@@ -1,15 +1,9 @@
-import store from '../../store'
+import getNodeIds from './getNodeIds'
 
 /**
  * Count nodes in graph
  * @return {Number} nodesLength   Available nodes length
 \ */
-const countNodes = () => {
-  const {
-    availableNodes
-  } = store.getState()
-
-  return availableNodes.length
-}
+const countNodes = () => getNodeIds().length
 
 export default countNodes

@@ -15,6 +15,8 @@ import EditOntologyRestoreNode from './EditOntologyRestoreNode'
 import EditOntologyRestoreEdge from './EditOntologyRestoreEdge'
 import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import getNode from '../utils/nodesEdgesUtils/getNode'
+import getEdge from '../utils/nodesEdgesUtils/getEdge'
+import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 
 const EditOntology = ({
   objectPropertiesFromApi,
@@ -22,8 +24,10 @@ const EditOntology = ({
   objectPropertiesFromApiBackup,
   deletedNodes,
   deletedEdges,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 }) => {
   const { t } = useTranslation()
 
@@ -75,45 +79,86 @@ const EditOntology = ({
     (nodeId) => {
       const node = getNode(nodeId)
 
+      const { stylingNodeCaptionProperty } = node.userDefined ? userDefinedNodeStyling : globalNodeStyling
+
       const label = node[stylingNodeCaptionProperty]
 
       return ({
         value: nodeId,
-        label: label || nodeId
+        label: label || nodeId,
+        userDefined: node.userDefined
       })
     }
   ) : []
+
+  const availableEdgeIds = getEdgeIds()
+
+  const optionEdges = availableEdgeIds.length > 0 ? availableEdgeIds.map((edgeId) => {
+    const {
+      label,
+      from, to,
+      userDefined
+    } = getEdge(edgeId)
+
+    const fromNode = getNode(from)
+    const { stylingNodeCaptionProperty: fromStylingNodeCaptionProperty } = from.userDefined ? userDefinedNodeStyling : globalNodeStyling
+    const fromLabel = fromNode ? fromNode[fromStylingNodeCaptionProperty] : ''
+
+    const toNode = getNode(to)
+    const { stylingNodeCaptionProperty: toStylingNodeCaptionProperty } = from.userDefined ? userDefinedNodeStyling : globalNodeStyling
+    const toLabel = toNode ? toNode[toStylingNodeCaptionProperty] : ''
+
+    const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
+
+    return ({
+      value: edgeId,
+      label: connectionLabel,
+      userDefined
+    })
+  }) : 0
 
   const availableEdges = orderBy(uniqBy(Object.keys(objectPropertiesFromApi).map(
     (edgeId) => {
       const {
         rdfAbout,
-        rdfsLabel
-        // objectPropertyRdfAbout,
-        // objectPropertyRdfsLabel
-      } = objectPropertiesFromApi[edgeId] // .edgeProperties
+        rdfsLabel,
+        userDefined
+      } = objectPropertiesFromApi[edgeId]
+
+      const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
 
       return ({
         value: rdfAbout,
-        label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || rdfsLabel
-        // value: objectPropertyRdfAbout,
-        // label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || objectPropertyRdfsLabel
+        label: objectPropertiesFromApi[edgeId][stylingEdgeCaptionProperty] || rdfsLabel,
+        userDefined
       })
     }
   ), 'label'), ['label'], ['asc'])
 
   const deletedNodesList = deletedNodes?.map(
-    (nodeId) => ({
-      value: nodeId,
-      label: classesFromApiBackup[nodeId] ? classesFromApiBackup[nodeId][stylingNodeCaptionProperty] : nodeId
-    })
+    (nodeId) => {
+      const node = classesFromApiBackup[nodeId]
+
+      const { stylingNodeCaptionProperty } = node && node.userDefined ? userDefinedNodeStyling : globalNodeStyling
+
+      return ({
+        value: nodeId,
+        label: node && node[stylingNodeCaptionProperty] ? node[stylingNodeCaptionProperty] : nodeId
+      })
+    }
   )
 
   const deletedEdgesList = deletedEdges?.map(
-    (edgeId) => ({
-      value: edgeId,
-      label: objectPropertiesFromApiBackup[edgeId] ? objectPropertiesFromApiBackup[edgeId][stylingEdgeCaptionProperty] : edgeId
-    })
+    (edgeId) => {
+      const edge = objectPropertiesFromApiBackup[edgeId]
+
+      const { stylingEdgeCaptionProperty } = edge && edge.userDefined ? userDefinedEdgeStyling : globalEdgeStyling
+
+      return ({
+        value: edgeId,
+        label: edge && edge[stylingEdgeCaptionProperty] ? edge[stylingEdgeCaptionProperty] : edgeId
+      })
+    }
   )
 
   return (
@@ -204,6 +249,7 @@ const EditOntology = ({
                     <EditOntologyDeleteEdge
                       type={type}
                       operation={operation}
+                      optionEdges={optionEdges}
                     />
                   )
                   : (
@@ -211,7 +257,6 @@ const EditOntology = ({
                       type={type}
                       operation={operation}
                       optionNodes={availableNodes}
-                      optionEdges={availableEdges}
                     />
                   )
               }
@@ -254,8 +299,10 @@ EditOntology.propTypes = {
   objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
-  stylingNodeCaptionProperty: PropTypes.string.isRequired,
-  stylingEdgeCaptionProperty: PropTypes.string.isRequired,
+  globalNodeStyling: PropTypes.shape().isRequired,
+  userDefinedNodeStyling: PropTypes.shape().isRequired,
+  globalEdgeStyling: PropTypes.shape().isRequired,
+  userDefinedEdgeStyling: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -264,16 +311,20 @@ const mapToProps = ({
   objectPropertiesFromApiBackup,
   deletedNodes,
   deletedEdges,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 }) => ({
   objectPropertiesFromApi,
   classesFromApiBackup,
   objectPropertiesFromApiBackup,
   deletedNodes,
   deletedEdges,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty
+  globalNodeStyling,
+  userDefinedNodeStyling,
+  globalEdgeStyling,
+  userDefinedEdgeStyling
 })
 
 export default connect(

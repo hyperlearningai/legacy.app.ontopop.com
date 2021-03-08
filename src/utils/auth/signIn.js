@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { ROUTE_INDEX } from '../../constants/routes'
 import {
   AUTH_COOKIE,
@@ -6,55 +5,63 @@ import {
 import { AUTH_SIGN_IN } from '../../constants/api'
 import { NOTIFY_WARNING } from '../../constants/notifications'
 import showNotification from '../notifications/showNotification'
+import httpCall from '../apiCalls/httpCall'
 
+/**
+ * Http call function
+ * @param  {Object}   params
+ * @param  {Function} params.addNumber                  addNumber action
+ * @param  {Class}    params.router                     NextJs router class
+ * @param  {Function} params.addToObject                addToObject action
+ * @param  {String}   params.email                      Email
+ * @param  {String}   params.password                   Password
+ * @param  {Function} params.setShowError               setShowError state function
+ * @param  {Function} params.t                          i18n translation function
+ * @return {*}        response
+ */
 const signIn = async ({
   router,
   addToObject,
-  setStoreState,
+  addNumber,
   email,
   password,
   setShowError,
   t
 }) => {
-  setStoreState('loading', true)
+  const withAuth = false
 
-  try {
-    const response = await axios.post(AUTH_SIGN_IN, {
+  const response = await httpCall({
+    addNumber,
+    withAuth,
+    body: {
       username: email,
       password
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    },
+    route: AUTH_SIGN_IN,
+    method: 'post',
+    t
+  })
 
-    const { data } = response
+  const {
+    error,
+    data
+  } = response
 
-    if (!data || !data.token) {
-      setStoreState('loading', false)
-
-      return showNotification({
-        message: t(response),
-        type: NOTIFY_WARNING
-      })
-    }
-
-    const { token } = data
-
-    addToObject('user', 'email', email)
-    addToObject('user', 'token', token)
-    localStorage.setItem(AUTH_COOKIE, JSON.stringify({ email, token }))
-
-    return router.push(ROUTE_INDEX)
-  } catch (error) {
-    showNotification({
-      message: t(error.message),
+  if (error) {
+    setShowError(true)
+    return showNotification({
+      message: error,
       type: NOTIFY_WARNING
     })
-
-    setShowError(true)
-    setStoreState('loading', false)
   }
+
+  const { token } = data
+
+  addToObject('user', 'email', email)
+  addToObject('user', 'token', token)
+  localStorage.setItem(AUTH_COOKIE, JSON.stringify({ email, token }))
+
+  return router.push(ROUTE_INDEX)
 }
 
 export default signIn

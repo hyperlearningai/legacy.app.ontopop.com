@@ -7,11 +7,13 @@ import setNodesIdsToDisplay from './setNodesIdsToDisplay'
  * Graph data loading at startup
  * @param  {Object}     params
  * @param  {Function}   params.t                  Internationalisation function
+ * @param  {Function}   params.addNumber          addNumber action
  * @param  {Function}   params.setStoreState      setStoreState action
  * @param  {Function}   params.removeFromObject   removeFromObject action
  * @return { undefined }
 \ */
 const startupActions = async ({
+  addNumber,
   setStoreState,
   removeFromObject,
   t
@@ -23,6 +25,7 @@ const startupActions = async ({
 
   // get graph data
   await getGraphData({
+    addNumber,
     setStoreState,
     t
   })

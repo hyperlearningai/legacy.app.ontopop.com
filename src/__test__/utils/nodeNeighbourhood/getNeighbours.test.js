@@ -2,7 +2,7 @@ import { DataSet } from 'vis-data'
 import store from '../../../store'
 import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { edgesPerNode } from '../../fixtures/edgesPerNodeNew.js'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode.js'
 
 const selectedNodeId = '12'
 const deletedNodes = []
@@ -15,9 +15,10 @@ const edges = Object.keys(objectPropertiesFromApi).map((property) => ({
 }))
 
 store.getState = jest.fn().mockImplementation(() => ({
-  edgesPerNode,
+  totalEdgesPerNode,
   availableEdges: new DataSet(edges),
-  deletedNodes
+  deletedNodes,
+  objectPropertiesFromApi
 }))
 
 describe('getNeighbours', () => {

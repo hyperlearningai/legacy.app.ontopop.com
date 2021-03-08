@@ -1,6 +1,6 @@
 {
   "name": "ontology-visualisation",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Ontology visualisation",
   "main": "",
   "repository": {
@@ -120,7 +120,6 @@
     "react-notifications-component": "^3.0.3",
     "react-simple-code-editor": "^0.11.0",
     "react-transition-group": "^4.4.1",
-    "redux-loading-middleware": "^1.0.1",
     "redux-zero": "^5.1.7",
     "uuid": "^8.3.2",
     "vis-data": "^7.1.1",

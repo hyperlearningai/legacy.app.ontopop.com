@@ -4,6 +4,7 @@ exports[`GraphContextMenu should match snapshot 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,6 +13,7 @@ exports[`GraphContextMenu should match snapshot 1`] = `
       "setStoreState": [Function],
     }
   }
+  addNumber={[MockFunction]}
   contextMenuData={
     Object {
       "left": 100,

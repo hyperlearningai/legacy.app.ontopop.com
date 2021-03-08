@@ -6,14 +6,23 @@ import { LABEL_PROPERTY } from '../../constants/graph'
 
 const setup = () => {
   const props = {
-    classesFromApi: {},
     objectPropertiesFromApi: {},
     classesFromApiBackup: {},
     objectPropertiesFromApiBackup: {},
     deletedNodes: [],
     deletedEdges: [],
-    stylingNodeCaptionProperty: LABEL_PROPERTY,
-    stylingEdgeCaptionProperty: LABEL_PROPERTY
+    globalNodeStyling: {
+      stylingNodeCaptionProperty: LABEL_PROPERTY,
+    },
+    userDefinedNodeStyling: {
+      stylingNodeCaptionProperty: LABEL_PROPERTY,
+    },
+    globalEdgeStyling: {
+      stylingNodeCaptionProperty: LABEL_PROPERTY,
+    },
+    userDefinedEdgeStyling: {
+      stylingNodeCaptionProperty: LABEL_PROPERTY,
+    }
   }
 
   const component = shallow(<EditOntology {...props} />)

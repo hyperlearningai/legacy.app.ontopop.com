@@ -6,11 +6,9 @@ import { classesFromApi } from '../fixtures/classesFromApi'
 
 const setup = () => {
   const props = {
-    opearation: 'update',
+    operation: 'update',
     setStoreState: jest.fn(),
-    addToArray: jest.fn(),
-    removeFromObject: jest.fn(),
-    addToObject: jest.fn(),
+    addNumber: jest.fn(),
     optionNodes: [{
       label: 'Node',
       value: 'node'

@@ -23,13 +23,11 @@ const optionEdges = Object.keys(objectPropertiesFromApi).map(
 const setup = () => {
   const props = {
     type: 'edge',
-    opearation: 'add',
+    operation: 'add',
     optionNodes,
     optionEdges,
     setStoreState: jest.fn(),
-    addToArray: jest.fn(),
-    removeFromObject: jest.fn(),
-    addToObject: jest.fn(),
+    addNumber: jest.fn(),
   }
 
   const component = shallow(<EditOntologyAddEdge {...props} />)

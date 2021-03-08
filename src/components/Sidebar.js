@@ -8,7 +8,8 @@ import {
 } from 'react-icons/fi'
 import {
   BiNetworkChart,
-  BiSelection
+  BiSelection,
+  BiText
 } from 'react-icons/bi'
 import {
   BsSearch,
@@ -22,7 +23,8 @@ import {
   AiOutlineArrowRight
 } from 'react-icons/ai'
 import {
-  IoGitNetwork
+  IoGitNetwork,
+  IoBuildSharp
 } from 'react-icons/io5'
 import {
   FaRegHandPointer,
@@ -33,6 +35,7 @@ import {
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import {
+  SIDEBAR_VIEW_ENTRY_SEARCH,
   SIDEBAR_VIEW_GRAPHS,
   SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
@@ -46,7 +49,10 @@ import {
   SIDEBAR_VIEW_EDGES_FILTER,
   SIDEBAR_VIEW_CUSTOM_QUERY,
   SIDEBAR_VIEW_EDIT_ONTOLOGY,
-  SIDEBAR_VIEW_STYLING
+  SIDEBAR_VIEW_STYLING,
+  SIDEBAR_VIEW_STRUCTURED_SEARCH,
+  MAIN_VIEW_SEARCH,
+  MAIN_VIEW_GRAPH
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
@@ -62,6 +68,8 @@ import EdgesFilter from './EdgesFilter'
 import CustomQuery from './CustomQuery'
 import EditOntology from './EditOntology'
 import NetworkStyling from './NetworkStyling'
+import StructuredSearch from './StructuredSearch'
+import EntrySearch from './EntrySearch'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -79,18 +87,46 @@ const Sidebar = ({
     <aside className={`sidebar${isSidebarOpen ? '' : '-closed'}`}>
       <div className="sidebar-icons">
         <Button
+          tooltip={t(SIDEBAR_VIEW_ENTRY_SEARCH)}
+          className={sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_ENTRY_SEARCH)
+            setStoreState('mainVisualisation', MAIN_VIEW_SEARCH)
+          }}
+        >
+          <BsSearch />
+        </Button>
+        <Button
           tooltip={t(SIDEBAR_VIEW_GRAPHS)}
           className={sidebarView === SIDEBAR_VIEW_GRAPHS ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_GRAPHS)}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_GRAPHS)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
         >
           <FiLayers />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
           className={sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_FREE_TEXT_SEARCH)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
         >
           <BsSearch />
+          <BiText />
+        </Button>
+        <Button
+          tooltip={t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
+          className={sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_STRUCTURED_SEARCH)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
+        >
+          <BsSearch />
+          <IoBuildSharp />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_NODES_SELECTION)}
@@ -98,6 +134,7 @@ const Sidebar = ({
           onClick={() => {
             setStoreState('isNodeSelectable', true)
             setView(SIDEBAR_VIEW_NODES_SELECTION)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
           }}
         >
           <FaRegCircle />
@@ -109,6 +146,7 @@ const Sidebar = ({
           onClick={() => {
             setStoreState('isEdgeSelectable', true)
             setView(SIDEBAR_VIEW_EDGES_SELECTION)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
           }}
         >
           <BsArrowUpRight />
@@ -120,6 +158,7 @@ const Sidebar = ({
           onClick={() => {
             setStoreState('isNodeSelectable', true)
             setView(SIDEBAR_VIEW_NODES_FILTER)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
           }}
         >
           <FaRegCircle />
@@ -131,6 +170,7 @@ const Sidebar = ({
           onClick={() => {
             setStoreState('isEdgeSelectable', true)
             setView(SIDEBAR_VIEW_EDGES_FILTER)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
           }}
         >
           <BsArrowUpRight />
@@ -142,6 +182,7 @@ const Sidebar = ({
           onClick={() => {
             setStoreState('isBoundingBox', true)
             setView(SIDEBAR_VIEW_BOUNDING_BOX)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
           }}
         >
           <BiSelection />
@@ -152,6 +193,7 @@ const Sidebar = ({
           onClick={() => {
             setStoreState('isNeighbourNodeSelectable', true)
             setView(SIDEBAR_VIEW_NEIGHBOURHOOD)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
           }}
         >
           <BiNetworkChart />
@@ -162,6 +204,7 @@ const Sidebar = ({
           onClick={() => {
             setStoreState('isShortestPathNode1Selectable', true)
             setView(SIDEBAR_VIEW_SHORTEST_PATH)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
           }}
         >
           <IoGitNetwork />
@@ -169,35 +212,50 @@ const Sidebar = ({
         <Button
           tooltip={t(SIDEBAR_VIEW_CUSTOM_QUERY)}
           className={sidebarView === SIDEBAR_VIEW_CUSTOM_QUERY ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_CUSTOM_QUERY)}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_CUSTOM_QUERY)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
         >
           <BsCodeSlash />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_SETTINGS)}
           className={sidebarView === SIDEBAR_VIEW_SETTINGS ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_SETTINGS)}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_SETTINGS)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
         >
           <FiSettings />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_STYLING)}
           className={sidebarView === SIDEBAR_VIEW_STYLING ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_STYLING)}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_STYLING)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
         >
           <FaPaintBrush />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_EXPORT)}
           className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_EXPORT)}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_EXPORT)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
         >
           <FaFileExport />
         </Button>
         <Button
           tooltip={t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
           className={sidebarView === SIDEBAR_VIEW_EDIT_ONTOLOGY ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => setView(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_EDIT_ONTOLOGY)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
         >
           <BsPencilSquare />
         </Button>
@@ -219,6 +277,12 @@ const Sidebar = ({
         isSidebarOpen && (
           <div className="sidebar-main">
             {
+              sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH && (
+                <EntrySearch />
+              )
+            }
+
+            {
               sidebarView === SIDEBAR_VIEW_GRAPHS && (
                 <NetworkGraphList />
               )
@@ -227,6 +291,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH && (
                 <FreeTextSearch />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH && (
+                <StructuredSearch />
               )
             }
 

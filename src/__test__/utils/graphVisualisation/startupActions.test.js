@@ -9,6 +9,7 @@ jest.mock('../../../utils/apiCalls/getGraphData')
 jest.mock('../../../utils/graphVisualisation/setNodesIdsToDisplay')
 
 const setStoreState = jest.fn()
+const addNumber = jest.fn()
 const t = jest.fn()
 
 describe('startupActions', () => {
@@ -18,6 +19,7 @@ describe('startupActions', () => {
 
   it('should work correctly', async () => {
     await startupActions({
+      addNumber,
       setStoreState,
       t
     })
@@ -27,6 +29,7 @@ describe('startupActions', () => {
     })
 
     expect(getGraphData).toHaveBeenCalledWith({
+      addNumber,
       setStoreState,
       t
     })

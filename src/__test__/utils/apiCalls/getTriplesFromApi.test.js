@@ -32,7 +32,7 @@ describe('getTriplesFromApi', () => {
     })
 
     expect(setStoreState).toHaveBeenCalledWith(
-      'edgesPerNode', {
+      'totalEdgesPerNode', {
         1: ['11', '12'],
         141: ['12'],
         170: ['11']

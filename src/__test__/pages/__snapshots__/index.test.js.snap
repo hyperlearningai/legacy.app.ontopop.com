@@ -4,6 +4,7 @@ exports[`Index page should match snapshot 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,7 +13,16 @@ exports[`Index page should match snapshot 1`] = `
       "setStoreState": [Function],
     }
   }
+  addToObject={[MockFunction]}
   mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  user={
+    Object {
+      "email": "a@b.c",
+      "isGuest": false,
+      "token": "123",
+    }
+  }
 >
   <Component />
 </Connect>

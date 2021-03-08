@@ -6,40 +6,22 @@ import { Button } from 'primereact/button'
 import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
-import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
-import getEdge from '../utils/nodesEdgesUtils/getEdge'
-import getNode from '../utils/nodesEdgesUtils/getNode'
 
 const EditOntologyDeleteEdge = ({
   type,
   operation,
   setStoreState,
-  addToArray,
-  removeFromObject,
-  addToObject,
-  stylingNodeCaptionProperty
+  addNumber,
+  optionEdges
 }) => {
   const { t } = useTranslation()
 
   const [selectedElement, setSelectedElement] = useState(undefined)
   const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
-  const optionEdges = getEdgeIds().map((edgeId) => {
-    const { label, from, to } = getEdge(edgeId)
-
-    const fromNode = getNode(from)
-    const fromLabel = fromNode ? fromNode[stylingNodeCaptionProperty] : ''
-
-    const toNode = getNode(to)
-    const toLabel = toNode ? toNode[stylingNodeCaptionProperty] : ''
-
-    const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
-
-    return ({
-      value: edgeId,
-      label: connectionLabel
-    })
-  })
+  const userDeletedEdges = optionEdges && optionEdges.length > 0
+    ? optionEdges.filter((edge) => edge.userDefined)
+    : []
 
   return (
     <>
@@ -52,7 +34,7 @@ const EditOntologyDeleteEdge = ({
 
         <MultiSelect
           value={selectedElement}
-          options={optionEdges}
+          options={userDeletedEdges}
           onChange={(e) => setSelectedElement(e.value)}
           placeholder={t('selectElement')}
           display="chip"
@@ -73,9 +55,7 @@ const EditOntologyDeleteEdge = ({
               type,
               selectedElement,
               setStoreState,
-              addToArray,
-              removeFromObject,
-              addToObject,
+              addNumber,
               selectedElementProperties,
               t
             })
@@ -95,20 +75,16 @@ EditOntologyDeleteEdge.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  addToArray: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
-  stylingNodeCaptionProperty: PropTypes.string.isRequired,
+  addNumber: PropTypes.func.isRequired,
+  optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
 const mapToProps = ({
   selectedGraphVersion,
   graphVersions,
-  stylingNodeCaptionProperty
 }) => ({
   selectedGraphVersion,
   graphVersions,
-  stylingNodeCaptionProperty
 })
 
 export default connect(

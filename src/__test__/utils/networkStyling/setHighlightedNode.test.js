@@ -6,70 +6,60 @@ import store from '../../../store'
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 
+const node = { id: '123' }
+getNode.mockImplementation(() => ([node]))
+
+const commonState = {
+  globalNodeStyling: { stylingNodeHighlightBackgroundColor: '#000' },
+  userDefinedNodeStyling: { stylingNodeHighlightBackgroundColor: '#000' },
+}
+
 describe('setHighlightedNode', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
   it('should work correctly when no highlighted nodes', async () => {
-    const nodeId = 'node-123'
-
-    getNode.mockImplementationOnce(() => ([{
-      id: nodeId
-    }]))
-
     store.getState = jest.fn().mockImplementationOnce(() => ({
       highlightedNodes: [],
-      stylingNodeHighlightBackgroundColor: '#000'
+      ...commonState
     }))
 
     await setHighlightedNode({
-      nodeId
+      node
     })
 
     expect(updateNodes).toHaveBeenCalledTimes(0)
   })
 
   it('should work correctly if not highlighted', async () => {
-    const nodeId = 'node-123'
-
-    getNode.mockImplementationOnce(() => ([{
-      id: nodeId
-    }]))
-
     store.getState = jest.fn().mockImplementationOnce(() => ({
       highlightedNodes: ['node-234'],
-      stylingNodeHighlightBackgroundColor: '#000'
+      ...commonState
     }))
 
     await setHighlightedNode({
-      nodeId
+      node
     })
 
     expect(updateNodes).toHaveBeenCalledTimes(0)
   })
 
   it('should work correctly', async () => {
-    const nodeId = 'node-123'
-
-    getNode.mockImplementationOnce(() => ([{
-      id: nodeId
-    }]))
-
     store.getState = jest.fn().mockImplementationOnce(() => ({
-      highlightedNodes: [nodeId],
-      stylingNodeHighlightBackgroundColor: '#000'
+      highlightedNodes: [node.id],
+      ...commonState
     }))
 
     await setHighlightedNode({
-      nodeId
+      node
     })
 
     expect(updateNodes).toHaveBeenCalledWith({
       color: {
         background: '#000',
       },
-      id: nodeId,
+      id: node.id,
     })
   })
 })

@@ -4,6 +4,7 @@ exports[`FreeTextSearch should match snapshot  1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -2124,6 +2125,16 @@ matter’ is understood in the broadest possible sense to include also undetache
       "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n": "node",
       "http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay": "edge",
       "http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M": "node",
+    }
+  }
+  globalEdgeStyling={
+    Object {
+      "stylingEdgeCaptionProperty": "rdfsLabel",
+    }
+  }
+  globalNodeStyling={
+    Object {
+      "stylingNodeCaptionProperty": "rdfsLabel",
     }
   }
   mapToProps={[Function]}
@@ -7793,8 +7804,16 @@ matter’ is understood in the broadest possible sense to include also undetache
   }
   removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
-  stylingEdgeCaptionProperty="rdfsLabel"
-  stylingNodeCaptionProperty="rdfsLabel"
+  userDefinedEdgeStyling={
+    Object {
+      "stylingEdgeCaptionProperty": "rdfsLabel",
+    }
+  }
+  userDefinedNodeStyling={
+    Object {
+      "stylingNodeCaptionProperty": "rdfsLabel",
+    }
+  }
 >
   <Component />
 </Connect>

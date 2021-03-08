@@ -4,12 +4,13 @@ import {
   ALGO_TYPE_SHORTEST_PATH,
   ALGO_TYPE_BOUNDING_BOX,
   ALGO_TYPE_NODES_FILTER,
-  ALGO_TYPE_EDGES_FILTER
+  ALGO_TYPE_EDGES_FILTER,
+  ALGO_TYPE_SEARCH_NEIGHBOURHOOD
 } from '../../../constants/algorithms'
 import setNodesIdsToDisplay from '../../../utils/graphVisualisation/setNodesIdsToDisplay'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { edgesPerNode } from '../../fixtures/edgesPerNode'
+import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import store from '../../../store'
 import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
 import getNodesFromPaths from '../../../utils/shortestPath/getNodesFromPaths'
@@ -48,6 +49,10 @@ describe('setNodesIdsToDisplay', () => {
       [
         [
           'highlightedNodes',
+          [],
+        ],
+        [
+          'highlightedEdges',
           [],
         ],
         [
@@ -286,6 +291,10 @@ describe('setNodesIdsToDisplay', () => {
         [],
       ],
       [
+        'highlightedEdges',
+        [],
+      ],
+      [
         'isNodeOverlay',
         false,
       ],
@@ -307,13 +316,62 @@ describe('setNodesIdsToDisplay', () => {
     ])
   })
 
+  it('should work correctly when ALGO_TYPE_SEARCH_NEIGHBOURHOOD', async () => {
+    const type = ALGO_TYPE_SEARCH_NEIGHBOURHOOD
+
+    const options = {
+      selectedNodesId: ['12', '24'],
+      separationDegree: 1,
+      selectedEdgesId: ['111'],
+      totalEdgesPerNode
+    }
+
+    getNeighbours.mockImplementation(() => ['24', '36'])
+
+    await setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options
+    })
+
+    expect(setStoreState.mock.calls).toEqual([
+      [
+        'highlightedNodes',
+        ['12', '24'],
+      ],
+      [
+        'highlightedEdges',
+        ['111'],
+      ],
+      [
+        'isNodeOverlay',
+        false,
+      ],
+      [
+        'shortestPathNodes',
+        [],
+      ],
+      [
+        'shortestPathResults',
+        [],
+      ],
+      [
+        'nodesIdsToDisplay',
+        [
+          '24',
+          '36',
+        ]
+      ],
+    ])
+  })
+
   it('should work correctly when ALGO_TYPE_NEIGHBOURHOOD', async () => {
     const type = ALGO_TYPE_NEIGHBOURHOOD
 
     const options = {
       selectedNodeId: '12',
       separationDegree: 1,
-      edgesPerNode
+      totalEdgesPerNode
     }
 
     getNeighbours.mockImplementation(() => ({
@@ -330,6 +388,10 @@ describe('setNodesIdsToDisplay', () => {
     expect(setStoreState.mock.calls).toEqual([
       [
         'highlightedNodes',
+        ['12'],
+      ],
+      [
+        'highlightedEdges',
         [],
       ],
       [
@@ -390,6 +452,10 @@ describe('setNodesIdsToDisplay', () => {
           '24',
           '48',
         ],
+      ],
+      [
+        'highlightedEdges',
+        [],
       ],
       [
         'isNodeOverlay',
@@ -457,6 +523,10 @@ describe('setNodesIdsToDisplay', () => {
         ],
       ],
       [
+        'highlightedEdges',
+        [],
+      ],
+      [
         'isNodeOverlay',
         false,
       ],
@@ -514,6 +584,10 @@ describe('setNodesIdsToDisplay', () => {
         [],
       ],
       [
+        'highlightedEdges',
+        [],
+      ],
+      [
         'isNodeOverlay',
         false,
       ],
@@ -556,6 +630,10 @@ describe('setNodesIdsToDisplay', () => {
     expect(setStoreState.mock.calls).toEqual([
       [
         'highlightedNodes',
+        [],
+      ],
+      [
+        'highlightedEdges',
         [],
       ],
       [

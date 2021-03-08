@@ -1,35 +1,37 @@
 import store from '../../store'
-import getNode from '../nodesEdgesUtils/getNode'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
  * Set node background as highlighted
  * @param  {Object}   params
- * @param  {String}   params.nodeId           Node ID
+ * @param  {String}   params.node           Node object
  * @return { undefined }
  */
 const setHighlightedNode = ({
-  nodeId
+  node
 }) => {
   const {
     highlightedNodes,
-    stylingNodeHighlightBackgroundColor
+    globalNodeStyling,
+    userDefinedNodeStyling
   } = store.getState()
 
   if (highlightedNodes.length === 0) return false
 
-  const isHighlighted = highlightedNodes.includes(nodeId)
+  const { id, userDefined } = node
+
+  const isHighlighted = highlightedNodes.includes(id)
 
   if (!isHighlighted) return false
 
-  const node = getNode(nodeId)
-
   const color = node.color || {}
+
+  const { stylingNodeHighlightBackgroundColor } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
   color.background = stylingNodeHighlightBackgroundColor
 
   return updateNodes({
-    id: nodeId,
+    id,
     color
   })
 }

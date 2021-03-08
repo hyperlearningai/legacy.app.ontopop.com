@@ -9,7 +9,8 @@ import updateNodes from '../nodesEdgesUtils/updateNodes'
 const setHighlightedNodes = () => {
   const {
     highlightedNodes,
-    stylingNodeHighlightBackgroundColor
+    globalNodeStyling,
+    userDefinedNodeStyling
   } = store.getState()
 
   if (highlightedNodes.length === 0) return false
@@ -23,6 +24,7 @@ const setHighlightedNodes = () => {
   highlightedNodesObjects.map((node) => {
     const color = node.color || {}
 
+    const { stylingNodeHighlightBackgroundColor } = node.userDefined ? userDefinedNodeStyling : globalNodeStyling
     color.background = stylingNodeHighlightBackgroundColor
 
     return updateNodes({

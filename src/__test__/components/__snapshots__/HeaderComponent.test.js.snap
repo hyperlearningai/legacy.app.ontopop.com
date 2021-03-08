@@ -4,6 +4,7 @@ exports[`HeaderComponent should match snapshot when user logged in and loading 1
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,7 +13,7 @@ exports[`HeaderComponent should match snapshot when user logged in and loading 1
       "setStoreState": [Function],
     }
   }
-  loading={true}
+  loading={1}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   user={
@@ -30,6 +31,7 @@ exports[`HeaderComponent should match snapshot when user not logged in and not l
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -38,7 +40,7 @@ exports[`HeaderComponent should match snapshot when user not logged in and not l
       "setStoreState": [Function],
     }
   }
-  loading={false}
+  loading={0}
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   user={

@@ -4,6 +4,7 @@ exports[`NodesSelection should match snapshot when no selected node 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -23,6 +24,7 @@ exports[`NodesSelection should match snapshot when selected node 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],

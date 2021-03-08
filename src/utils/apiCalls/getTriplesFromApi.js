@@ -9,7 +9,7 @@ const getTriplesFromApi = ({
   setStoreState,
   edges
 }) => {
-  const edgesPerNode = {}
+  const totalEdgesPerNode = {}
 
   Object.keys(edges).map((edgeId) => {
     const edge = edges[edgeId]
@@ -21,23 +21,23 @@ const getTriplesFromApi = ({
 
     const id = edge.id.toString()
 
-    if (!edgesPerNode[from.toString()]) {
-      edgesPerNode[from.toString()] = [id]
-    } else if (!edgesPerNode[from.toString()].includes(id)) {
-      edgesPerNode[from.toString()].push(id)
+    if (!totalEdgesPerNode[from.toString()]) {
+      totalEdgesPerNode[from.toString()] = [id]
+    } else if (!totalEdgesPerNode[from.toString()].includes(id)) {
+      totalEdgesPerNode[from.toString()].push(id)
     }
 
-    if (!edgesPerNode[to.toString()]) {
-      edgesPerNode[to.toString()] = [id]
-    } else if (!edgesPerNode[to.toString()].includes(id)) {
-      edgesPerNode[to.toString()].push(id)
+    if (!totalEdgesPerNode[to.toString()]) {
+      totalEdgesPerNode[to.toString()] = [id]
+    } else if (!totalEdgesPerNode[to.toString()].includes(id)) {
+      totalEdgesPerNode[to.toString()].push(id)
     }
 
     return true
   })
 
-  setStoreState('edgesPerNode', edgesPerNode)
-  setStoreState('edgesPerNodeBackup', edgesPerNode)
+  setStoreState('totalEdgesPerNode', totalEdgesPerNode)
+  setStoreState('totalEdgesPerNodeBackup', totalEdgesPerNode)
 }
 
 export default getTriplesFromApi

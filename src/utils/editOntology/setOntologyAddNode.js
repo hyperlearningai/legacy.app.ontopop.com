@@ -1,22 +1,22 @@
 import store from '../../store'
-import {
-  UNIQUE_PROPERTY, USER_DEFINED_PROPERTY,
-} from '../../constants/graph'
 import showNotification from '../notifications/showNotification'
-import { NOTIFY_WARNING } from '../../constants/notifications'
+import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import addNode from '../nodesEdgesUtils/addNode'
-import getNode from '../nodesEdgesUtils/getNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
+import { POST_CREATE_NODE } from '../../constants/api'
+import httpCall from '../apiCalls/httpCall'
 
 /**
  * ADd ontology nodes
  * @param  {Object}         params
+ * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
-const setOntologyAddNode = ({
+const setOntologyAddNode = async ({
+  addNumber,
   setStoreState,
   selectedElementProperties,
   t
@@ -26,81 +26,141 @@ const setOntologyAddNode = ({
     classesFromApi,
     classesFromApiBackup,
     addedNodes,
-    stylingNodeCaptionProperty,
-    edgesPerNode,
-    edgesPerNodeBackup,
+    totalEdgesPerNode,
+    totalEdgesPerNodeBackup,
+    userDefinedNodeStyling
   } = store.getState()
+
+  const {
+    stylingNodeBorder,
+    stylingNodeBorderSelected,
+    stylingNodeTextFontSize,
+    stylingNodeTextColor,
+    stylingNodeTextFontAlign,
+    stylingNodeShape,
+    stylingNodeBackgroundColor,
+    stylingNodeBorderColor,
+    stylingNodeHighlightBackgroundColor,
+    stylingNodeHighlightBorderColor,
+    stylingNodeHoverBackgroundColor,
+    stylingNodeHoverBorderColor,
+    stylingNodeSize,
+    stylingNodeCaptionProperty,
+  } = userDefinedNodeStyling
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
   const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(edgesPerNode))
-  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(edgesPerNodeBackup))
+  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
+  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(totalEdgesPerNodeBackup))
 
-  const newNodeId = selectedElementProperties[UNIQUE_PROPERTY]
+  const body = JSON.parse(JSON.stringify(selectedElementProperties))
+  body.label = 'class'
 
-  if (getNode(newNodeId) !== null) {
-    const message = `${t('nodeIdAlreadyExists')}: ${newNodeId}`
+  const response = await httpCall({
+    addNumber,
+    withAuth: true,
+    route: POST_CREATE_NODE,
+    method: 'post',
+    body,
+    t
+  })
 
+  const {
+    error, data
+  } = response
+
+  let message = t('couldNotAddNode')
+  if (error) {
     return showNotification({
       message,
       type: NOTIFY_WARNING
     })
   }
 
-  newClassesFromApi[newNodeId] = {
-    [USER_DEFINED_PROPERTY]: true
+  if (!data || Object.keys(data).length !== 1) {
+    return showNotification({
+      message,
+      type: NOTIFY_WARNING
+    })
   }
-  newClassesFromApiBackup[newNodeId] = {
-    [USER_DEFINED_PROPERTY]: true
+
+  const { id, userDefined } = data[Object.keys(data)[0]]
+
+  // add to classesFromApi
+  newClassesFromApi[id] = {
+    ...selectedElementProperties,
+    userDefined,
+    id
   }
 
-  const selectedElementPropertiesKeys = Object.keys(selectedElementProperties)
+  // add label
+  newClassesFromApi[id].label = selectedElementProperties[stylingNodeCaptionProperty]
+    ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
-  selectedElementPropertiesKeys.map((propertyKey) => {
-    // add new node connection as empty array
-    if (propertyKey === UNIQUE_PROPERTY) {
-      const id = selectedElementProperties[propertyKey]
-      newNodesEdges[id] = []
-      newEdgesPerNode[id] = []
-      newEdgesPerNodeBackup[id] = []
-    }
+  // add array for new node in nodes edges connections
+  newNodesEdges[id] = []
+  newEdgesPerNode[id] = []
+  newEdgesPerNodeBackup[id] = []
 
-    if (propertyKey !== UNIQUE_PROPERTY
-          && selectedElementProperties[propertyKey]
-          && selectedElementProperties[propertyKey] !== ''
-    ) {
-      newClassesFromApi[newNodeId][propertyKey] = selectedElementProperties[propertyKey]
-      newClassesFromApiBackup[newNodeId][propertyKey] = selectedElementProperties[propertyKey]
+  // add as backup
+  newClassesFromApiBackup[id] = newClassesFromApi[id]
 
-      if (propertyKey === stylingNodeCaptionProperty) {
-        newClassesFromApi[newNodeId].label = selectedElementProperties[propertyKey]
-        newClassesFromApiBackup[newNodeId].label = selectedElementProperties[propertyKey]
-      }
-    }
-
-    return true
-  })
+  // add node style
+  const nodeStyle = {
+    borderWidth: stylingNodeBorder,
+    borderWidthSelected: stylingNodeBorderSelected,
+    font: {
+      size: stylingNodeTextFontSize,
+      color: stylingNodeTextColor,
+      align: stylingNodeTextFontAlign,
+      face: 'Montserrat',
+      bold: '700'
+    },
+    shape: stylingNodeShape,
+    color: {
+      background: stylingNodeBackgroundColor,
+      border: stylingNodeBorderColor,
+      highlight: {
+        background: stylingNodeHighlightBackgroundColor,
+        border: stylingNodeHighlightBorderColor,
+      },
+      hover: {
+        background: stylingNodeHoverBackgroundColor,
+        border: stylingNodeHoverBorderColor,
+      },
+    },
+    size: stylingNodeSize
+  }
 
   addNode({
-    ...newClassesFromApi[newNodeId],
-    id: newNodeId,
-    label: newClassesFromApi[newNodeId][stylingNodeCaptionProperty]
+    node: {
+      ...newClassesFromApi[id],
+      ...nodeStyle
+    },
+    addNumber
   })
 
   const newAddedNodes = [
     ...addedNodes,
-    ...[newNodeId]
+    ...[id]
   ]
 
   setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('edgesPerNode', newEdgesPerNode)
-  setStoreState('edgesPerNodeBackup', newEdgesPerNodeBackup)
+  setStoreState('totalEdgesPerNode', newEdgesPerNode)
+  setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('classesFromApiBackup', newClassesFromApiBackup)
   setStoreState('addedNodes', newAddedNodes)
   setNodeStyle({
-    nodeId: newNodeId,
+    nodeId: id,
+  })
+
+  message = `${t('nodeAdded')}: ${id}`
+
+  showNotification({
+    message,
+    type: NOTIFY_SUCCESS
   })
 }
 

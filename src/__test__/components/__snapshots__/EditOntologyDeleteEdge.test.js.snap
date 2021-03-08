@@ -4,6 +4,7 @@ exports[`EditOntologyDeleteEdge should match snapshot 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,11 +13,9 @@ exports[`EditOntologyDeleteEdge should match snapshot 1`] = `
       "setStoreState": [Function],
     }
   }
-  addToArray={[MockFunction]}
-  addToObject={[MockFunction]}
+  addNumber={[MockFunction]}
   mapToProps={[Function]}
-  opearation="delete"
-  removeFromObject={[MockFunction]}
+  operation="delete"
   setStoreState={[MockFunction]}
   stylingNodeCaptionProperty="rfdsLabel"
   type="edge"

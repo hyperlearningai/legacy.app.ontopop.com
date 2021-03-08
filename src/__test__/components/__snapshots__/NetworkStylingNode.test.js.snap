@@ -4,6 +4,7 @@ exports[`NetworkStylingNode should match snapshot  1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -12,6 +13,7 @@ exports[`NetworkStylingNode should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
+  addToObject={[MockFunction]}
   annotationProperties={
     Array [
       Object {
@@ -20,12 +22,25 @@ exports[`NetworkStylingNode should match snapshot  1`] = `
       },
     ]
   }
+  globalNodeStyling={
+    Object {
+      "stylingNodeBackgroundColor": "#adefd1",
+      "stylingNodeBorder": 1,
+      "stylingNodeBorderColor": "#011e41",
+      "stylingNodeBorderSelected": 2,
+      "stylingNodeCaptionProperty": "rdfsLabel",
+      "stylingNodeHighlightBackgroundColor": "#ffed00",
+      "stylingNodeHighlightBorderColor": "#009688",
+      "stylingNodeHoverBackgroundColor": "#f2f2f2",
+      "stylingNodeHoverBorderColor": "#607d8b",
+      "stylingNodeShape": "circle",
+      "stylingNodeSize": 25,
+      "stylingNodeTextColor": "#000000",
+      "stylingNodeTextFontAlign": "center",
+      "stylingNodeTextFontSize": 12,
+    }
+  }
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
-  stylingNodeBackgroundColor="#adefd1"
-  stylingNodeBorder={1}
-  stylingNodeBorderColor="#011e41"
-  stylingNodeBorderSelected={2}
   stylingNodeByProperty={
     Array [
       Object {
@@ -36,16 +51,24 @@ exports[`NetworkStylingNode should match snapshot  1`] = `
       },
     ]
   }
-  stylingNodeCaptionProperty="rdfsLabel"
-  stylingNodeHighlightBackgroundColor="#ffed00"
-  stylingNodeHighlightBorderColor="#009688"
-  stylingNodeHoverBackgroundColor="#f2f2f2"
-  stylingNodeHoverBorderColor="#607d8b"
-  stylingNodeShape="circle"
-  stylingNodeSize={25}
-  stylingNodeTextColor="#000000"
-  stylingNodeTextFontAlign="center"
-  stylingNodeTextFontSize={12}
+  userDefinedNodeStyling={
+    Object {
+      "stylingNodeBackgroundColor": "#adefd1",
+      "stylingNodeBorder": 1,
+      "stylingNodeBorderColor": "#011e41",
+      "stylingNodeBorderSelected": 2,
+      "stylingNodeCaptionProperty": "rdfsLabel",
+      "stylingNodeHighlightBackgroundColor": "#ffed00",
+      "stylingNodeHighlightBorderColor": "#009688",
+      "stylingNodeHoverBackgroundColor": "#f2f2f2",
+      "stylingNodeHoverBorderColor": "#607d8b",
+      "stylingNodeShape": "circle",
+      "stylingNodeSize": 25,
+      "stylingNodeTextColor": "#000000",
+      "stylingNodeTextFontAlign": "center",
+      "stylingNodeTextFontSize": 12,
+    }
+  }
 >
   <Component />
 </Connect>

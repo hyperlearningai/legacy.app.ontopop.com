@@ -5,11 +5,10 @@ import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 import setNodesIdsToDisplay from '../utils/graphVisualisation/setNodesIdsToDisplay'
 import GraphContextMenu from './GraphContextMenu'
-import startupActions from '../utils/graphVisualisation/startupActions'
 import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
-import addElementsToGraph from '../utils/graphVisualisation/addElementsToGraph'
+import queueGraphElements from '../utils/graphVisualisation/queueGraphElements'
 
 const GraphVisualisation = ({
   currentGraph,
@@ -18,7 +17,6 @@ const GraphVisualisation = ({
   showContextMenu,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
-  addToObject,
   availableNodes,
   availableEdges,
   network,
@@ -27,41 +25,13 @@ const GraphVisualisation = ({
   physicsHierarchicalView,
   physicsRepulsion,
   isPhysicsOn,
-  stylingEdgeLength,
-  stylingEdgeWidth,
-  stylingEdgeLineStyle,
-  stylingEdgeLineColor,
-  stylingEdgeLineColorHover,
-  stylingEdgeLineColorHighlight,
-  stylingEdgeTextColor,
-  stylingEdgeTextSize,
-  stylingEdgeTextAlign,
-  stylingNodeShape,
-  stylingNodeSize,
-  stylingNodeBorder,
-  stylingNodeBorderSelected,
-  stylingNodeBorderColor,
-  stylingNodeBackgroundColor,
-  stylingNodeHighlightBorderColor,
-  stylingNodeHighlightBackgroundColor,
-  stylingNodeTextColor,
-  stylingNodeHoverBackgroundColor,
-  stylingNodeHoverBorderColor,
-  stylingNodeTextFontSize,
-  stylingNodeTextFontAlign,
+  globalEdgeStyling,
+  addNumber
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
-  const isInitialMountNodesToDisplay = useRef(true)
 
   const visJsRef = useRef(null)
-
-  useEffect(() => startupActions({
-    setStoreState,
-    addToObject,
-    removeFromObject,
-    t
-  }), [])
 
   // set new Network
   useEffect(() => setNetwork({
@@ -75,13 +45,14 @@ const GraphVisualisation = ({
 
   // update available nodes/edges according to view
   useEffect(() => {
-    if (isInitialMountNodesToDisplay.current) {
-      isInitialMountNodesToDisplay.current = false
-    } else if (network) {
+    if (isInitialMountCurrentGraph.current) {
+      isInitialMountCurrentGraph.current = false
+    } else if (nodesIdsToDisplay.length > 0) {
       setStoreState('isNetworkLoading', true)
 
-      addElementsToGraph({
+      queueGraphElements({
         setStoreState,
+        addNumber
       })
     }
   }, [
@@ -89,22 +60,18 @@ const GraphVisualisation = ({
   ])
 
   useEffect(() => {
-    if (isInitialMountCurrentGraph.current) {
-      isInitialMountCurrentGraph.current = false
-    } else {
-      const {
-        type,
-        options
-      } = graphData[currentGraph]
+    const {
+      type,
+      options
+    } = graphData[currentGraph]
 
-      setNodesIdsToDisplay({
-        type,
-        setStoreState,
-        options,
-        removeFromObject,
-        t
-      })
-    }
+    setNodesIdsToDisplay({
+      type,
+      setStoreState,
+      options,
+      removeFromObject,
+      t
+    })
   }, [
     currentGraph
   ])
@@ -118,40 +85,14 @@ const GraphVisualisation = ({
     isPhysicsOn,
     physicsHierarchicalView,
     physicsRepulsion,
-    stylingEdgeLength,
-    stylingEdgeWidth,
-    stylingEdgeLineStyle,
-    stylingEdgeLineColor,
-    stylingEdgeLineColorHover,
-    stylingEdgeLineColorHighlight,
-    stylingEdgeLength,
-    stylingEdgeWidth,
-    stylingEdgeLineStyle,
-    stylingEdgeLineColor,
-    stylingEdgeLineColorHover,
-    stylingEdgeLineColorHighlight,
-    stylingEdgeTextColor,
-    stylingEdgeTextSize,
-    stylingEdgeTextAlign,
-    stylingNodeShape,
-    stylingNodeSize,
-    stylingNodeBorder,
-    stylingNodeBorderSelected,
-    stylingNodeBorderColor,
-    stylingNodeBackgroundColor,
-    stylingNodeHighlightBorderColor,
-    stylingNodeHighlightBackgroundColor,
-    stylingNodeTextColor,
-    stylingNodeHoverBackgroundColor,
-    stylingNodeHoverBorderColor,
-    stylingNodeTextFontSize,
-    stylingNodeTextFontAlign
+    globalEdgeStyling.stylingEdgeLength
   ])
 
   // // set graph options
   useEffect(() => setNetworkMethods({
     setStoreState,
     network,
+    addNumber
   }), [
     network,
     nodesIdsToDisplay
@@ -208,36 +149,15 @@ GraphVisualisation.propTypes = {
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
   removeFromObject: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,
   network: PropTypes.shape(),
   nodesIdsToDisplay: PropTypes.arrayOf(PropTypes.string).isRequired,
-  stylingEdgeLength: PropTypes.number.isRequired,
-  stylingEdgeWidth: PropTypes.number.isRequired,
-  stylingEdgeLineStyle: PropTypes.bool.isRequired,
-  stylingEdgeLineColor: PropTypes.string.isRequired,
-  stylingEdgeLineColorHover: PropTypes.string.isRequired,
-  stylingEdgeLineColorHighlight: PropTypes.string.isRequired,
-  stylingNodeShape: PropTypes.string.isRequired,
-  stylingNodeBorderColor: PropTypes.string.isRequired,
-  stylingNodeBackgroundColor: PropTypes.string.isRequired,
-  stylingNodeHighlightBorderColor: PropTypes.string.isRequired,
-  stylingNodeHighlightBackgroundColor: PropTypes.string.isRequired,
-  stylingNodeTextColor: PropTypes.string.isRequired,
-  stylingNodeSize: PropTypes.number.isRequired,
-  stylingNodeBorder: PropTypes.number.isRequired,
-  stylingNodeBorderSelected: PropTypes.number.isRequired,
-  stylingNodeTextFontSize: PropTypes.number.isRequired,
-  stylingNodeHoverBackgroundColor: PropTypes.string.isRequired,
-  stylingNodeHoverBorderColor: PropTypes.string.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
-  stylingNodeTextFontAlign: PropTypes.string.isRequired,
-  stylingEdgeTextColor: PropTypes.string.isRequired,
-  stylingEdgeTextSize: PropTypes.number.isRequired,
-  stylingEdgeTextAlign: PropTypes.string.isRequired,
+  globalEdgeStyling: PropTypes.shape().isRequired,
+  addNumber: PropTypes.func.isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -257,32 +177,10 @@ const mapToProps = ({
   nodesIdsToDisplay,
   physicsHierarchicalView,
   physicsRepulsion,
-  stylingEdgeLength,
-  stylingEdgeWidth,
-  stylingEdgeLineStyle,
-  stylingEdgeLineColor,
-  stylingEdgeLineColorHover,
-  stylingEdgeLineColorHighlight,
-  stylingNodeShape,
-  stylingNodeSize,
-  stylingNodeBorder,
-  stylingNodeBorderSelected,
-  stylingNodeBorderColor,
-  stylingNodeBackgroundColor,
-  stylingNodeHighlightBorderColor,
-  stylingNodeHighlightBackgroundColor,
-  stylingNodeTextColor,
-  searchFilter,
   selectedNeighbourNode,
   selectedNodes,
   isPhysicsOn,
-  stylingNodeHoverBackgroundColor,
-  stylingNodeHoverBorderColor,
-  stylingNodeTextFontSize,
-  stylingNodeTextFontAlign,
-  stylingEdgeTextColor,
-  stylingEdgeTextSize,
-  stylingEdgeTextAlign,
+  globalEdgeStyling
 }) => ({
   currentGraph,
   graphData,
@@ -296,32 +194,10 @@ const mapToProps = ({
   nodesIdsToDisplay,
   physicsHierarchicalView,
   physicsRepulsion,
-  stylingEdgeLength,
-  stylingEdgeWidth,
-  stylingEdgeLineStyle,
-  stylingEdgeLineColor,
-  stylingEdgeLineColorHover,
-  stylingEdgeLineColorHighlight,
-  stylingNodeShape,
-  stylingNodeSize,
-  stylingNodeBorder,
-  stylingNodeBorderSelected,
-  stylingNodeBorderColor,
-  stylingNodeBackgroundColor,
-  stylingNodeHighlightBorderColor,
-  stylingNodeHighlightBackgroundColor,
-  stylingNodeTextColor,
-  searchFilter,
   selectedNeighbourNode,
   selectedNodes,
   isPhysicsOn,
-  stylingNodeHoverBackgroundColor,
-  stylingNodeHoverBorderColor,
-  stylingNodeTextFontSize,
-  stylingNodeTextFontAlign,
-  stylingEdgeTextColor,
-  stylingEdgeTextSize,
-  stylingEdgeTextAlign,
+  globalEdgeStyling
 })
 
 export default connect(

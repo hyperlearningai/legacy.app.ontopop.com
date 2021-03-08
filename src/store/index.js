@@ -1,8 +1,6 @@
 import createStore from 'redux-zero'
-import { applyMiddleware } from 'redux-zero/middleware'
-import loadingMiddleware from 'redux-loading-middleware'
 import { DataSet } from 'vis-data'
-import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { MAIN_VIEW_SEARCH, SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import {
   EDGE_COLOR,
@@ -24,8 +22,9 @@ import {
 const initialState = {
   // view updates
   isSidebarOpen: true,
-  sidebarView: SIDEBAR_VIEW_GRAPHS,
-  loading: false,
+  sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH,
+  activeLoaders: 0,
+  mainVisualisation: MAIN_VIEW_SEARCH,
 
   // user
   user: {
@@ -42,8 +41,8 @@ const initialState = {
   objectPropertiesFromApi: {},
   classesFromApiBackup: {},
   objectPropertiesFromApiBackup: {},
-  edgesPerNode: {},
-  edgesPerNodeBackup: {},
+  totalEdgesPerNode: {},
+  totalEdgesPerNodeBackup: {},
   network: undefined,
   annotationProperties: [],
   deletedNodes: [],
@@ -56,56 +55,99 @@ const initialState = {
 
   // Data visualisation
   nodesIdsToDisplay: [],
-  edgesIdsToDisplay: [],
   availableNodes: new DataSet([]),
   availableEdges: new DataSet([]),
   nodesEdges: {},
   highlightedNodes: [],
+  highlightedEdges: [],
 
   // network styling
-  stylingEdgeLineColor: EDGE_COLOR,
-  stylingEdgeLineColorHover: EDGE_COLOR,
-  stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
-  stylingEdgeLineStyle: false,
-  stylingEdgeTextColor: EDGE_COLOR,
-  stylingEdgeTextSize: 12,
-  stylingEdgeTextAlign: 'horizontal',
-  stylingEdgeWidth: 1,
+  globalEdgeStyling: {
+    stylingEdgeLineColor: EDGE_COLOR,
+    stylingEdgeLineColorHover: EDGE_COLOR,
+    stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+    stylingEdgeLineStyle: false,
+    stylingEdgeTextColor: EDGE_COLOR,
+    stylingEdgeTextSize: 12,
+    stylingEdgeTextAlign: 'horizontal',
+    stylingEdgeWidth: 1,
+    stylingEdgeLength: 250,
+    stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
+  },
+
+  userDefinedEdgeStyling: {
+    stylingEdgeLineColor: EDGE_COLOR,
+    stylingEdgeLineColorHover: EDGE_COLOR,
+    stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
+    stylingEdgeLineStyle: false,
+    stylingEdgeTextColor: EDGE_COLOR,
+    stylingEdgeTextSize: 12,
+    stylingEdgeTextAlign: 'horizontal',
+    stylingEdgeWidth: 1,
+    stylingEdgeLength: 250,
+    stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
+  },
+
   stylingEdgeByProperty: [
     JSON.parse(JSON.stringify(SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT)),
     JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
   ],
-  stylingEdgeLength: 250,
-  stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
 
-  stylingNodeSize: 25,
-  stylingNodeBorder: 1,
-  stylingNodeTextColor: NODE_TEXT_COLOR,
-  stylingNodeBorderSelected: 2,
-  stylingNodeBorderColor: NODE_BORDER,
-  stylingNodeBackgroundColor: NODE_BACKGROUND,
-  stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
-  stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
-  stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
-  stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
-  stylingNodeShape: NODE_DEFAULT_SHAPE,
-  stylingNodeTextFontSize: 12,
-  stylingNodeTextFontAlign: 'center',
-  stylingNodeCaptionProperty: LABEL_PROPERTY,
+  globalNodeStyling: {
+    stylingNodeSize: 25,
+    stylingNodeBorder: 1,
+    stylingNodeTextColor: NODE_TEXT_COLOR,
+    stylingNodeBorderSelected: 2,
+    stylingNodeBorderColor: NODE_BORDER,
+    stylingNodeBackgroundColor: NODE_BACKGROUND,
+    stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
+    stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
+    stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
+    stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
+    stylingNodeShape: NODE_DEFAULT_SHAPE,
+    stylingNodeTextFontSize: 12,
+    stylingNodeTextFontAlign: 'center',
+    stylingNodeCaptionProperty: LABEL_PROPERTY,
+    stylingNodeOverlayOpacity: 0.1,
+  },
+
+  userDefinedNodeStyling: {
+    stylingNodeSize: 25,
+    stylingNodeBorder: 1,
+    stylingNodeTextColor: NODE_TEXT_COLOR,
+    stylingNodeBorderSelected: 2,
+    stylingNodeBorderColor: NODE_BORDER,
+    stylingNodeBackgroundColor: NODE_BACKGROUND,
+    stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
+    stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
+    stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
+    stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
+    stylingNodeShape: NODE_DEFAULT_SHAPE,
+    stylingNodeTextFontSize: 12,
+    stylingNodeTextFontAlign: 'center',
+    stylingNodeCaptionProperty: LABEL_PROPERTY,
+    stylingNodeOverlayOpacity: 0.1,
+  },
+
   stylingNodeByProperty: [
     JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT))
   ],
-  stylingNodeOverlayOpacity: 0.1,
 
-  // netowrk graph loading
-  isNetworkLoading: false,
-  networkLoadingProgress: 0,
+  // entry search
+  entrySearchFilter: 'all',
+  entrySearchResults: [],
+  entrySearchAnnotationProperties: [],
+  isQueried: false,
 
-  // free text selection
-  searchFilter: '',
+  // free text search
   freeTextSelection: {},
   freeTextSelectedElement: '',
   freeTextPrevSelectedElement: undefined,
+
+  // Structured search
+  structuredSelection: {},
+  structuredSelectedElement: '',
+  structuredPrevSelectedElement: undefined,
 
   // node selection
   isNodeSelectable: false,
@@ -182,7 +224,6 @@ const initialState = {
   }
 }
 
-const middlewares = applyMiddleware(loadingMiddleware)
-const store = createStore(initialState, middlewares)
+const store = createStore(initialState)
 
 export default store

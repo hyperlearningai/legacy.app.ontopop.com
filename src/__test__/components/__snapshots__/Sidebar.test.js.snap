@@ -4,6 +4,7 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -25,6 +26,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -46,6 +48,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -67,6 +70,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -88,6 +92,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -109,6 +114,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_O
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -126,10 +132,33 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_O
 </Connect>
 `;
 
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_ENTRY_SEARCH 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  isSidebarOpen={true}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="entrySearch"
+>
+  <Component />
+</Connect>
+`;
+
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -151,6 +180,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_T
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -172,6 +202,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -193,6 +224,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -214,6 +246,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -235,6 +268,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -256,6 +290,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -277,6 +312,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
@@ -294,10 +330,33 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
 </Connect>
 `;
 
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STRUCTURED_SEARCH 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  isSidebarOpen={true}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  sidebarView="structuredSearch"
+>
+  <Component />
+</Connect>
+`;
+
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STYLING 1`] = `
 <Connect
   actions={
     Object {
+      "addNumber": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],

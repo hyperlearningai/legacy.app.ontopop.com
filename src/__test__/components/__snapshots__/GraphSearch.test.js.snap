@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraphSearch should match snapshot when isQueried false 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  entrySearchResults={
+    Array [
+      Object {
+        "id": "123",
+      },
+    ]
+  }
+  isQueried={false}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`GraphSearch should match snapshot when isQueried true 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  entrySearchResults={
+    Array [
+      Object {
+        "id": "123",
+      },
+    ]
+  }
+  isQueried={true}
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
