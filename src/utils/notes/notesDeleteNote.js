@@ -68,7 +68,7 @@ const notesDeleteNote = async ({
 
   setStoreState('notes', modifiedNotes)
 
-  if (data.message) {
+  if (data && data.message) {
     return showNotification({
       message: data.message,
       type: NOTIFY_SUCCESS

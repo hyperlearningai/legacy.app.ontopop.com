@@ -200,7 +200,7 @@ const initialState = {
   },
 
   // notes
-  notes: {},
+  notes: [],
 
   // physics
   isPhysicsOn: false,

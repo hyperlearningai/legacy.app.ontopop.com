@@ -57,9 +57,9 @@ const NotesList = ({
   }, [selectedNode])
 
   let filteredNotes = notes
-  if (type === 'node' && selectedNode) {
+  if (notes.length && type === 'node' && selectedNode) {
     filteredNotes = notes.filter((note) => note.nodeId === selectedNode)
-  } else if (type === 'edge' && selectedEdge) {
+  } else if (notes.length && type === 'edge' && selectedEdge) {
     filteredNotes = notes.filter((note) => note.edgeId === parseInt(selectedEdge))
   }
 
@@ -315,12 +315,17 @@ const NotesList = ({
 }
 
 NotesList.propTypes = {
-  notes: PropTypes.shape(),
+  notes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   selectedNode: PropTypes.string,
   selectedEdge: PropTypes.string,
   setStoreState: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
   addToObject: PropTypes.func.isRequired,
+}
+
+NotesList.defaultProps = {
+  selectedNode: undefined,
+  selectedEdge: undefined
 }
 
 const mapToProps = ({
