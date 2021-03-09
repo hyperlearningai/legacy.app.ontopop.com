@@ -32,6 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-78 Login page with login endpoint
 
 ### Changed
+- ONTOLOGY-117 Replaced get checks with try/catch in addNode and addEdge
 - ONTOLOGY-117 Replaced old API endpoints with new API services
 - ONTOLOGY-110 Sequential node/adge count update after node/edge added
 - ONTOLOGY-110 Node styling now performed to each node during queue processing to avoid browser freezing

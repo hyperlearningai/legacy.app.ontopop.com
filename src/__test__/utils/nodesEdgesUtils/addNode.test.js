@@ -5,7 +5,7 @@ import store from '../../../store'
 const addNumber = jest.fn()
 
 describe('addNode', () => {
-  it('should not add node if existing correctly', async () => {
+  it('should not add node if existing', async () => {
     const availableNodes = new DataSet([
       {
         id: '123'
@@ -24,6 +24,7 @@ describe('addNode', () => {
     })
 
     expect(availableNodes.length).toEqual(1)
+    expect(addNumber).toHaveBeenCalledTimes(0)
   })
 
   it('should add node correctly', async () => {

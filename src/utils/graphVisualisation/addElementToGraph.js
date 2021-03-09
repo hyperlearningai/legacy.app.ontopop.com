@@ -41,9 +41,10 @@ const addElementToGraph = ({
   nodesEdges,
 }) => {
   const nodeId = nodesIdsToDisplay[i]
-  const nodeIdObject = classesFromApi[nodeId.toString()]
-  const triples = totalEdgesPerNode[nodeId.toString()]
+  const nodeIdObject = classesFromApi[nodeId]
+  const triples = totalEdgesPerNode[nodeId]
 
+  // add node
   const { stylingNodeCaptionProperty } = nodeIdObject[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling : globalNodeStyling
 
   nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
@@ -58,7 +59,6 @@ const addElementToGraph = ({
     addNumber
   })
   setNodeStyle({ node: nodeIdObject, skipSpider: true })
-
   if (triples && triples.length > 0) {
     triples.map((edgeId) => {
       const edge = objectPropertiesFromApi[edgeId]

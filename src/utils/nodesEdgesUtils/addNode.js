@@ -1,3 +1,4 @@
+/* eslint no-console:0 */
 import store from '../../store'
 
 /**
@@ -12,11 +13,11 @@ const addNode = ({ node, addNumber }) => {
     availableNodes
   } = store.getState()
 
-  const isNodeNotVisible = availableNodes.get(node.id) === null
-
-  if (isNodeNotVisible) {
+  try {
     availableNodes.add(node)
     addNumber('availableNodesCount', 1)
+  } catch (error) {
+    return error
   }
 }
 
