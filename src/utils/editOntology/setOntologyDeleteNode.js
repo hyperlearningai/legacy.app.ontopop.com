@@ -1,4 +1,4 @@
-import { DELETE_NODE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_NODES_ID } from '../../constants/api'
 import {
   NOTIFY_SUCCESS,
   NOTIFY_WARNING
@@ -53,7 +53,7 @@ const setOntologyDeleteNode = async ({
       const response = await httpCall({
         addNumber,
         withAuth: true,
-        route: DELETE_NODE.replace('{id}', nodeId),
+        route: API_ENDPOINT_GRAPH_NODES_ID.replace('{id}', nodeId),
         method: 'delete',
         body: {},
         t

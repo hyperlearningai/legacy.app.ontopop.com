@@ -2,7 +2,7 @@ import { ROUTE_INDEX } from '../../constants/routes'
 import {
   AUTH_COOKIE,
 } from '../../constants/auth'
-import { AUTH_SIGN_IN } from '../../constants/api'
+import { API_ENDPOINT_AUTH_SIGN_IN } from '../../constants/api'
 import { NOTIFY_WARNING } from '../../constants/notifications'
 import showNotification from '../notifications/showNotification'
 import httpCall from '../apiCalls/httpCall'
@@ -37,7 +37,7 @@ const signIn = async ({
       username: email,
       password
     },
-    route: AUTH_SIGN_IN,
+    route: API_ENDPOINT_AUTH_SIGN_IN,
     method: 'post',
     t
   })

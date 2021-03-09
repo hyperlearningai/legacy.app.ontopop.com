@@ -5,7 +5,7 @@ import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import setEdgeStyleByProperty from '../networkStyling/setEdgeStyleByProperty'
 import getNode from '../nodesEdgesUtils/getNode'
-import { POST_CREATE_EDGE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_EDGES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 
 /**
@@ -56,7 +56,7 @@ const setOntologyAddEdge = async ({
   const response = await httpCall({
     addNumber,
     withAuth: true,
-    route: POST_CREATE_EDGE,
+    route: API_ENDPOINT_GRAPH_EDGES_CREATE,
     method: 'post',
     body,
     t
