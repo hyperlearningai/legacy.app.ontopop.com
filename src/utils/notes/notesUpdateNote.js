@@ -62,16 +62,15 @@ const notesUpdateNote = async ({
     data
   } = response
 
-  const modifiedNotes = notes.map((note) => (note.id === data.id ? data : note))
-
-  setStoreState('notes', modifiedNotes)
-
-  if (error) {
+  if (error || !data.id) {
     return showNotification({
-      message: t('couldNotQueryNotes'),
+      message: t('couldNotUpdateNote'),
       type: NOTIFY_WARNING
     })
   }
+
+  const modifiedNotes = notes.map((note) => (note.id === data.id ? data : note))
+  setStoreState('notes', modifiedNotes)
 }
 
 export default notesUpdateNote

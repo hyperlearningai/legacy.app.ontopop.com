@@ -62,7 +62,7 @@ const notesGetNotes = async ({
   setStoreState('notes', data)
 
   if (error) {
-    return showNotification({
+    showNotification({
       message: t('couldNotQueryNotes'),
       type: NOTIFY_WARNING
     })

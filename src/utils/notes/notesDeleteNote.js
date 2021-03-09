@@ -76,8 +76,8 @@ const notesDeleteNote = async ({
   }
 
   if (error) {
-    return showNotification({
-      message: t('couldNotQueryNotes'),
+    showNotification({
+      message: t('couldNotDeleteNote'),
       type: NOTIFY_WARNING
     })
   }

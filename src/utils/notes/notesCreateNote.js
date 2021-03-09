@@ -67,17 +67,17 @@ const notesCreateNote = async ({
 
   setStoreState('notes', modifiedNotes)
 
-  if (data.message) {
-    return showNotification({
-      message: t('noteCreated'),
-      type: NOTIFY_SUCCESS
-    })
-  }
-
   if (error) {
     return showNotification({
       message: t('couldNotCreateNote'),
       type: NOTIFY_WARNING
+    })
+  }
+
+  if (data) {
+    return showNotification({
+      message: t('noteCreated'),
+      type: NOTIFY_SUCCESS
     })
   }
 }

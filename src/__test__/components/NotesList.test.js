@@ -1,5 +1,5 @@
 import React from 'react'
-import {shallow} from 'enzyme'
+import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import NotesList from '../../components/NotesList'
 
@@ -40,19 +40,17 @@ describe('NotesList', () => {
       component
     } = setup({
       notes: [{
-        "1": {
-          "id": 1,
-          "type": "graph",
-          "userId": "username@domain.tld",
-          "contents": "My first note",
-          "dateCreated": "yyyy-MM-dd HH:mm:ss",
-          "dateLastUpdated": "yyyy-MM-dd HH:mm:ss"
+        1: {
+          id: 1,
+          type: 'graph',
+          userId: 'username@domain.tld',
+          contents: 'My first note',
+          dateCreated: 'yyyy-MM-dd HH:mm:ss',
+          dateLastUpdated: 'yyyy-MM-dd HH:mm:ss'
         }
       }]
     })
 
     expect(toJson(component)).toMatchSnapshot()
   })
-
-
 })
