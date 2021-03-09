@@ -381,6 +381,7 @@ export default {
   changePassword: 'Change Password',
 
   // notes
+  focus: 'Focus',
   dateCreated: 'Created:',
   dateLastUpdated: 'Updated:',
   userId: 'User ID:',

@@ -13,14 +13,15 @@ import notesGetNotes from '../utils/notes/notesGetNotes'
 import notesCreateNote from '../utils/notes/notesCreateNote'
 import notesUpdateNote from '../utils/notes/notesUpdateNote'
 import notesDeleteNote from '../utils/notes/notesDeleteNote'
+import highlightNodesNotes from '../utils/notes/highlightNodesNotes'
+import highlightEdgesNotes from '../utils/notes/highlightEdgesNotes'
 
 const NotesList = ({
   notes,
   addNumber,
   selectedNode,
   selectedEdge,
-  setStoreState,
-  addToObject
+  setStoreState
 }) => {
   const { t } = useTranslation()
 
@@ -58,7 +59,7 @@ const NotesList = ({
 
   let filteredNotes = notes
   if (notes.length && type === 'node' && selectedNode) {
-    filteredNotes = notes.filter((note) => note.nodeId === selectedNode)
+    filteredNotes = notes.filter((note) => note.nodeId === parseInt(selectedNode))
   } else if (notes.length && type === 'edge' && selectedEdge) {
     filteredNotes = notes.filter((note) => note.edgeId === parseInt(selectedEdge))
   }
@@ -87,15 +88,6 @@ const NotesList = ({
       </div>
 
       <div className="notes">
-        <div className="notes-highlight">
-          <Button
-            tooltip={t('highlightNotes')}
-            tooltipOptions={{ position: 'top' }}
-            label={t('highlightNotes')}
-            onClick={() => addToObject('globalNodeStyling', 'stylingNodeBorderColor', 'red')}
-          />
-        </div>
-
         <div className="notes-select-row">
           <label htmlFor="notes-select">
             {t('resultsType')}
@@ -118,6 +110,17 @@ const NotesList = ({
             itemTemplate={itemTemplate}
           />
         </div>
+        {(type !== 'graph') && (
+        <div className="notes-highlight">
+          <Button
+            tooltip={t('highlightNotes')}
+            tooltipOptions={{ position: 'top' }}
+            label={t('highlightNotes')}
+            onClick={() => (type === 'node' ? highlightNodesNotes() : highlightEdgesNotes())}
+          />
+        </div>
+        )}
+
         <div className="notes-list">
           <div className="card">
 
@@ -129,7 +132,9 @@ const NotesList = ({
                   tooltipOptions={{ position: 'top' }}
                   label={t('addNewNote')}
                   onClick={() => setShowForm(true)}
-                />
+                >
+                  <i className="pi pi-plus-circle" />
+                </Button>
               </div>
               )}
             {showForm
@@ -305,9 +310,7 @@ const NotesList = ({
 
               </div>
             ))}
-
           </div>
-
         </div>
       </div>
     </>
@@ -319,8 +322,7 @@ NotesList.propTypes = {
   selectedNode: PropTypes.string,
   selectedEdge: PropTypes.string,
   setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  addNumber: PropTypes.func.isRequired
 }
 
 NotesList.defaultProps = {

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotesList should match snapshot when notes empty 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addNumber={[MockFunction]}
+  mapToProps={[Function]}
+  notes={Array []}
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`NotesList should match snapshot with graph note 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addNumber={[MockFunction]}
+  mapToProps={[Function]}
+  notes={
+    Array [
+      Object {
+        "1": Object {
+          "contents": "My first note",
+          "dateCreated": "yyyy-MM-dd HH:mm:ss",
+          "dateLastUpdated": "yyyy-MM-dd HH:mm:ss",
+          "id": 1,
+          "type": "graph",
+          "userId": "username@domain.tld",
+        },
+      },
+    ]
+  }
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

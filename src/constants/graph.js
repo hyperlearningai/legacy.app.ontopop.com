@@ -14,6 +14,10 @@ export const NODE_DEFAULT_SHAPE = 'circle'
 export const EDGE_COLOR = '#070b11'
 export const EDGE_COLOR_SELECTED = '#03a9f4'
 export const EDGE_COLOR_HIGHLIGHTED = '#9c27b0'
+export const NOTE_NODE_BORDER_WIDTH = 3
+export const NOTE_NODE_BORDER_COLOR = '#ff6f61'
+export const NOTE_EDGE_BORDER_WIDTH = 3
+export const NOTE_EDGE_BORDER_COLOR = '#ff6f61'
 
 export const FONT_ALIGNMENT_OPTIONS = [
   { icon: 'pi pi-align-left', value: 'left' },
