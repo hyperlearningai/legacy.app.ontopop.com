@@ -49,7 +49,7 @@ const addExpandedNode = ({
     nodeIdObject.x = Math.floor((Math.random() * 100) + 1)
     nodeIdObject.y = Math.floor((Math.random() * 100) + 1)
 
-    addNode(nodeIdObject)
+    addNode({ node: nodeIdObject, addNumber })
     setNodeStyle({
       node: nodeIdObject,
       skipSpider: true
@@ -67,7 +67,7 @@ const addExpandedNode = ({
     nodesEdges[nodeId].push(id)
   }
 
-  addEdge(edge)
+  addEdge({ edge, addNumber })
   setEdgeStyle({
     edge
   })

@@ -9,8 +9,6 @@ import { LABEL_PROPERTY, UNIQUE_PROPERTY } from '../../../constants/graph'
 import showNotification from '../../../utils/notifications/showNotification'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
-import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
-import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
@@ -20,11 +18,6 @@ jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/apiCalls/httpCall')
-jest.mock('../../../utils/nodesEdgesUtils/countEdges')
-jest.mock('../../../utils/nodesEdgesUtils/countNodes')
-
-countEdges.mockImplementation(() => 1)
-countNodes.mockImplementation(() => 1)
 
 describe('setOntologyAddNode', () => {
   afterEach(() => {
@@ -134,35 +127,38 @@ describe('setOntologyAddNode', () => {
 
     expect(addNode).toHaveBeenCalledWith(
       {
-        borderWidth: undefined,
-        borderWidthSelected: undefined,
-        color: {
-          background: undefined,
-          border: undefined,
-          highlight: {
+        addNumber,
+        node: {
+          borderWidth: undefined,
+          borderWidthSelected: undefined,
+          color: {
             background: undefined,
             border: undefined,
+            highlight: {
+              background: undefined,
+              border: undefined,
+            },
+            hover: {
+              background: undefined,
+              border: undefined,
+            },
           },
-          hover: {
-            background: undefined,
-            border: undefined,
+          font: {
+            align: undefined,
+            bold: '700',
+            color: undefined,
+            face: 'Montserrat',
+            size: undefined,
           },
-        },
-        font: {
-          align: undefined,
-          bold: '700',
-          color: undefined,
-          face: 'Montserrat',
+          'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
+          id: '123',
+          label: 'New\nnode',
+          rdfAbout: '123',
+          rdfsLabel: 'New node',
+          shape: undefined,
           size: undefined,
-        },
-        'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-        id: '123',
-        label: 'New\nnode',
-        rdfAbout: '123',
-        rdfsLabel: 'New node',
-        shape: undefined,
-        size: undefined,
-        userDefined: true,
+          userDefined: true,
+        }
       }
     )
 
@@ -223,10 +219,6 @@ describe('setOntologyAddNode', () => {
         [
           'addedNodes',
           ['123']
-        ],
-        [
-          'availableNodesCount',
-          1,
         ],
       ]
     )

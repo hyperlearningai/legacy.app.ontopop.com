@@ -3,9 +3,8 @@ import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import addNode from '../nodesEdgesUtils/addNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
-import { POST_CREATE_NODE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
-import countNodes from '../nodesEdgesUtils/countNodes'
 
 /**
  * ADd ontology nodes
@@ -61,7 +60,7 @@ const setOntologyAddNode = async ({
   const response = await httpCall({
     addNumber,
     withAuth: true,
-    route: POST_CREATE_NODE,
+    route: API_ENDPOINT_GRAPH_NODES_CREATE,
     method: 'post',
     body,
     t
@@ -135,8 +134,11 @@ const setOntologyAddNode = async ({
   }
 
   addNode({
-    ...newClassesFromApi[id],
-    ...nodeStyle
+    node: {
+      ...newClassesFromApi[id],
+      ...nodeStyle
+    },
+    addNumber
   })
 
   const newAddedNodes = [
@@ -160,8 +162,6 @@ const setOntologyAddNode = async ({
     message,
     type: NOTIFY_SUCCESS
   })
-
-  setStoreState('availableNodesCount', countNodes())
 }
 
 export default setOntologyAddNode

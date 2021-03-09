@@ -43,35 +43,53 @@ const GraphSearch = ({
             </div>
           ) : (
             <div className="graph-search-bar">
-              <AutoComplete
-                value={search}
-                suggestions={suggestions}
-                completeMethod={(e) => {
-                  const { query } = e
+              <form onSubmit={(e) => {
+                e.preventDefault()
 
-                  getSuggestions({
-                    query,
-                    suggestions,
-                    setSuggestions
-                  })
-                }}
-                field="label"
-                onSelect={(e) => {
-                  const { value } = e.value
+                searchGraph({
+                  value: search,
+                  setStoreState,
+                  setSearch,
+                  setLoading
+                })
+              }}
+              >
+                <AutoComplete
+                  name="search"
+                  value={search}
+                  suggestions={suggestions}
+                  completeMethod={(e) => {
+                    const { query } = e
 
-                  searchGraph({
-                    value,
-                    setStoreState,
-                    setSearch,
-                    setLoading
-                  })
-                }}
-                onChange={(e) => {
-                  setStoreState('isQueried', false)
-                  setSearch(e.value)
-                }}
-              />
-              <BsSearch />
+                    getSuggestions({
+                      query,
+                      suggestions,
+                      setSuggestions
+                    })
+                  }}
+                  field="label"
+                  onSelect={(e) => {
+                    const { value } = e.value
+
+                    searchGraph({
+                      value,
+                      setStoreState,
+                      setSearch,
+                      setLoading
+                    })
+                  }}
+                  onChange={(e) => {
+                    setStoreState('isQueried', false)
+                    setSearch(e.value)
+                  }}
+                />
+                <BsSearch />
+                <input
+                  name="submit"
+                  className="hidden"
+                  type="submit"
+                />
+              </form>
             </div>
           )
         }

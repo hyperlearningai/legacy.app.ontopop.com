@@ -5,11 +5,9 @@ import getNode from '../nodesEdgesUtils/getNode'
 import getEdgeObject from '../graphVisualisation/getEdgeObject'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import httpCall from '../apiCalls/httpCall'
-import { POST_CREATE_NODE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
-import countEdges from '../nodesEdgesUtils/countEdges'
-import countNodes from '../nodesEdgesUtils/countNodes'
 
 /**
  * Restore ontology nodes
@@ -110,7 +108,7 @@ const setOntologyRestoreNode = async ({
       const response = await httpCall({
         addNumber,
         withAuth: true,
-        route: POST_CREATE_NODE,
+        route: API_ENDPOINT_GRAPH_NODES_CREATE,
         method: 'post',
         body,
         t
@@ -149,8 +147,11 @@ const setOntologyRestoreNode = async ({
         ? newClassesFromApi[id][stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
       addNode({
-        ...newClassesFromApi[id],
-        ...nodeStyle
+        node: {
+          ...newClassesFromApi[id],
+          ...nodeStyle
+        },
+        addNumber
       })
 
       // add connection back
@@ -264,8 +265,11 @@ const setOntologyRestoreNode = async ({
             }
 
             addEdge({
-              ...edge,
-              ...edgeStyle
+              edge: {
+                ...edge,
+                ...edgeStyle
+              },
+              addNumber
             })
           }
 
@@ -276,7 +280,7 @@ const setOntologyRestoreNode = async ({
       return true
     })
 
-    const message = `${t('nodesRestored')}: ${restoredNodes.join(', ')}`
+    const message = `${t('nodesRestored')}: ${restoredNodes.map((restoredNode) => restoredNode.id).join(', ')}`
     showNotification({
       message,
       type: NOTIFY_SUCCESS
@@ -290,8 +294,6 @@ const setOntologyRestoreNode = async ({
   setStoreState('deletedNodes', newDeletedNodes)
   setStoreState('deletedEdges', newDeletedEdges)
   setElementsStyle()
-  setStoreState('availableNodesCount', countNodes())
-  setStoreState('availableEdgesCount', countEdges())
 }
 
 export default setOntologyRestoreNode

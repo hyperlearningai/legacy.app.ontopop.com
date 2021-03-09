@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.4.0]
 ### Added
+- ONTOLOGY-117 Added new API services
+- ONTOLOGY-110 Turned search into form to allow pressing enter on search
 - ONTOLOGY-110 Added timeouts to expandNode to avoid browser freezing
 - ONTOLOGY-110 Added timeouts to queueGraphElements to avoid browser freezing
 - ONTOLOGY-108 Added alpha banner and feedback link
@@ -30,6 +32,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-78 Login page with login endpoint
 
 ### Changed
+- ONTOLOGY-117 Replaced get checks with try/catch in addNode and addEdge
+- ONTOLOGY-117 Replaced old API endpoints with new API services
+- ONTOLOGY-110 Sequential node/adge count update after node/edge added
 - ONTOLOGY-110 Node styling now performed to each node during queue processing to avoid browser freezing
 - ONTOLOGY-110 Added activeLoaders to replace loading in store
 - ONTOLOGY-93 Refactored several utils and components to use user-defined nodes and edges styles
@@ -44,6 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-93 Removed boundingBoxSelection clearNodesSelection util
 
 ### Fixed
+- ONTOLOGY-110 Fixed bug: all nodes were highlighted after changing node background color, now working properly
 - ONTOLOGY-93 Node selection bug when in shortest path or node neighbourhood mode after nodes filter/nodes selection mode
 - ONTOLOGY-93 Node/edge count update after ontology management operations
 

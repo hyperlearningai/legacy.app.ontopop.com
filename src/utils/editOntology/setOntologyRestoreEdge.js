@@ -2,12 +2,10 @@ import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import getNode from '../nodesEdgesUtils/getNode'
 import setEdgeStyleByProperty from '../networkStyling/setEdgeStyleByProperty'
-import { POST_CREATE_EDGE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_EDGES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
-import countNodes from '../nodesEdgesUtils/countNodes'
-import countEdges from '../nodesEdgesUtils/countEdges'
 
 /**
  * ADd ontology edge
@@ -55,7 +53,7 @@ const setOntologyRestoreEdge = async ({
       const response = await httpCall({
         addNumber,
         withAuth: true,
-        route: POST_CREATE_EDGE,
+        route: API_ENDPOINT_GRAPH_EDGES_CREATE,
         method: 'post',
         body,
         t
@@ -113,7 +111,7 @@ const setOntologyRestoreEdge = async ({
       if (
         isFromVisible
         && isToVisible) {
-        addEdge(edge)
+        addEdge({ edge, addNumber })
 
         // add connections
         if (!newNodesEdges[from].includes(id)) {
@@ -152,9 +150,6 @@ const setOntologyRestoreEdge = async ({
       message,
       type: NOTIFY_SUCCESS
     })
-
-    setStoreState('availableNodesCount', countNodes())
-    setStoreState('availableEdgesCount', countEdges())
   }
 }
 

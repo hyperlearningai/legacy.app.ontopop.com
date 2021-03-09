@@ -3,6 +3,7 @@ import addNode from '../nodesEdgesUtils/addNode'
 import { USER_DEFINED_PROPERTY } from '../../constants/graph'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import actionAfterNodesAdded from './actionAfterNodesAdded'
+import addEdge from '../nodesEdgesUtils/addEdge'
 
 /**
  * Node queue to avoid browser freezing
@@ -40,21 +41,24 @@ const addElementToGraph = ({
   nodesEdges,
 }) => {
   const nodeId = nodesIdsToDisplay[i]
-  const nodeIdObject = classesFromApi[nodeId.toString()]
-  const triples = totalEdgesPerNode[nodeId.toString()]
+  const nodeIdObject = classesFromApi[nodeId]
+  const triples = totalEdgesPerNode[nodeId]
 
+  // add node
   const { stylingNodeCaptionProperty } = nodeIdObject[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling : globalNodeStyling
 
   nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
     ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
 
   addNode({
-    ...nodeIdObject,
-    x: Math.random() * 1500, // for scattering when in physics mode
-    y: Math.random() * 1500,
+    node: {
+      ...nodeIdObject,
+      x: Math.random() * 1500, // for scattering when in physics mode
+      y: Math.random() * 1500,
+    },
+    addNumber
   })
   setNodeStyle({ node: nodeIdObject, skipSpider: true })
-
   if (triples && triples.length > 0) {
     triples.map((edgeId) => {
       const edge = objectPropertiesFromApi[edgeId]
@@ -81,6 +85,8 @@ const addElementToGraph = ({
       && nodesIdsToDisplay.includes(from.toString())
 
       if (isEdgeDisplayable) {
+        addEdge({ edge, addNumber })
+
         addNodesEdges({
           edge,
           nodesEdges,
@@ -98,9 +104,12 @@ const addElementToGraph = ({
           ? nodeToAddObject[captionProperty].replace(/ /g, '\n') : ''
 
         addNode({
-          ...nodeToAddObject,
-          x: Math.random() * 1500, // for scattering when in physics mode
-          y: Math.random() * 1500,
+          node: {
+            ...nodeToAddObject,
+            x: Math.random() * 1500, // for scattering when in physics mode
+            y: Math.random() * 1500,
+          },
+          addNumber
         })
         setNodeStyle({ node: nodeToAddObject, skipSpider: true })
       }
