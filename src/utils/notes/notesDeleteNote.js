@@ -32,19 +32,29 @@ const notesDeleteNote = async ({
 }) => {
   const {
     user,
-    notes
+    notes,
+    nodesNotes,
+    edgesNotes
   } = store.getState()
 
   const withAuth = !!user.token
 
   let route
+  let modifiedNotes
+  let notesState
 
   if (type === 'node') {
     route = DELETE_NODE_NOTE.replace('{node_id}', selectedElement).replace('{id}', selectedNoteID)
+    modifiedNotes = nodesNotes.slice()
+    notesState = 'nodesNotes'
   } else if (type === 'edge') {
     route = DELETE_EDGE_NOTE.replace('{edge_id}', selectedElement).replace('{id}', selectedNoteID)
+    modifiedNotes = edgesNotes.slice()
+    notesState = 'edgesNotes'
   } else {
     route = DELETE_GRAPH_NOTE.replace('{id}', selectedNoteID)
+    modifiedNotes = notes.slice()
+    notesState = 'notes'
   }
 
   const response = await httpCall({
@@ -61,12 +71,11 @@ const notesDeleteNote = async ({
     data
   } = response
 
-  const dataIndex = notes.findIndex((note) => note.id === selectedNoteID)
-  const modifiedNotes = notes.slice()
+  const dataIndex = modifiedNotes.findIndex((note) => note.id === selectedNoteID)
 
   modifiedNotes.splice(dataIndex, 1)
 
-  setStoreState('notes', modifiedNotes)
+  setStoreState(notesState, modifiedNotes)
 
   if (data && data.message) {
     return showNotification({

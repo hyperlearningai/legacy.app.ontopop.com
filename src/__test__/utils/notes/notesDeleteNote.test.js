@@ -20,7 +20,7 @@ const noteMock = {
   dateLastUpdated: '2021-12-12 10:10:10'
 }
 
-describe('notesUpdateNote', () => {
+describe('notesDeleteNote', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -45,20 +45,7 @@ describe('notesUpdateNote', () => {
     )
   })
 
-  it('should work correctly when no data', async () => {
-    httpCall.mockImplementationOnce(() => ({ data: {} }))
-
-    await notesDeleteNote({
-      type: 'graph',
-      selectedElement: null,
-      selectedNoteID: 2,
-      addNumber,
-      setStoreState,
-      t
-    })
-  })
-
-  it('should work correctly', async () => {
+  it('should work correctly when graph type', async () => {
     const mockNotesBefore = [{ ...noteMock }, { ...noteMock, id: 2 }]
     const mockNotesAfter = [{ ...noteMock, id: 2 }]
 
@@ -80,6 +67,65 @@ describe('notesUpdateNote', () => {
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([['notes', mockNotesAfter]])
+    expect(showNotification).toHaveBeenCalledWith(
+      { message: 'Note Deleted', type: 'success' }
+    )
+    expect(setStoreState).toHaveBeenCalledWith('notes', mockNotesAfter)
+  })
+
+  it('should work correctly when node type', async () => {
+    const mockNotesBefore = [{ ...noteMock }, { ...noteMock, id: 2 }]
+    const mockNotesAfter = [{ ...noteMock, id: 2 }]
+
+    httpCall.mockImplementationOnce(() => ({
+      data: { message: 'Note Deleted' }
+    }))
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      nodesNotes: mockNotesBefore,
+      user: { token: '123' }
+    }))
+
+    await notesDeleteNote({
+      type: 'node',
+      selectedElement: null,
+      selectedNoteID: 1,
+      addNumber,
+      setStoreState,
+      t
+    })
+
+    expect(showNotification).toHaveBeenCalledWith(
+      { message: 'Note Deleted', type: 'success' }
+    )
+    expect(setStoreState).toHaveBeenCalledWith('nodesNotes', mockNotesAfter)
+  })
+
+  it('should work correctly when edge type', async () => {
+    const mockNotesBefore = [{ ...noteMock }, { ...noteMock, id: 2 }]
+    const mockNotesAfter = [{ ...noteMock, id: 2 }]
+
+    httpCall.mockImplementationOnce(() => ({
+      data: { message: 'Note Deleted' }
+    }))
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      edgesNotes: mockNotesBefore,
+      user: { token: '123' }
+    }))
+
+    await notesDeleteNote({
+      type: 'edge',
+      selectedElement: null,
+      selectedNoteID: 1,
+      addNumber,
+      setStoreState,
+      t
+    })
+
+    expect(showNotification).toHaveBeenCalledWith(
+      { message: 'Note Deleted', type: 'success' }
+    )
+    expect(setStoreState).toHaveBeenCalledWith('edgesNotes', mockNotesAfter)
   })
 })

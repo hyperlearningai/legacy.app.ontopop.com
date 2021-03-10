@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 import expandNode from '../utils/graphVisualisation/expandNode'
-import { SIDEBAR_VIEW_CUSTOM_QUERY } from '../constants/views'
+import { SIDEBAR_VIEW_CUSTOM_QUERY, SIDEBAR_VIEW_NOTES } from '../constants/views'
 
 const GraphContextMenu = ({
   setStoreState,
@@ -16,10 +16,11 @@ const GraphContextMenu = ({
   const {
     top,
     left,
-    nodeId
+    nodeId,
+    edgeId
   } = contextMenuData
 
-  const menu = [
+  const defaultMenu = [
     {
       label: t('customQuery'),
       icon: 'pi pi-fw pi-tablet',
@@ -38,34 +39,57 @@ const GraphContextMenu = ({
     }
   ]
 
-  if (nodeId) {
-    menu[1] = {
-      label: t('expandNode'),
-      icon: 'pi pi-fw pi-plus',
-      command: () => {
-        expandNode({
-          nodeId,
-          setStoreState,
-          addNumber,
-        })
-        setStoreState('showContextMenu', false)
-      }
-    }
-  }
+  let menu = defaultMenu
 
   if (nodeId) {
-    menu[2] = {
-      label: t('addNote'),
-      icon: 'pi pi-fw pi-plus',
-      command: () => {
-        expandNode({
-          nodeId,
-          setStoreState,
-          addNumber,
-        })
-        setStoreState('showContextMenu', false)
+    const selectedNodeMenu = [
+      {
+        label: t('expandNode'),
+        icon: 'pi pi-fw pi-plus',
+        command: () => {
+          expandNode({
+            nodeId,
+            setStoreState,
+            addNumber,
+          })
+          setStoreState('showContextMenu', false)
+        }
+      }, {
+        label: t('notes'),
+        icon: 'pi pi-fw pi-comment',
+        command: () => {
+          setStoreState('noteElementId', nodeId)
+          setStoreState('selectedNotesType', 'node')
+          setStoreState('sidebarView', SIDEBAR_VIEW_NOTES)
+          setStoreState('showContextMenu', false)
+        }
       }
-    }
+    ]
+
+    menu = [
+      defaultMenu[0],
+      ...selectedNodeMenu,
+      ...defaultMenu.slice(1)
+    ]
+  } else if (edgeId) {
+    const selectedEdgeMenu = [
+      {
+        label: t('notes'),
+        icon: 'pi pi-fw pi-comment',
+        command: () => {
+          setStoreState('noteElementId', edgeId)
+          setStoreState('selectedNotesType', 'edge')
+          setStoreState('sidebarView', SIDEBAR_VIEW_NOTES)
+          setStoreState('showContextMenu', false)
+        }
+      }
+    ]
+
+    menu = [
+      defaultMenu[0],
+      ...selectedEdgeMenu,
+      ...defaultMenu.slice(1)
+    ]
   }
 
   return (

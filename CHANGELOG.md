@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.4.0]
 ### Added
+- ONTOLOGY-30 Added network / node / edge comments
 - ONTOLOGY-117 Added new API services
 - ONTOLOGY-110 Turned search into form to allow pressing enter on search
 - ONTOLOGY-110 Added timeouts to expandNode to avoid browser freezing
@@ -32,6 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-78 Login page with login endpoint
 
 ### Changed
+- ONTOLOGY-30 Highlight logic: if notes view, highlight commented nodes, else highlight spiderable nodes
 - ONTOLOGY-117 Replaced get checks with try/catch in addNode and addEdge
 - ONTOLOGY-117 Replaced old API endpoints with new API services
 - ONTOLOGY-110 Sequential node/adge count update after node/edge added

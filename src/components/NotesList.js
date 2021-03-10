@@ -1,68 +1,115 @@
+/* eslint jsx-a11y/label-has-associated-control:0 */
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { connect } from 'redux-zero/react'
 import { SelectButton } from 'primereact/selectbutton'
-import { InputTextarea } from 'primereact/inputtextarea'
+import { Divider } from 'primereact/divider'
+import { InputText } from 'primereact/inputtext'
+import { orderBy, uniq } from 'lodash'
+import { Dropdown } from 'primereact/dropdown'
 import { Button } from 'primereact/button'
+import { Calendar } from 'primereact/calendar'
+import { Accordion, AccordionTab } from 'primereact/accordion'
+import { MultiSelect } from 'primereact/multiselect'
 import { SIDEBAR_VIEW_NOTES } from '../constants/views'
 import actions from '../store/actions'
 import resetSelectedNode from '../utils/nodesSelection/resetSelectedNode'
 import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
-import notesGetNotes from '../utils/notes/notesGetNotes'
-import notesCreateNote from '../utils/notes/notesCreateNote'
-import notesUpdateNote from '../utils/notes/notesUpdateNote'
-import notesDeleteNote from '../utils/notes/notesDeleteNote'
-import highlightNodesNotes from '../utils/notes/highlightNodesNotes'
-import highlightEdgesNotes from '../utils/notes/highlightEdgesNotes'
+import NotesListNote from './NotesListNote'
+import NotesListAddNew from './NotesListAddNew'
+import addNodesBorders from '../utils/networkStyling/addNodesBorders'
+import { SORT_FIELDS, MIN_DATE } from '../constants/notes'
+import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
+import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
+import getNode from '../utils/nodesEdgesUtils/getNode'
+import getEdge from '../utils/nodesEdgesUtils/getEdge'
 
 const NotesList = ({
   notes,
-  addNumber,
-  selectedNode,
-  selectedEdge,
-  setStoreState
+  nodesNotes,
+  edgesNotes,
+  setStoreState,
+  selectedNotesType,
+  noteElementId,
+  classesFromApi
 }) => {
   const { t } = useTranslation()
 
-  const [type, setType] = useState('graph')
-  const [noteText, setNoteText] = useState('')
-  const [showForm, setShowForm] = useState(false)
-  const [editingKey, setEditingKey] = useState('')
+  const [search, setSearch] = useState('')
+  const [sortField, setSortField] = useState('dateLastUpdated')
+  const [sortDirection, setSortDirection] = useState('asc')
+  const [filter, setFilter] = useState(undefined)
+  const [filterValue, setFilterValue] = useState('')
 
-  useEffect(() => () => {
-    setStoreState('selectedNode', undefined)
+  useEffect(() => {
+    addNodesBorders()
 
-    resetSelectedNode({
-      setStoreState
-    })
+    return () => {
+      setStoreState('noteElementId', undefined)
+      setStoreState('noteElementId', undefined)
+
+      resetSelectedNode({
+        setStoreState
+      })
+
+      addNodesBorders()
+    }
   }, [])
 
   useEffect(() => {
-    notesGetNotes({
-      addNumber,
-      setStoreState,
-      t
-    })
-
-    if (selectedNode && selectedNode !== '') {
+    if (noteElementId && noteElementId !== '') {
       resetSelectedNode({
         setStoreState
       })
 
       highlightSelectedNode({
         setStoreState,
-        selectedNode
+        noteElementId
       })
     }
-  }, [selectedNode])
+  }, [noteElementId])
 
-  let filteredNotes = notes
-  if (notes.length && type === 'node' && selectedNode) {
-    filteredNotes = notes.filter((note) => note.nodeId === parseInt(selectedNode))
-  } else if (notes.length && type === 'edge' && selectedEdge) {
-    filteredNotes = notes.filter((note) => note.edgeId === parseInt(selectedEdge))
+  const filterNode = (note) => {
+    if (search === '' && !filter) return true
+
+    if (filter === 'dateCreated' && new Date(note.dateCreated) < filterValue) return false
+
+    if (filter === 'dateLastUpdated' && new Date(note.dateLastUpdated) < filterValue) return false
+
+    if (filter === 'userId' && !filterValue.includes(note.userId)) return false
+
+    return search === '' ? true : note.contents && note.contents.toLowerCase().includes(search.toLowerCase())
   }
+
+  let userIdNotes = notes
+
+  let filteredNotes = notes.length > 0 ? notes.filter((note) => filterNode(note)) : []
+
+  if (selectedNotesType === 'node') {
+    const nodesNotesById = nodesNotes.length > 0 && noteElementId ? nodesNotes.filter((note) => note.nodeId.toString() === noteElementId) : []
+    filteredNotes = nodesNotesById
+    userIdNotes = nodesNotesById
+
+    if (filteredNotes.length > 0) {
+      filteredNotes = filteredNotes.filter((note) => filterNode(note))
+    }
+  }
+
+  if (selectedNotesType === 'edge') {
+    const edgesNotesById = edgesNotes.length > 0 && noteElementId ? edgesNotes.filter((note) => note.edgeId.toString() === noteElementId) : []
+    filteredNotes = edgesNotesById
+    userIdNotes = edgesNotesById
+
+    if (filteredNotes.length > 0) {
+      filteredNotes = filteredNotes.filter((note) => filterNode(note))
+    }
+  }
+
+  const userIds = userIdNotes.length > 0 ? uniq(userIdNotes.map((note) => note.userId).map((userId) => ({
+    value: userId,
+    label: userId
+  }))) : []
 
   const noteButtons = [{
     value: 'graph',
@@ -81,6 +128,28 @@ const NotesList = ({
     </span>
   )
 
+  const availableNodesList = getNodeIds().map((nodeId) => {
+    const node = getNode(nodeId)
+
+    return ({
+      value: node.id,
+      label: node.label
+    })
+  }).filter((node) => node.label)
+
+  const availableEdgesList = getEdgeIds().map((edgeId) => {
+    const {
+      id, label, from, to
+    } = getEdge(edgeId)
+
+    const edgeLabel = `${classesFromApi[from].label} => ${label} => ${classesFromApi[to].label}`
+
+    return ({
+      value: id,
+      label: edgeLabel
+    })
+  }).filter((edge) => edge.label)
+
   return (
     <>
       <div className="sidebar-main-title">
@@ -90,228 +159,164 @@ const NotesList = ({
       <div className="notes">
         <div className="notes-select-row">
           <label htmlFor="notes-select">
-            {t('resultsType')}
+            {t('notesFor')}
           </label>
           <SelectButton
             id="notes-select"
-            value={type}
+            value={selectedNotesType}
             options={noteButtons}
             onChange={(e) => {
-              setType(e.value)
-              setStoreState(e.value === 'node' ? 'isNodeSelectable' : 'isEdgeSelectable', true)
-              notesGetNotes({
-                type: e.value,
-                selectedElement: selectedNode,
-                addNumber,
-                setStoreState,
-                t
-              })
+              const { value } = e
+
+              setStoreState('isNodeSelectable', value === 'node')
+              setStoreState('isEdgeSelectable', value === 'edge')
+              setStoreState('noteElementId', undefined)
+              setStoreState('selectedNotesType', value)
             }}
             itemTemplate={itemTemplate}
           />
         </div>
-        {(type !== 'graph') && (
-        <div className="notes-highlight">
-          <Button
-            tooltip={t('highlightNotes')}
-            tooltipOptions={{ position: 'top' }}
-            label={t('highlightNotes')}
-            onClick={() => (type === 'node' ? highlightNodesNotes() : highlightEdgesNotes())}
-          />
-        </div>
-        )}
 
-        <div className="notes-list">
-          <div className="card">
+        {
+          selectedNotesType !== 'graph' && (
+            <div className="notes-select-row">
+              <label htmlFor="notes-select-element">
+                {t('selectElement')}
+              </label>
+              <Dropdown
+                id="notes-select-element"
+                name="notes-select-element"
+                value={noteElementId}
+                options={
+                  selectedNotesType === 'node'
+                    ? availableNodesList
+                    : availableEdgesList
+                }
+                onChange={(e) => setStoreState('noteElementId', e.value)}
+              />
+            </div>
+          )
+        }
 
-            {!showForm
-              && (
-              <div className="notes-note notes-add-button">
-                <Button
-                  tooltip={t('addNewNote')}
-                  tooltipOptions={{ position: 'top' }}
-                  label={t('addNewNote')}
-                  onClick={() => setShowForm(true)}
-                >
-                  <i className="pi pi-plus-circle" />
-                </Button>
+        {
+          (
+            selectedNotesType === 'graph' || (
+              selectedNotesType !== 'graph'
+            && noteElementId)
+          ) && (
+            <NotesListAddNew />
+          )
+        }
+
+        <Divider />
+
+        {
+          filteredNotes.length > 0 && (
+            <div className="notes-list">
+              <div htmlFor="notes-list-title">
+                {t('availableNotes')}
               </div>
-              )}
-            {showForm
-              && (
-              <div className="notes-note">
-                <h2>
-                  {type === 'graph' && t('addGraphNote')}
-                  {type === 'node' && t('addNodeNote')}
-                  {type === 'edge' && t('addEdgeNote')}
-                </h2>
-                <label htmlFor="noteText">{t('noteText')}</label>
-                <InputTextarea
-                  id="noteText"
-                  value={noteText}
-                  type="text"
-                  onChange={(e) => {
-                    setNoteText(e.target.value)
-                  }}
-                />
-                {type === 'node' && <p>{selectedNode ? `${t('forNode')}: ${selectedNode}` : t('selectNodeFromGraph')}</p>}
-                {type === 'edge' && <p>{selectedEdge ? `${t('forEdge')}: ${selectedEdge}` : t('selectEdgeFromGraph')}</p>}
-                <Button
-                  tooltip={t('addNote')}
-                  tooltipOptions={{ position: 'top' }}
-                  label={t('addNote')}
-                  disabled={(type === 'node' && !selectedNode) || (type === 'edge' && !selectedEdge)}
-                  onClick={() => {
-                    setShowForm(false)
-                    setNoteText('')
-                    notesCreateNote({
-                      type,
-                      selectedElement: type === 'node' ? selectedNode : selectedEdge,
-                      noteText,
-                      addNumber,
-                      setStoreState,
-                      t
-                    })
-                  }}
-                />
 
-                <Button
-                  tooltip={t('close')}
-                  tooltipOptions={{ position: 'top' }}
-                  className="p-button-secondary"
-                  label={t('close')}
-                  onClick={() => setShowForm(false)}
+              <div className="p-input-icon-right notes-list-search-input">
+                <i className="pi pi-search" />
+                <InputText
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder={t('search')}
                 />
-
               </div>
-              )}
 
-            {filteredNotes.length > 0 && filteredNotes.map((note) => (
-              <div key={note.id} className="notes-note">
-                {!(editingKey === note.id) && (
-                <div className="notes-content">
-                  <p>{note.contents}</p>
-                </div>
-                )}
-
-                <div className="notes-row">
-                  <span>
-                    {' '}
-                    {t('dateCreated')}
-                  </span>
-                  <span>{new Date(note.dateCreated).toLocaleString()}</span>
-                </div>
-                <div className="notes-row">
-                  <span>
-                    {' '}
-                    {t('dateLastUpdated')}
-                  </span>
-                  <span>{new Date(note.dateLastUpdated).toLocaleString()}</span>
-                </div>
-
-                <div className="notes-row">
-                  <span>
-                    {' '}
-                    {t('userId')}
-                  </span>
-                  <span>{note.userId}</span>
-                </div>
-
-                {'nodeId' in note && note.nodeId > 0 && (
-                <div className="notes-row">
-                  <span>
-                    {' '}
-                    {t('nodeId')}
-                  </span>
-                  <span>{note.nodeId}</span>
-                </div>
-                )}
-
-                {'edgeId' in note && note.edgeId > 0 && (
-                <div className="notes-row">
-                  <span>
-                    {' '}
-                    {t('edgeId')}
-                  </span>
-                  <span>{note.edgeId}</span>
-                </div>
-                )}
-
-                {editingKey === note.id
-                  && (
-                  <div>
-                    <label htmlFor="noteText">{t('noteText')}</label>
-                    <InputTextarea
-                      id="noteText"
-                      value={noteText}
-                      type="text"
-                      onChange={(e) => {
-                        setNoteText(e.target.value)
-                      }}
-                    />
-
-                    <Button
-                      tooltip={t('edit')}
-                      tooltipOptions={{ position: 'top' }}
-                      label={t('edit')}
-                      onClick={() => {
-                        setEditingKey('')
-                        setNoteText('')
-                        notesUpdateNote({
-                          type,
-                          selectedElement: type === 'node' ? note.nodeId : note.edgeId,
-                          selectedNoteID: note.id,
-                          noteText,
-                          addNumber,
-                          setStoreState,
-                          t
-                        })
-                      }}
-                    />
-                    <Button
-                      tooltip={t('close')}
-                      tooltipOptions={{ position: 'top' }}
-                      label={t('close')}
-                      className="p-button-secondary"
-                      onClick={() => setEditingKey('')}
-                    />
-                  </div>
-                  )}
-
-                {!(editingKey === note.id) && (
-                <div>
-                  <Button
-                    tooltip={t('edit')}
-                    tooltipOptions={{ position: 'top' }}
-                    label={t('edit')}
-                    className="p-button-secondary"
-                    onClick={() => {
-                      setEditingKey(note.id)
-                      setNoteText(note.contents)
-                    }}
+              <div className="notes-select-row">
+                <label htmlFor="notes-select">
+                  {t('sortBy')}
+                </label>
+                <div className="p-inputgroup">
+                  <Dropdown
+                    value={sortField}
+                    options={SORT_FIELDS.map((field) => ({
+                      value: field,
+                      label: t(field)
+                    }))}
+                    onChange={(e) => setSortField(e.value)}
                   />
-
                   <Button
-                    tooltip={t('delete')}
+                    tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
                     tooltipOptions={{ position: 'top' }}
-                    className="p-button-danger"
-                    label={t('delete')}
-                    onClick={() => notesDeleteNote({
-                      type,
-                      selectedElement: type === 'node' ? note.nodeId : note.edgeId,
-                      selectedNoteID: note.id,
-                      addNumber,
-                      setStoreState,
-                      t
-                    })}
+                    icon={sortDirection === 'asc' ? 'pi pi-arrow-down' : 'pi pi-arrow-up'}
+                    onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
                   />
                 </div>
-                )}
-
               </div>
-            ))}
-          </div>
-        </div>
+
+              <div className="notes-accordion-row">
+                <Accordion>
+                  <AccordionTab header={t('filter')}>
+                    <div className="notes-select-row">
+                      <label htmlFor="notes-select">
+                        {t('filterBy')}
+                      </label>
+                      <Dropdown
+                        value={filter}
+                        options={SORT_FIELDS.map((field) => ({
+                          value: field,
+                          label: t(field)
+                        }))}
+                        onChange={(e) => {
+                          setFilterValue('')
+                          setFilter(e.value)
+                        }}
+                      />
+                    </div>
+
+                    {
+                  filter === 'userId' && (
+                    <div className="notes-select-row">
+                      <label htmlFor="notes-select">
+                        {t('selectUserIds')}
+                      </label>
+                      <MultiSelect
+                        value={filterValue}
+                        filter
+                        options={userIds}
+                        onChange={(e) => setFilterValue(e.value)}
+                      />
+                    </div>
+                  )
+                }
+
+                    {
+                  (
+                    filter === 'dateCreated'
+                    || filter === 'dateLastUpdated'
+                  ) && (
+                    <div className="notes-select-row">
+                      <Calendar
+                        minDate={new Date(MIN_DATE)}
+                        maxDate={new Date()}
+                        value={filterValue || MIN_DATE}
+                        onChange={(e) => setFilterValue(e.value)}
+                        inline
+                      />
+                    </div>
+                  )
+                }
+
+                  </AccordionTab>
+                </Accordion>
+              </div>
+
+              {
+                orderBy(filteredNotes, [sortField], [sortDirection]).map((note) => (
+                  <NotesListNote
+                    key={`note-card-${note.id}`}
+                    note={note}
+                  />
+                ))
+              }
+            </div>
+          )
+        }
+
       </div>
     </>
   )
@@ -319,25 +324,32 @@ const NotesList = ({
 
 NotesList.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  selectedNode: PropTypes.string,
-  selectedEdge: PropTypes.string,
+  nodesNotes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  edgesNotes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  noteElementId: PropTypes.string,
+  selectedNotesType: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired
+  classesFromApi: PropTypes.shape().isRequired,
 }
 
 NotesList.defaultProps = {
-  selectedNode: undefined,
-  selectedEdge: undefined
+  noteElementId: undefined,
 }
 
 const mapToProps = ({
   notes,
-  selectedNode,
-  selectedEdge
+  selectedNotesType,
+  nodesNotes,
+  edgesNotes,
+  noteElementId,
+  classesFromApi
 }) => ({
   notes,
-  selectedNode,
-  selectedEdge
+  selectedNotesType,
+  nodesNotes,
+  edgesNotes,
+  noteElementId,
+  classesFromApi
 })
 
 export default connect(

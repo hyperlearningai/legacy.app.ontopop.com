@@ -36,13 +36,17 @@ const notesGetNotes = async ({
   const withAuth = !!user.token
 
   let route
+  let notesState
 
   if (type === 'node') {
     route = selectedElement ? GET_NODE_NOTES.replace('{node_id}', selectedElement) : GET_NODES_NOTES
+    notesState = 'nodesNotes'
   } else if (type === 'edge') {
     route = selectedElement ? GET_EDGE_NOTES.replace('{edge_id}', selectedElement) : GET_EDGES_NOTES
+    notesState = 'edgesNotes'
   } else {
     route = GET_GRAPH_NOTES
+    notesState = 'notes'
   }
 
   const response = await httpCall({
@@ -59,14 +63,14 @@ const notesGetNotes = async ({
     data
   } = response
 
-  setStoreState('notes', data)
-
   if (error) {
-    showNotification({
+    return showNotification({
       message: t('couldNotQueryNotes'),
       type: NOTIFY_WARNING
     })
   }
+
+  setStoreState(notesState, data)
 }
 
 export default notesGetNotes

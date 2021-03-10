@@ -77,6 +77,8 @@ describe('notesUpdateNote', () => {
 
     store.getState = jest.fn().mockImplementation(() => ({
       notes: mockNotesBefore,
+      nodesNotes: mockNotesBefore,
+      edgesNotes: mockNotesBefore,
       user: { token: '123' }
     }))
 
@@ -91,5 +93,61 @@ describe('notesUpdateNote', () => {
     })
 
     expect(setStoreState.mock.calls).toEqual([['notes', mockNotesAfter]])
+  })
+
+  it('should work correctly when type node', async () => {
+    const mockNotesBefore = [{ ...noteMock, contents: 'before change' }, { ...noteMock, id: 2 }]
+    const mockNotesAfter = [{ ...noteMock, contents: 'after change' }, { ...noteMock, id: 2 }]
+
+    httpCall.mockImplementationOnce(() => ({
+      data: { ...noteMock, contents: 'after change' }
+    }))
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      notes: mockNotesBefore,
+      nodesNotes: mockNotesBefore,
+      edgesNotes: mockNotesBefore,
+      user: { token: '123' }
+    }))
+
+    await notesUpdateNote({
+      type: 'node',
+      selectedElement: null,
+      selectedNoteID: 1,
+      noteText: 'after change',
+      addNumber,
+      setStoreState,
+      t
+    })
+
+    expect(setStoreState.mock.calls).toEqual([['nodesNotes', mockNotesAfter]])
+  })
+
+  it('should work correctly when type edge', async () => {
+    const mockNotesBefore = [{ ...noteMock, contents: 'before change' }, { ...noteMock, id: 2 }]
+    const mockNotesAfter = [{ ...noteMock, contents: 'after change' }, { ...noteMock, id: 2 }]
+
+    httpCall.mockImplementationOnce(() => ({
+      data: { ...noteMock, contents: 'after change' }
+    }))
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      notes: mockNotesBefore,
+      nodesNotes: mockNotesBefore,
+      edgesNotes: mockNotesBefore,
+      user: { token: '123' }
+    }))
+
+    await notesUpdateNote({
+      type: 'edge',
+      selectedElement: null,
+      selectedNoteID: 1,
+      noteText: 'after change',
+      addNumber,
+      setStoreState,
+      t
+    })
+
+    expect(setStoreState.mock.calls).toEqual([['edgesNotes', mockNotesAfter]])
   })
 })

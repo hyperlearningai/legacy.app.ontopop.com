@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotesListAddNew should match snapshot when edge 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addNumber={[MockFunction]}
+  mapToProps={[Function]}
+  noteElementId="12"
+  selectedNotesType="edge"
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`NotesListAddNew should match snapshot when graph 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addNumber={[MockFunction]}
+  mapToProps={[Function]}
+  noteElementId="12"
+  selectedNotesType="graph"
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`NotesListAddNew should match snapshot when node 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+    }
+  }
+  addNumber={[MockFunction]}
+  mapToProps={[Function]}
+  noteElementId="12"
+  selectedNotesType="node"
+  setStoreState={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

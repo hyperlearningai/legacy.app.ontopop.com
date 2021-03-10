@@ -30,19 +30,29 @@ const notesCreateNote = async ({
 }) => {
   const {
     user,
-    notes
+    notes,
+    nodesNotes,
+    edgesNotes
   } = store.getState()
 
   const withAuth = !!user.token
 
   let route
+  let modifiedNotes
+  let notesState
 
   if (type === 'node') {
     route = POST_CREATE_NODE_NOTE.replace('{node_id}', selectedElement)
+    modifiedNotes = nodesNotes.slice()
+    notesState = 'nodesNotes'
   } else if (type === 'edge') {
     route = POST_CREATE_EDGE_NOTE.replace('{edge_id}', selectedElement)
+    modifiedNotes = edgesNotes.slice()
+    notesState = 'edgesNotes'
   } else {
     route = POST_CREATE_GRAPH_NOTE
+    modifiedNotes = notes.slice()
+    notesState = 'notes'
   }
 
   const response = await httpCall({
@@ -62,10 +72,9 @@ const notesCreateNote = async ({
     data
   } = response
 
-  const modifiedNotes = notes.slice()
   modifiedNotes.push(data)
 
-  setStoreState('notes', modifiedNotes)
+  setStoreState(notesState, modifiedNotes)
 
   if (error) {
     return showNotification({

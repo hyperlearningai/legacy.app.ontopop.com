@@ -196,11 +196,16 @@ const initialState = {
   contextMenuData: {
     top: 0,
     left: 0,
-    nodeId: ''
+    nodeId: '',
+    edgeId: ''
   },
 
   // notes
   notes: [],
+  nodesNotes: [],
+  edgesNotes: [],
+  selectedNotesType: 'graph',
+  noteElementId: undefined,
 
   // physics
   isPhysicsOn: false,

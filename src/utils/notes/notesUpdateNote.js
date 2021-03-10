@@ -30,19 +30,29 @@ const notesUpdateNote = async ({
 }) => {
   const {
     user,
-    notes
+    notes,
+    nodesNotes,
+    edgesNotes
   } = store.getState()
 
   const withAuth = !!user.token
 
   let route
+  let modifiedNotes
+  let notesState
 
   if (type === 'node') {
     route = PATCH_UPDATE_NODE_NOTE.replace('{node_id}', selectedElement).replace('{id}', selectedNoteID)
+    modifiedNotes = nodesNotes.slice()
+    notesState = 'nodesNotes'
   } else if (type === 'edge') {
     route = PATCH_UPDATE_EDGE_NOTE.replace('{edge_id}', selectedElement).replace('{id}', selectedNoteID)
+    modifiedNotes = edgesNotes.slice()
+    notesState = 'edgesNotes'
   } else {
     route = PATCH_UPDATE_GRAPH_NOTE.replace('{id}', selectedNoteID)
+    modifiedNotes = notes.slice()
+    notesState = 'notes'
   }
 
   const response = await httpCall({
@@ -69,8 +79,8 @@ const notesUpdateNote = async ({
     })
   }
 
-  const modifiedNotes = notes.map((note) => (note.id === data.id ? data : note))
-  setStoreState('notes', modifiedNotes)
+  const updatedNotes = modifiedNotes.map((note) => (note.id === data.id ? data : note))
+  setStoreState(notesState, updatedNotes)
 }
 
 export default notesUpdateNote
