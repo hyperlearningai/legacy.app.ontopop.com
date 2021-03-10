@@ -65,7 +65,7 @@ const NotesList = ({
 
       highlightSelectedNode({
         setStoreState,
-        noteElementId
+        selectedNode: noteElementId
       })
     }
   }, [noteElementId])
