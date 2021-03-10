@@ -106,10 +106,10 @@ const NotesList = ({
     }
   }
 
-  const userIds = userIdNotes.length > 0 ? uniq(userIdNotes.map((note) => note.userId).map((userId) => ({
+  const userIds = userIdNotes.length > 0 ? uniq(userIdNotes.map((note) => note.userId)).map((userId) => ({
     value: userId,
     label: userId
-  }))) : []
+  })) : []
 
   const noteButtons = [{
     value: 'graph',
@@ -211,7 +211,11 @@ const NotesList = ({
         <Divider />
 
         {
-          filteredNotes.length > 0 && (
+          (
+            selectedNotesType === 'graph' || (
+              selectedNotesType !== 'graph'
+            && noteElementId)
+          ) && (
             <div className="notes-list">
               <div htmlFor="notes-list-title">
                 {t('availableNotes')}
@@ -269,54 +273,54 @@ const NotesList = ({
                     </div>
 
                     {
-                  filter === 'userId' && (
-                    <div className="notes-select-row">
-                      <label htmlFor="notes-select">
-                        {t('selectUserIds')}
-                      </label>
-                      <MultiSelect
-                        value={filterValue}
-                        filter
-                        options={userIds}
-                        onChange={(e) => setFilterValue(e.value)}
-                      />
-                    </div>
-                  )
-                }
+                    filter === 'userId' && (
+                      <div className="notes-select-row">
+                        <label htmlFor="notes-select">
+                          {t('selectUserIds')}
+                        </label>
+                        <MultiSelect
+                          value={filterValue}
+                          filter
+                          options={userIds}
+                          onChange={(e) => setFilterValue(e.value)}
+                        />
+                      </div>
+                    )
+                  }
 
                     {
-                  (
-                    filter === 'dateCreated'
-                    || filter === 'dateLastUpdated'
-                  ) && (
-                    <div className="notes-select-row">
-                      <Calendar
-                        minDate={new Date(MIN_DATE)}
-                        maxDate={new Date()}
-                        value={filterValue || MIN_DATE}
-                        onChange={(e) => setFilterValue(e.value)}
-                        inline
-                      />
-                    </div>
-                  )
-                }
+                    (
+                      filter === 'dateCreated'
+                      || filter === 'dateLastUpdated'
+                    ) && (
+                      <div className="notes-select-row">
+                        <Calendar
+                          minDate={new Date(MIN_DATE)}
+                          maxDate={new Date()}
+                          value={filterValue || MIN_DATE}
+                          onChange={(e) => setFilterValue(e.value)}
+                          inline
+                        />
+                      </div>
+                    )
+                  }
 
                   </AccordionTab>
                 </Accordion>
               </div>
 
               {
-                orderBy(filteredNotes, [sortField], [sortDirection]).map((note) => (
-                  <NotesListNote
-                    key={`note-card-${note.id}`}
-                    note={note}
-                  />
-                ))
-              }
+              filteredNotes.length > 0
+              && orderBy(filteredNotes, [sortField], [sortDirection]).map((note) => (
+                <NotesListNote
+                  key={`note-card-${note.id}`}
+                  note={note}
+                />
+              ))
+            }
             </div>
           )
         }
-
       </div>
     </>
   )
