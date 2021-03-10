@@ -3,7 +3,7 @@ import resetNodesStyles from '../../../utils/networkStyling/resetNodesStyles'
 import setHighlightedNodes from '../../../utils/networkStyling/setHighlightedNodes'
 import setNodesStylesByProperty from '../../../utils/networkStyling/setNodesStylesByProperty'
 import setNodesOverlay from '../../../utils/networkStyling/setNodesOverlay'
-import highlightSpiderableNodes from '../../../utils/networkStyling/highlightSpiderableNodes'
+import addNodesBorders from '../../../utils/networkStyling/addNodesBorders'
 import setUserDefinedNodesStyles from '../../../utils/networkStyling/setUserDefinedNodesStyles'
 
 jest.mock('../../../utils/networkStyling/resetNodesStyles')
@@ -11,7 +11,7 @@ jest.mock('../../../utils/networkStyling/setUserDefinedNodesStyles')
 jest.mock('../../../utils/networkStyling/setHighlightedNodes')
 jest.mock('../../../utils/networkStyling/setNodesOverlay')
 jest.mock('../../../utils/networkStyling/setNodesStylesByProperty')
-jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
+jest.mock('../../../utils/networkStyling/addNodesBorders')
 
 describe('setNodesStyle', () => {
   afterEach(() => {
@@ -24,7 +24,7 @@ describe('setNodesStyle', () => {
     expect(resetNodesStyles).toHaveBeenCalledWith()
     expect(setUserDefinedNodesStyles).toHaveBeenCalledWith()
     expect(setNodesStylesByProperty).toHaveBeenCalledWith()
-    expect(highlightSpiderableNodes).toHaveBeenCalledWith()
+    expect(addNodesBorders).toHaveBeenCalledWith()
     expect(setHighlightedNodes).toHaveBeenCalledWith()
     expect(setNodesOverlay).toHaveBeenCalledWith()
   })

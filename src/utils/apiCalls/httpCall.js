@@ -45,6 +45,12 @@ const httpCall = async ({
       case 'post':
         response = await axios.post(route, body, config)
         break
+      case 'patch':
+        response = await axios.patch(route, body, config)
+        break
+      case 'delete':
+        response = await axios.delete(route, config)
+        break
       default:
         response = await axios.get(route, config)
         break

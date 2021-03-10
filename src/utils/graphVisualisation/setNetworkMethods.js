@@ -84,6 +84,7 @@ const setNetworkMethods = async ({
 
     setStoreState('contextMenuData', {
       nodeId: event.nodes?.length ? event.nodes[0] : undefined,
+      edgeId: event.edges?.length ? event.edges[0] : undefined,
       top: offsetY,
       left: offsetX
     })
