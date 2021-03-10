@@ -3,7 +3,7 @@ import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import addNode from '../nodesEdgesUtils/addNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
-import { POST_CREATE_NODE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 
 /**
@@ -60,7 +60,7 @@ const setOntologyAddNode = async ({
   const response = await httpCall({
     addNumber,
     withAuth: true,
-    route: POST_CREATE_NODE,
+    route: API_ENDPOINT_GRAPH_NODES_CREATE,
     method: 'post',
     body,
     t

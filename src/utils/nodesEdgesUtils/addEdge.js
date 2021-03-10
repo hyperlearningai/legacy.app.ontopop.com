@@ -12,11 +12,11 @@ const addEdge = ({ edge, addNumber }) => {
     availableEdges
   } = store.getState()
 
-  const isEdgeNotVisible = availableEdges.get(edge.id) === null
-
-  if (isEdgeNotVisible) {
+  try {
     availableEdges.add(edge)
     addNumber('availableEdgesCount', 1)
+  } catch (error) {
+    return error
   }
 }
 

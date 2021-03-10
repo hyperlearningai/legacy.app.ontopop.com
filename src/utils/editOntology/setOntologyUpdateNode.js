@@ -1,6 +1,6 @@
 import store from '../../store'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
-import { PATCH_UPDATE_NODE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_NODES_ID } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import httpCall from '../apiCalls/httpCall'
@@ -35,7 +35,7 @@ const setOntologyUpdateNode = async ({
   const response = await httpCall({
     addNumber,
     withAuth: true,
-    route: PATCH_UPDATE_NODE.replace('{id}', selectedElement),
+    route: API_ENDPOINT_GRAPH_NODES_ID.replace('{id}', selectedElement),
     method: 'patch',
     body,
     t

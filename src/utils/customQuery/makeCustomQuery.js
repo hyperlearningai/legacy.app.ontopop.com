@@ -3,7 +3,7 @@ import {
   NOTIFY_WARNING
 } from '../../constants/notifications'
 import showNotification from '../notifications/showNotification'
-import { GET_GRAPH_QUERY } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_QUERY } from '../../constants/api'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
 
@@ -41,7 +41,7 @@ const makeCustomQuery = async ({
     body: {
       query: customQueryString
     },
-    route: GET_GRAPH_QUERY,
+    route: API_ENDPOINT_GRAPH_QUERY,
     method: 'post',
     t
   })

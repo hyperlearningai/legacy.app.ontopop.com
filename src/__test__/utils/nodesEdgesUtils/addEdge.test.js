@@ -24,6 +24,7 @@ describe('addEdge', () => {
     })
 
     expect(availableEdges.length).toEqual(1)
+    expect(addNumber).toHaveBeenCalledTimes(0)
   })
 
   it('should add edge correctly', async () => {
