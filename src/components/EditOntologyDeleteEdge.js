@@ -28,11 +28,12 @@ const EditOntologyDeleteEdge = ({
       <div
         className="edit-ontology-row"
       >
-        <label htmlFor="element-select">
+        <label htmlFor="delete-element-select">
           {t('selectElement')}
         </label>
 
         <MultiSelect
+          id="delete-element-select"
           value={selectedElement}
           options={userDeletedEdges}
           onChange={(e) => setSelectedElement(e.value)}

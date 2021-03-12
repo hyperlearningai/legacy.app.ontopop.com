@@ -1,0 +1,18 @@
+{
+  "statusCode": 200,
+  "body": { 
+    "1410": {
+      "edgeId": 1410,
+      "role": "Subclass of",
+      "id": 1410,
+      "label": "Achieved by",
+      "rdfsLabel": "Subclass of",
+      "userDefined": true,
+      "userId": "valid@email.com",
+      "from": 13,
+      "to": 1407
+    }
+  },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

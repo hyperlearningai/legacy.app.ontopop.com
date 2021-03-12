@@ -14,7 +14,7 @@ import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import { SIDEBAR_VIEW_NOTES } from '../constants/views'
 import actions from '../store/actions'
-import resetSelectedNode from '../utils/nodesSelection/resetSelectedNode'
+import setNodesStyle from '../utils/networkStyling/setNodesStyle'
 import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
 import NotesListNote from './NotesListNote'
 import NotesListAddNew from './NotesListAddNew'
@@ -24,6 +24,8 @@ import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
+import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
+import highlightSelectedEdge from '../utils/edgesSelection/highlightSelectedEdge'
 
 const NotesList = ({
   notes,
@@ -49,26 +51,32 @@ const NotesList = ({
       setStoreState('noteElementId', undefined)
       setStoreState('noteElementId', undefined)
 
-      resetSelectedNode({
-        setStoreState
-      })
+      setNodesStyle()
+      setEdgesStyle()
 
       addNodesBorders()
     }
   }, [])
 
   useEffect(() => {
-    if (noteElementId && noteElementId !== '') {
-      resetSelectedNode({
-        setStoreState
-      })
+    if (selectedNotesType === 'node' && noteElementId && noteElementId !== '') {
+      setNodesStyle()
 
       highlightSelectedNode({
         setStoreState,
         selectedNode: noteElementId
       })
     }
-  }, [noteElementId])
+
+    if (selectedNotesType === 'edge' && noteElementId && noteElementId !== '') {
+      setEdgesStyle()
+
+      highlightSelectedEdge({
+        setStoreState,
+        selectedEdge: noteElementId
+      })
+    }
+  }, [noteElementId, selectedNotesType])
 
   const filterNode = (note) => {
     if (search === '' && !filter) return true
@@ -87,7 +95,7 @@ const NotesList = ({
   let filteredNotes = notes.length > 0 ? notes.filter((note) => filterNode(note)) : []
 
   if (selectedNotesType === 'node') {
-    const nodesNotesById = nodesNotes.length > 0 && noteElementId ? nodesNotes.filter((note) => note.nodeId.toString() === noteElementId) : []
+    const nodesNotesById = nodesNotes.length > 0 && noteElementId ? nodesNotes.filter((note) => note.nodeId.toString() === noteElementId.toString()) : []
     filteredNotes = nodesNotesById
     userIdNotes = nodesNotesById
 
@@ -97,7 +105,7 @@ const NotesList = ({
   }
 
   if (selectedNotesType === 'edge') {
-    const edgesNotesById = edgesNotes.length > 0 && noteElementId ? edgesNotes.filter((note) => note.edgeId.toString() === noteElementId) : []
+    const edgesNotesById = edgesNotes.length > 0 && noteElementId ? edgesNotes.filter((note) => note.edgeId.toString() === noteElementId.toString()) : []
     filteredNotes = edgesNotesById
     userIdNotes = edgesNotesById
 
@@ -227,6 +235,7 @@ const NotesList = ({
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder={t('search')}
+                  id="notes-search-filter"
                 />
               </div>
 
@@ -236,6 +245,7 @@ const NotesList = ({
                 </label>
                 <div className="p-inputgroup">
                   <Dropdown
+                    id="notes-sort-by"
                     value={sortField}
                     options={SORT_FIELDS.map((field) => ({
                       value: field,
@@ -244,6 +254,7 @@ const NotesList = ({
                     onChange={(e) => setSortField(e.value)}
                   />
                   <Button
+                    id="notes-sort-by-direction"
                     tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
                     tooltipOptions={{ position: 'top' }}
                     icon={sortDirection === 'asc' ? 'pi pi-arrow-down' : 'pi pi-arrow-up'}
@@ -253,13 +264,16 @@ const NotesList = ({
               </div>
 
               <div className="notes-accordion-row">
-                <Accordion>
+                <Accordion
+                  id="notes-filter"
+                >
                   <AccordionTab header={t('filter')}>
                     <div className="notes-select-row">
-                      <label htmlFor="notes-select">
+                      <label htmlFor="notes-filter-field">
                         {t('filterBy')}
                       </label>
                       <Dropdown
+                        id="notes-filter-field"
                         value={filter}
                         options={SORT_FIELDS.map((field) => ({
                           value: field,
@@ -279,6 +293,7 @@ const NotesList = ({
                           {t('selectUserIds')}
                         </label>
                         <MultiSelect
+                          id="notes-filter-user"
                           value={filterValue}
                           filter
                           options={userIds}

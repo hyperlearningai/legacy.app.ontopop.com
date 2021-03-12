@@ -5,7 +5,28 @@
 
   &-message {
     width: 100%;
-    padding: 24px;
+    padding: 10px 24px;
+    text-align: center;
+  }
+
+  &-dropdown {
+    width: 100%;
+    padding: 10px 24px;
+
+    .p-dropdown,
+    .p-dropdown-panel,
+    .p-dropdown-items,
+    .p-dropdown-items-wrapper,
+    .p-input {
+      width: 100%;
+    }
+
+    .p-dropdown-item {
+      width: 100%;
+      word-break: break-word;
+      height: auto;
+      white-space: normal;
+    }
   }
 
   &-row {

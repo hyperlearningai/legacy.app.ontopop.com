@@ -1,0 +1,13 @@
+{
+  "statusCode": 200,
+  "body": { 
+    "1407":{
+      "id": 1407,
+      "label": "vertex",
+      "userDefined": true,
+      "userId": "valid@email.com"  
+    }
+  },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

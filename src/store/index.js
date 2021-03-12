@@ -157,7 +157,7 @@ const initialState = {
   // edge selection
   isEdgeSelectable: false,
   selectedEdge: '',
-  prevSelectedEdges: undefined,
+  prevSelectedEdge: undefined,
 
   // bounding box
   selectedBoundingBoxNodes: [],

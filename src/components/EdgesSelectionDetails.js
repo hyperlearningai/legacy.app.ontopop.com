@@ -34,7 +34,7 @@ const EdgesSelectionDetails = ({
         {t('properties')}
       </div>
 
-      <div className="edges-selection-details-table">
+      <div className="edges-selection-details-table edges-selection-details-table-properties">
         <table>
           <thead>
             <tr>
@@ -69,7 +69,7 @@ const EdgesSelectionDetails = ({
         {t('nodesProperties')}
       </div>
 
-      <div className="edges-selection-details-table">
+      <div className="edges-selection-details-table edges-selection-details-table-relationships">
         <table>
           <thead>
             <tr>
@@ -83,7 +83,8 @@ const EdgesSelectionDetails = ({
               <td className="icon-cell">
                 <button
                   type="button"
-                  title={t('removeSelectedEdge')}
+                  className="button-expand"
+                  title={t('expand')}
                   onClick={() => toggleExpanded(!isExpanded)}
                 >
                   {isExpanded ? <BsCaretDownFill /> : <BsCaretRightFill />}

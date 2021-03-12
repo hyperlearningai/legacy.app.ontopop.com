@@ -16,6 +16,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.5.0]
+### Added
+- ONTOLOGY-126 Added dropdowns with available nodes/edges lists in nodes/edges selection, node neighbourhood and shortest path
+- ONTOLOGY-126 Added cypress end-to-end tests
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
 ## [0.4.0]
 ### Added
 - ONTOLOGY-30 Added network / node / edge comments

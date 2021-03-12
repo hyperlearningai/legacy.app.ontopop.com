@@ -14,20 +14,30 @@ const highlightSelectedNode = ({
   selectedNode
 }) => {
   const {
-    stylingNodeHighlightBackgroundColor
+    userDefinedNodeStyling,
+    globalNodeStyling,
+    network
   } = store.getState()
 
-  const nodeProperties = getNode(selectedNode)
+  const node = getNode(selectedNode)
 
-  setStoreState('prevSelectedNode', nodeProperties)
+  setStoreState('prevSelectedNode', node)
 
-  const color = nodeProperties.color || {}
+  const color = node.color || {}
+
+  const { stylingNodeHighlightBackgroundColor } = node.userDefined ? userDefinedNodeStyling : globalNodeStyling
   color.background = stylingNodeHighlightBackgroundColor
 
   updateNodes({
     id: selectedNode,
     color
   })
+
+  network.focus(selectedNode,
+    {
+      scale: 1,
+      animation: true
+    })
 }
 
 export default highlightSelectedNode

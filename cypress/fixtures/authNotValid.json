@@ -1,0 +1,6 @@
+{
+  "statusCode": 400,
+  "body": { "error": "Invalid credentials" },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

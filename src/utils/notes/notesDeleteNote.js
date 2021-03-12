@@ -71,7 +71,7 @@ const notesDeleteNote = async ({
     data
   } = response
 
-  const dataIndex = modifiedNotes.findIndex((note) => note.id === selectedNoteID)
+  const dataIndex = modifiedNotes.findIndex((note) => note.id.toString() === selectedNoteID.toString())
 
   modifiedNotes.splice(dataIndex, 1)
 

@@ -28,7 +28,7 @@ const NodesSelectionDetails = ({
         {t('properties')}
       </div>
 
-      <div className="nodes-selection-details-table">
+      <div className="nodes-selection-details-table nodes-selection-details-table-properties">
         <table>
           <thead>
             <tr>
@@ -61,7 +61,7 @@ const NodesSelectionDetails = ({
 
       {
         connections.length > 0 ? (
-          <div className="nodes-selection-details-table">
+          <div className="nodes-selection-details-table nodes-selection-details-table-relationships">
             <table>
               <thead>
                 <tr>

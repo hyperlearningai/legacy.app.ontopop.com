@@ -1,7 +1,6 @@
 import store from '../../store'
 import getEdge from '../nodesEdgesUtils/getEdge'
 import updateEdges from '../nodesEdgesUtils/updateEdges'
-import { getEdgeUniqueId } from '../../constants/functions'
 
 /**
  * Highlight selected edges
@@ -15,30 +14,33 @@ const highlightSelectedEdge = ({
   selectedEdge
 }) => {
   const {
-    stylingEdgeLineColorHighlight
+    userDefinedEdgeStyling,
+    globalEdgeStyling,
+    network
   } = store.getState()
 
-  const edgeUniqueId = getEdgeUniqueId(selectedEdge)
+  const edge = getEdge(selectedEdge)
 
-  const edgeProperties = getEdge({
-    filter: (edge) => edge.id.includes(edgeUniqueId)
+  setStoreState('prevSelectedEdge', edge)
+
+  const color = edge.color || {}
+
+  const { stylingEdgeLineColorHighlight } = edge.userDefined
+    ? userDefinedEdgeStyling : globalEdgeStyling
+  color.color = stylingEdgeLineColorHighlight
+  const width = 3
+
+  updateEdges({
+    id: edge.id,
+    color,
+    width
   })
 
-  setStoreState('prevSelectedEdges', edgeProperties)
-
-  if (edgeProperties.length > 0) {
-    edgeProperties.map((edgeProperty) => {
-      const color = edgeProperty.color || {}
-      color.color = stylingEdgeLineColorHighlight
-      const width = 3
-
-      return updateEdges({
-        id: edgeProperty.id,
-        color,
-        width
-      })
+  network.focus(edge.from,
+    {
+      scale: 1,
+      animation: true
     })
-  }
 }
 
 export default highlightSelectedEdge

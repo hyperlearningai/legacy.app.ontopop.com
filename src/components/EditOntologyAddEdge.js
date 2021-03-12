@@ -35,12 +35,12 @@ const EditOntologyAddEdge = ({
       <div
         className="edit-ontology-row"
       >
-        <label htmlFor="graph-select">
+        <label htmlFor="graph-select-from">
           {t('fromNode')}
         </label>
 
         <Dropdown
-          id="graph-select"
+          id="graph-select-from"
           value={fromNode}
           filter
           options={optionNodes}
@@ -52,12 +52,12 @@ const EditOntologyAddEdge = ({
       <div
         className="edit-ontology-row"
       >
-        <label htmlFor="graph-select">
+        <label htmlFor="graph-select-edge">
           {t('edge')}
         </label>
 
         <Dropdown
-          id="graph-select"
+          id="graph-select-edge"
           value={edge}
           filter
           options={optionEdges}
@@ -71,12 +71,12 @@ const EditOntologyAddEdge = ({
       <div
         className="edit-ontology-row"
       >
-        <label htmlFor="graph-select">
+        <label htmlFor="graph-select-to">
           {t('toNode')}
         </label>
 
         <Dropdown
-          id="graph-select"
+          id="graph-select-to"
           value={toNode}
           filter
           options={optionNodes}

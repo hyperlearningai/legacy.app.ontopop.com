@@ -1,0 +1,15 @@
+{
+  "statusCode": 200,
+  "body": { 
+    "id":1,
+    "type":"node",
+    "nodeId":13,
+    "edgeId":0,
+    "userId":"valid@email.com",
+    "contents":"Latest node note",
+    "dateCreated":"2021-03-11 16:18:33",
+    "dateLastUpdated":"2021-03-11 16:18:33"
+   },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}
