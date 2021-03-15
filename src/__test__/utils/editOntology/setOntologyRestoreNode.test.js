@@ -10,7 +10,7 @@ import { nodesEdges } from '../../fixtures/nodesEdgesNew'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
-import getEdgeObject from '../../../utils/graphVisualisation/getEdgeObject'
+import getElementLabel from '../../../utils/networkStyling/getElementLabel'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import en from '../../../i18n/en'
@@ -30,7 +30,7 @@ const addNumber = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
-jest.mock('../../../utils/graphVisualisation/getEdgeObject')
+jest.mock('../../../utils/networkStyling/getElementLabel')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/apiCalls/httpCall')
@@ -131,15 +131,7 @@ describe('setOntologyRestoreNode', () => {
 
     getNode.mockImplementation(() => ({ id: '123' }))
 
-    getEdgeObject.mockImplementation(() => ({
-      rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      rdfsLabel: 'Provided to',
-      label: 'Provided to',
-      predicate: '11',
-      id: '11',
-      from: '1',
-      to: '141',
-    }))
+    getElementLabel.mockImplementation(() => 'Provided to')
 
     await setOntologyRestoreNode({
       addNumber,
@@ -186,7 +178,7 @@ describe('setOntologyRestoreNode', () => {
           skosComment: 'A Node can also be defined as a point in a network or diagram at which lines or pathways intersect or branch.',
           skosDefinition: 'A zero dimensional Entity with a position but no volume that is usually represented by a small round dot.',
           userDefined: false,
-        }
+        },
       }
     )
     expect(addEdge).toHaveBeenLastCalledWith(
@@ -204,25 +196,27 @@ describe('setOntologyRestoreNode', () => {
             opacity: 1,
           },
           dashes: false,
+          edgeId: 1022,
           font: {
             align: 'horizontal',
             color: '#070b11',
             size: 12,
           },
-          from: '1',
-          id: '11',
+          from: '102',
+          id: '1022',
           label: 'Provided to',
           labelHighlightBold: true,
-          predicate: '11',
-          rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-          rdfsLabel: 'Provided to',
+          rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+          rdfsLabel: 'Composed of',
+          role: 'Composed of',
           selectionWidth: 3,
           smooth: {
             forceDirection: 'none',
             roundness: 0.45,
             type: 'cubicBezier',
           },
-          to: '141',
+          to: '98',
+          userDefined: false,
           width: 1,
         }
       }

@@ -42,7 +42,7 @@ context('Export', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('record')
+      cy.get('#main-search').type('record')
 
       cy.wait('@getGraph')
 

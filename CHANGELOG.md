@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.5.0]
 ### Added
+- ONTOLOGY-126 Added utilities getStylingProperty and getElementLabel
 - ONTOLOGY-126 Added dropdowns with available nodes/edges lists in nodes/edges selection, node neighbourhood and shortest path
 - ONTOLOGY-126 Added cypress end-to-end tests
 

@@ -56,7 +56,7 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('road')
+      cy.get('#main-search').type('road')
 
       cy.wait('@getGraph')
 
@@ -170,7 +170,7 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('road')
+      cy.get('#main-search').type('road')
 
       cy.wait('@getGraph')
 
@@ -287,7 +287,7 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('road')
+      cy.get('#main-search').type('road')
 
       cy.wait('@getGraph')
 

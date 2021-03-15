@@ -9,19 +9,13 @@ import { SIDEBAR_VIEW_FREE_TEXT_SEARCH } from '../constants/views'
 import searchElement from '../utils/freeTextSearch/searchElement'
 import clearElement from '../utils/freeTextSearch/clearElement'
 import highlightElement from '../utils/freeTextSearch/highlightElement'
-import getNode from '../utils/nodesEdgesUtils/getNode'
+import getElementLabel from '../utils/networkStyling/getElementLabel'
 
 const FreeTextSearch = ({
-  classesFromApi,
   freeTextSelection,
   freeTextSelectedElement,
-  objectPropertiesFromApi,
   removeFromObject,
   setStoreState,
-  globalEdgeStyling,
-  userDefinedEdgeStyling,
-  globalNodeStyling,
-  userDefinedNodeStyling,
 }) => {
   const { t } = useTranslation()
   const isInitialMount = useRef(true)
@@ -75,25 +69,33 @@ const FreeTextSearch = ({
           Object.keys(freeTextSelection).length > 0
           && Object.keys(freeTextSelection).map((elementId) => {
             const {
-              type, userDefined, from, to
+              type, from, to
             } = freeTextSelection[elementId]
 
             let elementLabel
 
             if (type === 'node') {
-              const { stylingNodeCaptionProperty } = userDefined ? userDefinedNodeStyling : globalNodeStyling
-              elementLabel = classesFromApi[elementId][stylingNodeCaptionProperty]
+              elementLabel = getElementLabel({
+                type: 'node',
+                id: elementId
+              })
             } else {
-              const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
-              const edge = objectPropertiesFromApi[elementId][stylingEdgeCaptionProperty]
+              const edgeLabel = getElementLabel({
+                type: 'edge',
+                id: elementId
+              })
 
-              const fromNode = getNode(from)
-              const fromNodeLabel = fromNode[fromNode.userDefined ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty]
+              const fromNodeLabel = getElementLabel({
+                type: 'node',
+                id: from
+              })
 
-              const toNode = getNode(to)
-              const toNodeLabel = toNode[toNode.userDefined ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty]
+              const toNodeLabel = getElementLabel({
+                type: 'node',
+                id: to
+              })
 
-              elementLabel = `${fromNodeLabel} => ${edge} => ${toNodeLabel}`
+              elementLabel = `${fromNodeLabel} => ${edgeLabel} => ${toNodeLabel}`
             }
 
             return (
@@ -146,36 +148,14 @@ FreeTextSearch.propTypes = {
   removeFromObject: PropTypes.func.isRequired,
   freeTextSelection: PropTypes.shape().isRequired,
   freeTextSelectedElement: PropTypes.string.isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
-  globalEdgeStyling: PropTypes.shape().isRequired,
-  userDefinedEdgeStyling: PropTypes.shape().isRequired,
-  globalNodeStyling: PropTypes.shape().isRequired,
-  userDefinedNodeStyling: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   freeTextSelection,
   freeTextSelectedElement,
-  classesFromApi,
-  objectPropertiesFromApi,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty,
-  globalEdgeStyling,
-  userDefinedEdgeStyling,
-  globalNodeStyling,
-  userDefinedNodeStyling,
 }) => ({
   freeTextSelection,
   freeTextSelectedElement,
-  classesFromApi,
-  objectPropertiesFromApi,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty,
-  globalEdgeStyling,
-  userDefinedEdgeStyling,
-  globalNodeStyling,
-  userDefinedNodeStyling,
 })
 
 export default connect(

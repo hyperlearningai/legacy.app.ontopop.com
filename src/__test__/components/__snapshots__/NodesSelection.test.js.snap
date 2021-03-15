@@ -13,44 +13,8 @@ exports[`NodesSelection should match snapshot when no selected node 1`] = `
       "setStoreState": [Function],
     }
   }
-  globalNodeStyling={
-    Object {
-      "stylingNodeBackgroundColor": "#adefd1",
-      "stylingNodeBorder": 1,
-      "stylingNodeBorderColor": "#011e41",
-      "stylingNodeBorderSelected": 2,
-      "stylingNodeCaptionProperty": "rdfsLabel",
-      "stylingNodeHighlightBackgroundColor": "#ffed00",
-      "stylingNodeHighlightBorderColor": "#009688",
-      "stylingNodeHoverBackgroundColor": "#f2f2f2",
-      "stylingNodeHoverBorderColor": "#607d8b",
-      "stylingNodeShape": "circle",
-      "stylingNodeSize": 25,
-      "stylingNodeTextColor": "#000000",
-      "stylingNodeTextFontAlign": "center",
-      "stylingNodeTextFontSize": 12,
-    }
-  }
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
-  userDefinedNodeStyling={
-    Object {
-      "stylingNodeBackgroundColor": "#adefd1",
-      "stylingNodeBorder": 1,
-      "stylingNodeBorderColor": "#011e41",
-      "stylingNodeBorderSelected": 2,
-      "stylingNodeCaptionProperty": "rdfsLabel",
-      "stylingNodeHighlightBackgroundColor": "#ffed00",
-      "stylingNodeHighlightBorderColor": "#009688",
-      "stylingNodeHoverBackgroundColor": "#f2f2f2",
-      "stylingNodeHoverBorderColor": "#607d8b",
-      "stylingNodeShape": "circle",
-      "stylingNodeSize": 25,
-      "stylingNodeTextColor": "#000000",
-      "stylingNodeTextFontAlign": "center",
-      "stylingNodeTextFontSize": 12,
-    }
-  }
 >
   <Component />
 </Connect>
@@ -69,45 +33,9 @@ exports[`NodesSelection should match snapshot when selected node 1`] = `
       "setStoreState": [Function],
     }
   }
-  globalNodeStyling={
-    Object {
-      "stylingNodeBackgroundColor": "#adefd1",
-      "stylingNodeBorder": 1,
-      "stylingNodeBorderColor": "#011e41",
-      "stylingNodeBorderSelected": 2,
-      "stylingNodeCaptionProperty": "rdfsLabel",
-      "stylingNodeHighlightBackgroundColor": "#ffed00",
-      "stylingNodeHighlightBorderColor": "#009688",
-      "stylingNodeHoverBackgroundColor": "#f2f2f2",
-      "stylingNodeHoverBorderColor": "#607d8b",
-      "stylingNodeShape": "circle",
-      "stylingNodeSize": 25,
-      "stylingNodeTextColor": "#000000",
-      "stylingNodeTextFontAlign": "center",
-      "stylingNodeTextFontSize": 12,
-    }
-  }
   mapToProps={[Function]}
   selectedNode="http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY"
   setStoreState={[MockFunction]}
-  userDefinedNodeStyling={
-    Object {
-      "stylingNodeBackgroundColor": "#adefd1",
-      "stylingNodeBorder": 1,
-      "stylingNodeBorderColor": "#011e41",
-      "stylingNodeBorderSelected": 2,
-      "stylingNodeCaptionProperty": "rdfsLabel",
-      "stylingNodeHighlightBackgroundColor": "#ffed00",
-      "stylingNodeHighlightBorderColor": "#009688",
-      "stylingNodeHoverBackgroundColor": "#f2f2f2",
-      "stylingNodeHoverBorderColor": "#607d8b",
-      "stylingNodeShape": "circle",
-      "stylingNodeSize": 25,
-      "stylingNodeTextColor": "#000000",
-      "stylingNodeTextFontAlign": "center",
-      "stylingNodeTextFontSize": 12,
-    }
-  }
 >
   <Component />
 </Connect>

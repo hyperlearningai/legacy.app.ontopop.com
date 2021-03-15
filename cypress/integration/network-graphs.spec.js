@@ -42,7 +42,7 @@ context('Network graph', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('link')
+      cy.get('#main-search').type('link')
 
       cy.wait('@getGraph')
 

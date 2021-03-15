@@ -6,6 +6,8 @@ import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import setEdgeStyle from '../../../utils/networkStyling/setEdgeStyle'
 import actionAfterNodesAdded from '../../../utils/graphVisualisation/actionAfterNodesAdded'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
+import store from '../../../store'
+import getElementLabel from '../../../utils/networkStyling/getElementLabel'
 
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
@@ -15,11 +17,22 @@ jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
 jest.mock('../../../utils/networkStyling/setEdgeStyle')
 jest.mock('../../../utils/graphVisualisation/actionAfterNodesAdded')
+jest.mock('../../../utils/networkStyling/getElementLabel')
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
 
 getNode.mockImplementation(() => null)
+getElementLabel.mockImplementation(() => 'Road')
+
+store.getState = jest.fn().mockImplementation(() => ({
+  globalNodeStyling: {
+    stylingNodeCaptionProperty: 'rdfsLabel'
+  },
+  userDefinedNodeStyling: {
+    stylingNodeCaptionProperty: 'rdfsLabel'
+  },
+}))
 
 describe('addExpandedNode', () => {
   afterEach(() => {
@@ -41,12 +54,6 @@ describe('addExpandedNode', () => {
       nodesEdges: { 111: [] },
       setStoreState,
       classesFromApi,
-      globalNodeStyling: {
-        stylingNodeCaptionProperty: 'rdfsLabel'
-      },
-      userDefinedNodeStyling: {
-        stylingNodeCaptionProperty: 'rdfsLabel'
-      },
       addNumber,
     })
 

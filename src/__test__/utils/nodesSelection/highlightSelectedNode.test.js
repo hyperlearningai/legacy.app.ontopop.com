@@ -57,7 +57,7 @@ describe('highlightSelectedNode', () => {
     })
 
     expect(focus).toHaveBeenCalledWith(
-      '123', { animation: true, scale: 1 }
+      '123', { animation: false, scale: 1 }
     )
   })
 })

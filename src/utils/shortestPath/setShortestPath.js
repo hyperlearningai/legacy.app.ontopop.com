@@ -8,13 +8,17 @@ import store from '../../store'
  * @param  {Object}   params
  * @param  {Boolean}  params.isNodeOverlay              Display nodes outside path flag
  * @param  {Function} params.setStoreState              setStoreState action
- * @param  {Function} params.addToObject            Update graph data function
+ * @param  {Function} params.addToObject                Update graph data function
+ * @param  {Array}    params.nodesToExclude             Node IDs to exclude
+ * @param  {Array}    params.edgesToExclude             Edge labels to exclude
  * @return { undefined }
  */
 const setShortestPath = async ({
   isNodeOverlay,
   setStoreState,
   addToObject,
+  nodesToExclude,
+  edgesToExclude
 }) => {
   const {
     lastGraphIndex,
@@ -30,7 +34,9 @@ const setShortestPath = async ({
 
   const shortestPathResults = await getShortestPath({
     shortestPathSelectedNodes,
-    nodesEdges
+    nodesEdges,
+    nodesToExclude,
+    edgesToExclude
   })
 
   const newGraphIndex = lastGraphIndex + 1

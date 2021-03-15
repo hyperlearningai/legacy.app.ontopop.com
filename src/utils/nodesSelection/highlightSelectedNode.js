@@ -1,4 +1,5 @@
 import store from '../../store'
+import getStylingProperty from '../networkStyling/getStylingProperty'
 import getNode from '../nodesEdgesUtils/getNode'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
@@ -14,8 +15,6 @@ const highlightSelectedNode = ({
   selectedNode
 }) => {
   const {
-    userDefinedNodeStyling,
-    globalNodeStyling,
     network
   } = store.getState()
 
@@ -25,8 +24,11 @@ const highlightSelectedNode = ({
 
   const color = node.color || {}
 
-  const { stylingNodeHighlightBackgroundColor } = node.userDefined ? userDefinedNodeStyling : globalNodeStyling
-  color.background = stylingNodeHighlightBackgroundColor
+  color.background = getStylingProperty({
+    type: 'node',
+    property: 'stylingNodeHighlightBackgroundColor',
+    element: node
+  })
 
   updateNodes({
     id: selectedNode,
@@ -36,7 +38,7 @@ const highlightSelectedNode = ({
   network.focus(selectedNode,
     {
       scale: 1,
-      animation: true
+      animation: false,
     })
 }
 

@@ -146,11 +146,11 @@ const setOntologyAddNode = async ({
     ...[id]
   ]
 
+  setStoreState('classesFromApiBackup', newClassesFromApiBackup)
+  setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('nodesEdges', newNodesEdges)
   setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
-  setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('classesFromApiBackup', newClassesFromApiBackup)
   setStoreState('addedNodes', newAddedNodes)
   setNodeStyle({
     nodeId: id,

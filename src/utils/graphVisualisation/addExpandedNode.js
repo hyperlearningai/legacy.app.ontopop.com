@@ -5,11 +5,18 @@ import getNode from '../nodesEdgesUtils/getNode'
 import setEdgeStyle from '../networkStyling/setEdgeStyle'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import actionAfterNodesAdded from './actionAfterNodesAdded'
+import getElementLabel from '../networkStyling/getElementLabel'
 
 /**
  * Add nodes and/or edges to graph
  * @param  {Object}   params
  * @param  {Number}   params.nodeId           Selected node id
+ * @param  {Number}   params.index            Item index in loop
+ * @param  {Number}   params.edgesNumber      Total number of edges
+ * @param  {Object}   params.edge             Edge object
+ * @param  {Object}   params.nodesEdges       Edges per node
+ * @param  {Object}   params.classesFromApi   All nodes with properties
+ * @param  {Function} params.addNumber        addNumber action
  * @param  {Function} params.setStoreState    setStoreState action
  * @return {undefined}
  */
@@ -21,8 +28,6 @@ const addExpandedNode = ({
   nodesEdges,
   setStoreState,
   classesFromApi,
-  globalNodeStyling,
-  userDefinedNodeStyling,
   addNumber,
 }) => {
   if (!edge) return false
@@ -41,10 +46,10 @@ const addExpandedNode = ({
   if (isNodeNotAvailable) {
     const nodeIdObject = classesFromApi[nodeIdToCheck]
 
-    const { stylingNodeCaptionProperty } = nodeIdObject.userDefined ? userDefinedNodeStyling : globalNodeStyling
-
-    nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
-      ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+    nodeIdObject.label = getElementLabel({
+      type: 'node',
+      id: nodeIdToCheck
+    })
 
     nodeIdObject.x = Math.floor((Math.random() * 100) + 1)
     nodeIdObject.y = Math.floor((Math.random() * 100) + 1)

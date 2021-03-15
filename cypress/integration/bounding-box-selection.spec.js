@@ -42,7 +42,7 @@ context('Bounding box selection', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('main')
+      cy.get('#main-search').type('main')
 
       cy.wait('@getGraph')
 

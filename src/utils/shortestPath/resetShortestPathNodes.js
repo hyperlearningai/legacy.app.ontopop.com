@@ -1,5 +1,4 @@
-import store from '../../store'
-import updateNodeBackground from './updateNodeBackground'
+import setNodesStyle from '../networkStyling/setNodesStyle'
 
 /**
  * Reset shortest path nodes
@@ -10,24 +9,7 @@ import updateNodeBackground from './updateNodeBackground'
 const resetShortestPathNodes = ({
   setStoreState,
 }) => {
-  const {
-    shortestPathNode1,
-    shortestPathNode2,
-    stylingNodeBackgroundColor,
-    shortestPathNode1Object,
-    shortestPathNode2Object
-  } = store.getState()
-
-  updateNodeBackground({
-    background: stylingNodeBackgroundColor,
-    nodeId: shortestPathNode1,
-    originalNode: shortestPathNode1Object,
-  })
-  updateNodeBackground({
-    background: stylingNodeBackgroundColor,
-    nodeId: shortestPathNode2,
-    originalNode: shortestPathNode2Object,
-  })
+  setNodesStyle()
 
   setStoreState('isShortestPathNode1Selectable', false)
   setStoreState('isShortestPathNode2Selectable', false)

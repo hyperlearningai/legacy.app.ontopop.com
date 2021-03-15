@@ -1,6 +1,6 @@
 import resetShortestPathNodes from '../../../utils/shortestPath/resetShortestPathNodes'
 import store from '../../../store'
-import updateNodeBackground from '../../../utils/shortestPath/updateNodeBackground'
+import setNodesStyle from '../../../utils/networkStyling/setNodesStyle'
 
 const setStoreState = jest.fn()
 
@@ -10,7 +10,7 @@ const stylingNodeBackgroundColor = '#000'
 const shortestPathNode1Object = { id: 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9' }
 const shortestPathNode2Object = { id: 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9' }
 
-jest.mock('../../../utils/shortestPath/updateNodeBackground')
+jest.mock('../../../utils/networkStyling/setNodesStyle')
 
 store.getState = jest.fn().mockImplementation(() => ({
   shortestPathNode1,
@@ -30,6 +30,7 @@ describe('resetShortestPathNodes', () => {
       setStoreState,
     })
 
+    expect(setNodesStyle).toHaveBeenCalledWith()
     expect(setStoreState.mock.calls).toEqual([
       [
         'isShortestPathNode1Selectable',
@@ -57,16 +58,5 @@ describe('resetShortestPathNodes', () => {
       ],
 
     ])
-    expect(updateNodeBackground.mock.calls).toEqual(
-      [[{
-        background: '#000',
-        nodeId: 'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV',
-        originalNode: { id: 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9' }
-      }], [{
-        background: '#000',
-        nodeId: 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9',
-        originalNode: { id: 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9' }
-      }]]
-    )
   })
 })

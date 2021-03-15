@@ -12,12 +12,11 @@ import getNode from '../utils/nodesEdgesUtils/getNode'
 import setNodesStyle from '../utils/networkStyling/setNodesStyle'
 import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
 import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
+import getElementLabel from '../utils/networkStyling/getElementLabel'
 
 const NodesSelection = ({
   selectedNode,
   setStoreState,
-  userDefinedNodeStyling,
-  globalNodeStyling
 }) => {
   const { t } = useTranslation()
 
@@ -43,11 +42,10 @@ const NodesSelection = ({
 
   const availableNodes = availableNodeIds.length > 0 ? availableNodeIds.map(
     (nodeId) => {
-      const node = getNode(nodeId)
-
-      const { stylingNodeCaptionProperty } = node.userDefined ? userDefinedNodeStyling : globalNodeStyling
-
-      const label = node[stylingNodeCaptionProperty]
+      const label = getElementLabel({
+        type: 'node',
+        id: nodeId
+      })
 
       return ({
         value: nodeId,
@@ -98,8 +96,6 @@ const NodesSelection = ({
 NodesSelection.propTypes = {
   selectedNode: PropTypes.string,
   setStoreState: PropTypes.func.isRequired,
-  userDefinedNodeStyling: PropTypes.shape().isRequired,
-  globalNodeStyling: PropTypes.shape().isRequired,
 }
 
 NodesSelection.defaultProps = {
@@ -108,12 +104,8 @@ NodesSelection.defaultProps = {
 
 const mapToProps = ({
   selectedNode,
-  userDefinedNodeStyling,
-  globalNodeStyling
 }) => ({
   selectedNode,
-  userDefinedNodeStyling,
-  globalNodeStyling
 })
 
 export default connect(

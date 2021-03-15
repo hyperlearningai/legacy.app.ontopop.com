@@ -10,7 +10,8 @@ const setNodesOverlay = () => {
   const {
     shortestPathNodes,
     isNodeOverlay,
-    stylingNodeOverlayOpacity
+    globalNodeStyling,
+    userDefinedNodeStyling
   } = store.getState()
 
   if (!isNodeOverlay) return false
@@ -21,7 +22,9 @@ const setNodesOverlay = () => {
 
   if (nodesToStyle.length > 0) {
     nodesToStyle.map((node) => {
-      const { id } = node
+      const { id, userDefined } = node
+
+      const { stylingNodeOverlayOpacity } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
       updateNodes({
         id,

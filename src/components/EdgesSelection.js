@@ -10,13 +10,11 @@ import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
 import highlightSelectedEdge from '../utils/edgesSelection/highlightSelectedEdge'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
-import getNode from '../utils/nodesEdgesUtils/getNode'
+import getElementLabel from '../utils/networkStyling/getElementLabel'
 
 const EdgesSelection = ({
   selectedEdge,
   setStoreState,
-  userDefinedNodeStyling,
-  globalNodeStyling
 }) => {
   const { t } = useTranslation()
 
@@ -47,13 +45,15 @@ const EdgesSelection = ({
       userDefined
     } = getEdge(edgeId)
 
-    const fromNode = getNode(from)
-    const { stylingNodeCaptionProperty: fromStylingNodeCaptionProperty } = from.userDefined ? userDefinedNodeStyling : globalNodeStyling
-    const fromLabel = fromNode ? fromNode[fromStylingNodeCaptionProperty] : ''
+    const fromLabel = getElementLabel({
+      type: 'node',
+      id: from
+    })
 
-    const toNode = getNode(to)
-    const { stylingNodeCaptionProperty: toStylingNodeCaptionProperty } = from.userDefined ? userDefinedNodeStyling : globalNodeStyling
-    const toLabel = toNode ? toNode[toStylingNodeCaptionProperty] : ''
+    const toLabel = getElementLabel({
+      type: 'node',
+      id: to
+    })
 
     const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
 
@@ -109,8 +109,6 @@ const EdgesSelection = ({
 EdgesSelection.propTypes = {
   selectedEdge: PropTypes.string,
   setStoreState: PropTypes.func.isRequired,
-  userDefinedNodeStyling: PropTypes.shape().isRequired,
-  globalNodeStyling: PropTypes.shape().isRequired,
 }
 
 EdgesSelection.defaultProps = {
@@ -119,12 +117,8 @@ EdgesSelection.defaultProps = {
 
 const mapToProps = ({
   selectedEdge,
-  userDefinedNodeStyling,
-  globalNodeStyling
 }) => ({
   selectedEdge,
-  userDefinedNodeStyling,
-  globalNodeStyling
 })
 
 export default connect(

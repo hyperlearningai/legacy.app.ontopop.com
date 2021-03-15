@@ -16,7 +16,7 @@ describe('setHighlightedNodes', () => {
       id: 'node-123'
     }]))
 
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       highlightedNodes: ['node-123'],
       globalNodeStyling: { stylingNodeHighlightBackgroundColor: '#000' },
       userDefinedNodeStyling: { stylingNodeHighlightBackgroundColor: '#000' },

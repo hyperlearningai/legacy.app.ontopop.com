@@ -1,6 +1,0 @@
-{
-  "query": "g.V().hasLabel('class').count()",
-  "data": {
-    "0": 203
-  }
-}

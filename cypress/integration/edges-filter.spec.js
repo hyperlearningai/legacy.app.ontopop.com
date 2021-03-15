@@ -42,7 +42,7 @@ context('Edges filter', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('value')
+      cy.get('#main-search').type('value')
 
       cy.wait('@getGraph')
 

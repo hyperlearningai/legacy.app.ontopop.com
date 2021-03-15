@@ -42,7 +42,7 @@ context('Structured search', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('asset')
+      cy.get('#main-search').type('asset')
 
       cy.wait('@getGraph')
 

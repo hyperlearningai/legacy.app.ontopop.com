@@ -2,6 +2,7 @@ import actionAfterNodesAdded from '../../../utils/graphVisualisation/actionAfter
 import store from '../../../store'
 import highlightSpiderableNodes from '../../../utils/networkStyling/highlightSpiderableNodes'
 import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
+import setNodesOverlay from '../../../utils/networkStyling/setNodesOverlay'
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
@@ -30,6 +31,7 @@ store.getState = jest.fn().mockImplementation(() => ({
 
 jest.mock('../../../utils/nodesEdgesUtils/getNodeIds')
 jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
+jest.mock('../../../utils/networkStyling/setNodesOverlay')
 
 getNodeIds.mockImplementationOnce(() => ['111'])
 
@@ -69,7 +71,7 @@ describe('actionAfterNodesAdded', () => {
     expect(addNumber).toHaveBeenCalledWith('activeLoaders', -1)
 
     expect(highlightSpiderableNodes).toHaveBeenCalledWith()
-
+    expect(setNodesOverlay).toHaveBeenCalledWith()
     expect(setTimeout).toHaveBeenCalledWith(
       expect.any(Function), 1000
     )

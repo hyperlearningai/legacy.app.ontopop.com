@@ -119,8 +119,8 @@ const setOntologyAddEdge = async ({
     ...[id]
   ]
 
-  setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
   setStoreState('objectPropertiesFromApiBackup', newObjectPropertiesFromApiBackup)
+  setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
   setStoreState('nodesEdges', newNodesEdges)
   setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)

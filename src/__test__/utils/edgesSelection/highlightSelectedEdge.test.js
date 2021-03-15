@@ -63,7 +63,7 @@ describe('highlightSelectedEdge', () => {
       '40',
       {
         scale: 1,
-        animation: true
+        animation: false
       }
     )
   })

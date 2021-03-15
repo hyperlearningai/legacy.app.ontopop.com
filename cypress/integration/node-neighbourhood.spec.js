@@ -3,13 +3,13 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 
-context('Nodes selection', () => {
+context('Node neighbourhood', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
   })
 
-  describe('Nodes selection', () => {
-    it('Nodes selection should return results', () => {
+  describe('Node neighbourhood', () => {
+    it('Node neighbourhood should return results', () => {
       cy.intercept({
         method: 'POST',
         url: '**/login',
@@ -61,26 +61,26 @@ context('Nodes selection', () => {
       cy.get('.nav-left').should('contain', 'Nodes: 11')
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
-      // click the nodes selection icon
-      cy.get('.sidebar-icons').find('.p-button').eq(4).click()
-
-      cy.get('.nodes-selection-details').should('not.have.exist')
+      // click the node neighbourhood icon
+      cy.get('.sidebar-icons').find('.p-button').eq(9).click()
 
       // select first node
       cy.get('#node-select').find('.p-dropdown-trigger').click({ force: true })
       cy.get('#node-select').find('.p-dropdown-filter').type('asset')
       cy.get('#node-select').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '5')
-      cy.get('.nodes-selection-details-table-relationships').find('tbody tr').should('have.length', '10')
+      // check that separation degree up/down buttons work
+      cy.get('.p-button-success').click()
+      cy.get('.p-button-success').click()
+      cy.get('.p-button-danger').click()
 
-      // select another node
-      cy.get('#node-select').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#node-select').find('.p-dropdown-filter').clear().type('str')
-      cy.get('#node-select').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('#separation-degree').find('.p-inputnumber-input').should('have.value', 2)
 
-      cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '6')
-      cy.get('.nodes-selection-details-table-relationships').find('tbody tr').should('have.length', '2')
+      cy.get('.node-neighbourhood-button').click()
+
+      // shows subgraph
+      cy.get('.nav-left').should('contain', 'Nodes: 70')
+      cy.get('.nav-left').should('contain', 'Edges: 173')
     })
   })
 })

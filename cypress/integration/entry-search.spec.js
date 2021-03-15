@@ -42,7 +42,7 @@ context('Entry search', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('link')
+      cy.get('#main-search').type('link')
 
       cy.wait('@getGraph')
 
@@ -113,7 +113,7 @@ context('Entry search', () => {
       // set nodes as result type
       cy.get('#filter-select').find('.p-button').eq(1).click()
 
-      cy.get('[name="search"').type('record')
+      cy.get('#main-search').type('record')
 
       cy.wait('@getGraph')
 
@@ -184,7 +184,7 @@ context('Entry search', () => {
       // set nodes as result type
       cy.get('#filter-select').find('.p-button').eq(2).click()
 
-      cy.get('[name="search"').type('record')
+      cy.get('#main-search').type('record')
 
       cy.wait('@getGraph')
 
@@ -259,7 +259,7 @@ context('Entry search', () => {
       cy.get('.p-multiselect-filter').type('rdfs')
       cy.get('.p-multiselect-item').click({ force: true })
 
-      cy.get('[name="search"').type('link')
+      cy.get('#main-search').type('link')
 
       cy.wait('@getGraph')
 

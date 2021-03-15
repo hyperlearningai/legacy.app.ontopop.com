@@ -41,17 +41,25 @@ store.getState = jest.fn().mockImplementation(() => ({
   availableEdges,
   totalEdgesPerNode,
   classesFromApi,
+  classesFromApiBackup: classesFromApi,
   objectPropertiesFromApi,
+  objectPropertiesFromApiBackup: objectPropertiesFromApi,
   nodesIdsToDisplay,
   isPhysicsOn: false,
   globalNodeStyling: {
     stylingNodeCaptionProperty,
   },
-  stylingNodeByProperty: [],
-  stylingEdgeByProperty: [],
   userDefinedNodeStyling: {
     stylingNodeCaptionProperty,
   },
+  globalEdgeStyling: {
+    stylingNodeCaptionProperty,
+  },
+  userDefinedEdgeStyling: {
+    stylingNodeCaptionProperty,
+  },
+  stylingNodeByProperty: [],
+  stylingEdgeByProperty: [],
   highlightedNodes: [],
   highlightedEdges: [],
   nodesEdges
@@ -68,18 +76,7 @@ describe('addElementToGraph', () => {
       nodesIdsToDisplay,
       objectPropertiesFromApi,
       totalEdgesPerNode,
-      globalNodeStyling: {
-        stylingNodeCaptionProperty,
-      },
-      userDefinedNodeStyling: {
-        stylingNodeCaptionProperty,
-      },
-      globalEdgeStyling: {
-        stylingNodeCaptionProperty,
-      },
-      userDefinedEdgeStyling: {
-        stylingNodeCaptionProperty,
-      },
+
       setStoreState,
       addNumber,
       i: 2,
@@ -114,7 +111,7 @@ describe('addElementToGraph', () => {
           edgeId: 11,
           from: '1',
           id: '11',
-          label: undefined,
+          label: '',
           rdfsLabel: 'Subclass of',
           role: 'Subclass of',
           to: '141',

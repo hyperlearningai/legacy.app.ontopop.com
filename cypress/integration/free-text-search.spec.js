@@ -42,7 +42,7 @@ context('Free text search', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('[name="search"').type('road')
+      cy.get('#main-search').type('road')
 
       cy.wait('@getGraph')
 

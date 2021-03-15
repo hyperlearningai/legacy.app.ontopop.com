@@ -125,6 +125,10 @@ export default {
   isNotNodeOverlay: 'Show path only',
   selectStartingNode: 'Select starting node',
   selectEndingNode: 'Select ending node',
+  selectNodesFromGraphOrFromList: 'Select nodes from graph or pick from list',
+  nodesToExclude: 'Nodes to exclude',
+  edgesToExclude: 'Edges to exclude',
+  showShortestPath: 'Show shortest path',
 
   // Physics settings
   physicsSettings: 'Physics settings',
