@@ -46,6 +46,12 @@ For unit testing:
   npm run test:watch
 ```
 
+For e2e testing:
+```shell script
+  npm run test:e2e:open   # run npm run dev in a different terminal
+  npm run test:e2e:run    # used by the pipeline | run npm run build first if you want to test it
+```
+
 For linting, if using VSCode, make sure to have the following extensions installed:
 - [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
