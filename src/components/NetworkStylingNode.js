@@ -51,15 +51,20 @@ const NetworkStylingNode = ({
 
   return (
     <Accordion>
-      <AccordionTab header={t('nodeStyling')}>
+      <AccordionTab
+        header={t('nodeStyling')}
+      >
         <Accordion>
-          <AccordionTab header={t('nodeStylingGlobal')}>
+          <AccordionTab
+            header={t('nodeStylingGlobal')}
+          >
             <Accordion>
               <AccordionTab header={t('stylingNodeShape')}>
                 <Dropdown
                   value={globalNodeStyling.stylingNodeShape}
                   options={nodeShapeOptions}
                   filter
+                  id="global-node-shape"
                   onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeShape', e.value)}
                   className="m-t-10"
                   placeholder={t('stylingNodeShape')}
@@ -67,12 +72,16 @@ const NetworkStylingNode = ({
               </AccordionTab>
 
               <AccordionTab header={t('stylingNodeSize')}>
-                <div className="network -styling-input">
-                  <div className="network -styling-item-input">
+                <div className="network-styling-input">
+                  <div className="network-styling-item-input">
                     {
                       NODE_SHAPES_AFFECTED_BY_SIZE.includes(globalNodeStyling.stylingNodeShape) ? (
                         <>
-                          <InputNumber value={globalNodeStyling.stylingNodeSize} onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeSize', e.value)} />
+                          <InputNumber
+                            id="global-node-size"
+                            value={globalNodeStyling.stylingNodeSize}
+                            onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeSize', e.value)}
+                          />
                           <Slider
                             min={1}
                             max={1000}
@@ -93,9 +102,13 @@ const NetworkStylingNode = ({
               </AccordionTab>
 
               <AccordionTab header={t('stylingNodeTextFontSize')}>
-                <div className="network -styling-input">
-                  <div className="network -styling-item-input">
-                    <InputNumber value={globalNodeStyling.stylingNodeTextFontSize} onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeTextFontSize', e.value)} />
+                <div className="network-styling-input">
+                  <div className="network-styling-item-input">
+                    <InputNumber
+                      id="global-node-font-size"
+                      value={globalNodeStyling.stylingNodeTextFontSize}
+                      onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeTextFontSize', e.value)}
+                    />
                     <Slider
                       min={1}
                       max={200}
@@ -111,6 +124,7 @@ const NetworkStylingNode = ({
               <AccordionTab header={t('stylingNodeTextFontAlign')}>
                 <SelectButton
                   value={globalNodeStyling.stylingNodeTextFontAlign}
+                  id="global-node-font-alignment"
                   options={FONT_ALIGNMENT_OPTIONS}
                   itemTemplate={FONT_ALIGNMENT_TEMPLATE}
                   onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeTextFontAlign', e.value)}
@@ -119,9 +133,13 @@ const NetworkStylingNode = ({
 
               <AccordionTab header={t('stylingNodeBorder')}>
                 <h4 className="m-t-0 m-b-0">{t('nodeBorderLineWidth')}</h4>
-                <div className="network -styling-input">
-                  <div className="network -styling-item-input">
-                    <InputNumber value={globalNodeStyling.stylingNodeBorder} onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeBorder', e.value)} />
+                <div className="network-styling-input">
+                  <div className="network-styling-item-input">
+                    <InputNumber
+                      id="global-node-border-width"
+                      value={globalNodeStyling.stylingNodeBorder}
+                      onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeBorder', e.value)}
+                    />
                     <Slider
                       min={1}
                       max={10}
@@ -133,9 +151,13 @@ const NetworkStylingNode = ({
                   </div>
                 </div>
                 <h4 className="m-t-20 m-b-0">{t('nodeBorderLineWidthHighlighted')}</h4>
-                <div className="network -styling-input">
-                  <div className="network -styling-item-input">
-                    <InputNumber value={globalNodeStyling.stylingNodeBorderSelected} onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeBorderSelected', e.value)} />
+                <div className="network-styling-input">
+                  <div className="network-styling-item-input">
+                    <InputNumber
+                      id="global-node-border-width-highlighted"
+                      value={globalNodeStyling.stylingNodeBorderSelected}
+                      onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeBorderSelected', e.value)}
+                    />
                     <Slider
                       min={1}
                       max={10}
@@ -150,6 +172,7 @@ const NetworkStylingNode = ({
               <AccordionTab header={t('nodeColor')}>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="global-node-color-text"
                     value={globalNodeStyling.stylingNodeTextColor.replace('#', '')}
                     onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeTextColor', `#${e.value}`)}
                   />
@@ -159,6 +182,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="global-node-color-border"
                     value={globalNodeStyling.stylingNodeBorderColor.replace('#', '')}
                     onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeBorderColor', `#${e.value}`)}
                   />
@@ -168,6 +192,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="global-node-color-border-highlight"
                     value={globalNodeStyling.stylingNodeHighlightBorderColor.replace('#', '')}
                     onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeHighlightBorderColor', `#${e.value}`)}
                   />
@@ -177,6 +202,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="global-node-color-background"
                     value={globalNodeStyling.stylingNodeBackgroundColor.replace('#', '')}
                     onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeBackgroundColor', `#${e.value}`)}
                   />
@@ -186,6 +212,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="global-node-color-background-highlight"
                     value={globalNodeStyling.stylingNodeHighlightBackgroundColor.replace('#', '')}
                     onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeHighlightBackgroundColor', `#${e.value}`)}
                   />
@@ -195,6 +222,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="global-node-color-background-hover"
                     value={globalNodeStyling.stylingNodeHoverBackgroundColor.replace('#', '')}
                     onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeHoverBackgroundColor', `#${e.value}`)}
                   />
@@ -204,6 +232,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="global-node-color-border-hover"
                     value={globalNodeStyling.stylingNodeHoverBorderColor.replace('#', '')}
                     onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeHoverBorderColor', `#${e.value}`)}
                   />
@@ -218,6 +247,7 @@ const NetworkStylingNode = ({
                   value={globalNodeStyling.stylingNodeCaptionProperty}
                   options={annotationProperties}
                   filter
+                  id="global-node-caption-property"
                   onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeCaptionProperty', e.value)}
                   className="m-t-10"
                   placeholder={t('selectProperty')}
@@ -233,6 +263,7 @@ const NetworkStylingNode = ({
                   value={userDefinedNodeStyling.stylingNodeShape}
                   options={nodeShapeOptions}
                   filter
+                  id="ud-node-shape"
                   onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeShape', e.value)}
                   className="m-t-10"
                   placeholder={t('stylingNodeShape')}
@@ -240,12 +271,16 @@ const NetworkStylingNode = ({
               </AccordionTab>
 
               <AccordionTab header={t('stylingNodeSize')}>
-                <div className="network -styling-input">
-                  <div className="network -styling-item-input">
+                <div className="network-styling-input">
+                  <div className="network-styling-item-input">
                     {
                       NODE_SHAPES_AFFECTED_BY_SIZE.includes(userDefinedNodeStyling.stylingNodeShape) ? (
                         <>
-                          <InputNumber value={userDefinedNodeStyling.stylingNodeSize} onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeSize', e.value)} />
+                          <InputNumber
+                            id="ud-node-size"
+                            value={userDefinedNodeStyling.stylingNodeSize}
+                            onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeSize', e.value)}
+                          />
                           <Slider
                             min={1}
                             max={1000}
@@ -266,9 +301,10 @@ const NetworkStylingNode = ({
               </AccordionTab>
 
               <AccordionTab header={t('stylingNodeTextFontSize')}>
-                <div className="network -styling-input">
-                  <div className="network -styling-item-input">
+                <div className="network-styling-input">
+                  <div className="network-styling-item-input">
                     <InputNumber
+                      id="ud-node-font-size"
                       value={userDefinedNodeStyling.stylingNodeTextFontSize}
                       onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeTextFontSize', e.value)}
                     />
@@ -286,6 +322,7 @@ const NetworkStylingNode = ({
 
               <AccordionTab header={t('stylingNodeTextFontAlign')}>
                 <SelectButton
+                  id="ud-node-font-alignment"
                   value={userDefinedNodeStyling.stylingNodeTextFontAlign}
                   options={FONT_ALIGNMENT_OPTIONS}
                   itemTemplate={FONT_ALIGNMENT_TEMPLATE}
@@ -295,9 +332,10 @@ const NetworkStylingNode = ({
 
               <AccordionTab header={t('stylingNodeBorder')}>
                 <h4 className="m-t-0 m-b-0">{t('nodeBorderLineWidth')}</h4>
-                <div className="network -styling-input">
-                  <div className="network -styling-item-input">
+                <div className="network-styling-input">
+                  <div className="network-styling-item-input">
                     <InputNumber
+                      id="ud-node-border-width"
                       value={userDefinedNodeStyling.stylingNodeBorder}
                       onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeBorder', e.value)}
                     />
@@ -312,9 +350,13 @@ const NetworkStylingNode = ({
                   </div>
                 </div>
                 <h4 className="m-t-20 m-b-0">{t('nodeBorderLineWidthHighlighted')}</h4>
-                <div className="network -styling-input">
-                  <div className="network -styling-item-input">
-                    <InputNumber value={userDefinedNodeStyling.stylingNodeBorderSelected} onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeBorderSelected', e.value)} />
+                <div className="network-styling-input">
+                  <div className="network-styling-item-input">
+                    <InputNumber
+                      id="ud-node-border-width-highlighted"
+                      value={userDefinedNodeStyling.stylingNodeBorderSelected}
+                      onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeBorderSelected', e.value)}
+                    />
                     <Slider
                       min={1}
                       max={10}
@@ -329,6 +371,7 @@ const NetworkStylingNode = ({
               <AccordionTab header={t('nodeColor')}>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="ud-node-color-text"
                     value={userDefinedNodeStyling.stylingNodeTextColor.replace('#', '')}
                     onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeTextColor', `#${e.value}`)}
                   />
@@ -338,6 +381,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="ud-node-color-border"
                     value={userDefinedNodeStyling.stylingNodeBorderColor.replace('#', '')}
                     onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeBorderColor', `#${e.value}`)}
                   />
@@ -347,6 +391,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="ud-node-color-border-highlight"
                     value={userDefinedNodeStyling.stylingNodeHighlightBorderColor.replace('#', '')}
                     onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeHighlightBorderColor', `#${e.value}`)}
                   />
@@ -356,6 +401,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="ud-node-color-background"
                     value={userDefinedNodeStyling.stylingNodeBackgroundColor.replace('#', '')}
                     onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeBackgroundColor', `#${e.value}`)}
                   />
@@ -365,6 +411,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="ud-node-color-background-highlight"
                     value={userDefinedNodeStyling.stylingNodeHighlightBackgroundColor.replace('#', '')}
                     onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeHighlightBackgroundColor', `#${e.value}`)}
                   />
@@ -374,6 +421,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="ud-node-color-background-hover"
                     value={userDefinedNodeStyling.stylingNodeHoverBackgroundColor.replace('#', '')}
                     onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeHoverBackgroundColor', `#${e.value}`)}
                   />
@@ -383,6 +431,7 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="ud-node-color-border-hover"
                     value={userDefinedNodeStyling.stylingNodeHoverBorderColor.replace('#', '')}
                     onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeHoverBorderColor', `#${e.value}`)}
                   />
@@ -397,6 +446,7 @@ const NetworkStylingNode = ({
                   value={userDefinedNodeStyling.stylingNodeCaptionProperty}
                   options={annotationProperties}
                   filter
+                  id="ud-node-caption-property"
                   onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeCaptionProperty', e.value)}
                   className="m-t-10"
                   placeholder={t('selectProperty')}

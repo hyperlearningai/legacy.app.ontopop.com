@@ -23,7 +23,8 @@
     "audit": "npm audit",
     "build-docs": "jsdoc src/utils/*.js -d docs",
     "test:e2e:open": "cypress open",
-    "test:e2e:run": "start-server-and-test build start http://localhost:3000 cy:run"
+    "cy:run": "cypress run",
+    "test:e2e:run": "start-server-and-test start 3000 cy:run"
   },
   "author": "@chriscarex",
   "license": "MIT",

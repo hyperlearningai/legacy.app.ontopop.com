@@ -106,6 +106,7 @@ const Login = ({
                 <Button
                   className="auth-button m-t-20"
                   label={t('login')}
+                  id="auth-login-button"
                   onClick={() => signIn({
                     router,
                     addToObject,

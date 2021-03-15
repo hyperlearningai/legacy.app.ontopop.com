@@ -176,6 +176,7 @@ export default {
   stylingNodeBorder: 'Node border',
   nodeBorderLineWidth: 'Border width',
   stylingNodeBorderSelected: 'Border width highlighted',
+  nodeBorderLineWidthHighlighted: 'Border width highlighted',
   stylingNodeBorderColor: 'Border colour',
   stylingNodeTextColor: 'Node text colour',
   stylingNodeHighlightBorderColor: 'Border colour highlighted',

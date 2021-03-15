@@ -253,6 +253,7 @@ context('Entry search', () => {
       cy.wait('@postLogin')
 
       // show advanced search and uncheck all properties but rdfsLabel
+      cy.wait(500)
       cy.get('.entry-search-row-checkbox').find('.p-checkbox-box').click({ force: true })
       cy.get('.p-multiselect-trigger').click({ force: true })
       cy.get('.p-multiselect-header').find('.p-checkbox-box').click({ force: true })
