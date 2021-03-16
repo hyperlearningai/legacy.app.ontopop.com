@@ -8,7 +8,7 @@ const setup = ({
 }) => {
   const props = {
     setStoreState: jest.fn(),
-    selectedNode
+    selectedNode,
   }
 
   const component = shallow(<NodesSelection {...props} />)

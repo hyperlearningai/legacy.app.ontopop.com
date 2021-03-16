@@ -3,18 +3,42 @@
   height: 100%;
   overflow-y: auto;
   text-align: center;
-  padding: 24px;
+  // padding: 24px;
 
-  &-selection {
-    text-align: left;
+  label {
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
 
-    label {
-      margin-bottom: 5px;
+  &-message {
+    width: 100%;
+    padding: 10px 24px;
+    text-align: center;
+  }
+
+  &-dropdown {
+    width: 100%;
+    padding: 10px 24px;
+
+    .p-dropdown,
+    .p-dropdown-panel,
+    .p-dropdown-items,
+    .p-dropdown-items-wrapper,
+    .p-input {
       width: 100%;
-      text-align: center;
-      font-size: 14px;
     }
 
+    .p-dropdown-item {
+      width: 100%;
+      word-break: break-word;
+      height: auto;
+      white-space: normal;
+    }
+  }
+
+  #separation-degree {
     input {
       width: 50%;
       margin: auto;
@@ -23,27 +47,12 @@
     }
   }
 
-  &-selected {
-    margin: 10px auto;
-    font-size: 12px;
-    text-align: left;
-    width: 100%;
+  &-degree {
+    padding: 10px 24px;
+  }
 
-    table {
-      font-size: 12px;
-
-      tbody {
-        tr {
-          td {
-            padding: 5px;
-          }
-
-          :nth-child(2) {
-            word-break: break-all;
-          }
-        }
-      }
-    }
+  &-buttons {
+    padding: 10px 24px;
   }
 
   &-button {

@@ -25,18 +25,6 @@ store.getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
   nodesEdges: {},
   isPhysicsOn: false,
-  globalNodeStyling: {
-    stylingNodeCaptionProperty: 'rdfsLabel'
-  },
-  userDefinedNodeStyling: {
-    stylingNodeCaptionProperty: 'rdfsLabel'
-  },
-  globalEdgeStyling: {
-    stylingEdgeCaptionProperty: 'rdfsLabel'
-  },
-  userDefinedEdgeStyling: {
-    stylingEdgeCaptionProperty: 'rdfsLabel'
-  },
 }))
 
 countNodes.mockImplementation(() => 10)

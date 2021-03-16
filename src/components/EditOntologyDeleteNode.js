@@ -6,6 +6,7 @@ import { Button } from 'primereact/button'
 import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
+import { USER_DEFINED_PROPERTY } from '../constants/graph'
 
 const EditOntologyDeleteNode = ({
   type,
@@ -20,7 +21,7 @@ const EditOntologyDeleteNode = ({
   const [selectedElementProperties, setSelectedElementProperties] = useState(undefined)
 
   const userDefinedNodes = optionNodes && optionNodes.length > 0
-    ? optionNodes.filter((node) => node.userDefined)
+    ? optionNodes.filter((node) => node[USER_DEFINED_PROPERTY])
     : []
 
   return (

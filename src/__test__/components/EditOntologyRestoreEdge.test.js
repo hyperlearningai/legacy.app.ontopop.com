@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EditOntologyRestoreEdge from '../../components/EditOntologyRestoreEdge'
-import { classesFromApi } from '../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../fixtures/objectPropertiesFromApi'
 
 const setup = ({
@@ -13,16 +12,9 @@ const setup = ({
     operation: 'restore',
     setStoreState: jest.fn(),
     addNumber: jest.fn(),
-    classesFromApiBackup: classesFromApi,
     objectPropertiesFromApiBackup: objectPropertiesFromApi,
     deletedEdges,
     deletedNodes: [],
-    userDefinedNodeStyling: {
-      stylingNodeCaptionProperty: 'rdfsLabel'
-    },
-    globalNodeStyling: {
-      stylingNodeCaptionProperty: 'rdfsLabel'
-    },
   }
 
   const component = shallow(<EditOntologyRestoreEdge {...props} />)

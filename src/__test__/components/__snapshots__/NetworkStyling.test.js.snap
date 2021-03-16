@@ -25,6 +25,7 @@ exports[`NetworkStyling should match snapshot  1`] = `
         disabled={false}
         icon="pi pi-save"
         iconPos="left"
+        id="save-styling-button"
         label="save"
         onClick={[Function]}
         tooltip={null}

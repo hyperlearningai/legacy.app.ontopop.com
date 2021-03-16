@@ -6,18 +6,16 @@ import { Button } from 'primereact/button'
 import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
+import getElementLabel from '../utils/networkStyling/getElementLabel'
 
 const EditOntologyRestoreEdge = ({
   type,
   operation,
   setStoreState,
   addNumber,
-  classesFromApiBackup,
   objectPropertiesFromApiBackup,
   deletedEdges,
   deletedNodes,
-  userDefinedNodeStyling,
-  globalNodeStyling
 }) => {
   const { t } = useTranslation()
 
@@ -45,11 +43,15 @@ const EditOntologyRestoreEdge = ({
         label
       } = objectPropertiesFromApiBackup[edgeId]
 
-      const { stylingNodeCaptionProperty: fromStylingNodeCaptionProperty } = classesFromApiBackup[from].userDefined ? userDefinedNodeStyling : globalNodeStyling
-      const { stylingNodeCaptionProperty: toStylingNodeCaptionProperty } = classesFromApiBackup[to].userDefined ? userDefinedNodeStyling : globalNodeStyling
+      const fromLabel = getElementLabel({
+        type: 'node',
+        id: from
+      })
 
-      const fromLabel = classesFromApiBackup[from][fromStylingNodeCaptionProperty]
-      const toLabel = classesFromApiBackup[to][toStylingNodeCaptionProperty]
+      const toLabel = getElementLabel({
+        type: 'node',
+        id: to
+      })
 
       const connectionLabel = `${fromLabel} => (${label}) => ${toLabel}`
 
@@ -121,29 +123,19 @@ EditOntologyRestoreEdge.propTypes = {
   operation: PropTypes.string.isRequired,
   setStoreState: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
-  classesFromApiBackup: PropTypes.shape().isRequired,
   objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  userDefinedNodeStyling: PropTypes.shape().isRequired,
-  globalNodeStyling: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
-  classesFromApiBackup,
   deletedEdges,
   deletedNodes,
-  stylingNodeCaptionProperty,
-  objectPropertiesFromApiBackup, userDefinedNodeStyling,
-  globalNodeStyling
-}) => ({
-  classesFromApiBackup,
-  deletedEdges,
-  deletedNodes,
-  stylingNodeCaptionProperty,
   objectPropertiesFromApiBackup,
-  userDefinedNodeStyling,
-  globalNodeStyling
+}) => ({
+  deletedEdges,
+  deletedNodes,
+  objectPropertiesFromApiBackup,
 })
 
 export default connect(

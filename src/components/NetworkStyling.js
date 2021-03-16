@@ -28,6 +28,7 @@ const NetworkStyling = () => {
             label={t(isSaved ? 'saved' : 'save')}
             disabled={isSaved}
             icon={icon}
+            id="save-styling-button"
             onClick={() => saveStyling({
               setSaved
             })}

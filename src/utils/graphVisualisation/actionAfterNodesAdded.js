@@ -1,6 +1,7 @@
 import highlightSpiderableNodes from '../networkStyling/highlightSpiderableNodes'
 import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import store from '../../store'
+import setNodesOverlay from '../networkStyling/setNodesOverlay'
 
 /**
  * Node queue to avoid browser freezing
@@ -34,6 +35,7 @@ const actionAfterNodesAdded = ({
 
   // perform highlight check here as nodes' edges are not fully loaded during loop
   highlightSpiderableNodes()
+  setNodesOverlay()
 
   const displayedNodes = getNodeIds()
 

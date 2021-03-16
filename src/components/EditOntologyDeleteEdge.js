@@ -6,6 +6,7 @@ import { Button } from 'primereact/button'
 import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
+import { USER_DEFINED_PROPERTY } from '../constants/graph'
 
 const EditOntologyDeleteEdge = ({
   type,
@@ -20,7 +21,7 @@ const EditOntologyDeleteEdge = ({
   const [selectedElementProperties, setSelectedElementProperties] = useState({})
 
   const userDeletedEdges = optionEdges && optionEdges.length > 0
-    ? optionEdges.filter((edge) => edge.userDefined)
+    ? optionEdges.filter((edge) => edge[USER_DEFINED_PROPERTY])
     : []
 
   return (
@@ -28,11 +29,12 @@ const EditOntologyDeleteEdge = ({
       <div
         className="edit-ontology-row"
       >
-        <label htmlFor="element-select">
+        <label htmlFor="delete-element-select">
           {t('selectElement')}
         </label>
 
         <MultiSelect
+          id="delete-element-select"
           value={selectedElement}
           options={userDeletedEdges}
           onChange={(e) => setSelectedElement(e.value)}

@@ -169,6 +169,34 @@ describe('setOntologyAddNode', () => {
     expect(setStoreState.mock.calls).toEqual(
       [
         [
+          'classesFromApiBackup',
+          {
+            ...classesFromApi,
+            123: {
+              id: '123',
+              'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
+              label: 'New\nnode',
+              rdfAbout: '123',
+              rdfsLabel: 'New node',
+              userDefined: true,
+            },
+          },
+        ],
+        [
+          'classesFromApi',
+          {
+            ...classesFromApi,
+            123: {
+              id: '123',
+              'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
+              label: 'New\nnode',
+              rdfAbout: '123',
+              rdfsLabel: 'New node',
+              userDefined: true,
+            },
+          },
+        ],
+        [
           'nodesEdges',
           {
             123: []
@@ -188,34 +216,7 @@ describe('setOntologyAddNode', () => {
             123: []
           }
         ],
-        [
-          'classesFromApi',
-          {
-            ...classesFromApi,
-            123: {
-              id: '123',
-              'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              label: 'New\nnode',
-              rdfAbout: '123',
-              rdfsLabel: 'New node',
-              userDefined: true,
-            },
-          },
-        ],
-        [
-          'classesFromApiBackup',
-          {
-            ...classesFromApi,
-            123: {
-              id: '123',
-              'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              label: 'New\nnode',
-              rdfAbout: '123',
-              rdfsLabel: 'New node',
-              userDefined: true,
-            },
-          },
-        ],
+
         [
           'addedNodes',
           ['123']

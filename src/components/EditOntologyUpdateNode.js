@@ -8,6 +8,7 @@ import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
 import restoreUpdatedElement from '../utils/editOntology/restoreUpdatedElement'
+import { USER_DEFINED_PROPERTY } from '../constants/graph'
 
 const EditOntologyUpdateNode = ({
   operation,
@@ -24,7 +25,7 @@ const EditOntologyUpdateNode = ({
   const type = 'node'
 
   const userDefinedNodes = optionNodes && optionNodes.length > 0
-    ? optionNodes.filter((node) => node.userDefined)
+    ? optionNodes.filter((node) => node[USER_DEFINED_PROPERTY])
     : []
 
   return (

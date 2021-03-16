@@ -46,6 +46,7 @@ const NotesListAddNew = ({
               tooltip={t('addNewNote')}
               tooltipOptions={{ position: 'top' }}
               label={t('addNewNote')}
+              id="add-note"
               onClick={() => setShowForm(true)}
             >
               <i className="pi pi-plus-circle" />
@@ -58,9 +59,9 @@ const NotesListAddNew = ({
               {selectedNotesType === 'node' && t('addNodeNote')}
               {selectedNotesType === 'edge' && t('addEdgeNote')}
             </p>
-            <label htmlFor="noteText">{t('noteText')}</label>
+            <label htmlFor="note-textarea">{t('noteText')}</label>
             <InputTextarea
-              id="noteText"
+              id="note-textarea"
               value={noteText}
               type="text"
               onChange={(e) => {
@@ -71,7 +72,7 @@ const NotesListAddNew = ({
             {
               selectedNotesType !== 'graph'
               && (
-                <p>
+                <p id="selected-element-label">
                   {`${t(selectedNotesType === 'edge' ? 'forEdge' : 'forNode')}: ${elementLabel}`}
                 </p>
               )
@@ -83,6 +84,7 @@ const NotesListAddNew = ({
                 tooltipOptions={{ position: 'top' }}
                 className="p-button-secondary"
                 label={t('close')}
+                id="close-add-note"
                 onClick={() => setShowForm(false)}
               />
 
@@ -90,6 +92,7 @@ const NotesListAddNew = ({
                 tooltip={t('addNote')}
                 tooltipOptions={{ position: 'top' }}
                 label={t('addNote')}
+                id="submit-note"
                 disabled={(selectedNotesType === 'node' && !noteElementId) || (selectedNotesType === 'edge' && !noteElementId)}
                 onClick={() => {
                   setShowForm(false)

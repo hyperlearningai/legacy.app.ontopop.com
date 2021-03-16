@@ -111,9 +111,10 @@ const NotesListNode = ({
         editingId === id
         && (
           <div>
-            <label htmlFor="noteText">{t('noteText')}</label>
+            <label htmlFor={`note-text-${id}`}>{t('noteText')}</label>
             <InputTextarea
-              id="noteText"
+              id={`note-text-${id}`}
+              className="note-text"
               value={noteText}
               type="text"
               onChange={(e) => {
@@ -126,13 +127,16 @@ const NotesListNode = ({
                 tooltip={t('close')}
                 tooltipOptions={{ position: 'top' }}
                 label={t('close')}
-                className="p-button-secondary"
+                className="p-button-secondary close-note"
+                id={`close-note-${id}`}
                 onClick={() => setEditingId('')}
               />
               <Button
                 tooltip={t('edit')}
                 tooltipOptions={{ position: 'top' }}
                 label={t('edit')}
+                className="edit-note"
+                id={`edit-note-${id}`}
                 onClick={() => {
                   setEditingId('')
                   setNoteText('')
@@ -161,7 +165,8 @@ const NotesListNode = ({
             <Button
               tooltip={t('delete')}
               tooltipOptions={{ position: 'top' }}
-              className="p-button-danger"
+              className="p-button-danger delete-note"
+              id={`delete-note-${id}`}
               label={t('delete')}
               onClick={() => notesDeleteNote({
                 type: selectedNotesType,
@@ -177,7 +182,8 @@ const NotesListNode = ({
               tooltip={t('edit')}
               tooltipOptions={{ position: 'top' }}
               label={t('edit')}
-              className="p-button-secondary"
+              className="p-button-secondary edit-note"
+              id={`edit-note-${id}`}
               onClick={() => {
                 setEditingId(id)
                 setNoteText(contents)

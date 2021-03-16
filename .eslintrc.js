@@ -4,6 +4,7 @@ module.exports = {
     browser: true,
     node: true,
     jest: true,
+    'cypress/globals': true
   },
   parser: '@babel/eslint-parser',
   parserOptions: {
@@ -25,6 +26,7 @@ module.exports = {
     'react',
     'react-hooks',
     'html',
+    'cypress'
   ],
   globals: {
     Atomics: 'readonly',

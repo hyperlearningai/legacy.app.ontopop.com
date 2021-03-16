@@ -2,12 +2,12 @@ import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import addNode from '../nodesEdgesUtils/addNode'
 import getNode from '../nodesEdgesUtils/getNode'
-import getEdgeObject from '../graphVisualisation/getEdgeObject'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import httpCall from '../apiCalls/httpCall'
 import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
+import getElementLabel from '../networkStyling/getElementLabel'
 
 /**
  * Restore ontology nodes
@@ -232,8 +232,11 @@ const setOntologyRestoreNode = async ({
             dashes: stylingEdgeLineStyle
           }
 
-          const edge = getEdgeObject({
-            edge: newObjectPropertiesFromApiBackup[edgeId]
+          const edge = newObjectPropertiesFromApiBackup[edgeId]
+
+          edge.label = getElementLabel({
+            type: 'edge',
+            id: edgeId
           })
 
           // add edgeId to triple

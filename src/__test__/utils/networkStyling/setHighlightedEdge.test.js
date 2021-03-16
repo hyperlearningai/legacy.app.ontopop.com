@@ -8,7 +8,7 @@ const edge = { id: '123' }
 
 const commonState = {
   globalEdgeStyling: { stylingEdgeLineColorHighlight: '#000' },
-  userDefinedEdgeStyling: { stylingEdgeLineColorHighlight: '#000' },
+  userDefinedEdgeStyling: { stylingEdgeLineColorHighlight: '#fff' },
 }
 
 describe('setHighlightedEdge', () => {
@@ -17,7 +17,7 @@ describe('setHighlightedEdge', () => {
   })
 
   it('should work correctly when no highlighted nodes', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       highlightedEdges: [],
       ...commonState
     }))
@@ -30,7 +30,7 @@ describe('setHighlightedEdge', () => {
   })
 
   it('should work correctly if not highlighted', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       highlightedEdges: ['234'],
       ...commonState
     }))
@@ -43,7 +43,7 @@ describe('setHighlightedEdge', () => {
   })
 
   it('should work correctly', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       highlightedEdges: [edge.id],
       ...commonState
     }))

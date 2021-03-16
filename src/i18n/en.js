@@ -58,6 +58,8 @@ export default {
   node: 'Node',
   noRelationships: 'No relationships found',
   selectNodeFromGraph: 'Select node from graph',
+  selectNodeFromGraphOrFromList: 'Select node from graph or pick from list',
+  selectNode: 'Select node',
 
   // structured search
   filterElementsByArbitraryPropsCombination: 'Filter nodes or adges by any arbitrary combination of one or more node property values',
@@ -96,7 +98,9 @@ export default {
 
   // edge selection
   selectEdgeFromGraph: 'Select edge from graph',
+  selectEdgeFromGraphOrFromList: 'Select edge from graph or pick from list',
   edge: 'Edge',
+  expand: 'Expand',
 
   // bounding box
   boundingBox: 'Bounding box selection',
@@ -121,6 +125,10 @@ export default {
   isNotNodeOverlay: 'Show path only',
   selectStartingNode: 'Select starting node',
   selectEndingNode: 'Select ending node',
+  selectNodesFromGraphOrFromList: 'Select nodes from graph or pick from list',
+  nodesToExclude: 'Nodes to exclude',
+  edgesToExclude: 'Edges to exclude',
+  showShortestPath: 'Show shortest path',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -168,6 +176,7 @@ export default {
   stylingNodeBorder: 'Node border',
   nodeBorderLineWidth: 'Border width',
   stylingNodeBorderSelected: 'Border width highlighted',
+  nodeBorderLineWidthHighlighted: 'Border width highlighted',
   stylingNodeBorderColor: 'Border colour',
   stylingNodeTextColor: 'Node text colour',
   stylingNodeHighlightBorderColor: 'Border colour highlighted',

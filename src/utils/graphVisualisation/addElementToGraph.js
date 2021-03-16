@@ -1,9 +1,9 @@
 import addNodesEdges from './addNodesEdges'
 import addNode from '../nodesEdgesUtils/addNode'
-import { USER_DEFINED_PROPERTY } from '../../constants/graph'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import actionAfterNodesAdded from './actionAfterNodesAdded'
 import addEdge from '../nodesEdgesUtils/addEdge'
+import getElementLabel from '../networkStyling/getElementLabel'
 
 /**
  * Node queue to avoid browser freezing
@@ -12,10 +12,6 @@ import addEdge from '../nodesEdgesUtils/addEdge'
  * @param  {Array}    params.nodesIdsToDisplay            Node IDs to visualisa
  * @param  {Object}   params.objectPropertiesFromApi      All avilable edges
  * @param  {Object}   params.totalEdgesPerNode                 List of edges per node
- * @param  {Object}   params.globalNodeStyling            Styling properties for nodes (global)
- * @param  {Object}   params.userDefinedNodeStyling       Styling properties for nodes (user-defined)
- * @param  {Object}   params.globalEdgeStyling            Styling properties for edges (global)
- * @param  {Object}   params.userDefinedEdgeStyling       Styling properties for edges (user-defined)
  * @param  {Function} params.setStoreState                setStoreState action
  * @param  {Function} params.addNumber                    addNumber action
  * @param  {Number}   params.i                            Current node index
@@ -29,10 +25,6 @@ const addElementToGraph = ({
   nodesIdsToDisplay,
   objectPropertiesFromApi,
   totalEdgesPerNode,
-  globalNodeStyling,
-  userDefinedNodeStyling,
-  globalEdgeStyling,
-  userDefinedEdgeStyling,
   setStoreState,
   addNumber,
   i,
@@ -45,10 +37,10 @@ const addElementToGraph = ({
   const triples = totalEdgesPerNode[nodeId]
 
   // add node
-  const { stylingNodeCaptionProperty } = nodeIdObject[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling : globalNodeStyling
-
-  nodeIdObject.label = nodeIdObject[stylingNodeCaptionProperty]
-    ? nodeIdObject[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+  nodeIdObject.label = getElementLabel({
+    type: 'node',
+    id: nodeId
+  })
 
   addNode({
     node: {
@@ -66,14 +58,14 @@ const addElementToGraph = ({
       const {
         from,
         to,
-        userDefined
       } = edge
 
       if (!from || !to) return false
 
-      const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
-
-      edge.label = edge[stylingEdgeCaptionProperty]
+      edge.label = getElementLabel({
+        type: 'edge',
+        id: edgeId
+      })
 
       const isEdgeExisting = processedEdges.includes(edgeId)
 
@@ -98,10 +90,10 @@ const addElementToGraph = ({
 
         const nodeToAddObject = classesFromApi[nodeToAdd]
 
-        const captionProperty = nodeToAddObject[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty
-
-        nodeToAddObject.label = nodeToAddObject[captionProperty]
-          ? nodeToAddObject[captionProperty].replace(/ /g, '\n') : ''
+        nodeToAddObject.label = getElementLabel({
+          type: 'node',
+          id: nodeToAdd
+        })
 
         addNode({
           node: {

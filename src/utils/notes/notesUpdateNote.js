@@ -80,6 +80,7 @@ const notesUpdateNote = async ({
   }
 
   const updatedNotes = modifiedNotes.map((note) => (note.id === data.id ? data : note))
+
   setStoreState(notesState, updatedNotes)
 }
 

@@ -19,10 +19,6 @@ const queueGraphElements = ({
     nodesIdsToDisplay,
     objectPropertiesFromApi,
     totalEdgesPerNode,
-    globalNodeStyling,
-    userDefinedNodeStyling,
-    globalEdgeStyling,
-    userDefinedEdgeStyling,
     isPhysicsOn,
   } = store.getState()
 
@@ -56,10 +52,6 @@ const queueGraphElements = ({
       nodesIdsToDisplay,
       objectPropertiesFromApi,
       totalEdgesPerNode,
-      globalNodeStyling,
-      userDefinedNodeStyling,
-      globalEdgeStyling,
-      userDefinedEdgeStyling,
       setStoreState,
       i,
       nodeIdsLength,

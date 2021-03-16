@@ -150,10 +150,10 @@ describe('setOntologyAddEdge', () => {
 
     expect(setStoreState.mock.calls).toEqual(
       [
-        ['objectPropertiesFromApi',
+        ['objectPropertiesFromApiBackup',
           newObjectPropertiesFromApi
         ],
-        ['objectPropertiesFromApiBackup',
+        ['objectPropertiesFromApi',
           newObjectPropertiesFromApi
         ],
         [

@@ -7,10 +7,14 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { InputNumber } from 'primereact/inputnumber'
 import { Button } from 'primereact/button'
+import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import setNeighbourNodes from '../utils/nodeNeighbourhood/setNeighbourNodes'
-import getNode from '../utils/nodesEdgesUtils/getNode'
+import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
+import setNodesStyle from '../utils/networkStyling/setNodesStyle'
+import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
+import getElementLabel from '../utils/networkStyling/getElementLabel'
 
 const NodeNeighbourhood = ({
   setStoreState,
@@ -24,7 +28,36 @@ const NodeNeighbourhood = ({
   useEffect(() => () => {
     setStoreState('isNeighbourNodeSelectable', false)
     setStoreState('selectedNeighbourNode', '')
+
+    setNodesStyle()
   }, [])
+
+  useEffect(() => {
+    if (selectedNeighbourNode && selectedNeighbourNode !== '') {
+      setNodesStyle()
+
+      highlightSelectedNode({
+        setStoreState,
+        selectedNode: selectedNeighbourNode
+      })
+    }
+  }, [selectedNeighbourNode])
+
+  const availableNodeIds = getNodeIds()
+
+  const availableNodes = availableNodeIds.length > 0 ? availableNodeIds.map(
+    (nodeId) => {
+      const label = getElementLabel({
+        type: 'node',
+        id: nodeId
+      })
+
+      return ({
+        value: nodeId,
+        label: label || nodeId
+      })
+    }
+  ) : []
 
   return (
     <>
@@ -32,57 +65,55 @@ const NodeNeighbourhood = ({
         {t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
       </div>
       <div className="node-neighbourhood">
-        <div className="node-neighbourhood-selection">
-          {t('selectNodeFromGraph')}
-          <div className="p-field p-col-12 m-t-20">
-            <label htmlFor="separationDegree">{t('separationDegree')}</label>
-            <InputNumber
-              id="separationDegree"
-              value={separationDegree}
-              onValueChange={(e) => setSeparationDegree(e.target.value)}
-              showButtons
-              buttonLayout="horizontal"
-              step={1}
-              min={1}
-              disabled={selectedNeighbourNode === ''}
-              decrementButtonClassName="p-button-danger"
-              incrementButtonClassName="p-button-success"
-              incrementButtonIcon="pi pi-plus"
-              decrementButtonIcon="pi pi-minus"
-              className="m-t-10"
-            />
-          </div>
+        <div className="node-neighbourhood-message">
+          {t('selectNodeFromGraphOrFromList')}
         </div>
 
-        {
-          selectedNeighbourNode
-          && selectedNeighbourNode !== '' && (
-            <div className="node-neighbourhood-selected">
-              <table>
-                <tbody>
-                  <tr>
-                    <td className="bold">{t('selectedNode')}</td>
-                    <td>{getNode(selectedNeighbourNode).label}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          )
-        }
+        <div className="node-neighbourhood-dropdown">
+          <Dropdown
+            id="node-select"
+            value={selectedNeighbourNode}
+            filter
+            options={availableNodes}
+            onChange={(e) => setStoreState('selectedNeighbourNode', e.value)}
+            placeholder={t('selectNode')}
+          />
+        </div>
 
-        <Button
-          tooltip={t('showNeighbourhood')}
-          className="node-neighbourhood-button m-t-30"
-          disabled={selectedNeighbourNode === ''}
-          icon="pi pi-chevron-right"
-          iconPos="right"
-          label={t('show')}
-          onClick={() => setNeighbourNodes({
-            separationDegree,
-            setStoreState,
-            addToObject
-          })}
-        />
+        <div className="p-field node-neighbourhood-degree m-t-20">
+          <label htmlFor="separation-degree">{t('separationDegree')}</label>
+          <InputNumber
+            id="separation-degree"
+            value={separationDegree}
+            onValueChange={(e) => setSeparationDegree(e.target.value)}
+            showButtons
+            buttonLayout="horizontal"
+            step={1}
+            min={1}
+            disabled={selectedNeighbourNode === ''}
+            decrementButtonClassName="p-button-danger"
+            incrementButtonClassName="p-button-success"
+            incrementButtonIcon="pi pi-plus"
+            decrementButtonIcon="pi pi-minus"
+            className="m-t-10"
+          />
+        </div>
+
+        <div className="node-neighbourhood-buttons m-t-40">
+          <Button
+            tooltip={t('showNeighbourhood')}
+            className="node-neighbourhood-button"
+            disabled={selectedNeighbourNode === ''}
+            icon="pi pi-chevron-right"
+            iconPos="right"
+            label={t('show')}
+            onClick={() => setNeighbourNodes({
+              separationDegree,
+              setStoreState,
+              addToObject
+            })}
+          />
+        </div>
       </div>
     </>
   )

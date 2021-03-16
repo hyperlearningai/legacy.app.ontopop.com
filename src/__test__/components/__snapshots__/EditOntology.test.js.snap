@@ -13,32 +13,10 @@ exports[`EditOntology should match snapshot  1`] = `
       "setStoreState": [Function],
     }
   }
-  classesFromApiBackup={Object {}}
   deletedEdges={Array []}
   deletedNodes={Array []}
-  globalEdgeStyling={
-    Object {
-      "stylingNodeCaptionProperty": "rdfsLabel",
-    }
-  }
-  globalNodeStyling={
-    Object {
-      "stylingNodeCaptionProperty": "rdfsLabel",
-    }
-  }
   mapToProps={[Function]}
   objectPropertiesFromApi={Object {}}
-  objectPropertiesFromApiBackup={Object {}}
-  userDefinedEdgeStyling={
-    Object {
-      "stylingNodeCaptionProperty": "rdfsLabel",
-    }
-  }
-  userDefinedNodeStyling={
-    Object {
-      "stylingNodeCaptionProperty": "rdfsLabel",
-    }
-  }
 >
   <Component />
 </Connect>

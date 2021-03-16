@@ -1,0 +1,8 @@
+{
+  "statusCode": 200,
+  "body": { 
+    "message":"Note Deleted"
+   },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

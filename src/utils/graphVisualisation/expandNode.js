@@ -20,8 +20,6 @@ const expandNode = ({
     objectPropertiesFromApi,
     nodesEdges,
     classesFromApi,
-    globalNodeStyling,
-    userDefinedNodeStyling
   } = store.getState()
 
   const edges = totalEdgesPerNode[nodeId]
@@ -47,8 +45,6 @@ const expandNode = ({
         nodesEdges: newNodesEdges,
         setStoreState,
         classesFromApi,
-        globalNodeStyling,
-        userDefinedNodeStyling,
         addNumber,
       }), 1)
     }

@@ -16,7 +16,7 @@ describe('setHighlightedEdges', () => {
       id: '123'
     }]))
 
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       highlightedEdges: ['123'],
       globalEdgeStyling: { stylingEdgeLineColorHighlight: '#000' },
       userDefinedEdgeStyling: { stylingEdgeLineColorHighlight: '#000' },

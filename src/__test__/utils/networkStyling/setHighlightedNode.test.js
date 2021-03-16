@@ -20,7 +20,7 @@ describe('setHighlightedNode', () => {
   })
 
   it('should work correctly when no highlighted nodes', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       highlightedNodes: [],
       ...commonState
     }))
@@ -33,7 +33,7 @@ describe('setHighlightedNode', () => {
   })
 
   it('should work correctly if not highlighted', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       highlightedNodes: ['node-234'],
       ...commonState
     }))
@@ -46,7 +46,7 @@ describe('setHighlightedNode', () => {
   })
 
   it('should work correctly', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
+    store.getState = jest.fn().mockImplementation(() => ({
       highlightedNodes: [node.id],
       ...commonState
     }))

@@ -12,19 +12,13 @@ import { SIDEBAR_VIEW_STRUCTURED_SEARCH } from '../constants/views'
 import structuredSearchElement from '../utils/structuredSearch/structuredSearchElement'
 import highlightStructuredSearchElement from '../utils/structuredSearch/highlightStructuredSearchElement'
 import clearStructuredSearchElement from '../utils/structuredSearch/clearStructuredSearchElement'
-import getNode from '../utils/nodesEdgesUtils/getNode'
+import getElementLabel from '../utils/networkStyling/getElementLabel'
 
 const StructuredSearch = ({
-  classesFromApi,
   structuredSelection,
   structuredSelectedElement,
-  objectPropertiesFromApi,
   removeFromObject,
   setStoreState,
-  globalEdgeStyling,
-  userDefinedEdgeStyling,
-  globalNodeStyling,
-  userDefinedNodeStyling,
   annotationProperties,
 }) => {
   const { t } = useTranslation()
@@ -109,25 +103,35 @@ const StructuredSearch = ({
                   Object.keys(structuredSelection).length > 0
                   && Object.keys(structuredSelection).map((elementId) => {
                     const {
-                      type, userDefined, from, to
+                      type,
+                      from,
+                      to
                     } = structuredSelection[elementId]
 
                     let elementLabel
 
                     if (type === 'node') {
-                      const { stylingNodeCaptionProperty } = userDefined ? userDefinedNodeStyling : globalNodeStyling
-                      elementLabel = classesFromApi[elementId][stylingNodeCaptionProperty]
+                      elementLabel = getElementLabel({
+                        type: 'node',
+                        id: elementId
+                      })
                     } else {
-                      const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
-                      const edge = objectPropertiesFromApi[elementId][stylingEdgeCaptionProperty]
+                      const edgeLabel = getElementLabel({
+                        type: 'edge',
+                        id: elementId
+                      })
 
-                      const fromNode = getNode(from)
-                      const fromNodeLabel = fromNode[fromNode.userDefined ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty]
+                      const fromNodeLabel = getElementLabel({
+                        type: 'node',
+                        id: from
+                      })
 
-                      const toNode = getNode(to)
-                      const toNodeLabel = toNode[toNode.userDefined ? userDefinedNodeStyling.stylingNodeCaptionProperty : globalNodeStyling.stylingNodeCaptionProperty]
+                      const toNodeLabel = getElementLabel({
+                        type: 'node',
+                        id: to
+                      })
 
-                      elementLabel = `${fromNodeLabel} => ${edge} => ${toNodeLabel}`
+                      elementLabel = `${fromNodeLabel} => ${edgeLabel} => ${toNodeLabel}`
                     }
 
                     return (
@@ -319,34 +323,17 @@ StructuredSearch.propTypes = {
   removeFromObject: PropTypes.func.isRequired,
   structuredSelection: PropTypes.shape().isRequired,
   structuredSelectedElement: PropTypes.string.isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
-  objectPropertiesFromApi: PropTypes.shape().isRequired,
-  globalEdgeStyling: PropTypes.shape().isRequired,
-  userDefinedEdgeStyling: PropTypes.shape().isRequired,
-  globalNodeStyling: PropTypes.shape().isRequired,
-  userDefinedNodeStyling: PropTypes.shape().isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
 const mapToProps = ({
   structuredSelection,
   structuredSelectedElement,
-  classesFromApi,
-  objectPropertiesFromApi,
+
   annotationProperties,
-  globalEdgeStyling,
-  userDefinedEdgeStyling,
-  globalNodeStyling,
-  userDefinedNodeStyling,
 }) => ({
   structuredSelection,
   structuredSelectedElement,
-  classesFromApi,
-  objectPropertiesFromApi,
-  globalEdgeStyling,
-  userDefinedEdgeStyling,
-  globalNodeStyling,
-  userDefinedNodeStyling,
   annotationProperties,
 })
 
