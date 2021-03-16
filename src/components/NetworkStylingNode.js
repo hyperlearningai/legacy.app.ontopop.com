@@ -26,6 +26,7 @@ const NetworkStylingNode = ({
   userDefinedNodeStyling,
   stylingNodeByProperty,
   annotationProperties,
+  annotationPropertiesDatasets
 }) => {
   const isInitialMount = useRef(true)
 
@@ -212,6 +213,16 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="global-node-color-background-dataset"
+                    value={globalNodeStyling.stylingNodeBackgroundColorDataset.replace('#', '')}
+                    onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeBackgroundColorDataset', `#${e.value}`)}
+                  />
+                  <span>
+                    {t('stylingNodeBackgroundColorDataset')}
+                  </span>
+                </div>
+                <div className="m-b-10 colorpicker">
+                  <ColorPicker
                     id="global-node-color-background-highlight"
                     value={globalNodeStyling.stylingNodeHighlightBackgroundColor.replace('#', '')}
                     onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeHighlightBackgroundColor', `#${e.value}`)}
@@ -243,15 +254,36 @@ const NetworkStylingNode = ({
               </AccordionTab>
 
               <AccordionTab header={t('stylingNodeCaptionProperty')}>
-                <Dropdown
-                  value={globalNodeStyling.stylingNodeCaptionProperty}
-                  options={annotationProperties}
-                  filter
-                  id="global-node-caption-property"
-                  onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeCaptionProperty', e.value)}
-                  className="m-t-10"
-                  placeholder={t('selectProperty')}
-                />
+                <div className="network-styling-dropdown-row">
+                  <span>
+                    {t('stylingNodeCaptionProperty')}
+                  </span>
+                  <Dropdown
+                    value={globalNodeStyling.stylingNodeCaptionProperty}
+                    options={annotationProperties}
+                    filter
+                    id="global-node-caption-property"
+                    onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeCaptionProperty', e.value)}
+                    className="m-t-10"
+                    placeholder={t('selectProperty')}
+                  />
+                </div>
+
+                <div className="network-styling-dropdown-row">
+                  <span>
+                    {t('stylingNodeCaptionPropertyDataset')}
+                  </span>
+                  <Dropdown
+                    value={globalNodeStyling.stylingNodeCaptionPropertyDataset}
+                    options={annotationPropertiesDatasets}
+                    filter
+                    id="global-node-caption-property-dataset"
+                    onChange={(e) => addToObject('globalNodeStyling', 'stylingNodeCaptionPropertyDataset', e.value)}
+                    className="m-t-10"
+                    placeholder={t('selectProperty')}
+                  />
+                </div>
+
               </AccordionTab>
             </Accordion>
           </AccordionTab>
@@ -411,6 +443,16 @@ const NetworkStylingNode = ({
                 </div>
                 <div className="m-b-10 colorpicker">
                   <ColorPicker
+                    id="ud-node-color-background-dataset"
+                    value={userDefinedNodeStyling.stylingNodeBackgroundColorDataset.replace('#', '')}
+                    onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeBackgroundColorDataset', `#${e.value}`)}
+                  />
+                  <span>
+                    {t('stylingNodeBackgroundColorDataset')}
+                  </span>
+                </div>
+                <div className="m-b-10 colorpicker">
+                  <ColorPicker
                     id="ud-node-color-background-highlight"
                     value={userDefinedNodeStyling.stylingNodeHighlightBackgroundColor.replace('#', '')}
                     onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeHighlightBackgroundColor', `#${e.value}`)}
@@ -442,15 +484,35 @@ const NetworkStylingNode = ({
               </AccordionTab>
 
               <AccordionTab header={t('stylingNodeCaptionProperty')}>
-                <Dropdown
-                  value={userDefinedNodeStyling.stylingNodeCaptionProperty}
-                  options={annotationProperties}
-                  filter
-                  id="ud-node-caption-property"
-                  onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeCaptionProperty', e.value)}
-                  className="m-t-10"
-                  placeholder={t('selectProperty')}
-                />
+                <div className="network-styling-dropdown-row">
+                  <span>
+                    {t('stylingNodeCaptionProperty')}
+                  </span>
+                  <Dropdown
+                    value={userDefinedNodeStyling.stylingNodeCaptionProperty}
+                    options={annotationProperties}
+                    filter
+                    id="ud-node-caption-property"
+                    onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeCaptionProperty', e.value)}
+                    className="m-t-10"
+                    placeholder={t('selectProperty')}
+                  />
+                </div>
+
+                <div className="network-styling-dropdown-row">
+                  <span>
+                    {t('stylingNodeCaptionPropertyDataset')}
+                  </span>
+                  <Dropdown
+                    value={userDefinedNodeStyling.stylingNodeCaptionPropertyDataset}
+                    options={annotationPropertiesDatasets}
+                    filter
+                    id="ud-node-caption-property-dataset"
+                    onChange={(e) => addToObject('userDefinedNodeStyling', 'stylingNodeCaptionPropertyDataset', e.value)}
+                    className="m-t-10"
+                    placeholder={t('selectProperty')}
+                  />
+                </div>
               </AccordionTab>
             </Accordion>
           </AccordionTab>
@@ -485,6 +547,7 @@ NetworkStylingNode.propTypes = {
   globalNodeStyling: PropTypes.shape().isRequired,
   userDefinedNodeStyling: PropTypes.shape().isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  annotationPropertiesDatasets: PropTypes.arrayOf(PropTypes.shape).isRequired,
   stylingNodeByProperty: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
@@ -492,12 +555,14 @@ const mapToProps = ({
   globalNodeStyling,
   userDefinedNodeStyling,
   stylingNodeByProperty,
-  annotationProperties
+  annotationProperties,
+  annotationPropertiesDatasets
 }) => ({
   globalNodeStyling,
   userDefinedNodeStyling,
   stylingNodeByProperty,
-  annotationProperties
+  annotationProperties,
+  annotationPropertiesDatasets
 })
 
 export default connect(

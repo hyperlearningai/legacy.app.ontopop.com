@@ -36,7 +36,7 @@ describe('getElementLabel', () => {
     expect(getElementLabel({
       type,
       id
-    })).toEqual('Organisational\nValues')
+    })).toEqual('Dispose')
   })
 
   it('should work correctly when edge and global', () => {
@@ -46,6 +46,6 @@ describe('getElementLabel', () => {
     expect(getElementLabel({
       type,
       id
-    })).toEqual('Provided to')
+    })).toEqual('Subclass of')
   })
 })

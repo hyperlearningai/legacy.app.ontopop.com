@@ -53,7 +53,6 @@ const setOntologyRestoreNode = async ({
     stylingNodeHoverBackgroundColor,
     stylingNodeHoverBorderColor,
     stylingNodeSize,
-    stylingNodeCaptionProperty,
   } = userDefinedNodeStyling
 
   // add node style
@@ -143,8 +142,10 @@ const setOntologyRestoreNode = async ({
       delete newClassesFromApiBackup[oldId]
 
       newClassesFromApi[id].id = id
-      newClassesFromApi[id].label = newClassesFromApi[id][stylingNodeCaptionProperty]
-        ? newClassesFromApi[id][stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+      newClassesFromApi[id].label = getElementLabel({
+        type: 'node',
+        id
+      })
 
       addNode({
         node: {

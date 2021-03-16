@@ -1,4 +1,5 @@
 export const NODE_BACKGROUND = '#adefd1' // 'adefd1' // '03a9f4' // '2B7CE9',
+export const NODE_BACKGROUND_DATASET = '#00bcd4'
 export const NODE_BORDER = '#011e41' // 'D2E5FF',
 export const NODE_BORDER_WIDTH = 1
 export const CLICK_NODE_BACKGROUND = '#ffed00' // '#abd6df'
@@ -228,6 +229,7 @@ export const SUB_CLASS_OF_OBJECT = {
 }
 
 export const USER_DEFINED_PROPERTY = 'userDefined'
+export const NODE_TYPE = 'nodeType'
 
 export const RESERVED_PROPERTIES = [
   'id',
@@ -244,7 +246,8 @@ export const RESERVED_PROPERTIES = [
   'shape',
   'size',
   'borderWidth',
-  'borderWidthSelected'
+  'borderWidthSelected',
+  NODE_TYPE
 ]
 
 export const EDGE_PROPERTIES = [
@@ -269,6 +272,7 @@ export const REQUIRED_PROPERTIES = [
 
 export const UNIQUE_PROPERTY = 'rdfAbout'
 export const LABEL_PROPERTY = 'rdfsLabel'
+export const LABEL_PROPERTY_DATASET = 'name'
 export const EDGE_LABEL_PROPERTY = 'rdfsLabel'
 
 export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'

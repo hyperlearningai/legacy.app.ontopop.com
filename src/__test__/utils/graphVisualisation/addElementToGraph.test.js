@@ -1,3 +1,4 @@
+/* eslint max-len:0 */
 import { DataSet } from 'vis-data'
 import addElementToGraph from '../../../utils/graphVisualisation/addElementToGraph'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
@@ -6,7 +7,7 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
 import actionAfterNodesAdded from '../../../utils/graphVisualisation/actionAfterNodesAdded'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
-import setEdgeStyle from '../../../utils/networkStyling/setEdgeStyle'
+import addNodesEdges from '../../../utils/graphVisualisation/addNodesEdges'
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
@@ -16,25 +17,47 @@ const availableEdges = new DataSet()
 const stylingNodeCaptionProperty = 'rdfsLabel'
 const nodesIdsToDisplay = [
   '1',
-  '170',
-  '141'
+  '177',
+  '91',
+  '191'
 ]
 const nodesEdges = {
   1: [
     '11',
     '12',
+    '441',
+    '781',
+    '811',
+    '1421',
+    '1781',
+    '1855',
+    '1921'
   ],
-  141: [
+  177: [
     '11',
+    '91',
+    '275',
+    '738',
+    '874',
+    '1133',
+    '1342',
+    '1523',
+    '1531',
+    '1642',
+    '1771',
+    '1772',
+    '1773',
+    '1774',
+    '1838'
   ],
-  170: [
-    '12',
+  91: [
+    '911'
   ],
 }
 
 jest.mock('../../../utils/graphVisualisation/actionAfterNodesAdded')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
-jest.mock('../../../utils/networkStyling/setEdgeStyle')
+jest.mock('../../../utils/graphVisualisation/addNodesEdges')
 
 store.getState = jest.fn().mockImplementation(() => ({
   availableNodes,
@@ -76,7 +99,6 @@ describe('addElementToGraph', () => {
       nodesIdsToDisplay,
       objectPropertiesFromApi,
       totalEdgesPerNode,
-
       setStoreState,
       addNumber,
       i: 2,
@@ -92,30 +114,39 @@ describe('addElementToGraph', () => {
     expect(setNodeStyle).toHaveBeenLastCalledWith(
       {
         node: {
-          'Business Area': 'Communications',
-          id: '1',
-          label: 'Communication\nDocument',
-          nodeId: 1,
-          rdfAbout: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
-          rdfsLabel: 'Communication Document',
-          skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
-          skosDefinition: 'Document storing the information conveyed between two or more parties.',
-          userDefined: false
+          'Business Area': 'Operate Design Construct Plan Maintain',
+          id: '191',
+          label: 'Environmental\nCondition',
+          name: 'Environmental Condition',
+          nodeId: 191,
+          nodeType: 'class',
+          rdfAbout: 'http://webprotege.stanford.edu/RmVBgJPMOQ5Amchla0VZUw',
+          rdfsLabel: 'Environmental Condition',
+          skosDefinition: 'A measure of how the environment proximate to the Network is developing or declining.',
+          upperOntology: false,
+          userDefined: false,
         },
         skipSpider: true
       }
     )
-    expect(setEdgeStyle).toHaveBeenLastCalledWith(
+    expect(addNodesEdges).toHaveBeenLastCalledWith(
       {
         edge: {
-          edgeId: 11,
-          from: '1',
-          id: '11',
+          edgeId: 911,
+          from: '91',
+          id: '911',
           label: '',
           rdfsLabel: 'Subclass of',
           role: 'Subclass of',
-          to: '141',
+          to: '191',
           userDefined: false
+        },
+        nodesEdges: {
+          1: ['11', '12', '441',
+            '781', '811', '1421', '1781', '1855', '1921'],
+          177: ['11', '91', '275', '738', '874',
+            '1133', '1342', '1523', '1531', '1642', '1771', '1772', '1773', '1774', '1838'],
+          91: ['911']
         }
       }
     )

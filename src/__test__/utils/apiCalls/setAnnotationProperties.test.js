@@ -22,7 +22,7 @@ describe('setAnnotationProperties', () => {
       },
       {
         id: '2',
-        label: 'class',
+        label: 'dataset',
         rdfsLabel: 'Programme',
         skosExample: 'Develop connectivity between London and Inverness.',
         'Business Area': 'Maintain Plan',
@@ -39,9 +39,8 @@ describe('setAnnotationProperties', () => {
       nodes
     })
 
-    expect(setStoreState).toHaveBeenLastCalledWith(
-      'annotationProperties',
-      [{
+    expect(setStoreState.mock.calls).toEqual(
+      [['annotationProperties', [{
         label: 'Business Area',
         value: 'Business Area'
       }, {
@@ -56,10 +55,21 @@ describe('setAnnotationProperties', () => {
       }, {
         label: 'skosDefinition',
         value: 'skosDefinition'
-      }, {
-        label: 'skosExample',
-        value: 'skosExample'
-      }]
+      }]], ['annotationPropertiesDatasets',
+        [{
+          label: 'Business Area',
+          value: 'Business Area'
+        }, { label: 'rdfAbout', value: 'rdfAbout' }, {
+          label: 'rdfsLabel',
+          value: 'rdfsLabel'
+        }, { label: 'skosComment', value: 'skosComment' }, {
+          label: 'skosDefinition',
+          value: 'skosDefinition'
+        }, {
+          label: 'skosExample',
+          value: 'skosExample'
+        }]
+      ]]
     )
   })
 })

@@ -58,8 +58,8 @@ context('Physics settings', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 6')
-      cy.get('.nav-left').should('contain', 'Edges: 9')
+      cy.get('.nav-left').should('contain', 'Nodes: 7')
+      cy.get('.nav-left').should('contain', 'Edges: 12')
 
       // click the physics settings sidebar icon
       cy.get('.sidebar-icons').find('.p-button').eq(12).click()

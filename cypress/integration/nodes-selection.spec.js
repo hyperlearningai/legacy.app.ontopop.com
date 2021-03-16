@@ -71,7 +71,7 @@ context('Nodes selection', () => {
       cy.get('#node-select').find('.p-dropdown-filter').type('asset')
       cy.get('#node-select').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '5')
+      cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '7')
       cy.get('.nodes-selection-details-table-relationships').find('tbody tr').should('have.length', '10')
 
       // select another node
@@ -79,7 +79,7 @@ context('Nodes selection', () => {
       cy.get('#node-select').find('.p-dropdown-filter').clear().type('str')
       cy.get('#node-select').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '6')
+      cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '8')
       cy.get('.nodes-selection-details-table-relationships').find('tbody tr').should('have.length', '2')
     })
   })

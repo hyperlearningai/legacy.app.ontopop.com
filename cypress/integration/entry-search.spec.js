@@ -73,8 +73,8 @@ context('Entry search', () => {
         .eq(1)
         .click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 24')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
     })
 
     it('searching for record should work when nodes results only', () => {
@@ -144,8 +144,8 @@ context('Entry search', () => {
         .eq(1)
         .click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 4')
+      cy.get('.nav-left').should('contain', 'Nodes: 6')
+      cy.get('.nav-left').should('contain', 'Edges: 9')
     })
 
     it('searching for record should work when edges results only', () => {
@@ -291,8 +291,8 @@ context('Entry search', () => {
         .eq(1)
         .click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 24')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
     })
   })
 })

@@ -58,8 +58,8 @@ context('Export', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 22')
-      cy.get('.nav-left').should('contain', 'Edges: 50')
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 20')
 
       // click the export sidebar icon
       cy.get('.sidebar-icons').find('.p-button').eq(15).click()
@@ -83,8 +83,6 @@ context('Export', () => {
 
       // print
       cy.get('.export-settings-buttons').eq(2).find('.p-button-label').should('have.text', 'Print')
-      // clicking print button fails on test but working live
-      // cy.get('.export-settings-buttons').eq(2).find('.p-button').click()
     })
   })
 })
