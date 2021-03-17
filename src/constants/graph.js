@@ -274,7 +274,7 @@ export const UNIQUE_PROPERTY = 'rdfAbout'
 export const LABEL_PROPERTY = 'rdfsLabel'
 export const LABEL_PROPERTY_DATASET = 'name'
 export const EDGE_LABEL_PROPERTY = 'rdfsLabel'
-
+export const UPPER_ONTOLOGY = 'upperOntology'
 export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'
 export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
 export const OWL_RESTRICTION = 'owlRestriction'

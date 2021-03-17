@@ -25,6 +25,9 @@ describe('setShortestPath', () => {
 
   it('should work correctly', async () => {
     const isNodeOverlay = false
+    const isUpperOntology = true
+    const nodesToExclude = []
+    const edgesToExclude = []
 
     getShortestPath.mockImplementation(() => ([
       '33|||40'
@@ -33,6 +36,9 @@ describe('setShortestPath', () => {
       isNodeOverlay,
       setStoreState,
       addToObject,
+      nodesToExclude,
+      edgesToExclude,
+      isUpperOntology
     })
 
     expect(setStoreState.mock.calls).toEqual([

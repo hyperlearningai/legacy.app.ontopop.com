@@ -7,6 +7,7 @@ import store from '../../store'
  * Set shortest path
  * @param  {Object}   params
  * @param  {Boolean}  params.isNodeOverlay              Display nodes outside path flag
+ * @param  {Boolean}  params.isUpperOntology            Display upper ontology nodes flag
  * @param  {Function} params.setStoreState              setStoreState action
  * @param  {Function} params.addToObject                Update graph data function
  * @param  {Array}    params.nodesToExclude             Node IDs to exclude
@@ -18,7 +19,8 @@ const setShortestPath = async ({
   setStoreState,
   addToObject,
   nodesToExclude,
-  edgesToExclude
+  edgesToExclude,
+  isUpperOntology
 }) => {
   const {
     lastGraphIndex,
@@ -36,7 +38,8 @@ const setShortestPath = async ({
     shortestPathSelectedNodes,
     nodesEdges,
     nodesToExclude,
-    edgesToExclude
+    edgesToExclude,
+    isUpperOntology
   })
 
   const newGraphIndex = lastGraphIndex + 1

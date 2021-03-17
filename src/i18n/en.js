@@ -123,12 +123,14 @@ export default {
   selectNodesFromGraph: 'Select nodes from graph',
   isNodeOverlay: 'Show path over nodes',
   isNotNodeOverlay: 'Show path only',
+  overlay: 'Overlay',
   selectStartingNode: 'Select starting node',
   selectEndingNode: 'Select ending node',
   selectNodesFromGraphOrFromList: 'Select nodes from graph or pick from list',
   nodesToExclude: 'Nodes to exclude',
   edgesToExclude: 'Edges to exclude',
   showShortestPath: 'Show shortest path',
+  showUpperOntologyLayers: 'Show upper ontology layers',
 
   // Physics settings
   physicsSettings: 'Physics settings',
