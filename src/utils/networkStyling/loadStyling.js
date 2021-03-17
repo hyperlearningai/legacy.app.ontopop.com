@@ -19,9 +19,7 @@ const loadStyling = async ({
   })
 
   if (savedStyle) {
-    const savedStyleJson = JSON.parse(savedStyle)
-
-    Object.keys(savedStyleJson).map((option) => setStoreState(option, savedStyleJson[option]))
+    Object.keys(savedStyle).map((option) => setStoreState(option, savedStyle[option]))
   }
 
   return true

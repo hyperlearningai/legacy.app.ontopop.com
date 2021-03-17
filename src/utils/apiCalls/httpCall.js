@@ -9,7 +9,6 @@ import store from '../../store'
  * @param  {String}   params.route                      Request URL
  * @param  {String}   params.method                     HTTP method
  * @param  {Boolean}  params.withAuth                   Authentication bearer flag
- * @param  {Boolean}  params.customHeaders              Use Custom Headers
  * @param  {Function} params.t                          i18n translation function
  * @return {*}        response
  */
@@ -20,7 +19,6 @@ const httpCall = async ({
   route,
   method,
   t,
-  customHeaders
 }) => {
   const {
     user
@@ -28,7 +26,7 @@ const httpCall = async ({
 
   addNumber('activeLoaders', 1)
 
-  const headers = customHeaders || {
+  const headers = {
     'Content-Type': 'application/json',
   }
 

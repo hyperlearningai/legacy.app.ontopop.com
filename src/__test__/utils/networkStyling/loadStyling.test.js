@@ -13,18 +13,32 @@ describe('loadStyling', () => {
     const addNumber = jest.fn()
     const t = jest.fn()
 
-    getNetworkStyling.mockImplementationOnce(() => JSON.stringify({
-      stylingNodeShape: 'circle',
-      stylingNodeSize: 25
+    getNetworkStyling.mockImplementationOnce(() => ({
+      globalEdgeStyling: {
+        stylingEdgeCaptionProperty: 'rdfsLabel',
+        stylingEdgeLength: 250,
+        stylingEdgeLineColor: '#070b11'
+      },
+      globalNodeStyling: {
+        stylingNodeBorderColor: '#011e41',
+        stylingNodeBorderSelected: 2,
+        stylingNodeCaptionProperty: 'rdfsLabel'
+      }
     }))
 
     await loadStyling({ setStoreState, addNumber, t })
 
-    expect(setStoreState.mock.calls).toEqual(
-      [
-        ['stylingNodeShape', 'circle'],
-        ['stylingNodeSize', 25]
-      ]
-    )
+    expect(setStoreState.mock.calls).toEqual([
+      ['globalEdgeStyling', {
+        stylingEdgeCaptionProperty: 'rdfsLabel',
+        stylingEdgeLength: 250,
+        stylingEdgeLineColor: '#070b11',
+      }],
+      ['globalNodeStyling', {
+        stylingNodeBorderColor: '#011e41',
+        stylingNodeBorderSelected: 2,
+        stylingNodeCaptionProperty: 'rdfsLabel',
+      }]
+    ])
   })
 })

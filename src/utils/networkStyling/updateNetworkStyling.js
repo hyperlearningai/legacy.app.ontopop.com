@@ -16,7 +16,6 @@ const updateNetworkStyling = async ({
   t
 }) => {
   const response = await httpCall({
-    customHeaders: { 'Content-Type': 'text/plain' },
     addNumber,
     withAuth: true,
     body: stylingJSON,
@@ -35,6 +34,8 @@ const updateNetworkStyling = async ({
       type: NOTIFY_WARNING
     })
   }
+
+  return false
 }
 
 export default updateNetworkStyling

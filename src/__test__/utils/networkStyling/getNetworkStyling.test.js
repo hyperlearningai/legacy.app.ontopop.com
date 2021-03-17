@@ -28,7 +28,15 @@ describe('getNetworkStyling', () => {
 
   it('should return data', async () => {
     httpCall.mockImplementationOnce(() => ({
-      data: { stylingJSON: '{"globalNodeStyling":{"stylingNodeSize":25,"stylingNodeBorder":1,"stylingNodeTextColor":"#000000"}}' }
+      data: {
+        configuration: {
+          globalNodeStyling: {
+            stylingNodeSize: 25,
+            stylingNodeBorder: 1,
+            stylingNodeTextColor: '#000000'
+          }
+        }
+      }
     }))
 
     const result = await getNetworkStyling({
@@ -36,6 +44,12 @@ describe('getNetworkStyling', () => {
       t
     })
 
-    expect(result).toBe('{"globalNodeStyling":{"stylingNodeSize":25,"stylingNodeBorder":1,"stylingNodeTextColor":"#000000"}}')
+    expect(result).toStrictEqual({
+      globalNodeStyling: {
+        stylingNodeSize: 25,
+        stylingNodeBorder: 1,
+        stylingNodeTextColor: '#000000'
+      }
+    })
   })
 })

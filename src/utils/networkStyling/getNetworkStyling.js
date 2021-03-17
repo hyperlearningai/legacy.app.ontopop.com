@@ -41,7 +41,7 @@ const getNetworkStyling = async ({
     })
   }
 
-  return data.stylingJSON
+  return data.configuration
 }
 
 export default getNetworkStyling

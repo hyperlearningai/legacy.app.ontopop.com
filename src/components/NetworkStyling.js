@@ -10,7 +10,7 @@ import saveStyling from '../utils/networkStyling/saveStyling'
 import actions from '../store/actions'
 
 const NetworkStyling = ({
-  addNumber,
+  addNumber
 }) => {
   const { t } = useTranslation()
 

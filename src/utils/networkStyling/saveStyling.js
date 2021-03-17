@@ -2,10 +2,10 @@ import store from '../../store'
 import updateNetworkStyling from './updateNetworkStyling'
 
 /**
- * Save styling to local storage
+ * Save styling to database
  * @return {undefined}
  */
-const saveStyling = ({
+const saveStyling = async ({
   setSaved,
   addNumber,
   t
@@ -28,11 +28,13 @@ const saveStyling = ({
     stylingEdgeByProperty,
   })
 
-  updateNetworkStyling({ stylingJSON, addNumber, t })
-
   setSaved(true)
 
-  setTimeout(() => setSaved(false), 5000)
+  await updateNetworkStyling({
+    stylingJSON, addNumber, t
+  })
+
+  setSaved(false)
 }
 
 export default saveStyling
