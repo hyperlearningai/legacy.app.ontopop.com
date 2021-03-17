@@ -50,29 +50,7 @@ describe('getShortestPath', () => {
     })
 
     expect(paths).toEqual([
-      '174|||1742|||862|||1843'
-    ])
-  })
-
-  it('should return 2 paths', async () => {
-    const shortestPathSelectedNodes = [
-      '191',
-      '51'
-    ]
-
-    const nodesToExclude = []
-    const edgesToExclude = []
-
-    const paths = await getShortestPath({
-      shortestPathSelectedNodes,
-      nodesEdges,
-      nodesToExclude,
-      edgesToExclude
-    })
-
-    expect(paths).toEqual([
-      '191|||1914|||121',
-      '191|||1914|||512',
+      '174|||1741|||906|||1841'
     ])
   })
 
@@ -93,7 +71,7 @@ describe('getShortestPath', () => {
     })
 
     expect(paths).toEqual([
-      '191|||1915|||121',
+      '191|||1913|||3999|||4040',
     ])
   })
 
@@ -104,7 +82,7 @@ describe('getShortestPath', () => {
     ]
 
     const nodesToExclude = ['12']
-    const edgesToExclude = ['Monitored by']
+    const edgesToExclude = ['Found in']
 
     const paths = await getShortestPath({
       shortestPathSelectedNodes,
@@ -114,19 +92,8 @@ describe('getShortestPath', () => {
     })
 
     expect(paths).toEqual([
-      '191|||71|||1617|||331',
-      '191|||71|||1614|||1765',
-      '191|||71|||493|||1124',
-      '191|||71|||493|||1783',
-      '191|||71|||701|||601',
-      '191|||71|||1443|||95',
-      '191|||71|||1542|||213',
-      '191|||71|||1542|||1891',
-      '191|||71|||1924|||512',
-      '191|||464|||875|||874',
-      '191|||1912|||694|||252',
-      '191|||794|||1311|||513',
-      '191|||1386|||841|||921',
+      '191|||1912|||1503|||183|||1001|||511',
+      '191|||1913|||903|||601|||602|||513',
     ])
   })
 })

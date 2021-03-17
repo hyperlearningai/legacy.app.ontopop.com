@@ -56,16 +56,16 @@ context('Network graph', () => {
         .click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 24')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
 
       // click to Main
       cy.get('.network-graph-list-row').eq(0).find('.p-button').click()
 
-      cy.wait(2000)
+      cy.wait(7000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 203')
-      cy.get('.nav-left').should('contain', 'Edges: 551')
+      cy.get('.nav-left').should('contain', 'Nodes: 320')
+      cy.get('.nav-left').should('contain', 'Edges: 828')
 
       // click to Main
       cy.get('.network-graph-list-row').eq(1).find('.p-button').eq(1)
@@ -74,17 +74,17 @@ context('Network graph', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 24')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
 
       // remove current graph and redirect to main
       cy.get('.network-graph-list-row').eq(1).find('.p-button').eq(0)
         .click()
 
-      cy.wait(2000)
+      cy.wait(7000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 203')
-      cy.get('.nav-left').should('contain', 'Edges: 551')
+      cy.get('.nav-left').should('contain', 'Nodes: 320')
+      cy.get('.nav-left').should('contain', 'Edges: 828')
 
       // check navigation buttons
       cy.get('.vis-up').click()

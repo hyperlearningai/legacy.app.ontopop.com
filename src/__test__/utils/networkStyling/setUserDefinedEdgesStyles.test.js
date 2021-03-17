@@ -97,7 +97,7 @@ describe('setUserDefinedEdgesStyles', () => {
               size: 12,
             },
             id: '12',
-            label: 'Provided\nto',
+            label: 'Subclass\nof',
             labelHighlightBold: true,
             rdfsLabel: 'linked to',
             selectionWidth: 3,

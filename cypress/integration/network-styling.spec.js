@@ -173,6 +173,9 @@ context('Network styling', () => {
       cy.get('#global-node-color-background')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
+      cy.get('#global-node-color-background-dataset')
+        .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
+
       cy.get('#global-node-color-background-highlight')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
@@ -196,6 +199,12 @@ context('Network styling', () => {
         .click()
 
       cy.get('#global-node-caption-property').find('.p-dropdown-item').eq(3).click({ force: true })
+
+      cy.get('#global-node-caption-property-dataset')
+        .find('.p-dropdown-trigger')
+        .click()
+
+      cy.get('#global-node-caption-property-dataset').find('.p-dropdown-item').eq(3).click({ force: true })
     })
 
     it('User-defined node styling', () => {
@@ -259,7 +268,7 @@ context('Network styling', () => {
       cy.get('.sidebar-icons').find('.p-button').eq(16).click()
 
       // add node
-      cy.get('.p-inputtextarea').should('have.length', 10)
+      cy.get('.p-inputtextarea').should('have.length', 12)
 
       cy.get('.p-inputtextarea').eq(2).type('http://test/node')
       cy.get('.p-inputtextarea').eq(3).type('Test node')
@@ -383,6 +392,9 @@ context('Network styling', () => {
       cy.get('#ud-node-color-background')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
+      cy.get('#ud-node-color-background-dataset')
+        .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
+
       cy.get('#ud-node-color-background-highlight')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
@@ -406,6 +418,12 @@ context('Network styling', () => {
         .click()
 
       cy.get('#ud-node-caption-property').find('.p-dropdown-item').eq(3).click({ force: true })
+
+      cy.get('#ud-node-caption-property-dataset')
+        .find('.p-dropdown-trigger')
+        .click()
+
+      cy.get('#ud-node-caption-property-dataset').find('.p-dropdown-item').eq(3).click({ force: true })
     })
 
     it('Node styling by caption', () => {
@@ -832,7 +850,7 @@ context('Network styling', () => {
 
       cy.get('#ud-edge-width')
         .find('input')
-        .clear().type('10')
+        .clear().type(10)
 
       // open ud edge colors
       cy.get('.p-accordion').eq(1).find('.p-accordion-content')
@@ -875,7 +893,7 @@ context('Network styling', () => {
 
       cy.get('#ud-edge-text-size')
         .find('input')
-        .clear().type('20')
+        .clear().type(20)
 
       // open ud edge text color
       cy.get('.p-accordion').eq(1).find('.p-accordion-content')

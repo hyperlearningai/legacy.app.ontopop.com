@@ -84,7 +84,7 @@ context('Edges selection', () => {
 
       // expand nodes
       cy.get('.button-expand').click({ force: true })
-      cy.get('.edge-node-info-title').should('have.length', 11)
+      cy.get('.edge-node-info-title').should('have.length', 15)
     })
   })
 })

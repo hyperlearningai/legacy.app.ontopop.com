@@ -20,8 +20,8 @@ describe('getNodesFromPaths', () => {
       shortestPathResults
     })).toEqual([
       '1',
-      '141',
-      '170',
+      '177',
+      '147',
     ])
   })
 })

@@ -1,4 +1,4 @@
-import { USER_DEFINED_PROPERTY } from '../../constants/graph'
+import { NODE_TYPE, USER_DEFINED_PROPERTY } from '../../constants/graph'
 import store from '../../store'
 
 /**
@@ -25,10 +25,13 @@ const getElementLabel = ({
     const node = classesFromApiBackup[id]
 
     const {
-      stylingNodeCaptionProperty
+      stylingNodeCaptionProperty,
+      stylingNodeCaptionPropertyDataset
     } = node[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling : globalNodeStyling
 
-    return node[stylingNodeCaptionProperty] ? node[stylingNodeCaptionProperty].split(' ').join('\n') : ''
+    const viewLabel = node[node[NODE_TYPE] === 'dataset' ? stylingNodeCaptionPropertyDataset : stylingNodeCaptionProperty]
+
+    return viewLabel ? viewLabel.split(' ').join('\n') : ''
   }
 
   const edge = objectPropertiesFromApiBackup[id]

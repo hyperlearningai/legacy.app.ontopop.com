@@ -86,7 +86,7 @@ describe('setUserDefinedNodesStyles', () => {
               size: 12,
             },
             id: '111',
-            label: 'Blueprint',
+            label: 'Schedule\nof\nRates',
             rdfsLabel: 'applies to',
             shape: 'circle',
             size: 25,
