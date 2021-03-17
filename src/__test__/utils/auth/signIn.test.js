@@ -18,11 +18,11 @@ describe('signIn', () => {
     const router = { push }
 
     const addToObject = jest.fn()
-    const addNumber = jest.fn()
+    const t = jest.fn()
     const email = 'test@test.com'
     const password = 'test'
     const setShowError = jest.fn()
-    const t = jest.fn()
+    const addNumber = jest.fn()
 
     httpCall.mockImplementationOnce(() => ({
       error: 'serverError'

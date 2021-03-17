@@ -16,9 +16,11 @@ import {
   NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT,
   SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT
 } from '../../../constants/graph'
+import updateNetworkStyling from '../../../utils/networkStyling/updateNetworkStyling'
 
 jest.mock('../../../utils/nodesEdgesUtils/getNodeIds')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
+jest.mock('../../../utils/networkStyling/updateNetworkStyling')
 
 jest.useFakeTimers()
 
@@ -28,6 +30,9 @@ describe('saveStyling', () => {
   })
 
   it('should work correctly', async () => {
+    const addNumber = jest.fn()
+    const t = jest.fn()
+
     store.getState = jest.fn().mockImplementation(() => ({
       globalNodeStyling: {
         stylingNodeSize: 25,
@@ -96,18 +101,17 @@ describe('saveStyling', () => {
 
     const setSaved = jest.fn()
 
-    const setItem = jest.fn()
-
-    Storage.prototype.setItem = setItem
-
     await saveStyling({
-      setSaved
+      setSaved,
+      addNumber,
+      t
     })
 
-    expect(setItem).toHaveBeenCalledWith(
-      'gv-styling',
-      '{"globalNodeStyling":{"stylingNodeSize":25,"stylingNodeBorder":1,"stylingNodeTextColor":"#000000","stylingNodeBorderSelected":2,"stylingNodeBorderColor":"#011e41","stylingNodeBackgroundColor":"#adefd1","stylingNodeHighlightBorderColor":"#009688","stylingNodeHighlightBackgroundColor":"#ffed00","stylingNodeHoverBackgroundColor":"#f2f2f2","stylingNodeHoverBorderColor":"#607d8b","stylingNodeShape":"circle","stylingNodeTextFontSize":12,"stylingNodeTextFontAlign":"center","stylingNodeCaptionProperty":"rdfsLabel"},"userDefinedNodeStyling":{"stylingNodeSize":25,"stylingNodeBorder":1,"stylingNodeTextColor":"#000000","stylingNodeBorderSelected":2,"stylingNodeBorderColor":"#011e41","stylingNodeBackgroundColor":"#adefd1","stylingNodeHighlightBorderColor":"#009688","stylingNodeHighlightBackgroundColor":"#ffed00","stylingNodeHoverBackgroundColor":"#f2f2f2","stylingNodeHoverBorderColor":"#607d8b","stylingNodeShape":"circle","stylingNodeTextFontSize":12,"stylingNodeTextFontAlign":"center","stylingNodeCaptionProperty":"rdfsLabel"},"stylingNodeByProperty":[{"filterType":"equal","filterValue":"","styleType":"","styleValue":""}],"globalEdgeStyling":{"stylingEdgeLineColor":"#070b11","stylingEdgeLineColorHover":"#070b11","stylingEdgeLineColorHighlight":"#9c27b0","stylingEdgeLineStyle":false,"stylingEdgeTextColor":"#070b11","stylingEdgeTextSize":12,"stylingEdgeTextAlign":"horizontal","stylingEdgeWidth":1,"stylingEdgeLength":250,"stylingEdgeCaptionProperty":"rdfsLabel"},"userDefinedEdgeStyling":{"stylingEdgeLineColor":"#070b11","stylingEdgeLineColorHover":"#070b11","stylingEdgeLineColorHighlight":"#9c27b0","stylingEdgeLineStyle":false,"stylingEdgeTextColor":"#070b11","stylingEdgeTextSize":12,"stylingEdgeTextAlign":"horizontal","stylingEdgeWidth":1,"stylingEdgeLength":250,"stylingEdgeCaptionProperty":"rdfsLabel"},"stylingEdgeByProperty":[{"filterType":"equal","filterValue":"Subclass of","styleType":"stylingEdgeLineStyle","styleValue":true,"property":"rdfsLabel"},{"filterType":"equal","filterValue":"","styleType":"","styleValue":""}]}'
-    )
+    expect(updateNetworkStyling).toHaveBeenCalledWith({
+      addNumber,
+      stylingJSON: '{"globalNodeStyling":{"stylingNodeSize":25,"stylingNodeBorder":1,"stylingNodeTextColor":"#000000","stylingNodeBorderSelected":2,"stylingNodeBorderColor":"#011e41","stylingNodeBackgroundColor":"#adefd1","stylingNodeHighlightBorderColor":"#009688","stylingNodeHighlightBackgroundColor":"#ffed00","stylingNodeHoverBackgroundColor":"#f2f2f2","stylingNodeHoverBorderColor":"#607d8b","stylingNodeShape":"circle","stylingNodeTextFontSize":12,"stylingNodeTextFontAlign":"center","stylingNodeCaptionProperty":"rdfsLabel"},"userDefinedNodeStyling":{"stylingNodeSize":25,"stylingNodeBorder":1,"stylingNodeTextColor":"#000000","stylingNodeBorderSelected":2,"stylingNodeBorderColor":"#011e41","stylingNodeBackgroundColor":"#adefd1","stylingNodeHighlightBorderColor":"#009688","stylingNodeHighlightBackgroundColor":"#ffed00","stylingNodeHoverBackgroundColor":"#f2f2f2","stylingNodeHoverBorderColor":"#607d8b","stylingNodeShape":"circle","stylingNodeTextFontSize":12,"stylingNodeTextFontAlign":"center","stylingNodeCaptionProperty":"rdfsLabel"},"stylingNodeByProperty":[{"filterType":"equal","filterValue":"","styleType":"","styleValue":""}],"globalEdgeStyling":{"stylingEdgeLineColor":"#070b11","stylingEdgeLineColorHover":"#070b11","stylingEdgeLineColorHighlight":"#9c27b0","stylingEdgeLineStyle":false,"stylingEdgeTextColor":"#070b11","stylingEdgeTextSize":12,"stylingEdgeTextAlign":"horizontal","stylingEdgeWidth":1,"stylingEdgeLength":250,"stylingEdgeCaptionProperty":"rdfsLabel"},"userDefinedEdgeStyling":{"stylingEdgeLineColor":"#070b11","stylingEdgeLineColorHover":"#070b11","stylingEdgeLineColorHighlight":"#9c27b0","stylingEdgeLineStyle":false,"stylingEdgeTextColor":"#070b11","stylingEdgeTextSize":12,"stylingEdgeTextAlign":"horizontal","stylingEdgeWidth":1,"stylingEdgeLength":250,"stylingEdgeCaptionProperty":"rdfsLabel"},"stylingEdgeByProperty":[{"filterType":"equal","filterValue":"Subclass of","styleType":"stylingEdgeLineStyle","styleValue":true,"property":"rdfsLabel"},{"filterType":"equal","filterValue":"","styleType":"","styleValue":""}]}',
+      t
+    })
     expect(setSaved).toHaveBeenCalledWith(true)
     expect(setTimeout).toHaveBeenCalledWith(
       expect.any(Function), 5000

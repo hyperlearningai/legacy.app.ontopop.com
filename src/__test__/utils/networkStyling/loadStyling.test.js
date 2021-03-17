@@ -1,4 +1,7 @@
 import loadStyling from '../../../utils/networkStyling/loadStyling'
+import getNetworkStyling from '../../../utils/networkStyling/getNetworkStyling'
+
+jest.mock('../../../utils/networkStyling/getNetworkStyling')
 
 describe('loadStyling', () => {
   afterEach(() => {
@@ -7,15 +10,15 @@ describe('loadStyling', () => {
 
   it('should work correctly', async () => {
     const setStoreState = jest.fn()
+    const addNumber = jest.fn()
+    const t = jest.fn()
 
-    const getItem = jest.fn().mockImplementationOnce(() => JSON.stringify({
+    getNetworkStyling.mockImplementationOnce(() => JSON.stringify({
       stylingNodeShape: 'circle',
       stylingNodeSize: 25
     }))
 
-    Storage.prototype.getItem = getItem
-
-    await loadStyling({ setStoreState })
+    await loadStyling({ setStoreState, addNumber, t })
 
     expect(setStoreState.mock.calls).toEqual(
       [
