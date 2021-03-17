@@ -62,7 +62,7 @@ context('Edges selection', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the nodes selection icon
-      cy.get('.sidebar-icons').find('.p-button').eq(5).click()
+      cy.get('#sidebar-button-edges-selection').click()
 
       cy.get('.edges-selection-details').should('not.have.exist')
 

@@ -98,9 +98,9 @@ context('Network graph', () => {
 
       // check that sidebar Arrow icon toggles sidebar
       cy.get('.sidebar-main').should('be.visible')
-      cy.get('.sidebar-icons').find('.p-button').eq(17).click()
+      cy.get('#sidebar-button-toggle').click()
       cy.get('.sidebar-main').should('not.be.exist')
-      cy.get('.sidebar-icons').find('.p-button').eq(17).click()
+      cy.get('#sidebar-button-toggle').click()
       cy.get('.sidebar-main').should('be.visible')
     })
   })

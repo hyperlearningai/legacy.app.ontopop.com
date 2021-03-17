@@ -62,7 +62,7 @@ context('Free text search', () => {
       cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the free text search icon
-      cy.get('.sidebar-icons').find('.p-button').eq(2).click()
+      cy.get('#sidebar-button-free-text-search').click()
 
       cy.get('.freetext-search-input').find('.p-inputtext').type('main')
 

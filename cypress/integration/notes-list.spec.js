@@ -76,7 +76,7 @@ context('Notes list', () => {
       cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(14).click()
+      cy.get('#sidebar-button-notes').click()
 
       cy.get('.notes-note').should('have.length', 2)
 
@@ -190,7 +190,7 @@ context('Notes list', () => {
       cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(14).click()
+      cy.get('#sidebar-button-notes').click()
 
       // select node
       cy.get('#notes-select').find('.p-button').eq(1).click()
@@ -307,7 +307,7 @@ context('Notes list', () => {
       cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(14).click()
+      cy.get('#sidebar-button-notes').click()
 
       // select node
       cy.get('#notes-select').find('.p-button').eq(2).click()

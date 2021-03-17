@@ -64,7 +64,7 @@ context('Network styling', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the network styling icon
-      cy.get('.sidebar-icons').find('.p-button').eq(13).click()
+      cy.get('#sidebar-button-view-styling').click()
 
       // open all tabs and select different items
       cy.get('.p-accordion')
@@ -265,7 +265,7 @@ context('Network styling', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the edit ontology sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(16).click()
+      cy.get('#sidebar-button-edit-ontology').click()
 
       // add node
       cy.get('.p-inputtextarea').should('have.length', 12)
@@ -283,7 +283,7 @@ context('Network styling', () => {
       cy.get('.vis-zoomExtends').click()
 
       // click the network styling icon
-      cy.get('.sidebar-icons').find('.p-button').eq(13).click()
+      cy.get('#sidebar-button-view-styling').click()
 
       // open all tabs and select different items
       cy.get('.p-accordion')
@@ -479,7 +479,7 @@ context('Network styling', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the network styling icon
-      cy.get('.sidebar-icons').find('.p-button').eq(13).click()
+      cy.get('#sidebar-button-view-styling').click()
 
       // open all tabs and select different items
       cy.get('.p-accordion')
@@ -622,7 +622,7 @@ context('Network styling', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the network styling icon
-      cy.get('.sidebar-icons').find('.p-button').eq(13).click()
+      cy.get('#sidebar-button-view-styling').click()
 
       // open all tabs and select different items
       cy.get('.p-accordion')
@@ -803,7 +803,7 @@ context('Network styling', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the edit ontology sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(16).click()
+      cy.get('#sidebar-button-edit-ontology').click()
 
       // add edge
       cy.get('#type-select').find('.p-button').eq(1).click()
@@ -825,7 +825,7 @@ context('Network styling', () => {
       cy.get('.nav-left').should('contain', 'Edges: 15')
 
       // click the network styling icon
-      cy.get('.sidebar-icons').find('.p-button').eq(13).click()
+      cy.get('#sidebar-button-view-styling').click()
 
       // open all tabs and select different items
       cy.get('.p-accordion')
@@ -988,7 +988,7 @@ context('Network styling', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the network styling icon
-      cy.get('.sidebar-icons').find('.p-button').eq(13).click()
+      cy.get('#sidebar-button-view-styling').click()
 
       // open all tabs and select different items
       cy.get('.p-accordion')

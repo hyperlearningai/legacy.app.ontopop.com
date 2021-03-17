@@ -26,10 +26,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-126 Added cypress end-to-end tests
 
 ### Changed
+- ONTOLOGY-112 Used sidebar button IDs rather than eq in cypress tests to allow buttons reordering
 
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-112 Removed unnecessary test fixtures
 
 ### Fixed
 

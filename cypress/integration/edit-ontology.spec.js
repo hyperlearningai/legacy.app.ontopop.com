@@ -92,7 +92,7 @@ context('Edit ontology', () => {
       cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the edit ontology sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(16).click()
+      cy.get('#sidebar-button-edit-ontology').click()
 
       // add node
       cy.get('.p-inputtextarea').should('have.length', 12)

@@ -1,5 +1,5 @@
 import { classesFromApi } from './classesFromApi'
-import { nodesEdges } from './nodesEdgesNew'
+import { nodesEdges } from './nodesEdges'
 import { totalEdgesPerNode } from './totalEdgesPerNode'
 
 const newClassesFromApi = {

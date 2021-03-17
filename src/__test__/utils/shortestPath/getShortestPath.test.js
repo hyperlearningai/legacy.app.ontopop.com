@@ -1,7 +1,7 @@
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
 import { availableEdges } from '../../fixtures/availableEdges'
-import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { nodesEdges } from '../../fixtures/nodesEdges'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 

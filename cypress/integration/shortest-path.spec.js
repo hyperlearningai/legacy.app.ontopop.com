@@ -62,7 +62,7 @@ context('Shortest path', () => {
     //   cy.get('.nav-left').should('contain', 'Edges: 14')
 
     //   // click the shortest path icon
-    //   cy.get('.sidebar-icons').find('.p-button').eq(10).click()
+    //   cy.get('#sidebar-button-shortest-path').click()
 
     //   // choose starting node
     //   cy.get('#shortest-path-button-1').click()
@@ -141,7 +141,7 @@ context('Shortest path', () => {
     //   cy.get('.nav-left').should('contain', 'Edges: 14')
 
     //   // click the shortest path icon
-    //   cy.get('.sidebar-icons').find('.p-button').eq(10).click()
+    //   cy.get('#sidebar-button-shortest-path').click()
 
     //   // choose starting node
     //   cy.get('#shortest-path-button-1').click()
@@ -233,7 +233,7 @@ context('Shortest path', () => {
       cy.get('.nav-left').should('contain', 'Edges: 40')
 
       // click the shortest path icon
-      cy.get('.sidebar-icons').find('.p-button').eq(10).click()
+      cy.get('#sidebar-button-shortest-path').click()
 
       // choose starting node
       cy.get('#shortest-path-button-1').click()
@@ -263,7 +263,7 @@ context('Shortest path', () => {
         .click({ force: true })
 
       // click the shortest path icon
-      cy.get('.sidebar-icons').find('.p-button').eq(10).click()
+      cy.get('#sidebar-button-shortest-path').click()
 
       // choose starting node
       cy.get('#shortest-path-button-1').click()

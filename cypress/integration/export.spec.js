@@ -62,7 +62,7 @@ context('Export', () => {
       cy.get('.nav-left').should('contain', 'Edges: 20')
 
       // click the export sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(15).click()
+      cy.get('#sidebar-button-export').click()
 
       // change file name
       cy.get('#filename').clear().type('new-file')

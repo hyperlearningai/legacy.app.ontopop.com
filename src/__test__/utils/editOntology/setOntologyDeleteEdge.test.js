@@ -7,7 +7,7 @@ import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
-import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'

@@ -62,7 +62,7 @@ context('Physics settings', () => {
       cy.get('.nav-left').should('contain', 'Edges: 12')
 
       // click the physics settings sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(12).click()
+      cy.get('#sidebar-button-physics-settings').click()
 
       // should toggle physics
       cy.get('.network-settings-buttons').eq(0).find('.p-button').should('have.class', 'p-button p-component')

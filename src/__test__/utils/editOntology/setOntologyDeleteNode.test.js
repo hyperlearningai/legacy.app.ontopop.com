@@ -7,7 +7,7 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteNode'
-import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'

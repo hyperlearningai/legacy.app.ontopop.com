@@ -62,7 +62,7 @@ context('Node neighbourhood', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the node neighbourhood icon
-      cy.get('.sidebar-icons').find('.p-button').eq(9).click()
+      cy.get('#sidebar-button-node-neighbourhood').click()
 
       // select first node
       cy.get('#node-select').find('.p-dropdown-trigger').click({ force: true })

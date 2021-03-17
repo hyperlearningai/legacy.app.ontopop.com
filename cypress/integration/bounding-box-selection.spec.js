@@ -62,7 +62,7 @@ context('Bounding box selection', () => {
       cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the bounding box selection icon
-      cy.get('.sidebar-icons').find('.p-button').eq(8).click()
+      cy.get('#sidebar-button-bounding-box').click()
 
       // generate bounding box
       cy.get('canvas').click(100, 100)

@@ -62,7 +62,7 @@ context('Edges filter', () => {
       cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the nodes filter icon
-      cy.get('.sidebar-icons').find('.p-button').eq(7).click()
+      cy.get('#sidebar-button-edges-filter').click()
 
       // AND search should work
 
