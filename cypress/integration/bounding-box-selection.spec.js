@@ -48,7 +48,7 @@ context('Bounding box selection', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 102')
+      cy.get('.graph-search-results-number').should('contain', 'Search results: 103')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(4).find('.p-button')
@@ -58,8 +58,8 @@ context('Bounding box selection', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 17')
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the bounding box selection icon
       cy.get('.sidebar-icons').find('.p-button').eq(8).click()

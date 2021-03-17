@@ -79,8 +79,8 @@ context('Node neighbourhood', () => {
       cy.get('.node-neighbourhood-button').click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 70')
-      cy.get('.nav-left').should('contain', 'Edges: 173')
+      cy.get('.nav-left').should('contain', 'Nodes: 85')
+      cy.get('.nav-left').should('contain', 'Edges: 222')
     })
   })
 })

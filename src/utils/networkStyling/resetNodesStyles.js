@@ -1,7 +1,8 @@
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 import store from '../../store'
 import getNode from '../nodesEdgesUtils/getNode'
-import { USER_DEFINED_PROPERTY } from '../../constants/graph'
+import { NODE_TYPE, USER_DEFINED_PROPERTY } from '../../constants/graph'
+import getElementLabel from './getElementLabel'
 
 /**
  * Reset nodes which have been styled
@@ -10,7 +11,6 @@ import { USER_DEFINED_PROPERTY } from '../../constants/graph'
 const resetNodesStyles = () => {
   const {
     globalNodeStyling,
-    classesFromApi
   } = store.getState()
 
   const availableNodes = getNode({
@@ -27,16 +27,16 @@ const resetNodesStyles = () => {
     stylingNodeTextFontAlign,
     stylingNodeShape,
     stylingNodeBackgroundColor,
+    stylingNodeBackgroundColorDataset,
     stylingNodeBorderColor,
     stylingNodeHighlightBackgroundColor,
     stylingNodeHighlightBorderColor,
     stylingNodeHoverBackgroundColor,
     stylingNodeHoverBorderColor,
     stylingNodeSize,
-    stylingNodeCaptionProperty,
   } = globalNodeStyling
 
-  const nodeStyle = {
+  const nodeStyle = (node) => ({
     borderWidth: stylingNodeBorder,
     borderWidthSelected: stylingNodeBorderSelected,
     font: {
@@ -48,7 +48,7 @@ const resetNodesStyles = () => {
     },
     shape: stylingNodeShape,
     color: {
-      background: stylingNodeBackgroundColor,
+      background: node[NODE_TYPE] === 'class' ? stylingNodeBackgroundColor : stylingNodeBackgroundColorDataset,
       border: stylingNodeBorderColor,
       highlight: {
         background: stylingNodeHighlightBackgroundColor,
@@ -60,7 +60,7 @@ const resetNodesStyles = () => {
       },
     },
     size: stylingNodeSize
-  }
+  })
 
   // update node style
   availableNodes.map((node) => {
@@ -68,12 +68,15 @@ const resetNodesStyles = () => {
     delete nodeWithoutCoordinates.x
     delete nodeWithoutCoordinates.y
 
+    const nodeStyleObject = nodeStyle(node)
+
     return updateNodes({
       ...nodeWithoutCoordinates,
-      ...nodeStyle,
-      label: classesFromApi[node.id][stylingNodeCaptionProperty]
-        ? classesFromApi[node.id][stylingNodeCaptionProperty].replace(/ /g, '\n')
-        : ''
+      ...nodeStyleObject,
+      label: getElementLabel({
+        type: 'node',
+        id: node.id
+      })
     })
   })
 }

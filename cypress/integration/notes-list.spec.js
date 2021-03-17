@@ -72,8 +72,8 @@ context('Notes list', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
       cy.get('.sidebar-icons').find('.p-button').eq(14).click()
@@ -186,8 +186,8 @@ context('Notes list', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
       cy.get('.sidebar-icons').find('.p-button').eq(14).click()
@@ -303,8 +303,8 @@ context('Notes list', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
       cy.get('.sidebar-icons').find('.p-button').eq(14).click()
@@ -350,7 +350,6 @@ context('Notes list', () => {
 
       cy.get('.notes-content').eq(1).find('p').should('have.text', 'Latest edge note added')
 
-      // needs to clicks, probably click not working properly the first time
       cy.get('.delete-note').eq(1).click({ force: true })
       cy.wait('@deleteEdgeNote')
 

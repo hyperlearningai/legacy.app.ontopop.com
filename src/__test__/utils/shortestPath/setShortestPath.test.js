@@ -1,5 +1,5 @@
 import setShortestPath from '../../../utils/shortestPath/setShortestPath'
-import { nodesEdges } from '../../fixtures/nodesEdges'
+import { nodesEdges } from '../../fixtures/nodesEdgesNew'
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
 

@@ -240,17 +240,7 @@ describe('serialiseOwlFile', () => {
 
 
 
-    <!-- http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp -->
 
-    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp">
-        <edge:Id>12</edge:Id>
-        <role:>Provided to</role:>
-        <id:>12</id:>
-        <label:>Provided to</label:>
-        <rdfs:Label>Provided to</rdfs:Label>
-        <from:>1</from:>
-        <to:>170</to:>
-    </owl:ObjectProperty>
 
     <!--
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -268,21 +258,23 @@ describe('serialiseOwlFile', () => {
         <rdfs:Label>Communication Document</rdfs:Label>
         <business:Business Area>Communications</business:Business Area>
         <skos:Comment>A communication will typically have the Licence Holder (Highways England) as one of the parties.</skos:Comment>
+        <name:>Communication Document</name:>
         <skos:Definition>Document storing the information conveyed between two or more parties.</skos:Definition>
         <node:Id>1</node:Id>
+        <node:Type>class</node:Type>
     </owl:Class>
 
 
 
-    <!-- http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ -->
+    <!-- http://webprotege.stanford.edu/RTyCIe0sZbCvkp6VVWaYGs -->
 
-    <owl:Class rdf:about="http://webprotege.stanford.edu/RY4x5rU5jNH9YIcM63gBgJ">
-        <rdfs:Label>Licence Holder</rdfs:Label>
-        <business:Business Area>Maintain Design Operate Plan Construct Finance Communications</business:Business Area>
-        <subdomain:Subdomain>GIS RedLine</subdomain:Subdomain>
-        <synonym:Synonym>Infrastructure Manager, Highways England, HE</synonym:Synonym>
-        <skos:Definition>A legal organisation with agency in the management of the Network and its associated Strategic Road Network Assets.</skos:Definition>
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RTyCIe0sZbCvkp6VVWaYGs">
+        <rdfs:Label>Immaterial Continuant</rdfs:Label>
+        <upper:Ontology>true</upper:Ontology>
+        <name:>Immaterial Continuant</name:>
+        <skos:Definition>Concepts and ideas that exist in the real world.</skos:Definition>
         <node:Id>170</node:Id>
+        <node:Type>class</node:Type>
     </owl:Class>
 
 </rdf:RDF>`

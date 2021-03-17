@@ -21,6 +21,7 @@ describe('resetNodeStyle', () => {
         stylingNodeTextFontAlign: 'center',
         stylingNodeShape: 'circle',
         stylingNodeBackgroundColor: '#000',
+        stylingNodeBackgroundColorDataset: '#000',
         stylingNodeBorderColor: '#000',
         stylingNodeHighlightBackgroundColor: '#000',
         stylingNodeHighlightBorderColor: '#000',
@@ -29,7 +30,7 @@ describe('resetNodeStyle', () => {
         stylingNodeSize: 12,
         stylingNodeCaptionProperty: 'rdfsLabel'
       },
-      classesFromApi
+      classesFromApiBackup: classesFromApi
     }))
 
     const node = {
