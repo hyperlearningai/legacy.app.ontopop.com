@@ -1,4 +1,5 @@
 import getNetworkStyling from './getNetworkStyling'
+import store from '../../store'
 
 /**
  * Load saved styling options
@@ -18,8 +19,16 @@ const loadStyling = async ({
     t
   })
 
+  const state = store.getState()
+
   if (savedStyle) {
-    Object.keys(savedStyle).map((option) => setStoreState(option, savedStyle[option]))
+    Object.keys(savedStyle).map((option) => {
+      const optionValue = Array.isArray(state[option])
+        ? [...state[option], ...savedStyle[option]]
+        : { ...state[option], ...savedStyle[option] }
+
+      return setStoreState(option, optionValue)
+    })
   }
 
   return true

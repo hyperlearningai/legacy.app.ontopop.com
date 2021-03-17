@@ -1,5 +1,6 @@
 import loadStyling from '../../../utils/networkStyling/loadStyling'
 import getNetworkStyling from '../../../utils/networkStyling/getNetworkStyling'
+import store from "../../../store";
 
 jest.mock('../../../utils/networkStyling/getNetworkStyling')
 
@@ -12,6 +13,14 @@ describe('loadStyling', () => {
     const setStoreState = jest.fn()
     const addNumber = jest.fn()
     const t = jest.fn()
+
+    const getState = jest.fn().mockImplementation(() => ({
+      globalEdgeStyling: {
+        stylingEdgeCaptionProperty: 'ABC',
+        newproperty: 'CDE'
+      }
+    }))
+    store.getState = getState
 
     getNetworkStyling.mockImplementationOnce(() => ({
       globalEdgeStyling: {
@@ -30,6 +39,7 @@ describe('loadStyling', () => {
 
     expect(setStoreState.mock.calls).toEqual([
       ['globalEdgeStyling', {
+        newproperty: 'CDE',
         stylingEdgeCaptionProperty: 'rdfsLabel',
         stylingEdgeLength: 250,
         stylingEdgeLineColor: '#070b11',
