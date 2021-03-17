@@ -48,6 +48,8 @@ describe('saveStyling', () => {
       t
     })
 
-    expect(setSaved).toHaveBeenCalledWith(false)
+    expect(setTimeout).toHaveBeenCalledWith(
+      expect.any(Function), 5000
+    )
   })
 })

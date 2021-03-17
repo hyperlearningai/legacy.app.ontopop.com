@@ -34,7 +34,7 @@ const saveStyling = async ({
     stylingJSON, addNumber, t
   })
 
-  setSaved(false)
+  setTimeout(() => setSaved(false), 5000)
 }
 
 export default saveStyling
