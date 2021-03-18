@@ -4,6 +4,8 @@ import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import addNode from '../fixtures/addNode'
 import addEdge from '../fixtures/addEdge'
+import getStyling from '../fixtures/getStyling'
+import saveStyling from '../fixtures/saveStyling'
 
 context('Network styling', () => {
   beforeEach(() => {
@@ -36,6 +38,11 @@ context('Network styling', () => {
         method: 'GET',
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
@@ -237,6 +244,11 @@ context('Network styling', () => {
         method: 'POST',
         url: '**/graph/nodes/create?model=1',
       }, addNode).as('addNode')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
@@ -452,6 +464,11 @@ context('Network styling', () => {
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -594,6 +611,11 @@ context('Network styling', () => {
         method: 'GET',
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
@@ -775,6 +797,11 @@ context('Network styling', () => {
         method: 'POST',
         url: '**/graph/edges/create?model=1',
       }, addEdge).as('addEdge')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
@@ -961,6 +988,16 @@ context('Network styling', () => {
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/api/ui/styling',
+      }, saveStyling).as('saveStyling')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -1087,6 +1124,8 @@ context('Network styling', () => {
       cy.get('.save-property-style').click({ force: true })
 
       cy.get('#save-styling-button').click()
+
+      cy.wait('@saveStyling')
       cy.get('#save-styling-button').should('have.text', 'Saved!')
     })
   })

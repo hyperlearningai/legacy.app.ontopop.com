@@ -11,6 +11,7 @@ import createEdgeNote from '../fixtures/createEdgeNote'
 import deleteEdgeNote from '../fixtures/deleteEdgeNote'
 import updateEdgeNote from '../fixtures/updateEdgeNote'
 import updateNodeNote from '../fixtures/updateNodeNote'
+import getStyling from '../fixtures/getStyling'
 
 context('Notes list', () => {
   beforeEach(() => {
@@ -48,6 +49,11 @@ context('Notes list', () => {
         method: 'POST',
         url: '**/graph/notes/create',
       }, createNote).as('createNote')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
@@ -162,6 +168,11 @@ context('Notes list', () => {
         method: 'PATCH',
         url: '**/graph/nodes/*/notes/*',
       }, updateNodeNote).as('updateNodeNote')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
@@ -279,6 +290,11 @@ context('Notes list', () => {
         method: 'PATCH',
         url: '**/graph/edges/*/notes/*',
       }, updateEdgeNote).as('updateEdgeNote')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')

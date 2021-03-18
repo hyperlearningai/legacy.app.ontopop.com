@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import customQueryResponse from '../fixtures/customQueryResponse'
+import getStyling from '../fixtures/getStyling'
 
 context('Custom query', () => {
   beforeEach(() => {
@@ -40,6 +41,11 @@ context('Custom query', () => {
         method: 'POST',
         url: '**/graph/query',
       }, customQueryResponse).as('postQuery')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')

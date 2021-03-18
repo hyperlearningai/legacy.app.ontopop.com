@@ -2,6 +2,7 @@
 import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
+import getStyling from '../fixtures/getStyling'
 
 context('Shortest path', () => {
   beforeEach(() => {
@@ -9,176 +10,184 @@ context('Shortest path', () => {
   })
 
   describe('Shortest path', () => {
-    // it('Shortest path should return results', () => {
-    //   cy.intercept({
-    //     method: 'POST',
-    //     url: '**/login',
-    //   }, authValid).as('postLogin')
+    it('Shortest path should return results', () => {
+      cy.intercept({
+        method: 'POST',
+        url: '**/login',
+      }, authValid).as('postLogin')
 
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '**/graph/notes',
-    //   }, emptyNotes).as('getNotes')
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/notes',
+      }, emptyNotes).as('getNotes')
 
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '**/graph/nodes/notes',
-    //   }, emptyNotes).as('getNodesNotes')
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/nodes/notes',
+      }, emptyNotes).as('getNodesNotes')
 
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '**/graph/edges/notes',
-    //   }, emptyNotes).as('getEdgesNotes')
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/edges/notes',
+      }, emptyNotes).as('getEdgesNotes')
 
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '**/graph?model=1',
-    //   }, graphResponse).as('getGraph')
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph?model=1',
+      }, graphResponse).as('getGraph')
 
-    //   cy.get('#email').type('valid@email.com')
-    //   cy.get('#password').type('password')
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
-    //   cy.get('.auth-button').click()
+      cy.get('#email').type('valid@email.com')
+      cy.get('#password').type('password')
 
-    //   cy.wait('@postLogin')
+      cy.get('#email').type('valid@email.com')
+      cy.get('#password').type('password')
 
-    //   cy.get('#main-search').type('value')
+      cy.get('.auth-button').click()
 
-    //   cy.wait('@getGraph')
+      cy.wait('@postLogin')
 
-    //   cy.get('.p-autocomplete-item').click()
+      cy.get('#main-search').type('value')
 
-    //   cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.wait('@getGraph')
 
-    //   // click to show network graph
-    //   cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-    //     .eq(1)
-    //     .click()
+      cy.get('.p-autocomplete-item').click()
 
-    //   cy.wait(1000)
+      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
 
-    //   // shows subgraph
-    //   cy.get('.nav-left').should('contain', 'Nodes: 11')
-    //   cy.get('.nav-left').should('contain', 'Edges: 14')
+      // click to show network graph
+      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
+        .eq(1)
+        .click()
 
-    //   // click the shortest path icon
-    //   cy.get('#sidebar-button-shortest-path').click()
+      cy.wait(1000)
 
-    //   // choose starting node
-    //   cy.get('#shortest-path-button-1').click()
+      // shows subgraph
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
-    //   // select first node
-    //   cy.get('#node-select-1').find('.p-dropdown-trigger').click({ force: true })
-    //   cy.get('#node-select-1').find('.p-dropdown-filter').type('asset')
-    //   cy.get('#node-select-1').find('.p-dropdown-item').eq(0).click({ force: true })
+      // click the shortest path icon
+      cy.get('#sidebar-button-shortest-path').click()
 
-    //   // choose ending node
-    //   cy.get('#shortest-path-button-2').click()
+      // choose starting node
+      cy.get('#shortest-path-button-1').click()
 
-    //   // select first node
-    //   cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
-    //   cy.get('#node-select-2').find('.p-dropdown-filter').type('equi')
-    //   cy.get('#node-select-2').find('.p-dropdown-item').eq(0).click({ force: true })
+      // select first node
+      cy.get('#node-select-1').find('.p-dropdown-trigger').click({ force: true })
+      cy.get('#node-select-1').find('.p-dropdown-filter').type('asset')
+      cy.get('#node-select-1').find('.p-dropdown-item').eq(0).click({ force: true })
 
-    //   // check that shortest path button work
-    //   cy.get('.shortest-path-show-button').click()
+      // choose ending node
+      cy.get('#shortest-path-button-2').click()
 
-    //   // shows subgraph
-    //   cy.get('.nav-left').should('contain', 'Nodes: 2')
-    //   cy.get('.nav-left').should('contain', 'Edges: 1')
-    // })
+      // select first node
+      cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
+      cy.get('#node-select-2').find('.p-dropdown-filter').type('equi')
+      cy.get('#node-select-2').find('.p-dropdown-item').eq(0).click({ force: true })
 
-    // it('Shortest path should return results when nodes/edges to exclude and overlay', () => {
-    //   cy.intercept({
-    //     method: 'POST',
-    //     url: '**/login',
-    //   }, authValid).as('postLogin')
+      // check that shortest path button work
+      cy.get('.shortest-path-show-button').click()
 
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '**/graph/notes',
-    //   }, emptyNotes).as('getNotes')
+      // shows subgraph
+      cy.get('.nav-left').should('contain', 'Nodes: 2')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
+    })
 
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '**/graph/nodes/notes',
-    //   }, emptyNotes).as('getNodesNotes')
+    it('Shortest path should return results when nodes/edges to exclude and overlay', () => {
+      cy.intercept({
+        method: 'POST',
+        url: '**/login',
+      }, authValid).as('postLogin')
 
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '**/graph/edges/notes',
-    //   }, emptyNotes).as('getEdgesNotes')
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/notes',
+      }, emptyNotes).as('getNotes')
 
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '**/graph?model=1',
-    //   }, graphResponse).as('getGraph')
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/nodes/notes',
+      }, emptyNotes).as('getNodesNotes')
 
-    //   cy.get('#email').type('valid@email.com')
-    //   cy.get('#password').type('password')
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/edges/notes',
+      }, emptyNotes).as('getEdgesNotes')
 
-    //   cy.get('.auth-button').click()
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph?model=1',
+      }, graphResponse).as('getGraph')
 
-    //   cy.wait('@postLogin')
+      cy.get('#email').type('valid@email.com')
+      cy.get('#password').type('password')
 
-    //   cy.get('#main-search').type('value')
+      cy.get('.auth-button').click()
 
-    //   cy.wait('@getGraph')
+      cy.wait('@postLogin')
 
-    //   cy.get('.p-autocomplete-item').click()
+      cy.get('#main-search').type('value')
 
-    //   cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.wait('@getGraph')
 
-    //   // click to show network graph
-    //   cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-    //     .eq(1)
-    //     .click()
+      cy.get('.p-autocomplete-item').click()
 
-    //   cy.wait(1000)
+      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
 
-    //   // shows subgraph
-    //   cy.get('.nav-left').should('contain', 'Nodes: 11')
-    //   cy.get('.nav-left').should('contain', 'Edges: 14')
+      // click to show network graph
+      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
+        .eq(1)
+        .click()
 
-    //   // click the shortest path icon
-    //   cy.get('#sidebar-button-shortest-path').click()
+      cy.wait(1000)
 
-    //   // choose starting node
-    //   cy.get('#shortest-path-button-1').click()
+      // shows subgraph
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
-    //   // select first node
-    //   cy.get('#node-select-1').find('.p-dropdown-trigger').click({ force: true })
-    //   cy.get('#node-select-1').find('.p-dropdown-filter').type('strat')
-    //   cy.get('#node-select-1').find('.p-dropdown-item').eq(0).click({ force: true })
+      // click the shortest path icon
+      cy.get('#sidebar-button-shortest-path').click()
 
-    //   // choose ending node
-    //   cy.get('#shortest-path-button-2').click()
+      // choose starting node
+      cy.get('#shortest-path-button-1').click()
 
-    //   // select first node
-    //   cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
-    //   cy.get('#node-select-2').find('.p-dropdown-filter').type('prod')
-    //   cy.get('#node-select-2').find('.p-dropdown-item').eq(0).click({ force: true })
+      // select first node
+      cy.get('#node-select-1').find('.p-dropdown-trigger').click({ force: true })
+      cy.get('#node-select-1').find('.p-dropdown-filter').type('strat')
+      cy.get('#node-select-1').find('.p-dropdown-item').eq(0).click({ force: true })
 
-    //   // select nodes to exclude
-    //   cy.get('#excluded-nodes-select').find('.p-multiselect-trigger').click({ force: true })
-    //   cy.get('#excluded-nodes-select').find('.p-multiselect-filter').type('sys')
-    //   cy.get('#excluded-nodes-select').find('.p-multiselect-item').eq(0).click({ force: true })
+      // choose ending node
+      cy.get('#shortest-path-button-2').click()
 
-    //   // select edges to exclude
-    //   cy.get('#excluded-edges-select').find('.p-multiselect-trigger').click({ force: true })
-    //   cy.get('#excluded-edges-select').find('.p-multiselect-filter').type('subcla')
-    //   cy.get('#excluded-edges-select').find('.p-multiselect-item').eq(0).click({ force: true })
+      // select first node
+      cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
+      cy.get('#node-select-2').find('.p-dropdown-filter').type('prod')
+      cy.get('#node-select-2').find('.p-dropdown-item').eq(0).click({ force: true })
 
-    //   // overlay checkbox
-    //   cy.get('#overlay-checkbox').click()
+      // select nodes to exclude
+      cy.get('#excluded-nodes-select').find('.p-multiselect-trigger').click({ force: true })
+      cy.get('#excluded-nodes-select').find('.p-multiselect-filter').type('sys')
+      cy.get('#excluded-nodes-select').find('.p-multiselect-item').eq(0).click({ force: true })
 
-    //   // check that shortest path button work
-    //   cy.get('.shortest-path-show-button').click()
+      // select edges to exclude
+      cy.get('#excluded-edges-select').find('.p-multiselect-trigger').click({ force: true })
+      cy.get('#excluded-edges-select').find('.p-multiselect-filter').type('subcla')
+      cy.get('#excluded-edges-select').find('.p-multiselect-item').eq(0).click({ force: true })
 
-    //   // shows subgraph
-    //   cy.get('.nav-left').should('contain', 'Nodes: 11')
-    //   cy.get('.nav-left').should('contain', 'Edges: 14')
-    // })
+      // overlay checkbox
+      cy.get('#overlay-checkbox').click()
+
+      // check that shortest path button work
+      cy.get('.shortest-path-show-button').click()
+
+      // shows subgraph
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
+    })
 
     it('Shortest path should return results when isUpperOntology on/off', () => {
       cy.intercept({
@@ -205,6 +214,11 @@ context('Shortest path', () => {
         method: 'GET',
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')

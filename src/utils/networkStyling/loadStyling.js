@@ -1,18 +1,34 @@
-import { STYLING_LS } from '../../constants/localStorage'
+import getNetworkStyling from './getNetworkStyling'
+import store from '../../store'
+
 /**
  * Load saved styling options
- * @param  {Function} params.setStoreState           setStoreState action
+ * @param  {Object}   params
+ * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.addNumber                  addNumber action
+ * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
-const loadStyling = ({
-  setStoreState
+const loadStyling = async ({
+  setStoreState,
+  addNumber,
+  t
 }) => {
-  const savedStyle = localStorage.getItem(STYLING_LS)
+  const savedStyle = await getNetworkStyling({
+    addNumber,
+    t
+  })
+
+  const state = store.getState()
 
   if (savedStyle) {
-    const savedStyleJson = JSON.parse(savedStyle)
+    Object.keys(savedStyle).map((option) => {
+      const optionValue = Array.isArray(state[option])
+        ? [...state[option], ...savedStyle[option]]
+        : { ...state[option], ...savedStyle[option] }
 
-    Object.keys(savedStyleJson).map((option) => setStoreState(option, savedStyleJson[option]))
+      return setStoreState(option, optionValue)
+    })
   }
 
   return true
