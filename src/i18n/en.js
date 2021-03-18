@@ -53,6 +53,8 @@ export default {
   couldNotQueryAnnotationProperties: 'Could not query annotation properties!',
   couldNotQueryEdgeProperties: 'Could not query object properties!',
   noNodesToDisplay: 'No nodes to display!',
+  couldNotQueryStyles: 'Could not query styles!',
+  couldNotUpdateStyles: 'Could not update styles!',
 
   // node selection
   node: 'Node',

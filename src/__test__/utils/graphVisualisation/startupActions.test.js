@@ -27,7 +27,9 @@ describe('startupActions', () => {
     })
 
     expect(loadStyling).toHaveBeenCalledWith({
+      addNumber,
       setStoreState,
+      t
     })
 
     expect(getGraphData).toHaveBeenCalledWith({
