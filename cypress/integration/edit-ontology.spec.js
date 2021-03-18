@@ -7,6 +7,7 @@ import addEdge from '../fixtures/addEdge'
 import udpateNode from '../fixtures/updateNode'
 import deleteNode from '../fixtures/deleteNode'
 import deleteEdge from '../fixtures/deleteEdge'
+import getStyling from '../fixtures/getStyling'
 
 context('Edit ontology', () => {
   beforeEach(() => {
@@ -64,6 +65,11 @@ context('Edit ontology', () => {
         method: 'DELETE',
         url: '**/graph/edges/*',
       }, deleteEdge).as('deleteEdge')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')

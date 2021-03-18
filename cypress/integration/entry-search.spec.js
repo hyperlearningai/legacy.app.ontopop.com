@@ -2,6 +2,7 @@
 import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
+import getStyling from '../fixtures/getStyling'
 
 context('Entry search', () => {
   beforeEach(() => {
@@ -34,6 +35,11 @@ context('Entry search', () => {
         method: 'GET',
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
@@ -102,6 +108,11 @@ context('Entry search', () => {
         method: 'GET',
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
@@ -174,6 +185,11 @@ context('Entry search', () => {
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -244,6 +260,11 @@ context('Entry search', () => {
         method: 'GET',
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')

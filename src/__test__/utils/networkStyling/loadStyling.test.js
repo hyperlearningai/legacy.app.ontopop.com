@@ -1,6 +1,6 @@
 import loadStyling from '../../../utils/networkStyling/loadStyling'
 import getNetworkStyling from '../../../utils/networkStyling/getNetworkStyling'
-import store from "../../../store";
+import store from '../../../store'
 
 jest.mock('../../../utils/networkStyling/getNetworkStyling')
 
