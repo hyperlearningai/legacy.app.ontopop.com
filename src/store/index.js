@@ -214,6 +214,10 @@ const initialState = {
   selectedNotesType: 'graph',
   noteElementId: undefined,
 
+  // synonyms
+  nodesSynonyms: [],
+  synonymElementId: undefined,
+
   // physics
   isPhysicsOn: false,
   physicsHierarchicalView: false,

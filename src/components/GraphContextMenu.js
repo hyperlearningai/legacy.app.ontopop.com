@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 import expandNode from '../utils/graphVisualisation/expandNode'
-import { SIDEBAR_VIEW_CUSTOM_QUERY, SIDEBAR_VIEW_NOTES } from '../constants/views'
+import { SIDEBAR_VIEW_CUSTOM_QUERY, SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 
 const GraphContextMenu = ({
   setStoreState,
@@ -61,6 +61,16 @@ const GraphContextMenu = ({
           setStoreState('noteElementId', nodeId)
           setStoreState('selectedNotesType', 'node')
           setStoreState('sidebarView', SIDEBAR_VIEW_NOTES)
+          setStoreState('showContextMenu', false)
+        }
+      },
+      {
+        label: t('synonyms'),
+        icon: 'pi pi-file',
+        command: () => {
+          setStoreState('synonymElementId', nodeId)
+          setStoreState('selectedNotesType', 'node')
+          setStoreState('sidebarView', SIDEBAR_VIEW_SYNONYMS)
           setStoreState('showContextMenu', false)
         }
       }
