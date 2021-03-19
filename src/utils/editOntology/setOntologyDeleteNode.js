@@ -8,7 +8,6 @@ import httpCall from '../apiCalls/httpCall'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import countEdges from '../nodesEdgesUtils/countEdges'
 import countNodes from '../nodesEdgesUtils/countNodes'
-import removeEdge from '../nodesEdgesUtils/removeEdge'
 import removeNode from '../nodesEdgesUtils/removeNode'
 import showNotification from '../notifications/showNotification'
 
@@ -122,13 +121,6 @@ const setOntologyDeleteNode = async ({
             newEdgesPerNode[nodeIdToCheck] = updatedConnections
           }
 
-          // remove edge from graph
-          removeEdge({
-            edge,
-            addNumber,
-            toggleFromArrayInKey
-          })
-
           // add to deleted connections
           if (!newDeletedEdges.includes(connection)) {
             newDeletedEdges.push(connection)
@@ -146,7 +138,11 @@ const setOntologyDeleteNode = async ({
 
       delete newClassesFromApi[nodeId]
 
-      removeNode({ nodeId, addNumber })
+      removeNode({
+        nodeId,
+        addNumber,
+        toggleFromArrayInKey
+      })
     }
   }
 

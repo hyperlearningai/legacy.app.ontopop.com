@@ -64,7 +64,8 @@ const toggleElements = ({
       } else {
         removeNode({
           nodeId,
-          addNumber
+          addNumber,
+          toggleFromArrayInKey
         })
       }
 

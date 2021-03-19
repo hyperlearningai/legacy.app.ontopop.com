@@ -23,6 +23,7 @@ const addNode = ({ node, addNumber }) => {
     x: Math.floor((Math.random() * 1500) + 1),
     y: Math.floor((Math.random() * 1500) + 1)
   })
+
   addNumber('availableNodesCount', 1)
 }
 

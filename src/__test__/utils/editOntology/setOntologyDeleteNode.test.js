@@ -121,14 +121,14 @@ describe('setOntologyDeleteNode', () => {
       {
         addNumber,
         edge: {
-          edgeId: 4093,
-          from: '12',
-          id: '4093',
+          edgeId: 4094,
+          from: '4000',
+          id: '4094',
           label: 'Found in',
           rdfsLabel: 'Found in',
           role: 'Found in',
-          to: '4000',
-          userDefined: false
+          to: '137',
+          userDefined: false,
         },
         toggleFromArrayInKey
       }
