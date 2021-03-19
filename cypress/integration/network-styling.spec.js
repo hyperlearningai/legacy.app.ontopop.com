@@ -51,16 +51,16 @@ context('Network styling', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('value')
+      cy.get('#main-search').type('maintenance')
 
       cy.wait('@getGraph')
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results: 2')
 
       // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
+      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(0).find('.p-button')
         .eq(1)
         .click()
 
@@ -68,7 +68,18 @@ context('Network styling', () => {
 
       // shows subgraph
       cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Edges: 17')
+
+      // toogle visualisation of datasets and upper ontology elements
+      cy.get('#sidebar-button-graph-options').click()
+      cy.get('#upper-ontology-checkbox').click()
+      cy.get('#dataset-checkbox').click()
+
+      cy.get('#network-graph-options-save').click()
+      cy.wait(3000)
+
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
@@ -273,8 +284,8 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the edit ontology sidebar icon
       cy.get('#sidebar-button-edit-ontology').click()
@@ -289,8 +300,8 @@ context('Network styling', () => {
 
       cy.wait('@addNode')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 12')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       cy.get('.vis-zoomExtends').click()
 
@@ -492,8 +503,8 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
@@ -640,8 +651,8 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
@@ -826,8 +837,8 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the edit ontology sidebar icon
       cy.get('#sidebar-button-edit-ontology').click()
@@ -848,8 +859,8 @@ context('Network styling', () => {
 
       cy.wait('@addEdge')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 15')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
@@ -1021,8 +1032,8 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()

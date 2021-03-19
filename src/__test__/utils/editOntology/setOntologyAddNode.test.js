@@ -5,10 +5,12 @@ import { classesFromApi } from '../../fixtures/classesFromApi'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import en from '../../../i18n/en'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
-import { LABEL_PROPERTY, UNIQUE_PROPERTY } from '../../../constants/graph'
+import { LABEL_PROPERTY, RDF_ABOUT_PROPERTY } from '../../../constants/graph'
 import showNotification from '../../../utils/notifications/showNotification'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
+import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
@@ -18,6 +20,11 @@ jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/apiCalls/httpCall')
+jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
+jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
+
+checkNodeVisibility.mockImplementation(() => true)
+checkEdgeVisibility.mockImplementation(() => true)
 
 describe('setOntologyAddNode', () => {
   afterEach(() => {
@@ -94,7 +101,7 @@ describe('setOntologyAddNode', () => {
 
   it('should work correctly', async () => {
     const selectedElementProperties = {
-      [UNIQUE_PROPERTY]: '123',
+      [RDF_ABOUT_PROPERTY]: '123',
       [LABEL_PROPERTY]: 'New node',
       'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node'
     }

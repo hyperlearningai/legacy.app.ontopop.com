@@ -11,6 +11,8 @@ exports[`NetworkStylingEdgeByPropertyForm should match snapshot  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   index={0}

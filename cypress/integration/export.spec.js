@@ -64,8 +64,8 @@ context('Export', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 20')
+      cy.get('.nav-left').should('contain', 'Nodes: 12')
+      cy.get('.nav-left').should('contain', 'Edges: 19')
 
       // click the export sidebar icon
       cy.get('#sidebar-button-export').click()

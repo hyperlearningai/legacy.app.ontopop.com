@@ -11,6 +11,8 @@ exports[`EditOntologyRestoreEdge should match snapshot when deleted edges 1`] = 
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -8676,6 +8678,8 @@ exports[`EditOntologyRestoreEdge should match snapshot when no deleted edges 1`]
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}

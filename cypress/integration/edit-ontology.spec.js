@@ -94,8 +94,8 @@ context('Edit ontology', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 5')
+      cy.get('.nav-left').should('contain', 'Nodes: 2')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
 
       // click the edit ontology sidebar icon
       cy.get('#sidebar-button-edit-ontology').click()
@@ -110,8 +110,8 @@ context('Edit ontology', () => {
 
       cy.wait('@addNode')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 5')
-      cy.get('.nav-left').should('contain', 'Edges: 5')
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
 
       // add edge
       cy.get('#type-select').find('.p-button').eq(1).click()
@@ -129,8 +129,8 @@ context('Edit ontology', () => {
 
       cy.wait('@addEdge')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 5')
-      cy.get('.nav-left').should('contain', 'Edges: 6')
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 2')
 
       // update node
       cy.get('#operation-select').find('.p-button').eq(1).click()
@@ -148,8 +148,8 @@ context('Edit ontology', () => {
 
       cy.wait('@updateNode')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 5')
-      cy.get('.nav-left').should('contain', 'Edges: 6')
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 2')
 
       // delete edge
       cy.get('#operation-select').find('.p-button').eq(2).click()
@@ -161,8 +161,8 @@ context('Edit ontology', () => {
 
       cy.wait('@deleteEdge')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 5')
-      cy.get('.nav-left').should('contain', 'Edges: 5')
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
 
       // restore edge
       cy.get('#operation-select').find('.p-button').eq(3).click()
@@ -174,8 +174,8 @@ context('Edit ontology', () => {
 
       cy.wait('@addEdge')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 5')
-      cy.get('.nav-left').should('contain', 'Edges: 6')
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 2')
 
       // delete node
       cy.get('#operation-select').find('.p-button').eq(2).click()
@@ -188,8 +188,8 @@ context('Edit ontology', () => {
 
       cy.wait('@deleteNode')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 6')
+      cy.get('.nav-left').should('contain', 'Nodes: 2')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
 
       // restore node
       cy.get('#operation-select').find('.p-button').eq(3).click()
@@ -201,8 +201,8 @@ context('Edit ontology', () => {
 
       cy.wait('@addNode')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 5')
-      cy.get('.nav-left').should('contain', 'Edges: 6')
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
     })
   })
 })

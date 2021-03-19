@@ -2,6 +2,7 @@ import { ALGO_TYPE_SHORTEST_PATH } from '../../constants/algorithms'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import getShortestPath from './getShortestPath'
 import store from '../../store'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 
 /**
  * Set shortest path
@@ -54,7 +55,9 @@ const setShortestPath = async ({
       shortestPathSelectedNodes,
       shortestPathResults,
       isNodeOverlay
-    }
+    },
+    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS,
+    isUpperOntologyVisible: isUpperOntology
   }
 
   addToObject('graphData', newCurrentGraph, graphValue)

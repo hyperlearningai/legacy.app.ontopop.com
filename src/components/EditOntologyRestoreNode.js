@@ -13,7 +13,9 @@ const EditOntologyRestoreNode = ({
   setStoreState,
   addNumber,
   optionNodes,
-  optionEdges
+  optionEdges,
+  addSubValueToObject,
+  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -69,6 +71,8 @@ const EditOntologyRestoreNode = ({
               setStoreState,
               addNumber,
               selectedElementProperties,
+              addSubValueToObject,
+              toggleFromArrayInKey,
               t
             })
             setSelectedElement(undefined)
@@ -90,6 +94,8 @@ EditOntologyRestoreNode.propTypes = {
   addNumber: PropTypes.func.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  addSubValueToObject: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

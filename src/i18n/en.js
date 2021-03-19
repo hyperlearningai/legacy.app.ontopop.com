@@ -26,6 +26,7 @@ export default {
 
   // sidebar
   networkGraphs: 'Network graphs',
+  networkGraphOptions: 'Network graph options',
   nodeNeighbourhood: 'Node neighbourhood',
   structuredSearch: 'Structured search',
   ontologyFilter: 'Ontology filter',
@@ -430,4 +431,9 @@ export default {
 
   // api calls
   apiCallNotValid: 'Invalid http request',
+
+  // network graph options
+  showSubclassRelationships: 'Show subclass relationships',
+  showDatasets: 'Show datasets',
+  chooseGraphOptions: 'Choose global or specific visualisation options for the current graph'
 }

@@ -44,23 +44,20 @@ context('Shortest path', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('#email').type('valid@email.com')
-      cy.get('#password').type('password')
-
       cy.get('.auth-button').click()
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('value')
+      cy.get('#main-search').type('road')
 
       cy.wait('@getGraph')
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results: 28')
 
       // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
+      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(0).find('.p-button')
         .eq(1)
         .click()
 
@@ -68,7 +65,19 @@ context('Shortest path', () => {
 
       // shows subgraph
       cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Edges: 17')
+
+      // enable upper ontology
+      cy.get('#sidebar-button-graph-options').click()
+
+      // switch 3 main options
+      cy.get('#upper-ontology-checkbox').click()
+      cy.get('#dataset-checkbox').click()
+
+      // save and check new nodes and edges count
+      cy.get('#network-graph-options-save').click()
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the shortest path icon
       cy.get('#sidebar-button-shortest-path').click()
@@ -93,8 +102,8 @@ context('Shortest path', () => {
       cy.get('.shortest-path-show-button').click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 2')
     })
 
     it('Shortest path should return results when nodes/edges to exclude and overlay', () => {
@@ -123,6 +132,11 @@ context('Shortest path', () => {
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -146,8 +160,8 @@ context('Shortest path', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the shortest path icon
       cy.get('#sidebar-button-shortest-path').click()
@@ -243,6 +257,19 @@ context('Shortest path', () => {
       cy.wait(1000)
 
       // shows subgraph
+      cy.get('.nav-left').should('contain', 'Nodes: 22')
+      cy.get('.nav-left').should('contain', 'Edges: 18')
+
+      // enable upper ontology
+      cy.get('#sidebar-button-graph-options').click()
+
+      // switch 3 main options
+      cy.get('#upper-ontology-checkbox').click()
+      cy.get('#dataset-checkbox').click()
+
+      // save and check new nodes and edges count
+      cy.get('#network-graph-options-save').click()
+
       cy.get('.nav-left').should('contain', 'Nodes: 23')
       cy.get('.nav-left').should('contain', 'Edges: 40')
 
@@ -271,39 +298,6 @@ context('Shortest path', () => {
       // shows subgraph
       cy.get('.nav-left').should('contain', 'Nodes: 4')
       cy.get('.nav-left').should('contain', 'Edges: 5')
-
-      // go back to previous graph
-      cy.get('.network-graph-list-row').eq(1).find('.p-button').eq(1)
-        .click({ force: true })
-
-      // click the shortest path icon
-      cy.get('#sidebar-button-shortest-path').click()
-
-      // choose starting node
-      cy.get('#shortest-path-button-1').click()
-
-      // select first node
-      cy.get('#node-select-1').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#node-select-1').find('.p-dropdown-filter').type('qualification')
-      cy.get('#node-select-1').find('.p-dropdown-item').eq(0).click({ force: true })
-
-      // choose ending node
-      cy.get('#shortest-path-button-2').click()
-
-      // select first node
-      cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#node-select-2').find('.p-dropdown-filter').type('supply')
-      cy.get('#node-select-2').find('.p-dropdown-item').eq(0).click({ force: true })
-
-      // upper-ontology checkbox should be false
-      cy.get('#upper-ontology-checkbox').click()
-
-      // check that shortest path button work
-      cy.get('.shortest-path-show-button').click()
-
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 3')
-      cy.get('.nav-left').should('contain', 'Edges: 2')
     })
   })
 })

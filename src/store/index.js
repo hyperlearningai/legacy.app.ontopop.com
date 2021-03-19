@@ -18,7 +18,8 @@ import {
   NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT,
   SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT,
   EDGE_LABEL_PROPERTY,
-  LABEL_PROPERTY_DATASET
+  LABEL_PROPERTY_DATASET,
+  DEFAULT_GRAPH_VISUALISATION_OPTIONS
 } from '../constants/graph'
 
 const initialState = {
@@ -235,6 +236,7 @@ const initialState = {
       label: 'Main',
       noDelete: true,
       type: ALGO_TYPE_FULL,
+      ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
     }
   }
 }

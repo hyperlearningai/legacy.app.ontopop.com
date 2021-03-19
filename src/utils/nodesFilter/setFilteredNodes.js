@@ -1,4 +1,5 @@
 import { ALGO_TYPE_NODES_FILTER } from '../../constants/algorithms'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
 
@@ -30,7 +31,8 @@ const setFilteredNodes = ({
     type: ALGO_TYPE_NODES_FILTER,
     options: {
       nodesFilters
-    }
+    },
+    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
   }
 
   addToObject('graphData', newCurrentGraph, graphValue)

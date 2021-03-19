@@ -219,6 +219,14 @@ export const EDGE_STYLING_PROPERTIES = {
   },
 }
 
+export const DEFAULT_GRAPH_VISUALISATION_OPTIONS = {
+  isUpperOntologyVisible: false,
+  isSubClassEdgeVisible: true,
+  isDatasetVisible: false,
+  hiddenNodes: [],
+  hiddenEdges: []
+}
+
 export const SUB_CLASS_OF_ID = 'http://www.w3.org/2000/01/rdf-schema#subclassof'
 export const SUB_CLASS_OF_LABEL = 'subClassOf'
 
@@ -250,9 +258,18 @@ export const RESERVED_PROPERTIES = [
   NODE_TYPE
 ]
 
+export const RDF_ABOUT_PROPERTY = 'rdfAbout'
+export const LABEL_PROPERTY = 'rdfsLabel'
+export const LABEL_PROPERTY_DATASET = 'name'
+export const EDGE_LABEL_PROPERTY = 'rdfsLabel'
+export const UPPER_ONTOLOGY = 'upperOntology'
+export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'
+export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
+export const OWL_RESTRICTION = 'owlRestriction'
+
 export const EDGE_PROPERTIES = [
-  'rdfAbout',
-  'rdfsLabel',
+  RDF_ABOUT_PROPERTY,
+  LABEL_PROPERTY,
 ]
 
 export const EDGE_PROPERTIES_DROPDOWN = EDGE_PROPERTIES.map((property) => ({
@@ -267,17 +284,8 @@ export const LOW_LEVEL_PROPERTIES = [
 ]
 
 export const REQUIRED_PROPERTIES = [
-  'rdfAbout',
+  RDF_ABOUT_PROPERTY,
 ]
-
-export const UNIQUE_PROPERTY = 'rdfAbout'
-export const LABEL_PROPERTY = 'rdfsLabel'
-export const LABEL_PROPERTY_DATASET = 'name'
-export const EDGE_LABEL_PROPERTY = 'rdfsLabel'
-export const UPPER_ONTOLOGY = 'upperOntology'
-export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'
-export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
-export const OWL_RESTRICTION = 'owlRestriction'
 
 export const REQUIRED_PREDICATES = [
   'rdfsSubClassOf',

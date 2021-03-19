@@ -24,8 +24,11 @@ import {
 } from 'react-icons/ai'
 import {
   IoGitNetwork,
-  IoBuildSharp
+  IoBuildSharp,
 } from 'react-icons/io5'
+import {
+  IoMdOptions
+} from 'react-icons/io'
 import {
   FaRegHandPointer,
   FaRegCircle,
@@ -38,6 +41,7 @@ import actions from '../store/actions'
 import {
   SIDEBAR_VIEW_ENTRY_SEARCH,
   SIDEBAR_VIEW_GRAPHS,
+  SIDEBAR_VIEW_GRAPH_OPTIONS,
   SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
   SIDEBAR_VIEW_SHORTEST_PATH,
@@ -73,6 +77,7 @@ import NetworkStyling from './NetworkStyling'
 import StructuredSearch from './StructuredSearch'
 import NotesList from './NotesList'
 import EntrySearch from './EntrySearch'
+import NetworkGraphOptions from './NetworkGraphOptions'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -110,6 +115,17 @@ const Sidebar = ({
           }}
         >
           <FiLayers />
+        </Button>
+        <Button
+          id="sidebar-button-graph-options"
+          tooltip={t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
+          className={sidebarView === SIDEBAR_VIEW_GRAPH_OPTIONS ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_GRAPH_OPTIONS)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
+        >
+          <IoMdOptions />
         </Button>
         <Button
           id="sidebar-button-free-text-search"
@@ -316,6 +332,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_GRAPHS && (
                 <NetworkGraphList />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_GRAPH_OPTIONS && (
+                <NetworkGraphOptions />
               )
             }
 

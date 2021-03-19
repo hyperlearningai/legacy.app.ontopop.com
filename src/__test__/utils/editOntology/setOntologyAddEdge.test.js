@@ -11,6 +11,8 @@ import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import setEdgeStyleByProperty from '../../../utils/networkStyling/setEdgeStyleByProperty'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import httpCall from '../../../utils/apiCalls/httpCall'
+import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
@@ -19,6 +21,11 @@ jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/networkStyling/setEdgeStyleByProperty')
 jest.mock('../../../utils/apiCalls/httpCall')
+jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
+jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
+
+checkNodeVisibility.mockImplementation(() => true)
+checkEdgeVisibility.mockImplementation(() => true)
 
 const setStoreState = jest.fn()
 const t = (id) => en[id]

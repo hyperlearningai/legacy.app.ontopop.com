@@ -2,7 +2,14 @@ import { DataSet } from 'vis-data'
 import removeNode from '../../../utils/nodesEdgesUtils/removeNode'
 import store from '../../../store'
 
+const addNumber = jest.fn()
+const nodeId = '12'
+
 describe('removeNode', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should not remove node if not existing', async () => {
     const availableNodes = new DataSet([])
 
@@ -10,7 +17,10 @@ describe('removeNode', () => {
       availableNodes
     })
 
-    await removeNode('node-123')
+    await removeNode({
+      nodeId,
+      addNumber
+    })
 
     expect(availableNodes.length).toEqual(0)
   })
@@ -18,14 +28,17 @@ describe('removeNode', () => {
   it('should remove node if node exists', async () => {
     const availableNodes = new DataSet([
       {
-        id: 'node-123'
+        id: '12'
       }
     ])
     store.getState = () => ({
       availableNodes
     })
 
-    await removeNode('node-123')
+    await removeNode({
+      nodeId,
+      addNumber
+    })
 
     expect(availableNodes.length).toEqual(0)
   })

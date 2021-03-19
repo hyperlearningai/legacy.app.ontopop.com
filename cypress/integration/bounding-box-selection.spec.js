@@ -64,8 +64,8 @@ context('Bounding box selection', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 25')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 17')
 
       // click the bounding box selection icon
       cy.get('#sidebar-button-bounding-box').click()

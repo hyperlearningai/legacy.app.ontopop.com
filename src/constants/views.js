@@ -1,5 +1,6 @@
 export const SIDEBAR_VIEW_ENTRY_SEARCH = 'entrySearch'
 export const SIDEBAR_VIEW_GRAPHS = 'networkGraphs'
+export const SIDEBAR_VIEW_GRAPH_OPTIONS = 'networkGraphOptions'
 export const SIDEBAR_VIEW_FREE_TEXT_SEARCH = 'freeTextSearch'
 export const SIDEBAR_VIEW_STRUCTURED_SEARCH = 'structuredSearch'
 export const SIDEBAR_VIEW_NODES_SELECTION = 'nodesSelection'

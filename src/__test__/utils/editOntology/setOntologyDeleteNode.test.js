@@ -18,6 +18,7 @@ import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
 const setStoreState = jest.fn()
+const toggleFromArrayInKey = jest.fn()
 const t = (id) => en[id]
 const addNumber = jest.fn()
 
@@ -68,6 +69,7 @@ describe('setOntologyDeleteNode', () => {
       addNumber,
       selectedElement,
       setStoreState,
+      toggleFromArrayInKey,
       t
     })
 
@@ -86,6 +88,7 @@ describe('setOntologyDeleteNode', () => {
       addNumber,
       selectedElement,
       setStoreState,
+      toggleFromArrayInKey,
       t
     })
 
@@ -110,11 +113,25 @@ describe('setOntologyDeleteNode', () => {
       addNumber,
       selectedElement,
       setStoreState,
+      toggleFromArrayInKey,
       t
     })
 
     expect(removeEdge).toHaveBeenLastCalledWith(
-      '4093'
+      {
+        addNumber,
+        edge: {
+          edgeId: 4093,
+          from: '12',
+          id: '4093',
+          label: 'Found in',
+          rdfsLabel: 'Found in',
+          role: 'Found in',
+          to: '4000',
+          userDefined: false
+        },
+        toggleFromArrayInKey
+      }
     )
 
     expect(setElementsStyle).toHaveBeenCalledWith()

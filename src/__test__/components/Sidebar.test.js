@@ -4,6 +4,7 @@ import toJson from 'enzyme-to-json'
 import Sidebar from '../../components/Sidebar'
 import {
   SIDEBAR_VIEW_GRAPHS,
+  SIDEBAR_VIEW_GRAPH_OPTIONS,
   SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_EDGES_SELECTION,
   SIDEBAR_VIEW_NODES_SELECTION,
@@ -68,6 +69,17 @@ describe('Sidebar', () => {
     } = setup({
       isSidebarOpen: true,
       sidebarView: SIDEBAR_VIEW_GRAPHS
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPH_OPTIONS', () => {
+    const {
+      component
+    } = setup({
+      isSidebarOpen: true,
+      sidebarView: SIDEBAR_VIEW_GRAPH_OPTIONS
     })
 
     expect(toJson(component)).toMatchSnapshot()

@@ -14,6 +14,8 @@ import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
 import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
+import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 
 const selectedElement = [
   '12'
@@ -29,6 +31,8 @@ jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
+jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
 
 store.getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
@@ -46,6 +50,8 @@ getNode.mockImplementation(() => ({ id: '123' }))
 
 countEdges.mockImplementation(() => 1)
 countNodes.mockImplementation(() => 1)
+checkNodeVisibility.mockImplementation(() => true)
+checkEdgeVisibility.mockImplementation(() => true)
 
 describe('setOntologyRestoreEdge', () => {
   afterEach(() => {

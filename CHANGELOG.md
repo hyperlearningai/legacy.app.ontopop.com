@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.5.0]
 ### Added
+- ONTOLOGY-112 Added network graph options
 - ONTOLOGY-112 Added ability to toggle upper ontology nodes in shortest path view
 - ONTOLOGY-105 Connected with styling API
 - ONTOLOGY-86 Show nodes and edges related to datasets

@@ -64,8 +64,8 @@ context('Node neighbourhood', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the node neighbourhood icon
       cy.get('#sidebar-button-node-neighbourhood').click()
@@ -85,8 +85,8 @@ context('Node neighbourhood', () => {
       cy.get('.node-neighbourhood-button').click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 85')
-      cy.get('.nav-left').should('contain', 'Edges: 222')
+      cy.get('.nav-left').should('contain', 'Nodes: 69')
+      cy.get('.nav-left').should('contain', 'Edges: 168')
     })
   })
 })

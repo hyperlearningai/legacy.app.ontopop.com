@@ -6,7 +6,7 @@ import getNodesFromBoundingBox from './getNodesFromBoundingBox'
  * Update X-Y position of bounding box on mouse down event listener
  * @param  {Object}   params
  * @param  {Object}   params.e                      Canvas DOM event
- * @param  {function} params.setStoreState          setStoreState action
+ * @param  {Function} params.setStoreState          setStoreState action
  * @return { undefined }
 \ */
 const onMouseDown = ({

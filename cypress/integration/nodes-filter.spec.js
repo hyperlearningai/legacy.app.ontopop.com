@@ -64,8 +64,8 @@ context('Nodes filter', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 10')
+      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the nodes filter icon
       cy.get('#sidebar-button-nodes-filter').click()
@@ -89,8 +89,8 @@ context('Nodes filter', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 3')
-      cy.get('.nav-left').should('contain', 'Edges: 2')
+      cy.get('.nav-left').should('contain', 'Nodes: 2')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
     })
   })
 })

@@ -1,20 +1,23 @@
 import store from '../../store'
+import getNode from './getNode'
 
 /**
  * Remove node from graph
- * @param  {String}   nodeId    Node id
+ * @param  {String}     nodeId                Node id
+ * @param  {Function}   params.addNumber      Add number action
  * @return { undefined }
 \ */
-const removeNode = (nodeId) => {
+const removeNode = ({ nodeId, addNumber }) => {
   const {
     availableNodes
   } = store.getState()
 
-  const isNodeVisible = availableNodes.get(nodeId) !== null
+  const isVisible = getNode(nodeId)
 
-  if (isNodeVisible) {
-    availableNodes.remove(nodeId)
-  }
+  if (isVisible === null) return false
+
+  availableNodes.remove(nodeId)
+  addNumber('availableNodesCount', -1)
 }
 
 export default removeNode
