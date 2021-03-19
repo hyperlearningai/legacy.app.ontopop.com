@@ -1,12 +1,14 @@
-import { STYLING_LS } from '../../constants/localStorage'
 import store from '../../store'
+import updateNetworkStyling from './updateNetworkStyling'
 
 /**
- * Save styling to local storage
+ * Save styling to database
  * @return {undefined}
  */
-const saveStyling = ({
-  setSaved
+const saveStyling = async ({
+  setSaved,
+  addNumber,
+  t
 }) => {
   const {
     globalNodeStyling,
@@ -26,9 +28,11 @@ const saveStyling = ({
     stylingEdgeByProperty,
   })
 
-  localStorage.setItem(STYLING_LS, stylingJSON)
-
   setSaved(true)
+
+  await updateNetworkStyling({
+    stylingJSON, addNumber, t
+  })
 
   setTimeout(() => setSaved(false), 5000)
 }

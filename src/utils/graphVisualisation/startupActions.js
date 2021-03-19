@@ -21,7 +21,9 @@ const startupActions = async ({
 }) => {
   // load saved styling options
   loadStyling({
-    setStoreState
+    setStoreState,
+    addNumber,
+    t
   })
 
   // get graph comments

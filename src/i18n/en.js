@@ -57,6 +57,8 @@ export default {
   couldNotCreateSynonym: 'Could not create a synonym!',
   couldNotUpdateSynonym: 'Could not update a synonym!',
   couldNotDeleteSynonym: 'Could not delete a synonym!',
+  couldNotQueryStyles: 'Could not query styles!',
+  couldNotUpdateStyles: 'Could not update styles!',
 
   // node selection
   node: 'Node',
@@ -428,14 +430,6 @@ export default {
   edgeId: 'Edge ID',
   edgeLabel: 'Edge label',
 
-  synonyms: 'Synonyms',
-  synonymsFor: 'Synonyms for',
-
   // api calls
   apiCallNotValid: 'Invalid http request',
-  addNewSynonym: 'Add New Synonym',
-  addSynonym: 'Add Synonym',
-  synonymText: 'Synonym Text',
-  availableSynonyms: 'Available Synonyms',
-  synonymCreated: 'Synonym Created!',
 }
