@@ -49,9 +49,6 @@ const synonymsCreateSynonym = async ({
     data
   } = response
 
-
-  console.log('response', response)
-
   modifiedSynonyms.push(data)
 
   setStoreState(synonymsState, modifiedSynonyms)

@@ -433,7 +433,7 @@ export default {
   // api calls
   apiCallNotValid: 'Invalid http request',
 
-  //synonyms
+  // synonyms
   synonyms: 'Synonyms',
   synonymsFor: 'Synonyms for',
   addNewSynonym: 'Add New Synonym',
