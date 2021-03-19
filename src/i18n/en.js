@@ -432,4 +432,13 @@ export default {
 
   // api calls
   apiCallNotValid: 'Invalid http request',
+
+  //synonyms
+  synonyms: 'Synonyms',
+  synonymsFor: 'Synonyms for',
+  addNewSynonym: 'Add New Synonym',
+  addSynonym: 'Add Synonym',
+  synonymText: 'Synonym Text',
+  availableSynonyms: 'Available Synonyms',
+  synonymCreated: 'Synonym Created!',
 }
