@@ -1,5 +1,7 @@
 import { NODE_TYPE, UPPER_ONTOLOGY } from '../../constants/graph'
 import store from '../../store'
+import checkValidProperties from './checkValidProperties'
+import checkVisibilityByProperty from './checkVisibilityByProperty'
 
 /**
  * Check node visibility
@@ -21,6 +23,7 @@ const checkNodeVisibility = ({
   const {
     isUpperOntologyVisible,
     isDatasetVisible,
+    hiddenNodesProperties,
   } = graphData[currentGraph]
 
   let isVisible = true
@@ -31,6 +34,19 @@ const checkNodeVisibility = ({
 
   if (isVisible && !isDatasetVisible) {
     isVisible = classesFromApiBackup[nodeId][NODE_TYPE] !== 'dataset'
+  }
+
+  if (isVisible) {
+    const properties = checkValidProperties({
+      properties: hiddenNodesProperties
+    })
+
+    if (properties.length > 0) {
+      isVisible = checkVisibilityByProperty({
+        element: classesFromApiBackup[nodeId],
+        properties
+      })
+    }
   }
 
   if (!isVisible) {

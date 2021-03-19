@@ -63,25 +63,123 @@ context('Network graph options', () => {
 
       cy.get('#sidebar-button-graph-options').click()
 
-      // cy.wait(3000)
-
       // Check number of nodes and edges at first loading
       cy.get('.nav-left').should('contain', 'Nodes: 22')
       cy.get('.nav-left').should('contain', 'Edges: 18')
-      // cy.get('.nav-left').should('contain', 'Nodes: 200')
-      // cy.get('.nav-left').should('contain', 'Edges: 517')
 
-      // switch 3 main optinos
+      // switch 3 main options
       cy.get('#upper-ontology-checkbox').click()
       cy.get('#subclass-checkbox').click()
       cy.get('#dataset-checkbox').click()
 
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
-      // cy.wait(13000)
 
       cy.get('.nav-left').should('contain', 'Nodes: 23')
       cy.get('.nav-left').should('contain', 'Edges: 18')
+
+      // Add nodes filters
+      cy.get('#subclass-checkbox').click()
+
+      cy.get('.p-accordion').eq(0).click()
+
+      // open first filter
+      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
+        .find('.p-accordion-tab')
+        .eq(0)
+        .click()
+
+      // fill in filter and remove
+      cy.get('.value-input').type('cond')
+
+      cy.get('.graph-options-button-delete').click()
+
+      // fill in first filter
+      cy.get('.logic-select').find('.p-button').eq(1).click()
+
+      cy.get('.property-select').find('.p-dropdown-trigger')
+        .click()
+
+      cy.get('.property-select').find('.p-dropdown-item')
+        .eq(18)
+        .click({ force: true })
+
+      cy.get('.operation-select').find('.p-dropdown-trigger')
+        .click()
+
+      cy.get('.operation-select').find('.p-dropdown-item')
+        .eq(0)
+        .click({ force: true })
+
+      cy.get('.value-input').type('in')
+
+      // add subfilter
+      cy.get('.add-delete-buttons').find('.add-property').click()
+
+      cy.get('.value-input').eq(1).type('in')
+
+      cy.get('.add-delete-buttons').eq(1).find('.delete-property').click()
+
+      // add new filter and delete
+      cy.get('.graph-options-button-add').click()
+
+      // save and check new nodes and edges count
+      cy.get('#network-graph-options-save').click()
+
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 3')
+
+      // Add edges filters
+      cy.get('.p-accordion').find('a').eq(0)
+        .click({ force: true })
+      cy.get('.p-accordion').find('a').eq(3)
+        .click({ force: true })
+
+      // open first filter
+      cy.get('.p-accordion').eq(2)
+        .find('.p-accordion-tab')
+        .eq(0)
+        .click()
+
+      // fill in filter and remove
+      cy.get('.value-input').type('cond')
+
+      cy.get('.graph-options-button-delete').click()
+
+      // fill in first filter
+      cy.get('.logic-select').find('.p-button').eq(1).click()
+
+      cy.get('.property-select').find('.p-dropdown-trigger')
+        .click()
+
+      cy.get('.property-select').find('.p-dropdown-item')
+        .eq(1)
+        .click({ force: true })
+
+      cy.get('.operation-select').find('.p-dropdown-trigger')
+        .click()
+
+      cy.get('.operation-select').find('.p-dropdown-item')
+        .eq(2)
+        .click({ force: true })
+
+      cy.get('.value-input').type('of')
+
+      // add subfilter
+      cy.get('.add-delete-buttons').find('.add-property').click()
+
+      cy.get('.value-input').eq(1).type('of')
+
+      cy.get('.add-delete-buttons').eq(1).find('.delete-property').click()
+
+      // add new filter and delete
+      cy.get('.graph-options-button-add').click()
+
+      // save and check new nodes and edges count
+      cy.get('#network-graph-options-save').click()
+
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 0')
     })
   })
 })

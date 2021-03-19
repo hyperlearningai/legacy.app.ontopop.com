@@ -9,6 +9,8 @@ import toggleElements from './toggleElements'
  * @param  {Function} params.toggleFromSubArray        toggleFromSubArray action
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Function} params.toggleFromArrayInKey      toggleFromArrayInKey action
+ * @param  {Object}   params.hiddenNodesProperties     Properties to hide nodes
+ * @param  {Object}   params.hiddenEdgesProperties     Properties to hide edges
  * @param  {Boolean}  params.isUpperOntologyVisible    Show upper ontology flag
  * @param  {Boolean}  params.isSubClassEdgeVisible     Show subclass edges flag
  * @param  {Boolean}  params.isDatasetVisible          Show dataset nodes flag
@@ -18,6 +20,8 @@ const setNetworkGraphOptions = ({
   isUpperOntologyVisible,
   isSubClassEdgeVisible,
   isDatasetVisible,
+  hiddenNodesProperties,
+  hiddenEdgesProperties,
   addToObject,
   toggleFromSubArray,
   addNumber,
@@ -29,11 +33,14 @@ const setNetworkGraphOptions = ({
     graphData
   } = store.getState()
 
-  const currentGraphObject = JSON.parse(JSON.stringify(graphData[currentGraph]))
-
-  currentGraphObject.isUpperOntologyVisible = isUpperOntologyVisible
-  currentGraphObject.isSubClassEdgeVisible = isSubClassEdgeVisible
-  currentGraphObject.isDatasetVisible = isDatasetVisible
+  const currentGraphObject = {
+    ...graphData[currentGraph],
+    isUpperOntologyVisible,
+    isSubClassEdgeVisible,
+    isDatasetVisible,
+    hiddenNodesProperties,
+    hiddenEdgesProperties,
+  }
 
   addToObject('graphData', currentGraph, currentGraphObject)
 

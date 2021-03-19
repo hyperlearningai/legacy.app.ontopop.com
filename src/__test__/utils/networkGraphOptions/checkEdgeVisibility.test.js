@@ -29,7 +29,8 @@ describe('checkEdgeVisibility', () => {
           type: ALGO_TYPE_FULL,
           isUpperOntologyVisible: false,
           isSubClassEdgeVisible: false,
-          isDatasetVisible: false
+          isDatasetVisible: false,
+          hiddenEdgesProperties: {}
         }
       },
     }))
@@ -60,7 +61,8 @@ describe('checkEdgeVisibility', () => {
           type: ALGO_TYPE_FULL,
           isUpperOntologyVisible: false,
           isSubClassEdgeVisible: false,
-          isDatasetVisible: false
+          isDatasetVisible: false,
+          hiddenEdgesProperties: {}
         }
       },
     }))
@@ -72,6 +74,49 @@ describe('checkEdgeVisibility', () => {
 
     expect(toggleFromSubArray).toHaveBeenCalledTimes(0)
     expect(output).toEqual(true)
+  })
+
+  it('should work correctly if subclass visible and hiddenEdgesProperties', async () => {
+    const edgeId = '12'
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type: ALGO_TYPE_FULL,
+          isUpperOntologyVisible: false,
+          isSubClassEdgeVisible: true,
+          isDatasetVisible: false,
+          hiddenEdgesProperties: {
+            0: {
+              type: 'and',
+              properties: {
+                0: {
+                  property: 'rdfsLabel',
+                  operation: 'equal',
+                  value: 'Governed by'
+                }
+              }
+            }
+          }
+        }
+      },
+    }))
+
+    const output = await checkEdgeVisibility({
+      edgeId,
+      toggleFromSubArray
+    })
+
+    expect(toggleFromSubArray).toHaveBeenCalledWith(
+      'graphData',
+      currentGraph,
+      'hiddenEdges',
+      edgeId
+    )
+    expect(output).toEqual(false)
   })
 
   it('should work correctly if subclass visible and is subclass', async () => {
@@ -86,7 +131,8 @@ describe('checkEdgeVisibility', () => {
           type: ALGO_TYPE_FULL,
           isUpperOntologyVisible: false,
           isSubClassEdgeVisible: true,
-          isDatasetVisible: false
+          isDatasetVisible: false,
+          hiddenEdgesProperties: {}
         }
       },
     }))

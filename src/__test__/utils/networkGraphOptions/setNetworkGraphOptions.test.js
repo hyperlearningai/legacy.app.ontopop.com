@@ -2,6 +2,7 @@ import setNetworkGraphOptions from '../../../utils/networkGraphOptions/setNetwor
 import store from '../../../store'
 import { ALGO_TYPE_FULL } from '../../../constants/algorithms'
 import toggleElements from '../../../utils/networkGraphOptions/toggleElements'
+import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../../../constants/graph'
 
 const addToObject = jest.fn()
 const toggleFromSubArray = jest.fn()
@@ -20,7 +21,9 @@ store.getState = jest.fn().mockImplementation(() => ({
       type: ALGO_TYPE_FULL,
       isUpperOntologyVisible: false,
       isSubClassEdgeVisible: true,
-      isDatasetVisible: false
+      isDatasetVisible: false,
+      hiddenNodesProperties: {},
+      hiddenEdgesProperties: {},
     }
   }
 }))
@@ -34,11 +37,15 @@ describe('setNetworkGraphOptions', () => {
     const isUpperOntologyVisible = true
     const isSubClassEdgeVisible = false
     const isDatasetVisible = true
+    const hiddenNodesProperties = DEFAULT_HIDDEN_ELEMENT_PROPERTY
+    const hiddenEdgesProperties = DEFAULT_HIDDEN_ELEMENT_PROPERTY
 
     await setNetworkGraphOptions({
       isUpperOntologyVisible,
       isSubClassEdgeVisible,
       isDatasetVisible,
+      hiddenNodesProperties,
+      hiddenEdgesProperties,
       addToObject,
       toggleFromSubArray,
       addNumber,
@@ -53,9 +60,11 @@ describe('setNetworkGraphOptions', () => {
         label: 'Main',
         noDelete: true,
         type: ALGO_TYPE_FULL,
-        isUpperOntologyVisible: true,
-        isSubClassEdgeVisible: false,
-        isDatasetVisible: true
+        isUpperOntologyVisible,
+        isSubClassEdgeVisible,
+        isDatasetVisible,
+        hiddenNodesProperties,
+        hiddenEdgesProperties
       }
     )
     expect(toggleElements).toHaveBeenCalledWith({

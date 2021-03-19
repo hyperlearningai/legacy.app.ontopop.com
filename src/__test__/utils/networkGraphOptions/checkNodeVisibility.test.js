@@ -28,7 +28,8 @@ describe('checkNodeVisibility', () => {
           type: ALGO_TYPE_FULL,
           isUpperOntologyVisible: false,
           isSubClassEdgeVisible: true,
-          isDatasetVisible: true
+          isDatasetVisible: true,
+          hiddenNodesProperties: {}
         }
       },
     }))
@@ -59,7 +60,8 @@ describe('checkNodeVisibility', () => {
           type: ALGO_TYPE_FULL,
           isUpperOntologyVisible: false,
           isSubClassEdgeVisible: true,
-          isDatasetVisible: true
+          isDatasetVisible: true,
+          hiddenNodesProperties: {}
         }
       },
     }))
@@ -85,7 +87,51 @@ describe('checkNodeVisibility', () => {
           type: ALGO_TYPE_FULL,
           isUpperOntologyVisible: true,
           isSubClassEdgeVisible: true,
-          isDatasetVisible: false
+          isDatasetVisible: false,
+          hiddenNodesProperties: {}
+        }
+      },
+    }))
+
+    const output = await checkNodeVisibility({
+      nodeId,
+      toggleFromSubArray
+    })
+
+    expect(toggleFromSubArray).toHaveBeenCalledWith(
+      'graphData',
+      currentGraph,
+      'hiddenNodes',
+      nodeId
+    )
+    expect(output).toEqual(false)
+  })
+
+  it('should work correctly if dataset visible and hiddenNodesProperties', async () => {
+    const nodeId = '1813'
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type: ALGO_TYPE_FULL,
+          isUpperOntologyVisible: true,
+          isSubClassEdgeVisible: true,
+          isDatasetVisible: true,
+          hiddenNodesProperties: {
+            0: {
+              type: 'and',
+              properties: {
+                0: {
+                  operation: 'equal',
+                  value: 'test',
+                  property: 'rdfsLabel'
+                }
+              }
+            }
+          }
         }
       },
     }))
@@ -116,7 +162,8 @@ describe('checkNodeVisibility', () => {
           type: ALGO_TYPE_FULL,
           isUpperOntologyVisible: true,
           isSubClassEdgeVisible: true,
-          isDatasetVisible: false
+          isDatasetVisible: false,
+          hiddenNodesProperties: {}
         }
       },
     }))
@@ -142,7 +189,8 @@ describe('checkNodeVisibility', () => {
           type: ALGO_TYPE_FULL,
           isUpperOntologyVisible: true,
           isSubClassEdgeVisible: true,
-          isDatasetVisible: false
+          isDatasetVisible: false,
+          hiddenNodesProperties: {}
         }
       },
     }))

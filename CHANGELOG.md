@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.5.0]
 ### Added
+- ONTOLOGY-112 Added possibility to hide nodes and edges based on specific properties on network graph options
 - ONTOLOGY-112 Added network graph options
 - ONTOLOGY-112 Added ability to toggle upper ontology nodes in shortest path view
 - ONTOLOGY-105 Connected with styling API
@@ -27,6 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-126 Added cypress end-to-end tests
 
 ### Changed
+- ONTOLOGY-112 Updated node and edge removal logic
 - ONTOLOGY-112 Used sidebar button IDs rather than eq in cypress tests to allow buttons reordering
 
 ### Deprecated

@@ -101,6 +101,32 @@
     }
   }
 
+  &-property {
+    &-form {
+      &-property {
+        padding: 10px 0;
+        border-top: 1px solid $mid-grey;
+        border-bottom: 1px solid $mid-grey;
+
+        .p-dropdown,
+        .p-dropdown-panel,
+        .p-dropdown-items,
+        .p-dropdown-items-wrapper,
+        .p-input,
+        .p-inputtext {
+          width: 100%;
+        }
+
+        .p-dropdown-item {
+          width: 100%;
+          word-break: break-word;
+          height: auto;
+          white-space: normal;
+        }
+      }
+    }
+  }
+
   &-button {
     width: 100%;
 

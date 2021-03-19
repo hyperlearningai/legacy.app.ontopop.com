@@ -219,10 +219,25 @@ export const EDGE_STYLING_PROPERTIES = {
   },
 }
 
+export const DEFAULT_HIDDEN_ELEMENT_SUBPROPERTY = {
+  property: '',
+  operation: 'includes',
+  value: ''
+}
+
+export const DEFAULT_HIDDEN_ELEMENT_PROPERTY = {
+  type: 'and',
+  properties: {
+    0: DEFAULT_HIDDEN_ELEMENT_SUBPROPERTY
+  }
+}
+
 export const DEFAULT_GRAPH_VISUALISATION_OPTIONS = {
   isUpperOntologyVisible: false,
   isSubClassEdgeVisible: true,
   isDatasetVisible: false,
+  hiddenNodesProperties: { 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY },
+  hiddenEdgesProperties: { 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY },
   hiddenNodes: [],
   hiddenEdges: []
 }

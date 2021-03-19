@@ -84,9 +84,6 @@ context('Network styling', () => {
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
 
-      // open all tabs and select different items
-      cy.get('.p-accordion')
-
       // open node styling
       cy.get('.p-accordion').eq(0).click()
 
@@ -308,9 +305,6 @@ context('Network styling', () => {
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
 
-      // open all tabs and select different items
-      cy.get('.p-accordion')
-
       // open node styling
       cy.get('.p-accordion').eq(0).click()
 
@@ -509,9 +503,6 @@ context('Network styling', () => {
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
 
-      // open all tabs and select different items
-      cy.get('.p-accordion')
-
       // open node styling
       cy.get('.p-accordion').eq(0).click()
 
@@ -656,9 +647,6 @@ context('Network styling', () => {
 
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
-
-      // open all tabs and select different items
-      cy.get('.p-accordion')
 
       // open edge styling
       cy.get('.p-accordion').eq(1).click()
@@ -865,9 +853,6 @@ context('Network styling', () => {
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
 
-      // open all tabs and select different items
-      cy.get('.p-accordion')
-
       // open edge styling
       cy.get('.p-accordion').eq(1).click()
 
@@ -1037,9 +1022,6 @@ context('Network styling', () => {
 
       // click the network styling icon
       cy.get('#sidebar-button-view-styling').click()
-
-      // open all tabs and select different items
-      cy.get('.p-accordion')
 
       // open edge styling
       cy.get('.p-accordion').eq(1).click()

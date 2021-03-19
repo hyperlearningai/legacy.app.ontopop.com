@@ -435,5 +435,11 @@ export default {
   // network graph options
   showSubclassRelationships: 'Show subclass relationships',
   showDatasets: 'Show datasets',
-  chooseGraphOptions: 'Choose global or specific visualisation options for the current graph'
+  chooseGraphOptions: 'Choose global or specific visualisation options for the current graph',
+  hideElementsByProperties: 'Hide elements by properties',
+  notContains: 'Not contains',
+  notEqual: 'Not equal',
+  chooseFilter: 'Choose filter',
+  selectLogic: 'Select logic',
+  insertText: 'Insert text'
 }

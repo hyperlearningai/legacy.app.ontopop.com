@@ -1,22 +1,22 @@
 /* eslint react/no-array-index-key:0 */
+/* eslint react/jsx-key:0 */
 import { useState } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
-import { InputText } from 'primereact/inputtext'
-import { Dropdown } from 'primereact/dropdown'
-import { SelectButton } from 'primereact/selectbutton'
+import { Accordion, AccordionTab } from 'primereact/accordion'
 import { Checkbox } from 'primereact/checkbox'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
+import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
 import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraphOptions'
+import HideElementsByPropertyForm from './HideElementsByPropertyForm'
 
 const NetworkGraphOptions = ({
   toggleFromSubArray,
   addNumber,
   addToObject,
-  annotationProperties,
   currentGraph,
   graphData,
   toggleFromArrayInKey,
@@ -27,38 +27,16 @@ const NetworkGraphOptions = ({
   const {
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
-    isDatasetVisible
+    isDatasetVisible,
+    hiddenNodesProperties,
+    hiddenEdgesProperties
   } = graphData[currentGraph]
 
-  const defaultNodeFilter = {
-    property: '',
-    value: '',
-  }
-
-  const checkEmptyRow = (filters) => filters.filter((filter) => filter.property === '' && filter.value === '').length > 0
-
-  const [filters, setFilters] = useState([defaultNodeFilter])
-  const [queryLogic, setQueryLogic] = useState('and')
   const [isUpperOntologyVisibleLocal, setUpperOntologyVisibleLocal] = useState(isUpperOntologyVisible)
   const [isSubClassEdgeVisibleLocal, setSubClassEdgeVisibleLocal] = useState(isSubClassEdgeVisible)
   const [isDatasetVisibleLocal, setDatasetVisibleLocal] = useState(isDatasetVisible)
-
-  const logicButtons = [{
-    value: 'and',
-    label: t('and'),
-    icon: 'pi-plus'
-  }, {
-    value: 'or',
-    label: t('or'),
-    icon: 'pi-minus'
-  }]
-
-  const itemTemplate = (option) => (
-    <span className="graph-options-selection-row-select-option">
-      <i className={`pi ${option.icon}`} />
-      {` ${option.label}`}
-    </span>
-  )
+  const [nodesProperties, setNodesProperties] = useState(hiddenNodesProperties)
+  const [edgesProperties, setEdgesProperties] = useState(hiddenEdgesProperties)
 
   return (
     <>
@@ -101,119 +79,101 @@ const NetworkGraphOptions = ({
           </label>
         </div>
 
-        <div
-          className="graph-options-select-button"
-        >
-          <label htmlFor="logic-select">
-            {t('chooseLogic')}
-          </label>
-          <SelectButton
-            id="logic-select"
-            value={queryLogic}
-            options={logicButtons}
-            onChange={(e) => {
-              setQueryLogic(e.value)
-            }}
-            itemTemplate={itemTemplate}
-          />
-        </div>
+        <div className="graph-options-text">{t('hideElementsByProperties')}</div>
 
         <div
           className="graph-options-selection"
         >
-          {
-            filters.map(
-              (nodefilter, index) => {
-                const selectId = `graph-options-property-${index}`
-                const inputTextId = `graph-options-value-${index}`
-
-                return (
-                  <div
-                    className="graph-options-selection-row"
-                    key={`graph-options-${index}`}
-                  >
-                    {
-                      filters.length > 1 && (
-                        <div className="p-field remove-button p-col-12">
-                          <Button
-                            icon="pi pi-times"
-                            className="p-button-rounded p-button-danger"
-                            tooltip={t('removeFilter')}
-                            onClick={() => {
-                              const newNodeFilter = filters.slice()
-
-                              newNodeFilter.splice(index, 1)
-
-                              if (!checkEmptyRow(newNodeFilter)) {
-                                newNodeFilter.push(JSON.parse(JSON.stringify(defaultNodeFilter)))
-                              }
-
-                              setFilters(newNodeFilter)
-                            }}
-                          />
-                        </div>
-                      )
-                    }
-
-                    <div className="p-field p-col-12">
-                      <label htmlFor={selectId}>{t('selectProperty')}</label>
-                      <Dropdown
-                        id={selectId}
-                        value={filters[index].property}
-                        options={annotationProperties}
-                        filter
-                        onChange={(e) => {
-                          const newFilter = {
-                            ...filters[index],
-                            property: e.value
-                          }
-
-                          let newNodesFilters = [
-                            ...filters.slice(0, index),
-                            newFilter,
-                            ...filters.slice(index + 1),
-                          ]
-
-                          if (!checkEmptyRow(newNodesFilters)) {
-                            newNodesFilters = [
-                              ...newNodesFilters,
-                              JSON.parse(JSON.stringify(defaultNodeFilter))
-                            ]
-                          }
-
-                          setFilters(newNodesFilters)
-                        }}
-                        className="m-t-10"
-                        placeholder={t('selectProperty')}
+          <Accordion>
+            <AccordionTab
+              id="nodes-accordion"
+              header={t('nodes')}
+            >
+              <Accordion>
+                {
+                  Object.keys(nodesProperties).length > 0
+                  && Object.keys(nodesProperties).map((nodePropertyIndex) => (
+                    <AccordionTab
+                      header={`${t('filter')} ${parseInt(nodePropertyIndex) + 1}`}
+                    >
+                      <HideElementsByPropertyForm
+                        index={parseInt(nodePropertyIndex)}
+                        elementProperties={nodesProperties}
+                        elementType="node"
+                        setProperty={setNodesProperties}
                       />
-                    </div>
+                    </AccordionTab>
+                  ))
+                }
+              </Accordion>
+              <div className="graph-options-button-wrapper">
+                <Button
+                  label={t('add')}
+                  icon="pi pi-plus"
+                  className="graph-options-button graph-options-button-add"
+                  tooltip={t('add')}
+                  iconPos="right"
+                  tooltipOptions={{
+                    position: 'top'
+                  }}
+                  onClick={() => {
+                    if (Object.keys(nodesProperties).length === 0) return setNodesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
 
-                    <div className="p-field p-col-12 m-t-20">
-                      <label htmlFor={inputTextId}>{t('searchString')}</label>
-                      <InputText
-                        id={inputTextId}
-                        value={filters[index].value}
-                        placeholder={t('searchString')}
-                        onChange={(e) => {
-                          const newFilter = {
-                            ...filters[index],
-                            value: e.target.value
-                          }
+                    const nextIndex = Object.keys(nodesProperties).length
 
-                          setFilters([
-                            ...filters.slice(0, index),
-                            newFilter,
-                            ...filters.slice(index + 1)
-                          ])
-                        }}
-                        className="m-t-10"
+                    setNodesProperties({
+                      ...nodesProperties,
+                      [nextIndex]: DEFAULT_HIDDEN_ELEMENT_PROPERTY
+                    })
+                  }}
+                />
+              </div>
+            </AccordionTab>
+            <AccordionTab
+              id="edges-accordion"
+              header={t('edges')}
+            >
+              <Accordion>
+                {
+                  Object.keys(edgesProperties).length > 0
+                  && Object.keys(edgesProperties).map((edgePropertyIndex) => (
+                    <AccordionTab
+                      header={`${t('filter')} ${parseInt(edgePropertyIndex) + 1}`}
+                    >
+                      <HideElementsByPropertyForm
+                        index={parseInt(edgePropertyIndex)}
+                        elementProperties={edgesProperties}
+                        elementType="edge"
+                        setProperty={setEdgesProperties}
                       />
-                    </div>
-                  </div>
-                )
-              }
-            )
-          }
+                    </AccordionTab>
+                  ))
+                }
+              </Accordion>
+              <div className="graph-options-button-wrapper">
+                <Button
+                  label={t('add')}
+                  tooltip={t('add')}
+                  className="graph-options-button graph-options-button-add"
+                  iconPos="right"
+                  tooltipOptions={{
+                    position: 'top'
+                  }}
+                  icon="pi pi-plus"
+                  onClick={() => {
+                    if (Object.keys(edgesProperties).length === 0) return setEdgesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
+
+                    const nextIndex = Object.keys(edgesProperties).length
+
+                    setEdgesProperties({
+                      ...edgesProperties,
+                      [nextIndex]: DEFAULT_HIDDEN_ELEMENT_PROPERTY
+                    })
+                  }}
+                />
+              </div>
+            </AccordionTab>
+          </Accordion>
         </div>
 
         <div className="graph-options-button-wrapper">
@@ -228,6 +188,8 @@ const NetworkGraphOptions = ({
               isUpperOntologyVisible: isUpperOntologyVisibleLocal,
               isSubClassEdgeVisible: isSubClassEdgeVisibleLocal,
               isDatasetVisible: isDatasetVisibleLocal,
+              hiddenNodesProperties: nodesProperties,
+              hiddenEdgesProperties: edgesProperties,
               addToObject,
               toggleFromSubArray,
               addNumber,
@@ -246,7 +208,6 @@ NetworkGraphOptions.propTypes = {
   currentGraph: PropTypes.string.isRequired,
   graphData: PropTypes.shape().isRequired,
   addToObject: PropTypes.func.isRequired,
-  annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   toggleFromSubArray: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
   toggleFromArrayInKey: PropTypes.func.isRequired,
@@ -254,11 +215,9 @@ NetworkGraphOptions.propTypes = {
 }
 
 const mapToProps = ({
-  annotationProperties,
   currentGraph,
   graphData
 }) => ({
-  annotationProperties,
   currentGraph,
   graphData
 })
