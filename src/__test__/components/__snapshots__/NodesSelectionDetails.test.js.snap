@@ -5,9 +5,11 @@ exports[`NodesSelectionDetails should match snapshot  1`] = `
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],

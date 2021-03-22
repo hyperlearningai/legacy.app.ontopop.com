@@ -5,9 +5,11 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -29,9 +31,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -53,9 +57,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -77,9 +83,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -101,9 +109,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -125,9 +135,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_O
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -149,9 +161,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_ENTRY_
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -173,9 +187,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -197,9 +213,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_T
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -221,9 +239,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPH_
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -245,9 +265,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -269,9 +291,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -293,9 +317,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -317,9 +343,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -341,9 +369,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -365,9 +395,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -389,9 +421,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STRUCT
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -413,9 +447,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STYLIN
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -437,9 +473,11 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SYNONY
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],

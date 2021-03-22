@@ -5,9 +5,11 @@ exports[`EditOntologyRestoreNode should match snapshot when type edge and no opt
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -32,9 +34,11 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and no opt
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -59,9 +63,11 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and option
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],

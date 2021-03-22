@@ -5,9 +5,11 @@ exports[`SynonymsList should match snapshot when synonyms empty 1`] = `
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -5298,9 +5300,11 @@ exports[`SynonymsList should match snapshot with synonym 1`] = `
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],

@@ -5,9 +5,11 @@ exports[`EditOntologyForm should match snapshot when add operation 1`] = `
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
@@ -31,9 +33,11 @@ exports[`EditOntologyForm should match snapshot when update operation 1`] = `
   actions={
     Object {
       "addNumber": [Function],
+      "addOrAppendToObject": [Function],
       "addSubValueToObject": [Function],
       "addToArray": [Function],
       "addToObject": [Function],
+      "addValueToSubkeyObject": [Function],
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],

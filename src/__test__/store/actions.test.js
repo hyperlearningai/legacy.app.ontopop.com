@@ -2,6 +2,103 @@ import { DataSet } from 'vis-data'
 import actions from '../../store/actions'
 
 describe('Actions', () => {
+  it('addValueToSubkeyObject should work correctly', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'new'
+
+    const state = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: 'test'
+        }
+      }
+    }
+
+    const newState = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: 'new'
+        }
+      }
+    }
+
+    expect(actions.addValueToSubkeyObject(state, keys, value)).toEqual(newState)
+  })
+
+  it('addValueToSubkeyObject should work correctly when single value', () => {
+    const keys = [
+      'parent',
+    ]
+
+    const value = 'test'
+
+    const state = {
+      parent: ''
+    }
+
+    const newState = {
+      parent: 'test'
+    }
+
+    expect(actions.addValueToSubkeyObject(state, keys, value)).toEqual(newState)
+  })
+
+  it('addOrAppendToObject should work correctly when single value', () => {
+    const keys = [
+      'parent',
+    ]
+    const value = 1
+
+    const state = {
+      parent: 0
+    }
+
+    const newState = {
+      parent: 1
+    }
+
+    expect(actions.addOrAppendToObject(state, keys, value)).toEqual(newState)
+  })
+
+  it('addOrAppendToObject should work correctly', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 1
+
+    const state = {
+      parent: {
+        otherChild: 10,
+        child: {
+          otherSubchild: 10,
+          subchild: 0
+        }
+      }
+    }
+
+    const newState = {
+      parent: {
+        otherChild: 10,
+        child: {
+          otherSubchild: 10,
+          subchild: 1
+        }
+      }
+    }
+
+    expect(actions.addOrAppendToObject(state, keys, value)).toEqual(newState)
+  })
+
   it('toggleFromSubArray should work correctly when pushing the value', () => {
     const stateKey = 'graphData'
     const key = 'graph-0'

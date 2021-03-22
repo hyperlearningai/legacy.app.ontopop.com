@@ -1,5 +1,84 @@
 export default {
   /**
+   * Add value to subkey object
+   * @param  {Object} state     Store state
+   * @param  {Array}  keys       Object keys in nested order
+   * @param  {*}      value     new subkey value
+   * @return {undefined}
+   */
+  addValueToSubkeyObject: (state, keys, value) => {
+    const newObject = JSON.parse(JSON.stringify(state))
+
+    if (keys.length < 2) {
+      const key = keys[0]
+
+      return {
+        [key]: value
+      }
+    }
+
+    const subValues = [newObject]
+
+    keys.map((key, index) => {
+      if (index > keys.length - 2) return false
+
+      if (index > keys.length - 3) {
+        const nextKey = keys[index + 1]
+
+        subValues[index][key] = {
+          ...subValues[index][key],
+          [nextKey]: value
+        }
+
+        return subValues.push(subValues[index][key])
+      }
+
+      return subValues.push(subValues[index][key])
+    })
+
+    return newObject
+  },
+  /**
+   * Add number to key
+   * @param  {Object} state     Store state
+   * @param  {Array} keys       Object keys in nested order
+   * @param  {*} value          new subkey value
+   * @return {undefined}
+   */
+  addOrAppendToObject: (state, keys, value) => {
+    const newObject = JSON.parse(JSON.stringify(state))
+
+    if (keys.length < 2) {
+      const key = keys[0]
+
+      return {
+        [key]: state[key] + value
+      }
+    }
+
+    const subValues = [newObject]
+
+    keys.map((key, index) => {
+      if (index > keys.length - 2) return false
+
+      if (index > keys.length - 3) {
+        const nextKey = keys[index + 1]
+
+        subValues[index][key] = {
+          ...subValues[index][key],
+          [nextKey]: subValues[index][key][nextKey] + value
+        }
+
+        return subValues.push(subValues[index][key])
+      }
+
+      return subValues.push(subValues[index][key])
+    })
+
+    return newObject
+  },
+
+  /**
    * Add number to key
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update
