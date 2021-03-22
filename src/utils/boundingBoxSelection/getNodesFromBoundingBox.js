@@ -6,7 +6,7 @@ import updateNodes from '../nodesEdgesUtils/updateNodes'
 /**
  * Get nodes inside/outside bounding box
  * @param  {Object}   params
- * @param  {function} params.setStoreState          setStoreState action
+ * @param  {Function} params.setStoreState          setStoreState action
  * @return { undefined }
 \ */
 const getNodesFromBoundingBox = async ({

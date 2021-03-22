@@ -6,7 +6,7 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyRestoreNode'
-import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
@@ -17,10 +17,15 @@ import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import {
-  CLICK_NODE_BACKGROUND, EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED, EDGE_LABEL_PROPERTY, HIGHLIGHT_NODE_BORDER, HOVER_NODE_BACKGROUND, HOVER_NODE_BORDER, LABEL_PROPERTY, NODE_BACKGROUND, NODE_BORDER, NODE_DEFAULT_SHAPE, NODE_TEXT_COLOR
+  CLICK_NODE_BACKGROUND, EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED,
+  EDGE_LABEL_PROPERTY, HIGHLIGHT_NODE_BORDER, HOVER_NODE_BACKGROUND,
+  HOVER_NODE_BORDER, LABEL_PROPERTY, NODE_BACKGROUND, NODE_BORDER,
+  NODE_DEFAULT_SHAPE, NODE_TEXT_COLOR
 } from '../../../constants/graph'
 import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
+import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 
 const selectedElement = ['100', '40']
 const deletedNodes = ['100', '33', '21', '40']
@@ -39,6 +44,8 @@ jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
+jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
 
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApiBackup: classesFromApi,
@@ -94,6 +101,8 @@ store.getState = jest.fn().mockImplementation(() => ({
 
 countEdges.mockImplementation(() => 1)
 countNodes.mockImplementation(() => 1)
+checkNodeVisibility.mockImplementation(() => true)
+checkEdgeVisibility.mockImplementation(() => true)
 
 describe('setOntologyRestoreNode', () => {
   afterEach(() => {

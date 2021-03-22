@@ -8,7 +8,6 @@ import httpCall from '../apiCalls/httpCall'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import countEdges from '../nodesEdgesUtils/countEdges'
 import countNodes from '../nodesEdgesUtils/countNodes'
-import removeEdge from '../nodesEdgesUtils/removeEdge'
 import removeNode from '../nodesEdgesUtils/removeNode'
 import showNotification from '../notifications/showNotification'
 
@@ -19,6 +18,7 @@ import showNotification from '../notifications/showNotification'
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Function}       params.addToObject                Add to object action
+ * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey funciton
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
@@ -26,6 +26,7 @@ const setOntologyDeleteNode = async ({
   addNumber,
   selectedElement,
   setStoreState,
+  toggleFromArrayInKey,
   t
 }) => {
   const {
@@ -95,10 +96,11 @@ const setOntologyDeleteNode = async ({
         const connections = newNodesEdges[nodeId]
 
         connections.map((connection) => {
+          const edge = objectPropertiesFromApi[connection]
           const {
             from,
             to
-          } = objectPropertiesFromApi[connection]
+          } = edge
 
           const isFrom = from === nodeId
           const nodeIdToCheck = isFrom ? to : from
@@ -119,9 +121,6 @@ const setOntologyDeleteNode = async ({
             newEdgesPerNode[nodeIdToCheck] = updatedConnections
           }
 
-          // remove edge from graph
-          removeEdge(connection)
-
           // add to deleted connections
           if (!newDeletedEdges.includes(connection)) {
             newDeletedEdges.push(connection)
@@ -139,7 +138,11 @@ const setOntologyDeleteNode = async ({
 
       delete newClassesFromApi[nodeId]
 
-      removeNode(nodeId)
+      removeNode({
+        nodeId,
+        addNumber,
+        toggleFromArrayInKey
+      })
     }
   }
 

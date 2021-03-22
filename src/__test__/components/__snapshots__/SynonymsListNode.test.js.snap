@@ -11,6 +11,8 @@ exports[`SynonymsListNode should match snapshot when no user 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -5316,6 +5318,8 @@ exports[`SynonymsListNode should match snapshot when same user 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}

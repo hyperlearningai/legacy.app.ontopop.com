@@ -26,6 +26,7 @@ export default {
 
   // sidebar
   networkGraphs: 'Network graphs',
+  networkGraphOptions: 'Network graph options',
   nodeNeighbourhood: 'Node neighbourhood',
   structuredSearch: 'Structured search',
   ontologyFilter: 'Ontology filter',
@@ -129,12 +130,14 @@ export default {
   selectNodesFromGraph: 'Select nodes from graph',
   isNodeOverlay: 'Show path over nodes',
   isNotNodeOverlay: 'Show path only',
+  overlay: 'Overlay',
   selectStartingNode: 'Select starting node',
   selectEndingNode: 'Select ending node',
   selectNodesFromGraphOrFromList: 'Select nodes from graph or pick from list',
   nodesToExclude: 'Nodes to exclude',
   edgesToExclude: 'Edges to exclude',
   showShortestPath: 'Show shortest path',
+  showUpperOntologyLayers: 'Show upper ontology layers',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -441,4 +444,15 @@ export default {
   synonymText: 'Synonym Text',
   availableSynonyms: 'Available Synonyms',
   synonymCreated: 'Synonym Created!',
+
+  // network graph options
+  showSubclassRelationships: 'Show subclass relationships',
+  showDatasets: 'Show datasets',
+  chooseGraphOptions: 'Choose global or specific visualisation options for the current graph',
+  hideElementsByProperties: 'Hide elements by properties',
+  notContains: 'Not contains',
+  notEqual: 'Not equal',
+  chooseFilter: 'Choose filter',
+  selectLogic: 'Select logic',
+  insertText: 'Insert text'
 }

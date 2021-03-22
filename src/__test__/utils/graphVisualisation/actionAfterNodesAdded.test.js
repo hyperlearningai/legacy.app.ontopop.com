@@ -51,18 +51,6 @@ describe('actionAfterNodesAdded', () => {
 
     expect(setStoreState.mock.calls).toEqual(
       [
-        ['nodesEdges', {
-          1: [
-            '11',
-            '12',
-          ],
-          141: [
-            '11',
-          ],
-          170: [
-            '12',
-          ],
-        }],
         ['isPhysicsOn', true],
         ['physicsRepulsion', true]
       ]

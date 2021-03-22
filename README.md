@@ -5,7 +5,6 @@
 
 | Development  | Main  |
 | :----------: | :---: |
-| [![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Dev?branchName=develop)] | [![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Production?branchName=main)] |
 | [![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Dev?branchName=develop)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=4&branchName=develop) | [![Build status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Production)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=5) |
 
 

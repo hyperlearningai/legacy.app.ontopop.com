@@ -11,6 +11,8 @@ exports[`EdgesSelection should match snapshot when customQueryOutput  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -40,6 +42,8 @@ exports[`EdgesSelection should match snapshot when no customQueryOutput  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}

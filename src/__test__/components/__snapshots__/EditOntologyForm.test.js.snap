@@ -11,6 +11,8 @@ exports[`EditOntologyForm should match snapshot when add operation 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   annotationProperties={Array []}
@@ -35,6 +37,8 @@ exports[`EditOntologyForm should match snapshot when update operation 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   annotationProperties={Array []}

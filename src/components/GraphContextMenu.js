@@ -11,7 +11,9 @@ const GraphContextMenu = ({
   setStoreState,
   contextMenuData,
   addNumber,
-  classesFromApi
+  classesFromApi,
+  toggleFromSubArray,
+  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -69,6 +71,8 @@ const GraphContextMenu = ({
             nodeId,
             setStoreState,
             addNumber,
+            toggleFromSubArray,
+            toggleFromArrayInKey
           })
           setStoreState('showContextMenu', false)
         }
@@ -125,6 +129,8 @@ GraphContextMenu.propTypes = {
   addNumber: PropTypes.func.isRequired,
   contextMenuData: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
+  toggleFromSubArray: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

@@ -1,5 +1,6 @@
 import setFilteredNodes from '../../../utils/nodesFilter/setFilteredNodes'
 import store from '../../../store'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
@@ -50,6 +51,7 @@ describe('setFilteredNodes', () => {
           nodesFilters
         },
         type: 'nodes-filter',
+        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
       }
     )
   })

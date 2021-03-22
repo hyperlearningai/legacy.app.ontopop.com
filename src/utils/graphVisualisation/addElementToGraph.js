@@ -1,9 +1,11 @@
-import addNodesEdges from './addNodesEdges'
 import addNode from '../nodesEdgesUtils/addNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import actionAfterNodesAdded from './actionAfterNodesAdded'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import getElementLabel from '../networkStyling/getElementLabel'
+import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
+import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
+import setEdgeStyle from '../networkStyling/setEdgeStyle'
 
 /**
  * Node queue to avoid browser freezing
@@ -11,13 +13,14 @@ import getElementLabel from '../networkStyling/getElementLabel'
  * @param  {Object}   params.classesFromApi               All available nodes
  * @param  {Array}    params.nodesIdsToDisplay            Node IDs to visualisa
  * @param  {Object}   params.objectPropertiesFromApi      All avilable edges
- * @param  {Object}   params.totalEdgesPerNode                 List of edges per node
+ * @param  {Object}   params.totalEdgesPerNode            List of edges per node
  * @param  {Function} params.setStoreState                setStoreState action
+ * @param  {Function} params.toggleFromSubArray           toggleFromSubArray action
+ * @param  {Function} params.toggleFromArrayInKey         toggleFromArrayInKey action
  * @param  {Function} params.addNumber                    addNumber action
  * @param  {Number}   params.i                            Current node index
  * @param  {Number}   params.nodeIdsLength                Total nodes number
  * @param  {Array}    params.processedEdges               Edges already processed
- * @param  {Object}   params.nodesEdges                   Edges per node
  * @return { undefined }
  */
 const addElementToGraph = ({
@@ -27,10 +30,11 @@ const addElementToGraph = ({
   totalEdgesPerNode,
   setStoreState,
   addNumber,
+  toggleFromSubArray,
   i,
   nodeIdsLength,
   processedEdges,
-  nodesEdges,
+  toggleFromArrayInKey
 }) => {
   const nodeId = nodesIdsToDisplay[i]
   const nodeIdObject = classesFromApi[nodeId]
@@ -42,51 +46,77 @@ const addElementToGraph = ({
     id: nodeId
   })
 
-  addNode({
-    node: {
-      ...nodeIdObject,
-      x: Math.random() * 1500, // for scattering when in physics mode
-      y: Math.random() * 1500,
-    },
-    addNumber
+  const isNodeVisible = checkNodeVisibility({
+    nodeId,
+    toggleFromSubArray
   })
-  setNodeStyle({ node: nodeIdObject, skipSpider: true })
-  if (triples && triples.length > 0) {
-    triples.map((edgeId) => {
-      const edge = objectPropertiesFromApi[edgeId]
 
-      const {
-        from,
-        to,
-      } = edge
+  if (isNodeVisible) {
+    addNode({
+      node: nodeIdObject,
+      // {
+      //   ...nodeIdObject,
+      //   x: Math.random() * 1500, // for scattering when in physics mode
+      //   y: Math.random() * 1500,
+      // },
+      addNumber
+    })
 
-      if (!from || !to) return false
+    setNodeStyle({ node: nodeIdObject, skipSpider: true })
 
-      edge.label = getElementLabel({
-        type: 'edge',
-        id: edgeId
-      })
+    if (triples && triples.length > 0) {
+      triples.map((edgeId) => {
+        const edge = objectPropertiesFromApi[edgeId]
 
-      const isEdgeExisting = processedEdges.includes(edgeId)
+        const {
+          from,
+          to,
+          id
+        } = edge
 
-      if (isEdgeExisting) return false
-
-      processedEdges.push(edgeId)
-
-      const isEdgeDisplayable = nodesIdsToDisplay.includes(to.toString())
-      && nodesIdsToDisplay.includes(from.toString())
-
-      if (isEdgeDisplayable) {
-        addEdge({ edge, addNumber })
-
-        addNodesEdges({
-          edge,
-          nodesEdges,
+        // check if edge to be displayed
+        const isEdgeVisible = checkEdgeVisibility({
+          edgeId: id,
+          toggleFromSubArray
         })
 
-        const nodeToAdd = to.toString() === nodeId.toString()
-          ? from.toString()
-          : to.toString()
+        if (!isEdgeVisible) return false
+        if (!from || !to) return false
+
+        const isEdgeDisplayable = nodesIdsToDisplay.includes(to.toString())
+        && nodesIdsToDisplay.includes(from.toString())
+
+        if (!isEdgeDisplayable) return false
+
+        const nodeToAdd = to.toString() === nodeId.toString() ? from.toString() : to.toString()
+
+        const isNodeToAddVisible = checkNodeVisibility({
+          nodeId: nodeToAdd,
+          toggleFromSubArray
+        })
+
+        if (!isNodeToAddVisible) return false
+
+        edge.label = getElementLabel({
+          type: 'edge',
+          id: edgeId
+        })
+
+        const isEdgeExisting = processedEdges.includes(edgeId)
+
+        if (isEdgeExisting) return false
+
+        processedEdges.push(edgeId)
+
+        addEdge({
+          edge,
+          addNumber,
+          toggleFromArrayInKey
+        })
+
+        setEdgeStyle({
+          edge
+        })
 
         const nodeToAddObject = classesFromApi[nodeToAdd]
 
@@ -96,25 +126,25 @@ const addElementToGraph = ({
         })
 
         addNode({
-          node: {
-            ...nodeToAddObject,
-            x: Math.random() * 1500, // for scattering when in physics mode
-            y: Math.random() * 1500,
-          },
+          node: nodeToAddObject,
+          // {
+          //   ...nodeToAddObject,
+          //   x: Math.random() * 1500, // for scattering when in physics mode
+          //   y: Math.random() * 1500,
+          // },
           addNumber
         })
-        setNodeStyle({ node: nodeToAddObject, skipSpider: true })
-      }
 
-      return true
-    })
+        return setNodeStyle({ node: nodeToAddObject, skipSpider: true })
+      })
+    }
   }
 
   if (i === nodeIdsLength - 1) {
     actionAfterNodesAdded({
       setStoreState,
       addNumber,
-      nodesEdges,
+      // nodesEdges,
     })
   }
 }

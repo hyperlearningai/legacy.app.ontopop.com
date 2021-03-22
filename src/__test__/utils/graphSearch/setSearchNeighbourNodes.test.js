@@ -1,5 +1,6 @@
 import setSearchNeighbourNodes from '../../../utils/graphSearch/setSearchNeighbourNodes'
 import store from '../../../store'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
@@ -53,7 +54,8 @@ describe('setSearchNeighbourNodes', () => {
           selectedNodesId: ['12'],
           separationDegree: 1
         },
-        type: 'search-neighbourhood'
+        type: 'search-neighbourhood',
+        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
       }
     )
   })
@@ -97,7 +99,8 @@ describe('setSearchNeighbourNodes', () => {
           selectedNodesId: ['1', '111'],
           separationDegree: 1
         },
-        type: 'search-neighbourhood'
+        type: 'search-neighbourhood',
+        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
       }
     )
   })

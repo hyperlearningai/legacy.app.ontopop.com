@@ -62,16 +62,16 @@ context('Network graph', () => {
         .click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 24')
-      cy.get('.nav-left').should('contain', 'Edges: 52')
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 24')
 
       // click to Main
       cy.get('.network-graph-list-row').eq(0).find('.p-button').click()
 
-      cy.wait(7000)
+      cy.wait(3000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 320')
-      cy.get('.nav-left').should('contain', 'Edges: 828')
+      cy.get('.nav-left').should('contain', 'Nodes: 200')
+      cy.get('.nav-left').should('contain', 'Edges: 517')
 
       // click to Main
       cy.get('.network-graph-list-row').eq(1).find('.p-button').eq(1)
@@ -80,17 +80,17 @@ context('Network graph', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 24')
-      cy.get('.nav-left').should('contain', 'Edges: 52')
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 24')
 
       // remove current graph and redirect to main
       cy.get('.network-graph-list-row').eq(1).find('.p-button').eq(0)
         .click()
 
-      cy.wait(7000)
+      cy.wait(3000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 320')
-      cy.get('.nav-left').should('contain', 'Edges: 828')
+      cy.get('.nav-left').should('contain', 'Nodes: 200')
+      cy.get('.nav-left').should('contain', 'Edges: 517')
 
       // check navigation buttons
       cy.get('.vis-up').click()
@@ -104,9 +104,9 @@ context('Network graph', () => {
 
       // check that sidebar Arrow icon toggles sidebar
       cy.get('.sidebar-main').should('be.visible')
-      cy.get('.sidebar-icons').find('.p-button').eq(18).click()
+      cy.get('#sidebar-button-toggle').click()
       cy.get('.sidebar-main').should('not.be.exist')
-      cy.get('.sidebar-icons').find('.p-button').eq(18).click()
+      cy.get('#sidebar-button-toggle').click()
       cy.get('.sidebar-main').should('be.visible')
     })
   })

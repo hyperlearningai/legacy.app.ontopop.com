@@ -11,6 +11,8 @@ exports[`SynonymsList should match snapshot when synonyms empty 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -5302,6 +5304,8 @@ exports[`SynonymsList should match snapshot with synonym 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}

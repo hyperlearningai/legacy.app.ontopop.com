@@ -11,6 +11,8 @@ exports[`NotesList should match snapshot when notes empty 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   classesFromApi={
@@ -5328,6 +5330,8 @@ exports[`NotesList should match snapshot with edge note and noteElementId 1`] = 
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   classesFromApi={
@@ -10645,6 +10649,8 @@ exports[`NotesList should match snapshot with graph note 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   classesFromApi={
@@ -15975,6 +15981,8 @@ exports[`NotesList should match snapshot with node note and noteElementId 1`] = 
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   classesFromApi={

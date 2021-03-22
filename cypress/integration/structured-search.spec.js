@@ -68,7 +68,7 @@ context('Structured search', () => {
       cy.get('.nav-left').should('contain', 'Edges: 11')
 
       // click the structured search icon
-      cy.get('.sidebar-icons').find('.p-button').eq(3).click()
+      cy.get('#sidebar-button-structured-search').click()
 
       // AND search should work
 

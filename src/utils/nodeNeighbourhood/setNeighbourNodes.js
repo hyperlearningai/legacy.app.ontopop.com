@@ -1,4 +1,5 @@
 import { ALGO_TYPE_NEIGHBOURHOOD } from '../../constants/algorithms'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
 
@@ -34,7 +35,8 @@ const setNeighbourNodes = ({
     options: {
       selectedNodeId,
       separationDegree,
-    }
+    },
+    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
   }
 
   addToObject('graphData', newCurrentGraph, graphValue)

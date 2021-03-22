@@ -8,6 +8,8 @@ import actionAfterNodesAdded from '../../../utils/graphVisualisation/actionAfter
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import store from '../../../store'
 import getElementLabel from '../../../utils/networkStyling/getElementLabel'
+import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
+import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
@@ -18,9 +20,13 @@ jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
 jest.mock('../../../utils/networkStyling/setEdgeStyle')
 jest.mock('../../../utils/graphVisualisation/actionAfterNodesAdded')
 jest.mock('../../../utils/networkStyling/getElementLabel')
+jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
+jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
+const toggleFromArrayInKey = jest.fn()
+const toggleFromSubArray = jest.fn()
 
 getNode.mockImplementation(() => null)
 getElementLabel.mockImplementation(() => 'Road')
@@ -32,6 +38,7 @@ store.getState = jest.fn().mockImplementation(() => ({
   userDefinedNodeStyling: {
     stylingNodeCaptionProperty: 'rdfsLabel'
   },
+  nodesEdges: { 111: [] },
 }))
 
 describe('addExpandedNode', () => {
@@ -39,7 +46,76 @@ describe('addExpandedNode', () => {
     jest.clearAllMocks()
   })
 
+  it('should work correctly when edge not visible', async () => {
+    const nodeId = '1'
+    const edge = {
+      id: '111',
+      to: '12',
+      from: '33'
+    }
+
+    checkEdgeVisibility.mockImplementation(() => false)
+    checkNodeVisibility.mockImplementation(() => true)
+
+    await addExpandedNode({
+      nodeId,
+      index: 10,
+      edgesNumber: 11,
+      edge,
+      setStoreState,
+      classesFromApi,
+      addNumber,
+      toggleFromArrayInKey,
+      toggleFromSubArray
+    })
+
+    expect(addNode).toHaveBeenCalledTimes(0)
+  })
+
+  it('should work correctly when node not visible', async () => {
+    const nodeId = '1'
+    const edge = {
+      id: '111',
+      to: '12',
+      from: '33'
+    }
+
+    checkEdgeVisibility.mockImplementation(() => true)
+    checkNodeVisibility.mockImplementation(() => false)
+
+    await addExpandedNode({
+      nodeId,
+      index: 10,
+      edgesNumber: 11,
+      edge,
+      setStoreState,
+      classesFromApi,
+      addNumber,
+      toggleFromArrayInKey,
+      toggleFromSubArray
+    })
+
+    expect(addNode).toHaveBeenCalledTimes(0)
+    expect(addEdge).toHaveBeenLastCalledWith(
+      {
+        edge,
+        addNumber,
+        toggleFromArrayInKey
+      }
+    )
+    expect(setEdgeStyle).toHaveBeenLastCalledWith(
+      { edge }
+    )
+    expect(actionAfterNodesAdded).toHaveBeenCalledWith({
+      setStoreState,
+      addNumber,
+    })
+  })
+
   it('should work correctly', async () => {
+    checkEdgeVisibility.mockImplementation(() => true)
+    checkNodeVisibility.mockImplementation(() => true)
+
     const nodeId = '1'
     const edge = {
       id: '111',
@@ -51,7 +127,8 @@ describe('addExpandedNode', () => {
       index: 10,
       edgesNumber: 11,
       edge,
-      nodesEdges: { 111: [] },
+      toggleFromArrayInKey,
+      toggleFromSubArray,
       setStoreState,
       classesFromApi,
       addNumber,
@@ -64,21 +141,16 @@ describe('addExpandedNode', () => {
     expect(setNodeStyle).toHaveBeenCalledTimes(1)
 
     expect(addEdge).toHaveBeenLastCalledWith(
-      { edge, addNumber }
+      {
+        edge,
+        addNumber,
+        toggleFromArrayInKey
+      }
     )
 
     expect(actionAfterNodesAdded).toHaveBeenCalledWith({
       setStoreState,
       addNumber,
-      nodesEdges: {
-        1: [
-          '111',
-        ],
-        111: [],
-        33: [
-          '111',
-        ]
-      },
     })
   })
 })

@@ -5,6 +5,7 @@ import getNodesSynonyms from '../fixtures/getNodesSynonyms'
 import deleteNodeSynonym from '../fixtures/deleteNodeSynonym'
 import createNodeSynonym from '../fixtures/createNodeSynonym'
 import updateNodeSynonym from '../fixtures/updateNodeSynonym'
+import getStyling from '../fixtures/getStyling'
 
 context('Synonyms list', () => {
   beforeEach(() => {
@@ -43,6 +44,11 @@ context('Synonyms list', () => {
         url: '**/graph/nodes/*/synonyms/*',
       }, updateNodeSynonym).as('updateNodeSynonym')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -66,11 +72,19 @@ context('Synonyms list', () => {
       cy.wait(1000)
 
       // shows subgraph
+      cy.get('.nav-left').should('contain', 'Nodes: 2')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
+
+      // show dataset nodes
+      cy.get('#sidebar-button-graph-options').click()
+      cy.get('#dataset-checkbox').click()
+      cy.get('#network-graph-options-save').click()
+
       cy.get('.nav-left').should('contain', 'Nodes: 4')
       cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the synonym sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(17).click()
+      cy.get('#sidebar-button-synonims').click()
 
       // select first node from dropdown
       cy.get('#synonyms-select-element').find('.p-dropdown-trigger').click({ force: true })

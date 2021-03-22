@@ -11,6 +11,8 @@ exports[`Login page should match snapshot when activeLoaders 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   activeLoaders={1}
@@ -33,6 +35,8 @@ exports[`Login page should match snapshot when no activeLoaders 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   activeLoaders={0}
