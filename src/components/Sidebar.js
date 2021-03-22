@@ -123,16 +123,6 @@ const Sidebar = ({
           <BiText />
         </Button>
         <Button
-          tooltip={t(SIDEBAR_VIEW_SYNONYMS)}
-          className={sidebarView === SIDEBAR_VIEW_SYNONYMS ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_SYNONYMS)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FaFileAlt />
-        </Button>
-        <Button
           tooltip={t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
           className={sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
@@ -283,6 +273,16 @@ const Sidebar = ({
           }}
         >
           <BsPencilSquare />
+        </Button>
+        <Button
+          tooltip={t(SIDEBAR_VIEW_SYNONYMS)}
+          className={sidebarView === SIDEBAR_VIEW_SYNONYMS ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_SYNONYMS)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
+        >
+          <FaFileAlt />
         </Button>
         <Button
           tooltip={t('toggleSidebar')}

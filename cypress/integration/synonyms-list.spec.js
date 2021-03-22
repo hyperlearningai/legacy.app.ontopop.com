@@ -70,7 +70,7 @@ context('Synonyms list', () => {
       cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the synonym sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(3).click()
+      cy.get('.sidebar-icons').find('.p-button').eq(17).click()
 
       // select first node from dropdown
       cy.get('#synonyms-select-element').find('.p-dropdown-trigger').click({ force: true })
