@@ -1,0 +1,8 @@
+{
+  "statusCode": 200,
+  "body": {
+    "message":"Synonym Deleted"
+   },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

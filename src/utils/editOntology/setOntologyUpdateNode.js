@@ -4,6 +4,7 @@ import { API_ENDPOINT_GRAPH_NODES_ID } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import httpCall from '../apiCalls/httpCall'
+import { NODE_TYPE } from '../../constants/graph'
 
 /**
  * Update ontology nodes
@@ -35,10 +36,10 @@ const setOntologyUpdateNode = async ({
   const body = {
     ...node,
     ...selectedElementProperties,
-    label: node.nodeType
+    label: node[NODE_TYPE]
   }
 
-  delete body.nodeType
+  delete body[NODE_TYPE]
 
   const response = await httpCall({
     addNumber,

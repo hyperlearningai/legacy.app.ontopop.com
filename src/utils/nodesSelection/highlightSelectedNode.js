@@ -22,7 +22,7 @@ const highlightSelectedNode = ({
 
   setStoreState('prevSelectedNode', node)
 
-  const color = node.color || {}
+  const color = node?.color || {}
 
   color.background = getStylingProperty({
     type: 'node',
