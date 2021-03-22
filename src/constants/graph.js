@@ -238,8 +238,6 @@ export const DEFAULT_GRAPH_VISUALISATION_OPTIONS = {
   isDatasetVisible: false,
   hiddenNodesProperties: { 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY },
   hiddenEdgesProperties: { 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY },
-  hiddenNodes: [],
-  hiddenEdges: []
 }
 
 export const SUB_CLASS_OF_ID = 'http://www.w3.org/2000/01/rdf-schema#subclassof'
@@ -253,6 +251,7 @@ export const SUB_CLASS_OF_OBJECT = {
 
 export const USER_DEFINED_PROPERTY = 'userDefined'
 export const NODE_TYPE = 'nodeType'
+export const TOOLTIP_KEY = 'title'
 
 export const RESERVED_PROPERTIES = [
   'id',
@@ -270,7 +269,8 @@ export const RESERVED_PROPERTIES = [
   'size',
   'borderWidth',
   'borderWidthSelected',
-  NODE_TYPE
+  NODE_TYPE,
+  TOOLTIP_KEY
 ]
 
 export const RDF_ABOUT_PROPERTY = 'rdfAbout'

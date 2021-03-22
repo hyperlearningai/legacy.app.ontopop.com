@@ -8,7 +8,6 @@ import updateStyleAndPhysics from './updateStyleAndPhysics'
 /**
  * Check edge visibility
  * @param  {Object}    params
- * @param  {Function}  params.toggleFromSubArray    toggleFromSubArray action
  * @param  {Function}  params.toggleFromArrayInKey  toggleFromArrayInKey action
  * @param  {Function}  params.setStoreState         setStoreState action
  * @return {undefined}
@@ -17,7 +16,6 @@ const toggleEdge = ({
   edgeId,
   addNumber,
   toggleFromArrayInKey,
-  toggleFromSubArray,
   setStoreState,
   isLastEdge
 }) => {
@@ -29,7 +27,6 @@ const toggleEdge = ({
 
   const isVisible = checkEdgeVisibility({
     edgeId,
-    toggleFromSubArray
   })
 
   setTimeout(() => {

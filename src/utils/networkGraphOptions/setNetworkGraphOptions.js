@@ -6,7 +6,6 @@ import toggleElements from './toggleElements'
  * @param  {Object}   params
  * @param  {Function} params.addNumber                 addNumber action
  * @param  {Function} params.addToObject               Add to object action
- * @param  {Function} params.toggleFromSubArray        toggleFromSubArray action
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Function} params.toggleFromArrayInKey      toggleFromArrayInKey action
  * @param  {Object}   params.hiddenNodesProperties     Properties to hide nodes
@@ -23,7 +22,6 @@ const setNetworkGraphOptions = ({
   hiddenNodesProperties,
   hiddenEdgesProperties,
   addToObject,
-  toggleFromSubArray,
   addNumber,
   toggleFromArrayInKey,
   setStoreState,
@@ -45,10 +43,9 @@ const setNetworkGraphOptions = ({
   addToObject('graphData', currentGraph, currentGraphObject)
 
   toggleElements({
-    toggleFromSubArray,
     addNumber,
     toggleFromArrayInKey,
-    setStoreState,
+    setStoreState
   })
 }
 

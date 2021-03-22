@@ -7,7 +7,6 @@ import getEdge from '../nodesEdgesUtils/getEdge'
  * @param  {Number}   params.nodeId                   Selected node id
  * @param  {Function} params.setStoreState            setStoreState action
  * @param  {Function} params.addNumber                addNumber action
- * @param  {Function} params.toggleFromSubArray       toggleFromSubArray action
  * @param  {Function} params.toggleFromArrayInKey     toggleFromArrayInKey action
  * @return {undefined}
  */
@@ -15,19 +14,15 @@ const expandNode = ({
   nodeId,
   setStoreState,
   addNumber,
-  toggleFromSubArray,
   toggleFromArrayInKey
 }) => {
   const {
     totalEdgesPerNode,
     objectPropertiesFromApi,
-    // nodesEdges,
     classesFromApi,
   } = store.getState()
 
   const edges = totalEdgesPerNode[nodeId]
-
-  // const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
 
   if (edges?.length > 0) {
     addNumber('activeLoaders', 1)
@@ -45,10 +40,8 @@ const expandNode = ({
         index,
         edgesNumber: edges.length,
         edge: edgeObject,
-        // nodesEdges: newNodesEdges,
         setStoreState,
         classesFromApi,
-        toggleFromSubArray,
         toggleFromArrayInKey,
         addNumber,
       }), 1)

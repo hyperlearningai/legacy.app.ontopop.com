@@ -15,7 +15,6 @@ import setEdgeStyle from '../networkStyling/setEdgeStyle'
  * @param  {Object}   params.objectPropertiesFromApi      All avilable edges
  * @param  {Object}   params.totalEdgesPerNode            List of edges per node
  * @param  {Function} params.setStoreState                setStoreState action
- * @param  {Function} params.toggleFromSubArray           toggleFromSubArray action
  * @param  {Function} params.toggleFromArrayInKey         toggleFromArrayInKey action
  * @param  {Function} params.addNumber                    addNumber action
  * @param  {Number}   params.i                            Current node index
@@ -30,7 +29,6 @@ const addElementToGraph = ({
   totalEdgesPerNode,
   setStoreState,
   addNumber,
-  toggleFromSubArray,
   i,
   nodeIdsLength,
   processedEdges,
@@ -45,20 +43,15 @@ const addElementToGraph = ({
     type: 'node',
     id: nodeId
   })
+  nodeIdObject.title = nodeIdObject.label
 
   const isNodeVisible = checkNodeVisibility({
     nodeId,
-    toggleFromSubArray
   })
 
   if (isNodeVisible) {
     addNode({
       node: nodeIdObject,
-      // {
-      //   ...nodeIdObject,
-      //   x: Math.random() * 1500, // for scattering when in physics mode
-      //   y: Math.random() * 1500,
-      // },
       addNumber
     })
 
@@ -77,7 +70,6 @@ const addElementToGraph = ({
         // check if edge to be displayed
         const isEdgeVisible = checkEdgeVisibility({
           edgeId: id,
-          toggleFromSubArray
         })
 
         if (!isEdgeVisible) return false
@@ -92,7 +84,6 @@ const addElementToGraph = ({
 
         const isNodeToAddVisible = checkNodeVisibility({
           nodeId: nodeToAdd,
-          toggleFromSubArray
         })
 
         if (!isNodeToAddVisible) return false
@@ -124,14 +115,10 @@ const addElementToGraph = ({
           type: 'node',
           id: nodeToAdd
         })
+        nodeToAddObject.title = nodeToAddObject.label
 
         addNode({
           node: nodeToAddObject,
-          // {
-          //   ...nodeToAddObject,
-          //   x: Math.random() * 1500, // for scattering when in physics mode
-          //   y: Math.random() * 1500,
-          // },
           addNumber
         })
 
@@ -144,7 +131,6 @@ const addElementToGraph = ({
     actionAfterNodesAdded({
       setStoreState,
       addNumber,
-      // nodesEdges,
     })
   }
 }

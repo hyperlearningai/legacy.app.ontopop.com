@@ -2,21 +2,18 @@ import store from '../../store'
 import addNode from '../nodesEdgesUtils/addNode'
 import removeNode from '../nodesEdgesUtils/removeNode'
 import checkNodeVisibility from './checkNodeVisibility'
-import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import setNodesStyle from '../networkStyling/setNodesStyle'
 import toggleEdgesFromVisibleNodes from './toggleEdgesFromVisibleNodes'
 
 /**
  * Check edge visibility
  * @param  {Object}    params
- * @param  {Function}  params.toggleFromSubArray    toggleFromSubArray action
  * @param  {Function}  params.addNumber             addNumber action
  * @param  {Function}  params.setStoreState         setStoreState action
  * @param  {Function}  params.toggleFromArrayInKey  toggleFromArrayInKey action
  * @return {undefined}
  */
 const toggleElements = ({
-  toggleFromSubArray,
   addNumber,
   toggleFromArrayInKey,
   setStoreState
@@ -28,29 +25,21 @@ const toggleElements = ({
   } = store.getState()
 
   const {
-    hiddenNodes,
+    nodesIdsToDisplay
   } = graphData[currentGraph]
-
-  const visibleNodes = getNodeIds()
-
-  const nodesToCheck = [
-    ...visibleNodes,
-    ...hiddenNodes
-  ]
 
   const newVisibleNodes = []
 
-  if (nodesToCheck.length === 0) return false
+  if (nodesIdsToDisplay.length === 0) return false
 
   addNumber('activeLoaders', 1)
 
-  for (let index = 0; index < nodesToCheck.length; index++) {
-    const nodeId = nodesToCheck[index]
+  for (let index = 0; index < nodesIdsToDisplay.length; index++) {
+    const nodeId = nodesIdsToDisplay[index]
     const node = classesFromApiBackup[nodeId]
 
     const isVisible = checkNodeVisibility({
       nodeId,
-      toggleFromSubArray
     })
 
     setTimeout(() => {
@@ -69,7 +58,7 @@ const toggleElements = ({
         })
       }
 
-      if (index === nodesToCheck.length - 1) {
+      if (index === nodesIdsToDisplay.length - 1) {
         addNumber('activeLoaders', -1)
 
         setNodesStyle()
@@ -78,8 +67,7 @@ const toggleElements = ({
           visibleNodes: newVisibleNodes,
           toggleFromArrayInKey,
           setStoreState,
-          addNumber,
-          toggleFromSubArray
+          addNumber
         })
       }
     }, 1)

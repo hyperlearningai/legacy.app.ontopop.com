@@ -5,7 +5,6 @@ import { classesFromApi } from '../../fixtures/classesFromApi'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 
 const setStoreState = jest.fn()
-const toggleFromSubArray = jest.fn()
 const addNumber = jest.fn()
 const toggleFromArrayInKey = jest.fn()
 
@@ -18,7 +17,7 @@ checkNodeVisibility.mockImplementation(() => true)
 store.getState = jest.fn().mockImplementation(() => ({
   graphData: {
     'graph-0': {
-      hiddenNodes: ['1', '3']
+      nodesIdsToDisplay: ['1', '3']
     }
   },
   currentGraph: 'graph-0',
@@ -36,7 +35,6 @@ describe('toggleElements', () => {
 
   it('should work correctly', async () => {
     await toggleElements({
-      toggleFromSubArray,
       addNumber,
       toggleFromArrayInKey,
       setStoreState
