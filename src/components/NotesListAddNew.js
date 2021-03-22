@@ -43,6 +43,7 @@ const NotesListAddNew = ({
         ? (
           <div className="notes-note notes-add-button">
             <Button
+              aria-label={t('addNewNote')}
               tooltip={t('addNewNote')}
               tooltipOptions={{ position: 'top' }}
               label={t('addNewNote')}
@@ -80,6 +81,7 @@ const NotesListAddNew = ({
 
             <div className="notes-buttons">
               <Button
+                aria-label={t('close')}
                 tooltip={t('close')}
                 tooltipOptions={{ position: 'top' }}
                 className="p-button-secondary"
@@ -89,6 +91,7 @@ const NotesListAddNew = ({
               />
 
               <Button
+                aria-label={t('addNote')}
                 tooltip={t('addNote')}
                 tooltipOptions={{ position: 'top' }}
                 label={t('addNote')}

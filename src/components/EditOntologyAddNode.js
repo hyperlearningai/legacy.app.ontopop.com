@@ -56,6 +56,7 @@ const EditOntologyAddNode = ({
 
       <div className="edit-ontology-row">
         <Button
+          aria-label={`${t(operation)}`}
           className="go-button"
           tooltip={`${t(operation)}`}
           disabled={operation === 'add'

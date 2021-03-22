@@ -64,6 +64,7 @@ const CustomQuery = ({
 
         <div className="custom-query-buttons">
           <Button
+            aria-label={t('clear')}
             tooltip={t('clear')}
             tooltipOptions={{ position: 'top' }}
             className="custom-query-buttons-button"
@@ -86,6 +87,7 @@ const CustomQuery = ({
               </div>
             ) : (
               <Button
+                aria-label={t('query')}
                 tooltip={t('query')}
                 tooltipOptions={{ position: 'top' }}
                 className="custom-query-buttons-button"
@@ -119,7 +121,7 @@ const CustomQuery = ({
                   collapsed
                 />
                 <div className="custom-query-buttons">
-                  <Button
+                 c{t('exportAsJson')}
                     tooltip={t('exportAsJson')}
                     tooltipOptions={{ position: 'top' }}
                     className="custom-query-buttons-button"
@@ -147,6 +149,7 @@ const CustomQuery = ({
                     >
                       <div className="custom-query-row-delete">
                         <Button
+                          aria-label={t('removeFromHistory')}
                           tooltip={`${t('removeFromHistory')}: ${query}`}
                           onClick={() => removeFromArray('customQueryStringHistory', query)}
                           icon="pi pi-times"
@@ -155,6 +158,7 @@ const CustomQuery = ({
 
                       <div className="custom-query-row-main">
                         <Button
+                          aria-label={t('queryAgain')}
                           tooltip={`${t('queryAgain')}: ${query}`}
                           disabled={query === customQueryString}
                           onClick={() => {

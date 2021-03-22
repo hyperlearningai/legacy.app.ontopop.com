@@ -230,6 +230,7 @@ const NetworkStylingEdgeByPropertyForm = ({
               || stylingPropertyObject.styleValue
             ) && (
               <Button
+                aria-label={t('delete')}
                 label={t('delete')}
                 className="p-button-warning delete-property-style"
                 icon="pi pi-trash"
@@ -245,6 +246,7 @@ const NetworkStylingEdgeByPropertyForm = ({
           }
 
           <Button
+            aria-label={t('save')}
             label={t('save')}
             icon="pi pi-check"
             className="save-property-style"

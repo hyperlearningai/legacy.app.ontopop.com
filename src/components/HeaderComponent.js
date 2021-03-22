@@ -54,6 +54,7 @@ const HeaderComponent = ({
         </a>
 
         <Button
+          aria-label="overlay-menu-button"
           type="button"
           icon="pi pi-align-justify"
           id="overlay-menu-button"
@@ -64,6 +65,7 @@ const HeaderComponent = ({
           {
             router.asPath === ROUTE_PROFILE ? (
               <Button
+                aria-label={t('home')}
                 icon="pi pi-home"
                 label={t('home')}
                 id="overlay-menu-home"
@@ -72,6 +74,7 @@ const HeaderComponent = ({
               />
             ) : (
               <Button
+                aria-label={t('profile')}
                 icon="pi pi-user"
                 id="overlay-menu-profile"
                 label={t('profile')}
@@ -83,6 +86,7 @@ const HeaderComponent = ({
           {
             user.isGuest ? (
               <Button
+                aria-label={t('signIn')}
                 icon="pi pi-sign-in"
                 id="overlay-menu-login"
                 className="p-button-secondary"
@@ -91,6 +95,7 @@ const HeaderComponent = ({
               />
             ) : (
               <Button
+                aria-label={t('signOut')}
                 icon="pi pi-sign-out"
                 id="overlay-menu-logout"
                 className="p-button-secondary"

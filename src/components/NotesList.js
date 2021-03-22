@@ -254,6 +254,7 @@ const NotesList = ({
                     onChange={(e) => setSortField(e.value)}
                   />
                   <Button
+                    aria-label={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
                     id="notes-sort-by-direction"
                     tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
                     tooltipOptions={{ position: 'top' }}

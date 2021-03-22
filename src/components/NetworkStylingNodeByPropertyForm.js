@@ -223,6 +223,7 @@ const NetworkStylingNodeByPropertyForm = ({
           {
             isDeleteAvailable && (
               <Button
+                aria-label={t('delete')}
                 label={t('delete')}
                 className="p-button-warning delete-property-style"
                 icon="pi pi-trash"
@@ -238,6 +239,7 @@ const NetworkStylingNodeByPropertyForm = ({
           }
 
           <Button
+            aria-label={t('delete')}
             label={t('save')}
             icon="pi pi-check"
             className="save-property-style"

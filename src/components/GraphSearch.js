@@ -29,7 +29,7 @@ const GraphSearch = ({
 
   return (
     <div className="graph-search">
-      <h2>{t('searchGraph')}</h2>
+      <h1>{t('searchGraph')}</h1>
       <p>{t('sidebarForAdvancedOptions')}</p>
 
       {

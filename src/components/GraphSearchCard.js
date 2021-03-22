@@ -66,12 +66,14 @@ const GraphSearchCard = ({
       <Divider />
       <div className="p-card-buttons">
         <Button
+          aria-label="showMore"
           className="p-card-buttons-info"
           label={t(isShowMore ? 'lessInfo' : 'moreInfo')}
           onClick={() => setShowMore(!isShowMore)}
         />
 
         <Button
+          aria-label={t('show')}
           label={t('show')}
           onClick={() => setSearchNeighbourNodes({
             separationDegree: 1,

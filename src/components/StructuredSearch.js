@@ -79,6 +79,7 @@ const StructuredSearch = ({
           && Object.keys(structuredSelection).length > 0
             ? (
               <Button
+                aria-label={t('goBack')}
                 icon="pi pi-arrow-left"
                 tooltip={t('goBack')}
                 onClick={() => {
@@ -141,6 +142,7 @@ const StructuredSearch = ({
                       >
                         <div className="structured-search-results-row-delete">
                           <Button
+                            aria-label={t('removeGraph')}
                             tooltip={`${t('removeGraph')}: ${elementId}`}
                             onClick={() => {
                               removeFromObject('structuredSelection', elementId)
@@ -154,6 +156,7 @@ const StructuredSearch = ({
 
                         <div className="structured-search-results-row-main">
                           <Button
+                            aria-label={t('focusElement')}
                             tooltip={`${t('focusElement')}: ${elementLabel}`}
                             disabled={elementId === structuredSelectedElement}
                             onClick={() => setStoreState('structuredSelectedElement', elementId)}
@@ -211,6 +214,7 @@ const StructuredSearch = ({
                               filters.length > 1 && (
                                 <div className="p-field remove-button p-col-12">
                                   <Button
+                                    aria-label={t('removeFilter')}
                                     icon="pi pi-times"
                                     className="p-button-rounded p-button-danger"
                                     tooltip={t('removeFilter')}
@@ -293,6 +297,7 @@ const StructuredSearch = ({
 
                 <div className="structured-search-button-wrapper">
                   <Button
+                    aria-label={t('showFilteredNodes')}
                     tooltip={t('showFilteredNodes')}
                     className="structured-search-button m-t-30"
                     disabled={filters.length < 2}

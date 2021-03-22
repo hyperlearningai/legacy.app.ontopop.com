@@ -38,6 +38,7 @@ const NetworkSettings = ({
           </div>
           <div className="network-settings-buttons">
             <Button
+              aria-label={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
               tooltip={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
               tooltipOptions={{ position: 'top' }}
               className={isPhysicsOn ? 'network-settings-buttons-button-selected' : ''}
@@ -54,6 +55,7 @@ const NetworkSettings = ({
           </div>
           <div className="network-settings-buttons">
             <Button
+              aria-label={t('hierachicalView')}
               tooltip={t('hierachicalView')}
               tooltipOptions={{ position: 'top' }}
               className={physicsHierarchicalView ? 'network-settings-buttons-button-selected' : ''}
@@ -62,6 +64,7 @@ const NetworkSettings = ({
               <FaSitemap />
             </Button>
             <Button
+              aria-label={t('gravitationalView')}
               tooltip={t('gravitationalView')}
               tooltipOptions={{ position: 'top' }}
               className={!physicsHierarchicalView ? 'network-settings-buttons-button-selected' : ''}
@@ -78,6 +81,7 @@ const NetworkSettings = ({
           </div>
           <div className="network-settings-buttons">
             <Button
+              aria-label={t('gravitationalView')}
               tooltip={t('enableRepulsion')}
               tooltipOptions={{ position: 'top' }}
               className={physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}
@@ -86,6 +90,7 @@ const NetworkSettings = ({
               <IoFootballOutline />
             </Button>
             <Button
+              aria-label={t('disableRepulsion')}
               tooltip={t('disableRepulsion')}
               tooltipOptions={{ position: 'top' }}
               className={!physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}
