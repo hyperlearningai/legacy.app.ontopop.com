@@ -4,7 +4,7 @@ import { InputTextarea } from 'primereact/inputtextarea'
 import { orderBy } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
-import { UNIQUE_PROPERTY } from '../constants/graph'
+import { RDF_ABOUT_PROPERTY } from '../constants/graph'
 
 const EditOntologyForm = ({
   selectedElementProperties,
@@ -25,7 +25,7 @@ const EditOntologyForm = ({
         })), ['search'], ['asc']).map((property) => {
           const id = property.value
           const label = property.value
-          const isRequired = property.value === UNIQUE_PROPERTY
+          const isRequired = property.value === RDF_ABOUT_PROPERTY
 
           const isValid = operation === 'add' && isRequired ? selectedElementProperties[id]?.length > 0 : true
 

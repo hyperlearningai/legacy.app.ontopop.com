@@ -11,6 +11,8 @@ exports[`EditOntologyRestoreNode should match snapshot when type edge and no opt
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -36,6 +38,8 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and no opt
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -61,6 +65,8 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and option
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}

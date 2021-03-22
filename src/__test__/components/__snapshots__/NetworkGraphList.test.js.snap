@@ -11,6 +11,8 @@ exports[`NetworkGraphList should match snapshot  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   currentGraph="graph-0"

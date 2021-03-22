@@ -11,6 +11,8 @@ exports[`HeaderComponent should match snapshot when user logged in and loading 1
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   loading={1}
@@ -38,6 +40,8 @@ exports[`HeaderComponent should match snapshot when user not logged in and not l
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   loading={0}

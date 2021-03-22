@@ -5,8 +5,6 @@ import httpCall from '../apiCalls/httpCall'
 import { API_ENDPOINT_GRAPH_EDGES_ID } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
-import countEdges from '../nodesEdgesUtils/countEdges'
-import countNodes from '../nodesEdgesUtils/countNodes'
 
 /**
  * Remove connection from ontology
@@ -14,6 +12,7 @@ import countNodes from '../nodesEdgesUtils/countNodes'
  * @param  {Function}       params.addNumber                  setStoreState action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElement            Array of edge IDs
+ * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey funciton
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
@@ -21,19 +20,18 @@ const setOntologyDeleteEdge = async ({
   addNumber,
   setStoreState,
   selectedElement,
+  toggleFromArrayInKey,
   t
 }) => {
   const {
     classesFromApi,
     deletedEdges,
-    nodesEdges,
     totalEdgesPerNode,
     objectPropertiesFromApi
   } = store.getState()
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
   const newDeletedEdges = deletedEdges.slice()
-  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
   const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
 
   const edgesDeleted = []
@@ -82,10 +80,12 @@ const setOntologyDeleteEdge = async ({
         newDeletedEdges.push(edgeId)
       }
 
+      const edge = objectPropertiesFromApi[edgeId]
+
       const {
         from,
         to
-      } = objectPropertiesFromApi[edgeId]
+      } = edge
 
       // delete from triples
       const fromPredicateIndex = newEdgesPerNode[from].indexOf(edgeId)
@@ -106,24 +106,14 @@ const setOntologyDeleteEdge = async ({
 
       if (isFromVisible || isToVisible) return false
 
-      // delete from connections
-      const fromPredicateConnectionIndex = newNodesEdges[from].indexOf(edgeId)
-
-      if (fromPredicateConnectionIndex > -1) {
-        newEdgesPerNode[from].splice(fromPredicateConnectionIndex, 1)
-      }
-
-      const toPredicateConnectionIndex = newNodesEdges[to].indexOf(edgeId)
-
-      if (toPredicateConnectionIndex > -1) {
-        newEdgesPerNode[to].splice(toPredicateConnectionIndex, 1)
-      }
-
-      removeEdge(edgeId)
+      removeEdge(({
+        edge,
+        addNumber,
+        toggleFromArrayInKey
+      }))
     }
   }
 
-  setStoreState('nodesEdges', newNodesEdges)
   setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('deletedEdges', newDeletedEdges)
@@ -134,9 +124,6 @@ const setOntologyDeleteEdge = async ({
       message,
       type: NOTIFY_SUCCESS
     })
-
-    setStoreState('availableNodesCount', countNodes())
-    setStoreState('availableEdgesCount', countEdges())
   }
 }
 

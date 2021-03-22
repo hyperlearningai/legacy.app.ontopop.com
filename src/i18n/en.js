@@ -26,6 +26,7 @@ export default {
 
   // sidebar
   networkGraphs: 'Network graphs',
+  networkGraphOptions: 'Network graph options',
   nodeNeighbourhood: 'Node neighbourhood',
   structuredSearch: 'Structured search',
   ontologyFilter: 'Ontology filter',
@@ -53,6 +54,10 @@ export default {
   couldNotQueryAnnotationProperties: 'Could not query annotation properties!',
   couldNotQueryEdgeProperties: 'Could not query object properties!',
   noNodesToDisplay: 'No nodes to display!',
+  couldNotQuerySynonyms: 'Could not query synonyms!',
+  couldNotCreateSynonym: 'Could not create a synonym!',
+  couldNotUpdateSynonym: 'Could not update a synonym!',
+  couldNotDeleteSynonym: 'Could not delete a synonym!',
   couldNotQueryStyles: 'Could not query styles!',
   couldNotUpdateStyles: 'Could not update styles!',
 
@@ -125,12 +130,14 @@ export default {
   selectNodesFromGraph: 'Select nodes from graph',
   isNodeOverlay: 'Show path over nodes',
   isNotNodeOverlay: 'Show path only',
+  overlay: 'Overlay',
   selectStartingNode: 'Select starting node',
   selectEndingNode: 'Select ending node',
   selectNodesFromGraphOrFromList: 'Select nodes from graph or pick from list',
   nodesToExclude: 'Nodes to exclude',
   edgesToExclude: 'Edges to exclude',
   showShortestPath: 'Show shortest path',
+  showUpperOntologyLayers: 'Show upper ontology layers',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -428,4 +435,24 @@ export default {
 
   // api calls
   apiCallNotValid: 'Invalid http request',
+
+  // synonyms
+  synonyms: 'Synonyms',
+  synonymsFor: 'Synonyms for',
+  addNewSynonym: 'Add New Synonym',
+  addSynonym: 'Add Synonym',
+  synonymText: 'Synonym Text',
+  availableSynonyms: 'Available Synonyms',
+  synonymCreated: 'Synonym Created!',
+
+  // network graph options
+  showSubclassRelationships: 'Show subclass relationships',
+  showDatasets: 'Show datasets',
+  chooseGraphOptions: 'Choose global or specific visualisation options for the current graph',
+  hideElementsByProperties: 'Hide elements by properties',
+  notContains: 'Not contains',
+  notEqual: 'Not equal',
+  chooseFilter: 'Choose filter',
+  selectLogic: 'Select logic',
+  insertText: 'Insert text'
 }

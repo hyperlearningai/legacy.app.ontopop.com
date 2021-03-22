@@ -4,6 +4,7 @@ import { API_ENDPOINT_GRAPH_NODES_ID } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import httpCall from '../apiCalls/httpCall'
+import { NODE_TYPE } from '../../constants/graph'
 
 /**
  * Update ontology nodes
@@ -30,7 +31,15 @@ const setOntologyUpdateNode = async ({
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
 
-  const body = JSON.parse(JSON.stringify(selectedElementProperties))
+  const node = newClassesFromApi[selectedElement]
+
+  const body = {
+    ...node,
+    ...selectedElementProperties,
+    label: node[NODE_TYPE]
+  }
+
+  delete body[NODE_TYPE]
 
   const response = await httpCall({
     addNumber,
@@ -70,6 +79,7 @@ const setOntologyUpdateNode = async ({
 
   newClassesFromApi[selectedElement].label = selectedElementProperties[stylingNodeCaptionProperty]
     ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+  newClassesFromApi[selectedElement].title = newClassesFromApi[selectedElement].label
 
   updateNodes({ id: selectedElement, ...newClassesFromApi[selectedElement] })
 

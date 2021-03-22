@@ -16,6 +16,8 @@ const EditOntologyUpdateNode = ({
   addNumber,
   optionNodes,
   classesFromApi,
+  addSubValueToObject,
+  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -96,6 +98,8 @@ const EditOntologyUpdateNode = ({
                     setStoreState,
                     addNumber,
                     selectedElementProperties,
+                    addSubValueToObject,
+                    toggleFromArrayInKey,
                     t
                   })
                   setSelectedElement(undefined)
@@ -120,6 +124,8 @@ EditOntologyUpdateNode.propTypes = {
   addNumber: PropTypes.func.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   classesFromApi: PropTypes.shape().isRequired,
+  addSubValueToObject: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

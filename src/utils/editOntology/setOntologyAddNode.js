@@ -5,6 +5,8 @@ import addNode from '../nodesEdgesUtils/addNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
+import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
+import { NODE_TYPE } from '../../constants/graph'
 
 /**
  * ADd ontology nodes
@@ -28,7 +30,7 @@ const setOntologyAddNode = async ({
     addedNodes,
     totalEdgesPerNode,
     totalEdgesPerNodeBackup,
-    userDefinedNodeStyling
+    userDefinedNodeStyling,
   } = store.getState()
 
   const {
@@ -85,18 +87,23 @@ const setOntologyAddNode = async ({
     })
   }
 
-  const { id, userDefined } = data[Object.keys(data)[0]]
+  const {
+    id, userDefined, label, userId
+  } = data[Object.keys(data)[0]]
 
   // add to classesFromApi
   newClassesFromApi[id] = {
     ...selectedElementProperties,
+    [NODE_TYPE]: label,
     userDefined,
-    id
+    id,
+    userId
   }
 
   // add label
   newClassesFromApi[id].label = selectedElementProperties[stylingNodeCaptionProperty]
     ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+  newClassesFromApi[id].title = newClassesFromApi[id].label
 
   // add array for new node in nodes edges connections
   newNodesEdges[id] = []
@@ -133,14 +140,6 @@ const setOntologyAddNode = async ({
     size: stylingNodeSize
   }
 
-  addNode({
-    node: {
-      ...newClassesFromApi[id],
-      ...nodeStyle
-    },
-    addNumber
-  })
-
   const newAddedNodes = [
     ...addedNodes,
     ...[id]
@@ -152,9 +151,24 @@ const setOntologyAddNode = async ({
   setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
   setStoreState('addedNodes', newAddedNodes)
-  setNodeStyle({
+
+  const isVisible = checkNodeVisibility({
     nodeId: id,
   })
+
+  if (isVisible) {
+    addNode({
+      node: {
+        ...newClassesFromApi[id],
+        ...nodeStyle
+      },
+      addNumber
+    })
+
+    setNodeStyle({
+      nodeId: id,
+    })
+  }
 
   message = `${t('nodeAdded')}: ${id}`
 

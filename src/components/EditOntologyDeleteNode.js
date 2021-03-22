@@ -14,6 +14,8 @@ const EditOntologyDeleteNode = ({
   setStoreState,
   addNumber,
   optionNodes,
+  addSubValueToObject,
+  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -59,6 +61,8 @@ const EditOntologyDeleteNode = ({
               setStoreState,
               addNumber,
               selectedElementProperties,
+              addSubValueToObject,
+              toggleFromArrayInKey,
               t
             })
             setSelectedElement(undefined)
@@ -79,6 +83,8 @@ EditOntologyDeleteNode.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  addSubValueToObject: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

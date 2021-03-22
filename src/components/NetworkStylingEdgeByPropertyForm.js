@@ -232,6 +232,10 @@ const NetworkStylingEdgeByPropertyForm = ({
               <Button
                 aria-label={t('delete')}
                 label={t('delete')}
+                tooltip={t('delete')}
+                tooltipOptions={{
+                  position: 'top'
+                }}
                 className="p-button-warning delete-property-style"
                 icon="pi pi-trash"
                 onClick={() => updateStylingByProperties({
@@ -248,6 +252,10 @@ const NetworkStylingEdgeByPropertyForm = ({
           <Button
             aria-label={t('save')}
             label={t('save')}
+            tooltip={t('save')}
+            tooltipOptions={{
+              position: 'top'
+            }}
             icon="pi pi-check"
             className="save-property-style"
             disabled={stylingPropertyObject.styleType === 'stylingEdgeLineStyle' ? false : (!stylingPropertyObject.styleValue

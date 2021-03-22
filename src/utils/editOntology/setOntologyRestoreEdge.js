@@ -6,6 +6,7 @@ import { API_ENDPOINT_GRAPH_EDGES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
+import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
 
 /**
  * ADd ontology edge
@@ -13,6 +14,7 @@ import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
  * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElement            Element properties with from,to,edge keys
+ * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey action
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
@@ -20,6 +22,7 @@ const setOntologyRestoreEdge = async ({
   addNumber,
   setStoreState,
   selectedElement,
+  toggleFromArrayInKey,
   t
 }) => {
   const {
@@ -28,7 +31,7 @@ const setOntologyRestoreEdge = async ({
     nodesEdges,
     totalEdgesPerNode,
     objectPropertiesFromApiBackup,
-    stylingEdgeCaptionProperty
+    stylingEdgeCaptionProperty,
   } = store.getState()
 
   const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
@@ -111,7 +114,17 @@ const setOntologyRestoreEdge = async ({
       if (
         isFromVisible
         && isToVisible) {
-        addEdge({ edge, addNumber })
+        const isVisible = checkEdgeVisibility({
+          edgeId: edge.id,
+        })
+
+        if (isVisible) {
+          addEdge({
+            edge,
+            addNumber,
+            toggleFromArrayInKey
+          })
+        }
 
         // add connections
         if (!newNodesEdges[from].includes(id)) {

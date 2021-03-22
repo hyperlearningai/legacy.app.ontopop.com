@@ -12,7 +12,6 @@ import queueGraphElements from '../utils/graphVisualisation/queueGraphElements'
 
 const GraphVisualisation = ({
   currentGraph,
-  graphData,
   setStoreState,
   showContextMenu,
   isBoundingBoxSelectable,
@@ -26,7 +25,9 @@ const GraphVisualisation = ({
   physicsRepulsion,
   isPhysicsOn,
   globalEdgeStyling,
-  addNumber
+  toggleFromArrayInKey,
+  addNumber,
+  addSubValueToObject
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
@@ -52,27 +53,21 @@ const GraphVisualisation = ({
 
       queueGraphElements({
         setStoreState,
-        addNumber
+        addNumber,
+        toggleFromArrayInKey,
+        addSubValueToObject
       })
     }
   }, [
     nodesIdsToDisplay,
   ])
 
-  useEffect(() => {
-    const {
-      type,
-      options
-    } = graphData[currentGraph]
-
-    setNodesIdsToDisplay({
-      type,
-      setStoreState,
-      options,
-      removeFromObject,
-      t
-    })
-  }, [
+  useEffect(() => setNodesIdsToDisplay({
+    setStoreState,
+    removeFromObject,
+    t
+  }),
+  [
     currentGraph
   ])
 
@@ -92,7 +87,8 @@ const GraphVisualisation = ({
   useEffect(() => setNetworkMethods({
     setStoreState,
     network,
-    addNumber
+    addNumber,
+    toggleFromArrayInKey
   }), [
     network,
     nodesIdsToDisplay
@@ -143,7 +139,6 @@ const GraphVisualisation = ({
 
 GraphVisualisation.propTypes = {
   currentGraph: PropTypes.string.isRequired,
-  graphData: PropTypes.shape().isRequired,
   setStoreState: PropTypes.func.isRequired,
   showContextMenu: PropTypes.bool.isRequired,
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
@@ -158,6 +153,8 @@ GraphVisualisation.propTypes = {
   physicsRepulsion: PropTypes.bool.isRequired,
   globalEdgeStyling: PropTypes.shape().isRequired,
   addNumber: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
+  addSubValueToObject: PropTypes.func.isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -166,7 +163,6 @@ GraphVisualisation.defaultProps = {
 
 const mapToProps = ({
   currentGraph,
-  graphData,
   showContextMenu,
   contextMenuData,
   isBoundingBoxSelectable,
@@ -183,7 +179,6 @@ const mapToProps = ({
   globalEdgeStyling
 }) => ({
   currentGraph,
-  graphData,
   showContextMenu,
   contextMenuData,
   isBoundingBoxSelectable,

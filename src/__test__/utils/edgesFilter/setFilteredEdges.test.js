@@ -1,5 +1,6 @@
 import setFilteredEdges from '../../../utils/edgesFilter/setFilteredEdges'
 import store from '../../../store'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
@@ -50,6 +51,7 @@ describe('setFilteredEdges', () => {
           edgesFilters
         },
         type: 'edges-filter',
+        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
       }
     )
   })

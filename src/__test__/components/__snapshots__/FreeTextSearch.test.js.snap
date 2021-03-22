@@ -11,6 +11,8 @@ exports[`FreeTextSearch should match snapshot  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   freeTextSelectedElement="http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay"

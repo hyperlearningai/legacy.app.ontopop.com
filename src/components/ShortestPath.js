@@ -33,6 +33,7 @@ const ShortestPath = ({
   const { t } = useTranslation()
 
   const [isNodeOverlay, setNodesOverlay] = useState(false)
+  const [isUpperOntology, setUpperOntology] = useState(true)
   const [nodesToExclude, setNodesToExclude] = useState([])
   const [edgesToExclude, setEdgesToExclude] = useState([])
 
@@ -185,12 +186,23 @@ const ShortestPath = ({
 
         <div className="shortest-path-toggle p-col-12  m-t-40">
           <Checkbox
+            id="upper-ontology-checkbox"
+            onChange={(e) => setUpperOntology(e.checked)}
+            checked={isUpperOntology}
+          />
+          <label htmlFor="upper-ontology-checkbox" className="p-checkbox-label">
+            {t('showUpperOntologyLayers')}
+          </label>
+        </div>
+
+        <div className="shortest-path-toggle p-col-12  m-t-10">
+          <Checkbox
             id="overlay-checkbox"
             onChange={(e) => setNodesOverlay(e.checked)}
             checked={isNodeOverlay}
           />
           <label htmlFor="overlay-checkbox" className="p-checkbox-label">
-            {t(isNodeOverlay ? 'isNodeOverlay' : 'isNotNodeOverlay')}
+            {t('overlay')}
           </label>
         </div>
 
@@ -208,7 +220,8 @@ const ShortestPath = ({
               setStoreState,
               addToObject,
               nodesToExclude,
-              edgesToExclude
+              edgesToExclude,
+              isUpperOntology
             })}
           />
         </div>

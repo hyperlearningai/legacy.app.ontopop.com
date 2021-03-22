@@ -6,18 +6,21 @@ import setEdgeStyle from '../networkStyling/setEdgeStyle'
 import setNodeStyle from '../networkStyling/setNodeStyle'
 import actionAfterNodesAdded from './actionAfterNodesAdded'
 import getElementLabel from '../networkStyling/getElementLabel'
+import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
 
 /**
  * Add nodes and/or edges to graph
  * @param  {Object}   params
- * @param  {Number}   params.nodeId           Selected node id
- * @param  {Number}   params.index            Item index in loop
- * @param  {Number}   params.edgesNumber      Total number of edges
- * @param  {Object}   params.edge             Edge object
- * @param  {Object}   params.nodesEdges       Edges per node
- * @param  {Object}   params.classesFromApi   All nodes with properties
- * @param  {Function} params.addNumber        addNumber action
- * @param  {Function} params.setStoreState    setStoreState action
+ * @param  {Number}   params.nodeId                 Selected node id
+ * @param  {Number}   params.index                  Item index in loop
+ * @param  {Number}   params.edgesNumber            Total number of edges
+ * @param  {Number}   params.edgesNumber            Total number of edges
+ * @param  {Object}   params.edge                   Edge object
+ * @param  {Object}   params.classesFromApi         All nodes with properties
+ * @param  {Function} params.addNumber              addNumber action
+ * @param  {Function} params.setStoreState          setStoreState action
+ * @param  {Function} params.toggleFromArrayInKey   toggleFromArrayInKey action
  * @return {undefined}
  */
 const addExpandedNode = ({
@@ -25,7 +28,7 @@ const addExpandedNode = ({
   index,
   edgesNumber,
   edge,
-  nodesEdges,
+  toggleFromArrayInKey,
   setStoreState,
   classesFromApi,
   addNumber,
@@ -38,50 +41,54 @@ const addExpandedNode = ({
     to
   } = edge
 
-  // check if node exists
-  const nodeIdToCheck = from === nodeId ? to : from
-
-  const isNodeNotAvailable = getNode(nodeIdToCheck) === null
-
-  if (isNodeNotAvailable) {
-    const nodeIdObject = classesFromApi[nodeIdToCheck]
-
-    nodeIdObject.label = getElementLabel({
-      type: 'node',
-      id: nodeIdToCheck
-    })
-
-    nodeIdObject.x = Math.floor((Math.random() * 100) + 1)
-    nodeIdObject.y = Math.floor((Math.random() * 100) + 1)
-
-    addNode({ node: nodeIdObject, addNumber })
-    setNodeStyle({
-      node: nodeIdObject,
-      skipSpider: true
-    })
-
-    if (!nodesEdges[nodeIdToCheck]) {
-      nodesEdges[nodeIdToCheck] = []
-    }
-
-    if (!nodesEdges[nodeId]) {
-      nodesEdges[nodeId] = []
-    }
-
-    nodesEdges[nodeIdToCheck].push(id)
-    nodesEdges[nodeId].push(id)
-  }
-
-  addEdge({ edge, addNumber })
-  setEdgeStyle({
-    edge
+  // check if edge to be displayed
+  const isEdgeVisible = checkEdgeVisibility({
+    edgeId: id,
   })
+
+  if (isEdgeVisible) {
+    // check if node exists
+    const nodeIdToCheck = from === nodeId ? to : from
+
+    const isNodeNotAvailable = getNode(nodeIdToCheck) === null
+
+    if (isNodeNotAvailable) {
+      // check visibility
+      const isVisible = checkNodeVisibility({
+        nodeId: nodeIdToCheck,
+      })
+
+      if (isVisible) {
+        const nodeIdObject = classesFromApi[nodeIdToCheck]
+
+        nodeIdObject.label = getElementLabel({
+          type: 'node',
+          id: nodeIdToCheck
+        })
+        nodeIdObject.title = nodeIdObject.label
+
+        addNode({ node: nodeIdObject, addNumber })
+        setNodeStyle({
+          node: nodeIdObject,
+          skipSpider: true
+        })
+      }
+    }
+
+    addEdge({
+      edge,
+      addNumber,
+      toggleFromArrayInKey
+    })
+    setEdgeStyle({
+      edge
+    })
+  }
 
   if (index === edgesNumber - 1) {
     actionAfterNodesAdded({
       setStoreState,
       addNumber,
-      nodesEdges,
     })
   }
 }

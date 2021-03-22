@@ -24,14 +24,16 @@ const setOntology = ({
   setStoreState,
   selectedElementProperties,
   addNumber,
+  toggleFromArrayInKey,
   t
 }) => {
   if (operation === 'restore') {
     if (type === 'node') {
       setOntologyRestoreNode({
+        addNumber,
         selectedElement,
         setStoreState,
-        addNumber,
+        toggleFromArrayInKey,
         t
       })
     }
@@ -41,6 +43,7 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         addNumber,
+        toggleFromArrayInKey,
         t
       })
     }
@@ -52,6 +55,7 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         addNumber,
+        toggleFromArrayInKey,
         t
       })
     }
@@ -61,6 +65,7 @@ const setOntology = ({
         setStoreState,
         selectedElement,
         addNumber,
+        toggleFromArrayInKey,
         t
       })
     }
@@ -72,6 +77,7 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         selectedElementProperties,
+        toggleFromArrayInKey,
         addNumber,
         t
       })
@@ -81,9 +87,9 @@ const setOntology = ({
   if (operation === 'add') {
     if (type === 'node') {
       setOntologyAddNode({
+        addNumber,
         setStoreState,
         selectedElementProperties,
-        addNumber,
         t
       })
     }
@@ -92,6 +98,7 @@ const setOntology = ({
       setOntologyAddEdge({
         setStoreState,
         selectedElementProperties,
+        toggleFromArrayInKey,
         addNumber,
         t,
       })

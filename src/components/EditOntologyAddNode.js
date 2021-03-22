@@ -6,14 +6,15 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
-import { UNIQUE_PROPERTY } from '../constants/graph'
+import { RDF_ABOUT_PROPERTY } from '../constants/graph'
 
 const EditOntologyAddNode = ({
   type,
   operation,
   setStoreState,
   addNumber,
-  classesFromApi
+  classesFromApi,
+  toggleFromArrayInKey,
 }) => {
   const { t } = useTranslation()
 
@@ -39,7 +40,7 @@ const EditOntologyAddNode = ({
       />
 
       {
-        classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]]
+        classesFromApi[selectedElementProperties[RDF_ABOUT_PROPERTY]]
          && (
          <div
            className="edit-ontology-row"
@@ -61,10 +62,10 @@ const EditOntologyAddNode = ({
           tooltip={`${t(operation)}`}
           disabled={operation === 'add'
               && (
-                !selectedElementProperties[UNIQUE_PROPERTY]
-                || selectedElementProperties[UNIQUE_PROPERTY] === ''
+                !selectedElementProperties[RDF_ABOUT_PROPERTY]
+                || selectedElementProperties[RDF_ABOUT_PROPERTY] === ''
                 || (
-                  type === 'node' && classesFromApi[selectedElementProperties[UNIQUE_PROPERTY]]
+                  type === 'node' && classesFromApi[selectedElementProperties[RDF_ABOUT_PROPERTY]]
                 )
               )}
           onClick={() => {
@@ -73,8 +74,9 @@ const EditOntologyAddNode = ({
               type,
               selectedElement,
               setStoreState,
-              addNumber,
               selectedElementProperties,
+              addNumber,
+              toggleFromArrayInKey,
               t
             })
             setSelectedElement(undefined)
@@ -95,6 +97,7 @@ EditOntologyAddNode.propTypes = {
   classesFromApi: PropTypes.shape().isRequired,
   setStoreState: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

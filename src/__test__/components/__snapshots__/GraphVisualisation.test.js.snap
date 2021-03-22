@@ -11,9 +11,12 @@ exports[`GraphVisualisation should match snapshot  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
+  addSubValueToObject={[MockFunction]}
   availableEdges={
     DataSet {
       "_data": Map {},
@@ -72,15 +75,6 @@ exports[`GraphVisualisation should match snapshot  1`] = `
       "stylingEdgeWidth": 1,
     }
   }
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-        "type": "full",
-      },
-    }
-  }
   isBoundingBoxSelectable={true}
   isPhysicsOn={true}
   mapToProps={[Function]}
@@ -91,6 +85,7 @@ exports[`GraphVisualisation should match snapshot  1`] = `
   removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
   showContextMenu={true}
+  toggleFromArrayInKey={[MockFunction]}
 >
   <Component />
 </Connect>

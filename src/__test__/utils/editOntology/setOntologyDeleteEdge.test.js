@@ -7,7 +7,7 @@ import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
-import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
@@ -34,6 +34,7 @@ const selectedElement = [
 const setStoreState = jest.fn()
 const t = (id) => en[id]
 const addNumber = jest.fn()
+const toggleFromArrayInKey = jest.fn()
 
 getEdge.mockImplementation(() => ({
   from: '1',
@@ -63,6 +64,7 @@ describe('setOntologyDeleteEdge', () => {
       addNumber,
       setStoreState,
       selectedElement,
+      toggleFromArrayInKey,
       t
     })
 
@@ -81,6 +83,7 @@ describe('setOntologyDeleteEdge', () => {
       addNumber,
       setStoreState,
       selectedElement,
+      toggleFromArrayInKey,
       t
     })
 
@@ -105,11 +108,26 @@ describe('setOntologyDeleteEdge', () => {
       addNumber,
       setStoreState,
       selectedElement,
+      toggleFromArrayInKey,
       t
     })
 
     expect(removeEdge).toHaveBeenLastCalledWith(
-      '11'
+      {
+        addNumber,
+        edge: {
+          edgeId: 11,
+          from: '1',
+          id: '11',
+          label: 'Provided to',
+          rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+          rdfsLabel: 'Provided to',
+          role: 'Provided to',
+          to: '177',
+          userDefined: false
+        },
+        toggleFromArrayInKey
+      }
     )
 
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NetworkGraphOptions should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
+    }
+  }
+  addNumber={[MockFunction]}
+  addToObject={[MockFunction]}
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
+  mapToProps={[Function]}
+  setStoreState={[MockFunction]}
+  toggleFromArrayInKey={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

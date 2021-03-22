@@ -11,6 +11,8 @@ exports[`StructuredSearch should match snapshot when no results 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   annotationProperties={
@@ -41,6 +43,8 @@ exports[`StructuredSearch should match snapshot when results 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   annotationProperties={

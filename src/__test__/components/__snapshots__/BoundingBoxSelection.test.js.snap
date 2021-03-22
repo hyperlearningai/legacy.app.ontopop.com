@@ -11,6 +11,8 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addToObject={[MockFunction]}
@@ -34,6 +36,8 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addToObject={[MockFunction]}

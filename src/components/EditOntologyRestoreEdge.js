@@ -16,6 +16,8 @@ const EditOntologyRestoreEdge = ({
   objectPropertiesFromApiBackup,
   deletedEdges,
   deletedNodes,
+  addSubValueToObject,
+  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -102,6 +104,8 @@ const EditOntologyRestoreEdge = ({
                       setStoreState,
                       addNumber,
                       selectedElementProperties,
+                      addSubValueToObject,
+                      toggleFromArrayInKey,
                       t
                     })
                     setSelectedElement(undefined)
@@ -127,6 +131,8 @@ EditOntologyRestoreEdge.propTypes = {
   objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  addSubValueToObject: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
