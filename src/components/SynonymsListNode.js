@@ -91,9 +91,7 @@ const SynonymsListNode = ({
               className="synonym-text"
               value={synonymText || ''}
               type="text"
-              onChange={(e) => {
-                setSynonymText(e.target.value)
-              }}
+              onChange={(e) => setSynonymText(e.target.value)}
             />
 
             <div className="synonyms-buttons">

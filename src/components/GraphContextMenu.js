@@ -5,11 +5,13 @@ import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
 import expandNode from '../utils/graphVisualisation/expandNode'
 import { SIDEBAR_VIEW_CUSTOM_QUERY, SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
+import { NODE_TYPE } from '../constants/graph'
 
 const GraphContextMenu = ({
   setStoreState,
   contextMenuData,
   addNumber,
+  classesFromApi
 }) => {
   const { t } = useTranslation()
 
@@ -42,6 +44,22 @@ const GraphContextMenu = ({
   let menu = defaultMenu
 
   if (nodeId) {
+    let synonimsButton = []
+
+    if (classesFromApi[nodeId][NODE_TYPE]
+      && classesFromApi[nodeId][NODE_TYPE] === 'class') {
+      synonimsButton = [{
+        label: t('synonyms'),
+        icon: 'pi pi-file',
+        command: () => {
+          setStoreState('synonymElementId', nodeId)
+          setStoreState('selectedNotesType', 'node')
+          setStoreState('sidebarView', SIDEBAR_VIEW_SYNONYMS)
+          setStoreState('showContextMenu', false)
+        }
+      }]
+    }
+
     const selectedNodeMenu = [
       {
         label: t('expandNode'),
@@ -64,21 +82,12 @@ const GraphContextMenu = ({
           setStoreState('showContextMenu', false)
         }
       },
-      {
-        label: t('synonyms'),
-        icon: 'pi pi-file',
-        command: () => {
-          setStoreState('synonymElementId', nodeId)
-          setStoreState('selectedNotesType', 'node')
-          setStoreState('sidebarView', SIDEBAR_VIEW_SYNONYMS)
-          setStoreState('showContextMenu', false)
-        }
-      }
     ]
 
     menu = [
       defaultMenu[0],
       ...selectedNodeMenu,
+      ...synonimsButton,
       ...defaultMenu.slice(1)
     ]
   } else if (edgeId) {
@@ -115,12 +124,15 @@ GraphContextMenu.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
   contextMenuData: PropTypes.shape().isRequired,
+  classesFromApi: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   contextMenuData,
+  classesFromApi
 }) => ({
   contextMenuData,
+  classesFromApi
 })
 
 export default connect(

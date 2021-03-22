@@ -17,18 +17,19 @@ import setNodesStyle from '../utils/networkStyling/setNodesStyle'
 import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
 import addNodesBorders from '../utils/networkStyling/addNodesBorders'
 import { MIN_DATE, SORT_FIELDS } from '../constants/synonyms'
-import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
 import SynonymsListAddNew from './SynonymsListAddNew'
 import synonymsGetSynonyms from '../utils/synonyms/synonymsGetSynonyms'
 import SynonymsListNode from './SynonymsListNode'
+import { NODE_TYPE } from '../constants/graph'
 
 const SynonymsList = ({
   addNumber,
   nodesSynonyms,
   setStoreState,
-  synonymElementId
+  synonymElementId,
+  classesFromApi
 }) => {
   const { t } = useTranslation()
 
@@ -69,6 +70,13 @@ const SynonymsList = ({
         setStoreState,
         selectedNode: synonymElementId
       })
+
+      synonymsGetSynonyms({
+        selectedElement: synonymElementId,
+        addNumber,
+        setStoreState,
+        t
+      })
     }
   }, [synonymElementId])
 
@@ -97,12 +105,15 @@ const SynonymsList = ({
     label: userId
   })) : []
 
-  const availableNodesList = getNodeIds().map((nodeId) => {
-    const node = getNode(nodeId)
+  const availableNodesList = getNode({
+    filter: (node) => classesFromApi[node.id][NODE_TYPE]
+      && classesFromApi[node.id][NODE_TYPE] === 'class'
+  }).map((node) => {
+    const { id, label } = node
 
     return ({
-      value: node.id,
-      label: node.label
+      value: id,
+      label
     })
   }).filter((node) => node.label)
 
@@ -122,15 +133,7 @@ const SynonymsList = ({
             name="synonyms-select-element"
             value={synonymElementId}
             options={availableNodesList}
-            onChange={(e) => {
-              setStoreState('synonymElementId', e.value)
-              synonymsGetSynonyms({
-                selectedElement: e.value,
-                addNumber,
-                setStoreState,
-                t
-              })
-            }}
+            onChange={(e) => setStoreState('synonymElementId', e.value)}
           />
         </div>
 
@@ -261,6 +264,7 @@ SynonymsList.propTypes = {
   synonymElementId: PropTypes.string,
   setStoreState: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
+  classesFromApi: PropTypes.shape().isRequired,
 }
 
 SynonymsList.defaultProps = {

@@ -18,7 +18,6 @@ context('Synonyms list', () => {
         url: '**/login',
       }, authValid).as('postLogin')
 
-
       cy.intercept({
         method: 'GET',
         url: '**/graph/node/*/synonyms',
@@ -75,6 +74,11 @@ context('Synonyms list', () => {
 
       // select first node from dropdown
       cy.get('#synonyms-select-element').find('.p-dropdown-trigger').click({ force: true })
+
+      // only class type nodes should be displayed
+      cy.get('#synonyms-select-element').find('.p-dropdown-item').should('have.length', 2)
+
+      // select first node
       cy.get('#synonyms-select-element').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // add Node synonym
