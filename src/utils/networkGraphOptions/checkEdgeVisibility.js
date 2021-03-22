@@ -9,12 +9,10 @@ import checkVisibilityByProperty from './checkVisibilityByProperty'
  * Check edge visibility
  * @param  {Object}   params
  * @param  {String}   params.edgeId                 Edge ID
- * @param  {Function} params.toggleFromSubArray     toggleFromSubArray action
  * @return {Boolean}  isVisible                     Edge visibility flag
  */
 const checkEdgeVisibility = ({
   edgeId,
-  toggleFromSubArray
 }) => {
   const {
     currentGraph,
@@ -46,10 +44,6 @@ const checkEdgeVisibility = ({
         })
       }
     }
-  }
-
-  if (!isVisible) {
-    toggleFromSubArray('graphData', currentGraph, 'hiddenEdges', edgeId)
   }
 
   return isVisible

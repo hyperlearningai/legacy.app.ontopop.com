@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.5.0]
 ### Added
+- ONTOLOGY-137 Added node tooltip on hover
 - ONTOLOGY-112 Added possibility to hide nodes and edges based on specific properties on network graph options
 - ONTOLOGY-112 Added network graph options
 - ONTOLOGY-112 Added ability to toggle upper ontology nodes in shortest path view
@@ -37,6 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-112 Removed unnecessary test fixtures
 
 ### Fixed
+- ONTOLOGY-137 Fixed dataset/upper ontology nodes toggling bug
 - ONTOLOGY-112 Fixed node update API
 
 ### Security

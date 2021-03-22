@@ -9,8 +9,6 @@ const commonState = {
   classesFromApiBackup: classesFromApi,
 }
 
-const toggleFromSubArray = jest.fn()
-
 describe('checkNodeVisibility', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -35,16 +33,9 @@ describe('checkNodeVisibility', () => {
     }))
 
     const output = await checkNodeVisibility({
-      nodeId,
-      toggleFromSubArray
+      nodeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledWith(
-      'graphData',
-      currentGraph,
-      'hiddenNodes',
-      nodeId
-    )
     expect(output).toEqual(false)
   })
 
@@ -67,11 +58,9 @@ describe('checkNodeVisibility', () => {
     }))
 
     const output = await checkNodeVisibility({
-      nodeId,
-      toggleFromSubArray
+      nodeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledTimes(0)
     expect(output).toEqual(true)
   })
 
@@ -94,16 +83,9 @@ describe('checkNodeVisibility', () => {
     }))
 
     const output = await checkNodeVisibility({
-      nodeId,
-      toggleFromSubArray
+      nodeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledWith(
-      'graphData',
-      currentGraph,
-      'hiddenNodes',
-      nodeId
-    )
     expect(output).toEqual(false)
   })
 
@@ -137,16 +119,9 @@ describe('checkNodeVisibility', () => {
     }))
 
     const output = await checkNodeVisibility({
-      nodeId,
-      toggleFromSubArray
+      nodeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledWith(
-      'graphData',
-      currentGraph,
-      'hiddenNodes',
-      nodeId
-    )
     expect(output).toEqual(false)
   })
 
@@ -169,11 +144,9 @@ describe('checkNodeVisibility', () => {
     }))
 
     const output = await checkNodeVisibility({
-      nodeId,
-      toggleFromSubArray
+      nodeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledTimes(0)
     expect(output).toEqual(true)
   })
 
@@ -196,11 +169,9 @@ describe('checkNodeVisibility', () => {
     }))
 
     const output = await checkNodeVisibility({
-      nodeId,
-      toggleFromSubArray
+      nodeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledTimes(0)
     expect(output).toEqual(true)
   })
 })

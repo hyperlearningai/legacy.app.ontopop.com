@@ -22,6 +22,7 @@ const updatedNode = {
   'Business Area': 'Communications',
   nodeId: 1,
   nodeType: 'class',
+  title: 'New\nnode',
   rdfAbout: 'http://test.com/node',
   skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
   skosDefinition: 'Document storing the information conveyed between two or more parties.',

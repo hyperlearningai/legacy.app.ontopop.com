@@ -14,7 +14,6 @@ import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
  * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElement            Element properties with from,to,edge keys
- * @param  {Function}       params.toggleFromSubArray         toggleFromSubArray action
  * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey action
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
@@ -23,7 +22,6 @@ const setOntologyRestoreEdge = async ({
   addNumber,
   setStoreState,
   selectedElement,
-  toggleFromSubArray,
   toggleFromArrayInKey,
   t
 }) => {
@@ -118,7 +116,6 @@ const setOntologyRestoreEdge = async ({
         && isToVisible) {
         const isVisible = checkEdgeVisibility({
           edgeId: edge.id,
-          toggleFromSubArray
         })
 
         if (isVisible) {

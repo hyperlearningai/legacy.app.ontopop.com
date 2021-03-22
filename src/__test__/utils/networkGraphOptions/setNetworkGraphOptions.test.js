@@ -5,7 +5,6 @@ import toggleElements from '../../../utils/networkGraphOptions/toggleElements'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../../../constants/graph'
 
 const addToObject = jest.fn()
-const toggleFromSubArray = jest.fn()
 const toggleFromArrayInKey = jest.fn()
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
@@ -47,7 +46,6 @@ describe('setNetworkGraphOptions', () => {
       hiddenNodesProperties,
       hiddenEdgesProperties,
       addToObject,
-      toggleFromSubArray,
       addNumber,
       toggleFromArrayInKey,
       setStoreState,
@@ -68,7 +66,6 @@ describe('setNetworkGraphOptions', () => {
       }
     )
     expect(toggleElements).toHaveBeenCalledWith({
-      toggleFromSubArray,
       addNumber,
       toggleFromArrayInKey,
       setStoreState,

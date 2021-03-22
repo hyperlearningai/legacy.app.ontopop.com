@@ -32,7 +32,6 @@ exports[`NetworkGraphOptions should match snapshot  1`] = `
   mapToProps={[Function]}
   setStoreState={[MockFunction]}
   toggleFromArrayInKey={[MockFunction]}
-  toggleFromSubArray={[MockFunction]}
 >
   <Component />
 </Connect>
