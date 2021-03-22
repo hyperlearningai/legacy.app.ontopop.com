@@ -74,6 +74,7 @@ const NetworkStylingEdgeByPropertyForm = ({
 
             <div className="network-styling-property-form-row">
               <InputText
+                className="property-text-input"
                 value={stylingPropertyObject.filterValue}
                 onChange={(e) => setStylingPropertyObject({
                   ...stylingPropertyObject,
@@ -230,7 +231,11 @@ const NetworkStylingEdgeByPropertyForm = ({
             ) && (
               <Button
                 label={t('delete')}
-                className="p-button-warning"
+                tooltip={t('delete')}
+                tooltipOptions={{
+                  position: 'top'
+                }}
+                className="p-button-warning delete-property-style"
                 icon="pi pi-trash"
                 onClick={() => updateStylingByProperties({
                   type: 'edge',
@@ -245,7 +250,12 @@ const NetworkStylingEdgeByPropertyForm = ({
 
           <Button
             label={t('save')}
+            tooltip={t('save')}
+            tooltipOptions={{
+              position: 'top'
+            }}
             icon="pi pi-check"
+            className="save-property-style"
             disabled={stylingPropertyObject.styleType === 'stylingEdgeLineStyle' ? false : (!stylingPropertyObject.styleValue
               || stylingPropertyObject.styleValue.length === 0
               || stylingPropertyObject.styleValue === 0)}

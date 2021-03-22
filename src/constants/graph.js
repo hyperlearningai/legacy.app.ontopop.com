@@ -1,4 +1,5 @@
 export const NODE_BACKGROUND = '#adefd1' // 'adefd1' // '03a9f4' // '2B7CE9',
+export const NODE_BACKGROUND_DATASET = '#00bcd4'
 export const NODE_BORDER = '#011e41' // 'D2E5FF',
 export const NODE_BORDER_WIDTH = 1
 export const CLICK_NODE_BACKGROUND = '#ffed00' // '#abd6df'
@@ -9,11 +10,17 @@ export const HOVER_NODE_BORDER = '#607d8b'
 export const SELECTED_NODE_COLOR = '#ff6f61'
 export const SPIDERABLE_NODE_BORDER_COLOR = '#ff6f61'
 export const SPIDERABLE_NODE_BORDER_WIDTH = 2
+export const COMMENTED_NODE_BORDER_COLOR = '#2196f3'
+export const COMMENTED_NODE_BORDER_WIDTH = 5
 export const NODE_TEXT_COLOR = '#000000'
 export const NODE_DEFAULT_SHAPE = 'circle'
 export const EDGE_COLOR = '#070b11'
 export const EDGE_COLOR_SELECTED = '#03a9f4'
 export const EDGE_COLOR_HIGHLIGHTED = '#9c27b0'
+export const NOTE_NODE_BORDER_WIDTH = 3
+export const NOTE_NODE_BORDER_COLOR = '#ff6f61'
+export const NOTE_EDGE_BORDER_WIDTH = 3
+export const NOTE_EDGE_BORDER_COLOR = '#ff6f61'
 
 export const FONT_ALIGNMENT_OPTIONS = [
   { icon: 'pi pi-align-left', value: 'left' },
@@ -212,6 +219,29 @@ export const EDGE_STYLING_PROPERTIES = {
   },
 }
 
+export const DEFAULT_HIDDEN_ELEMENT_SUBPROPERTY = {
+  property: '',
+  operation: 'includes',
+  value: ''
+}
+
+export const DEFAULT_HIDDEN_ELEMENT_PROPERTY = {
+  type: 'and',
+  properties: {
+    0: DEFAULT_HIDDEN_ELEMENT_SUBPROPERTY
+  }
+}
+
+export const DEFAULT_GRAPH_VISUALISATION_OPTIONS = {
+  isUpperOntologyVisible: false,
+  isSubClassEdgeVisible: true,
+  isDatasetVisible: false,
+  hiddenNodesProperties: { 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY },
+  hiddenEdgesProperties: { 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY },
+  hiddenNodes: [],
+  hiddenEdges: []
+}
+
 export const SUB_CLASS_OF_ID = 'http://www.w3.org/2000/01/rdf-schema#subclassof'
 export const SUB_CLASS_OF_LABEL = 'subClassOf'
 
@@ -222,6 +252,7 @@ export const SUB_CLASS_OF_OBJECT = {
 }
 
 export const USER_DEFINED_PROPERTY = 'userDefined'
+export const NODE_TYPE = 'nodeType'
 
 export const RESERVED_PROPERTIES = [
   'id',
@@ -238,12 +269,22 @@ export const RESERVED_PROPERTIES = [
   'shape',
   'size',
   'borderWidth',
-  'borderWidthSelected'
+  'borderWidthSelected',
+  NODE_TYPE
 ]
 
+export const RDF_ABOUT_PROPERTY = 'rdfAbout'
+export const LABEL_PROPERTY = 'rdfsLabel'
+export const LABEL_PROPERTY_DATASET = 'name'
+export const EDGE_LABEL_PROPERTY = 'rdfsLabel'
+export const UPPER_ONTOLOGY = 'upperOntology'
+export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'
+export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
+export const OWL_RESTRICTION = 'owlRestriction'
+
 export const EDGE_PROPERTIES = [
-  'rdfAbout',
-  'rdfsLabel',
+  RDF_ABOUT_PROPERTY,
+  LABEL_PROPERTY,
 ]
 
 export const EDGE_PROPERTIES_DROPDOWN = EDGE_PROPERTIES.map((property) => ({
@@ -258,16 +299,8 @@ export const LOW_LEVEL_PROPERTIES = [
 ]
 
 export const REQUIRED_PROPERTIES = [
-  'rdfAbout',
+  RDF_ABOUT_PROPERTY,
 ]
-
-export const UNIQUE_PROPERTY = 'rdfAbout'
-export const LABEL_PROPERTY = 'rdfsLabel'
-export const EDGE_LABEL_PROPERTY = 'rdfsLabel'
-
-export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'
-export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
-export const OWL_RESTRICTION = 'owlRestriction'
 
 export const REQUIRED_PREDICATES = [
   'rdfsSubClassOf',

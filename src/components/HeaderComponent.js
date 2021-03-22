@@ -56,6 +56,7 @@ const HeaderComponent = ({
         <Button
           type="button"
           icon="pi pi-align-justify"
+          id="overlay-menu-button"
           onClick={(e) => overlay.current.toggle(e)}
         />
 
@@ -65,12 +66,14 @@ const HeaderComponent = ({
               <Button
                 icon="pi pi-home"
                 label={t('home')}
+                id="overlay-menu-home"
                 className="p-button-secondary"
                 onClick={() => router.push(ROUTE_INDEX)}
               />
             ) : (
               <Button
                 icon="pi pi-user"
+                id="overlay-menu-profile"
                 label={t('profile')}
                 className="p-button-secondary"
                 onClick={() => router.push(ROUTE_PROFILE)}
@@ -81,15 +84,17 @@ const HeaderComponent = ({
             user.isGuest ? (
               <Button
                 icon="pi pi-sign-in"
-                label={t('signIn')}
+                id="overlay-menu-login"
                 className="p-button-secondary"
+                label={t('signIn')}
                 onClick={() => router.push(ROUTE_LOGIN)}
               />
             ) : (
               <Button
                 icon="pi pi-sign-out"
-                label={t('signOut')}
+                id="overlay-menu-logout"
                 className="p-button-secondary"
+                label={t('signOut')}
                 onClick={() => logout({
                   router,
                   setStoreState

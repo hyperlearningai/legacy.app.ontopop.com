@@ -11,6 +11,8 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -19,11 +21,11 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
   optionEdges={
     Array [
       Object {
-        "label": "Subclass of",
+        "label": "Provided to",
         "value": "11",
       },
       Object {
-        "label": "Provided to",
+        "label": "Subclass of",
         "value": "12",
       },
       Object {
@@ -39,11 +41,11 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "23",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Governed by",
         "value": "24",
       },
       Object {
-        "label": "Governed by",
+        "label": "Subclass of",
         "value": "25",
       },
       Object {
@@ -51,11 +53,11 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "31",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Input into",
         "value": "41",
       },
       Object {
-        "label": "Input into",
+        "label": "Subclass of",
         "value": "42",
       },
       Object {
@@ -71,27 +73,27 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "62",
       },
       Object {
-        "label": "Improved through",
+        "label": "Subclass of",
         "value": "71",
       },
       Object {
-        "label": "Input into",
+        "label": "Improved through",
         "value": "72",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Input into",
         "value": "73",
       },
       Object {
-        "label": "Itemised by",
+        "label": "Subclass of",
         "value": "81",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Itemised by",
         "value": "82",
       },
       Object {
-        "label": "Required for",
+        "label": "Performed by",
         "value": "91",
       },
       Object {
@@ -99,7 +101,7 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "92",
       },
       Object {
-        "label": "Performed by",
+        "label": "Required for",
         "value": "93",
       },
       Object {
@@ -123,20 +125,24 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "112",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Performed on",
         "value": "121",
       },
       Object {
-        "label": "Performed by",
+        "label": "Affected by",
         "value": "122",
       },
       Object {
-        "label": "Performed on",
+        "label": "Subclass of",
         "value": "123",
       },
       Object {
         "label": "Triggered by",
         "value": "124",
+      },
+      Object {
+        "label": "Performed by",
+        "value": "125",
       },
       Object {
         "label": "Subclass of",
@@ -147,15 +153,11 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "141",
       },
       Object {
-        "label": "Required for",
-        "value": "142",
-      },
-      Object {
         "label": "Subclass of",
         "value": "151",
       },
       Object {
-        "label": "Improved through",
+        "label": "Required for",
         "value": "152",
       },
       Object {
@@ -163,28 +165,32 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "161",
       },
       Object {
-        "label": "Informed by",
+        "label": "Improved through",
+        "value": "162",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "171",
       },
       Object {
         "label": "Subclass of",
-        "value": "172",
+        "value": "181",
       },
       Object {
-        "label": "Requested by",
-        "value": "173",
-      },
-      Object {
-        "label": "Presented in",
-        "value": "174",
+        "label": "Informed by",
+        "value": "182",
       },
       Object {
         "label": "Required for",
-        "value": "175",
+        "value": "183",
       },
       Object {
-        "label": "Subclass of",
-        "value": "181",
+        "label": "Requested by",
+        "value": "184",
+      },
+      Object {
+        "label": "Presented in",
+        "value": "185",
       },
       Object {
         "label": "Subclass of",
@@ -195,87 +201,55 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "201",
       },
       Object {
-        "label": "Funded by",
-        "value": "202",
-      },
-      Object {
-        "label": "Funded by",
-        "value": "203",
-      },
-      Object {
-        "label": "Itemised by",
-        "value": "204",
-      },
-      Object {
-        "label": "Included in",
+        "label": "Subclass of",
         "value": "211",
       },
       Object {
-        "label": "Provided to",
-        "value": "212",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "213",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Funded by",
         "value": "221",
       },
       Object {
-        "label": "Caused by",
-        "value": "231",
+        "label": "Subclass of",
+        "value": "222",
       },
       Object {
-        "label": "Predicted by",
-        "value": "232",
+        "label": "Itemised by",
+        "value": "223",
+      },
+      Object {
+        "label": "Funded by",
+        "value": "224",
       },
       Object {
         "label": "Subclass of",
+        "value": "231",
+      },
+      Object {
+        "label": "Provided to",
+        "value": "232",
+      },
+      Object {
+        "label": "Included in",
         "value": "233",
       },
       Object {
-        "label": "Located at",
+        "label": "Subclass of",
         "value": "241",
       },
       Object {
         "label": "Subclass of",
-        "value": "242",
-      },
-      Object {
-        "label": "Reconciled by",
         "value": "251",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Predicted by",
         "value": "252",
       },
       Object {
-        "label": "Performed by",
+        "label": "Caused by",
         "value": "253",
       },
       Object {
-        "label": "Created by",
-        "value": "254",
-      },
-      Object {
-        "label": "Reviewed by",
-        "value": "255",
-      },
-      Object {
-        "label": "Input into",
-        "value": "256",
-      },
-      Object {
-        "label": "Summarised in",
-        "value": "257",
-      },
-      Object {
-        "label": "Recorded in",
-        "value": "258",
-      },
-      Object {
-        "label": "Completed before",
+        "label": "Located at",
         "value": "261",
       },
       Object {
@@ -283,12 +257,44 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "262",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Created by",
         "value": "271",
+      },
+      Object {
+        "label": "Recorded in",
+        "value": "272",
+      },
+      Object {
+        "label": "Input into",
+        "value": "273",
+      },
+      Object {
+        "label": "Summarised in",
+        "value": "274",
+      },
+      Object {
+        "label": "Performed by",
+        "value": "275",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "276",
+      },
+      Object {
+        "label": "Reviewed by",
+        "value": "277",
+      },
+      Object {
+        "label": "Reconciled by",
+        "value": "278",
       },
       Object {
         "label": "Subclass of",
         "value": "281",
+      },
+      Object {
+        "label": "Completed before",
+        "value": "282",
       },
       Object {
         "label": "Subclass of",
@@ -303,23 +309,15 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "311",
       },
       Object {
-        "label": "Achieved by",
-        "value": "312",
-      },
-      Object {
         "label": "Subclass of",
         "value": "321",
-      },
-      Object {
-        "label": "Composed of",
-        "value": "322",
       },
       Object {
         "label": "Subclass of",
         "value": "331",
       },
       Object {
-        "label": "Performed by",
+        "label": "Achieved by",
         "value": "332",
       },
       Object {
@@ -327,19 +325,19 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "341",
       },
       Object {
-        "label": "Reviewed by",
-        "value": "342",
+        "label": "Composed of",
+        "value": "351",
       },
       Object {
         "label": "Subclass of",
-        "value": "351",
+        "value": "352",
       },
       Object {
         "label": "Subclass of",
         "value": "361",
       },
       Object {
-        "label": "Required for",
+        "label": "Performed by",
         "value": "362",
       },
       Object {
@@ -347,63 +345,55 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "371",
       },
       Object {
-        "label": "Required for",
-        "value": "381",
-      },
-      Object {
-        "label": "Presented in",
-        "value": "382",
-      },
-      Object {
-        "label": "Associated with",
-        "value": "383",
-      },
-      Object {
-        "label": "Associated with",
-        "value": "384",
+        "label": "Reviewed by",
+        "value": "372",
       },
       Object {
         "label": "Subclass of",
-        "value": "385",
-      },
-      Object {
-        "label": "Obtained through",
-        "value": "386",
-      },
-      Object {
-        "label": "Achieved by",
-        "value": "387",
+        "value": "381",
       },
       Object {
         "label": "Subclass of",
         "value": "391",
       },
       Object {
-        "label": "Used by",
+        "label": "Required for",
         "value": "392",
-      },
-      Object {
-        "label": "Used by",
-        "value": "393",
-      },
-      Object {
-        "label": "Composed of",
-        "value": "394",
-      },
-      Object {
-        "label": "Located at",
-        "value": "395",
       },
       Object {
         "label": "Subclass of",
         "value": "401",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Obtained through",
         "value": "411",
       },
       Object {
-        "label": "Requested by",
+        "label": "Achieved by",
+        "value": "412",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "413",
+      },
+      Object {
+        "label": "Required for",
+        "value": "414",
+      },
+      Object {
+        "label": "Presented in",
+        "value": "415",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "416",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "417",
+      },
+      Object {
+        "label": "Composed of",
         "value": "421",
       },
       Object {
@@ -411,119 +401,107 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "422",
       },
       Object {
-        "label": "Informed by",
-        "value": "431",
+        "label": "Located at",
+        "value": "423",
       },
       Object {
-        "label": "Affected by",
-        "value": "432",
+        "label": "Used by",
+        "value": "424",
       },
       Object {
-        "label": "Informed by",
-        "value": "433",
+        "label": "Used by",
+        "value": "425",
       },
       Object {
         "label": "Subclass of",
-        "value": "434",
+        "value": "431",
       },
       Object {
         "label": "Subclass of",
         "value": "441",
       },
       Object {
-        "label": "Used in",
-        "value": "442",
-      },
-      Object {
-        "label": "Recorded in",
-        "value": "443",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Requested by",
         "value": "451",
       },
       Object {
-        "label": "Improved through",
+        "label": "Subclass of",
         "value": "452",
       },
       Object {
-        "label": "Measured at",
+        "label": "Informed by",
         "value": "461",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Affected by",
         "value": "462",
       },
       Object {
-        "label": "Predicted by",
+        "label": "Informed by",
         "value": "463",
       },
       Object {
-        "label": "Measured by",
+        "label": "Subclass of",
         "value": "464",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "465",
-      },
-      Object {
-        "label": "Improved through",
-        "value": "466",
       },
       Object {
         "label": "Subclass of",
         "value": "471",
       },
       Object {
-        "label": "Composed of",
+        "label": "Recorded in",
+        "value": "472",
+      },
+      Object {
+        "label": "Used in",
+        "value": "473",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "481",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Improved through",
         "value": "482",
       },
       Object {
-        "label": "Composed of",
-        "value": "483",
-      },
-      Object {
-        "label": "Measured by",
+        "label": "Affected by",
         "value": "491",
       },
       Object {
-        "label": "Improved through",
+        "label": "Measured by",
         "value": "492",
       },
       Object {
-        "label": "Associated with",
+        "label": "Measured at",
         "value": "493",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Improved through",
         "value": "494",
       },
       Object {
-        "label": "Located at",
+        "label": "Subclass of",
+        "value": "495",
+      },
+      Object {
+        "label": "Predicted by",
+        "value": "496",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "501",
       },
       Object {
-        "label": "Associated with",
-        "value": "502",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "503",
-      },
-      Object {
-        "label": "Performed on",
         "value": "511",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Composed of",
         "value": "512",
       },
       Object {
-        "label": "Performed by",
+        "label": "Composed of",
         "value": "513",
       },
       Object {
@@ -531,68 +509,72 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "521",
       },
       Object {
-        "label": "Required for",
+        "label": "Improved through",
         "value": "522",
       },
       Object {
-        "label": "Performed from",
+        "label": "Measured by",
+        "value": "523",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "524",
+      },
+      Object {
+        "label": "Located at",
         "value": "531",
       },
       Object {
-        "label": "Performed by",
+        "label": "Subclass of",
         "value": "532",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Associated with",
         "value": "533",
-      },
-      Object {
-        "label": "Informed by",
-        "value": "534",
       },
       Object {
         "label": "Subclass of",
         "value": "541",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Performed on",
+        "value": "542",
+      },
+      Object {
+        "label": "Performed by",
+        "value": "543",
+      },
+      Object {
+        "label": "Required for",
         "value": "551",
       },
       Object {
         "label": "Subclass of",
+        "value": "552",
+      },
+      Object {
+        "label": "Performed by",
         "value": "561",
       },
       Object {
-        "label": "Bounded by",
+        "label": "Subclass of",
+        "value": "562",
+      },
+      Object {
+        "label": "Performed from",
+        "value": "563",
+      },
+      Object {
+        "label": "Informed by",
+        "value": "564",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "571",
       },
       Object {
-        "label": "Applied to",
-        "value": "572",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "573",
-      },
-      Object {
-        "label": "Created by",
         "value": "581",
-      },
-      Object {
-        "label": "Used in",
-        "value": "582",
-      },
-      Object {
-        "label": "Created for",
-        "value": "583",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "584",
-      },
-      Object {
-        "label": "Used by",
-        "value": "585",
       },
       Object {
         "label": "Subclass of",
@@ -603,43 +585,59 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "601",
       },
       Object {
-        "label": "Performed on",
+        "label": "Bounded by",
         "value": "602",
       },
       Object {
-        "label": "Operated from",
+        "label": "Applied to",
         "value": "603",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Used by",
         "value": "611",
       },
       Object {
-        "label": "Located at",
+        "label": "Used in",
         "value": "612",
       },
       Object {
-        "label": "Presented in",
+        "label": "Created by",
+        "value": "613",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "614",
+      },
+      Object {
+        "label": "Created for",
+        "value": "615",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "621",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "631",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Performed on",
         "value": "632",
       },
       Object {
-        "label": "Managed within",
+        "label": "Operated from",
         "value": "633",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Located at",
         "value": "641",
       },
       Object {
         "label": "Subclass of",
-        "value": "651",
+        "value": "642",
       },
       Object {
-        "label": "Input into",
+        "label": "Presented in",
         "value": "661",
       },
       Object {
@@ -647,127 +645,91 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "662",
       },
       Object {
-        "label": "Associated with",
+        "label": "Managed within",
         "value": "663",
       },
       Object {
-        "label": "Instantiation of",
+        "label": "Subclass of",
         "value": "671",
       },
       Object {
-        "label": "Owned by",
-        "value": "672",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "673",
-      },
-      Object {
-        "label": "Predicted by",
         "value": "681",
       },
       Object {
         "label": "Subclass of",
-        "value": "682",
-      },
-      Object {
-        "label": "Provided by",
         "value": "691",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Associated with",
         "value": "692",
       },
       Object {
-        "label": "Provided by",
+        "label": "Input into",
         "value": "693",
       },
       Object {
-        "label": "Reviewed by",
-        "value": "694",
-      },
-      Object {
-        "label": "Used in",
-        "value": "695",
-      },
-      Object {
-        "label": "Provided to",
-        "value": "696",
-      },
-      Object {
-        "label": "Provided by",
-        "value": "697",
-      },
-      Object {
-        "label": "Managed within",
-        "value": "698",
-      },
-      Object {
-        "label": "Managed within",
-        "value": "699",
-      },
-      Object {
-        "label": "Improved through",
+        "label": "Owned by",
         "value": "701",
       },
       Object {
-        "label": "Owned by",
+        "label": "Instantiation of",
         "value": "702",
       },
       Object {
-        "label": "Represented by",
+        "label": "Subclass of",
         "value": "703",
       },
       Object {
-        "label": "Subclass of",
-        "value": "704",
-      },
-      Object {
-        "label": "Input into",
-        "value": "705",
-      },
-      Object {
-        "label": "Used in",
-        "value": "706",
-      },
-      Object {
-        "label": "Located at",
-        "value": "707",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "708",
-      },
-      Object {
-        "label": "Obtained through",
-        "value": "709",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Predicted by",
         "value": "711",
       },
       Object {
-        "label": "Required for",
+        "label": "Subclass of",
         "value": "712",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Provided by",
         "value": "721",
       },
       Object {
-        "label": "Located at",
+        "label": "Managed within",
         "value": "722",
       },
       Object {
-        "label": "Managed by",
+        "label": "Provided by",
         "value": "723",
       },
       Object {
-        "label": "Recorded in",
-        "value": "731",
+        "label": "Provided to",
+        "value": "724",
+      },
+      Object {
+        "label": "Managed within",
+        "value": "725",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "726",
+      },
+      Object {
+        "label": "Reviewed by",
+        "value": "727",
+      },
+      Object {
+        "label": "Used in",
+        "value": "728",
       },
       Object {
         "label": "Provided by",
+        "value": "729",
+      },
+      Object {
+        "label": "Used in",
+        "value": "731",
+      },
+      Object {
+        "label": "Input into",
         "value": "732",
       },
       Object {
@@ -775,15 +737,35 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "733",
       },
       Object {
-        "label": "Managed within",
+        "label": "Represented within",
         "value": "734",
+      },
+      Object {
+        "label": "Improved through",
+        "value": "735",
+      },
+      Object {
+        "label": "Obtained through",
+        "value": "736",
+      },
+      Object {
+        "label": "Located at",
+        "value": "737",
+      },
+      Object {
+        "label": "Owned by",
+        "value": "738",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "739",
       },
       Object {
         "label": "Subclass of",
         "value": "741",
       },
       Object {
-        "label": "Implemented through",
+        "label": "Required for",
         "value": "742",
       },
       Object {
@@ -791,19 +773,35 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "751",
       },
       Object {
-        "label": "Requested by",
+        "label": "Managed by",
         "value": "752",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Located at",
+        "value": "753",
+      },
+      Object {
+        "label": "Managed within",
         "value": "761",
+      },
+      Object {
+        "label": "Provided by",
+        "value": "762",
+      },
+      Object {
+        "label": "Recorded in",
+        "value": "763",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "764",
       },
       Object {
         "label": "Subclass of",
         "value": "771",
       },
       Object {
-        "label": "Presented in",
+        "label": "Implemented through",
         "value": "772",
       },
       Object {
@@ -811,155 +809,159 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "781",
       },
       Object {
-        "label": "Input into",
-        "value": "791",
-      },
-      Object {
-        "label": "Measured at",
-        "value": "792",
-      },
-      Object {
-        "label": "Measured by",
-        "value": "793",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "794",
+        "label": "Requested by",
+        "value": "782",
       },
       Object {
         "label": "Subclass of",
-        "value": "795",
+        "value": "791",
       },
       Object {
         "label": "Subclass of",
         "value": "801",
       },
       Object {
-        "label": "Measured by",
+        "label": "Presented in",
+        "value": "802",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "811",
       },
       Object {
-        "label": "Affected by",
-        "value": "812",
-      },
-      Object {
         "label": "Measured at",
-        "value": "813",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "814",
-      },
-      Object {
-        "label": "Subclass of",
         "value": "821",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "822",
+      },
+      Object {
+        "label": "Input into",
+        "value": "823",
+      },
+      Object {
+        "label": "Measured by",
+        "value": "824",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "825",
       },
       Object {
         "label": "Subclass of",
         "value": "831",
       },
       Object {
-        "label": "Used in",
+        "label": "Subclass of",
         "value": "841",
       },
       Object {
-        "label": "Owned by",
+        "label": "Measured at",
         "value": "842",
       },
       Object {
-        "label": "Operated by",
+        "label": "Measured by",
         "value": "843",
       },
       Object {
-        "label": "Owned by",
+        "label": "Affected by",
         "value": "844",
       },
       Object {
         "label": "Subclass of",
-        "value": "845",
-      },
-      Object {
-        "label": "Reviewed by",
         "value": "851",
       },
       Object {
-        "label": "Created by",
-        "value": "852",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "853",
-      },
-      Object {
-        "label": "Used in",
         "value": "861",
       },
       Object {
-        "label": "Used in",
-        "value": "862",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "863",
-      },
-      Object {
-        "label": "Issued through",
+        "label": "Owned by",
         "value": "871",
       },
       Object {
-        "label": "Applied to",
+        "label": "Operated by",
         "value": "872",
       },
       Object {
-        "label": "Issued by",
+        "label": "Used in",
         "value": "873",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Owned by",
         "value": "874",
       },
       Object {
-        "label": "Issued by",
+        "label": "Involved In",
         "value": "875",
       },
       Object {
-        "label": "Located at",
+        "label": "Operated by",
         "value": "876",
       },
       Object {
         "label": "Subclass of",
+        "value": "877",
+      },
+      Object {
+        "label": "Created by",
         "value": "881",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "882",
+      },
+      Object {
+        "label": "Reviewed by",
+        "value": "883",
       },
       Object {
         "label": "Subclass of",
         "value": "891",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Used in",
+        "value": "892",
+      },
+      Object {
+        "label": "Used in",
+        "value": "893",
+      },
+      Object {
+        "label": "Located at",
         "value": "901",
       },
       Object {
-        "label": "Managed by",
+        "label": "Applied to",
         "value": "902",
       },
       Object {
-        "label": "Associated with",
-        "value": "911",
+        "label": "Issued through",
+        "value": "903",
       },
       Object {
         "label": "Subclass of",
-        "value": "912",
+        "value": "904",
+      },
+      Object {
+        "label": "Issued by",
+        "value": "905",
+      },
+      Object {
+        "label": "Issued by",
+        "value": "906",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "911",
       },
       Object {
         "label": "Subclass of",
         "value": "921",
       },
       Object {
-        "label": "Performed by",
-        "value": "922",
-      },
-      Object {
-        "label": "Agreed with",
+        "label": "Managed by",
         "value": "931",
       },
       Object {
@@ -967,259 +969,271 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "932",
       },
       Object {
-        "label": "Created for",
-        "value": "933",
-      },
-      Object {
-        "label": "Agreed with",
-        "value": "934",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Associated with",
         "value": "941",
       },
       Object {
-        "label": "Completed before",
+        "label": "Subclass of",
+        "value": "942",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "951",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Performed by",
         "value": "952",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Agreed with",
         "value": "961",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "962",
+      },
+      Object {
+        "label": "Created for",
+        "value": "963",
+      },
+      Object {
+        "label": "Agreed with",
+        "value": "964",
       },
       Object {
         "label": "Subclass of",
         "value": "971",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Completed before",
         "value": "981",
       },
       Object {
         "label": "Subclass of",
+        "value": "982",
+      },
+      Object {
+        "label": "Applied to",
         "value": "991",
+      },
+      Object {
+        "label": "Paid through",
+        "value": "992",
+      },
+      Object {
+        "label": "Included in",
+        "value": "993",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "994",
       },
       Object {
         "label": "Subclass of",
         "value": "1001",
       },
       Object {
-        "label": "Included in",
-        "value": "1011",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "1012",
-      },
-      Object {
-        "label": "Performed on",
-        "value": "1013",
-      },
-      Object {
-        "label": "Performed by",
-        "value": "1014",
+        "value": "1011",
       },
       Object {
         "label": "Subclass of",
         "value": "1021",
       },
       Object {
-        "label": "Composed of",
-        "value": "1022",
-      },
-      Object {
-        "label": "Composed of",
-        "value": "1023",
-      },
-      Object {
         "label": "Subclass of",
         "value": "1031",
-      },
-      Object {
-        "label": "Associated with",
-        "value": "1032",
-      },
-      Object {
-        "label": "Advised by",
-        "value": "1033",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1034",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1035",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1036",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1037",
       },
       Object {
         "label": "Subclass of",
         "value": "1041",
       },
       Object {
-        "label": "Improved through",
+        "label": "Performed on",
         "value": "1051",
       },
       Object {
-        "label": "Identified by",
+        "label": "Performed by",
         "value": "1052",
       },
       Object {
-        "label": "Affected by",
+        "label": "Subclass of",
         "value": "1053",
       },
       Object {
-        "label": "Input into",
+        "label": "Included in",
         "value": "1054",
       },
       Object {
-        "label": "Subclass of",
-        "value": "1055",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Composed of",
         "value": "1061",
       },
       Object {
-        "label": "Advised by",
+        "label": "Subclass of",
         "value": "1062",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Composed of",
+        "value": "1063",
+      },
+      Object {
+        "label": "Affected by",
         "value": "1071",
       },
       Object {
-        "label": "Located at",
+        "label": "Advised by",
+        "value": "1072",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1073",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "1074",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1075",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1076",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1077",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "1081",
       },
       Object {
-        "label": "Represented by",
-        "value": "1082",
-      },
-      Object {
-        "label": "Recorded in",
-        "value": "1083",
-      },
-      Object {
-        "label": "Owned by",
-        "value": "1084",
-      },
-      Object {
-        "label": "Recorded in",
-        "value": "1085",
-      },
-      Object {
-        "label": "Owned by",
-        "value": "1086",
-      },
-      Object {
-        "label": "Obtained through",
-        "value": "1087",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1088",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Identified by",
         "value": "1091",
       },
       Object {
-        "label": "Used in",
+        "label": "Improved through",
         "value": "1092",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1093",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1094",
+      },
+      Object {
+        "label": "Input into",
+        "value": "1095",
       },
       Object {
         "label": "Subclass of",
         "value": "1101",
       },
       Object {
-        "label": "Required for",
+        "label": "Advised by",
         "value": "1102",
-      },
-      Object {
-        "label": "Presented in",
-        "value": "1103",
       },
       Object {
         "label": "Subclass of",
         "value": "1111",
       },
       Object {
-        "label": "Input into",
+        "label": "Subclass of",
         "value": "1121",
       },
       Object {
-        "label": "Required for",
-        "value": "1122",
-      },
-      Object {
-        "label": "Performed by",
-        "value": "1123",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1124",
-      },
-      Object {
-        "label": "Recorded in",
+        "label": "Represented by",
         "value": "1131",
       },
       Object {
-        "label": "Recorded in",
+        "label": "Obtained through",
         "value": "1132",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Owned by",
         "value": "1133",
       },
       Object {
-        "label": "Represented by",
+        "label": "Located at",
         "value": "1134",
       },
       Object {
-        "label": "Provided to",
+        "label": "Recorded in",
+        "value": "1135",
+      },
+      Object {
+        "label": "Recorded in",
+        "value": "1136",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1137",
+      },
+      Object {
+        "label": "Owned by",
+        "value": "1138",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "1141",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Used in",
         "value": "1142",
       },
       Object {
-        "label": "Performed by",
-        "value": "1143",
+        "label": "Presented in",
+        "value": "1151",
       },
       Object {
         "label": "Subclass of",
-        "value": "1151",
+        "value": "1152",
+      },
+      Object {
+        "label": "Required for",
+        "value": "1153",
       },
       Object {
         "label": "Subclass of",
         "value": "1161",
       },
       Object {
-        "label": "Completed before",
+        "label": "Required for",
         "value": "1171",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Performed by",
         "value": "1172",
       },
       Object {
+        "label": "Input into",
+        "value": "1173",
+      },
+      Object {
         "label": "Subclass of",
+        "value": "1174",
+      },
+      Object {
+        "label": "Recorded in",
         "value": "1181",
       },
       Object {
-        "label": "Composed of",
+        "label": "Subclass of",
+        "value": "1182",
+      },
+      Object {
+        "label": "Recorded in",
+        "value": "1183",
+      },
+      Object {
+        "label": "Represented by",
+        "value": "1184",
+      },
+      Object {
+        "label": "Performed by",
         "value": "1191",
       },
       Object {
@@ -1227,7 +1241,7 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1192",
       },
       Object {
-        "label": "Represented by",
+        "label": "Provided to",
         "value": "1193",
       },
       Object {
@@ -1239,71 +1253,47 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1211",
       },
       Object {
-        "label": "Controlled by",
+        "label": "Completed before",
         "value": "1221",
       },
       Object {
-        "label": "Controlled by",
-        "value": "1222",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "1223",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1224",
+        "value": "1222",
       },
       Object {
         "label": "Subclass of",
         "value": "1231",
       },
       Object {
-        "label": "Informed by",
+        "label": "Subclass of",
         "value": "1241",
       },
       Object {
-        "label": "Informed by",
+        "label": "Represented by",
         "value": "1242",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Composed of",
         "value": "1243",
       },
       Object {
-        "label": "Conducted for",
-        "value": "1244",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1245",
-      },
-      Object {
-        "label": "Completed before",
-        "value": "1251",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "1252",
+        "value": "1251",
       },
       Object {
         "label": "Subclass of",
         "value": "1261",
       },
       Object {
-        "label": "Created by",
-        "value": "1262",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Identified by",
         "value": "1271",
       },
       Object {
-        "label": "Used in",
+        "label": "Monitored by",
         "value": "1272",
       },
       Object {
-        "label": "Used by",
+        "label": "Subclass of",
         "value": "1273",
       },
       Object {
@@ -1311,56 +1301,80 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1281",
       },
       Object {
-        "label": "Required for",
+        "label": "Controlled by",
         "value": "1282",
       },
       Object {
-        "label": "Employed by",
+        "label": "Controlled by",
         "value": "1283",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1284",
       },
       Object {
         "label": "Subclass of",
         "value": "1291",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Informed by",
         "value": "1301",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1302",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1303",
+      },
+      Object {
+        "label": "Informed by",
+        "value": "1304",
+      },
+      Object {
+        "label": "Conducted for",
+        "value": "1305",
       },
       Object {
         "label": "Subclass of",
         "value": "1311",
       },
       Object {
-        "label": "Located at",
+        "label": "Completed before",
         "value": "1312",
-      },
-      Object {
-        "label": "Attended by",
-        "value": "1313",
-      },
-      Object {
-        "label": "Detected by",
-        "value": "1314",
-      },
-      Object {
-        "label": "Detected by",
-        "value": "1315",
-      },
-      Object {
-        "label": "Located at",
-        "value": "1316",
       },
       Object {
         "label": "Subclass of",
         "value": "1321",
       },
       Object {
-        "label": "Applied to",
+        "label": "Created by",
         "value": "1322",
       },
       Object {
+        "label": "Used by",
+        "value": "1331",
+      },
+      Object {
         "label": "Subclass of",
+        "value": "1332",
+      },
+      Object {
+        "label": "Used in",
+        "value": "1333",
+      },
+      Object {
+        "label": "Required for",
         "value": "1341",
+      },
+      Object {
+        "label": "Employed by",
+        "value": "1342",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1343",
       },
       Object {
         "label": "Subclass of",
@@ -1371,112 +1385,44 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1361",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Located at",
         "value": "1371",
       },
       Object {
-        "label": "Required for",
+        "label": "Attended by",
         "value": "1372",
       },
       Object {
-        "label": "Input into",
+        "label": "Located at",
+        "value": "1373",
+      },
+      Object {
+        "label": "Detected by",
+        "value": "1374",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1375",
+      },
+      Object {
+        "label": "Detected by",
+        "value": "1376",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "1381",
       },
       Object {
-        "label": "Measured at",
+        "label": "Applied to",
         "value": "1382",
       },
       Object {
-        "label": "Measured by",
-        "value": "1383",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "1384",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1385",
-      },
-      Object {
-        "label": "Associated with",
-        "value": "1386",
-      },
-      Object {
-        "label": "Performed from",
-        "value": "1391",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1392",
-      },
-      Object {
-        "label": "Achieved by",
-        "value": "1393",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1394",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1395",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1396",
-      },
-      Object {
-        "label": "Measured by",
-        "value": "1397",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1398",
-      },
-      Object {
-        "label": "Performed by",
-        "value": "1399",
-      },
-      Object {
-        "label": "Required for",
         "value": "1401",
       },
       Object {
         "label": "Subclass of",
-        "value": "1402",
-      },
-      Object {
-        "label": "Summarised in",
-        "value": "1403",
-      },
-      Object {
-        "label": "Updated by",
-        "value": "1404",
-      },
-      Object {
-        "label": "Used in",
-        "value": "1405",
-      },
-      Object {
-        "label": "Used in",
-        "value": "1406",
-      },
-      Object {
-        "label": "Updated by",
-        "value": "1407",
-      },
-      Object {
-        "label": "Managed by",
         "value": "1411",
-      },
-      Object {
-        "label": "Managed within",
-        "value": "1412",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1413",
       },
       Object {
         "label": "Subclass of",
@@ -1487,147 +1433,199 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1431",
       },
       Object {
-        "label": "Governed by",
+        "label": "Required for",
+        "value": "1432",
+      },
+      Object {
+        "label": "Associated with",
         "value": "1441",
       },
       Object {
-        "label": "Controlled by",
+        "label": "Measured at",
         "value": "1442",
       },
       Object {
-        "label": "Summarised in",
+        "label": "Affected by",
         "value": "1443",
       },
       Object {
-        "label": "Affected by",
+        "label": "Input into",
         "value": "1444",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Measured by",
         "value": "1445",
       },
       Object {
-        "label": "Performed by",
+        "label": "Subclass of",
         "value": "1446",
       },
       Object {
-        "label": "Conducted for",
+        "label": "Subclass of",
         "value": "1451",
       },
       Object {
-        "label": "Conducted for",
+        "label": "Achieved by",
         "value": "1452",
       },
       Object {
-        "label": "Conducted for",
+        "label": "Performed from",
         "value": "1453",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Affected by",
         "value": "1454",
       },
       Object {
-        "label": "Employed by",
+        "label": "Performed by",
+        "value": "1455",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1456",
+      },
+      Object {
+        "label": "Bounded by",
+        "value": "1457",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1458",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1459",
+      },
+      Object {
+        "label": "Used in",
         "value": "1461",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Required for",
         "value": "1462",
       },
       Object {
-        "label": "Paid through",
+        "label": "Subclass of",
         "value": "1463",
+      },
+      Object {
+        "label": "Summarised in",
+        "value": "1464",
+      },
+      Object {
+        "label": "Updated by",
+        "value": "1465",
+      },
+      Object {
+        "label": "Used in",
+        "value": "1466",
+      },
+      Object {
+        "label": "Updated by",
+        "value": "1467",
       },
       Object {
         "label": "Subclass of",
         "value": "1471",
       },
       Object {
-        "label": "Provided to",
+        "label": "Managed by",
         "value": "1472",
       },
       Object {
-        "label": "Requested by",
+        "label": "Managed within",
         "value": "1473",
       },
       Object {
-        "label": "Reviewed by",
-        "value": "1474",
-      },
-      Object {
-        "label": "Provided to",
-        "value": "1475",
-      },
-      Object {
-        "label": "Required for",
+        "label": "Subclass of",
         "value": "1481",
       },
       Object {
         "label": "Subclass of",
-        "value": "1482",
-      },
-      Object {
-        "label": "Created by",
-        "value": "1483",
-      },
-      Object {
-        "label": "Performed by",
         "value": "1491",
       },
       Object {
-        "label": "Performed on",
-        "value": "1492",
-      },
-      Object {
-        "label": "Included in",
-        "value": "1493",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1494",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Summarised in",
         "value": "1501",
       },
       Object {
-        "label": "Provided to",
+        "label": "Governed by",
         "value": "1502",
       },
       Object {
         "label": "Subclass of",
+        "value": "1503",
+      },
+      Object {
+        "label": "Performed by",
+        "value": "1504",
+      },
+      Object {
+        "label": "Controlled by",
+        "value": "1505",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1506",
+      },
+      Object {
+        "label": "Conducted for",
         "value": "1511",
       },
       Object {
-        "label": "Created for",
+        "label": "Subclass of",
+        "value": "1512",
+      },
+      Object {
+        "label": "Conducted for",
+        "value": "1513",
+      },
+      Object {
+        "label": "Conducted for",
+        "value": "1514",
+      },
+      Object {
+        "label": "Involved In",
         "value": "1521",
       },
       Object {
-        "label": "Created by",
+        "label": "Subclass of",
         "value": "1522",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Employed by",
         "value": "1523",
       },
       Object {
-        "label": "Created for",
+        "label": "Paid through",
         "value": "1524",
       },
       Object {
-        "label": "Informed by",
-        "value": "1525",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Provided to",
         "value": "1531",
       },
       Object {
-        "label": "Required for",
-        "value": "1541",
+        "label": "Provided to",
+        "value": "1532",
       },
       Object {
         "label": "Subclass of",
+        "value": "1533",
+      },
+      Object {
+        "label": "Reviewed by",
+        "value": "1534",
+      },
+      Object {
+        "label": "Requested by",
+        "value": "1535",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1541",
+      },
+      Object {
+        "label": "Created by",
         "value": "1542",
       },
       Object {
@@ -1635,115 +1633,91 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1543",
       },
       Object {
-        "label": "Agreed with",
-        "value": "1544",
-      },
-      Object {
-        "label": "Created for",
-        "value": "1545",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Associated with",
         "value": "1551",
       },
       Object {
-        "label": "Created by",
+        "label": "Subclass of",
         "value": "1552",
       },
       Object {
-        "label": "Reviewed by",
+        "label": "Performed by",
         "value": "1553",
       },
       Object {
-        "label": "Created for",
-        "value": "1554",
-      },
-      Object {
-        "label": "Created for",
-        "value": "1555",
-      },
-      Object {
-        "label": "Completed before",
+        "label": "Performed by",
         "value": "1561",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Performed on",
         "value": "1562",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1563",
+      },
+      Object {
+        "label": "Included in",
+        "value": "1564",
       },
       Object {
         "label": "Subclass of",
         "value": "1571",
       },
       Object {
-        "label": "Issued to",
+        "label": "Provided to",
         "value": "1572",
-      },
-      Object {
-        "label": "Issued by",
-        "value": "1573",
-      },
-      Object {
-        "label": "Reconciled by",
-        "value": "1574",
       },
       Object {
         "label": "Subclass of",
         "value": "1581",
       },
       Object {
-        "label": "Applied to",
-        "value": "1582",
-      },
-      Object {
-        "label": "Updated by",
-        "value": "1583",
-      },
-      Object {
-        "label": "Updated by",
-        "value": "1584",
+        "label": "Created for",
+        "value": "1591",
       },
       Object {
         "label": "Subclass of",
-        "value": "1591",
+        "value": "1592",
+      },
+      Object {
+        "label": "Created for",
+        "value": "1593",
+      },
+      Object {
+        "label": "Created by",
+        "value": "1594",
+      },
+      Object {
+        "label": "Informed by",
+        "value": "1595",
       },
       Object {
         "label": "Subclass of",
         "value": "1601",
       },
       Object {
-        "label": "Operated from",
+        "label": "Agreed with",
         "value": "1611",
       },
       Object {
-        "label": "Proposed in",
+        "label": "Created for",
         "value": "1612",
       },
       Object {
-        "label": "Affected by",
+        "label": "Required for",
         "value": "1613",
       },
       Object {
-        "label": "Affected by",
+        "label": "Subclass of",
         "value": "1614",
       },
       Object {
-        "label": "Affected by",
+        "label": "Required for",
         "value": "1615",
       },
       Object {
-        "label": "Bounded by",
-        "value": "1616",
-      },
-      Object {
-        "label": "Advised by",
-        "value": "1617",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1618",
-      },
-      Object {
-        "label": "Caused by",
+        "label": "Created for",
         "value": "1621",
       },
       Object {
@@ -1751,20 +1725,56 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1622",
       },
       Object {
-        "label": "Located at",
+        "label": "Created for",
         "value": "1623",
+      },
+      Object {
+        "label": "Reviewed by",
+        "value": "1624",
+      },
+      Object {
+        "label": "Created by",
+        "value": "1625",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1631",
+      },
+      Object {
+        "label": "Completed before",
+        "value": "1632",
       },
       Object {
         "label": "Subclass of",
         "value": "1641",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Issued to",
+        "value": "1642",
+      },
+      Object {
+        "label": "Reconciled by",
+        "value": "1643",
+      },
+      Object {
+        "label": "Issued by",
+        "value": "1644",
+      },
+      Object {
+        "label": "Applied to",
         "value": "1651",
       },
       Object {
-        "label": "Informed by",
+        "label": "Updated by",
         "value": "1652",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1653",
+      },
+      Object {
+        "label": "Updated by",
+        "value": "1654",
       },
       Object {
         "label": "Subclass of",
@@ -1775,51 +1785,59 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1671",
       },
       Object {
-        "label": "Applied to",
-        "value": "1672",
-      },
-      Object {
         "label": "Bounded by",
-        "value": "1673",
-      },
-      Object {
-        "label": "Subclass of",
         "value": "1681",
       },
       Object {
+        "label": "Advised by",
+        "value": "1682",
+      },
+      Object {
+        "label": "Operated from",
+        "value": "1683",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1684",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1685",
+      },
+      Object {
+        "label": "Proposed in",
+        "value": "1686",
+      },
+      Object {
         "label": "Subclass of",
+        "value": "1687",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1688",
+      },
+      Object {
+        "label": "Located at",
         "value": "1691",
       },
       Object {
-        "label": "Governed by",
-        "value": "1701",
-      },
-      Object {
-        "label": "Governed by",
-        "value": "1702",
+        "label": "Caused by",
+        "value": "1692",
       },
       Object {
         "label": "Subclass of",
-        "value": "1703",
-      },
-      Object {
-        "label": "Governed by",
-        "value": "1704",
+        "value": "1693",
       },
       Object {
         "label": "Subclass of",
         "value": "1711",
       },
       Object {
-        "label": "Created by",
-        "value": "1712",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Informed by",
         "value": "1721",
       },
       Object {
-        "label": "Caused by",
+        "label": "Subclass of",
         "value": "1722",
       },
       Object {
@@ -1831,107 +1849,63 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1741",
       },
       Object {
-        "label": "Required for",
+        "label": "Bounded by",
         "value": "1742",
+      },
+      Object {
+        "label": "Applied to",
+        "value": "1743",
       },
       Object {
         "label": "Subclass of",
         "value": "1751",
       },
       Object {
-        "label": "Affected by",
-        "value": "1761",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "1762",
-      },
-      Object {
-        "label": "Created by",
-        "value": "1763",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1764",
-      },
-      Object {
-        "label": "Composed of",
-        "value": "1765",
-      },
-      Object {
-        "label": "Used in",
-        "value": "1766",
-      },
-      Object {
-        "label": "Applied to",
-        "value": "1767",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1768",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1769",
+        "value": "1761",
       },
       Object {
         "label": "Subclass of",
         "value": "1771",
       },
       Object {
-        "label": "Performed by",
+        "label": "Governed by",
+        "value": "1772",
+      },
+      Object {
+        "label": "Governed by",
+        "value": "1773",
+      },
+      Object {
+        "label": "Governed by",
+        "value": "1774",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "1781",
       },
       Object {
-        "label": "Presented in",
+        "label": "Created by",
         "value": "1782",
       },
       Object {
         "label": "Subclass of",
-        "value": "1783",
-      },
-      Object {
-        "label": "Performed by",
-        "value": "1784",
-      },
-      Object {
-        "label": "Included in",
-        "value": "1785",
-      },
-      Object {
-        "label": "Provided by",
-        "value": "1786",
-      },
-      Object {
-        "label": "Performed by",
-        "value": "1787",
-      },
-      Object {
-        "label": "Applied to",
         "value": "1791",
       },
       Object {
-        "label": "Used by",
+        "label": "Caused by",
         "value": "1792",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1793",
       },
       Object {
         "label": "Subclass of",
         "value": "1801",
       },
       Object {
-        "label": "Used in",
-        "value": "1802",
-      },
-      Object {
-        "label": "Associated with",
+        "label": "Subclass of",
         "value": "1811",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Required for",
         "value": "1812",
       },
       Object {
@@ -1939,212 +1913,1424 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "1821",
       },
       Object {
-        "label": "Improved through",
-        "value": "1822",
-      },
-      Object {
-        "label": "Subclass of",
+        "label": "Applied to",
         "value": "1831",
       },
       Object {
-        "label": "Measured by",
+        "label": "Affected by",
+        "value": "1832",
+      },
+      Object {
+        "label": "Composed of",
+        "value": "1833",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1834",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1835",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1836",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1837",
+      },
+      Object {
+        "label": "Created by",
+        "value": "1838",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1839",
+      },
+      Object {
+        "label": "Found in",
+        "value": "1840",
+      },
+      Object {
+        "label": "Subclass of",
         "value": "1841",
       },
       Object {
-        "label": "Improved through",
-        "value": "1842",
-      },
-      Object {
-        "label": "Input into",
-        "value": "1843",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1844",
-      },
-      Object {
-        "label": "Presented in",
+        "label": "Performed by",
         "value": "1851",
       },
       Object {
-        "label": "Provided by",
+        "label": "Included in",
         "value": "1852",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Performed by",
         "value": "1853",
+      },
+      Object {
+        "label": "Provided by",
+        "value": "1854",
+      },
+      Object {
+        "label": "Presented in",
+        "value": "1855",
+      },
+      Object {
+        "label": "Performed by",
+        "value": "1856",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1857",
       },
       Object {
         "label": "Subclass of",
         "value": "1861",
       },
       Object {
+        "label": "Applied to",
+        "value": "1862",
+      },
+      Object {
+        "label": "Used by",
+        "value": "1863",
+      },
+      Object {
+        "label": "Found in",
+        "value": "1869",
+      },
+      Object {
         "label": "Subclass of",
         "value": "1871",
       },
       Object {
-        "label": "Completed before",
+        "label": "Used in",
         "value": "1872",
       },
       Object {
-        "label": "Informed by",
+        "label": "Associated with",
         "value": "1881",
       },
       Object {
-        "label": "Presented in",
-        "value": "1882",
-      },
-      Object {
-        "label": "Associated with",
-        "value": "1883",
-      },
-      Object {
-        "label": "Identified by",
-        "value": "1884",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "1885",
-      },
-      Object {
-        "label": "Managed by",
-        "value": "1886",
-      },
-      Object {
-        "label": "Associated with",
-        "value": "1887",
-      },
-      Object {
         "label": "Subclass of",
-        "value": "1888",
+        "value": "1882",
       },
       Object {
         "label": "Subclass of",
         "value": "1891",
       },
       Object {
-        "label": "Included in",
+        "label": "Improved through",
         "value": "1892",
       },
       Object {
-        "label": "Performed by",
+        "label": "Found in",
         "value": "1893",
       },
       Object {
-        "label": "Operated from",
+        "label": "Found in",
         "value": "1894",
       },
       Object {
-        "label": "Performed on",
+        "label": "Found in",
         "value": "1895",
+      },
+      Object {
+        "label": "Found in",
+        "value": "1896",
+      },
+      Object {
+        "label": "Found in",
+        "value": "1897",
       },
       Object {
         "label": "Subclass of",
         "value": "1901",
       },
       Object {
-        "label": "Improved through",
+        "label": "Subclass of",
         "value": "1911",
       },
       Object {
-        "label": "Subclass of",
+        "label": "Improved through",
         "value": "1912",
       },
       Object {
-        "label": "Affected by",
+        "label": "Measured by",
         "value": "1913",
       },
       Object {
-        "label": "Monitored by",
+        "label": "Input into",
         "value": "1914",
       },
       Object {
-        "label": "Improved through",
-        "value": "1915",
+        "label": "Found in",
+        "value": "1920",
       },
       Object {
         "label": "Subclass of",
         "value": "1921",
       },
       Object {
-        "label": "Operated from",
+        "label": "Presented in",
         "value": "1922",
       },
       Object {
-        "label": "Used in",
+        "label": "Provided by",
         "value": "1923",
       },
       Object {
-        "label": "Used by",
+        "label": "Found in",
         "value": "1924",
+      },
+      Object {
+        "label": "Found in",
+        "value": "1925",
+      },
+      Object {
+        "label": "Found in",
+        "value": "1926",
       },
       Object {
         "label": "Subclass of",
         "value": "1931",
       },
       Object {
-        "label": "Agreed with",
-        "value": "1932",
-      },
-      Object {
-        "label": "Required for",
-        "value": "1933",
-      },
-      Object {
-        "label": "Associated with",
+        "label": "Subclass of",
         "value": "1941",
       },
       Object {
-        "label": "Associated with",
+        "label": "Completed before",
         "value": "1942",
       },
       Object {
-        "label": "Input into",
-        "value": "1943",
-      },
-      Object {
-        "label": "Presented in",
-        "value": "1944",
-      },
-      Object {
-        "label": "Subclass of",
-        "value": "1945",
+        "label": "Found in",
+        "value": "1947",
       },
       Object {
         "label": "Subclass of",
         "value": "1951",
       },
       Object {
-        "label": "Selected in",
+        "label": "Associated with",
         "value": "1952",
       },
       Object {
-        "label": "Proposed in",
+        "label": "Informed by",
         "value": "1953",
       },
       Object {
-        "label": "Represented within",
-        "value": "7010",
+        "label": "Identified by",
+        "value": "1954",
       },
       Object {
-        "label": "Bounded by",
-        "value": "13910",
+        "label": "Affected by",
+        "value": "1955",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "1956",
+      },
+      Object {
+        "label": "Managed by",
+        "value": "1957",
+      },
+      Object {
+        "label": "Presented in",
+        "value": "1958",
+      },
+      Object {
+        "label": "Operated from",
+        "value": "1961",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1962",
+      },
+      Object {
+        "label": "Performed by",
+        "value": "1963",
+      },
+      Object {
+        "label": "Performed on",
+        "value": "1964",
+      },
+      Object {
+        "label": "Included in",
+        "value": "1965",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1971",
+      },
+      Object {
+        "label": "Found in",
+        "value": "1979",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1981",
+      },
+      Object {
+        "label": "Improved through",
+        "value": "1982",
+      },
+      Object {
+        "label": "Monitored by",
+        "value": "1983",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "1984",
+      },
+      Object {
+        "label": "Improved through",
+        "value": "1985",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "1991",
+      },
+      Object {
+        "label": "Operated from",
+        "value": "1992",
+      },
+      Object {
+        "label": "Used in",
+        "value": "1993",
+      },
+      Object {
+        "label": "Used by",
+        "value": "1994",
+      },
+      Object {
+        "label": "Required for",
+        "value": "2001",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "2002",
+      },
+      Object {
+        "label": "Agreed with",
+        "value": "2003",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2009",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2010",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "2011",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "2012",
+      },
+      Object {
+        "label": "Associated with",
+        "value": "2013",
+      },
+      Object {
+        "label": "Input into",
+        "value": "2014",
+      },
+      Object {
+        "label": "Presented in",
+        "value": "2015",
+      },
+      Object {
+        "label": "Selected in",
+        "value": "2021",
+      },
+      Object {
+        "label": "Proposed in",
+        "value": "2022",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "2023",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2036",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2071",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2072",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2073",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2074",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2126",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2127",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2145",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2163",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2198",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2199",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2200",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2218",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2219",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2237",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2255",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2273",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2291",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2292",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2310",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2328",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2329",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2347",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2365",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2383",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2418",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2419",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2437",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2438",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2439",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2440",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2458",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2476",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2477",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2495",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2513",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2514",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2515",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2516",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2534",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2535",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2536",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2537",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2555",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2607",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2608",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2626",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2627",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2679",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2697",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2698",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2699",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2717",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2718",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2736",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2771",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2789",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2790",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2791",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2792",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2810",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2828",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2846",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2847",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2848",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2866",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2867",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2868",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2869",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2870",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2871",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2872",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2873",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2891",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2909",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2927",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2945",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2963",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2998",
+      },
+      Object {
+        "label": "Found in",
+        "value": "2999",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3017",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3018",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3019",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3020",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3021",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3039",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3040",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3041",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3042",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3043",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3061",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3062",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3063",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3064",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3065",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3083",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3084",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3085",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3086",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3087",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3105",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3123",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3141",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3159",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3177",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3195",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3196",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3197",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3198",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3199",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3200",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3201",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3202",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3220",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3221",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3239",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3240",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3258",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3259",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3260",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3278",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3296",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3331",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3349",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3350",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3351",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3369",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3370",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3388",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3406",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3424",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3442",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3443",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3461",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3479",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3497",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3498",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3499",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3500",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3518",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3536",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3554",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3572",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3590",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3591",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3609",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3610",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3628",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3629",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3630",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3648",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3649",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3650",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3668",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3669",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3687",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3688",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3706",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3724",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3742",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3777",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3795",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3813",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3831",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3849",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3867",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3885",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3903",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3904",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3905",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3906",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3907",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3925",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3960",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3978",
+      },
+      Object {
+        "label": "Found in",
+        "value": "3999",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4003",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4007",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4011",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4012",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4013",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4014",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4015",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4016",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4017",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4018",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4019",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4020",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4021",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4022",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4023",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4024",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4025",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4026",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4027",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4028",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4029",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4030",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4031",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4032",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4033",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4034",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4035",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4036",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4037",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4038",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4039",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4040",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4041",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4042",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4043",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4044",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4045",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4046",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4047",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4048",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4049",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4050",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4051",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4052",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4053",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4054",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4055",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4056",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4057",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4058",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4059",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4060",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4061",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4062",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4063",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4064",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4065",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4066",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4067",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4068",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4069",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4070",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4071",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4072",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4073",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4074",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4075",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4076",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4077",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4078",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4079",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4080",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4081",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4082",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4083",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4084",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4085",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4086",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4087",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4088",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4089",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4090",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4091",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4092",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4093",
+      },
+      Object {
+        "label": "Found in",
+        "value": "4094",
+      },
+      Object {
+        "label": "Represented by",
+        "value": "7310",
+      },
+      Object {
+        "label": "Measured by",
+        "value": "14510",
+      },
+      Object {
+        "label": "Affected by",
+        "value": "18310",
+      },
+      Object {
+        "label": "Subclass of",
+        "value": "18311",
       },
       Object {
         "label": "Informed by",
-        "value": "17610",
+        "value": "18312",
+      },
+      Object {
+        "label": "Used in",
+        "value": "18313",
       },
       Object {
         "label": "Affected by",
-        "value": "17611",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "17612",
-      },
-      Object {
-        "label": "Affected by",
-        "value": "17613",
+        "value": "18314",
       },
     ]
   }
@@ -2203,736 +3389,1232 @@ exports[`EditOntologyAddEdge should match snapshot  1`] = `
         "value": "13",
       },
       Object {
-        "label": "Handover",
+        "label": "Cost Variation",
         "value": "14",
       },
       Object {
-        "label": "Connectivity",
+        "label": "Handover",
         "value": "15",
       },
       Object {
-        "label": "High Level Design",
+        "label": "Connectivity",
         "value": "16",
       },
       Object {
-        "label": "Model",
+        "label": "High Level Design",
         "value": "17",
       },
       Object {
-        "label": "MetaData",
+        "label": "Model",
         "value": "18",
       },
       Object {
-        "label": "Emissions",
+        "label": "Priority",
         "value": "19",
       },
       Object {
-        "label": "Income",
+        "label": "MetaData",
         "value": "20",
       },
       Object {
-        "label": "Training",
+        "label": "Emissions",
         "value": "21",
       },
       Object {
-        "label": "Flood",
+        "label": "Income",
         "value": "22",
       },
       Object {
-        "label": "Delay",
+        "label": "Training",
         "value": "23",
       },
       Object {
-        "label": "Facility",
+        "label": "Flood",
         "value": "24",
       },
       Object {
-        "label": "Transaction",
+        "label": "Delay",
         "value": "25",
       },
       Object {
-        "label": "Collate",
+        "label": "Facility",
         "value": "26",
       },
       Object {
-        "label": "Certification",
+        "label": "Transaction",
         "value": "27",
       },
       Object {
-        "label": "Drainage",
+        "label": "Collate",
         "value": "28",
       },
       Object {
-        "label": "Representation",
+        "label": "Certification",
         "value": "29",
       },
       Object {
-        "label": "Lighting",
+        "label": "Drainage",
         "value": "30",
       },
       Object {
-        "label": "Financial Value",
+        "label": "Representation",
         "value": "31",
       },
       Object {
-        "label": "Route",
+        "label": "Lighting",
         "value": "32",
       },
       Object {
-        "label": "Land Registration",
+        "label": "Financial Value",
         "value": "33",
       },
       Object {
-        "label": "Feedback",
+        "label": "Network Model Variation",
         "value": "34",
       },
       Object {
-        "label": "Skill",
+        "label": "Route",
         "value": "35",
       },
       Object {
-        "label": "Safety Risk Assessment",
+        "label": "Land Registration",
         "value": "36",
       },
       Object {
-        "label": "Drawing",
+        "label": "Feedback",
         "value": "37",
       },
       Object {
-        "label": "Qualification",
+        "label": "Skill",
         "value": "38",
       },
       Object {
-        "label": "Link",
+        "label": "Safety Risk Assessment",
         "value": "39",
       },
       Object {
-        "label": "Depot",
+        "label": "Drawing",
         "value": "40",
       },
       Object {
-        "label": "Voice Recording",
+        "label": "Qualification",
         "value": "41",
       },
       Object {
-        "label": "Emergency Services",
+        "label": "Link",
         "value": "42",
       },
       Object {
-        "label": "Budget",
+        "label": "Depot",
         "value": "43",
       },
       Object {
-        "label": "Spare Parts",
+        "label": "Voice Recording",
         "value": "44",
       },
       Object {
-        "label": "Safety",
+        "label": "Emergency Services",
         "value": "45",
       },
       Object {
-        "label": "Flow",
+        "label": "Budget",
         "value": "46",
       },
       Object {
-        "label": "Retire",
+        "label": "Spare Parts",
         "value": "47",
       },
       Object {
-        "label": "Polyline",
+        "label": "Safety",
         "value": "48",
       },
       Object {
-        "label": "Customer Satisfaction",
+        "label": "Flow",
         "value": "49",
       },
       Object {
-        "label": "Network Model",
+        "label": "Retire",
         "value": "50",
       },
       Object {
-        "label": "Activity",
+        "label": "Polyline",
         "value": "51",
       },
       Object {
-        "label": "Legal Document",
+        "label": "Customer Satisfaction",
         "value": "52",
       },
       Object {
-        "label": "Role",
+        "label": "Network Model",
         "value": "53",
       },
       Object {
-        "label": "Data Lifecycle",
+        "label": "Activity",
         "value": "54",
       },
       Object {
-        "label": "Structures",
+        "label": "Legal Document",
         "value": "55",
       },
       Object {
-        "label": "Standards",
+        "label": "Role",
         "value": "56",
       },
       Object {
-        "label": "Closure",
+        "label": "Data Lifecycle",
         "value": "57",
       },
       Object {
-        "label": "Data Dictionary",
+        "label": "Structures",
         "value": "58",
       },
       Object {
-        "label": "Pavements",
+        "label": "Standards",
         "value": "59",
       },
       Object {
-        "label": "Monitoring",
+        "label": "Closure",
         "value": "60",
       },
       Object {
-        "label": "Hardware",
+        "label": "Data Dictionary",
         "value": "61",
       },
       Object {
-        "label": "Occurrent",
+        "label": "Pavements",
         "value": "62",
       },
       Object {
-        "label": "KPI",
+        "label": "Monitoring",
         "value": "63",
       },
       Object {
-        "label": "Competence",
+        "label": "Hardware",
         "value": "64",
       },
       Object {
-        "label": "Stakeholder",
+        "label": "Occurrent",
         "value": "65",
       },
       Object {
-        "label": "Failure Mode",
+        "label": "KPI",
         "value": "66",
       },
       Object {
-        "label": "System",
+        "label": "Competence",
         "value": "67",
       },
       Object {
-        "label": "Forecast",
+        "label": "Stakeholder",
         "value": "68",
       },
       Object {
-        "label": "Data",
+        "label": "Failure Mode",
         "value": "69",
       },
       Object {
-        "label": "Strategic Road Network Asset",
+        "label": "System",
         "value": "70",
       },
       Object {
-        "label": "Availability",
+        "label": "Forecast",
         "value": "71",
       },
       Object {
-        "label": "Event",
+        "label": "Data",
         "value": "72",
       },
       Object {
-        "label": "Dataset",
+        "label": "Strategic Road Network Asset",
         "value": "73",
       },
       Object {
-        "label": "Vision",
+        "label": "Availability",
         "value": "74",
       },
       Object {
-        "label": "FOI",
+        "label": "Event",
         "value": "75",
       },
       Object {
-        "label": "Project Document",
+        "label": "Dataset",
         "value": "76",
       },
       Object {
-        "label": "Hazard",
+        "label": "Vision",
         "value": "77",
       },
       Object {
-        "label": "Bulletin",
+        "label": "FOI",
         "value": "78",
       },
       Object {
-        "label": "Occupancy",
+        "label": "Project Document",
         "value": "79",
       },
       Object {
-        "label": "External Document",
+        "label": "Hazard",
         "value": "80",
       },
       Object {
-        "label": "Headway",
+        "label": "Bulletin",
         "value": "81",
       },
       Object {
-        "label": "Air Quality",
+        "label": "Occupancy",
         "value": "82",
       },
       Object {
-        "label": "Asset Performance",
+        "label": "External Document",
         "value": "83",
       },
       Object {
-        "label": "Vehicle",
+        "label": "Headway",
         "value": "84",
       },
       Object {
-        "label": "Financial Document",
+        "label": "Air Quality",
         "value": "85",
       },
       Object {
-        "label": "Lessons Learned",
+        "label": "Asset Performance",
         "value": "86",
       },
       Object {
-        "label": "Instruction",
+        "label": "Vehicle",
         "value": "87",
       },
       Object {
-        "label": "Biodiversity",
+        "label": "Financial Document",
         "value": "88",
       },
       Object {
-        "label": "Ledger",
+        "label": "Lessons Learned",
         "value": "89",
       },
       Object {
-        "label": "IT",
+        "label": "Instruction",
         "value": "90",
       },
       Object {
-        "label": "Environmental Incident",
+        "label": "Biodiversity",
         "value": "91",
       },
       Object {
-        "label": "Patrol",
+        "label": "Ledger",
         "value": "92",
       },
       Object {
-        "label": "Contract",
+        "label": "IT",
         "value": "93",
       },
       Object {
-        "label": "Demolition",
+        "label": "Environmental Incident",
         "value": "94",
       },
       Object {
-        "label": "Collect",
+        "label": "Patrol",
         "value": "95",
       },
       Object {
-        "label": "Geometric Component",
+        "label": "Contract",
         "value": "96",
       },
       Object {
-        "label": "Water Flow",
+        "label": "Demolition",
         "value": "97",
       },
       Object {
-        "label": "Line",
+        "label": "Collect",
         "value": "98",
       },
       Object {
-        "label": "Road Restraint",
+        "label": "Cost",
         "value": "99",
       },
       Object {
-        "label": "Node",
+        "label": "Geometric Component",
         "value": "100",
       },
       Object {
-        "label": "Audit",
+        "label": "Water Flow",
         "value": "101",
       },
       Object {
-        "label": "Polygon",
+        "label": "Line",
         "value": "102",
       },
       Object {
-        "label": "Customer",
+        "label": "Road Restraint",
         "value": "103",
       },
       Object {
-        "label": "Environmental",
+        "label": "Node",
         "value": "104",
       },
       Object {
-        "label": "Condition",
+        "label": "Audit",
         "value": "105",
       },
       Object {
-        "label": "Funding Channel",
+        "label": "Polygon",
         "value": "106",
       },
       Object {
-        "label": "Traffic Regulation Order",
+        "label": "Customer",
         "value": "107",
       },
       Object {
-        "label": "Land",
+        "label": "Environmental",
         "value": "108",
       },
       Object {
-        "label": "Assumption",
+        "label": "Condition",
         "value": "109",
       },
       Object {
-        "label": "Progress",
+        "label": "Funding Channel",
         "value": "110",
       },
       Object {
-        "label": "Blueprint",
+        "label": "Schedule of Rates",
         "value": "111",
       },
       Object {
-        "label": "Survey",
+        "label": "Traffic Regulation Order",
         "value": "112",
       },
       Object {
-        "label": "Asset",
+        "label": "Land",
         "value": "113",
       },
       Object {
-        "label": "Measurement",
+        "label": "Assumption",
         "value": "114",
       },
       Object {
-        "label": "Dispose",
+        "label": "Progress",
         "value": "115",
       },
       Object {
-        "label": "Office",
+        "label": "Blueprint",
         "value": "116",
       },
       Object {
-        "label": "Archive",
+        "label": "Survey",
         "value": "117",
       },
       Object {
-        "label": "Principle",
+        "label": "Asset",
         "value": "118",
       },
       Object {
-        "label": "Network",
+        "label": "Measurement",
         "value": "119",
       },
       Object {
-        "label": "Organisational Values",
+        "label": "Dispose",
         "value": "120",
       },
       Object {
-        "label": "IT Document",
+        "label": "Office",
         "value": "121",
       },
       Object {
-        "label": "Roadside Operational Technology",
+        "label": "Archive",
         "value": "122",
       },
       Object {
-        "label": "Weather",
+        "label": "Principle",
         "value": "123",
       },
       Object {
-        "label": "Strategy",
+        "label": "Network",
         "value": "124",
       },
       Object {
-        "label": "Use",
+        "label": "Organisational Values",
         "value": "125",
       },
       Object {
-        "label": "Business Case",
+        "label": "IT Document",
         "value": "126",
       },
       Object {
-        "label": "Equipment",
+        "label": "Spillage",
         "value": "127",
       },
       Object {
-        "label": "Supplier",
+        "label": "Roadside Operational Technology",
         "value": "128",
       },
       Object {
-        "label": "Experience",
+        "label": "Weather",
         "value": "129",
       },
       Object {
-        "label": "Carriageway Control",
+        "label": "Strategy",
         "value": "130",
       },
       Object {
-        "label": "Incident",
+        "label": "Use",
         "value": "131",
       },
       Object {
-        "label": "Regulation",
+        "label": "Business Case",
         "value": "132",
       },
       Object {
-        "label": "Material Continuant",
+        "label": "Equipment",
         "value": "133",
       },
       Object {
-        "label": "Accident",
+        "label": "Supplier",
         "value": "134",
       },
       Object {
-        "label": "Sustainability",
+        "label": "Experience",
         "value": "135",
       },
       Object {
-        "label": "Correspondence",
+        "label": "Carriageway Control",
         "value": "136",
       },
       Object {
-        "label": "Supply Chain",
+        "label": "Incident",
         "value": "137",
       },
       Object {
-        "label": "Speed",
+        "label": "Regulation",
         "value": "138",
       },
       Object {
-        "label": "Journey",
+        "label": "Material Continuant",
         "value": "139",
       },
       Object {
-        "label": "Inventory",
+        "label": "Accident",
         "value": "140",
       },
       Object {
-        "label": "Document",
+        "label": "Sustainability",
         "value": "141",
       },
       Object {
-        "label": "Policy",
+        "label": "Correspondence",
         "value": "142",
       },
       Object {
-        "label": "Imperative",
+        "label": "Supply Chain",
         "value": "143",
       },
       Object {
-        "label": "Project Phase",
+        "label": "Speed",
         "value": "144",
       },
       Object {
-        "label": "Consultation",
+        "label": "Journey",
         "value": "145",
       },
       Object {
-        "label": "Person",
+        "label": "Inventory",
         "value": "146",
       },
       Object {
-        "label": "Report",
+        "label": "Document",
         "value": "147",
       },
       Object {
-        "label": "Digital Twin",
+        "label": "Policy",
         "value": "148",
       },
       Object {
-        "label": "Inspection",
+        "label": "Imperative",
         "value": "149",
       },
       Object {
-        "label": "Purchase Order",
+        "label": "Project Phase",
         "value": "150",
       },
       Object {
-        "label": "Pollution",
+        "label": "Consultation",
         "value": "151",
       },
       Object {
-        "label": "Requirement",
+        "label": "Person",
         "value": "152",
       },
       Object {
-        "label": "File",
+        "label": "Report",
         "value": "153",
       },
       Object {
-        "label": "Schedule",
+        "label": "Digital Twin",
         "value": "154",
       },
       Object {
-        "label": "Design",
+        "label": "Enquiry",
         "value": "155",
       },
       Object {
-        "label": "Evaluate",
+        "label": "Inspection",
         "value": "156",
       },
       Object {
-        "label": "Invoice",
+        "label": "Purchase Order",
         "value": "157",
       },
       Object {
-        "label": "Speed Limit Variation",
+        "label": "Pollution",
         "value": "158",
       },
       Object {
-        "label": "Noise Level",
+        "label": "Requirement",
         "value": "159",
       },
       Object {
-        "label": "Analytical Model",
+        "label": "File",
         "value": "160",
       },
       Object {
-        "label": "Project",
+        "label": "Schedule",
         "value": "161",
       },
       Object {
-        "label": "Network Incident",
+        "label": "Design",
         "value": "162",
       },
       Object {
-        "label": "Immaterial Continuant",
+        "label": "Evaluate",
         "value": "163",
       },
       Object {
-        "label": "Work Site",
+        "label": "Invoice",
         "value": "164",
       },
       Object {
-        "label": "Research",
+        "label": "Speed Limit Variation",
         "value": "165",
       },
       Object {
-        "label": "Ticket",
+        "label": "Noise Level",
         "value": "166",
       },
       Object {
-        "label": "Diversion",
+        "label": "Analytical Model",
         "value": "167",
       },
       Object {
-        "label": "Database",
+        "label": "Project",
         "value": "168",
       },
       Object {
-        "label": "Ancillary",
+        "label": "Network Incident",
         "value": "169",
       },
       Object {
-        "label": "Licence Holder",
+        "label": "Immaterial Continuant",
         "value": "170",
       },
       Object {
-        "label": "Social Media Post",
+        "label": "Work Site",
         "value": "171",
       },
       Object {
-        "label": "Congestion",
+        "label": "Research",
         "value": "172",
       },
       Object {
-        "label": "Manual",
+        "label": "Ticket",
         "value": "173",
       },
       Object {
-        "label": "Development Consent Order (DCO)",
+        "label": "Diversion",
         "value": "174",
       },
       Object {
-        "label": "Water Quality",
+        "label": "Database",
         "value": "175",
       },
       Object {
-        "label": "Plan",
+        "label": "Ancillary",
         "value": "176",
       },
       Object {
-        "label": "Product",
+        "label": "Licence Holder",
         "value": "177",
       },
       Object {
-        "label": "Engagement",
+        "label": "Social Media Post",
         "value": "178",
       },
       Object {
-        "label": "Interface",
+        "label": "Congestion",
         "value": "179",
       },
       Object {
-        "label": "Road Safety Measure",
+        "label": "Manual",
         "value": "180",
       },
       Object {
-        "label": "Location",
+        "label": "Development Consent Order (DCO)",
         "value": "181",
       },
       Object {
-        "label": "Asset Condition",
+        "label": "Water Quality",
         "value": "182",
       },
       Object {
-        "label": "Stage Gate",
+        "label": "Plan",
         "value": "183",
       },
       Object {
-        "label": "Environmental Condition",
+        "label": "Product",
         "value": "184",
       },
       Object {
-        "label": "Complaint",
+        "label": "Engagement",
         "value": "185",
       },
       Object {
-        "label": "Control Centre",
+        "label": "Interface",
         "value": "186",
       },
       Object {
-        "label": "Analyse",
+        "label": "Road Safety Measure",
         "value": "187",
       },
       Object {
-        "label": "Risk",
+        "label": "Location",
         "value": "188",
       },
       Object {
-        "label": "Testing",
+        "label": "Asset Condition",
         "value": "189",
       },
       Object {
-        "label": "Documentation",
+        "label": "Stage Gate",
         "value": "190",
       },
       Object {
-        "label": "Performance",
+        "label": "Environmental Condition",
         "value": "191",
       },
       Object {
-        "label": "Software",
+        "label": "Complaint",
         "value": "192",
       },
       Object {
-        "label": "Final Account",
+        "label": "Control Centre",
         "value": "193",
       },
       Object {
-        "label": "Defect",
+        "label": "Analyse",
         "value": "194",
       },
       Object {
-        "label": "Option",
+        "label": "Risk",
         "value": "195",
       },
       Object {
-        "label": "196",
+        "label": "Testing",
         "value": "196",
+      },
+      Object {
+        "label": "Documentation",
+        "value": "197",
+      },
+      Object {
+        "label": "Performance",
+        "value": "198",
+      },
+      Object {
+        "label": "Software",
+        "value": "199",
+      },
+      Object {
+        "label": "Final Account",
+        "value": "200",
+      },
+      Object {
+        "label": "Defect",
+        "value": "201",
+      },
+      Object {
+        "label": "Option",
+        "value": "202",
+      },
+      Object {
+        "label": "203",
+        "value": "203",
+      },
+      Object {
+        "label": "1813",
+        "value": "1813",
+      },
+      Object {
+        "label": "1842",
+        "value": "1842",
+      },
+      Object {
+        "label": "1870",
+        "value": "1870",
+      },
+      Object {
+        "label": "1898",
+        "value": "1898",
+      },
+      Object {
+        "label": "1927",
+        "value": "1927",
+      },
+      Object {
+        "label": "1948",
+        "value": "1948",
+      },
+      Object {
+        "label": "1980",
+        "value": "1980",
+      },
+      Object {
+        "label": "2016",
+        "value": "2016",
+      },
+      Object {
+        "label": "2037",
+        "value": "2037",
+      },
+      Object {
+        "label": "2054",
+        "value": "2054",
+      },
+      Object {
+        "label": "2075",
+        "value": "2075",
+      },
+      Object {
+        "label": "2092",
+        "value": "2092",
+      },
+      Object {
+        "label": "2109",
+        "value": "2109",
+      },
+      Object {
+        "label": "2128",
+        "value": "2128",
+      },
+      Object {
+        "label": "2146",
+        "value": "2146",
+      },
+      Object {
+        "label": "2164",
+        "value": "2164",
+      },
+      Object {
+        "label": "2181",
+        "value": "2181",
+      },
+      Object {
+        "label": "2201",
+        "value": "2201",
+      },
+      Object {
+        "label": "2220",
+        "value": "2220",
+      },
+      Object {
+        "label": "2238",
+        "value": "2238",
+      },
+      Object {
+        "label": "2256",
+        "value": "2256",
+      },
+      Object {
+        "label": "2274",
+        "value": "2274",
+      },
+      Object {
+        "label": "2293",
+        "value": "2293",
+      },
+      Object {
+        "label": "2311",
+        "value": "2311",
+      },
+      Object {
+        "label": "2330",
+        "value": "2330",
+      },
+      Object {
+        "label": "2348",
+        "value": "2348",
+      },
+      Object {
+        "label": "2366",
+        "value": "2366",
+      },
+      Object {
+        "label": "2384",
+        "value": "2384",
+      },
+      Object {
+        "label": "2401",
+        "value": "2401",
+      },
+      Object {
+        "label": "2420",
+        "value": "2420",
+      },
+      Object {
+        "label": "2441",
+        "value": "2441",
+      },
+      Object {
+        "label": "2459",
+        "value": "2459",
+      },
+      Object {
+        "label": "2478",
+        "value": "2478",
+      },
+      Object {
+        "label": "2496",
+        "value": "2496",
+      },
+      Object {
+        "label": "2517",
+        "value": "2517",
+      },
+      Object {
+        "label": "2538",
+        "value": "2538",
+      },
+      Object {
+        "label": "2556",
+        "value": "2556",
+      },
+      Object {
+        "label": "2573",
+        "value": "2573",
+      },
+      Object {
+        "label": "2590",
+        "value": "2590",
+      },
+      Object {
+        "label": "2609",
+        "value": "2609",
+      },
+      Object {
+        "label": "2628",
+        "value": "2628",
+      },
+      Object {
+        "label": "2645",
+        "value": "2645",
+      },
+      Object {
+        "label": "2662",
+        "value": "2662",
+      },
+      Object {
+        "label": "2680",
+        "value": "2680",
+      },
+      Object {
+        "label": "2700",
+        "value": "2700",
+      },
+      Object {
+        "label": "2719",
+        "value": "2719",
+      },
+      Object {
+        "label": "2737",
+        "value": "2737",
+      },
+      Object {
+        "label": "2754",
+        "value": "2754",
+      },
+      Object {
+        "label": "2772",
+        "value": "2772",
+      },
+      Object {
+        "label": "2793",
+        "value": "2793",
+      },
+      Object {
+        "label": "2811",
+        "value": "2811",
+      },
+      Object {
+        "label": "2829",
+        "value": "2829",
+      },
+      Object {
+        "label": "2849",
+        "value": "2849",
+      },
+      Object {
+        "label": "2874",
+        "value": "2874",
+      },
+      Object {
+        "label": "2892",
+        "value": "2892",
+      },
+      Object {
+        "label": "2910",
+        "value": "2910",
+      },
+      Object {
+        "label": "2928",
+        "value": "2928",
+      },
+      Object {
+        "label": "2946",
+        "value": "2946",
+      },
+      Object {
+        "label": "2964",
+        "value": "2964",
+      },
+      Object {
+        "label": "2981",
+        "value": "2981",
+      },
+      Object {
+        "label": "3000",
+        "value": "3000",
+      },
+      Object {
+        "label": "3022",
+        "value": "3022",
+      },
+      Object {
+        "label": "3044",
+        "value": "3044",
+      },
+      Object {
+        "label": "3066",
+        "value": "3066",
+      },
+      Object {
+        "label": "3088",
+        "value": "3088",
+      },
+      Object {
+        "label": "3106",
+        "value": "3106",
+      },
+      Object {
+        "label": "3124",
+        "value": "3124",
+      },
+      Object {
+        "label": "3142",
+        "value": "3142",
+      },
+      Object {
+        "label": "3160",
+        "value": "3160",
+      },
+      Object {
+        "label": "3178",
+        "value": "3178",
+      },
+      Object {
+        "label": "3203",
+        "value": "3203",
+      },
+      Object {
+        "label": "3222",
+        "value": "3222",
+      },
+      Object {
+        "label": "3241",
+        "value": "3241",
+      },
+      Object {
+        "label": "3261",
+        "value": "3261",
+      },
+      Object {
+        "label": "3279",
+        "value": "3279",
+      },
+      Object {
+        "label": "3297",
+        "value": "3297",
+      },
+      Object {
+        "label": "3314",
+        "value": "3314",
+      },
+      Object {
+        "label": "3332",
+        "value": "3332",
+      },
+      Object {
+        "label": "3352",
+        "value": "3352",
+      },
+      Object {
+        "label": "3371",
+        "value": "3371",
+      },
+      Object {
+        "label": "3389",
+        "value": "3389",
+      },
+      Object {
+        "label": "3407",
+        "value": "3407",
+      },
+      Object {
+        "label": "3425",
+        "value": "3425",
+      },
+      Object {
+        "label": "3444",
+        "value": "3444",
+      },
+      Object {
+        "label": "3462",
+        "value": "3462",
+      },
+      Object {
+        "label": "3480",
+        "value": "3480",
+      },
+      Object {
+        "label": "3501",
+        "value": "3501",
+      },
+      Object {
+        "label": "3519",
+        "value": "3519",
+      },
+      Object {
+        "label": "3537",
+        "value": "3537",
+      },
+      Object {
+        "label": "3555",
+        "value": "3555",
+      },
+      Object {
+        "label": "3573",
+        "value": "3573",
+      },
+      Object {
+        "label": "3592",
+        "value": "3592",
+      },
+      Object {
+        "label": "3611",
+        "value": "3611",
+      },
+      Object {
+        "label": "3631",
+        "value": "3631",
+      },
+      Object {
+        "label": "3651",
+        "value": "3651",
+      },
+      Object {
+        "label": "3670",
+        "value": "3670",
+      },
+      Object {
+        "label": "3689",
+        "value": "3689",
+      },
+      Object {
+        "label": "3707",
+        "value": "3707",
+      },
+      Object {
+        "label": "3725",
+        "value": "3725",
+      },
+      Object {
+        "label": "3743",
+        "value": "3743",
+      },
+      Object {
+        "label": "3760",
+        "value": "3760",
+      },
+      Object {
+        "label": "3778",
+        "value": "3778",
+      },
+      Object {
+        "label": "3796",
+        "value": "3796",
+      },
+      Object {
+        "label": "3814",
+        "value": "3814",
+      },
+      Object {
+        "label": "3832",
+        "value": "3832",
+      },
+      Object {
+        "label": "3850",
+        "value": "3850",
+      },
+      Object {
+        "label": "3868",
+        "value": "3868",
+      },
+      Object {
+        "label": "3886",
+        "value": "3886",
+      },
+      Object {
+        "label": "3908",
+        "value": "3908",
+      },
+      Object {
+        "label": "3926",
+        "value": "3926",
+      },
+      Object {
+        "label": "3943",
+        "value": "3943",
+      },
+      Object {
+        "label": "3961",
+        "value": "3961",
+      },
+      Object {
+        "label": "3979",
+        "value": "3979",
+      },
+      Object {
+        "label": "3996",
+        "value": "3996",
+      },
+      Object {
+        "label": "4000",
+        "value": "4000",
+      },
+      Object {
+        "label": "4004",
+        "value": "4004",
+      },
+      Object {
+        "label": "4008",
+        "value": "4008",
       },
     ]
   }

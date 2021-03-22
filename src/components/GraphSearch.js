@@ -57,6 +57,7 @@ const GraphSearch = ({
                 <AutoComplete
                   name="search"
                   value={search}
+                  id="main-search"
                   suggestions={suggestions}
                   completeMethod={(e) => {
                     const { query } = e

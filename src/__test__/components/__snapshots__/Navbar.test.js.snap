@@ -11,6 +11,8 @@ exports[`Navbar should match snapshot when MAIN_VIEW_GRAPH 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   availableEdgesCount={333}
@@ -40,6 +42,8 @@ exports[`Navbar should match snapshot when MAIN_VIEW_SEARCH 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   availableEdgesCount={333}

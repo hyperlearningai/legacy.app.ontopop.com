@@ -74,6 +74,72 @@ export default {
     })
   },
   /**
+   * Toggle item from subarray
+   * @param  {Object} state     Store state
+   * @param  {String} stateKey  State key to update
+   * @param  {String} key       key to add/update
+   * @param  {String} subkey    subkey to add/update
+   * @param  {String} value     Value to add to array
+   * @return {undefined}
+   */
+  toggleFromSubArray: (state, stateKey, key, subkey, value) => {
+    const newArray = state[stateKey][key][subkey]
+
+    const valueIndex = newArray.indexOf(value)
+
+    if (valueIndex === -1) {
+      newArray.push(value)
+    } else {
+      newArray.splice(valueIndex, 1)
+    }
+
+    return ({
+      [stateKey]: {
+        ...state[stateKey],
+        [key]: {
+          ...state[stateKey][key],
+          [subkey]: newArray
+        }
+      }
+    })
+  },
+  /**
+   * Toggle item from subarray
+   * @param  {Object} state     Store state
+   * @param  {String} stateKey  State key to update
+   * @param  {String} key       key to add/update
+   * @param  {String} subkey    subkey to add/update
+   * @param  {String} value     Value to add to array
+   * @return {undefined}
+   */
+  toggleFromArrayInKey: (state, stateKey, key, value) => {
+    const newArray = state[stateKey][key]
+
+    if (!newArray) {
+      return ({
+        [stateKey]: {
+          ...state[stateKey],
+          [key]: [value]
+        }
+      })
+    }
+
+    const valueIndex = newArray.indexOf(value)
+
+    if (valueIndex === -1) {
+      newArray.push(value)
+    } else {
+      newArray.splice(valueIndex, 1)
+    }
+
+    return ({
+      [stateKey]: {
+        ...state[stateKey],
+        [key]: newArray
+      }
+    })
+  },
+  /**
    * Add ID to array
    * @param  {Object} state     Store state
    * @param  {String} stateKey  State key to update

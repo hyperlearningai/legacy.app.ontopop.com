@@ -38,3 +38,6 @@ docs
 .serverless_nextjs
 .serverless_nextjs/*
 test.json
+
+# cypress
+cypress/downloads/*

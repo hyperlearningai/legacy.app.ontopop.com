@@ -1,0 +1,13 @@
+{
+  "statusCode": 200,
+  "body": [{
+      "id":1,
+      "type":"graph",
+      "userId":"valid@email.com",
+      "contents":"graph note",
+      "dateCreated":"2021-02-11 16:18:33",
+      "dateLastUpdated":"2021-02-11 16:18:33"
+    }],
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

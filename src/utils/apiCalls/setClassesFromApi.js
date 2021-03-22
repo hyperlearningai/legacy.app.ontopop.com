@@ -1,3 +1,5 @@
+import { NODE_TYPE } from '../../constants/graph'
+
 /**
  * Narmalise nodes array from API
  * @param  {Object}   params
@@ -17,13 +19,21 @@ const setClassesFromApi = ({
     const {
       id,
       rdfsLabel,
-
+      label,
+      name
     } = nodeObject
+
+    let viewLabel = rdfsLabel
+
+    if (label === 'dataset') {
+      viewLabel = name
+    }
 
     classes[id] = {
       ...nodeObject,
       id: id.toString(),
-      label: rdfsLabel,
+      label: viewLabel,
+      [NODE_TYPE]: label === 'dataset' ? 'dataset' : 'class'
     }
 
     return true

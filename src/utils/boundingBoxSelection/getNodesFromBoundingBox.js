@@ -1,11 +1,12 @@
 import store from '../../store'
+import getStylingProperty from '../networkStyling/getStylingProperty'
 import getNode from '../nodesEdgesUtils/getNode'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
  * Get nodes inside/outside bounding box
  * @param  {Object}   params
- * @param  {function} params.setStoreState          setStoreState action
+ * @param  {Function} params.setStoreState          setStoreState action
  * @return { undefined }
 \ */
 const getNodesFromBoundingBox = async ({
@@ -15,8 +16,6 @@ const getNodesFromBoundingBox = async ({
     boundingBoxGeometry,
     isBoundingBoxSelectionInternal,
     network,
-    globalNodeStyling,
-    userDefinedNodeStyling
   } = store.getState()
 
   const {
@@ -51,9 +50,11 @@ const getNodesFromBoundingBox = async ({
   availableNodes.map((node) => {
     const color = node.color || {}
 
-    const { stylingNodeHighlightBackgroundColor } = node.userDefined ? userDefinedNodeStyling : globalNodeStyling
-
-    color.background = stylingNodeHighlightBackgroundColor
+    color.background = getStylingProperty({
+      type: 'node',
+      property: 'stylingNodeHighlightBackgroundColor',
+      element: node
+    })
 
     return updateNodes(
       { id: node.id, color }

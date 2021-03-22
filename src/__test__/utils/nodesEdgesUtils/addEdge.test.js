@@ -3,6 +3,7 @@ import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import store from '../../../store'
 
 const addNumber = jest.fn()
+const toggleFromArrayInKey = jest.fn()
 
 describe('addEdge', () => {
   it('should not add edge if existing correctly', async () => {
@@ -20,10 +21,12 @@ describe('addEdge', () => {
       addNumber,
       edge: {
         id: '123'
-      }
+      },
+      toggleFromArrayInKey
     })
 
     expect(availableEdges.length).toEqual(1)
+    expect(addNumber).toHaveBeenCalledTimes(0)
   })
 
   it('should add edge correctly', async () => {
@@ -36,7 +39,8 @@ describe('addEdge', () => {
       addNumber,
       edge: {
         id: '123'
-      }
+      },
+      toggleFromArrayInKey
     })
 
     expect(availableEdges.length).toEqual(1)

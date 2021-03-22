@@ -16,8 +16,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.5.0]
+### Added
+- ONTOLOGY-112 Added possibility to hide nodes and edges based on specific properties on network graph options
+- ONTOLOGY-112 Added network graph options
+- ONTOLOGY-112 Added ability to toggle upper ontology nodes in shortest path view
+- ONTOLOGY-105 Connected with styling API
+- ONTOLOGY-86 Show nodes and edges related to datasets
+- ONTOLOGY-126 Added utilities getStylingProperty and getElementLabel
+- ONTOLOGY-126 Added dropdowns with available nodes/edges lists in nodes/edges selection, node neighbourhood and shortest path
+- ONTOLOGY-126 Added cypress end-to-end tests
+
+### Changed
+- ONTOLOGY-112 Updated node and edge removal logic
+- ONTOLOGY-112 Used sidebar button IDs rather than eq in cypress tests to allow buttons reordering
+
+### Deprecated
+
+### Removed
+- ONTOLOGY-112 Removed unnecessary test fixtures
+
+### Fixed
+- ONTOLOGY-112 Fixed node update API
+
+### Security
+
 ## [0.4.0]
 ### Added
+- ONTOLOGY-30 Added network / node / edge comments
+- ONTOLOGY-117 Added new API services
 - ONTOLOGY-110 Turned search into form to allow pressing enter on search
 - ONTOLOGY-110 Added timeouts to expandNode to avoid browser freezing
 - ONTOLOGY-110 Added timeouts to queueGraphElements to avoid browser freezing
@@ -31,6 +58,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-78 Login page with login endpoint
 
 ### Changed
+- ONTOLOGY-30 Highlight logic: if notes view, highlight commented nodes, else highlight spiderable nodes
+- ONTOLOGY-117 Replaced get checks with try/catch in addNode and addEdge
+- ONTOLOGY-117 Replaced old API endpoints with new API services
 - ONTOLOGY-110 Sequential node/adge count update after node/edge added
 - ONTOLOGY-110 Node styling now performed to each node during queue processing to avoid browser freezing
 - ONTOLOGY-110 Added activeLoaders to replace loading in store

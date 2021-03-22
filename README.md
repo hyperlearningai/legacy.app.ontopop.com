@@ -8,6 +8,7 @@
 | [![Build Status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Dev?branchName=develop)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=4&branchName=develop) | [![Build status](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_apis/build/status/Ontology%20Visualisation%20Production)](https://dev.azure.com/hyperlearningai/Ontology%20Framework/_build/latest?definitionId=5) |
 
 
+
 ## Introduction
 
 Ontology visualisation web app based on NextJs/React/Redux-zero with internationalisation i18n support.
@@ -19,6 +20,16 @@ Ontology visualisation web app based on NextJs/React/Redux-zero with internation
 ## Installation
 
 `npm install`
+
+If having issues with starting the application: 
+
+```shell script
+  rm -rf node_modules
+  npm i
+  npx browserslist@latest --update-db
+  npm rebuild node-sass
+  npm audit fix
+```
 
 ## Build
 
@@ -44,6 +55,12 @@ For unit testing:
 ```shell script
   npm run test
   npm run test:watch
+```
+
+For e2e testing:
+```shell script
+  npm run test:e2e:open   # run npm run dev in a different terminal
+  npm run test:e2e:run    # used by the pipeline | run npm run build first if you want to test it
 ```
 
 For linting, if using VSCode, make sure to have the following extensions installed:

@@ -21,16 +21,12 @@ import {
  * Updates nodes and edges to display
  * @param  {Object}     params
  * @param  {Function}   params.setStoreState             setStoreState action
- * @param  {String}     params.type                      type of algorithm to use
- * @param  {Object}     params.options                   additional options
  * @param  {Function}   params.removeFromObject          removeFromObject action
  * @param  {Function}   params.t                         i18n internationalisazion function
  * @return { undefined }
  */
 const setNodesIdsToDisplay = async ({
-  type,
   setStoreState,
-  options,
   removeFromObject,
   t
 }) => {
@@ -38,8 +34,14 @@ const setNodesIdsToDisplay = async ({
     classesFromApi,
     nodesIdsToDisplay,
     deletedNodes,
-    currentGraph
+    currentGraph,
+    graphData
   } = store.getState()
+
+  const {
+    type,
+    options
+  } = graphData[currentGraph]
 
   if (type !== ALGO_TYPE_FULL && !options) return false
 

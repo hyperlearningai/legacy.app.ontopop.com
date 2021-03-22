@@ -1,6 +1,7 @@
 import setNeighbourNodes from '../../../utils/nodeNeighbourhood/setNeighbourNodes'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import store from '../../../store'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
@@ -49,7 +50,8 @@ describe('setNeighbourNodes', () => {
           selectedNodeId: '1',
           separationDegree: 1,
         },
-        type: 'neighbourhood'
+        type: 'neighbourhood',
+        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
       }
     )
   })

@@ -2,12 +2,14 @@ import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import addNode from '../nodesEdgesUtils/addNode'
 import getNode from '../nodesEdgesUtils/getNode'
-import getEdgeObject from '../graphVisualisation/getEdgeObject'
 import setElementsStyle from '../networkStyling/setElementsStyle'
 import httpCall from '../apiCalls/httpCall'
-import { POST_CREATE_NODE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
+import getElementLabel from '../networkStyling/getElementLabel'
+import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
 
 /**
  * Restore ontology nodes
@@ -15,6 +17,8 @@ import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
  * @param  {Function}       params.addNumber                  addNumber action
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {Function}       params.setStoreState              setStoreState action
+ * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey action
+ * @param  {Function}       params.toggleFromSubArray         toggleFromSubArray action
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
@@ -22,6 +26,8 @@ const setOntologyRestoreNode = async ({
   addNumber,
   selectedElement,
   setStoreState,
+  toggleFromSubArray,
+  toggleFromArrayInKey,
   t
 }) => {
   const {
@@ -36,7 +42,7 @@ const setOntologyRestoreNode = async ({
     totalEdgesPerNodeBackup,
     userDefinedNodeStyling,
     globalEdgeStyling,
-    userDefinedEdgeStyling
+    userDefinedEdgeStyling,
   } = store.getState()
 
   const {
@@ -53,7 +59,6 @@ const setOntologyRestoreNode = async ({
     stylingNodeHoverBackgroundColor,
     stylingNodeHoverBorderColor,
     stylingNodeSize,
-    stylingNodeCaptionProperty,
   } = userDefinedNodeStyling
 
   // add node style
@@ -108,7 +113,7 @@ const setOntologyRestoreNode = async ({
       const response = await httpCall({
         addNumber,
         withAuth: true,
-        route: POST_CREATE_NODE,
+        route: API_ENDPOINT_GRAPH_NODES_CREATE,
         method: 'post',
         body,
         t
@@ -143,25 +148,34 @@ const setOntologyRestoreNode = async ({
       delete newClassesFromApiBackup[oldId]
 
       newClassesFromApi[id].id = id
-      newClassesFromApi[id].label = newClassesFromApi[id][stylingNodeCaptionProperty]
-        ? newClassesFromApi[id][stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
-
-      addNode({
-        node: {
-          ...newClassesFromApi[id],
-          ...nodeStyle
-        },
-        addNumber
+      newClassesFromApi[id].label = getElementLabel({
+        type: 'node',
+        id
       })
 
-      // add connection back
-      newNodesEdges[id] = []
-      newEdgesPerNode[id] = []
-
-      restoredNodes.push({
-        id,
-        oldId,
+      const isVisible = checkNodeVisibility({
+        nodeId: id,
+        toggleFromSubArray
       })
+
+      if (isVisible) {
+        addNode({
+          node: {
+            ...newClassesFromApi[id],
+            ...nodeStyle,
+          },
+          addNumber
+        })
+
+        // add connection back
+        newNodesEdges[id] = []
+        newEdgesPerNode[id] = []
+
+        restoredNodes.push({
+          id,
+          oldId,
+        })
+      }
     }
   }
 
@@ -232,8 +246,11 @@ const setOntologyRestoreNode = async ({
             dashes: stylingEdgeLineStyle
           }
 
-          const edge = getEdgeObject({
-            edge: newObjectPropertiesFromApiBackup[edgeId]
+          const edge = newObjectPropertiesFromApiBackup[edgeId]
+
+          edge.label = getElementLabel({
+            type: 'edge',
+            id: edgeId
           })
 
           // add edgeId to triple
@@ -264,13 +281,21 @@ const setOntologyRestoreNode = async ({
               newDeletedEdges.splice(deletedEdgeIndex, 1)
             }
 
-            addEdge({
-              edge: {
-                ...edge,
-                ...edgeStyle
-              },
-              addNumber
+            const isVisible = checkEdgeVisibility({
+              edgeId: edge.id,
+              toggleFromSubArray
             })
+
+            if (isVisible) {
+              addEdge({
+                edge: {
+                  ...edge,
+                  ...edgeStyle,
+                },
+                addNumber,
+                toggleFromArrayInKey
+              })
+            }
           }
 
           return true
@@ -280,7 +305,7 @@ const setOntologyRestoreNode = async ({
       return true
     })
 
-    const message = `${t('nodesRestored')}: ${restoredNodes.join(', ')}`
+    const message = `${t('nodesRestored')}: ${restoredNodes.map((restoredNode) => restoredNode.id).join(', ')}`
     showNotification({
       message,
       type: NOTIFY_SUCCESS

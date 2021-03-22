@@ -14,9 +14,11 @@ import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
 import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
+import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 
 const selectedElement = [
-  '11'
+  '12'
 ]
 const setStoreState = jest.fn()
 const t = (id) => en[id]
@@ -29,13 +31,15 @@ jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
+jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
 
 store.getState = jest.fn().mockImplementation(() => ({
   objectPropertiesFromApi,
   deletedEdges: [selectedElement[0]],
   nodesEdges: {
     1: [],
-    141: [],
+    147: [],
   },
   totalEdgesPerNode,
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
@@ -46,6 +50,8 @@ getNode.mockImplementation(() => ({ id: '123' }))
 
 countEdges.mockImplementation(() => 1)
 countNodes.mockImplementation(() => 1)
+checkNodeVisibility.mockImplementation(() => true)
+checkEdgeVisibility.mockImplementation(() => true)
 
 describe('setOntologyRestoreEdge', () => {
   afterEach(() => {
@@ -64,7 +70,7 @@ describe('setOntologyRestoreEdge', () => {
 
     expect(showNotification).toHaveBeenCalledWith(
       {
-        message: 'Could not restore node: 11',
+        message: 'Could not restore node: 12',
         type: 'warning'
       }
     )
@@ -82,7 +88,7 @@ describe('setOntologyRestoreEdge', () => {
 
     expect(showNotification).toHaveBeenLastCalledWith(
       {
-        message: 'Could not restore node: 11',
+        message: 'Could not restore node: 12',
         type: 'warning'
       }
     )
@@ -91,8 +97,8 @@ describe('setOntologyRestoreEdge', () => {
   it('should work correctly', async () => {
     httpCall.mockImplementation(() => ({
       data: {
-        11: {
-          id: '11'
+        12: {
+          id: '12'
         }
       }
     }))
@@ -107,19 +113,19 @@ describe('setOntologyRestoreEdge', () => {
     expect(addEdge).toHaveBeenLastCalledWith({
       addNumber,
       edge: {
-        edgeId: 11,
+        edgeId: 12,
         from: '1',
-        id: '11',
+        id: '12',
         label: 'Subclass of',
         rdfsLabel: 'Subclass of',
         role: 'Subclass of',
-        to: '141',
+        to: '147',
         userDefined: false,
       }
     })
 
     expect(setEdgeStyleByProperty).toHaveBeenLastCalledWith(
-      { edgeId: '11' }
+      { edgeId: '12' }
     )
 
     expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)

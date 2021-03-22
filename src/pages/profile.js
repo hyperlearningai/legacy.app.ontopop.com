@@ -65,7 +65,7 @@ const Profile = ({
               editingFirstName ? (
                 <div className="p-inputgroup ">
                   <InputText
-                    id="firstName"
+                    id="first-name"
                     value={firstName}
                     type="text"
                     onChange={(e) => {
@@ -74,6 +74,7 @@ const Profile = ({
                   />
                   <Button
                     icon="pi pi-check"
+                    id="set-first-name"
                     onClick={() => setEditingFirstName(false)}
                     className="p-button-success"
                   />
@@ -82,6 +83,7 @@ const Profile = ({
                       setFirstName(user.firstName)
                       setEditingFirstName(false)
                     }}
+                    id="cancel-first-name"
                     icon="pi pi-times"
                     className="p-button-danger"
                   />
@@ -91,6 +93,7 @@ const Profile = ({
                   {firstName}
                   <Button
                     icon="pi pi-pencil"
+                    id="edit-first-name"
                     onClick={() => setEditingFirstName(true)}
                     className="p-button-rounded p-button-text p-button-plain"
                   />
@@ -105,7 +108,7 @@ const Profile = ({
                     editingLastName ? (
                       <div className="p-inputgroup ">
                         <InputText
-                          id="lastName"
+                          id="last-name"
                           value={lastName}
                           type="lastName"
                           onChange={(e) => {
@@ -113,11 +116,13 @@ const Profile = ({
                           }}
                         />
                         <Button
+                          id="set-last-name"
                           icon="pi pi-check"
                           onClick={() => setEditingLastName(false)}
                           className="p-button-success"
                         />
                         <Button
+                          id="cancel-last-name"
                           onClick={() => {
                             setLastName(user.lastName)
                             setEditingLastName(false)
@@ -130,6 +135,7 @@ const Profile = ({
                       <p className="profile-value">
                         {lastName}
                         <Button
+                          id="edit-last-name"
                           icon="pi pi-pencil"
                           onClick={() => setEditingLastName(true)}
                           className="p-button-rounded p-button-text p-button-plain"
@@ -154,10 +160,12 @@ const Profile = ({
                       />
                       <Button
                         icon="pi pi-check"
+                        id="set-email"
                         onClick={() => setEditingEmail(false)}
                         className="p-button-success"
                       />
                       <Button
+                        id="delete-email"
                         onClick={() => {
                           setEmail(user.email)
                           setEditingEmail(false)
@@ -170,6 +178,7 @@ const Profile = ({
                     <p className="profile-value">
                       {email}
                       <Button
+                        id="edit-email"
                         icon="pi pi-pencil"
                         onClick={() => setEditingEmail(true)}
                         className="p-button-rounded p-button-text p-button-plain"
@@ -194,6 +203,7 @@ const Profile = ({
                   />
                   <Button
                     icon="pi pi-check"
+                    id="set-company"
                     onClick={() => setEditingCompany(false)}
                     className="p-button-success"
                   />
@@ -203,6 +213,7 @@ const Profile = ({
                       setEditingCompany(false)
                     }}
                     icon="pi pi-times"
+                    id="cancel-company"
                     className="p-button-danger"
                   />
                 </div>
@@ -210,6 +221,7 @@ const Profile = ({
                 <p className="profile-value">
                   {company}
                   <Button
+                    id="edit-company"
                     icon="pi pi-pencil"
                     onClick={() => setEditingCompany(true)}
                     className="p-button-rounded p-button-text p-button-plain"

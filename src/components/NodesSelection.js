@@ -4,16 +4,19 @@ import {
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
 import NodesSelectionDetails from './NodesSelectionDetails'
 import { SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
 import getNode from '../utils/nodesEdgesUtils/getNode'
-import resetSelectedNode from '../utils/nodesSelection/resetSelectedNode'
+import setNodesStyle from '../utils/networkStyling/setNodesStyle'
 import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
+import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
+import getElementLabel from '../utils/networkStyling/getElementLabel'
 
 const NodesSelection = ({
   selectedNode,
-  setStoreState
+  setStoreState,
 }) => {
   const { t } = useTranslation()
 
@@ -21,16 +24,12 @@ const NodesSelection = ({
     setStoreState('selectedNode', undefined)
     setStoreState('isNodeSelectable', false)
 
-    resetSelectedNode({
-      setStoreState
-    })
+    setNodesStyle()
   }, [])
 
   useEffect(() => {
     if (selectedNode && selectedNode !== '') {
-      resetSelectedNode({
-        setStoreState
-      })
+      setNodesStyle()
 
       highlightSelectedNode({
         setStoreState,
@@ -38,6 +37,22 @@ const NodesSelection = ({
       })
     }
   }, [selectedNode])
+
+  const availableNodeIds = getNodeIds()
+
+  const availableNodes = availableNodeIds.length > 0 ? availableNodeIds.map(
+    (nodeId) => {
+      const label = getElementLabel({
+        type: 'node',
+        id: nodeId
+      })
+
+      return ({
+        value: nodeId,
+        label: label || nodeId
+      })
+    }
+  ) : []
 
   const isNodeSelected = selectedNode && selectedNode !== ''
 
@@ -52,17 +67,28 @@ const NodesSelection = ({
             </>
           )}
       </div>
-      {!isNodeSelected ? (
-        <div className="nodes-selection">
-          <div className="nodes-selection-message">
-            {t('selectNodeFromGraph')}
-          </div>
+      <div className="nodes-selection">
+        <div className="nodes-selection-message">
+          {t('selectNodeFromGraphOrFromList')}
         </div>
-      ) : (
-        <NodesSelectionDetails
-          nodeId={selectedNode}
-        />
-      )}
+
+        <div className="nodes-selection-dropdown">
+          <Dropdown
+            id="node-select"
+            value={selectedNode}
+            filter
+            options={availableNodes}
+            onChange={(e) => setStoreState('selectedNode', e.value)}
+            placeholder={t('selectNode')}
+          />
+        </div>
+
+        {isNodeSelected && (
+          <NodesSelectionDetails
+            nodeId={selectedNode}
+          />
+        )}
+      </div>
     </>
   )
 }

@@ -4,7 +4,7 @@ import store from '../../store'
  * Update bounding box on mouse move event listener
  * @param  {Object}   params
  * @param  {Object}   params.e                      Canvas DOM event
- * @param  {function} params.setStoreState          setStoreState action
+ * @param  {Function} params.setStoreState          setStoreState action
  * @return { undefined }
  */
 const onMouseMove = ({

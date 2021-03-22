@@ -8,6 +8,7 @@ import {
   NODE_TEXT_COLOR,
   NODE_BORDER,
   NODE_BACKGROUND,
+  NODE_BACKGROUND_DATASET,
   CLICK_NODE_BACKGROUND,
   HIGHLIGHT_NODE_BORDER,
   NODE_DEFAULT_SHAPE,
@@ -16,7 +17,9 @@ import {
   LABEL_PROPERTY,
   NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT,
   SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT,
-  EDGE_LABEL_PROPERTY
+  EDGE_LABEL_PROPERTY,
+  LABEL_PROPERTY_DATASET,
+  DEFAULT_GRAPH_VISUALISATION_OPTIONS
 } from '../constants/graph'
 
 const initialState = {
@@ -45,6 +48,7 @@ const initialState = {
   totalEdgesPerNodeBackup: {},
   network: undefined,
   annotationProperties: [],
+  annotationPropertiesDatasets: [],
   deletedNodes: [],
   addedNodes: [],
   updatedNodes: [],
@@ -100,6 +104,7 @@ const initialState = {
     stylingNodeBorderSelected: 2,
     stylingNodeBorderColor: NODE_BORDER,
     stylingNodeBackgroundColor: NODE_BACKGROUND,
+    stylingNodeBackgroundColorDataset: NODE_BACKGROUND_DATASET,
     stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
     stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
     stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
@@ -108,6 +113,7 @@ const initialState = {
     stylingNodeTextFontSize: 12,
     stylingNodeTextFontAlign: 'center',
     stylingNodeCaptionProperty: LABEL_PROPERTY,
+    stylingNodeCaptionPropertyDataset: LABEL_PROPERTY_DATASET,
     stylingNodeOverlayOpacity: 0.1,
   },
 
@@ -118,6 +124,7 @@ const initialState = {
     stylingNodeBorderSelected: 2,
     stylingNodeBorderColor: NODE_BORDER,
     stylingNodeBackgroundColor: NODE_BACKGROUND,
+    stylingNodeBackgroundColorDataset: NODE_BACKGROUND_DATASET,
     stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
     stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
     stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
@@ -126,6 +133,7 @@ const initialState = {
     stylingNodeTextFontSize: 12,
     stylingNodeTextFontAlign: 'center',
     stylingNodeCaptionProperty: LABEL_PROPERTY,
+    stylingNodeCaptionPropertyDataset: LABEL_PROPERTY_DATASET,
     stylingNodeOverlayOpacity: 0.1,
   },
 
@@ -157,7 +165,7 @@ const initialState = {
   // edge selection
   isEdgeSelectable: false,
   selectedEdge: '',
-  prevSelectedEdges: undefined,
+  prevSelectedEdge: undefined,
 
   // bounding box
   selectedBoundingBoxNodes: [],
@@ -196,8 +204,20 @@ const initialState = {
   contextMenuData: {
     top: 0,
     left: 0,
-    nodeId: ''
+    nodeId: '',
+    edgeId: ''
   },
+
+  // notes
+  notes: [],
+  nodesNotes: [],
+  edgesNotes: [],
+  selectedNotesType: 'graph',
+  noteElementId: undefined,
+
+  // synonyms
+  nodesSynonyms: [],
+  synonymElementId: undefined,
 
   // physics
   isPhysicsOn: false,
@@ -220,6 +240,7 @@ const initialState = {
       label: 'Main',
       noDelete: true,
       type: ALGO_TYPE_FULL,
+      ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
     }
   }
 }

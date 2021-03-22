@@ -18,7 +18,7 @@ const httpCall = async ({
   body,
   route,
   method,
-  t
+  t,
 }) => {
   const {
     user
@@ -27,7 +27,7 @@ const httpCall = async ({
   addNumber('activeLoaders', 1)
 
   const headers = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   }
 
   if (withAuth) {
@@ -44,6 +44,12 @@ const httpCall = async ({
     switch (method) {
       case 'post':
         response = await axios.post(route, body, config)
+        break
+      case 'patch':
+        response = await axios.patch(route, body, config)
+        break
+      case 'delete':
+        response = await axios.delete(route, config)
         break
       default:
         response = await axios.get(route, config)

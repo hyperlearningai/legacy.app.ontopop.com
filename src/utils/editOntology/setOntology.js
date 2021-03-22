@@ -15,6 +15,7 @@ import setOntologyRestoreEdge from './setOntologyRestoreEdge'
  * @param  {String}         params.type                       Element type (node / edge)
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
+ * @param  {Function}       params.toggleFromSubArray         toggleFromSubArray action
  * @return {undefined}
  */
 const setOntology = ({
@@ -24,6 +25,8 @@ const setOntology = ({
   setStoreState,
   selectedElementProperties,
   addNumber,
+  toggleFromSubArray,
+  toggleFromArrayInKey,
   t
 }) => {
   if (operation === 'restore') {
@@ -32,6 +35,8 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         addNumber,
+        toggleFromSubArray,
+        toggleFromArrayInKey,
         t
       })
     }
@@ -41,6 +46,8 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         addNumber,
+        toggleFromSubArray,
+        toggleFromArrayInKey,
         t
       })
     }
@@ -52,6 +59,7 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         addNumber,
+        toggleFromArrayInKey,
         t
       })
     }
@@ -61,6 +69,7 @@ const setOntology = ({
         setStoreState,
         selectedElement,
         addNumber,
+        toggleFromArrayInKey,
         t
       })
     }
@@ -72,6 +81,7 @@ const setOntology = ({
         selectedElement,
         setStoreState,
         selectedElementProperties,
+        toggleFromArrayInKey,
         addNumber,
         t
       })
@@ -83,6 +93,8 @@ const setOntology = ({
       setOntologyAddNode({
         setStoreState,
         selectedElementProperties,
+        toggleFromSubArray,
+        toggleFromArrayInKey,
         addNumber,
         t
       })
@@ -92,6 +104,8 @@ const setOntology = ({
       setOntologyAddEdge({
         setStoreState,
         selectedElementProperties,
+        toggleFromSubArray,
+        toggleFromArrayInKey,
         addNumber,
         t,
       })

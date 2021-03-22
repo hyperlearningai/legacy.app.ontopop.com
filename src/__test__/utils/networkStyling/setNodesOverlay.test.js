@@ -8,6 +8,15 @@ jest.mock('../../../utils/nodesEdgesUtils/getNode')
 
 const setStoreState = jest.fn()
 
+const commonState = {
+  globalNodeStyling: {
+    stylingNodeOverlayOpacity: 0.1
+  },
+  userDefinedNodeStyling: {
+    stylingNodeOverlayOpacity: 0.1
+  }
+}
+
 describe('setNodesOverlay', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -15,9 +24,9 @@ describe('setNodesOverlay', () => {
 
   it('should work correctly when no overlay', async () => {
     store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
       shortestPathNodes: ['node-123', 'node-234'],
       isNodeOverlay: false,
-      stylingNodeOverlayOpacity: 0.1
     }))
 
     getNode.mockImplementationOnce(() => ([{
@@ -33,9 +42,9 @@ describe('setNodesOverlay', () => {
 
   it('should work correctly when no overlay', async () => {
     store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
       shortestPathNodes: ['node-123', 'node-234'],
       isNodeOverlay: true,
-      stylingNodeOverlayOpacity: 0.1
     }))
 
     getNode.mockImplementationOnce(() => ([{

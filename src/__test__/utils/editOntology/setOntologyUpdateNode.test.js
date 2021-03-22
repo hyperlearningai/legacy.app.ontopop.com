@@ -14,17 +14,26 @@ const selectedElementProperties = {
 }
 const selectedElement = '1'
 
-const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-newClassesFromApi[selectedElement] = {
-  ...newClassesFromApi[selectedElement],
-  label: 'New node',
+const updatedNode = {
+  id: '1',
+  label: 'New\nnode',
   rdfsLabel: 'New node',
+  name: 'Communication Document',
   'Business Area': 'Communications',
   nodeId: 1,
+  nodeType: 'class',
   rdfAbout: 'http://test.com/node',
   skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
   skosDefinition: 'Document storing the information conveyed between two or more parties.',
   userDefined: false,
+  upperOntology: false,
+}
+
+const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
+newClassesFromApi[selectedElement] = {
+  ...newClassesFromApi[selectedElement],
+  ...updatedNode,
+  label: 'New node',
 }
 
 const t = (id) => en[id]
@@ -115,17 +124,7 @@ describe('setOntologyUpdateNode', () => {
     })
 
     expect(updateNodes).toHaveBeenLastCalledWith(
-      {
-        id: '1',
-        label: 'New\nnode',
-        rdfsLabel: 'New node',
-        'Business Area': 'Communications',
-        nodeId: 1,
-        rdfAbout: 'http://test.com/node',
-        skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
-        skosDefinition: 'Document storing the information conveyed between two or more parties.',
-        userDefined: false,
-      }
+      updatedNode
     )
 
     const classesFromApiOutput = JSON.parse(JSON.stringify(newClassesFromApi))

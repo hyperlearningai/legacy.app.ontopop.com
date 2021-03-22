@@ -1,4 +1,5 @@
 import { ALGO_TYPE_SEARCH_NEIGHBOURHOOD } from '../../constants/algorithms'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 import { MAIN_VIEW_GRAPH, SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
 
@@ -54,7 +55,8 @@ const setSearchNeighbourNodes = ({
       selectedNodesId,
       selectedEdgesId,
       separationDegree,
-    }
+    },
+    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
   }
 
   addToObject('graphData', newCurrentGraph, graphValue)

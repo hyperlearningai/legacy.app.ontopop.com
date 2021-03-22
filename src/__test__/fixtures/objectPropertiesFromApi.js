@@ -1,24 +1,24 @@
 export const objectPropertiesFromApi = {
   11: {
     edgeId: 11,
-    role: 'Subclass of',
-    id: '11',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '1',
-    to: '141'
-  },
-  12: {
-    edgeId: 12,
     role: 'Provided to',
-    id: '12',
+    id: '11',
     label: 'Provided to',
     rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
     rdfsLabel: 'Provided to',
     userDefined: false,
     from: '1',
-    to: '170'
+    to: '177'
+  },
+  12: {
+    edgeId: 12,
+    role: 'Subclass of',
+    id: '12',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '1',
+    to: '147'
   },
   21: {
     edgeId: 21,
@@ -29,7 +29,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Governed by',
     userDefined: false,
     from: '2',
-    to: '132'
+    to: '123'
   },
   22: {
     edgeId: 22,
@@ -51,28 +51,28 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Managed by',
     userDefined: false,
     from: '2',
-    to: '53'
+    to: '56'
   },
   24: {
     edgeId: 24,
-    role: 'Subclass of',
-    id: '24',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '2',
-    to: '163'
-  },
-  25: {
-    edgeId: 25,
     role: 'Governed by',
-    id: '25',
+    id: '24',
     label: 'Governed by',
     rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
     rdfsLabel: 'Governed by',
     userDefined: false,
     from: '2',
-    to: '118'
+    to: '138'
+  },
+  25: {
+    edgeId: 25,
+    role: 'Subclass of',
+    id: '25',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '2',
+    to: '170'
   },
   31: {
     edgeId: 31,
@@ -82,28 +82,28 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '3',
-    to: '76'
+    to: '79'
   },
   41: {
     edgeId: 41,
-    role: 'Subclass of',
-    id: '41',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '4',
-    to: '163'
-  },
-  42: {
-    edgeId: 42,
     role: 'Input into',
-    id: '42',
+    id: '41',
     label: 'Input into',
     rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
     rdfsLabel: 'Input into',
     userDefined: false,
     from: '4',
-    to: '160'
+    to: '167'
+  },
+  42: {
+    edgeId: 42,
+    role: 'Subclass of',
+    id: '42',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '4',
+    to: '170'
   },
   51: {
     edgeId: 51,
@@ -113,7 +113,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '5',
-    to: '163'
+    to: '170'
   },
   61: {
     edgeId: 61,
@@ -123,7 +123,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '6',
-    to: '54'
+    to: '57'
   },
   62: {
     edgeId: 62,
@@ -134,71 +134,71 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Completed before',
     userDefined: false,
     from: '6',
-    to: '95'
+    to: '98'
   },
   71: {
     edgeId: 71,
-    role: 'Improved through',
+    role: 'Subclass of',
     id: '71',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '7',
+    to: '198'
+  },
+  72: {
+    edgeId: 72,
+    role: 'Improved through',
+    id: '72',
     label: 'Improved through',
     rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     rdfsLabel: 'Improved through',
     userDefined: false,
     from: '7',
-    to: '161'
+    to: '168'
   },
-  72: {
-    edgeId: 72,
+  73: {
+    edgeId: 73,
     role: 'Input into',
-    id: '72',
+    id: '73',
     label: 'Input into',
     rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
     rdfsLabel: 'Input into',
     userDefined: false,
     from: '7',
-    to: '160'
-  },
-  73: {
-    edgeId: 73,
-    role: 'Subclass of',
-    id: '73',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '7',
-    to: '191'
+    to: '167'
   },
   81: {
     edgeId: 81,
-    role: 'Itemised by',
-    id: '81',
-    label: 'Itemised by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
-    rdfsLabel: 'Itemised by',
-    userDefined: false,
-    from: '8',
-    to: '25'
-  },
-  82: {
-    edgeId: 82,
     role: 'Subclass of',
-    id: '82',
+    id: '81',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '8',
     to: '5'
   },
+  82: {
+    edgeId: 82,
+    role: 'Itemised by',
+    id: '82',
+    label: 'Itemised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
+    rdfsLabel: 'Itemised by',
+    userDefined: false,
+    from: '8',
+    to: '27'
+  },
   91: {
     edgeId: 91,
-    role: 'Required for',
+    role: 'Performed by',
     id: '91',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
     userDefined: false,
     from: '9',
-    to: '144'
+    to: '177'
   },
   92: {
     edgeId: 92,
@@ -209,18 +209,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Implemented through',
     userDefined: false,
     from: '9',
-    to: '25'
+    to: '27'
   },
   93: {
     edgeId: 93,
-    role: 'Performed by',
+    role: 'Required for',
     id: '93',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
     userDefined: false,
     from: '9',
-    to: '170'
+    to: '150'
   },
   94: {
     edgeId: 94,
@@ -231,7 +231,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Performed by',
     userDefined: false,
     from: '9',
-    to: '65'
+    to: '68'
   },
   95: {
     edgeId: 95,
@@ -241,7 +241,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '9',
-    to: '51'
+    to: '54'
   },
   101: {
     edgeId: 101,
@@ -251,7 +251,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '10',
-    to: '85'
+    to: '88'
   },
   111: {
     edgeId: 111,
@@ -261,7 +261,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '11',
-    to: '52'
+    to: '55'
   },
   112: {
     edgeId: 112,
@@ -276,35 +276,35 @@ export const objectPropertiesFromApi = {
   },
   121: {
     edgeId: 121,
-    role: 'Subclass of',
-    id: '121',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '12',
-    to: '51'
-  },
-  122: {
-    edgeId: 122,
-    role: 'Performed by',
-    id: '122',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '12',
-    to: '53'
-  },
-  123: {
-    edgeId: 123,
     role: 'Performed on',
-    id: '123',
+    id: '121',
     label: 'Performed on',
     rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
     rdfsLabel: 'Performed on',
     userDefined: false,
     from: '12',
-    to: '70'
+    to: '73'
+  },
+  122: {
+    edgeId: 122,
+    role: 'Affected by',
+    id: '122',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '12',
+    to: '19'
+  },
+  123: {
+    edgeId: 123,
+    role: 'Subclass of',
+    id: '123',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '12',
+    to: '54'
   },
   124: {
     edgeId: 124,
@@ -315,7 +315,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Triggered by',
     userDefined: false,
     from: '12',
-    to: '105'
+    to: '109'
+  },
+  125: {
+    edgeId: 125,
+    role: 'Performed by',
+    id: '125',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '12',
+    to: '56'
   },
   131: {
     edgeId: 131,
@@ -325,7 +336,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '13',
-    to: '70'
+    to: '73'
   },
   141: {
     edgeId: 141,
@@ -335,18 +346,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '14',
-    to: '76'
-  },
-  142: {
-    edgeId: 142,
-    role: 'Required for',
-    id: '142',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '14',
-    to: '144'
+    to: '5'
   },
   151: {
     edgeId: 151,
@@ -356,18 +356,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '15',
-    to: '191'
+    to: '79'
   },
   152: {
     edgeId: 152,
-    role: 'Improved through',
+    role: 'Required for',
     id: '152',
-    label: 'Improved through',
-    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-    rdfsLabel: 'Improved through',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
     userDefined: false,
     from: '15',
-    to: '161'
+    to: '150'
   },
   161: {
     edgeId: 161,
@@ -377,61 +377,28 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '16',
-    to: '76'
+    to: '198'
+  },
+  162: {
+    edgeId: 162,
+    role: 'Improved through',
+    id: '162',
+    label: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    rdfsLabel: 'Improved through',
+    userDefined: false,
+    from: '16',
+    to: '168'
   },
   171: {
     edgeId: 171,
-    role: 'Informed by',
-    id: '171',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
-    userDefined: false,
-    from: '17',
-    to: '155'
-  },
-  172: {
-    edgeId: 172,
     role: 'Subclass of',
-    id: '172',
+    id: '171',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '17',
-    to: '29'
-  },
-  173: {
-    edgeId: 173,
-    role: 'Requested by',
-    id: '173',
-    label: 'Requested by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
-    rdfsLabel: 'Requested by',
-    userDefined: false,
-    from: '17',
-    to: '65'
-  },
-  174: {
-    edgeId: 174,
-    role: 'Presented in',
-    id: '174',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
-    userDefined: false,
-    from: '17',
-    to: '145'
-  },
-  175: {
-    edgeId: 175,
-    role: 'Required for',
-    id: '175',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '17',
-    to: '144'
+    to: '79'
   },
   181: {
     edgeId: 181,
@@ -441,7 +408,51 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '18',
-    to: '69'
+    to: '31'
+  },
+  182: {
+    edgeId: 182,
+    role: 'Informed by',
+    id: '182',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
+    userDefined: false,
+    from: '18',
+    to: '162'
+  },
+  183: {
+    edgeId: 183,
+    role: 'Required for',
+    id: '183',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '18',
+    to: '150'
+  },
+  184: {
+    edgeId: 184,
+    role: 'Requested by',
+    id: '184',
+    label: 'Requested by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+    rdfsLabel: 'Requested by',
+    userDefined: false,
+    from: '18',
+    to: '68'
+  },
+  185: {
+    edgeId: 185,
+    role: 'Presented in',
+    id: '185',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
+    userDefined: false,
+    from: '18',
+    to: '151'
   },
   191: {
     edgeId: 191,
@@ -451,7 +462,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '19',
-    to: '91'
+    to: '170'
   },
   201: {
     edgeId: 201,
@@ -461,233 +472,145 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '20',
-    to: '5'
-  },
-  202: {
-    edgeId: 202,
-    role: 'Funded by',
-    id: '202',
-    label: 'Funded by',
-    rdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
-    rdfsLabel: 'Funded by',
-    userDefined: false,
-    from: '20',
-    to: '128'
-  },
-  203: {
-    edgeId: 203,
-    role: 'Funded by',
-    id: '203',
-    label: 'Funded by',
-    rdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
-    rdfsLabel: 'Funded by',
-    userDefined: false,
-    from: '20',
-    to: '65'
-  },
-  204: {
-    edgeId: 204,
-    role: 'Itemised by',
-    id: '204',
-    label: 'Itemised by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
-    rdfsLabel: 'Itemised by',
-    userDefined: false,
-    from: '20',
-    to: '25'
+    to: '72'
   },
   211: {
     edgeId: 211,
-    role: 'Included in',
-    id: '211',
-    label: 'Included in',
-    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-    rdfsLabel: 'Included in',
-    userDefined: false,
-    from: '21',
-    to: '154'
-  },
-  212: {
-    edgeId: 212,
-    role: 'Provided to',
-    id: '212',
-    label: 'Provided to',
-    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-    rdfsLabel: 'Provided to',
-    userDefined: false,
-    from: '21',
-    to: '146'
-  },
-  213: {
-    edgeId: 213,
     role: 'Subclass of',
-    id: '213',
+    id: '211',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '21',
-    to: '51'
+    to: '94'
   },
   221: {
     edgeId: 221,
-    role: 'Subclass of',
+    role: 'Funded by',
     id: '221',
+    label: 'Funded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
+    rdfsLabel: 'Funded by',
+    userDefined: false,
+    from: '22',
+    to: '134'
+  },
+  222: {
+    edgeId: 222,
+    role: 'Subclass of',
+    id: '222',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '22',
-    to: '91'
+    to: '5'
+  },
+  223: {
+    edgeId: 223,
+    role: 'Itemised by',
+    id: '223',
+    label: 'Itemised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7f3MFJaUN2W4LPV62BVWCH',
+    rdfsLabel: 'Itemised by',
+    userDefined: false,
+    from: '22',
+    to: '27'
+  },
+  224: {
+    edgeId: 224,
+    role: 'Funded by',
+    id: '224',
+    label: 'Funded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RkJSmQ0b8EYQx19ftdEkGF',
+    rdfsLabel: 'Funded by',
+    userDefined: false,
+    from: '22',
+    to: '68'
   },
   231: {
     edgeId: 231,
-    role: 'Caused by',
+    role: 'Subclass of',
     id: '231',
-    label: 'Caused by',
-    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
-    rdfsLabel: 'Caused by',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '23',
-    to: '162'
+    to: '54'
   },
   232: {
     edgeId: 232,
-    role: 'Predicted by',
+    role: 'Provided to',
     id: '232',
+    label: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    rdfsLabel: 'Provided to',
+    userDefined: false,
+    from: '23',
+    to: '152'
+  },
+  233: {
+    edgeId: 233,
+    role: 'Included in',
+    id: '233',
+    label: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    rdfsLabel: 'Included in',
+    userDefined: false,
+    from: '23',
+    to: '161'
+  },
+  241: {
+    edgeId: 241,
+    role: 'Subclass of',
+    id: '241',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '24',
+    to: '94'
+  },
+  251: {
+    edgeId: 251,
+    role: 'Subclass of',
+    id: '251',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '25',
+    to: '169'
+  },
+  252: {
+    edgeId: 252,
+    role: 'Predicted by',
+    id: '252',
     label: 'Predicted by',
     rdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
     rdfsLabel: 'Predicted by',
     userDefined: false,
-    from: '23',
-    to: '68'
+    from: '25',
+    to: '71'
   },
-  233: {
-    edgeId: 233,
-    role: 'Subclass of',
-    id: '233',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+  253: {
+    edgeId: 253,
+    role: 'Caused by',
+    id: '253',
+    label: 'Caused by',
+    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
+    rdfsLabel: 'Caused by',
     userDefined: false,
-    from: '23',
-    to: '162'
+    from: '25',
+    to: '169'
   },
-  241: {
-    edgeId: 241,
+  261: {
+    edgeId: 261,
     role: 'Located at',
-    id: '241',
+    id: '261',
     label: 'Located at',
     rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
     rdfsLabel: 'Located at',
     userDefined: false,
-    from: '24',
-    to: '181'
-  },
-  242: {
-    edgeId: 242,
-    role: 'Subclass of',
-    id: '242',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '24',
-    to: '113'
-  },
-  251: {
-    edgeId: 251,
-    role: 'Reconciled by',
-    id: '251',
-    label: 'Reconciled by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
-    rdfsLabel: 'Reconciled by',
-    userDefined: false,
-    from: '25',
-    to: '67'
-  },
-  252: {
-    edgeId: 252,
-    role: 'Subclass of',
-    id: '252',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '25',
-    to: '51'
-  },
-  253: {
-    edgeId: 253,
-    role: 'Performed by',
-    id: '253',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '25',
-    to: '170'
-  },
-  254: {
-    edgeId: 254,
-    role: 'Created by',
-    id: '254',
-    label: 'Created by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-    rdfsLabel: 'Created by',
-    userDefined: false,
-    from: '25',
-    to: '67'
-  },
-  255: {
-    edgeId: 255,
-    role: 'Reviewed by',
-    id: '255',
-    label: 'Reviewed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-    rdfsLabel: 'Reviewed by',
-    userDefined: false,
-    from: '25',
-    to: '53'
-  },
-  256: {
-    edgeId: 256,
-    role: 'Input into',
-    id: '256',
-    label: 'Input into',
-    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-    rdfsLabel: 'Input into',
-    userDefined: false,
-    from: '25',
-    to: '160'
-  },
-  257: {
-    edgeId: 257,
-    role: 'Summarised in',
-    id: '257',
-    label: 'Summarised in',
-    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
-    rdfsLabel: 'Summarised in',
-    userDefined: false,
-    from: '25',
-    to: '147'
-  },
-  258: {
-    edgeId: 258,
-    role: 'Recorded in',
-    id: '258',
-    label: 'Recorded in',
-    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-    rdfsLabel: 'Recorded in',
-    userDefined: false,
-    from: '25',
-    to: '67'
-  },
-  261: {
-    edgeId: 261,
-    role: 'Completed before',
-    id: '261',
-    label: 'Completed before',
-    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-    rdfsLabel: 'Completed before',
-    userDefined: false,
     from: '26',
-    to: '156'
+    to: '188'
   },
   262: {
     edgeId: 262,
@@ -697,17 +620,94 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '26',
-    to: '54'
+    to: '118'
   },
   271: {
     edgeId: 271,
-    role: 'Subclass of',
+    role: 'Created by',
     id: '271',
+    label: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    rdfsLabel: 'Created by',
+    userDefined: false,
+    from: '27',
+    to: '70'
+  },
+  272: {
+    edgeId: 272,
+    role: 'Recorded in',
+    id: '272',
+    label: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    rdfsLabel: 'Recorded in',
+    userDefined: false,
+    from: '27',
+    to: '70'
+  },
+  273: {
+    edgeId: 273,
+    role: 'Input into',
+    id: '273',
+    label: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    rdfsLabel: 'Input into',
+    userDefined: false,
+    from: '27',
+    to: '167'
+  },
+  274: {
+    edgeId: 274,
+    role: 'Summarised in',
+    id: '274',
+    label: 'Summarised in',
+    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+    rdfsLabel: 'Summarised in',
+    userDefined: false,
+    from: '27',
+    to: '153'
+  },
+  275: {
+    edgeId: 275,
+    role: 'Performed by',
+    id: '275',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '27',
+    to: '177'
+  },
+  276: {
+    edgeId: 276,
+    role: 'Subclass of',
+    id: '276',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '27',
-    to: '52'
+    to: '54'
+  },
+  277: {
+    edgeId: 277,
+    role: 'Reviewed by',
+    id: '277',
+    label: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    rdfsLabel: 'Reviewed by',
+    userDefined: false,
+    from: '27',
+    to: '56'
+  },
+  278: {
+    edgeId: 278,
+    role: 'Reconciled by',
+    id: '278',
+    label: 'Reconciled by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
+    rdfsLabel: 'Reconciled by',
+    userDefined: false,
+    from: '27',
+    to: '70'
   },
   281: {
     edgeId: 281,
@@ -717,7 +717,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '28',
-    to: '70'
+    to: '57'
+  },
+  282: {
+    edgeId: 282,
+    role: 'Completed before',
+    id: '282',
+    label: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    rdfsLabel: 'Completed before',
+    userDefined: false,
+    from: '28',
+    to: '163'
   },
   291: {
     edgeId: 291,
@@ -727,7 +738,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '29',
-    to: '62'
+    to: '55'
   },
   301: {
     edgeId: 301,
@@ -737,7 +748,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '30',
-    to: '70'
+    to: '73'
   },
   311: {
     edgeId: 311,
@@ -747,18 +758,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '31',
-    to: '5'
-  },
-  312: {
-    edgeId: 312,
-    role: 'Achieved by',
-    id: '312',
-    label: 'Achieved by',
-    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
-    rdfsLabel: 'Achieved by',
-    userDefined: false,
-    from: '31',
-    to: '161'
+    to: '65'
   },
   321: {
     edgeId: 321,
@@ -768,18 +768,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '32',
-    to: '119'
-  },
-  322: {
-    edgeId: 322,
-    role: 'Composed of',
-    id: '322',
-    label: 'Composed of',
-    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-    rdfsLabel: 'Composed of',
-    userDefined: false,
-    from: '32',
-    to: '39'
+    to: '73'
   },
   331: {
     edgeId: 331,
@@ -789,18 +778,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '33',
-    to: '51'
+    to: '5'
   },
   332: {
     edgeId: 332,
-    role: 'Performed by',
+    role: 'Achieved by',
     id: '332',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
+    label: 'Achieved by',
+    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+    rdfsLabel: 'Achieved by',
     userDefined: false,
     from: '33',
-    to: '65'
+    to: '168'
   },
   341: {
     edgeId: 341,
@@ -810,28 +799,28 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '34',
-    to: '147'
-  },
-  342: {
-    edgeId: 342,
-    role: 'Reviewed by',
-    id: '342',
-    label: 'Reviewed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-    rdfsLabel: 'Reviewed by',
-    userDefined: false,
-    from: '34',
-    to: '53'
+    to: '90'
   },
   351: {
     edgeId: 351,
-    role: 'Subclass of',
+    role: 'Composed of',
     id: '351',
+    label: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    rdfsLabel: 'Composed of',
+    userDefined: false,
+    from: '35',
+    to: '42'
+  },
+  352: {
+    edgeId: 352,
+    role: 'Subclass of',
+    id: '352',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '35',
-    to: '38'
+    to: '124'
   },
   361: {
     edgeId: 361,
@@ -841,18 +830,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '36',
-    to: '147'
+    to: '54'
   },
   362: {
     edgeId: 362,
-    role: 'Required for',
+    role: 'Performed by',
     id: '362',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
     userDefined: false,
     from: '36',
-    to: '161'
+    to: '68'
   },
   371: {
     edgeId: 371,
@@ -862,83 +851,28 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '37',
-    to: '155'
+    to: '153'
+  },
+  372: {
+    edgeId: 372,
+    role: 'Reviewed by',
+    id: '372',
+    label: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    rdfsLabel: 'Reviewed by',
+    userDefined: false,
+    from: '37',
+    to: '56'
   },
   381: {
     edgeId: 381,
-    role: 'Required for',
-    id: '381',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '38',
-    to: '53'
-  },
-  382: {
-    edgeId: 382,
-    role: 'Presented in',
-    id: '382',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
-    userDefined: false,
-    from: '38',
-    to: '27'
-  },
-  383: {
-    edgeId: 383,
-    role: 'Associated with',
-    id: '383',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '38',
-    to: '146'
-  },
-  384: {
-    edgeId: 384,
-    role: 'Associated with',
-    id: '384',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '38',
-    to: '128'
-  },
-  385: {
-    edgeId: 385,
     role: 'Subclass of',
-    id: '385',
+    id: '381',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '38',
-    to: '163'
-  },
-  386: {
-    edgeId: 386,
-    role: 'Obtained through',
-    id: '386',
-    label: 'Obtained through',
-    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
-    rdfsLabel: 'Obtained through',
-    userDefined: false,
-    from: '38',
-    to: '21'
-  },
-  387: {
-    edgeId: 387,
-    role: 'Achieved by',
-    id: '387',
-    label: 'Achieved by',
-    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
-    rdfsLabel: 'Achieved by',
-    userDefined: false,
-    from: '38',
-    to: '146'
+    to: '41'
   },
   391: {
     edgeId: 391,
@@ -948,51 +882,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '39',
-    to: '50'
+    to: '153'
   },
   392: {
     edgeId: 392,
-    role: 'Used by',
+    role: 'Required for',
     id: '392',
-    label: 'Used by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-    rdfsLabel: 'Used by',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
     userDefined: false,
     from: '39',
-    to: '103'
-  },
-  393: {
-    edgeId: 393,
-    role: 'Used by',
-    id: '393',
-    label: 'Used by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-    rdfsLabel: 'Used by',
-    userDefined: false,
-    from: '39',
-    to: '84'
-  },
-  394: {
-    edgeId: 394,
-    role: 'Composed of',
-    id: '394',
-    label: 'Composed of',
-    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-    rdfsLabel: 'Composed of',
-    userDefined: false,
-    from: '39',
-    to: '96'
-  },
-  395: {
-    edgeId: 395,
-    role: 'Located at',
-    id: '395',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
-    userDefined: false,
-    from: '39',
-    to: '181'
+    to: '168'
   },
   401: {
     edgeId: 401,
@@ -1002,28 +903,94 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '40',
-    to: '24'
+    to: '162'
   },
   411: {
     edgeId: 411,
-    role: 'Subclass of',
+    role: 'Obtained through',
     id: '411',
+    label: 'Obtained through',
+    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+    rdfsLabel: 'Obtained through',
+    userDefined: false,
+    from: '41',
+    to: '23'
+  },
+  412: {
+    edgeId: 412,
+    role: 'Achieved by',
+    id: '412',
+    label: 'Achieved by',
+    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+    rdfsLabel: 'Achieved by',
+    userDefined: false,
+    from: '41',
+    to: '152'
+  },
+  413: {
+    edgeId: 413,
+    role: 'Associated with',
+    id: '413',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '41',
+    to: '152'
+  },
+  414: {
+    edgeId: 414,
+    role: 'Required for',
+    id: '414',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '41',
+    to: '56'
+  },
+  415: {
+    edgeId: 415,
+    role: 'Presented in',
+    id: '415',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
+    userDefined: false,
+    from: '41',
+    to: '29'
+  },
+  416: {
+    edgeId: 416,
+    role: 'Subclass of',
+    id: '416',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '41',
-    to: '1'
+    to: '170'
+  },
+  417: {
+    edgeId: 417,
+    role: 'Associated with',
+    id: '417',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '41',
+    to: '134'
   },
   421: {
     edgeId: 421,
-    role: 'Requested by',
+    role: 'Composed of',
     id: '421',
-    label: 'Requested by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
-    rdfsLabel: 'Requested by',
+    label: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    rdfsLabel: 'Composed of',
     userDefined: false,
     from: '42',
-    to: '53'
+    to: '100'
   },
   422: {
     edgeId: 422,
@@ -1033,50 +1000,50 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '42',
-    to: '163'
+    to: '53'
+  },
+  423: {
+    edgeId: 423,
+    role: 'Located at',
+    id: '423',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
+    userDefined: false,
+    from: '42',
+    to: '188'
+  },
+  424: {
+    edgeId: 424,
+    role: 'Used by',
+    id: '424',
+    label: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    rdfsLabel: 'Used by',
+    userDefined: false,
+    from: '42',
+    to: '87'
+  },
+  425: {
+    edgeId: 425,
+    role: 'Used by',
+    id: '425',
+    label: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    rdfsLabel: 'Used by',
+    userDefined: false,
+    from: '42',
+    to: '107'
   },
   431: {
     edgeId: 431,
-    role: 'Informed by',
-    id: '431',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
-    userDefined: false,
-    from: '43',
-    to: '8'
-  },
-  432: {
-    edgeId: 432,
-    role: 'Affected by',
-    id: '432',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '43',
-    to: '106'
-  },
-  433: {
-    edgeId: 433,
-    role: 'Informed by',
-    id: '433',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
-    userDefined: false,
-    from: '43',
-    to: '20'
-  },
-  434: {
-    edgeId: 434,
     role: 'Subclass of',
-    id: '434',
+    id: '431',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '43',
-    to: '5'
+    to: '26'
   },
   441: {
     edgeId: 441,
@@ -1086,115 +1053,71 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '44',
-    to: '113'
-  },
-  442: {
-    edgeId: 442,
-    role: 'Used in',
-    id: '442',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '44',
-    to: '12'
-  },
-  443: {
-    edgeId: 443,
-    role: 'Recorded in',
-    id: '443',
-    label: 'Recorded in',
-    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-    rdfsLabel: 'Recorded in',
-    userDefined: false,
-    from: '44',
-    to: '140'
+    to: '1'
   },
   451: {
     edgeId: 451,
-    role: 'Subclass of',
+    role: 'Requested by',
     id: '451',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+    label: 'Requested by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+    rdfsLabel: 'Requested by',
     userDefined: false,
     from: '45',
-    to: '118'
+    to: '56'
   },
   452: {
     edgeId: 452,
-    role: 'Improved through',
-    id: '452',
-    label: 'Improved through',
-    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-    rdfsLabel: 'Improved through',
-    userDefined: false,
-    from: '45',
-    to: '161'
-  },
-  461: {
-    edgeId: 461,
-    role: 'Measured at',
-    id: '461',
-    label: 'Measured at',
-    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
-    rdfsLabel: 'Measured at',
-    userDefined: false,
-    from: '46',
-    to: '181'
-  },
-  462: {
-    edgeId: 462,
     role: 'Subclass of',
-    id: '462',
+    id: '452',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
-    from: '46',
-    to: '191'
+    from: '45',
+    to: '170'
   },
-  463: {
-    edgeId: 463,
-    role: 'Predicted by',
-    id: '463',
-    label: 'Predicted by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
-    rdfsLabel: 'Predicted by',
+  461: {
+    edgeId: 461,
+    role: 'Informed by',
+    id: '461',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
     userDefined: false,
     from: '46',
-    to: '160'
+    to: '8'
   },
-  464: {
-    edgeId: 464,
-    role: 'Measured by',
-    id: '464',
-    label: 'Measured by',
-    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-    rdfsLabel: 'Measured by',
-    userDefined: false,
-    from: '46',
-    to: '122'
-  },
-  465: {
-    edgeId: 465,
+  462: {
+    edgeId: 462,
     role: 'Affected by',
-    id: '465',
+    id: '462',
     label: 'Affected by',
     rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     rdfsLabel: 'Affected by',
     userDefined: false,
     from: '46',
-    to: '131'
+    to: '110'
   },
-  466: {
-    edgeId: 466,
-    role: 'Improved through',
-    id: '466',
-    label: 'Improved through',
-    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-    rdfsLabel: 'Improved through',
+  463: {
+    edgeId: 463,
+    role: 'Informed by',
+    id: '463',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
     userDefined: false,
     from: '46',
-    to: '161'
+    to: '22'
+  },
+  464: {
+    edgeId: 464,
+    role: 'Subclass of',
+    id: '464',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '46',
+    to: '5'
   },
   471: {
     edgeId: 471,
@@ -1204,146 +1127,157 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '47',
-    to: '51'
+    to: '118'
+  },
+  472: {
+    edgeId: 472,
+    role: 'Recorded in',
+    id: '472',
+    label: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    rdfsLabel: 'Recorded in',
+    userDefined: false,
+    from: '47',
+    to: '146'
+  },
+  473: {
+    edgeId: 473,
+    role: 'Used in',
+    id: '473',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '47',
+    to: '12'
   },
   481: {
     edgeId: 481,
-    role: 'Composed of',
-    id: '481',
-    label: 'Composed of',
-    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-    rdfsLabel: 'Composed of',
-    userDefined: false,
-    from: '48',
-    to: '100'
-  },
-  482: {
-    edgeId: 482,
     role: 'Subclass of',
-    id: '482',
+    id: '481',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '48',
-    to: '96'
+    to: '123'
   },
-  483: {
-    edgeId: 483,
-    role: 'Composed of',
-    id: '483',
-    label: 'Composed of',
-    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-    rdfsLabel: 'Composed of',
+  482: {
+    edgeId: 482,
+    role: 'Improved through',
+    id: '482',
+    label: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    rdfsLabel: 'Improved through',
     userDefined: false,
     from: '48',
-    to: '98'
+    to: '168'
   },
   491: {
     edgeId: 491,
-    role: 'Measured by',
+    role: 'Affected by',
     id: '491',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '49',
+    to: '137'
+  },
+  492: {
+    edgeId: 492,
+    role: 'Measured by',
+    id: '492',
     label: 'Measured by',
     rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
     rdfsLabel: 'Measured by',
     userDefined: false,
     from: '49',
-    to: '53'
+    to: '128'
   },
-  492: {
-    edgeId: 492,
+  493: {
+    edgeId: 493,
+    role: 'Measured at',
+    id: '493',
+    label: 'Measured at',
+    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
+    rdfsLabel: 'Measured at',
+    userDefined: false,
+    from: '49',
+    to: '188'
+  },
+  494: {
+    edgeId: 494,
     role: 'Improved through',
-    id: '492',
+    id: '494',
     label: 'Improved through',
     rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     rdfsLabel: 'Improved through',
     userDefined: false,
     from: '49',
-    to: '161'
+    to: '168'
   },
-  493: {
-    edgeId: 493,
-    role: 'Associated with',
-    id: '493',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '49',
-    to: '103'
-  },
-  494: {
-    edgeId: 494,
+  495: {
+    edgeId: 495,
     role: 'Subclass of',
-    id: '494',
+    id: '495',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '49',
-    to: '191'
+    to: '198'
+  },
+  496: {
+    edgeId: 496,
+    role: 'Predicted by',
+    id: '496',
+    label: 'Predicted by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
+    rdfsLabel: 'Predicted by',
+    userDefined: false,
+    from: '49',
+    to: '167'
   },
   501: {
     edgeId: 501,
-    role: 'Located at',
-    id: '501',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
-    userDefined: false,
-    from: '50',
-    to: '181'
-  },
-  502: {
-    edgeId: 502,
-    role: 'Associated with',
-    id: '502',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '50',
-    to: '70'
-  },
-  503: {
-    edgeId: 503,
     role: 'Subclass of',
-    id: '503',
+    id: '501',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '50',
-    to: '17'
+    to: '54'
   },
   511: {
     edgeId: 511,
-    role: 'Performed on',
-    id: '511',
-    label: 'Performed on',
-    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
-    rdfsLabel: 'Performed on',
-    userDefined: false,
-    from: '51',
-    to: '50'
-  },
-  512: {
-    edgeId: 512,
     role: 'Subclass of',
-    id: '512',
+    id: '511',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '51',
-    to: '62'
+    to: '100'
+  },
+  512: {
+    edgeId: 512,
+    role: 'Composed of',
+    id: '512',
+    label: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    rdfsLabel: 'Composed of',
+    userDefined: false,
+    from: '51',
+    to: '102'
   },
   513: {
     edgeId: 513,
-    role: 'Performed by',
+    role: 'Composed of',
     id: '513',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
+    label: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    rdfsLabel: 'Composed of',
     userDefined: false,
     from: '51',
-    to: '53'
+    to: '104'
   },
   521: {
     edgeId: 521,
@@ -1353,61 +1287,72 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '52',
-    to: '141'
+    to: '198'
   },
   522: {
     edgeId: 522,
-    role: 'Required for',
+    role: 'Improved through',
     id: '522',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
+    label: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    rdfsLabel: 'Improved through',
     userDefined: false,
     from: '52',
-    to: '144'
+    to: '168'
+  },
+  523: {
+    edgeId: 523,
+    role: 'Measured by',
+    id: '523',
+    label: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    rdfsLabel: 'Measured by',
+    userDefined: false,
+    from: '52',
+    to: '56'
+  },
+  524: {
+    edgeId: 524,
+    role: 'Associated with',
+    id: '524',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '52',
+    to: '107'
   },
   531: {
     edgeId: 531,
-    role: 'Performed from',
+    role: 'Located at',
     id: '531',
-    label: 'Performed from',
-    rdfAbout: 'http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx',
-    rdfsLabel: 'Performed from',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
     userDefined: false,
     from: '53',
-    to: '24'
+    to: '188'
   },
   532: {
     edgeId: 532,
-    role: 'Performed by',
-    id: '532',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '53',
-    to: '146'
-  },
-  533: {
-    edgeId: 533,
     role: 'Subclass of',
-    id: '533',
+    id: '532',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '53',
-    to: '163'
+    to: '18'
   },
-  534: {
-    edgeId: 534,
-    role: 'Informed by',
-    id: '534',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
+  533: {
+    edgeId: 533,
+    role: 'Associated with',
+    id: '533',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
     userDefined: false,
     from: '53',
-    to: '192'
+    to: '73'
   },
   541: {
     edgeId: 541,
@@ -1417,113 +1362,113 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '54',
-    to: '62'
+    to: '65'
+  },
+  542: {
+    edgeId: 542,
+    role: 'Performed on',
+    id: '542',
+    label: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+    rdfsLabel: 'Performed on',
+    userDefined: false,
+    from: '54',
+    to: '53'
+  },
+  543: {
+    edgeId: 543,
+    role: 'Performed by',
+    id: '543',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '54',
+    to: '56'
   },
   551: {
     edgeId: 551,
-    role: 'Subclass of',
+    role: 'Required for',
     id: '551',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '55',
+    to: '150'
+  },
+  552: {
+    edgeId: 552,
+    role: 'Subclass of',
+    id: '552',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '55',
-    to: '70'
+    to: '147'
   },
   561: {
     edgeId: 561,
-    role: 'Subclass of',
+    role: 'Performed by',
     id: '561',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '56',
+    to: '152'
+  },
+  562: {
+    edgeId: 562,
+    role: 'Subclass of',
+    id: '562',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '56',
-    to: '132'
+    to: '170'
+  },
+  563: {
+    edgeId: 563,
+    role: 'Performed from',
+    id: '563',
+    label: 'Performed from',
+    rdfAbout: 'http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx',
+    rdfsLabel: 'Performed from',
+    userDefined: false,
+    from: '56',
+    to: '26'
+  },
+  564: {
+    edgeId: 564,
+    role: 'Informed by',
+    id: '564',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
+    userDefined: false,
+    from: '56',
+    to: '199'
   },
   571: {
     edgeId: 571,
-    role: 'Bounded by',
-    id: '571',
-    label: 'Bounded by',
-    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
-    rdfsLabel: 'Bounded by',
-    userDefined: false,
-    from: '57',
-    to: '100'
-  },
-  572: {
-    edgeId: 572,
-    role: 'Applied to',
-    id: '572',
-    label: 'Applied to',
-    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-    rdfsLabel: 'Applied to',
-    userDefined: false,
-    from: '57',
-    to: '39'
-  },
-  573: {
-    edgeId: 573,
     role: 'Subclass of',
-    id: '573',
+    id: '571',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '57',
-    to: '87'
+    to: '65'
   },
   581: {
     edgeId: 581,
-    role: 'Created by',
-    id: '581',
-    label: 'Created by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-    rdfsLabel: 'Created by',
-    userDefined: false,
-    from: '58',
-    to: '53'
-  },
-  582: {
-    edgeId: 582,
-    role: 'Used in',
-    id: '582',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '58',
-    to: '168'
-  },
-  583: {
-    edgeId: 583,
-    role: 'Created for',
-    id: '583',
-    label: 'Created for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-    rdfsLabel: 'Created for',
-    userDefined: false,
-    from: '58',
-    to: '18'
-  },
-  584: {
-    edgeId: 584,
     role: 'Subclass of',
-    id: '584',
+    id: '581',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '58',
-    to: '69'
-  },
-  585: {
-    edgeId: 585,
-    role: 'Used by',
-    id: '585',
-    label: 'Used by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-    rdfsLabel: 'Used by',
-    userDefined: false,
-    from: '58',
-    to: '67'
+    to: '73'
   },
   591: {
     edgeId: 591,
@@ -1533,7 +1478,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '59',
-    to: '70'
+    to: '138'
   },
   601: {
     edgeId: 601,
@@ -1543,113 +1488,157 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '60',
-    to: '51'
+    to: '90'
   },
   602: {
     edgeId: 602,
-    role: 'Performed on',
+    role: 'Bounded by',
     id: '602',
+    label: 'Bounded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+    rdfsLabel: 'Bounded by',
+    userDefined: false,
+    from: '60',
+    to: '104'
+  },
+  603: {
+    edgeId: 603,
+    role: 'Applied to',
+    id: '603',
+    label: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    rdfsLabel: 'Applied to',
+    userDefined: false,
+    from: '60',
+    to: '42'
+  },
+  611: {
+    edgeId: 611,
+    role: 'Used by',
+    id: '611',
+    label: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    rdfsLabel: 'Used by',
+    userDefined: false,
+    from: '61',
+    to: '70'
+  },
+  612: {
+    edgeId: 612,
+    role: 'Used in',
+    id: '612',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '61',
+    to: '175'
+  },
+  613: {
+    edgeId: 613,
+    role: 'Created by',
+    id: '613',
+    label: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    rdfsLabel: 'Created by',
+    userDefined: false,
+    from: '61',
+    to: '56'
+  },
+  614: {
+    edgeId: 614,
+    role: 'Subclass of',
+    id: '614',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '61',
+    to: '72'
+  },
+  615: {
+    edgeId: 615,
+    role: 'Created for',
+    id: '615',
+    label: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    rdfsLabel: 'Created for',
+    userDefined: false,
+    from: '61',
+    to: '20'
+  },
+  621: {
+    edgeId: 621,
+    role: 'Subclass of',
+    id: '621',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '62',
+    to: '73'
+  },
+  631: {
+    edgeId: 631,
+    role: 'Subclass of',
+    id: '631',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '63',
+    to: '54'
+  },
+  632: {
+    edgeId: 632,
+    role: 'Performed on',
+    id: '632',
     label: 'Performed on',
     rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
     rdfsLabel: 'Performed on',
     userDefined: false,
-    from: '60',
-    to: '70'
+    from: '63',
+    to: '73'
   },
-  603: {
-    edgeId: 603,
+  633: {
+    edgeId: 633,
     role: 'Operated from',
-    id: '603',
+    id: '633',
     label: 'Operated from',
     rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
     rdfsLabel: 'Operated from',
     userDefined: false,
-    from: '60',
-    to: '186'
+    from: '63',
+    to: '193'
   },
-  611: {
-    edgeId: 611,
-    role: 'Subclass of',
-    id: '611',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '61',
-    to: '90'
-  },
-  612: {
-    edgeId: 612,
+  641: {
+    edgeId: 641,
     role: 'Located at',
-    id: '612',
+    id: '641',
     label: 'Located at',
     rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
     rdfsLabel: 'Located at',
     userDefined: false,
-    from: '61',
-    to: '24'
+    from: '64',
+    to: '26'
   },
-  631: {
-    edgeId: 631,
-    role: 'Presented in',
-    id: '631',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
-    userDefined: false,
-    from: '63',
-    to: '147'
-  },
-  632: {
-    edgeId: 632,
+  642: {
+    edgeId: 642,
     role: 'Subclass of',
-    id: '632',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '63',
-    to: '191'
-  },
-  633: {
-    edgeId: 633,
-    role: 'Managed within',
-    id: '633',
-    label: 'Managed within',
-    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
-    rdfsLabel: 'Managed within',
-    userDefined: false,
-    from: '63',
-    to: '161'
-  },
-  641: {
-    edgeId: 641,
-    role: 'Subclass of',
-    id: '641',
+    id: '642',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '64',
-    to: '38'
-  },
-  651: {
-    edgeId: 651,
-    role: 'Subclass of',
-    id: '651',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '65',
-    to: '163'
+    to: '93'
   },
   661: {
     edgeId: 661,
-    role: 'Input into',
+    role: 'Presented in',
     id: '661',
-    label: 'Input into',
-    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-    rdfsLabel: 'Input into',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
     userDefined: false,
     from: '66',
-    to: '160'
+    to: '153'
   },
   662: {
     edgeId: 662,
@@ -1659,342 +1648,243 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '66',
-    to: '163'
+    to: '198'
   },
   663: {
     edgeId: 663,
-    role: 'Associated with',
+    role: 'Managed within',
     id: '663',
+    label: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+    rdfsLabel: 'Managed within',
+    userDefined: false,
+    from: '66',
+    to: '168'
+  },
+  671: {
+    edgeId: 671,
+    role: 'Subclass of',
+    id: '671',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '67',
+    to: '41'
+  },
+  681: {
+    edgeId: 681,
+    role: 'Subclass of',
+    id: '681',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '68',
+    to: '170'
+  },
+  691: {
+    edgeId: 691,
+    role: 'Subclass of',
+    id: '691',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '69',
+    to: '170'
+  },
+  692: {
+    edgeId: 692,
+    role: 'Associated with',
+    id: '692',
     label: 'Associated with',
     rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
     rdfsLabel: 'Associated with',
     userDefined: false,
-    from: '66',
-    to: '70'
-  },
-  671: {
-    edgeId: 671,
-    role: 'Instantiation of',
-    id: '671',
-    label: 'Instantiation of',
-    rdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
-    rdfsLabel: 'Instantiation of',
-    userDefined: false,
-    from: '67',
-    to: '177'
-  },
-  672: {
-    edgeId: 672,
-    role: 'Owned by',
-    id: '672',
-    label: 'Owned by',
-    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-    rdfsLabel: 'Owned by',
-    userDefined: false,
-    from: '67',
-    to: '53'
-  },
-  673: {
-    edgeId: 673,
-    role: 'Subclass of',
-    id: '673',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '67',
-    to: '192'
-  },
-  681: {
-    edgeId: 681,
-    role: 'Predicted by',
-    id: '681',
-    label: 'Predicted by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
-    rdfsLabel: 'Predicted by',
-    userDefined: false,
-    from: '68',
-    to: '160'
-  },
-  682: {
-    edgeId: 682,
-    role: 'Subclass of',
-    id: '682',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '68',
-    to: '163'
-  },
-  691: {
-    edgeId: 691,
-    role: 'Provided by',
-    id: '691',
-    label: 'Provided by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
-    rdfsLabel: 'Provided by',
-    userDefined: false,
     from: '69',
-    to: '65'
-  },
-  692: {
-    edgeId: 692,
-    role: 'Subclass of',
-    id: '692',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '69',
-    to: '113'
+    to: '73'
   },
   693: {
     edgeId: 693,
-    role: 'Provided by',
-    id: '693',
-    label: 'Provided by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
-    rdfsLabel: 'Provided by',
-    userDefined: false,
-    from: '69',
-    to: '192'
-  },
-  694: {
-    edgeId: 694,
-    role: 'Reviewed by',
-    id: '694',
-    label: 'Reviewed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-    rdfsLabel: 'Reviewed by',
-    userDefined: false,
-    from: '69',
-    to: '67'
-  },
-  695: {
-    edgeId: 695,
-    role: 'Used in',
-    id: '695',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '69',
-    to: '147'
-  },
-  696: {
-    edgeId: 696,
-    role: 'Provided to',
-    id: '696',
-    label: 'Provided to',
-    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-    rdfsLabel: 'Provided to',
-    userDefined: false,
-    from: '69',
-    to: '192'
-  },
-  697: {
-    edgeId: 697,
-    role: 'Provided by',
-    id: '697',
-    label: 'Provided by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
-    rdfsLabel: 'Provided by',
-    userDefined: false,
-    from: '69',
-    to: '114'
-  },
-  698: {
-    edgeId: 698,
-    role: 'Managed within',
-    id: '698',
-    label: 'Managed within',
-    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
-    rdfsLabel: 'Managed within',
-    userDefined: false,
-    from: '69',
-    to: '67'
-  },
-  699: {
-    edgeId: 699,
-    role: 'Managed within',
-    id: '699',
-    label: 'Managed within',
-    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
-    rdfsLabel: 'Managed within',
-    userDefined: false,
-    from: '69',
-    to: '54'
-  },
-  701: {
-    edgeId: 701,
-    role: 'Improved through',
-    id: '701',
-    label: 'Improved through',
-    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-    rdfsLabel: 'Improved through',
-    userDefined: false,
-    from: '70',
-    to: '161'
-  },
-  702: {
-    edgeId: 702,
-    role: 'Owned by',
-    id: '702',
-    label: 'Owned by',
-    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-    rdfsLabel: 'Owned by',
-    userDefined: false,
-    from: '70',
-    to: '170'
-  },
-  703: {
-    edgeId: 703,
-    role: 'Represented by',
-    id: '703',
-    label: 'Represented by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
-    rdfsLabel: 'Represented by',
-    userDefined: false,
-    from: '70',
-    to: '148'
-  },
-  704: {
-    edgeId: 704,
-    role: 'Subclass of',
-    id: '704',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '70',
-    to: '113'
-  },
-  705: {
-    edgeId: 705,
     role: 'Input into',
-    id: '705',
+    id: '693',
     label: 'Input into',
     rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
     rdfsLabel: 'Input into',
     userDefined: false,
-    from: '70',
-    to: '160'
+    from: '69',
+    to: '167'
   },
-  706: {
-    edgeId: 706,
-    role: 'Used in',
-    id: '706',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
+  701: {
+    edgeId: 701,
+    role: 'Owned by',
+    id: '701',
+    label: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    rdfsLabel: 'Owned by',
     userDefined: false,
     from: '70',
-    to: '144'
+    to: '56'
   },
-  707: {
-    edgeId: 707,
-    role: 'Located at',
-    id: '707',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
+  702: {
+    edgeId: 702,
+    role: 'Instantiation of',
+    id: '702',
+    label: 'Instantiation of',
+    rdfAbout: 'http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM',
+    rdfsLabel: 'Instantiation of',
     userDefined: false,
     from: '70',
-    to: '181'
+    to: '184'
   },
-  708: {
-    edgeId: 708,
-    role: 'Affected by',
-    id: '708',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
+  703: {
+    edgeId: 703,
+    role: 'Subclass of',
+    id: '703',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '70',
-    to: '91'
-  },
-  709: {
-    edgeId: 709,
-    role: 'Obtained through',
-    id: '709',
-    label: 'Obtained through',
-    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
-    rdfsLabel: 'Obtained through',
-    userDefined: false,
-    from: '70',
-    to: '9'
+    to: '199'
   },
   711: {
     edgeId: 711,
-    role: 'Subclass of',
+    role: 'Predicted by',
     id: '711',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+    label: 'Predicted by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCmUfm0eeBA3SpSDhY4GHOe',
+    rdfsLabel: 'Predicted by',
     userDefined: false,
     from: '71',
-    to: '191'
+    to: '167'
   },
   712: {
     edgeId: 712,
-    role: 'Required for',
-    id: '712',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '71',
-    to: '137'
-  },
-  721: {
-    edgeId: 721,
     role: 'Subclass of',
-    id: '721',
+    id: '712',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
-    from: '72',
-    to: '62'
+    from: '71',
+    to: '170'
   },
-  722: {
-    edgeId: 722,
-    role: 'Located at',
-    id: '722',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
-    userDefined: false,
-    from: '72',
-    to: '181'
-  },
-  723: {
-    edgeId: 723,
-    role: 'Managed by',
-    id: '723',
-    label: 'Managed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
-    rdfsLabel: 'Managed by',
-    userDefined: false,
-    from: '72',
-    to: '53'
-  },
-  731: {
-    edgeId: 731,
-    role: 'Recorded in',
-    id: '731',
-    label: 'Recorded in',
-    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-    rdfsLabel: 'Recorded in',
-    userDefined: false,
-    from: '73',
-    to: '153'
-  },
-  732: {
-    edgeId: 732,
+  721: {
+    edgeId: 721,
     role: 'Provided by',
-    id: '732',
+    id: '721',
     label: 'Provided by',
     rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
     rdfsLabel: 'Provided by',
     userDefined: false,
+    from: '72',
+    to: '68'
+  },
+  722: {
+    edgeId: 722,
+    role: 'Managed within',
+    id: '722',
+    label: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+    rdfsLabel: 'Managed within',
+    userDefined: false,
+    from: '72',
+    to: '70'
+  },
+  723: {
+    edgeId: 723,
+    role: 'Provided by',
+    id: '723',
+    label: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+    rdfsLabel: 'Provided by',
+    userDefined: false,
+    from: '72',
+    to: '199'
+  },
+  724: {
+    edgeId: 724,
+    role: 'Provided to',
+    id: '724',
+    label: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    rdfsLabel: 'Provided to',
+    userDefined: false,
+    from: '72',
+    to: '199'
+  },
+  725: {
+    edgeId: 725,
+    role: 'Managed within',
+    id: '725',
+    label: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+    rdfsLabel: 'Managed within',
+    userDefined: false,
+    from: '72',
+    to: '57'
+  },
+  726: {
+    edgeId: 726,
+    role: 'Subclass of',
+    id: '726',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '72',
+    to: '118'
+  },
+  727: {
+    edgeId: 727,
+    role: 'Reviewed by',
+    id: '727',
+    label: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    rdfsLabel: 'Reviewed by',
+    userDefined: false,
+    from: '72',
+    to: '70'
+  },
+  728: {
+    edgeId: 728,
+    role: 'Used in',
+    id: '728',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '72',
+    to: '153'
+  },
+  729: {
+    edgeId: 729,
+    role: 'Provided by',
+    id: '729',
+    label: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+    rdfsLabel: 'Provided by',
+    userDefined: false,
+    from: '72',
+    to: '119'
+  },
+  731: {
+    edgeId: 731,
+    role: 'Used in',
+    id: '731',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
     from: '73',
-    to: '103'
+    to: '150'
+  },
+  732: {
+    edgeId: 732,
+    role: 'Input into',
+    id: '732',
+    label: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    rdfsLabel: 'Input into',
+    userDefined: false,
+    from: '73',
+    to: '167'
   },
   733: {
     edgeId: 733,
@@ -2004,18 +1894,73 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '73',
-    to: '69'
+    to: '118'
   },
   734: {
     edgeId: 734,
-    role: 'Managed within',
+    role: 'Represented within',
     id: '734',
-    label: 'Managed within',
-    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
-    rdfsLabel: 'Managed within',
+    label: 'Represented within',
+    rdfAbout: 'http://webprotege.stanford.edu/RcNW56SFgi34icUZNpsOET',
+    rdfsLabel: 'Represented within',
     userDefined: false,
     from: '73',
-    to: '67'
+    to: '162'
+  },
+  735: {
+    edgeId: 735,
+    role: 'Improved through',
+    id: '735',
+    label: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    rdfsLabel: 'Improved through',
+    userDefined: false,
+    from: '73',
+    to: '168'
+  },
+  736: {
+    edgeId: 736,
+    role: 'Obtained through',
+    id: '736',
+    label: 'Obtained through',
+    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+    rdfsLabel: 'Obtained through',
+    userDefined: false,
+    from: '73',
+    to: '9'
+  },
+  737: {
+    edgeId: 737,
+    role: 'Located at',
+    id: '737',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
+    userDefined: false,
+    from: '73',
+    to: '188'
+  },
+  738: {
+    edgeId: 738,
+    role: 'Owned by',
+    id: '738',
+    label: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    rdfsLabel: 'Owned by',
+    userDefined: false,
+    from: '73',
+    to: '177'
+  },
+  739: {
+    edgeId: 739,
+    role: 'Affected by',
+    id: '739',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '73',
+    to: '94'
   },
   741: {
     edgeId: 741,
@@ -2025,18 +1970,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '74',
-    to: '118'
+    to: '198'
   },
   742: {
     edgeId: 742,
-    role: 'Implemented through',
+    role: 'Required for',
     id: '742',
-    label: 'Implemented through',
-    rdfAbout: 'http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7',
-    rdfsLabel: 'Implemented through',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
     userDefined: false,
     from: '74',
-    to: '176'
+    to: '143'
   },
   751: {
     edgeId: 751,
@@ -2046,28 +1991,72 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '75',
-    to: '1'
+    to: '65'
   },
   752: {
     edgeId: 752,
-    role: 'Requested by',
+    role: 'Managed by',
     id: '752',
-    label: 'Requested by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
-    rdfsLabel: 'Requested by',
+    label: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
+    rdfsLabel: 'Managed by',
     userDefined: false,
     from: '75',
-    to: '103'
+    to: '56'
+  },
+  753: {
+    edgeId: 753,
+    role: 'Located at',
+    id: '753',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
+    userDefined: false,
+    from: '75',
+    to: '188'
   },
   761: {
     edgeId: 761,
-    role: 'Subclass of',
+    role: 'Managed within',
     id: '761',
+    label: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+    rdfsLabel: 'Managed within',
+    userDefined: false,
+    from: '76',
+    to: '70'
+  },
+  762: {
+    edgeId: 762,
+    role: 'Provided by',
+    id: '762',
+    label: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+    rdfsLabel: 'Provided by',
+    userDefined: false,
+    from: '76',
+    to: '107'
+  },
+  763: {
+    edgeId: 763,
+    role: 'Recorded in',
+    id: '763',
+    label: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    rdfsLabel: 'Recorded in',
+    userDefined: false,
+    from: '76',
+    to: '160'
+  },
+  764: {
+    edgeId: 764,
+    role: 'Subclass of',
+    id: '764',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '76',
-    to: '141'
+    to: '72'
   },
   771: {
     edgeId: 771,
@@ -2077,18 +2066,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '77',
-    to: '163'
+    to: '123'
   },
   772: {
     edgeId: 772,
-    role: 'Presented in',
+    role: 'Implemented through',
     id: '772',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
+    label: 'Implemented through',
+    rdfAbout: 'http://webprotege.stanford.edu/RbjcXDTrplTouTeWRoMMe7',
+    rdfsLabel: 'Implemented through',
     userDefined: false,
     from: '77',
-    to: '190'
+    to: '183'
   },
   781: {
     edgeId: 781,
@@ -2100,59 +2089,26 @@ export const objectPropertiesFromApi = {
     from: '78',
     to: '1'
   },
+  782: {
+    edgeId: 782,
+    role: 'Requested by',
+    id: '782',
+    label: 'Requested by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+    rdfsLabel: 'Requested by',
+    userDefined: false,
+    from: '78',
+    to: '107'
+  },
   791: {
     edgeId: 791,
-    role: 'Input into',
-    id: '791',
-    label: 'Input into',
-    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-    rdfsLabel: 'Input into',
-    userDefined: false,
-    from: '79',
-    to: '160'
-  },
-  792: {
-    edgeId: 792,
-    role: 'Measured at',
-    id: '792',
-    label: 'Measured at',
-    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
-    rdfsLabel: 'Measured at',
-    userDefined: false,
-    from: '79',
-    to: '181'
-  },
-  793: {
-    edgeId: 793,
-    role: 'Measured by',
-    id: '793',
-    label: 'Measured by',
-    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-    rdfsLabel: 'Measured by',
-    userDefined: false,
-    from: '79',
-    to: '122'
-  },
-  794: {
-    edgeId: 794,
-    role: 'Affected by',
-    id: '794',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '79',
-    to: '131'
-  },
-  795: {
-    edgeId: 795,
     role: 'Subclass of',
-    id: '795',
+    id: '791',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '79',
-    to: '191'
+    to: '147'
   },
   801: {
     edgeId: 801,
@@ -2162,60 +2118,82 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '80',
-    to: '141'
+    to: '170'
+  },
+  802: {
+    edgeId: 802,
+    role: 'Presented in',
+    id: '802',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
+    userDefined: false,
+    from: '80',
+    to: '197'
   },
   811: {
     edgeId: 811,
-    role: 'Measured by',
+    role: 'Subclass of',
     id: '811',
-    label: 'Measured by',
-    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-    rdfsLabel: 'Measured by',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '81',
-    to: '122'
+    to: '1'
   },
-  812: {
-    edgeId: 812,
-    role: 'Affected by',
-    id: '812',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '81',
-    to: '131'
-  },
-  813: {
-    edgeId: 813,
+  821: {
+    edgeId: 821,
     role: 'Measured at',
-    id: '813',
+    id: '821',
     label: 'Measured at',
     rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
     rdfsLabel: 'Measured at',
     userDefined: false,
-    from: '81',
-    to: '181'
+    from: '82',
+    to: '188'
   },
-  814: {
-    edgeId: 814,
-    role: 'Subclass of',
-    id: '814',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+  822: {
+    edgeId: 822,
+    role: 'Affected by',
+    id: '822',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
     userDefined: false,
-    from: '81',
-    to: '191'
+    from: '82',
+    to: '137'
   },
-  821: {
-    edgeId: 821,
+  823: {
+    edgeId: 823,
+    role: 'Input into',
+    id: '823',
+    label: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    rdfsLabel: 'Input into',
+    userDefined: false,
+    from: '82',
+    to: '167'
+  },
+  824: {
+    edgeId: 824,
+    role: 'Measured by',
+    id: '824',
+    label: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    rdfsLabel: 'Measured by',
+    userDefined: false,
+    from: '82',
+    to: '128'
+  },
+  825: {
+    edgeId: 825,
     role: 'Subclass of',
-    id: '821',
+    id: '825',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '82',
-    to: '184'
+    to: '198'
   },
   831: {
     edgeId: 831,
@@ -2225,200 +2203,178 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '83',
-    to: '191'
+    to: '147'
   },
   841: {
     edgeId: 841,
-    role: 'Used in',
+    role: 'Subclass of',
     id: '841',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '84',
-    to: '92'
+    to: '198'
   },
   842: {
     edgeId: 842,
-    role: 'Owned by',
+    role: 'Measured at',
     id: '842',
+    label: 'Measured at',
+    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
+    rdfsLabel: 'Measured at',
+    userDefined: false,
+    from: '84',
+    to: '188'
+  },
+  843: {
+    edgeId: 843,
+    role: 'Measured by',
+    id: '843',
+    label: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    rdfsLabel: 'Measured by',
+    userDefined: false,
+    from: '84',
+    to: '128'
+  },
+  844: {
+    edgeId: 844,
+    role: 'Affected by',
+    id: '844',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '84',
+    to: '137'
+  },
+  851: {
+    edgeId: 851,
+    role: 'Subclass of',
+    id: '851',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '85',
+    to: '191'
+  },
+  861: {
+    edgeId: 861,
+    role: 'Subclass of',
+    id: '861',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '86',
+    to: '198'
+  },
+  871: {
+    edgeId: 871,
+    role: 'Owned by',
+    id: '871',
     label: 'Owned by',
     rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
     rdfsLabel: 'Owned by',
     userDefined: false,
-    from: '84',
-    to: '146'
+    from: '87',
+    to: '152'
   },
-  843: {
-    edgeId: 843,
+  872: {
+    edgeId: 872,
     role: 'Operated by',
-    id: '843',
+    id: '872',
     label: 'Operated by',
     rdfAbout: 'http://webprotege.stanford.edu/RB2lnkvVru2pLbt5iOaISSs',
     rdfsLabel: 'Operated by',
     userDefined: false,
-    from: '84',
-    to: '103'
+    from: '87',
+    to: '152'
   },
-  844: {
-    edgeId: 844,
+  873: {
+    edgeId: 873,
+    role: 'Used in',
+    id: '873',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '87',
+    to: '95'
+  },
+  874: {
+    edgeId: 874,
     role: 'Owned by',
-    id: '844',
+    id: '874',
     label: 'Owned by',
     rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
     rdfsLabel: 'Owned by',
     userDefined: false,
-    from: '84',
-    to: '170'
+    from: '87',
+    to: '177'
   },
-  845: {
-    edgeId: 845,
+  875: {
+    edgeId: 875,
+    role: 'Involved In',
+    id: '875',
+    label: 'Involved In',
+    rdfAbout: 'http://webprotege.stanford.edu/Rcd9CFxzLGHq3FClhtC5f6',
+    rdfsLabel: 'Involved In',
+    userDefined: false,
+    from: '87',
+    to: '140'
+  },
+  876: {
+    edgeId: 876,
+    role: 'Operated by',
+    id: '876',
+    label: 'Operated by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB2lnkvVru2pLbt5iOaISSs',
+    rdfsLabel: 'Operated by',
+    userDefined: false,
+    from: '87',
+    to: '107'
+  },
+  877: {
+    edgeId: 877,
     role: 'Subclass of',
-    id: '845',
+    id: '877',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
-    from: '84',
-    to: '133'
+    from: '87',
+    to: '139'
   },
-  851: {
-    edgeId: 851,
-    role: 'Reviewed by',
-    id: '851',
-    label: 'Reviewed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-    rdfsLabel: 'Reviewed by',
-    userDefined: false,
-    from: '85',
-    to: '53'
-  },
-  852: {
-    edgeId: 852,
+  881: {
+    edgeId: 881,
     role: 'Created by',
-    id: '852',
+    id: '881',
     label: 'Created by',
     rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
     rdfsLabel: 'Created by',
     userDefined: false,
-    from: '85',
-    to: '177'
+    from: '88',
+    to: '184'
   },
-  853: {
-    edgeId: 853,
+  882: {
+    edgeId: 882,
     role: 'Subclass of',
-    id: '853',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '85',
-    to: '141'
-  },
-  861: {
-    edgeId: 861,
-    role: 'Used in',
-    id: '861',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '86',
-    to: '144'
-  },
-  862: {
-    edgeId: 862,
-    role: 'Used in',
-    id: '862',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '86',
-    to: '161'
-  },
-  863: {
-    edgeId: 863,
-    role: 'Subclass of',
-    id: '863',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '86',
-    to: '76'
-  },
-  871: {
-    edgeId: 871,
-    role: 'Issued through',
-    id: '871',
-    label: 'Issued through',
-    rdfAbout: 'http://webprotege.stanford.edu/R7dYrsdk1L1bcLR0A9vS5QP',
-    rdfsLabel: 'Issued through',
-    userDefined: false,
-    from: '87',
-    to: '122'
-  },
-  872: {
-    edgeId: 872,
-    role: 'Applied to',
-    id: '872',
-    label: 'Applied to',
-    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-    rdfsLabel: 'Applied to',
-    userDefined: false,
-    from: '87',
-    to: '39'
-  },
-  873: {
-    edgeId: 873,
-    role: 'Issued by',
-    id: '873',
-    label: 'Issued by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
-    rdfsLabel: 'Issued by',
-    userDefined: false,
-    from: '87',
-    to: '53'
-  },
-  874: {
-    edgeId: 874,
-    role: 'Subclass of',
-    id: '874',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '87',
-    to: '51'
-  },
-  875: {
-    edgeId: 875,
-    role: 'Issued by',
-    id: '875',
-    label: 'Issued by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
-    rdfsLabel: 'Issued by',
-    userDefined: false,
-    from: '87',
-    to: '192'
-  },
-  876: {
-    edgeId: 876,
-    role: 'Located at',
-    id: '876',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
-    userDefined: false,
-    from: '87',
-    to: '181'
-  },
-  881: {
-    edgeId: 881,
-    role: 'Subclass of',
-    id: '881',
+    id: '882',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '88',
-    to: '184'
+    to: '147'
+  },
+  883: {
+    edgeId: 883,
+    role: 'Reviewed by',
+    id: '883',
+    label: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    rdfsLabel: 'Reviewed by',
+    userDefined: false,
+    from: '88',
+    to: '56'
   },
   891: {
     edgeId: 891,
@@ -2428,49 +2384,104 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '89',
-    to: '85'
+    to: '79'
+  },
+  892: {
+    edgeId: 892,
+    role: 'Used in',
+    id: '892',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '89',
+    to: '150'
+  },
+  893: {
+    edgeId: 893,
+    role: 'Used in',
+    id: '893',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '89',
+    to: '168'
   },
   901: {
     edgeId: 901,
-    role: 'Subclass of',
+    role: 'Located at',
     id: '901',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
     userDefined: false,
     from: '90',
-    to: '113'
+    to: '188'
   },
   902: {
     edgeId: 902,
-    role: 'Managed by',
+    role: 'Applied to',
     id: '902',
-    label: 'Managed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
-    rdfsLabel: 'Managed by',
+    label: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    rdfsLabel: 'Applied to',
     userDefined: false,
     from: '90',
-    to: '53'
+    to: '42'
+  },
+  903: {
+    edgeId: 903,
+    role: 'Issued through',
+    id: '903',
+    label: 'Issued through',
+    rdfAbout: 'http://webprotege.stanford.edu/R7dYrsdk1L1bcLR0A9vS5QP',
+    rdfsLabel: 'Issued through',
+    userDefined: false,
+    from: '90',
+    to: '128'
+  },
+  904: {
+    edgeId: 904,
+    role: 'Subclass of',
+    id: '904',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '90',
+    to: '54'
+  },
+  905: {
+    edgeId: 905,
+    role: 'Issued by',
+    id: '905',
+    label: 'Issued by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
+    rdfsLabel: 'Issued by',
+    userDefined: false,
+    from: '90',
+    to: '56'
+  },
+  906: {
+    edgeId: 906,
+    role: 'Issued by',
+    id: '906',
+    label: 'Issued by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
+    rdfsLabel: 'Issued by',
+    userDefined: false,
+    from: '90',
+    to: '199'
   },
   911: {
     edgeId: 911,
-    role: 'Associated with',
-    id: '911',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '91',
-    to: '4'
-  },
-  912: {
-    edgeId: 912,
     role: 'Subclass of',
-    id: '912',
+    id: '911',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '91',
-    to: '131'
+    to: '191'
   },
   921: {
     edgeId: 921,
@@ -2480,29 +2491,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '92',
-    to: '51'
-  },
-  922: {
-    edgeId: 922,
-    role: 'Performed by',
-    id: '922',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '92',
-    to: '53'
+    to: '88'
   },
   931: {
     edgeId: 931,
-    role: 'Agreed with',
+    role: 'Managed by',
     id: '931',
-    label: 'Agreed with',
-    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
-    rdfsLabel: 'Agreed with',
+    label: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
+    rdfsLabel: 'Managed by',
     userDefined: false,
     from: '93',
-    to: '128'
+    to: '56'
   },
   932: {
     edgeId: 932,
@@ -2512,70 +2512,92 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '93',
-    to: '52'
-  },
-  933: {
-    edgeId: 933,
-    role: 'Created for',
-    id: '933',
-    label: 'Created for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-    rdfsLabel: 'Created for',
-    userDefined: false,
-    from: '93',
-    to: '161'
-  },
-  934: {
-    edgeId: 934,
-    role: 'Agreed with',
-    id: '934',
-    label: 'Agreed with',
-    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
-    rdfsLabel: 'Agreed with',
-    userDefined: false,
-    from: '93',
-    to: '65'
+    to: '118'
   },
   941: {
     edgeId: 941,
-    role: 'Subclass of',
+    role: 'Associated with',
     id: '941',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '94',
+    to: '4'
+  },
+  942: {
+    edgeId: 942,
+    role: 'Subclass of',
+    id: '942',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '94',
-    to: '51'
+    to: '137'
   },
   951: {
     edgeId: 951,
-    role: 'Completed before',
-    id: '951',
-    label: 'Completed before',
-    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-    rdfsLabel: 'Completed before',
-    userDefined: false,
-    from: '95',
-    to: '26'
-  },
-  952: {
-    edgeId: 952,
     role: 'Subclass of',
-    id: '952',
+    id: '951',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '95',
     to: '54'
   },
+  952: {
+    edgeId: 952,
+    role: 'Performed by',
+    id: '952',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '95',
+    to: '56'
+  },
   961: {
     edgeId: 961,
-    role: 'Subclass of',
+    role: 'Agreed with',
     id: '961',
+    label: 'Agreed with',
+    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+    rdfsLabel: 'Agreed with',
+    userDefined: false,
+    from: '96',
+    to: '68'
+  },
+  962: {
+    edgeId: 962,
+    role: 'Subclass of',
+    id: '962',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '96',
-    to: '17'
+    to: '55'
+  },
+  963: {
+    edgeId: 963,
+    role: 'Created for',
+    id: '963',
+    label: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    rdfsLabel: 'Created for',
+    userDefined: false,
+    from: '96',
+    to: '168'
+  },
+  964: {
+    edgeId: 964,
+    role: 'Agreed with',
+    id: '964',
+    label: 'Agreed with',
+    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+    rdfsLabel: 'Agreed with',
+    userDefined: false,
+    from: '96',
+    to: '134'
   },
   971: {
     edgeId: 971,
@@ -2585,27 +2607,71 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '97',
-    to: '184'
+    to: '54'
   },
   981: {
     edgeId: 981,
-    role: 'Subclass of',
+    role: 'Completed before',
     id: '981',
+    label: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    rdfsLabel: 'Completed before',
+    userDefined: false,
+    from: '98',
+    to: '28'
+  },
+  982: {
+    edgeId: 982,
+    role: 'Subclass of',
+    id: '982',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '98',
-    to: '96'
+    to: '57'
   },
   991: {
     edgeId: 991,
-    role: 'Subclass of',
+    role: 'Applied to',
     id: '991',
+    label: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    rdfsLabel: 'Applied to',
+    userDefined: false,
+    from: '99',
+    to: '54'
+  },
+  992: {
+    edgeId: 992,
+    role: 'Paid through',
+    id: '992',
+    label: 'Paid through',
+    rdfAbout: 'http://webprotege.stanford.edu/RCO41EY55jxxkXEYAsRnzul',
+    rdfsLabel: 'Paid through',
+    userDefined: false,
+    from: '99',
+    to: '27'
+  },
+  993: {
+    edgeId: 993,
+    role: 'Included in',
+    id: '993',
+    label: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    rdfsLabel: 'Included in',
+    userDefined: false,
+    from: '99',
+    to: '111'
+  },
+  994: {
+    edgeId: 994,
+    role: 'Subclass of',
+    id: '994',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '99',
-    to: '70'
+    to: '5'
   },
   1001: {
     edgeId: 1001,
@@ -2615,50 +2681,17 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '100',
-    to: '96'
+    to: '18'
   },
   1011: {
     edgeId: 1011,
-    role: 'Included in',
-    id: '1011',
-    label: 'Included in',
-    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-    rdfsLabel: 'Included in',
-    userDefined: false,
-    from: '101',
-    to: '154'
-  },
-  1012: {
-    edgeId: 1012,
     role: 'Subclass of',
-    id: '1012',
+    id: '1011',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '101',
-    to: '51'
-  },
-  1013: {
-    edgeId: 1013,
-    role: 'Performed on',
-    id: '1013',
-    label: 'Performed on',
-    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
-    rdfsLabel: 'Performed on',
-    userDefined: false,
-    from: '101',
-    to: '108'
-  },
-  1014: {
-    edgeId: 1014,
-    role: 'Performed by',
-    id: '1014',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '101',
-    to: '53'
+    to: '191'
   },
   1021: {
     edgeId: 1021,
@@ -2666,28 +2699,6 @@ export const objectPropertiesFromApi = {
     id: '1021',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '102',
-    to: '96'
-  },
-  1022: {
-    edgeId: 1022,
-    role: 'Composed of',
-    id: '1022',
-    label: 'Composed of',
-    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-    rdfsLabel: 'Composed of',
-    userDefined: false,
-    from: '102',
-    to: '98'
-  },
-  1023: {
-    edgeId: 1023,
-    role: 'Composed of',
-    id: '1023',
-    label: 'Composed of',
-    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-    rdfsLabel: 'Composed of',
     userDefined: false,
     from: '102',
     to: '100'
@@ -2700,73 +2711,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '103',
-    to: '163'
-  },
-  1032: {
-    edgeId: 1032,
-    role: 'Associated with',
-    id: '1032',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '103',
-    to: '146'
-  },
-  1033: {
-    edgeId: 1033,
-    role: 'Advised by',
-    id: '1033',
-    label: 'Advised by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
-    rdfsLabel: 'Advised by',
-    userDefined: false,
-    from: '103',
-    to: '122'
-  },
-  1034: {
-    edgeId: 1034,
-    role: 'Affected by',
-    id: '1034',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '103',
-    to: '131'
-  },
-  1035: {
-    edgeId: 1035,
-    role: 'Affected by',
-    id: '1035',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '103',
-    to: '158'
-  },
-  1036: {
-    edgeId: 1036,
-    role: 'Affected by',
-    id: '1036',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '103',
-    to: '107'
-  },
-  1037: {
-    edgeId: 1037,
-    role: 'Affected by',
-    id: '1037',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '103',
-    to: '57'
+    to: '73'
   },
   1041: {
     edgeId: 1041,
@@ -2776,200 +2721,222 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '104',
-    to: '70'
+    to: '100'
   },
   1051: {
     edgeId: 1051,
-    role: 'Improved through',
+    role: 'Performed on',
     id: '1051',
-    label: 'Improved through',
-    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-    rdfsLabel: 'Improved through',
+    label: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+    rdfsLabel: 'Performed on',
     userDefined: false,
     from: '105',
-    to: '12'
+    to: '113'
   },
   1052: {
     edgeId: 1052,
-    role: 'Identified by',
+    role: 'Performed by',
     id: '1052',
-    label: 'Identified by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
-    rdfsLabel: 'Identified by',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
     userDefined: false,
     from: '105',
-    to: '149'
+    to: '56'
   },
   1053: {
     edgeId: 1053,
-    role: 'Affected by',
+    role: 'Subclass of',
     id: '1053',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '105',
+    to: '54'
+  },
+  1054: {
+    edgeId: 1054,
+    role: 'Included in',
+    id: '1054',
+    label: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    rdfsLabel: 'Included in',
+    userDefined: false,
+    from: '105',
+    to: '161'
+  },
+  1061: {
+    edgeId: 1061,
+    role: 'Composed of',
+    id: '1061',
+    label: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    rdfsLabel: 'Composed of',
+    userDefined: false,
+    from: '106',
+    to: '102'
+  },
+  1062: {
+    edgeId: 1062,
+    role: 'Subclass of',
+    id: '1062',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '106',
+    to: '100'
+  },
+  1063: {
+    edgeId: 1063,
+    role: 'Composed of',
+    id: '1063',
+    label: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    rdfsLabel: 'Composed of',
+    userDefined: false,
+    from: '106',
+    to: '104'
+  },
+  1071: {
+    edgeId: 1071,
+    role: 'Affected by',
+    id: '1071',
     label: 'Affected by',
     rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     rdfsLabel: 'Affected by',
     userDefined: false,
-    from: '105',
-    to: '194'
+    from: '107',
+    to: '112'
   },
-  1054: {
-    edgeId: 1054,
-    role: 'Input into',
-    id: '1054',
-    label: 'Input into',
-    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-    rdfsLabel: 'Input into',
-    userDefined: false,
-    from: '105',
-    to: '160'
-  },
-  1055: {
-    edgeId: 1055,
-    role: 'Subclass of',
-    id: '1055',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '105',
-    to: '114'
-  },
-  1061: {
-    edgeId: 1061,
-    role: 'Subclass of',
-    id: '1061',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '106',
-    to: '5'
-  },
-  1062: {
-    edgeId: 1062,
+  1072: {
+    edgeId: 1072,
     role: 'Advised by',
-    id: '1062',
+    id: '1072',
     label: 'Advised by',
     rdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
     rdfsLabel: 'Advised by',
     userDefined: false,
-    from: '106',
-    to: '124'
+    from: '107',
+    to: '128'
   },
-  1071: {
-    edgeId: 1071,
+  1073: {
+    edgeId: 1073,
     role: 'Subclass of',
-    id: '1071',
+    id: '1073',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '107',
-    to: '52'
+    to: '170'
+  },
+  1074: {
+    edgeId: 1074,
+    role: 'Associated with',
+    id: '1074',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '107',
+    to: '152'
+  },
+  1075: {
+    edgeId: 1075,
+    role: 'Affected by',
+    id: '1075',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '107',
+    to: '137'
+  },
+  1076: {
+    edgeId: 1076,
+    role: 'Affected by',
+    id: '1076',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '107',
+    to: '165'
+  },
+  1077: {
+    edgeId: 1077,
+    role: 'Affected by',
+    id: '1077',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '107',
+    to: '60'
   },
   1081: {
     edgeId: 1081,
-    role: 'Located at',
-    id: '1081',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
-    userDefined: false,
-    from: '108',
-    to: '181'
-  },
-  1082: {
-    edgeId: 1082,
-    role: 'Represented by',
-    id: '1082',
-    label: 'Represented by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
-    rdfsLabel: 'Represented by',
-    userDefined: false,
-    from: '108',
-    to: '102'
-  },
-  1083: {
-    edgeId: 1083,
-    role: 'Recorded in',
-    id: '1083',
-    label: 'Recorded in',
-    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-    rdfsLabel: 'Recorded in',
-    userDefined: false,
-    from: '108',
-    to: '67'
-  },
-  1084: {
-    edgeId: 1084,
-    role: 'Owned by',
-    id: '1084',
-    label: 'Owned by',
-    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-    rdfsLabel: 'Owned by',
-    userDefined: false,
-    from: '108',
-    to: '65'
-  },
-  1085: {
-    edgeId: 1085,
-    role: 'Recorded in',
-    id: '1085',
-    label: 'Recorded in',
-    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-    rdfsLabel: 'Recorded in',
-    userDefined: false,
-    from: '108',
-    to: '33'
-  },
-  1086: {
-    edgeId: 1086,
-    role: 'Owned by',
-    id: '1086',
-    label: 'Owned by',
-    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
-    rdfsLabel: 'Owned by',
-    userDefined: false,
-    from: '108',
-    to: '170'
-  },
-  1087: {
-    edgeId: 1087,
-    role: 'Obtained through',
-    id: '1087',
-    label: 'Obtained through',
-    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
-    rdfsLabel: 'Obtained through',
-    userDefined: false,
-    from: '108',
-    to: '9'
-  },
-  1088: {
-    edgeId: 1088,
     role: 'Subclass of',
-    id: '1088',
+    id: '1081',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '108',
-    to: '133'
+    to: '73'
   },
   1091: {
     edgeId: 1091,
-    role: 'Subclass of',
+    role: 'Identified by',
     id: '1091',
+    label: 'Identified by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
+    rdfsLabel: 'Identified by',
+    userDefined: false,
+    from: '109',
+    to: '156'
+  },
+  1092: {
+    edgeId: 1092,
+    role: 'Improved through',
+    id: '1092',
+    label: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    rdfsLabel: 'Improved through',
+    userDefined: false,
+    from: '109',
+    to: '12'
+  },
+  1093: {
+    edgeId: 1093,
+    role: 'Affected by',
+    id: '1093',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '109',
+    to: '201'
+  },
+  1094: {
+    edgeId: 1094,
+    role: 'Subclass of',
+    id: '1094',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '109',
-    to: '163'
+    to: '119'
   },
-  1092: {
-    edgeId: 1092,
-    role: 'Used in',
-    id: '1092',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
+  1095: {
+    edgeId: 1095,
+    role: 'Input into',
+    id: '1095',
+    label: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    rdfsLabel: 'Input into',
     userDefined: false,
     from: '109',
-    to: '155'
+    to: '167'
   },
   1101: {
     edgeId: 1101,
@@ -2979,29 +2946,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '110',
-    to: '191'
+    to: '5'
   },
   1102: {
     edgeId: 1102,
-    role: 'Required for',
+    role: 'Advised by',
     id: '1102',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
+    label: 'Advised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+    rdfsLabel: 'Advised by',
     userDefined: false,
     from: '110',
-    to: '137'
-  },
-  1103: {
-    edgeId: 1103,
-    role: 'Presented in',
-    id: '1103',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
-    userDefined: false,
-    from: '110',
-    to: '147'
+    to: '130'
   },
   1111: {
     edgeId: 1111,
@@ -3011,135 +2967,157 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '111',
-    to: '155'
+    to: '5'
   },
   1121: {
     edgeId: 1121,
-    role: 'Input into',
-    id: '1121',
-    label: 'Input into',
-    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-    rdfsLabel: 'Input into',
-    userDefined: false,
-    from: '112',
-    to: '160'
-  },
-  1122: {
-    edgeId: 1122,
-    role: 'Required for',
-    id: '1122',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '112',
-    to: '161'
-  },
-  1123: {
-    edgeId: 1123,
-    role: 'Performed by',
-    id: '1123',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '112',
-    to: '103'
-  },
-  1124: {
-    edgeId: 1124,
     role: 'Subclass of',
-    id: '1124',
+    id: '1121',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '112',
-    to: '51'
+    to: '55'
   },
   1131: {
     edgeId: 1131,
-    role: 'Recorded in',
-    id: '1131',
-    label: 'Recorded in',
-    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-    rdfsLabel: 'Recorded in',
-    userDefined: false,
-    from: '113',
-    to: '67'
-  },
-  1132: {
-    edgeId: 1132,
-    role: 'Recorded in',
-    id: '1132',
-    label: 'Recorded in',
-    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
-    rdfsLabel: 'Recorded in',
-    userDefined: false,
-    from: '113',
-    to: '177'
-  },
-  1133: {
-    edgeId: 1133,
-    role: 'Subclass of',
-    id: '1133',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '113',
-    to: '133'
-  },
-  1134: {
-    edgeId: 1134,
     role: 'Represented by',
-    id: '1134',
+    id: '1131',
     label: 'Represented by',
     rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
     rdfsLabel: 'Represented by',
     userDefined: false,
     from: '113',
-    to: '155'
+    to: '106'
+  },
+  1132: {
+    edgeId: 1132,
+    role: 'Obtained through',
+    id: '1132',
+    label: 'Obtained through',
+    rdfAbout: 'http://webprotege.stanford.edu/RDgkQlvQbb2skaXpfhIEAp8',
+    rdfsLabel: 'Obtained through',
+    userDefined: false,
+    from: '113',
+    to: '9'
+  },
+  1133: {
+    edgeId: 1133,
+    role: 'Owned by',
+    id: '1133',
+    label: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    rdfsLabel: 'Owned by',
+    userDefined: false,
+    from: '113',
+    to: '177'
+  },
+  1134: {
+    edgeId: 1134,
+    role: 'Located at',
+    id: '1134',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
+    userDefined: false,
+    from: '113',
+    to: '188'
+  },
+  1135: {
+    edgeId: 1135,
+    role: 'Recorded in',
+    id: '1135',
+    label: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    rdfsLabel: 'Recorded in',
+    userDefined: false,
+    from: '113',
+    to: '70'
+  },
+  1136: {
+    edgeId: 1136,
+    role: 'Recorded in',
+    id: '1136',
+    label: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    rdfsLabel: 'Recorded in',
+    userDefined: false,
+    from: '113',
+    to: '36'
+  },
+  1137: {
+    edgeId: 1137,
+    role: 'Subclass of',
+    id: '1137',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '113',
+    to: '139'
+  },
+  1138: {
+    edgeId: 1138,
+    role: 'Owned by',
+    id: '1138',
+    label: 'Owned by',
+    rdfAbout: 'http://webprotege.stanford.edu/RB9hSN5JimVLMgBjRg72MWG',
+    rdfsLabel: 'Owned by',
+    userDefined: false,
+    from: '113',
+    to: '68'
   },
   1141: {
     edgeId: 1141,
-    role: 'Provided to',
-    id: '1141',
-    label: 'Provided to',
-    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-    rdfsLabel: 'Provided to',
-    userDefined: false,
-    from: '114',
-    to: '192'
-  },
-  1142: {
-    edgeId: 1142,
     role: 'Subclass of',
-    id: '1142',
+    id: '1141',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '114',
-    to: '163'
+    to: '170'
   },
-  1143: {
-    edgeId: 1143,
-    role: 'Performed by',
-    id: '1143',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
+  1142: {
+    edgeId: 1142,
+    role: 'Used in',
+    id: '1142',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
     userDefined: false,
     from: '114',
-    to: '122'
+    to: '162'
   },
   1151: {
     edgeId: 1151,
-    role: 'Subclass of',
+    role: 'Presented in',
     id: '1151',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
+    userDefined: false,
+    from: '115',
+    to: '153'
+  },
+  1152: {
+    edgeId: 1152,
+    role: 'Subclass of',
+    id: '1152',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '115',
-    to: '51'
+    to: '198'
+  },
+  1153: {
+    edgeId: 1153,
+    role: 'Required for',
+    id: '1153',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '115',
+    to: '143'
   },
   1161: {
     edgeId: 1161,
@@ -3149,23 +3127,45 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '116',
-    to: '24'
+    to: '162'
   },
   1171: {
     edgeId: 1171,
-    role: 'Completed before',
+    role: 'Required for',
     id: '1171',
-    label: 'Completed before',
-    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-    rdfsLabel: 'Completed before',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
     userDefined: false,
     from: '117',
-    to: '115'
+    to: '168'
   },
   1172: {
     edgeId: 1172,
-    role: 'Subclass of',
+    role: 'Performed by',
     id: '1172',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '117',
+    to: '107'
+  },
+  1173: {
+    edgeId: 1173,
+    role: 'Input into',
+    id: '1173',
+    label: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    rdfsLabel: 'Input into',
+    userDefined: false,
+    from: '117',
+    to: '167'
+  },
+  1174: {
+    edgeId: 1174,
+    role: 'Subclass of',
+    id: '1174',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
@@ -3174,24 +3174,57 @@ export const objectPropertiesFromApi = {
   },
   1181: {
     edgeId: 1181,
-    role: 'Subclass of',
+    role: 'Recorded in',
     id: '1181',
+    label: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    rdfsLabel: 'Recorded in',
+    userDefined: false,
+    from: '118',
+    to: '70'
+  },
+  1182: {
+    edgeId: 1182,
+    role: 'Subclass of',
+    id: '1182',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '118',
-    to: '163'
+    to: '139'
+  },
+  1183: {
+    edgeId: 1183,
+    role: 'Recorded in',
+    id: '1183',
+    label: 'Recorded in',
+    rdfAbout: 'http://webprotege.stanford.edu/RC9oNNab0poBq3VZzEoHIcM',
+    rdfsLabel: 'Recorded in',
+    userDefined: false,
+    from: '118',
+    to: '184'
+  },
+  1184: {
+    edgeId: 1184,
+    role: 'Represented by',
+    id: '1184',
+    label: 'Represented by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+    rdfsLabel: 'Represented by',
+    userDefined: false,
+    from: '118',
+    to: '162'
   },
   1191: {
     edgeId: 1191,
-    role: 'Composed of',
+    role: 'Performed by',
     id: '1191',
-    label: 'Composed of',
-    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-    rdfsLabel: 'Composed of',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
     userDefined: false,
     from: '119',
-    to: '70'
+    to: '128'
   },
   1192: {
     edgeId: 1192,
@@ -3201,18 +3234,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '119',
-    to: '163'
+    to: '170'
   },
   1193: {
     edgeId: 1193,
-    role: 'Represented by',
+    role: 'Provided to',
     id: '1193',
-    label: 'Represented by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
-    rdfsLabel: 'Represented by',
+    label: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    rdfsLabel: 'Provided to',
     userDefined: false,
     from: '119',
-    to: '50'
+    to: '199'
   },
   1201: {
     edgeId: 1201,
@@ -3222,7 +3255,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '120',
-    to: '118'
+    to: '54'
   },
   1211: {
     edgeId: 1211,
@@ -3232,50 +3265,28 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '121',
-    to: '141'
+    to: '26'
   },
   1221: {
     edgeId: 1221,
-    role: 'Controlled by',
+    role: 'Completed before',
     id: '1221',
-    label: 'Controlled by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
-    rdfsLabel: 'Controlled by',
+    label: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    rdfsLabel: 'Completed before',
     userDefined: false,
     from: '122',
-    to: '53'
+    to: '120'
   },
   1222: {
     edgeId: 1222,
-    role: 'Controlled by',
-    id: '1222',
-    label: 'Controlled by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
-    rdfsLabel: 'Controlled by',
-    userDefined: false,
-    from: '122',
-    to: '192'
-  },
-  1223: {
-    edgeId: 1223,
     role: 'Subclass of',
-    id: '1223',
+    id: '1222',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '122',
-    to: '70'
-  },
-  1224: {
-    edgeId: 1224,
-    role: 'Affected by',
-    id: '1224',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '122',
-    to: '123'
+    to: '57'
   },
   1231: {
     edgeId: 1231,
@@ -3285,82 +3296,49 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '123',
-    to: '91'
+    to: '170'
   },
   1241: {
     edgeId: 1241,
-    role: 'Informed by',
+    role: 'Subclass of',
     id: '1241',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '124',
-    to: '165'
+    to: '170'
   },
   1242: {
     edgeId: 1242,
-    role: 'Informed by',
+    role: 'Represented by',
     id: '1242',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
+    label: 'Represented by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+    rdfsLabel: 'Represented by',
     userDefined: false,
     from: '124',
-    to: '68'
+    to: '53'
   },
   1243: {
     edgeId: 1243,
-    role: 'Subclass of',
+    role: 'Composed of',
     id: '1243',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+    label: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    rdfsLabel: 'Composed of',
     userDefined: false,
     from: '124',
-    to: '118'
-  },
-  1244: {
-    edgeId: 1244,
-    role: 'Conducted for',
-    id: '1244',
-    label: 'Conducted for',
-    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
-    rdfsLabel: 'Conducted for',
-    userDefined: false,
-    from: '124',
-    to: '176'
-  },
-  1245: {
-    edgeId: 1245,
-    role: 'Affected by',
-    id: '1245',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '124',
-    to: '20'
+    to: '73'
   },
   1251: {
     edgeId: 1251,
-    role: 'Completed before',
-    id: '1251',
-    label: 'Completed before',
-    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-    rdfsLabel: 'Completed before',
-    userDefined: false,
-    from: '125',
-    to: '117'
-  },
-  1252: {
-    edgeId: 1252,
     role: 'Subclass of',
-    id: '1252',
+    id: '1251',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '125',
-    to: '54'
+    to: '123'
   },
   1261: {
     edgeId: 1261,
@@ -3370,50 +3348,39 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '126',
-    to: '76'
-  },
-  1262: {
-    edgeId: 1262,
-    role: 'Created by',
-    id: '1262',
-    label: 'Created by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-    rdfsLabel: 'Created by',
-    userDefined: false,
-    from: '126',
-    to: '53'
+    to: '147'
   },
   1271: {
     edgeId: 1271,
-    role: 'Subclass of',
+    role: 'Identified by',
     id: '1271',
+    label: 'Identified by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
+    rdfsLabel: 'Identified by',
+    userDefined: false,
+    from: '127',
+    to: '107'
+  },
+  1272: {
+    edgeId: 1272,
+    role: 'Monitored by',
+    id: '1272',
+    label: 'Monitored by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXKNigVZSAdET48254gS2w',
+    rdfsLabel: 'Monitored by',
+    userDefined: false,
+    from: '127',
+    to: '56'
+  },
+  1273: {
+    edgeId: 1273,
+    role: 'Subclass of',
+    id: '1273',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '127',
-    to: '113'
-  },
-  1272: {
-    edgeId: 1272,
-    role: 'Used in',
-    id: '1272',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '127',
-    to: '12'
-  },
-  1273: {
-    edgeId: 1273,
-    role: 'Used by',
-    id: '1273',
-    label: 'Used by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-    rdfsLabel: 'Used by',
-    userDefined: false,
-    from: '127',
-    to: '53'
+    to: '94'
   },
   1281: {
     edgeId: 1281,
@@ -3423,29 +3390,40 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '128',
-    to: '163'
+    to: '73'
   },
   1282: {
     edgeId: 1282,
-    role: 'Required for',
+    role: 'Controlled by',
     id: '1282',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
+    label: 'Controlled by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
+    rdfsLabel: 'Controlled by',
     userDefined: false,
     from: '128',
-    to: '137'
+    to: '56'
   },
   1283: {
     edgeId: 1283,
-    role: 'Employed by',
+    role: 'Controlled by',
     id: '1283',
-    label: 'Employed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
-    rdfsLabel: 'Employed by',
+    label: 'Controlled by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
+    rdfsLabel: 'Controlled by',
     userDefined: false,
     from: '128',
-    to: '170'
+    to: '199'
+  },
+  1284: {
+    edgeId: 1284,
+    role: 'Affected by',
+    id: '1284',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '128',
+    to: '129'
   },
   1291: {
     edgeId: 1291,
@@ -3455,17 +3433,61 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '129',
-    to: '38'
+    to: '94'
   },
   1301: {
     edgeId: 1301,
-    role: 'Subclass of',
+    role: 'Informed by',
     id: '1301',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
+    userDefined: false,
+    from: '130',
+    to: '71'
+  },
+  1302: {
+    edgeId: 1302,
+    role: 'Affected by',
+    id: '1302',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '130',
+    to: '22'
+  },
+  1303: {
+    edgeId: 1303,
+    role: 'Subclass of',
+    id: '1303',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '130',
-    to: '70'
+    to: '123'
+  },
+  1304: {
+    edgeId: 1304,
+    role: 'Informed by',
+    id: '1304',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
+    userDefined: false,
+    from: '130',
+    to: '172'
+  },
+  1305: {
+    edgeId: 1305,
+    role: 'Conducted for',
+    id: '1305',
+    label: 'Conducted for',
+    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
+    rdfsLabel: 'Conducted for',
+    userDefined: false,
+    from: '130',
+    to: '183'
   },
   1311: {
     edgeId: 1311,
@@ -3475,62 +3497,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '131',
-    to: '62'
+    to: '57'
   },
   1312: {
     edgeId: 1312,
-    role: 'Located at',
+    role: 'Completed before',
     id: '1312',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
+    label: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    rdfsLabel: 'Completed before',
     userDefined: false,
     from: '131',
-    to: '39'
-  },
-  1313: {
-    edgeId: 1313,
-    role: 'Attended by',
-    id: '1313',
-    label: 'Attended by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDKQk63bgl4QNsF9Hoy84CF',
-    rdfsLabel: 'Attended by',
-    userDefined: false,
-    from: '131',
-    to: '42'
-  },
-  1314: {
-    edgeId: 1314,
-    role: 'Detected by',
-    id: '1314',
-    label: 'Detected by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
-    rdfsLabel: 'Detected by',
-    userDefined: false,
-    from: '131',
-    to: '192'
-  },
-  1315: {
-    edgeId: 1315,
-    role: 'Detected by',
-    id: '1315',
-    label: 'Detected by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
-    rdfsLabel: 'Detected by',
-    userDefined: false,
-    from: '131',
-    to: '53'
-  },
-  1316: {
-    edgeId: 1316,
-    role: 'Located at',
-    id: '1316',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
-    userDefined: false,
-    from: '131',
-    to: '181'
+    to: '122'
   },
   1321: {
     edgeId: 1321,
@@ -3540,28 +3518,82 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '132',
-    to: '163'
+    to: '79'
   },
   1322: {
     edgeId: 1322,
-    role: 'Applied to',
+    role: 'Created by',
     id: '1322',
-    label: 'Applied to',
-    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-    rdfsLabel: 'Applied to',
+    label: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    rdfsLabel: 'Created by',
     userDefined: false,
     from: '132',
-    to: '176'
+    to: '56'
+  },
+  1331: {
+    edgeId: 1331,
+    role: 'Used by',
+    id: '1331',
+    label: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    rdfsLabel: 'Used by',
+    userDefined: false,
+    from: '133',
+    to: '56'
+  },
+  1332: {
+    edgeId: 1332,
+    role: 'Subclass of',
+    id: '1332',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '133',
+    to: '118'
+  },
+  1333: {
+    edgeId: 1333,
+    role: 'Used in',
+    id: '1333',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '133',
+    to: '12'
   },
   1341: {
     edgeId: 1341,
-    role: 'Subclass of',
+    role: 'Required for',
     id: '1341',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '134',
+    to: '143'
+  },
+  1342: {
+    edgeId: 1342,
+    role: 'Employed by',
+    id: '1342',
+    label: 'Employed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
+    rdfsLabel: 'Employed by',
+    userDefined: false,
+    from: '134',
+    to: '177'
+  },
+  1343: {
+    edgeId: 1343,
+    role: 'Subclass of',
+    id: '1343',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '134',
-    to: '162'
+    to: '170'
   },
   1351: {
     edgeId: 1351,
@@ -3571,7 +3603,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '135',
-    to: '118'
+    to: '41'
   },
   1361: {
     edgeId: 1361,
@@ -3581,299 +3613,113 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '136',
-    to: '1'
+    to: '73'
   },
   1371: {
     edgeId: 1371,
-    role: 'Subclass of',
+    role: 'Located at',
     id: '1371',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
     userDefined: false,
     from: '137',
-    to: '163'
+    to: '188'
   },
   1372: {
     edgeId: 1372,
-    role: 'Required for',
+    role: 'Attended by',
     id: '1372',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
+    label: 'Attended by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDKQk63bgl4QNsF9Hoy84CF',
+    rdfsLabel: 'Attended by',
     userDefined: false,
     from: '137',
-    to: '144'
+    to: '45'
+  },
+  1373: {
+    edgeId: 1373,
+    role: 'Located at',
+    id: '1373',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
+    userDefined: false,
+    from: '137',
+    to: '42'
+  },
+  1374: {
+    edgeId: 1374,
+    role: 'Detected by',
+    id: '1374',
+    label: 'Detected by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
+    rdfsLabel: 'Detected by',
+    userDefined: false,
+    from: '137',
+    to: '199'
+  },
+  1375: {
+    edgeId: 1375,
+    role: 'Subclass of',
+    id: '1375',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '137',
+    to: '65'
+  },
+  1376: {
+    edgeId: 1376,
+    role: 'Detected by',
+    id: '1376',
+    label: 'Detected by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7u5ooQBcC82kgElYnRYvBa',
+    rdfsLabel: 'Detected by',
+    userDefined: false,
+    from: '137',
+    to: '56'
   },
   1381: {
     edgeId: 1381,
-    role: 'Input into',
+    role: 'Subclass of',
     id: '1381',
-    label: 'Input into',
-    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-    rdfsLabel: 'Input into',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '138',
-    to: '160'
+    to: '170'
   },
   1382: {
     edgeId: 1382,
-    role: 'Measured at',
+    role: 'Applied to',
     id: '1382',
-    label: 'Measured at',
-    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
-    rdfsLabel: 'Measured at',
+    label: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    rdfsLabel: 'Applied to',
     userDefined: false,
     from: '138',
-    to: '181'
-  },
-  1383: {
-    edgeId: 1383,
-    role: 'Measured by',
-    id: '1383',
-    label: 'Measured by',
-    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-    rdfsLabel: 'Measured by',
-    userDefined: false,
-    from: '138',
-    to: '122'
-  },
-  1384: {
-    edgeId: 1384,
-    role: 'Subclass of',
-    id: '1384',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '138',
-    to: '191'
-  },
-  1385: {
-    edgeId: 1385,
-    role: 'Affected by',
-    id: '1385',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '138',
-    to: '131'
-  },
-  1386: {
-    edgeId: 1386,
-    role: 'Associated with',
-    id: '1386',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '138',
-    to: '84'
-  },
-  1391: {
-    edgeId: 1391,
-    role: 'Performed from',
-    id: '1391',
-    label: 'Performed from',
-    rdfAbout: 'http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx',
-    rdfsLabel: 'Performed from',
-    userDefined: false,
-    from: '139',
-    to: '84'
-  },
-  1392: {
-    edgeId: 1392,
-    role: 'Subclass of',
-    id: '1392',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '139',
-    to: '62'
-  },
-  1393: {
-    edgeId: 1393,
-    role: 'Achieved by',
-    id: '1393',
-    label: 'Achieved by',
-    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
-    rdfsLabel: 'Achieved by',
-    userDefined: false,
-    from: '139',
-    to: '32'
-  },
-  1394: {
-    edgeId: 1394,
-    role: 'Affected by',
-    id: '1394',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '139',
-    to: '131'
-  },
-  1395: {
-    edgeId: 1395,
-    role: 'Affected by',
-    id: '1395',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '139',
-    to: '87'
-  },
-  1396: {
-    edgeId: 1396,
-    role: 'Affected by',
-    id: '1396',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '139',
-    to: '72'
-  },
-  1397: {
-    edgeId: 1397,
-    role: 'Measured by',
-    id: '1397',
-    label: 'Measured by',
-    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-    rdfsLabel: 'Measured by',
-    userDefined: false,
-    from: '139',
-    to: '122'
-  },
-  1398: {
-    edgeId: 1398,
-    role: 'Affected by',
-    id: '1398',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '139',
-    to: '123'
-  },
-  1399: {
-    edgeId: 1399,
-    role: 'Performed by',
-    id: '1399',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '139',
-    to: '103'
+    to: '183'
   },
   1401: {
     edgeId: 1401,
-    role: 'Required for',
-    id: '1401',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '140',
-    to: '144'
-  },
-  1402: {
-    edgeId: 1402,
     role: 'Subclass of',
-    id: '1402',
+    id: '1401',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '140',
-    to: '147'
-  },
-  1403: {
-    edgeId: 1403,
-    role: 'Summarised in',
-    id: '1403',
-    label: 'Summarised in',
-    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
-    rdfsLabel: 'Summarised in',
-    userDefined: false,
-    from: '140',
-    to: '147'
-  },
-  1404: {
-    edgeId: 1404,
-    role: 'Updated by',
-    id: '1404',
-    label: 'Updated by',
-    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
-    rdfsLabel: 'Updated by',
-    userDefined: false,
-    from: '140',
-    to: '53'
-  },
-  1405: {
-    edgeId: 1405,
-    role: 'Used in',
-    id: '1405',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '140',
-    to: '137'
-  },
-  1406: {
-    edgeId: 1406,
-    role: 'Used in',
-    id: '1406',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '140',
-    to: '12'
-  },
-  1407: {
-    edgeId: 1407,
-    role: 'Updated by',
-    id: '1407',
-    label: 'Updated by',
-    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
-    rdfsLabel: 'Updated by',
-    userDefined: false,
-    from: '140',
-    to: '67'
+    to: '169'
   },
   1411: {
     edgeId: 1411,
-    role: 'Managed by',
-    id: '1411',
-    label: 'Managed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
-    rdfsLabel: 'Managed by',
-    userDefined: false,
-    from: '141',
-    to: '53'
-  },
-  1412: {
-    edgeId: 1412,
-    role: 'Managed within',
-    id: '1412',
-    label: 'Managed within',
-    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
-    rdfsLabel: 'Managed within',
-    userDefined: false,
-    from: '141',
-    to: '67'
-  },
-  1413: {
-    edgeId: 1413,
     role: 'Subclass of',
-    id: '1413',
+    id: '1411',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '141',
-    to: '133'
+    to: '123'
   },
   1421: {
     edgeId: 1421,
@@ -3883,7 +3729,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '142',
-    to: '132'
+    to: '1'
   },
   1431: {
     edgeId: 1431,
@@ -3893,147 +3739,257 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '143',
-    to: '118'
+    to: '170'
+  },
+  1432: {
+    edgeId: 1432,
+    role: 'Required for',
+    id: '1432',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '143',
+    to: '150'
   },
   1441: {
     edgeId: 1441,
-    role: 'Governed by',
+    role: 'Associated with',
     id: '1441',
-    label: 'Governed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-    rdfsLabel: 'Governed by',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
     userDefined: false,
     from: '144',
-    to: '142'
+    to: '87'
   },
   1442: {
     edgeId: 1442,
-    role: 'Controlled by',
+    role: 'Measured at',
     id: '1442',
-    label: 'Controlled by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
-    rdfsLabel: 'Controlled by',
+    label: 'Measured at',
+    rdfAbout: 'http://webprotege.stanford.edu/R89lHzrBYZLIc1RgkMScjIW',
+    rdfsLabel: 'Measured at',
     userDefined: false,
     from: '144',
-    to: '183'
+    to: '188'
   },
   1443: {
     edgeId: 1443,
-    role: 'Summarised in',
-    id: '1443',
-    label: 'Summarised in',
-    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
-    rdfsLabel: 'Summarised in',
-    userDefined: false,
-    from: '144',
-    to: '147'
-  },
-  1444: {
-    edgeId: 1444,
     role: 'Affected by',
-    id: '1444',
+    id: '1443',
     label: 'Affected by',
     rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
     rdfsLabel: 'Affected by',
     userDefined: false,
     from: '144',
-    to: '36'
+    to: '137'
+  },
+  1444: {
+    edgeId: 1444,
+    role: 'Input into',
+    id: '1444',
+    label: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    rdfsLabel: 'Input into',
+    userDefined: false,
+    from: '144',
+    to: '167'
   },
   1445: {
     edgeId: 1445,
-    role: 'Subclass of',
+    role: 'Measured by',
     id: '1445',
+    label: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    rdfsLabel: 'Measured by',
+    userDefined: false,
+    from: '144',
+    to: '128'
+  },
+  1446: {
+    edgeId: 1446,
+    role: 'Subclass of',
+    id: '1446',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '144',
-    to: '161'
-  },
-  1446: {
-    edgeId: 1446,
-    role: 'Performed by',
-    id: '1446',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '144',
-    to: '53'
+    to: '198'
   },
   1451: {
     edgeId: 1451,
-    role: 'Conducted for',
+    role: 'Subclass of',
     id: '1451',
-    label: 'Conducted for',
-    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
-    rdfsLabel: 'Conducted for',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '145',
     to: '65'
   },
   1452: {
     edgeId: 1452,
-    role: 'Conducted for',
+    role: 'Achieved by',
     id: '1452',
-    label: 'Conducted for',
-    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
-    rdfsLabel: 'Conducted for',
+    label: 'Achieved by',
+    rdfAbout: 'http://webprotege.stanford.edu/RuflVNuPASFn75l7LznQc0',
+    rdfsLabel: 'Achieved by',
     userDefined: false,
     from: '145',
-    to: '103'
+    to: '35'
   },
   1453: {
     edgeId: 1453,
-    role: 'Conducted for',
+    role: 'Performed from',
     id: '1453',
-    label: 'Conducted for',
-    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
-    rdfsLabel: 'Conducted for',
+    label: 'Performed from',
+    rdfAbout: 'http://webprotege.stanford.edu/RC48Hic1INaQShlkSyb6ZIx',
+    rdfsLabel: 'Performed from',
     userDefined: false,
     from: '145',
-    to: '161'
+    to: '87'
   },
   1454: {
     edgeId: 1454,
-    role: 'Subclass of',
+    role: 'Affected by',
     id: '1454',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
     userDefined: false,
     from: '145',
-    to: '178'
+    to: '137'
+  },
+  1455: {
+    edgeId: 1455,
+    role: 'Performed by',
+    id: '1455',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '145',
+    to: '107'
+  },
+  1456: {
+    edgeId: 1456,
+    role: 'Affected by',
+    id: '1456',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '145',
+    to: '90'
+  },
+  1457: {
+    edgeId: 1457,
+    role: 'Bounded by',
+    id: '1457',
+    label: 'Bounded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+    rdfsLabel: 'Bounded by',
+    userDefined: false,
+    from: '145',
+    to: '188'
+  },
+  1458: {
+    edgeId: 1458,
+    role: 'Affected by',
+    id: '1458',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '145',
+    to: '129'
+  },
+  1459: {
+    edgeId: 1459,
+    role: 'Affected by',
+    id: '1459',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '145',
+    to: '75'
   },
   1461: {
     edgeId: 1461,
-    role: 'Employed by',
+    role: 'Used in',
     id: '1461',
-    label: 'Employed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
-    rdfsLabel: 'Employed by',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
     userDefined: false,
     from: '146',
-    to: '170'
+    to: '12'
   },
   1462: {
     edgeId: 1462,
-    role: 'Subclass of',
+    role: 'Required for',
     id: '1462',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '146',
+    to: '150'
+  },
+  1463: {
+    edgeId: 1463,
+    role: 'Subclass of',
+    id: '1463',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '146',
-    to: '133'
+    to: '153'
   },
-  1463: {
-    edgeId: 1463,
-    role: 'Paid through',
-    id: '1463',
-    label: 'Paid through',
-    rdfAbout: 'http://webprotege.stanford.edu/RCO41EY55jxxkXEYAsRnzul',
-    rdfsLabel: 'Paid through',
+  1464: {
+    edgeId: 1464,
+    role: 'Summarised in',
+    id: '1464',
+    label: 'Summarised in',
+    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+    rdfsLabel: 'Summarised in',
     userDefined: false,
     from: '146',
-    to: '25'
+    to: '153'
+  },
+  1465: {
+    edgeId: 1465,
+    role: 'Updated by',
+    id: '1465',
+    label: 'Updated by',
+    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
+    rdfsLabel: 'Updated by',
+    userDefined: false,
+    from: '146',
+    to: '70'
+  },
+  1466: {
+    edgeId: 1466,
+    role: 'Used in',
+    id: '1466',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '146',
+    to: '143'
+  },
+  1467: {
+    edgeId: 1467,
+    role: 'Updated by',
+    id: '1467',
+    label: 'Updated by',
+    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
+    rdfsLabel: 'Updated by',
+    userDefined: false,
+    from: '146',
+    to: '56'
   },
   1471: {
     edgeId: 1471,
@@ -4043,242 +3999,275 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '147',
-    to: '141'
+    to: '139'
   },
   1472: {
     edgeId: 1472,
-    role: 'Provided to',
+    role: 'Managed by',
     id: '1472',
-    label: 'Provided to',
-    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-    rdfsLabel: 'Provided to',
+    label: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
+    rdfsLabel: 'Managed by',
     userDefined: false,
     from: '147',
-    to: '170'
+    to: '56'
   },
   1473: {
     edgeId: 1473,
-    role: 'Requested by',
+    role: 'Managed within',
     id: '1473',
-    label: 'Requested by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
-    rdfsLabel: 'Requested by',
+    label: 'Managed within',
+    rdfAbout: 'http://webprotege.stanford.edu/R8UlzVcWWjnYzxJxqtXIIFd',
+    rdfsLabel: 'Managed within',
     userDefined: false,
     from: '147',
-    to: '65'
-  },
-  1474: {
-    edgeId: 1474,
-    role: 'Reviewed by',
-    id: '1474',
-    label: 'Reviewed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-    rdfsLabel: 'Reviewed by',
-    userDefined: false,
-    from: '147',
-    to: '53'
-  },
-  1475: {
-    edgeId: 1475,
-    role: 'Provided to',
-    id: '1475',
-    label: 'Provided to',
-    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-    rdfsLabel: 'Provided to',
-    userDefined: false,
-    from: '147',
-    to: '65'
+    to: '70'
   },
   1481: {
     edgeId: 1481,
-    role: 'Required for',
-    id: '1481',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '148',
-    to: '144'
-  },
-  1482: {
-    edgeId: 1482,
     role: 'Subclass of',
-    id: '1482',
+    id: '1481',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '148',
-    to: '29'
-  },
-  1483: {
-    edgeId: 1483,
-    role: 'Created by',
-    id: '1483',
-    label: 'Created by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-    rdfsLabel: 'Created by',
-    userDefined: false,
-    from: '148',
-    to: '53'
+    to: '138'
   },
   1491: {
     edgeId: 1491,
-    role: 'Performed by',
+    role: 'Subclass of',
     id: '1491',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '149',
+    to: '123'
+  },
+  1501: {
+    edgeId: 1501,
+    role: 'Summarised in',
+    id: '1501',
+    label: 'Summarised in',
+    rdfAbout: 'http://webprotege.stanford.edu/R7I1rNuvyyDwzTcsAAofisu',
+    rdfsLabel: 'Summarised in',
+    userDefined: false,
+    from: '150',
+    to: '153'
+  },
+  1502: {
+    edgeId: 1502,
+    role: 'Governed by',
+    id: '1502',
+    label: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+    rdfsLabel: 'Governed by',
+    userDefined: false,
+    from: '150',
+    to: '148'
+  },
+  1503: {
+    edgeId: 1503,
+    role: 'Subclass of',
+    id: '1503',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '150',
+    to: '168'
+  },
+  1504: {
+    edgeId: 1504,
+    role: 'Performed by',
+    id: '1504',
     label: 'Performed by',
     rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
     rdfsLabel: 'Performed by',
     userDefined: false,
-    from: '149',
-    to: '53'
+    from: '150',
+    to: '56'
   },
-  1492: {
-    edgeId: 1492,
-    role: 'Performed on',
-    id: '1492',
-    label: 'Performed on',
-    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
-    rdfsLabel: 'Performed on',
-    userDefined: false,
-    from: '149',
-    to: '70'
-  },
-  1493: {
-    edgeId: 1493,
-    role: 'Included in',
-    id: '1493',
-    label: 'Included in',
-    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-    rdfsLabel: 'Included in',
-    userDefined: false,
-    from: '149',
-    to: '154'
-  },
-  1494: {
-    edgeId: 1494,
-    role: 'Subclass of',
-    id: '1494',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '149',
-    to: '51'
-  },
-  1501: {
-    edgeId: 1501,
-    role: 'Subclass of',
-    id: '1501',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+  1505: {
+    edgeId: 1505,
+    role: 'Controlled by',
+    id: '1505',
+    label: 'Controlled by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8XmPwbVWaRiEyUv3kxunaF',
+    rdfsLabel: 'Controlled by',
     userDefined: false,
     from: '150',
-    to: '85'
+    to: '190'
   },
-  1502: {
-    edgeId: 1502,
-    role: 'Provided to',
-    id: '1502',
-    label: 'Provided to',
-    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-    rdfsLabel: 'Provided to',
+  1506: {
+    edgeId: 1506,
+    role: 'Affected by',
+    id: '1506',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
     userDefined: false,
     from: '150',
-    to: '128'
+    to: '39'
   },
   1511: {
     edgeId: 1511,
-    role: 'Subclass of',
+    role: 'Conducted for',
     id: '1511',
+    label: 'Conducted for',
+    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
+    rdfsLabel: 'Conducted for',
+    userDefined: false,
+    from: '151',
+    to: '68'
+  },
+  1512: {
+    edgeId: 1512,
+    role: 'Subclass of',
+    id: '1512',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '151',
-    to: '91'
+    to: '185'
+  },
+  1513: {
+    edgeId: 1513,
+    role: 'Conducted for',
+    id: '1513',
+    label: 'Conducted for',
+    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
+    rdfsLabel: 'Conducted for',
+    userDefined: false,
+    from: '151',
+    to: '107'
+  },
+  1514: {
+    edgeId: 1514,
+    role: 'Conducted for',
+    id: '1514',
+    label: 'Conducted for',
+    rdfAbout: 'http://webprotege.stanford.edu/RDzbWoYkp7g1ljEL076ahtw',
+    rdfsLabel: 'Conducted for',
+    userDefined: false,
+    from: '151',
+    to: '168'
   },
   1521: {
     edgeId: 1521,
-    role: 'Created for',
+    role: 'Involved In',
     id: '1521',
-    label: 'Created for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-    rdfsLabel: 'Created for',
+    label: 'Involved In',
+    rdfAbout: 'http://webprotege.stanford.edu/Rcd9CFxzLGHq3FClhtC5f6',
+    rdfsLabel: 'Involved In',
     userDefined: false,
     from: '152',
-    to: '161'
+    to: '140'
   },
   1522: {
     edgeId: 1522,
-    role: 'Created by',
-    id: '1522',
-    label: 'Created by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-    rdfsLabel: 'Created by',
-    userDefined: false,
-    from: '152',
-    to: '53'
-  },
-  1523: {
-    edgeId: 1523,
     role: 'Subclass of',
-    id: '1523',
+    id: '1522',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '152',
-    to: '76'
+    to: '139'
+  },
+  1523: {
+    edgeId: 1523,
+    role: 'Employed by',
+    id: '1523',
+    label: 'Employed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8EXGHPfSLDiLihUtTOLFsB',
+    rdfsLabel: 'Employed by',
+    userDefined: false,
+    from: '152',
+    to: '177'
   },
   1524: {
     edgeId: 1524,
-    role: 'Created for',
+    role: 'Paid through',
     id: '1524',
-    label: 'Created for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-    rdfsLabel: 'Created for',
+    label: 'Paid through',
+    rdfAbout: 'http://webprotege.stanford.edu/RCO41EY55jxxkXEYAsRnzul',
+    rdfsLabel: 'Paid through',
     userDefined: false,
     from: '152',
-    to: '21'
-  },
-  1525: {
-    edgeId: 1525,
-    role: 'Informed by',
-    id: '1525',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
-    userDefined: false,
-    from: '152',
-    to: '65'
+    to: '27'
   },
   1531: {
     edgeId: 1531,
-    role: 'Subclass of',
+    role: 'Provided to',
     id: '1531',
+    label: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    rdfsLabel: 'Provided to',
+    userDefined: false,
+    from: '153',
+    to: '177'
+  },
+  1532: {
+    edgeId: 1532,
+    role: 'Provided to',
+    id: '1532',
+    label: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    rdfsLabel: 'Provided to',
+    userDefined: false,
+    from: '153',
+    to: '68'
+  },
+  1533: {
+    edgeId: 1533,
+    role: 'Subclass of',
+    id: '1533',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '153',
-    to: '69'
+    to: '147'
+  },
+  1534: {
+    edgeId: 1534,
+    role: 'Reviewed by',
+    id: '1534',
+    label: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    rdfsLabel: 'Reviewed by',
+    userDefined: false,
+    from: '153',
+    to: '56'
+  },
+  1535: {
+    edgeId: 1535,
+    role: 'Requested by',
+    id: '1535',
+    label: 'Requested by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBzR29uCACOGDcXgx1CeMn1',
+    rdfsLabel: 'Requested by',
+    userDefined: false,
+    from: '153',
+    to: '68'
   },
   1541: {
     edgeId: 1541,
-    role: 'Required for',
-    id: '1541',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '154',
-    to: '137'
-  },
-  1542: {
-    edgeId: 1542,
     role: 'Subclass of',
-    id: '1542',
+    id: '1541',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '154',
-    to: '176'
+    to: '31'
+  },
+  1542: {
+    edgeId: 1542,
+    role: 'Created by',
+    id: '1542',
+    label: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    rdfsLabel: 'Created by',
+    userDefined: false,
+    from: '154',
+    to: '56'
   },
   1543: {
     edgeId: 1543,
@@ -4289,104 +4278,82 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Required for',
     userDefined: false,
     from: '154',
-    to: '144'
-  },
-  1544: {
-    edgeId: 1544,
-    role: 'Agreed with',
-    id: '1544',
-    label: 'Agreed with',
-    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
-    rdfsLabel: 'Agreed with',
-    userDefined: false,
-    from: '154',
-    to: '65'
-  },
-  1545: {
-    edgeId: 1545,
-    role: 'Created for',
-    id: '1545',
-    label: 'Created for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-    rdfsLabel: 'Created for',
-    userDefined: false,
-    from: '154',
-    to: '161'
+    to: '150'
   },
   1551: {
     edgeId: 1551,
-    role: 'Subclass of',
+    role: 'Associated with',
     id: '1551',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '155',
+    to: '137'
+  },
+  1552: {
+    edgeId: 1552,
+    role: 'Subclass of',
+    id: '1552',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '155',
-    to: '29'
-  },
-  1552: {
-    edgeId: 1552,
-    role: 'Created by',
-    id: '1552',
-    label: 'Created by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-    rdfsLabel: 'Created by',
-    userDefined: false,
-    from: '155',
-    to: '53'
+    to: '54'
   },
   1553: {
     edgeId: 1553,
-    role: 'Reviewed by',
+    role: 'Performed by',
     id: '1553',
-    label: 'Reviewed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
-    rdfsLabel: 'Reviewed by',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
     userDefined: false,
     from: '155',
-    to: '65'
-  },
-  1554: {
-    edgeId: 1554,
-    role: 'Created for',
-    id: '1554',
-    label: 'Created for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-    rdfsLabel: 'Created for',
-    userDefined: false,
-    from: '155',
-    to: '144'
-  },
-  1555: {
-    edgeId: 1555,
-    role: 'Created for',
-    id: '1555',
-    label: 'Created for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
-    rdfsLabel: 'Created for',
-    userDefined: false,
-    from: '155',
-    to: '195'
+    to: '152'
   },
   1561: {
     edgeId: 1561,
-    role: 'Completed before',
+    role: 'Performed by',
     id: '1561',
-    label: 'Completed before',
-    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-    rdfsLabel: 'Completed before',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
     userDefined: false,
     from: '156',
-    to: '187'
+    to: '56'
   },
   1562: {
     edgeId: 1562,
-    role: 'Subclass of',
+    role: 'Performed on',
     id: '1562',
+    label: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+    rdfsLabel: 'Performed on',
+    userDefined: false,
+    from: '156',
+    to: '73'
+  },
+  1563: {
+    edgeId: 1563,
+    role: 'Subclass of',
+    id: '1563',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '156',
     to: '54'
+  },
+  1564: {
+    edgeId: 1564,
+    role: 'Included in',
+    id: '1564',
+    label: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    rdfsLabel: 'Included in',
+    userDefined: false,
+    from: '156',
+    to: '161'
   },
   1571: {
     edgeId: 1571,
@@ -4396,40 +4363,18 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '157',
-    to: '85'
+    to: '88'
   },
   1572: {
     edgeId: 1572,
-    role: 'Issued to',
+    role: 'Provided to',
     id: '1572',
-    label: 'Issued to',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Fp5FKHZWgNVNiLcHuAtPf',
-    rdfsLabel: 'Issued to',
+    label: 'Provided to',
+    rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
+    rdfsLabel: 'Provided to',
     userDefined: false,
     from: '157',
-    to: '170'
-  },
-  1573: {
-    edgeId: 1573,
-    role: 'Issued by',
-    id: '1573',
-    label: 'Issued by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
-    rdfsLabel: 'Issued by',
-    userDefined: false,
-    from: '157',
-    to: '128'
-  },
-  1574: {
-    edgeId: 1574,
-    role: 'Reconciled by',
-    id: '1574',
-    label: 'Reconciled by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
-    rdfsLabel: 'Reconciled by',
-    userDefined: false,
-    from: '157',
-    to: '25'
+    to: '134'
   },
   1581: {
     edgeId: 1581,
@@ -4439,50 +4384,61 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '158',
-    to: '87'
-  },
-  1582: {
-    edgeId: 1582,
-    role: 'Applied to',
-    id: '1582',
-    label: 'Applied to',
-    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-    rdfsLabel: 'Applied to',
-    userDefined: false,
-    from: '158',
-    to: '39'
-  },
-  1583: {
-    edgeId: 1583,
-    role: 'Updated by',
-    id: '1583',
-    label: 'Updated by',
-    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
-    rdfsLabel: 'Updated by',
-    userDefined: false,
-    from: '158',
-    to: '67'
-  },
-  1584: {
-    edgeId: 1584,
-    role: 'Updated by',
-    id: '1584',
-    label: 'Updated by',
-    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
-    rdfsLabel: 'Updated by',
-    userDefined: false,
-    from: '158',
-    to: '53'
+    to: '94'
   },
   1591: {
     edgeId: 1591,
-    role: 'Subclass of',
+    role: 'Created for',
     id: '1591',
+    label: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    rdfsLabel: 'Created for',
+    userDefined: false,
+    from: '159',
+    to: '168'
+  },
+  1592: {
+    edgeId: 1592,
+    role: 'Subclass of',
+    id: '1592',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '159',
-    to: '184'
+    to: '79'
+  },
+  1593: {
+    edgeId: 1593,
+    role: 'Created for',
+    id: '1593',
+    label: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    rdfsLabel: 'Created for',
+    userDefined: false,
+    from: '159',
+    to: '23'
+  },
+  1594: {
+    edgeId: 1594,
+    role: 'Created by',
+    id: '1594',
+    label: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    rdfsLabel: 'Created by',
+    userDefined: false,
+    from: '159',
+    to: '56'
+  },
+  1595: {
+    edgeId: 1595,
+    role: 'Informed by',
+    id: '1595',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
+    userDefined: false,
+    from: '159',
+    to: '68'
   },
   1601: {
     edgeId: 1601,
@@ -4492,105 +4448,72 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '160',
-    to: '192'
+    to: '72'
   },
   1611: {
     edgeId: 1611,
-    role: 'Operated from',
+    role: 'Agreed with',
     id: '1611',
-    label: 'Operated from',
-    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
-    rdfsLabel: 'Operated from',
+    label: 'Agreed with',
+    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+    rdfsLabel: 'Agreed with',
     userDefined: false,
     from: '161',
-    to: '164'
+    to: '68'
   },
   1612: {
     edgeId: 1612,
-    role: 'Proposed in',
+    role: 'Created for',
     id: '1612',
-    label: 'Proposed in',
-    rdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
-    rdfsLabel: 'Proposed in',
+    label: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    rdfsLabel: 'Created for',
     userDefined: false,
     from: '161',
-    to: '126'
+    to: '168'
   },
   1613: {
     edgeId: 1613,
-    role: 'Affected by',
+    role: 'Required for',
     id: '1613',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
     userDefined: false,
     from: '161',
-    to: '188'
+    to: '150'
   },
   1614: {
     edgeId: 1614,
-    role: 'Affected by',
-    id: '1614',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '161',
-    to: '176'
-  },
-  1615: {
-    edgeId: 1615,
-    role: 'Affected by',
-    id: '1615',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '161',
-    to: '31'
-  },
-  1616: {
-    edgeId: 1616,
-    role: 'Bounded by',
-    id: '1616',
-    label: 'Bounded by',
-    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
-    rdfsLabel: 'Bounded by',
-    userDefined: false,
-    from: '161',
-    to: '144'
-  },
-  1617: {
-    edgeId: 1617,
-    role: 'Advised by',
-    id: '1617',
-    label: 'Advised by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
-    rdfsLabel: 'Advised by',
-    userDefined: false,
-    from: '161',
-    to: '65'
-  },
-  1618: {
-    edgeId: 1618,
     role: 'Subclass of',
-    id: '1618',
+    id: '1614',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '161',
-    to: '2'
+    to: '183'
+  },
+  1615: {
+    edgeId: 1615,
+    role: 'Required for',
+    id: '1615',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '161',
+    to: '143'
   },
   1621: {
     edgeId: 1621,
-    role: 'Caused by',
+    role: 'Created for',
     id: '1621',
-    label: 'Caused by',
-    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
-    rdfsLabel: 'Caused by',
+    label: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    rdfsLabel: 'Created for',
     userDefined: false,
     from: '162',
-    to: '123'
+    to: '150'
   },
   1622: {
     edgeId: 1622,
@@ -4600,18 +4523,61 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '162',
-    to: '131'
+    to: '31'
   },
   1623: {
     edgeId: 1623,
-    role: 'Located at',
+    role: 'Created for',
     id: '1623',
-    label: 'Located at',
-    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
-    rdfsLabel: 'Located at',
+    label: 'Created for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7IaR9YG9mGzOkseoqQ4Rzi',
+    rdfsLabel: 'Created for',
     userDefined: false,
     from: '162',
-    to: '39'
+    to: '202'
+  },
+  1624: {
+    edgeId: 1624,
+    role: 'Reviewed by',
+    id: '1624',
+    label: 'Reviewed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R83hFPamR9Qma90o0ltJtC7',
+    rdfsLabel: 'Reviewed by',
+    userDefined: false,
+    from: '162',
+    to: '68'
+  },
+  1625: {
+    edgeId: 1625,
+    role: 'Created by',
+    id: '1625',
+    label: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    rdfsLabel: 'Created by',
+    userDefined: false,
+    from: '162',
+    to: '56'
+  },
+  1631: {
+    edgeId: 1631,
+    role: 'Subclass of',
+    id: '1631',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '163',
+    to: '57'
+  },
+  1632: {
+    edgeId: 1632,
+    role: 'Completed before',
+    id: '1632',
+    label: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    rdfsLabel: 'Completed before',
+    userDefined: false,
+    from: '163',
+    to: '194'
   },
   1641: {
     edgeId: 1641,
@@ -4621,28 +4587,83 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '164',
-    to: '24'
+    to: '88'
+  },
+  1642: {
+    edgeId: 1642,
+    role: 'Issued to',
+    id: '1642',
+    label: 'Issued to',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Fp5FKHZWgNVNiLcHuAtPf',
+    rdfsLabel: 'Issued to',
+    userDefined: false,
+    from: '164',
+    to: '177'
+  },
+  1643: {
+    edgeId: 1643,
+    role: 'Reconciled by',
+    id: '1643',
+    label: 'Reconciled by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCoyoKN6hsec0RfP3VnLQen',
+    rdfsLabel: 'Reconciled by',
+    userDefined: false,
+    from: '164',
+    to: '27'
+  },
+  1644: {
+    edgeId: 1644,
+    role: 'Issued by',
+    id: '1644',
+    label: 'Issued by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCSHnubpYqLMmQHwcTdreoq',
+    rdfsLabel: 'Issued by',
+    userDefined: false,
+    from: '164',
+    to: '134'
   },
   1651: {
     edgeId: 1651,
-    role: 'Subclass of',
+    role: 'Applied to',
     id: '1651',
+    label: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    rdfsLabel: 'Applied to',
+    userDefined: false,
+    from: '165',
+    to: '42'
+  },
+  1652: {
+    edgeId: 1652,
+    role: 'Updated by',
+    id: '1652',
+    label: 'Updated by',
+    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
+    rdfsLabel: 'Updated by',
+    userDefined: false,
+    from: '165',
+    to: '56'
+  },
+  1653: {
+    edgeId: 1653,
+    role: 'Subclass of',
+    id: '1653',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '165',
-    to: '51'
+    to: '90'
   },
-  1652: {
-    edgeId: 1652,
-    role: 'Informed by',
-    id: '1652',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
+  1654: {
+    edgeId: 1654,
+    role: 'Updated by',
+    id: '1654',
+    label: 'Updated by',
+    rdfAbout: 'http://webprotege.stanford.edu/R9sQaGD5gjjxCrqX8xatj5I',
+    rdfsLabel: 'Updated by',
     userDefined: false,
     from: '165',
-    to: '68'
+    to: '70'
   },
   1661: {
     edgeId: 1661,
@@ -4652,7 +4673,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '166',
-    to: '80'
+    to: '191'
   },
   1671: {
     edgeId: 1671,
@@ -4662,92 +4683,126 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '167',
-    to: '87'
+    to: '199'
   },
-  1672: {
-    edgeId: 1672,
-    role: 'Applied to',
-    id: '1672',
-    label: 'Applied to',
-    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-    rdfsLabel: 'Applied to',
-    userDefined: false,
-    from: '167',
-    to: '39'
-  },
-  1673: {
-    edgeId: 1673,
+  1681: {
+    edgeId: 1681,
     role: 'Bounded by',
-    id: '1673',
+    id: '1681',
     label: 'Bounded by',
     rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
     rdfsLabel: 'Bounded by',
     userDefined: false,
-    from: '167',
-    to: '100'
+    from: '168',
+    to: '150'
   },
-  1681: {
-    edgeId: 1681,
+  1682: {
+    edgeId: 1682,
+    role: 'Advised by',
+    id: '1682',
+    label: 'Advised by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7V7p8sdl5TpSs0cd7gZvqr',
+    rdfsLabel: 'Advised by',
+    userDefined: false,
+    from: '168',
+    to: '68'
+  },
+  1683: {
+    edgeId: 1683,
+    role: 'Operated from',
+    id: '1683',
+    label: 'Operated from',
+    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+    rdfsLabel: 'Operated from',
+    userDefined: false,
+    from: '168',
+    to: '171'
+  },
+  1684: {
+    edgeId: 1684,
+    role: 'Affected by',
+    id: '1684',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '168',
+    to: '183'
+  },
+  1685: {
+    edgeId: 1685,
+    role: 'Affected by',
+    id: '1685',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '168',
+    to: '33'
+  },
+  1686: {
+    edgeId: 1686,
+    role: 'Proposed in',
+    id: '1686',
+    label: 'Proposed in',
+    rdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
+    rdfsLabel: 'Proposed in',
+    userDefined: false,
+    from: '168',
+    to: '132'
+  },
+  1687: {
+    edgeId: 1687,
     role: 'Subclass of',
-    id: '1681',
+    id: '1687',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '168',
-    to: '69'
+    to: '2'
+  },
+  1688: {
+    edgeId: 1688,
+    role: 'Affected by',
+    id: '1688',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '168',
+    to: '195'
   },
   1691: {
     edgeId: 1691,
-    role: 'Subclass of',
+    role: 'Located at',
     id: '1691',
+    label: 'Located at',
+    rdfAbout: 'http://webprotege.stanford.edu/RYIoLKdwlygMWF57BNuMib',
+    rdfsLabel: 'Located at',
+    userDefined: false,
+    from: '169',
+    to: '42'
+  },
+  1692: {
+    edgeId: 1692,
+    role: 'Caused by',
+    id: '1692',
+    label: 'Caused by',
+    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
+    rdfsLabel: 'Caused by',
+    userDefined: false,
+    from: '169',
+    to: '129'
+  },
+  1693: {
+    edgeId: 1693,
+    role: 'Subclass of',
+    id: '1693',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '169',
-    to: '70'
-  },
-  1701: {
-    edgeId: 1701,
-    role: 'Governed by',
-    id: '1701',
-    label: 'Governed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-    rdfsLabel: 'Governed by',
-    userDefined: false,
-    from: '170',
-    to: '132'
-  },
-  1702: {
-    edgeId: 1702,
-    role: 'Governed by',
-    id: '1702',
-    label: 'Governed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-    rdfsLabel: 'Governed by',
-    userDefined: false,
-    from: '170',
-    to: '65'
-  },
-  1703: {
-    edgeId: 1703,
-    role: 'Subclass of',
-    id: '1703',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
-    userDefined: false,
-    from: '170',
-    to: '163'
-  },
-  1704: {
-    edgeId: 1704,
-    role: 'Governed by',
-    id: '1704',
-    label: 'Governed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
-    rdfsLabel: 'Governed by',
-    userDefined: false,
-    from: '170',
-    to: '118'
+    to: '137'
   },
   1711: {
     edgeId: 1711,
@@ -4757,39 +4812,28 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '171',
-    to: '1'
-  },
-  1712: {
-    edgeId: 1712,
-    role: 'Created by',
-    id: '1712',
-    label: 'Created by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-    rdfsLabel: 'Created by',
-    userDefined: false,
-    from: '171',
-    to: '53'
+    to: '26'
   },
   1721: {
     edgeId: 1721,
-    role: 'Subclass of',
+    role: 'Informed by',
     id: '1721',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
+    userDefined: false,
+    from: '172',
+    to: '71'
+  },
+  1722: {
+    edgeId: 1722,
+    role: 'Subclass of',
+    id: '1722',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '172',
-    to: '162'
-  },
-  1722: {
-    edgeId: 1722,
-    role: 'Caused by',
-    id: '1722',
-    label: 'Caused by',
-    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
-    rdfsLabel: 'Caused by',
-    userDefined: false,
-    from: '172',
-    to: '162'
+    to: '54'
   },
   1731: {
     edgeId: 1731,
@@ -4799,7 +4843,7 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '173',
-    to: '190'
+    to: '83'
   },
   1741: {
     edgeId: 1741,
@@ -4809,18 +4853,29 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '174',
-    to: '52'
+    to: '90'
   },
   1742: {
     edgeId: 1742,
-    role: 'Required for',
+    role: 'Bounded by',
     id: '1742',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
+    label: 'Bounded by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
+    rdfsLabel: 'Bounded by',
     userDefined: false,
     from: '174',
-    to: '144'
+    to: '104'
+  },
+  1743: {
+    edgeId: 1743,
+    role: 'Applied to',
+    id: '1743',
+    label: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    rdfsLabel: 'Applied to',
+    userDefined: false,
+    from: '174',
+    to: '42'
   },
   1751: {
     edgeId: 1751,
@@ -4830,105 +4885,17 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '175',
-    to: '184'
+    to: '72'
   },
   1761: {
     edgeId: 1761,
-    role: 'Affected by',
-    id: '1761',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '176',
-    to: '70'
-  },
-  1762: {
-    edgeId: 1762,
     role: 'Subclass of',
-    id: '1762',
+    id: '1761',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '176',
-    to: '163'
-  },
-  1763: {
-    edgeId: 1763,
-    role: 'Created by',
-    id: '1763',
-    label: 'Created by',
-    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
-    rdfsLabel: 'Created by',
-    userDefined: false,
-    from: '176',
-    to: '170'
-  },
-  1764: {
-    edgeId: 1764,
-    role: 'Affected by',
-    id: '1764',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '176',
-    to: '123'
-  },
-  1765: {
-    edgeId: 1765,
-    role: 'Composed of',
-    id: '1765',
-    label: 'Composed of',
-    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
-    rdfsLabel: 'Composed of',
-    userDefined: false,
-    from: '176',
-    to: '51'
-  },
-  1766: {
-    edgeId: 1766,
-    role: 'Used in',
-    id: '1766',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '176',
-    to: '144'
-  },
-  1767: {
-    edgeId: 1767,
-    role: 'Applied to',
-    id: '1767',
-    label: 'Applied to',
-    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-    rdfsLabel: 'Applied to',
-    userDefined: false,
-    from: '176',
-    to: '161'
-  },
-  1768: {
-    edgeId: 1768,
-    role: 'Affected by',
-    id: '1768',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '176',
-    to: '4'
-  },
-  1769: {
-    edgeId: 1769,
-    role: 'Affected by',
-    id: '1769',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '176',
-    to: '137'
+    to: '73'
   },
   1771: {
     edgeId: 1771,
@@ -4938,115 +4905,82 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '177',
-    to: '192'
+    to: '170'
+  },
+  1772: {
+    edgeId: 1772,
+    role: 'Governed by',
+    id: '1772',
+    label: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+    rdfsLabel: 'Governed by',
+    userDefined: false,
+    from: '177',
+    to: '123'
+  },
+  1773: {
+    edgeId: 1773,
+    role: 'Governed by',
+    id: '1773',
+    label: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+    rdfsLabel: 'Governed by',
+    userDefined: false,
+    from: '177',
+    to: '138'
+  },
+  1774: {
+    edgeId: 1774,
+    role: 'Governed by',
+    id: '1774',
+    label: 'Governed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RC1zYYNqqFSlJxIKg4SdBTB',
+    rdfsLabel: 'Governed by',
+    userDefined: false,
+    from: '177',
+    to: '68'
   },
   1781: {
     edgeId: 1781,
-    role: 'Performed by',
+    role: 'Subclass of',
     id: '1781',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '178',
-    to: '103'
-  },
-  1782: {
-    edgeId: 1782,
-    role: 'Presented in',
-    id: '1782',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '178',
     to: '1'
   },
-  1783: {
-    edgeId: 1783,
-    role: 'Subclass of',
-    id: '1783',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+  1782: {
+    edgeId: 1782,
+    role: 'Created by',
+    id: '1782',
+    label: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    rdfsLabel: 'Created by',
     userDefined: false,
     from: '178',
-    to: '51'
-  },
-  1784: {
-    edgeId: 1784,
-    role: 'Performed by',
-    id: '1784',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '178',
-    to: '53'
-  },
-  1785: {
-    edgeId: 1785,
-    role: 'Included in',
-    id: '1785',
-    label: 'Included in',
-    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-    rdfsLabel: 'Included in',
-    userDefined: false,
-    from: '178',
-    to: '154'
-  },
-  1786: {
-    edgeId: 1786,
-    role: 'Provided by',
-    id: '1786',
-    label: 'Provided by',
-    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
-    rdfsLabel: 'Provided by',
-    userDefined: false,
-    from: '178',
-    to: '67'
-  },
-  1787: {
-    edgeId: 1787,
-    role: 'Performed by',
-    id: '1787',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
-    userDefined: false,
-    from: '178',
-    to: '65'
+    to: '56'
   },
   1791: {
     edgeId: 1791,
-    role: 'Applied to',
-    id: '1791',
-    label: 'Applied to',
-    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
-    rdfsLabel: 'Applied to',
-    userDefined: false,
-    from: '179',
-    to: '67'
-  },
-  1792: {
-    edgeId: 1792,
-    role: 'Used by',
-    id: '1792',
-    label: 'Used by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-    rdfsLabel: 'Used by',
-    userDefined: false,
-    from: '179',
-    to: '53'
-  },
-  1793: {
-    edgeId: 1793,
     role: 'Subclass of',
-    id: '1793',
+    id: '1791',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '179',
-    to: '192'
+    to: '169'
+  },
+  1792: {
+    edgeId: 1792,
+    role: 'Caused by',
+    id: '1792',
+    label: 'Caused by',
+    rdfAbout: 'http://webprotege.stanford.edu/RD0ZcPXhdHrABadmgWvHPLF',
+    rdfsLabel: 'Caused by',
+    userDefined: false,
+    from: '179',
+    to: '169'
   },
   1801: {
     edgeId: 1801,
@@ -5056,39 +4990,28 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '180',
-    to: '176'
-  },
-  1802: {
-    edgeId: 1802,
-    role: 'Used in',
-    id: '1802',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
-    userDefined: false,
-    from: '180',
-    to: '144'
+    to: '197'
   },
   1811: {
     edgeId: 1811,
-    role: 'Associated with',
-    id: '1811',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '181',
-    to: '39'
-  },
-  1812: {
-    edgeId: 1812,
     role: 'Subclass of',
-    id: '1812',
+    id: '1811',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '181',
-    to: '163'
+    to: '55'
+  },
+  1812: {
+    edgeId: 1812,
+    role: 'Required for',
+    id: '1812',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '181',
+    to: '150'
   },
   1821: {
     edgeId: 1821,
@@ -5098,103 +5021,202 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '182',
-    to: '105'
-  },
-  1822: {
-    edgeId: 1822,
-    role: 'Improved through',
-    id: '1822',
-    label: 'Improved through',
-    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-    rdfsLabel: 'Improved through',
-    userDefined: false,
-    from: '182',
-    to: '12'
+    to: '191'
   },
   1831: {
     edgeId: 1831,
-    role: 'Subclass of',
+    role: 'Applied to',
     id: '1831',
-    label: 'Subclass of',
-    rdfsLabel: 'Subclass of',
+    label: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    rdfsLabel: 'Applied to',
     userDefined: false,
     from: '183',
-    to: '161'
+    to: '168'
+  },
+  1832: {
+    edgeId: 1832,
+    role: 'Affected by',
+    id: '1832',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '183',
+    to: '46'
+  },
+  1833: {
+    edgeId: 1833,
+    role: 'Composed of',
+    id: '1833',
+    label: 'Composed of',
+    rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+    rdfsLabel: 'Composed of',
+    userDefined: false,
+    from: '183',
+    to: '54'
+  },
+  1834: {
+    edgeId: 1834,
+    role: 'Affected by',
+    id: '1834',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '183',
+    to: '129'
+  },
+  1835: {
+    edgeId: 1835,
+    role: 'Affected by',
+    id: '1835',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '183',
+    to: '19'
+  },
+  1836: {
+    edgeId: 1836,
+    role: 'Affected by',
+    id: '1836',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '183',
+    to: '4'
+  },
+  1837: {
+    edgeId: 1837,
+    role: 'Affected by',
+    id: '1837',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '183',
+    to: '75'
+  },
+  1838: {
+    edgeId: 1838,
+    role: 'Created by',
+    id: '1838',
+    label: 'Created by',
+    rdfAbout: 'http://webprotege.stanford.edu/R8Pp0U9lbiy2Wpdm6YzyV5m',
+    rdfsLabel: 'Created by',
+    userDefined: false,
+    from: '183',
+    to: '177'
+  },
+  1839: {
+    edgeId: 1839,
+    role: 'Affected by',
+    id: '1839',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '183',
+    to: '143'
+  },
+  1840: {
+    edgeId: 1840,
+    role: 'Found in',
+    id: '1840',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '85',
+    to: '1813'
   },
   1841: {
     edgeId: 1841,
-    role: 'Measured by',
-    id: '1841',
-    label: 'Measured by',
-    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
-    rdfsLabel: 'Measured by',
-    userDefined: false,
-    from: '184',
-    to: '122'
-  },
-  1842: {
-    edgeId: 1842,
-    role: 'Improved through',
-    id: '1842',
-    label: 'Improved through',
-    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-    rdfsLabel: 'Improved through',
-    userDefined: false,
-    from: '184',
-    to: '161'
-  },
-  1843: {
-    edgeId: 1843,
-    role: 'Input into',
-    id: '1843',
-    label: 'Input into',
-    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-    rdfsLabel: 'Input into',
-    userDefined: false,
-    from: '184',
-    to: '160'
-  },
-  1844: {
-    edgeId: 1844,
     role: 'Subclass of',
-    id: '1844',
+    id: '1841',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '184',
-    to: '105'
+    to: '199'
   },
   1851: {
     edgeId: 1851,
-    role: 'Presented in',
+    role: 'Performed by',
     id: '1851',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
     userDefined: false,
     from: '185',
-    to: '147'
+    to: '56'
   },
   1852: {
     edgeId: 1852,
-    role: 'Provided by',
+    role: 'Included in',
     id: '1852',
+    label: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    rdfsLabel: 'Included in',
+    userDefined: false,
+    from: '185',
+    to: '161'
+  },
+  1853: {
+    edgeId: 1853,
+    role: 'Performed by',
+    id: '1853',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '185',
+    to: '107'
+  },
+  1854: {
+    edgeId: 1854,
+    role: 'Provided by',
+    id: '1854',
     label: 'Provided by',
     rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
     rdfsLabel: 'Provided by',
     userDefined: false,
     from: '185',
-    to: '103'
+    to: '70'
   },
-  1853: {
-    edgeId: 1853,
+  1855: {
+    edgeId: 1855,
+    role: 'Presented in',
+    id: '1855',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
+    userDefined: false,
+    from: '185',
+    to: '1'
+  },
+  1856: {
+    edgeId: 1856,
+    role: 'Performed by',
+    id: '1856',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '185',
+    to: '68'
+  },
+  1857: {
+    edgeId: 1857,
     role: 'Subclass of',
-    id: '1853',
+    id: '1857',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '185',
-    to: '1'
+    to: '54'
   },
   1861: {
     edgeId: 1861,
@@ -5204,7 +5226,39 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '186',
-    to: '24'
+    to: '199'
+  },
+  1862: {
+    edgeId: 1862,
+    role: 'Applied to',
+    id: '1862',
+    label: 'Applied to',
+    rdfAbout: 'http://webprotege.stanford.edu/RCt16VHlp30eNXujyqS0ik9',
+    rdfsLabel: 'Applied to',
+    userDefined: false,
+    from: '186',
+    to: '70'
+  },
+  1863: {
+    edgeId: 1863,
+    role: 'Used by',
+    id: '1863',
+    label: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    rdfsLabel: 'Used by',
+    userDefined: false,
+    from: '186',
+    to: '56'
+  },
+  1869: {
+    edgeId: 1869,
+    role: 'Found in',
+    id: '1869',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '1842'
   },
   1871: {
     edgeId: 1871,
@@ -5214,105 +5268,39 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '187',
-    to: '54'
+    to: '183'
   },
   1872: {
     edgeId: 1872,
-    role: 'Completed before',
+    role: 'Used in',
     id: '1872',
-    label: 'Completed before',
-    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
-    rdfsLabel: 'Completed before',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
     userDefined: false,
     from: '187',
-    to: '125'
+    to: '150'
   },
   1881: {
     edgeId: 1881,
-    role: 'Informed by',
+    role: 'Associated with',
     id: '1881',
-    label: 'Informed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
-    rdfsLabel: 'Informed by',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
     userDefined: false,
     from: '188',
-    to: '68'
+    to: '42'
   },
   1882: {
     edgeId: 1882,
-    role: 'Presented in',
-    id: '1882',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
-    userDefined: false,
-    from: '188',
-    to: '147'
-  },
-  1883: {
-    edgeId: 1883,
-    role: 'Associated with',
-    id: '1883',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '188',
-    to: '77'
-  },
-  1884: {
-    edgeId: 1884,
-    role: 'Identified by',
-    id: '1884',
-    label: 'Identified by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
-    rdfsLabel: 'Identified by',
-    userDefined: false,
-    from: '188',
-    to: '36'
-  },
-  1885: {
-    edgeId: 1885,
-    role: 'Affected by',
-    id: '1885',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '188',
-    to: '66'
-  },
-  1886: {
-    edgeId: 1886,
-    role: 'Managed by',
-    id: '1886',
-    label: 'Managed by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
-    rdfsLabel: 'Managed by',
-    userDefined: false,
-    from: '188',
-    to: '53'
-  },
-  1887: {
-    edgeId: 1887,
-    role: 'Associated with',
-    id: '1887',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '188',
-    to: '176'
-  },
-  1888: {
-    edgeId: 1888,
     role: 'Subclass of',
-    id: '1888',
+    id: '1882',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '188',
-    to: '114'
+    to: '170'
   },
   1891: {
     edgeId: 1891,
@@ -5322,51 +5310,68 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '189',
-    to: '51'
+    to: '109'
   },
   1892: {
     edgeId: 1892,
-    role: 'Included in',
+    role: 'Improved through',
     id: '1892',
-    label: 'Included in',
-    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
-    rdfsLabel: 'Included in',
+    label: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    rdfsLabel: 'Improved through',
     userDefined: false,
     from: '189',
-    to: '154'
+    to: '12'
   },
   1893: {
     edgeId: 1893,
-    role: 'Performed by',
+    role: 'Found in',
     id: '1893',
-    label: 'Performed by',
-    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
-    rdfsLabel: 'Performed by',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
     userDefined: false,
-    from: '189',
-    to: '53'
+    from: '137',
+    to: '1870'
   },
   1894: {
     edgeId: 1894,
-    role: 'Operated from',
+    role: 'Found in',
     id: '1894',
-    label: 'Operated from',
-    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
-    rdfsLabel: 'Operated from',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
     userDefined: false,
-    from: '189',
-    to: '186'
+    from: '140',
+    to: '1870'
   },
   1895: {
     edgeId: 1895,
-    role: 'Performed on',
+    role: 'Found in',
     id: '1895',
-    label: 'Performed on',
-    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
-    rdfsLabel: 'Performed on',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
     userDefined: false,
-    from: '189',
-    to: '70'
+    from: '87',
+    to: '1870'
+  },
+  1896: {
+    edgeId: 1896,
+    role: 'Found in',
+    id: '1896',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '45',
+    to: '1870'
+  },
+  1897: {
+    edgeId: 1897,
+    role: 'Found in',
+    id: '1897',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '1870'
   },
   1901: {
     edgeId: 1901,
@@ -5376,61 +5381,60 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '190',
-    to: '141'
+    to: '168'
   },
   1911: {
     edgeId: 1911,
-    role: 'Improved through',
-    id: '1911',
-    label: 'Improved through',
-    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
-    rdfsLabel: 'Improved through',
-    userDefined: false,
-    from: '191',
-    to: '161'
-  },
-  1912: {
-    edgeId: 1912,
     role: 'Subclass of',
-    id: '1912',
+    id: '1911',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '191',
-    to: '114'
+    to: '109'
   },
-  1913: {
-    edgeId: 1913,
-    role: 'Affected by',
-    id: '1913',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '191',
-    to: '194'
-  },
-  1914: {
-    edgeId: 1914,
-    role: 'Monitored by',
-    id: '1914',
-    label: 'Monitored by',
-    rdfAbout: 'http://webprotege.stanford.edu/RXKNigVZSAdET48254gS2w',
-    rdfsLabel: 'Monitored by',
-    userDefined: false,
-    from: '191',
-    to: '53'
-  },
-  1915: {
-    edgeId: 1915,
+  1912: {
+    edgeId: 1912,
     role: 'Improved through',
-    id: '1915',
+    id: '1912',
     label: 'Improved through',
     rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
     rdfsLabel: 'Improved through',
     userDefined: false,
     from: '191',
-    to: '12'
+    to: '168'
+  },
+  1913: {
+    edgeId: 1913,
+    role: 'Measured by',
+    id: '1913',
+    label: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    rdfsLabel: 'Measured by',
+    userDefined: false,
+    from: '191',
+    to: '128'
+  },
+  1914: {
+    edgeId: 1914,
+    role: 'Input into',
+    id: '1914',
+    label: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    rdfsLabel: 'Input into',
+    userDefined: false,
+    from: '191',
+    to: '167'
+  },
+  1920: {
+    edgeId: 1920,
+    role: 'Found in',
+    id: '1920',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '1898'
   },
   1921: {
     edgeId: 1921,
@@ -5440,40 +5444,59 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '192',
-    to: '90'
+    to: '1'
   },
   1922: {
     edgeId: 1922,
-    role: 'Operated from',
+    role: 'Presented in',
     id: '1922',
-    label: 'Operated from',
-    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
-    rdfsLabel: 'Operated from',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
     userDefined: false,
     from: '192',
-    to: '61'
+    to: '153'
   },
   1923: {
     edgeId: 1923,
-    role: 'Used in',
+    role: 'Provided by',
     id: '1923',
-    label: 'Used in',
-    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
-    rdfsLabel: 'Used in',
+    label: 'Provided by',
+    rdfAbout: 'http://webprotege.stanford.edu/RCptIcn975cERAVUlJOL7sV',
+    rdfsLabel: 'Provided by',
     userDefined: false,
     from: '192',
-    to: '161'
+    to: '107'
   },
   1924: {
     edgeId: 1924,
-    role: 'Used by',
+    role: 'Found in',
     id: '1924',
-    label: 'Used by',
-    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
-    rdfsLabel: 'Used by',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
     userDefined: false,
-    from: '192',
-    to: '53'
+    from: '145',
+    to: '1898'
+  },
+  1925: {
+    edgeId: 1925,
+    role: 'Found in',
+    id: '1925',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '144',
+    to: '1898'
+  },
+  1926: {
+    edgeId: 1926,
+    role: 'Found in',
+    id: '1926',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '1898'
   },
   1931: {
     edgeId: 1931,
@@ -5483,83 +5506,38 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '193',
-    to: '85'
-  },
-  1932: {
-    edgeId: 1932,
-    role: 'Agreed with',
-    id: '1932',
-    label: 'Agreed with',
-    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
-    rdfsLabel: 'Agreed with',
-    userDefined: false,
-    from: '193',
-    to: '128'
-  },
-  1933: {
-    edgeId: 1933,
-    role: 'Required for',
-    id: '1933',
-    label: 'Required for',
-    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
-    rdfsLabel: 'Required for',
-    userDefined: false,
-    from: '193',
-    to: '144'
+    to: '26'
   },
   1941: {
     edgeId: 1941,
-    role: 'Associated with',
-    id: '1941',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '194',
-    to: '66'
-  },
-  1942: {
-    edgeId: 1942,
-    role: 'Associated with',
-    id: '1942',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    userDefined: false,
-    from: '194',
-    to: '70'
-  },
-  1943: {
-    edgeId: 1943,
-    role: 'Input into',
-    id: '1943',
-    label: 'Input into',
-    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
-    rdfsLabel: 'Input into',
-    userDefined: false,
-    from: '194',
-    to: '160'
-  },
-  1944: {
-    edgeId: 1944,
-    role: 'Presented in',
-    id: '1944',
-    label: 'Presented in',
-    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
-    rdfsLabel: 'Presented in',
-    userDefined: false,
-    from: '194',
-    to: '14'
-  },
-  1945: {
-    edgeId: 1945,
     role: 'Subclass of',
-    id: '1945',
+    id: '1941',
     label: 'Subclass of',
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '194',
-    to: '62'
+    to: '57'
+  },
+  1942: {
+    edgeId: 1942,
+    role: 'Completed before',
+    id: '1942',
+    label: 'Completed before',
+    rdfAbout: 'http://webprotege.stanford.edu/RBGj27xJbqpVePdpgjXqeVk',
+    rdfsLabel: 'Completed before',
+    userDefined: false,
+    from: '194',
+    to: '131'
+  },
+  1947: {
+    edgeId: 1947,
+    role: 'Found in',
+    id: '1947',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '1927'
   },
   1951: {
     edgeId: 1951,
@@ -5569,94 +5547,3088 @@ export const objectPropertiesFromApi = {
     rdfsLabel: 'Subclass of',
     userDefined: false,
     from: '195',
-    to: '76'
+    to: '119'
   },
   1952: {
     edgeId: 1952,
-    role: 'Selected in',
+    role: 'Associated with',
     id: '1952',
-    label: 'Selected in',
-    rdfAbout: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
-    rdfsLabel: 'Selected in',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
     userDefined: false,
     from: '195',
-    to: '144'
+    to: '183'
   },
   1953: {
     edgeId: 1953,
-    role: 'Proposed in',
-    id: '1953',
-    label: 'Proposed in',
-    rdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
-    rdfsLabel: 'Proposed in',
-    userDefined: false,
-    from: '195',
-    to: '144'
-  },
-  7010: {
-    edgeId: 7010,
-    role: 'Represented within',
-    id: '7010',
-    label: 'Represented within',
-    rdfAbout: 'http://webprotege.stanford.edu/RcNW56SFgi34icUZNpsOET',
-    rdfsLabel: 'Represented within',
-    userDefined: false,
-    from: '70',
-    to: '155'
-  },
-  13910: {
-    edgeId: 13910,
-    role: 'Bounded by',
-    id: '13910',
-    label: 'Bounded by',
-    rdfAbout: 'http://webprotege.stanford.edu/RXCmh2J46cqAwwT2c4D7Bx',
-    rdfsLabel: 'Bounded by',
-    userDefined: false,
-    from: '139',
-    to: '181'
-  },
-  17610: {
-    edgeId: 17610,
     role: 'Informed by',
-    id: '17610',
+    id: '1953',
     label: 'Informed by',
     rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
     rdfsLabel: 'Informed by',
     userDefined: false,
-    from: '176',
-    to: '68'
-  },
-  17611: {
-    edgeId: 17611,
-    role: 'Affected by',
-    id: '17611',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '176',
-    to: '72'
-  },
-  17612: {
-    edgeId: 17612,
-    role: 'Affected by',
-    id: '17612',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '176',
-    to: '43'
-  },
-  17613: {
-    edgeId: 17613,
-    role: 'Affected by',
-    id: '17613',
-    label: 'Affected by',
-    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    rdfsLabel: 'Affected by',
-    userDefined: false,
-    from: '176',
+    from: '195',
     to: '71'
+  },
+  1954: {
+    edgeId: 1954,
+    role: 'Identified by',
+    id: '1954',
+    label: 'Identified by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBog5Fl0hcK19z2umsYIBzn',
+    rdfsLabel: 'Identified by',
+    userDefined: false,
+    from: '195',
+    to: '39'
+  },
+  1955: {
+    edgeId: 1955,
+    role: 'Affected by',
+    id: '1955',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '195',
+    to: '69'
+  },
+  1956: {
+    edgeId: 1956,
+    role: 'Associated with',
+    id: '1956',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '195',
+    to: '80'
+  },
+  1957: {
+    edgeId: 1957,
+    role: 'Managed by',
+    id: '1957',
+    label: 'Managed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBXkLIHl4DLxgRus9nf68fU',
+    rdfsLabel: 'Managed by',
+    userDefined: false,
+    from: '195',
+    to: '56'
+  },
+  1958: {
+    edgeId: 1958,
+    role: 'Presented in',
+    id: '1958',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
+    userDefined: false,
+    from: '195',
+    to: '153'
+  },
+  1961: {
+    edgeId: 1961,
+    role: 'Operated from',
+    id: '1961',
+    label: 'Operated from',
+    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+    rdfsLabel: 'Operated from',
+    userDefined: false,
+    from: '196',
+    to: '193'
+  },
+  1962: {
+    edgeId: 1962,
+    role: 'Subclass of',
+    id: '1962',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '196',
+    to: '54'
+  },
+  1963: {
+    edgeId: 1963,
+    role: 'Performed by',
+    id: '1963',
+    label: 'Performed by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7cbyWVOLsYCR1NFY11TBjJ',
+    rdfsLabel: 'Performed by',
+    userDefined: false,
+    from: '196',
+    to: '56'
+  },
+  1964: {
+    edgeId: 1964,
+    role: 'Performed on',
+    id: '1964',
+    label: 'Performed on',
+    rdfAbout: 'http://webprotege.stanford.edu/RDWT4jt5mF3fw4zrooDr58g',
+    rdfsLabel: 'Performed on',
+    userDefined: false,
+    from: '196',
+    to: '73'
+  },
+  1965: {
+    edgeId: 1965,
+    role: 'Included in',
+    id: '1965',
+    label: 'Included in',
+    rdfAbout: 'http://webprotege.stanford.edu/R8jWMWKWG5xCyyCGXksUAbL',
+    rdfsLabel: 'Included in',
+    userDefined: false,
+    from: '196',
+    to: '161'
+  },
+  1971: {
+    edgeId: 1971,
+    role: 'Subclass of',
+    id: '1971',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '197',
+    to: '147'
+  },
+  1979: {
+    edgeId: 1979,
+    role: 'Found in',
+    id: '1979',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '5',
+    to: '1948'
+  },
+  1981: {
+    edgeId: 1981,
+    role: 'Subclass of',
+    id: '1981',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '198',
+    to: '119'
+  },
+  1982: {
+    edgeId: 1982,
+    role: 'Improved through',
+    id: '1982',
+    label: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    rdfsLabel: 'Improved through',
+    userDefined: false,
+    from: '198',
+    to: '168'
+  },
+  1983: {
+    edgeId: 1983,
+    role: 'Monitored by',
+    id: '1983',
+    label: 'Monitored by',
+    rdfAbout: 'http://webprotege.stanford.edu/RXKNigVZSAdET48254gS2w',
+    rdfsLabel: 'Monitored by',
+    userDefined: false,
+    from: '198',
+    to: '56'
+  },
+  1984: {
+    edgeId: 1984,
+    role: 'Affected by',
+    id: '1984',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '198',
+    to: '201'
+  },
+  1985: {
+    edgeId: 1985,
+    role: 'Improved through',
+    id: '1985',
+    label: 'Improved through',
+    rdfAbout: 'http://webprotege.stanford.edu/R8fzvBl85R2Nc2SqsikiKp9',
+    rdfsLabel: 'Improved through',
+    userDefined: false,
+    from: '198',
+    to: '12'
+  },
+  1991: {
+    edgeId: 1991,
+    role: 'Subclass of',
+    id: '1991',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '199',
+    to: '93'
+  },
+  1992: {
+    edgeId: 1992,
+    role: 'Operated from',
+    id: '1992',
+    label: 'Operated from',
+    rdfAbout: 'http://webprotege.stanford.edu/RvMCpTSGsQmEAyy8Mi6fdN',
+    rdfsLabel: 'Operated from',
+    userDefined: false,
+    from: '199',
+    to: '64'
+  },
+  1993: {
+    edgeId: 1993,
+    role: 'Used in',
+    id: '1993',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '199',
+    to: '168'
+  },
+  1994: {
+    edgeId: 1994,
+    role: 'Used by',
+    id: '1994',
+    label: 'Used by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDHyoSHFDLL9G8kmD2B11Go',
+    rdfsLabel: 'Used by',
+    userDefined: false,
+    from: '199',
+    to: '56'
+  },
+  2001: {
+    edgeId: 2001,
+    role: 'Required for',
+    id: '2001',
+    label: 'Required for',
+    rdfAbout: 'http://webprotege.stanford.edu/R7uRVbFaeQ4xCgAEayawrZ3',
+    rdfsLabel: 'Required for',
+    userDefined: false,
+    from: '200',
+    to: '150'
+  },
+  2002: {
+    edgeId: 2002,
+    role: 'Subclass of',
+    id: '2002',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '200',
+    to: '88'
+  },
+  2003: {
+    edgeId: 2003,
+    role: 'Agreed with',
+    id: '2003',
+    label: 'Agreed with',
+    rdfAbout: 'http://webprotege.stanford.edu/R7xuMweW7v6CbTdPcVpjdp3',
+    rdfsLabel: 'Agreed with',
+    userDefined: false,
+    from: '200',
+    to: '134'
+  },
+  2009: {
+    edgeId: 2009,
+    role: 'Found in',
+    id: '2009',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '35',
+    to: '1980'
+  },
+  2010: {
+    edgeId: 2010,
+    role: 'Found in',
+    id: '2010',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '1980'
+  },
+  2011: {
+    edgeId: 2011,
+    role: 'Associated with',
+    id: '2011',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '201',
+    to: '73'
+  },
+  2012: {
+    edgeId: 2012,
+    role: 'Subclass of',
+    id: '2012',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '201',
+    to: '65'
+  },
+  2013: {
+    edgeId: 2013,
+    role: 'Associated with',
+    id: '2013',
+    label: 'Associated with',
+    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+    rdfsLabel: 'Associated with',
+    userDefined: false,
+    from: '201',
+    to: '69'
+  },
+  2014: {
+    edgeId: 2014,
+    role: 'Input into',
+    id: '2014',
+    label: 'Input into',
+    rdfAbout: 'http://webprotege.stanford.edu/RC0fF4cbTcg59fvYtEu1FF0',
+    rdfsLabel: 'Input into',
+    userDefined: false,
+    from: '201',
+    to: '167'
+  },
+  2015: {
+    edgeId: 2015,
+    role: 'Presented in',
+    id: '2015',
+    label: 'Presented in',
+    rdfAbout: 'http://webprotege.stanford.edu/RBouRer6kTdZCfCZ4kpk7K3',
+    rdfsLabel: 'Presented in',
+    userDefined: false,
+    from: '201',
+    to: '15'
+  },
+  2021: {
+    edgeId: 2021,
+    role: 'Selected in',
+    id: '2021',
+    label: 'Selected in',
+    rdfAbout: 'http://webprotege.stanford.edu/R5u6iRwByXm7q6dOcaVRk8',
+    rdfsLabel: 'Selected in',
+    userDefined: false,
+    from: '202',
+    to: '150'
+  },
+  2022: {
+    edgeId: 2022,
+    role: 'Proposed in',
+    id: '2022',
+    label: 'Proposed in',
+    rdfAbout: 'http://webprotege.stanford.edu/R4I2v4Y7su3Adf0Vcj6TWd',
+    rdfsLabel: 'Proposed in',
+    userDefined: false,
+    from: '202',
+    to: '150'
+  },
+  2023: {
+    edgeId: 2023,
+    role: 'Subclass of',
+    id: '2023',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '202',
+    to: '79'
+  },
+  2036: {
+    edgeId: 2036,
+    role: 'Found in',
+    id: '2036',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '21',
+    to: '2016'
+  },
+  2071: {
+    edgeId: 2071,
+    role: 'Found in',
+    id: '2071',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '113',
+    to: '2054'
+  },
+  2072: {
+    edgeId: 2072,
+    role: 'Found in',
+    id: '2072',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '152',
+    to: '2054'
+  },
+  2073: {
+    edgeId: 2073,
+    role: 'Found in',
+    id: '2073',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '2054'
+  },
+  2074: {
+    edgeId: 2074,
+    role: 'Found in',
+    id: '2074',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '2054'
+  },
+  2126: {
+    edgeId: 2126,
+    role: 'Found in',
+    id: '2126',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '142',
+    to: '2109'
+  },
+  2127: {
+    edgeId: 2127,
+    role: 'Found in',
+    id: '2127',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '107',
+    to: '2109'
+  },
+  2145: {
+    edgeId: 2145,
+    role: 'Found in',
+    id: '2145',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '142',
+    to: '2128'
+  },
+  2163: {
+    edgeId: 2163,
+    role: 'Found in',
+    id: '2163',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '4',
+    to: '2146'
+  },
+  2198: {
+    edgeId: 2198,
+    role: 'Found in',
+    id: '2198',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '109',
+    to: '2181'
+  },
+  2199: {
+    edgeId: 2199,
+    role: 'Found in',
+    id: '2199',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '2181'
+  },
+  2200: {
+    edgeId: 2200,
+    role: 'Found in',
+    id: '2200',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '2181'
+  },
+  2218: {
+    edgeId: 2218,
+    role: 'Found in',
+    id: '2218',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '110',
+    to: '2201'
+  },
+  2219: {
+    edgeId: 2219,
+    role: 'Found in',
+    id: '2219',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '68',
+    to: '2201'
+  },
+  2237: {
+    edgeId: 2237,
+    role: 'Found in',
+    id: '2237',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '144',
+    to: '2220'
+  },
+  2255: {
+    edgeId: 2255,
+    role: 'Found in',
+    id: '2255',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '2238'
+  },
+  2273: {
+    edgeId: 2273,
+    role: 'Found in',
+    id: '2273',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '75',
+    to: '2256'
+  },
+  2291: {
+    edgeId: 2291,
+    role: 'Found in',
+    id: '2291',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '166',
+    to: '2274'
+  },
+  2292: {
+    edgeId: 2292,
+    role: 'Found in',
+    id: '2292',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '94',
+    to: '2274'
+  },
+  2310: {
+    edgeId: 2310,
+    role: 'Found in',
+    id: '2310',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '48',
+    to: '2293'
+  },
+  2328: {
+    edgeId: 2328,
+    role: 'Found in',
+    id: '2328',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '71',
+    to: '2311'
+  },
+  2329: {
+    edgeId: 2329,
+    role: 'Found in',
+    id: '2329',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '8',
+    to: '2311'
+  },
+  2347: {
+    edgeId: 2347,
+    role: 'Found in',
+    id: '2347',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '21',
+    to: '2330'
+  },
+  2365: {
+    edgeId: 2365,
+    role: 'Found in',
+    id: '2365',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '2348'
+  },
+  2383: {
+    edgeId: 2383,
+    role: 'Found in',
+    id: '2383',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '2366'
+  },
+  2418: {
+    edgeId: 2418,
+    role: 'Found in',
+    id: '2418',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '2401'
+  },
+  2419: {
+    edgeId: 2419,
+    role: 'Found in',
+    id: '2419',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '2401'
+  },
+  2437: {
+    edgeId: 2437,
+    role: 'Found in',
+    id: '2437',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '94',
+    to: '2420'
+  },
+  2438: {
+    edgeId: 2438,
+    role: 'Found in',
+    id: '2438',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '129',
+    to: '2420'
+  },
+  2439: {
+    edgeId: 2439,
+    role: 'Found in',
+    id: '2439',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2420'
+  },
+  2440: {
+    edgeId: 2440,
+    role: 'Found in',
+    id: '2440',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '30',
+    to: '2420'
+  },
+  2458: {
+    edgeId: 2458,
+    role: 'Found in',
+    id: '2458',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '144',
+    to: '2441'
+  },
+  2476: {
+    edgeId: 2476,
+    role: 'Found in',
+    id: '2476',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2459'
+  },
+  2477: {
+    edgeId: 2477,
+    role: 'Found in',
+    id: '2477',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '13',
+    to: '2459'
+  },
+  2495: {
+    edgeId: 2495,
+    role: 'Found in',
+    id: '2495',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '113',
+    to: '2478'
+  },
+  2513: {
+    edgeId: 2513,
+    role: 'Found in',
+    id: '2513',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '201',
+    to: '2496'
+  },
+  2514: {
+    edgeId: 2514,
+    role: 'Found in',
+    id: '2514',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '69',
+    to: '2496'
+  },
+  2515: {
+    edgeId: 2515,
+    role: 'Found in',
+    id: '2515',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '12',
+    to: '2496'
+  },
+  2516: {
+    edgeId: 2516,
+    role: 'Found in',
+    id: '2516',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2496'
+  },
+  2534: {
+    edgeId: 2534,
+    role: 'Found in',
+    id: '2534',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '2517'
+  },
+  2535: {
+    edgeId: 2535,
+    role: 'Found in',
+    id: '2535',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '2517'
+  },
+  2536: {
+    edgeId: 2536,
+    role: 'Found in',
+    id: '2536',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2517'
+  },
+  2537: {
+    edgeId: 2537,
+    role: 'Found in',
+    id: '2537',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '62',
+    to: '2517'
+  },
+  2555: {
+    edgeId: 2555,
+    role: 'Found in',
+    id: '2555',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '60',
+    to: '2538'
+  },
+  2607: {
+    edgeId: 2607,
+    role: 'Found in',
+    id: '2607',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2590'
+  },
+  2608: {
+    edgeId: 2608,
+    role: 'Found in',
+    id: '2608',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '58',
+    to: '2590'
+  },
+  2626: {
+    edgeId: 2626,
+    role: 'Found in',
+    id: '2626',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2609'
+  },
+  2627: {
+    edgeId: 2627,
+    role: 'Found in',
+    id: '2627',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '30',
+    to: '2609'
+  },
+  2679: {
+    edgeId: 2679,
+    role: 'Found in',
+    id: '2679',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '48',
+    to: '2662'
+  },
+  2697: {
+    edgeId: 2697,
+    role: 'Found in',
+    id: '2697',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '2680'
+  },
+  2698: {
+    edgeId: 2698,
+    role: 'Found in',
+    id: '2698',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '2680'
+  },
+  2699: {
+    edgeId: 2699,
+    role: 'Found in',
+    id: '2699',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '2680'
+  },
+  2717: {
+    edgeId: 2717,
+    role: 'Found in',
+    id: '2717',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2700'
+  },
+  2718: {
+    edgeId: 2718,
+    role: 'Found in',
+    id: '2718',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '32',
+    to: '2700'
+  },
+  2736: {
+    edgeId: 2736,
+    role: 'Found in',
+    id: '2736',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '2719'
+  },
+  2771: {
+    edgeId: 2771,
+    role: 'Found in',
+    id: '2771',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '2754'
+  },
+  2789: {
+    edgeId: 2789,
+    role: 'Found in',
+    id: '2789',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '2772'
+  },
+  2790: {
+    edgeId: 2790,
+    role: 'Found in',
+    id: '2790',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '2772'
+  },
+  2791: {
+    edgeId: 2791,
+    role: 'Found in',
+    id: '2791',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2772'
+  },
+  2792: {
+    edgeId: 2792,
+    role: 'Found in',
+    id: '2792',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '62',
+    to: '2772'
+  },
+  2810: {
+    edgeId: 2810,
+    role: 'Found in',
+    id: '2810',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '2793'
+  },
+  2828: {
+    edgeId: 2828,
+    role: 'Found in',
+    id: '2828',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '129',
+    to: '2811'
+  },
+  2846: {
+    edgeId: 2846,
+    role: 'Found in',
+    id: '2846',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '2829'
+  },
+  2847: {
+    edgeId: 2847,
+    role: 'Found in',
+    id: '2847',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '2829'
+  },
+  2848: {
+    edgeId: 2848,
+    role: 'Found in',
+    id: '2848',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '2829'
+  },
+  2866: {
+    edgeId: 2866,
+    role: 'Found in',
+    id: '2866',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '2849'
+  },
+  2867: {
+    edgeId: 2867,
+    role: 'Found in',
+    id: '2867',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '84',
+    to: '2849'
+  },
+  2868: {
+    edgeId: 2868,
+    role: 'Found in',
+    id: '2868',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '2849'
+  },
+  2869: {
+    edgeId: 2869,
+    role: 'Found in',
+    id: '2869',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '2849'
+  },
+  2870: {
+    edgeId: 2870,
+    role: 'Found in',
+    id: '2870',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '2849'
+  },
+  2871: {
+    edgeId: 2871,
+    role: 'Found in',
+    id: '2871',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '82',
+    to: '2849'
+  },
+  2872: {
+    edgeId: 2872,
+    role: 'Found in',
+    id: '2872',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '144',
+    to: '2849'
+  },
+  2873: {
+    edgeId: 2873,
+    role: 'Found in',
+    id: '2873',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '2849'
+  },
+  2891: {
+    edgeId: 2891,
+    role: 'Found in',
+    id: '2891',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '4',
+    to: '2874'
+  },
+  2909: {
+    edgeId: 2909,
+    role: 'Found in',
+    id: '2909',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '2892'
+  },
+  2927: {
+    edgeId: 2927,
+    role: 'Found in',
+    id: '2927',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '68',
+    to: '2910'
+  },
+  2945: {
+    edgeId: 2945,
+    role: 'Found in',
+    id: '2945',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '2928'
+  },
+  2963: {
+    edgeId: 2963,
+    role: 'Found in',
+    id: '2963',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '2946'
+  },
+  2998: {
+    edgeId: 2998,
+    role: 'Found in',
+    id: '2998',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '52',
+    to: '2981'
+  },
+  2999: {
+    edgeId: 2999,
+    role: 'Found in',
+    id: '2999',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '117',
+    to: '2981'
+  },
+  3017: {
+    edgeId: 3017,
+    role: 'Found in',
+    id: '3017',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3000'
+  },
+  3018: {
+    edgeId: 3018,
+    role: 'Found in',
+    id: '3018',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '3000'
+  },
+  3019: {
+    edgeId: 3019,
+    role: 'Found in',
+    id: '3019',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '3000'
+  },
+  3020: {
+    edgeId: 3020,
+    role: 'Found in',
+    id: '3020',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3000'
+  },
+  3021: {
+    edgeId: 3021,
+    role: 'Found in',
+    id: '3021',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3000'
+  },
+  3039: {
+    edgeId: 3039,
+    role: 'Found in',
+    id: '3039',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3022'
+  },
+  3040: {
+    edgeId: 3040,
+    role: 'Found in',
+    id: '3040',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '3022'
+  },
+  3041: {
+    edgeId: 3041,
+    role: 'Found in',
+    id: '3041',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '3022'
+  },
+  3042: {
+    edgeId: 3042,
+    role: 'Found in',
+    id: '3042',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3022'
+  },
+  3043: {
+    edgeId: 3043,
+    role: 'Found in',
+    id: '3043',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3022'
+  },
+  3061: {
+    edgeId: 3061,
+    role: 'Found in',
+    id: '3061',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3044'
+  },
+  3062: {
+    edgeId: 3062,
+    role: 'Found in',
+    id: '3062',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '3044'
+  },
+  3063: {
+    edgeId: 3063,
+    role: 'Found in',
+    id: '3063',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '3044'
+  },
+  3064: {
+    edgeId: 3064,
+    role: 'Found in',
+    id: '3064',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3044'
+  },
+  3065: {
+    edgeId: 3065,
+    role: 'Found in',
+    id: '3065',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3044'
+  },
+  3083: {
+    edgeId: 3083,
+    role: 'Found in',
+    id: '3083',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3066'
+  },
+  3084: {
+    edgeId: 3084,
+    role: 'Found in',
+    id: '3084',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '3066'
+  },
+  3085: {
+    edgeId: 3085,
+    role: 'Found in',
+    id: '3085',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '3066'
+  },
+  3086: {
+    edgeId: 3086,
+    role: 'Found in',
+    id: '3086',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3066'
+  },
+  3087: {
+    edgeId: 3087,
+    role: 'Found in',
+    id: '3087',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3066'
+  },
+  3105: {
+    edgeId: 3105,
+    role: 'Found in',
+    id: '3105',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '4',
+    to: '3088'
+  },
+  3123: {
+    edgeId: 3123,
+    role: 'Found in',
+    id: '3123',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '4',
+    to: '3106'
+  },
+  3141: {
+    edgeId: 3141,
+    role: 'Found in',
+    id: '3141',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '5',
+    to: '3124'
+  },
+  3159: {
+    edgeId: 3159,
+    role: 'Found in',
+    id: '3159',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '168',
+    to: '3142'
+  },
+  3177: {
+    edgeId: 3177,
+    role: 'Found in',
+    id: '3177',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '55',
+    to: '3160'
+  },
+  3195: {
+    edgeId: 3195,
+    role: 'Found in',
+    id: '3195',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '9',
+    to: '3178'
+  },
+  3196: {
+    edgeId: 3196,
+    role: 'Found in',
+    id: '3196',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '105',
+    to: '3178'
+  },
+  3197: {
+    edgeId: 3197,
+    role: 'Found in',
+    id: '3197',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '11',
+    to: '3178'
+  },
+  3198: {
+    edgeId: 3198,
+    role: 'Found in',
+    id: '3198',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '113',
+    to: '3178'
+  },
+  3199: {
+    edgeId: 3199,
+    role: 'Found in',
+    id: '3199',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '36',
+    to: '3178'
+  },
+  3200: {
+    edgeId: 3200,
+    role: 'Found in',
+    id: '3200',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '3178'
+  },
+  3201: {
+    edgeId: 3201,
+    role: 'Found in',
+    id: '3201',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '3178'
+  },
+  3202: {
+    edgeId: 3202,
+    role: 'Found in',
+    id: '3202',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '56',
+    to: '3178'
+  },
+  3220: {
+    edgeId: 3220,
+    role: 'Found in',
+    id: '3220',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '3203'
+  },
+  3221: {
+    edgeId: 3221,
+    role: 'Found in',
+    id: '3221',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '2',
+    to: '3203'
+  },
+  3239: {
+    edgeId: 3239,
+    role: 'Found in',
+    id: '3239',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '3222'
+  },
+  3240: {
+    edgeId: 3240,
+    role: 'Found in',
+    id: '3240',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3222'
+  },
+  3258: {
+    edgeId: 3258,
+    role: 'Found in',
+    id: '3258',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '3241'
+  },
+  3259: {
+    edgeId: 3259,
+    role: 'Found in',
+    id: '3259',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3241'
+  },
+  3260: {
+    edgeId: 3260,
+    role: 'Found in',
+    id: '3260',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3241'
+  },
+  3278: {
+    edgeId: 3278,
+    role: 'Found in',
+    id: '3278',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3261'
+  },
+  3296: {
+    edgeId: 3296,
+    role: 'Found in',
+    id: '3296',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3279'
+  },
+  3331: {
+    edgeId: 3331,
+    role: 'Found in',
+    id: '3331',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '5',
+    to: '3314'
+  },
+  3349: {
+    edgeId: 3349,
+    role: 'Found in',
+    id: '3349',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '3332'
+  },
+  3350: {
+    edgeId: 3350,
+    role: 'Found in',
+    id: '3350',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '3332'
+  },
+  3351: {
+    edgeId: 3351,
+    role: 'Found in',
+    id: '3351',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3332'
+  },
+  3369: {
+    edgeId: 3369,
+    role: 'Found in',
+    id: '3369',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '3352'
+  },
+  3370: {
+    edgeId: 3370,
+    role: 'Found in',
+    id: '3370',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '58',
+    to: '3352'
+  },
+  3388: {
+    edgeId: 3388,
+    role: 'Found in',
+    id: '3388',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '178',
+    to: '3371'
+  },
+  3406: {
+    edgeId: 3406,
+    role: 'Found in',
+    id: '3406',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '5',
+    to: '3389'
+  },
+  3424: {
+    edgeId: 3424,
+    role: 'Found in',
+    id: '3424',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '144',
+    to: '3407'
+  },
+  3442: {
+    edgeId: 3442,
+    role: 'Found in',
+    id: '3442',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '5',
+    to: '3425'
+  },
+  3443: {
+    edgeId: 3443,
+    role: 'Found in',
+    id: '3443',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '71',
+    to: '3425'
+  },
+  3461: {
+    edgeId: 3461,
+    role: 'Found in',
+    id: '3461',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '117',
+    to: '3444'
+  },
+  3479: {
+    edgeId: 3479,
+    role: 'Found in',
+    id: '3479',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '82',
+    to: '3462'
+  },
+  3497: {
+    edgeId: 3497,
+    role: 'Found in',
+    id: '3497',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3480'
+  },
+  3498: {
+    edgeId: 3498,
+    role: 'Found in',
+    id: '3498',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '3480'
+  },
+  3499: {
+    edgeId: 3499,
+    role: 'Found in',
+    id: '3499',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '152',
+    to: '3480'
+  },
+  3500: {
+    edgeId: 3500,
+    role: 'Found in',
+    id: '3500',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '140',
+    to: '3480'
+  },
+  3518: {
+    edgeId: 3518,
+    role: 'Found in',
+    id: '3518',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '140',
+    to: '3501'
+  },
+  3536: {
+    edgeId: 3536,
+    role: 'Found in',
+    id: '3536',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '140',
+    to: '3519'
+  },
+  3554: {
+    edgeId: 3554,
+    role: 'Found in',
+    id: '3554',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '129',
+    to: '3537'
+  },
+  3572: {
+    edgeId: 3572,
+    role: 'Found in',
+    id: '3572',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '5',
+    to: '3555'
+  },
+  3590: {
+    edgeId: 3590,
+    role: 'Found in',
+    id: '3590',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '3573'
+  },
+  3591: {
+    edgeId: 3591,
+    role: 'Found in',
+    id: '3591',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '3573'
+  },
+  3609: {
+    edgeId: 3609,
+    role: 'Found in',
+    id: '3609',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '3592'
+  },
+  3610: {
+    edgeId: 3610,
+    role: 'Found in',
+    id: '3610',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '3592'
+  },
+  3628: {
+    edgeId: 3628,
+    role: 'Found in',
+    id: '3628',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '71',
+    to: '3611'
+  },
+  3629: {
+    edgeId: 3629,
+    role: 'Found in',
+    id: '3629',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '3611'
+  },
+  3630: {
+    edgeId: 3630,
+    role: 'Found in',
+    id: '3630',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3611'
+  },
+  3648: {
+    edgeId: 3648,
+    role: 'Found in',
+    id: '3648',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3631'
+  },
+  3649: {
+    edgeId: 3649,
+    role: 'Found in',
+    id: '3649',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '3631'
+  },
+  3650: {
+    edgeId: 3650,
+    role: 'Found in',
+    id: '3650',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '3631'
+  },
+  3668: {
+    edgeId: 3668,
+    role: 'Found in',
+    id: '3668',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3651'
+  },
+  3669: {
+    edgeId: 3669,
+    role: 'Found in',
+    id: '3669',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '144',
+    to: '3651'
+  },
+  3687: {
+    edgeId: 3687,
+    role: 'Found in',
+    id: '3687',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '3670'
+  },
+  3688: {
+    edgeId: 3688,
+    role: 'Found in',
+    id: '3688',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '3670'
+  },
+  3706: {
+    edgeId: 3706,
+    role: 'Found in',
+    id: '3706',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '3689'
+  },
+  3724: {
+    edgeId: 3724,
+    role: 'Found in',
+    id: '3724',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '3707'
+  },
+  3742: {
+    edgeId: 3742,
+    role: 'Found in',
+    id: '3742',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '82',
+    to: '3725'
+  },
+  3777: {
+    edgeId: 3777,
+    role: 'Found in',
+    id: '3777',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '3760'
+  },
+  3795: {
+    edgeId: 3795,
+    role: 'Found in',
+    id: '3795',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '3778'
+  },
+  3813: {
+    edgeId: 3813,
+    role: 'Found in',
+    id: '3813',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '60',
+    to: '3796'
+  },
+  3831: {
+    edgeId: 3831,
+    role: 'Found in',
+    id: '3831',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3814'
+  },
+  3849: {
+    edgeId: 3849,
+    role: 'Found in',
+    id: '3849',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '129',
+    to: '3832'
+  },
+  3867: {
+    edgeId: 3867,
+    role: 'Found in',
+    id: '3867',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3850'
+  },
+  3885: {
+    edgeId: 3885,
+    role: 'Found in',
+    id: '3885',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '3868'
+  },
+  3903: {
+    edgeId: 3903,
+    role: 'Found in',
+    id: '3903',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '3886'
+  },
+  3904: {
+    edgeId: 3904,
+    role: 'Found in',
+    id: '3904',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '3886'
+  },
+  3905: {
+    edgeId: 3905,
+    role: 'Found in',
+    id: '3905',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '124',
+    to: '3886'
+  },
+  3906: {
+    edgeId: 3906,
+    role: 'Found in',
+    id: '3906',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3886'
+  },
+  3907: {
+    edgeId: 3907,
+    role: 'Found in',
+    id: '3907',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3886'
+  },
+  3925: {
+    edgeId: 3925,
+    role: 'Found in',
+    id: '3925',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3908'
+  },
+  3960: {
+    edgeId: 3960,
+    role: 'Found in',
+    id: '3960',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '5',
+    to: '3943'
+  },
+  3978: {
+    edgeId: 3978,
+    role: 'Found in',
+    id: '3978',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '5',
+    to: '3961'
+  },
+  3999: {
+    edgeId: 3999,
+    role: 'Found in',
+    id: '3999',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '128',
+    to: '3996'
+  },
+  4003: {
+    edgeId: 4003,
+    role: 'Found in',
+    id: '4003',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '128',
+    to: '4000'
+  },
+  4007: {
+    edgeId: 4007,
+    role: 'Found in',
+    id: '4007',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '158',
+    to: '4004'
+  },
+  4011: {
+    edgeId: 4011,
+    role: 'Found in',
+    id: '4011',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '68',
+    to: '4008'
+  },
+  4012: {
+    edgeId: 4012,
+    role: 'Found in',
+    id: '4012',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '108',
+    to: '4000'
+  },
+  4013: {
+    edgeId: 4013,
+    role: 'Found in',
+    id: '4013',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '32',
+    to: '4000'
+  },
+  4014: {
+    edgeId: 4014,
+    role: 'Found in',
+    id: '4014',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '24',
+    to: '4004'
+  },
+  4015: {
+    edgeId: 4015,
+    role: 'Found in',
+    id: '4015',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '104',
+    to: '3996'
+  },
+  4016: {
+    edgeId: 4016,
+    role: 'Found in',
+    id: '4016',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '104',
+    to: '4004'
+  },
+  4017: {
+    edgeId: 4017,
+    role: 'Found in',
+    id: '4017',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '35',
+    to: '4000'
+  },
+  4018: {
+    edgeId: 4018,
+    role: 'Found in',
+    id: '4018',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '35',
+    to: '2964'
+  },
+  4019: {
+    edgeId: 4019,
+    role: 'Found in',
+    id: '4019',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '155',
+    to: '4000'
+  },
+  4020: {
+    edgeId: 4020,
+    role: 'Found in',
+    id: '4020',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '56',
+    to: '4008'
+  },
+  4021: {
+    edgeId: 4021,
+    role: 'Found in',
+    id: '4021',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '56',
+    to: '4000'
+  },
+  4022: {
+    edgeId: 4022,
+    role: 'Found in',
+    id: '4022',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '56',
+    to: '2964'
+  },
+  4023: {
+    edgeId: 4023,
+    role: 'Found in',
+    id: '4023',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '54',
+    to: '4000'
+  },
+  4024: {
+    edgeId: 4024,
+    role: 'Found in',
+    id: '4024',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '119',
+    to: '3996'
+  },
+  4025: {
+    edgeId: 4025,
+    role: 'Found in',
+    id: '4025',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '119',
+    to: '4000'
+  },
+  4026: {
+    edgeId: 4026,
+    role: 'Found in',
+    id: '4026',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '140',
+    to: '3480'
+  },
+  4027: {
+    edgeId: 4027,
+    role: 'Found in',
+    id: '4027',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '105',
+    to: '4008'
+  },
+  4028: {
+    edgeId: 4028,
+    role: 'Found in',
+    id: '4028',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '9',
+    to: '4008'
+  },
+  4029: {
+    edgeId: 4029,
+    role: 'Found in',
+    id: '4029',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '112',
+    to: '2964'
+  },
+  4030: {
+    edgeId: 4030,
+    role: 'Found in',
+    id: '4030',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '58',
+    to: '4000'
+  },
+  4031: {
+    edgeId: 4031,
+    role: 'Found in',
+    id: '4031',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '84',
+    to: '3996'
+  },
+  4032: {
+    edgeId: 4032,
+    role: 'Found in',
+    id: '4032',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '36',
+    to: '4008'
+  },
+  4033: {
+    edgeId: 4033,
+    role: 'Found in',
+    id: '4033',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '176',
+    to: '4000'
+  },
+  4034: {
+    edgeId: 4034,
+    role: 'Found in',
+    id: '4034',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '82',
+    to: '3996'
+  },
+  4035: {
+    edgeId: 4035,
+    role: 'Found in',
+    id: '4035',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '2964'
+  },
+  4036: {
+    edgeId: 4036,
+    role: 'Found in',
+    id: '4036',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '53',
+    to: '3996'
+  },
+  4037: {
+    edgeId: 4037,
+    role: 'Found in',
+    id: '4037',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '62',
+    to: '4000'
+  },
+  4038: {
+    edgeId: 4038,
+    role: 'Found in',
+    id: '4038',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '145',
+    to: '3996'
+  },
+  4039: {
+    edgeId: 4039,
+    role: 'Found in',
+    id: '4039',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '34',
+    to: '2964'
+  },
+  4040: {
+    edgeId: 4040,
+    role: 'Found in',
+    id: '4040',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '51',
+    to: '3996'
+  },
+  4041: {
+    edgeId: 4041,
+    role: 'Found in',
+    id: '4041',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '51',
+    to: '4004'
+  },
+  4042: {
+    edgeId: 4042,
+    role: 'Found in',
+    id: '4042',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '11',
+    to: '4008'
+  },
+  4043: {
+    edgeId: 4043,
+    role: 'Found in',
+    id: '4043',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '144',
+    to: '3996'
+  },
+  4044: {
+    edgeId: 4044,
+    role: 'Found in',
+    id: '4044',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '161',
+    to: '2964'
+  },
+  4045: {
+    edgeId: 4045,
+    role: 'Found in',
+    id: '4045',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '4008'
+  },
+  4046: {
+    edgeId: 4046,
+    role: 'Found in',
+    id: '4046',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '3996'
+  },
+  4047: {
+    edgeId: 4047,
+    role: 'Found in',
+    id: '4047',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '4000'
+  },
+  4048: {
+    edgeId: 4048,
+    role: 'Found in',
+    id: '4048',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '2964'
+  },
+  4049: {
+    edgeId: 4049,
+    role: 'Found in',
+    id: '4049',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '188',
+    to: '3480'
+  },
+  4050: {
+    edgeId: 4050,
+    role: 'Found in',
+    id: '4050',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '195',
+    to: '4000'
+  },
+  4051: {
+    edgeId: 4051,
+    role: 'Found in',
+    id: '4051',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '13',
+    to: '4000'
+  },
+  4052: {
+    edgeId: 4052,
+    role: 'Found in',
+    id: '4052',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '73',
+    to: '4000'
+  },
+  4053: {
+    edgeId: 4053,
+    role: 'Found in',
+    id: '4053',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '80',
+    to: '4000'
+  },
+  4054: {
+    edgeId: 4054,
+    role: 'Found in',
+    id: '4054',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '134',
+    to: '4000'
+  },
+  4055: {
+    edgeId: 4055,
+    role: 'Found in',
+    id: '4055',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '129',
+    to: '3480'
+  },
+  4056: {
+    edgeId: 4056,
+    role: 'Found in',
+    id: '4056',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '49',
+    to: '3996'
+  },
+  4057: {
+    edgeId: 4057,
+    role: 'Found in',
+    id: '4057',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '156',
+    to: '4004'
+  },
+  4058: {
+    edgeId: 4058,
+    role: 'Found in',
+    id: '4058',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '156',
+    to: '4000'
+  },
+  4059: {
+    edgeId: 4059,
+    role: 'Found in',
+    id: '4059',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '19',
+    to: '4000'
+  },
+  4060: {
+    edgeId: 4060,
+    role: 'Found in',
+    id: '4060',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '3996'
+  },
+  4061: {
+    edgeId: 4061,
+    role: 'Found in',
+    id: '4061',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '87',
+    to: '3480'
+  },
+  4062: {
+    edgeId: 4062,
+    role: 'Found in',
+    id: '4062',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '111',
+    to: '4000'
+  },
+  4063: {
+    edgeId: 4063,
+    role: 'Found in',
+    id: '4063',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '127',
+    to: '4000'
+  },
+  4064: {
+    edgeId: 4064,
+    role: 'Found in',
+    id: '4064',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '127',
+    to: '4004'
+  },
+  4065: {
+    edgeId: 4065,
+    role: 'Found in',
+    id: '4065',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '136',
+    to: '4000'
+  },
+  4066: {
+    edgeId: 4066,
+    role: 'Found in',
+    id: '4066',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '94',
+    to: '4000'
+  },
+  4067: {
+    edgeId: 4067,
+    role: 'Found in',
+    id: '4067',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '94',
+    to: '4004'
+  },
+  4068: {
+    edgeId: 4068,
+    role: 'Found in',
+    id: '4068',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '4008'
+  },
+  4069: {
+    edgeId: 4069,
+    role: 'Found in',
+    id: '4069',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '4000'
+  },
+  4070: {
+    edgeId: 4070,
+    role: 'Found in',
+    id: '4070',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '106',
+    to: '4004'
+  },
+  4071: {
+    edgeId: 4071,
+    role: 'Found in',
+    id: '4071',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '90',
+    to: '2964'
+  },
+  4072: {
+    edgeId: 4072,
+    role: 'Found in',
+    id: '4072',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '169',
+    to: '4000'
+  },
+  4073: {
+    edgeId: 4073,
+    role: 'Found in',
+    id: '4073',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '27',
+    to: '4000'
+  },
+  4074: {
+    edgeId: 4074,
+    role: 'Found in',
+    id: '4074',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '103',
+    to: '4000'
+  },
+  4075: {
+    edgeId: 4075,
+    role: 'Found in',
+    id: '4075',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '60',
+    to: '2964'
+  },
+  4076: {
+    edgeId: 4076,
+    role: 'Found in',
+    id: '4076',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '152',
+    to: '4008'
+  },
+  4077: {
+    edgeId: 4077,
+    role: 'Found in',
+    id: '4077',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '152',
+    to: '4000'
+  },
+  4078: {
+    edgeId: 4078,
+    role: 'Found in',
+    id: '4078',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '152',
+    to: '4004'
+  },
+  4079: {
+    edgeId: 4079,
+    role: 'Found in',
+    id: '4079',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '152',
+    to: '3480'
+  },
+  4080: {
+    edgeId: 4080,
+    role: 'Found in',
+    id: '4080',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '152',
+    to: '2964'
+  },
+  4081: {
+    edgeId: 4081,
+    role: 'Found in',
+    id: '4081',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '174',
+    to: '2964'
+  },
+  4082: {
+    edgeId: 4082,
+    role: 'Found in',
+    id: '4082',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '117',
+    to: '4000'
+  },
+  4083: {
+    edgeId: 4083,
+    role: 'Found in',
+    id: '4083',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '189',
+    to: '4000'
+  },
+  4084: {
+    edgeId: 4084,
+    role: 'Found in',
+    id: '4084',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '189',
+    to: '4004'
+  },
+  4085: {
+    edgeId: 4085,
+    role: 'Found in',
+    id: '4085',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '102',
+    to: '3996'
+  },
+  4086: {
+    edgeId: 4086,
+    role: 'Found in',
+    id: '4086',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '42',
+    to: '3996'
+  },
+  4087: {
+    edgeId: 4087,
+    role: 'Found in',
+    id: '4087',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '14',
+    to: '4000'
+  },
+  4088: {
+    edgeId: 4088,
+    role: 'Found in',
+    id: '4088',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '113',
+    to: '4008'
+  },
+  4089: {
+    edgeId: 4089,
+    role: 'Found in',
+    id: '4089',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '99',
+    to: '4000'
+  },
+  4090: {
+    edgeId: 4090,
+    role: 'Found in',
+    id: '4090',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '165',
+    to: '2964'
+  },
+  4091: {
+    edgeId: 4091,
+    role: 'Found in',
+    id: '4091',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '30',
+    to: '4004'
+  },
+  4092: {
+    edgeId: 4092,
+    role: 'Found in',
+    id: '4092',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '30',
+    to: '4000'
+  },
+  4093: {
+    edgeId: 4093,
+    role: 'Found in',
+    id: '4093',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '12',
+    to: '4000'
+  },
+  4094: {
+    edgeId: 4094,
+    role: 'Found in',
+    id: '4094',
+    label: 'Found in',
+    rdfsLabel: 'Found in',
+    userDefined: false,
+    from: '137',
+    to: '4000'
+  },
+  7310: {
+    edgeId: 7310,
+    role: 'Represented by',
+    id: '7310',
+    label: 'Represented by',
+    rdfAbout: 'http://webprotege.stanford.edu/R7hoT86zDXtTKlGVmxqJRio',
+    rdfsLabel: 'Represented by',
+    userDefined: false,
+    from: '73',
+    to: '154'
+  },
+  14510: {
+    edgeId: 14510,
+    role: 'Measured by',
+    id: '14510',
+    label: 'Measured by',
+    rdfAbout: 'http://webprotege.stanford.edu/R79SeNap6q11kTo4DsroWaC',
+    rdfsLabel: 'Measured by',
+    userDefined: false,
+    from: '145',
+    to: '128'
+  },
+  18310: {
+    edgeId: 18310,
+    role: 'Affected by',
+    id: '18310',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '183',
+    to: '74'
+  },
+  18311: {
+    edgeId: 18311,
+    role: 'Subclass of',
+    id: '18311',
+    label: 'Subclass of',
+    rdfsLabel: 'Subclass of',
+    userDefined: false,
+    from: '183',
+    to: '170'
+  },
+  18312: {
+    edgeId: 18312,
+    role: 'Informed by',
+    id: '18312',
+    label: 'Informed by',
+    rdfAbout: 'http://webprotege.stanford.edu/RDPf9CwQ3tGAm44VWzOmbHv',
+    rdfsLabel: 'Informed by',
+    userDefined: false,
+    from: '183',
+    to: '71'
+  },
+  18313: {
+    edgeId: 18313,
+    role: 'Used in',
+    id: '18313',
+    label: 'Used in',
+    rdfAbout: 'http://webprotege.stanford.edu/RDhasq1hVj3O5iWytoHK065',
+    rdfsLabel: 'Used in',
+    userDefined: false,
+    from: '183',
+    to: '150'
+  },
+  18314: {
+    edgeId: 18314,
+    role: 'Affected by',
+    id: '18314',
+    label: 'Affected by',
+    rdfAbout: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
+    rdfsLabel: 'Affected by',
+    userDefined: false,
+    from: '183',
+    to: '73'
   }
 }

@@ -3,7 +3,6 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import { DataSet } from 'vis-data'
 import GraphVisualisation from '../../components/GraphVisualisation'
-import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 import {
   EDGE_COLOR,
   EDGE_COLOR_HIGHLIGHTED,
@@ -12,13 +11,6 @@ import {
 const setup = () => {
   const props = {
     currentGraph: 'graph-0',
-    graphData: {
-      'graph-0': {
-        label: 'Main',
-        noDelete: true,
-        type: ALGO_TYPE_FULL
-      }
-    },
     availableEdges: new DataSet([]),
     availableNodes: new DataSet([]),
     boundingBoxGeometry: {

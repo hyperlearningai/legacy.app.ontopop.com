@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
+import { connect } from 'redux-zero/react'
+import PropTypes from 'prop-types'
 import { SIDEBAR_VIEW_STYLING } from '../constants/views'
 import NetworkStylingNode from './NetworkStylingNode'
 import NetworkStylingEdge from './NetworkStylingEdge'
 import saveStyling from '../utils/networkStyling/saveStyling'
+import actions from '../store/actions'
 
-const NetworkStyling = () => {
+const NetworkStyling = ({
+  addNumber
+}) => {
   const { t } = useTranslation()
 
   const [isSaved, setSaved] = useState(false)
@@ -28,8 +33,11 @@ const NetworkStyling = () => {
             label={t(isSaved ? 'saved' : 'save')}
             disabled={isSaved}
             icon={icon}
+            id="save-styling-button"
             onClick={() => saveStyling({
-              setSaved
+              setSaved,
+              addNumber,
+              t
             })}
           />
         </div>
@@ -38,4 +46,11 @@ const NetworkStyling = () => {
   )
 }
 
-export default NetworkStyling
+NetworkStyling.propTypes = {
+  addNumber: PropTypes.func.isRequired,
+}
+
+export default connect(
+  null,
+  actions
+)(NetworkStyling)

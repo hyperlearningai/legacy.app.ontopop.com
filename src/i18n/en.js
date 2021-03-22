@@ -26,6 +26,7 @@ export default {
 
   // sidebar
   networkGraphs: 'Network graphs',
+  networkGraphOptions: 'Network graph options',
   nodeNeighbourhood: 'Node neighbourhood',
   structuredSearch: 'Structured search',
   ontologyFilter: 'Ontology filter',
@@ -39,20 +40,33 @@ export default {
   selectEdges: 'Select edges',
   settings: 'Settings',
   styling: 'Styling',
+  notes: 'Notes',
   export: 'Export',
   freeTextSearch: 'Free-text search',
   versioning: 'Versioning',
 
   // data loading
   couldNotQueryGraph: 'Could not query graph!',
+  couldNotQueryNotes: 'Could not query notes!',
+  couldNotUpdateNote: 'Could not update a note!',
+  couldNotDeleteNote: 'Could not delete a note!',
+  couldNotCreateNote: 'Could not create a note!',
   couldNotQueryAnnotationProperties: 'Could not query annotation properties!',
   couldNotQueryEdgeProperties: 'Could not query object properties!',
   noNodesToDisplay: 'No nodes to display!',
+  couldNotQuerySynonyms: 'Could not query synonyms!',
+  couldNotCreateSynonym: 'Could not create a synonym!',
+  couldNotUpdateSynonym: 'Could not update a synonym!',
+  couldNotDeleteSynonym: 'Could not delete a synonym!',
+  couldNotQueryStyles: 'Could not query styles!',
+  couldNotUpdateStyles: 'Could not update styles!',
 
   // node selection
   node: 'Node',
   noRelationships: 'No relationships found',
   selectNodeFromGraph: 'Select node from graph',
+  selectNodeFromGraphOrFromList: 'Select node from graph or pick from list',
+  selectNode: 'Select node',
 
   // structured search
   filterElementsByArbitraryPropsCombination: 'Filter nodes or adges by any arbitrary combination of one or more node property values',
@@ -91,7 +105,9 @@ export default {
 
   // edge selection
   selectEdgeFromGraph: 'Select edge from graph',
+  selectEdgeFromGraphOrFromList: 'Select edge from graph or pick from list',
   edge: 'Edge',
+  expand: 'Expand',
 
   // bounding box
   boundingBox: 'Bounding box selection',
@@ -114,8 +130,14 @@ export default {
   selectNodesFromGraph: 'Select nodes from graph',
   isNodeOverlay: 'Show path over nodes',
   isNotNodeOverlay: 'Show path only',
+  overlay: 'Overlay',
   selectStartingNode: 'Select starting node',
   selectEndingNode: 'Select ending node',
+  selectNodesFromGraphOrFromList: 'Select nodes from graph or pick from list',
+  nodesToExclude: 'Nodes to exclude',
+  edgesToExclude: 'Edges to exclude',
+  showShortestPath: 'Show shortest path',
+  showUpperOntologyLayers: 'Show upper ontology layers',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -163,10 +185,12 @@ export default {
   stylingNodeBorder: 'Node border',
   nodeBorderLineWidth: 'Border width',
   stylingNodeBorderSelected: 'Border width highlighted',
+  nodeBorderLineWidthHighlighted: 'Border width highlighted',
   stylingNodeBorderColor: 'Border colour',
   stylingNodeTextColor: 'Node text colour',
   stylingNodeHighlightBorderColor: 'Border colour highlighted',
   stylingNodeBackgroundColor: 'Background colour',
+  stylingNodeBackgroundColorDataset: 'Background colour (Dataset)',
   stylingNodeHighlightBackgroundColor: 'Background colour highlighted',
   stylingNodeHoverBackgroundColor: 'Background colour on hover',
   stylingNodeHoverBorderColor: 'Border colour on hover',
@@ -176,6 +200,7 @@ export default {
   nodeShapeInstructions: 'Choose the node shape',
   stylingNodeTextFontAlign: 'Node font alignment',
   stylingNodeCaptionProperty: 'Node caption property',
+  stylingNodeCaptionPropertyDataset: 'Node caption property (Dataset)',
   ifNodeHasProperty: 'If node property',
   setNodeStyle: 'Set node style',
   selectStyle: 'Select style',
@@ -378,6 +403,56 @@ export default {
   company: 'Company',
   changePassword: 'Change Password',
 
+  // notes
+  focus: 'Focus',
+  dateCreated: 'Created at',
+  dateLastUpdated: 'Updated at',
+  userId: 'User ID',
+  graph: 'Graph',
+  noteText: 'Note Text',
+  addNote: 'Add Note',
+  addNewNote: 'Add New Note',
+  addGraphNote: 'Add Graph Note',
+  addNodeNote: 'Add Node Note',
+  addEdgeNote: 'Add Edge Note',
+  forNode: 'For Node',
+  forEdge: 'For Edge',
+  nodeId: 'Node ID',
+  nodeLabel: 'Node label',
+  highlightNotes: 'Highlight Notes',
+  noteCreated: 'Note Created!',
+  notesFor: 'Notes for',
+  availableNotes: 'Available notes',
+  sortBy: 'Sort by',
+  ascending: 'Ascending',
+  descending: 'Descending',
+  showFilter: 'Show filter',
+  filter: 'Filter',
+  filterBy: 'Filter by',
+  selectUserIds: 'Select user IDs',
+  edgeId: 'Edge ID',
+  edgeLabel: 'Edge label',
+
   // api calls
   apiCallNotValid: 'Invalid http request',
+
+  // synonyms
+  synonyms: 'Synonyms',
+  synonymsFor: 'Synonyms for',
+  addNewSynonym: 'Add New Synonym',
+  addSynonym: 'Add Synonym',
+  synonymText: 'Synonym Text',
+  availableSynonyms: 'Available Synonyms',
+  synonymCreated: 'Synonym Created!',
+
+  // network graph options
+  showSubclassRelationships: 'Show subclass relationships',
+  showDatasets: 'Show datasets',
+  chooseGraphOptions: 'Choose global or specific visualisation options for the current graph',
+  hideElementsByProperties: 'Hide elements by properties',
+  notContains: 'Not contains',
+  notEqual: 'Not equal',
+  chooseFilter: 'Choose filter',
+  selectLogic: 'Select logic',
+  insertText: 'Insert text'
 }

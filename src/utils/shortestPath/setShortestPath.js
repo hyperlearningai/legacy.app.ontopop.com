@@ -2,19 +2,26 @@ import { ALGO_TYPE_SHORTEST_PATH } from '../../constants/algorithms'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import getShortestPath from './getShortestPath'
 import store from '../../store'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 
 /**
  * Set shortest path
  * @param  {Object}   params
  * @param  {Boolean}  params.isNodeOverlay              Display nodes outside path flag
+ * @param  {Boolean}  params.isUpperOntology            Display upper ontology nodes flag
  * @param  {Function} params.setStoreState              setStoreState action
- * @param  {Function} params.addToObject            Update graph data function
+ * @param  {Function} params.addToObject                Update graph data function
+ * @param  {Array}    params.nodesToExclude             Node IDs to exclude
+ * @param  {Array}    params.edgesToExclude             Edge labels to exclude
  * @return { undefined }
  */
 const setShortestPath = async ({
   isNodeOverlay,
   setStoreState,
   addToObject,
+  nodesToExclude,
+  edgesToExclude,
+  isUpperOntology
 }) => {
   const {
     lastGraphIndex,
@@ -30,7 +37,10 @@ const setShortestPath = async ({
 
   const shortestPathResults = await getShortestPath({
     shortestPathSelectedNodes,
-    nodesEdges
+    nodesEdges,
+    nodesToExclude,
+    edgesToExclude,
+    isUpperOntology
   })
 
   const newGraphIndex = lastGraphIndex + 1
@@ -45,7 +55,9 @@ const setShortestPath = async ({
       shortestPathSelectedNodes,
       shortestPathResults,
       isNodeOverlay
-    }
+    },
+    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS,
+    isUpperOntologyVisible: isUpperOntology
   }
 
   addToObject('graphData', newCurrentGraph, graphValue)

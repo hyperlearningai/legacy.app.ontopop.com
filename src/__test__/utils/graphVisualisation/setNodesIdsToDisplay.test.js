@@ -16,20 +16,24 @@ import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
 import getNodesFromPaths from '../../../utils/shortestPath/getNodesFromPaths'
 import getNodesFromNodesFilters from '../../../utils/nodesFilter/getNodesFromNodesFilters'
 import getNodesEdgesFromEdgesFilters from '../../../utils/edgesFilter/getNodesEdgesFromEdgesFilters'
-
-const setStoreState = jest.fn()
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
 jest.mock('../../../utils/nodeNeighbourhood/getNeighbours')
 jest.mock('../../../utils/shortestPath/getNodesFromPaths')
 jest.mock('../../../utils/nodesFilter/getNodesFromNodesFilters')
 jest.mock('../../../utils/edgesFilter/getNodesEdgesFromEdgesFilters')
 
-store.getState = jest.fn().mockImplementation(() => ({
+const commonState = {
   classesFromApi,
+  classesFromApiBackup: classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay: ['123'],
   deletedNodes: []
-}))
+}
+
+const setStoreState = jest.fn()
+const removeFromObject = jest.fn()
+const t = jest.fn()
 
 describe('setNodesIdsToDisplay', () => {
   afterEach(() => {
@@ -38,11 +42,26 @@ describe('setNodesIdsToDisplay', () => {
 
   it('should work correctly when ALGO_TYPE_FULL', async () => {
     const type = ALGO_TYPE_FULL
+    const options = {}
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
 
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options: {}
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual(
@@ -266,6 +285,130 @@ describe('setNodesIdsToDisplay', () => {
             '194',
             '195',
             '196',
+            '197',
+            '198',
+            '199',
+            '200',
+            '201',
+            '202',
+            '203',
+            '1813',
+            '1842',
+            '1870',
+            '1898',
+            '1927',
+            '1948',
+            '1980',
+            '2016',
+            '2037',
+            '2054',
+            '2075',
+            '2092',
+            '2109',
+            '2128',
+            '2146',
+            '2164',
+            '2181',
+            '2201',
+            '2220',
+            '2238',
+            '2256',
+            '2274',
+            '2293',
+            '2311',
+            '2330',
+            '2348',
+            '2366',
+            '2384',
+            '2401',
+            '2420',
+            '2441',
+            '2459',
+            '2478',
+            '2496',
+            '2517',
+            '2538',
+            '2556',
+            '2573',
+            '2590',
+            '2609',
+            '2628',
+            '2645',
+            '2662',
+            '2680',
+            '2700',
+            '2719',
+            '2737',
+            '2754',
+            '2772',
+            '2793',
+            '2811',
+            '2829',
+            '2849',
+            '2874',
+            '2892',
+            '2910',
+            '2928',
+            '2946',
+            '2964',
+            '2981',
+            '3000',
+            '3022',
+            '3044',
+            '3066',
+            '3088',
+            '3106',
+            '3124',
+            '3142',
+            '3160',
+            '3178',
+            '3203',
+            '3222',
+            '3241',
+            '3261',
+            '3279',
+            '3297',
+            '3314',
+            '3332',
+            '3352',
+            '3371',
+            '3389',
+            '3407',
+            '3425',
+            '3444',
+            '3462',
+            '3480',
+            '3501',
+            '3519',
+            '3537',
+            '3555',
+            '3573',
+            '3592',
+            '3611',
+            '3631',
+            '3651',
+            '3670',
+            '3689',
+            '3707',
+            '3725',
+            '3743',
+            '3760',
+            '3778',
+            '3796',
+            '3814',
+            '3832',
+            '3850',
+            '3868',
+            '3886',
+            '3908',
+            '3926',
+            '3943',
+            '3961',
+            '3979',
+            '3996',
+            '4000',
+            '4004',
+            '4008',
           ],
         ],
       ]
@@ -279,10 +422,24 @@ describe('setNodesIdsToDisplay', () => {
       selectedBoundingBoxNodes: [{ id: '12' }, { id: '24' }],
     }
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -326,12 +483,26 @@ describe('setNodesIdsToDisplay', () => {
       totalEdgesPerNode
     }
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     getNeighbours.mockImplementation(() => ['24', '36'])
 
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -366,6 +537,11 @@ describe('setNodesIdsToDisplay', () => {
   })
 
   it('should work correctly when ALGO_TYPE_NEIGHBOURHOOD', async () => {
+    getNeighbours.mockImplementation(() => ({
+      neighbourNodes: ['24', '36'],
+      neighbourEdges: ['111']
+    }))
+
     const type = ALGO_TYPE_NEIGHBOURHOOD
 
     const options = {
@@ -374,15 +550,24 @@ describe('setNodesIdsToDisplay', () => {
       totalEdgesPerNode
     }
 
-    getNeighbours.mockImplementation(() => ({
-      neighbourNodes: ['24', '36'],
-      neighbourEdges: ['111']
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
     }))
 
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -439,10 +624,24 @@ describe('setNodesIdsToDisplay', () => {
       shortestPathEdges: ['111', '112']
     }))
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -508,10 +707,24 @@ describe('setNodesIdsToDisplay', () => {
       shortestPathEdges: ['111', '112']
     }))
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -572,10 +785,24 @@ describe('setNodesIdsToDisplay', () => {
       '14'
     ]))
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -621,10 +848,24 @@ describe('setNodesIdsToDisplay', () => {
 
     getNodesEdgesFromEdgesFilters.mockImplementation(() => (['11', '12']))
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([

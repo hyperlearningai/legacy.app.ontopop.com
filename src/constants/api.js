@@ -1,31 +1,76 @@
 export const ENDPOINT_URL = process.env.NEXT_PUBLIC_API_ENDPOINT
-export const API_ENDPOINT = `${ENDPOINT_URL}/api`
-
-export const GET_ONTOLOGY = `${API_ENDPOINT}/ontology`
-export const GET_GRAPH = `${API_ENDPOINT}/graph`
 
 export const MODEL_1 = '?model=1'
-export const GET_GRAPH_MODEL_1 = `${GET_GRAPH}${MODEL_1}`
-export const GET_GRAPH_QUERY = `${GET_GRAPH}/query`
 
-export const GET_EDGES = `${GET_GRAPH}/edges`
-export const GET_EDGE = `${GET_EDGES}/{id}`
+// GRAPH
+export const API_ENDPOINT_GRAPH = `${process.env.NEXT_PUBLIC_GRAPH_ENDPOINT}/api/graph`
+export const API_ENDPOINT_GRAPH_MODEL_1 = `${API_ENDPOINT_GRAPH}${MODEL_1}`
 
-export const POST_CREATE_EDGE = `${GET_EDGES}/create${MODEL_1}`
-export const PATCH_UPDATE_EDGE = `${GET_EDGES}/{id}${MODEL_1}`
-export const DELETE_EDGE = `${GET_EDGES}/{id}${MODEL_1}`
+export const API_ENDPOINT_GRAPH_NODES = `${API_ENDPOINT_GRAPH}/nodes${MODEL_1}`
+export const API_ENDPOINT_GRAPH_NODES_ID = `${API_ENDPOINT_GRAPH}/nodes/{id}${MODEL_1}`
+export const API_ENDPOINT_GRAPH_NODES_ID_EDGES = `${API_ENDPOINT_GRAPH}/nodes/{id}/edges${MODEL_1}`
+export const API_ENDPOINT_GRAPH_NODES_ID_EDGES_IN = `${API_ENDPOINT_GRAPH}/nodes/{id}/edges/in${MODEL_1}`
+export const API_ENDPOINT_GRAPH_NODES_ID_EDGES_OUT = `${API_ENDPOINT_GRAPH}/nodes/{id}/edges/out${MODEL_1}`
+export const API_ENDPOINT_GRAPH_NODES_CREATE = `${API_ENDPOINT_GRAPH}/nodes/create${MODEL_1}`
 
-export const GET_NODES = `${GET_GRAPH}/nodes`
-export const GET_NODE = `${GET_GRAPH}/nodes/{id}`
+export const API_ENDPOINT_GRAPH_EDGES = `${API_ENDPOINT_GRAPH}/edges${MODEL_1}`
+export const API_ENDPOINT_GRAPH_EDGES_ID = `${API_ENDPOINT_GRAPH}/edges/{id}${MODEL_1}`
+export const API_ENDPOINT_GRAPH_EDGES_CREATE = `${API_ENDPOINT_GRAPH}/edges/create${MODEL_1}`
 
-export const POST_CREATE_NODE = `${GET_NODES}/create${MODEL_1}`
-export const PATCH_UPDATE_NODE = `${GET_NODES}/{id}${MODEL_1}`
-export const DELETE_NODE = `${GET_NODES}/{id}${MODEL_1}`
+export const API_ENDPOINT_GRAPH_QUERY = `${API_ENDPOINT_GRAPH}/query`
 
-export const GET_PROPERTIES = `${GET_ONTOLOGY}/properties`
-export const GET_PROPERTIES_OBJECTS = `${GET_PROPERTIES}/objects`
-export const GET_PROPERTIES_OBJECT = `${GET_PROPERTIES}/objects/{id}`
-export const GET_PROPERTIES_ANNOTATIONS = `${GET_PROPERTIES}/annotations`
-export const GET_PROPERTIES_ANNOTATION = `${GET_PROPERTIES}/annotations/{id}`
+// AUTH
+export const API_ENDPOINT_AUTH = `${process.env.NEXT_PUBLIC_AUTH_API_ENDPOINT}/api/auth`
 
-export const AUTH_SIGN_IN = `${API_ENDPOINT}/auth/login`
+export const API_ENDPOINT_AUTH_SIGN_IN = `${API_ENDPOINT_AUTH}/login`
+export const API_ENDPOINT_AUTH_TOKEN_REFRESH = `${API_ENDPOINT_AUTH}/token/refresh`
+
+// STYLING
+export const API_ENDPOINT_STYLING = `${process.env.NEXT_PUBLIC_STYLING_ENDPOINT}/api/ui/styling`
+
+// COLLABORATION
+export const API_ENDPOINT_COLLABORATION = `${process.env.NEXT_PUBLIC_COLLABORATION_API_ENDPOINT}/api/graph`
+
+export const GET_GRAPH_NOTES = `${API_ENDPOINT_COLLABORATION}/notes`
+export const GET_GRAPH_NOTE = `${API_ENDPOINT_COLLABORATION}/notes/{id}`
+export const POST_CREATE_GRAPH_NOTE = `${API_ENDPOINT_COLLABORATION}/notes/create`
+export const PATCH_UPDATE_GRAPH_NOTE = `${API_ENDPOINT_COLLABORATION}/notes/{id}`
+export const DELETE_GRAPH_NOTE = `${API_ENDPOINT_COLLABORATION}/notes/{id}`
+
+export const GET_NODES_NOTES = `${API_ENDPOINT_COLLABORATION}/nodes/notes`
+export const GET_NODE_NOTES = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/notes`
+export const GET_NODE_NOTE = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/notes/{id}`
+export const POST_CREATE_NODE_NOTE = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/notes/create`
+export const PATCH_UPDATE_NODE_NOTE = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/notes/{id}`
+export const DELETE_NODE_NOTE = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/notes/{id}`
+
+export const GET_EDGES_NOTES = `${API_ENDPOINT_COLLABORATION}/edges/notes`
+export const GET_EDGE_NOTES = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes`
+export const GET_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes/{id}`
+export const POST_CREATE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes/create`
+export const PATCH_UPDATE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes/{id}`
+export const DELETE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes/{id}`
+
+export const GET_NODE_SYNONYMS = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms`
+export const GET_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
+export const POST_CREATE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/create`
+export const PATCH_UPDATE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
+export const DELETE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
+
+// ONTOLOGY
+export const API_ENDPOINT_ONTOLOGY = `${process.env.NEXT_PUBLIC_ONTOLOGY_ENDPOINT}/api/ontology`
+
+export const API_ENDPOINT_ONTOLOGY_PROPERTIES = `${API_ENDPOINT_ONTOLOGY}/properties`
+export const API_ENDPOINT_ONTOLOGY_PROPERTIES_ANNOTATIONS = `${API_ENDPOINT_ONTOLOGY_PROPERTIES}/annotations`
+export const API_ENDPOINT_ONTOLOGY_PROPERTIES_ANNOTATIONS_IRI = `${API_ENDPOINT_ONTOLOGY_PROPERTIES_ANNOTATIONS}/annotation?iri={iri}`
+export const API_ENDPOINT_ONTOLOGY_PROPERTIES_ANNOTATIONS_ID = `${API_ENDPOINT_ONTOLOGY_PROPERTIES_ANNOTATIONS}/{id}`
+export const API_ENDPOINT_ONTOLOGY_PROPERTIES_OBJECTS = `${API_ENDPOINT_ONTOLOGY_PROPERTIES}/objects`
+export const API_ENDPOINT_ONTOLOGY_PROPERTIES_OBJECTS_IRI = `${API_ENDPOINT_ONTOLOGY_PROPERTIES_OBJECTS}/object?iri={iri}`
+export const API_ENDPOINT_ONTOLOGY_PROPERTIES_OBJECTS_ID = `${API_ENDPOINT_ONTOLOGY_PROPERTIES_OBJECTS}/{id}`
+
+export const API_ENDPOINT_ONTOLOGY_CLASS = `${API_ENDPOINT_ONTOLOGY}/classes`
+export const API_ENDPOINT_ONTOLOGY_CLASS_ID = `${API_ENDPOINT_ONTOLOGY_CLASS}/{id}`
+export const API_ENDPOINT_ONTOLOGY_CLASS_IRI = `${API_ENDPOINT_ONTOLOGY_CLASS}/class?iri={iri}`
+
+export const API_ENDPOINT_ONTOLOGY_TRIPLE = `${API_ENDPOINT_ONTOLOGY}/triples`
+export const API_ENDPOINT_ONTOLOGY_TRIPLE_ID = `${API_ENDPOINT_ONTOLOGY_TRIPLE}/{id}`

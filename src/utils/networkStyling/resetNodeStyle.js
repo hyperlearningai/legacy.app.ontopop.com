@@ -1,5 +1,7 @@
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 import store from '../../store'
+import { NODE_TYPE } from '../../constants/graph'
+import getElementLabel from './getElementLabel'
 
 /**
  * Reset nodes which have been styled
@@ -12,7 +14,6 @@ const resetNodeStyle = ({
 }) => {
   const {
     globalNodeStyling,
-    classesFromApi
   } = store.getState()
 
   const {
@@ -23,13 +24,13 @@ const resetNodeStyle = ({
     stylingNodeTextFontAlign,
     stylingNodeShape,
     stylingNodeBackgroundColor,
+    stylingNodeBackgroundColorDataset,
     stylingNodeBorderColor,
     stylingNodeHighlightBackgroundColor,
     stylingNodeHighlightBorderColor,
     stylingNodeHoverBackgroundColor,
     stylingNodeHoverBorderColor,
     stylingNodeSize,
-    stylingNodeCaptionProperty,
   } = globalNodeStyling
 
   const nodeStyle = {
@@ -44,7 +45,7 @@ const resetNodeStyle = ({
     },
     shape: stylingNodeShape,
     color: {
-      background: stylingNodeBackgroundColor,
+      background: node[NODE_TYPE] === 'class' ? stylingNodeBackgroundColor : stylingNodeBackgroundColorDataset,
       border: stylingNodeBorderColor,
       highlight: {
         background: stylingNodeHighlightBackgroundColor,
@@ -66,9 +67,10 @@ const resetNodeStyle = ({
   return updateNodes({
     ...nodeWithoutCoordinates,
     ...nodeStyle,
-    label: classesFromApi[node.id][stylingNodeCaptionProperty]
-      ? classesFromApi[node.id][stylingNodeCaptionProperty].replace(/ /g, '\n')
-      : ''
+    label: getElementLabel({
+      type: 'node',
+      id: node.id
+    })
   })
 }
 

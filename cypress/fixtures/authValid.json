@@ -1,0 +1,6 @@
+{
+  "statusCode": 200,
+  "body": { "token": "abc123" },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

@@ -3,8 +3,10 @@ import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import addNode from '../nodesEdgesUtils/addNode'
 import setNodeStyle from '../networkStyling/setNodeStyle'
-import { POST_CREATE_NODE } from '../../constants/api'
+import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
+import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
+import { NODE_TYPE } from '../../constants/graph'
 
 /**
  * ADd ontology nodes
@@ -12,6 +14,7 @@ import httpCall from '../apiCalls/httpCall'
  * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
+ * @param  {Function}       params.toggleFromSubArray        toggleFromSubArray action
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
@@ -19,6 +22,7 @@ const setOntologyAddNode = async ({
   addNumber,
   setStoreState,
   selectedElementProperties,
+  toggleFromSubArray,
   t
 }) => {
   const {
@@ -28,7 +32,7 @@ const setOntologyAddNode = async ({
     addedNodes,
     totalEdgesPerNode,
     totalEdgesPerNodeBackup,
-    userDefinedNodeStyling
+    userDefinedNodeStyling,
   } = store.getState()
 
   const {
@@ -60,7 +64,7 @@ const setOntologyAddNode = async ({
   const response = await httpCall({
     addNumber,
     withAuth: true,
-    route: POST_CREATE_NODE,
+    route: API_ENDPOINT_GRAPH_NODES_CREATE,
     method: 'post',
     body,
     t
@@ -85,13 +89,17 @@ const setOntologyAddNode = async ({
     })
   }
 
-  const { id, userDefined } = data[Object.keys(data)[0]]
+  const {
+    id, userDefined, label, userId
+  } = data[Object.keys(data)[0]]
 
   // add to classesFromApi
   newClassesFromApi[id] = {
     ...selectedElementProperties,
+    [NODE_TYPE]: label,
     userDefined,
-    id
+    id,
+    userId
   }
 
   // add label
@@ -133,28 +141,36 @@ const setOntologyAddNode = async ({
     size: stylingNodeSize
   }
 
-  addNode({
-    node: {
-      ...newClassesFromApi[id],
-      ...nodeStyle
-    },
-    addNumber
-  })
-
   const newAddedNodes = [
     ...addedNodes,
     ...[id]
   ]
 
+  setStoreState('classesFromApiBackup', newClassesFromApiBackup)
+  setStoreState('classesFromApi', newClassesFromApi)
   setStoreState('nodesEdges', newNodesEdges)
   setStoreState('totalEdgesPerNode', newEdgesPerNode)
   setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
-  setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('classesFromApiBackup', newClassesFromApiBackup)
   setStoreState('addedNodes', newAddedNodes)
-  setNodeStyle({
+
+  const isVisible = checkNodeVisibility({
     nodeId: id,
+    toggleFromSubArray,
   })
+
+  if (isVisible) {
+    addNode({
+      node: {
+        ...newClassesFromApi[id],
+        ...nodeStyle
+      },
+      addNumber
+    })
+
+    setNodeStyle({
+      nodeId: id,
+    })
+  }
 
   message = `${t('nodeAdded')}: ${id}`
 

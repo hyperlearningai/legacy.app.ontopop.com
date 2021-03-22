@@ -12,12 +12,16 @@ import setShortestPathNode from '../shortestPath/setShortestPathNode'
  * @param  {Function} params.addNumber                 addNumber action
  * @param  {Function} params.setStoreState             setStoreState action
  * @param  {Object}   params.network                   VisJs network object
+ * @param  {Function} params.toggleFromSubArray        toggleFromSubArray action
+ * @param  {Function} params.toggleFromArrayInKey      toggleFromSubArray action
  * @return { undefined }
  */
 const setNetworkMethods = async ({
   setStoreState,
   network,
-  addNumber
+  addNumber,
+  toggleFromSubArray,
+  toggleFromArrayInKey
 }) => {
   network?.on('selectNode', (event) => {
     const {
@@ -68,7 +72,9 @@ const setNetworkMethods = async ({
         expandNode({
           nodeId,
           setStoreState,
-          addNumber
+          addNumber,
+          toggleFromSubArray,
+          toggleFromArrayInKey
         })
       }
     }
@@ -84,6 +90,7 @@ const setNetworkMethods = async ({
 
     setStoreState('contextMenuData', {
       nodeId: event.nodes?.length ? event.nodes[0] : undefined,
+      edgeId: event.edges?.length ? event.edges[0] : undefined,
       top: offsetY,
       left: offsetX
     })

@@ -15,6 +15,8 @@ const EditOntologyAddEdge = ({
   optionEdges,
   setStoreState,
   addNumber,
+  toggleFromSubArray,
+  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -35,12 +37,12 @@ const EditOntologyAddEdge = ({
       <div
         className="edit-ontology-row"
       >
-        <label htmlFor="graph-select">
+        <label htmlFor="graph-select-from">
           {t('fromNode')}
         </label>
 
         <Dropdown
-          id="graph-select"
+          id="graph-select-from"
           value={fromNode}
           filter
           options={optionNodes}
@@ -52,12 +54,12 @@ const EditOntologyAddEdge = ({
       <div
         className="edit-ontology-row"
       >
-        <label htmlFor="graph-select">
+        <label htmlFor="graph-select-edge">
           {t('edge')}
         </label>
 
         <Dropdown
-          id="graph-select"
+          id="graph-select-edge"
           value={edge}
           filter
           options={optionEdges}
@@ -71,12 +73,12 @@ const EditOntologyAddEdge = ({
       <div
         className="edit-ontology-row"
       >
-        <label htmlFor="graph-select">
+        <label htmlFor="graph-select-to">
           {t('toNode')}
         </label>
 
         <Dropdown
-          id="graph-select"
+          id="graph-select-to"
           value={toNode}
           filter
           options={optionNodes}
@@ -117,6 +119,8 @@ const EditOntologyAddEdge = ({
               type,
               setStoreState,
               addNumber,
+              toggleFromSubArray,
+              toggleFromArrayInKey,
               selectedElementProperties: {
                 from: fromNode,
                 edge,
@@ -145,6 +149,8 @@ EditOntologyAddEdge.propTypes = {
   optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
   setStoreState: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
+  toggleFromSubArray: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

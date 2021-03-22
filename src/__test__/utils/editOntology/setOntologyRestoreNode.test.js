@@ -6,19 +6,26 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
   setStoreStateFixture
 } from '../../fixtures/setOntologyRestoreNode'
-import { nodesEdges } from '../../fixtures/nodesEdgesNew'
+import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
-import getEdgeObject from '../../../utils/graphVisualisation/getEdgeObject'
+import getElementLabel from '../../../utils/networkStyling/getElementLabel'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
-import { EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED, EDGE_LABEL_PROPERTY } from '../../../constants/graph'
+import {
+  CLICK_NODE_BACKGROUND, EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED,
+  EDGE_LABEL_PROPERTY, HIGHLIGHT_NODE_BORDER, HOVER_NODE_BACKGROUND,
+  HOVER_NODE_BORDER, LABEL_PROPERTY, NODE_BACKGROUND, NODE_BORDER,
+  NODE_DEFAULT_SHAPE, NODE_TEXT_COLOR
+} from '../../../constants/graph'
 import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
+import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 
 const selectedElement = ['100', '40']
 const deletedNodes = ['100', '33', '21', '40']
@@ -30,13 +37,15 @@ const addNumber = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
-jest.mock('../../../utils/graphVisualisation/getEdgeObject')
+jest.mock('../../../utils/networkStyling/getElementLabel')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
+jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
 
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApiBackup: classesFromApi,
@@ -44,11 +53,26 @@ store.getState = jest.fn().mockImplementation(() => ({
   deletedNodes,
   deletedEdges,
   objectPropertiesFromApi,
-  userDefinedNodeStyling: { stylingNodeCaptionProperty: 'rdfsLabel' },
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
   nodesEdges,
   totalEdgesPerNode,
   totalEdgesPerNodeBackup: totalEdgesPerNode,
+  userDefinedNodeStyling: {
+    stylingNodeSize: 25,
+    stylingNodeBorder: 1,
+    stylingNodeTextColor: NODE_TEXT_COLOR,
+    stylingNodeBorderSelected: 2,
+    stylingNodeBorderColor: NODE_BORDER,
+    stylingNodeBackgroundColor: NODE_BACKGROUND,
+    stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
+    stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
+    stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
+    stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
+    stylingNodeShape: NODE_DEFAULT_SHAPE,
+    stylingNodeTextFontSize: 12,
+    stylingNodeTextFontAlign: 'center',
+    stylingNodeCaptionProperty: LABEL_PROPERTY,
+  },
   globalEdgeStyling: {
     stylingEdgeLineColor: EDGE_COLOR,
     stylingEdgeLineColorHover: EDGE_COLOR,
@@ -77,6 +101,8 @@ store.getState = jest.fn().mockImplementation(() => ({
 
 countEdges.mockImplementation(() => 1)
 countNodes.mockImplementation(() => 1)
+checkNodeVisibility.mockImplementation(() => true)
+checkEdgeVisibility.mockImplementation(() => true)
 
 describe('setOntologyRestoreNode', () => {
   afterEach(() => {
@@ -125,21 +151,13 @@ describe('setOntologyRestoreNode', () => {
 
     httpCall.mockImplementation(() => ({
       data: {
-        40: { id: '40' }
+        12: { id: '12' }
       }
     }))
 
     getNode.mockImplementation(() => ({ id: '123' }))
 
-    getEdgeObject.mockImplementation(() => ({
-      rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-      rdfsLabel: 'Provided to',
-      label: 'Provided to',
-      predicate: '11',
-      id: '11',
-      from: '1',
-      to: '141',
-    }))
+    getElementLabel.mockImplementation(() => 'Provided to')
 
     await setOntologyRestoreNode({
       addNumber,
@@ -153,40 +171,41 @@ describe('setOntologyRestoreNode', () => {
       {
         addNumber,
         node: {
-          'Business Area': 'Maintain Operate',
-          Synonym: 'Point, Feature',
-          borderWidth: undefined,
-          borderWidthSelected: undefined,
+          Type: 'Sketch',
+          borderWidth: 1,
+          borderWidthSelected: 2,
           color: {
-            background: undefined,
-            border: undefined,
+            background: '#adefd1',
+            border: '#011e41',
             highlight: {
-              background: undefined,
-              border: undefined,
+              background: '#ffed00',
+              border: '#009688',
             },
             hover: {
-              background: undefined,
-              border: undefined,
+              background: '#f2f2f2',
+              border: '#607d8b',
             },
           },
           font: {
-            align: undefined,
+            align: 'center',
             bold: '700',
-            color: undefined,
+            color: '#000000',
             face: 'Montserrat',
-            size: undefined,
+            size: 12,
           },
-          id: '40',
-          label: 'Node',
-          nodeId: 100,
-          rdfAbout: 'http://webprotege.stanford.edu/RBGK1EZogKmTJUyW3HfCU5t',
-          rdfsLabel: 'Node',
-          shape: undefined,
-          size: undefined,
-          skosComment: 'A Node can also be defined as a point in a network or diagram at which lines or pathways intersect or branch.',
-          skosDefinition: 'A zero dimensional Entity with a position but no volume that is usually represented by a small round dot.',
+          id: '12',
+          label: 'Provided to',
+          name: 'Drawing',
+          nodeId: 40,
+          nodeType: 'class',
+          rdfAbout: 'http://webprotege.stanford.edu/R7ziZlwBCU3dDShTGeoBjYR',
+          rdfsLabel: 'Drawing',
+          shape: 'circle',
+          size: 25,
+          skosDefinition: 'A Design Representation intended to visually communicate the properties of an Asset or system of Assets.',
+          upperOntology: false,
           userDefined: false,
-        }
+        },
       }
     )
     expect(addEdge).toHaveBeenLastCalledWith(
@@ -204,25 +223,26 @@ describe('setOntologyRestoreNode', () => {
             opacity: 1,
           },
           dashes: false,
+          edgeId: 401,
           font: {
             align: 'horizontal',
             color: '#070b11',
             size: 12,
           },
-          from: '1',
-          id: '11',
+          from: '12',
+          id: '401',
           label: 'Provided to',
           labelHighlightBold: true,
-          predicate: '11',
-          rdfAbout: 'http://webprotege.stanford.edu/RXaMAxdkuV5CvgEpovEVvp',
-          rdfsLabel: 'Provided to',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
           selectionWidth: 3,
           smooth: {
             forceDirection: 'none',
             roundness: 0.45,
             type: 'cubicBezier',
           },
-          to: '141',
+          to: '162',
+          userDefined: false,
           width: 1,
         }
       }

@@ -6,8 +6,18 @@ import getNode from '../../../utils/nodesEdgesUtils/getNode'
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 
+const focus = jest.fn()
+
 store.getState = jest.fn().mockImplementation(() => ({
-  stylingNodeHighlightBackgroundColor: '#ffff00'
+  userDefinedNodeStyling: {
+    stylingNodeHighlightBackgroundColor: '#ffff00',
+  },
+  globalNodeStyling: {
+    stylingNodeHighlightBackgroundColor: '#ff0000',
+  },
+  network: {
+    focus
+  }
 }))
 
 const setStoreState = jest.fn()
@@ -19,26 +29,35 @@ describe('highlightSelectedNode', () => {
 
   it('should work correctly', async () => {
     getNode.mockImplementationOnce(() => ({
-      id: 'node-123',
+      id: '123',
       color: {
         background: '#000'
-      }
+      },
+      userDefined: true
     }))
 
     await highlightSelectedNode({
       setStoreState,
-      selectedNode: 'node-123'
+      selectedNode: '123'
     })
 
     expect(setStoreState).toHaveBeenCalledWith(
-      'prevSelectedNode', { color: { background: '#ffff00' }, id: 'node-123' }
+      'prevSelectedNode', {
+        color: { background: '#ffff00' },
+        userDefined: true,
+        id: '123'
+      }
     )
 
     expect(updateNodes).toHaveBeenCalledWith({
       color: {
         background: '#ffff00',
       },
-      id: 'node-123',
+      id: '123',
     })
+
+    expect(focus).toHaveBeenCalledWith(
+      '123', { animation: false, scale: 1 }
+    )
   })
 })

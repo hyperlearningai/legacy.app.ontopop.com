@@ -2,6 +2,7 @@ import setShortestPath from '../../../utils/shortestPath/setShortestPath'
 import { nodesEdges } from '../../fixtures/nodesEdges'
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
@@ -25,6 +26,9 @@ describe('setShortestPath', () => {
 
   it('should work correctly', async () => {
     const isNodeOverlay = false
+    const isUpperOntology = true
+    const nodesToExclude = []
+    const edgesToExclude = []
 
     getShortestPath.mockImplementation(() => ([
       '33|||40'
@@ -33,6 +37,9 @@ describe('setShortestPath', () => {
       isNodeOverlay,
       setStoreState,
       addToObject,
+      nodesToExclude,
+      edgesToExclude,
+      isUpperOntology
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -64,6 +71,8 @@ describe('setShortestPath', () => {
           ],
         },
         type: 'shortest-path',
+        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS,
+        isUpperOntologyVisible: true
       }
     )
   })

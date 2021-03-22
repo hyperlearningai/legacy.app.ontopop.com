@@ -1,7 +1,7 @@
 import loadStyling from '../networkStyling/loadStyling'
 import getGraphData from '../apiCalls/getGraphData'
-import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 import setNodesIdsToDisplay from './setNodesIdsToDisplay'
+import notesGetNotes from '../notes/notesGetNotes'
 
 /**
  * Graph data loading at startup
@@ -20,7 +20,32 @@ const startupActions = async ({
 }) => {
   // load saved styling options
   loadStyling({
-    setStoreState
+    setStoreState,
+    addNumber,
+    t
+  })
+
+  // get graph comments
+  notesGetNotes({
+    addNumber,
+    setStoreState,
+    t
+  })
+
+  // get node comments
+  notesGetNotes({
+    addNumber,
+    setStoreState,
+    type: 'node',
+    t
+  })
+
+  // get edge comments
+  notesGetNotes({
+    addNumber,
+    setStoreState,
+    type: 'edge',
+    t
   })
 
   // get graph data
@@ -31,7 +56,6 @@ const startupActions = async ({
   })
 
   setNodesIdsToDisplay({
-    type: ALGO_TYPE_FULL,
     setStoreState,
     removeFromObject,
     t

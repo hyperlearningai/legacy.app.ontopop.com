@@ -1,6 +1,7 @@
 import highlightSpiderableNodes from '../networkStyling/highlightSpiderableNodes'
 import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import store from '../../store'
+import setNodesOverlay from '../networkStyling/setNodesOverlay'
 
 /**
  * Node queue to avoid browser freezing
@@ -13,7 +14,6 @@ import store from '../../store'
 const actionAfterNodesAdded = ({
   setStoreState,
   addNumber,
-  nodesEdges,
 }) => {
   const {
     network,
@@ -24,8 +24,6 @@ const actionAfterNodesAdded = ({
   const currentPhysicsOnState = isPhysicsOn
   const currentPhysicsRepulsionState = physicsRepulsion
 
-  setStoreState('nodesEdges', JSON.parse(JSON.stringify(nodesEdges)))
-
   // turn physics on to scatter nodes around
   setStoreState('isPhysicsOn', true)
   setStoreState('physicsRepulsion', true)
@@ -34,6 +32,7 @@ const actionAfterNodesAdded = ({
 
   // perform highlight check here as nodes' edges are not fully loaded during loop
   highlightSpiderableNodes()
+  setNodesOverlay()
 
   const displayedNodes = getNodeIds()
 
