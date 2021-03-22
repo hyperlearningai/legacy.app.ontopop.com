@@ -6,6 +6,7 @@ import setNodeStyle from '../networkStyling/setNodeStyle'
 import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
+import { NODE_TYPE } from '../../constants/graph'
 
 /**
  * ADd ontology nodes
@@ -88,13 +89,17 @@ const setOntologyAddNode = async ({
     })
   }
 
-  const { id, userDefined } = data[Object.keys(data)[0]]
+  const {
+    id, userDefined, label, userId
+  } = data[Object.keys(data)[0]]
 
   // add to classesFromApi
   newClassesFromApi[id] = {
     ...selectedElementProperties,
+    [NODE_TYPE]: label,
     userDefined,
-    id
+    id,
+    userId
   }
 
   // add label

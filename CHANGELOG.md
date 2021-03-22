@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-112 Removed unnecessary test fixtures
 
 ### Fixed
+- ONTOLOGY-112 Fixed node update API
 
 ### Security
 

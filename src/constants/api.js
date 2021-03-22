@@ -51,6 +51,12 @@ export const POST_CREATE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_
 export const PATCH_UPDATE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes/{id}`
 export const DELETE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes/{id}`
 
+export const GET_NODE_SYNONYMS = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms`
+export const GET_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
+export const POST_CREATE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/create`
+export const PATCH_UPDATE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
+export const DELETE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
+
 // ONTOLOGY
 export const API_ENDPOINT_ONTOLOGY = `${process.env.NEXT_PUBLIC_ONTOLOGY_ENDPOINT}/api/ontology`
 

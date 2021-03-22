@@ -54,6 +54,10 @@ export default {
   couldNotQueryAnnotationProperties: 'Could not query annotation properties!',
   couldNotQueryEdgeProperties: 'Could not query object properties!',
   noNodesToDisplay: 'No nodes to display!',
+  couldNotQuerySynonyms: 'Could not query synonyms!',
+  couldNotCreateSynonym: 'Could not create a synonym!',
+  couldNotUpdateSynonym: 'Could not update a synonym!',
+  couldNotDeleteSynonym: 'Could not delete a synonym!',
   couldNotQueryStyles: 'Could not query styles!',
   couldNotUpdateStyles: 'Could not update styles!',
 
@@ -431,6 +435,15 @@ export default {
 
   // api calls
   apiCallNotValid: 'Invalid http request',
+
+  // synonyms
+  synonyms: 'Synonyms',
+  synonymsFor: 'Synonyms for',
+  addNewSynonym: 'Add New Synonym',
+  addSynonym: 'Add Synonym',
+  synonymText: 'Synonym Text',
+  availableSynonyms: 'Available Synonyms',
+  synonymCreated: 'Synonym Created!',
 
   // network graph options
   showSubclassRelationships: 'Show subclass relationships',

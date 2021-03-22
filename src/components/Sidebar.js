@@ -34,7 +34,8 @@ import {
   FaRegCircle,
   FaFileExport,
   FaPaintBrush,
-  FaStickyNote
+  FaStickyNote,
+  FaFileAlt
 } from 'react-icons/fa'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
@@ -58,7 +59,7 @@ import {
   SIDEBAR_VIEW_STRUCTURED_SEARCH,
   MAIN_VIEW_SEARCH,
   MAIN_VIEW_GRAPH,
-  SIDEBAR_VIEW_NOTES
+  SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
@@ -77,6 +78,7 @@ import NetworkStyling from './NetworkStyling'
 import StructuredSearch from './StructuredSearch'
 import NotesList from './NotesList'
 import EntrySearch from './EntrySearch'
+import SynonymsList from './SynonymsList'
 import NetworkGraphOptions from './NetworkGraphOptions'
 
 const Sidebar = ({
@@ -284,6 +286,17 @@ const Sidebar = ({
           <FaStickyNote />
         </Button>
         <Button
+          tooltip={t(SIDEBAR_VIEW_SYNONYMS)}
+          id="sidebar-button-synonims"
+          className={sidebarView === SIDEBAR_VIEW_SYNONYMS ? 'sidebar-bar-button-selected' : ''}
+          onClick={() => {
+            setView(SIDEBAR_VIEW_SYNONYMS)
+            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+          }}
+        >
+          <FaFileAlt />
+        </Button>
+        <Button
           id="sidebar-button-export"
           tooltip={t(SIDEBAR_VIEW_EXPORT)}
           className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
@@ -344,6 +357,12 @@ const Sidebar = ({
             {
               sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH && (
                 <FreeTextSearch />
+              )
+            }
+
+            {
+              sidebarView === SIDEBAR_VIEW_SYNONYMS && (
+                <SynonymsList />
               )
             }
 

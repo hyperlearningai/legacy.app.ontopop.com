@@ -86,7 +86,7 @@ const setOntologyAddEdge = async ({
     })
   }
 
-  const { id, userDefined } = data[Object.keys(data)[0]]
+  const { id, userDefined, userId } = data[Object.keys(data)[0]]
 
   const edge = {
     from,
@@ -96,7 +96,8 @@ const setOntologyAddEdge = async ({
     label: edgeLabel,
     rdfsLabel: edgeLabel,
     rdfAbout: edgeId,
-    userDefined
+    userDefined,
+    userId
   }
 
   newObjectPropertiesFromApi[id] = edge
