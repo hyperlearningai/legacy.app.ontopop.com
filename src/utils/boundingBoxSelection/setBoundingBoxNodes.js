@@ -1,4 +1,5 @@
 import { ALGO_TYPE_BOUNDING_BOX } from '../../constants/algorithms'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
 
@@ -29,7 +30,8 @@ const setBoundingBoxNodes = ({
     type: ALGO_TYPE_BOUNDING_BOX,
     options: {
       selectedBoundingBoxNodes,
-    }
+    },
+    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
   }
 
   addToObject('graphData', newCurrentGraph, graphValue)

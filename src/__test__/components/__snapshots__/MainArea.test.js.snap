@@ -11,6 +11,8 @@ exports[`MainArea should match snapshot when MAIN_VIEW_GRAPH 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -35,6 +37,8 @@ exports[`MainArea should match snapshot when MAIN_VIEW_SEARCH 1`] = `
       "removeFromArray": [Function],
       "removeFromObject": [Function],
       "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
     }
   }
   addNumber={[MockFunction]}

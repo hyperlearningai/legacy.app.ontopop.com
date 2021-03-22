@@ -2,6 +2,56 @@ import { DataSet } from 'vis-data'
 import actions from '../../store/actions'
 
 describe('Actions', () => {
+  it('toggleFromSubArray should work correctly when pushing the value', () => {
+    const stateKey = 'graphData'
+    const key = 'graph-0'
+    const subkey = 'hiddenNode'
+    const value = '1'
+
+    const state = {
+      [stateKey]: {
+        [key]: {
+          [subkey]: []
+        }
+      }
+    }
+
+    const newState = {
+      [stateKey]: {
+        [key]: {
+          [subkey]: [value]
+        }
+      }
+    }
+
+    expect(actions.toggleFromSubArray(state, stateKey, key, subkey, value)).toEqual(newState)
+  })
+
+  it('toggleFromSubArray should work correctly when removing the value', () => {
+    const stateKey = 'graphData'
+    const key = 'graph-0'
+    const subkey = 'hiddenNode'
+    const value = '1'
+
+    const state = {
+      [stateKey]: {
+        [key]: {
+          [subkey]: [value]
+        }
+      }
+    }
+
+    const newState = {
+      [stateKey]: {
+        [key]: {
+          [subkey]: []
+        }
+      }
+    }
+
+    expect(actions.toggleFromSubArray(state, stateKey, key, subkey, value)).toEqual(newState)
+  })
+
   it('addNumber should work correctly', () => {
     const state = {
       activeLoaders: 0

@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HideElementsByPropertyForm should match snapshot when edge 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
+    }
+  }
+  annotationProperties={
+    Array [
+      Object {
+        "label": "rdfsLabel",
+        "value": "rdfsLabel",
+      },
+    ]
+  }
+  annotationPropertiesDatasets={
+    Array [
+      Object {
+        "label": "upperOntology",
+        "value": "upperOntology",
+      },
+    ]
+  }
+  elementProperties={
+    Object {
+      "0": Object {
+        "properties": Object {
+          "0": Object {
+            "operation": "includes",
+            "property": "",
+            "value": "",
+          },
+        },
+        "type": "and",
+      },
+    }
+  }
+  elementType="edge"
+  index={0}
+  mapToProps={[Function]}
+  setProperty={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`HideElementsByPropertyForm should match snapshot when node 1`] = `
+<Connect
+  actions={
+    Object {
+      "addNumber": [Function],
+      "addSubValueToObject": [Function],
+      "addToArray": [Function],
+      "addToObject": [Function],
+      "removeFromArray": [Function],
+      "removeFromObject": [Function],
+      "setStoreState": [Function],
+      "toggleFromArrayInKey": [Function],
+      "toggleFromSubArray": [Function],
+    }
+  }
+  annotationProperties={
+    Array [
+      Object {
+        "label": "rdfsLabel",
+        "value": "rdfsLabel",
+      },
+    ]
+  }
+  annotationPropertiesDatasets={
+    Array [
+      Object {
+        "label": "upperOntology",
+        "value": "upperOntology",
+      },
+    ]
+  }
+  elementProperties={
+    Object {
+      "0": Object {
+        "properties": Object {
+          "0": Object {
+            "operation": "includes",
+            "property": "",
+            "value": "",
+          },
+        },
+        "type": "and",
+      },
+    }
+  }
+  elementType="node"
+  index={0}
+  mapToProps={[Function]}
+  setProperty={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

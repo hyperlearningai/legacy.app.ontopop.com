@@ -14,7 +14,6 @@ import setNodesOverlay from '../networkStyling/setNodesOverlay'
 const actionAfterNodesAdded = ({
   setStoreState,
   addNumber,
-  nodesEdges,
 }) => {
   const {
     network,
@@ -24,8 +23,6 @@ const actionAfterNodesAdded = ({
 
   const currentPhysicsOnState = isPhysicsOn
   const currentPhysicsRepulsionState = physicsRepulsion
-
-  setStoreState('nodesEdges', JSON.parse(JSON.stringify(nodesEdges)))
 
   // turn physics on to scatter nodes around
   setStoreState('isPhysicsOn', true)

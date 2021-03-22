@@ -1,6 +1,5 @@
 import loadStyling from '../networkStyling/loadStyling'
 import getGraphData from '../apiCalls/getGraphData'
-import { ALGO_TYPE_FULL } from '../../constants/algorithms'
 import setNodesIdsToDisplay from './setNodesIdsToDisplay'
 import notesGetNotes from '../notes/notesGetNotes'
 
@@ -57,7 +56,6 @@ const startupActions = async ({
   })
 
   setNodesIdsToDisplay({
-    type: ALGO_TYPE_FULL,
     setStoreState,
     removeFromObject,
     t

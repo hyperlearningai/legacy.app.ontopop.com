@@ -70,11 +70,11 @@ context('Custom query', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 12')
-      cy.get('.nav-left').should('contain', 'Edges: 20')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 19')
 
       // click the custom query sidebar icon
-      cy.get('.sidebar-icons').find('.p-button').eq(11).click()
+      cy.get('#sidebar-button-custom-query').click()
 
       // should have two items in query history
       cy.get('.custom-query-row').should('have.length', 2)

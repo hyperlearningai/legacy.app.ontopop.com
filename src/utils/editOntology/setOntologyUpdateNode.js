@@ -30,7 +30,15 @@ const setOntologyUpdateNode = async ({
 
   const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
 
-  const body = JSON.parse(JSON.stringify(selectedElementProperties))
+  const node = newClassesFromApi[selectedElement]
+
+  const body = {
+    ...node,
+    ...selectedElementProperties,
+    label: node.nodeType
+  }
+
+  delete body.nodeType
 
   const response = await httpCall({
     addNumber,

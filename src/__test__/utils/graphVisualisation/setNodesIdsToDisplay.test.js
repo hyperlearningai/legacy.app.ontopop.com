@@ -16,20 +16,24 @@ import getNeighbours from '../../../utils/nodeNeighbourhood/getNeighbours'
 import getNodesFromPaths from '../../../utils/shortestPath/getNodesFromPaths'
 import getNodesFromNodesFilters from '../../../utils/nodesFilter/getNodesFromNodesFilters'
 import getNodesEdgesFromEdgesFilters from '../../../utils/edgesFilter/getNodesEdgesFromEdgesFilters'
-
-const setStoreState = jest.fn()
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
 jest.mock('../../../utils/nodeNeighbourhood/getNeighbours')
 jest.mock('../../../utils/shortestPath/getNodesFromPaths')
 jest.mock('../../../utils/nodesFilter/getNodesFromNodesFilters')
 jest.mock('../../../utils/edgesFilter/getNodesEdgesFromEdgesFilters')
 
-store.getState = jest.fn().mockImplementation(() => ({
+const commonState = {
   classesFromApi,
+  classesFromApiBackup: classesFromApi,
   objectPropertiesFromApi,
   nodesIdsToDisplay: ['123'],
   deletedNodes: []
-}))
+}
+
+const setStoreState = jest.fn()
+const removeFromObject = jest.fn()
+const t = jest.fn()
 
 describe('setNodesIdsToDisplay', () => {
   afterEach(() => {
@@ -38,11 +42,26 @@ describe('setNodesIdsToDisplay', () => {
 
   it('should work correctly when ALGO_TYPE_FULL', async () => {
     const type = ALGO_TYPE_FULL
+    const options = {}
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
 
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options: {}
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual(
@@ -403,10 +422,24 @@ describe('setNodesIdsToDisplay', () => {
       selectedBoundingBoxNodes: [{ id: '12' }, { id: '24' }],
     }
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -450,12 +483,26 @@ describe('setNodesIdsToDisplay', () => {
       totalEdgesPerNode
     }
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     getNeighbours.mockImplementation(() => ['24', '36'])
 
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -490,6 +537,11 @@ describe('setNodesIdsToDisplay', () => {
   })
 
   it('should work correctly when ALGO_TYPE_NEIGHBOURHOOD', async () => {
+    getNeighbours.mockImplementation(() => ({
+      neighbourNodes: ['24', '36'],
+      neighbourEdges: ['111']
+    }))
+
     const type = ALGO_TYPE_NEIGHBOURHOOD
 
     const options = {
@@ -498,15 +550,24 @@ describe('setNodesIdsToDisplay', () => {
       totalEdgesPerNode
     }
 
-    getNeighbours.mockImplementation(() => ({
-      neighbourNodes: ['24', '36'],
-      neighbourEdges: ['111']
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
     }))
 
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -563,10 +624,24 @@ describe('setNodesIdsToDisplay', () => {
       shortestPathEdges: ['111', '112']
     }))
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -632,10 +707,24 @@ describe('setNodesIdsToDisplay', () => {
       shortestPathEdges: ['111', '112']
     }))
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -696,10 +785,24 @@ describe('setNodesIdsToDisplay', () => {
       '14'
     ]))
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([
@@ -745,10 +848,24 @@ describe('setNodesIdsToDisplay', () => {
 
     getNodesEdgesFromEdgesFilters.mockImplementation(() => (['11', '12']))
 
+    store.getState = jest.fn().mockImplementation(() => ({
+      ...commonState,
+      currentGraph: 'graph-0',
+      graphData: {
+        'graph-0': {
+          label: 'Main',
+          noDelete: true,
+          type,
+          options,
+          ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+        }
+      }
+    }))
+
     await setNodesIdsToDisplay({
-      type,
       setStoreState,
-      options
+      removeFromObject,
+      t
     })
 
     expect(setStoreState.mock.calls).toEqual([

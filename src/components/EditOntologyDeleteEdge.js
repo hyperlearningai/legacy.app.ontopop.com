@@ -13,7 +13,9 @@ const EditOntologyDeleteEdge = ({
   operation,
   setStoreState,
   addNumber,
-  optionEdges
+  optionEdges,
+  addSubValueToObject,
+  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -59,6 +61,8 @@ const EditOntologyDeleteEdge = ({
               setStoreState,
               addNumber,
               selectedElementProperties,
+              addSubValueToObject,
+              toggleFromArrayInKey,
               t
             })
             setSelectedElement(undefined)
@@ -79,6 +83,8 @@ EditOntologyDeleteEdge.propTypes = {
   setStoreState: PropTypes.func.isRequired,
   addNumber: PropTypes.func.isRequired,
   optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  addSubValueToObject: PropTypes.func.isRequired,
+  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

@@ -1,5 +1,6 @@
 import setBoundingBoxNodes from '../../../utils/boundingBoxSelection/setBoundingBoxNodes'
 import store from '../../../store'
+import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
 const setStoreState = jest.fn()
 const addToObject = jest.fn()
@@ -46,6 +47,7 @@ describe('setBoundingBoxNodes', () => {
           ],
         },
         type: 'bounding-box',
+        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
       }
     )
   })

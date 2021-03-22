@@ -20,17 +20,19 @@ const getTriplesFromApi = ({
     } = edge
 
     const id = edge.id.toString()
+    const fromAsString = from.toString()
+    const toAsString = to.toString()
 
-    if (!totalEdgesPerNode[from.toString()]) {
-      totalEdgesPerNode[from.toString()] = [id]
-    } else if (!totalEdgesPerNode[from.toString()].includes(id)) {
-      totalEdgesPerNode[from.toString()].push(id)
+    if (!totalEdgesPerNode[fromAsString]) {
+      totalEdgesPerNode[fromAsString] = [id]
+    } else if (!totalEdgesPerNode[fromAsString].includes(id)) {
+      totalEdgesPerNode[fromAsString].push(id)
     }
 
-    if (!totalEdgesPerNode[to.toString()]) {
-      totalEdgesPerNode[to.toString()] = [id]
-    } else if (!totalEdgesPerNode[to.toString()].includes(id)) {
-      totalEdgesPerNode[to.toString()].push(id)
+    if (!totalEdgesPerNode[toAsString]) {
+      totalEdgesPerNode[toAsString] = [id]
+    } else if (!totalEdgesPerNode[toAsString].includes(id)) {
+      totalEdgesPerNode[toAsString].push(id)
     }
 
     return true
