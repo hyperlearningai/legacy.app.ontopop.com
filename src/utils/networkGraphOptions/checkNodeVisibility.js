@@ -7,12 +7,10 @@ import checkVisibilityByProperty from './checkVisibilityByProperty'
  * Check node visibility
  * @param  {Object}    params
  * @param  {String}    params.nodeId              Node ID
- * @param  {Function}  params.toggleFromSubArray  toggleFromSubArray action
  * @return {Boolean}   isVisible                  Node visibility flag
  */
 const checkNodeVisibility = ({
   nodeId,
-  toggleFromSubArray
 }) => {
   const {
     currentGraph,
@@ -47,10 +45,6 @@ const checkNodeVisibility = ({
         properties
       })
     }
-  }
-
-  if (!isVisible) {
-    toggleFromSubArray('graphData', currentGraph, 'hiddenNodes', nodeId)
   }
 
   return isVisible

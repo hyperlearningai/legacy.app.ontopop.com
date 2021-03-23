@@ -7,7 +7,6 @@ import addElementToGraph from './addElementToGraph'
  * Update store and graph based on node IDs to display
  * @param  {Object}   params
  * @param  {Function} params.setStoreState           setStoreState action
- * @param  {Function} params.toggleFromSubArray      toggleFromSubArray action
  * @param  {Function} params.toggleFromArrayInKey      toggleFromSubArray action
  * @param  {Function} params.addNumber               addNumber action
  * @return { undefined }
@@ -15,8 +14,8 @@ import addElementToGraph from './addElementToGraph'
 const queueGraphElements = ({
   setStoreState,
   addNumber,
-  toggleFromSubArray,
-  toggleFromArrayInKey
+  toggleFromArrayInKey,
+  addSubValueToObject
 }) => {
   const {
     classesFromApi,
@@ -24,6 +23,7 @@ const queueGraphElements = ({
     objectPropertiesFromApi,
     totalEdgesPerNode,
     isPhysicsOn,
+    currentGraph
   } = store.getState()
 
   if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
@@ -31,6 +31,7 @@ const queueGraphElements = ({
   // reset nodes and edges count
   setStoreState('availableNodesCount', 0)
   setStoreState('availableEdgesCount', 0)
+  addSubValueToObject('graphData', currentGraph, 'nodesIdsToDisplay', nodesIdsToDisplay)
 
   const currentPhysicsOnState = isPhysicsOn
 
@@ -56,12 +57,10 @@ const queueGraphElements = ({
       nodesIdsToDisplay,
       objectPropertiesFromApi,
       totalEdgesPerNode,
-      toggleFromSubArray,
       setStoreState,
       i,
       nodeIdsLength,
       toggleFromArrayInKey,
-      // nodesEdges,
       processedEdges,
       addNumber,
     }), 1)

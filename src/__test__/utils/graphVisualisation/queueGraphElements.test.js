@@ -7,6 +7,8 @@ import store from '../../../store'
 
 const setStoreState = jest.fn()
 const addNumber = jest.fn()
+const toggleFromArrayInKey = jest.fn()
+const addSubValueToObject = jest.fn()
 
 const availableNodes = new DataSet()
 const availableEdges = new DataSet()
@@ -43,7 +45,9 @@ describe('queueGraphElements', () => {
 
     await queueGraphElements({
       setStoreState,
-      addNumber
+      addNumber,
+      toggleFromArrayInKey,
+      addSubValueToObject
     })
 
     expect(setStoreState).toHaveBeenCalledTimes(0)
@@ -68,7 +72,9 @@ describe('queueGraphElements', () => {
 
     await queueGraphElements({
       setStoreState,
-      addNumber
+      addNumber,
+      toggleFromArrayInKey,
+      addSubValueToObject
     })
 
     expect(setStoreState.mock.calls).toEqual(

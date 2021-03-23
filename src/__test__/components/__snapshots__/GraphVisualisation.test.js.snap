@@ -16,6 +16,7 @@ exports[`GraphVisualisation should match snapshot  1`] = `
     }
   }
   addNumber={[MockFunction]}
+  addSubValueToObject={[MockFunction]}
   availableEdges={
     DataSet {
       "_data": Map {},
@@ -84,6 +85,7 @@ exports[`GraphVisualisation should match snapshot  1`] = `
   removeFromObject={[MockFunction]}
   setStoreState={[MockFunction]}
   showContextMenu={true}
+  toggleFromArrayInKey={[MockFunction]}
 >
   <Component />
 </Connect>

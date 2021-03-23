@@ -79,6 +79,7 @@ const setOntologyUpdateNode = async ({
 
   newClassesFromApi[selectedElement].label = selectedElementProperties[stylingNodeCaptionProperty]
     ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+  newClassesFromApi[selectedElement].title = newClassesFromApi[selectedElement].label
 
   updateNodes({ id: selectedElement, ...newClassesFromApi[selectedElement] })
 
