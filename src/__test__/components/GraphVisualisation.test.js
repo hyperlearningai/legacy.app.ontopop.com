@@ -30,6 +30,8 @@ const setup = () => {
     setStoreState: jest.fn(),
     showContextMenu: true,
     removeFromObject: jest.fn(),
+    addSubValueToObject: jest.fn(),
+    toggleFromArrayInKey: jest.fn(),
     addNumber: jest.fn(),
     globalEdgeStyling: {
       stylingEdgeLineColor: EDGE_COLOR,
@@ -41,7 +43,7 @@ const setup = () => {
       stylingEdgeTextAlign: 'horizontal',
       stylingEdgeWidth: 1,
       stylingEdgeLength: 250,
-    }
+    },
   }
 
   const component = shallow(<GraphVisualisation {...props} />)

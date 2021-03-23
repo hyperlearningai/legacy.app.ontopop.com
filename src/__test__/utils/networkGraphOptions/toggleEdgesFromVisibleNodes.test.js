@@ -8,7 +8,6 @@ import updateStyleAndPhysics from '../../../utils/networkGraphOptions/updateStyl
 import setEdgesStyle from '../../../utils/networkStyling/setEdgesStyle'
 
 const setStoreState = jest.fn()
-const toggleFromSubArray = jest.fn()
 const addNumber = jest.fn()
 const toggleFromArrayInKey = jest.fn()
 
@@ -42,7 +41,6 @@ describe('toggleEdgesFromVisibleNodes', () => {
       visibleNodes,
       toggleFromArrayInKey,
       setStoreState,
-      toggleFromSubArray,
       addNumber
     })
 
@@ -57,7 +55,6 @@ describe('toggleEdgesFromVisibleNodes', () => {
       edgeId: '11',
       addNumber,
       toggleFromArrayInKey,
-      toggleFromSubArray,
       setStoreState,
       isLastEdge: false
     })

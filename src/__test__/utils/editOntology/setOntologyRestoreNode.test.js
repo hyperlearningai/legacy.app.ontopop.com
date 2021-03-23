@@ -195,6 +195,7 @@ describe('setOntologyRestoreNode', () => {
           },
           id: '12',
           label: 'Provided to',
+          title: 'Provided to',
           name: 'Drawing',
           nodeId: 40,
           nodeType: 'class',

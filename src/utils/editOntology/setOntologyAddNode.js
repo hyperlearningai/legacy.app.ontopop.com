@@ -14,7 +14,6 @@ import { NODE_TYPE } from '../../constants/graph'
  * @param  {Function}       params.addNumber                  addNumber action
  * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
- * @param  {Function}       params.toggleFromSubArray        toggleFromSubArray action
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
@@ -22,7 +21,6 @@ const setOntologyAddNode = async ({
   addNumber,
   setStoreState,
   selectedElementProperties,
-  toggleFromSubArray,
   t
 }) => {
   const {
@@ -105,6 +103,7 @@ const setOntologyAddNode = async ({
   // add label
   newClassesFromApi[id].label = selectedElementProperties[stylingNodeCaptionProperty]
     ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
+  newClassesFromApi[id].title = newClassesFromApi[id].label
 
   // add array for new node in nodes edges connections
   newNodesEdges[id] = []
@@ -155,7 +154,6 @@ const setOntologyAddNode = async ({
 
   const isVisible = checkNodeVisibility({
     nodeId: id,
-    toggleFromSubArray,
   })
 
   if (isVisible) {

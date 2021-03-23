@@ -16,7 +16,6 @@ const toggleEdgesFromVisibleNodes = ({
   visibleNodes,
   toggleFromArrayInKey,
   setStoreState,
-  toggleFromSubArray,
   addNumber
 }) => {
   const {
@@ -78,7 +77,6 @@ const toggleEdgesFromVisibleNodes = ({
         edgeId,
         addNumber,
         toggleFromArrayInKey,
-        toggleFromSubArray,
         setStoreState,
         isLastEdge
       })

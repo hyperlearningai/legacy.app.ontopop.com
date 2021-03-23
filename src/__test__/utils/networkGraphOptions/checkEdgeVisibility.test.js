@@ -10,8 +10,6 @@ const commonState = {
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
 }
 
-const toggleFromSubArray = jest.fn()
-
 describe('checkEdgeVisibility', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -36,16 +34,9 @@ describe('checkEdgeVisibility', () => {
     }))
 
     const output = await checkEdgeVisibility({
-      edgeId,
-      toggleFromSubArray
+      edgeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledWith(
-      'graphData',
-      currentGraph,
-      'hiddenEdges',
-      edgeId
-    )
     expect(output).toEqual(false)
   })
 
@@ -68,11 +59,9 @@ describe('checkEdgeVisibility', () => {
     }))
 
     const output = await checkEdgeVisibility({
-      edgeId,
-      toggleFromSubArray
+      edgeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledTimes(0)
     expect(output).toEqual(true)
   })
 
@@ -106,16 +95,9 @@ describe('checkEdgeVisibility', () => {
     }))
 
     const output = await checkEdgeVisibility({
-      edgeId,
-      toggleFromSubArray
+      edgeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledWith(
-      'graphData',
-      currentGraph,
-      'hiddenEdges',
-      edgeId
-    )
     expect(output).toEqual(false)
   })
 
@@ -138,11 +120,9 @@ describe('checkEdgeVisibility', () => {
     }))
 
     const output = await checkEdgeVisibility({
-      edgeId,
-      toggleFromSubArray
+      edgeId
     })
 
-    expect(toggleFromSubArray).toHaveBeenCalledTimes(0)
     expect(output).toEqual(true)
   })
 })

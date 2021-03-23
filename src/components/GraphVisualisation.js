@@ -25,9 +25,9 @@ const GraphVisualisation = ({
   physicsRepulsion,
   isPhysicsOn,
   globalEdgeStyling,
-  toggleFromSubArray,
   toggleFromArrayInKey,
-  addNumber
+  addNumber,
+  addSubValueToObject
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
@@ -54,8 +54,8 @@ const GraphVisualisation = ({
       queueGraphElements({
         setStoreState,
         addNumber,
-        toggleFromSubArray,
-        toggleFromArrayInKey
+        toggleFromArrayInKey,
+        addSubValueToObject
       })
     }
   }, [
@@ -88,7 +88,7 @@ const GraphVisualisation = ({
     setStoreState,
     network,
     addNumber,
-    toggleFromSubArray
+    toggleFromArrayInKey
   }), [
     network,
     nodesIdsToDisplay
@@ -153,8 +153,8 @@ GraphVisualisation.propTypes = {
   physicsRepulsion: PropTypes.bool.isRequired,
   globalEdgeStyling: PropTypes.shape().isRequired,
   addNumber: PropTypes.func.isRequired,
-  toggleFromSubArray: PropTypes.func.isRequired,
   toggleFromArrayInKey: PropTypes.func.isRequired,
+  addSubValueToObject: PropTypes.func.isRequired,
 }
 
 GraphVisualisation.defaultProps = {
