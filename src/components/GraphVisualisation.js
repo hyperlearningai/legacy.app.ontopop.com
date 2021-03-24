@@ -9,7 +9,6 @@ import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
 import queueGraphElements from '../utils/graphVisualisation/queueGraphElements'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const GraphVisualisation = ({
   currentGraph,
@@ -46,8 +45,6 @@ const GraphVisualisation = ({
     if (isInitialMountCurrentGraph.current) {
       isInitialMountCurrentGraph.current = false
     } else if (nodesIdsToDisplay.length > 0) {
-      updateStoreValue(['isNetworkLoading'], OPERATION_TYPE_UPDATE, true)
-
       queueGraphElements({
         updateStoreValue
       })

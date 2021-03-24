@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-109 Added userback and mouseflow snippets
 
 ### Changed
+- ONTOLOGY-151 Node and edge rendering logic to improve performance
 
 ### Deprecated
 

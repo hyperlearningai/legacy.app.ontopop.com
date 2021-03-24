@@ -25,15 +25,13 @@ describe('highlightSpiderableNode', () => {
   })
 
   it('should work correctly when not spiderable', async () => {
-    const node = { id: '11', userDefined: false }
-
-    const nodesEdges = {
-      11: totalEdgesPerNode['11']
-    }
+    const node = { id: '12', userDefined: false }
 
     store.getState = jest.fn().mockImplementationOnce(() => ({
       ...commonState,
-      nodesEdges,
+      nodesSpiderability: {
+        12: 'false'
+      },
     }))
 
     await highlightSpiderableNode({
@@ -46,21 +44,44 @@ describe('highlightSpiderableNode', () => {
         color: {
           border: '#000',
         },
-        id: '11',
+        id: '12',
       }
     )
   })
 
-  it('should work correctly', async () => {
-    const node = { id: '11', userDefined: false }
-
-    const nodesEdges = {
-      11: totalEdgesPerNode['11'].slice(0, 1)
-    }
+  it('should work correctly when hidden', async () => {
+    const node = { id: '12', userDefined: false }
 
     store.getState = jest.fn().mockImplementationOnce(() => ({
       ...commonState,
-      nodesEdges,
+      nodesSpiderability: {
+        12: 'hidden'
+      }
+    }))
+
+    await highlightSpiderableNode({
+      node
+    })
+
+    expect(updateNodes).toHaveBeenCalledWith(
+      {
+        borderWidth: 2,
+        color: {
+          border: '#9c27b0',
+        },
+        id: '12',
+      }
+    )
+  })
+
+  it('should work correctly when spiderable', async () => {
+    const node = { id: '12', userDefined: false }
+
+    store.getState = jest.fn().mockImplementationOnce(() => ({
+      ...commonState,
+      nodesSpiderability: {
+        12: 'true'
+      }
     }))
 
     await highlightSpiderableNode({
@@ -73,7 +94,7 @@ describe('highlightSpiderableNode', () => {
         color: {
           border: '#ff6f61',
         },
-        id: '11',
+        id: '12',
       }
     )
   })

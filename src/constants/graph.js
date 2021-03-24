@@ -8,6 +8,7 @@ export const HIGHLIGHT_NODE_BORDER = '#009688'
 export const HOVER_NODE_BACKGROUND = '#f2f2f2'
 export const HOVER_NODE_BORDER = '#607d8b'
 export const SELECTED_NODE_COLOR = '#ff6f61'
+export const SPIDERABLE_NODE_BORDER_COLOR_HIDDEN = '#9c27b0'
 export const SPIDERABLE_NODE_BORDER_COLOR = '#ff6f61'
 export const SPIDERABLE_NODE_BORDER_WIDTH = 2
 export const COMMENTED_NODE_BORDER_COLOR = '#2196f3'

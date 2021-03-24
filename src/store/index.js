@@ -46,6 +46,7 @@ const initialState = {
   objectPropertiesFromApiBackup: {},
   totalEdgesPerNode: {},
   totalEdgesPerNodeBackup: {},
+  nodesSpiderability: {},
   network: undefined,
   annotationProperties: [],
   annotationPropertiesDatasets: [],
