@@ -10,7 +10,7 @@ import {
 
 const setup = () => {
   const props = {
-    addToObject: jest.fn(),
+    updateStoreValue: jest.fn(),
     globalEdgeStyling: {
       stylingEdgeLineColor: EDGE_COLOR,
       stylingEdgeLineColorHover: EDGE_COLOR,

@@ -1,8 +1,9 @@
 import resetShortestPathNodes from '../../../utils/shortestPath/resetShortestPathNodes'
 import store from '../../../store'
 import setNodesStyle from '../../../utils/networkStyling/setNodesStyle'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 const shortestPathNode1 = 'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV'
 const shortestPathNode2 = 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
@@ -27,33 +28,39 @@ describe('resetShortestPathNodes', () => {
 
   it('should work correctly', async () => {
     await resetShortestPathNodes({
-      setStoreState,
+      updateStoreValue,
     })
 
     expect(setNodesStyle).toHaveBeenCalledWith()
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'isShortestPathNode1Selectable',
+        ['isShortestPathNode1Selectable'],
+        OPERATION_TYPE_UPDATE,
         false,
       ],
       [
-        'isShortestPathNode2Selectable',
+        ['isShortestPathNode2Selectable'],
+        OPERATION_TYPE_UPDATE,
         false,
       ],
       [
-        'shortestPathNode1',
+        ['shortestPathNode1'],
+        OPERATION_TYPE_UPDATE,
         '',
       ],
       [
-        'shortestPathNode2',
+        ['shortestPathNode2'],
+        OPERATION_TYPE_UPDATE,
         '',
       ],
       [
-        'shortestPathNode1Object',
+        ['shortestPathNode1Object'],
+        OPERATION_TYPE_UPDATE,
         undefined,
       ],
       [
-        'shortestPathNode2Object',
+        ['shortestPathNode2Object'],
+        OPERATION_TYPE_UPDATE,
         undefined,
       ],
 

@@ -1,5 +1,6 @@
 import { AUTH_COOKIE } from '../../../constants/auth'
 import { ROUTE_LOGIN } from '../../../constants/routes'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import logout from '../../../utils/auth/logout'
 
 describe('logout', () => {
@@ -10,7 +11,7 @@ describe('logout', () => {
   it('should work correctly', async () => {
     const push = jest.fn()
     const router = { push }
-    const setStoreState = jest.fn()
+    const updateStoreValue = jest.fn()
 
     const removeItem = jest.fn()
 
@@ -18,17 +19,17 @@ describe('logout', () => {
 
     await logout({
       router,
-      setStoreState
+      updateStoreValue
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'user', {
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['user'], OPERATION_TYPE_UPDATE, {
+        company: '',
         email: '',
         firstName: '',
-        lastName: '',
-        company: '',
         isGuest: false,
-        token: '',
+        lastName: '',
+        token: ''
       }
     )
 

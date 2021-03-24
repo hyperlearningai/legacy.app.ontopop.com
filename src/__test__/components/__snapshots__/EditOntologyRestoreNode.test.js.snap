@@ -4,24 +4,15 @@ exports[`EditOntologyRestoreNode should match snapshot when type edge and no opt
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   mapToProps={[Function]}
   operation="restore"
   optionEdges={Array []}
   optionNodes={Array []}
-  setStoreState={[MockFunction]}
   type="edge"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -31,24 +22,15 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and no opt
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   mapToProps={[Function]}
   operation="restore"
   optionEdges={Array []}
   optionNodes={Array []}
-  setStoreState={[MockFunction]}
   type="node"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -58,18 +40,9 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and option
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   mapToProps={[Function]}
   operation="restore"
   optionEdges={Array []}
@@ -81,8 +54,8 @@ exports[`EditOntologyRestoreNode should match snapshot when type node and option
       },
     ]
   }
-  setStoreState={[MockFunction]}
   type="node"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

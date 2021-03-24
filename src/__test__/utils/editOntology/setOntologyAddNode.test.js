@@ -11,9 +11,9 @@ import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 
 const t = (id) => en[id]
 jest.mock('../../../utils/notifications/showNotification')
@@ -51,8 +51,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
@@ -85,8 +84,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
@@ -126,15 +124,14 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(addNode).toHaveBeenCalledWith(
       {
-        addNumber,
+        updateStoreValue,
         node: {
           borderWidth: undefined,
           borderWidthSelected: undefined,
@@ -176,10 +173,11 @@ describe('setOntologyAddNode', () => {
       { nodeId: '123' }
     )
 
-    expect(setStoreState.mock.calls).toEqual(
+    expect(updateStoreValue.mock.calls).toEqual(
       [
         [
-          'classesFromApiBackup',
+          ['classesFromApiBackup'],
+          OPERATION_TYPE_UPDATE,
           {
             ...classesFromApi,
             123: {
@@ -196,7 +194,8 @@ describe('setOntologyAddNode', () => {
           },
         ],
         [
-          'classesFromApi',
+          ['classesFromApi'],
+          OPERATION_TYPE_UPDATE,
           {
             ...classesFromApi,
             123: {
@@ -213,20 +212,23 @@ describe('setOntologyAddNode', () => {
           },
         ],
         [
-          'nodesEdges',
+          ['nodesEdges'],
+          OPERATION_TYPE_UPDATE,
           {
             123: []
           }
         ],
         [
-          'totalEdgesPerNode',
+          ['totalEdgesPerNode'],
+          OPERATION_TYPE_UPDATE,
           {
             ...totalEdgesPerNode,
             123: []
           }
         ],
         [
-          'totalEdgesPerNodeBackup',
+          ['totalEdgesPerNodeBackup'],
+          OPERATION_TYPE_UPDATE,
           {
             ...totalEdgesPerNode,
             123: []
@@ -234,7 +236,8 @@ describe('setOntologyAddNode', () => {
         ],
 
         [
-          'addedNodes',
+          ['addedNodes'],
+          OPERATION_TYPE_UPDATE,
           ['123']
         ],
       ]

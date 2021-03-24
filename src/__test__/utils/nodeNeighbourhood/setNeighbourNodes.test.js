@@ -1,10 +1,8 @@
 import setNeighbourNodes from '../../../utils/nodeNeighbourhood/setNeighbourNodes'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import store from '../../../store'
-import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
-const setStoreState = jest.fn()
-const addToObject = jest.fn()
+const updateStoreValue = jest.fn()
 const selectedNeighbourNode = '1'
 const separationDegree = 1
 const lastGraphIndex = 1
@@ -24,35 +22,73 @@ describe('setNeighbourNodes', () => {
   it('should work correctly', async () => {
     await setNeighbourNodes({
       separationDegree,
-      setStoreState,
-      addToObject
+      updateStoreValue,
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'currentGraph',
+        [
+          'graphData',
+          'graph-2',
+        ],
+        'update',
+        {
+          hiddenEdgesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          hiddenNodesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          isDatasetVisible: false,
+          isSubClassEdgeVisible: true,
+          isUpperOntologyVisible: false,
+          label: 'neighbourhood-graph-2',
+          options: {
+            selectedNodeId: '1',
+            separationDegree: 1,
+          },
+          type: 'neighbourhood',
+        },
+      ],
+      [
+        [
+          'currentGraph',
+        ],
+        'update',
         'graph-2',
       ],
       [
-        'lastGraphIndex',
+        [
+          'lastGraphIndex',
+        ],
+        'update',
         2,
       ],
       [
-        'sidebarView',
+        [
+          'sidebarView',
+        ],
+        'update',
         'networkGraphs',
       ],
     ])
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphData',
-      'graph-2', {
-        label: 'neighbourhood-graph-2',
-        options: {
-          selectedNodeId: '1',
-          separationDegree: 1,
-        },
-        type: 'neighbourhood',
-        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
-      }
-    )
   })
 })

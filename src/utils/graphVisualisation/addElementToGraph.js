@@ -10,29 +10,25 @@ import setEdgeStyle from '../networkStyling/setEdgeStyle'
 /**
  * Node queue to avoid browser freezing
  * @param  {Object}   params
- * @param  {Object}   params.classesFromApi               All available nodes
- * @param  {Array}    params.nodesIdsToDisplay            Node IDs to visualisa
- * @param  {Object}   params.objectPropertiesFromApi      All avilable edges
- * @param  {Object}   params.totalEdgesPerNode            List of edges per node
- * @param  {Function} params.setStoreState                setStoreState action
- * @param  {Function} params.toggleFromArrayInKey         toggleFromArrayInKey action
- * @param  {Function} params.addNumber                    addNumber action
- * @param  {Number}   params.i                            Current node index
- * @param  {Number}   params.nodeIdsLength                Total nodes number
- * @param  {Array}    params.processedEdges               Edges already processed
+ * @param  {Object}   params.classesFromApi                 All available nodes
+ * @param  {Array}    params.nodesIdsToDisplay              Node IDs to visualisa
+ * @param  {Object}   params.objectPropertiesFromApi        All avilable edges
+ * @param  {Object}   params.totalEdgesPerNode              List of edges per node
+ * @param  {Function} params.updateStoreValue               updateStoreValue action
+ * @param  {Number}   params.i                              Current node index
+ * @param  {Number}   params.nodeIdsLength                  Total nodes number
+ * @param  {Array}    params.processedEdges                 Edges already processed
  * @return { undefined }
  */
 const addElementToGraph = ({
+  updateStoreValue,
   classesFromApi,
   nodesIdsToDisplay,
   objectPropertiesFromApi,
   totalEdgesPerNode,
-  setStoreState,
-  addNumber,
   i,
   nodeIdsLength,
   processedEdges,
-  toggleFromArrayInKey
 }) => {
   const nodeId = nodesIdsToDisplay[i]
   const nodeIdObject = classesFromApi[nodeId]
@@ -52,7 +48,7 @@ const addElementToGraph = ({
   if (isNodeVisible) {
     addNode({
       node: nodeIdObject,
-      addNumber
+      updateStoreValue,
     })
 
     setNodeStyle({ node: nodeIdObject, skipSpider: true })
@@ -101,8 +97,7 @@ const addElementToGraph = ({
 
         addEdge({
           edge,
-          addNumber,
-          toggleFromArrayInKey
+          updateStoreValue
         })
 
         setEdgeStyle({
@@ -119,7 +114,7 @@ const addElementToGraph = ({
 
         addNode({
           node: nodeToAddObject,
-          addNumber
+          updateStoreValue
         })
 
         return setNodeStyle({ node: nodeToAddObject, skipSpider: true })
@@ -129,8 +124,7 @@ const addElementToGraph = ({
 
   if (i === nodeIdsLength - 1) {
     actionAfterNodesAdded({
-      setStoreState,
-      addNumber,
+      updateStoreValue
     })
   }
 }

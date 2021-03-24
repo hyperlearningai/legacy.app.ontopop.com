@@ -1,9 +1,10 @@
 import { AUTH_COOKIE } from '../../constants/auth'
-import { AUTH_ROUTES, ROUTE_LOGIN } from '../../constants/routes'
+import { AUTH_ROUTES, ROUTE_INDEX, ROUTE_LOGIN } from '../../constants/routes'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 const checkTokenValidity = ({
   router,
-  addToObject
+  updateStoreValue
 }) => {
   // check if local storage with cookie
   const authCookie = localStorage.getItem(AUTH_COOKIE)
@@ -16,8 +17,10 @@ const checkTokenValidity = ({
   // // TODO: Add api endpoint to check cookie token validity
   const { email, token } = JSON.parse(authCookie)
 
-  addToObject('user', 'email', email)
-  addToObject('user', 'token', token)
+  updateStoreValue(['user', 'email'], OPERATION_TYPE_UPDATE, email)
+  updateStoreValue(['user', 'token'], OPERATION_TYPE_UPDATE, token)
+
+  router.push(ROUTE_INDEX)
 }
 
 export default checkTokenValidity

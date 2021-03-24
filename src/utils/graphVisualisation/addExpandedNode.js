@@ -18,9 +18,7 @@ import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
  * @param  {Number}   params.edgesNumber            Total number of edges
  * @param  {Object}   params.edge                   Edge object
  * @param  {Object}   params.classesFromApi         All nodes with properties
- * @param  {Function} params.addNumber              addNumber action
- * @param  {Function} params.setStoreState          setStoreState action
- * @param  {Function} params.toggleFromArrayInKey   toggleFromArrayInKey action
+ * @param  {Function} params.updateStoreValue       updateStoreValue action
  * @return {undefined}
  */
 const addExpandedNode = ({
@@ -28,10 +26,8 @@ const addExpandedNode = ({
   index,
   edgesNumber,
   edge,
-  toggleFromArrayInKey,
-  setStoreState,
+  updateStoreValue,
   classesFromApi,
-  addNumber,
 }) => {
   if (!edge) return false
 
@@ -67,7 +63,7 @@ const addExpandedNode = ({
         })
         nodeIdObject.title = nodeIdObject.label
 
-        addNode({ node: nodeIdObject, addNumber })
+        addNode({ node: nodeIdObject, updateStoreValue })
         setNodeStyle({
           node: nodeIdObject,
           skipSpider: true
@@ -77,8 +73,7 @@ const addExpandedNode = ({
 
     addEdge({
       edge,
-      addNumber,
-      toggleFromArrayInKey
+      updateStoreValue
     })
     setEdgeStyle({
       edge
@@ -87,8 +82,7 @@ const addExpandedNode = ({
 
   if (index === edgesNumber - 1) {
     actionAfterNodesAdded({
-      setStoreState,
-      addNumber,
+      updateStoreValue
     })
   }
 }

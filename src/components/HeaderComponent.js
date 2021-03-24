@@ -16,7 +16,7 @@ import {
 
 const HeaderComponent = ({
   activeLoaders,
-  setStoreState,
+  updateStoreValue,
   user
 }) => {
   const overlay = useRef(null)
@@ -97,7 +97,7 @@ const HeaderComponent = ({
                 label={t('signOut')}
                 onClick={() => logout({
                   router,
-                  setStoreState
+                  updateStoreValue
                 })}
               />
             )
@@ -111,7 +111,7 @@ const HeaderComponent = ({
 
 HeaderComponent.propTypes = {
   activeLoaders: PropTypes.number.isRequired,
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
 }
 

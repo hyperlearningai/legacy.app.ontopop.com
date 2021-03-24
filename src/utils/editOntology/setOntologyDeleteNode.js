@@ -3,30 +3,24 @@ import {
   NOTIFY_SUCCESS,
   NOTIFY_WARNING
 } from '../../constants/notifications'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
 import setElementsStyle from '../networkStyling/setElementsStyle'
-import countEdges from '../nodesEdgesUtils/countEdges'
-import countNodes from '../nodesEdgesUtils/countNodes'
 import removeNode from '../nodesEdgesUtils/removeNode'
 import showNotification from '../notifications/showNotification'
 
 /**
  * Delete ontology nodes
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  addNumber action
+ * @param  {Function}       params.updateStoreValue                  updateStoreValue action
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
- * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Function}       params.addToObject                Add to object action
- * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey funciton
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyDeleteNode = async ({
-  addNumber,
+  updateStoreValue,
   selectedElement,
-  setStoreState,
-  toggleFromArrayInKey,
   t
 }) => {
   const {
@@ -52,7 +46,7 @@ const setOntologyDeleteNode = async ({
       const nodeId = selectedElement[index]
 
       const response = await httpCall({
-        addNumber,
+        updateStoreValue,
         withAuth: true,
         route: API_ENDPOINT_GRAPH_NODES_ID.replace('{id}', nodeId),
         method: 'delete',
@@ -140,8 +134,7 @@ const setOntologyDeleteNode = async ({
 
       removeNode({
         nodeId,
-        addNumber,
-        toggleFromArrayInKey
+        updateStoreValue,
       })
     }
   }
@@ -154,11 +147,11 @@ const setOntologyDeleteNode = async ({
     })
   }
 
-  setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('totalEdgesPerNode', newEdgesPerNode)
-  setStoreState('deletedNodes', newDeletedNodes)
-  setStoreState('deletedEdges', newDeletedEdges)
-  setStoreState('classesFromApi', newClassesFromApi)
+  updateStoreValue(['nodesEdges'], OPERATION_TYPE_UPDATE, newNodesEdges)
+  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, newEdgesPerNode)
+  updateStoreValue(['deletedNodes'], OPERATION_TYPE_UPDATE, newDeletedNodes)
+  updateStoreValue(['deletedEdges'], OPERATION_TYPE_UPDATE, newDeletedEdges)
+  updateStoreValue(['classesFromApi'], OPERATION_TYPE_UPDATE, newClassesFromApi)
   setElementsStyle()
 
   if (nodesDeleted.length > 0) {
@@ -167,9 +160,6 @@ const setOntologyDeleteNode = async ({
       message,
       type: NOTIFY_SUCCESS
     })
-
-    setStoreState('availableNodesCount', countNodes())
-    setStoreState('availableEdgesCount', countEdges())
   }
 }
 

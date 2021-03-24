@@ -6,10 +6,9 @@ import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import toggleEdge from '../../../utils/networkGraphOptions/toggleEdge'
 import updateStyleAndPhysics from '../../../utils/networkGraphOptions/updateStyleAndPhysics'
 import setEdgesStyle from '../../../utils/networkStyling/setEdgesStyle'
+import { OPERATION_TYPE_ADD } from '../../../constants/store'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
-const toggleFromArrayInKey = jest.fn()
+const updateStoreValue = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNodeIds')
 jest.mock('../../../utils/networkGraphOptions/updateStyleAndPhysics')
@@ -39,27 +38,23 @@ describe('toggleEdgesFromVisibleNodes', () => {
 
     await toggleEdgesFromVisibleNodes({
       visibleNodes,
-      toggleFromArrayInKey,
-      setStoreState,
-      addNumber
+      updateStoreValue,
     })
 
-    expect(addNumber.mock.calls).toEqual(
+    expect(updateStoreValue.mock.calls).toEqual(
       [
-        ['activeLoaders', 1],
-        ['activeLoaders', -1],
+        [['activeLoaders'], OPERATION_TYPE_ADD, 1],
+        [['activeLoaders'], OPERATION_TYPE_ADD, -1],
       ]
     )
     expect(setEdgesStyle).toHaveBeenCalledWith()
     expect(toggleEdge).toHaveBeenLastCalledWith({
       edgeId: '11',
-      addNumber,
-      toggleFromArrayInKey,
-      setStoreState,
+      updateStoreValue,
       isLastEdge: false
     })
     expect(updateStyleAndPhysics).toHaveBeenCalledWith({
-      setStoreState
+      updateStoreValue
     })
   })
 })

@@ -4,10 +4,7 @@ import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 
-const setStoreState = jest.fn()
-const toggleFromSubArray = jest.fn()
-const addNumber = jest.fn()
-const toggleFromArrayInKey = jest.fn()
+const updateStoreValue = jest.fn()
 
 jest.mock('../../../utils/networkGraphOptions/toggleEdgesFromVisibleNodes')
 jest.mock('../../../utils/nodesEdgesUtils/getNodeIds')
@@ -37,10 +34,7 @@ describe('toggleEdge', () => {
   it('should work correctly', async () => {
     await toggleEdge({
       edgeId: '1',
-      addNumber,
-      toggleFromArrayInKey,
-      toggleFromSubArray,
-      setStoreState,
+      updateStoreValue,
       isLastEdge: true
     })
 

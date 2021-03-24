@@ -146,6 +146,7 @@ const initialState = {
   entrySearchResults: [],
   entrySearchAnnotationProperties: [],
   isQueried: false,
+  entrySearchValue: '',
 
   // free text search
   freeTextSelection: {},

@@ -6,10 +6,11 @@ import { Checkbox } from 'primereact/checkbox'
 import { useEffect, useState } from 'react'
 import { MultiSelect } from 'primereact/multiselect'
 import actions from '../store/actions'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const EntrySearch = ({
   entrySearchFilter,
-  setStoreState,
+  updateStoreValue,
   annotationProperties,
   entrySearchAnnotationProperties
 }) => {
@@ -19,8 +20,9 @@ const EntrySearch = ({
 
   useEffect(() => {
     if (annotationProperties.length > 0) {
-      setStoreState(
-        'entrySearchAnnotationProperties',
+      updateStoreValue(
+        ['entrySearchAnnotationProperties'],
+        OPERATION_TYPE_UPDATE,
         annotationProperties.map((property) => property.value)
       )
     }
@@ -54,7 +56,7 @@ const EntrySearch = ({
             id="filter-select"
             value={entrySearchFilter}
             options={filterOptions}
-            onChange={(e) => setStoreState('entrySearchFilter', e.value)}
+            onChange={(e) => updateStoreValue(['entrySearchFilter'], OPERATION_TYPE_UPDATE, e.value)}
           />
         </div>
 
@@ -83,7 +85,7 @@ const EntrySearch = ({
                 value={entrySearchAnnotationProperties}
                 options={annotationProperties}
                 filter
-                onChange={(e) => setStoreState('entrySearchAnnotationProperties', e.value)}
+                onChange={(e) => updateStoreValue(['entrySearchAnnotationProperties'], OPERATION_TYPE_UPDATE, e.value)}
                 className="m-t-10"
                 placeholder={t('selectProperty')}
               />
@@ -96,7 +98,7 @@ const EntrySearch = ({
 }
 
 EntrySearch.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   entrySearchFilter: PropTypes.string.isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   entrySearchAnnotationProperties: PropTypes.arrayOf(PropTypes.string).isRequired,

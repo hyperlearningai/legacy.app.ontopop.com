@@ -1,3 +1,4 @@
+import { OPERATION_TYPE_ADD } from '../../constants/store'
 import store from '../../store'
 import getEdge from './getEdge'
 import getNode from './getNode'
@@ -6,14 +7,12 @@ import removeEdge from './removeEdge'
 /**
  * Remove node from graph
  * @param  {String}     nodeId                            Node id
- * @param  {Function}   params.addNumber                  Add number action
- * @param  {Function}   params.toggleFromArrayInKey       Add number action
+ * @param  {Function}   params.updateStoreValue           updateStoreValue action
  * @return { undefined }
 \ */
 const removeNode = ({
   nodeId,
-  addNumber,
-  toggleFromArrayInKey
+  updateStoreValue
 }) => {
   const {
     availableNodes,
@@ -24,7 +23,7 @@ const removeNode = ({
   if (isVisible === null) return false
 
   availableNodes.remove(nodeId)
-  addNumber('availableNodesCount', -1)
+  updateStoreValue(['availableNodesCount'], OPERATION_TYPE_ADD, -1)
 
   // delete connected edges
   const edges = getEdge({
@@ -34,8 +33,7 @@ const removeNode = ({
   if (edges.length > 0) {
     edges.map((edge) => removeEdge({
       edge,
-      addNumber,
-      toggleFromArrayInKey
+      updateStoreValue
     }))
   }
 }

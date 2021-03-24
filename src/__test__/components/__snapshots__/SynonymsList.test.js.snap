@@ -4,18 +4,9 @@ exports[`SynonymsList should match snapshot when synonyms empty 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -5286,8 +5277,8 @@ NTIS provide to RIF which is then passed to Azure",
   }
   mapToProps={[Function]}
   nodesSynonyms={Array []}
-  setStoreState={[MockFunction]}
   synonymElementId=""
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -5297,18 +5288,9 @@ exports[`SynonymsList should match snapshot with synonym 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -10592,8 +10574,8 @@ NTIS provide to RIF which is then passed to Azure",
       },
     ]
   }
-  setStoreState={[MockFunction]}
   synonymElementId=""
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

@@ -11,10 +11,8 @@ import { RDF_ABOUT_PROPERTY } from '../constants/graph'
 const EditOntologyAddNode = ({
   type,
   operation,
-  setStoreState,
-  addNumber,
+  updateStoreValue,
   classesFromApi,
-  toggleFromArrayInKey,
 }) => {
   const { t } = useTranslation()
 
@@ -72,10 +70,8 @@ const EditOntologyAddNode = ({
               operation,
               type,
               selectedElement,
-              setStoreState,
+              updateStoreValue,
               selectedElementProperties,
-              addNumber,
-              toggleFromArrayInKey,
               t
             })
             setSelectedElement(undefined)
@@ -94,9 +90,7 @@ EditOntologyAddNode.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
-  toggleFromArrayInKey: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

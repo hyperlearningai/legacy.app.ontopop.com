@@ -2,8 +2,9 @@ import httpCall from '../../../utils/apiCalls/httpCall'
 import en from '../../../i18n/en'
 import notesGetNotes from '../../../utils/notes/notesGetNotes'
 import showNotification from '../../../utils/notifications/showNotification'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const addNumber = jest.fn()
 const t = (id) => en[id]
 jest.mock('../../../utils/apiCalls/httpCall')
@@ -21,7 +22,7 @@ describe('notesGetNotes', () => {
       type: 'graph',
       selectedElement: null,
       addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -46,12 +47,12 @@ describe('notesGetNotes', () => {
       type: 'graph',
       selectedElement: null,
       addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'notes', [{
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['notes'], OPERATION_TYPE_UPDATE, [{
         contents: 'My first note',
         dateCreated: 'yyyy-MM-dd HH:mm:ss',
         dateLastUpdated: 'yyyy-MM-dd HH:mm:ss',
@@ -78,12 +79,12 @@ describe('notesGetNotes', () => {
       type: 'edge',
       selectedElement: null,
       addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'edgesNotes', [{
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['edgesNotes'], OPERATION_TYPE_UPDATE, [{
         contents: 'My first note',
         dateCreated: 'yyyy-MM-dd HH:mm:ss',
         dateLastUpdated: 'yyyy-MM-dd HH:mm:ss',
@@ -110,12 +111,12 @@ describe('notesGetNotes', () => {
       type: 'node',
       selectedElement: null,
       addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'nodesNotes', [{
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['nodesNotes'], OPERATION_TYPE_UPDATE, [{
         contents: 'My first note',
         dateCreated: 'yyyy-MM-dd HH:mm:ss',
         dateLastUpdated: 'yyyy-MM-dd HH:mm:ss',

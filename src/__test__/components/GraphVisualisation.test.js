@@ -27,12 +27,8 @@ const setup = () => {
     nodesIdsToDisplay: [],
     physicsHierarchicalView: true,
     physicsRepulsion: true,
-    setStoreState: jest.fn(),
     showContextMenu: true,
-    removeFromObject: jest.fn(),
-    addSubValueToObject: jest.fn(),
-    toggleFromArrayInKey: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
     globalEdgeStyling: {
       stylingEdgeLineColor: EDGE_COLOR,
       stylingEdgeLineColorHover: EDGE_COLOR,

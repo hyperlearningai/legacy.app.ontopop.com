@@ -5,7 +5,7 @@ import Index from '../../pages/index'
 
 const setup = () => {
   const props = {
-    addToObject: jest.fn(),
+    updateStoreValue: jest.fn(),
     user: {
       email: 'a@b.c'
     }

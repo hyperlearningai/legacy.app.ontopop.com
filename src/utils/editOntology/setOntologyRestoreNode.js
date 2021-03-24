@@ -10,22 +10,19 @@ import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import getElementLabel from '../networkStyling/getElementLabel'
 import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
 import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Restore ontology nodes
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  addNumber action
+ * @param  {Function}       params.updateStoreValue                  updateStoreValue action
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
- * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey action
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyRestoreNode = async ({
-  addNumber,
+  updateStoreValue,
   selectedElement,
-  setStoreState,
-  toggleFromArrayInKey,
   t
 }) => {
   const {
@@ -109,7 +106,7 @@ const setOntologyRestoreNode = async ({
       body.label = 'class'
 
       const response = await httpCall({
-        addNumber,
+        updateStoreValue,
         withAuth: true,
         route: API_ENDPOINT_GRAPH_NODES_CREATE,
         method: 'post',
@@ -162,7 +159,7 @@ const setOntologyRestoreNode = async ({
             ...newClassesFromApi[id],
             ...nodeStyle,
           },
-          addNumber
+          updateStoreValue
         })
 
         // add connection back
@@ -289,8 +286,7 @@ const setOntologyRestoreNode = async ({
                   ...edge,
                   ...edgeStyle,
                 },
-                addNumber,
-                toggleFromArrayInKey
+                updateStoreValue
               })
             }
           }
@@ -309,12 +305,12 @@ const setOntologyRestoreNode = async ({
     })
   }
 
-  setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('totalEdgesPerNode', newEdgesPerNode)
-  setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
-  setStoreState('deletedNodes', newDeletedNodes)
-  setStoreState('deletedEdges', newDeletedEdges)
+  updateStoreValue(['nodesEdges'], OPERATION_TYPE_UPDATE, newNodesEdges)
+  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, newEdgesPerNode)
+  updateStoreValue(['classesFromApi'], OPERATION_TYPE_UPDATE, newClassesFromApi)
+  updateStoreValue(['objectPropertiesFromApi'], OPERATION_TYPE_UPDATE, newObjectPropertiesFromApi)
+  updateStoreValue(['deletedNodes'], OPERATION_TYPE_UPDATE, newDeletedNodes)
+  updateStoreValue(['deletedEdges'], OPERATION_TYPE_UPDATE, newDeletedEdges)
   setElementsStyle()
 }
 

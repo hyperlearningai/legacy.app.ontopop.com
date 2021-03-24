@@ -5,8 +5,7 @@ import EdgesFilter from '../../components/EdgesFilter'
 
 const setup = () => {
   const props = {
-    addToObject: jest.fn(),
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<EdgesFilter {...props} />)

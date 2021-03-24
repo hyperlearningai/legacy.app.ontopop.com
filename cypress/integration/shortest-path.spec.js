@@ -54,7 +54,7 @@ context('Shortest path', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 28')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(0).find('.p-button')
@@ -150,7 +150,7 @@ context('Shortest path', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
@@ -247,7 +247,7 @@ context('Shortest path', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 4')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for material: 4')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')

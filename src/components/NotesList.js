@@ -26,12 +26,13 @@ import getNode from '../utils/nodesEdgesUtils/getNode'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
 import highlightSelectedEdge from '../utils/edgesSelection/highlightSelectedEdge'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NotesList = ({
   notes,
   nodesNotes,
   edgesNotes,
-  setStoreState,
+  updateStoreValue,
   selectedNotesType,
   noteElementId,
   classesFromApi
@@ -48,8 +49,8 @@ const NotesList = ({
     addNodesBorders()
 
     return () => {
-      setStoreState('noteElementId', undefined)
-      setStoreState('noteElementId', undefined)
+      updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, undefined)
+      updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, undefined)
 
       setNodesStyle()
       setEdgesStyle()
@@ -63,7 +64,7 @@ const NotesList = ({
       setNodesStyle()
 
       highlightSelectedNode({
-        setStoreState,
+        updateStoreValue,
         selectedNode: noteElementId
       })
     }
@@ -72,7 +73,7 @@ const NotesList = ({
       setEdgesStyle()
 
       highlightSelectedEdge({
-        setStoreState,
+        updateStoreValue,
         selectedEdge: noteElementId
       })
     }
@@ -176,10 +177,10 @@ const NotesList = ({
             onChange={(e) => {
               const { value } = e
 
-              setStoreState('isNodeSelectable', value === 'node')
-              setStoreState('isEdgeSelectable', value === 'edge')
-              setStoreState('noteElementId', undefined)
-              setStoreState('selectedNotesType', value)
+              updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, value === 'node')
+              updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, value === 'edge')
+              updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, undefined)
+              updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, value)
             }}
             itemTemplate={itemTemplate}
           />
@@ -200,7 +201,7 @@ const NotesList = ({
                     ? availableNodesList
                     : availableEdgesList
                 }
-                onChange={(e) => setStoreState('noteElementId', e.value)}
+                onChange={(e) => updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, e.value)}
               />
             </div>
           )
@@ -347,7 +348,7 @@ NotesList.propTypes = {
   edgesNotes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   noteElementId: PropTypes.string,
   selectedNotesType: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
 }
 

@@ -11,11 +11,8 @@ import { USER_DEFINED_PROPERTY } from '../constants/graph'
 const EditOntologyDeleteNode = ({
   type,
   operation,
-  setStoreState,
-  addNumber,
+  updateStoreValue,
   optionNodes,
-  addSubValueToObject,
-  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -57,11 +54,8 @@ const EditOntologyDeleteNode = ({
               operation,
               type,
               selectedElement,
-              setStoreState,
-              addNumber,
+              updateStoreValue,
               selectedElementProperties,
-              addSubValueToObject,
-              toggleFromArrayInKey,
               t
             })
             setSelectedElement(undefined)
@@ -79,11 +73,8 @@ const EditOntologyDeleteNode = ({
 EditOntologyDeleteNode.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   optionNodes: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  addSubValueToObject: PropTypes.func.isRequired,
-  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

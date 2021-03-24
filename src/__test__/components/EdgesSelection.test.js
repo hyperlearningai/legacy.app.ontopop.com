@@ -5,7 +5,7 @@ import EdgesSelection from '../../components/EdgesSelection'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     selectedEdge: 'edge-123'
   }
 

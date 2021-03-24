@@ -4,15 +4,7 @@ exports[`FreeTextSearch should match snapshot  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   freeTextSelectedElement="http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay"
@@ -24,8 +16,7 @@ exports[`FreeTextSearch should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
-  removeFromObject={[MockFunction]}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

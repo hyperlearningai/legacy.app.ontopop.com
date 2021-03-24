@@ -9,8 +9,7 @@ import showNotification from '../../../utils/notifications/showNotification'
 import httpCall from '../../../utils/apiCalls/httpCall'
 
 const t = (id) => en[id]
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   user: { token: 'ewj123' }
@@ -34,8 +33,7 @@ describe('getGraphData', () => {
     ))
 
     await getGraphData({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -53,8 +51,7 @@ describe('getGraphData', () => {
     }))
 
     await getGraphData({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -88,25 +85,24 @@ describe('getGraphData', () => {
     Storage.prototype.getItem = getItem
 
     await getGraphData({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
     expect(setAnnotationProperties).toHaveBeenCalledWith({
-      setStoreState,
+      updateStoreValue,
       nodes
     })
     expect(setClassesFromApi).toHaveBeenCalledWith({
-      setStoreState,
+      updateStoreValue,
       nodes
     })
     expect(setObjectPropertiesFromApi).toHaveBeenCalledWith({
-      setStoreState,
+      updateStoreValue,
       edges: {}
     })
     expect(getTriplesFromApi).toHaveBeenCalledWith({
-      setStoreState,
+      updateStoreValue,
       edges: {}
     })
   })

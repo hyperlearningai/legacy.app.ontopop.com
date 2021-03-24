@@ -8,8 +8,7 @@ const setup = () => {
   const props = {
     type: 'node',
     operation: 'add',
-    setStoreState: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
     classesFromApi
   }
 

@@ -2,7 +2,7 @@ import { Network } from 'vis-network'
 import { JSDOM } from 'jsdom'
 import setNetwork from '../../../utils/graphVisualisation/setNetwork'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 jest.mock('vis-network')
 const dom = new JSDOM()
@@ -38,7 +38,7 @@ describe('setNetwork', () => {
     }
 
     await setNetwork({
-      setStoreState,
+      updateStoreValue,
       visJsRef,
       availableNodes,
       availableEdges,
@@ -46,7 +46,7 @@ describe('setNetwork', () => {
       physicsEdgeLength
     })
 
-    expect(setStoreState.mock.calls[0][0]).toEqual('network')
+    expect(updateStoreValue.mock.calls[0][0]).toEqual(['network'])
 
     expect(Network).toHaveBeenCalled()
     expect(addEventListener.mock.calls[0][0]).toEqual('mousedown')

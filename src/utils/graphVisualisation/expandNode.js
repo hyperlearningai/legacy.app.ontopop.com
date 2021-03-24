@@ -1,20 +1,17 @@
 import store from '../../store'
 import addExpandedNode from './addExpandedNode'
 import getEdge from '../nodesEdgesUtils/getEdge'
+import { OPERATION_TYPE_ADD } from '../../constants/store'
 /**
  * Add nodes and/or edges to graph
  * @param  {Object}   params
  * @param  {Number}   params.nodeId                   Selected node id
- * @param  {Function} params.setStoreState            setStoreState action
- * @param  {Function} params.addNumber                addNumber action
- * @param  {Function} params.toggleFromArrayInKey     toggleFromArrayInKey action
+ * @param  {Function} params.updateStoreValue          updateStoreValue action
  * @return {undefined}
  */
 const expandNode = ({
   nodeId,
-  setStoreState,
-  addNumber,
-  toggleFromArrayInKey
+  updateStoreValue
 }) => {
   const {
     totalEdgesPerNode,
@@ -25,7 +22,7 @@ const expandNode = ({
   const edges = totalEdgesPerNode[nodeId]
 
   if (edges?.length > 0) {
-    addNumber('activeLoaders', 1)
+    updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, 1)
 
     for (let index = 0; index < edges.length; index++) {
       const edgeId = edges[index]
@@ -40,10 +37,8 @@ const expandNode = ({
         index,
         edgesNumber: edges.length,
         edge: edgeObject,
-        setStoreState,
+        updateStoreValue,
         classesFromApi,
-        toggleFromArrayInKey,
-        addNumber,
       }), 1)
     }
   }

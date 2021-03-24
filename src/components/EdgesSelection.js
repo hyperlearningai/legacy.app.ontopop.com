@@ -11,15 +11,16 @@ import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
 import highlightSelectedEdge from '../utils/edgesSelection/highlightSelectedEdge'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const EdgesSelection = ({
   selectedEdge,
-  setStoreState,
+  updateStoreValue,
 }) => {
   const { t } = useTranslation()
 
   useEffect(() => () => {
-    setStoreState('selectedEdge', undefined)
+    updateStoreValue(['selectedEdge'], OPERATION_TYPE_UPDATE, undefined)
 
     setEdgesStyle()
   }, [])
@@ -29,7 +30,7 @@ const EdgesSelection = ({
       setEdgesStyle()
 
       highlightSelectedEdge({
-        setStoreState,
+        updateStoreValue,
         selectedEdge
       })
     }
@@ -89,7 +90,7 @@ const EdgesSelection = ({
             value={selectedEdge}
             filter
             options={availableEdges}
-            onChange={(e) => setStoreState('selectedEdge', e.value)}
+            onChange={(e) => updateStoreValue(['selectedEdge'], OPERATION_TYPE_UPDATE, e.value)}
             placeholder={t('selectEdge')}
           />
         </div>
@@ -108,7 +109,7 @@ const EdgesSelection = ({
 
 EdgesSelection.propTypes = {
   selectedEdge: PropTypes.string,
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 EdgesSelection.defaultProps = {

@@ -4,20 +4,12 @@ exports[`HeaderComponent should match snapshot when user logged in and loading 1
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   loading={1}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
   user={
     Object {
       "email": "test@test.com",
@@ -33,20 +25,12 @@ exports[`HeaderComponent should match snapshot when user not logged in and not l
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   loading={0}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
   user={
     Object {
       "email": "",

@@ -9,9 +9,8 @@ import getNode from '../utils/nodesEdgesUtils/getNode'
 import synonymsCreateSynonym from '../utils/synonyms/synonymsCreateSynonym'
 
 const SynonymsListAddNew = ({
-  addNumber,
   synonymElementId,
-  setStoreState,
+  updateStoreValue,
 }) => {
   const { t } = useTranslation()
 
@@ -46,9 +45,7 @@ const SynonymsListAddNew = ({
               id="synonym-textarea"
               value={synonymText}
               type="text"
-              onChange={(e) => {
-                setSynonymText(e.target.value)
-              }}
+              onChange={(e) => setSynonymText(e.target.value)}
             />
 
             <p id="selected-element-label">
@@ -77,8 +74,7 @@ const SynonymsListAddNew = ({
                   synonymsCreateSynonym({
                     selectedElement: synonymElementId,
                     synonymText,
-                    addNumber,
-                    setStoreState,
+                    updateStoreValue,
                     t
                   })
                 }}
@@ -93,8 +89,7 @@ const SynonymsListAddNew = ({
 
 SynonymsListAddNew.propTypes = {
   synonymElementId: PropTypes.string,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 SynonymsListAddNew.defaultProps = {

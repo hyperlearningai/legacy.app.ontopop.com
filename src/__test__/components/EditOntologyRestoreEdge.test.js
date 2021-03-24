@@ -10,8 +10,7 @@ const setup = ({
   const props = {
     type: 'edge',
     operation: 'restore',
-    setStoreState: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
     objectPropertiesFromApiBackup: objectPropertiesFromApi,
     deletedEdges,
     deletedNodes: [],

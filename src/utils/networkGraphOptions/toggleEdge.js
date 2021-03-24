@@ -6,17 +6,14 @@ import setEdgesStyle from '../networkStyling/setEdgesStyle'
 import updateStyleAndPhysics from './updateStyleAndPhysics'
 
 /**
- * Check edge visibility
+ * toggle edge visibility
  * @param  {Object}    params
- * @param  {Function}  params.toggleFromArrayInKey  toggleFromArrayInKey action
- * @param  {Function}  params.setStoreState         setStoreState action
+ * @param  {Function}  params.updateStoreValue         updateStoreValue action
  * @return {undefined}
  */
 const toggleEdge = ({
   edgeId,
-  addNumber,
-  toggleFromArrayInKey,
-  setStoreState,
+  updateStoreValue,
   isLastEdge
 }) => {
   const {
@@ -33,24 +30,22 @@ const toggleEdge = ({
     if (isVisible) {
       addEdge({
         edge,
-        addNumber,
-        toggleFromArrayInKey
+        updateStoreValue,
       })
     } else {
       removeEdge({
         edge,
-        addNumber,
-        toggleFromArrayInKey
+        updateStoreValue,
       })
     }
 
     if (isLastEdge) {
-      addNumber('activeLoaders', -1)
+      updateStoreValue('activeLoaders', -1)
 
       setEdgesStyle()
 
       updateStyleAndPhysics({
-        setStoreState
+        updateStoreValue
       })
     }
   }, 1)

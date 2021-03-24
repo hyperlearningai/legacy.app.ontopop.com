@@ -362,6 +362,7 @@ export default {
   advancedSearch: 'Advanced search',
   showAdvancedSearch: 'Show advanced search',
   searchResults: 'Search results',
+  searchResultsFor: 'Search results for',
   moreInfo: 'More info',
   lessInfo: 'Less info',
 

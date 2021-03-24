@@ -4,18 +4,9 @@ exports[`NetworkStylingEdge should match snapshot  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addToObject={[MockFunction]}
   globalEdgeStyling={
     Object {
       "stylingEdgeCaptionProperty": "rdfsLabel",
@@ -32,6 +23,7 @@ exports[`NetworkStylingEdge should match snapshot  1`] = `
   }
   mapToProps={[Function]}
   stylingEdgeByProperty={Array []}
+  updateStoreValue={[MockFunction]}
   userDefinedEdgeStyling={
     Object {
       "stylingEdgeCaptionProperty": "rdfsLabel",

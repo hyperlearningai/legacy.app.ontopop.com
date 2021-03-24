@@ -14,9 +14,8 @@ import actions from '../store/actions'
 import resetGraphData from '../utils/graphVisualisation/resetGraphData'
 
 const Index = ({
-  addToObject,
+  updateStoreValue,
   user,
-  setStoreState
 }) => {
   const { t } = useTranslation()
 
@@ -27,12 +26,12 @@ const Index = ({
     if (!user.isGuest && user.email === '') {
       checkAuthAtStartup({
         router,
-        addToObject
+        updateStoreValue
       })
     }
 
     return () => resetGraphData({
-      setStoreState
+      updateStoreValue
     })
   },
   [])
@@ -68,9 +67,8 @@ const Index = ({
 }
 
 Index.propTypes = {
-  addToObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
-  setStoreState: PropTypes.func.isRequired,
 }
 
 const mapPropsToState = ({

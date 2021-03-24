@@ -11,8 +11,7 @@ const setup = ({
   const props = {
     type,
     operation: 'restore',
-    setStoreState: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
     optionNodes,
     optionEdges
   }

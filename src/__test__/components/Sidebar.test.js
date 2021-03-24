@@ -30,7 +30,7 @@ const setup = ({
   const props = {
     isSidebarOpen,
     sidebarView,
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<Sidebar {...props} />)

@@ -3,10 +3,9 @@ import store from '../../../store'
 import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
+import { OPERATION_TYPE_ADD } from '../../../constants/store'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
-const toggleFromArrayInKey = jest.fn()
+const updateStoreValue = jest.fn()
 
 jest.mock('../../../utils/networkGraphOptions/toggleEdgesFromVisibleNodes')
 jest.mock('../../../utils/nodesEdgesUtils/getNodeIds')
@@ -35,13 +34,11 @@ describe('toggleElements', () => {
 
   it('should work correctly', async () => {
     await toggleElements({
-      addNumber,
-      toggleFromArrayInKey,
-      setStoreState
+      updateStoreValue,
     })
 
-    expect(addNumber).toHaveBeenCalledWith(
-      'activeLoaders', 1
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['activeLoaders'], OPERATION_TYPE_ADD, 1
     )
     expect(setTimeout).toHaveBeenLastCalledWith(
       expect.any(Function), 1

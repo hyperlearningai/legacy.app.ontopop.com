@@ -23,11 +23,11 @@ import SynonymsListAddNew from './SynonymsListAddNew'
 import synonymsGetSynonyms from '../utils/synonyms/synonymsGetSynonyms'
 import SynonymsListNode from './SynonymsListNode'
 import { NODE_TYPE } from '../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const SynonymsList = ({
-  addNumber,
   nodesSynonyms,
-  setStoreState,
+  updateStoreValue,
   synonymElementId,
   classesFromApi
 }) => {
@@ -46,14 +46,13 @@ const SynonymsList = ({
     if (synonymElementId) {
       synonymsGetSynonyms({
         selectedElement: synonymElementId,
-        addNumber,
-        setStoreState,
+        updateStoreValue,
         t
       })
     }
 
     return () => {
-      setStoreState('synonymElementId', undefined)
+      updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, undefined)
 
       setNodesStyle()
       setEdgesStyle()
@@ -67,14 +66,13 @@ const SynonymsList = ({
       setNodesStyle()
 
       highlightSelectedNode({
-        setStoreState,
+        updateStoreValue,
         selectedNode: synonymElementId
       })
 
       synonymsGetSynonyms({
         selectedElement: synonymElementId,
-        addNumber,
-        setStoreState,
+        updateStoreValue,
         t
       })
     }
@@ -133,7 +131,7 @@ const SynonymsList = ({
             name="synonyms-select-element"
             value={synonymElementId}
             options={availableNodesList}
-            onChange={(e) => setStoreState('synonymElementId', e.value)}
+            onChange={(e) => updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, e.value)}
           />
         </div>
 
@@ -262,8 +260,7 @@ const SynonymsList = ({
 SynonymsList.propTypes = {
   nodesSynonyms: PropTypes.arrayOf(PropTypes.shape).isRequired,
   synonymElementId: PropTypes.string,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
 }
 

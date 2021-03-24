@@ -2,6 +2,7 @@ import signIn from '../../../utils/auth/signIn'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import { AUTH_COOKIE } from '../../../constants/auth'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 jest.useFakeTimers()
 
@@ -17,8 +18,7 @@ describe('signIn', () => {
     const push = jest.fn()
     const router = { push }
 
-    const addToObject = jest.fn()
-    const addNumber = jest.fn()
+    const updateStoreValue = jest.fn()
     const email = 'test@test.com'
     const password = 'test'
     const setShowError = jest.fn()
@@ -30,8 +30,7 @@ describe('signIn', () => {
 
     await signIn({
       router,
-      addToObject,
-      addNumber,
+      updateStoreValue,
       email,
       password,
       setShowError,
@@ -48,8 +47,7 @@ describe('signIn', () => {
     const push = jest.fn()
     const router = { push }
 
-    const addToObject = jest.fn()
-    const addNumber = jest.fn()
+    const updateStoreValue = jest.fn()
     const email = 'test@test.com'
     const password = 'test'
     const token = '12345'
@@ -68,15 +66,18 @@ describe('signIn', () => {
 
     await signIn({
       router,
-      addToObject,
-      addNumber,
+      updateStoreValue,
       email,
       password,
       setShowError,
       t
     })
 
-    expect(addToObject).toHaveBeenCalledWith('user', 'email', email)
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['user', 'email'], OPERATION_TYPE_UPDATE,
+        'test@test.com'], [
+        ['user', 'token'], OPERATION_TYPE_UPDATE, '12345']]
+    )
     expect(push).toHaveBeenCalledWith('/')
     expect(setItem).toHaveBeenCalledWith(
       AUTH_COOKIE, JSON.stringify({ email, token })

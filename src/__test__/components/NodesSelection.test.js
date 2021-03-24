@@ -7,7 +7,7 @@ const setup = ({
   selectedNode
 }) => {
   const props = {
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     selectedNode,
   }
 

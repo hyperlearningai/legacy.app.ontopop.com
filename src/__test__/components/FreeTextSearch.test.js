@@ -11,8 +11,7 @@ const setup = () => {
       'http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M': 'node',
     },
     freeTextSelectedElement: 'http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay',
-    removeFromObject: jest.fn(),
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<FreeTextSearch {...props} />)

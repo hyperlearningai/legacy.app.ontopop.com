@@ -8,22 +8,19 @@ import getNode from '../nodesEdgesUtils/getNode'
 import { API_ENDPOINT_GRAPH_EDGES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * ADd ontology edge
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  addNumber action
- * @param  {Function}       params.setStoreState              setStoreState action
- * @param  {Function}       params.toggleFromArrayInKey        toggleFromSubArray action
+ * @param  {Function}       params.updateStoreValue                  updateStoreValue action
  * @param  {Function}       params.t                          i18n function
  * @param  {Object}         params.selectedElementProperties  Element properties with from,to,edge keys
  * @return {undefined}
  */
 const setOntologyAddEdge = async ({
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   selectedElementProperties,
-  toggleFromArrayInKey,
   t
 }) => {
   const {
@@ -57,7 +54,7 @@ const setOntologyAddEdge = async ({
   }
 
   const response = await httpCall({
-    addNumber,
+    updateStoreValue,
     withAuth: true,
     route: API_ENDPOINT_GRAPH_EDGES_CREATE,
     method: 'post',
@@ -121,12 +118,12 @@ const setOntologyAddEdge = async ({
     ...[id]
   ]
 
-  setStoreState('objectPropertiesFromApiBackup', newObjectPropertiesFromApiBackup)
-  setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
-  setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('totalEdgesPerNode', newEdgesPerNode)
-  setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
-  setStoreState('addedEdges', newAddedEdges)
+  updateStoreValue(['objectPropertiesFromApiBackup'], OPERATION_TYPE_UPDATE, newObjectPropertiesFromApiBackup)
+  updateStoreValue(['objectPropertiesFromApi'], OPERATION_TYPE_UPDATE, newObjectPropertiesFromApi)
+  updateStoreValue(['nodesEdges'], OPERATION_TYPE_UPDATE, newNodesEdges)
+  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, newEdgesPerNode)
+  updateStoreValue(['totalEdgesPerNodeBackup'], OPERATION_TYPE_UPDATE, newEdgesPerNodeBackup)
+  updateStoreValue(['addedEdges'], OPERATION_TYPE_UPDATE, newAddedEdges)
 
   // add edge to graph and style
   if (isFromVisible && isToVisible) {
@@ -137,8 +134,7 @@ const setOntologyAddEdge = async ({
     if (isVisible) {
       addEdge({
         edge,
-        addNumber,
-        toggleFromArrayInKey
+        updateStoreValue,
       })
 
       setNodeStyle({

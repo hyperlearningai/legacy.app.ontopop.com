@@ -2,20 +2,16 @@ import store from '../../store'
 import clearNodes from '../nodesEdgesUtils/clearNodes'
 import clearEdges from '../nodesEdgesUtils/clearEdges'
 import addElementToGraph from './addElementToGraph'
+import { OPERATION_TYPE_ADD, OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Update store and graph based on node IDs to display
  * @param  {Object}   params
- * @param  {Function} params.setStoreState           setStoreState action
- * @param  {Function} params.toggleFromArrayInKey      toggleFromSubArray action
- * @param  {Function} params.addNumber               addNumber action
+ * @param  {Function} params.updateStoreValue                   updateStoreValue action
  * @return { undefined }
  */
 const queueGraphElements = ({
-  setStoreState,
-  addNumber,
-  toggleFromArrayInKey,
-  addSubValueToObject
+  updateStoreValue
 }) => {
   const {
     classesFromApi,
@@ -29,40 +25,36 @@ const queueGraphElements = ({
   if (!nodesIdsToDisplay || nodesIdsToDisplay.length === 0) return false
 
   // reset nodes and edges count
-  setStoreState('availableNodesCount', 0)
-  setStoreState('availableEdgesCount', 0)
-  addSubValueToObject('graphData', currentGraph, 'nodesIdsToDisplay', nodesIdsToDisplay)
+  updateStoreValue(['availableNodesCount'], OPERATION_TYPE_UPDATE, 0)
+  updateStoreValue(['availableEdgesCount'], OPERATION_TYPE_UPDATE, 0)
+  updateStoreValue(['graphData', currentGraph, 'nodesIdsToDisplay'], OPERATION_TYPE_UPDATE, nodesIdsToDisplay)
 
   const currentPhysicsOnState = isPhysicsOn
 
   // turn physics off to speed up loading time when restoring large graphsa
   if (currentPhysicsOnState) {
-    setStoreState('isPhysicsOn', false)
+    updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, false)
   }
 
   // reset nodes/edges (display at the end of the function)
   clearEdges()
   clearNodes()
 
-  // const nodesEdges = {}
-
   const processedEdges = []
   const nodeIdsLength = nodesIdsToDisplay.length
 
-  addNumber('activeLoaders', 1)
+  updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, 1)
 
   for (let i = 0; i < nodeIdsLength; i++) {
     setTimeout(() => addElementToGraph({
+      updateStoreValue,
       classesFromApi,
       nodesIdsToDisplay,
       objectPropertiesFromApi,
       totalEdgesPerNode,
-      setStoreState,
       i,
       nodeIdsLength,
-      toggleFromArrayInKey,
       processedEdges,
-      addNumber,
     }), 1)
   }
 }

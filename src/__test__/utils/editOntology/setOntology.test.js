@@ -19,7 +19,7 @@ jest.mock('../../../utils/editOntology/setOntologyDeleteEdge')
 jest.mock('../../../utils/editOntology/setOntologyRestoreEdge')
 
 const selectedElement = 'id-123'
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const selectedElementProperties = { rdfsLabel: 'id-123' }
 const t = (id) => en[id]
 
@@ -36,14 +36,14 @@ describe('setOntology', () => {
       operation,
       type,
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(setOntologyRestoreNode).toHaveBeenCalledWith({
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       t
     })
   })
@@ -56,14 +56,14 @@ describe('setOntology', () => {
       operation,
       type,
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(setOntologyDeleteNode).toHaveBeenCalledWith({
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       t
     })
   })
@@ -76,14 +76,14 @@ describe('setOntology', () => {
       operation,
       type,
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(setOntologyUpdateNode).toHaveBeenCalledWith({
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
@@ -97,13 +97,13 @@ describe('setOntology', () => {
       operation,
       type,
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(setOntologyAddNode).toHaveBeenCalledWith({
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
@@ -117,14 +117,14 @@ describe('setOntology', () => {
       operation,
       type,
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(setOntologyAddEdge).toHaveBeenCalledWith({
       selectedElementProperties,
-      setStoreState,
+      updateStoreValue,
       t
     })
   })
@@ -137,13 +137,13 @@ describe('setOntology', () => {
       operation,
       type,
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(setOntologyDeleteEdge).toHaveBeenCalledWith({
-      setStoreState,
+      updateStoreValue,
       selectedElement,
       t
     })
@@ -157,14 +157,14 @@ describe('setOntology', () => {
       operation,
       type,
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(setOntologyRestoreEdge).toHaveBeenCalledWith({
       selectedElement,
-      setStoreState,
+      updateStoreValue,
       t
     })
   })

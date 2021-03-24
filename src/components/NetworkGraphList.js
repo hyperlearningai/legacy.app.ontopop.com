@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { OPERATION_TYPE_DELETE, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkGraphList = ({
-  setStoreState,
-  removeFromObject,
+  updateStoreValue,
   currentGraph,
   graphData
 }) => {
@@ -37,10 +37,10 @@ const NetworkGraphList = ({
                         tooltip={`${t('removeGraph')}: ${label}`}
                         onClick={() => {
                           if (currentGraph === graphViewsKey) {
-                            setStoreState('currentGraph', 'graph-0')
+                            updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, 'graph-0')
                           }
 
-                          removeFromObject('graphData', graphViewsKey)
+                          updateStoreValue(['graphData', graphViewsKey], OPERATION_TYPE_DELETE)
                         }}
                         icon="pi pi-times"
                       />
@@ -52,7 +52,7 @@ const NetworkGraphList = ({
                   <Button
                     tooltip={`${t('viewGraph')}: ${label}`}
                     disabled={currentGraph === graphViewsKey}
-                    onClick={() => setStoreState('currentGraph', graphViewsKey)}
+                    onClick={() => updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, graphViewsKey)}
                     label={label}
                     icon="pi pi-chevron-right"
                     iconPos="right"
@@ -68,9 +68,8 @@ const NetworkGraphList = ({
 }
 
 NetworkGraphList.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   graphData: PropTypes.shape().isRequired,
-  removeFromObject: PropTypes.func.isRequired,
   currentGraph: PropTypes.string.isRequired,
 }
 

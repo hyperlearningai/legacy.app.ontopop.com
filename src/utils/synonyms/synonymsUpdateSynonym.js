@@ -3,14 +3,14 @@ import showNotification from '../notifications/showNotification'
 import { PATCH_UPDATE_NODE_SYNONYM } from '../../constants/api'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Update Synonym
  * @param  {Object}   params
  * @param  {String}   params.selectedElement            Selected node/edge ID
- * @param  {String}   params.selectedSynonymID             Selected synonym ID
- * @param  {Function} params.addNumber                  addNumber action
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {String}   params.selectedSynonymID          Selected synonym ID
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
@@ -18,8 +18,7 @@ const synonymsUpdateSynonym = async ({
   selectedElement,
   selectedSynonymID,
   synonymText,
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -34,8 +33,7 @@ const synonymsUpdateSynonym = async ({
   const synonymsState = 'nodesSynonyms'
 
   const response = await httpCall({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     withAuth,
     route,
     method: 'patch',
@@ -59,7 +57,7 @@ const synonymsUpdateSynonym = async ({
 
   const updatedSynonyms = modifiedSynonyms.map((synonym) => (synonym.id === data.id ? data : synonym))
 
-  setStoreState(synonymsState, updatedSynonyms)
+  updateStoreValue([synonymsState], OPERATION_TYPE_UPDATE, updatedSynonyms)
 }
 
 export default synonymsUpdateSynonym

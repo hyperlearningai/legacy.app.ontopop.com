@@ -9,8 +9,7 @@ const setup = () => {
       property: 'rdfsLabel',
       value: 'road'
     }],
-    addToObject: jest.fn(),
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<NodesFilter {...props} />)

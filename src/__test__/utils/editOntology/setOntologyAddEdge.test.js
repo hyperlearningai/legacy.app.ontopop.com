@@ -13,6 +13,7 @@ import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
@@ -27,9 +28,8 @@ jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
 checkNodeVisibility.mockImplementation(() => true)
 checkEdgeVisibility.mockImplementation(() => true)
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
-const addNumber = jest.fn()
 
 const selectedElementProperties = {
   from: '1',
@@ -64,8 +64,7 @@ describe('setOntologyAddEdge', () => {
     httpCall.mockImplementationOnce(() => ({ error: true }))
 
     await setOntologyAddEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
@@ -82,8 +81,7 @@ describe('setOntologyAddEdge', () => {
     httpCall.mockImplementationOnce(() => ({ data: {} }))
 
     await setOntologyAddEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
@@ -109,15 +107,14 @@ describe('setOntologyAddEdge', () => {
     }))
 
     await setOntologyAddEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(addEdge.mock.calls).toEqual(
       [[{
-        addNumber,
+        updateStoreValue,
         edge: {
           edgeId: '123',
           from: '1',
@@ -126,7 +123,8 @@ describe('setOntologyAddEdge', () => {
           rdfAbout: '11',
           rdfsLabel: 'Provided to',
           to: '141',
-          userDefined: true
+          userDefined: true,
+          userId: undefined,
         }
       }]]
     )
@@ -155,16 +153,21 @@ describe('setOntologyAddEdge', () => {
       userDefined: true,
     }
 
-    expect(setStoreState.mock.calls).toEqual(
+    expect(updateStoreValue.mock.calls).toEqual(
       [
-        ['objectPropertiesFromApiBackup',
-          newObjectPropertiesFromApi
-        ],
-        ['objectPropertiesFromApi',
+        [
+          ['objectPropertiesFromApiBackup'],
+          OPERATION_TYPE_UPDATE,
           newObjectPropertiesFromApi
         ],
         [
-          'nodesEdges',
+          ['objectPropertiesFromApi'],
+          OPERATION_TYPE_UPDATE,
+          newObjectPropertiesFromApi
+        ],
+        [
+          ['nodesEdges'],
+          OPERATION_TYPE_UPDATE,
           {
             1: [
               '123',
@@ -175,7 +178,8 @@ describe('setOntologyAddEdge', () => {
           },
         ],
         [
-          'totalEdgesPerNode',
+          ['totalEdgesPerNode'],
+          OPERATION_TYPE_UPDATE,
           {
             1: [
               '11',
@@ -2448,7 +2452,8 @@ describe('setOntologyAddEdge', () => {
           },
         ],
         [
-          'totalEdgesPerNodeBackup',
+          ['totalEdgesPerNodeBackup'],
+          OPERATION_TYPE_UPDATE,
           {
             1: [
               '11',
@@ -4721,7 +4726,8 @@ describe('setOntologyAddEdge', () => {
           },
         ],
         [
-          'addedEdges',
+          ['addedEdges'],
+          OPERATION_TYPE_UPDATE,
           [
             '123',
           ],

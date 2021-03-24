@@ -7,9 +7,10 @@ const setup = ({
   isQueried
 }) => {
   const props = {
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     entrySearchResults: [{ id: '123' }],
     isQueried,
+    entrySearchValue: 'value'
   }
 
   const component = shallow(<GraphSearch {...props} />)
