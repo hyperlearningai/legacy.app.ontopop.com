@@ -16,6 +16,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.6.0]
+### Added
+- ONTOLOGY-109 Added userback and mouseflow snippets
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
 ## [0.5.0]
 ### Added
 - ONTOLOGY-137 Added node tooltip on hover
