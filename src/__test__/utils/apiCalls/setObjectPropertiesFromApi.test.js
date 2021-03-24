@@ -1,6 +1,7 @@
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import setObjectPropertiesFromApi from '../../../utils/apiCalls/setObjectPropertiesFromApi'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 describe('setObjectPropertiesFromApi', () => {
   afterEach(() => {
@@ -30,12 +31,12 @@ describe('setObjectPropertiesFromApi', () => {
     }
 
     await setObjectPropertiesFromApi({
-      setStoreState,
+      updateStoreValue,
       edges
     })
 
-    expect(setStoreState.mock.calls).toEqual(
-      [['objectPropertiesFromApi', {
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['objectPropertiesFromApi'], OPERATION_TYPE_UPDATE, {
         11:
       {
         edgeId: 11,
@@ -56,7 +57,7 @@ describe('setObjectPropertiesFromApi', () => {
           role: 'Subclass of',
           to: '141'
         }
-      }], ['objectPropertiesFromApiBackup', {
+      }], [['objectPropertiesFromApiBackup'], OPERATION_TYPE_UPDATE, {
         11: {
           edgeId: 11,
           from: '1',

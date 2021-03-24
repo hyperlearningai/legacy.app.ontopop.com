@@ -10,8 +10,7 @@ import { RESERVED_PROPERTIES } from '../constants/graph'
 import setSearchNeighbourNodes from '../utils/graphSearch/setSearchNeighbourNodes'
 
 const GraphSearchCard = ({
-  setStoreState,
-  addToObject,
+  updateStoreValue,
   searchResult,
   globalNodeStyling,
   userDefinedNodeStyling,
@@ -75,8 +74,7 @@ const GraphSearchCard = ({
           label={t('show')}
           onClick={() => setSearchNeighbourNodes({
             separationDegree: 1,
-            setStoreState,
-            addToObject,
+            updateStoreValue,
             searchResult
           })}
         />
@@ -86,8 +84,7 @@ const GraphSearchCard = ({
 }
 
 GraphSearchCard.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   searchResult: PropTypes.shape().isRequired,
   globalNodeStyling: PropTypes.shape().isRequired,
   userDefinedNodeStyling: PropTypes.shape().isRequired,

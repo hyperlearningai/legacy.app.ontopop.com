@@ -4,23 +4,12 @@ exports[`Login page should match snapshot when activeLoaders 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   activeLoaders={1}
-  addNumber={[MockFunction]}
-  addToObject={[MockFunction]}
   mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -30,23 +19,12 @@ exports[`Login page should match snapshot when no activeLoaders 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   activeLoaders={0}
-  addNumber={[MockFunction]}
-  addToObject={[MockFunction]}
   mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

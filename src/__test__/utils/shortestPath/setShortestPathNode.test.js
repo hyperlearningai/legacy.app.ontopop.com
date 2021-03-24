@@ -2,11 +2,12 @@ import setShortestPathNode from '../../../utils/shortestPath/setShortestPathNode
 import store from '../../../store'
 import updateNodeBackground from '../../../utils/shortestPath/updateNodeBackground'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 jest.mock('../../../utils/shortestPath/updateNodeBackground')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const shortestPathNode1 = 'http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV'
 const shortestPathNode2 = 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9'
 const stylingNodeBackgroundColor = '#000'
@@ -35,12 +36,12 @@ describe('setShortestPathNode', () => {
 
     await setShortestPathNode({
       state,
-      setStoreState,
+      updateStoreValue,
       nodeId,
     })
 
     expect(updateNodeBackground).toHaveBeenCalledTimes(0)
-    expect(setStoreState).toHaveBeenCalledTimes(0)
+    expect(updateStoreValue).toHaveBeenCalledTimes(0)
   })
 
   it('should work correctly when shortestPathNode1', async () => {
@@ -50,7 +51,7 @@ describe('setShortestPathNode', () => {
 
     await setShortestPathNode({
       state,
-      setStoreState,
+      updateStoreValue,
       nodeId,
     })
 
@@ -76,18 +77,23 @@ describe('setShortestPathNode', () => {
       ],
     ])
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'shortestPathNode1Object',
+        [
+          'shortestPathNode1Object',
+        ],
+        OPERATION_TYPE_UPDATE,
         {
           id: 'node-123',
         },
       ],
       [
-        'shortestPathNode1',
+        [
+          'shortestPathNode1',
+        ],
+        OPERATION_TYPE_UPDATE,
         'node-123',
       ],
-
     ])
   })
 
@@ -98,7 +104,7 @@ describe('setShortestPathNode', () => {
 
     await setShortestPathNode({
       state,
-      setStoreState,
+      updateStoreValue,
       nodeId,
     })
 
@@ -124,15 +130,21 @@ describe('setShortestPathNode', () => {
       ],
     ])
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'shortestPathNode1Object',
+        [
+          'shortestPathNode1Object',
+        ],
+        OPERATION_TYPE_UPDATE,
         {
           id: 'node-123',
         },
       ],
       [
-        'shortestPathNode1',
+        [
+          'shortestPathNode1',
+        ],
+        OPERATION_TYPE_UPDATE,
         'node-123',
       ],
     ])

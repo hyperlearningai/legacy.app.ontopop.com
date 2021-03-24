@@ -18,9 +18,10 @@ import {
   EDGE_PROPERTIES_DROPDOWN
 } from '../constants/graph'
 import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkStylingEdge = ({
-  addToObject,
+  updateStoreValue,
   globalEdgeStyling,
   userDefinedEdgeStyling,
   stylingEdgeByProperty,
@@ -60,14 +61,14 @@ const NetworkStylingEdge = ({
                     <InputNumber
                       id="global-edge-length"
                       value={globalEdgeStyling.stylingEdgeLength}
-                      onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeLength', parseInt(e.value))}
+                      onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeLength'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                     />
                     <Slider
                       min={1}
                       max={1000}
                       step={1}
                       value={globalEdgeStyling.stylingEdgeLength}
-                      onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeLength', parseInt(e.value))}
+                      onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeLength'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                     />
                   </div>
                 </div>
@@ -76,14 +77,14 @@ const NetworkStylingEdge = ({
                 <InputNumber
                   id="global-edge-width"
                   value={globalEdgeStyling.stylingEdgeWidth}
-                  onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeWidth', parseInt(e.value))}
+                  onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeWidth'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                 />
                 <Slider
                   min={1}
                   max={20}
                   step={1}
                   value={globalEdgeStyling.stylingEdgeWidth}
-                  onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeWidth', parseInt(e.value))}
+                  onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeWidth'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                 />
               </AccordionTab>
               <AccordionTab header={t('stylingEdgeLineColor')}>
@@ -91,7 +92,7 @@ const NetworkStylingEdge = ({
                   <ColorPicker
                     id="global-edge-color-line"
                     value={globalEdgeStyling.stylingEdgeLineColor.replace('#', '')}
-                    onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeLineColor', `#${e.value}`)}
+                    onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeLineColor'], OPERATION_TYPE_UPDATE, `#${e.value}`)}
                   />
                   <span>
                     {t('stylingEdgeLineColor')}
@@ -101,7 +102,7 @@ const NetworkStylingEdge = ({
                   <ColorPicker
                     id="global-edge-color-line-highlight"
                     value={globalEdgeStyling.stylingEdgeLineColorHighlight.replace('#', '')}
-                    onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeLineColorHighlight', `#${e.value}`)}
+                    onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeLineColorHighlight'], OPERATION_TYPE_UPDATE, `#${e.value}`)}
                   />
                   <span>
                     {t('stylingEdgeLineColorHighlight')}
@@ -111,7 +112,7 @@ const NetworkStylingEdge = ({
                   <ColorPicker
                     id="global-edge-color-line-hover"
                     value={globalEdgeStyling.stylingEdgeLineColorHover.replace('#', '')}
-                    onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeLineColorHover', `#${e.value}`)}
+                    onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeLineColorHover'], OPERATION_TYPE_UPDATE, `#${e.value}`)}
                   />
                   <span>
                     {t('stylingEdgeLineColorHover')}
@@ -123,7 +124,7 @@ const NetworkStylingEdge = ({
                   id="global-edge-line-style"
                   value={globalEdgeStyling.stylingEdgeLineStyle}
                   options={EDGE_LINE_STYLE_OPTIONS}
-                  onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeLineStyle', e.value)}
+                  onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeLineStyle'], OPERATION_TYPE_UPDATE, e.value)}
                   itemTemplate={EDGE_LINE_STYLE_TEMPLATE}
                 />
               </AccordionTab>
@@ -131,14 +132,14 @@ const NetworkStylingEdge = ({
                 <InputNumber
                   id="global-edge-text-size"
                   value={globalEdgeStyling.stylingEdgeTextSize}
-                  onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeTextSize', parseInt(e.value))}
+                  onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeTextSize'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                 />
                 <Slider
                   min={1}
                   max={200}
                   step={1}
                   value={globalEdgeStyling.stylingEdgeTextSize}
-                  onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeTextSize', parseInt(e.value))}
+                  onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeTextSize'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                 />
               </AccordionTab>
               <AccordionTab header={t('stylingEdgeTextColor')}>
@@ -146,7 +147,7 @@ const NetworkStylingEdge = ({
                   <ColorPicker
                     id="global-edge-text-color"
                     value={globalEdgeStyling.stylingEdgeTextColor.replace('#', '')}
-                    onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeTextColor', `#${e.value}`)}
+                    onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeTextColor'], OPERATION_TYPE_UPDATE, `#${e.value}`)}
                   />
                   <span>
                     {t('stylingEdgeTextColor')}
@@ -158,7 +159,7 @@ const NetworkStylingEdge = ({
                   id="global-edge-text-align"
                   value={globalEdgeStyling.stylingEdgeTextAlign}
                   options={captionAlignmentOptions}
-                  onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeTextAlign', e.value)}
+                  onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeTextAlign'], OPERATION_TYPE_UPDATE, e.value)}
                 />
               </AccordionTab>
               <AccordionTab header={t('stylingEdgeCaptionProperty')}>
@@ -167,7 +168,7 @@ const NetworkStylingEdge = ({
                   value={globalEdgeStyling.stylingEdgeCaptionProperty}
                   options={EDGE_PROPERTIES_DROPDOWN}
                   filter
-                  onChange={(e) => addToObject('globalEdgeStyling', 'stylingEdgeCaptionProperty', e.value)}
+                  onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeCaptionProperty'], OPERATION_TYPE_UPDATE, e.value)}
                   className="m-t-10"
                   placeholder={t('selectProperty')}
                 />
@@ -181,14 +182,14 @@ const NetworkStylingEdge = ({
                 <InputNumber
                   id="ud-edge-width"
                   value={userDefinedEdgeStyling.stylingEdgeWidth}
-                  onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeWidth', parseInt(e.value))}
+                  onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeWidth'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                 />
                 <Slider
                   min={1}
                   max={20}
                   step={1}
                   value={userDefinedEdgeStyling.stylingEdgeWidth}
-                  onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeWidth', parseInt(e.value))}
+                  onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeWidth'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                 />
               </AccordionTab>
               <AccordionTab header={t('stylingEdgeLineColor')}>
@@ -196,7 +197,7 @@ const NetworkStylingEdge = ({
                   <ColorPicker
                     id="ud-edge-color-line"
                     value={userDefinedEdgeStyling.stylingEdgeLineColor.replace('#', '')}
-                    onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeLineColor', `#${e.value}`)}
+                    onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeLineColor'], OPERATION_TYPE_UPDATE, `#${e.value}`)}
                   />
                   <span>
                     {t('stylingEdgeLineColor')}
@@ -206,7 +207,7 @@ const NetworkStylingEdge = ({
                   <ColorPicker
                     id="ud-edge-color-line-highlight"
                     value={userDefinedEdgeStyling.stylingEdgeLineColorHighlight.replace('#', '')}
-                    onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeLineColorHighlight', `#${e.value}`)}
+                    onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeLineColorHighlight'], OPERATION_TYPE_UPDATE, `#${e.value}`)}
                   />
                   <span>
                     {t('stylingEdgeLineColorHighlight')}
@@ -216,7 +217,7 @@ const NetworkStylingEdge = ({
                   <ColorPicker
                     id="ud-edge-color-line-hover"
                     value={userDefinedEdgeStyling.stylingEdgeLineColorHover.replace('#', '')}
-                    onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeLineColorHover', `#${e.value}`)}
+                    onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeLineColorHover'], OPERATION_TYPE_UPDATE, `#${e.value}`)}
                   />
                   <span>
                     {t('stylingEdgeLineColorHover')}
@@ -228,7 +229,7 @@ const NetworkStylingEdge = ({
                   id="ud-edge-line-style"
                   value={userDefinedEdgeStyling.stylingEdgeLineStyle}
                   options={EDGE_LINE_STYLE_OPTIONS}
-                  onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeLineStyle', e.value)}
+                  onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeLineStyle'], OPERATION_TYPE_UPDATE, e.value)}
                   itemTemplate={EDGE_LINE_STYLE_TEMPLATE}
                 />
               </AccordionTab>
@@ -236,14 +237,14 @@ const NetworkStylingEdge = ({
                 <InputNumber
                   id="ud-edge-text-size"
                   value={userDefinedEdgeStyling.stylingEdgeTextSize}
-                  onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeTextSize', parseInt(e.value))}
+                  onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeTextSize'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                 />
                 <Slider
                   min={1}
                   max={200}
                   step={1}
                   value={userDefinedEdgeStyling.stylingEdgeTextSize}
-                  onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeTextSize', parseInt(e.value))}
+                  onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeTextSize'], OPERATION_TYPE_UPDATE, parseInt(e.value))}
                 />
               </AccordionTab>
               <AccordionTab header={t('stylingEdgeTextColor')}>
@@ -251,7 +252,7 @@ const NetworkStylingEdge = ({
                   <ColorPicker
                     id="ud-edge-text-color"
                     value={userDefinedEdgeStyling.stylingEdgeTextColor.replace('#', '')}
-                    onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeTextColor', `#${e.value}`)}
+                    onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeTextColor'], OPERATION_TYPE_UPDATE, `#${e.value}`)}
                   />
                   <span>
                     {t('stylingEdgeTextColor')}
@@ -263,7 +264,7 @@ const NetworkStylingEdge = ({
                   id="ud-edge-text-align"
                   value={userDefinedEdgeStyling.stylingEdgeTextAlign}
                   options={captionAlignmentOptions}
-                  onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeTextAlign', e.value)}
+                  onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeTextAlign'], OPERATION_TYPE_UPDATE, e.value)}
                 />
               </AccordionTab>
               <AccordionTab header={t('stylingEdgeCaptionProperty')}>
@@ -272,7 +273,7 @@ const NetworkStylingEdge = ({
                   value={userDefinedEdgeStyling.stylingEdgeCaptionProperty}
                   options={EDGE_PROPERTIES_DROPDOWN}
                   filter
-                  onChange={(e) => addToObject('userDefinedEdgeStyling', 'stylingEdgeCaptionProperty', e.value)}
+                  onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeCaptionProperty'], OPERATION_TYPE_UPDATE, e.value)}
                   className="m-t-10"
                   placeholder={t('selectProperty')}
                 />
@@ -306,7 +307,7 @@ const NetworkStylingEdge = ({
 }
 
 NetworkStylingEdge.propTypes = {
-  addToObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   globalEdgeStyling: PropTypes.shape().isRequired,
   userDefinedEdgeStyling: PropTypes.shape().isRequired,
   stylingEdgeByProperty: PropTypes.arrayOf(PropTypes.shape).isRequired,

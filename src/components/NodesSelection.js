@@ -13,16 +13,17 @@ import setNodesStyle from '../utils/networkStyling/setNodesStyle'
 import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
 import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NodesSelection = ({
   selectedNode,
-  setStoreState,
+  updateStoreValue,
 }) => {
   const { t } = useTranslation()
 
   useEffect(() => () => {
-    setStoreState('selectedNode', undefined)
-    setStoreState('isNodeSelectable', false)
+    updateStoreValue(['selectedNode'], OPERATION_TYPE_UPDATE, undefined)
+    updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, false)
 
     setNodesStyle()
   }, [])
@@ -32,7 +33,7 @@ const NodesSelection = ({
       setNodesStyle()
 
       highlightSelectedNode({
-        setStoreState,
+        updateStoreValue,
         selectedNode
       })
     }
@@ -78,7 +79,7 @@ const NodesSelection = ({
             value={selectedNode}
             filter
             options={availableNodes}
-            onChange={(e) => setStoreState('selectedNode', e.value)}
+            onChange={(e) => updateStoreValue(['selectedNode'], OPERATION_TYPE_UPDATE, e.value)}
             placeholder={t('selectNode')}
           />
         </div>
@@ -95,7 +96,7 @@ const NodesSelection = ({
 
 NodesSelection.propTypes = {
   selectedNode: PropTypes.string,
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 NodesSelection.defaultProps = {

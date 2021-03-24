@@ -1,15 +1,16 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 
 /**
  * Update bounding box on mouse move event listener
  * @param  {Object}   params
- * @param  {Object}   params.e                      Canvas DOM event
- * @param  {Function} params.setStoreState          setStoreState action
+ * @param  {Object}   params.e                          Canvas DOM event
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @return { undefined }
  */
 const onMouseMove = ({
   e,
-  setStoreState
+  updateStoreValue
 }) => {
   const {
     boundingBoxGeometry,
@@ -43,7 +44,7 @@ const onMouseMove = ({
     newBoundingBoxGeometry.boundingBoxWidth = boundingBoxWidth
     newBoundingBoxGeometry.boundingBoxHeight = boundingBoxHeight
 
-    setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
+    updateStoreValue(['boundingBoxGeometry'], OPERATION_TYPE_UPDATE, newBoundingBoxGeometry)
   }
 }
 

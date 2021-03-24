@@ -17,6 +17,7 @@ import getNodesFromPaths from '../../../utils/shortestPath/getNodesFromPaths'
 import getNodesFromNodesFilters from '../../../utils/nodesFilter/getNodesFromNodesFilters'
 import getNodesEdgesFromEdgesFilters from '../../../utils/edgesFilter/getNodesEdgesFromEdgesFilters'
 import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 jest.mock('../../../utils/nodeNeighbourhood/getNeighbours')
 jest.mock('../../../utils/shortestPath/getNodesFromPaths')
@@ -31,8 +32,7 @@ const commonState = {
   deletedNodes: []
 }
 
-const setStoreState = jest.fn()
-const removeFromObject = jest.fn()
+const updateStoreValue = jest.fn()
 const t = jest.fn()
 
 describe('setNodesIdsToDisplay', () => {
@@ -59,35 +59,40 @@ describe('setNodesIdsToDisplay', () => {
     }))
 
     await setNodesIdsToDisplay({
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual(
+    expect(updateStoreValue.mock.calls).toEqual(
       [
         [
-          'highlightedNodes',
+          ['highlightedNodes'],
+          OPERATION_TYPE_UPDATE,
           [],
         ],
         [
-          'highlightedEdges',
+          ['highlightedEdges'],
+          OPERATION_TYPE_UPDATE,
           [],
         ],
         [
-          'isNodeOverlay',
+          ['isNodeOverlay'],
+          OPERATION_TYPE_UPDATE,
           false,
         ],
         [
-          'shortestPathNodes',
+          ['shortestPathNodes'],
+          OPERATION_TYPE_UPDATE,
           [],
         ],
         [
-          'shortestPathResults',
+          ['shortestPathResults'],
+          OPERATION_TYPE_UPDATE,
           [],
         ],
         [
-          'nodesIdsToDisplay',
+          ['nodesIdsToDisplay'],
+          OPERATION_TYPE_UPDATE,
           [
             '1',
             '2',
@@ -437,34 +442,39 @@ describe('setNodesIdsToDisplay', () => {
     }))
 
     await setNodesIdsToDisplay({
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'highlightedNodes',
+        ['highlightedNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'highlightedEdges',
+        ['highlightedEdges'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'isNodeOverlay',
+        ['isNodeOverlay'],
+        OPERATION_TYPE_UPDATE,
         false,
       ],
       [
-        'shortestPathNodes',
+        ['shortestPathNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'shortestPathResults',
+        ['shortestPathResults'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'nodesIdsToDisplay',
+        ['nodesIdsToDisplay'],
+        OPERATION_TYPE_UPDATE,
         [
           '12',
           '24',
@@ -500,34 +510,39 @@ describe('setNodesIdsToDisplay', () => {
     getNeighbours.mockImplementation(() => ['24', '36'])
 
     await setNodesIdsToDisplay({
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'highlightedNodes',
+        ['highlightedNodes'],
+        OPERATION_TYPE_UPDATE,
         ['12', '24'],
       ],
       [
-        'highlightedEdges',
+        ['highlightedEdges'],
+        OPERATION_TYPE_UPDATE,
         ['111'],
       ],
       [
-        'isNodeOverlay',
+        ['isNodeOverlay'],
+        OPERATION_TYPE_UPDATE,
         false,
       ],
       [
-        'shortestPathNodes',
+        ['shortestPathNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'shortestPathResults',
+        ['shortestPathResults'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'nodesIdsToDisplay',
+        ['nodesIdsToDisplay'],
+        OPERATION_TYPE_UPDATE,
         [
           '24',
           '36',
@@ -565,34 +580,39 @@ describe('setNodesIdsToDisplay', () => {
     }))
 
     await setNodesIdsToDisplay({
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'highlightedNodes',
+        ['highlightedNodes'],
+        OPERATION_TYPE_UPDATE,
         ['12'],
       ],
       [
-        'highlightedEdges',
+        ['highlightedEdges'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'isNodeOverlay',
+        ['isNodeOverlay'],
+        OPERATION_TYPE_UPDATE,
         false,
       ],
       [
-        'shortestPathNodes',
+        ['shortestPathNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'shortestPathResults',
+        ['shortestPathResults'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'nodesIdsToDisplay',
+        ['nodesIdsToDisplay'],
+        OPERATION_TYPE_UPDATE,
         {
           neighbourEdges: [
             '111',
@@ -639,29 +659,32 @@ describe('setNodesIdsToDisplay', () => {
     }))
 
     await setNodesIdsToDisplay({
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'highlightedNodes',
+        ['highlightedNodes'],
+        OPERATION_TYPE_UPDATE,
         [
           '24',
           '48',
         ],
       ],
       [
-        'highlightedEdges',
+        ['highlightedEdges'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'isNodeOverlay',
+        ['isNodeOverlay'],
+        OPERATION_TYPE_UPDATE,
         true,
       ],
       [
-        'shortestPathNodes',
+        ['shortestPathNodes'],
+        OPERATION_TYPE_UPDATE,
         {
           shortestPathEdges: [
             '111',
@@ -675,13 +698,15 @@ describe('setNodesIdsToDisplay', () => {
         },
       ],
       [
-        'shortestPathResults',
+        ['shortestPathResults'],
+        OPERATION_TYPE_UPDATE,
         [
           '111_112',
         ],
       ],
       [
-        'nodesIdsToDisplay',
+        ['nodesIdsToDisplay'],
+        OPERATION_TYPE_UPDATE,
         [
           '123',
         ],
@@ -722,39 +747,44 @@ describe('setNodesIdsToDisplay', () => {
     }))
 
     await setNodesIdsToDisplay({
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'highlightedNodes',
+        ['highlightedNodes'],
+        OPERATION_TYPE_UPDATE,
         [
           '24',
           '48',
         ],
       ],
       [
-        'highlightedEdges',
+        ['highlightedEdges'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'isNodeOverlay',
+        ['isNodeOverlay'],
+        OPERATION_TYPE_UPDATE,
         false,
       ],
       [
-        'shortestPathNodes',
+        ['shortestPathNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'shortestPathResults',
+        ['shortestPathResults'],
+        OPERATION_TYPE_UPDATE,
         [
           '111_112',
         ],
       ],
       [
-        'nodesIdsToDisplay',
+        ['nodesIdsToDisplay'],
+        OPERATION_TYPE_UPDATE,
         {
           shortestPathEdges: [
             '111',
@@ -800,34 +830,39 @@ describe('setNodesIdsToDisplay', () => {
     }))
 
     await setNodesIdsToDisplay({
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'highlightedNodes',
+        ['highlightedNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'highlightedEdges',
+        ['highlightedEdges'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'isNodeOverlay',
+        ['isNodeOverlay'],
+        OPERATION_TYPE_UPDATE,
         false,
       ],
       [
-        'shortestPathNodes',
+        ['shortestPathNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'shortestPathResults',
+        ['shortestPathResults'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'nodesIdsToDisplay',
+        ['nodesIdsToDisplay'],
+        OPERATION_TYPE_UPDATE,
         [
           '12',
           '14',
@@ -863,34 +898,39 @@ describe('setNodesIdsToDisplay', () => {
     }))
 
     await setNodesIdsToDisplay({
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'highlightedNodes',
+        ['highlightedNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'highlightedEdges',
+        ['highlightedEdges'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'isNodeOverlay',
+        ['isNodeOverlay'],
+        OPERATION_TYPE_UPDATE,
         false,
       ],
       [
-        'shortestPathNodes',
+        ['shortestPathNodes'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'shortestPathResults',
+        ['shortestPathResults'],
+        OPERATION_TYPE_UPDATE,
         [],
       ],
       [
-        'nodesIdsToDisplay',
+        ['nodesIdsToDisplay'],
+        OPERATION_TYPE_UPDATE,
         [
           '11',
           '12',

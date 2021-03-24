@@ -4,17 +4,7 @@ exports[`NetworkStylingNodeByPropertyForm should match snapshot  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   annotationProperties={
@@ -28,7 +18,6 @@ exports[`NetworkStylingNodeByPropertyForm should match snapshot  1`] = `
   index={0}
   isDeleteAvailable={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   stylingProperty={
     Object {
       "filterType": "equal",
@@ -37,6 +26,7 @@ exports[`NetworkStylingNodeByPropertyForm should match snapshot  1`] = `
       "styleValue": "",
     }
   }
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

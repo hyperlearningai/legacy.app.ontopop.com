@@ -17,9 +17,10 @@ import {
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_SETTINGS } from '../constants/views'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkSettings = ({
-  setStoreState,
+  updateStoreValue,
   physicsRepulsion,
   physicsHierarchicalView,
   isPhysicsOn
@@ -41,7 +42,7 @@ const NetworkSettings = ({
               tooltip={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
               tooltipOptions={{ position: 'top' }}
               className={isPhysicsOn ? 'network-settings-buttons-button-selected' : ''}
-              onClick={() => setStoreState('isPhysicsOn', !isPhysicsOn)}
+              onClick={() => updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, !isPhysicsOn)}
             >
               <AiOutlinePoweroff />
             </Button>
@@ -57,7 +58,7 @@ const NetworkSettings = ({
               tooltip={t('hierachicalView')}
               tooltipOptions={{ position: 'top' }}
               className={physicsHierarchicalView ? 'network-settings-buttons-button-selected' : ''}
-              onClick={() => setStoreState('physicsHierarchicalView', true)}
+              onClick={() => updateStoreValue(['physicsHierarchicalView'], OPERATION_TYPE_UPDATE, true)}
             >
               <FaSitemap />
             </Button>
@@ -65,7 +66,7 @@ const NetworkSettings = ({
               tooltip={t('gravitationalView')}
               tooltipOptions={{ position: 'top' }}
               className={!physicsHierarchicalView ? 'network-settings-buttons-button-selected' : ''}
-              onClick={() => setStoreState('physicsHierarchicalView', false)}
+              onClick={() => updateStoreValue(['physicsHierarchicalView'], OPERATION_TYPE_UPDATE, false)}
             >
               <SiAtom />
             </Button>
@@ -81,7 +82,7 @@ const NetworkSettings = ({
               tooltip={t('enableRepulsion')}
               tooltipOptions={{ position: 'top' }}
               className={physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}
-              onClick={() => setStoreState('physicsRepulsion', true)}
+              onClick={() => updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, true)}
             >
               <IoFootballOutline />
             </Button>
@@ -89,7 +90,7 @@ const NetworkSettings = ({
               tooltip={t('disableRepulsion')}
               tooltipOptions={{ position: 'top' }}
               className={!physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}
-              onClick={() => setStoreState('physicsRepulsion', false)}
+              onClick={() => updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, false)}
             >
               <IoGitNetworkSharp />
             </Button>
@@ -101,7 +102,7 @@ const NetworkSettings = ({
 }
 
 NetworkSettings.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   physicsHierarchicalView: PropTypes.bool.isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,

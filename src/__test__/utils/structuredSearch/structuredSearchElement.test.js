@@ -5,8 +5,9 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
 import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
 import getEdgeIds from '../../../utils/nodesEdgesUtils/getEdgeIds'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
@@ -24,20 +25,20 @@ describe('structuredSearchElement', () => {
     jest.clearAllMocks()
   })
 
-  it('should not call setStoreState when empty filters', async () => {
+  it('should not call updateStoreValue when empty filters', async () => {
     const queryLogic = 'and'
     const filters = []
 
     await structuredSearchElement({
       filters,
       queryLogic,
-      setStoreState,
+      updateStoreValue,
     })
 
-    expect(setStoreState).toHaveBeenCalledTimes(0)
+    expect(updateStoreValue).toHaveBeenCalledTimes(0)
   })
 
-  it('should not call setStoreState when filters with no value', async () => {
+  it('should not call updateStoreValue when filters with no value', async () => {
     const queryLogic = 'and'
     const filters = [{
       property: 'rdfAbout',
@@ -50,10 +51,10 @@ describe('structuredSearchElement', () => {
     await structuredSearchElement({
       filters,
       queryLogic,
-      setStoreState,
+      updateStoreValue,
     })
 
-    expect(setStoreState).toHaveBeenCalledTimes(0)
+    expect(updateStoreValue).toHaveBeenCalledTimes(0)
   })
 
   it('should return correct results when AND query', async () => {
@@ -69,11 +70,11 @@ describe('structuredSearchElement', () => {
     await structuredSearchElement({
       filters,
       queryLogic,
-      setStoreState,
+      updateStoreValue,
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'structuredSelection', {
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['structuredSelection'], OPERATION_TYPE_UPDATE, {
         103: {
           'Business Area': 'Maintain Construct Plan',
           'Data Source': 'Confirm',
@@ -154,11 +155,11 @@ describe('structuredSearchElement', () => {
     await structuredSearchElement({
       filters,
       queryLogic,
-      setStoreState,
+      updateStoreValue,
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'structuredSelection', {
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['structuredSelection'], OPERATION_TYPE_UPDATE, {
         103: {
           'Business Area': 'Maintain Construct Plan',
           'Data Source': 'Confirm',

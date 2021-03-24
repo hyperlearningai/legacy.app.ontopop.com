@@ -7,6 +7,7 @@ import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
+import { OPERATION_TYPE_ADD } from '../../../constants/store'
 
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
@@ -17,8 +18,8 @@ jest.mock('../../../utils/nodesEdgesUtils/countEdges')
 jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
+
 store.getState = jest.fn().mockImplementation(() => ({
   totalEdgesPerNode,
   classesFromApi,
@@ -45,11 +46,10 @@ describe('expandNode', () => {
 
     await expandNode({
       nodeId,
-      setStoreState,
-      addNumber,
+      updateStoreValue,
     })
 
-    expect(addNumber).toHaveBeenCalledWith('activeLoaders', 1)
+    expect(updateStoreValue).toHaveBeenCalledWith(['activeLoaders'], OPERATION_TYPE_ADD, 1)
 
     expect(setTimeout).toHaveBeenCalledWith(
       expect.any(Function),

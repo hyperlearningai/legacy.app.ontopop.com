@@ -7,9 +7,8 @@ const setup = ({
   selectedNotesType
 }) => {
   const props = {
-    addNumber: jest.fn(),
     noteElementId: '12',
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     selectedNotesType,
   }
 

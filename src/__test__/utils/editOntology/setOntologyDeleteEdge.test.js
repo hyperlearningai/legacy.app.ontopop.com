@@ -4,7 +4,7 @@ import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
-  setStoreStateFixture
+  updateStoreValueFixture
 } from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import { nodesEdges } from '../../fixtures/nodesEdges'
@@ -31,10 +31,8 @@ countNodes.mockImplementation(() => 1)
 const selectedElement = [
   '11'
 ]
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
-const addNumber = jest.fn()
-const toggleFromArrayInKey = jest.fn()
 
 getEdge.mockImplementation(() => ({
   from: '1',
@@ -61,10 +59,8 @@ describe('setOntologyDeleteEdge', () => {
     httpCall.mockImplementationOnce(() => ({ error: true }))
 
     await setOntologyDeleteEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
-      toggleFromArrayInKey,
       t
     })
 
@@ -80,10 +76,8 @@ describe('setOntologyDeleteEdge', () => {
     httpCall.mockImplementationOnce(() => ({ data: {} }))
 
     await setOntologyDeleteEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
-      toggleFromArrayInKey,
       t
     })
 
@@ -105,16 +99,14 @@ describe('setOntologyDeleteEdge', () => {
     }))
 
     await setOntologyDeleteEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
-      toggleFromArrayInKey,
       t
     })
 
     expect(removeEdge).toHaveBeenLastCalledWith(
       {
-        addNumber,
+        updateStoreValue,
         edge: {
           edgeId: 11,
           from: '1',
@@ -126,11 +118,10 @@ describe('setOntologyDeleteEdge', () => {
           to: '177',
           userDefined: false
         },
-        toggleFromArrayInKey
       }
     )
 
-    expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
+    expect(updateStoreValue.mock.calls).toEqual(updateStoreValueFixture)
 
     expect(showNotification).toHaveBeenLastCalledWith(
       {

@@ -1,9 +1,7 @@
 import setSearchNeighbourNodes from '../../../utils/graphSearch/setSearchNeighbourNodes'
 import store from '../../../store'
-import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
-const setStoreState = jest.fn()
-const addToObject = jest.fn()
+const updateStoreValue = jest.fn()
 const separationDegree = 1
 const lastGraphIndex = 1
 
@@ -20,51 +18,95 @@ describe('setSearchNeighbourNodes', () => {
   it('should work correctly when node', async () => {
     await setSearchNeighbourNodes({
       separationDegree,
-      setStoreState,
-      addToObject,
+      updateStoreValue,
       searchResult: {
         id: '12',
         type: 'node',
       }
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'currentGraph',
+        [
+          'graphData',
+          'graph-2',
+        ],
+        'update',
+        {
+          hiddenEdgesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          hiddenNodesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          isDatasetVisible: false,
+          isSubClassEdgeVisible: true,
+          isUpperOntologyVisible: false,
+          label: 'search-graph-2',
+          options: {
+            selectedEdgesId: [],
+            selectedNodesId: [
+              '12',
+            ],
+            separationDegree: 1,
+          },
+          type: 'search-neighbourhood',
+        },
+      ],
+      [
+        [
+          'currentGraph',
+        ],
+        'update',
         'graph-2',
       ],
       [
-        'lastGraphIndex',
+        [
+          'lastGraphIndex',
+        ],
+        'update',
         2,
       ],
       [
-        'mainVisualisation',
+        [
+          'mainVisualisation',
+        ],
+        'update',
         'graph',
       ],
       [
-        'sidebarView',
+        [
+          'sidebarView',
+        ],
+        'update',
         'networkGraphs',
       ],
+
     ])
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphData', 'graph-2', {
-        label: 'search-graph-2',
-        options: {
-          selectedEdgesId: [],
-          selectedNodesId: ['12'],
-          separationDegree: 1
-        },
-        type: 'search-neighbourhood',
-        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
-      }
-    )
   })
 
   it('should work correctly when edge', async () => {
     await setSearchNeighbourNodes({
       separationDegree,
-      setStoreState,
-      addToObject,
+      updateStoreValue,
       searchResult: {
         id: '12',
         type: 'edge',
@@ -73,35 +115,84 @@ describe('setSearchNeighbourNodes', () => {
       }
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'currentGraph',
+        [
+          'graphData',
+          'graph-2',
+        ],
+        'update',
+        {
+          hiddenEdgesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          hiddenNodesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          isDatasetVisible: false,
+          isSubClassEdgeVisible: true,
+          isUpperOntologyVisible: false,
+          label: 'search-graph-2',
+          options: {
+            selectedEdgesId: [
+              '12',
+            ],
+            selectedNodesId: [
+              '1',
+              '111',
+            ],
+            separationDegree: 1,
+          },
+          type: 'search-neighbourhood',
+        },
+      ],
+      [
+        [
+          'currentGraph',
+        ],
+        'update',
         'graph-2',
       ],
       [
-        'lastGraphIndex',
+        [
+          'lastGraphIndex',
+        ],
+        'update',
         2,
       ],
       [
-        'mainVisualisation',
+        [
+          'mainVisualisation',
+        ],
+        'update',
         'graph',
       ],
       [
-        'sidebarView',
+        [
+          'sidebarView',
+        ],
+        'update',
         'networkGraphs',
       ],
+
     ])
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphData', 'graph-2', {
-        label: 'search-graph-2',
-        options: {
-          selectedEdgesId: ['12'],
-          selectedNodesId: ['1', '111'],
-          separationDegree: 1
-        },
-        type: 'search-neighbourhood',
-        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
-      }
-    )
   })
 })

@@ -3,9 +3,9 @@ import en from '../../../i18n/en'
 import synonymsDeleteSynonym from '../../../utils/synonyms/synonymsDeleteSynonym'
 import showNotification from '../../../utils/notifications/showNotification'
 import store from '../../../store'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
 
 jest.mock('../../../utils/apiCalls/httpCall')
@@ -30,8 +30,7 @@ describe('synonymsDeleteSynonym', () => {
     await synonymsDeleteSynonym({
       selectedElement: null,
       selectedSynonymID: 42,
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -59,14 +58,13 @@ describe('synonymsDeleteSynonym', () => {
     await synonymsDeleteSynonym({
       selectedElement: null,
       selectedSynonymID: 1,
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
     expect(showNotification).toHaveBeenCalledWith(
       { message: 'Synonym Deleted', type: 'success' }
     )
-    expect(setStoreState).toHaveBeenCalledWith('nodesSynonyms', mockSynonymsAfter)
+    expect(updateStoreValue).toHaveBeenCalledWith(['nodesSynonyms'], OPERATION_TYPE_UPDATE, mockSynonymsAfter)
   })
 })

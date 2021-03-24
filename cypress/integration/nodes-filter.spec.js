@@ -54,7 +54,7 @@ context('Nodes filter', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')

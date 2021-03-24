@@ -5,22 +5,19 @@ import httpCall from '../apiCalls/httpCall'
 import { API_ENDPOINT_GRAPH_EDGES_ID } from '../../constants/api'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Remove connection from ontology
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  setStoreState action
- * @param  {Function}       params.setStoreState              setStoreState action
+ * @param  {Function}       params.updateStoreValue           updateStoreValue action
  * @param  {Object}         params.selectedElement            Array of edge IDs
- * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey funciton
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyDeleteEdge = async ({
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   selectedElement,
-  toggleFromArrayInKey,
   t
 }) => {
   const {
@@ -42,7 +39,7 @@ const setOntologyDeleteEdge = async ({
       const edgeId = selectedElement[index]
 
       const response = await httpCall({
-        addNumber,
+        updateStoreValue,
         withAuth: true,
         route: API_ENDPOINT_GRAPH_EDGES_ID.replace('{id}', edgeId),
         method: 'delete',
@@ -108,15 +105,14 @@ const setOntologyDeleteEdge = async ({
 
       removeEdge(({
         edge,
-        addNumber,
-        toggleFromArrayInKey
+        updateStoreValue,
       }))
     }
   }
 
-  setStoreState('totalEdgesPerNode', newEdgesPerNode)
-  setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('deletedEdges', newDeletedEdges)
+  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, newEdgesPerNode)
+  updateStoreValue(['classesFromApi'], OPERATION_TYPE_UPDATE, newClassesFromApi)
+  updateStoreValue(['deletedEdges'], OPERATION_TYPE_UPDATE, newDeletedEdges)
 
   if (edgesDeleted.length > 0) {
     const message = `${t('edgesDeleted')}: ${edgesDeleted.join(', ')}`

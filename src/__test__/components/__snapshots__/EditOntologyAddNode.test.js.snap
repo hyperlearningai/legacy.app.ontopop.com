@@ -4,20 +4,9 @@ exports[`EditOntologyAddNode should match snapshot 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -5288,8 +5277,8 @@ NTIS provide to RIF which is then passed to Azure",
   }
   mapToProps={[Function]}
   operation="add"
-  setStoreState={[MockFunction]}
   type="node"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

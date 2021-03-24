@@ -80,17 +80,18 @@ import NotesList from './NotesList'
 import EntrySearch from './EntrySearch'
 import SynonymsList from './SynonymsList'
 import NetworkGraphOptions from './NetworkGraphOptions'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const Sidebar = ({
   isSidebarOpen,
   sidebarView,
-  setStoreState,
+  updateStoreValue,
 }) => {
   const { t } = useTranslation()
 
   const setView = (view) => {
-    setStoreState('isSidebarOpen', true)
-    setStoreState('sidebarView', view)
+    updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, true)
+    updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, view)
   }
 
   return (
@@ -102,7 +103,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_ENTRY_SEARCH)
-            setStoreState('mainVisualisation', MAIN_VIEW_SEARCH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_SEARCH)
           }}
         >
           <BsSearch />
@@ -113,7 +114,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_GRAPHS ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_GRAPHS)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <FiLayers />
@@ -124,7 +125,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_GRAPH_OPTIONS ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_GRAPH_OPTIONS)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <IoMdOptions />
@@ -135,7 +136,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_FREE_TEXT_SEARCH)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <BsSearch />
@@ -147,7 +148,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_STRUCTURED_SEARCH)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <BsSearch />
@@ -158,9 +159,9 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_NODES_SELECTION)}
           className={sidebarView === SIDEBAR_VIEW_NODES_SELECTION ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            setStoreState('isNodeSelectable', true)
+            updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_NODES_SELECTION)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <FaRegCircle />
@@ -171,9 +172,9 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_EDGES_SELECTION)}
           className={sidebarView === SIDEBAR_VIEW_EDGES_SELECTION ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            setStoreState('isEdgeSelectable', true)
+            updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_EDGES_SELECTION)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <BsArrowUpRight />
@@ -184,9 +185,9 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_NODES_FILTER)}
           className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            setStoreState('isNodeSelectable', true)
+            updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_NODES_FILTER)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <FaRegCircle />
@@ -197,9 +198,9 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_EDGES_FILTER)}
           className={sidebarView === SIDEBAR_VIEW_EDGES_FILTER ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            setStoreState('isEdgeSelectable', true)
+            updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_EDGES_FILTER)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <BsArrowUpRight />
@@ -210,9 +211,9 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_BOUNDING_BOX)}
           className={sidebarView === SIDEBAR_VIEW_BOUNDING_BOX ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            setStoreState('isBoundingBox', true)
+            updateStoreValue(['isBoundingBox'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_BOUNDING_BOX)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <BiSelection />
@@ -222,9 +223,9 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
           className={sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            setStoreState('isNeighbourNodeSelectable', true)
+            updateStoreValue(['isNeighbourNodeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_NEIGHBOURHOOD)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <BiNetworkChart />
@@ -234,9 +235,9 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_SHORTEST_PATH)}
           className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            setStoreState('isShortestPathNode1Selectable', true)
+            updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_SHORTEST_PATH)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <IoGitNetwork />
@@ -247,7 +248,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_CUSTOM_QUERY ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_CUSTOM_QUERY)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <BsCodeSlash />
@@ -258,7 +259,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_SETTINGS ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_SETTINGS)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <FiSettings />
@@ -269,7 +270,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_STYLING ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_STYLING)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <FaPaintBrush />
@@ -280,7 +281,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_NOTES ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_NOTES)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <FaStickyNote />
@@ -291,7 +292,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_SYNONYMS ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_SYNONYMS)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <FaFileAlt />
@@ -302,7 +303,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_EXPORT)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <FaFileExport />
@@ -313,7 +314,7 @@ const Sidebar = ({
           className={sidebarView === SIDEBAR_VIEW_EDIT_ONTOLOGY ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
             setView(SIDEBAR_VIEW_EDIT_ONTOLOGY)
-            setStoreState('mainVisualisation', MAIN_VIEW_GRAPH)
+            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
         >
           <BsPencilSquare />
@@ -321,7 +322,7 @@ const Sidebar = ({
         <Button
           id="sidebar-button-toggle"
           tooltip={t('toggleSidebar')}
-          onClick={() => setStoreState('isSidebarOpen', !isSidebarOpen)}
+          onClick={() => updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, !isSidebarOpen)}
         >
           {
             isSidebarOpen ? (
@@ -459,7 +460,7 @@ const Sidebar = ({
 Sidebar.propTypes = {
   isSidebarOpen: PropTypes.bool.isRequired,
   sidebarView: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

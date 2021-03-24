@@ -1,0 +1,5 @@
+export const OPERATION_TYPE_ADD = 'add'
+export const OPERATION_TYPE_DELETE = 'delete'
+export const OPERATION_TYPE_UPDATE = 'update'
+export const OPERATION_TYPE_PUSH = 'push'
+export const OPERATION_TYPE_TOGGLE = 'toggle'

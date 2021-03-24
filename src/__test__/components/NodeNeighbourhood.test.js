@@ -5,8 +5,7 @@ import NodeNeighbourhood from '../../components/NodeNeighbourhood'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
-    addToObject: jest.fn(),
+    updateStoreValue: jest.fn(),
     selectedNeighbourNode: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
   }
 

@@ -3,11 +3,9 @@ import store from '../../../store'
 import { ALGO_TYPE_FULL } from '../../../constants/algorithms'
 import toggleElements from '../../../utils/networkGraphOptions/toggleElements'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const addToObject = jest.fn()
-const toggleFromArrayInKey = jest.fn()
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 
 jest.mock('../../../utils/networkGraphOptions/toggleElements')
 
@@ -45,15 +43,13 @@ describe('setNetworkGraphOptions', () => {
       isDatasetVisible,
       hiddenNodesProperties,
       hiddenEdgesProperties,
-      addToObject,
-      addNumber,
-      toggleFromArrayInKey,
-      setStoreState,
+      updateStoreValue,
     })
 
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphData',
-      'graph-0',
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['graphData',
+        'graph-0'],
+      OPERATION_TYPE_UPDATE,
       {
         label: 'Main',
         noDelete: true,
@@ -66,9 +62,7 @@ describe('setNetworkGraphOptions', () => {
       }
     )
     expect(toggleElements).toHaveBeenCalledWith({
-      addNumber,
-      toggleFromArrayInKey,
-      setStoreState,
+      updateStoreValue,
     })
   })
 })

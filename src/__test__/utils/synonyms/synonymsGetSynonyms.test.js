@@ -2,9 +2,9 @@ import httpCall from '../../../utils/apiCalls/httpCall'
 import en from '../../../i18n/en'
 import synonymsGetSynonyms from '../../../utils/synonyms/synonymsGetSynonyms'
 import showNotification from '../../../utils/notifications/showNotification'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
@@ -19,8 +19,7 @@ describe('synonymsGetSynonyms', () => {
 
     await synonymsGetSynonyms({
       selectedElement: null,
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -42,13 +41,13 @@ describe('synonymsGetSynonyms', () => {
 
     await synonymsGetSynonyms({
       selectedElement: null,
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'nodesSynonyms', [{
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['nodesSynonyms'],
+      OPERATION_TYPE_UPDATE, [{
         synonym: 'My first synonym',
         dateCreated: 'yyyy-MM-dd HH:mm:ss',
         dateLastUpdated: 'yyyy-MM-dd HH:mm:ss',

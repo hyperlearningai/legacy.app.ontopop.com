@@ -6,8 +6,9 @@ import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const selectedElementProperties = {
   rdfAbout: 'http://test.com/node',
   rdfsLabel: 'New node',
@@ -38,7 +39,6 @@ newClassesFromApi[selectedElement] = {
 }
 
 const t = (id) => en[id]
-const addNumber = jest.fn()
 
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
@@ -60,9 +60,8 @@ describe('setOntologyUpdateNode', () => {
     }))
 
     await setOntologyUpdateNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
       selectedElementProperties,
       t
     })
@@ -85,9 +84,8 @@ describe('setOntologyUpdateNode', () => {
     }))
 
     await setOntologyUpdateNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
       selectedElementProperties,
       t
     })
@@ -117,9 +115,8 @@ describe('setOntologyUpdateNode', () => {
     }))
 
     await setOntologyUpdateNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
       selectedElementProperties,
       t
     })
@@ -131,13 +128,15 @@ describe('setOntologyUpdateNode', () => {
     const classesFromApiOutput = JSON.parse(JSON.stringify(newClassesFromApi))
     classesFromApiOutput['1'].label = 'New\nnode'
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'classesFromApi',
+        ['classesFromApi'],
+        OPERATION_TYPE_UPDATE,
         classesFromApiOutput
       ],
       [
-        'updatedNodes',
+        ['updatedNodes'],
+        OPERATION_TYPE_UPDATE,
         ['1']
       ]
     ])

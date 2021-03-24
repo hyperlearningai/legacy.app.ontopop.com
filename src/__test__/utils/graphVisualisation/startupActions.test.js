@@ -9,9 +9,7 @@ jest.mock('../../../utils/apiCalls/getGraphData')
 jest.mock('../../../utils/graphVisualisation/setNodesIdsToDisplay')
 jest.mock('../../../utils/notes/notesGetNotes')
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
-const removeFromObject = jest.fn()
+const updateStoreValue = jest.fn()
 const t = jest.fn()
 
 describe('startupActions', () => {
@@ -21,44 +19,37 @@ describe('startupActions', () => {
 
   it('should work correctly', async () => {
     await startupActions({
-      addNumber,
-      setStoreState,
-      removeFromObject,
+      updateStoreValue,
       t
     })
 
     expect(loadStyling).toHaveBeenCalledWith({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
     expect(getGraphData).toHaveBeenCalledWith({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
     expect(notesGetNotes.mock.calls).toEqual([
       [
         {
-          addNumber,
-          setStoreState,
+          updateStoreValue,
           t
         }
       ],
       [
         {
-          addNumber,
-          setStoreState,
+          updateStoreValue,
           type: 'node',
           t
         }
       ],
       [
         {
-          addNumber,
-          setStoreState,
+          updateStoreValue,
           type: 'edge',
           t
         }
@@ -66,8 +57,7 @@ describe('startupActions', () => {
     ])
 
     expect(setNodesIdsToDisplay).toHaveBeenCalledWith({
-      removeFromObject,
-      setStoreState,
+      updateStoreValue,
       t
     })
   })

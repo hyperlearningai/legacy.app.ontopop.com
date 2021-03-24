@@ -1,10 +1,11 @@
 import axios from 'axios'
+import { OPERATION_TYPE_ADD } from '../../constants/store'
 import store from '../../store'
 
 /**
  * Http call function
  * @param  {Object}   params
- * @param  {Function} params.addNumber                  addNumber action
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @param  {String}   params.body                       Request body
  * @param  {String}   params.route                      Request URL
  * @param  {String}   params.method                     HTTP method
@@ -13,7 +14,7 @@ import store from '../../store'
  * @return {*}        response
  */
 const httpCall = async ({
-  addNumber,
+  updateStoreValue,
   withAuth,
   body,
   route,
@@ -24,7 +25,7 @@ const httpCall = async ({
     user
   } = store.getState()
 
-  addNumber('activeLoaders', 1)
+  updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, 1)
 
   const headers = {
     'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ const httpCall = async ({
         break
     }
 
-    addNumber('activeLoaders', -1)
+    updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, -1)
 
     const {
       data,
@@ -69,7 +70,7 @@ const httpCall = async ({
 
     return { data }
   } catch (error) {
-    addNumber('activeLoaders', -1)
+    updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, -1)
 
     return { error: t(error.message) }
   }

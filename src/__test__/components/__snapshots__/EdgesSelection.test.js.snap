@@ -4,22 +4,12 @@ exports[`EdgesSelection should match snapshot  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   mapToProps={[Function]}
   selectedEdge="edge-123"
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

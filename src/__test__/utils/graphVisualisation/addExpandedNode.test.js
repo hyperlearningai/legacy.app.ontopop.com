@@ -23,10 +23,7 @@ jest.mock('../../../utils/networkStyling/getElementLabel')
 jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
 jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
-const toggleFromArrayInKey = jest.fn()
-const toggleFromSubArray = jest.fn()
+const updateStoreValue = jest.fn()
 
 getNode.mockImplementation(() => null)
 getElementLabel.mockImplementation(() => 'Road')
@@ -62,11 +59,8 @@ describe('addExpandedNode', () => {
       index: 10,
       edgesNumber: 11,
       edge,
-      setStoreState,
+      updateStoreValue,
       classesFromApi,
-      addNumber,
-      toggleFromArrayInKey,
-      toggleFromSubArray
     })
 
     expect(addNode).toHaveBeenCalledTimes(0)
@@ -88,27 +82,22 @@ describe('addExpandedNode', () => {
       index: 10,
       edgesNumber: 11,
       edge,
-      setStoreState,
+      updateStoreValue,
       classesFromApi,
-      addNumber,
-      toggleFromArrayInKey,
-      toggleFromSubArray
     })
 
     expect(addNode).toHaveBeenCalledTimes(0)
     expect(addEdge).toHaveBeenLastCalledWith(
       {
         edge,
-        addNumber,
-        toggleFromArrayInKey
+        updateStoreValue
       }
     )
     expect(setEdgeStyle).toHaveBeenLastCalledWith(
       { edge }
     )
     expect(actionAfterNodesAdded).toHaveBeenCalledWith({
-      setStoreState,
-      addNumber,
+      updateStoreValue,
     })
   })
 
@@ -127,11 +116,8 @@ describe('addExpandedNode', () => {
       index: 10,
       edgesNumber: 11,
       edge,
-      toggleFromArrayInKey,
-      toggleFromSubArray,
-      setStoreState,
-      classesFromApi,
-      addNumber,
+      updateStoreValue,
+      classesFromApi
     })
 
     expect(addNode).toHaveBeenCalledTimes(1)
@@ -143,14 +129,12 @@ describe('addExpandedNode', () => {
     expect(addEdge).toHaveBeenLastCalledWith(
       {
         edge,
-        addNumber,
-        toggleFromArrayInKey
+        updateStoreValue
       }
     )
 
     expect(actionAfterNodesAdded).toHaveBeenCalledWith({
-      setStoreState,
-      addNumber,
+      updateStoreValue,
     })
   })
 })

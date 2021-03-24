@@ -7,22 +7,19 @@ import httpCall from '../apiCalls/httpCall'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * ADd ontology edge
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  addNumber action
- * @param  {Function}       params.setStoreState              setStoreState action
+ * @param  {Function}       params.updateStoreValue           updateStoreValue action
  * @param  {Object}         params.selectedElement            Element properties with from,to,edge keys
- * @param  {Function}       params.toggleFromArrayInKey       toggleFromArrayInKey action
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyRestoreEdge = async ({
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   selectedElement,
-  toggleFromArrayInKey,
   t
 }) => {
   const {
@@ -54,7 +51,7 @@ const setOntologyRestoreEdge = async ({
       body.label = 'subclass'
 
       const response = await httpCall({
-        addNumber,
+        updateStoreValue,
         withAuth: true,
         route: API_ENDPOINT_GRAPH_EDGES_CREATE,
         method: 'post',
@@ -121,8 +118,7 @@ const setOntologyRestoreEdge = async ({
         if (isVisible) {
           addEdge({
             edge,
-            addNumber,
-            toggleFromArrayInKey
+            updateStoreValue,
           })
         }
 
@@ -146,12 +142,12 @@ const setOntologyRestoreEdge = async ({
 
   // remove selected elements from deleted connection
   const newDeletedEdges = deletedEdges.filter((connection) => !restoredEdges[connection])
-  setStoreState('deletedEdges', newDeletedEdges)
+  updateStoreValue(['deletedEdges'], OPERATION_TYPE_UPDATE, newDeletedEdges)
 
   // add data
-  setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('totalEdgesPerNode', newEdgesPerNode)
-  setStoreState('objectPropertiesFromApi', newObjectPropertiesFromApi)
+  updateStoreValue(['nodesEdges'], OPERATION_TYPE_UPDATE, newNodesEdges)
+  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, newEdgesPerNode)
+  updateStoreValue(['objectPropertiesFromApi'], OPERATION_TYPE_UPDATE, newObjectPropertiesFromApi)
 
   const restoredEdgesOldIds = Object.keys(restoredEdges)
 

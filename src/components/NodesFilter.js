@@ -12,16 +12,16 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
 import setFilteredNodes from '../utils/nodesFilter/setFilteredNodes'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NodesFilter = ({
-  setStoreState,
+  updateStoreValue,
   annotationProperties,
-  addToObject
 }) => {
   const { t } = useTranslation()
 
   useEffect(() => () => {
-    setStoreState('isNodeSelectable', false)
+    updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, false)
   }, [])
 
   const defaultNodeFilter = {
@@ -148,9 +148,8 @@ const NodesFilter = ({
           iconPos="right"
           label={t('show')}
           onClick={() => setFilteredNodes({
-            setStoreState,
+            updateStoreValue,
             nodesFilters,
-            addToObject,
             t
           })}
         />
@@ -160,9 +159,8 @@ const NodesFilter = ({
 }
 
 NodesFilter.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

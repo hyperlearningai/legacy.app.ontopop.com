@@ -1,4 +1,5 @@
 /* eslint no-console:0 */
+import { OPERATION_TYPE_ADD } from '../../constants/store'
 import store from '../../store'
 import setEdgesStyle from '../networkStyling/setEdgesStyle'
 import toggleEdge from './toggleEdge'
@@ -8,15 +9,12 @@ import updateStyleAndPhysics from './updateStyleAndPhysics'
  * Add node to graph
  * @param  {Object}     params
  * @param  {Array}      params.visibleNodes               Visible nodes
- * @param  {Function}   params.toggleFromArrayInKey       toggleFromArrayInKey action
- * @param  {Function}   params.setStoreState              setStoreState action
+ * @param  {Function}   params.updateStoreValue              updateStoreValue action
  * @return { undefined }
 \ */
 const toggleEdgesFromVisibleNodes = ({
   visibleNodes,
-  toggleFromArrayInKey,
-  setStoreState,
-  addNumber
+  updateStoreValue
 }) => {
   const {
     objectPropertiesFromApiBackup,
@@ -27,7 +25,7 @@ const toggleEdgesFromVisibleNodes = ({
 
   if (visibleNodes.length === 0) return false
 
-  addNumber('activeLoaders', 1)
+  updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, 1)
 
   return visibleNodes.map((nodeId, nodeIndex) => {
     const edgeIds = totalEdgesPerNode[nodeId]
@@ -38,12 +36,12 @@ const toggleEdgesFromVisibleNodes = ({
       if (
         isLastNode
       ) {
-        addNumber('activeLoaders', -1)
+        updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, -1)
 
         setEdgesStyle()
 
         updateStyleAndPhysics({
-          setStoreState
+          updateStoreValue
         })
       }
       return false
@@ -62,12 +60,12 @@ const toggleEdgesFromVisibleNodes = ({
       if (!visibleNodes.includes(nodeToCheck)
       || uniqueEdges.includes(edgeId)) {
         if (isLastEdge) {
-          addNumber('activeLoaders', -1)
+          updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, -1)
 
           setEdgesStyle()
 
           updateStyleAndPhysics({
-            setStoreState
+            updateStoreValue
           })
         }
         return false
@@ -75,9 +73,7 @@ const toggleEdgesFromVisibleNodes = ({
 
       return toggleEdge({
         edgeId,
-        addNumber,
-        toggleFromArrayInKey,
-        setStoreState,
+        updateStoreValue,
         isLastEdge
       })
     })

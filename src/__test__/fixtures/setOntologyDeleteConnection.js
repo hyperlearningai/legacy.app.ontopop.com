@@ -13,7 +13,7 @@ newEdgesPerNode['1'].splice(0, 1)
 newEdgesPerNode['1'].splice(0, 1)
 newEdgesPerNode['141'].splice(0, 1)
 
-export const setStoreStateFixture = [
+export const updateStoreValueFixture = [
   [
     'nodesEdges', newNodesEdges
   ],

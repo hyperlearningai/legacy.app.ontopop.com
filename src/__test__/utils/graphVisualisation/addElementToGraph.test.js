@@ -10,10 +10,7 @@ import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
-const toggleFromSubArray = jest.fn()
-const toggleFromArrayInKey = jest.fn()
+const updateStoreValue = jest.fn()
 const availableNodes = new DataSet()
 const availableEdges = new DataSet()
 const stylingNodeCaptionProperty = 'rdfsLabel'
@@ -109,13 +106,10 @@ describe('addElementToGraph', () => {
       nodesIdsToDisplay,
       objectPropertiesFromApi,
       totalEdgesPerNode,
-      setStoreState,
-      addNumber,
-      toggleFromSubArray,
+      updateStoreValue,
       i,
       nodeIdsLength,
       processedEdges,
-      toggleFromArrayInKey
     })
 
     expect(setNodeStyle).toHaveBeenLastCalledWith(
@@ -139,8 +133,7 @@ describe('addElementToGraph', () => {
     )
 
     expect(actionAfterNodesAdded).toHaveBeenCalledWith({
-      setStoreState,
-      addNumber,
+      updateStoreValue,
     })
   })
 
@@ -157,13 +150,10 @@ describe('addElementToGraph', () => {
       nodesIdsToDisplay,
       objectPropertiesFromApi,
       totalEdgesPerNode,
-      setStoreState,
-      addNumber,
-      toggleFromSubArray,
+      updateStoreValue,
       i,
       nodeIdsLength,
       processedEdges,
-      toggleFromArrayInKey
     })
 
     expect(setNodeStyle).toHaveBeenLastCalledWith(

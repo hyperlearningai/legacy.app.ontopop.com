@@ -1,5 +1,6 @@
 import { ALGO_TYPE_NODES_FILTER } from '../../constants/algorithms'
 import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
 
@@ -7,14 +8,12 @@ import store from '../../store'
  * Set neighbout nodes
  * @param  {Object}   params
  * @param  {Array}    params.nodesFilters              Array of node filters {property [string], value [string]}
- * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Function} params.addToObject           Add to object action
+ * @param  {Function} params.updateStoreValue             updateStoreValue action
  * @return
  */
 const setFilteredNodes = ({
-  setStoreState,
+  updateStoreValue,
   nodesFilters,
-  addToObject
 }) => {
   const {
     lastGraphIndex,
@@ -35,10 +34,10 @@ const setFilteredNodes = ({
     ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
   }
 
-  addToObject('graphData', newCurrentGraph, graphValue)
-  setStoreState('currentGraph', newCurrentGraph)
-  setStoreState('lastGraphIndex', newGraphIndex)
-  setStoreState('sidebarView', SIDEBAR_VIEW_GRAPHS)
+  updateStoreValue(['graphData', newCurrentGraph], OPERATION_TYPE_UPDATE, graphValue)
+  updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, newCurrentGraph)
+  updateStoreValue(['lastGraphIndex'], OPERATION_TYPE_UPDATE, newGraphIndex)
+  updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
 }
 
 export default setFilteredNodes

@@ -1,6 +1,6 @@
 import getTriplesFromApi from '../../../utils/apiCalls/getTriplesFromApi'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 describe('getTriplesFromApi', () => {
   afterEach(() => {
@@ -27,16 +27,24 @@ describe('getTriplesFromApi', () => {
     }]
 
     await getTriplesFromApi({
-      setStoreState,
+      updateStoreValue,
       edges
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'totalEdgesPerNode', {
-        1: ['11', '12'],
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['totalEdgesPerNode'], 'update', {
+        1: ['11',
+          '12'],
         141: ['12'],
         170: ['11']
-      }
+      }], [
+        ['totalEdgesPerNodeBackup'],
+        'update', {
+          1: ['11',
+            '12'],
+          141: ['12'],
+          170: ['11']
+        }]]
     )
   })
 })

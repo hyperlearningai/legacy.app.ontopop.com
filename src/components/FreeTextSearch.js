@@ -10,12 +10,12 @@ import searchElement from '../utils/freeTextSearch/searchElement'
 import clearElement from '../utils/freeTextSearch/clearElement'
 import highlightElement from '../utils/freeTextSearch/highlightElement'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { OPERATION_TYPE_DELETE, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const FreeTextSearch = ({
   freeTextSelection,
   freeTextSelectedElement,
-  removeFromObject,
-  setStoreState,
+  updateStoreValue,
 }) => {
   const { t } = useTranslation()
   const isInitialMount = useRef(true)
@@ -24,9 +24,9 @@ const FreeTextSearch = ({
   useEffect(() => () => {
     clearElement()
 
-    setStoreState('freeTextSelection', {})
-    setStoreState('freeTextSelectedElement', '')
-    setStoreState('freeTextPrevSelectedElement', undefined)
+    updateStoreValue(['freeTextSelection'], OPERATION_TYPE_UPDATE, {})
+    updateStoreValue(['freeTextSelectedElement'], OPERATION_TYPE_UPDATE, '')
+    updateStoreValue(['freeTextPrevSelectedElement'], OPERATION_TYPE_UPDATE, undefined)
   }, [])
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const FreeTextSearch = ({
       clearElement()
 
       highlightElement({
-        setStoreState,
+        updateStoreValue,
       })
     }
   }, [freeTextSelectedElement])
@@ -57,7 +57,7 @@ const FreeTextSearch = ({
 
             searchElement({
               search: e.target.value,
-              setStoreState
+              updateStoreValue
             })
           }}
           placeholder={t('search')}
@@ -107,12 +107,12 @@ const FreeTextSearch = ({
                   <Button
                     tooltip={`${t('removeGraph')}: ${elementId}`}
                     onClick={() => {
-                      removeFromObject('freeTextSelection', elementId)
+                      updateStoreValue(['freeTextSelection', elementId], OPERATION_TYPE_DELETE)
 
                       if (elementId === freeTextSelectedElement) {
                         clearElement()
 
-                        setStoreState('freeTextSelectedElement', '')
+                        updateStoreValue(['freeTextSelectedElement'], OPERATION_TYPE_UPDATE, '')
                       }
                     }}
                     icon="pi pi-times"
@@ -124,7 +124,7 @@ const FreeTextSearch = ({
                   <Button
                     tooltip={`${t('focusElement')}: ${elementLabel}`}
                     disabled={elementId === freeTextSelectedElement}
-                    onClick={() => setStoreState('freeTextSelectedElement', elementId)}
+                    onClick={() => updateStoreValue(['freeTextSelectedElement'], OPERATION_TYPE_UPDATE, elementId)}
                   >
                     <span>
                       <i className={`pi pi-${type === 'node' ? 'circle-off' : 'arrow-up'}`} />
@@ -144,8 +144,7 @@ const FreeTextSearch = ({
 }
 
 FreeTextSearch.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   freeTextSelection: PropTypes.shape().isRequired,
   freeTextSelectedElement: PropTypes.string.isRequired,
 }

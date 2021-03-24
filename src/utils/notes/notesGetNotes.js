@@ -11,22 +11,21 @@ import {
 } from '../../constants/api'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Get graph data from API
  * @param  {Object}   params
  * @param  {String}   params.type                       Element type
  * @param  {String}   params.selectedElement            Selected node/edge ID
- * @param  {Function} params.addNumber                  addNumber action
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
 const notesGetNotes = async ({
   type,
   selectedElement,
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -50,8 +49,7 @@ const notesGetNotes = async ({
   }
 
   const response = await httpCall({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     withAuth,
     route,
     method: 'get',
@@ -70,7 +68,7 @@ const notesGetNotes = async ({
     })
   }
 
-  setStoreState(notesState, data)
+  updateStoreValue([notesState], OPERATION_TYPE_UPDATE, data)
 }
 
 export default notesGetNotes

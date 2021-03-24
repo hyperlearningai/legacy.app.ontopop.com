@@ -5,13 +5,14 @@ import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/updateEdges')
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 const fit = jest.fn()
 const focus = jest.fn()
@@ -56,13 +57,13 @@ describe('highlightStructuredSearchElement', () => {
     }))
 
     await highlightStructuredSearchElement({
-      setStoreState
+      updateStoreValue
     })
 
     expect(updateNodes).toHaveBeenCalledWith(
       { color: { background: '#000' }, id: '12' }
     )
-    expect(setStoreState).toHaveBeenCalledWith('structuredPrevSelectedElement', {
+    expect(updateStoreValue).toHaveBeenCalledWith(['structuredPrevSelectedElement'], OPERATION_TYPE_UPDATE, {
       color: {
         background: '#000',
       },
@@ -104,7 +105,7 @@ describe('highlightStructuredSearchElement', () => {
     }))
 
     await highlightStructuredSearchElement({
-      setStoreState
+      updateStoreValue
     })
 
     expect(updateEdges).toHaveBeenCalledWith(
@@ -112,7 +113,7 @@ describe('highlightStructuredSearchElement', () => {
         color: { color: '#000' }, id: '111', width: 3,
       }
     )
-    expect(setStoreState).toHaveBeenCalledWith('structuredPrevSelectedElement',
+    expect(updateStoreValue).toHaveBeenCalledWith(['structuredPrevSelectedElement'], OPERATION_TYPE_UPDATE,
       { color: { color: '#000' }, id: '111', from: '1' })
     expect(focus).toHaveBeenCalledWith(
       '1', { animation: true, scale: 1 }

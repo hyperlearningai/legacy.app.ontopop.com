@@ -4,9 +4,8 @@ import store from '../../../store'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 const nodeId = '12'
-const toggleFromArrayInKey = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
@@ -28,8 +27,7 @@ describe('removeNode', () => {
 
     await removeNode({
       nodeId,
-      addNumber,
-      toggleFromArrayInKey
+      updateStoreValue,
     })
 
     expect(availableNodes.length).toEqual(0)
@@ -48,15 +46,13 @@ describe('removeNode', () => {
 
     await removeNode({
       nodeId,
-      addNumber,
-      toggleFromArrayInKey
+      updateStoreValue,
     })
 
     expect(availableNodes.length).toEqual(0)
     expect(removeEdge).toHaveBeenCalledWith({
       edge,
-      addNumber,
-      toggleFromArrayInKey
+      updateStoreValue,
     })
   })
 })

@@ -13,12 +13,12 @@ import structuredSearchElement from '../utils/structuredSearch/structuredSearchE
 import highlightStructuredSearchElement from '../utils/structuredSearch/highlightStructuredSearchElement'
 import clearStructuredSearchElement from '../utils/structuredSearch/clearStructuredSearchElement'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { OPERATION_TYPE_DELETE, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const StructuredSearch = ({
   structuredSelection,
   structuredSelectedElement,
-  removeFromObject,
-  setStoreState,
+  updateStoreValue,
   annotationProperties,
 }) => {
   const { t } = useTranslation()
@@ -37,9 +37,9 @@ const StructuredSearch = ({
   useEffect(() => () => {
     clearStructuredSearchElement()
 
-    setStoreState('structuredSelection', {})
-    setStoreState('structuredSelectedElement', '')
-    setStoreState('structuredPrevSelectedElement', undefined)
+    updateStoreValue(['structuredSelection'], OPERATION_TYPE_UPDATE, {})
+    updateStoreValue(['structuredSelectedElement'], OPERATION_TYPE_UPDATE, '')
+    updateStoreValue(['structuredPrevSelectedElement'], OPERATION_TYPE_UPDATE, undefined)
   }, [])
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const StructuredSearch = ({
       clearStructuredSearchElement()
 
       highlightStructuredSearchElement({
-        setStoreState,
+        updateStoreValue,
       })
     }
   }, [structuredSelectedElement])
@@ -84,7 +84,7 @@ const StructuredSearch = ({
                 onClick={() => {
                   clearStructuredSearchElement()
 
-                  setStoreState('structuredSelection', undefined)
+                  updateStoreValue(['structuredSelection'], OPERATION_TYPE_UPDATE, undefined)
                 }}
               />
             ) : ''
@@ -143,9 +143,9 @@ const StructuredSearch = ({
                           <Button
                             tooltip={`${t('removeGraph')}: ${elementId}`}
                             onClick={() => {
-                              removeFromObject('structuredSelection', elementId)
+                              updateStoreValue(['structuredSelection', elementId], OPERATION_TYPE_DELETE)
 
-                              if (elementId === structuredSelectedElement) setStoreState('structuredSelectedElement', '')
+                              if (elementId === structuredSelectedElement) updateStoreValue(['structuredSelectedElement'], OPERATION_TYPE_UPDATE, '')
                             }}
                             icon="pi pi-times"
                           />
@@ -156,7 +156,7 @@ const StructuredSearch = ({
                           <Button
                             tooltip={`${t('focusElement')}: ${elementLabel}`}
                             disabled={elementId === structuredSelectedElement}
-                            onClick={() => setStoreState('structuredSelectedElement', elementId)}
+                            onClick={() => updateStoreValue(['structuredSelectedElement'], OPERATION_TYPE_UPDATE, elementId)}
                           >
                             <span>
                               <i className={`pi pi-${type === 'node' ? 'circle-off' : 'arrow-up'}`} />
@@ -186,9 +186,7 @@ const StructuredSearch = ({
                     id="logic-select"
                     value={queryLogic}
                     options={logicButtons}
-                    onChange={(e) => {
-                      setQueryLogic(e.value)
-                    }}
+                    onChange={(e) => setQueryLogic(e.value)}
                     itemTemplate={itemTemplate}
                   />
                 </div>
@@ -302,7 +300,7 @@ const StructuredSearch = ({
                     onClick={() => structuredSearchElement({
                       filters,
                       queryLogic,
-                      setStoreState,
+                      updateStoreValue,
                     })}
                   />
                 </div>
@@ -319,8 +317,7 @@ const StructuredSearch = ({
 }
 
 StructuredSearch.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   structuredSelection: PropTypes.shape().isRequired,
   structuredSelectedElement: PropTypes.string.isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
@@ -329,7 +326,6 @@ StructuredSearch.propTypes = {
 const mapToProps = ({
   structuredSelection,
   structuredSelectedElement,
-
   annotationProperties,
 }) => ({
   structuredSelection,

@@ -26,8 +26,7 @@ const setup = () => {
     operation: 'add',
     optionNodes,
     optionEdges,
-    setStoreState: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<EditOntologyAddEdge {...props} />)

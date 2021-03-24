@@ -1,3 +1,4 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 import getStylingProperty from '../networkStyling/getStylingProperty'
 import getEdge from '../nodesEdgesUtils/getEdge'
@@ -7,11 +8,11 @@ import updateEdges from '../nodesEdgesUtils/updateEdges'
  * Highlight selected edges
  * @param  {Object}   params
  * @param  {String}   params.selectedEdge           Selected edge ID
- * @param  {Function} params.setStoreState          setStoreState action
+ * @param  {Function} params.updateStoreValue          updateStoreValue action
  * @return { undefined }
  */
 const highlightSelectedEdge = ({
-  setStoreState,
+  updateStoreValue,
   selectedEdge
 }) => {
   const {
@@ -20,7 +21,7 @@ const highlightSelectedEdge = ({
 
   const edge = getEdge(selectedEdge)
 
-  setStoreState('prevSelectedEdge', edge)
+  updateStoreValue(['prevSelectedEdge'], OPERATION_TYPE_UPDATE, edge)
 
   const color = edge.color || {}
 

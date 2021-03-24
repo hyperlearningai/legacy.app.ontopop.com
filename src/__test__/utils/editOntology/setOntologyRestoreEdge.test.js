@@ -4,7 +4,7 @@ import store from '../../../store'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import {
-  setStoreStateFixture
+  updateStoreValueFixture
 } from '../../fixtures/setOntologyRestoreEdge'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import setEdgeStyleByProperty from '../../../utils/networkStyling/setEdgeStyleByProperty'
@@ -20,9 +20,8 @@ import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVis
 const selectedElement = [
   '12'
 ]
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
-const addNumber = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setEdgeStyleByProperty')
@@ -62,8 +61,7 @@ describe('setOntologyRestoreEdge', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyRestoreEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
       t
     })
@@ -80,8 +78,7 @@ describe('setOntologyRestoreEdge', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyRestoreEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
       t
     })
@@ -104,14 +101,13 @@ describe('setOntologyRestoreEdge', () => {
     }))
 
     await setOntologyRestoreEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
       t
     })
 
     expect(addEdge).toHaveBeenLastCalledWith({
-      addNumber,
+      updateStoreValue,
       edge: {
         edgeId: 12,
         from: '1',
@@ -128,6 +124,6 @@ describe('setOntologyRestoreEdge', () => {
       { edgeId: '12' }
     )
 
-    expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
+    expect(updateStoreValue.mock.calls).toEqual(updateStoreValueFixture)
   })
 })

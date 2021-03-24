@@ -4,17 +4,7 @@ exports[`NetworkGraphOptions should match snapshot  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   addNumber={[MockFunction]}
@@ -32,8 +22,8 @@ exports[`NetworkGraphOptions should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   toggleFromArrayInKey={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

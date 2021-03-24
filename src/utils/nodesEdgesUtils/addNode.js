@@ -1,15 +1,19 @@
 /* eslint no-console:0 */
+import { OPERATION_TYPE_ADD } from '../../constants/store'
 import store from '../../store'
 import getNode from './getNode'
 
 /**
  * Add node to graph
  * @param  {Object}     params
- * @param  {Object}     params.node           Node object with at least id and label keys
- * @param  {Function}   params.addNumber      Add number action
+ * @param  {Object}     params.node                  Node object with at least id and label keys
+ * @param  {Function}   params.updateStoreValue      updateStoreValue action
  * @return { undefined }
 \ */
-const addNode = ({ node, addNumber }) => {
+const addNode = ({
+  node,
+  updateStoreValue,
+}) => {
   const {
     availableNodes
   } = store.getState()
@@ -24,7 +28,7 @@ const addNode = ({ node, addNumber }) => {
     y: Math.floor((Math.random() * 1500) + 1)
   })
 
-  addNumber('availableNodesCount', 1)
+  updateStoreValue(['availableNodesCount'], OPERATION_TYPE_ADD, 1)
 }
 
 export default addNode

@@ -21,10 +21,10 @@ import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode
 import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const ShortestPath = ({
-  setStoreState,
-  addToObject,
+  updateStoreValue,
   shortestPathNode1,
   shortestPathNode2,
   isShortestPathNode1Selectable,
@@ -38,7 +38,7 @@ const ShortestPath = ({
   const [edgesToExclude, setEdgesToExclude] = useState([])
 
   useEffect(() => () => resetShortestPathNodes({
-    setStoreState
+    updateStoreValue
   }), [])
 
   useEffect(() => {
@@ -46,14 +46,14 @@ const ShortestPath = ({
 
     if (shortestPathNode1 && shortestPathNode1 !== '') {
       highlightSelectedNode({
-        setStoreState,
+        updateStoreValue,
         selectedNode: shortestPathNode1
       })
     }
 
     if (shortestPathNode2 && shortestPathNode2 !== '') {
       highlightSelectedNode({
-        setStoreState,
+        updateStoreValue,
         selectedNode: shortestPathNode2
       })
     }
@@ -107,8 +107,8 @@ const ShortestPath = ({
             id="shortest-path-button-1"
             icon={isShortestPathNode1Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
             onClick={() => {
-              setStoreState('isShortestPathNode2Selectable', false)
-              setStoreState('isShortestPathNode1Selectable', true)
+              updateStoreValue(['isShortestPathNode2Selectable'], OPERATION_TYPE_UPDATE, false)
+              updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, true)
             }}
           />
         </div>
@@ -119,7 +119,7 @@ const ShortestPath = ({
             value={shortestPathNode1}
             filter
             options={availableNodes}
-            onChange={(e) => setStoreState('shortestPathNode1', e.value)}
+            onChange={(e) => updateStoreValue(['shortestPathNode1'], OPERATION_TYPE_UPDATE, e.value)}
             placeholder={t('selectNode')}
           />
         </div>
@@ -130,8 +130,8 @@ const ShortestPath = ({
             id="shortest-path-button-2"
             icon={isShortestPathNode2Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
             onClick={() => {
-              setStoreState('isShortestPathNode1Selectable', false)
-              setStoreState('isShortestPathNode2Selectable', true)
+              updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, false)
+              updateStoreValue(['isShortestPathNode2Selectable'], OPERATION_TYPE_UPDATE, true)
             }}
           />
         </div>
@@ -142,7 +142,7 @@ const ShortestPath = ({
             value={shortestPathNode2}
             filter
             options={availableNodes}
-            onChange={(e) => setStoreState('shortestPathNode2', e.value)}
+            onChange={(e) => updateStoreValue(['shortestPathNode2'], OPERATION_TYPE_UPDATE, e.value)}
             placeholder={t('selectNode')}
           />
         </div>
@@ -214,8 +214,7 @@ const ShortestPath = ({
             label={t('show')}
             onClick={() => setShortestPath({
               isNodeOverlay,
-              setStoreState,
-              addToObject,
+              updateStoreValue,
               nodesToExclude,
               edgesToExclude,
               isUpperOntology
@@ -228,8 +227,7 @@ const ShortestPath = ({
 }
 
 ShortestPath.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   shortestPathNode1: PropTypes.string.isRequired,
   shortestPathNode2: PropTypes.string.isRequired,
   isShortestPathNode1Selectable: PropTypes.bool.isRequired,
@@ -238,16 +236,14 @@ ShortestPath.propTypes = {
 
 const mapToProps = ({
   classesFromApi,
-  setStoreState,
-  addToObject,
+  updateStoreValue,
   shortestPathNode1,
   shortestPathNode2,
   isShortestPathNode1Selectable,
   isShortestPathNode2Selectable,
 }) => ({
   classesFromApi,
-  setStoreState,
-  addToObject,
+  updateStoreValue,
   shortestPathNode1,
   shortestPathNode2,
   isShortestPathNode1Selectable,

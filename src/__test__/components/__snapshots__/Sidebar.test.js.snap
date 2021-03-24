@@ -4,23 +4,13 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={false}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="networkGraphs"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -30,23 +20,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="boundingBox"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -56,23 +36,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="customQuery"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -82,23 +52,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="edgesFilter"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -108,23 +68,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="edgesSelection"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -134,23 +84,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_O
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="editOntology"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -160,23 +100,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_ENTRY_
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="entrySearch"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -186,23 +116,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="export"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -212,23 +132,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_T
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="freeTextSearch"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -238,23 +148,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPH_
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="networkGraphOptions"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -264,23 +164,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="networkGraphs"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -290,23 +180,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="nodeNeighbourhood"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -316,23 +196,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="nodesFilter"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -342,23 +212,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="nodesSelection"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -368,23 +228,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="settings"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -394,23 +244,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="shortestPath"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -420,23 +260,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STRUCT
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="structuredSearch"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -446,23 +276,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STYLIN
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="styling"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -472,23 +292,13 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SYNONY
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   sidebarView="synonyms"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

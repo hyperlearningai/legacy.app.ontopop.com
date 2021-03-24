@@ -1,7 +1,10 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+
 /* eslint max-len:0 */
-export const setStoreStateFixture = [
+export const updateStoreValueFixture = [
   [
-    'totalEdgesPerNode',
+    ['totalEdgesPerNode'],
+    OPERATION_TYPE_UPDATE,
     {
       1: [
         '12',
@@ -2270,7 +2273,8 @@ export const setStoreStateFixture = [
     },
   ],
   [
-    'classesFromApi',
+    ['classesFromApi'],
+    OPERATION_TYPE_UPDATE,
     {
       1: {
         'Business Area': 'Communications',
@@ -7501,7 +7505,8 @@ export const setStoreStateFixture = [
     },
   ],
   [
-    'deletedEdges',
+    ['deletedEdges'],
+    OPERATION_TYPE_UPDATE,
     [
       '11',
     ],

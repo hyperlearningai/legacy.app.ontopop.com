@@ -2,10 +2,8 @@ import setShortestPath from '../../../utils/shortestPath/setShortestPath'
 import { nodesEdges } from '../../fixtures/nodesEdges'
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
-import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
-const setStoreState = jest.fn()
-const addToObject = jest.fn()
+const updateStoreValue = jest.fn()
 const shortestPathNode1 = '33'
 const shortestPathNode2 = '40'
 const lastGraphIndex = 1
@@ -35,45 +33,82 @@ describe('setShortestPath', () => {
     ]))
     await setShortestPath({
       isNodeOverlay,
-      setStoreState,
-      addToObject,
+      updateStoreValue,
       nodesToExclude,
       edgesToExclude,
       isUpperOntology
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'currentGraph',
+        [
+          'graphData',
+          'graph-2',
+        ],
+        'update',
+        {
+          hiddenEdgesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          hiddenNodesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          isDatasetVisible: false,
+          isSubClassEdgeVisible: true,
+          isUpperOntologyVisible: true,
+          label: 'shortest-path-graph-2',
+          options: {
+            isNodeOverlay: false,
+            shortestPathResults: [
+              '33|||40',
+            ],
+            shortestPathSelectedNodes: [
+              '33',
+              '40',
+            ],
+          },
+          type: 'shortest-path',
+        },
+      ],
+      [
+        [
+          'currentGraph',
+        ],
+        'update',
         'graph-2',
       ],
       [
-        'lastGraphIndex',
+        [
+          'lastGraphIndex',
+        ],
+        'update',
         2,
       ],
       [
-        'sidebarView',
+        [
+          'sidebarView',
+        ],
+        'update',
         'networkGraphs',
       ],
     ])
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphData',
-      'graph-2', {
-        label: 'shortest-path-graph-2',
-        options: {
-          isNodeOverlay: false,
-          shortestPathResults: [
-            '33|||40',
-          ],
-          shortestPathSelectedNodes: [
-            '33',
-            '40',
-          ],
-        },
-        type: 'shortest-path',
-        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS,
-        isUpperOntologyVisible: true
-      }
-    )
   })
 })

@@ -1,7 +1,7 @@
 /* eslint max-len:0 */
 import { objectPropertiesFromApi } from './objectPropertiesFromApi'
 
-export const setStoreStateFixture = [
+export const updateStoreValueFixture = [
   [
     'deletedEdges',
     [],

@@ -18,7 +18,7 @@ const setup = () => {
     addNumber: jest.fn(),
     addToObject: jest.fn(),
     toggleFromArrayInKey: jest.fn(),
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<NetworkGraphOptions {...props} />)

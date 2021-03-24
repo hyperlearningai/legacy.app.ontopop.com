@@ -4,20 +4,9 @@ exports[`NotesListNote should match snapshot when no user 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -13936,7 +13925,7 @@ NTIS provide to RIF which is then passed to Azure",
     }
   }
   selectedNotesType=""
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
   user={
     Object {
       "email": "",
@@ -13951,20 +13940,9 @@ exports[`NotesListNote should match snapshot when same user 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addOrAppendToObject": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "addValueToSubkeyObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -27883,7 +27861,7 @@ NTIS provide to RIF which is then passed to Azure",
     }
   }
   selectedNotesType=""
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
   user={
     Object {
       "email": "test@test.test",

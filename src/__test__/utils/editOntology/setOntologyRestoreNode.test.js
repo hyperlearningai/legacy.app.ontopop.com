@@ -4,7 +4,7 @@ import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
-  setStoreStateFixture
+  updateStoreValueFixture
 } from '../../fixtures/setOntologyRestoreNode'
 import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
@@ -31,9 +31,8 @@ const selectedElement = ['100', '40']
 const deletedNodes = ['100', '33', '21', '40']
 const deletedEdges = ['11', '33', '21', '40']
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
-const addNumber = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
@@ -113,9 +112,8 @@ describe('setOntologyRestoreNode', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyRestoreNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
       t
     })
 
@@ -131,9 +129,8 @@ describe('setOntologyRestoreNode', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyRestoreNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
       t
     })
 
@@ -160,16 +157,15 @@ describe('setOntologyRestoreNode', () => {
     getElementLabel.mockImplementation(() => 'Provided to')
 
     await setOntologyRestoreNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
       t
     })
 
     expect(setElementsStyle).toHaveBeenCalledWith()
     expect(addNode).toHaveBeenLastCalledWith(
       {
-        addNumber,
+        updateStoreValue,
         node: {
           Type: 'Sketch',
           borderWidth: 1,
@@ -211,7 +207,7 @@ describe('setOntologyRestoreNode', () => {
     )
     expect(addEdge).toHaveBeenLastCalledWith(
       {
-        addNumber,
+        updateStoreValue,
         edge: {
           arrows: {
             to: true,
@@ -248,6 +244,6 @@ describe('setOntologyRestoreNode', () => {
         }
       }
     )
-    expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
+    expect(updateStoreValue.mock.calls).toEqual(updateStoreValueFixture)
   })
 })

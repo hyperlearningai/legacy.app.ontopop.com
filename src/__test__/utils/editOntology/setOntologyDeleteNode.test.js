@@ -5,7 +5,7 @@ import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import {
-  setStoreStateFixture
+  updateStoreValueFixture
 } from '../../fixtures/setOntologyDeleteNode'
 import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
@@ -17,10 +17,8 @@ import en from '../../../i18n/en'
 import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
 import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 
-const setStoreState = jest.fn()
-const toggleFromArrayInKey = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
-const addNumber = jest.fn()
 
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
@@ -66,10 +64,8 @@ describe('setOntologyDeleteNode', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyDeleteNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
-      toggleFromArrayInKey,
       t
     })
 
@@ -85,10 +81,8 @@ describe('setOntologyDeleteNode', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyDeleteNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
-      toggleFromArrayInKey,
       t
     })
 
@@ -110,16 +104,14 @@ describe('setOntologyDeleteNode', () => {
     }))
 
     await setOntologyDeleteNode({
-      addNumber,
+      updateStoreValue,
       selectedElement,
-      setStoreState,
-      toggleFromArrayInKey,
       t
     })
 
     expect(removeEdge).toHaveBeenLastCalledWith(
       {
-        addNumber,
+        updateStoreValue,
         edge: {
           edgeId: 4094,
           from: '4000',
@@ -130,13 +122,12 @@ describe('setOntologyDeleteNode', () => {
           to: '137',
           userDefined: false,
         },
-        toggleFromArrayInKey
       }
     )
 
     expect(setElementsStyle).toHaveBeenCalledWith()
 
-    expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
+    expect(updateStoreValue.mock.calls).toEqual(updateStoreValueFixture)
 
     expect(showNotification).toHaveBeenLastCalledWith(
       {

@@ -1,12 +1,14 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+
 /**
  * Narmalise nodes array from API
  * @param  {Object}   params
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue              updateStoreValue action
  * @param  {Array}    params.nodes                      Nodes from API
  * @return {undefined}
  */
 const setObjectPropertiesFromApi = ({
-  setStoreState,
+  updateStoreValue,
   edges
 }) => {
   const objectProperties = edges
@@ -32,8 +34,8 @@ const setObjectPropertiesFromApi = ({
     return true
   })
 
-  setStoreState('objectPropertiesFromApi', objectProperties)
-  setStoreState('objectPropertiesFromApiBackup', objectProperties)
+  updateStoreValue(['objectPropertiesFromApi'], OPERATION_TYPE_UPDATE, objectProperties)
+  updateStoreValue(['objectPropertiesFromApiBackup'], OPERATION_TYPE_UPDATE, objectProperties)
 }
 
 export default setObjectPropertiesFromApi

@@ -3,8 +3,9 @@ import store from '../../../store'
 import highlightSpiderableNodes from '../../../utils/networkStyling/highlightSpiderableNodes'
 import setNodesOverlay from '../../../utils/networkStyling/setNodesOverlay'
 import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const fit = jest.fn()
 
 jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
@@ -28,12 +29,12 @@ describe('updateStyleAndPhysics', () => {
 
   it('should work correctly', async () => {
     await updateStyleAndPhysics({
-      setStoreState
+      updateStoreValue
     })
 
-    expect(setStoreState.mock.calls).toEqual(
-      [['isPhysicsOn', true],
-        ['physicsRepulsion', true]]
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['isPhysicsOn'], OPERATION_TYPE_UPDATE, true],
+        [['physicsRepulsion'], OPERATION_TYPE_UPDATE, true]]
     )
     expect(highlightSpiderableNodes).toHaveBeenCalledWith()
     expect(setNodesOverlay).toHaveBeenCalledWith()

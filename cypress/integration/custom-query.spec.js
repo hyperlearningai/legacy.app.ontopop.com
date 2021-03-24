@@ -60,7 +60,7 @@ context('Custom query', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 6')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for link: 6')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(4).find('.p-button')

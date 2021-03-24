@@ -10,9 +10,8 @@ import getNode from '../utils/nodesEdgesUtils/getNode'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 
 const NotesListAddNew = ({
-  addNumber,
   noteElementId,
-  setStoreState,
+  updateStoreValue,
   selectedNotesType,
 }) => {
   const { t } = useTranslation()
@@ -101,8 +100,7 @@ const NotesListAddNew = ({
                     type: selectedNotesType,
                     selectedElement: selectedNotesType === 'node' ? noteElementId : noteElementId,
                     noteText,
-                    addNumber,
-                    setStoreState,
+                    updateStoreValue,
                     t
                   })
                 }}
@@ -118,8 +116,7 @@ const NotesListAddNew = ({
 NotesListAddNew.propTypes = {
   noteElementId: PropTypes.string,
   selectedNotesType: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 NotesListAddNew.defaultProps = {

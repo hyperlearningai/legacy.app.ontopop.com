@@ -1,26 +1,187 @@
-import { DataSet } from 'vis-data'
+// import { DataSet } from 'vis-data'
 import actions from '../../store/actions'
 
 describe('Actions', () => {
-  it('addValueToSubkeyObject should work correctly', () => {
+  it('updateStoreValue should work correctly when single key and add type', () => {
+    const keys = [
+      'parent',
+    ]
+    const value = 1
+    const type = 'add'
+
+    const state = {
+      parent: 1
+    }
+
+    const newState = {
+      parent: 2
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and push type', () => {
+    const keys = [
+      'parent',
+    ]
+
+    const value = 'new'
+    const type = 'push'
+
+    const state = {
+      parent: []
+    }
+
+    const newState = {
+      parent: ['new']
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and toggle type', () => {
+    const keys = [
+      'parent',
+    ]
+
+    const value = 'new'
+    const type = 'toggle'
+
+    const state = {
+      parent: ['old', 'new']
+    }
+
+    const newState = {
+      parent: ['old']
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and update type', () => {
+    const keys = [
+      'parent',
+    ]
+
+    const value = 'new'
+    const type = 'update'
+
+    const state = {
+      parent: 'old'
+    }
+
+    const newState = {
+      parent: value
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when multi key and push type', () => {
     const keys = [
       'parent',
       'child',
       'subchild'
     ]
     const value = 'new'
+    const type = 'push'
 
     const state = {
       parent: {
         otherChild: 'test',
         child: {
           otherSubchild: 'test',
-          subchild: 'test'
+          subchild: []
         }
       }
     }
 
     const newState = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['new']
+        }
+      }
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when multi key and push type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'new'
+    const type = 'push'
+
+    const state = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: []
+        }
+      }
+    }
+
+    const newState = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['new']
+        }
+      }
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when multi key and toggle type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'new'
+    const type = 'toggle'
+
+    const state = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['old', 'new']
+        }
+      }
+    }
+
+    const newState = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['old']
+        }
+      }
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when multi key and delete type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const type = 'delete'
+
+    const state = {
       parent: {
         otherChild: 'test',
         child: {
@@ -30,265 +191,81 @@ describe('Actions', () => {
       }
     }
 
-    expect(actions.addValueToSubkeyObject(state, keys, value)).toEqual(newState)
-  })
-
-  it('addValueToSubkeyObject should work correctly when single value', () => {
-    const keys = [
-      'parent',
-    ]
-
-    const value = 'test'
-
-    const state = {
-      parent: ''
-    }
-
     const newState = {
-      parent: 'test'
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test'
+        }
+      }
     }
 
-    expect(actions.addValueToSubkeyObject(state, keys, value)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type)).toEqual(newState)
   })
 
-  it('addOrAppendToObject should work correctly when single value', () => {
-    const keys = [
-      'parent',
-    ]
-    const value = 1
-
-    const state = {
-      parent: 0
-    }
-
-    const newState = {
-      parent: 1
-    }
-
-    expect(actions.addOrAppendToObject(state, keys, value)).toEqual(newState)
-  })
-
-  it('addOrAppendToObject should work correctly', () => {
+  it('updateStoreValue should work correctly when multi key and add type', () => {
     const keys = [
       'parent',
       'child',
       'subchild'
     ]
     const value = 1
+    const type = 'add'
 
     const state = {
       parent: {
-        otherChild: 10,
+        otherChild: 'test',
         child: {
-          otherSubchild: 10,
-          subchild: 0
-        }
-      }
-    }
-
-    const newState = {
-      parent: {
-        otherChild: 10,
-        child: {
-          otherSubchild: 10,
+          otherSubchild: 'test',
           subchild: 1
         }
       }
     }
 
-    expect(actions.addOrAppendToObject(state, keys, value)).toEqual(newState)
-  })
-
-  it('toggleFromSubArray should work correctly when pushing the value', () => {
-    const stateKey = 'graphData'
-    const key = 'graph-0'
-    const subkey = 'hiddenNode'
-    const value = '1'
-
-    const state = {
-      [stateKey]: {
-        [key]: {
-          [subkey]: []
-        }
-      }
-    }
-
     const newState = {
-      [stateKey]: {
-        [key]: {
-          [subkey]: [value]
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: 2
         }
       }
     }
 
-    expect(actions.toggleFromSubArray(state, stateKey, key, subkey, value)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
 
-  it('toggleFromSubArray should work correctly when removing the value', () => {
-    const stateKey = 'graphData'
-    const key = 'graph-0'
-    const subkey = 'hiddenNode'
-    const value = '1'
-
-    const state = {
-      [stateKey]: {
-        [key]: {
-          [subkey]: [value]
-        }
-      }
-    }
-
-    const newState = {
-      [stateKey]: {
-        [key]: {
-          [subkey]: []
-        }
-      }
-    }
-
-    expect(actions.toggleFromSubArray(state, stateKey, key, subkey, value)).toEqual(newState)
-  })
-
-  it('addNumber should work correctly', () => {
-    const state = {
-      activeLoaders: 0
-    }
-
-    const newState = {
-      activeLoaders: 2
-    }
-
-    const value = 2
-
-    expect(actions.addNumber(state, 'activeLoaders', value)).toEqual(newState)
-  })
-
-  it('addSubValueToObject should work correctly', () => {
-    const state = {
-      graphData: {
-        'graph-0': {
-          label: 'Main',
-          description: 'Main description'
-        }
-      }
-    }
-
-    const key = 'graph-0'
-    const subkey = 'description'
-    const value = 'New'
-
-    const newState = {
-      graphData: {
-        'graph-0': {
-          label: 'Main',
-          description: value
-        }
-      }
-    }
-
-    expect(actions.addSubValueToObject(state, 'graphData', key, subkey, value)).toEqual(newState)
-  })
-
-  it('addToObject should work correctly', () => {
-    const state = {
-      graphData: {
-        'graph-0': {
-          label: 'Main'
-        }
-      }
-    }
-
-    const key = 'graph-0'
+  it('updateStoreValue should work correctly when multi key and update type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
     const value = {
-      label: 'New'
+      subsubchild: 'test'
     }
+    const type = 'update'
 
-    const newState = {
-      graphData: {
-        'graph-0': value
-      }
-    }
-
-    expect(actions.addToObject(state, 'graphData', key, value)).toEqual(newState)
-  })
-
-  it('removeFromObject should work correctly', () => {
     const state = {
-      graphData: {
-        'graph-0': {
-          label: 'Main'
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: 1
         }
       }
     }
 
-    const id = 'graph-0'
-
     const newState = {
-      graphData: {}
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: value
+        }
+      }
     }
 
-    expect(actions.removeFromObject(state, 'graphData', id)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
-
-  it('removeFromArray should work correctly when selectedNodes', () => {
-    const state = {
-      selectedNodes: ['123'],
-      availableNodes: new DataSet([{ id: '123' }])
-    }
-
-    const id = '123'
-
-    const newState = {
-      selectedNodes: []
-    }
-
-    expect(actions.removeFromArray(state, 'selectedNodes', id)).toEqual(newState)
-  })
-
-  it('removeFromArray should work correctly when selectedEdges', () => {
-    const state = {
-      selectedEdges: ['123'],
-      availableEdges: new DataSet([{ id: '123' }])
-    }
-
-    const id = '123'
-
-    const newState = {
-      selectedEdges: []
-    }
-
-    expect(actions.removeFromArray(state, 'selectedEdges', id)).toEqual(newState)
-  })
-
-  it('addToArray should work correctly', () => {
-    const state = {
-      selectedNodes: []
-    }
-
-    const id = '123'
-
-    const newState = {
-      selectedNodes: ['123']
-    }
-
-    expect(actions.addToArray(state, 'selectedNodes', id)).toEqual(newState)
-  })
-
-  it('addToArray should work correctly with options', () => {
-    const state = {
-      selectedNodes: ['123']
-    }
-
-    const id = '123'
-
-    const newState = {
-      selectedNodes: ['123', '123']
-    }
-
-    expect(actions.addToArray(state, 'selectedNodes', id, { alwaysAdd: true })).toEqual(newState)
-  })
-
-  it('setStoreState should work correctly', () => expect(actions.setStoreState({ field: '' }, 'field', 'value')).toEqual({
-    field: 'value'
-  }))
 })

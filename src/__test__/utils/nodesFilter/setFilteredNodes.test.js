@@ -1,9 +1,7 @@
 import setFilteredNodes from '../../../utils/nodesFilter/setFilteredNodes'
 import store from '../../../store'
-import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
-const setStoreState = jest.fn()
-const addToObject = jest.fn()
+const updateStoreValue = jest.fn()
 const lastGraphIndex = 1
 
 const getState = jest.fn().mockImplementation(() => ({
@@ -24,35 +22,78 @@ describe('setFilteredNodes', () => {
     }]
 
     await setFilteredNodes({
-      setStoreState,
+      updateStoreValue,
       nodesFilters,
-      addToObject
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'currentGraph',
+        [
+          'graphData',
+          'graph-2',
+        ],
+        'update',
+        {
+          hiddenEdgesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          hiddenNodesProperties: {
+            0: {
+              properties: {
+                0: {
+                  operation: 'includes',
+                  property: '',
+                  value: '',
+                },
+              },
+              type: 'and',
+            },
+          },
+          isDatasetVisible: false,
+          isSubClassEdgeVisible: true,
+          isUpperOntologyVisible: false,
+          label: 'nodes-filter-graph-2',
+          options: {
+            nodesFilters: [
+              {
+                property: 'rdfsLabel',
+                value: 'road',
+              },
+            ],
+          },
+          type: 'nodes-filter',
+        },
+      ],
+      [
+        [
+          'currentGraph',
+        ],
+        'update',
         'graph-2',
       ],
       [
-        'lastGraphIndex',
+        [
+          'lastGraphIndex',
+        ],
+        'update',
         2,
       ],
       [
-        'sidebarView',
+        [
+          'sidebarView',
+        ],
+        'update',
         'networkGraphs',
       ],
     ])
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphData',
-      'graph-2', {
-        label: 'nodes-filter-graph-2',
-        options: {
-          nodesFilters
-        },
-        type: 'nodes-filter',
-        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
-      }
-    )
   })
 })

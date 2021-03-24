@@ -1,7 +1,6 @@
 import setNetworkMethods from '../../../utils/graphVisualisation/setNetworkMethods'
 
-const setStoreState = jest.fn()
-const addToArray = jest.fn()
+const updateStoreValue = jest.fn()
 
 describe('setNetworkMethods', () => {
   afterEach(() => {
@@ -28,9 +27,8 @@ describe('setNetworkMethods', () => {
     }
 
     await setNetworkMethods({
-      setStoreState,
+      updateStoreValue,
       network,
-      addToArray,
     })
 
     expect(on.mock.calls[0][0]).toEqual(

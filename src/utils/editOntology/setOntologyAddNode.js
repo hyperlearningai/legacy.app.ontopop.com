@@ -7,19 +7,18 @@ import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
 import { NODE_TYPE } from '../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * ADd ontology nodes
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  addNumber action
- * @param  {Function}       params.setStoreState              setStoreState action
+ * @param  {Function}       params.updateStoreValue           updateStoreValue action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyAddNode = async ({
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   selectedElementProperties,
   t
 }) => {
@@ -60,7 +59,7 @@ const setOntologyAddNode = async ({
   body.label = 'class'
 
   const response = await httpCall({
-    addNumber,
+    updateStoreValue,
     withAuth: true,
     route: API_ENDPOINT_GRAPH_NODES_CREATE,
     method: 'post',
@@ -145,12 +144,12 @@ const setOntologyAddNode = async ({
     ...[id]
   ]
 
-  setStoreState('classesFromApiBackup', newClassesFromApiBackup)
-  setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('totalEdgesPerNode', newEdgesPerNode)
-  setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
-  setStoreState('addedNodes', newAddedNodes)
+  updateStoreValue(['classesFromApiBackup'], OPERATION_TYPE_UPDATE, newClassesFromApiBackup)
+  updateStoreValue(['classesFromApi'], OPERATION_TYPE_UPDATE, newClassesFromApi)
+  updateStoreValue(['nodesEdges'], OPERATION_TYPE_UPDATE, newNodesEdges)
+  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, newEdgesPerNode)
+  updateStoreValue(['totalEdgesPerNodeBackup'], OPERATION_TYPE_UPDATE, newEdgesPerNodeBackup)
+  updateStoreValue(['addedNodes'], OPERATION_TYPE_UPDATE, newAddedNodes)
 
   const isVisible = checkNodeVisibility({
     nodeId: id,
@@ -162,7 +161,7 @@ const setOntologyAddNode = async ({
         ...newClassesFromApi[id],
         ...nodeStyle
       },
-      addNumber
+      updateStoreValue
     })
 
     setNodeStyle({

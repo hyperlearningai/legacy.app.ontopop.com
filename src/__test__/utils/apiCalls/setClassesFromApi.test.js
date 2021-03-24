@@ -1,6 +1,7 @@
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import setClassesFromApi from '../../../utils/apiCalls/setClassesFromApi'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 describe('setClassesFromApi', () => {
   afterEach(() => {
@@ -35,12 +36,12 @@ describe('setClassesFromApi', () => {
     ]
 
     await setClassesFromApi({
-      setStoreState,
+      updateStoreValue,
       nodes
     })
 
-    expect(setStoreState.mock.calls).toEqual(
-      [['classesFromApi', [{
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['classesFromApi'], OPERATION_TYPE_UPDATE, [{
         'Business Area': 'Communications',
         id: '1',
         label: 'class',
@@ -61,7 +62,7 @@ describe('setClassesFromApi', () => {
         skosComment: 'A communication will typically have the Licence Holder (Highways England) as one of the parties.',
         skosDefinition: 'Document storing the information conveyed between two or more parties.',
         userDefined: false
-      }]], ['classesFromApiBackup', [{
+      }]], [['classesFromApiBackup'], OPERATION_TYPE_UPDATE, [{
         'Business Area': 'Communications',
         id: '1',
         label: 'class',

@@ -1,9 +1,10 @@
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import store from '../../../store'
 import resetGraphData from '../../../utils/graphVisualisation/resetGraphData'
 import clearEdges from '../../../utils/nodesEdgesUtils/clearEdges'
 import clearNodes from '../../../utils/nodesEdgesUtils/clearNodes'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 jest.mock('../../../utils/nodesEdgesUtils/clearEdges')
 jest.mock('../../../utils/nodesEdgesUtils/clearNodes')
 
@@ -18,25 +19,25 @@ describe('resetGraphData', () => {
     }))
 
     await resetGraphData({
-      setStoreState
+      updateStoreValue
     })
 
     expect(clearEdges).toHaveBeenCalledWith()
     expect(clearNodes).toHaveBeenCalledWith()
-    expect(setStoreState.mock.calls).toEqual([
-      ['isPhysicsOn', false],
-      ['classesFromApi', {}],
-      ['objectPropertiesFromApi', {}],
-      ['classesFromApiBackup', {}],
-      ['objectPropertiesFromApiBackup', {}],
-      ['deletedNodes', []],
-      ['addedNodes', []],
-      ['updatedNodes', []],
-      ['deletedEdges', []],
-      ['addedEdges', []],
-      ['updatedEdges', []],
-      ['addedEdges', []],
-      ['deletedEdges', []]
+    expect(updateStoreValue.mock.calls).toEqual([
+      [['isPhysicsOn'], OPERATION_TYPE_UPDATE, false],
+      [['classesFromApi'], OPERATION_TYPE_UPDATE, {}],
+      [['objectPropertiesFromApi'], OPERATION_TYPE_UPDATE, {}],
+      [['classesFromApiBackup'], OPERATION_TYPE_UPDATE, {}],
+      [['objectPropertiesFromApiBackup'], OPERATION_TYPE_UPDATE, {}],
+      [['deletedNodes'], OPERATION_TYPE_UPDATE, []],
+      [['addedNodes'], OPERATION_TYPE_UPDATE, []],
+      [['updatedNodes'], OPERATION_TYPE_UPDATE, []],
+      [['deletedEdges'], OPERATION_TYPE_UPDATE, []],
+      [['addedEdges'], OPERATION_TYPE_UPDATE, []],
+      [['updatedEdges'], OPERATION_TYPE_UPDATE, []],
+      [['addedEdges'], OPERATION_TYPE_UPDATE, []],
+      [['deletedEdges'], OPERATION_TYPE_UPDATE, []]
     ])
   })
 })

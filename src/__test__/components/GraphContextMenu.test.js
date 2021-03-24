@@ -11,8 +11,7 @@ const setup = () => {
       left: 100,
       nodeId: '12'
     },
-    setStoreState: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
     classesFromApi
   }
 

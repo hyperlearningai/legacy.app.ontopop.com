@@ -15,19 +15,19 @@ import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import setNodesStyle from '../utils/networkStyling/setNodesStyle'
 import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NodeNeighbourhood = ({
-  setStoreState,
+  updateStoreValue,
   selectedNeighbourNode,
-  addToObject,
 }) => {
   const { t } = useTranslation()
 
   const [separationDegree, setSeparationDegree] = useState(1)
 
   useEffect(() => () => {
-    setStoreState('isNeighbourNodeSelectable', false)
-    setStoreState('selectedNeighbourNode', '')
+    updateStoreValue(['isNeighbourNodeSelectable'], OPERATION_TYPE_UPDATE, false)
+    updateStoreValue(['selectedNeighbourNode'], OPERATION_TYPE_UPDATE, '')
 
     setNodesStyle()
   }, [])
@@ -37,7 +37,7 @@ const NodeNeighbourhood = ({
       setNodesStyle()
 
       highlightSelectedNode({
-        setStoreState,
+        updateStoreValue,
         selectedNode: selectedNeighbourNode
       })
     }
@@ -75,7 +75,7 @@ const NodeNeighbourhood = ({
             value={selectedNeighbourNode}
             filter
             options={availableNodes}
-            onChange={(e) => setStoreState('selectedNeighbourNode', e.value)}
+            onChange={(e) => updateStoreValue(['selectedNeighbourNode'], OPERATION_TYPE_UPDATE, e.value)}
             placeholder={t('selectNode')}
           />
         </div>
@@ -109,8 +109,7 @@ const NodeNeighbourhood = ({
             label={t('show')}
             onClick={() => setNeighbourNodes({
               separationDegree,
-              setStoreState,
-              addToObject
+              updateStoreValue,
             })}
           />
         </div>
@@ -120,9 +119,8 @@ const NodeNeighbourhood = ({
 }
 
 NodeNeighbourhood.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   selectedNeighbourNode: PropTypes.string.isRequired,
-  addToObject: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

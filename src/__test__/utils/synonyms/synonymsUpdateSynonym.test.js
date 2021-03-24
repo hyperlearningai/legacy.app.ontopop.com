@@ -3,9 +3,9 @@ import en from '../../../i18n/en'
 import synonymsUpdateSynonym from '../../../utils/synonyms/synonymsUpdateSynonym'
 import showNotification from '../../../utils/notifications/showNotification'
 import store from '../../../store'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
 
 jest.mock('../../../utils/apiCalls/httpCall')
@@ -31,8 +31,7 @@ describe('synonymsUpdateSynonym', () => {
       selectedElement: null,
       selectedSynonymID: 42,
       synonymText: 'example text',
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -51,8 +50,7 @@ describe('synonymsUpdateSynonym', () => {
       selectedElement: null,
       selectedSynonymID: 42,
       synonymText: 'example text',
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -83,11 +81,10 @@ describe('synonymsUpdateSynonym', () => {
       selectedElement: null,
       selectedSynonymID: 1,
       synonymText: 'after change',
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([['nodesSynonyms', mockSynonymsAfter]])
+    expect(updateStoreValue.mock.calls).toEqual([[['nodesSynonyms'], OPERATION_TYPE_UPDATE, mockSynonymsAfter]])
   })
 })

@@ -16,7 +16,7 @@ describe('saveStyling', () => {
   })
 
   it('should work correctly', async () => {
-    const addNumber = jest.fn()
+    const updateStoreValue = jest.fn()
     const t = jest.fn()
 
     store.getState = jest.fn().mockImplementation(() => ({
@@ -36,14 +36,14 @@ describe('saveStyling', () => {
 
     await saveStyling({
       setSaved,
-      addNumber,
+      updateStoreValue,
       t
     })
 
     expect(setSaved).toHaveBeenCalledWith(true)
 
     expect(updateNetworkStyling).toHaveBeenCalledWith({
-      addNumber,
+      updateStoreValue,
       stylingJSON: '{"globalNodeStyling":{"stylingNodeSize":25,"stylingNodeBorder":1},"userDefinedNodeStyling":{"stylingNodeSize":25,"stylingNodeBorder":1,"stylingNodeTextColor":"#000000","stylingNodeBorderSelected":2}}',
       t
     })
