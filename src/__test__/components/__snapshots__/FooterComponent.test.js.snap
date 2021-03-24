@@ -5,7 +5,7 @@ exports[`FooterComponent should match snapshot  1`] = `
   <div
     className="footer-right"
   >
-    Ontology Visualisation v0.5.0
+    Ontology Visualisation v0.6.0
   </div>
 </footer>
 `;
