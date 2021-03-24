@@ -1,3 +1,4 @@
+/* eslint react/no-danger:0 */
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
