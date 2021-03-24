@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.6.0]
 ### Added
+- ONTOLOGY-130 Added updateStoreValue action to replace all other store actions
+- ONTOLOGY-130 Search starts also on search icon click
 - ONTOLOGY-109 Added userback and mouseflow snippets
 
 ### Changed
@@ -25,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-130 Removed all actions except for updateStoreValue
 
 ### Fixed
 
