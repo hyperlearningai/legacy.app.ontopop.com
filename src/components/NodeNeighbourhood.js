@@ -70,7 +70,7 @@ const NodeNeighbourhood = ({
 
         <div className="node-neighbourhood-buttons m-t-40">
           <Button
-            aria-label={t('showNeighbourhood')}
+            ariaLabel={t('showNeighbourhood')}
             tooltip={t('showNeighbourhood')}
             className="node-neighbourhood-button"
             disabled={selectedNodeType !== 'node'}

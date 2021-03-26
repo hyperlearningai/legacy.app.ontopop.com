@@ -88,7 +88,7 @@ const FreeTextSearch = ({
               >
                 <div className="freetext-search-row-delete">
                   <Button
-                    aria-label={t('removeGraph')}
+                    ariaLabel={t('removeGraph')}
                     tooltip={`${t('removeGraph')}: ${elementId}`}
                     onClick={() => {
                       updateStoreValue(['freeTextSelection', elementId], OPERATION_TYPE_DELETE)
@@ -106,7 +106,7 @@ const FreeTextSearch = ({
 
                 <div className="freetext-search-row-main">
                   <Button
-                    aria-label={t('focusElement')}
+                    ariaLabel={t('focusElement')}
                     tooltip={`${t('focusElement')}: ${elementLabel}`}
                     disabled={elementId === selectedElement}
                     onClick={() => updateHighlightedElement({

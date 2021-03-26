@@ -82,7 +82,7 @@ const EdgesSelectionDetails = ({
             <tr>
               <td className="icon-cell">
                 <button
-                  aria-label={t('expand')}
+                  ariaLabel={t('expand')}
                   type="button"
                   className="button-expand"
                   title={t('expand')}

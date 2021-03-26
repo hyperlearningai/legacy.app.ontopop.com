@@ -62,7 +62,7 @@ const CustomQuery = ({
 
         <div className="custom-query-buttons">
           <Button
-            aria-label={t('clear')}
+            ariaLabel={t('clear')}
             tooltip={t('clear')}
             tooltipOptions={{ position: 'top' }}
             className="custom-query-buttons-button"
@@ -85,7 +85,7 @@ const CustomQuery = ({
               </div>
             ) : (
               <Button
-                aria-label={t('query')}
+                ariaLabel={t('query')}
                 tooltip={t('query')}
                 tooltipOptions={{ position: 'top' }}
                 className="custom-query-buttons-button"
@@ -145,7 +145,7 @@ const CustomQuery = ({
                     >
                       <div className="custom-query-row-delete">
                         <Button
-                          aria-label={t('removeFromHistory')}
+                          ariaLabel={t('removeFromHistory')}
                           tooltip={`${t('removeFromHistory')}: ${query}`}
                           onClick={() => updateStoreValue(['customQueryStringHistory'], OPERATION_TYPE_TOGGLE, query)}
                           icon="pi pi-times"
@@ -154,7 +154,7 @@ const CustomQuery = ({
 
                       <div className="custom-query-row-main">
                         <Button
-                          aria-label={t('queryAgain')}
+                          ariaLabel={t('queryAgain')}
                           tooltip={`${t('queryAgain')}: ${query}`}
                           disabled={query === customQueryString}
                           onClick={() => {

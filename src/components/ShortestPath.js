@@ -86,7 +86,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-button">
           <Button
-            aria-label={t('edit')}
+            ariaLabel={t('edit')}
             label={t('selectStartingNode')}
             id="shortest-path-button-1"
             icon={isShortestPathNode1Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
@@ -111,7 +111,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-button">
           <Button
-            aria-label={t('selectEndingNode')}
+            ariaLabel={t('selectEndingNode')}
             label={t('selectEndingNode')}
             id="shortest-path-button-2"
             icon={isShortestPathNode2Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
@@ -182,7 +182,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-buttons m-t-20">
           <Button
-            aria-label={t('showShortestPath')}
+            ariaLabel={t('showShortestPath')}
             tooltip={t('showShortestPath')}
             className="shortest-path-show-button"
             disabled={shortestPathNode1 === '' || shortestPathNode2 === ''}

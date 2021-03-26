@@ -60,7 +60,7 @@ const NodesFilter = ({
                       nodesFilters.length > 1 && (
                       <div className="p-field remove-button p-col-12">
                         <Button
-                          aria-label={t('removeFilter')}
+                          ariaLabel={t('removeFilter')}
                           icon="pi pi-times"
                           className="p-button-rounded p-button-danger"
                           tooltip={t('removeFilter')}
@@ -143,7 +143,7 @@ const NodesFilter = ({
         </div>
 
         <Button
-          aria-label={t('removeFilter')}
+          ariaLabel={t('removeFilter')}
           tooltip={t('showFilteredNodes')}
           className="nodes-filter-button m-t-30"
           disabled={nodesFilters.length < 2}

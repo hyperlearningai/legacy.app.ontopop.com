@@ -76,7 +76,7 @@ const EditOntologyUpdateNode = ({
                   selectedElement
                 })}
                 label={t('restoreOriginal')}
-                aria-label={t('restoreOriginal')}
+                ariaLabel={t('restoreOriginal')}
                 icon="pi pi-refresh"
                 iconPos="left"
               />
@@ -84,7 +84,7 @@ const EditOntologyUpdateNode = ({
 
             <div className="edit-ontology-row">
               <Button
-                aria-label={t(operation)}
+                ariaLabel={t(operation)}
                 className="go-button"
                 tooltip={`${t(operation)}`}
                 onClick={() => {

@@ -161,7 +161,7 @@ const SynonymsList = ({
                     onChange={(e) => setSortField(e.value)}
                   />
                   <Button
-                    aria-label="synonyms-sort-by-direction"
+                    ariaLabel="synonyms-sort-by-direction"
                     id="synonyms-sort-by-direction"
                     tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
                     tooltipOptions={{ position: 'top' }}

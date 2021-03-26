@@ -233,7 +233,7 @@ const NetworkStylingEdgeByPropertyForm = ({
               || stylingPropertyObject.styleValue
             ) && (
               <Button
-                aria-label={t('delete')}
+                ariaLabel={t('delete')}
                 label={t('delete')}
                 tooltip={t('delete')}
                 tooltipOptions={{
@@ -253,7 +253,7 @@ const NetworkStylingEdgeByPropertyForm = ({
           }
 
           <Button
-            aria-label={t('save')}
+            ariaLabel={t('save')}
             label={t('save')}
             tooltip={t('save')}
             tooltipOptions={{

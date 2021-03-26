@@ -56,7 +56,7 @@ const EdgesFilter = ({
                       edgesFilters.length > 1 && (
                       <div className="p-field remove-button p-col-12">
                         <Button
-                          aria-label={t('removeFilter')}
+                          ariaLabel={t('removeFilter')}
                           icon="pi pi-times"
                           className="p-button-rounded p-button-danger"
                           tooltip={t('removeFilter')}
@@ -139,7 +139,7 @@ const EdgesFilter = ({
         </div>
 
         <Button
-          aria-label={t('showFilteredEdges')}
+          ariaLabel={t('showFilteredEdges')}
           tooltip={t('showFilteredEdges')}
           className="edges-filter-button m-t-30"
           disabled={edgesFilters.length < 2}

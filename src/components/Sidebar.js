@@ -98,7 +98,7 @@ const Sidebar = ({
     <aside className={`sidebar${isSidebarOpen ? '' : '-closed'}`}>
       <div className="sidebar-icons">
         <Button
-          aria-label={t(SIDEBAR_VIEW_ENTRY_SEARCH)}
+          ariaLabel={t(SIDEBAR_VIEW_ENTRY_SEARCH)}
           tooltip={t(SIDEBAR_VIEW_ENTRY_SEARCH)}
           id="sidebar-button-search"
           className={sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH ? 'sidebar-bar-button-selected' : ''}
@@ -110,7 +110,7 @@ const Sidebar = ({
           <BsSearch />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_GRAPHS)}
+          ariaLabel={t(SIDEBAR_VIEW_GRAPHS)}
           id="sidebar-button-graphs"
           tooltip={t(SIDEBAR_VIEW_GRAPHS)}
           className={sidebarView === SIDEBAR_VIEW_GRAPHS ? 'sidebar-bar-button-selected' : ''}
@@ -122,7 +122,7 @@ const Sidebar = ({
           <FiLayers />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
+          ariaLabel={t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
           id="sidebar-button-graph-options"
           tooltip={t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
           className={sidebarView === SIDEBAR_VIEW_GRAPH_OPTIONS ? 'sidebar-bar-button-selected' : ''}
@@ -134,7 +134,7 @@ const Sidebar = ({
           <IoMdOptions />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
+          ariaLabel={t(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
           id="sidebar-button-free-text-search"
           tooltip={t(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
           className={sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH ? 'sidebar-bar-button-selected' : ''}
@@ -147,7 +147,7 @@ const Sidebar = ({
           <BiText />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
+          ariaLabel={t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
           id="sidebar-button-structured-search"
           tooltip={t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
           className={sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH ? 'sidebar-bar-button-selected' : ''}
@@ -160,7 +160,7 @@ const Sidebar = ({
           <IoBuildSharp />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_NODES_SELECTION)}
+          ariaLabel={t(SIDEBAR_VIEW_NODES_SELECTION)}
           id="sidebar-button-nodes-selection"
           tooltip={t(SIDEBAR_VIEW_NODES_SELECTION)}
           className={sidebarView === SIDEBAR_VIEW_NODES_SELECTION ? 'sidebar-bar-button-selected' : ''}
@@ -174,7 +174,7 @@ const Sidebar = ({
           <FaRegHandPointer />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_EDGES_SELECTION)}
+          ariaLabel={t(SIDEBAR_VIEW_EDGES_SELECTION)}
           id="sidebar-button-edges-selection"
           tooltip={t(SIDEBAR_VIEW_EDGES_SELECTION)}
           className={sidebarView === SIDEBAR_VIEW_EDGES_SELECTION ? 'sidebar-bar-button-selected' : ''}
@@ -188,7 +188,7 @@ const Sidebar = ({
           <FaRegHandPointer />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_NODES_FILTER)}
+          ariaLabel={t(SIDEBAR_VIEW_NODES_FILTER)}
           id="sidebar-button-nodes-filter"
           tooltip={t(SIDEBAR_VIEW_NODES_FILTER)}
           className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
@@ -202,7 +202,7 @@ const Sidebar = ({
           <BsFilter />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_EDGES_FILTER)}
+          ariaLabel={t(SIDEBAR_VIEW_EDGES_FILTER)}
           id="sidebar-button-edges-filter"
           tooltip={t(SIDEBAR_VIEW_EDGES_FILTER)}
           className={sidebarView === SIDEBAR_VIEW_EDGES_FILTER ? 'sidebar-bar-button-selected' : ''}
@@ -216,7 +216,7 @@ const Sidebar = ({
           <BsFilter />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_BOUNDING_BOX)}
+          ariaLabel={t(SIDEBAR_VIEW_BOUNDING_BOX)}
           id="sidebar-button-bounding-box"
           tooltip={t(SIDEBAR_VIEW_BOUNDING_BOX)}
           className={sidebarView === SIDEBAR_VIEW_BOUNDING_BOX ? 'sidebar-bar-button-selected' : ''}
@@ -229,7 +229,7 @@ const Sidebar = ({
           <BiSelection />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
+          ariaLabel={t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
           id="sidebar-button-node-neighbourhood"
           tooltip={t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
           className={sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD ? 'sidebar-bar-button-selected' : ''}
@@ -242,7 +242,7 @@ const Sidebar = ({
           <BiNetworkChart />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_SHORTEST_PATH)}
+          ariaLabel={t(SIDEBAR_VIEW_SHORTEST_PATH)}
           id="sidebar-button-shortest-path"
           tooltip={t(SIDEBAR_VIEW_SHORTEST_PATH)}
           className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
@@ -256,7 +256,7 @@ const Sidebar = ({
           <IoGitNetwork />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_CUSTOM_QUERY)}
+          ariaLabel={t(SIDEBAR_VIEW_CUSTOM_QUERY)}
           id="sidebar-button-custom-query"
           tooltip={t(SIDEBAR_VIEW_CUSTOM_QUERY)}
           className={sidebarView === SIDEBAR_VIEW_CUSTOM_QUERY ? 'sidebar-bar-button-selected' : ''}
@@ -268,7 +268,7 @@ const Sidebar = ({
           <BsCodeSlash />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_SETTINGS)}
+          ariaLabel={t(SIDEBAR_VIEW_SETTINGS)}
           id="sidebar-button-physics-settings"
           tooltip={t(SIDEBAR_VIEW_SETTINGS)}
           className={sidebarView === SIDEBAR_VIEW_SETTINGS ? 'sidebar-bar-button-selected' : ''}
@@ -280,7 +280,7 @@ const Sidebar = ({
           <FiSettings />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_STYLING)}
+          ariaLabel={t(SIDEBAR_VIEW_STYLING)}
           id="sidebar-button-view-styling"
           tooltip={t(SIDEBAR_VIEW_STYLING)}
           className={sidebarView === SIDEBAR_VIEW_STYLING ? 'sidebar-bar-button-selected' : ''}
@@ -292,7 +292,7 @@ const Sidebar = ({
           <FaPaintBrush />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_NOTES)}
+          ariaLabel={t(SIDEBAR_VIEW_NOTES)}
           id="sidebar-button-notes"
           tooltip={t(SIDEBAR_VIEW_NOTES)}
           className={sidebarView === SIDEBAR_VIEW_NOTES ? 'sidebar-bar-button-selected' : ''}
@@ -304,7 +304,7 @@ const Sidebar = ({
           <FaStickyNote />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_SYNONYMS)}
+          ariaLabel={t(SIDEBAR_VIEW_SYNONYMS)}
           tooltip={t(SIDEBAR_VIEW_SYNONYMS)}
           id="sidebar-button-synonims"
           className={sidebarView === SIDEBAR_VIEW_SYNONYMS ? 'sidebar-bar-button-selected' : ''}
@@ -316,7 +316,7 @@ const Sidebar = ({
           <FaFileAlt />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_EXPORT)}
+          ariaLabel={t(SIDEBAR_VIEW_EXPORT)}
           id="sidebar-button-export"
           tooltip={t(SIDEBAR_VIEW_EXPORT)}
           className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
@@ -328,7 +328,7 @@ const Sidebar = ({
           <FaFileExport />
         </Button>
         <Button
-          aria-label={t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
+          ariaLabel={t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
           id="sidebar-button-edit-ontology"
           tooltip={t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
           className={sidebarView === SIDEBAR_VIEW_EDIT_ONTOLOGY ? 'sidebar-bar-button-selected' : ''}
@@ -340,7 +340,7 @@ const Sidebar = ({
           <BsPencilSquare />
         </Button>
         <Button
-          aria-label={t('toggleSidebar')}
+          ariaLabel={t('toggleSidebar')}
           id="sidebar-button-toggle"
           tooltip={t('toggleSidebar')}
           onClick={() => updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, !isSidebarOpen)}

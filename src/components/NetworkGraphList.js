@@ -34,7 +34,7 @@ const NetworkGraphList = ({
                   {
                     !noDelete && (
                       <Button
-                        aria-label={t('removeGraph')}
+                        ariaLabel={t('removeGraph')}
                         tooltip={`${t('removeGraph')}: ${label}`}
                         onClick={() => {
                           if (currentGraph === graphViewsKey) {
@@ -51,7 +51,7 @@ const NetworkGraphList = ({
 
                 <div className="network-graph-list-row-main">
                   <Button
-                    aria-label={t('viewGraph')}
+                    ariaLabel={t('viewGraph')}
                     tooltip={`${t('viewGraph')}: ${label}`}
                     disabled={currentGraph === graphViewsKey}
                     onClick={() => updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, graphViewsKey)}

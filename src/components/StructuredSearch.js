@@ -79,7 +79,7 @@ const StructuredSearch = ({
           && Object.keys(structuredSelection).length > 0
             ? (
               <Button
-                aria-label={t('goBack')}
+                ariaLabel={t('goBack')}
                 icon="pi pi-arrow-left"
                 tooltip={t('goBack')}
                 onClick={() => {
@@ -142,7 +142,7 @@ const StructuredSearch = ({
                       >
                         <div className="structured-search-results-row-delete">
                           <Button
-                            aria-label={t('removeGraph')}
+                            ariaLabel={t('removeGraph')}
                             tooltip={`${t('removeGraph')}: ${elementId}`}
                             onClick={() => {
                               updateStoreValue(['structuredSelection', elementId], OPERATION_TYPE_DELETE)
@@ -156,7 +156,7 @@ const StructuredSearch = ({
 
                         <div className="structured-search-results-row-main">
                           <Button
-                            aria-label={t('focusElement')}
+                            ariaLabel={t('focusElement')}
                             tooltip={`${t('focusElement')}: ${elementLabel}`}
                             disabled={elementId === structuredSelectedElement}
                             onClick={() => updateStoreValue(['structuredSelectedElement'], OPERATION_TYPE_UPDATE, elementId)}
@@ -212,7 +212,7 @@ const StructuredSearch = ({
                               filters.length > 1 && (
                                 <div className="p-field remove-button p-col-12">
                                   <Button
-                                    aria-label={t('removeFilter')}
+                                    ariaLabel={t('removeFilter')}
                                     icon="pi pi-times"
                                     className="p-button-rounded p-button-danger"
                                     tooltip={t('removeFilter')}
@@ -296,7 +296,7 @@ const StructuredSearch = ({
 
                 <div className="structured-search-button-wrapper">
                   <Button
-                    aria-label={t('showFilteredNodes')}
+                    ariaLabel={t('showFilteredNodes')}
                     tooltip={t('showFilteredNodes')}
                     className="structured-search-button m-t-30"
                     disabled={filters.length < 2}

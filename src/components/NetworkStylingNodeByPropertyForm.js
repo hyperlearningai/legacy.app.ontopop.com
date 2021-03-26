@@ -226,7 +226,7 @@ const NetworkStylingNodeByPropertyForm = ({
           {
             isDeleteAvailable && (
               <Button
-                aria-label={t('delete')}
+                ariaLabel={t('delete')}
                 label={t('delete')}
                 tooltip={t('delete')}
                 tooltipOptions={{
@@ -246,7 +246,7 @@ const NetworkStylingNodeByPropertyForm = ({
           }
 
           <Button
-            aria-label={t('delete')}
+            ariaLabel={t('delete')}
             label={t('save')}
             tooltip={t('save')}
             tooltipOptions={{

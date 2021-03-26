@@ -30,7 +30,7 @@ const NetworkStyling = ({
 
         <div className="network-styling-button m-t-20 m-b-20">
           <Button
-            aria-label={t(isSaved ? 'saved' : 'save')}
+            ariaLabel={t(isSaved ? 'saved' : 'save')}
             label={t(isSaved ? 'saved' : 'save')}
             disabled={isSaved}
             icon={icon}
