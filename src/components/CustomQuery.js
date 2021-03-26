@@ -47,9 +47,9 @@ const CustomQuery = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_CUSTOM_QUERY)}
-      </div>
+      </h1>
       <div className="custom-query">
 
         <div className="p-input-icon-right custom-query-input">

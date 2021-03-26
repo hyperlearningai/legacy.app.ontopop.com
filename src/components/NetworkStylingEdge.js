@@ -163,6 +163,7 @@ const NetworkStylingEdge = ({
               </AccordionTab>
               <AccordionTab header={t('stylingEdgeCaptionProperty')}>
                 <Dropdown
+                  ariaLabel="global-edge-caption-property"
                   id="global-edge-caption-property"
                   value={globalEdgeStyling.stylingEdgeCaptionProperty}
                   options={EDGE_PROPERTIES_DROPDOWN}
@@ -268,6 +269,7 @@ const NetworkStylingEdge = ({
               </AccordionTab>
               <AccordionTab header={t('stylingEdgeCaptionProperty')}>
                 <Dropdown
+                  ariaLabel="global-node-shape"
                   id="ud-edge-caption-property"
                   value={userDefinedEdgeStyling.stylingEdgeCaptionProperty}
                   options={EDGE_PROPERTIES_DROPDOWN}

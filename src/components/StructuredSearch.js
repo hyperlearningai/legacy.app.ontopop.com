@@ -73,7 +73,7 @@ const StructuredSearch = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {
           structuredSelection
           && Object.keys(structuredSelection).length > 0
@@ -91,7 +91,7 @@ const StructuredSearch = ({
             ) : ''
         }
         {t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
-      </div>
+      </h1>
       <div className="structured-search">
         {
           structuredSelection
@@ -237,6 +237,7 @@ const StructuredSearch = ({
                             <div className="p-field p-col-12">
                               <label htmlFor={selectId}>{t('selectProperty')}</label>
                               <Dropdown
+                                ariaLabel={t('selectProperty')}
                                 id={selectId}
                                 value={filters[index].property}
                                 options={annotationProperties}

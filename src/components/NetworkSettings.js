@@ -28,9 +28,9 @@ const NetworkSettings = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SETTINGS)}
-      </div>
+      </h1>
       <div className="network-settings">
         <div className="network-settings-input">
           <div className="label">

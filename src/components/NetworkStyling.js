@@ -19,9 +19,9 @@ const NetworkStyling = ({
   const icon = isSaved ? 'pi pi-check' : 'pi pi-save'
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_STYLING)}
-      </div>
+      </h1>
       <div className="network-styling">
         <div className="card">
           <NetworkStylingNode />

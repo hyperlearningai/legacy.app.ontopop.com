@@ -33,6 +33,11 @@ main {
   height: calc(100% - 210px);
 }
 
+.p-button,
+.p-selectbutton .p-button.p-highlight{
+  background-color: $indigo;
+}
+
 // Components
 @import "_header";
 @import "_nav";

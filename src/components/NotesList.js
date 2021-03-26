@@ -160,9 +160,9 @@ const NotesList = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NOTES)}
-      </div>
+      </h1>
 
       <div className="notes">
         <div className="notes-select-row">
@@ -192,6 +192,7 @@ const NotesList = ({
                 {t('selectElement')}
               </label>
               <Dropdown
+                ariaLabel="notes-select-element"
                 id="notes-select-element"
                 name="notes-select-element"
                 value={noteElementId}
@@ -245,6 +246,7 @@ const NotesList = ({
                 </label>
                 <div className="p-inputgroup">
                   <Dropdown
+                    ariaLabel="notes-sort-by"
                     id="notes-sort-by"
                     value={sortField}
                     options={SORT_FIELDS.map((field) => ({
@@ -274,6 +276,7 @@ const NotesList = ({
                         {t('filterBy')}
                       </label>
                       <Dropdown
+                        ariaLabel="notes-filter-field"
                         id="notes-filter-field"
                         value={filter}
                         options={SORT_FIELDS.map((field) => ({

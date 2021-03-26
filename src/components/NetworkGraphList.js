@@ -17,9 +17,9 @@ const NetworkGraphList = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPHS)}
-      </div>
+      </h1>
       <div className="network-graph-list">
         {
           graphViewsKeys.map((graphViewsKey) => {

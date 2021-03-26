@@ -43,9 +43,9 @@ const FreeTextSearch = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
-      </div>
+      </h1>
 
       <div className="p-input-icon-right freetext-search-input">
         <i className="pi pi-search" />

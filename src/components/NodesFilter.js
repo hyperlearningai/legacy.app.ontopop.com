@@ -35,9 +35,9 @@ const NodesFilter = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NODES_FILTER)}
-      </div>
+      </h1>
 
       <div className="nodes-filter">
         <div>{t('filterNodesByArbitraryPropsCombination')}</div>
@@ -83,6 +83,7 @@ const NodesFilter = ({
                     <div className="p-field p-col-12">
                       <label htmlFor={selectId}>{t('selectProperty')}</label>
                       <Dropdown
+                        ariaLabel="notes-select-element"
                         id={selectId}
                         value={nodesFilters[index].property}
                         options={annotationProperties}

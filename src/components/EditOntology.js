@@ -167,9 +167,9 @@ const EditOntology = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         { t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
-      </div>
+      </h1>
       <div className="edit-ontology">
         <div
           className="edit-ontology-row"

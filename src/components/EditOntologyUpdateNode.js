@@ -40,6 +40,7 @@ const EditOntologyUpdateNode = ({
         </label>
 
         <Dropdown
+          ariaLabel="graph-select"
           id="graph-select"
           value={selectedElement}
           filter

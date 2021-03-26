@@ -55,9 +55,9 @@ const BoundingBoxSelection = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_BOUNDING_BOX)}
-      </div>
+      </h1>
       <div className="bounding-box">
         <div className="bounding-box-selection">
           {t('drawBoundingBox')}

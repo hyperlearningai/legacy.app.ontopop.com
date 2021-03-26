@@ -61,9 +61,9 @@ const NodeNeighbourhood = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
-      </div>
+      </h1>
       <div className="node-neighbourhood">
         <div className="node-neighbourhood-message">
           {t('selectNodeFromGraphOrFromList')}
@@ -71,6 +71,7 @@ const NodeNeighbourhood = ({
 
         <div className="node-neighbourhood-dropdown">
           <Dropdown
+            ariaLabel="notes-select-element"
             id="node-select"
             value={selectedNeighbourNode}
             filter

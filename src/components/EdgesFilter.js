@@ -32,9 +32,9 @@ const EdgesFilter = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_EDGES_FILTER)}
-      </div>
+      </h1>
 
       <div className="edges-filter">
         <div>{t('filterEdgesByArbitraryPropsCombination')}</div>
@@ -80,6 +80,7 @@ const EdgesFilter = ({
                     <div className="p-field p-col-12">
                       <label htmlFor={selectId}>{t('selectProperty')}</label>
                       <Dropdown
+                        ariaLabel={selectId}
                         id={selectId}
                         value={edgesFilters[index].property}
                         options={EDGE_PROPERTIES_DROPDOWN}

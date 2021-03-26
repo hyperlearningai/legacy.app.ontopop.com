@@ -58,7 +58,7 @@ const NodesSelection = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {!isNodeSelected
           ? t(SIDEBAR_VIEW_NODES_SELECTION)
           : (
@@ -66,7 +66,7 @@ const NodesSelection = ({
               {`${t('node')}: ${getNode(selectedNode).label}`}
             </>
           )}
-      </div>
+      </h1>
       <div className="nodes-selection">
         <div className="nodes-selection-message">
           {t('selectNodeFromGraphOrFromList')}
@@ -74,6 +74,8 @@ const NodesSelection = ({
 
         <div className="nodes-selection-dropdown">
           <Dropdown
+            ariaLabel="notes-select-element"
+            ariaLabel="node-select"
             id="node-select"
             value={selectedNode}
             filter

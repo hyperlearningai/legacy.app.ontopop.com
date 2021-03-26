@@ -93,9 +93,9 @@ const ShortestPath = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SHORTEST_PATH)}
-      </div>
+      </h1>
       <div className="shortest-path">
         <div className="shortest-path-message">
           {t('selectNodesFromGraphOrFromList')}
@@ -116,6 +116,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-dropdown">
           <Dropdown
+            ariaLabel="node-select-1"
             id="node-select-1"
             value={shortestPathNode1}
             filter
@@ -140,6 +141,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-dropdown">
           <Dropdown
+            ariaLabel="node-select-2"
             id="node-select-2"
             value={shortestPathNode2}
             filter

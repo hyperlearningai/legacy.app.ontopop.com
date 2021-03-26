@@ -35,9 +35,9 @@ const ExportSettings = () => {
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_EXPORT)}
-      </div>
+      </h1>
       <div className="export-settings">
         <div className="export-settings-input">
           <label htmlFor="filename">

@@ -68,7 +68,7 @@ const EdgesSelection = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {!isEdgeSelected
           ? t(SIDEBAR_VIEW_EDGES_SELECTION)
           : (
@@ -76,7 +76,7 @@ const EdgesSelection = ({
               {`${t('edge')}: ${getEdge(selectedEdge).label}`}
             </>
           )}
-      </div>
+      </h1>
 
       <div className="edges-selection">
         <div className="edges-selection-message">
@@ -85,6 +85,7 @@ const EdgesSelection = ({
 
         <div className="edges-selection-dropdown">
           <Dropdown
+            ariaLabel="edge-select"
             id="edge-select"
             value={selectedEdge}
             filter
