@@ -54,7 +54,7 @@ context('Entry search', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 6')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for link: 6')
 
       // display more card info
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-card-buttons-info')
@@ -130,7 +130,7 @@ context('Entry search', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 9')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for record: 9')
 
       // display more card info
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-card-buttons-info')
@@ -206,7 +206,7 @@ context('Entry search', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 7')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for record: 7')
 
       // display more card info
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-card-buttons-info')
@@ -285,9 +285,9 @@ context('Entry search', () => {
 
       cy.wait('@getGraph')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('#search-icon').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 1')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for link: 1')
 
       // display more card info
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(0).find('.p-card-buttons-info')

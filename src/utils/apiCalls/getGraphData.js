@@ -16,14 +16,12 @@ import httpCall from './httpCall'
 /**
  * Get graph data from API
  * @param  {Object}   params
- * @param  {Function} params.addNumber                  addNumber action
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
 const getGraphData = async ({
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -33,7 +31,7 @@ const getGraphData = async ({
   const withAuth = !!user.token
 
   const response = await httpCall({
-    addNumber,
+    updateStoreValue,
     withAuth,
     route: API_ENDPOINT_GRAPH_MODEL_1,
     method: 'get',
@@ -73,22 +71,22 @@ const getGraphData = async ({
   const edgesJson = JSON.parse(edges)
 
   setAnnotationProperties({
-    setStoreState,
+    updateStoreValue,
     nodes: nodesJson
   })
 
   setClassesFromApi({
-    setStoreState,
+    updateStoreValue,
     nodes: nodesJson
   })
 
   setObjectPropertiesFromApi({
-    setStoreState,
+    updateStoreValue,
     edges: edgesJson
   })
 
   getTriplesFromApi({
-    setStoreState,
+    updateStoreValue,
     edges: edgesJson
   })
 }

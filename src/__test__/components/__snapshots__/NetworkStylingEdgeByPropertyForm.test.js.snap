@@ -4,21 +4,12 @@ exports[`NetworkStylingEdgeByPropertyForm should match snapshot  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   index={0}
   isDeleteAvailable={true}
   mapToProps={null}
-  setStoreState={[MockFunction]}
   stylingProperty={
     Object {
       "filterType": "equal",
@@ -28,6 +19,7 @@ exports[`NetworkStylingEdgeByPropertyForm should match snapshot  1`] = `
       "styleValue": true,
     }
   }
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

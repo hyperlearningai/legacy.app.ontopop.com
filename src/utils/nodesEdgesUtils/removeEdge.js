@@ -1,17 +1,16 @@
+import { OPERATION_TYPE_TOGGLE, OPERATION_TYPE_ADD } from '../../constants/store'
 import store from '../../store'
 import getEdge from './getEdge'
 
 /**
  * Remove edge from graph
  * @param  {String}     edgeId                          Edge id
- * @param  {Function}   params.addNumber                Add number action
- * @param  {Function}   params.toggleFromArrayInKey     toggleFromArrayInKey action
+ * @param  {Function}   params.updateStoreValue         updateStoreValue action
  * @return { undefined }
 \ */
 const removeEdge = ({
   edge,
-  addNumber,
-  toggleFromArrayInKey
+  updateStoreValue
 }) => {
   const {
     availableEdges
@@ -23,7 +22,7 @@ const removeEdge = ({
 
   availableEdges.remove(edge.id)
 
-  addNumber('availableEdgesCount', -1)
+  updateStoreValue(['availableEdgesCount'], OPERATION_TYPE_ADD, -1)
 
   const {
     from,
@@ -31,8 +30,8 @@ const removeEdge = ({
     id
   } = edge
 
-  toggleFromArrayInKey('nodesEdges', from, id)
-  toggleFromArrayInKey('nodesEdges', to, id)
+  updateStoreValue(['nodesEdges', from], OPERATION_TYPE_TOGGLE, id)
+  updateStoreValue(['nodesEdges', to], OPERATION_TYPE_TOGGLE, id)
 }
 
 export default removeEdge

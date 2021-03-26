@@ -2,9 +2,10 @@ import axios from 'axios'
 import store from '../../../store'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import en from '../../../i18n/en'
+import { OPERATION_TYPE_ADD } from '../../../constants/store'
 
 const t = (id) => en[id]
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   user: { token: 'ewj123' }
@@ -30,7 +31,7 @@ describe('httpCall', () => {
     const withAuth = false
 
     const response = await httpCall({
-      addNumber,
+      updateStoreValue,
       withAuth,
       body,
       route,
@@ -38,8 +39,8 @@ describe('httpCall', () => {
       t
     })
 
-    expect(addNumber.mock.calls).toEqual(
-      [['activeLoaders', 1], ['activeLoaders', -1]]
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['activeLoaders'], OPERATION_TYPE_ADD, 1], [['activeLoaders'], OPERATION_TYPE_ADD, -1]]
     )
     expect(response).toEqual(
       { error: 'Invalid http request' }
@@ -57,7 +58,7 @@ describe('httpCall', () => {
     const withAuth = false
 
     const response = await httpCall({
-      addNumber,
+      updateStoreValue,
       withAuth,
       body,
       route,
@@ -65,8 +66,8 @@ describe('httpCall', () => {
       t
     })
 
-    expect(addNumber.mock.calls).toEqual(
-      [['activeLoaders', 1], ['activeLoaders', -1]]
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['activeLoaders'], OPERATION_TYPE_ADD, 1], [['activeLoaders'], OPERATION_TYPE_ADD, -1]]
     )
     expect(response).toEqual(
       { error: 'Invalid http request' }
@@ -92,7 +93,7 @@ describe('httpCall', () => {
     const withAuth = false
 
     const response = await httpCall({
-      addNumber,
+      updateStoreValue,
       withAuth,
       body,
       route,
@@ -100,8 +101,8 @@ describe('httpCall', () => {
       t
     })
 
-    expect(addNumber.mock.calls).toEqual(
-      [['activeLoaders', 1], ['activeLoaders', -1]]
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['activeLoaders'], OPERATION_TYPE_ADD, 1], [['activeLoaders'], OPERATION_TYPE_ADD, -1]]
     )
     expect(response).toEqual(
       { data: { edges: '{}', nodes: '{"1":{"id":1}}' } }
@@ -127,7 +128,7 @@ describe('httpCall', () => {
     const withAuth = true
 
     const response = await httpCall({
-      addNumber,
+      updateStoreValue,
       withAuth,
       body,
       route,
@@ -135,8 +136,8 @@ describe('httpCall', () => {
       t
     })
 
-    expect(addNumber.mock.calls).toEqual(
-      [['activeLoaders', 1], ['activeLoaders', -1]]
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['activeLoaders'], OPERATION_TYPE_ADD, 1], [['activeLoaders'], OPERATION_TYPE_ADD, -1]]
     )
     expect(response).toEqual(
       { data: { edges: '{}', nodes: '{"1":{"id":1}}' } }

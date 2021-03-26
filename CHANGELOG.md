@@ -18,13 +18,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.6.0]
 ### Added
+- ONTOLOGY-130 Added updateStoreValue action to replace all other store actions
+- ONTOLOGY-130 Search starts also on search icon click
 - ONTOLOGY-109 Added userback and mouseflow snippets
 
 ### Changed
+- ONTOLOGY-151 Node and edge rendering logic to improve performance
 
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-130 Removed all actions except for updateStoreValue
 
 ### Fixed
 
@@ -63,7 +67,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-117 Added new API services
 - ONTOLOGY-110 Turned search into form to allow pressing enter on search
 - ONTOLOGY-110 Added timeouts to expandNode to avoid browser freezing
-- ONTOLOGY-110 Added timeouts to queueGraphElements to avoid browser freezing
+- ONTOLOGY-110 Added timeouts to addNodesToGraph to avoid browser freezing
 - ONTOLOGY-108 Added alpha banner and feedback link
 - ONTOLOGY-93 User-defined nodes and edges styles
 - ONTOLOGY-92 Search as entry point after sign in

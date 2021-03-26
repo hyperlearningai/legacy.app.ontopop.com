@@ -29,10 +29,14 @@ const setup = ({
       dateCreated: 'yyyy-MM-dd HH:mm:ss',
       dateLastUpdated: 'yyyy-MM-dd HH:mm:ss'
     }],
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     selectedNotesType,
     noteElementId,
-    classesFromApi
+    classesFromApi,
+    nodesDropdownLabels: [{
+      id: '1',
+      value: 'node'
+    }]
   }
 
   const component = shallow(<NotesList {...props} />)

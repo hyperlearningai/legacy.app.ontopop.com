@@ -16,8 +16,7 @@ const setup = () => {
     type: 'node',
     operation: 'add',
     optionNodes,
-    setStoreState: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<EditOntologyDeleteNode {...props} />)

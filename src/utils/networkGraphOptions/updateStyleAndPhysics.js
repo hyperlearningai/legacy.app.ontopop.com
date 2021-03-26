@@ -2,15 +2,16 @@ import highlightSpiderableNodes from '../networkStyling/highlightSpiderableNodes
 import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import store from '../../store'
 import setNodesOverlay from '../networkStyling/setNodesOverlay'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Node queue to avoid browser freezing
  * @param  {Object}   params
- * @param  {Function} params.setStoreState                setStoreState action
+ * @param  {Function} params.updateStoreValue                updateStoreValue action
  * @return { undefined }
  */
 const updateStyleAndPhysics = ({
-  setStoreState,
+  updateStoreValue,
 }) => {
   const {
     network,
@@ -22,8 +23,8 @@ const updateStyleAndPhysics = ({
   const currentPhysicsRepulsionState = physicsRepulsion
 
   // turn physics on to scatter nodes around
-  setStoreState('isPhysicsOn', true)
-  setStoreState('physicsRepulsion', true)
+  updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, true)
+  updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, true)
 
   // perform highlight check here as nodes' edges are not fully loaded during loop
   highlightSpiderableNodes()
@@ -34,11 +35,11 @@ const updateStyleAndPhysics = ({
   // restore isPhysicsOn state
   setTimeout(() => {
     if (!currentPhysicsOnState) {
-      setStoreState('isPhysicsOn', false)
+      updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, false)
     }
 
     if (!currentPhysicsRepulsionState) {
-      setStoreState('physicsRepulsion', false)
+      updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, false)
     }
 
     network?.fit({

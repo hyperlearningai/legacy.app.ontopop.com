@@ -5,26 +5,23 @@ import store from '../../store'
 import expandNode from './expandNode'
 import getNode from '../nodesEdgesUtils/getNode'
 import setShortestPathNode from '../shortestPath/setShortestPathNode'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+import updateHighlightedElement from '../networkStyling/updateHighlightedElement'
 
 /**
  * Update VisJs network methods
  * @param  {Object}   params
- * @param  {Function} params.addNumber                 addNumber action
- * @param  {Function} params.setStoreState             setStoreState action
- * @param  {Object}   params.network                   VisJs network object
- * @param  {Function} params.toggleFromArrayInKey      toggleFromSubArray action
+ * @param  {Function} params.updateStoreValue                 updateStoreValue action
+ * @param  {Object}   params.network                          VisJs network object
  * @return { undefined }
  */
 const setNetworkMethods = async ({
-  setStoreState,
   network,
-  addNumber,
-  toggleFromArrayInKey
+  updateStoreValue
 }) => {
   network?.on('selectNode', (event) => {
     const {
-      isNodeSelectable,
-      isNeighbourNodeSelectable,
+      isElementSelectable,
       isShortestPathNode1Selectable,
       isShortestPathNode2Selectable,
     } = store.getState()
@@ -32,17 +29,17 @@ const setNetworkMethods = async ({
     if (event.nodes?.length === 1) {
       const nodeId = event.nodes[0]
 
-      if (isNodeSelectable) {
-        return setStoreState('selectedNode', nodeId)
-      }
-
-      if (isNeighbourNodeSelectable) {
-        return setStoreState('selectedNeighbourNode', nodeId)
+      if (isElementSelectable) {
+        return updateHighlightedElement({
+          updateStoreValue,
+          id: nodeId,
+          type: 'node'
+        })
       }
 
       if (isShortestPathNode1Selectable) {
         return setShortestPathNode({
-          setStoreState,
+          updateStoreValue,
           state: 'shortestPathNode1',
           nodeId
         })
@@ -50,7 +47,7 @@ const setNetworkMethods = async ({
 
       if (isShortestPathNode2Selectable) {
         return setShortestPathNode({
-          setStoreState,
+          updateStoreValue,
           state: 'shortestPathNode2',
           nodeId
         })
@@ -58,7 +55,7 @@ const setNetworkMethods = async ({
     }
   })
 
-  network?.on('click', () => setStoreState('showContextMenu', false))
+  network?.on('click', () => updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false))
 
   network?.on('doubleClick', (event) => {
     if (event.nodes?.length === 1) {
@@ -69,9 +66,7 @@ const setNetworkMethods = async ({
       if (color?.border === SPIDERABLE_NODE_BORDER_COLOR) {
         expandNode({
           nodeId,
-          setStoreState,
-          addNumber,
-          toggleFromArrayInKey
+          updateStoreValue,
         })
       }
     }
@@ -85,25 +80,29 @@ const setNetworkMethods = async ({
       offsetY,
     } = event.event
 
-    setStoreState('contextMenuData', {
+    updateStoreValue(['contextMenuData'], OPERATION_TYPE_UPDATE, {
       nodeId: event.nodes?.length ? event.nodes[0] : undefined,
       edgeId: event.edges?.length ? event.edges[0] : undefined,
       top: offsetY,
       left: offsetX
     })
-    setStoreState('showContextMenu', true)
+    updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, true)
   })
 
   network?.on('selectEdge', (event) => {
     const {
-      isEdgeSelectable,
+      isElementSelectable
     } = store.getState()
 
-    if (event.edges?.length === 1) {
+    if (event.edges?.length === 1 && event.nodes?.length === 0) {
       const edgeId = event.edges[0]
 
-      if (isEdgeSelectable) {
-        return setStoreState('selectedEdge', edgeId)
+      if (isElementSelectable) {
+        return updateHighlightedElement({
+          updateStoreValue,
+          id: edgeId,
+          type: 'edge'
+        })
       }
     }
   })

@@ -6,7 +6,7 @@ import { NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT } from '../../constants/gr
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     index: 0,
     stylingProperty: JSON.parse(JSON.stringify(NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT)),
     isDeleteAvailable: true,

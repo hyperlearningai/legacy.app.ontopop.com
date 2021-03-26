@@ -1,11 +1,19 @@
 import { AUTH_COOKIE } from '../../constants/auth'
 import { ROUTE_LOGIN } from '../../constants/routes'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
+/**
+ * Set nodes inside bounding box
+ * @param  {Object}   params
+ * @param  {Function} params.updateStoreValue             updateStoreValue action
+ * @param  {Class} params.router                       Router class
+ * @return { undefined }
+ */
 const logout = ({
   router,
-  setStoreState
+  updateStoreValue
 }) => {
-  setStoreState('user', {
+  updateStoreValue(['user'], OPERATION_TYPE_UPDATE, {
     email: '',
     firstName: '',
     lastName: '',

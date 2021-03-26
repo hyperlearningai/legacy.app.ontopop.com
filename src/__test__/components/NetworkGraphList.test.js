@@ -5,7 +5,6 @@ import NetworkGraphList from '../../components/NetworkGraphList'
 
 const setup = () => {
   const props = {
-    removeFromObject: jest.fn(),
     currentGraph: 'graph-0',
     graphData: {
       'graph-0': {
@@ -16,7 +15,7 @@ const setup = () => {
         label: 'Search',
       }
     },
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<NetworkGraphList {...props} />)

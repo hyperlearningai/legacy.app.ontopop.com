@@ -9,6 +9,7 @@ import {
 } from '../../constants/api'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Get graph data from API
@@ -16,8 +17,7 @@ import httpCall from '../apiCalls/httpCall'
  * @param  {String}   params.type                       Element type
  * @param  {String}   params.selectedElement            Selected node/edge ID
  * @param  {String}   params.selectedNoteID             Selected note ID
- * @param  {Function} params.addNumber                  addNumber action
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue              updateStoreValue action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
@@ -26,8 +26,7 @@ const notesDeleteNote = async ({
   type,
   selectedElement,
   selectedNoteID,
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -58,8 +57,7 @@ const notesDeleteNote = async ({
   }
 
   const response = await httpCall({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     withAuth,
     route,
     method: 'delete',
@@ -75,7 +73,7 @@ const notesDeleteNote = async ({
 
   modifiedNotes.splice(dataIndex, 1)
 
-  setStoreState(notesState, modifiedNotes)
+  updateStoreValue([notesState], OPERATION_TYPE_UPDATE, modifiedNotes)
 
   if (data && data.message) {
     return showNotification({

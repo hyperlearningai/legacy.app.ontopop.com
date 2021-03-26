@@ -8,10 +8,7 @@ const setup = ({
   mainVisualisation
 }) => {
   const props = {
-    setStoreState: jest.fn(),
-    addToObject: jest.fn(),
-    removeFromObject: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
     mainVisualisation
   }
 

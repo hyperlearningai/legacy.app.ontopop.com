@@ -1,6 +1,7 @@
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import setAnnotationProperties from '../../../utils/apiCalls/setAnnotationProperties'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 describe('setAnnotationProperties', () => {
   afterEach(() => {
@@ -35,12 +36,12 @@ describe('setAnnotationProperties', () => {
     ]
 
     await setAnnotationProperties({
-      setStoreState,
+      updateStoreValue,
       nodes
     })
 
-    expect(setStoreState.mock.calls).toEqual(
-      [['annotationProperties', [{
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['annotationProperties'], OPERATION_TYPE_UPDATE, [{
         label: 'Business Area',
         value: 'Business Area'
       }, {
@@ -55,7 +56,7 @@ describe('setAnnotationProperties', () => {
       }, {
         label: 'skosDefinition',
         value: 'skosDefinition'
-      }]], ['annotationPropertiesDatasets',
+      }]], [['annotationPropertiesDatasets'], OPERATION_TYPE_UPDATE,
         [{
           label: 'Business Area',
           value: 'Business Area'

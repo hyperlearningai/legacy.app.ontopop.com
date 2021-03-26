@@ -6,7 +6,7 @@ import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
- * Highlight spiderable nodes borders
+ * Highlight commented nodes borders
  * @return { undefined }
  */
 const highlightCommentedNodes = () => {

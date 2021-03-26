@@ -3,22 +3,21 @@ import showNotification from '../notifications/showNotification'
 import { POST_CREATE_NODE_SYNONYM } from '../../constants/api'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Create Synonym
  * @param  {Object}   params
  * @param  {String}   params.selectedElement            Selected node/edge ID
  * @param  {String}   params.synonymText                Synonym Text
- * @param  {Function} params.addNumber                  addNumber action
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue              updateStoreValue action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
 const synonymsCreateSynonym = async ({
   selectedElement,
   synonymText,
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -33,8 +32,7 @@ const synonymsCreateSynonym = async ({
   const synonymsState = 'nodesSynonyms'
 
   const response = await httpCall({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     withAuth,
     route,
     method: 'post',
@@ -51,7 +49,7 @@ const synonymsCreateSynonym = async ({
 
   modifiedSynonyms.push(data)
 
-  setStoreState(synonymsState, modifiedSynonyms)
+  updateStoreValue([synonymsState], OPERATION_TYPE_UPDATE, modifiedSynonyms)
 
   if (error) {
     return showNotification({

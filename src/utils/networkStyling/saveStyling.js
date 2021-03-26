@@ -7,7 +7,7 @@ import updateNetworkStyling from './updateNetworkStyling'
  */
 const saveStyling = async ({
   setSaved,
-  addNumber,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -31,7 +31,7 @@ const saveStyling = async ({
   setSaved(true)
 
   await updateNetworkStyling({
-    stylingJSON, addNumber, t
+    stylingJSON, updateStoreValue, t
   })
 
   setTimeout(() => setSaved(false), 5000)

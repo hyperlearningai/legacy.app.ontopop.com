@@ -4,15 +4,7 @@ exports[`Navbar should match snapshot when MAIN_VIEW_GRAPH 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   availableEdgesCount={333}
@@ -35,15 +27,7 @@ exports[`Navbar should match snapshot when MAIN_VIEW_SEARCH 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   availableEdgesCount={333}

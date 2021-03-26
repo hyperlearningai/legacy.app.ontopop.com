@@ -3,8 +3,9 @@ import en from '../../../i18n/en'
 import notesCreateNote from '../../../utils/notes/notesCreateNote'
 import showNotification from '../../../utils/notifications/showNotification'
 import store from '../../../store'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const addNumber = jest.fn()
 const t = (id) => en[id]
 
@@ -33,7 +34,7 @@ describe('notesCreateNote', () => {
       selectedElement: null,
       noteText: 'new note mock text',
       addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -64,7 +65,7 @@ describe('notesCreateNote', () => {
       selectedElement: null,
       noteText: 'new note mock text',
       addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -75,7 +76,7 @@ describe('notesCreateNote', () => {
       }
     )
 
-    expect(setStoreState).toHaveBeenCalledWith('notes', mockNotesAfter)
+    expect(updateStoreValue).toHaveBeenCalledWith(['notes'], OPERATION_TYPE_UPDATE, mockNotesAfter)
   })
 
   it('should work correctly when node', async () => {
@@ -97,7 +98,7 @@ describe('notesCreateNote', () => {
       selectedElement: null,
       noteText: 'new note mock text',
       addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -108,7 +109,7 @@ describe('notesCreateNote', () => {
       }
     )
 
-    expect(setStoreState).toHaveBeenCalledWith('nodesNotes', mockNotesAfter)
+    expect(updateStoreValue).toHaveBeenCalledWith(['nodesNotes'], OPERATION_TYPE_UPDATE, mockNotesAfter)
   })
 
   it('should work correctly when edge', async () => {
@@ -130,7 +131,7 @@ describe('notesCreateNote', () => {
       selectedElement: null,
       noteText: 'new note mock text',
       addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -141,6 +142,6 @@ describe('notesCreateNote', () => {
       }
     )
 
-    expect(setStoreState).toHaveBeenCalledWith('edgesNotes', mockNotesAfter)
+    expect(updateStoreValue).toHaveBeenCalledWith(['edgesNotes'], OPERATION_TYPE_UPDATE, mockNotesAfter)
   })
 })

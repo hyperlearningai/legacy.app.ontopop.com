@@ -8,11 +8,10 @@ import GraphContextMenu from './GraphContextMenu'
 import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
-import queueGraphElements from '../utils/graphVisualisation/queueGraphElements'
+import addNodesToGraph from '../utils/graphVisualisation/addNodesToGraph'
 
 const GraphVisualisation = ({
   currentGraph,
-  setStoreState,
   showContextMenu,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
@@ -20,14 +19,11 @@ const GraphVisualisation = ({
   availableEdges,
   network,
   nodesIdsToDisplay,
-  removeFromObject,
   physicsHierarchicalView,
   physicsRepulsion,
   isPhysicsOn,
   globalEdgeStyling,
-  toggleFromArrayInKey,
-  addNumber,
-  addSubValueToObject
+  updateStoreValue
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
@@ -36,7 +32,7 @@ const GraphVisualisation = ({
 
   // set new Network
   useEffect(() => setNetwork({
-    setStoreState,
+    updateStoreValue,
     visJsRef,
     availableNodes,
     availableEdges,
@@ -49,13 +45,8 @@ const GraphVisualisation = ({
     if (isInitialMountCurrentGraph.current) {
       isInitialMountCurrentGraph.current = false
     } else if (nodesIdsToDisplay.length > 0) {
-      setStoreState('isNetworkLoading', true)
-
-      queueGraphElements({
-        setStoreState,
-        addNumber,
-        toggleFromArrayInKey,
-        addSubValueToObject
+      addNodesToGraph({
+        updateStoreValue
       })
     }
   }, [
@@ -63,8 +54,7 @@ const GraphVisualisation = ({
   ])
 
   useEffect(() => setNodesIdsToDisplay({
-    setStoreState,
-    removeFromObject,
+    updateStoreValue,
     t
   }),
   [
@@ -85,10 +75,8 @@ const GraphVisualisation = ({
 
   // // set graph options
   useEffect(() => setNetworkMethods({
-    setStoreState,
+    updateStoreValue,
     network,
-    addNumber,
-    toggleFromArrayInKey
   }), [
     network,
     nodesIdsToDisplay
@@ -139,11 +127,9 @@ const GraphVisualisation = ({
 
 GraphVisualisation.propTypes = {
   currentGraph: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
   showContextMenu: PropTypes.bool.isRequired,
   isBoundingBoxSelectable: PropTypes.bool.isRequired,
   boundingBoxGeometry: PropTypes.shape().isRequired,
-  removeFromObject: PropTypes.func.isRequired,
   availableNodes: PropTypes.shape().isRequired,
   availableEdges: PropTypes.shape().isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,
@@ -152,9 +138,7 @@ GraphVisualisation.propTypes = {
   physicsHierarchicalView: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
   globalEdgeStyling: PropTypes.shape().isRequired,
-  addNumber: PropTypes.func.isRequired,
-  toggleFromArrayInKey: PropTypes.func.isRequired,
-  addSubValueToObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -164,7 +148,6 @@ GraphVisualisation.defaultProps = {
 const mapToProps = ({
   currentGraph,
   showContextMenu,
-  contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   availableNodes,
@@ -173,14 +156,11 @@ const mapToProps = ({
   nodesIdsToDisplay,
   physicsHierarchicalView,
   physicsRepulsion,
-  selectedNeighbourNode,
-  selectedNodes,
   isPhysicsOn,
   globalEdgeStyling
 }) => ({
   currentGraph,
   showContextMenu,
-  contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   availableNodes,
@@ -189,8 +169,6 @@ const mapToProps = ({
   nodesIdsToDisplay,
   physicsHierarchicalView,
   physicsRepulsion,
-  selectedNeighbourNode,
-  selectedNodes,
   isPhysicsOn,
   globalEdgeStyling
 })

@@ -4,18 +4,9 @@ exports[`GraphContextMenu should match snapshot 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -5292,7 +5283,7 @@ NTIS provide to RIF which is then passed to Azure",
     }
   }
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

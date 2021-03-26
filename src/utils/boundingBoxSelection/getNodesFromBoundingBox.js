@@ -1,3 +1,4 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 import getStylingProperty from '../networkStyling/getStylingProperty'
 import getNode from '../nodesEdgesUtils/getNode'
@@ -6,11 +7,11 @@ import updateNodes from '../nodesEdgesUtils/updateNodes'
 /**
  * Get nodes inside/outside bounding box
  * @param  {Object}   params
- * @param  {Function} params.setStoreState          setStoreState action
+ * @param  {Function} params.updateStoreValue          updateStoreValue action
  * @return { undefined }
 \ */
 const getNodesFromBoundingBox = async ({
-  setStoreState
+  updateStoreValue
 }) => {
   const {
     boundingBoxGeometry,
@@ -45,7 +46,7 @@ const getNodesFromBoundingBox = async ({
     }
   })
 
-  if (availableNodes.length === 0) setStoreState('selectedBoundingBoxNodes', [])
+  if (availableNodes.length === 0) updateStoreValue(['selectedBoundingBoxNodes'], OPERATION_TYPE_UPDATE, [])
 
   availableNodes.map((node) => {
     const color = node.color || {}
@@ -61,7 +62,7 @@ const getNodesFromBoundingBox = async ({
     )
   })
 
-  return setStoreState('selectedBoundingBoxNodes', availableNodes)
+  return updateStoreValue(['selectedBoundingBoxNodes'], OPERATION_TYPE_UPDATE, availableNodes)
 }
 
 export default getNodesFromBoundingBox

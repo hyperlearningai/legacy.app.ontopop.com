@@ -68,7 +68,7 @@ context('Notes list', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 28')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-button')
@@ -187,7 +187,7 @@ context('Notes list', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 28')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-button')
@@ -309,7 +309,7 @@ context('Notes list', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 28')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-button')

@@ -2,56 +2,44 @@
 import setOntologyRestoreEdge from '../../../utils/editOntology/setOntologyRestoreEdge'
 import store from '../../../store'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
-import {
-  setStoreStateFixture
-} from '../../fixtures/setOntologyRestoreEdge'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
-import setEdgeStyleByProperty from '../../../utils/networkStyling/setEdgeStyleByProperty'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
-import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
-import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
+import getEdgeIds from '../../../utils/nodesEdgesUtils/getEdgeIds'
+import checkNodeSpiderability from '../../../utils/networkStyling/checkNodeSpiderability'
+import { OPERATION_TYPE_ARRAY_DELETE, OPERATION_TYPE_PUSH_UNIQUE } from '../../../constants/store'
 
 const selectedElement = [
   '12'
 ]
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
-const addNumber = jest.fn()
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
-jest.mock('../../../utils/networkStyling/setEdgeStyleByProperty')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
+jest.mock('../../../utils/nodesEdgesUtils/getEdgeIds')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
-jest.mock('../../../utils/nodesEdgesUtils/countEdges')
-jest.mock('../../../utils/nodesEdgesUtils/countNodes')
 jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
 jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
+jest.mock('../../../utils/networkStyling/checkNodeSpiderability')
 
 store.getState = jest.fn().mockImplementation(() => ({
-  objectPropertiesFromApi,
-  deletedEdges: [selectedElement[0]],
-  nodesEdges: {
-    1: [],
-    147: [],
-  },
-  totalEdgesPerNode,
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
-  stylingEdgeCaptionProperty: 'rdfsLabel',
+  userDefinedEdgeStyling: { stylingEdgeCaptionProperty: 'rdfsLabel' }
 }))
 
 getNode.mockImplementation(() => ({ id: '123' }))
 
-countEdges.mockImplementation(() => 1)
-countNodes.mockImplementation(() => 1)
 checkNodeVisibility.mockImplementation(() => true)
 checkEdgeVisibility.mockImplementation(() => true)
+
+const visibleEdges = ['12', '33', '40']
+getEdgeIds.mockImplementation(() => visibleEdges)
 
 describe('setOntologyRestoreEdge', () => {
   afterEach(() => {
@@ -62,8 +50,7 @@ describe('setOntologyRestoreEdge', () => {
     httpCall.mockImplementation(() => ({ error: true }))
 
     await setOntologyRestoreEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
       t
     })
@@ -80,8 +67,7 @@ describe('setOntologyRestoreEdge', () => {
     httpCall.mockImplementation(() => ({ data: {} }))
 
     await setOntologyRestoreEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
       t
     })
@@ -104,19 +90,19 @@ describe('setOntologyRestoreEdge', () => {
     }))
 
     await setOntologyRestoreEdge({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElement,
       t
     })
 
     expect(addEdge).toHaveBeenLastCalledWith({
-      addNumber,
+      updateStoreValue,
+      label: 'Subclass of',
       edge: {
         edgeId: 12,
         from: '1',
         id: '12',
-        label: 'Subclass of',
+        label: 'subclass',
         rdfsLabel: 'Subclass of',
         role: 'Subclass of',
         to: '147',
@@ -124,10 +110,31 @@ describe('setOntologyRestoreEdge', () => {
       }
     })
 
-    expect(setEdgeStyleByProperty).toHaveBeenLastCalledWith(
-      { edgeId: '12' }
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['objectPropertiesFromApi'], 'objectAdd', {
+        12: {
+          edgeId: 12,
+          from: '1',
+          id: '12',
+          label: 'subclass',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '147',
+          userDefined: false
+        }
+      }], [
+        ['deletedEdges'], OPERATION_TYPE_ARRAY_DELETE, '12'],
+      [['totalEdgesPerNodeBackup', '1'], OPERATION_TYPE_ARRAY_DELETE, '12'],
+      [['totalEdgesPerNodeBackup', '1'], OPERATION_TYPE_ARRAY_DELETE, '12'],
+      [['totalEdgesPerNode', '1'], OPERATION_TYPE_PUSH_UNIQUE, '12'],
+      [['totalEdgesPerNode', '147'], OPERATION_TYPE_PUSH_UNIQUE, '12'],
+      [['nodesEdges', '1'], OPERATION_TYPE_PUSH_UNIQUE, '12'],
+      [['nodesEdges', '147'], OPERATION_TYPE_PUSH_UNIQUE, '12']
+      ]
     )
-
-    expect(setStoreState.mock.calls).toEqual(setStoreStateFixture)
+    expect(checkNodeSpiderability.mock.calls).toEqual(
+      [[{ nodeId: '1', updateStoreValue, visibleEdges: ['12', '33', '40'] }],
+        [{ nodeId: '147', updateStoreValue, visibleEdges: ['12', '33', '40'] }]]
+    )
   })
 })

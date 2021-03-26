@@ -4,19 +4,19 @@ exports[`NodesSelection should match snapshot when no selected node 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -26,20 +26,24 @@ exports[`NodesSelection should match snapshot when selected node 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   mapToProps={[Function]}
-  selectedNode="http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY"
-  setStoreState={[MockFunction]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
+  selectedElement={
+    Object {
+      "1": "node",
+    }
+  }
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

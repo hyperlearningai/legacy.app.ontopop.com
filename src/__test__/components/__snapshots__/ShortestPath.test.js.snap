@@ -4,24 +4,23 @@ exports[`ShortestPath should match snapshot  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addToObject={[MockFunction]}
   isShortestPathNode1Selectable={false}
   isShortestPathNode2Selectable={true}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   shortestPathNode1="http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV"
   shortestPathNode2="http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

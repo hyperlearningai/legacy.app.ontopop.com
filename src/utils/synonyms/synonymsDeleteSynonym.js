@@ -3,14 +3,14 @@ import showNotification from '../notifications/showNotification'
 import { DELETE_NODE_SYNONYM } from '../../constants/api'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Get graph data from API
  * @param  {Object}   params
  * @param  {String}   params.selectedElement            Selected node/edge ID
  * @param  {String}   params.selectedSynonymID             Selected synonym ID
- * @param  {Function} params.addNumber                  addNumber action
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue              updateStoreValue action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
@@ -18,8 +18,7 @@ import httpCall from '../apiCalls/httpCall'
 const synonymsDeleteSynonym = async ({
   selectedElement,
   selectedSynonymID,
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -34,8 +33,7 @@ const synonymsDeleteSynonym = async ({
   const synonymsState = 'nodesSynonyms'
 
   const response = await httpCall({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     withAuth,
     route,
     method: 'delete',
@@ -51,7 +49,7 @@ const synonymsDeleteSynonym = async ({
 
   modifiedSynonym.splice(dataIndex, 1)
 
-  setStoreState(synonymsState, modifiedSynonym)
+  updateStoreValue([synonymsState], OPERATION_TYPE_UPDATE, modifiedSynonym)
 
   if (data && data.message) {
     return showNotification({

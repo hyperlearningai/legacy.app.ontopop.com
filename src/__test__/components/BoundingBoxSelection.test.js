@@ -7,9 +7,8 @@ const setup = ({
   isBoundingBoxSelectionInternal
 }) => {
   const props = {
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     selectedBoundingBoxNodes: [],
-    addToObject: jest.fn(),
     isBoundingBoxSelectionInternal
   }
 

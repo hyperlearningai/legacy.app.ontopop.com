@@ -5,13 +5,12 @@ import Index from '../../pages/index'
 
 const setup = () => {
   const props = {
-    addToObject: jest.fn(),
     user: {
       isGuest: false,
       email: 'a@b.c',
       token: '123'
     },
-    setStoreState: jest.fn()
+    updateStoreValue: jest.fn()
   }
   const component = shallow(<Index {...props} />)
 

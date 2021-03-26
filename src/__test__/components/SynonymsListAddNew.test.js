@@ -5,9 +5,8 @@ import SynonymsListAddNew from '../../components/SynonymsListAddNew'
 
 const setup = () => {
   const props = {
-    addNumber: jest.fn(),
     synonymElementId: '12',
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
   }
 
   const component = shallow(<SynonymsListAddNew {...props} />)

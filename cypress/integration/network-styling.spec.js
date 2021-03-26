@@ -57,7 +57,7 @@ context('Network styling', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 2')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for maintenance: 2')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(0).find('.p-button')
@@ -271,7 +271,7 @@ context('Network styling', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
@@ -487,7 +487,7 @@ context('Network styling', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
@@ -632,7 +632,7 @@ context('Network styling', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
@@ -815,7 +815,7 @@ context('Network styling', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
@@ -1007,7 +1007,7 @@ context('Network styling', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')

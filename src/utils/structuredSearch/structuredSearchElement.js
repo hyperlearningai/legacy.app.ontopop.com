@@ -1,19 +1,20 @@
 import store from '../../store'
 import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Structured search in elements' properties
  * @param  {Object}   params
  * @param  {String}   params.queryLogic              Search logic
  * @param  {Array}    params.filters                 Search filters
- * @param  {Function} params.setStoreState           setStoreState action
+ * @param  {Function} params.updateStoreValue        updateStoreValue action
  * @return { undefined }
  */
 const structuredSearchElement = ({
   filters,
   queryLogic,
-  setStoreState,
+  updateStoreValue,
 }) => {
   const {
     classesFromApi,
@@ -77,7 +78,7 @@ const structuredSearchElement = ({
     }
   }
 
-  return setStoreState('structuredSelection', JSON.parse(JSON.stringify(elementsToDisplay)))
+  return updateStoreValue(['structuredSelection'], OPERATION_TYPE_UPDATE, JSON.parse(JSON.stringify(elementsToDisplay)))
 }
 
 export default structuredSearchElement

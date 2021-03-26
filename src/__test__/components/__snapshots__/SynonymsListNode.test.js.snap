@@ -4,18 +4,9 @@ exports[`SynonymsListNode should match snapshot when no user 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -5286,7 +5277,6 @@ NTIS provide to RIF which is then passed to Azure",
   }
   mapToProps={[Function]}
   selectedNotesType=""
-  setStoreState={[MockFunction]}
   synonymObject={
     Object {
       "dateCreated": "2021-03-09 17:03:51",
@@ -5297,6 +5287,7 @@ NTIS provide to RIF which is then passed to Azure",
       "userId": "test@test.test",
     }
   }
+  updateStoreValue={[MockFunction]}
   user={
     Object {
       "email": "",
@@ -5311,18 +5302,9 @@ exports[`SynonymsListNode should match snapshot when same user 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   classesFromApi={
     Object {
       "1": Object {
@@ -10593,7 +10575,6 @@ NTIS provide to RIF which is then passed to Azure",
   }
   mapToProps={[Function]}
   selectedNotesType=""
-  setStoreState={[MockFunction]}
   synonymObject={
     Object {
       "dateCreated": "2021-03-09 17:03:51",
@@ -10604,6 +10585,7 @@ NTIS provide to RIF which is then passed to Azure",
       "userId": "test@test.test",
     }
   }
+  updateStoreValue={[MockFunction]}
   user={
     Object {
       "email": "test@test.test",

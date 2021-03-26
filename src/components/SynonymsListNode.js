@@ -10,8 +10,7 @@ import synonymsDeleteSynonym from '../utils/synonyms/synonymsDeleteSynonym'
 
 const SynonymsListNode = ({
   synonymObject,
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   classesFromApi,
   user
 }) => {
@@ -116,8 +115,7 @@ const SynonymsListNode = ({
                     selectedElement: nodeId,
                     selectedSynonymID: id,
                     synonymText,
-                    addNumber,
-                    setStoreState,
+                    updateStoreValue,
                     t
                   })
                 }}
@@ -142,8 +140,7 @@ const SynonymsListNode = ({
               onClick={() => synonymsDeleteSynonym({
                 selectedElement: nodeId,
                 selectedSynonymID: id,
-                addNumber,
-                setStoreState,
+                updateStoreValue,
                 t
               })}
             />
@@ -168,8 +165,7 @@ const SynonymsListNode = ({
 
 SynonymsListNode.propTypes = {
   synonymObject: PropTypes.shape().isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
 }

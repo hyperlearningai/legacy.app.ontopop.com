@@ -4,19 +4,11 @@ exports[`Profile page should match snapshot 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addToObject={[MockFunction]}
   mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
   user={
     Object {
       "email": "a@b.c",

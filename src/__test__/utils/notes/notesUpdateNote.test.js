@@ -3,9 +3,9 @@ import en from '../../../i18n/en'
 import notesUpdateNote from '../../../utils/notes/notesUpdateNote'
 import showNotification from '../../../utils/notifications/showNotification'
 import store from '../../../store'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 const t = (id) => en[id]
 
 jest.mock('../../../utils/apiCalls/httpCall')
@@ -33,8 +33,7 @@ describe('notesUpdateNote', () => {
       selectedElement: null,
       selectedNoteID: 42,
       noteText: 'example text',
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -54,8 +53,7 @@ describe('notesUpdateNote', () => {
       selectedElement: null,
       selectedNoteID: 42,
       noteText: 'example text',
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
@@ -87,12 +85,11 @@ describe('notesUpdateNote', () => {
       selectedElement: null,
       selectedNoteID: 1,
       noteText: 'after change',
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([['notes', mockNotesAfter]])
+    expect(updateStoreValue.mock.calls).toEqual([[['notes'], OPERATION_TYPE_UPDATE, mockNotesAfter]])
   })
 
   it('should work correctly when type node', async () => {
@@ -115,12 +112,11 @@ describe('notesUpdateNote', () => {
       selectedElement: null,
       selectedNoteID: 1,
       noteText: 'after change',
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([['nodesNotes', mockNotesAfter]])
+    expect(updateStoreValue.mock.calls).toEqual([[['nodesNotes'], OPERATION_TYPE_UPDATE, mockNotesAfter]])
   })
 
   it('should work correctly when type edge', async () => {
@@ -143,11 +139,10 @@ describe('notesUpdateNote', () => {
       selectedElement: null,
       selectedNoteID: 1,
       noteText: 'after change',
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       t
     })
 
-    expect(setStoreState.mock.calls).toEqual([['edgesNotes', mockNotesAfter]])
+    expect(updateStoreValue.mock.calls).toEqual([[['edgesNotes'], OPERATION_TYPE_UPDATE, mockNotesAfter]])
   })
 })

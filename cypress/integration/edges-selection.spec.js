@@ -54,7 +54,7 @@ context('Edges selection', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 5')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
@@ -77,7 +77,7 @@ context('Edges selection', () => {
       cy.get('#edge-select').find('.p-dropdown-filter').type('asset')
       cy.get('#edge-select').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.edges-selection-details-table-properties').find('tbody tr').should('have.length', '1')
+      cy.get('.edges-selection-details-table-properties').find('tbody tr').should('have.length', '2')
       cy.get('.edges-selection-details-table-relationships').find('tbody tr').should('have.length', '1')
 
       // select another node
@@ -85,7 +85,7 @@ context('Edges selection', () => {
       cy.get('#edge-select').find('.p-dropdown-filter').clear().type('str')
       cy.get('#edge-select').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.edges-selection-details-table-properties').find('tbody tr').should('have.length', '1')
+      cy.get('.edges-selection-details-table-properties').find('tbody tr').should('have.length', '2')
       cy.get('.edges-selection-details-table-relationships').find('tbody tr').should('have.length', '1')
 
       // expand nodes

@@ -38,6 +38,7 @@ export default {
   edgesFilter: 'Edges filter',
   selectNodes: 'Select nodes',
   selectEdges: 'Select edges',
+  selectEdge: 'Select edge',
   settings: 'Settings',
   styling: 'Styling',
   notes: 'Notes',
@@ -362,6 +363,7 @@ export default {
   advancedSearch: 'Advanced search',
   showAdvancedSearch: 'Show advanced search',
   searchResults: 'Search results',
+  searchResultsFor: 'Search results for',
   moreInfo: 'More info',
   lessInfo: 'Less info',
 

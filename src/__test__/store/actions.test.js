@@ -1,197 +1,516 @@
-import { DataSet } from 'vis-data'
+// import { DataSet } from 'vis-data'
+import { OPERATION_TYPE_ARRAY_DELETE, OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_PUSH_UNIQUE } from '../../constants/store'
 import actions from '../../store/actions'
 
 describe('Actions', () => {
-  it('toggleFromSubArray should work correctly when pushing the value', () => {
-    const stateKey = 'graphData'
-    const key = 'graph-0'
-    const subkey = 'hiddenNode'
-    const value = '1'
+  it('updateStoreValue should work correctly when single key and objectAdd type', () => {
+    const keys = [
+      'parent',
+    ]
+    const value = { b: '2' }
+    const type = OPERATION_TYPE_OBJECT_ADD
 
     const state = {
-      [stateKey]: {
-        [key]: {
-          [subkey]: []
+      parent: {
+        a: '1'
+      }
+    }
+
+    const newState = {
+      parent: {
+        a: '1',
+        b: '2'
+      }
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and pushUnique type and value existing', () => {
+    const keys = [
+      'parent',
+    ]
+    const value = 'two'
+    const type = OPERATION_TYPE_PUSH_UNIQUE
+
+    const state = {
+      parent: ['one', 'two', 'three']
+    }
+
+    const newState = {
+      parent: ['one', 'two', 'three']
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and pushUnique type', () => {
+    const keys = [
+      'parent',
+    ]
+    const value = 'three'
+    const type = OPERATION_TYPE_PUSH_UNIQUE
+
+    const state = {
+      parent: ['one', 'two']
+    }
+
+    const newState = {
+      parent: ['one', 'two', 'three']
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and arrayDelete type', () => {
+    const keys = [
+      'parent',
+    ]
+    const value = 'two'
+    const type = OPERATION_TYPE_ARRAY_DELETE
+
+    const state = {
+      parent: ['one', 'two', 'three']
+    }
+
+    const newState = {
+      parent: ['one', 'three']
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and add type', () => {
+    const keys = [
+      'parent',
+    ]
+    const value = 1
+    const type = 'add'
+
+    const state = {
+      parent: 1
+    }
+
+    const newState = {
+      parent: 2
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and push type', () => {
+    const keys = [
+      'parent',
+    ]
+
+    const value = 'new'
+    const type = 'push'
+
+    const state = {
+      parent: []
+    }
+
+    const newState = {
+      parent: ['new']
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and toggle type', () => {
+    const keys = [
+      'parent',
+    ]
+
+    const value = 'new'
+    const type = 'toggle'
+
+    const state = {
+      parent: ['old', 'new']
+    }
+
+    const newState = {
+      parent: ['old']
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when single key and update type', () => {
+    const keys = [
+      'parent',
+    ]
+
+    const value = 'new'
+    const type = 'update'
+
+    const state = {
+      parent: 'old'
+    }
+
+    const newState = {
+      parent: value
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when multi key and push type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'new'
+    const type = 'push'
+
+    const state = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: []
         }
       }
     }
 
     const newState = {
-      [stateKey]: {
-        [key]: {
-          [subkey]: [value]
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['new']
         }
       }
     }
 
-    expect(actions.toggleFromSubArray(state, stateKey, key, subkey, value)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
 
-  it('toggleFromSubArray should work correctly when removing the value', () => {
-    const stateKey = 'graphData'
-    const key = 'graph-0'
-    const subkey = 'hiddenNode'
-    const value = '1'
+  it('updateStoreValue should work correctly when multi key and push type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'new'
+    const type = 'push'
 
     const state = {
-      [stateKey]: {
-        [key]: {
-          [subkey]: [value]
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: []
         }
       }
     }
 
     const newState = {
-      [stateKey]: {
-        [key]: {
-          [subkey]: []
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['new']
         }
       }
     }
 
-    expect(actions.toggleFromSubArray(state, stateKey, key, subkey, value)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
 
-  it('addNumber should work correctly', () => {
+  it('updateStoreValue should work correctly when multi key and toggle type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'new'
+    const type = 'toggle'
+
     const state = {
-      activeLoaders: 0
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['old', 'new']
+        }
+      }
     }
 
     const newState = {
-      activeLoaders: 2
-    }
-
-    const value = 2
-
-    expect(actions.addNumber(state, 'activeLoaders', value)).toEqual(newState)
-  })
-
-  it('addSubValueToObject should work correctly', () => {
-    const state = {
-      graphData: {
-        'graph-0': {
-          label: 'Main',
-          description: 'Main description'
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['old']
         }
       }
     }
 
-    const key = 'graph-0'
-    const subkey = 'description'
-    const value = 'New'
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when multi key and delete type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const type = 'delete'
+
+    const state = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: 'new'
+        }
+      }
+    }
 
     const newState = {
-      graphData: {
-        'graph-0': {
-          label: 'Main',
-          description: value
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test'
         }
       }
     }
 
-    expect(actions.addSubValueToObject(state, 'graphData', key, subkey, value)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type)).toEqual(newState)
   })
 
-  it('addToObject should work correctly', () => {
+  it('updateStoreValue should work correctly when multi key and add type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 1
+    const type = 'add'
+
     const state = {
-      graphData: {
-        'graph-0': {
-          label: 'Main'
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: 1
         }
       }
     }
 
-    const key = 'graph-0'
+    const newState = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: 2
+        }
+      }
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
+
+  it('updateStoreValue should work correctly when multi key and update type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
     const value = {
-      label: 'New'
+      subsubchild: 'test'
     }
+    const type = 'update'
 
-    const newState = {
-      graphData: {
-        'graph-0': value
-      }
-    }
-
-    expect(actions.addToObject(state, 'graphData', key, value)).toEqual(newState)
-  })
-
-  it('removeFromObject should work correctly', () => {
     const state = {
-      graphData: {
-        'graph-0': {
-          label: 'Main'
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: 1
         }
       }
     }
 
-    const id = 'graph-0'
-
     const newState = {
-      graphData: {}
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: value
+        }
+      }
     }
 
-    expect(actions.removeFromObject(state, 'graphData', id)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
 
-  it('removeFromArray should work correctly when selectedNodes', () => {
+  it('updateStoreValue should work correctly when multikey and arrayDelete type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'two'
+
+    const type = OPERATION_TYPE_ARRAY_DELETE
+
     const state = {
-      selectedNodes: ['123'],
-      availableNodes: new DataSet([{ id: '123' }])
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['one', 'two', 'three']
+        }
+      }
     }
-
-    const id = '123'
 
     const newState = {
-      selectedNodes: []
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+          subchild: ['one', 'three']
+        }
+      }
     }
 
-    expect(actions.removeFromArray(state, 'selectedNodes', id)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
 
-  it('removeFromArray should work correctly when selectedEdges', () => {
+  it('updateStoreValue should work correctly when multikey and arrayDelete type and no subkey', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'two'
+
+    const type = OPERATION_TYPE_ARRAY_DELETE
+
     const state = {
-      selectedEdges: ['123'],
-      availableEdges: new DataSet([{ id: '123' }])
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+        }
+      }
     }
-
-    const id = '123'
 
     const newState = {
-      selectedEdges: []
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: 'test',
+        }
+      }
     }
 
-    expect(actions.removeFromArray(state, 'selectedEdges', id)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
 
-  it('addToArray should work correctly', () => {
+  it('updateStoreValue should work correctly when multikey and pushUnique type and value existing', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'one'
+
+    const type = OPERATION_TYPE_PUSH_UNIQUE
+
     const state = {
-      selectedNodes: []
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: ['one'],
+          subchild: ['one'],
+        }
+      }
     }
-
-    const id = '123'
 
     const newState = {
-      selectedNodes: ['123']
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: ['one'],
+          subchild: ['one'],
+        }
+      }
     }
 
-    expect(actions.addToArray(state, 'selectedNodes', id)).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
 
-  it('addToArray should work correctly with options', () => {
+  it('updateStoreValue should work correctly when multikey and pushUnique type and value not existing', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = 'two'
+
+    const type = OPERATION_TYPE_PUSH_UNIQUE
+
     const state = {
-      selectedNodes: ['123']
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: ['one'],
+          subchild: ['one'],
+        }
+      }
     }
-
-    const id = '123'
 
     const newState = {
-      selectedNodes: ['123', '123']
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: ['one'],
+          subchild: ['one', 'two'],
+        }
+      }
     }
 
-    expect(actions.addToArray(state, 'selectedNodes', id, { alwaysAdd: true })).toEqual(newState)
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
   })
 
-  it('setStoreState should work correctly', () => expect(actions.setStoreState({ field: '' }, 'field', 'value')).toEqual({
-    field: 'value'
-  }))
+  it('updateStoreValue should work correctly when multi key and objectAdd type', () => {
+    const keys = [
+      'parent',
+      'child',
+      'subchild'
+    ]
+    const value = { b: '2' }
+    const type = OPERATION_TYPE_OBJECT_ADD
+
+    const state = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: ['one'],
+          subchild: {
+            a: '1'
+          },
+        }
+      }
+    }
+
+    const newState = {
+      parent: {
+        otherChild: 'test',
+        child: {
+          otherSubchild: ['one'],
+          subchild: {
+            a: '1',
+            b: '2'
+          },
+        }
+      }
+    }
+
+    expect(actions.updateStoreValue(state, keys, type, value)).toEqual(newState)
+  })
 })

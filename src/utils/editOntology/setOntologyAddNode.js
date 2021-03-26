@@ -1,66 +1,30 @@
-import store from '../../store'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import addNode from '../nodesEdgesUtils/addNode'
-import setNodeStyle from '../networkStyling/setNodeStyle'
 import { API_ENDPOINT_GRAPH_NODES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
 import { NODE_TYPE } from '../../constants/graph'
+import { OPERATION_TYPE_PUSH_UNIQUE, OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * ADd ontology nodes
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  addNumber action
- * @param  {Function}       params.setStoreState              setStoreState action
+ * @param  {Function}       params.updateStoreValue           updateStoreValue action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyAddNode = async ({
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   selectedElementProperties,
   t
 }) => {
-  const {
-    nodesEdges,
-    classesFromApi,
-    classesFromApiBackup,
-    addedNodes,
-    totalEdgesPerNode,
-    totalEdgesPerNodeBackup,
-    userDefinedNodeStyling,
-  } = store.getState()
-
-  const {
-    stylingNodeBorder,
-    stylingNodeBorderSelected,
-    stylingNodeTextFontSize,
-    stylingNodeTextColor,
-    stylingNodeTextFontAlign,
-    stylingNodeShape,
-    stylingNodeBackgroundColor,
-    stylingNodeBorderColor,
-    stylingNodeHighlightBackgroundColor,
-    stylingNodeHighlightBorderColor,
-    stylingNodeHoverBackgroundColor,
-    stylingNodeHoverBorderColor,
-    stylingNodeSize,
-    stylingNodeCaptionProperty,
-  } = userDefinedNodeStyling
-
-  const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  const newClassesFromApiBackup = JSON.parse(JSON.stringify(classesFromApiBackup))
-  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
-  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(totalEdgesPerNodeBackup))
-
   const body = JSON.parse(JSON.stringify(selectedElementProperties))
   body.label = 'class'
 
   const response = await httpCall({
-    addNumber,
+    updateStoreValue,
     withAuth: true,
     route: API_ENDPOINT_GRAPH_NODES_CREATE,
     method: 'post',
@@ -91,86 +55,37 @@ const setOntologyAddNode = async ({
     id, userDefined, label, userId
   } = data[Object.keys(data)[0]]
 
+  const stringId = id.toString()
+
   // add to classesFromApi
-  newClassesFromApi[id] = {
+  const nodeClass = {
     ...selectedElementProperties,
     [NODE_TYPE]: label,
     userDefined,
-    id,
+    id: stringId,
     userId
   }
 
-  // add label
-  newClassesFromApi[id].label = selectedElementProperties[stylingNodeCaptionProperty]
-    ? selectedElementProperties[stylingNodeCaptionProperty].replace(/ /g, '\n') : ''
-  newClassesFromApi[id].title = newClassesFromApi[id].label
-
-  // add array for new node in nodes edges connections
-  newNodesEdges[id] = []
-  newEdgesPerNode[id] = []
-  newEdgesPerNodeBackup[id] = []
-
-  // add as backup
-  newClassesFromApiBackup[id] = newClassesFromApi[id]
-
-  // add node style
-  const nodeStyle = {
-    borderWidth: stylingNodeBorder,
-    borderWidthSelected: stylingNodeBorderSelected,
-    font: {
-      size: stylingNodeTextFontSize,
-      color: stylingNodeTextColor,
-      align: stylingNodeTextFontAlign,
-      face: 'Montserrat',
-      bold: '700'
-    },
-    shape: stylingNodeShape,
-    color: {
-      background: stylingNodeBackgroundColor,
-      border: stylingNodeBorderColor,
-      highlight: {
-        background: stylingNodeHighlightBackgroundColor,
-        border: stylingNodeHighlightBorderColor,
-      },
-      hover: {
-        background: stylingNodeHoverBackgroundColor,
-        border: stylingNodeHoverBorderColor,
-      },
-    },
-    size: stylingNodeSize
-  }
-
-  const newAddedNodes = [
-    ...addedNodes,
-    ...[id]
-  ]
-
-  setStoreState('classesFromApiBackup', newClassesFromApiBackup)
-  setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('nodesEdges', newNodesEdges)
-  setStoreState('totalEdgesPerNode', newEdgesPerNode)
-  setStoreState('totalEdgesPerNodeBackup', newEdgesPerNodeBackup)
-  setStoreState('addedNodes', newAddedNodes)
+  updateStoreValue(['classesFromApi', stringId], OPERATION_TYPE_UPDATE, nodeClass)
+  updateStoreValue(['classesFromApiBackup', stringId], OPERATION_TYPE_UPDATE, nodeClass)
+  updateStoreValue(['nodesEdges', stringId], OPERATION_TYPE_UPDATE, [])
+  updateStoreValue(['totalEdgesPerNode', stringId], OPERATION_TYPE_UPDATE, [])
+  updateStoreValue(['totalEdgesPerNodeBackup', stringId], OPERATION_TYPE_UPDATE, [])
+  updateStoreValue(['addedNodes'], OPERATION_TYPE_PUSH_UNIQUE, stringId)
+  updateStoreValue(['nodesSpiderability', stringId], OPERATION_TYPE_UPDATE, 'false')
 
   const isVisible = checkNodeVisibility({
-    nodeId: id,
+    nodeId: stringId,
   })
 
   if (isVisible) {
     addNode({
-      node: {
-        ...newClassesFromApi[id],
-        ...nodeStyle
-      },
-      addNumber
-    })
-
-    setNodeStyle({
-      nodeId: id,
+      node: nodeClass,
+      updateStoreValue
     })
   }
 
-  message = `${t('nodeAdded')}: ${id}`
+  message = `${t('nodeAdded')}: ${stringId}`
 
   showNotification({
     message,

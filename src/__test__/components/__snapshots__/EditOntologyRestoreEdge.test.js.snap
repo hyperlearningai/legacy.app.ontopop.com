@@ -4,18 +4,9 @@ exports[`EditOntologyRestoreEdge should match snapshot when deleted edges 1`] = 
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   deletedEdges={
     Array [
       "12",
@@ -8660,8 +8651,8 @@ exports[`EditOntologyRestoreEdge should match snapshot when deleted edges 1`] = 
     }
   }
   operation="restore"
-  setStoreState={[MockFunction]}
   type="edge"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -8671,18 +8662,9 @@ exports[`EditOntologyRestoreEdge should match snapshot when no deleted edges 1`]
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   deletedEdges={Array []}
   deletedNodes={Array []}
   mapToProps={[Function]}
@@ -17323,8 +17305,8 @@ exports[`EditOntologyRestoreEdge should match snapshot when no deleted edges 1`]
     }
   }
   operation="restore"
-  setStoreState={[MockFunction]}
   type="edge"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

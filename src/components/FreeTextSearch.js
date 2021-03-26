@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
@@ -8,38 +8,21 @@ import actions from '../store/actions'
 import { SIDEBAR_VIEW_FREE_TEXT_SEARCH } from '../constants/views'
 import searchElement from '../utils/freeTextSearch/searchElement'
 import clearElement from '../utils/freeTextSearch/clearElement'
-import highlightElement from '../utils/freeTextSearch/highlightElement'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { OPERATION_TYPE_DELETE, OPERATION_TYPE_UPDATE } from '../constants/store'
+import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 
 const FreeTextSearch = ({
   freeTextSelection,
-  freeTextSelectedElement,
-  removeFromObject,
-  setStoreState,
+  selectedElement,
+  updateStoreValue,
 }) => {
   const { t } = useTranslation()
-  const isInitialMount = useRef(true)
 
   const [search, setSearch] = useState('')
   useEffect(() => () => {
-    clearElement()
-
-    setStoreState('freeTextSelection', {})
-    setStoreState('freeTextSelectedElement', '')
-    setStoreState('freeTextPrevSelectedElement', undefined)
+    updateStoreValue(['freeTextSelection'], OPERATION_TYPE_UPDATE, {})
   }, [])
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false
-    } else {
-      clearElement()
-
-      highlightElement({
-        setStoreState,
-      })
-    }
-  }, [freeTextSelectedElement])
 
   return (
     <>
@@ -57,7 +40,7 @@ const FreeTextSearch = ({
 
             searchElement({
               search: e.target.value,
-              setStoreState
+              updateStoreValue
             })
           }}
           placeholder={t('search')}
@@ -100,19 +83,19 @@ const FreeTextSearch = ({
 
             return (
               <div
-                className={`freetext-search-row ${elementId === freeTextSelectedElement ? 'freetext-search-row-selected' : ''}`}
+                className={`freetext-search-row ${elementId === selectedElement ? 'freetext-search-row-selected' : ''}`}
                 key={`freetext-search-row-${elementId}`}
               >
                 <div className="freetext-search-row-delete">
                   <Button
                     tooltip={`${t('removeGraph')}: ${elementId}`}
                     onClick={() => {
-                      removeFromObject('freeTextSelection', elementId)
+                      updateStoreValue(['freeTextSelection', elementId], OPERATION_TYPE_DELETE)
 
-                      if (elementId === freeTextSelectedElement) {
+                      if (elementId === selectedElement) {
                         clearElement()
 
-                        setStoreState('freeTextSelectedElement', '')
+                        updateStoreValue(['freeTextSelectedElement'], OPERATION_TYPE_UPDATE, '')
                       }
                     }}
                     icon="pi pi-times"
@@ -123,8 +106,12 @@ const FreeTextSearch = ({
                 <div className="freetext-search-row-main">
                   <Button
                     tooltip={`${t('focusElement')}: ${elementLabel}`}
-                    disabled={elementId === freeTextSelectedElement}
-                    onClick={() => setStoreState('freeTextSelectedElement', elementId)}
+                    disabled={elementId === selectedElement}
+                    onClick={() => updateHighlightedElement({
+                      updateStoreValue,
+                      id: elementId,
+                      type
+                    })}
                   >
                     <span>
                       <i className={`pi pi-${type === 'node' ? 'circle-off' : 'arrow-up'}`} />
@@ -144,18 +131,21 @@ const FreeTextSearch = ({
 }
 
 FreeTextSearch.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  removeFromObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   freeTextSelection: PropTypes.shape().isRequired,
-  freeTextSelectedElement: PropTypes.string.isRequired,
+  selectedElement: PropTypes.shape(),
+}
+
+FreeTextSearch.defaultProps = {
+  selectedElement: undefined
 }
 
 const mapToProps = ({
   freeTextSelection,
-  freeTextSelectedElement,
+  selectedElement
 }) => ({
   freeTextSelection,
-  freeTextSelectedElement,
+  selectedElement
 })
 
 export default connect(

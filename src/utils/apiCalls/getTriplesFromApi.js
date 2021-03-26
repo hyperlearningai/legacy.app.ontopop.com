@@ -1,12 +1,14 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+
 /**
  * Get triples from API
  * @param  {Object}   params
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue              updateStoreValue action
  * @param  {Array}    params.edges                      Edges from API
  * @return {undefined}
  */
 const getTriplesFromApi = ({
-  setStoreState,
+  updateStoreValue,
   edges
 }) => {
   const totalEdgesPerNode = {}
@@ -38,8 +40,8 @@ const getTriplesFromApi = ({
     return true
   })
 
-  setStoreState('totalEdgesPerNode', totalEdgesPerNode)
-  setStoreState('totalEdgesPerNodeBackup', totalEdgesPerNode)
+  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, totalEdgesPerNode)
+  updateStoreValue(['totalEdgesPerNodeBackup'], OPERATION_TYPE_UPDATE, totalEdgesPerNode)
 }
 
 export default getTriplesFromApi

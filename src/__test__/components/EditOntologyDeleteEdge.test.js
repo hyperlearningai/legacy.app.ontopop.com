@@ -7,8 +7,7 @@ const setup = () => {
   const props = {
     type: 'edge',
     operation: 'delete',
-    setStoreState: jest.fn(),
-    addNumber: jest.fn(),
+    updateStoreValue: jest.fn(),
     stylingNodeCaptionProperty: 'rfdsLabel'
   }
 

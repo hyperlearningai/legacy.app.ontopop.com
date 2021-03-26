@@ -7,8 +7,7 @@ const setup = ({ structuredSelection }) => {
   const props = {
     structuredSelection,
     structuredSelectedElement: '33',
-    removeFromObject: jest.fn(),
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     annotationProperties: [{
       value: 'rdfAbout',
       label: 'rdfAbout'

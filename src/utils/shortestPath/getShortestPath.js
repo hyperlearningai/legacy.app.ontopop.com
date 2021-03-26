@@ -1,4 +1,3 @@
-import { UPPER_ONTOLOGY } from '../../constants/graph'
 import store from '../../store'
 import getElementLabel from '../networkStyling/getElementLabel'
 import getEdge from '../nodesEdgesUtils/getEdge'
@@ -16,7 +15,6 @@ import getEdge from '../nodesEdgesUtils/getEdge'
  * @param  {Array}    params.edgesToExclude            Edge labels to exclude
  * @param  {Object}   params.userDefinedEdgeStyling    User-defined edge styling properties
  * @param  {Object}   params.globalEdgeStyling         Global edge styling properties
- * @param  {Boolean}  params.isUpperOntology            Display upper ontology nodes flag
  * @return {Array}    paths                            Array of strings concatenating triples
  */
 const loopThroughNeighbours = ({
@@ -29,8 +27,7 @@ const loopThroughNeighbours = ({
   edgesToExclude,
   userDefinedEdgeStyling,
   globalEdgeStyling,
-  isUpperOntology,
-  classesFromApi
+  classesFromApi,
 }) => {
   const paths = []
 
@@ -47,15 +44,13 @@ const loopThroughNeighbours = ({
 
     const edge = getEdge(edgeId)
 
+    if (edge === null) continue
+
     const {
       from,
       to,
     } = edge
 
-    if (!isUpperOntology) {
-      if (classesFromApi[from][UPPER_ONTOLOGY]) continue
-      if (classesFromApi[to][UPPER_ONTOLOGY]) continue
-    }
     if (nodesToExclude.includes(from)) continue
     if (nodesToExclude.includes(to)) continue
 
@@ -70,12 +65,11 @@ const loopThroughNeighbours = ({
       !exploredNodes.includes(from)
       && nodesEdges[from]
     ) {
-      nodesEdges[from].map((triple) => {
-        if (!nextEdgesToExplore.includes(triple)) {
-          nextEdgesToExplore.push(triple)
-          nextPathRoots.push(nextPathRoot)
-        }
-        return true
+      nodesEdges[from].forEach((nodeEdgeId) => {
+        if (nextEdgesToExplore.includes(nodeEdgeId)) return false
+
+        nextEdgesToExplore.push(nodeEdgeId)
+        nextPathRoots.push(nextPathRoot)
       })
 
       exploredNodes.push(from)
@@ -85,12 +79,11 @@ const loopThroughNeighbours = ({
       !exploredNodes.includes(to)
       && nodesEdges[to]
     ) {
-      nodesEdges[to].map((triple) => {
-        if (!nextEdgesToExplore.includes(triple)) {
-          nextEdgesToExplore.push(triple)
-          nextPathRoots.push(nextPathRoot)
-        }
-        return true
+      nodesEdges[to].forEach((nodeEdgeId) => {
+        if (nextEdgesToExplore.includes(nodeEdgeId)) return false
+
+        nextEdgesToExplore.push(nodeEdgeId)
+        nextPathRoots.push(nextPathRoot)
       })
 
       exploredNodes.push(to)
@@ -116,8 +109,7 @@ const loopThroughNeighbours = ({
     edgesToExclude,
     userDefinedEdgeStyling,
     globalEdgeStyling,
-    isUpperOntology,
-    classesFromApi
+    classesFromApi,
   })
 }
 
@@ -128,29 +120,27 @@ const loopThroughNeighbours = ({
  * @param  {Object}   params.nodesEdges                 Normalised array of nodes with related in and out connections
  * @param  {Array}    params.nodesToExclude             Node IDs to exclude
  * @param  {Array}    params.edgesToExclude             Edge labels to exclude
- * @param  {Boolean}  params.isUpperOntology            Display upper ontology nodes flag
  * @return {Array}    paths                             Array of strings concatenating triples
  */
 const getShortestPath = async ({
   shortestPathSelectedNodes,
-  nodesEdges,
   nodesToExclude,
   edgesToExclude,
-  isUpperOntology
 }) => {
   const {
     userDefinedEdgeStyling,
     globalEdgeStyling,
-    classesFromApi
+    classesFromApi,
+    nodesEdges
   } = store.getState()
 
   const [startNode, endNode] = shortestPathSelectedNodes
-  const nodeConnections = nodesEdges[startNode]
+  const nodeEdges = nodesEdges[startNode]
 
-  if (!nodeConnections || nodeConnections.length === 0) return []
+  if (!nodeEdges || nodeEdges.length === 0) return []
 
   const exploredNodes = [startNode]
-  const edgesToExplore = nodeConnections
+  const edgesToExplore = nodeEdges
   const pathRoots = edgesToExplore.map(() => startNode)
 
   return loopThroughNeighbours({
@@ -163,7 +153,6 @@ const getShortestPath = async ({
     edgesToExclude,
     userDefinedEdgeStyling,
     globalEdgeStyling,
-    isUpperOntology,
     classesFromApi
   })
 }
