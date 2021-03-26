@@ -76,9 +76,9 @@ const ShortestPath = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SHORTEST_PATH)}
-      </div>
+      </h1>
       <div className="shortest-path">
         <div className="shortest-path-message">
           {t('selectNodesFromGraphOrFromList')}
@@ -86,6 +86,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-button">
           <Button
+            ariaLabel={t('edit')}
             label={t('selectStartingNode')}
             id="shortest-path-button-1"
             icon={isShortestPathNode1Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
@@ -98,6 +99,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-dropdown">
           <Dropdown
+            ariaLabel="node-select-1"
             id="node-select-1"
             value={shortestPathNode1}
             filter
@@ -109,6 +111,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-button">
           <Button
+            ariaLabel={t('selectEndingNode')}
             label={t('selectEndingNode')}
             id="shortest-path-button-2"
             icon={isShortestPathNode2Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
@@ -121,6 +124,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-dropdown">
           <Dropdown
+            ariaLabel="node-select-2"
             id="node-select-2"
             value={shortestPathNode2}
             filter
@@ -178,6 +182,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-buttons m-t-20">
           <Button
+            ariaLabel={t('showShortestPath')}
             tooltip={t('showShortestPath')}
             className="shortest-path-show-button"
             disabled={shortestPathNode1 === '' || shortestPathNode2 === ''}

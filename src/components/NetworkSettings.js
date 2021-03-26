@@ -29,9 +29,9 @@ const NetworkSettings = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SETTINGS)}
-      </div>
+      </h1>
       <div className="network-settings">
         <div className="network-settings-input">
           <div className="label">
@@ -39,6 +39,7 @@ const NetworkSettings = ({
           </div>
           <div className="network-settings-buttons">
             <Button
+              ariaLabel={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
               tooltip={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
               tooltipOptions={{ position: 'top' }}
               className={isPhysicsOn ? 'network-settings-buttons-button-selected' : ''}
@@ -55,6 +56,7 @@ const NetworkSettings = ({
           </div>
           <div className="network-settings-buttons">
             <Button
+              ariaLabel={t('hierachicalView')}
               tooltip={t('hierachicalView')}
               tooltipOptions={{ position: 'top' }}
               className={physicsHierarchicalView ? 'network-settings-buttons-button-selected' : ''}
@@ -63,6 +65,7 @@ const NetworkSettings = ({
               <FaSitemap />
             </Button>
             <Button
+              ariaLabel={t('gravitationalView')}
               tooltip={t('gravitationalView')}
               tooltipOptions={{ position: 'top' }}
               className={!physicsHierarchicalView ? 'network-settings-buttons-button-selected' : ''}
@@ -79,6 +82,7 @@ const NetworkSettings = ({
           </div>
           <div className="network-settings-buttons">
             <Button
+              ariaLabel={t('gravitationalView')}
               tooltip={t('enableRepulsion')}
               tooltipOptions={{ position: 'top' }}
               className={physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}
@@ -87,6 +91,7 @@ const NetworkSettings = ({
               <IoFootballOutline />
             </Button>
             <Button
+              ariaLabel={t('disableRepulsion')}
               tooltip={t('disableRepulsion')}
               tooltipOptions={{ position: 'top' }}
               className={!physicsRepulsion ? 'network-settings-buttons-button-selected' : ''}

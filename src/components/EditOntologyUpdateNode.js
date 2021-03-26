@@ -37,6 +37,7 @@ const EditOntologyUpdateNode = ({
         </label>
 
         <Dropdown
+          ariaLabel="graph-select"
           id="graph-select"
           value={selectedElement}
           filter
@@ -75,6 +76,7 @@ const EditOntologyUpdateNode = ({
                   selectedElement
                 })}
                 label={t('restoreOriginal')}
+                ariaLabel={t('restoreOriginal')}
                 icon="pi pi-refresh"
                 iconPos="left"
               />
@@ -82,6 +84,7 @@ const EditOntologyUpdateNode = ({
 
             <div className="edit-ontology-row">
               <Button
+                ariaLabel={t(operation)}
                 className="go-button"
                 tooltip={`${t(operation)}`}
                 onClick={() => {

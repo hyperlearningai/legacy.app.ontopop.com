@@ -103,6 +103,7 @@ const Login = ({
             ) : (
               <>
                 <Button
+                  ariaLabel="auth-login-button"
                   className="auth-button m-t-20"
                   label={t('login')}
                   id="auth-login-button"

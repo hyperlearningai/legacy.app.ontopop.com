@@ -2,11 +2,11 @@
 
 exports[`ExportSettings should match snapshot  1`] = `
 <Fragment>
-  <div
+  <h1
     className="sidebar-main-title"
   >
     export
-  </div>
+  </h1>
   <div
     className="export-settings"
   >
@@ -47,6 +47,7 @@ exports[`ExportSettings should match snapshot  1`] = `
         className="export-settings-buttons"
       >
         <Button
+          ariaLabel="jpeg"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -62,6 +63,7 @@ exports[`ExportSettings should match snapshot  1`] = `
           }
         />
         <Button
+          ariaLabel="png"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -77,6 +79,7 @@ exports[`ExportSettings should match snapshot  1`] = `
           }
         />
         <Button
+          ariaLabel="pdf"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -105,6 +108,7 @@ exports[`ExportSettings should match snapshot  1`] = `
         className="export-settings-buttons"
       >
         <Button
+          ariaLabel="csv"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -120,6 +124,7 @@ exports[`ExportSettings should match snapshot  1`] = `
           }
         />
         <Button
+          ariaLabel="owl"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -148,6 +153,7 @@ exports[`ExportSettings should match snapshot  1`] = `
         className="export-settings-buttons"
       >
         <Button
+          ariaLabel="print"
           badge={null}
           badgeClassName={null}
           icon={null}

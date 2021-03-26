@@ -46,6 +46,7 @@ const NetworkStylingEdgeByPropertyForm = ({
       <div className="network-styling-property-form-row">
         <h4 className="m-t-0 m-b-0">{t('ifNodeHasProperty')}</h4>
         <Dropdown
+          ariaLabel={t('selectStyle')}
           value={stylingPropertyObject.property}
           options={EDGE_PROPERTIES_DROPDOWN}
           filter
@@ -93,6 +94,7 @@ const NetworkStylingEdgeByPropertyForm = ({
             <div className="network-styling-property-form-row">
               <h4 className="m-t-0 m-b-0">{t('setNodeStyle')}</h4>
               <Dropdown
+                ariaLabel={t('selectStyle')}
                 value={stylingPropertyObject.styleType}
                 options={edgeStylingProperties}
                 filter
@@ -168,6 +170,7 @@ const NetworkStylingEdgeByPropertyForm = ({
               && (
                 <div className="network-styling-property-form-row">
                   <Dropdown
+                    ariaLabel={t(EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].placeholder)}
                     value={stylingPropertyObject.styleValue}
                     defaultValue={EDGE_STYLING_PROPERTIES[stylingPropertyObject.styleType].defaultValue}
                     options={
@@ -230,6 +233,7 @@ const NetworkStylingEdgeByPropertyForm = ({
               || stylingPropertyObject.styleValue
             ) && (
               <Button
+                ariaLabel={t('delete')}
                 label={t('delete')}
                 tooltip={t('delete')}
                 tooltipOptions={{
@@ -249,6 +253,7 @@ const NetworkStylingEdgeByPropertyForm = ({
           }
 
           <Button
+            ariaLabel={t('save')}
             label={t('save')}
             tooltip={t('save')}
             tooltipOptions={{

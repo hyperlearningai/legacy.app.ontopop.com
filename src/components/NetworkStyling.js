@@ -19,9 +19,9 @@ const NetworkStyling = ({
   const icon = isSaved ? 'pi pi-check' : 'pi pi-save'
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_STYLING)}
-      </div>
+      </h1>
       <div className="network-styling">
         <div className="card">
           <NetworkStylingNode />
@@ -30,6 +30,7 @@ const NetworkStyling = ({
 
         <div className="network-styling-button m-t-20 m-b-20">
           <Button
+            ariaLabel={t(isSaved ? 'saved' : 'save')}
             label={t(isSaved ? 'saved' : 'save')}
             disabled={isSaved}
             icon={icon}

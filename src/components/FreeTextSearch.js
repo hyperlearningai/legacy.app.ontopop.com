@@ -26,9 +26,9 @@ const FreeTextSearch = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
-      </div>
+      </h1>
 
       <div className="p-input-icon-right freetext-search-input">
         <i className="pi pi-search" />
@@ -88,6 +88,7 @@ const FreeTextSearch = ({
               >
                 <div className="freetext-search-row-delete">
                   <Button
+                    ariaLabel={t('removeGraph')}
                     tooltip={`${t('removeGraph')}: ${elementId}`}
                     onClick={() => {
                       updateStoreValue(['freeTextSelection', elementId], OPERATION_TYPE_DELETE)
@@ -105,6 +106,7 @@ const FreeTextSearch = ({
 
                 <div className="freetext-search-row-main">
                   <Button
+                    ariaLabel={t('focusElement')}
                     tooltip={`${t('focusElement')}: ${elementLabel}`}
                     disabled={elementId === selectedElement}
                     onClick={() => updateHighlightedElement({
