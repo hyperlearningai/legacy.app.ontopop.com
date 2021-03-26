@@ -6,7 +6,17 @@ const lastGraphIndex = 1
 
 const getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
-  selectedBoundingBoxNodes: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY']
+  selectedBoundingBoxNodes: ['1'],
+  graphData: {
+    'graph-0': {
+      isUpperOntologyVisible: true,
+      isSubClassEdgeVisible: true,
+      isDatasetVisible: true,
+      hiddenNodesProperties: [],
+      hiddenEdgesProperties: []
+    }
+  },
+  currentGraph: 'graph-0'
 }))
 store.getState = getState
 
@@ -28,37 +38,15 @@ describe('setBoundingBoxNodes', () => {
         ],
         'update',
         {
-          hiddenEdgesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          hiddenNodesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          isDatasetVisible: false,
+          hiddenEdgesProperties: [],
+          hiddenNodesProperties: [],
+          isDatasetVisible: true,
           isSubClassEdgeVisible: true,
-          isUpperOntologyVisible: false,
+          isUpperOntologyVisible: true,
           label: 'bounding-box-graph-2',
           options: {
             selectedBoundingBoxNodes: [
-              'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY',
+              '1',
             ],
           },
           type: 'bounding-box',

@@ -4,11 +4,19 @@ import store from '../../../store'
 const updateStoreValue = jest.fn()
 const lastGraphIndex = 1
 
-const getState = jest.fn().mockImplementation(() => ({
+store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
-
+  graphData: {
+    'graph-0': {
+      isUpperOntologyVisible: true,
+      isSubClassEdgeVisible: true,
+      isDatasetVisible: true,
+      hiddenNodesProperties: [],
+      hiddenEdgesProperties: []
+    }
+  },
+  currentGraph: 'graph-0'
 }))
-store.getState = getState
 
 describe('setFilteredNodes', () => {
   afterEach(() => {
@@ -34,33 +42,11 @@ describe('setFilteredNodes', () => {
         ],
         'update',
         {
-          hiddenEdgesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          hiddenNodesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          isDatasetVisible: false,
+          hiddenEdgesProperties: [],
+          hiddenNodesProperties: [],
+          isDatasetVisible: true,
           isSubClassEdgeVisible: true,
-          isUpperOntologyVisible: false,
+          isUpperOntologyVisible: true,
           label: 'nodes-filter-graph-2',
           options: {
             nodesFilters: [

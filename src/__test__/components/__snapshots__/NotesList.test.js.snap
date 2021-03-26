@@ -5289,6 +5289,14 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   nodesNotes={
     Array [
       Object {
@@ -10600,6 +10608,14 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   nodesNotes={
     Array [
       Object {
@@ -15911,6 +15927,14 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   nodesNotes={
     Array [
       Object {
@@ -21235,6 +21259,14 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   nodesNotes={
     Array [
       Object {

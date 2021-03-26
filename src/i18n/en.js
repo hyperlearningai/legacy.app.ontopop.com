@@ -38,6 +38,7 @@ export default {
   edgesFilter: 'Edges filter',
   selectNodes: 'Select nodes',
   selectEdges: 'Select edges',
+  selectEdge: 'Select edge',
   settings: 'Settings',
   styling: 'Styling',
   notes: 'Notes',

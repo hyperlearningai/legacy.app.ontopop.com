@@ -11,8 +11,8 @@ import {
 const setup = () => {
   const props = {
     currentGraph: 'graph-0',
-    availableEdges: new DataSet([]),
-    availableNodes: new DataSet([]),
+    showContextMenu: true,
+    isBoundingBoxSelectable: true,
     boundingBoxGeometry: {
       fixedPointX: 100,
       fixedPointY: 100,
@@ -21,13 +21,13 @@ const setup = () => {
       boundingBoxWidth: 200,
       boundingBoxHeight: 200
     },
-    isBoundingBoxSelectable: true,
-    isPhysicsOn: true,
+    availableEdges: new DataSet([]),
+    availableNodes: new DataSet([]),
     network: {},
     nodesIdsToDisplay: [],
     physicsHierarchicalView: true,
     physicsRepulsion: true,
-    showContextMenu: true,
+    isPhysicsOn: true,
     updateStoreValue: jest.fn(),
     globalEdgeStyling: {
       stylingEdgeLineColor: EDGE_COLOR,

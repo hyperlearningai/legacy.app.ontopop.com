@@ -1,20 +1,18 @@
 import setHighlightedNode from './setHighlightedNode'
 import setNodeOverlay from './setNodeOverlay'
 import setNodeStylesByProperty from './setNodeStylesByProperty'
-import highlightSpiderableNode from './highlightSpiderableNode'
 import setUserDefinedNodeStyle from './setUserDefinedNodeStyle'
 import resetNodeStyle from './resetNodeStyle'
+import addNodeBorders from './addNodeBorders'
 
 /**
  * Update store and graph based on node IDs to display
  * @param  {Object}   params
  * @param  {String}   params.nodeId           Node Id
- * @param  {Boolean}  params.skipSpider       Do not check if spiderable
  * @return { undefined }
  */
 const setNodeStyle = ({
   node,
-  skipSpider
 }) => {
   if (!node) return false
 
@@ -45,10 +43,8 @@ const setNodeStyle = ({
     nodeId: id
   })
 
-  if (skipSpider) return true
-
   // check if nodes are spiderable
-  highlightSpiderableNode({
+  addNodeBorders({
     node
   })
 }

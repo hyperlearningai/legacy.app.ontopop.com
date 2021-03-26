@@ -10,6 +10,14 @@ exports[`ShortestPath should match snapshot  1`] = `
   isShortestPathNode1Selectable={false}
   isShortestPathNode2Selectable={true}
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   shortestPathNode1="http://webprotege.stanford.edu/R7Ae7UPY2C3UrcNeeLv0gYV"
   shortestPathNode2="http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9"
   updateStoreValue={[MockFunction]}

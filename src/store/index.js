@@ -46,6 +46,7 @@ const initialState = {
   objectPropertiesFromApiBackup: {},
   totalEdgesPerNode: {},
   totalEdgesPerNodeBackup: {},
+  nodesSpiderability: {},
   network: undefined,
   annotationProperties: [],
   annotationPropertiesDatasets: [],
@@ -159,6 +160,8 @@ const initialState = {
   structuredPrevSelectedElement: undefined,
 
   // node selection
+  isElementSelectable: true,
+  selectedElement: undefined,
   isNodeSelectable: false,
   selectedNode: '',
   prevSelectedNode: undefined,
@@ -243,7 +246,11 @@ const initialState = {
       type: ALGO_TYPE_FULL,
       ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
     }
-  }
+  },
+
+  // dropdown labels
+  nodesDropdownLabels: [],
+  edgesDropdownLabels: [],
 }
 
 const store = createStore(initialState)

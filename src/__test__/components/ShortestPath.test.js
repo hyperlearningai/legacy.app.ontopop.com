@@ -10,6 +10,10 @@ const setup = () => {
     isShortestPathNode1Selectable: false,
     isShortestPathNode2Selectable: true,
     updateStoreValue: jest.fn(),
+    nodesDropdownLabels: [{
+      id: '1',
+      value: 'node'
+    }]
   }
 
   const component = shallow(<ShortestPath {...props} />)

@@ -14,19 +14,14 @@ import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import { SIDEBAR_VIEW_NOTES } from '../constants/views'
 import actions from '../store/actions'
-import setNodesStyle from '../utils/networkStyling/setNodesStyle'
-import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
 import NotesListNote from './NotesListNote'
 import NotesListAddNew from './NotesListAddNew'
 import addNodesBorders from '../utils/networkStyling/addNodesBorders'
 import { SORT_FIELDS, MIN_DATE } from '../constants/notes'
-import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
-import getNode from '../utils/nodesEdgesUtils/getNode'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
-import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
-import highlightSelectedEdge from '../utils/edgesSelection/highlightSelectedEdge'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 
 const NotesList = ({
   notes,
@@ -35,7 +30,8 @@ const NotesList = ({
   updateStoreValue,
   selectedNotesType,
   noteElementId,
-  classesFromApi
+  classesFromApi,
+  nodesDropdownLabels
 }) => {
   const { t } = useTranslation()
 
@@ -52,29 +48,24 @@ const NotesList = ({
       updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, undefined)
       updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, undefined)
 
-      setNodesStyle()
-      setEdgesStyle()
-
       addNodesBorders()
     }
   }, [])
 
   useEffect(() => {
     if (selectedNotesType === 'node' && noteElementId && noteElementId !== '') {
-      setNodesStyle()
-
-      highlightSelectedNode({
+      updateHighlightedElement({
         updateStoreValue,
-        selectedNode: noteElementId
+        id: noteElementId,
+        type: 'node'
       })
     }
 
     if (selectedNotesType === 'edge' && noteElementId && noteElementId !== '') {
-      setEdgesStyle()
-
-      highlightSelectedEdge({
+      updateHighlightedElement({
         updateStoreValue,
-        selectedEdge: noteElementId
+        id: noteElementId,
+        type: 'edge'
       })
     }
   }, [noteElementId, selectedNotesType])
@@ -137,14 +128,7 @@ const NotesList = ({
     </span>
   )
 
-  const availableNodesList = getNodeIds().map((nodeId) => {
-    const node = getNode(nodeId)
-
-    return ({
-      value: node.id,
-      label: node.label
-    })
-  }).filter((node) => node.label)
+  const availableNodesList = nodesDropdownLabels.filter((node) => node.label)
 
   const availableEdgesList = getEdgeIds().map((edgeId) => {
     const {
@@ -350,6 +334,7 @@ NotesList.propTypes = {
   selectedNotesType: PropTypes.string.isRequired,
   updateStoreValue: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
+  nodesDropdownLabels: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
 NotesList.defaultProps = {
@@ -362,14 +347,16 @@ const mapToProps = ({
   nodesNotes,
   edgesNotes,
   noteElementId,
-  classesFromApi
+  classesFromApi,
+  nodesDropdownLabels
 }) => ({
   notes,
   selectedNotesType,
   nodesNotes,
   edgesNotes,
   noteElementId,
-  classesFromApi
+  classesFromApi,
+  nodesDropdownLabels
 })
 
 export default connect(

@@ -1,6 +1,5 @@
 import {
   useState,
-  useEffect
 } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
@@ -11,53 +10,18 @@ import { Dropdown } from 'primereact/dropdown'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import setNeighbourNodes from '../utils/nodeNeighbourhood/setNeighbourNodes'
-import getNodeIds from '../utils/nodesEdgesUtils/getNodeIds'
-import setNodesStyle from '../utils/networkStyling/setNodesStyle'
-import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
-import getElementLabel from '../utils/networkStyling/getElementLabel'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 
 const NodeNeighbourhood = ({
   updateStoreValue,
-  selectedNeighbourNode,
+  selectedElement,
+  nodesDropdownLabels
 }) => {
   const { t } = useTranslation()
 
   const [separationDegree, setSeparationDegree] = useState(1)
 
-  useEffect(() => () => {
-    updateStoreValue(['isNeighbourNodeSelectable'], OPERATION_TYPE_UPDATE, false)
-    updateStoreValue(['selectedNeighbourNode'], OPERATION_TYPE_UPDATE, '')
-
-    setNodesStyle()
-  }, [])
-
-  useEffect(() => {
-    if (selectedNeighbourNode && selectedNeighbourNode !== '') {
-      setNodesStyle()
-
-      highlightSelectedNode({
-        updateStoreValue,
-        selectedNode: selectedNeighbourNode
-      })
-    }
-  }, [selectedNeighbourNode])
-
-  const availableNodeIds = getNodeIds()
-
-  const availableNodes = availableNodeIds.length > 0 ? availableNodeIds.map(
-    (nodeId) => {
-      const label = getElementLabel({
-        type: 'node',
-        id: nodeId
-      })
-
-      return ({
-        value: nodeId,
-        label: label || nodeId
-      })
-    }
-  ) : []
+  const [selectedNode, selectedNodeType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, false]
 
   return (
     <>
@@ -72,10 +36,14 @@ const NodeNeighbourhood = ({
         <div className="node-neighbourhood-dropdown">
           <Dropdown
             id="node-select"
-            value={selectedNeighbourNode}
+            value={selectedNode}
             filter
-            options={availableNodes}
-            onChange={(e) => updateStoreValue(['selectedNeighbourNode'], OPERATION_TYPE_UPDATE, e.value)}
+            options={nodesDropdownLabels}
+            onChange={(e) => updateHighlightedElement({
+              updateStoreValue,
+              id: e.value,
+              type: 'node'
+            })}
             placeholder={t('selectNode')}
           />
         </div>
@@ -90,7 +58,7 @@ const NodeNeighbourhood = ({
             buttonLayout="horizontal"
             step={1}
             min={1}
-            disabled={selectedNeighbourNode === ''}
+            disabled={selectedNodeType !== 'node'}
             decrementButtonClassName="p-button-danger"
             incrementButtonClassName="p-button-success"
             incrementButtonIcon="pi pi-plus"
@@ -103,7 +71,7 @@ const NodeNeighbourhood = ({
           <Button
             tooltip={t('showNeighbourhood')}
             className="node-neighbourhood-button"
-            disabled={selectedNeighbourNode === ''}
+            disabled={selectedNodeType !== 'node'}
             icon="pi pi-chevron-right"
             iconPos="right"
             label={t('show')}
@@ -120,17 +88,20 @@ const NodeNeighbourhood = ({
 
 NodeNeighbourhood.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
-  selectedNeighbourNode: PropTypes.string.isRequired,
+  selectedElement: PropTypes.string.isRequired,
+  nodesDropdownLabels: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
 const mapToProps = ({
   graphData,
   currentGraph,
-  selectedNeighbourNode,
+  selectedElement,
+  nodesDropdownLabels
 }) => ({
   graphData,
   currentGraph,
-  selectedNeighbourNode,
+  selectedElement,
+  nodesDropdownLabels
 })
 
 export default connect(

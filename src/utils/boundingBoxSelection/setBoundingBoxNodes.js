@@ -1,5 +1,4 @@
 import { ALGO_TYPE_BOUNDING_BOX } from '../../constants/algorithms'
-import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
@@ -15,7 +14,9 @@ const setBoundingBoxNodes = ({
 }) => {
   const {
     lastGraphIndex,
-    selectedBoundingBoxNodes
+    selectedBoundingBoxNodes,
+    graphData,
+    currentGraph
   } = store.getState()
 
   const newGraphIndex = lastGraphIndex + 1
@@ -24,13 +25,25 @@ const setBoundingBoxNodes = ({
 
   const label = `bounding-box-${newCurrentGraph}`
 
+  const {
+    isUpperOntologyVisible,
+    isSubClassEdgeVisible,
+    isDatasetVisible,
+    hiddenNodesProperties,
+    hiddenEdgesProperties
+  } = graphData[currentGraph]
+
   const graphValue = {
     label,
     type: ALGO_TYPE_BOUNDING_BOX,
     options: {
       selectedBoundingBoxNodes,
     },
-    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+    isUpperOntologyVisible,
+    isSubClassEdgeVisible,
+    isDatasetVisible,
+    hiddenNodesProperties,
+    hiddenEdgesProperties
   }
 
   updateStoreValue(['graphData', newCurrentGraph], OPERATION_TYPE_UPDATE, graphValue)

@@ -1,4 +1,4 @@
-import { OPERATION_TYPE_ADD } from '../../constants/store'
+import { OPERATION_TYPE_ADD, OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 import getEdge from './getEdge'
 import getNode from './getNode'
@@ -6,16 +6,18 @@ import removeEdge from './removeEdge'
 
 /**
  * Remove node from graph
- * @param  {String}     nodeId                            Node id
+* @param   {Object}     params
+ * @param  {String}     params.nodeId                     Node id
  * @param  {Function}   params.updateStoreValue           updateStoreValue action
  * @return { undefined }
 \ */
 const removeNode = ({
   nodeId,
-  updateStoreValue
+  updateStoreValue,
 }) => {
   const {
     availableNodes,
+    nodesDropdownLabels
   } = store.getState()
 
   const isVisible = getNode(nodeId)
@@ -24,6 +26,15 @@ const removeNode = ({
 
   availableNodes.remove(nodeId)
   updateStoreValue(['availableNodesCount'], OPERATION_TYPE_ADD, -1)
+
+  // remove from labels
+  const updatedDropdownLabels = nodesDropdownLabels.slice()
+  const nodeIndex = updatedDropdownLabels.findIndex((node) => node.value === nodeId)
+
+  if (nodeIndex > -1) {
+    updatedDropdownLabels.splice(nodeIndex, 1)
+    updateStoreValue(['nodesDropdownLabels'], OPERATION_TYPE_UPDATE, updatedDropdownLabels)
+  }
 
   // delete connected edges
   const edges = getEdge({

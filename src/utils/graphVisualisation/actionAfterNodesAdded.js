@@ -1,7 +1,4 @@
-import highlightSpiderableNodes from '../networkStyling/highlightSpiderableNodes'
-import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import store from '../../store'
-import setNodesOverlay from '../networkStyling/setNodesOverlay'
 import { OPERATION_TYPE_ADD, OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
@@ -28,12 +25,6 @@ const actionAfterNodesAdded = ({
 
   updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, -1)
 
-  // perform highlight check here as nodes' edges are not fully loaded during loop
-  highlightSpiderableNodes()
-  setNodesOverlay()
-
-  const displayedNodes = getNodeIds()
-
   // restore isPhysicsOn state
   setTimeout(() => {
     if (!currentPhysicsOnState) {
@@ -47,7 +38,7 @@ const actionAfterNodesAdded = ({
     network?.fit({
       animation: false // true
     })
-  }, displayedNodes.length > 100 ? 3000 : 1000)
+  }, 250)
 }
 
 export default actionAfterNodesAdded

@@ -1,44 +1,25 @@
-import { useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Dropdown } from 'primereact/dropdown'
+import { orderBy } from 'lodash'
 import actions from '../store/actions'
 import EdgesSelectionDetails from './EdgesSelectionDetails'
 import { SIDEBAR_VIEW_EDGES_SELECTION } from '../constants/views'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
-import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
-import highlightSelectedEdge from '../utils/edgesSelection/highlightSelectedEdge'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 
 const EdgesSelection = ({
-  selectedEdge,
+  selectedElement,
   updateStoreValue,
 }) => {
   const { t } = useTranslation()
 
-  useEffect(() => () => {
-    updateStoreValue(['selectedEdge'], OPERATION_TYPE_UPDATE, undefined)
-
-    setEdgesStyle()
-  }, [])
-
-  useEffect(() => {
-    if (selectedEdge && selectedEdge !== '') {
-      setEdgesStyle()
-
-      highlightSelectedEdge({
-        updateStoreValue,
-        selectedEdge
-      })
-    }
-  }, [selectedEdge])
-
   const availableEdgeIds = getEdgeIds()
 
-  const availableEdges = availableEdgeIds.length > 0 ? availableEdgeIds.map((edgeId) => {
+  const availableEdges = availableEdgeIds.length > 0 ? orderBy(availableEdgeIds.map((edgeId) => {
     const {
       label,
       from,
@@ -63,14 +44,14 @@ const EdgesSelection = ({
       label: connectionLabel,
       userDefined
     })
-  }) : 0
+  }), ['label'], ['asc']) : 0
 
-  const isEdgeSelected = selectedEdge && selectedEdge !== ''
+  const [selectedEdge, selectedEdgeType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, false]
 
   return (
     <>
       <div className="sidebar-main-title">
-        {!isEdgeSelected
+        {selectedEdgeType !== 'edge'
           ? t(SIDEBAR_VIEW_EDGES_SELECTION)
           : (
             <>
@@ -90,13 +71,17 @@ const EdgesSelection = ({
             value={selectedEdge}
             filter
             options={availableEdges}
-            onChange={(e) => updateStoreValue(['selectedEdge'], OPERATION_TYPE_UPDATE, e.value)}
+            onChange={(e) => updateHighlightedElement({
+              updateStoreValue,
+              id: e.value,
+              type: 'edge'
+            })}
             placeholder={t('selectEdge')}
           />
         </div>
 
         {
-          isEdgeSelected && (
+          selectedEdgeType === 'edge' && (
             <EdgesSelectionDetails
               edgeId={selectedEdge}
             />
@@ -108,18 +93,18 @@ const EdgesSelection = ({
 }
 
 EdgesSelection.propTypes = {
-  selectedEdge: PropTypes.string,
+  selectedElement: PropTypes.shape(),
   updateStoreValue: PropTypes.func.isRequired,
 }
 
 EdgesSelection.defaultProps = {
-  selectedEdge: undefined
+  selectedElement: undefined
 }
 
 const mapToProps = ({
-  selectedEdge,
+  selectedElement,
 }) => ({
-  selectedEdge,
+  selectedElement
 })
 
 export default connect(

@@ -4,11 +4,15 @@ import toJson from 'enzyme-to-json'
 import NodesSelection from '../../components/NodesSelection'
 
 const setup = ({
-  selectedNode
+  selectedElement
 }) => {
   const props = {
     updateStoreValue: jest.fn(),
-    selectedNode,
+    selectedElement,
+    nodesDropdownLabels: [{
+      id: '1',
+      value: 'node'
+    }]
   }
 
   const component = shallow(<NodesSelection {...props} />)
@@ -28,7 +32,7 @@ describe('NodesSelection', () => {
     const {
       component
     } = setup({
-      selectedNode: undefined
+      selectedElement: undefined
     })
 
     expect(toJson(component)).toMatchSnapshot()
@@ -38,7 +42,7 @@ describe('NodesSelection', () => {
     const {
       component
     } = setup({
-      selectedNode: 'http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'
+      selectedElement: { 1: 'node' }
     })
 
     expect(toJson(component)).toMatchSnapshot()

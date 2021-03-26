@@ -1,5 +1,4 @@
 import { ALGO_TYPE_NEIGHBOURHOOD } from '../../constants/algorithms'
-import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
@@ -17,9 +16,15 @@ const setNeighbourNodes = ({
 }) => {
   const {
     classesFromApi,
-    selectedNeighbourNode,
+    selectedElement,
     lastGraphIndex,
+    currentGraph,
+    graphData
   } = store.getState()
+
+  const [selectedNeighbourNode, selectedNodeType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, false]
+
+  if (selectedNodeType !== 'node') return false
 
   const newGraphIndex = lastGraphIndex + 1
 
@@ -28,6 +33,14 @@ const setNeighbourNodes = ({
   const selectedNodeId = classesFromApi[selectedNeighbourNode] ? classesFromApi[selectedNeighbourNode].id : ''
   const label = `neighbourhood-${newCurrentGraph}`
 
+  const {
+    isUpperOntologyVisible,
+    isSubClassEdgeVisible,
+    isDatasetVisible,
+    hiddenNodesProperties,
+    hiddenEdgesProperties
+  } = graphData[currentGraph]
+
   const graphValue = {
     label,
     type: ALGO_TYPE_NEIGHBOURHOOD,
@@ -35,7 +48,11 @@ const setNeighbourNodes = ({
       selectedNodeId,
       separationDegree,
     },
-    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+    isUpperOntologyVisible,
+    isSubClassEdgeVisible,
+    isDatasetVisible,
+    hiddenNodesProperties,
+    hiddenEdgesProperties
   }
 
   updateStoreValue(['graphData', newCurrentGraph], OPERATION_TYPE_UPDATE, graphValue)

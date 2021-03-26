@@ -1,59 +1,39 @@
 /* eslint max-len:0 */
-import { DataSet } from 'vis-data'
 import setOntologyDeleteNode from '../../../utils/editOntology/setOntologyDeleteNode'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import {
-  updateStoreValueFixture
-} from '../../fixtures/setOntologyDeleteNode'
-import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
-import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
-import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
-import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
+import removeNode from '../../../utils/nodesEdgesUtils/removeNode'
+import getEdgeIds from '../../../utils/nodesEdgesUtils/getEdgeIds'
+import { OPERATION_TYPE_ARRAY_DELETE, OPERATION_TYPE_DELETE, OPERATION_TYPE_PUSH_UNIQUE } from '../../../constants/store'
+import checkNodeSpiderability from '../../../utils/networkStyling/checkNodeSpiderability'
 
 const updateStoreValue = jest.fn()
 const t = (id) => en[id]
 
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
-jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
 jest.mock('../../../utils/networkStyling/setElementsStyle')
-jest.mock('../../../utils/nodesEdgesUtils/countEdges')
-jest.mock('../../../utils/nodesEdgesUtils/countNodes')
+jest.mock('../../../utils/nodesEdgesUtils/removeNode')
+jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
+jest.mock('../../../utils/nodesEdgesUtils/getEdgeIds')
+jest.mock('../../../utils/networkStyling/checkNodeSpiderability')
 
-const selectedElement = Object.keys(classesFromApi).slice(0, Object.keys(classesFromApi).length - 2)
-
-countEdges.mockImplementation(() => 1)
-countNodes.mockImplementation(() => 1)
+const selectedElement = Object.keys(classesFromApi).slice(0, 2)
 
 store.getState = jest.fn().mockImplementation(() => ({
-  classesFromApi,
-  objectPropertiesFromApi,
-  deletedNodes: [],
-  deletedEdges: [],
-  nodesEdges,
   totalEdgesPerNode,
-  availableNodes: new DataSet(
-    Object.keys(classesFromApi).map((property) => ({
-      ...classesFromApi[property],
-    }))
-  ),
-  availableEdges: new DataSet(
-    Object.keys(objectPropertiesFromApi).map((property) => ({
-      ...objectPropertiesFromApi[property],
-      from: objectPropertiesFromApi[property].to.toString(),
-      to: objectPropertiesFromApi[property].from.toString(),
-    }))
-  )
+  objectPropertiesFromApi
 }))
+
+getEdgeIds.mockImplementation(() => ['12', '33', '40'])
 
 describe('setOntologyDeleteNode', () => {
   afterEach(() => {
@@ -113,25 +93,607 @@ describe('setOntologyDeleteNode', () => {
       {
         updateStoreValue,
         edge: {
-          edgeId: 4094,
-          from: '4000',
-          id: '4094',
+          edgeId: 3221,
+          from: '2',
+          id: '3221',
           label: 'Found in',
           rdfsLabel: 'Found in',
           role: 'Found in',
-          to: '137',
+          to: '3203',
           userDefined: false,
         },
       }
     )
 
-    expect(setElementsStyle).toHaveBeenCalledWith()
+    expect(removeNode).toHaveBeenLastCalledWith(
+      { nodeId: '2', updateStoreValue }
+    )
+    expect(removeEdge).toHaveBeenLastCalledWith(
+      {
+        edge: {
+          edgeId: 3221,
+          from: '2',
+          id: '3221',
+          label: 'Found in',
+          rdfsLabel: 'Found in',
+          role: 'Found in',
+          to: '3203',
+          userDefined: false,
+        },
+        updateStoreValue
+      }
+    )
 
-    expect(updateStoreValue.mock.calls).toEqual(updateStoreValueFixture)
+    expect(checkNodeSpiderability.mock.calls).toEqual(
+      [[{ nodeId: '123', updateStoreValue, visibleEdges: ['12', '33', '40'] }],
+        [{ nodeId: '4', updateStoreValue, visibleEdges: ['12', '33', '40'] }],
+        [{ nodeId: '56', updateStoreValue, visibleEdges: ['12', '33', '40'] }],
+        [{ nodeId: '138', updateStoreValue, visibleEdges: ['12', '33', '40'] }],
+        [{ nodeId: '170', updateStoreValue, visibleEdges: ['12', '33', '40'] }],
+        [{ nodeId: '168', updateStoreValue, visibleEdges: ['12', '33', '40'] }],
+        [{ nodeId: '3203', updateStoreValue, visibleEdges: ['12', '33', '40'] }]]
+    )
+
+    expect(updateStoreValue.mock.calls).toEqual(
+      [
+        [
+          [
+            'totalEdgesPerNode',
+            '177'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '11'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '177'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '11'
+        ],
+        [
+          [
+            'nodesEdges',
+            '177'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '11'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '11'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '147'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '12'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '147'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '12'
+        ],
+        [
+          [
+            'nodesEdges',
+            '147'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '12'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '12'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '44'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '441'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '44'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '441'
+        ],
+        [
+          [
+            'nodesEdges',
+            '44'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '441'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '441'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '78'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '781'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '78'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '781'
+        ],
+        [
+          [
+            'nodesEdges',
+            '78'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '781'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '781'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '81'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '811'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '81'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '811'
+        ],
+        [
+          [
+            'nodesEdges',
+            '81'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '811'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '811'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '142'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1421'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '142'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1421'
+        ],
+        [
+          [
+            'nodesEdges',
+            '142'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1421'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '1421'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '178'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1781'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '178'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1781'
+        ],
+        [
+          [
+            'nodesEdges',
+            '178'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1781'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '1781'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '185'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1855'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '185'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1855'
+        ],
+        [
+          [
+            'nodesEdges',
+            '185'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1855'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '1855'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '192'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1921'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '192'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1921'
+        ],
+        [
+          [
+            'nodesEdges',
+            '192'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1921'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '1921'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'deletedNodes'
+          ],
+          OPERATION_TYPE_PUSH_UNIQUE,
+          '1'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '1'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'nodesEdges',
+            '1'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'classesFromApi',
+            '1'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '123'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '21'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '123'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '21'
+        ],
+        [
+          [
+            'nodesEdges',
+            '123'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '21'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '21'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '4'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '22'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '4'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '22'
+        ],
+        [
+          [
+            'nodesEdges',
+            '4'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '22'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '22'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '56'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '23'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '56'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '23'
+        ],
+        [
+          [
+            'nodesEdges',
+            '56'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '23'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '23'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '138'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '24'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '138'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '24'
+        ],
+        [
+          [
+            'nodesEdges',
+            '138'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '24'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '24'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '170'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '25'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '170'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '25'
+        ],
+        [
+          [
+            'nodesEdges',
+            '170'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '25'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '25'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '168'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1687'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '168'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1687'
+        ],
+        [
+          [
+            'nodesEdges',
+            '168'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '1687'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '1687'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '3203'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '3221'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '3203'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '3221'
+        ],
+        [
+          [
+            'nodesEdges',
+            '3203'
+          ],
+          OPERATION_TYPE_ARRAY_DELETE,
+          '3221'
+        ],
+        [
+          [
+            'objectPropertiesFromApi',
+            '3221'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'deletedNodes'
+          ],
+          OPERATION_TYPE_PUSH_UNIQUE,
+          '2'
+        ],
+        [
+          [
+            'totalEdgesPerNode',
+            '2'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'nodesEdges',
+            '2'
+          ],
+          OPERATION_TYPE_DELETE
+        ],
+        [
+          [
+            'classesFromApi',
+            '2'
+          ],
+          OPERATION_TYPE_DELETE
+        ]
+      ]
+    )
 
     expect(showNotification).toHaveBeenLastCalledWith(
       {
-        message: 'Nodes deleted: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 1813, 1842, 1870, 1898, 1927, 1948, 1980, 2016, 2037, 2054, 2075, 2092, 2109, 2128, 2146, 2164, 2181, 2201, 2220, 2238, 2256, 2274, 2293, 2311, 2330, 2348, 2366, 2384, 2401, 2420, 2441, 2459, 2478, 2496, 2517, 2538, 2556, 2573, 2590, 2609, 2628, 2645, 2662, 2680, 2700, 2719, 2737, 2754, 2772, 2793, 2811, 2829, 2849, 2874, 2892, 2910, 2928, 2946, 2964, 2981, 3000, 3022, 3044, 3066, 3088, 3106, 3124, 3142, 3160, 3178, 3203, 3222, 3241, 3261, 3279, 3297, 3314, 3332, 3352, 3371, 3389, 3407, 3425, 3444, 3462, 3480, 3501, 3519, 3537, 3555, 3573, 3592, 3611, 3631, 3651, 3670, 3689, 3707, 3725, 3743, 3760, 3778, 3796, 3814, 3832, 3850, 3868, 3886, 3908, 3926, 3943, 3961, 3979, 3996, 4000',
+        message: 'Node deleted: 2',
         type: 'success'
       }
     )

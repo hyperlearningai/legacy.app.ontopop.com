@@ -8,8 +8,7 @@ import GraphContextMenu from './GraphContextMenu'
 import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
-import queueGraphElements from '../utils/graphVisualisation/queueGraphElements'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import addNodesToGraph from '../utils/graphVisualisation/addNodesToGraph'
 
 const GraphVisualisation = ({
   currentGraph,
@@ -46,9 +45,7 @@ const GraphVisualisation = ({
     if (isInitialMountCurrentGraph.current) {
       isInitialMountCurrentGraph.current = false
     } else if (nodesIdsToDisplay.length > 0) {
-      updateStoreValue(['isNetworkLoading'], OPERATION_TYPE_UPDATE, true)
-
-      queueGraphElements({
+      addNodesToGraph({
         updateStoreValue
       })
     }
@@ -151,7 +148,6 @@ GraphVisualisation.defaultProps = {
 const mapToProps = ({
   currentGraph,
   showContextMenu,
-  contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   availableNodes,
@@ -160,14 +156,11 @@ const mapToProps = ({
   nodesIdsToDisplay,
   physicsHierarchicalView,
   physicsRepulsion,
-  selectedNeighbourNode,
-  selectedNodes,
   isPhysicsOn,
   globalEdgeStyling
 }) => ({
   currentGraph,
   showContextMenu,
-  contextMenuData,
   isBoundingBoxSelectable,
   boundingBoxGeometry,
   availableNodes,
@@ -176,8 +169,6 @@ const mapToProps = ({
   nodesIdsToDisplay,
   physicsHierarchicalView,
   physicsRepulsion,
-  selectedNeighbourNode,
-  selectedNodes,
   isPhysicsOn,
   globalEdgeStyling
 })

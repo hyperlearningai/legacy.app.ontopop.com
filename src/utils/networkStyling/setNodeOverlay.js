@@ -7,13 +7,13 @@ import updateNodes from '../nodesEdgesUtils/updateNodes'
  * @param  {String} params.nodeId           Node ID
  * @return { undefined }
  */
-const setNodesOverlay = ({
+const setNodeOverlay = ({
   nodeId
 }) => {
   const {
     shortestPathNodes,
     isNodeOverlay,
-    stylingNodeOverlayOpacity
+    globalNodeStyling,
   } = store.getState()
 
   if (!isNodeOverlay) return false
@@ -23,9 +23,9 @@ const setNodesOverlay = ({
   if (isOverlay) {
     updateNodes({
       id: nodeId,
-      opacity: stylingNodeOverlayOpacity
+      opacity: globalNodeStyling.stylingNodeOverlayOpacity
     })
   }
 }
 
-export default setNodesOverlay
+export default setNodeOverlay

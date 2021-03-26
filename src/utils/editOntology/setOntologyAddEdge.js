@@ -1,14 +1,13 @@
-import store from '../../store'
 import addEdge from '../nodesEdgesUtils/addEdge'
 import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
-import setNodeStyle from '../networkStyling/setNodeStyle'
-import setEdgeStyleByProperty from '../networkStyling/setEdgeStyleByProperty'
 import getNode from '../nodesEdgesUtils/getNode'
 import { API_ENDPOINT_GRAPH_EDGES_CREATE } from '../../constants/api'
 import httpCall from '../apiCalls/httpCall'
 import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
-import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+import { OPERATION_TYPE_PUSH_UNIQUE, OPERATION_TYPE_UPDATE } from '../../constants/store'
+import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import checkNodeSpiderability from '../networkStyling/checkNodeSpiderability'
 
 /**
  * ADd ontology edge
@@ -23,21 +22,6 @@ const setOntologyAddEdge = async ({
   selectedElementProperties,
   t
 }) => {
-  const {
-    objectPropertiesFromApi,
-    objectPropertiesFromApiBackup,
-    addedEdges,
-    nodesEdges,
-    totalEdgesPerNode,
-    totalEdgesPerNodeBackup,
-  } = store.getState()
-
-  const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
-  const newObjectPropertiesFromApiBackup = JSON.parse(JSON.stringify(objectPropertiesFromApiBackup))
-  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNodeBackup = JSON.parse(JSON.stringify(totalEdgesPerNodeBackup))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
-
   const {
     from,
     to,
@@ -83,11 +67,13 @@ const setOntologyAddEdge = async ({
 
   const { id, userDefined, userId } = data[Object.keys(data)[0]]
 
+  const stringId = id.toString()
+
   const edge = {
     from,
     to,
-    edgeId: id,
-    id,
+    edgeId: stringId,
+    id: stringId,
     label: edgeLabel,
     rdfsLabel: edgeLabel,
     rdfAbout: edgeId,
@@ -95,40 +81,29 @@ const setOntologyAddEdge = async ({
     userId
   }
 
-  newObjectPropertiesFromApi[id] = edge
-  newObjectPropertiesFromApiBackup[id] = edge
+  updateStoreValue(['objectPropertiesFromApi', stringId], OPERATION_TYPE_UPDATE, edge)
+  updateStoreValue(['objectPropertiesFromApiBackup', stringId], OPERATION_TYPE_UPDATE, edge)
 
   // add to triples
-  newEdgesPerNode[from].push(id)
-  newEdgesPerNodeBackup[from].push(id)
-  newEdgesPerNode[to].push(id)
-  newEdgesPerNodeBackup[to].push(id)
+  updateStoreValue(['totalEdgesPerNode', from], OPERATION_TYPE_PUSH_UNIQUE, stringId)
+  updateStoreValue(['totalEdgesPerNode', from], OPERATION_TYPE_PUSH_UNIQUE, stringId)
+  updateStoreValue(['totalEdgesPerNodeBackup', to], OPERATION_TYPE_PUSH_UNIQUE, stringId)
+  updateStoreValue(['totalEdgesPerNodeBackup', to], OPERATION_TYPE_PUSH_UNIQUE, stringId)
+
+  updateStoreValue(['addedEdges'], OPERATION_TYPE_PUSH_UNIQUE, stringId)
 
   const isFromVisible = getNode(from) !== null
   const isToVisible = getNode(from) !== null
 
   if (isFromVisible && isToVisible) {
-    newNodesEdges[from].push(id)
-    newNodesEdges[to].push(id)
+    updateStoreValue(['nodesEdges', from], OPERATION_TYPE_PUSH_UNIQUE, stringId)
+    updateStoreValue(['nodesEdges', to], OPERATION_TYPE_PUSH_UNIQUE, stringId)
   }
-
-  // add data
-  const newAddedEdges = [
-    ...addedEdges,
-    ...[id]
-  ]
-
-  updateStoreValue(['objectPropertiesFromApiBackup'], OPERATION_TYPE_UPDATE, newObjectPropertiesFromApiBackup)
-  updateStoreValue(['objectPropertiesFromApi'], OPERATION_TYPE_UPDATE, newObjectPropertiesFromApi)
-  updateStoreValue(['nodesEdges'], OPERATION_TYPE_UPDATE, newNodesEdges)
-  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, newEdgesPerNode)
-  updateStoreValue(['totalEdgesPerNodeBackup'], OPERATION_TYPE_UPDATE, newEdgesPerNodeBackup)
-  updateStoreValue(['addedEdges'], OPERATION_TYPE_UPDATE, newAddedEdges)
 
   // add edge to graph and style
   if (isFromVisible && isToVisible) {
     const isVisible = checkEdgeVisibility({
-      edgeId: edge.id,
+      edgeId: stringId,
     })
 
     if (isVisible) {
@@ -137,20 +112,23 @@ const setOntologyAddEdge = async ({
         updateStoreValue,
       })
 
-      setNodeStyle({
+      const visibleEdges = getEdgeIds()
+
+      checkNodeSpiderability({
         nodeId: from,
-      })
-      setNodeStyle({
-        nodeId: to,
+        updateStoreValue,
+        visibleEdges
       })
 
-      setEdgeStyleByProperty({
-        edgeId: id
+      checkNodeSpiderability({
+        nodeId: to,
+        updateStoreValue,
+        visibleEdges
       })
     }
   }
 
-  message = `${t('edgeAdded')}: ${id}`
+  message = `${t('edgeAdded')}: ${stringId}`
 
   showNotification({
     message,

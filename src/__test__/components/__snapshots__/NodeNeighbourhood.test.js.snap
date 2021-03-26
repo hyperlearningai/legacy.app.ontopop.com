@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NodeNeighbourhood should match snapshot  1`] = `
+exports[`NodeNeighbourhood should match snapshot when no selected node 1`] = `
 <Connect
   actions={
     Object {
@@ -8,10 +8,40 @@ exports[`NodeNeighbourhood should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
-  selectedNeighbourNode={
+  nodesDropdownLabels={
     Array [
-      "http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY",
+      Object {
+        "id": "1",
+        "value": "node",
+      },
     ]
+  }
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`NodeNeighbourhood should match snapshot when selected node 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
+  selectedElement={
+    Object {
+      "1": "node",
+    }
   }
   updateStoreValue={[MockFunction]}
 >

@@ -1,7 +1,7 @@
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
-import resetNodesStyles from '../networkStyling/resetNodesStyles'
 import getNodesFromBoundingBox from './getNodesFromBoundingBox'
+import resetBoundingBoxNodes from './resetBoundingBoxNodes'
 
 /**
  * Update X-Y position of bounding box on mouse down event listener
@@ -42,7 +42,7 @@ const onMouseDown = ({
 
       updateStoreValue(['boundingBoxGeometry'], OPERATION_TYPE_UPDATE, newBoundingBoxGeometry)
     } else {
-      resetNodesStyles()
+      resetBoundingBoxNodes()
 
       getNodesFromBoundingBox({
         updateStoreValue

@@ -3,17 +3,21 @@ import {
   NOTIFY_SUCCESS,
   NOTIFY_WARNING
 } from '../../constants/notifications'
-import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+import {
+  OPERATION_TYPE_ARRAY_DELETE, OPERATION_TYPE_DELETE, OPERATION_TYPE_PUSH_UNIQUE
+} from '../../constants/store'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
-import setElementsStyle from '../networkStyling/setElementsStyle'
+import checkNodeSpiderability from '../networkStyling/checkNodeSpiderability'
+import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import removeEdge from '../nodesEdgesUtils/removeEdge'
 import removeNode from '../nodesEdgesUtils/removeNode'
 import showNotification from '../notifications/showNotification'
 
 /**
  * Delete ontology nodes
  * @param  {Object}         params
- * @param  {Function}       params.updateStoreValue                  updateStoreValue action
+ * @param  {Function}       params.updateStoreValue           updateStoreValue action
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
@@ -24,21 +28,9 @@ const setOntologyDeleteNode = async ({
   t
 }) => {
   const {
-    classesFromApi,
-    deletedNodes,
-    deletedEdges,
-    nodesEdges,
     totalEdgesPerNode,
     objectPropertiesFromApi
   } = store.getState()
-
-  const newClassesFromApi = JSON.parse(JSON.stringify(classesFromApi))
-  const newNodesEdges = JSON.parse(JSON.stringify(nodesEdges))
-  const newEdgesPerNode = JSON.parse(JSON.stringify(totalEdgesPerNode))
-  const newDeletedNodes = deletedNodes.slice()
-  const newDeletedEdges = deletedEdges.slice()
-
-  const nodesDeleted = []
 
   if (selectedElement.length > 0) {
     // on each selected node, first remove connection then remove node
@@ -78,88 +70,62 @@ const setOntologyDeleteNode = async ({
         continue
       }
 
-      nodesDeleted.push(nodeId)
+      // remove connections with node
+      const edgeIds = totalEdgesPerNode[nodeId]
+      const nodesToRestyle = []
 
-      // add to deleted nodes
-      if (!newDeletedNodes.includes(nodeId)) {
-        newDeletedNodes.push(nodeId)
-      }
-
-      // remove connection with node
-      if (newNodesEdges[nodeId]) {
-        const connections = newNodesEdges[nodeId]
-
-        connections.map((connection) => {
-          const edge = objectPropertiesFromApi[connection]
+      if (edgeIds) {
+        edgeIds.forEach((edgeId) => {
+          const edge = objectPropertiesFromApi[edgeId]
           const {
             from,
             to
           } = edge
 
-          const isFrom = from === nodeId
-          const nodeIdToCheck = isFrom ? to : from
+          const nodeIdToCheck = from === nodeId ? to : from
+          updateStoreValue(['totalEdgesPerNode', nodeIdToCheck], OPERATION_TYPE_ARRAY_DELETE, edgeId)
+          updateStoreValue(['totalEdgesPerNode', nodeIdToCheck], OPERATION_TYPE_ARRAY_DELETE, edgeId)
+          updateStoreValue(['nodesEdges', nodeIdToCheck], OPERATION_TYPE_ARRAY_DELETE, edgeId)
+          updateStoreValue(['objectPropertiesFromApi', edgeId], OPERATION_TYPE_DELETE)
 
-          if (newNodesEdges[nodeIdToCheck]) {
-            const connectionIndex = newNodesEdges[nodeIdToCheck].indexOf(connection)
-
-            const updatedConnections = newNodesEdges[nodeIdToCheck].splice(connectionIndex, 1)
-
-            newNodesEdges[nodeIdToCheck] = updatedConnections
+          if (!nodesToRestyle.includes(nodeIdToCheck)) {
+            nodesToRestyle.push(nodeIdToCheck)
           }
 
-          if (newEdgesPerNode[nodeIdToCheck]) {
-            const connectionIndex = newEdgesPerNode[nodeIdToCheck].indexOf(connection)
-
-            const updatedConnections = newEdgesPerNode[nodeIdToCheck].splice(connectionIndex, 1)
-
-            newEdgesPerNode[nodeIdToCheck] = updatedConnections
-          }
-
-          // add to deleted connections
-          if (!newDeletedEdges.includes(connection)) {
-            newDeletedEdges.push(connection)
-          }
-
-          return true
+          removeEdge({
+            edge,
+            updateStoreValue
+          })
         })
-
-        delete newNodesEdges[nodeId]
       }
 
-      if (newEdgesPerNode[nodeId]) {
-        delete newEdgesPerNode[nodeId]
+      if (nodesToRestyle.length > 0 && index === selectedElement.length - 1) {
+        const visibleEdges = getEdgeIds()
+
+        nodesToRestyle.forEach((nodeToRestyleId) => checkNodeSpiderability({
+          nodeId: nodeToRestyleId,
+          updateStoreValue,
+          visibleEdges
+        }))
       }
 
-      delete newClassesFromApi[nodeId]
+      // add to deleted nodes
+      updateStoreValue(['deletedNodes'], OPERATION_TYPE_PUSH_UNIQUE, nodeId)
+      updateStoreValue(['totalEdgesPerNode', nodeId], OPERATION_TYPE_DELETE)
+      updateStoreValue(['nodesEdges', nodeId], OPERATION_TYPE_DELETE)
+      updateStoreValue(['classesFromApi', nodeId], OPERATION_TYPE_DELETE)
 
       removeNode({
         nodeId,
         updateStoreValue,
       })
+
+      const deleteMessage = `${t('nodeDeleted')}: ${nodeId}`
+      showNotification({
+        message: deleteMessage,
+        type: NOTIFY_SUCCESS
+      })
     }
-  }
-
-  if (nodesDeleted.length > 0) {
-    const message = `${t('nodesDeleted')}: ${nodesDeleted.join(', ')}`
-    showNotification({
-      message,
-      type: NOTIFY_SUCCESS
-    })
-  }
-
-  updateStoreValue(['nodesEdges'], OPERATION_TYPE_UPDATE, newNodesEdges)
-  updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, newEdgesPerNode)
-  updateStoreValue(['deletedNodes'], OPERATION_TYPE_UPDATE, newDeletedNodes)
-  updateStoreValue(['deletedEdges'], OPERATION_TYPE_UPDATE, newDeletedEdges)
-  updateStoreValue(['classesFromApi'], OPERATION_TYPE_UPDATE, newClassesFromApi)
-  setElementsStyle()
-
-  if (nodesDeleted.length > 0) {
-    const message = `${t('nodesDeleted')}: ${nodesDeleted.join(', ')}`
-    showNotification({
-      message,
-      type: NOTIFY_SUCCESS
-    })
   }
 }
 
