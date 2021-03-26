@@ -117,7 +117,7 @@ const CustomQuery = ({
                   collapsed
                 />
                 <div className="custom-query-buttons">
-                 c{t('exportAsJson')}
+                  <Button
                     tooltip={t('exportAsJson')}
                     tooltipOptions={{ position: 'top' }}
                     className="custom-query-buttons-button"
