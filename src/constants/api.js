@@ -31,6 +31,9 @@ export const API_ENDPOINT_STYLING = `${process.env.NEXT_PUBLIC_STYLING_ENDPOINT}
 // COLLABORATION
 export const API_ENDPOINT_COLLABORATION = `${process.env.NEXT_PUBLIC_COLLABORATION_API_ENDPOINT}/api/graph`
 
+// VOCABULARY
+export const API_ENDPOINT_VOCABULARY = `${process.env.NEXT_PUBLIC_VOCABULARY_API_ENDPOINT}/api/graph`
+
 export const GET_GRAPH_NOTES = `${API_ENDPOINT_COLLABORATION}/notes`
 export const GET_GRAPH_NOTE = `${API_ENDPOINT_COLLABORATION}/notes/{id}`
 export const POST_CREATE_GRAPH_NOTE = `${API_ENDPOINT_COLLABORATION}/notes/create`
@@ -51,11 +54,11 @@ export const POST_CREATE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_
 export const PATCH_UPDATE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes/{id}`
 export const DELETE_EDGE_NOTE = `${API_ENDPOINT_COLLABORATION}/edges/{edge_id}/notes/{id}`
 
-export const GET_NODE_SYNONYMS = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms`
-export const GET_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
-export const POST_CREATE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/create`
-export const PATCH_UPDATE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
-export const DELETE_NODE_SYNONYM = `${API_ENDPOINT_COLLABORATION}/nodes/{node_id}/synonyms/{id}`
+export const GET_NODE_SYNONYMS = `${API_ENDPOINT_VOCABULARY}/nodes/{node_id}/synonyms`
+export const GET_NODE_SYNONYM = `${API_ENDPOINT_VOCABULARY}/nodes/{node_id}/synonyms/{id}`
+export const POST_CREATE_NODE_SYNONYM = `${API_ENDPOINT_VOCABULARY}/nodes/{node_id}/synonyms/create`
+export const PATCH_UPDATE_NODE_SYNONYM = `${API_ENDPOINT_VOCABULARY}/nodes/{node_id}/synonyms/{id}`
+export const DELETE_NODE_SYNONYM = `${API_ENDPOINT_VOCABULARY}/nodes/{node_id}/synonyms/{id}`
 
 // ONTOLOGY
 export const API_ENDPOINT_ONTOLOGY = `${process.env.NEXT_PUBLIC_ONTOLOGY_ENDPOINT}/api/ontology`
