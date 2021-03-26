@@ -2,3 +2,8 @@
   background-color: #FDC600;
   color: #212529;
 }
+
+.p-button,
+.p-selectbutton .p-button.p-highlight{
+  background-color: $indigo;
+}
