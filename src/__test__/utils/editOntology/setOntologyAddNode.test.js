@@ -7,13 +7,12 @@ import en from '../../../i18n/en'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import { LABEL_PROPERTY, RDF_ABOUT_PROPERTY } from '../../../constants/graph'
 import showNotification from '../../../utils/notifications/showNotification'
-import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
+import { OPERATION_TYPE_PUSH_UNIQUE, OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 
 const t = (id) => en[id]
 jest.mock('../../../utils/notifications/showNotification')
@@ -51,8 +50,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
@@ -85,8 +83,7 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
@@ -110,7 +107,8 @@ describe('setOntologyAddNode', () => {
       data: {
         123: {
           id: '123',
-          userDefined: true
+          userDefined: true,
+          userId: 'valid@email.com'
         }
       }
     }))
@@ -126,117 +124,51 @@ describe('setOntologyAddNode', () => {
     }))
 
     await setOntologyAddNode({
-      addNumber,
-      setStoreState,
+      updateStoreValue,
       selectedElementProperties,
       t
     })
 
     expect(addNode).toHaveBeenCalledWith(
       {
-        addNumber,
+        updateStoreValue,
         node: {
-          borderWidth: undefined,
-          borderWidthSelected: undefined,
-          color: {
-            background: undefined,
-            border: undefined,
-            highlight: {
-              background: undefined,
-              border: undefined,
-            },
-            hover: {
-              background: undefined,
-              border: undefined,
-            },
-          },
-          font: {
-            align: undefined,
-            bold: '700',
-            color: undefined,
-            face: 'Montserrat',
-            size: undefined,
-          },
           'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
           id: '123',
-          label: 'New\nnode',
-          title: 'New\nnode',
-          userId: undefined,
           nodeType: undefined,
           rdfAbout: '123',
           rdfsLabel: 'New node',
-          shape: undefined,
-          size: undefined,
           userDefined: true,
+          userId: 'valid@email.com',
         }
       }
     )
 
-    expect(setNodeStyle).toHaveBeenCalledWith(
-      { nodeId: '123' }
-    )
-
-    expect(setStoreState.mock.calls).toEqual(
+    expect(updateStoreValue.mock.calls).toEqual(
       [
-        [
-          'classesFromApiBackup',
-          {
-            ...classesFromApi,
-            123: {
-              id: '123',
-              'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              label: 'New\nnode',
-              rdfAbout: '123',
-              rdfsLabel: 'New node',
-              userDefined: true,
-              title: 'New\nnode',
-              userId: undefined,
-              nodeType: undefined,
-            },
-          },
-        ],
-        [
-          'classesFromApi',
-          {
-            ...classesFromApi,
-            123: {
-              id: '123',
-              'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
-              label: 'New\nnode',
-              rdfAbout: '123',
-              rdfsLabel: 'New node',
-              userDefined: true,
-              title: 'New\nnode',
-              userId: undefined,
-              nodeType: undefined,
-            },
-          },
-        ],
-        [
-          'nodesEdges',
-          {
-            123: []
-          }
-        ],
-        [
-          'totalEdgesPerNode',
-          {
-            ...totalEdgesPerNode,
-            123: []
-          }
-        ],
-        [
-          'totalEdgesPerNodeBackup',
-          {
-            ...totalEdgesPerNode,
-            123: []
-          }
-        ],
-
-        [
-          'addedNodes',
-          ['123']
-        ],
+        [['classesFromApi', '123'], OPERATION_TYPE_UPDATE, {
+          'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
+          id: '123',
+          nodeType: undefined,
+          rdfAbout: '123',
+          rdfsLabel: 'New node',
+          userDefined: true,
+          userId: 'valid@email.com'
+        }],
+        [['classesFromApiBackup', '123'], OPERATION_TYPE_UPDATE, {
+          'http://webprotege.stanford.edu/R8Zrr9RnWOq4DeZDzBOW2J4': 'Another node',
+          id: '123',
+          nodeType: undefined,
+          rdfAbout: '123',
+          rdfsLabel: 'New node',
+          userDefined: true,
+          userId: 'valid@email.com'
+        }],
+        [['nodesEdges', '123'], OPERATION_TYPE_UPDATE, []],
+        [['totalEdgesPerNode', '123'], OPERATION_TYPE_UPDATE, []],
+        [['totalEdgesPerNodeBackup', '123'], OPERATION_TYPE_UPDATE, []],
+        [['addedNodes'], OPERATION_TYPE_PUSH_UNIQUE, '123'],
+        [['nodesSpiderability', '123'], OPERATION_TYPE_UPDATE, 'false']
       ]
     )
   })

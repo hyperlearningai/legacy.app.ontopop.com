@@ -4,22 +4,13 @@ exports[`NotesListAddNew should match snapshot when edge 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   mapToProps={[Function]}
   noteElementId="12"
   selectedNotesType="edge"
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -29,22 +20,13 @@ exports[`NotesListAddNew should match snapshot when graph 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   mapToProps={[Function]}
   noteElementId="12"
   selectedNotesType="graph"
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -54,22 +36,13 @@ exports[`NotesListAddNew should match snapshot when node 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   mapToProps={[Function]}
   noteElementId="12"
   selectedNotesType="node"
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

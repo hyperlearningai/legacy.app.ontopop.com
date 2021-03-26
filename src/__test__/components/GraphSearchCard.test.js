@@ -5,8 +5,7 @@ import GraphSearchCard from '../../components/GraphSearchCard'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
-    addToObject: jest.fn(),
+    updateStoreValue: jest.fn(),
     searchResult: {
       id: '123',
       rdfsLabel: 'test',

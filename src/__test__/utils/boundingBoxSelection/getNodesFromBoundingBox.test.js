@@ -2,8 +2,9 @@ import getNodesFromBoundingBox from '../../../utils/boundingBoxSelection/getNode
 import store from '../../../store'
 import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 
@@ -44,10 +45,12 @@ describe('getNodesFromBoundingBox', () => {
     getNode.mockImplementationOnce(() => ([]))
 
     await getNodesFromBoundingBox({
-      setStoreState
+      updateStoreValue
     })
 
-    expect(setStoreState).toHaveBeenCalledWith('selectedBoundingBoxNodes', [])
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['selectedBoundingBoxNodes'], OPERATION_TYPE_UPDATE, []], [['selectedBoundingBoxNodes'], OPERATION_TYPE_UPDATE, []]]
+    )
   })
 
   it('should work correctly when nodes', async () => {
@@ -86,7 +89,7 @@ describe('getNodesFromBoundingBox', () => {
     }]))
 
     await getNodesFromBoundingBox({
-      setStoreState
+      updateStoreValue
     })
 
     expect(updateNodes.mock.calls).toEqual(
@@ -103,13 +106,9 @@ describe('getNodesFromBoundingBox', () => {
         id: '234'
       }]]
     )
-    expect(setStoreState).toHaveBeenCalledWith('selectedBoundingBoxNodes', [
-      {
-        id: '123',
-      },
-      {
-        id: '234',
-      },
-    ])
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['selectedBoundingBoxNodes'], OPERATION_TYPE_UPDATE, [{ id: '123' }, { id: '234' }]
+
+    )
   })
 })

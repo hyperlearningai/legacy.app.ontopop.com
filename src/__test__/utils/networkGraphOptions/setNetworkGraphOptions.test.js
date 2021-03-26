@@ -1,15 +1,10 @@
 import setNetworkGraphOptions from '../../../utils/networkGraphOptions/setNetworkGraphOptions'
 import store from '../../../store'
 import { ALGO_TYPE_FULL } from '../../../constants/algorithms'
-import toggleElements from '../../../utils/networkGraphOptions/toggleElements'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const addToObject = jest.fn()
-const toggleFromArrayInKey = jest.fn()
-const setStoreState = jest.fn()
-const addNumber = jest.fn()
-
-jest.mock('../../../utils/networkGraphOptions/toggleElements')
+const updateStoreValue = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   currentGraph: 'graph-0',
@@ -23,6 +18,7 @@ store.getState = jest.fn().mockImplementation(() => ({
       isDatasetVisible: false,
       hiddenNodesProperties: {},
       hiddenEdgesProperties: {},
+      nodesIds: ['1']
     }
   }
 }))
@@ -45,30 +41,37 @@ describe('setNetworkGraphOptions', () => {
       isDatasetVisible,
       hiddenNodesProperties,
       hiddenEdgesProperties,
-      addToObject,
-      addNumber,
-      toggleFromArrayInKey,
-      setStoreState,
+      updateStoreValue,
     })
 
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphData',
-      'graph-0',
-      {
-        label: 'Main',
-        noDelete: true,
-        type: ALGO_TYPE_FULL,
-        isUpperOntologyVisible,
-        isSubClassEdgeVisible,
-        isDatasetVisible,
-        hiddenNodesProperties,
-        hiddenEdgesProperties
-      }
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[
+        ['graphData',
+          'graph-0'],
+        OPERATION_TYPE_UPDATE,
+        {
+          label: 'Main',
+          noDelete: true,
+          type: ALGO_TYPE_FULL,
+          isUpperOntologyVisible,
+          isSubClassEdgeVisible,
+          isDatasetVisible,
+          hiddenNodesProperties,
+          hiddenEdgesProperties,
+          nodesIds: [
+            '1',
+          ],
+        }
+      ],
+      [
+        [
+          'nodesIdsToDisplay',
+        ],
+        'update',
+        [
+          '1',
+        ],
+      ]]
     )
-    expect(toggleElements).toHaveBeenCalledWith({
-      addNumber,
-      toggleFromArrayInKey,
-      setStoreState,
-    })
   })
 })

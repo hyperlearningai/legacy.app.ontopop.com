@@ -1,3 +1,4 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 import getEdge from '../nodesEdgesUtils/getEdge'
 import getNode from '../nodesEdgesUtils/getNode'
@@ -7,11 +8,11 @@ import updateNodes from '../nodesEdgesUtils/updateNodes'
 /**
  * Highlight selected element
  * @param  {Object}   params
- * @param  {Function} params.setStoreState           setStoreState action
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @return { undefined }
  */
 const highlightElement = ({
-  setStoreState
+  updateStoreValue
 }) => {
   const {
     freeTextSelection,
@@ -29,7 +30,7 @@ const highlightElement = ({
   if (type === 'node') {
     const node = getNode(freeTextSelectedElement)
 
-    setStoreState('freeTextPrevSelectedElement', node)
+    updateStoreValue(['freeTextPrevSelectedElement'], OPERATION_TYPE_UPDATE, node)
 
     const color = node.color || {}
 
@@ -50,7 +51,7 @@ const highlightElement = ({
 
   const edge = getEdge(freeTextSelectedElement)
 
-  setStoreState('freeTextPrevSelectedElement', edge)
+  updateStoreValue(['freeTextPrevSelectedElement'], OPERATION_TYPE_UPDATE, edge)
 
   const color = edge.color || {}
 

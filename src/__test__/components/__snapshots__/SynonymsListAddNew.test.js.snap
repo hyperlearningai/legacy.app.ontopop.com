@@ -4,21 +4,12 @@ exports[`SynonymsListAddNew should match snapshot 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   mapToProps={[Function]}
-  setStoreState={[MockFunction]}
   synonymElementId="12"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

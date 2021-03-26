@@ -10,7 +10,7 @@ import saveStyling from '../utils/networkStyling/saveStyling'
 import actions from '../store/actions'
 
 const NetworkStyling = ({
-  addNumber
+  updateStoreValue
 }) => {
   const { t } = useTranslation()
 
@@ -37,7 +37,7 @@ const NetworkStyling = ({
             id="save-styling-button"
             onClick={() => saveStyling({
               setSaved,
-              addNumber,
+              updateStoreValue,
               t
             })}
           />
@@ -48,7 +48,7 @@ const NetworkStyling = ({
 }
 
 NetworkStyling.propTypes = {
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 export default connect(

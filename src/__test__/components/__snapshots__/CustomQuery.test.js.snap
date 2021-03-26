@@ -4,19 +4,9 @@ exports[`EdgesSelection should match snapshot when customQueryOutput  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
-  addToArray={[MockFunction]}
   customQueryOutput="{ items: [] }"
   customQueryStringHistory={
     Array [
@@ -24,8 +14,7 @@ exports[`EdgesSelection should match snapshot when customQueryOutput  1`] = `
     ]
   }
   mapToProps={[Function]}
-  removeFromArray={[MockFunction]}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -35,27 +24,16 @@ exports[`EdgesSelection should match snapshot when no customQueryOutput  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
-  addToArray={[MockFunction]}
   customQueryStringHistory={
     Array [
       "q.v()",
     ]
   }
   mapToProps={[Function]}
-  removeFromArray={[MockFunction]}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

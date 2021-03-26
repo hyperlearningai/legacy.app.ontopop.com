@@ -3,29 +3,31 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { AutoComplete } from 'primereact/autocomplete'
-import { BsSearch } from 'react-icons/bs'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Divider } from 'primereact/divider'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import getSuggestions from '../utils/graphSearch/getSuggestions'
 import searchGraph from '../utils/graphSearch/searchGraph'
 import GraphSearchCard from './GraphSearchCard'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const GraphSearch = ({
-  setStoreState,
+  updateStoreValue,
   entrySearchResults,
   isQueried,
+  entrySearchValue
 }) => {
   const { t } = useTranslation()
 
-  useEffect(() => () => {
-    setStoreState('isQueried', false)
-    setStoreState('entrySearchResults', [])
-  }, [])
-
-  const [search, setSearch] = useState('')
   const [suggestions, setSuggestions] = useState([])
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => () => {
+    updateStoreValue(['isQueried'], OPERATION_TYPE_UPDATE, false)
+    updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, [])
+    updateStoreValue(['entrySearchValue'], OPERATION_TYPE_UPDATE, '')
+  }, [])
 
   return (
     <div className="graph-search">
@@ -47,16 +49,14 @@ const GraphSearch = ({
                 e.preventDefault()
 
                 searchGraph({
-                  value: search,
-                  setStoreState,
-                  setSearch,
+                  updateStoreValue,
                   setLoading
                 })
               }}
               >
                 <AutoComplete
                   name="search"
-                  value={search}
+                  value={entrySearchValue}
                   id="main-search"
                   suggestions={suggestions}
                   completeMethod={(e) => {
@@ -72,19 +72,27 @@ const GraphSearch = ({
                   onSelect={(e) => {
                     const { value } = e.value
 
+                    updateStoreValue(['entrySearchValue'], OPERATION_TYPE_UPDATE, value)
+
                     searchGraph({
-                      value,
-                      setStoreState,
-                      setSearch,
+                      updateStoreValue,
                       setLoading
                     })
                   }}
                   onChange={(e) => {
-                    setStoreState('isQueried', false)
-                    setSearch(e.value)
+                    updateStoreValue(['isQueried'], OPERATION_TYPE_UPDATE, false)
+                    updateStoreValue(['entrySearchValue'], OPERATION_TYPE_UPDATE, e.value)
                   }}
                 />
-                <BsSearch />
+                <Button
+                  icon="pi pi-search"
+                  id="search-icon"
+                  className="p-button-rounded"
+                  onClick={() => searchGraph({
+                    updateStoreValue,
+                    setLoading
+                  })}
+                />
                 <input
                   name="submit"
                   className="hidden"
@@ -101,7 +109,7 @@ const GraphSearch = ({
             <Divider />
             <div className="graph-search-results">
               <div className="graph-search-results-number">
-                {`${t('searchResults')}: ${entrySearchResults.length}`}
+                {`${t('searchResultsFor')} ${entrySearchValue}: ${entrySearchResults.length}`}
               </div>
               <div className="graph-search-results-list">
                 {
@@ -123,17 +131,20 @@ const GraphSearch = ({
 }
 
 GraphSearch.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   entrySearchResults: PropTypes.arrayOf(PropTypes.shape).isRequired,
   isQueried: PropTypes.bool.isRequired,
+  entrySearchValue: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
   entrySearchResults,
   isQueried,
+  entrySearchValue
 }) => ({
   entrySearchResults,
   isQueried,
+  entrySearchValue
 })
 
 export default connect(

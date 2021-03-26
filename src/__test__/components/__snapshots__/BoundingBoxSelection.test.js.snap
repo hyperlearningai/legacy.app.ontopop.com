@@ -4,22 +4,13 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addToObject={[MockFunction]}
   isBoundingBoxSelectionInternal={true}
   mapToProps={[Function]}
   selectedBoundingBoxNodes={Array []}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -29,22 +20,13 @@ exports[`BoundingBoxSelection should match snapshot when isBoundingBoxSelectionI
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addToObject={[MockFunction]}
   isBoundingBoxSelectionInternal={false}
   mapToProps={[Function]}
   selectedBoundingBoxNodes={Array []}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

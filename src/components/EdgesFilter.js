@@ -16,8 +16,7 @@ import {
 } from '../constants/graph'
 
 const EdgesFilter = ({
-  setStoreState,
-  addToObject
+  updateStoreValue
 }) => {
   const { t } = useTranslation()
 
@@ -148,9 +147,8 @@ const EdgesFilter = ({
           iconPos="right"
           label={t('show')}
           onClick={() => setFilteredEdges({
-            setStoreState,
+            updateStoreValue,
             edgesFilters,
-            addToObject
           })}
         />
       </div>
@@ -159,8 +157,7 @@ const EdgesFilter = ({
 }
 
 EdgesFilter.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 export default connect(

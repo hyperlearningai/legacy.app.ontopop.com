@@ -6,7 +6,7 @@ import getNode from '../../../utils/nodesEdgesUtils/getNode'
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 const commonState = {
   globalNodeStyling: {
@@ -34,7 +34,7 @@ describe('setNodesOverlay', () => {
     }]))
 
     await setNodesOverlay({
-      setStoreState
+      updateStoreValue
     })
 
     expect(updateNodes).toHaveBeenCalledTimes(0)
@@ -52,7 +52,7 @@ describe('setNodesOverlay', () => {
     }]))
 
     await setNodesOverlay({
-      setStoreState
+      updateStoreValue
     })
 
     expect(updateNodes).toHaveBeenCalledWith(

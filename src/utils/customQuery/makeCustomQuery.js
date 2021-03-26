@@ -6,22 +6,19 @@ import showNotification from '../notifications/showNotification'
 import { API_ENDPOINT_GRAPH_QUERY } from '../../constants/api'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
+import { OPERATION_TYPE_PUSH, OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Get graph data from API
  * @param  {Object}   params
- * @param  {Function} params.setStoreState              setStoreState action
- * @param  {Function} params.addNumber                  addNumber action
- * @param  {Function} params.addToArray                 addToArray action
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @param  {Function} params.setLoader                  set query loader
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
 const makeCustomQuery = async ({
   customQueryString,
-  addNumber,
-  setStoreState,
-  addToArray,
+  updateStoreValue,
   setLoader,
   t
 }) => {
@@ -30,13 +27,13 @@ const makeCustomQuery = async ({
   } = store.getState()
 
   setLoader(true)
-  setStoreState('customQueryFromLatestOutput', '')
-  addToArray('customQueryStringHistory', customQueryString, { alwaysAdd: true })
+  updateStoreValue(['customQueryFromLatestOutput'], OPERATION_TYPE_UPDATE, '')
+  updateStoreValue(['customQueryStringHistory'], OPERATION_TYPE_PUSH, customQueryString)
 
   const withAuth = !!user.token
 
   const response = await httpCall({
-    addNumber,
+    updateStoreValue,
     withAuth,
     body: {
       query: customQueryString
@@ -60,8 +57,8 @@ const makeCustomQuery = async ({
     })
   }
 
-  setStoreState('customQueryFromLatestOutput', customQueryString)
-  setStoreState('customQueryOutput', data)
+  updateStoreValue(['customQueryFromLatestOutput'], OPERATION_TYPE_UPDATE, customQueryString)
+  updateStoreValue(['customQueryOutput'], OPERATION_TYPE_UPDATE, data)
 }
 
 export default makeCustomQuery

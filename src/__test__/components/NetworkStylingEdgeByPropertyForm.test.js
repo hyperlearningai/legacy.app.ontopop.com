@@ -6,7 +6,7 @@ import { SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT } from '../../constants/graph'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     index: 0,
     stylingProperty: JSON.parse(JSON.stringify(SUBCLASS_EDGE_STYLING_DEFAULT_OBJECT)),
     isDeleteAvailable: true,

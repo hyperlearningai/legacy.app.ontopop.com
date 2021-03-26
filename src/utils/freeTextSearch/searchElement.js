@@ -2,17 +2,18 @@ import { RESERVED_PROPERTIES } from '../../constants/graph'
 import store from '../../store'
 import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Search free-text in elements' properties
  * @param  {Object}   params
  * @param  {String}   params.search                  Search string
- * @param  {Function} params.setStoreState           setStoreState action
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @return { undefined }
  */
 const searchElement = ({
   search,
-  setStoreState
+  updateStoreValue
 }) => {
   const {
     classesFromApi,
@@ -22,7 +23,7 @@ const searchElement = ({
   const elementsToDisplay = {}
 
   if (search === '') {
-    return setStoreState('freeTextSelection', JSON.parse(JSON.stringify(elementsToDisplay)))
+    return updateStoreValue(['freeTextSelection'], OPERATION_TYPE_UPDATE, JSON.parse(JSON.stringify(elementsToDisplay)))
   }
 
   const nodeIds = getNodeIds()
@@ -74,7 +75,7 @@ const searchElement = ({
     }
   }
 
-  return setStoreState('freeTextSelection', JSON.parse(JSON.stringify(elementsToDisplay)))
+  return updateStoreValue(['freeTextSelection'], OPERATION_TYPE_UPDATE, JSON.parse(JSON.stringify(elementsToDisplay)))
 }
 
 export default searchElement

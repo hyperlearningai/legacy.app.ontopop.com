@@ -9,11 +9,10 @@ import setOntologyRestoreEdge from './setOntologyRestoreEdge'
 /**
  * Set graph full data
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  addNumber action
  * @param  {String}         params.operation                  Operation mode [add / update / delete / restore]
  * @param  {String|Array}   params.selectedElement            Selected node(s)/edge(s) IDs
  * @param  {String}         params.type                       Element type (node / edge)
- * @param  {Function}       params.setStoreState              setStoreState action
+ * @param  {Function}       params.updateStoreValue           updateStoreValue action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @return {undefined}
  */
@@ -21,19 +20,15 @@ const setOntology = ({
   operation,
   type,
   selectedElement,
-  setStoreState,
+  updateStoreValue,
   selectedElementProperties,
-  addNumber,
-  toggleFromArrayInKey,
   t
 }) => {
   if (operation === 'restore') {
     if (type === 'node') {
       setOntologyRestoreNode({
-        addNumber,
         selectedElement,
-        setStoreState,
-        toggleFromArrayInKey,
+        updateStoreValue,
         t
       })
     }
@@ -41,9 +36,7 @@ const setOntology = ({
     if (type === 'edge') {
       setOntologyRestoreEdge({
         selectedElement,
-        setStoreState,
-        addNumber,
-        toggleFromArrayInKey,
+        updateStoreValue,
         t
       })
     }
@@ -53,19 +46,15 @@ const setOntology = ({
     if (type === 'node') {
       setOntologyDeleteNode({
         selectedElement,
-        setStoreState,
-        addNumber,
-        toggleFromArrayInKey,
+        updateStoreValue,
         t
       })
     }
 
     if (type === 'edge') {
       setOntologyDeleteEdge({
-        setStoreState,
+        updateStoreValue,
         selectedElement,
-        addNumber,
-        toggleFromArrayInKey,
         t
       })
     }
@@ -75,10 +64,8 @@ const setOntology = ({
     if (type === 'node') {
       setOntologyUpdateNode({
         selectedElement,
-        setStoreState,
+        updateStoreValue,
         selectedElementProperties,
-        toggleFromArrayInKey,
-        addNumber,
         t
       })
     }
@@ -87,8 +74,7 @@ const setOntology = ({
   if (operation === 'add') {
     if (type === 'node') {
       setOntologyAddNode({
-        addNumber,
-        setStoreState,
+        updateStoreValue,
         selectedElementProperties,
         t
       })
@@ -96,10 +82,8 @@ const setOntology = ({
 
     if (type === 'edge') {
       setOntologyAddEdge({
-        setStoreState,
+        updateStoreValue,
         selectedElementProperties,
-        toggleFromArrayInKey,
-        addNumber,
         t,
       })
     }

@@ -137,7 +137,7 @@ const EditOntology = ({
     }
   ), 'label'), ['label'], ['asc'])
 
-  const deletedNodesList = deletedNodes?.map(
+  const deletedNodesList = deletedNodes.length > 0 ? deletedNodes.map(
     (nodeId) => {
       const label = getElementLabel({
         type: 'node',
@@ -149,9 +149,9 @@ const EditOntology = ({
         label
       })
     }
-  )
+  ) : []
 
-  const deletedEdgesList = deletedEdges?.map(
+  const deletedEdgesList = deletedEdges.length > 0 ? deletedEdges.map(
     (edgeId) => {
       const label = getElementLabel({
         type: 'edge',
@@ -163,7 +163,7 @@ const EditOntology = ({
         label
       })
     }
-  )
+  ) : []
 
   return (
     <>

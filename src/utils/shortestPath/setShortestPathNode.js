@@ -1,3 +1,4 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 import getNode from '../nodesEdgesUtils/getNode'
 import updateNodeBackground from './updateNodeBackground'
@@ -6,13 +7,13 @@ import updateNodeBackground from './updateNodeBackground'
  * Set shortest path
  * @param  {Object}   params
  * @param  {Boolean}  params.state              Shortest path node state to update
- * @param  {Function} params.setStoreState      setStoreState action
+ * @param  {Function} params.updateStoreValue   updateStoreValue action
  * @param  {Function} params.nodeId             Selected node id
  * @return { undefined }
  */
 const setShortestPathNode = ({
   state,
-  setStoreState,
+  updateStoreValue,
   nodeId,
 }) => {
   const {
@@ -47,7 +48,7 @@ const setShortestPathNode = ({
   }
 
   const originalNode = getNode(nodeId)
-  setStoreState(`${state}Object`, JSON.parse(JSON.stringify(originalNode)))
+  updateStoreValue([`${state}Object`], OPERATION_TYPE_UPDATE, JSON.parse(JSON.stringify(originalNode)))
 
   updateNodeBackground({
     background: stylingNodeHighlightBackgroundColor,
@@ -55,7 +56,7 @@ const setShortestPathNode = ({
     originalNode,
   })
 
-  setStoreState(state, nodeId)
+  updateStoreValue([state], OPERATION_TYPE_UPDATE, nodeId)
 }
 
 export default setShortestPathNode

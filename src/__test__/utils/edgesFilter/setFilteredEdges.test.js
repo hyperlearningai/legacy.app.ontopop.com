@@ -1,16 +1,22 @@
 import setFilteredEdges from '../../../utils/edgesFilter/setFilteredEdges'
 import store from '../../../store'
-import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../../constants/graph'
 
-const setStoreState = jest.fn()
-const addToObject = jest.fn()
+const updateStoreValue = jest.fn()
 const lastGraphIndex = 1
 
-const getState = jest.fn().mockImplementation(() => ({
+store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
-
+  graphData: {
+    'graph-0': {
+      isUpperOntologyVisible: true,
+      isSubClassEdgeVisible: true,
+      isDatasetVisible: true,
+      hiddenNodesProperties: [],
+      hiddenEdgesProperties: []
+    }
+  },
+  currentGraph: 'graph-0'
 }))
-store.getState = getState
 
 describe('setFilteredEdges', () => {
   afterEach(() => {
@@ -24,35 +30,56 @@ describe('setFilteredEdges', () => {
     }]
 
     await setFilteredEdges({
-      setStoreState,
+      updateStoreValue,
       edgesFilters,
-      addToObject
     })
 
-    expect(setStoreState.mock.calls).toEqual([
+    expect(updateStoreValue.mock.calls).toEqual([
       [
-        'currentGraph',
+        [
+          'graphData',
+          'graph-2',
+        ],
+        'update',
+        {
+          hiddenEdgesProperties: [],
+          hiddenNodesProperties: [],
+          isDatasetVisible: true,
+          isSubClassEdgeVisible: true,
+          isUpperOntologyVisible: true,
+          label: 'edges-filter-graph-2',
+          options: {
+            edgesFilters: [
+              {
+                property: 'rdfsLabel',
+                value: 'road',
+              },
+            ],
+          },
+          type: 'edges-filter',
+        },
+      ],
+      [
+        [
+          'currentGraph',
+        ],
+        'update',
         'graph-2',
       ],
       [
-        'lastGraphIndex',
+        [
+          'lastGraphIndex',
+        ],
+        'update',
         2,
       ],
       [
-        'sidebarView',
+        [
+          'sidebarView',
+        ],
+        'update',
         'networkGraphs',
       ],
     ])
-    expect(addToObject).toHaveBeenCalledWith(
-      'graphData',
-      'graph-2', {
-        label: 'edges-filter-graph-2',
-        options: {
-          edgesFilters
-        },
-        type: 'edges-filter',
-        ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
-      }
-    )
   })
 })

@@ -13,26 +13,27 @@ import actions from '../store/actions'
 import { SIDEBAR_VIEW_BOUNDING_BOX } from '../constants/views'
 import setBoundingBoxNodes from '../utils/boundingBoxSelection/setBoundingBoxNodes'
 import getNodesFromBoundingBox from '../utils/boundingBoxSelection/getNodesFromBoundingBox'
-import resetNodesStyles from '../utils/networkStyling/resetNodesStyles'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import resetBoundingBoxNodes from '../utils/boundingBoxSelection/resetBoundingBoxNodes'
 
 const BoundingBoxSelection = ({
-  setStoreState,
+  updateStoreValue,
   selectedBoundingBoxNodes,
-  addToObject,
   isBoundingBoxSelectionInternal,
 }) => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    setStoreState('isBoundingBoxSelectable', true)
+    updateStoreValue(['isBoundingBoxSelectable'], OPERATION_TYPE_UPDATE, true)
 
     return () => {
-      resetNodesStyles()
-      setStoreState('isBoundingBoxSelectable', false)
-      setStoreState('isBoundingBoxDrawable', false)
-      setStoreState('isBoundingBoxSelectionInternal', true)
-      setStoreState('selectedBoundingBoxNodes', [])
-      setStoreState('boundingBoxGeometry', {
+      resetBoundingBoxNodes()
+
+      updateStoreValue(['isBoundingBoxSelectable'], OPERATION_TYPE_UPDATE, false)
+      updateStoreValue(['isBoundingBoxDrawable'], OPERATION_TYPE_UPDATE, false)
+      updateStoreValue(['isBoundingBoxSelectionInternal'], OPERATION_TYPE_UPDATE, true)
+      updateStoreValue(['selectedBoundingBoxNodes'], OPERATION_TYPE_UPDATE, [])
+      updateStoreValue(['boundingBoxGeometry'], OPERATION_TYPE_UPDATE, {
         fixedPointX: 0,
         fixedPointY: 0,
         boundingBoxPosX: 0,
@@ -44,10 +45,10 @@ const BoundingBoxSelection = ({
   }, [])
 
   useEffect(() => {
-    resetNodesStyles()
+    resetBoundingBoxNodes()
 
     getNodesFromBoundingBox({
-      setStoreState
+      updateStoreValue
     })
   }, [
     isBoundingBoxSelectionInternal,
@@ -93,7 +94,7 @@ const BoundingBoxSelection = ({
               tooltip={t('insideBoundingBox')}
               tooltipOptions={{ position: 'top' }}
               className={isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
-              onClick={() => setStoreState('isBoundingBoxSelectionInternal', true)}
+              onClick={() => updateStoreValue(['isBoundingBoxSelectionInternal'], OPERATION_TYPE_UPDATE, true)}
             >
               <RiAddBoxLine />
             </Button>
@@ -102,7 +103,7 @@ const BoundingBoxSelection = ({
               tooltip={t('outsideBoundingBox')}
               tooltipOptions={{ position: 'top' }}
               className={!isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
-              onClick={() => setStoreState('isBoundingBoxSelectionInternal', false)}
+              onClick={() => updateStoreValue(['isBoundingBoxSelectionInternal'], OPERATION_TYPE_UPDATE, false)}
             >
               <RiCheckboxIndeterminateLine />
             </Button>
@@ -118,8 +119,7 @@ const BoundingBoxSelection = ({
           iconPos="right"
           label={t('show')}
           onClick={() => setBoundingBoxNodes({
-            setStoreState,
-            addToObject
+            updateStoreValue
           })}
         />
       </div>
@@ -128,9 +128,8 @@ const BoundingBoxSelection = ({
 }
 
 BoundingBoxSelection.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   selectedBoundingBoxNodes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  addToObject: PropTypes.func.isRequired,
   isBoundingBoxSelectionInternal: PropTypes.bool.isRequired,
 }
 

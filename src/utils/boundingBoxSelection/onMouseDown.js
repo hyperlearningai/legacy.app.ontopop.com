@@ -1,17 +1,18 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
-import resetNodesStyles from '../networkStyling/resetNodesStyles'
 import getNodesFromBoundingBox from './getNodesFromBoundingBox'
+import resetBoundingBoxNodes from './resetBoundingBoxNodes'
 
 /**
  * Update X-Y position of bounding box on mouse down event listener
  * @param  {Object}   params
- * @param  {Object}   params.e                      Canvas DOM event
- * @param  {Function} params.setStoreState          setStoreState action
+ * @param  {Object}   params.e                        Canvas DOM event
+ * @param  {Function} params.updateStoreValue         updateStoreValue action
  * @return { undefined }
 \ */
 const onMouseDown = ({
   e,
-  setStoreState
+  updateStoreValue
 }) => {
   const {
     boundingBoxGeometry,
@@ -22,7 +23,7 @@ const onMouseDown = ({
   if (isBoundingBoxSelectable) {
     const isBoundingBoxDrawableNow = !isBoundingBoxDrawable
 
-    setStoreState('isBoundingBoxDrawable', isBoundingBoxDrawableNow)
+    updateStoreValue(['isBoundingBoxDrawable'], OPERATION_TYPE_UPDATE, isBoundingBoxDrawableNow)
 
     const newBoundingBoxGeometry = JSON.parse(JSON.stringify(boundingBoxGeometry))
 
@@ -39,12 +40,12 @@ const onMouseDown = ({
       newBoundingBoxGeometry.boundingBoxWidth = 0
       newBoundingBoxGeometry.boundingBoxHeight = 0
 
-      setStoreState('boundingBoxGeometry', newBoundingBoxGeometry)
+      updateStoreValue(['boundingBoxGeometry'], OPERATION_TYPE_UPDATE, newBoundingBoxGeometry)
     } else {
-      resetNodesStyles()
+      resetBoundingBoxNodes()
 
       getNodesFromBoundingBox({
-        setStoreState
+        updateStoreValue
       })
     }
   }

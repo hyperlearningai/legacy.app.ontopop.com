@@ -4,15 +4,7 @@ exports[`StructuredSearch should match snapshot when no results 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   annotationProperties={
@@ -24,9 +16,8 @@ exports[`StructuredSearch should match snapshot when no results 1`] = `
     ]
   }
   mapToProps={[Function]}
-  removeFromObject={[MockFunction]}
-  setStoreState={[MockFunction]}
   structuredSelectedElement="33"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -36,15 +27,7 @@ exports[`StructuredSearch should match snapshot when results 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   annotationProperties={
@@ -56,8 +39,6 @@ exports[`StructuredSearch should match snapshot when results 1`] = `
     ]
   }
   mapToProps={[Function]}
-  removeFromObject={[MockFunction]}
-  setStoreState={[MockFunction]}
   structuredSelectedElement="33"
   structuredSelection={
     Object {
@@ -66,6 +47,7 @@ exports[`StructuredSearch should match snapshot when results 1`] = `
       "33": "node",
     }
   }
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

@@ -11,13 +11,10 @@ import getElementLabel from '../utils/networkStyling/getElementLabel'
 const EditOntologyRestoreEdge = ({
   type,
   operation,
-  setStoreState,
-  addNumber,
+  updateStoreValue,
   objectPropertiesFromApiBackup,
   deletedEdges,
   deletedNodes,
-  addSubValueToObject,
-  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -101,11 +98,8 @@ const EditOntologyRestoreEdge = ({
                       operation,
                       type,
                       selectedElement,
-                      setStoreState,
-                      addNumber,
+                      updateStoreValue,
                       selectedElementProperties,
-                      addSubValueToObject,
-                      toggleFromArrayInKey,
                       t
                     })
                     setSelectedElement(undefined)
@@ -126,13 +120,10 @@ const EditOntologyRestoreEdge = ({
 EditOntologyRestoreEdge.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   objectPropertiesFromApiBackup: PropTypes.shape().isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  addSubValueToObject: PropTypes.func.isRequired,
-  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

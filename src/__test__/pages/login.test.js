@@ -7,8 +7,7 @@ const setup = ({
   activeLoaders
 }) => {
   const props = {
-    addNumber: jest.fn(),
-    addToObject: jest.fn(),
+    updateStoreValue: jest.fn(),
     activeLoaders
   }
 

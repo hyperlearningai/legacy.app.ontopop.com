@@ -10,8 +10,7 @@ import notesDeleteNote from '../utils/notes/notesDeleteNote'
 
 const NotesListNode = ({
   note,
-  addNumber,
-  setStoreState,
+  updateStoreValue,
   selectedNotesType,
   classesFromApi,
   objectPropertiesFromApi,
@@ -147,8 +146,7 @@ const NotesListNode = ({
                     selectedElement: selectedNotesType === 'node' ? nodeId : edgeId,
                     selectedNoteID: id,
                     noteText,
-                    addNumber,
-                    setStoreState,
+                    updateStoreValue,
                     t
                   })
                 }}
@@ -175,8 +173,7 @@ const NotesListNode = ({
                 type: selectedNotesType,
                 selectedElement: selectedNotesType === 'node' ? nodeId : edgeId,
                 selectedNoteID: id,
-                addNumber,
-                setStoreState,
+                updateStoreValue,
                 t
               })}
             />
@@ -203,8 +200,7 @@ const NotesListNode = ({
 NotesListNode.propTypes = {
   note: PropTypes.shape().isRequired,
   selectedNotesType: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,

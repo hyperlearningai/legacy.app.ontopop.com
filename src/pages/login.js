@@ -15,8 +15,7 @@ import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
 
 const Login = ({
-  addNumber,
-  addToObject,
+  updateStoreValue,
   activeLoaders
 }) => {
   const { t } = useTranslation()
@@ -29,7 +28,7 @@ const Login = ({
   // check if authenticated, otherwise redirect to login
   useEffect(() => checkTokenValidity({
     router,
-    addToObject
+    updateStoreValue
   }), [])
 
   return (
@@ -110,8 +109,7 @@ const Login = ({
                   id="auth-login-button"
                   onClick={() => signIn({
                     router,
-                    addToObject,
-                    addNumber,
+                    updateStoreValue,
                     email,
                     password,
                     setShowError,
@@ -123,7 +121,7 @@ const Login = ({
                   className="auth-button m-t-20 p-button-secondary"
                   label={t('continueGuest')}
                   onClick={() => {
-                    addToObject('user', 'isGuest', true)
+                    updateStoreValue('user', 'isGuest', true)
                     router.push(ROUTE_INDEX)
                   }}
                 /> */}
@@ -138,8 +136,7 @@ const Login = ({
 }
 
 Login.propTypes = {
-  addNumber: PropTypes.func.isRequired,
-  addToObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   activeLoaders: PropTypes.number.isRequired,
 }
 

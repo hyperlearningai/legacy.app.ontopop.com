@@ -4,8 +4,9 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import store from '../../../store'
 import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
 import getEdgeIds from '../../../utils/nodesEdgesUtils/getEdgeIds'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
@@ -25,11 +26,13 @@ describe('searchElement', () => {
 
     await searchElement({
       search,
-      setStoreState
+      updateStoreValue
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'freeTextSelection', { }
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['freeTextSelection'],
+      OPERATION_TYPE_UPDATE,
+      { }
     )
   })
 
@@ -47,11 +50,13 @@ describe('searchElement', () => {
 
     await searchElement({
       search,
-      setStoreState
+      updateStoreValue
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'freeTextSelection', {
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['freeTextSelection'],
+      OPERATION_TYPE_UPDATE,
+      {
         1: {
           'Business Area': 'Communications',
           id: '1',

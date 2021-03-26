@@ -6,14 +6,12 @@ import actions from '../store/actions'
 import expandNode from '../utils/graphVisualisation/expandNode'
 import { SIDEBAR_VIEW_CUSTOM_QUERY, SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import { NODE_TYPE } from '../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const GraphContextMenu = ({
-  setStoreState,
+  updateStoreValue,
   contextMenuData,
-  addNumber,
   classesFromApi,
-  toggleFromSubArray,
-  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -29,8 +27,8 @@ const GraphContextMenu = ({
       label: t('customQuery'),
       icon: 'pi pi-fw pi-tablet',
       command: () => {
-        setStoreState('sidebarView', SIDEBAR_VIEW_CUSTOM_QUERY)
-        setStoreState('showContextMenu', false)
+        updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_CUSTOM_QUERY)
+        updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
       }
     },
     {
@@ -39,7 +37,7 @@ const GraphContextMenu = ({
     {
       label: t('close'),
       icon: 'pi pi-fw pi-power-off',
-      command: () => setStoreState('showContextMenu', false)
+      command: () => updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
     }
   ]
 
@@ -54,10 +52,10 @@ const GraphContextMenu = ({
         label: t('synonyms'),
         icon: 'pi pi-file',
         command: () => {
-          setStoreState('synonymElementId', nodeId)
-          setStoreState('selectedNotesType', 'node')
-          setStoreState('sidebarView', SIDEBAR_VIEW_SYNONYMS)
-          setStoreState('showContextMenu', false)
+          updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, nodeId)
+          updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
+          updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
+          updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
         }
       }]
     }
@@ -69,21 +67,18 @@ const GraphContextMenu = ({
         command: () => {
           expandNode({
             nodeId,
-            setStoreState,
-            addNumber,
-            toggleFromSubArray,
-            toggleFromArrayInKey
+            updateStoreValue,
           })
-          setStoreState('showContextMenu', false)
+          updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
         }
       }, {
         label: t('notes'),
         icon: 'pi pi-fw pi-comment',
         command: () => {
-          setStoreState('noteElementId', nodeId)
-          setStoreState('selectedNotesType', 'node')
-          setStoreState('sidebarView', SIDEBAR_VIEW_NOTES)
-          setStoreState('showContextMenu', false)
+          updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, nodeId)
+          updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
+          updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
+          updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
         }
       },
     ]
@@ -100,10 +95,10 @@ const GraphContextMenu = ({
         label: t('notes'),
         icon: 'pi pi-fw pi-comment',
         command: () => {
-          setStoreState('noteElementId', edgeId)
-          setStoreState('selectedNotesType', 'edge')
-          setStoreState('sidebarView', SIDEBAR_VIEW_NOTES)
-          setStoreState('showContextMenu', false)
+          updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, edgeId)
+          updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'edge')
+          updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
+          updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
         }
       }
     ]
@@ -125,12 +120,9 @@ const GraphContextMenu = ({
 }
 
 GraphContextMenu.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   contextMenuData: PropTypes.shape().isRequired,
   classesFromApi: PropTypes.shape().isRequired,
-  toggleFromSubArray: PropTypes.func.isRequired,
-  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

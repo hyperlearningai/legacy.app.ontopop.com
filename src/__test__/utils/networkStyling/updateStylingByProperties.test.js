@@ -3,8 +3,9 @@ import store from '../../../store'
 import {
   NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT
 } from '../../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 describe('updateStylingByProperties', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -29,11 +30,12 @@ describe('updateStylingByProperties', () => {
       operation,
       index,
       stylingPropertyObject,
-      setStoreState
+      updateStoreValue
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'stylingEdgeByProperty',
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['stylingEdgeByProperty'],
+      OPERATION_TYPE_UPDATE,
       [NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT]
     )
   })
@@ -54,11 +56,12 @@ describe('updateStylingByProperties', () => {
       operation,
       index,
       stylingPropertyObject,
-      setStoreState
+      updateStoreValue
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'stylingNodeByProperty',
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['stylingNodeByProperty'],
+      OPERATION_TYPE_UPDATE,
       [{
         filterType: 'equal', filterValue: '', property: undefined, styleType: '', styleValue: ''
       },
@@ -87,11 +90,12 @@ describe('updateStylingByProperties', () => {
       operation,
       index,
       stylingPropertyObject,
-      setStoreState
+      updateStoreValue
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'stylingNodeByProperty',
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['stylingNodeByProperty'],
+      OPERATION_TYPE_UPDATE,
       [{
         filterType: 'equal', filterValue: 'test', property: undefined, styleType: '', styleValue: ''
       },

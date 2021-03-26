@@ -54,7 +54,7 @@ context('Export', () => {
 
       cy.get('.p-autocomplete-item').click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results: 16')
+      cy.get('.graph-search-results-number').should('contain', 'Search results for record: 16')
 
       // click to show network graph
       cy.get('.graph-search-results-list').find('.p-card-buttons').eq(15).find('.p-button')

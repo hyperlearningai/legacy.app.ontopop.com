@@ -1,4 +1,5 @@
 import { NODE_EDGE_BY_PROPERTY_STYLING_DEFAULT_OBJECT } from '../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 
 /**
@@ -8,7 +9,7 @@ import store from '../../store'
  * @param  {String}   params.operation               Operation type [save | delete]
  * @param  {String}   params.index                   Item index in stylingEdgeByProperty or stylingNodeByProperty array
  * @param  {Object}   params.stylingPropertyObject   Object to update
- * @param  {Function} params.setStoreState           setStoreState action
+ * @param  {Function} params.updateStoreValue        updateStoreValue action
  * @return {undefined}
  */
 const updateStylingByProperties = ({
@@ -16,7 +17,7 @@ const updateStylingByProperties = ({
   operation,
   index,
   stylingPropertyObject,
-  setStoreState
+  updateStoreValue
 }) => {
   const {
     stylingEdgeByProperty,
@@ -46,7 +47,7 @@ const updateStylingByProperties = ({
     }
   }
 
-  setStoreState(storeState, stylingByPropertyObject)
+  updateStoreValue([storeState], OPERATION_TYPE_UPDATE, stylingByPropertyObject)
 }
 
 export default updateStylingByProperties

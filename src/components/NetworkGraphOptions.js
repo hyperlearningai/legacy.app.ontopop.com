@@ -14,12 +14,9 @@ import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraph
 import HideElementsByPropertyForm from './HideElementsByPropertyForm'
 
 const NetworkGraphOptions = ({
-  addNumber,
-  addToObject,
   currentGraph,
   graphData,
-  toggleFromArrayInKey,
-  setStoreState
+  updateStoreValue
 }) => {
   const { t } = useTranslation()
 
@@ -191,10 +188,7 @@ const NetworkGraphOptions = ({
               isDatasetVisible: isDatasetVisibleLocal,
               hiddenNodesProperties: nodesProperties,
               hiddenEdgesProperties: edgesProperties,
-              addToObject,
-              addNumber,
-              toggleFromArrayInKey,
-              setStoreState
+              updateStoreValue
             })}
           />
         </div>
@@ -207,10 +201,7 @@ const NetworkGraphOptions = ({
 NetworkGraphOptions.propTypes = {
   currentGraph: PropTypes.string.isRequired,
   graphData: PropTypes.shape().isRequired,
-  addToObject: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
-  toggleFromArrayInKey: PropTypes.func.isRequired,
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

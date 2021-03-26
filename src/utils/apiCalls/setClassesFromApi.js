@@ -1,14 +1,15 @@
 import { NODE_TYPE } from '../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Narmalise nodes array from API
  * @param  {Object}   params
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue              updateStoreValue action
  * @param  {Array}    params.nodes                      Nodes from API
  * @return {undefined}
  */
 const setClassesFromApi = ({
-  setStoreState,
+  updateStoreValue,
   nodes
 }) => {
   const classes = nodes
@@ -39,8 +40,8 @@ const setClassesFromApi = ({
     return true
   })
 
-  setStoreState('classesFromApi', classes)
-  setStoreState('classesFromApiBackup', classes)
+  updateStoreValue(['classesFromApi'], OPERATION_TYPE_UPDATE, classes)
+  updateStoreValue(['classesFromApiBackup'], OPERATION_TYPE_UPDATE, classes)
 }
 
 export default setClassesFromApi

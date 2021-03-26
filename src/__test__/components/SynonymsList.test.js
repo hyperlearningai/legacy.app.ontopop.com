@@ -9,9 +9,8 @@ const setup = ({
   synonymElementId
 }) => {
   const props = {
-    addNumber: jest.fn(),
     nodesSynonyms,
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     synonymElementId,
     classesFromApi
   }

@@ -3,14 +3,13 @@ import en from '../../../i18n/en'
 import showNotification from '../../../utils/notifications/showNotification'
 import store from '../../../store'
 import httpCall from '../../../utils/apiCalls/httpCall'
+import { OPERATION_TYPE_PUSH, OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/apiCalls/httpCall')
 
 const t = (id) => en[id]
-const setStoreState = jest.fn()
-const addToArray = jest.fn()
-const addNumber = jest.fn()
+const updateStoreValue = jest.fn()
 const setLoader = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
@@ -31,9 +30,7 @@ describe('makeCustomQuery', () => {
 
     await makeCustomQuery({
       customQueryString,
-      addNumber,
-      setStoreState,
-      addToArray,
+      updateStoreValue,
       setLoader,
       t
     })
@@ -42,18 +39,12 @@ describe('makeCustomQuery', () => {
       message: 'Could not query graph!',
       type: 'warning'
     })
-    expect(addToArray).toHaveBeenCalledWith(
-      'customQueryStringHistory', '', { alwaysAdd: true }
-    )
+
     expect(setLoader.mock.calls).toEqual(
       [[true], [false]]
     )
-    expect(setStoreState.mock.calls).toEqual(
-      [
-        ['customQueryFromLatestOutput',
-          '',
-        ],
-      ]
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['customQueryFromLatestOutput'], OPERATION_TYPE_UPDATE, ''], [['customQueryStringHistory'], OPERATION_TYPE_PUSH, '']]
     )
   })
 
@@ -69,37 +60,19 @@ describe('makeCustomQuery', () => {
 
     await makeCustomQuery({
       customQueryString,
-      addNumber,
-      setStoreState,
-      addToArray,
+      updateStoreValue,
       setLoader,
       t
     })
 
-    expect(addToArray).toHaveBeenCalledWith(
-      'customQueryStringHistory', 'q.E()', { alwaysAdd: true }
-    )
     expect(setLoader.mock.calls).toEqual(
       [[true], [false]]
     )
-    expect(setStoreState.mock.calls).toEqual(
-      [
-        [
-          'customQueryFromLatestOutput',
-          '',
-        ],
-        [
-          'customQueryFromLatestOutput',
-          'q.E()',
-        ],
-        [
-          'customQueryOutput',
-          {
-            owlClassMap: [],
-            owlObjectPropertyMap: [],
-          },
-        ],
-      ]
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['customQueryFromLatestOutput'], OPERATION_TYPE_UPDATE, ''], [
+        ['customQueryStringHistory'], OPERATION_TYPE_PUSH, 'q.E()'], [
+        ['customQueryFromLatestOutput'], 'update', 'q.E()'], [
+        ['customQueryOutput'], OPERATION_TYPE_UPDATE, { owlClassMap: [], owlObjectPropertyMap: [] }]]
     )
   })
 })

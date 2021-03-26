@@ -11,7 +11,7 @@ import checkTokenValidity from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
 
 const Profile = ({
-  addToObject,
+  updateStoreValue,
   user
 }) => {
   const { t } = useTranslation()
@@ -42,7 +42,7 @@ const Profile = ({
     if (!user.isGuest && user.email === '') {
       checkTokenValidity({
         router,
-        addToObject
+        updateStoreValue
       })
     }
   }, [])
@@ -252,15 +252,15 @@ const Profile = ({
 
 Profile.propTypes = {
   user: PropTypes.shape().isRequired,
-  addToObject: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 const mapPropsToState = ({
   user,
-  addToObject
+  updateStoreValue
 }) => ({
   user,
-  addToObject
+  updateStoreValue
 })
 
 export default connect(

@@ -3,11 +3,16 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import NodeNeighbourhood from '../../components/NodeNeighbourhood'
 
-const setup = () => {
+const setup = ({
+  selectedElement
+}) => {
   const props = {
-    setStoreState: jest.fn(),
-    addToObject: jest.fn(),
-    selectedNeighbourNode: ['http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY'],
+    updateStoreValue: jest.fn(),
+    selectedElement,
+    nodesDropdownLabels: [{
+      id: '1',
+      value: 'node'
+    }]
   }
 
   const component = shallow(<NodeNeighbourhood {...props} />)
@@ -23,10 +28,22 @@ describe('NodeNeighbourhood', () => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot ', () => {
+  it('should match snapshot when no selected node', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      selectedElement: undefined
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when selected node', () => {
+    const {
+      component
+    } = setup({
+      selectedElement: { 1: 'node' }
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

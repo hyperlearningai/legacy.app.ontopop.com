@@ -3,10 +3,12 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import EdgesSelection from '../../components/EdgesSelection'
 
-const setup = () => {
+const setup = ({
+  selectedElement
+}) => {
   const props = {
-    setStoreState: jest.fn(),
-    selectedEdge: 'edge-123'
+    updateStoreValue: jest.fn(),
+    selectedElement
   }
 
   const component = shallow(<EdgesSelection {...props} />)
@@ -22,10 +24,22 @@ describe('EdgesSelection', () => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot ', () => {
+  it('should match snapshot when no selected edge', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      selectedElement: undefined
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when selected edge', () => {
+    const {
+      component
+    } = setup({
+      selectedElement: { 1: 'edge' }
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

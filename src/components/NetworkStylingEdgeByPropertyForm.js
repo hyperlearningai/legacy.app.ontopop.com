@@ -18,7 +18,7 @@ import {
 } from '../constants/graph'
 
 const NetworkStylingEdgeByPropertyForm = ({
-  setStoreState,
+  updateStoreValue,
   index,
   stylingProperty,
   isDeleteAvailable,
@@ -246,7 +246,7 @@ const NetworkStylingEdgeByPropertyForm = ({
                   operation: 'delete',
                   index,
                   stylingPropertyObject,
-                  setStoreState
+                  updateStoreValue
                 })}
               />
             )
@@ -269,7 +269,7 @@ const NetworkStylingEdgeByPropertyForm = ({
               operation: 'save',
               index,
               stylingPropertyObject,
-              setStoreState
+              updateStoreValue
             })}
           />
         </span>
@@ -279,7 +279,7 @@ const NetworkStylingEdgeByPropertyForm = ({
 }
 
 NetworkStylingEdgeByPropertyForm.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   isDeleteAvailable: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
   stylingProperty: PropTypes.shape().isRequired,

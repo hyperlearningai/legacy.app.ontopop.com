@@ -5,21 +5,20 @@ import showNotification from '../notifications/showNotification'
 import { NOTIFY_SUCCESS, NOTIFY_WARNING } from '../../constants/notifications'
 import httpCall from '../apiCalls/httpCall'
 import { NODE_TYPE } from '../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Update ontology nodes
  * @param  {Object}         params
- * @param  {Function}       params.addNumber                  addNumber action
+ * @param  {Function}       params.updateStoreValue                  updateStoreValue action
  * @param  {String|Array}   params.selectedElement            Selected node ID
- * @param  {Function}       params.setStoreState              setStoreState action
  * @param  {Object}         params.selectedElementProperties  Element properties from form
  * @param  {Function}       params.t                          i18n function
  * @return {undefined}
  */
 const setOntologyUpdateNode = async ({
-  addNumber,
+  updateStoreValue,
   selectedElement,
-  setStoreState,
   selectedElementProperties,
   t
 }) => {
@@ -42,7 +41,7 @@ const setOntologyUpdateNode = async ({
   delete body[NODE_TYPE]
 
   const response = await httpCall({
-    addNumber,
+    updateStoreValue,
     withAuth: true,
     route: API_ENDPOINT_GRAPH_NODES_ID.replace('{id}', selectedElement),
     method: 'patch',
@@ -88,8 +87,8 @@ const setOntologyUpdateNode = async ({
     ...[selectedElement]
   ]
 
-  setStoreState('classesFromApi', newClassesFromApi)
-  setStoreState('updatedNodes', newUpdatedNodes)
+  updateStoreValue(['classesFromApi'], OPERATION_TYPE_UPDATE, newClassesFromApi)
+  updateStoreValue(['updatedNodes'], OPERATION_TYPE_UPDATE, newUpdatedNodes)
 
   message = `${t('nodeUpdated')}: ${selectedElement}`
   showNotification({

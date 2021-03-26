@@ -1,14 +1,15 @@
 import { RESERVED_PROPERTIES } from '../../constants/graph'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Set annotation properties
  * @param  {Object}   params
- * @param  {Function} params.setStoreState              setStoreState action
+ * @param  {Function} params.updateStoreValue              updateStoreValue action
  * @param  {Array}    params.nodes                      Nodes from API
  * @return {undefined}
  */
 const setAnnotationProperties = ({
-  setStoreState,
+  updateStoreValue,
   nodes
 }) => {
   let annotationProperties = []
@@ -48,11 +49,11 @@ const setAnnotationProperties = ({
     return true
   })
 
-  setStoreState('annotationProperties', annotationProperties.sort().map((property) => ({
+  updateStoreValue(['annotationProperties'], OPERATION_TYPE_UPDATE, annotationProperties.sort().map((property) => ({
     label: property,
     value: property
   })))
-  setStoreState('annotationPropertiesDatasets', annotationPropertiesDatasets.sort().map((property) => ({
+  updateStoreValue(['annotationPropertiesDatasets'], OPERATION_TYPE_UPDATE, annotationPropertiesDatasets.sort().map((property) => ({
     label: property,
     value: property
   })))

@@ -9,7 +9,7 @@ const setup = ({
 }) => {
   const props = {
     loading,
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     user
   }
 

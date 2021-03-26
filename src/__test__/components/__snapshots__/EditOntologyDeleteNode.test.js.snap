@@ -4,18 +4,9 @@ exports[`EditOntologyDeleteNode should match snapshot 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
   mapToProps={[Function]}
   operation="add"
   optionNodes={
@@ -1302,8 +1293,8 @@ exports[`EditOntologyDeleteNode should match snapshot 1`] = `
       },
     ]
   }
-  setStoreState={[MockFunction]}
   type="node"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

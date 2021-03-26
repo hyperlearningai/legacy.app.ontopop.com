@@ -5,7 +5,7 @@ import MainArea from '../../components/MainArea'
 
 const setup = () => {
   const props = {
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     entrySearchFilter: 'all',
     annotationProperties: [{
       value: 'rdfAbout',

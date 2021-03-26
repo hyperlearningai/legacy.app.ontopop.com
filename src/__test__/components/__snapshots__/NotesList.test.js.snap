@@ -4,15 +4,7 @@ exports[`NotesList should match snapshot when notes empty 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   classesFromApi={
@@ -5297,6 +5289,14 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   nodesNotes={
     Array [
       Object {
@@ -5313,7 +5313,7 @@ NTIS provide to RIF which is then passed to Azure",
   noteElementId=""
   notes={Array []}
   selectedNotesType="graph"
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -5323,15 +5323,7 @@ exports[`NotesList should match snapshot with edge note and noteElementId 1`] = 
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   classesFromApi={
@@ -10616,6 +10608,14 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   nodesNotes={
     Array [
       Object {
@@ -10632,7 +10632,7 @@ NTIS provide to RIF which is then passed to Azure",
   noteElementId="123"
   notes={Array []}
   selectedNotesType="edge"
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -10642,15 +10642,7 @@ exports[`NotesList should match snapshot with graph note 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   classesFromApi={
@@ -15935,6 +15927,14 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   nodesNotes={
     Array [
       Object {
@@ -15964,7 +15964,7 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   selectedNotesType="graph"
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -15974,15 +15974,7 @@ exports[`NotesList should match snapshot with node note and noteElementId 1`] = 
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
   classesFromApi={
@@ -21267,6 +21259,14 @@ NTIS provide to RIF which is then passed to Azure",
     ]
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   nodesNotes={
     Array [
       Object {
@@ -21283,7 +21283,7 @@ NTIS provide to RIF which is then passed to Azure",
   noteElementId="123"
   notes={Array []}
   selectedNotesType="node"
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

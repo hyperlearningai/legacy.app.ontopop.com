@@ -16,14 +16,12 @@ import 'prismjs/components/prism-clike'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/themes/prism-coy.css'
 import { CUSTOM_QUERIES_LS } from '../constants/localStorage'
+import { OPERATION_TYPE_TOGGLE, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const CustomQuery = ({
-  addNumber,
+  updateStoreValue,
   customQueryOutput,
   customQueryStringHistory,
-  setStoreState,
-  addToArray,
-  removeFromArray,
 }) => {
   const { t } = useTranslation()
 
@@ -34,8 +32,8 @@ const CustomQuery = ({
     const queryHistory = localStorage.getItem(CUSTOM_QUERIES_LS)
 
     if (queryHistory) {
-      setStoreState(
-        'customQueryStringHistory',
+      updateStoreValue(
+        ['customQueryStringHistory'], OPERATION_TYPE_UPDATE,
         JSON.parse(queryHistory)?.data
       )
     }
@@ -72,7 +70,7 @@ const CustomQuery = ({
             iconPos="left"
             label={t('clear')}
             onClick={() => {
-              setStoreState('customQueryOutput', undefined)
+              updateStoreValue(['customQueryOutput'], OPERATION_TYPE_UPDATE, undefined)
               setCustomQueryString('g.')
             }}
           />
@@ -96,10 +94,8 @@ const CustomQuery = ({
                 iconPos="right"
                 label={t('query')}
                 onClick={() => makeCustomQuery({
-                  addNumber,
+                  updateStoreValue,
                   customQueryString,
-                  setStoreState,
-                  addToArray,
                   setLoader,
                   t
                 })}
@@ -151,7 +147,7 @@ const CustomQuery = ({
                         <Button
                           aria-label={t('removeFromHistory')}
                           tooltip={`${t('removeFromHistory')}: ${query}`}
-                          onClick={() => removeFromArray('customQueryStringHistory', query)}
+                          onClick={() => updateStoreValue(['customQueryStringHistory'], OPERATION_TYPE_TOGGLE, query)}
                           icon="pi pi-times"
                         />
                       </div>
@@ -162,7 +158,7 @@ const CustomQuery = ({
                           tooltip={`${t('queryAgain')}: ${query}`}
                           disabled={query === customQueryString}
                           onClick={() => {
-                            setStoreState('customQueryOutput', undefined)
+                            updateStoreValue(['customQueryOutput'], OPERATION_TYPE_UPDATE, undefined)
                             setCustomQueryString(query)
                           }}
                         >
@@ -185,10 +181,7 @@ const CustomQuery = ({
 }
 
 CustomQuery.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
-  removeFromArray: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
-  addToArray: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   customQueryOutput: PropTypes.arrayOf(PropTypes.any),
   customQueryStringHistory: PropTypes.arrayOf(PropTypes.string).isRequired,
 }

@@ -3,8 +3,9 @@ import searchGraph from '../../../utils/graphSearch/searchGraph'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 const setLoading = jest.fn()
 const value = 'roa'
 
@@ -252,6 +253,7 @@ describe('searchGraph', () => {
       classesFromApi,
       objectPropertiesFromApi,
       entrySearchFilter: 'all',
+      entrySearchValue: value,
       entrySearchAnnotationProperties: [
         'rdfAbout',
         'rdfsLabel'
@@ -259,18 +261,17 @@ describe('searchGraph', () => {
     }))
 
     await searchGraph({
-      value,
-      setStoreState,
+      updateStoreValue,
       setLoading
     })
 
     expect(setLoading.mock.calls).toEqual(
       [[true], [false]]
     )
-    expect(setStoreState.mock.calls).toEqual(
+    expect(updateStoreValue.mock.calls).toEqual(
       [
-        ['isQueried', true],
-        ['entrySearchResults',
+        [['isQueried'], OPERATION_TYPE_UPDATE, true],
+        [['entrySearchResults'], OPERATION_TYPE_UPDATE,
           entrySearchResults
         ]
       ]
@@ -282,6 +283,7 @@ describe('searchGraph', () => {
       classesFromApi,
       objectPropertiesFromApi,
       entrySearchFilter: 'nodes',
+      entrySearchValue: value,
       entrySearchAnnotationProperties: [
         'rdfAbout',
         'rdfsLabel'
@@ -290,17 +292,17 @@ describe('searchGraph', () => {
 
     await searchGraph({
       value,
-      setStoreState,
+      updateStoreValue,
       setLoading
     })
 
     expect(setLoading.mock.calls).toEqual(
       [[true], [false]]
     )
-    expect(setStoreState.mock.calls).toEqual(
+    expect(updateStoreValue.mock.calls).toEqual(
       [
-        ['isQueried', true],
-        ['entrySearchResults',
+        [['isQueried'], OPERATION_TYPE_UPDATE, true],
+        [['entrySearchResults'], OPERATION_TYPE_UPDATE,
           entrySearchResults.filter((result) => result.type === 'node')
         ]
       ]
@@ -312,6 +314,7 @@ describe('searchGraph', () => {
       classesFromApi,
       objectPropertiesFromApi,
       entrySearchFilter: 'edges',
+      entrySearchValue: value,
       entrySearchAnnotationProperties: [
         'rdfAbout',
         'rdfsLabel'
@@ -319,18 +322,17 @@ describe('searchGraph', () => {
     }))
 
     await searchGraph({
-      value,
-      setStoreState,
+      updateStoreValue,
       setLoading
     })
 
     expect(setLoading.mock.calls).toEqual(
       [[true], [false]]
     )
-    expect(setStoreState.mock.calls).toEqual(
+    expect(updateStoreValue.mock.calls).toEqual(
       [
-        ['isQueried', true],
-        ['entrySearchResults',
+        [['isQueried'], OPERATION_TYPE_UPDATE, true],
+        [['entrySearchResults'], OPERATION_TYPE_UPDATE,
           entrySearchResults.filter((result) => result.type === 'edge')
         ]
       ]

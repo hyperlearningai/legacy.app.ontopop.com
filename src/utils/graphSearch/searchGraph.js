@@ -1,33 +1,33 @@
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 
 /**
  * Search graph
  * @param  {Object}   params
- * @param  {String}   params.search                  Search string
- * @param  {Function} params.setStoreState           setStoreState action
+ * @param  {Function} params.updateStoreValue        updateStoreValue action
  * @param  {Function} params.setLoading              Set loading function
  * @return { undefined }
  */
 const searchGraph = ({
-  value,
-  setStoreState,
-  setLoading
+  updateStoreValue,
+  setLoading,
 }) => {
   const {
     classesFromApi,
     objectPropertiesFromApi,
     entrySearchFilter,
     entrySearchAnnotationProperties,
+    entrySearchValue
   } = store.getState()
 
   const entrySearchResults = []
 
-  if (value === '') {
-    return setStoreState('entrySearchResults', entrySearchResults)
+  if (!entrySearchValue || typeof entrySearchValue !== 'string' || entrySearchValue === '') {
+    return updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, entrySearchResults)
   }
 
   if (entrySearchAnnotationProperties.length === 0) {
-    return setStoreState('entrySearchResults', entrySearchResults)
+    return updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, entrySearchResults)
   }
 
   setLoading(true)
@@ -42,7 +42,7 @@ const searchGraph = ({
 
         const isAnnotationPropertyContainingSearch = entrySearchAnnotationProperties.some(
           (property) => nodeElement[property]
-          && nodeElement[property].toString().toLowerCase().includes(value.toLowerCase())
+          && nodeElement[property].toString().toLowerCase().includes(entrySearchValue.toLowerCase())
         )
 
         nodeElement.type = 'node'
@@ -64,7 +64,7 @@ const searchGraph = ({
         const edgeElement = objectPropertiesFromApi[edgeId]
 
         const isContainingSearch = entrySearchAnnotationProperties.some((property) => edgeElement[property]
-          && edgeElement[property].toString().toLowerCase().includes(value.toLowerCase()))
+          && edgeElement[property].toString().toLowerCase().includes(entrySearchValue.toLowerCase()))
 
         edgeElement.type = 'edge'
 
@@ -77,8 +77,8 @@ const searchGraph = ({
 
   setLoading(false)
 
-  setStoreState('isQueried', true)
-  return setStoreState('entrySearchResults', entrySearchResults)
+  updateStoreValue(['isQueried'], OPERATION_TYPE_UPDATE, true)
+  return updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, entrySearchResults)
 }
 
 export default searchGraph

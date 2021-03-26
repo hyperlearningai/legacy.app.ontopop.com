@@ -2,6 +2,7 @@ import highlightSelectedEdge from '../../../utils/edgesSelection/highlightSelect
 import store from '../../../store'
 import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 jest.mock('../../../utils/nodesEdgesUtils/updateEdges')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
@@ -18,7 +19,7 @@ store.getState = jest.fn().mockImplementation(() => ({
   network: { focus }
 }))
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 describe('highlightSelectedEdge', () => {
   afterEach(() => {
@@ -36,18 +37,18 @@ describe('highlightSelectedEdge', () => {
     }))
 
     await highlightSelectedEdge({
-      setStoreState,
+      updateStoreValue,
       selectedEdge: '123'
     })
 
-    expect(setStoreState).toHaveBeenCalledWith(
-      'prevSelectedEdge', {
-        color: {
-          color: '#ffff00'
-        },
-        id: '123',
-        userDefined: true,
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['prevSelectedEdge'],
+      OPERATION_TYPE_UPDATE,
+      {
+        color: { color: '#ffff00' },
         from: '40',
+        id: '123',
+        userDefined: true
       }
     )
 

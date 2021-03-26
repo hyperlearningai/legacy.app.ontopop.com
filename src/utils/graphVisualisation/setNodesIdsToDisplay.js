@@ -16,18 +16,17 @@ import showNotification from '../notifications/showNotification'
 import {
   NOTIFY_WARNING
 } from '../../constants/notifications'
+import { OPERATION_TYPE_DELETE, OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Updates nodes and edges to display
  * @param  {Object}     params
- * @param  {Function}   params.setStoreState             setStoreState action
- * @param  {Function}   params.removeFromObject          removeFromObject action
+ * @param  {Function}   params.updateStoreValue          updateStoreValue action
  * @param  {Function}   params.t                         i18n internationalisazion function
  * @return { undefined }
  */
 const setNodesIdsToDisplay = async ({
-  setStoreState,
-  removeFromObject,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -40,7 +39,8 @@ const setNodesIdsToDisplay = async ({
 
   const {
     type,
-    options
+    options,
+    nodesIds
   } = graphData[currentGraph]
 
   if (type !== ALGO_TYPE_FULL && !options) return false
@@ -51,6 +51,58 @@ const setNodesIdsToDisplay = async ({
   let isNodeOverlayNew = false
   let shortestPathNodesNew = []
   let shortestPathResultsNew = []
+
+  if (nodesIds && nodesIds.length > 0) {
+    let highlightedNodesUpdate = []
+    let highlightedEdgesUpdate = []
+    let isNodeOverlayUpdate = false
+    let shortestPathNodesUpdate = []
+    let shortestPathResultsUpdate = []
+
+    switch (type) {
+      case ALGO_TYPE_SEARCH_NEIGHBOURHOOD:
+        const {
+          selectedNodesId,
+          selectedEdgesId,
+        } = options
+
+        highlightedNodesUpdate = selectedNodesId
+        highlightedEdgesUpdate = selectedEdgesId
+        break
+
+      case ALGO_TYPE_NEIGHBOURHOOD:
+        const {
+          selectedNodeId
+        } = options
+        highlightedNodesUpdate = [selectedNodeId]
+
+        break
+
+      case ALGO_TYPE_SHORTEST_PATH:
+        const {
+          shortestPathSelectedNodes,
+          shortestPathResults,
+          isNodeOverlay
+        } = options
+
+        highlightedNodesUpdate = shortestPathSelectedNodes
+        isNodeOverlayUpdate = isNodeOverlay
+        shortestPathResultsUpdate = shortestPathResults
+        shortestPathNodesUpdate = shortestPathSelectedNodes
+        break
+      default:
+        break
+    }
+
+    updateStoreValue(['highlightedNodes'], OPERATION_TYPE_UPDATE, highlightedNodesUpdate)
+    updateStoreValue(['highlightedEdges'], OPERATION_TYPE_UPDATE, highlightedEdgesUpdate)
+    updateStoreValue(['isNodeOverlay'], OPERATION_TYPE_UPDATE, isNodeOverlayUpdate)
+    updateStoreValue(['shortestPathNodes'], OPERATION_TYPE_UPDATE, shortestPathNodesUpdate)
+    updateStoreValue(['shortestPathResults'], OPERATION_TYPE_UPDATE, shortestPathResultsUpdate)
+    updateStoreValue(['nodesIdsToDisplay'], OPERATION_TYPE_UPDATE, nodesIds)
+
+    return true
+  }
 
   switch (type) {
     case ALGO_TYPE_FULL:
@@ -167,8 +219,8 @@ const setNodesIdsToDisplay = async ({
   }
 
   if (!nodesToDisplay || nodesToDisplay.length === 0) {
-    setStoreState('currentGraph', 'graph-0')
-    removeFromObject('graphData', currentGraph)
+    updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, 'graph-0')
+    updateStoreValue(['graphData', currentGraph], OPERATION_TYPE_DELETE)
 
     return showNotification({
       message: t('noNodesToDisplay'),
@@ -176,12 +228,13 @@ const setNodesIdsToDisplay = async ({
     })
   }
 
-  setStoreState('highlightedNodes', highlightedNodesNew)
-  setStoreState('highlightedEdges', highlightedEdgesNew)
-  setStoreState('isNodeOverlay', isNodeOverlayNew)
-  setStoreState('shortestPathNodes', shortestPathNodesNew)
-  setStoreState('shortestPathResults', shortestPathResultsNew)
-  setStoreState('nodesIdsToDisplay', nodesToDisplay)
+  updateStoreValue(['graphData', currentGraph, 'nodesIds'], OPERATION_TYPE_UPDATE, nodesToDisplay)
+  updateStoreValue(['highlightedNodes'], OPERATION_TYPE_UPDATE, highlightedNodesNew)
+  updateStoreValue(['highlightedEdges'], OPERATION_TYPE_UPDATE, highlightedEdgesNew)
+  updateStoreValue(['isNodeOverlay'], OPERATION_TYPE_UPDATE, isNodeOverlayNew)
+  updateStoreValue(['shortestPathNodes'], OPERATION_TYPE_UPDATE, shortestPathNodesNew)
+  updateStoreValue(['shortestPathResults'], OPERATION_TYPE_UPDATE, shortestPathResultsNew)
+  updateStoreValue(['nodesIdsToDisplay'], OPERATION_TYPE_UPDATE, nodesToDisplay)
 
   return true
 }

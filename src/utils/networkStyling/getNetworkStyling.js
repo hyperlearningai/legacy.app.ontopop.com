@@ -7,12 +7,12 @@ import httpCall from '../apiCalls/httpCall'
 /**
  * Get styling data from API
  * @param  {Object}   params
- * @param  {Function} params.addNumber                  addNumber action
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
  * @param  {Function} params.t                          i18n translation function
  * @return {undefined}
  */
 const getNetworkStyling = async ({
-  addNumber,
+  updateStoreValue,
   t
 }) => {
   const {
@@ -22,7 +22,7 @@ const getNetworkStyling = async ({
   const withAuth = !!user.token
 
   const response = await httpCall({
-    addNumber,
+    updateStoreValue,
     withAuth,
     route: API_ENDPOINT_STYLING,
     method: 'get',

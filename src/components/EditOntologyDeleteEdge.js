@@ -11,11 +11,8 @@ import { USER_DEFINED_PROPERTY } from '../constants/graph'
 const EditOntologyDeleteEdge = ({
   type,
   operation,
-  setStoreState,
-  addNumber,
+  updateStoreValue,
   optionEdges,
-  addSubValueToObject,
-  toggleFromArrayInKey
 }) => {
   const { t } = useTranslation()
 
@@ -59,11 +56,8 @@ const EditOntologyDeleteEdge = ({
               operation,
               type,
               selectedElement,
-              setStoreState,
-              addNumber,
+              updateStoreValue,
               selectedElementProperties,
-              addSubValueToObject,
-              toggleFromArrayInKey,
               t
             })
             setSelectedElement(undefined)
@@ -81,11 +75,8 @@ const EditOntologyDeleteEdge = ({
 EditOntologyDeleteEdge.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
-  setStoreState: PropTypes.func.isRequired,
-  addNumber: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   optionEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  addSubValueToObject: PropTypes.func.isRequired,
-  toggleFromArrayInKey: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

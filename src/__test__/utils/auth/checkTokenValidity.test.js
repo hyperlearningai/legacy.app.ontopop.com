@@ -1,4 +1,5 @@
 import { ROUTE_LOGIN } from '../../../constants/routes'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import checkTokenValidity from '../../../utils/auth/checkTokenValidity'
 
 describe('checkTokenValidity', () => {
@@ -7,7 +8,7 @@ describe('checkTokenValidity', () => {
   })
 
   it('should work correctly when no cookie', async () => {
-    const addToObject = jest.fn()
+    const updateStoreValue = jest.fn()
     const push = jest.fn()
     const router = { push }
     const getItem = jest.fn().mockImplementationOnce(() => undefined)
@@ -16,7 +17,7 @@ describe('checkTokenValidity', () => {
 
     await checkTokenValidity({
       router,
-      addToObject
+      updateStoreValue
     })
 
     expect(push).toHaveBeenCalledWith(
@@ -25,19 +26,21 @@ describe('checkTokenValidity', () => {
   })
 
   it('should work correctly when cookie', async () => {
-    const addToObject = jest.fn()
+    const updateStoreValue = jest.fn()
     const push = jest.fn()
     const router = { push }
 
-    const getItem = jest.fn().mockImplementationOnce(() => JSON.stringify({ email: 'a@b.c' }))
+    const getItem = jest.fn().mockImplementationOnce(() => JSON.stringify({ email: 'a@b.c', token: '123' }))
 
     Storage.prototype.getItem = getItem
 
     await checkTokenValidity({
       router,
-      addToObject
+      updateStoreValue
     })
 
-    expect(addToObject).toHaveBeenCalledWith('user', 'email', 'a@b.c')
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['user', 'email'], OPERATION_TYPE_UPDATE, 'a@b.c'], [['user', 'token'], OPERATION_TYPE_UPDATE, '123']]
+    )
   })
 })

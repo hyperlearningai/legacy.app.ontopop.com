@@ -5,13 +5,14 @@ import updateNodes from '../../../utils/nodesEdgesUtils/updateNodes'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import updateEdges from '../../../utils/nodesEdgesUtils/updateEdges'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
 jest.mock('../../../utils/nodesEdgesUtils/updateNodes')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/updateEdges')
 
-const setStoreState = jest.fn()
+const updateStoreValue = jest.fn()
 
 const fit = jest.fn()
 const focus = jest.fn()
@@ -52,17 +53,16 @@ describe('highlightElement', () => {
     }))
 
     await highlightElement({
-      setStoreState
+      updateStoreValue
     })
 
     expect(updateNodes).toHaveBeenCalledWith(
       { color: { background: '#000' }, id: '12' }
     )
-    expect(setStoreState).toHaveBeenCalledWith('freeTextPrevSelectedElement', {
-      color: {
-        background: '#000',
-      },
-    })
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['freeTextPrevSelectedElement'], OPERATION_TYPE_UPDATE,
+      { color: { background: '#000' } }
+    )
     expect(focus).toHaveBeenCalledWith('12', { animation: true, scale: 2 })
   })
 
@@ -96,7 +96,7 @@ describe('highlightElement', () => {
     }))
 
     await highlightElement({
-      setStoreState
+      updateStoreValue
     })
 
     expect(updateEdges).toHaveBeenCalledWith(
@@ -104,8 +104,11 @@ describe('highlightElement', () => {
         color: { color: '#000' }, id: '11', width: 3,
       }
     )
-    expect(setStoreState).toHaveBeenCalledWith('freeTextPrevSelectedElement',
-      { color: { color: '#000' }, id: '11', from: '1' })
+    expect(updateStoreValue).toHaveBeenCalledWith(
+      ['freeTextPrevSelectedElement'],
+      OPERATION_TYPE_UPDATE,
+      { color: { color: '#000' }, id: '11', from: '1' }
+    )
     expect(focus).toHaveBeenCalledWith(
       '1', { animation: true, scale: 1 }
     )

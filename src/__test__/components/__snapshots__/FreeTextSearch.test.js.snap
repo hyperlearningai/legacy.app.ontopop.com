@@ -1,21 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FreeTextSearch should match snapshot  1`] = `
+exports[`FreeTextSearch should match snapshot when no selected node 1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  freeTextSelectedElement="http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay"
   freeTextSelection={
     Object {
       "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n": "node",
@@ -24,8 +15,33 @@ exports[`FreeTextSearch should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
-  removeFromObject={[MockFunction]}
-  setStoreState={[MockFunction]}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`FreeTextSearch should match snapshot when selected node 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  freeTextSelection={
+    Object {
+      "http://webprotege.stanford.edu/R93SkoUnFXM1KEjUDb2Ij3n": "node",
+      "http://webprotege.stanford.edu/RBfzJ6HkijEIMSY3oKjcLay": "edge",
+      "http://webprotege.stanford.edu/Rr60siMdu9IEvdag4DhF7M": "node",
+    }
+  }
+  mapToProps={[Function]}
+  selectedElement={
+    Object {
+      "1": "node",
+    }
+  }
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

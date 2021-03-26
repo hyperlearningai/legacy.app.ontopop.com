@@ -14,7 +14,7 @@ import updateStylingByProperties from '../utils/networkStyling/updateStylingByPr
 import { FILTER_TYPE_OPTIONS, NODE_STYLING_PROPERTIES } from '../constants/graph'
 
 const NetworkStylingNodeByPropertyForm = ({
-  setStoreState,
+  updateStoreValue,
   index,
   stylingProperty,
   isDeleteAvailable,
@@ -239,7 +239,7 @@ const NetworkStylingNodeByPropertyForm = ({
                   operation: 'delete',
                   index,
                   stylingPropertyObject,
-                  setStoreState
+                  updateStoreValue
                 })}
               />
             )
@@ -262,7 +262,7 @@ const NetworkStylingNodeByPropertyForm = ({
               operation: 'save',
               index,
               stylingPropertyObject,
-              setStoreState
+              updateStoreValue
             })}
           />
         </span>
@@ -273,7 +273,7 @@ const NetworkStylingNodeByPropertyForm = ({
 }
 
 NetworkStylingNodeByPropertyForm.propTypes = {
-  setStoreState: PropTypes.func.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
   isDeleteAvailable: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,

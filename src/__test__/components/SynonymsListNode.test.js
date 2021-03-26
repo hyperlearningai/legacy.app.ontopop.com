@@ -17,8 +17,7 @@ const setup = ({
       dateCreated: '2021-03-09 17:03:51',
       dateLastUpdated: '2021-03-09 17:03:51',
     },
-    addNumber: jest.fn(),
-    setStoreState: jest.fn(),
+    updateStoreValue: jest.fn(),
     selectedNotesType: '',
     user: {
       email

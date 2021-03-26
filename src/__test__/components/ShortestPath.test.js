@@ -9,8 +9,11 @@ const setup = () => {
     shortestPathNode2: 'http://webprotege.stanford.edu/RJVpffoomVWohIDaJCykd9',
     isShortestPathNode1Selectable: false,
     isShortestPathNode2Selectable: true,
-    setStoreState: jest.fn(),
-    addToObject: jest.fn(),
+    updateStoreValue: jest.fn(),
+    nodesDropdownLabels: [{
+      id: '1',
+      value: 'node'
+    }]
   }
 
   const component = shallow(<ShortestPath {...props} />)

@@ -1,19 +1,14 @@
-import highlightSpiderableNodes from '../networkStyling/highlightSpiderableNodes'
-import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import store from '../../store'
-import setNodesOverlay from '../networkStyling/setNodesOverlay'
+import { OPERATION_TYPE_ADD, OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Node queue to avoid browser freezing
  * @param  {Object}   params
- * @param  {Function} params.setStoreState                setStoreState action
- * @param  {Function} params.addNumber                    addNumber action
- * @param  {Object}   params.nodesEdges                   Edges per node
+ * @param  {Function} params.updateStoreValue  updateStoreValue action
  * @return { undefined }
  */
 const actionAfterNodesAdded = ({
-  setStoreState,
-  addNumber,
+  updateStoreValue
 }) => {
   const {
     network,
@@ -25,31 +20,25 @@ const actionAfterNodesAdded = ({
   const currentPhysicsRepulsionState = physicsRepulsion
 
   // turn physics on to scatter nodes around
-  setStoreState('isPhysicsOn', true)
-  setStoreState('physicsRepulsion', true)
+  updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, true)
+  updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, true)
 
-  addNumber('activeLoaders', -1)
-
-  // perform highlight check here as nodes' edges are not fully loaded during loop
-  highlightSpiderableNodes()
-  setNodesOverlay()
-
-  const displayedNodes = getNodeIds()
+  updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, -1)
 
   // restore isPhysicsOn state
   setTimeout(() => {
     if (!currentPhysicsOnState) {
-      setStoreState('isPhysicsOn', false)
+      updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, false)
     }
 
     if (!currentPhysicsRepulsionState) {
-      setStoreState('physicsRepulsion', false)
+      updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, false)
     }
 
     network?.fit({
       animation: false // true
     })
-  }, displayedNodes.length > 100 ? 3000 : 1000)
+  }, 250)
 }
 
 export default actionAfterNodesAdded

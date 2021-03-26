@@ -6,13 +6,13 @@ import { API_ENDPOINT_AUTH_SIGN_IN } from '../../constants/api'
 import { NOTIFY_WARNING } from '../../constants/notifications'
 import showNotification from '../notifications/showNotification'
 import httpCall from '../apiCalls/httpCall'
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Http call function
  * @param  {Object}   params
- * @param  {Function} params.addNumber                  addNumber action
  * @param  {Class}    params.router                     NextJs router class
- * @param  {Function} params.addToObject                addToObject action
+ * @param  {Function} params.updateStoreValue                updateStoreValue action
  * @param  {String}   params.email                      Email
  * @param  {String}   params.password                   Password
  * @param  {Function} params.setShowError               setShowError state function
@@ -21,8 +21,7 @@ import httpCall from '../apiCalls/httpCall'
  */
 const signIn = async ({
   router,
-  addToObject,
-  addNumber,
+  updateStoreValue,
   email,
   password,
   setShowError,
@@ -31,7 +30,7 @@ const signIn = async ({
   const withAuth = false
 
   const response = await httpCall({
-    addNumber,
+    updateStoreValue,
     withAuth,
     body: {
       username: email,
@@ -57,8 +56,8 @@ const signIn = async ({
 
   const { token } = data
 
-  addToObject('user', 'email', email)
-  addToObject('user', 'token', token)
+  updateStoreValue(['user', 'email'], OPERATION_TYPE_UPDATE, email)
+  updateStoreValue(['user', 'token'], OPERATION_TYPE_UPDATE, token)
   localStorage.setItem(AUTH_COOKIE, JSON.stringify({ email, token }))
 
   return router.push(ROUTE_INDEX)

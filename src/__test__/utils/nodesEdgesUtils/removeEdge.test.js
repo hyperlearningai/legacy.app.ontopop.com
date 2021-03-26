@@ -1,9 +1,9 @@
 import { DataSet } from 'vis-data'
+import { OPERATION_TYPE_ADD, OPERATION_TYPE_TOGGLE } from '../../../constants/store'
 import store from '../../../store'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
 
-const addNumber = jest.fn()
-const toggleFromArrayInKey = jest.fn()
+const updateStoreValue = jest.fn()
 const edge = {
   id: '12',
   from: '1',
@@ -23,8 +23,7 @@ describe('removeEdge', () => {
 
     await removeEdge({
       edge,
-      addNumber,
-      toggleFromArrayInKey
+      updateStoreValue,
     })
 
     expect(availableEdges.length).toEqual(0)
@@ -43,15 +42,15 @@ describe('removeEdge', () => {
 
     await removeEdge({
       edge,
-      addNumber,
-      toggleFromArrayInKey
+      updateStoreValue,
     })
 
     expect(availableEdges.length).toEqual(0)
-    expect(addNumber).toHaveBeenCalledWith('availableEdgesCount', -1)
-    expect(toggleFromArrayInKey.mock.calls).toEqual([
-      ['nodesEdges', edge.from, edge.id],
-      ['nodesEdges', edge.to, edge.id],
+
+    expect(updateStoreValue.mock.calls).toEqual([
+      [['availableEdgesCount'], OPERATION_TYPE_ADD, -1],
+      [['nodesEdges', edge.from], OPERATION_TYPE_TOGGLE, edge.id],
+      [['nodesEdges', edge.to], OPERATION_TYPE_TOGGLE, edge.id],
     ])
   })
 })

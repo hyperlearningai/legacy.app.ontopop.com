@@ -7,57 +7,47 @@ import notesGetNotes from '../notes/notesGetNotes'
  * Graph data loading at startup
  * @param  {Object}     params
  * @param  {Function}   params.t                  Internationalisation function
- * @param  {Function}   params.addNumber          addNumber action
- * @param  {Function}   params.setStoreState      setStoreState action
- * @param  {Function}   params.removeFromObject   removeFromObject action
+ * @param  {Function}   params.updateStoreValue   updateStoreValue action
  * @return { undefined }
 \ */
 const startupActions = async ({
-  addNumber,
-  setStoreState,
-  removeFromObject,
+  updateStoreValue,
   t
 }) => {
   // load saved styling options
   loadStyling({
-    setStoreState,
-    addNumber,
+    updateStoreValue,
     t
   })
 
   // get graph comments
   notesGetNotes({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     t
   })
 
   // get node comments
   notesGetNotes({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     type: 'node',
     t
   })
 
   // get edge comments
   notesGetNotes({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     type: 'edge',
     t
   })
 
   // get graph data
   await getGraphData({
-    addNumber,
-    setStoreState,
+    updateStoreValue,
     t
   })
 
   setNodesIdsToDisplay({
-    setStoreState,
-    removeFromObject,
+    updateStoreValue,
     t
   })
 }

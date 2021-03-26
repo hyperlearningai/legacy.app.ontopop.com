@@ -4,19 +4,9 @@ exports[`GraphVisualisation should match snapshot  1`] = `
 <Connect
   actions={
     Object {
-      "addNumber": [Function],
-      "addSubValueToObject": [Function],
-      "addToArray": [Function],
-      "addToObject": [Function],
-      "removeFromArray": [Function],
-      "removeFromObject": [Function],
-      "setStoreState": [Function],
-      "toggleFromArrayInKey": [Function],
-      "toggleFromSubArray": [Function],
+      "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
-  addSubValueToObject={[MockFunction]}
   availableEdges={
     DataSet {
       "_data": Map {},
@@ -82,10 +72,8 @@ exports[`GraphVisualisation should match snapshot  1`] = `
   nodesIdsToDisplay={Array []}
   physicsHierarchicalView={true}
   physicsRepulsion={true}
-  removeFromObject={[MockFunction]}
-  setStoreState={[MockFunction]}
   showContextMenu={true}
-  toggleFromArrayInKey={[MockFunction]}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

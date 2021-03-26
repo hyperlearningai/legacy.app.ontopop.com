@@ -18,7 +18,7 @@ export const addToObjectFixture = {
   updatedEdges: ['http://webprotege.stanford.edu/R15RMwxh0pmeZADFPUrcpM']
 }
 
-export const setStoreStateFixture = [
+export const updateStoreValueFixture = [
   [
     'objectPropertiesFromApi',
     newOwlObjectProperties
