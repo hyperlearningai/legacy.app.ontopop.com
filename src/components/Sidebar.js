@@ -159,7 +159,7 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_NODES_SELECTION)}
           className={sidebarView === SIDEBAR_VIEW_NODES_SELECTION ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
+            // updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_NODES_SELECTION)
             updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
@@ -172,7 +172,7 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_EDGES_SELECTION)}
           className={sidebarView === SIDEBAR_VIEW_EDGES_SELECTION ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, true)
+            // updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_EDGES_SELECTION)
             updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
@@ -185,7 +185,7 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_NODES_FILTER)}
           className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
+            // updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_NODES_FILTER)
             updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
@@ -198,7 +198,7 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_EDGES_FILTER)}
           className={sidebarView === SIDEBAR_VIEW_EDGES_FILTER ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, true)
+            // updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_EDGES_FILTER)
             updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
@@ -223,7 +223,7 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
           className={sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
-            updateStoreValue(['isNeighbourNodeSelectable'], OPERATION_TYPE_UPDATE, true)
+            // updateStoreValue(['isNeighbourNodeSelectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_NEIGHBOURHOOD)
             updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
           }}
@@ -235,6 +235,7 @@ const Sidebar = ({
           tooltip={t(SIDEBAR_VIEW_SHORTEST_PATH)}
           className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
           onClick={() => {
+            updateStoreValue(['isElementSelectable'], OPERATION_TYPE_UPDATE, false)
             updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, true)
             setView(SIDEBAR_VIEW_SHORTEST_PATH)
             updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)

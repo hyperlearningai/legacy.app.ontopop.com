@@ -6,6 +6,7 @@ import expandNode from './expandNode'
 import getNode from '../nodesEdgesUtils/getNode'
 import setShortestPathNode from '../shortestPath/setShortestPathNode'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+import updateHighlightedElement from '../networkStyling/updateHighlightedElement'
 
 /**
  * Update VisJs network methods
@@ -20,8 +21,7 @@ const setNetworkMethods = async ({
 }) => {
   network?.on('selectNode', (event) => {
     const {
-      isNodeSelectable,
-      isNeighbourNodeSelectable,
+      isElementSelectable,
       isShortestPathNode1Selectable,
       isShortestPathNode2Selectable,
     } = store.getState()
@@ -29,12 +29,12 @@ const setNetworkMethods = async ({
     if (event.nodes?.length === 1) {
       const nodeId = event.nodes[0]
 
-      if (isNodeSelectable) {
-        return updateStoreValue(['selectedNode'], OPERATION_TYPE_UPDATE, nodeId)
-      }
-
-      if (isNeighbourNodeSelectable) {
-        return updateStoreValue(['selectedNeighbourNode'], OPERATION_TYPE_UPDATE, nodeId)
+      if (isElementSelectable) {
+        return updateHighlightedElement({
+          updateStoreValue,
+          id: nodeId,
+          type: 'node'
+        })
       }
 
       if (isShortestPathNode1Selectable) {
@@ -91,14 +91,18 @@ const setNetworkMethods = async ({
 
   network?.on('selectEdge', (event) => {
     const {
-      isEdgeSelectable,
+      isElementSelectable
     } = store.getState()
 
-    if (event.edges?.length === 1) {
+    if (event.edges?.length === 1 && event.nodes?.length === 0) {
       const edgeId = event.edges[0]
 
-      if (isEdgeSelectable) {
-        return updateStoreValue(['selectedEdge'], OPERATION_TYPE_UPDATE, edgeId)
+      if (isElementSelectable) {
+        return updateHighlightedElement({
+          updateStoreValue,
+          id: edgeId,
+          type: 'edge'
+        })
       }
     }
   })

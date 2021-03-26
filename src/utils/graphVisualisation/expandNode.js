@@ -1,7 +1,12 @@
 import store from '../../store'
-import addExpandedNode from './addExpandedNode'
-import getEdge from '../nodesEdgesUtils/getEdge'
-import { OPERATION_TYPE_ADD } from '../../constants/store'
+import { OPERATION_TYPE_ADD, OPERATION_TYPE_UPDATE } from '../../constants/store'
+import getNodeIds from '../nodesEdgesUtils/getNodeIds'
+import getEdgeIds from '../nodesEdgesUtils/getEdgeIds'
+import checkEdgeVisibility from '../networkGraphOptions/checkEdgeVisibility'
+import checkNodeVisibility from '../networkGraphOptions/checkNodeVisibility'
+import setNodeStyle from '../networkStyling/setNodeStyle'
+import addNodeToGraph from './addNodeToGraph'
+
 /**
  * Add nodes and/or edges to graph
  * @param  {Object}   params
@@ -19,29 +24,76 @@ const expandNode = ({
     classesFromApi,
   } = store.getState()
 
-  const edges = totalEdgesPerNode[nodeId]
+  const existingNodes = getNodeIds()
+  const existingEdges = getEdgeIds()
 
-  if (edges?.length > 0) {
-    updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, 1)
+  const nodeEdges = totalEdgesPerNode[nodeId]
 
-    for (let index = 0; index < edges.length; index++) {
-      const edgeId = edges[index]
-      const edge = getEdge(edgeId)
+  const nodesToDisplay = []
 
-      if (edge !== null) continue
+  const visibleEdges = nodeEdges.filter((edgeId) => {
+    if (existingEdges.includes(edgeId)) return false
 
-      const edgeObject = objectPropertiesFromApi[edgeId]
+    const {
+      from,
+      to
+    } = objectPropertiesFromApi[edgeId]
 
-      setTimeout(() => addExpandedNode({
-        nodeId,
-        index,
-        edgesNumber: edges.length,
-        edge: edgeObject,
+    const nodeToCheck = from === nodeId ? to : from
+
+    if (existingNodes.includes(nodeToCheck)) return false
+
+    const isNodeVisible = checkNodeVisibility({
+      nodeId: nodeToCheck
+    })
+
+    if (!isNodeVisible) return false
+
+    const isEdgevisible = checkEdgeVisibility({
+      edgeId
+    })
+
+    if (!isEdgevisible) return false
+
+    nodesToDisplay.push(nodeToCheck)
+
+    return true
+  })
+
+  // update selected node spiderability
+  const isNotSpiderable = nodeEdges.every((edgeId) => visibleEdges.includes(edgeId) || existingEdges.includes(edgeId))
+
+  updateStoreValue(['nodesSpiderability', nodeId], OPERATION_TYPE_UPDATE, isNotSpiderable ? 'false' : 'hidden')
+  setNodeStyle({ node: classesFromApi[nodeId] })
+
+  if (nodesToDisplay.length === 0) return false
+
+  updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, 1)
+
+  // add new nodes and edges
+  nodesToDisplay.forEach((currentNodeId, index) => {
+    const isLast = index === nodesToDisplay.length - 1
+
+    if (index > 50) {
+      setTimeout(() => addNodeToGraph({
         updateStoreValue,
-        classesFromApi,
-      }), 1)
+        nodeId: currentNodeId,
+        visibleEdges,
+        isLast,
+        isSpidered: true,
+        existingEdges
+      }), 0.001)
+    } else {
+      addNodeToGraph({
+        updateStoreValue,
+        nodeId: currentNodeId,
+        visibleEdges,
+        isLast,
+        isSpidered: true,
+        existingEdges
+      })
     }
-  }
+  })
 }
 
 export default expandNode

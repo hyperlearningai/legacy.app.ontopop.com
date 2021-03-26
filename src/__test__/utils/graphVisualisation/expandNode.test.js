@@ -5,31 +5,39 @@ import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import store from '../../../store'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
-import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
-import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
-import { OPERATION_TYPE_ADD } from '../../../constants/store'
+import { OPERATION_TYPE_ADD, OPERATION_TYPE_UPDATE } from '../../../constants/store'
+import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
+import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
+import getNodeIds from '../../../utils/nodesEdgesUtils/getNodeIds'
+import getEdgeIds from '../../../utils/nodesEdgesUtils/getEdgeIds'
+import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
+import addNodeToGraph from '../../../utils/graphVisualisation/addNodeToGraph'
 
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
+jest.mock('../../../utils/nodesEdgesUtils/getNodeIds')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
-jest.mock('../../../utils/nodesEdgesUtils/countNodes')
-jest.mock('../../../utils/nodesEdgesUtils/countEdges')
-jest.mock('../../../utils/networkStyling/highlightSpiderableNodes')
-jest.mock('../../../utils/networkStyling/setElementsStyle')
+jest.mock('../../../utils/nodesEdgesUtils/getEdgeIds')
+jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
+jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
+jest.mock('../../../utils/graphVisualisation/addNodeToGraph')
+jest.mock('../../../utils/networkStyling/setNodeStyle')
 
 const updateStoreValue = jest.fn()
 
 store.getState = jest.fn().mockImplementation(() => ({
   totalEdgesPerNode,
-  classesFromApi,
   objectPropertiesFromApi,
-  nodesEdges: {},
-  isPhysicsOn: false,
+  classesFromApi,
 }))
 
-countNodes.mockImplementation(() => 10)
-countEdges.mockImplementation(() => 10)
+checkNodeVisibility.mockImplementation(() => true)
+checkEdgeVisibility.mockImplementation(() => true)
+getNodeIds.mockImplementation(() => ['1', '177', '9'])
+getEdgeIds.mockImplementation(() => ['11', '91'])
+getEdge.mockImplementation(() => null)
+getNode.mockImplementation(() => null)
 
 jest.useFakeTimers()
 
@@ -41,19 +49,34 @@ describe('expandNode', () => {
   it('should work correctly', async () => {
     const nodeId = '1'
 
-    getEdge.mockImplementation(() => null)
-    getNode.mockImplementation(() => null)
-
     await expandNode({
       nodeId,
       updateStoreValue,
     })
 
-    expect(updateStoreValue).toHaveBeenCalledWith(['activeLoaders'], OPERATION_TYPE_ADD, 1)
-
-    expect(setTimeout).toHaveBeenCalledWith(
-      expect.any(Function),
-      1
+    expect(updateStoreValue.mock.calls).toEqual([
+      [
+        [
+          'nodesSpiderability',
+          '1',
+        ],
+        OPERATION_TYPE_UPDATE,
+        'false',
+      ],
+      [['activeLoaders'], OPERATION_TYPE_ADD, 1]
+    ])
+    expect(setNodeStyle).toHaveBeenCalledWith(
+      { node: classesFromApi[nodeId] }
+    )
+    expect(addNodeToGraph).toHaveBeenLastCalledWith(
+      {
+        existingEdges: ['11', '91'],
+        isLast: true,
+        isSpidered: true,
+        nodeId: '192',
+        updateStoreValue,
+        visibleEdges: ['12', '441', '781', '811', '1421', '1781', '1855', '1921']
+      }
     )
   })
 })

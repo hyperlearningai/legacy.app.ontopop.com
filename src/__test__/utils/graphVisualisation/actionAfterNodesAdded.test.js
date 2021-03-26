@@ -53,7 +53,7 @@ describe('actionAfterNodesAdded', () => {
     )
 
     expect(setTimeout).toHaveBeenCalledWith(
-      expect.any(Function), 1000
+      expect.any(Function), 250
     )
   })
 })

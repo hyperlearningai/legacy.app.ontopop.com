@@ -11,12 +11,12 @@ describe('setNodeOverlay', () => {
 
   it('should work correctly when no overlay', async () => {
     store.getState = jest.fn().mockImplementation(() => ({
-      shortestPathNodes: ['node-123', 'node-234'],
+      shortestPathNodes: ['123', '234'],
       isNodeOverlay: false,
-      stylingNodeOverlayOpacity: 0.1
+      globalNodeStyling: { stylingNodeOverlayOpacity: 0.1 }
     }))
 
-    const nodeId = 'node-123'
+    const nodeId = '123'
 
     await setNodeOverlay({
       nodeId
@@ -27,12 +27,12 @@ describe('setNodeOverlay', () => {
 
   it('should work correctly when node in shortest path overlay', async () => {
     store.getState = jest.fn().mockImplementation(() => ({
-      shortestPathNodes: ['node-123', 'node-234'],
+      shortestPathNodes: ['123', '234'],
       isNodeOverlay: true,
-      stylingNodeOverlayOpacity: 0.1
+      globalNodeStyling: { stylingNodeOverlayOpacity: 0.1 }
     }))
 
-    const nodeId = 'node-123'
+    const nodeId = '123'
     await setNodeOverlay({
       nodeId
     })
@@ -42,19 +42,19 @@ describe('setNodeOverlay', () => {
 
   it('should work correctly when overlay', async () => {
     store.getState = jest.fn().mockImplementation(() => ({
-      shortestPathNodes: ['node-123', 'node-234'],
+      shortestPathNodes: ['123', '234'],
       isNodeOverlay: true,
-      stylingNodeOverlayOpacity: 0.1
+      globalNodeStyling: { stylingNodeOverlayOpacity: 0.1 }
     }))
 
-    const nodeId = 'node-345'
+    const nodeId = '345'
 
     await setNodeOverlay({
       nodeId
     })
 
     expect(updateNodes).toHaveBeenCalledWith(
-      { id: 'node-345', opacity: 0.1 }
+      { id: '345', opacity: 0.1 }
     )
   })
 })

@@ -1,38 +1,36 @@
 /* eslint max-len:0 */
 import setOntologyDeleteEdge from '../../../utils/editOntology/setOntologyDeleteEdge'
 import store from '../../../store'
-import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import {
-  updateStoreValueFixture
-} from '../../fixtures/setOntologyDeleteEdge'
 import removeEdge from '../../../utils/nodesEdgesUtils/removeEdge'
-import { nodesEdges } from '../../fixtures/nodesEdges'
-import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getEdge from '../../../utils/nodesEdgesUtils/getEdge'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
-import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
-import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
+import getEdgeIds from '../../../utils/nodesEdgesUtils/getEdgeIds'
+import checkNodeSpiderability from '../../../utils/networkStyling/checkNodeSpiderability'
+import {
+  OPERATION_TYPE_ARRAY_DELETE,
+  OPERATION_TYPE_DELETE,
+  OPERATION_TYPE_PUSH_UNIQUE
+} from '../../../constants/store'
 
 jest.mock('../../../utils/nodesEdgesUtils/removeEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
+jest.mock('../../../utils/nodesEdgesUtils/getEdgeIds')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
-jest.mock('../../../utils/nodesEdgesUtils/countEdges')
-jest.mock('../../../utils/nodesEdgesUtils/countNodes')
-
-countEdges.mockImplementation(() => 1)
-countNodes.mockImplementation(() => 1)
+jest.mock('../../../utils/networkStyling/checkNodeSpiderability')
 
 const selectedElement = [
   '11'
 ]
 const updateStoreValue = jest.fn()
 const t = (id) => en[id]
+const visibleEdges = ['12', '33', '40']
+getEdgeIds.mockImplementation(() => visibleEdges)
 
 getEdge.mockImplementation(() => ({
   from: '1',
@@ -43,10 +41,6 @@ getNode.mockImplementation(() => ({
 }))
 
 store.getState = jest.fn().mockImplementation(() => ({
-  classesFromApi,
-  deletedEdges: [],
-  nodesEdges,
-  totalEdgesPerNode,
   objectPropertiesFromApi
 }))
 
@@ -116,18 +110,32 @@ describe('setOntologyDeleteEdge', () => {
           rdfsLabel: 'Provided to',
           role: 'Provided to',
           to: '177',
-          userDefined: false
+          userDefined: false,
         },
       }
     )
 
-    expect(updateStoreValue.mock.calls).toEqual(updateStoreValueFixture)
+    expect(updateStoreValue.mock.calls).toEqual(
+      [
+        [['totalEdgesPerNode', '1'], OPERATION_TYPE_ARRAY_DELETE, '11'],
+        [['totalEdgesPerNode', '177'], OPERATION_TYPE_ARRAY_DELETE, '11'],
+        [['deletedEdges'], OPERATION_TYPE_PUSH_UNIQUE, '11'],
+        [['objectPropertiesFromApi', '11'], OPERATION_TYPE_DELETE]
+      ]
+    )
 
     expect(showNotification).toHaveBeenLastCalledWith(
       {
-        message: 'Edges deleted: 11',
+        message: 'Edge deleted: 11',
         type: 'success'
       }
+    )
+
+    expect(checkNodeSpiderability.mock.calls).toEqual(
+      [
+        [{ nodeId: '1', updateStoreValue, visibleEdges: ['12', '33', '40'] }],
+        [{ nodeId: '177', updateStoreValue, visibleEdges: ['12', '33', '40'] }]
+      ]
     )
   })
 })

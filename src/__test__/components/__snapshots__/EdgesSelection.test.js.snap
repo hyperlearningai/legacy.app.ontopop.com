@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EdgesSelection should match snapshot  1`] = `
+exports[`EdgesSelection should match snapshot when no selected edge 1`] = `
 <Connect
   actions={
     Object {
@@ -8,7 +8,25 @@ exports[`EdgesSelection should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
-  selectedEdge="edge-123"
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`EdgesSelection should match snapshot when selected edge 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  mapToProps={[Function]}
+  selectedElement={
+    Object {
+      "1": "edge",
+    }
+  }
   updateStoreValue={[MockFunction]}
 >
   <Component />

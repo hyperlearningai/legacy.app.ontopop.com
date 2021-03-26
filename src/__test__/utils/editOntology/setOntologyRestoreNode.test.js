@@ -3,103 +3,43 @@ import setOntologyRestoreNode from '../../../utils/editOntology/setOntologyResto
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
-import {
-  updateStoreValueFixture
-} from '../../fixtures/setOntologyRestoreNode'
-import { nodesEdges } from '../../fixtures/nodesEdges'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
-import setElementsStyle from '../../../utils/networkStyling/setElementsStyle'
-import getElementLabel from '../../../utils/networkStyling/getElementLabel'
 import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
-import {
-  CLICK_NODE_BACKGROUND, EDGE_COLOR, EDGE_COLOR_HIGHLIGHTED,
-  EDGE_LABEL_PROPERTY, HIGHLIGHT_NODE_BORDER, HOVER_NODE_BACKGROUND,
-  HOVER_NODE_BORDER, LABEL_PROPERTY, NODE_BACKGROUND, NODE_BORDER,
-  NODE_DEFAULT_SHAPE, NODE_TEXT_COLOR
-} from '../../../constants/graph'
-import countEdges from '../../../utils/nodesEdgesUtils/countEdges'
-import countNodes from '../../../utils/nodesEdgesUtils/countNodes'
+
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
+import {
+  OPERATION_TYPE_ARRAY_DELETE,
+  OPERATION_TYPE_DELETE,
+  OPERATION_TYPE_PUSH_UNIQUE,
+  OPERATION_TYPE_UPDATE
+} from '../../../constants/store'
 
 const selectedElement = ['100', '40']
-const deletedNodes = ['100', '33', '21', '40']
-const deletedEdges = ['11', '33', '21', '40']
 
 const updateStoreValue = jest.fn()
 const t = (id) => en[id]
 
 jest.mock('../../../utils/nodesEdgesUtils/getNode')
-jest.mock('../../../utils/networkStyling/setElementsStyle')
 jest.mock('../../../utils/networkStyling/getElementLabel')
 jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
-jest.mock('../../../utils/nodesEdgesUtils/countEdges')
-jest.mock('../../../utils/nodesEdgesUtils/countNodes')
 jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
 jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
 
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApiBackup: classesFromApi,
-  classesFromApi,
-  deletedNodes,
-  deletedEdges,
-  objectPropertiesFromApi,
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
-  nodesEdges,
-  totalEdgesPerNode,
   totalEdgesPerNodeBackup: totalEdgesPerNode,
-  userDefinedNodeStyling: {
-    stylingNodeSize: 25,
-    stylingNodeBorder: 1,
-    stylingNodeTextColor: NODE_TEXT_COLOR,
-    stylingNodeBorderSelected: 2,
-    stylingNodeBorderColor: NODE_BORDER,
-    stylingNodeBackgroundColor: NODE_BACKGROUND,
-    stylingNodeHighlightBorderColor: HIGHLIGHT_NODE_BORDER,
-    stylingNodeHighlightBackgroundColor: CLICK_NODE_BACKGROUND,
-    stylingNodeHoverBackgroundColor: HOVER_NODE_BACKGROUND,
-    stylingNodeHoverBorderColor: HOVER_NODE_BORDER,
-    stylingNodeShape: NODE_DEFAULT_SHAPE,
-    stylingNodeTextFontSize: 12,
-    stylingNodeTextFontAlign: 'center',
-    stylingNodeCaptionProperty: LABEL_PROPERTY,
-  },
-  globalEdgeStyling: {
-    stylingEdgeLineColor: EDGE_COLOR,
-    stylingEdgeLineColorHover: EDGE_COLOR,
-    stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
-    stylingEdgeLineStyle: false,
-    stylingEdgeTextColor: EDGE_COLOR,
-    stylingEdgeTextSize: 12,
-    stylingEdgeTextAlign: 'horizontal',
-    stylingEdgeWidth: 1,
-    stylingEdgeLength: 250,
-    stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
-  },
-  userDefinedEdgeStyling: {
-    stylingEdgeLineColor: EDGE_COLOR,
-    stylingEdgeLineColorHover: EDGE_COLOR,
-    stylingEdgeLineColorHighlight: EDGE_COLOR_HIGHLIGHTED,
-    stylingEdgeLineStyle: false,
-    stylingEdgeTextColor: EDGE_COLOR,
-    stylingEdgeTextSize: 12,
-    stylingEdgeTextAlign: 'horizontal',
-    stylingEdgeWidth: 1,
-    stylingEdgeLength: 250,
-    stylingEdgeCaptionProperty: EDGE_LABEL_PROPERTY,
-  },
 }))
 
-countEdges.mockImplementation(() => 1)
-countNodes.mockImplementation(() => 1)
 checkNodeVisibility.mockImplementation(() => true)
 checkEdgeVisibility.mockImplementation(() => true)
 
@@ -143,9 +83,6 @@ describe('setOntologyRestoreNode', () => {
   })
 
   it('should work correctly', async () => {
-    const classesFromApiLatest = JSON.parse(JSON.stringify(classesFromApi))
-    deletedNodes.map((nodeId) => delete classesFromApiLatest[nodeId])
-
     httpCall.mockImplementation(() => ({
       data: {
         12: { id: '12' }
@@ -154,96 +91,218 @@ describe('setOntologyRestoreNode', () => {
 
     getNode.mockImplementation(() => ({ id: '123' }))
 
-    getElementLabel.mockImplementation(() => 'Provided to')
-
     await setOntologyRestoreNode({
       updateStoreValue,
       selectedElement,
       t
     })
 
-    expect(setElementsStyle).toHaveBeenCalledWith()
     expect(addNode).toHaveBeenLastCalledWith(
       {
-        updateStoreValue,
         node: {
           Type: 'Sketch',
-          borderWidth: 1,
-          borderWidthSelected: 2,
-          color: {
-            background: '#adefd1',
-            border: '#011e41',
-            highlight: {
-              background: '#ffed00',
-              border: '#009688',
-            },
-            hover: {
-              background: '#f2f2f2',
-              border: '#607d8b',
-            },
-          },
-          font: {
-            align: 'center',
-            bold: '700',
-            color: '#000000',
-            face: 'Montserrat',
-            size: 12,
-          },
           id: '12',
-          label: 'Provided to',
-          title: 'Provided to',
+          label: 'class',
           name: 'Drawing',
           nodeId: 40,
           nodeType: 'class',
           rdfAbout: 'http://webprotege.stanford.edu/R7ziZlwBCU3dDShTGeoBjYR',
           rdfsLabel: 'Drawing',
-          shape: 'circle',
-          size: 25,
           skosDefinition: 'A Design Representation intended to visually communicate the properties of an Asset or system of Assets.',
           upperOntology: false,
-          userDefined: false,
+          userDefined: false
         },
+        updateStoreValue
       }
     )
     expect(addEdge).toHaveBeenLastCalledWith(
       {
-        updateStoreValue,
         edge: {
-          arrows: {
-            to: true,
-          },
-          color: {
-            color: '#070b11',
-            highlight: '#9c27b0',
-            hover: '#070b11',
-            inherit: 'from',
-            opacity: 1,
-          },
-          dashes: false,
-          edgeId: 401,
-          font: {
-            align: 'horizontal',
-            color: '#070b11',
-            size: 12,
-          },
-          from: '12',
-          id: '401',
-          label: 'Provided to',
-          labelHighlightBold: true,
+          edgeId: 1062,
+          from: '106',
+          id: '1062',
+          label: 'Subclass of',
           rdfsLabel: 'Subclass of',
           role: 'Subclass of',
-          selectionWidth: 3,
-          smooth: {
-            forceDirection: 'none',
-            roundness: 0.45,
-            type: 'cubicBezier',
-          },
-          to: '162',
-          userDefined: false,
-          width: 1,
-        }
+          to: '100',
+          userDefined: false
+        },
+        updateStoreValue
       }
     )
-    expect(updateStoreValue.mock.calls).toEqual(updateStoreValueFixture)
+    expect(updateStoreValue.mock.calls).toEqual(
+      [[['deletedNodes'], OPERATION_TYPE_ARRAY_DELETE, '100'],
+        [['addedNodes'], OPERATION_TYPE_PUSH_UNIQUE, '12'],
+        [['classesFromApiBackup', '100'], OPERATION_TYPE_DELETE],
+        [['classesFromApi', '12'], OPERATION_TYPE_UPDATE, {
+          id: '12',
+          label: 'class',
+          name: 'Geometric Component',
+          nodeId: 100,
+          nodeType: 'class',
+          rdfAbout: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+          rdfsLabel: 'Geometric Component',
+          skosDefinition: 'The basic building blocks of geometric objects.',
+          upperOntology: false,
+          userDefined: false
+        }], [['classesFromApiBackup', '12'], OPERATION_TYPE_UPDATE, {
+          id: '12',
+          label: 'class',
+          name:
+          'Geometric Component',
+          nodeId: 100,
+          nodeType: 'class',
+          rdfAbout: 'http://webprotege.stanford.edu/RB6vzK57zLwceWuRwWA1usg',
+          rdfsLabel: 'Geometric Component',
+          skosDefinition: 'The basic building blocks of geometric objects.',
+          upperOntology: false,
+          userDefined: false
+        }], [['totalEdgesPerNode', '12'], OPERATION_TYPE_UPDATE, []], [['totalEdgesPerNodeBackup', '12'], OPERATION_TYPE_UPDATE, []], [['nodesEdges', '12'], OPERATION_TYPE_UPDATE, []], [['deletedNodes'], OPERATION_TYPE_ARRAY_DELETE, '40'], [['addedNodes'], OPERATION_TYPE_PUSH_UNIQUE, '12'], [['classesFromApiBackup', '40'], OPERATION_TYPE_DELETE], [['classesFromApi', '12'], OPERATION_TYPE_UPDATE, {
+          Type: 'Sketch',
+          id: '12',
+          label: 'class',
+          name: 'Drawing',
+          nodeId: 40,
+          nodeType: 'class',
+          rdfAbout: 'http://webprotege.stanford.edu/R7ziZlwBCU3dDShTGeoBjYR',
+          rdfsLabel: 'Drawing',
+          skosDefinition: 'A Design Representation intended to visually communicate the properties of an Asset or system of Assets.',
+          upperOntology: false,
+          userDefined: false
+        }], [['classesFromApiBackup', '12'], OPERATION_TYPE_UPDATE, {
+          Type: 'Sketch',
+          id: '12',
+          label: 'class',
+          name: 'Drawing',
+          nodeId: 40,
+          nodeType: 'class',
+          rdfAbout: 'http://webprotege.stanford.edu/R7ziZlwBCU3dDShTGeoBjYR',
+          rdfsLabel: 'Drawing',
+          skosDefinition: 'A Design Representation intended to visually communicate the properties of an Asset or system of Assets.',
+          upperOntology: false,
+          userDefined: false
+        }], [['totalEdgesPerNode', '12'], OPERATION_TYPE_UPDATE, []], [['totalEdgesPerNodeBackup', '12'], OPERATION_TYPE_UPDATE, []], [['nodesEdges', '12'], OPERATION_TYPE_UPDATE, []], [['objectPropertiesFromApi', '401'], OPERATION_TYPE_UPDATE, {
+          edgeId: 401,
+          from: '40',
+          id: '401',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '162',
+          userDefined: false
+        }], [['objectPropertiesFromApiBackup', '401'], OPERATION_TYPE_UPDATE, {
+          edgeId: 401, from: '40', id: '401', label: 'Subclass of', rdfsLabel: 'Subclass of', role: 'Subclass of', to: '162', userDefined: false
+        }], [['totalEdgesPerNode', '40'], OPERATION_TYPE_PUSH_UNIQUE, '401'], [['totalEdgesPerNodeBackup', '162'], OPERATION_TYPE_PUSH_UNIQUE, '401'], [['nodesEdges', '40'], OPERATION_TYPE_PUSH_UNIQUE, '401'], [['nodesEdges', '162'], OPERATION_TYPE_PUSH_UNIQUE, '401'], [['objectPropertiesFromApi', '421'], OPERATION_TYPE_UPDATE, {
+          edgeId: 421,
+          from: '42',
+          id: '421',
+          label: 'Composed of',
+          rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+          rdfsLabel: 'Composed of',
+          role: 'Composed of',
+          to: '100',
+          userDefined: false
+        }], [['objectPropertiesFromApiBackup', '421'], OPERATION_TYPE_UPDATE, {
+          edgeId: 421,
+          from: '42',
+          id: '421',
+          label: 'Composed of',
+          rdfAbout: 'http://webprotege.stanford.edu/RqeoNxhIUKNWDOrBxWFusJ',
+          rdfsLabel: 'Composed of',
+          role: 'Composed of',
+          to: '100',
+          userDefined: false
+        }], [['totalEdgesPerNode', '42'], OPERATION_TYPE_PUSH_UNIQUE, '421'], [['totalEdgesPerNodeBackup', '100'], OPERATION_TYPE_PUSH_UNIQUE, '421'], [['nodesEdges', '42'], OPERATION_TYPE_PUSH_UNIQUE, '421'], [['nodesEdges', '100'], OPERATION_TYPE_PUSH_UNIQUE, '421'], [['objectPropertiesFromApi', '511'], OPERATION_TYPE_UPDATE, {
+          edgeId: 511,
+          from: '51',
+          id: '511',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '100',
+          userDefined: false
+        }], [['objectPropertiesFromApiBackup', '511'], OPERATION_TYPE_UPDATE, {
+          edgeId: 511,
+          from: '51',
+          id: '511',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '100',
+          userDefined: false
+        }], [['totalEdgesPerNode', '51'], OPERATION_TYPE_PUSH_UNIQUE, '511'], [['totalEdgesPerNodeBackup', '100'], OPERATION_TYPE_PUSH_UNIQUE, '511'], [['nodesEdges', '51'], OPERATION_TYPE_PUSH_UNIQUE, '511'], [['nodesEdges', '100'], OPERATION_TYPE_PUSH_UNIQUE, '511'], [['objectPropertiesFromApi', '1001'], OPERATION_TYPE_UPDATE, {
+          edgeId: 1001, from: '100', id: '1001', label: 'Subclass of', rdfsLabel: 'Subclass of', role: 'Subclass of', to: '18', userDefined: false
+        }], [['objectPropertiesFromApiBackup', '1001'], OPERATION_TYPE_UPDATE, {
+          edgeId: 1001,
+          from: '100',
+          id: '1001',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '18',
+          userDefined: false
+        }], [['totalEdgesPerNode', '100'], OPERATION_TYPE_PUSH_UNIQUE, '1001'], [['totalEdgesPerNodeBackup', '18'], OPERATION_TYPE_PUSH_UNIQUE, '1001'], [['nodesEdges', '100'], OPERATION_TYPE_PUSH_UNIQUE, '1001'], [['nodesEdges', '18'], OPERATION_TYPE_PUSH_UNIQUE, '1001'], [['objectPropertiesFromApi', '1021'], OPERATION_TYPE_UPDATE, {
+          edgeId: 1021,
+          from: '102',
+          id: '1021',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '100',
+          userDefined: false
+        }], [['objectPropertiesFromApiBackup', '1021'], OPERATION_TYPE_UPDATE, {
+          edgeId: 1021,
+          from: '102',
+          id: '1021',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '100',
+          userDefined: false
+        }], [['totalEdgesPerNode', '102'], OPERATION_TYPE_PUSH_UNIQUE, '1021'], [['totalEdgesPerNodeBackup', '100'], OPERATION_TYPE_PUSH_UNIQUE, '1021'], [['nodesEdges', '102'], OPERATION_TYPE_PUSH_UNIQUE, '1021'], [['nodesEdges', '100'], OPERATION_TYPE_PUSH_UNIQUE, '1021'], [['objectPropertiesFromApi', '1041'], OPERATION_TYPE_UPDATE, {
+          edgeId: 1041,
+          from: '104',
+          id: '1041',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '100',
+          userDefined: false
+        }], [['objectPropertiesFromApiBackup', '1041'], OPERATION_TYPE_UPDATE, {
+          edgeId: 1041,
+          from: '104',
+          id: '1041',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '100',
+          userDefined: false
+        }], [
+          ['totalEdgesPerNode', '104'], OPERATION_TYPE_PUSH_UNIQUE, '1041'], [
+          ['totalEdgesPerNodeBackup', '100'], OPERATION_TYPE_PUSH_UNIQUE, '1041'], [['nodesEdges', '104'], OPERATION_TYPE_PUSH_UNIQUE, '1041'], [['nodesEdges', '100'], OPERATION_TYPE_PUSH_UNIQUE, '1041'], [['objectPropertiesFromApi', '1062'], OPERATION_TYPE_UPDATE, {
+          edgeId: 1062,
+          from: '106',
+          id: '1062',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '100',
+          userDefined: false
+        }], [['objectPropertiesFromApiBackup', '1062'], OPERATION_TYPE_UPDATE, {
+          edgeId: 1062,
+          from: '106',
+          id: '1062',
+          label: 'Subclass of',
+          rdfsLabel: 'Subclass of',
+          role: 'Subclass of',
+          to: '100',
+          userDefined: false
+        }], [['totalEdgesPerNode', '106'], OPERATION_TYPE_PUSH_UNIQUE,
+          '1062'], [['totalEdgesPerNodeBackup', '100'],
+          OPERATION_TYPE_PUSH_UNIQUE, '1062'], [['nodesEdges', '106'],
+          OPERATION_TYPE_PUSH_UNIQUE, '1062'], [['nodesEdges', '100'],
+          OPERATION_TYPE_PUSH_UNIQUE, '1062']]
+
+    )
   })
 })

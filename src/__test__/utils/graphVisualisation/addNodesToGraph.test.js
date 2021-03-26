@@ -1,5 +1,5 @@
 import { DataSet } from 'vis-data'
-import queueGraphElements from '../../../utils/graphVisualisation/queueGraphElements'
+import addNodesToGraph from '../../../utils/graphVisualisation/addNodesToGraph'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
@@ -10,8 +10,8 @@ import addNode from '../../../utils/nodesEdgesUtils/addNode'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 import getElementLabel from '../../../utils/networkStyling/getElementLabel'
-import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import addEdgeToGraph from '../../../utils/graphVisualisation/addEdgeToGraph'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 const updateStoreValue = jest.fn()
 
@@ -25,7 +25,6 @@ jest.mock('../../../utils/nodesEdgesUtils/addNode')
 jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
 jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
 jest.mock('../../../utils/networkStyling/getElementLabel')
-jest.mock('../../../utils/networkStyling/setNodeStyle')
 jest.mock('../../../utils/graphVisualisation/addEdgeToGraph')
 
 jest.useFakeTimers()
@@ -34,7 +33,7 @@ checkNodeVisibility.mockImplementation(() => true)
 checkEdgeVisibility.mockImplementation(() => true)
 getElementLabel.mockImplementation(() => 'test')
 
-describe('queueGraphElements', () => {
+describe('addNodesToGraph', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -57,7 +56,7 @@ describe('queueGraphElements', () => {
       },
     }))
 
-    await queueGraphElements({
+    await addNodesToGraph({
       updateStoreValue,
     })
 
@@ -82,21 +81,20 @@ describe('queueGraphElements', () => {
       },
     }))
 
-    await queueGraphElements({
+    await addNodesToGraph({
       updateStoreValue,
     })
 
     const node = {
       'Business Area': 'Finance',
       id: '10',
-      label: 'test',
+      label: 'Accrual',
       name: 'Accrual',
       nodeId: 10,
       nodeType: 'class',
       rdfAbout: 'http://webprotege.stanford.edu/R57wpQtXmxYodxNBUKJoHw',
       rdfsLabel: 'Accrual',
       skosDefinition: 'Document containing the period-end accumulated valuation amount for commodities that have floating prices up until the point of the final invoice.',
-      title: 'test',
       upperOntology: false,
       userDefined: false
     }
@@ -107,23 +105,34 @@ describe('queueGraphElements', () => {
       node,
       updateStoreValue
     })
-    expect(setNodeStyle).toHaveBeenLastCalledWith({
-      node
-    })
     expect(updateStoreValue.mock.calls).toEqual(
       [
         [
           [
+            'nodesDropdownLabels',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
+            'edgesDropdownLabels',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
             'availableNodesCount',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           0,
         ],
         [
           [
             'availableEdgesCount',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           0,
         ],
         [
@@ -132,7 +141,7 @@ describe('queueGraphElements', () => {
             'graph-0',
             'nodesIdsToDisplay',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           [
             '1',
             '2',
@@ -150,7 +159,7 @@ describe('queueGraphElements', () => {
           [
             'isPhysicsOn',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           false,
         ],
         [
@@ -165,7 +174,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '1',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -173,7 +182,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '2',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -181,7 +190,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '3',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -189,7 +198,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '4',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -197,7 +206,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '5',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -205,7 +214,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '6',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -213,7 +222,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '7',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -221,7 +230,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '8',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -229,7 +238,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '9',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
         [
@@ -237,7 +246,7 @@ describe('queueGraphElements', () => {
             'nodesSpiderability',
             '10',
           ],
-          'update',
+          OPERATION_TYPE_UPDATE,
           'true',
         ],
       ]

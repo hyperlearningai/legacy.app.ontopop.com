@@ -13,17 +13,14 @@ import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import { SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import actions from '../store/actions'
-import setNodesStyle from '../utils/networkStyling/setNodesStyle'
-import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode'
-import addNodesBorders from '../utils/networkStyling/addNodesBorders'
 import { MIN_DATE, SORT_FIELDS } from '../constants/synonyms'
 import getNode from '../utils/nodesEdgesUtils/getNode'
-import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
 import SynonymsListAddNew from './SynonymsListAddNew'
 import synonymsGetSynonyms from '../utils/synonyms/synonymsGetSynonyms'
 import SynonymsListNode from './SynonymsListNode'
 import { NODE_TYPE } from '../constants/graph'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 
 const SynonymsList = ({
   nodesSynonyms,
@@ -40,8 +37,6 @@ const SynonymsList = ({
   const [filterValue, setFilterValue] = useState('')
 
   useEffect(() => {
-    addNodesBorders()
-
     // get node synonyms
     if (synonymElementId) {
       synonymsGetSynonyms({
@@ -53,21 +48,15 @@ const SynonymsList = ({
 
     return () => {
       updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, undefined)
-
-      setNodesStyle()
-      setEdgesStyle()
-
-      addNodesBorders()
     }
   }, [])
 
   useEffect(() => {
     if (synonymElementId && synonymElementId !== '') {
-      setNodesStyle()
-
-      highlightSelectedNode({
+      updateHighlightedElement({
         updateStoreValue,
-        selectedNode: synonymElementId
+        id: synonymElementId,
+        type: 'node'
       })
 
       synonymsGetSynonyms({

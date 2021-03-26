@@ -1,7 +1,6 @@
 /* eslint max-len:0 */
 import addEdgeToGraph from '../../../utils/graphVisualisation/addEdgeToGraph'
 import actionAfterNodesAdded from '../../../utils/graphVisualisation/actionAfterNodesAdded'
-import setEdgeStyle from '../../../utils/networkStyling/setEdgeStyle'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import getElementLabel from '../../../utils/networkStyling/getElementLabel'
 import store from '../../../store'
@@ -9,7 +8,6 @@ import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 
 const updateStoreValue = jest.fn()
 jest.mock('../../../utils/graphVisualisation/actionAfterNodesAdded')
-jest.mock('../../../utils/networkStyling/setEdgeStyle')
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/networkStyling/getElementLabel')
 
@@ -24,7 +22,7 @@ const edge = {
   edgeId: 12,
   from: '1',
   id: '12',
-  label: 'test',
+  label: 'Subclass of',
   rdfsLabel: 'Subclass of',
   role: 'Subclass of',
   to: '147',
@@ -50,8 +48,6 @@ describe('addEdgeToGraph', () => {
       updateStoreValue
     })
 
-    expect(setEdgeStyle).toHaveBeenCalledWith({ edge })
-
     expect(actionAfterNodesAdded).toHaveBeenCalledWith({
       updateStoreValue,
     })
@@ -70,7 +66,6 @@ describe('addEdgeToGraph', () => {
       edge,
       updateStoreValue
     })
-    expect(setEdgeStyle).toHaveBeenCalledWith({ edge })
     expect(actionAfterNodesAdded).toHaveBeenCalledTimes(0)
   })
 })

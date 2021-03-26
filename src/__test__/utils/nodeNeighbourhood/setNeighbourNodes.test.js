@@ -1,18 +1,28 @@
 import setNeighbourNodes from '../../../utils/nodeNeighbourhood/setNeighbourNodes'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import store from '../../../store'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 const updateStoreValue = jest.fn()
-const selectedNeighbourNode = '1'
+const selectedElement = { 1: 'node' }
 const separationDegree = 1
 const lastGraphIndex = 1
 
-const getState = jest.fn().mockImplementation(() => ({
+store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
-  selectedNeighbourNode,
+  selectedElement,
   lastGraphIndex,
+  graphData: {
+    'graph-0': {
+      isUpperOntologyVisible: true,
+      isSubClassEdgeVisible: true,
+      isDatasetVisible: true,
+      hiddenNodesProperties: [],
+      hiddenEdgesProperties: []
+    }
+  },
+  currentGraph: 'graph-0'
 }))
-store.getState = getState
 
 describe('setNeighbourNodes', () => {
   afterEach(() => {
@@ -31,35 +41,13 @@ describe('setNeighbourNodes', () => {
           'graphData',
           'graph-2',
         ],
-        'update',
+        OPERATION_TYPE_UPDATE,
         {
-          hiddenEdgesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          hiddenNodesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          isDatasetVisible: false,
+          hiddenEdgesProperties: [],
+          hiddenNodesProperties: [],
+          isDatasetVisible: true,
           isSubClassEdgeVisible: true,
-          isUpperOntologyVisible: false,
+          isUpperOntologyVisible: true,
           label: 'neighbourhood-graph-2',
           options: {
             selectedNodeId: '1',
@@ -72,21 +60,21 @@ describe('setNeighbourNodes', () => {
         [
           'currentGraph',
         ],
-        'update',
+        OPERATION_TYPE_UPDATE,
         'graph-2',
       ],
       [
         [
           'lastGraphIndex',
         ],
-        'update',
+        OPERATION_TYPE_UPDATE,
         2,
       ],
       [
         [
           'sidebarView',
         ],
-        'update',
+        OPERATION_TYPE_UPDATE,
         'networkGraphs',
       ],
     ])

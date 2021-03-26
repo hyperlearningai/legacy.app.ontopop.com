@@ -1,7 +1,7 @@
 import setShortestPath from '../../../utils/shortestPath/setShortestPath'
-import { nodesEdges } from '../../fixtures/nodesEdges'
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
+import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 
 const updateStoreValue = jest.fn()
 const shortestPathNode1 = '33'
@@ -12,9 +12,18 @@ jest.mock('../../../utils/shortestPath/getShortestPath')
 
 store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
-  nodesEdges,
   shortestPathNode1,
-  shortestPathNode2
+  shortestPathNode2,
+  graphData: {
+    'graph-0': {
+      isUpperOntologyVisible: true,
+      isSubClassEdgeVisible: true,
+      isDatasetVisible: true,
+      hiddenNodesProperties: [],
+      hiddenEdgesProperties: []
+    }
+  },
+  currentGraph: 'graph-0'
 }))
 
 describe('setShortestPath', () => {
@@ -24,7 +33,6 @@ describe('setShortestPath', () => {
 
   it('should work correctly', async () => {
     const isNodeOverlay = false
-    const isUpperOntology = true
     const nodesToExclude = []
     const edgesToExclude = []
 
@@ -36,7 +44,6 @@ describe('setShortestPath', () => {
       updateStoreValue,
       nodesToExclude,
       edgesToExclude,
-      isUpperOntology
     })
 
     expect(updateStoreValue.mock.calls).toEqual([
@@ -45,33 +52,11 @@ describe('setShortestPath', () => {
           'graphData',
           'graph-2',
         ],
-        'update',
+        OPERATION_TYPE_UPDATE,
         {
-          hiddenEdgesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          hiddenNodesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          isDatasetVisible: false,
+          hiddenEdgesProperties: [],
+          hiddenNodesProperties: [],
+          isDatasetVisible: true,
           isSubClassEdgeVisible: true,
           isUpperOntologyVisible: true,
           label: 'shortest-path-graph-2',
@@ -92,21 +77,21 @@ describe('setShortestPath', () => {
         [
           'currentGraph',
         ],
-        'update',
+        OPERATION_TYPE_UPDATE,
         'graph-2',
       ],
       [
         [
           'lastGraphIndex',
         ],
-        'update',
+        OPERATION_TYPE_UPDATE,
         2,
       ],
       [
         [
           'sidebarView',
         ],
-        'update',
+        OPERATION_TYPE_UPDATE,
         'networkGraphs',
       ],
     ])

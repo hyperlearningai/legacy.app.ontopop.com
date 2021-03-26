@@ -3,7 +3,10 @@ import {
   OPERATION_TYPE_PUSH,
   OPERATION_TYPE_TOGGLE,
   OPERATION_TYPE_UPDATE,
-  OPERATION_TYPE_DELETE
+  OPERATION_TYPE_DELETE,
+  OPERATION_TYPE_ARRAY_DELETE,
+  OPERATION_TYPE_PUSH_UNIQUE,
+  OPERATION_TYPE_OBJECT_ADD
 } from '../constants/store'
 
 export default {
@@ -31,8 +34,17 @@ export default {
         }
       }
 
+      if (type === OPERATION_TYPE_OBJECT_ADD) {
+        return {
+          [key]: {
+            ...newObject[key],
+            ...value
+          }
+        }
+      }
+
       if (type === OPERATION_TYPE_PUSH) {
-        const newArray = state[key].slice()
+        const newArray = state[key] ? state[key].slice() : []
         newArray.push(value)
 
         return {
@@ -40,8 +52,34 @@ export default {
         }
       }
 
+      if (type === OPERATION_TYPE_PUSH_UNIQUE) {
+        const newArray = state[key] ? state[key].slice() : []
+
+        if (!newArray.includes(value)) {
+          newArray.push(value)
+        }
+
+        return {
+          [key]: newArray
+        }
+      }
+
+      if (type === OPERATION_TYPE_ARRAY_DELETE) {
+        const newArray = state[key] ? state[key].slice() : []
+
+        const valueIndex = newArray.indexOf(value)
+
+        if (valueIndex > -1) {
+          newArray.splice(valueIndex, 1)
+        }
+
+        return {
+          [key]: newArray
+        }
+      }
+
       if (type === OPERATION_TYPE_TOGGLE) {
-        const newArray = state[key].slice()
+        const newArray = state[key] ? state[key].slice() : []
 
         const valueIndex = newArray.indexOf(value)
 
@@ -77,6 +115,13 @@ export default {
           subValues[index][currentKey][nextKey] += value
         }
 
+        if (type === OPERATION_TYPE_OBJECT_ADD) {
+          subValues[index][currentKey][nextKey] = {
+            ...subValues[index][currentKey][nextKey],
+            ...value
+          }
+        }
+
         if (type === OPERATION_TYPE_DELETE) {
           delete subValues[index][currentKey][nextKey]
         }
@@ -89,6 +134,18 @@ export default {
           }
 
           subValues[index][currentKey][nextKey].push(value)
+        }
+
+        if (type === OPERATION_TYPE_PUSH_UNIQUE) {
+          if (
+            !subValues[index][currentKey][nextKey]
+          ) {
+            subValues[index][currentKey][nextKey] = []
+          }
+
+          if (!subValues[index][currentKey][nextKey].includes(value)) {
+            subValues[index][currentKey][nextKey].push(value)
+          }
         }
 
         if (type === OPERATION_TYPE_TOGGLE) {
@@ -104,6 +161,18 @@ export default {
             subValues[index][currentKey][nextKey].splice(valueIndex, 1)
           } else {
             subValues[index][currentKey][nextKey].push(value)
+          }
+        }
+
+        if (type === OPERATION_TYPE_ARRAY_DELETE) {
+          if (
+            subValues[index][currentKey][nextKey]
+          ) {
+            const valueIndex = subValues[index][currentKey][nextKey].indexOf(value)
+
+            if (valueIndex > -1) {
+              subValues[index][currentKey][nextKey].splice(valueIndex, 1)
+            }
           }
         }
 

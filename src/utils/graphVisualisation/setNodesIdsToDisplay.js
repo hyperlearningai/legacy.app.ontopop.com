@@ -39,7 +39,8 @@ const setNodesIdsToDisplay = async ({
 
   const {
     type,
-    options
+    options,
+    nodesIds
   } = graphData[currentGraph]
 
   if (type !== ALGO_TYPE_FULL && !options) return false
@@ -50,6 +51,58 @@ const setNodesIdsToDisplay = async ({
   let isNodeOverlayNew = false
   let shortestPathNodesNew = []
   let shortestPathResultsNew = []
+
+  if (nodesIds && nodesIds.length > 0) {
+    let highlightedNodesUpdate = []
+    let highlightedEdgesUpdate = []
+    let isNodeOverlayUpdate = false
+    let shortestPathNodesUpdate = []
+    let shortestPathResultsUpdate = []
+
+    switch (type) {
+      case ALGO_TYPE_SEARCH_NEIGHBOURHOOD:
+        const {
+          selectedNodesId,
+          selectedEdgesId,
+        } = options
+
+        highlightedNodesUpdate = selectedNodesId
+        highlightedEdgesUpdate = selectedEdgesId
+        break
+
+      case ALGO_TYPE_NEIGHBOURHOOD:
+        const {
+          selectedNodeId
+        } = options
+        highlightedNodesUpdate = [selectedNodeId]
+
+        break
+
+      case ALGO_TYPE_SHORTEST_PATH:
+        const {
+          shortestPathSelectedNodes,
+          shortestPathResults,
+          isNodeOverlay
+        } = options
+
+        highlightedNodesUpdate = shortestPathSelectedNodes
+        isNodeOverlayUpdate = isNodeOverlay
+        shortestPathResultsUpdate = shortestPathResults
+        shortestPathNodesUpdate = shortestPathSelectedNodes
+        break
+      default:
+        break
+    }
+
+    updateStoreValue(['highlightedNodes'], OPERATION_TYPE_UPDATE, highlightedNodesUpdate)
+    updateStoreValue(['highlightedEdges'], OPERATION_TYPE_UPDATE, highlightedEdgesUpdate)
+    updateStoreValue(['isNodeOverlay'], OPERATION_TYPE_UPDATE, isNodeOverlayUpdate)
+    updateStoreValue(['shortestPathNodes'], OPERATION_TYPE_UPDATE, shortestPathNodesUpdate)
+    updateStoreValue(['shortestPathResults'], OPERATION_TYPE_UPDATE, shortestPathResultsUpdate)
+    updateStoreValue(['nodesIdsToDisplay'], OPERATION_TYPE_UPDATE, nodesIds)
+
+    return true
+  }
 
   switch (type) {
     case ALGO_TYPE_FULL:
@@ -175,6 +228,7 @@ const setNodesIdsToDisplay = async ({
     })
   }
 
+  updateStoreValue(['graphData', currentGraph, 'nodesIds'], OPERATION_TYPE_UPDATE, nodesToDisplay)
   updateStoreValue(['highlightedNodes'], OPERATION_TYPE_UPDATE, highlightedNodesNew)
   updateStoreValue(['highlightedEdges'], OPERATION_TYPE_UPDATE, highlightedEdgesNew)
   updateStoreValue(['isNodeOverlay'], OPERATION_TYPE_UPDATE, isNodeOverlayNew)

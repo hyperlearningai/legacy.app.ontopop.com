@@ -5,10 +5,19 @@ const updateStoreValue = jest.fn()
 const separationDegree = 1
 const lastGraphIndex = 1
 
-const getState = jest.fn().mockImplementation(() => ({
+store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
+  graphData: {
+    'graph-0': {
+      isUpperOntologyVisible: true,
+      isSubClassEdgeVisible: true,
+      isDatasetVisible: true,
+      hiddenNodesProperties: [],
+      hiddenEdgesProperties: []
+    }
+  },
+  currentGraph: 'graph-0'
 }))
-store.getState = getState
 
 describe('setSearchNeighbourNodes', () => {
   afterEach(() => {
@@ -33,33 +42,11 @@ describe('setSearchNeighbourNodes', () => {
         ],
         'update',
         {
-          hiddenEdgesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          hiddenNodesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          isDatasetVisible: false,
+          hiddenEdgesProperties: [],
+          hiddenNodesProperties: [],
+          isDatasetVisible: true,
           isSubClassEdgeVisible: true,
-          isUpperOntologyVisible: false,
+          isUpperOntologyVisible: true,
           label: 'search-graph-2',
           options: {
             selectedEdgesId: [],
@@ -123,33 +110,11 @@ describe('setSearchNeighbourNodes', () => {
         ],
         'update',
         {
-          hiddenEdgesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          hiddenNodesProperties: {
-            0: {
-              properties: {
-                0: {
-                  operation: 'includes',
-                  property: '',
-                  value: '',
-                },
-              },
-              type: 'and',
-            },
-          },
-          isDatasetVisible: false,
+          hiddenEdgesProperties: [],
+          hiddenNodesProperties: [],
+          isDatasetVisible: true,
           isSubClassEdgeVisible: true,
-          isUpperOntologyVisible: false,
+          isUpperOntologyVisible: true,
           label: 'search-graph-2',
           options: {
             selectedEdgesId: [

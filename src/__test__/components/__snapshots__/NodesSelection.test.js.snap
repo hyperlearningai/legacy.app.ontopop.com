@@ -8,6 +8,14 @@ exports[`NodesSelection should match snapshot when no selected node 1`] = `
     }
   }
   mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -22,7 +30,19 @@ exports[`NodesSelection should match snapshot when selected node 1`] = `
     }
   }
   mapToProps={[Function]}
-  selectedNode="http://webprotege.stanford.edu/R0jI731hv09ZcJeji1fbtY"
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
+  selectedElement={
+    Object {
+      "1": "node",
+    }
+  }
   updateStoreValue={[MockFunction]}
 >
   <Component />

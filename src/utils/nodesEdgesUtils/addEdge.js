@@ -1,5 +1,7 @@
-import { OPERATION_TYPE_ADD, OPERATION_TYPE_TOGGLE } from '../../constants/store'
+import { OPERATION_TYPE_ADD, OPERATION_TYPE_PUSH_UNIQUE } from '../../constants/store'
 import store from '../../store'
+import getElementLabel from '../networkStyling/getElementLabel'
+import setEdgeStyle from '../networkStyling/setEdgeStyle'
 import getEdge from './getEdge'
 
 /**
@@ -17,21 +19,34 @@ const addEdge = ({
     availableEdges
   } = store.getState()
 
-  const isVisible = getEdge(edge.id)
+  const { id } = edge
+  const isVisible = getEdge(id)
 
   if (isVisible !== null) return false
 
-  availableEdges.add(edge)
+  const label = getElementLabel({
+    type: 'edge',
+    id
+  })
+
+  availableEdges.add({
+    ...edge,
+    label
+  })
+
   updateStoreValue(['availableEdgesCount'], OPERATION_TYPE_ADD, 1)
 
   const {
     from,
-    to,
-    id
+    to
   } = edge
 
-  updateStoreValue(['nodesEdges', from], OPERATION_TYPE_TOGGLE, id)
-  updateStoreValue(['nodesEdges', to], OPERATION_TYPE_TOGGLE, id)
+  updateStoreValue(['nodesEdges', from], OPERATION_TYPE_PUSH_UNIQUE, id)
+  updateStoreValue(['nodesEdges', to], OPERATION_TYPE_PUSH_UNIQUE, id)
+
+  setEdgeStyle({
+    edge
+  })
 }
 
 export default addEdge

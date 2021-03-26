@@ -5,7 +5,7 @@ import { nodesEdges } from '../../fixtures/nodesEdges'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import { classesFromApi } from '../../fixtures/classesFromApi'
 
-store.getState = () => ({
+const commonState = {
   availableEdges,
   objectPropertiesFromApiBackup: objectPropertiesFromApi,
   userDefinedEdgeStyling: {
@@ -15,7 +15,7 @@ store.getState = () => ({
     stylingEdgeCaptionProperty: 'rdfsLabel'
   },
   classesFromApi
-})
+}
 
 describe('getShortestPath', () => {
   afterEach(() => {
@@ -26,14 +26,16 @@ describe('getShortestPath', () => {
     const shortestPathSelectedNodes = [
       '12', '33'
     ]
-    const isUpperOntology = true
+
+    store.getState = () => ({
+      ...commonState,
+      nodesEdges: [],
+    })
 
     const paths = await getShortestPath({
       shortestPathSelectedNodes,
-      nodesEdges: [],
       nodesToExclude: [],
       edgesToExclude: [],
-      isUpperOntology
     })
 
     expect(paths).toEqual([])
@@ -47,14 +49,16 @@ describe('getShortestPath', () => {
 
     const nodesToExclude = []
     const edgesToExclude = []
-    const isUpperOntology = true
+
+    store.getState = () => ({
+      ...commonState,
+      nodesEdges
+    })
 
     const paths = await getShortestPath({
       shortestPathSelectedNodes,
-      nodesEdges,
       nodesToExclude,
       edgesToExclude,
-      isUpperOntology
     })
 
     expect(paths).toEqual([
@@ -70,14 +74,16 @@ describe('getShortestPath', () => {
 
     const nodesToExclude = []
     const edgesToExclude = ['Monitored by']
-    const isUpperOntology = true
+
+    store.getState = () => ({
+      ...commonState,
+      nodesEdges
+    })
 
     const paths = await getShortestPath({
       shortestPathSelectedNodes,
-      nodesEdges,
       nodesToExclude,
       edgesToExclude,
-      isUpperOntology
     })
 
     expect(paths).toEqual([
@@ -93,66 +99,21 @@ describe('getShortestPath', () => {
 
     const nodesToExclude = ['12']
     const edgesToExclude = ['Found in']
-    const isUpperOntology = true
+
+    store.getState = () => ({
+      ...commonState,
+      nodesEdges
+    })
 
     const paths = await getShortestPath({
       shortestPathSelectedNodes,
-      nodesEdges,
       nodesToExclude,
       edgesToExclude,
-      isUpperOntology
     })
 
     expect(paths).toEqual([
       '191|||1912|||1503|||183|||1001|||511',
       '191|||1913|||903|||601|||602|||513',
-    ])
-  })
-
-  it('should return paths when isUpperOntology is false', async () => {
-    const shortestPathSelectedNodes = [
-      '41',
-      '143'
-    ]
-
-    const nodesToExclude = []
-    const edgesToExclude = []
-    const isUpperOntology = false
-
-    const paths = await getShortestPath({
-      shortestPathSelectedNodes,
-      nodesEdges,
-      nodesToExclude,
-      edgesToExclude,
-      isUpperOntology
-    })
-
-    expect(paths).toEqual([
-      '41|||417|||1341',
-    ])
-  })
-
-  it('should return paths when isUpperOntology is true', async () => {
-    const shortestPathSelectedNodes = [
-      '41',
-      '143'
-    ]
-
-    const nodesToExclude = []
-    const edgesToExclude = []
-    const isUpperOntology = true
-
-    const paths = await getShortestPath({
-      shortestPathSelectedNodes,
-      nodesEdges,
-      nodesToExclude,
-      edgesToExclude,
-      isUpperOntology
-    })
-
-    expect(paths).toEqual([
-      '41|||416|||1431',
-      '41|||417|||1341',
     ])
   })
 })

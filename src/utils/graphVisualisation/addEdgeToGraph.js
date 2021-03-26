@@ -1,7 +1,5 @@
 import store from '../../store'
-import getElementLabel from '../networkStyling/getElementLabel'
 import addEdge from '../nodesEdgesUtils/addEdge'
-import setEdgeStyle from '../networkStyling/setEdgeStyle'
 import actionAfterNodesAdded from './actionAfterNodesAdded'
 
 /**
@@ -23,19 +21,10 @@ const addEdgeToGraph = ({
 
   const edge = objectPropertiesFromApi[edgeId]
 
-  edge.label = getElementLabel({
-    type: 'edge',
-    id: edgeId
-  })
-
   // add node
   addEdge({
     edge,
     updateStoreValue
-  })
-
-  setEdgeStyle({
-    edge
   })
 
   if (isLast) {

@@ -1,5 +1,4 @@
 import { ALGO_TYPE_EDGES_FILTER } from '../../constants/algorithms'
-import { DEFAULT_GRAPH_VISUALISATION_OPTIONS } from '../../constants/graph'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
@@ -17,6 +16,8 @@ const setFilteredEdges = ({
 }) => {
   const {
     lastGraphIndex,
+    graphData,
+    currentGraph
   } = store.getState()
 
   const newGraphIndex = lastGraphIndex + 1
@@ -25,13 +26,25 @@ const setFilteredEdges = ({
 
   const label = `edges-filter-${newCurrentGraph}`
 
+  const {
+    isUpperOntologyVisible,
+    isSubClassEdgeVisible,
+    isDatasetVisible,
+    hiddenNodesProperties,
+    hiddenEdgesProperties
+  } = graphData[currentGraph]
+
   const graphValue = {
     label,
     type: ALGO_TYPE_EDGES_FILTER,
     options: {
       edgesFilters
     },
-    ...DEFAULT_GRAPH_VISUALISATION_OPTIONS
+    isUpperOntologyVisible,
+    isSubClassEdgeVisible,
+    isDatasetVisible,
+    hiddenNodesProperties,
+    hiddenEdgesProperties
   }
 
   updateStoreValue(['graphData', newCurrentGraph], OPERATION_TYPE_UPDATE, graphValue)
