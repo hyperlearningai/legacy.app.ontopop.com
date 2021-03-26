@@ -47,7 +47,7 @@ exports[`ExportSettings should match snapshot  1`] = `
         className="export-settings-buttons"
       >
         <Button
-          aria-label="jpeg"
+          ariaLabel="jpeg"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -63,7 +63,7 @@ exports[`ExportSettings should match snapshot  1`] = `
           }
         />
         <Button
-          aria-label="png"
+          ariaLabel="png"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -79,7 +79,7 @@ exports[`ExportSettings should match snapshot  1`] = `
           }
         />
         <Button
-          aria-label="pdf"
+          ariaLabel="pdf"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -108,7 +108,7 @@ exports[`ExportSettings should match snapshot  1`] = `
         className="export-settings-buttons"
       >
         <Button
-          aria-label="csv"
+          ariaLabel="csv"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -124,7 +124,7 @@ exports[`ExportSettings should match snapshot  1`] = `
           }
         />
         <Button
-          aria-label="owl"
+          ariaLabel="owl"
           badge={null}
           badgeClassName={null}
           icon={null}
@@ -153,7 +153,7 @@ exports[`ExportSettings should match snapshot  1`] = `
         className="export-settings-buttons"
       >
         <Button
-          aria-label="print"
+          ariaLabel="print"
           badge={null}
           badgeClassName={null}
           icon={null}
