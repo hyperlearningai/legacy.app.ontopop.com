@@ -80,6 +80,18 @@ const Login = ({
                   setShowError(false)
                   setPassword(e.target.value)
                 }}
+                onKeyPress={(e) => {
+                  if (e.code === 'Enter') {
+                    signIn({
+                      router,
+                      updateStoreValue,
+                      email,
+                      password,
+                      setShowError,
+                      t
+                    })
+                  }
+                }}
               />
             </div>
           </div>
