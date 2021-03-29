@@ -12,22 +12,29 @@ import setSearchNeighbourNodes from '../utils/graphSearch/setSearchNeighbourNode
 const GraphSearchCard = ({
   updateStoreValue,
   searchResult,
-  globalNodeStyling,
-  userDefinedNodeStyling,
-  globalEdgeStyling,
-  userDefinedEdgeStyling
+  // globalNodeStyling,
+  // userDefinedNodeStyling,
+  // globalEdgeStyling,
+  // userDefinedEdgeStyling
 }) => {
   const { t } = useTranslation()
 
   const [isShowMore, setShowMore] = useState(false)
-  const { type, userDefined } = searchResult
+  const {
+    type,
+    // userDefined
+  } = searchResult
 
-  const { stylingNodeCaptionProperty } = userDefined ? userDefinedNodeStyling : globalNodeStyling
-  const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
+  // const { stylingNodeCaptionProperty } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+  // const { stylingEdgeCaptionProperty } = userDefined ? userDefinedEdgeStyling : globalEdgeStyling
 
-  const captionProperty = type === 'edge' ? stylingEdgeCaptionProperty : stylingNodeCaptionProperty
+  // const captionProperty = type === 'edge' ? stylingEdgeCaptionProperty : stylingNodeCaptionProperty
 
-  const label = searchResult[captionProperty]
+  const { label } = searchResult // [captionProperty]
+
+  // if (!label) {
+  //   console.log({ searchResult })
+  // }
 
   const properties = Object.keys(searchResult).filter((property) => !RESERVED_PROPERTIES.includes(property))
 
@@ -86,28 +93,28 @@ const GraphSearchCard = ({
 GraphSearchCard.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   searchResult: PropTypes.shape().isRequired,
-  globalNodeStyling: PropTypes.shape().isRequired,
-  userDefinedNodeStyling: PropTypes.shape().isRequired,
-  globalEdgeStyling: PropTypes.shape().isRequired,
-  userDefinedEdgeStyling: PropTypes.shape().isRequired,
+  // globalNodeStyling: PropTypes.shape().isRequired,
+  // userDefinedNodeStyling: PropTypes.shape().isRequired,
+  // globalEdgeStyling: PropTypes.shape().isRequired,
+  // userDefinedEdgeStyling: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   entrySearchResults,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty,
-  globalNodeStyling,
-  userDefinedNodeStyling,
-  globalEdgeStyling,
-  userDefinedEdgeStyling
+  // stylingNodeCaptionProperty,
+  // stylingEdgeCaptionProperty,
+  // globalNodeStyling,
+  // userDefinedNodeStyling,
+  // globalEdgeStyling,
+  // userDefinedEdgeStyling
 }) => ({
   entrySearchResults,
-  stylingNodeCaptionProperty,
-  stylingEdgeCaptionProperty,
-  globalNodeStyling,
-  userDefinedNodeStyling,
-  globalEdgeStyling,
-  userDefinedEdgeStyling
+  // stylingNodeCaptionProperty,
+  // stylingEdgeCaptionProperty,
+  // globalNodeStyling,
+  // userDefinedNodeStyling,
+  // globalEdgeStyling,
+  // userDefinedEdgeStyling
 })
 
 export default connect(

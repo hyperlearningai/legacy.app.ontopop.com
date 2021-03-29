@@ -366,6 +366,8 @@ export default {
   searchResultsFor: 'Search results for',
   moreInfo: 'More info',
   lessInfo: 'Less info',
+  couldNotGetSuggestedTerms: 'Could not get suggested terms',
+  couldNotGetSearchResults: 'Could not get search results',
 
   // search
   search: 'Search',

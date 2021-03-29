@@ -2,12 +2,19 @@
 import searchGraph from '../../../utils/graphSearch/searchGraph'
 import store from '../../../store'
 import { classesFromApi } from '../../fixtures/classesFromApi'
-import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
+// import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
+import en from '../../../i18n/en'
+import httpCall from '../../../utils/apiCalls/httpCall'
+import showNotification from '../../../utils/notifications/showNotification'
 
 const updateStoreValue = jest.fn()
 const setLoading = jest.fn()
+const t = (id) => en[id]
 const value = 'roa'
+
+jest.mock('../../../utils/apiCalls/httpCall')
+jest.mock('../../../utils/notifications/showNotification')
 
 const entrySearchResults = [
   {
@@ -73,174 +80,174 @@ const entrySearchResults = [
     upperOntology: false,
     userDefined: false,
   },
-  {
-    edgeId: 413,
-    from: '41',
-    id: '413',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '152',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 417,
-    from: '41',
-    id: '417',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '134',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 524,
-    from: '52',
-    id: '524',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '107',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 533,
-    from: '53',
-    id: '533',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '73',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 692,
-    from: '69',
-    id: '692',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '73',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 941,
-    from: '94',
-    id: '941',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '4',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 1074,
-    from: '107',
-    id: '1074',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '152',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 1441,
-    from: '144',
-    id: '1441',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '87',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 1551,
-    from: '155',
-    id: '1551',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '137',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 1881,
-    from: '188',
-    id: '1881',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '42',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 1952,
-    from: '195',
-    id: '1952',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '183',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 1956,
-    from: '195',
-    id: '1956',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '80',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 2011,
-    from: '201',
-    id: '2011',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '73',
-    type: 'edge',
-    userDefined: false,
-  },
-  {
-    edgeId: 2013,
-    from: '201',
-    id: '2013',
-    label: 'Associated with',
-    rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
-    rdfsLabel: 'Associated with',
-    role: 'Associated with',
-    to: '69',
-    type: 'edge',
-    userDefined: false,
-  },
+  // {
+  //   edgeId: 413,
+  //   from: '41',
+  //   id: '413',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '152',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 417,
+  //   from: '41',
+  //   id: '417',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '134',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 524,
+  //   from: '52',
+  //   id: '524',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '107',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 533,
+  //   from: '53',
+  //   id: '533',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '73',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 692,
+  //   from: '69',
+  //   id: '692',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '73',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 941,
+  //   from: '94',
+  //   id: '941',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '4',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 1074,
+  //   from: '107',
+  //   id: '1074',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '152',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 1441,
+  //   from: '144',
+  //   id: '1441',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '87',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 1551,
+  //   from: '155',
+  //   id: '1551',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '137',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 1881,
+  //   from: '188',
+  //   id: '1881',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '42',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 1952,
+  //   from: '195',
+  //   id: '1952',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '183',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 1956,
+  //   from: '195',
+  //   id: '1956',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '80',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 2011,
+  //   from: '201',
+  //   id: '2011',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '73',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
+  // {
+  //   edgeId: 2013,
+  //   from: '201',
+  //   id: '2013',
+  //   label: 'Associated with',
+  //   rdfAbout: 'http://webprotege.stanford.edu/RoaVc0YAiyET5nKJSYJAoX',
+  //   rdfsLabel: 'Associated with',
+  //   role: 'Associated with',
+  //   to: '69',
+  //   type: 'edge',
+  //   userDefined: false,
+  // },
 ]
 
 describe('searchGraph', () => {
@@ -248,21 +255,62 @@ describe('searchGraph', () => {
     jest.clearAllMocks()
   })
 
-  it('should work correctly when all elements', async () => {
+  it('should work correctly when query error', async () => {
+    httpCall.mockImplementation(() => (
+      { error: 'apiRequestError' }
+    ))
+
     store.getState = jest.fn().mockImplementation(() => ({
       classesFromApi,
-      objectPropertiesFromApi,
-      entrySearchFilter: 'all',
+      // objectPropertiesFromApi,
+      // entrySearchFilter: 'all',
       entrySearchValue: value,
-      entrySearchAnnotationProperties: [
-        'rdfAbout',
-        'rdfsLabel'
-      ],
+      // entrySearchAnnotationProperties: [
+      //   'rdfAbout',
+      //   'rdfsLabel'
+      // ],
     }))
 
     await searchGraph({
       updateStoreValue,
-      setLoading
+      setLoading,
+      t
+    })
+
+    expect(setLoading.mock.calls).toEqual(
+      [[true]]
+    )
+    expect(showNotification).toHaveBeenCalledWith(
+      { message: 'Could not get search results', type: 'warning' }
+    )
+    expect(updateStoreValue.mock.calls).toEqual(
+      [
+        [['isQueried'], OPERATION_TYPE_UPDATE, true],
+        [['entrySearchResults'], OPERATION_TYPE_UPDATE, []]
+      ]
+    )
+  })
+
+  it('should work correctly when all elements', async () => {
+    httpCall.mockImplementation(() => (
+      { data: { value: entrySearchResults } }
+    ))
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      classesFromApi,
+      // objectPropertiesFromApi,
+      // entrySearchFilter: 'all',
+      entrySearchValue: value,
+      // entrySearchAnnotationProperties: [
+      //   'rdfAbout',
+      //   'rdfsLabel'
+      // ],
+    }))
+
+    await searchGraph({
+      updateStoreValue,
+      setLoading,
+      t
     })
 
     expect(setLoading.mock.calls).toEqual(
@@ -278,64 +326,70 @@ describe('searchGraph', () => {
     )
   })
 
-  it('should work correctly when nodes elements', async () => {
-    store.getState = jest.fn().mockImplementation(() => ({
-      classesFromApi,
-      objectPropertiesFromApi,
-      entrySearchFilter: 'nodes',
-      entrySearchValue: value,
-      entrySearchAnnotationProperties: [
-        'rdfAbout',
-        'rdfsLabel'
-      ],
-    }))
+  // it('should work correctly when nodes elements', async () => {
+  //   httpCall.mockImplementation(() => (
+  //     { data: entrySearchResults }
+  //   ))
 
-    await searchGraph({
-      value,
-      updateStoreValue,
-      setLoading
-    })
+  //   store.getState = jest.fn().mockImplementation(() => ({
+  //     classesFromApi,
+  //     // objectPropertiesFromApi,
+  //     // entrySearchFilter: 'nodes',
+  //     entrySearchValue: value,
+  //     // entrySearchAnnotationProperties: [
+  //     //   'rdfAbout',
+  //     //   'rdfsLabel'
+  //     // ],
+  //   }))
 
-    expect(setLoading.mock.calls).toEqual(
-      [[true], [false]]
-    )
-    expect(updateStoreValue.mock.calls).toEqual(
-      [
-        [['isQueried'], OPERATION_TYPE_UPDATE, true],
-        [['entrySearchResults'], OPERATION_TYPE_UPDATE,
-          entrySearchResults.filter((result) => result.type === 'node')
-        ]
-      ]
-    )
-  })
+  //   await searchGraph({
+  //     value,
+  //     updateStoreValue,
+  //     setLoading,
+  //     t
+  //   })
 
-  it('should work correctly when edges elements', async () => {
-    store.getState = jest.fn().mockImplementation(() => ({
-      classesFromApi,
-      objectPropertiesFromApi,
-      entrySearchFilter: 'edges',
-      entrySearchValue: value,
-      entrySearchAnnotationProperties: [
-        'rdfAbout',
-        'rdfsLabel'
-      ],
-    }))
+  //   expect(setLoading.mock.calls).toEqual(
+  //     [[true], [false]]
+  //   )
+  //   expect(updateStoreValue.mock.calls).toEqual(
+  //     [
+  //       [['isQueried'], OPERATION_TYPE_UPDATE, true],
+  //       [['entrySearchResults'], OPERATION_TYPE_UPDATE,
+  //         entrySearchResults.filter((result) => result.type === 'node')
+  //       ]
+  //     ]
+  //   )
+  // })
 
-    await searchGraph({
-      updateStoreValue,
-      setLoading
-    })
+  // it('should work correctly when edges elements', async () => {
+  //   store.getState = jest.fn().mockImplementation(() => ({
+  //     classesFromApi,
+  //     // objectPropertiesFromApi,
+  //     // entrySearchFilter: 'edges',
+  //     entrySearchValue: value,
+  //     // entrySearchAnnotationProperties: [
+  //     //   'rdfAbout',
+  //     //   'rdfsLabel'
+  //     // ],
+  //   }))
 
-    expect(setLoading.mock.calls).toEqual(
-      [[true], [false]]
-    )
-    expect(updateStoreValue.mock.calls).toEqual(
-      [
-        [['isQueried'], OPERATION_TYPE_UPDATE, true],
-        [['entrySearchResults'], OPERATION_TYPE_UPDATE,
-          entrySearchResults.filter((result) => result.type === 'edge')
-        ]
-      ]
-    )
-  })
+  //   await searchGraph({
+  //     updateStoreValue,
+  //     setLoading,
+  //     t
+  //   })
+
+  //   expect(setLoading.mock.calls).toEqual(
+  //     [[true], [false]]
+  //   )
+  //   expect(updateStoreValue.mock.calls).toEqual(
+  //     [
+  //       [['isQueried'], OPERATION_TYPE_UPDATE, true],
+  //       [['entrySearchResults'], OPERATION_TYPE_UPDATE,
+  //         entrySearchResults.filter((result) => result.type === 'edge')
+  //       ]
+  //     ]
+  //   )
+  // })
 })

@@ -65,10 +65,15 @@ const GraphSearch = ({
                     getSuggestions({
                       query,
                       suggestions,
-                      setSuggestions
+                      setSuggestions,
+                      updateStoreValue,
+                      t
                     })
                   }}
                   field="label"
+                  autoHighlight
+                  scrollHeight="200px"
+                  delay={500}
                   onSelect={(e) => {
                     const { value } = e.value
 
@@ -76,7 +81,8 @@ const GraphSearch = ({
 
                     searchGraph({
                       updateStoreValue,
-                      setLoading
+                      setLoading,
+                      t
                     })
                   }}
                   onChange={(e) => {

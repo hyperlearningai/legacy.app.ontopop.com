@@ -6,10 +6,11 @@ import store from '../../store'
  * Http call function
  * @param  {Object}   params
  * @param  {Function} params.updateStoreValue           updateStoreValue action
- * @param  {String}   params.body                       Request body
+ * @param  {Object}   [params.body]                     Request body
  * @param  {String}   params.route                      Request URL
  * @param  {String}   params.method                     HTTP method
  * @param  {Boolean}  params.withAuth                   Authentication bearer flag
+ * @param  {Object}  [params.additionalHeaders]         AdditionalHeaders
  * @param  {Function} params.t                          i18n translation function
  * @return {*}        response
  */
@@ -19,6 +20,7 @@ const httpCall = async ({
   body,
   route,
   method,
+  additionalHeaders,
   t,
 }) => {
   const {
@@ -27,9 +29,14 @@ const httpCall = async ({
 
   updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, 1)
 
-  const headers = {
+  const contentTypeHeader = {
     'Content-Type': 'application/json',
   }
+
+  const headers = additionalHeaders ? {
+    ...contentTypeHeader,
+    ...additionalHeaders
+  } : contentTypeHeader
 
   if (withAuth) {
     headers.Authorization = user.token

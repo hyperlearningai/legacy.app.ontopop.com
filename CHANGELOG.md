@@ -18,11 +18,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.6.0]
 ### Added
+- ONTOLOGY-90 Added search bar autocomplete
 - ONTOLOGY-130 Added updateStoreValue action to replace all other store actions
 - ONTOLOGY-130 Search starts also on search icon click
 - ONTOLOGY-109 Added userback and mouseflow snippets
 
 ### Changed
+- ONTOLOGY-90 Search performed via Search APi rather than locally 
+- ONTOLOGY-90 Added vocabulary API endpoint and updated paths
 - ONTOLOGY-151 Node and edge rendering logic to improve performance
 
 ### Deprecated
