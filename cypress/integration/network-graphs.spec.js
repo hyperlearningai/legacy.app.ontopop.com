@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_NETWORK_GRAPHS } from '../../src/constants/routes'
 
 context('Network graph', () => {
   beforeEach(() => {
@@ -61,17 +62,19 @@ context('Network graph', () => {
         .eq(1)
         .click()
 
+      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPHS)
+
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 24')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
 
       // click to Main
       cy.get('.network-graph-list-row').eq(0).find('.p-button').click()
 
       cy.wait(3000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 200')
-      cy.get('.nav-left').should('contain', 'Edges: 517')
+      cy.get('.nav-left').should('contain', 'Nodes: 320')
+      cy.get('.nav-left').should('contain', 'Edges: 828')
 
       // click to Main
       cy.get('.network-graph-list-row').eq(1).find('.p-button').eq(1)
@@ -80,8 +83,8 @@ context('Network graph', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 24')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
 
       // remove current graph and redirect to main
       cy.get('.network-graph-list-row').eq(1).find('.p-button').eq(0)
@@ -89,8 +92,8 @@ context('Network graph', () => {
 
       cy.wait(3000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 200')
-      cy.get('.nav-left').should('contain', 'Edges: 517')
+      cy.get('.nav-left').should('contain', 'Nodes: 320')
+      cy.get('.nav-left').should('contain', 'Edges: 828')
 
       // check navigation buttons
       cy.get('.vis-up').click()

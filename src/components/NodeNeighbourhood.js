@@ -35,7 +35,7 @@ const NodeNeighbourhood = ({
 
         <div className="node-neighbourhood-dropdown">
           <Dropdown
-            ariaLabel="notes-select-element"
+            aria-label="notes-select-element"
             id="node-select"
             value={selectedNode}
             filter
@@ -70,7 +70,7 @@ const NodeNeighbourhood = ({
 
         <div className="node-neighbourhood-buttons m-t-40">
           <Button
-            ariaLabel={t('showNeighbourhood')}
+            aria-label={t('showNeighbourhood')}
             tooltip={t('showNeighbourhood')}
             className="node-neighbourhood-button"
             disabled={selectedNodeType !== 'node'}

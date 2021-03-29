@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 import {
   FiLayers,
   FiSettings
@@ -38,6 +39,7 @@ import {
   FaFileAlt
 } from 'react-icons/fa'
 import { Button } from 'primereact/button'
+import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import {
   SIDEBAR_VIEW_ENTRY_SEARCH,
@@ -57,9 +59,27 @@ import {
   SIDEBAR_VIEW_EDIT_ONTOLOGY,
   SIDEBAR_VIEW_STYLING,
   SIDEBAR_VIEW_STRUCTURED_SEARCH,
-  MAIN_VIEW_SEARCH,
-  MAIN_VIEW_GRAPH,
-  SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS
+  SIDEBAR_VIEW_NOTES,
+  SIDEBAR_VIEW_SYNONYMS,
+  IS_SEARCH_VISIBLE,
+  IS_GRAPHS_VISIBLE,
+  IS_GRAPH_OPTIONS_VISIBLE,
+  IS_FREE_TEXT_SEARCH_VISIBLE,
+  IS_STRUCTURED_SEARCH_VISIBLE,
+  IS_NODE_SELECTION_VISIBLE,
+  IS_EDGE_SELECTION_VISIBLE,
+  IS_NODES_FILTER_VISIBLE,
+  IS_EDGES_FILTER_VISIBLE,
+  IS_BOUNDING_BOX_VISIBLE,
+  IS_NEIGHBOURHOOD_VISIBLE,
+  IS_SHORTEST_PATH_VISIBLE,
+  IS_CUSTOM_QUERY_VISIBLE,
+  IS_PHYSICS_SETTINGS_VISIBLE,
+  IS_STYLING_VISIBLE,
+  IS_NOTES_VISIBLE,
+  IS_SYNONIMS_VISIBLE,
+  IS_EXPORT_VISIBLE,
+  IS_EDIT_ONTOLOGY_VISIBLE
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
@@ -81,266 +101,219 @@ import EntrySearch from './EntrySearch'
 import SynonymsList from './SynonymsList'
 import NetworkGraphOptions from './NetworkGraphOptions'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { toDashedCase } from '../constants/functions'
+import {
+  ROUTE_BOUNDING_BOX,
+  ROUTE_EDGES_FILTER,
+  ROUTE_EDGES_SELECTION,
+  ROUTE_FREE_TEXT_SEARCH,
+  ROUTE_NETWORK_GRAPHS,
+  ROUTE_NETWORK_GRAPH_OPTIONS,
+  ROUTE_NODES_FILTER,
+  ROUTE_NODES_SELECTION,
+  ROUTE_NODE_NEIGHBOURHOOD,
+  ROUTE_SEARCH,
+  ROUTE_SHORTEST_PATH,
+  ROUTE_STRUCTURED_SEARCH,
+  ROUTE_CUSTOM_QUERY,
+  ROUTE_SETTINGS,
+  ROUTE_STYLING,
+  ROUTE_NOTES,
+  ROUTE_SYNONYMS,
+  ROUTE_EXPORT,
+  ROUTE_EDIT_ONTOLOGY
+} from '../constants/routes'
 
 const Sidebar = ({
   isSidebarOpen,
-  sidebarView,
   updateStoreValue,
+  currentGraph,
+  graphData,
 }) => {
   const { t } = useTranslation()
 
-  const setView = (view) => {
-    updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, true)
-    updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, view)
+  const router = useRouter()
+
+  const { view } = router.query
+
+  const sidebarButtons = {
+    [toDashedCase(SIDEBAR_VIEW_ENTRY_SEARCH)]: {
+      route: ROUTE_SEARCH,
+      icon: <BsSearch />,
+      isVisible: IS_SEARCH_VISIBLE,
+      component: <EntrySearch />
+    },
+    [toDashedCase(SIDEBAR_VIEW_GRAPHS)]: {
+      route: ROUTE_NETWORK_GRAPHS,
+      icon: <FiLayers />,
+      isVisible: IS_GRAPHS_VISIBLE,
+      component: <NetworkGraphList />
+    },
+    [toDashedCase(SIDEBAR_VIEW_GRAPH_OPTIONS)]: {
+      route: ROUTE_NETWORK_GRAPH_OPTIONS,
+      icon: <IoMdOptions />,
+      isVisible: IS_GRAPH_OPTIONS_VISIBLE,
+      component: <NetworkGraphOptions />
+    },
+    [toDashedCase(SIDEBAR_VIEW_FREE_TEXT_SEARCH)]: {
+      route: ROUTE_FREE_TEXT_SEARCH,
+      icon: (
+        <>
+          <BsSearch />
+          <BiText />
+        </>
+      ),
+      isVisible: IS_FREE_TEXT_SEARCH_VISIBLE,
+      component: <FreeTextSearch />
+    },
+    [toDashedCase(SIDEBAR_VIEW_STRUCTURED_SEARCH)]: {
+      route: ROUTE_STRUCTURED_SEARCH,
+      icon: (
+        <>
+          <BsSearch />
+          <IoBuildSharp />
+        </>
+      ),
+      isVisible: IS_STRUCTURED_SEARCH_VISIBLE,
+      component: <StructuredSearch />
+    },
+    [toDashedCase(SIDEBAR_VIEW_NODES_SELECTION)]: {
+      route: ROUTE_NODES_SELECTION,
+      icon: (
+        <>
+          <FaRegCircle />
+          <FaRegHandPointer />
+        </>
+      ),
+      isVisible: IS_NODE_SELECTION_VISIBLE,
+      component: <NodesSelection />
+    },
+    [toDashedCase(SIDEBAR_VIEW_EDGES_SELECTION)]: {
+      route: ROUTE_EDGES_SELECTION,
+      icon: (
+        <>
+          <BsArrowUpRight />
+          <FaRegHandPointer />
+        </>
+      ),
+      isVisible: IS_EDGE_SELECTION_VISIBLE,
+      component: <EdgesSelection />
+    },
+    [toDashedCase(SIDEBAR_VIEW_NODES_FILTER)]: {
+      route: ROUTE_NODES_FILTER,
+      icon: (
+        <>
+          <FaRegCircle />
+          <BsFilter />
+        </>
+      ),
+      isVisible: IS_NODES_FILTER_VISIBLE,
+      component: <NodesFilter />
+    },
+    [toDashedCase(SIDEBAR_VIEW_EDGES_FILTER)]: {
+      route: ROUTE_EDGES_FILTER,
+      icon: (
+        <>
+          <BsArrowUpRight />
+          <BsFilter />
+        </>
+      ),
+      isVisible: IS_EDGES_FILTER_VISIBLE,
+      component: <EdgesFilter />
+    },
+    [toDashedCase(SIDEBAR_VIEW_BOUNDING_BOX)]: {
+      route: ROUTE_BOUNDING_BOX,
+      icon: <BiSelection />,
+      isVisible: IS_BOUNDING_BOX_VISIBLE,
+      component: <BoundingBoxSelection />
+    },
+    [toDashedCase(SIDEBAR_VIEW_NEIGHBOURHOOD)]: {
+      route: ROUTE_NODE_NEIGHBOURHOOD,
+      icon: <BiNetworkChart />,
+      isVisible: IS_NEIGHBOURHOOD_VISIBLE,
+      component: <NodeNeighbourhood />
+    },
+    [toDashedCase(SIDEBAR_VIEW_SHORTEST_PATH)]: {
+      route: ROUTE_SHORTEST_PATH,
+      icon: <IoGitNetwork />,
+      isVisible: IS_SHORTEST_PATH_VISIBLE,
+      component: <ShortestPath />
+    },
+    [toDashedCase(SIDEBAR_VIEW_CUSTOM_QUERY)]: {
+      route: ROUTE_CUSTOM_QUERY,
+      icon: <BsCodeSlash />,
+      isVisible: IS_CUSTOM_QUERY_VISIBLE,
+      component: <CustomQuery />
+    },
+    [toDashedCase(SIDEBAR_VIEW_SETTINGS)]: {
+      route: ROUTE_SETTINGS,
+      icon: <FiSettings />,
+      isVisible: IS_PHYSICS_SETTINGS_VISIBLE,
+      component: <NetworkSettings />
+    },
+    [toDashedCase(SIDEBAR_VIEW_STYLING)]: {
+      route: ROUTE_STYLING,
+      icon: <FaPaintBrush />,
+      isVisible: IS_STYLING_VISIBLE,
+      component: <NetworkStyling />
+    },
+    [toDashedCase(SIDEBAR_VIEW_NOTES)]: {
+      route: ROUTE_NOTES,
+      icon: <FaStickyNote />,
+      isVisible: IS_NOTES_VISIBLE,
+      component: <NotesList />
+    },
+    [toDashedCase(SIDEBAR_VIEW_SYNONYMS)]: {
+      route: ROUTE_SYNONYMS,
+      icon: <FaFileAlt />,
+      isVisible: IS_SYNONIMS_VISIBLE,
+      component: <SynonymsList />
+    },
+    [toDashedCase(SIDEBAR_VIEW_EXPORT)]: {
+      route: ROUTE_EXPORT,
+      icon: <FaFileExport />,
+      isVisible: IS_EXPORT_VISIBLE,
+      component: <ExportSettings />
+    },
+    [toDashedCase(SIDEBAR_VIEW_EDIT_ONTOLOGY)]: {
+      route: ROUTE_EDIT_ONTOLOGY,
+      icon: <BsPencilSquare />,
+      isVisible: IS_EDIT_ONTOLOGY_VISIBLE,
+      component: <EditOntology />
+    }
   }
 
   return (
     <aside className={`sidebar${isSidebarOpen ? '' : '-closed'}`}>
       <div className="sidebar-icons">
+        {
+          Object.keys(sidebarButtons).map((label) => {
+            const {
+              route, icon, isVisible
+            } = sidebarButtons[label]
+
+            if (!isVisible) return false
+
+            return (
+              <Link
+                key={`sidebar-button-${label}`}
+                href={route}
+                aria-label={t(label)}
+                tooltip={t(label)}
+                onClick={() => updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, true)}
+              >
+                <a
+                  id={`sidebar-button-${label}`}
+                  className={view === route ? 'p-button sidebar-bar-button-selected' : 'p-button'}
+                >
+                  {icon}
+                </a>
+              </Link>
+            )
+          })
+        }
         <Button
-          ariaLabel={t(SIDEBAR_VIEW_ENTRY_SEARCH)}
-          tooltip={t(SIDEBAR_VIEW_ENTRY_SEARCH)}
-          id="sidebar-button-search"
-          className={sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_ENTRY_SEARCH)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_SEARCH)
-          }}
-        >
-          <BsSearch />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_GRAPHS)}
-          id="sidebar-button-graphs"
-          tooltip={t(SIDEBAR_VIEW_GRAPHS)}
-          className={sidebarView === SIDEBAR_VIEW_GRAPHS ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_GRAPHS)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FiLayers />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
-          id="sidebar-button-graph-options"
-          tooltip={t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
-          className={sidebarView === SIDEBAR_VIEW_GRAPH_OPTIONS ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_GRAPH_OPTIONS)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <IoMdOptions />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
-          id="sidebar-button-free-text-search"
-          tooltip={t(SIDEBAR_VIEW_FREE_TEXT_SEARCH)}
-          className={sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_FREE_TEXT_SEARCH)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <BsSearch />
-          <BiText />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
-          id="sidebar-button-structured-search"
-          tooltip={t(SIDEBAR_VIEW_STRUCTURED_SEARCH)}
-          className={sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_STRUCTURED_SEARCH)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <BsSearch />
-          <IoBuildSharp />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_NODES_SELECTION)}
-          id="sidebar-button-nodes-selection"
-          tooltip={t(SIDEBAR_VIEW_NODES_SELECTION)}
-          className={sidebarView === SIDEBAR_VIEW_NODES_SELECTION ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            // updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
-            setView(SIDEBAR_VIEW_NODES_SELECTION)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FaRegCircle />
-          <FaRegHandPointer />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_EDGES_SELECTION)}
-          id="sidebar-button-edges-selection"
-          tooltip={t(SIDEBAR_VIEW_EDGES_SELECTION)}
-          className={sidebarView === SIDEBAR_VIEW_EDGES_SELECTION ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            // updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, true)
-            setView(SIDEBAR_VIEW_EDGES_SELECTION)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <BsArrowUpRight />
-          <FaRegHandPointer />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_NODES_FILTER)}
-          id="sidebar-button-nodes-filter"
-          tooltip={t(SIDEBAR_VIEW_NODES_FILTER)}
-          className={sidebarView === SIDEBAR_VIEW_NODES_FILTER ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            // updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
-            setView(SIDEBAR_VIEW_NODES_FILTER)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FaRegCircle />
-          <BsFilter />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_EDGES_FILTER)}
-          id="sidebar-button-edges-filter"
-          tooltip={t(SIDEBAR_VIEW_EDGES_FILTER)}
-          className={sidebarView === SIDEBAR_VIEW_EDGES_FILTER ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            // updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, true)
-            setView(SIDEBAR_VIEW_EDGES_FILTER)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <BsArrowUpRight />
-          <BsFilter />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_BOUNDING_BOX)}
-          id="sidebar-button-bounding-box"
-          tooltip={t(SIDEBAR_VIEW_BOUNDING_BOX)}
-          className={sidebarView === SIDEBAR_VIEW_BOUNDING_BOX ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            updateStoreValue(['isBoundingBox'], OPERATION_TYPE_UPDATE, true)
-            setView(SIDEBAR_VIEW_BOUNDING_BOX)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <BiSelection />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
-          id="sidebar-button-node-neighbourhood"
-          tooltip={t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
-          className={sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            // updateStoreValue(['isNeighbourNodeSelectable'], OPERATION_TYPE_UPDATE, true)
-            setView(SIDEBAR_VIEW_NEIGHBOURHOOD)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <BiNetworkChart />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_SHORTEST_PATH)}
-          id="sidebar-button-shortest-path"
-          tooltip={t(SIDEBAR_VIEW_SHORTEST_PATH)}
-          className={sidebarView === SIDEBAR_VIEW_SHORTEST_PATH ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            updateStoreValue(['isElementSelectable'], OPERATION_TYPE_UPDATE, false)
-            updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, true)
-            setView(SIDEBAR_VIEW_SHORTEST_PATH)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <IoGitNetwork />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_CUSTOM_QUERY)}
-          id="sidebar-button-custom-query"
-          tooltip={t(SIDEBAR_VIEW_CUSTOM_QUERY)}
-          className={sidebarView === SIDEBAR_VIEW_CUSTOM_QUERY ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_CUSTOM_QUERY)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <BsCodeSlash />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_SETTINGS)}
-          id="sidebar-button-physics-settings"
-          tooltip={t(SIDEBAR_VIEW_SETTINGS)}
-          className={sidebarView === SIDEBAR_VIEW_SETTINGS ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_SETTINGS)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FiSettings />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_STYLING)}
-          id="sidebar-button-view-styling"
-          tooltip={t(SIDEBAR_VIEW_STYLING)}
-          className={sidebarView === SIDEBAR_VIEW_STYLING ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_STYLING)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FaPaintBrush />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_NOTES)}
-          id="sidebar-button-notes"
-          tooltip={t(SIDEBAR_VIEW_NOTES)}
-          className={sidebarView === SIDEBAR_VIEW_NOTES ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_NOTES)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FaStickyNote />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_SYNONYMS)}
-          tooltip={t(SIDEBAR_VIEW_SYNONYMS)}
-          id="sidebar-button-synonims"
-          className={sidebarView === SIDEBAR_VIEW_SYNONYMS ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_SYNONYMS)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FaFileAlt />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_EXPORT)}
-          id="sidebar-button-export"
-          tooltip={t(SIDEBAR_VIEW_EXPORT)}
-          className={sidebarView === SIDEBAR_VIEW_EXPORT ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_EXPORT)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <FaFileExport />
-        </Button>
-        <Button
-          ariaLabel={t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
-          id="sidebar-button-edit-ontology"
-          tooltip={t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
-          className={sidebarView === SIDEBAR_VIEW_EDIT_ONTOLOGY ? 'sidebar-bar-button-selected' : ''}
-          onClick={() => {
-            setView(SIDEBAR_VIEW_EDIT_ONTOLOGY)
-            updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-          }}
-        >
-          <BsPencilSquare />
-        </Button>
-        <Button
-          ariaLabel={t('toggleSidebar')}
+          aria-label={t('toggleSidebar')}
           id="sidebar-button-toggle"
           tooltip={t('toggleSidebar')}
           onClick={() => updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, !isSidebarOpen)}
@@ -359,117 +332,8 @@ const Sidebar = ({
         isSidebarOpen && (
           <div className="sidebar-main">
             {
-              sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH && (
-                <EntrySearch />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_GRAPHS && (
-                <NetworkGraphList />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_GRAPH_OPTIONS && (
-                <NetworkGraphOptions />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_FREE_TEXT_SEARCH && (
-                <FreeTextSearch />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_SYNONYMS && (
-                <SynonymsList />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_STRUCTURED_SEARCH && (
-                <StructuredSearch />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_NODES_SELECTION && (
-                <NodesSelection />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_EDGES_SELECTION && (
-                <EdgesSelection />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_NODES_FILTER && (
-                <NodesFilter />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_EDGES_FILTER && (
-                <EdgesFilter />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_BOUNDING_BOX && (
-                <BoundingBoxSelection />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_NEIGHBOURHOOD && (
-                <NodeNeighbourhood />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_SHORTEST_PATH && (
-                <ShortestPath />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_CUSTOM_QUERY && (
-                <CustomQuery />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_SETTINGS && (
-                <NetworkSettings />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_STYLING && (
-                <NetworkStyling />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_NOTES && (
-                <NotesList />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_EXPORT && (
-                <ExportSettings />
-              )
-            }
-
-            {
-              sidebarView === SIDEBAR_VIEW_EDIT_ONTOLOGY && (
-                <EditOntology />
-              )
+              graphData[currentGraph]
+              && view ? sidebarButtons[view].component : <EntrySearch />
             }
           </div>
         )
@@ -480,16 +344,19 @@ const Sidebar = ({
 
 Sidebar.propTypes = {
   isSidebarOpen: PropTypes.bool.isRequired,
-  sidebarView: PropTypes.string.isRequired,
   updateStoreValue: PropTypes.func.isRequired,
+  currentGraph: PropTypes.string.isRequired,
+  graphData: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
-  sidebarView,
-  isSidebarOpen
+  isSidebarOpen,
+  currentGraph,
+  graphData
 }) => ({
-  sidebarView,
-  isSidebarOpen
+  isSidebarOpen,
+  currentGraph,
+  graphData
 })
 
 export default connect(

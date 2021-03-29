@@ -90,7 +90,7 @@ const BoundingBoxSelection = ({
           </div>
           <div className="network-settings-buttons">
             <Button
-              ariaLabel={t('insideBoundingBox')}
+              aria-label={t('insideBoundingBox')}
               tooltip={t('insideBoundingBox')}
               tooltipOptions={{ position: 'top' }}
               className={isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
@@ -99,7 +99,7 @@ const BoundingBoxSelection = ({
               <RiAddBoxLine />
             </Button>
             <Button
-              ariaLabel={t('outsideBoundingBox')}
+              aria-label={t('outsideBoundingBox')}
               tooltip={t('outsideBoundingBox')}
               tooltipOptions={{ position: 'top' }}
               className={!isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
@@ -111,7 +111,7 @@ const BoundingBoxSelection = ({
         </div>
 
         <Button
-          ariaLabel={t('showSelectedNodes')}
+          aria-label={t('showSelectedNodes')}
           tooltip={t('showSelectedNodes')}
           className="bounding-box-button"
           disabled={selectedBoundingBoxNodes.length < 1}

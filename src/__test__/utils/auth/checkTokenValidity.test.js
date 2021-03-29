@@ -1,4 +1,4 @@
-import { ROUTE_LOGIN } from '../../../constants/routes'
+import { ROUTE_LOGIN, ROUTE_SEARCH } from '../../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import checkTokenValidity from '../../../utils/auth/checkTokenValidity'
 
@@ -41,6 +41,9 @@ describe('checkTokenValidity', () => {
 
     expect(updateStoreValue.mock.calls).toEqual(
       [[['user', 'email'], OPERATION_TYPE_UPDATE, 'a@b.c'], [['user', 'token'], OPERATION_TYPE_UPDATE, '123']]
+    )
+    expect(push).toHaveBeenCalledWith(
+      ROUTE_SEARCH
     )
   })
 })

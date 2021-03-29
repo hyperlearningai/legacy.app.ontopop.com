@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_NODES_SELECTION } from '../../src/constants/routes'
 
 context('Nodes selection', () => {
   beforeEach(() => {
@@ -64,11 +65,13 @@ context('Nodes selection', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the nodes selection icon
       cy.get('#sidebar-button-nodes-selection').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_NODES_SELECTION)
 
       cy.get('.nodes-selection-details').should('not.have.exist')
 
@@ -78,7 +81,7 @@ context('Nodes selection', () => {
       cy.get('#node-select').find('.p-dropdown-item').eq(0).click({ force: true })
 
       cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '7')
-      cy.get('.nodes-selection-details-table-relationships').find('tbody tr').should('have.length', '9')
+      cy.get('.nodes-selection-details-table-relationships').find('tbody tr').should('have.length', '10')
 
       // select another node
       cy.get('#node-select').find('.p-dropdown-trigger').click({ force: true })

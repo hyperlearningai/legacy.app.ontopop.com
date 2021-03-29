@@ -1,9 +1,14 @@
 import setSearchNeighbourNodes from '../../../utils/graphSearch/setSearchNeighbourNodes'
 import store from '../../../store'
+import { ROUTE_NETWORK_GRAPHS } from '../../../constants/routes'
 
 const updateStoreValue = jest.fn()
 const separationDegree = 1
 const lastGraphIndex = 1
+const push = jest.fn()
+const router = {
+  push
+}
 
 store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
@@ -28,6 +33,7 @@ describe('setSearchNeighbourNodes', () => {
     await setSearchNeighbourNodes({
       separationDegree,
       updateStoreValue,
+      router,
       searchResult: {
         id: '12',
         type: 'node',
@@ -72,28 +78,15 @@ describe('setSearchNeighbourNodes', () => {
         'update',
         2,
       ],
-      [
-        [
-          'mainVisualisation',
-        ],
-        'update',
-        'graph',
-      ],
-      [
-        [
-          'sidebarView',
-        ],
-        'update',
-        'networkGraphs',
-      ],
-
     ])
+    expect(push).toHaveBeenCalledWith(ROUTE_NETWORK_GRAPHS)
   })
 
   it('should work correctly when edge', async () => {
     await setSearchNeighbourNodes({
       separationDegree,
       updateStoreValue,
+      router,
       searchResult: {
         id: '12',
         type: 'edge',
@@ -143,21 +136,7 @@ describe('setSearchNeighbourNodes', () => {
         'update',
         2,
       ],
-      [
-        [
-          'mainVisualisation',
-        ],
-        'update',
-        'graph',
-      ],
-      [
-        [
-          'sidebarView',
-        ],
-        'update',
-        'networkGraphs',
-      ],
-
     ])
+    expect(push).toHaveBeenCalledWith(ROUTE_NETWORK_GRAPHS)
   })
 })

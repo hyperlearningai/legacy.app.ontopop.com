@@ -60,7 +60,7 @@ const NodesFilter = ({
                       nodesFilters.length > 1 && (
                       <div className="p-field remove-button p-col-12">
                         <Button
-                          ariaLabel={t('removeFilter')}
+                          aria-label={t('removeFilter')}
                           icon="pi pi-times"
                           className="p-button-rounded p-button-danger"
                           tooltip={t('removeFilter')}
@@ -83,7 +83,7 @@ const NodesFilter = ({
                     <div className="p-field p-col-12">
                       <label htmlFor={selectId}>{t('selectProperty')}</label>
                       <Dropdown
-                        ariaLabel="notes-select-element"
+                        aria-label="notes-select-element"
                         id={selectId}
                         value={nodesFilters[index].property}
                         options={annotationProperties}
@@ -143,7 +143,7 @@ const NodesFilter = ({
         </div>
 
         <Button
-          ariaLabel={t('removeFilter')}
+          aria-label={t('removeFilter')}
           tooltip={t('showFilteredNodes')}
           className="nodes-filter-button m-t-30"
           disabled={nodesFilters.length < 2}

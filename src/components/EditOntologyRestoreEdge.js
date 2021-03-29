@@ -89,7 +89,7 @@ const EditOntologyRestoreEdge = ({
 
               <div className="edit-ontology-row">
                 <Button
-                  ariaLabel={`${t(operation)}`}
+                  aria-label={`${t(operation)}`}
                   className="go-button"
                   tooltip={`${t(operation)}`}
                   disabled={!selectedElement}

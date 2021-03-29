@@ -116,7 +116,7 @@ const SynonymsList = ({
             {t('selectElement')}
           </label>
           <Dropdown
-            ariaLabel="synonyms-select-element"
+            aria-label="synonyms-select-element"
             id="synonyms-select-element"
             name="synonyms-select-element"
             value={synonymElementId}
@@ -151,7 +151,7 @@ const SynonymsList = ({
                 </label>
                 <div className="p-inputgroup">
                   <Dropdown
-                    ariaLabel="synonyms-sort-by"
+                    aria-label="synonyms-sort-by"
                     id="synonyms-sort-by"
                     value={sortField}
                     options={SORT_FIELDS.map((field) => ({
@@ -161,7 +161,7 @@ const SynonymsList = ({
                     onChange={(e) => setSortField(e.value)}
                   />
                   <Button
-                    ariaLabel="synonyms-sort-by-direction"
+                    aria-label="synonyms-sort-by-direction"
                     id="synonyms-sort-by-direction"
                     tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
                     tooltipOptions={{ position: 'top' }}
@@ -181,7 +181,7 @@ const SynonymsList = ({
                         {t('filterBy')}
                       </label>
                       <Dropdown
-                        ariaLabel="synonyms-filter-field"
+                        aria-label="synonyms-filter-field"
                         id="synonyms-filter-field"
                         value={filter}
                         options={SORT_FIELDS.map((field) => ({

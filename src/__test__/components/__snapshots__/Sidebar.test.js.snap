@@ -7,9 +7,20 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={false}
   mapToProps={[Function]}
-  sidebarView="networkGraphs"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -23,9 +34,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="boundingBox"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -39,9 +61,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="customQuery"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -55,9 +88,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="edgesFilter"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -71,9 +115,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="edgesSelection"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -87,9 +142,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_O
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="editOntology"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -103,9 +169,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_ENTRY_
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="entrySearch"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -119,9 +196,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="export"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -135,9 +223,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_T
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="freeTextSearch"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -151,9 +250,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPH_
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="networkGraphOptions"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -167,9 +277,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="networkGraphs"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -183,9 +304,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="nodeNeighbourhood"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -199,9 +331,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="nodesFilter"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -215,9 +358,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="nodesSelection"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -231,9 +385,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="settings"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -247,9 +412,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="shortestPath"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -263,9 +439,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STRUCT
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="structuredSearch"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -279,9 +466,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STYLIN
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="styling"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -295,9 +493,20 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SYNONY
       "updateStoreValue": [Function],
     }
   }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  sidebarView="synonyms"
   updateStoreValue={[MockFunction]}
 >
   <Component />

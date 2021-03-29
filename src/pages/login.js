@@ -10,7 +10,7 @@ import { Chip } from 'primereact/chip'
 // import logo from '../assets/images/logo.svg'
 import HeadTags from '../components/HeadTags'
 import signIn from '../utils/auth/signIn'
-// import { ROUTE_INDEX } from '../constants/routes'
+// import { ROUTE_SEARCH } from '../constants/routes'
 import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
 
@@ -103,7 +103,7 @@ const Login = ({
             ) : (
               <>
                 <Button
-                  ariaLabel="auth-login-button"
+                  aria-label="auth-login-button"
                   className="auth-button m-t-20"
                   label={t('login')}
                   id="auth-login-button"
@@ -122,7 +122,7 @@ const Login = ({
                   label={t('continueGuest')}
                   onClick={() => {
                     updateStoreValue('user', 'isGuest', true)
-                    router.push(ROUTE_INDEX)
+                    router.push(ROUTE_SEARCH)
                   }}
                 /> */}
               </>

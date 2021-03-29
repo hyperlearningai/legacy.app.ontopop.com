@@ -79,7 +79,7 @@ const StructuredSearch = ({
           && Object.keys(structuredSelection).length > 0
             ? (
               <Button
-                ariaLabel={t('goBack')}
+                aria-label={t('goBack')}
                 icon="pi pi-arrow-left"
                 tooltip={t('goBack')}
                 onClick={() => {
@@ -142,7 +142,7 @@ const StructuredSearch = ({
                       >
                         <div className="structured-search-results-row-delete">
                           <Button
-                            ariaLabel={t('removeGraph')}
+                            aria-label={t('removeGraph')}
                             tooltip={`${t('removeGraph')}: ${elementId}`}
                             onClick={() => {
                               updateStoreValue(['structuredSelection', elementId], OPERATION_TYPE_DELETE)
@@ -156,7 +156,7 @@ const StructuredSearch = ({
 
                         <div className="structured-search-results-row-main">
                           <Button
-                            ariaLabel={t('focusElement')}
+                            aria-label={t('focusElement')}
                             tooltip={`${t('focusElement')}: ${elementLabel}`}
                             disabled={elementId === structuredSelectedElement}
                             onClick={() => updateStoreValue(['structuredSelectedElement'], OPERATION_TYPE_UPDATE, elementId)}
@@ -212,7 +212,7 @@ const StructuredSearch = ({
                               filters.length > 1 && (
                                 <div className="p-field remove-button p-col-12">
                                   <Button
-                                    ariaLabel={t('removeFilter')}
+                                    aria-label={t('removeFilter')}
                                     icon="pi pi-times"
                                     className="p-button-rounded p-button-danger"
                                     tooltip={t('removeFilter')}
@@ -235,7 +235,7 @@ const StructuredSearch = ({
                             <div className="p-field p-col-12">
                               <label htmlFor={selectId}>{t('selectProperty')}</label>
                               <Dropdown
-                                ariaLabel={t('selectProperty')}
+                                aria-label={t('selectProperty')}
                                 id={selectId}
                                 value={filters[index].property}
                                 options={annotationProperties}
@@ -296,7 +296,7 @@ const StructuredSearch = ({
 
                 <div className="structured-search-button-wrapper">
                   <Button
-                    ariaLabel={t('showFilteredNodes')}
+                    aria-label={t('showFilteredNodes')}
                     tooltip={t('showFilteredNodes')}
                     className="structured-search-button m-t-30"
                     disabled={filters.length < 2}

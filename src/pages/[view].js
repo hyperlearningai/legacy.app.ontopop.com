@@ -3,18 +3,23 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
+import Navbar from '../components/Navbar'
+import FooterComponent from '../components/FooterComponent'
 import HeadTags from '../components/HeadTags'
 import HeaderComponent from '../components/HeaderComponent'
+import Sidebar from '../components/Sidebar'
+import MainArea from '../components/MainArea'
 import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
 
-const Index = ({
+const View = ({
   updateStoreValue,
   user,
 }) => {
   const { t } = useTranslation()
-
   const router = useRouter()
+
+  const { view } = router.query
 
   // check if authenticated, otherwise redirect to login
   useEffect(() => {
@@ -30,7 +35,7 @@ const Index = ({
   return (
     <>
       <HeadTags
-        title=""
+        title={t(view)}
         description={t('ontologyVisualisationDescription')}
       />
 
@@ -39,6 +44,16 @@ const Index = ({
         || user.isGuest) && (
           <>
             <HeaderComponent />
+            <main className="main-view">
+
+              <Sidebar />
+              <div className="main-view-area">
+                <Navbar />
+                <MainArea />
+                <FooterComponent />
+              </div>
+
+            </main>
           </>
         )
       }
@@ -47,7 +62,7 @@ const Index = ({
   )
 }
 
-Index.propTypes = {
+View.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
 }
@@ -61,4 +76,4 @@ const mapPropsToState = ({
 export default connect(
   mapPropsToState,
   actions
-)(Index)
+)(View)

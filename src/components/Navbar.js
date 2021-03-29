@@ -7,31 +7,31 @@ import {
   BsSearch,
   BsArrowUpRight
 } from 'react-icons/bs'
+import { useRouter } from 'next/router'
 import actions from '../store/actions'
-import { MAIN_VIEW_GRAPH, MAIN_VIEW_SEARCH } from '../constants/views'
+import { ROUTE_SEARCH } from '../constants/routes'
 
 const Navbar = ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
   entrySearchResults
 }) => {
   const { t } = useTranslation()
+
+  const router = useRouter()
+
+  const { view } = router.query
 
   return (
     <nav>
       <div className="nav-left">
         {
-          mainVisualisation === MAIN_VIEW_SEARCH && (
+          view === ROUTE_SEARCH ? (
             <span>
               <BsSearch className="nodes-icon node m-r-5" />
               {`${t('searchResults')}: ${entrySearchResults.length}`}
             </span>
-          )
-        }
-
-        {
-          mainVisualisation === MAIN_VIEW_GRAPH && (
+          ) : (
             <span>
               <BsFillCircleFill className="nodes-icon node m-r-5" />
               {`${t('nodes')}: ${availableNodesCount}`}
@@ -49,19 +49,16 @@ const Navbar = ({
 Navbar.propTypes = {
   availableNodesCount: PropTypes.number.isRequired,
   availableEdgesCount: PropTypes.number.isRequired,
-  mainVisualisation: PropTypes.string.isRequired,
   entrySearchResults: PropTypes.arrayOf(PropTypes.shape).isRequired,
 }
 
 const mapToProps = ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
   entrySearchResults
 }) => ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
   entrySearchResults
 })
 

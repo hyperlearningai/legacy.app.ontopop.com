@@ -12,6 +12,7 @@ import deleteEdgeNote from '../fixtures/deleteEdgeNote'
 import updateEdgeNote from '../fixtures/updateEdgeNote'
 import updateNodeNote from '../fixtures/updateNodeNote'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_NOTES } from '../../src/constants/routes'
 
 context('Notes list', () => {
   beforeEach(() => {
@@ -78,11 +79,13 @@ context('Notes list', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_NOTES)
 
       cy.get('.notes-note').should('have.length', 2)
 
@@ -197,8 +200,8 @@ context('Notes list', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
@@ -319,8 +322,8 @@ context('Notes list', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()

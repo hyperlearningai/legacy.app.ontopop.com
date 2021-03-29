@@ -73,14 +73,14 @@ const Profile = ({
                     }}
                   />
                   <Button
-                    ariaLabel="set-first-name"
+                    aria-label="set-first-name"
                     icon="pi pi-check"
                     id="set-first-name"
                     onClick={() => setEditingFirstName(false)}
                     className="p-button-success"
                   />
                   <Button
-                    ariaLabel="cancel-first-name"
+                    aria-label="cancel-first-name"
                     onClick={() => {
                       setFirstName(user.firstName)
                       setEditingFirstName(false)
@@ -94,7 +94,7 @@ const Profile = ({
                 <p className="profile-value">
                   {firstName}
                   <Button
-                    ariaLabel="edit-first-name"
+                    aria-label="edit-first-name"
                     icon="pi pi-pencil"
                     id="edit-first-name"
                     onClick={() => setEditingFirstName(true)}
@@ -119,14 +119,14 @@ const Profile = ({
                           }}
                         />
                         <Button
-                          ariaLabel="set-last-name"
+                          aria-label="set-last-name"
                           id="set-last-name"
                           icon="pi pi-check"
                           onClick={() => setEditingLastName(false)}
                           className="p-button-success"
                         />
                         <Button
-                          ariaLabel="edit-last-name"
+                          aria-label="edit-last-name"
                           id="cancel-last-name"
                           onClick={() => {
                             setLastName(user.lastName)
@@ -140,7 +140,7 @@ const Profile = ({
                       <p className="profile-value">
                         {lastName}
                         <Button
-                          ariaLabel="edit-last-name"
+                          aria-label="edit-last-name"
                           id="edit-last-name"
                           icon="pi pi-pencil"
                           onClick={() => setEditingLastName(true)}
@@ -165,14 +165,14 @@ const Profile = ({
                         }}
                       />
                       <Button
-                        ariaLabel="set-email"
+                        aria-label="set-email"
                         icon="pi pi-check"
                         id="set-email"
                         onClick={() => setEditingEmail(false)}
                         className="p-button-success"
                       />
                       <Button
-                        ariaLabel="delete-email"
+                        aria-label="delete-email"
                         id="delete-email"
                         onClick={() => {
                           setEmail(user.email)
@@ -186,7 +186,7 @@ const Profile = ({
                     <p className="profile-value">
                       {email}
                       <Button
-                        ariaLabel="edit-email"
+                        aria-label="edit-email"
                         id="edit-email"
                         icon="pi pi-pencil"
                         onClick={() => setEditingEmail(true)}
@@ -211,14 +211,14 @@ const Profile = ({
                     }}
                   />
                   <Button
-                    ariaLabel="set-company"
+                    aria-label="set-company"
                     icon="pi pi-check"
                     id="set-company"
                     onClick={() => setEditingCompany(false)}
                     className="p-button-success"
                   />
                   <Button
-                    ariaLabel="cancel-company"
+                    aria-label="cancel-company"
                     onClick={() => {
                       setCompany(user.company)
                       setEditingCompany(false)
@@ -232,7 +232,7 @@ const Profile = ({
                 <p className="profile-value">
                   {company}
                   <Button
-                    ariaLabel="edit-company"
+                    aria-label="edit-company"
                     id="edit-company"
                     icon="pi pi-pencil"
                     onClick={() => setEditingCompany(true)}

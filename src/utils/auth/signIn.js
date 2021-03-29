@@ -1,4 +1,4 @@
-import { ROUTE_INDEX } from '../../constants/routes'
+import { ROUTE_SEARCH } from '../../constants/routes'
 import {
   AUTH_COOKIE,
 } from '../../constants/auth'
@@ -60,7 +60,7 @@ const signIn = async ({
   updateStoreValue(['user', 'token'], OPERATION_TYPE_UPDATE, token)
   localStorage.setItem(AUTH_COOKIE, JSON.stringify({ email, token }))
 
-  return router.push(ROUTE_INDEX)
+  return router.push(ROUTE_SEARCH)
 }
 
 export default signIn
