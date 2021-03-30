@@ -220,12 +220,15 @@ const setNodesIdsToDisplay = async ({
 
   if (!nodesToDisplay || nodesToDisplay.length === 0) {
     updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, 'graph-0')
-    updateStoreValue(['graphData', currentGraph], OPERATION_TYPE_DELETE)
 
-    return showNotification({
-      message: t('noNodesToDisplay'),
-      type: NOTIFY_WARNING
-    })
+    if (currentGraph !== 'graph-0') {
+      updateStoreValue(['graphData', currentGraph], OPERATION_TYPE_DELETE)
+
+      return showNotification({
+        message: t('noNodesToDisplay'),
+        type: NOTIFY_WARNING
+      })
+    }
   }
 
   updateStoreValue(['graphData', currentGraph, 'nodesIds'], OPERATION_TYPE_UPDATE, nodesToDisplay)

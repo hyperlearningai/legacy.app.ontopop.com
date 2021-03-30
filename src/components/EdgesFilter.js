@@ -56,7 +56,7 @@ const EdgesFilter = ({
                       edgesFilters.length > 1 && (
                       <div className="p-field remove-button p-col-12">
                         <Button
-                          ariaLabel={t('removeFilter')}
+                          aria-label={t('removeFilter')}
                           icon="pi pi-times"
                           className="p-button-rounded p-button-danger"
                           tooltip={t('removeFilter')}
@@ -79,7 +79,7 @@ const EdgesFilter = ({
                     <div className="p-field p-col-12">
                       <label htmlFor={selectId}>{t('selectProperty')}</label>
                       <Dropdown
-                        ariaLabel={selectId}
+                        aria-label={selectId}
                         id={selectId}
                         value={edgesFilters[index].property}
                         options={EDGE_PROPERTIES_DROPDOWN}
@@ -139,7 +139,7 @@ const EdgesFilter = ({
         </div>
 
         <Button
-          ariaLabel={t('showFilteredEdges')}
+          aria-label={t('showFilteredEdges')}
           tooltip={t('showFilteredEdges')}
           className="edges-filter-button m-t-30"
           disabled={edgesFilters.length < 2}

@@ -1,6 +1,6 @@
 import { ALGO_TYPE_SEARCH_NEIGHBOURHOOD } from '../../constants/algorithms'
+import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
-import { MAIN_VIEW_GRAPH, SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
 
 /**
@@ -8,13 +8,15 @@ import store from '../../store'
  * @param  {Object}   params
  * @param  {Number}   params.separationDegree          Separation degree integer
  * @param  {Function} params.updateStoreValue          updateStoreValue action
+ * @param  {Class}    params.router                    NextJs router class
  * @param  {Object}   params.searchResult              Selected node or edge object
  * @return { undefined }
  */
 const setSearchNeighbourNodes = ({
   separationDegree,
   updateStoreValue,
-  searchResult
+  searchResult,
+  router
 }) => {
   const {
     lastGraphIndex,
@@ -74,8 +76,8 @@ const setSearchNeighbourNodes = ({
   updateStoreValue(['graphData', newCurrentGraph], OPERATION_TYPE_UPDATE, graphValue)
   updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, newCurrentGraph)
   updateStoreValue(['lastGraphIndex'], OPERATION_TYPE_UPDATE, newGraphIndex)
-  updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
-  updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
+
+  router.push(ROUTE_NETWORK_GRAPHS)
 }
 
 export default setSearchNeighbourNodes

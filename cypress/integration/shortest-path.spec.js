@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_SHORTEST_PATH } from '../../src/constants/routes'
 
 context('Shortest path', () => {
   beforeEach(() => {
@@ -64,23 +65,13 @@ context('Shortest path', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 17')
-
-      // enable upper ontology
-      cy.get('#sidebar-button-graph-options').click()
-
-      // switch 3 main options
-      cy.get('#upper-ontology-checkbox').click()
-      cy.get('#dataset-checkbox').click()
-
-      // save and check new nodes and edges count
-      cy.get('#network-graph-options-save').click()
       cy.get('.nav-left').should('contain', 'Nodes: 13')
       cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the shortest path icon
       cy.get('#sidebar-button-shortest-path').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_SHORTEST_PATH)
 
       // choose starting node
       cy.get('#shortest-path-button-1').click()
@@ -160,8 +151,8 @@ context('Shortest path', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the shortest path icon
       cy.get('#sidebar-button-shortest-path').click()
@@ -199,8 +190,8 @@ context('Shortest path', () => {
       cy.get('.shortest-path-show-button').click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
     })
   })
 })

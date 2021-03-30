@@ -39,7 +39,7 @@ const EditOntologyAddEdge = ({
         </label>
 
         <Dropdown
-          ariaLabel="graph-select-from"
+          aria-label="graph-select-from"
           id="graph-select-from"
           value={fromNode}
           filter
@@ -57,7 +57,7 @@ const EditOntologyAddEdge = ({
         </label>
 
         <Dropdown
-          ariaLabel="graph-select-edge"
+          aria-label="graph-select-edge"
           id="graph-select-edge"
           value={edge}
           filter
@@ -77,7 +77,7 @@ const EditOntologyAddEdge = ({
         </label>
 
         <Dropdown
-          ariaLabel="graph-select-to"
+          aria-label="graph-select-to"
           id="graph-select-to"
           value={toNode}
           filter
@@ -105,7 +105,7 @@ const EditOntologyAddEdge = ({
 
       <div className="edit-ontology-row">
         <Button
-          ariaLabel={`${t(operation)}`}
+          aria-label={`${t(operation)}`}
           className="go-button"
           tooltip={`${t(operation)}`}
           disabled={

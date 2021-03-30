@@ -18,11 +18,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.6.0]
 ### Added
+- ONTOLOGY-153 Sidebar views routing for improved analytics
+- ONTOLOGY-153 Additional env variables to toggle sidebar views on/off
 - ONTOLOGY-130 Added updateStoreValue action to replace all other store actions
 - ONTOLOGY-130 Search starts also on search icon click
 - ONTOLOGY-109 Added userback and mouseflow snippets
 
 ### Changed
+- ONTOLOGY-153 Logout function now resets the store
 - ONTOLOGY-151 Node and edge rendering logic to improve performance
 
 ### Deprecated

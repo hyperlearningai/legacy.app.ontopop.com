@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../../src/constants/routes'
 
 context('Network graph options', () => {
   beforeEach(() => {
@@ -61,11 +62,13 @@ context('Network graph options', () => {
         .eq(1)
         .click()
 
-      cy.get('#sidebar-button-graph-options').click()
+      cy.get('#sidebar-button-network-graph-options').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPH_OPTIONS)
 
       // Check number of nodes and edges at first loading
-      cy.get('.nav-left').should('contain', 'Nodes: 22')
-      cy.get('.nav-left').should('contain', 'Edges: 18')
+      cy.get('.nav-left').should('contain', 'Nodes: 23')
+      cy.get('.nav-left').should('contain', 'Edges: 40')
 
       // switch 3 main options
       cy.get('#upper-ontology-checkbox').click()
@@ -75,11 +78,13 @@ context('Network graph options', () => {
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 23')
+      cy.get('.nav-left').should('contain', 'Nodes: 22')
       cy.get('.nav-left').should('contain', 'Edges: 18')
 
       // Add nodes filters
+      cy.get('#upper-ontology-checkbox').click()
       cy.get('#subclass-checkbox').click()
+      cy.get('#dataset-checkbox').click()
 
       cy.get('.p-accordion').eq(0).click()
 

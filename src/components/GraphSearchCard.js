@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'
 import { Card } from 'primereact/card'
+import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import { RESERVED_PROPERTIES } from '../constants/graph'
 import setSearchNeighbourNodes from '../utils/graphSearch/setSearchNeighbourNodes'
@@ -18,6 +19,8 @@ const GraphSearchCard = ({
   userDefinedEdgeStyling
 }) => {
   const { t } = useTranslation()
+
+  const router = useRouter()
 
   const [isShowMore, setShowMore] = useState(false)
   const { type, userDefined } = searchResult
@@ -65,19 +68,20 @@ const GraphSearchCard = ({
       <Divider />
       <div className="p-card-buttons">
         <Button
-          ariaLabel="showMore"
+          aria-label="showMore"
           className="p-card-buttons-info"
           label={t(isShowMore ? 'lessInfo' : 'moreInfo')}
           onClick={() => setShowMore(!isShowMore)}
         />
 
         <Button
-          ariaLabel={t('show')}
+          aria-label={t('show')}
           label={t('show')}
           onClick={() => setSearchNeighbourNodes({
             separationDegree: 1,
             updateStoreValue,
-            searchResult
+            searchResult,
+            router
           })}
         />
       </div>

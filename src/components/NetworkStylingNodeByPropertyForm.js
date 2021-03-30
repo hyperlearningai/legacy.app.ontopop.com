@@ -43,7 +43,7 @@ const NetworkStylingNodeByPropertyForm = ({
       <div className="network-styling-property-form-row">
         <h4 className="m-t-0 m-b-0">{t('ifNodeHasProperty')}</h4>
         <Dropdown
-          ariaLabel={t('selectStyle')}
+          aria-label={t('selectStyle')}
           value={stylingPropertyObject.property}
           options={annotationProperties}
           filter
@@ -91,7 +91,7 @@ const NetworkStylingNodeByPropertyForm = ({
             <div className="network-styling-property-form-row">
               <h4 className="m-t-0 m-b-0">{t('setNodeStyle')}</h4>
               <Dropdown
-                ariaLabel={t('selectStyle')}
+                aria-label={t('selectStyle')}
                 value={stylingPropertyObject.styleType}
                 options={nodeStylingProperties}
                 filter
@@ -167,7 +167,7 @@ const NetworkStylingNodeByPropertyForm = ({
               && (
                 <div className="network-styling-property-form-row">
                   <Dropdown
-                    ariaLabel={t(NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].placeholder)}
+                    aria-label={t(NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].placeholder)}
                     value={stylingPropertyObject.styleValue}
                     defaultValue={NODE_STYLING_PROPERTIES[stylingPropertyObject.styleType].defaultValue}
                     options={
@@ -226,7 +226,7 @@ const NetworkStylingNodeByPropertyForm = ({
           {
             isDeleteAvailable && (
               <Button
-                ariaLabel={t('delete')}
+                aria-label={t('delete')}
                 label={t('delete')}
                 tooltip={t('delete')}
                 tooltipOptions={{
@@ -246,7 +246,7 @@ const NetworkStylingNodeByPropertyForm = ({
           }
 
           <Button
-            ariaLabel={t('delete')}
+            aria-label={t('delete')}
             label={t('save')}
             tooltip={t('save')}
             tooltipOptions={{

@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_SETTINGS } from '../../src/constants/routes'
 
 context('Physics settings', () => {
   beforeEach(() => {
@@ -64,11 +65,13 @@ context('Physics settings', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 6')
-      cy.get('.nav-left').should('contain', 'Edges: 9')
+      cy.get('.nav-left').should('contain', 'Nodes: 7')
+      cy.get('.nav-left').should('contain', 'Edges: 12')
 
       // click the physics settings sidebar icon
-      cy.get('#sidebar-button-physics-settings').click()
+      cy.get('#sidebar-button-settings').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_SETTINGS)
 
       // should toggle physics
       cy.get('.network-settings-buttons').eq(0).find('.p-button').should('have.class', 'p-button p-component')

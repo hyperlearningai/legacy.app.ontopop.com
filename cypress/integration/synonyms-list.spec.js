@@ -6,6 +6,7 @@ import deleteNodeSynonym from '../fixtures/deleteNodeSynonym'
 import createNodeSynonym from '../fixtures/createNodeSynonym'
 import updateNodeSynonym from '../fixtures/updateNodeSynonym'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_SYNONYMS } from '../../src/constants/routes'
 
 context('Synonyms list', () => {
   beforeEach(() => {
@@ -72,19 +73,13 @@ context('Synonyms list', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
-
-      // show dataset nodes
-      cy.get('#sidebar-button-graph-options').click()
-      cy.get('#dataset-checkbox').click()
-      cy.get('#network-graph-options-save').click()
-
       cy.get('.nav-left').should('contain', 'Nodes: 4')
       cy.get('.nav-left').should('contain', 'Edges: 5')
 
       // click the synonym sidebar icon
-      cy.get('#sidebar-button-synonims').click()
+      cy.get('#sidebar-button-synonyms').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_SYNONYMS)
 
       // select first node from dropdown
       cy.get('#synonyms-select-element').find('.p-dropdown-trigger').click({ force: true })

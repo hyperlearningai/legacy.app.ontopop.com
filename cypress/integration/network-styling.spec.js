@@ -6,6 +6,7 @@ import addNode from '../fixtures/addNode'
 import addEdge from '../fixtures/addEdge'
 import getStyling from '../fixtures/getStyling'
 import saveStyling from '../fixtures/saveStyling'
+import { ROUTE_STYLING } from '../../src/constants/routes'
 
 context('Network styling', () => {
   beforeEach(() => {
@@ -67,22 +68,13 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 17')
-
-      // toogle visualisation of datasets and upper ontology elements
-      cy.get('#sidebar-button-graph-options').click()
-      cy.get('#upper-ontology-checkbox').click()
-      cy.get('#dataset-checkbox').click()
-
-      cy.get('#network-graph-options-save').click()
-      cy.wait(3000)
-
       cy.get('.nav-left').should('contain', 'Nodes: 13')
       cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_STYLING)
 
       // open node styling
       cy.get('.p-accordion').eq(0).click()
@@ -281,8 +273,8 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the edit ontology sidebar icon
       cy.get('#sidebar-button-edit-ontology').click()
@@ -297,13 +289,13 @@ context('Network styling', () => {
 
       cy.wait('@addNode')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 12')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       cy.get('.vis-zoomExtends').click()
 
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click()
 
       // open node styling
       cy.get('.p-accordion').eq(0).click()
@@ -497,11 +489,11 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click()
 
       // open node styling
       cy.get('.p-accordion').eq(0).click()
@@ -642,11 +634,11 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click()
 
       // open edge styling
       cy.get('.p-accordion').eq(1).click()
@@ -825,8 +817,8 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the edit ontology sidebar icon
       cy.get('#sidebar-button-edit-ontology').click()
@@ -847,11 +839,11 @@ context('Network styling', () => {
 
       cy.wait('@addEdge')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 15')
 
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click()
 
       // open edge styling
       cy.get('.p-accordion').eq(1).click()
@@ -1017,11 +1009,11 @@ context('Network styling', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click()
 
       // open edge styling
       cy.get('.p-accordion').eq(1).click()

@@ -3,17 +3,21 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
-import HeadTags from '../components/HeadTags'
-import HeaderComponent from '../components/HeaderComponent'
+import Navbar from './Navbar'
+import FooterComponent from './FooterComponent'
+import HeadTags from './HeadTags'
+import HeaderComponent from './HeaderComponent'
+import Sidebar from './Sidebar'
+import MainArea from './MainArea'
 import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
 
-const Index = ({
+const ViewWrapper = ({
   updateStoreValue,
   user,
+  view
 }) => {
   const { t } = useTranslation()
-
   const router = useRouter()
 
   // check if authenticated, otherwise redirect to login
@@ -30,7 +34,7 @@ const Index = ({
   return (
     <>
       <HeadTags
-        title=""
+        title={t(view)}
         description={t('ontologyVisualisationDescription')}
       />
 
@@ -39,6 +43,16 @@ const Index = ({
         || user.isGuest) && (
           <>
             <HeaderComponent />
+            <main className="main-view">
+
+              <Sidebar />
+              <div className="main-view-area">
+                <Navbar />
+                <MainArea />
+                <FooterComponent />
+              </div>
+
+            </main>
           </>
         )
       }
@@ -47,9 +61,10 @@ const Index = ({
   )
 }
 
-Index.propTypes = {
+ViewWrapper.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
+  view: PropTypes.string.isRequired,
 }
 
 const mapPropsToState = ({
@@ -61,4 +76,4 @@ const mapPropsToState = ({
 export default connect(
   mapPropsToState,
   actions
-)(Index)
+)(ViewWrapper)

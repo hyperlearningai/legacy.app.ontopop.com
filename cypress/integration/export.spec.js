@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_EXPORT } from '../../src/constants/routes'
 
 context('Export', () => {
   beforeEach(() => {
@@ -64,11 +65,13 @@ context('Export', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 12')
-      cy.get('.nav-left').should('contain', 'Edges: 19')
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 20')
 
       // click the export sidebar icon
       cy.get('#sidebar-button-export').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_EXPORT)
 
       // change file name
       cy.get('#filename').clear().type('new-file')

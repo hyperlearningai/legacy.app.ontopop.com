@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_FREE_TEXT_SEARCH } from '../../src/constants/routes'
 
 context('Free text search', () => {
   beforeEach(() => {
@@ -64,15 +65,17 @@ context('Free text search', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 17')
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the free text search icon
       cy.get('#sidebar-button-free-text-search').click()
 
+      cy.location('pathname').should('be.equal', ROUTE_FREE_TEXT_SEARCH)
+
       cy.get('.freetext-search-input').find('.p-inputtext').type('main')
 
-      cy.get('.freetext-search-row').should('have.length', 11)
+      cy.get('.freetext-search-row').should('have.length', 12)
 
       // press on first element
       cy.get('.freetext-search-row').eq(0).find('.p-button').eq(1)
@@ -82,7 +85,7 @@ context('Free text search', () => {
       cy.get('.freetext-search-row').eq(0).find('.p-button').eq(0)
         .click()
 
-      cy.get('.freetext-search-row').should('have.length', 10)
+      cy.get('.freetext-search-row').should('have.length', 11)
     })
   })
 })

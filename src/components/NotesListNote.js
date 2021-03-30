@@ -123,7 +123,7 @@ const NotesListNode = ({
 
             <div className="notes-buttons">
               <Button
-                ariaLabel={t('close')}
+                aria-label={t('close')}
                 tooltip={t('close')}
                 tooltipOptions={{ position: 'top' }}
                 label={t('close')}
@@ -132,7 +132,7 @@ const NotesListNode = ({
                 onClick={() => setEditingId('')}
               />
               <Button
-                ariaLabel={t('edit')}
+                aria-label={t('edit')}
                 tooltip={t('edit')}
                 tooltipOptions={{ position: 'top' }}
                 label={t('edit')}
@@ -163,7 +163,7 @@ const NotesListNode = ({
         && (
           <div className="notes-buttons">
             <Button
-              ariaLabel={t('delete')}
+              aria-label={t('delete')}
               tooltip={t('delete')}
               tooltipOptions={{ position: 'top' }}
               className="p-button-danger delete-note"
@@ -179,7 +179,7 @@ const NotesListNode = ({
             />
 
             <Button
-              ariaLabel={t('edit')}
+              aria-label={t('edit')}
               tooltip={t('edit')}
               tooltipOptions={{ position: 'top' }}
               label={t('edit')}

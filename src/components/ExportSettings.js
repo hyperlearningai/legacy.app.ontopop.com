@@ -72,7 +72,7 @@ const ExportSettings = () => {
             {
               EXPORT_GRAPH_OPTIONS.map((option) => (
                 <Button
-                  ariaLabel={t(option)}
+                  aria-label={t(option)}
                   key={`export-btn-${option}`}
                   tooltip={t(option)}
                   label={t(option)}
@@ -103,7 +103,7 @@ const ExportSettings = () => {
             {
               EXPORT_DATA_OPTIONS.map((option) => (
                 <Button
-                  ariaLabel={t(option)}
+                  aria-label={t(option)}
                   key={`export-btn-${option}`}
                   tooltip={t(option)}
                   tooltipOptions={{ position: 'top' }}
@@ -127,7 +127,7 @@ const ExportSettings = () => {
           </div>
           <div className="export-settings-buttons">
             <Button
-              ariaLabel={t('print')}
+              aria-label={t('print')}
               key="export-btn-print"
               tooltip={t('print')}
               tooltipOptions={{ position: 'top' }}

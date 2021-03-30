@@ -78,7 +78,7 @@ describe('signIn', () => {
         'test@test.com'], [
         ['user', 'token'], OPERATION_TYPE_UPDATE, '12345']]
     )
-    expect(push).toHaveBeenCalledWith('/')
+    expect(push).toHaveBeenCalledWith('/search')
     expect(setItem).toHaveBeenCalledWith(
       AUTH_COOKIE, JSON.stringify({ email, token })
     )

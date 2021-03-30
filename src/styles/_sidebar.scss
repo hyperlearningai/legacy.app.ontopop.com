@@ -35,11 +35,10 @@
       justify-content: center;
 
       &:enabled {
-        &:hover {
+        &:hover,
+        &:active,
+        &:focus {
           border-color: transparent;
-        }
-
-        &:active {
           border: transparent;
         }
       }
@@ -63,11 +62,20 @@
       svg {
         font-size: 24px;
 
-        &:nth-child(3) {
+        &:nth-child(2) {
           font-size: 18px;
           position: absolute;
           bottom: 5px;
           right: 5px;
+        }
+      }
+    }
+
+    .toggle-view-button {
+      svg {
+        &:nth-child(2) {
+          margin-bottom: 10px;
+          font-size: 24px;
         }
       }
     }

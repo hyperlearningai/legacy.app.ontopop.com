@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_SEARCH } from '../../src/constants/routes'
 
 context('Entry search', () => {
   beforeEach(() => {
@@ -48,6 +49,8 @@ context('Entry search', () => {
 
       cy.wait('@postLogin')
 
+      cy.location('pathname').should('be.equal', ROUTE_SEARCH)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@getGraph')
@@ -79,8 +82,8 @@ context('Entry search', () => {
         .eq(1)
         .click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 24')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
     })
 
     it('searching for record should work when nodes results only', () => {
@@ -155,8 +158,8 @@ context('Entry search', () => {
         .eq(1)
         .click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 4')
+      cy.get('.nav-left').should('contain', 'Nodes: 6')
+      cy.get('.nav-left').should('contain', 'Edges: 9')
     })
 
     it('searching for record should work when edges results only', () => {
@@ -312,8 +315,8 @@ context('Entry search', () => {
         .eq(1)
         .click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 24')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
     })
   })
 })
