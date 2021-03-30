@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import ViewWrapper from '../components/ViewWrapper'
+import ViewWrapper from '../../components/ViewWrapper'
 
 const View = ({
   view
