@@ -304,7 +304,7 @@ const Sidebar = ({
               >
                 <a
                   id={`sidebar-button-${label}`}
-                  className={view === route ? 'p-button sidebar-bar-button-selected' : 'p-button'}
+                  className={view === label ? 'p-button sidebar-bar-button-selected' : 'p-button'}
                 >
                   {icon}
                 </a>
@@ -316,14 +316,13 @@ const Sidebar = ({
           aria-label={t('toggleSidebar')}
           id="sidebar-button-toggle"
           tooltip={t('toggleSidebar')}
+          className="toggle-view-button"
           onClick={() => updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, !isSidebarOpen)}
         >
           {
-            isSidebarOpen ? (
-              <AiOutlineArrowLeft />
-            ) : (
-              <AiOutlineArrowRight />
-            )
+            isSidebarOpen
+              ? <AiOutlineArrowLeft />
+              : <AiOutlineArrowRight />
           }
         </Button>
       </div>

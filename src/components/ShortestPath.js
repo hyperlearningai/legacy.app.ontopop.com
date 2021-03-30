@@ -35,11 +35,19 @@ const ShortestPath = ({
   const [nodesToExclude, setNodesToExclude] = useState([])
   const [edgesToExclude, setEdgesToExclude] = useState([])
 
-  useEffect(() => () => {
-    resetShortestPathNodes({
-      updateStoreValue
-    })
-    updateStoreValue(['isElementSelectable'], OPERATION_TYPE_UPDATE, true)
+  useEffect(() => {
+    updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, true)
+    updateStoreValue(['isShortestPathNode2Selectable'], OPERATION_TYPE_UPDATE, false)
+    updateStoreValue(['isElementSelectable'], OPERATION_TYPE_UPDATE, false)
+
+    return () => {
+      resetShortestPathNodes({
+        updateStoreValue
+      })
+      updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, false)
+      updateStoreValue(['isShortestPathNode2Selectable'], OPERATION_TYPE_UPDATE, false)
+      updateStoreValue(['isElementSelectable'], OPERATION_TYPE_UPDATE, true)
+    }
   }, [])
 
   useEffect(() => {

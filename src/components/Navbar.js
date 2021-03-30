@@ -9,7 +9,7 @@ import {
 } from 'react-icons/bs'
 import { useRouter } from 'next/router'
 import actions from '../store/actions'
-import { ROUTE_SEARCH } from '../constants/routes'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 
 const Navbar = ({
   availableNodesCount,
@@ -26,7 +26,7 @@ const Navbar = ({
     <nav>
       <div className="nav-left">
         {
-          view === ROUTE_SEARCH ? (
+          view === SIDEBAR_VIEW_ENTRY_SEARCH ? (
             <span>
               <BsSearch className="nodes-icon node m-r-5" />
               {`${t('searchResults')}: ${entrySearchResults.length}`}

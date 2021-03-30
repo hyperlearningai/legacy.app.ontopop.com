@@ -1,14 +1,20 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import View from '../../pages/[view]'
-import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
+import ViewWrapper from '../../components/ViewWrapper'
+import { SIDEBAR_VIEW_BOUNDING_BOX } from '../../constants/views'
 
 const setup = () => {
   const props = {
-    view: SIDEBAR_VIEW_ENTRY_SEARCH
+    user: {
+      isGuest: false,
+      email: 'a@b.c',
+      token: '123'
+    },
+    updateStoreValue: jest.fn(),
+    view: SIDEBAR_VIEW_BOUNDING_BOX
   }
-  const component = shallow(<View {...props} />)
+  const component = shallow(<ViewWrapper {...props} />)
 
   return {
     component
