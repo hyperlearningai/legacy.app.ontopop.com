@@ -1,11 +1,10 @@
 import { AUTH_COOKIE } from '../../constants/auth'
 import {
   AUTH_ROUTES,
-  ROUTE_LOGIN,
   ROUTE_SEARCH
 } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
-import resetGraphData from '../graphVisualisation/resetGraphData'
+import logout from './logout'
 
 const checkTokenValidity = ({
   router,
@@ -18,11 +17,10 @@ const checkTokenValidity = ({
     const isBackToLogin = !AUTH_ROUTES.includes(window.location.pathname)
 
     if (isBackToLogin) {
-      resetGraphData({
+      return logout({
+        router,
         updateStoreValue
       })
-
-      return router.push(ROUTE_LOGIN)
     }
 
     return false
