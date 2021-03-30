@@ -34,7 +34,11 @@ const checkTokenValidity = ({
   updateStoreValue(['user', 'email'], OPERATION_TYPE_UPDATE, email)
   updateStoreValue(['user', 'token'], OPERATION_TYPE_UPDATE, token)
 
-  router.push(ROUTE_SEARCH)
+  const { view } = router.query
+
+  if (view !== ROUTE_SEARCH.replace('/', '')) {
+    router.push(ROUTE_SEARCH)
+  }
 }
 
 export default checkTokenValidity

@@ -5,11 +5,10 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import HeadTags from '../components/HeadTags'
 import HeaderComponent from '../components/HeaderComponent'
-import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
+import { ROUTE_SEARCH } from '../constants/routes'
 
 const Index = ({
-  updateStoreValue,
   user,
 }) => {
   const { t } = useTranslation()
@@ -17,15 +16,7 @@ const Index = ({
   const router = useRouter()
 
   // check if authenticated, otherwise redirect to login
-  useEffect(() => {
-    if (!user.isGuest && user.email === '') {
-      checkAuthAtStartup({
-        router,
-        updateStoreValue
-      })
-    }
-  },
-  [])
+  useEffect(() => router.push(ROUTE_SEARCH), [])
 
   return (
     <>
@@ -48,7 +39,6 @@ const Index = ({
 }
 
 Index.propTypes = {
-  updateStoreValue: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
 }
 
