@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.6.0]
 ### Added
+- ONTOLOGY-130 Login form can be submitted on enter
 - ONTOLOGY-153 Sidebar views routing for improved analytics
 - ONTOLOGY-153 Additional env variables to toggle sidebar views on/off
 - ONTOLOGY-130 Added updateStoreValue action to replace all other store actions

@@ -2,7 +2,7 @@ const withImages = require('next-images')
 
 module.exports = withImages({
   target: 'serverless',
-  trailingSlash: false, // true,
+  trailingSlash: true, // true,
   exportPathMap: () => {
     const dynamicRoutes = [
       '/search',
