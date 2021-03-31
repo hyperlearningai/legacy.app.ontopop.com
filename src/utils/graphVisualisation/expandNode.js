@@ -16,7 +16,7 @@ import addNodeToGraph from './addNodeToGraph'
  */
 const expandNode = ({
   nodeId,
-  updateStoreValue
+  updateStoreValue,
 }) => {
   const {
     totalEdgesPerNode,

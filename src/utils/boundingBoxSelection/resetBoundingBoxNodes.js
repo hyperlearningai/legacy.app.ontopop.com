@@ -18,7 +18,7 @@ const resetBoundingBoxNodes = () => {
 
     if (node) {
       setNodeStyle({
-        node
+        node,
       })
     }
   })

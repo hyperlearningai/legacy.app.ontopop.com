@@ -20,13 +20,14 @@ const Navbar = ({
 
   const router = useRouter()
 
-  const { view } = router.query
+  const { query } = router
+  const { slug } = query
 
   return (
     <nav>
       <div className="nav-left">
         {
-          view === SIDEBAR_VIEW_ENTRY_SEARCH ? (
+          (slug && slug[0] === SIDEBAR_VIEW_ENTRY_SEARCH) ? (
             <span>
               <BsSearch className="nodes-icon node m-r-5" />
               {`${t('searchResults')}: ${entrySearchResults.length}`}

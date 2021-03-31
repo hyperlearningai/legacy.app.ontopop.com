@@ -8,7 +8,7 @@ import getStyling from '../fixtures/getStyling'
 
 context('Auth', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Auth', () => {

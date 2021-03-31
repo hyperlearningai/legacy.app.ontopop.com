@@ -7,7 +7,7 @@ import { ROUTE_EDGES_SELECTION } from '../../src/constants/routes'
 
 context('Edges selection', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Edges selection', () => {

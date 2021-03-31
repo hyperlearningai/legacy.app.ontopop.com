@@ -7,7 +7,7 @@ import { ROUTE_SHORTEST_PATH } from '../../src/constants/routes'
 
 context('Shortest path', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Shortest path', () => {

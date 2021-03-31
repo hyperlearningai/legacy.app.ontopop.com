@@ -4,6 +4,7 @@ import {
   ROUTE_SEARCH
 } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
 import logout from './logout'
 
 const checkTokenValidity = ({
@@ -14,7 +15,7 @@ const checkTokenValidity = ({
   const authCookie = localStorage.getItem(AUTH_COOKIE)
 
   if (!authCookie) {
-    const isBackToLogin = !AUTH_ROUTES.includes(window.location.pathname)
+    const isBackToLogin = !AUTH_ROUTES.includes(router.pathname)
 
     if (isBackToLogin) {
       return logout({
@@ -32,9 +33,10 @@ const checkTokenValidity = ({
   updateStoreValue(['user', 'email'], OPERATION_TYPE_UPDATE, email)
   updateStoreValue(['user', 'token'], OPERATION_TYPE_UPDATE, token)
 
-  const { view } = router.query
+  const { query } = router
+  const { slug } = query
 
-  if (view !== ROUTE_SEARCH.replace('/', '')) {
+  if (!slug || (slug && slug[0] !== SIDEBAR_VIEW_ENTRY_SEARCH)) {
     router.push(ROUTE_SEARCH)
   }
 }

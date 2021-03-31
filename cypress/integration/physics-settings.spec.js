@@ -7,7 +7,7 @@ import { ROUTE_SETTINGS } from '../../src/constants/routes'
 
 context('Physics settings', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Physics settings', () => {

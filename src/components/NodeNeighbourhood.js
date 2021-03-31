@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { InputNumber } from 'primereact/inputnumber'
 import { Button } from 'primereact/button'
 import { Dropdown } from 'primereact/dropdown'
+import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import setNeighbourNodes from '../utils/nodeNeighbourhood/setNeighbourNodes'
@@ -18,6 +19,7 @@ const NodeNeighbourhood = ({
   nodesDropdownLabels
 }) => {
   const { t } = useTranslation()
+  const router = useRouter()
 
   const [separationDegree, setSeparationDegree] = useState(1)
 
@@ -80,6 +82,7 @@ const NodeNeighbourhood = ({
             onClick={() => setNeighbourNodes({
               separationDegree,
               updateStoreValue,
+              router
             })}
           />
         </div>

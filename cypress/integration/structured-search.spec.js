@@ -7,7 +7,7 @@ import { ROUTE_STRUCTURED_SEARCH } from '../../src/constants/routes'
 
 context('Structured search', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Structured search', () => {

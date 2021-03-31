@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Dropdown } from 'primereact/dropdown'
 import { Button } from 'primereact/button'
+import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_NODES_FILTER } from '../constants/views'
 import setFilteredNodes from '../utils/nodesFilter/setFilteredNodes'
@@ -19,6 +20,7 @@ const NodesFilter = ({
   annotationProperties,
 }) => {
   const { t } = useTranslation()
+  const router = useRouter()
 
   useEffect(() => () => {
     updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, false)
@@ -153,7 +155,7 @@ const NodesFilter = ({
           onClick={() => setFilteredNodes({
             updateStoreValue,
             nodesFilters,
-            t
+            router,
           })}
         />
       </div>

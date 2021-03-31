@@ -1,40 +1,28 @@
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
-import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import GraphVisualisation from './GraphVisualisation'
 import GraphSearch from './GraphSearch'
-import {
-  SIDEBAR_VIEW_ENTRY_SEARCH
-} from '../constants/views'
-import startupActions from '../utils/graphVisualisation/startupActions'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 
 const MainArea = ({
-  updateStoreValue,
   graphData,
   currentGraph
 }) => {
-  const { t } = useTranslation()
-
   const router = useRouter()
 
-  const { view } = router.query
-
-  useEffect(() => startupActions({
-    updateStoreValue,
-    t
-  }),
-  [])
+  const { query } = router
+  const { slug } = query
 
   return (
     <>
       {
-        view
-        && graphData
+        graphData
         && graphData[currentGraph]
-        && view !== SIDEBAR_VIEW_ENTRY_SEARCH
+        && slug
+        && slug[0] !== SIDEBAR_VIEW_ENTRY_SEARCH
           ? (
             <GraphVisualisation />
           ) : (
@@ -49,7 +37,6 @@ const MainArea = ({
 MainArea.propTypes = {
   graphData: PropTypes.shape().isRequired,
   currentGraph: PropTypes.string.isRequired,
-  updateStoreValue: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = ({

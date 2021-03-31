@@ -2,11 +2,14 @@ import setShortestPath from '../../../utils/shortestPath/setShortestPath'
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
+import { ROUTE_NETWORK_GRAPHS } from '../../../constants/routes'
 
 const updateStoreValue = jest.fn()
 const shortestPathNode1 = '33'
 const shortestPathNode2 = '40'
 const lastGraphIndex = 1
+const push = jest.fn()
+const router = { push }
 
 jest.mock('../../../utils/shortestPath/getShortestPath')
 
@@ -44,6 +47,7 @@ describe('setShortestPath', () => {
       updateStoreValue,
       nodesToExclude,
       edgesToExclude,
+      router
     })
 
     expect(updateStoreValue.mock.calls).toEqual([
@@ -87,13 +91,7 @@ describe('setShortestPath', () => {
         OPERATION_TYPE_UPDATE,
         2,
       ],
-      [
-        [
-          'sidebarView',
-        ],
-        OPERATION_TYPE_UPDATE,
-        'networkGraphs',
-      ],
     ])
+    expect(push).toHaveBeenCalledWith(ROUTE_NETWORK_GRAPHS)
   })
 })

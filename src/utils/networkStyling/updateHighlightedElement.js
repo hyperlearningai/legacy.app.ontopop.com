@@ -17,7 +17,7 @@ import setNodeStyle from './setNodeStyle'
 const updateHighlightedElement = ({
   updateStoreValue,
   id,
-  type
+  type,
 }) => {
   const {
     selectedElement,
@@ -30,7 +30,7 @@ const updateHighlightedElement = ({
 
     if (oldType === 'node') {
       setNodeStyle({
-        node: classesFromApi[oldId]
+        node: classesFromApi[oldId],
       })
     } else {
       setEdgeStyle({

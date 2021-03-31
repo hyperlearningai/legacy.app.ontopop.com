@@ -8,7 +8,7 @@ import { ROUTE_CUSTOM_QUERY } from '../../src/constants/routes'
 
 context('Custom query', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Custom query', () => {
