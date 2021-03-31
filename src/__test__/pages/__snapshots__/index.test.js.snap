@@ -1,22 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index page should match snapshot 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
-  user={
-    Object {
-      "email": "a@b.c",
-      "isGuest": false,
-      "token": "123",
-    }
-  }
->
-  <Component />
-</Connect>
-`;
+exports[`Index page should match snapshot 1`] = `<ConnectWrapper />`;

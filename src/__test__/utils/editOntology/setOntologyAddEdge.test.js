@@ -6,13 +6,13 @@ import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import showNotification from '../../../utils/notifications/showNotification'
 import en from '../../../i18n/en'
-import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import getNode from '../../../utils/nodesEdgesUtils/getNode'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import checkNodeVisibility from '../../../utils/networkGraphOptions/checkNodeVisibility'
 import checkEdgeVisibility from '../../../utils/networkGraphOptions/checkEdgeVisibility'
 import { OPERATION_TYPE_PUSH_UNIQUE, OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import getEdgeIds from '../../../utils/nodesEdgesUtils/getEdgeIds'
+import checkNodeSpiderability from '../../../utils/networkStyling/checkNodeSpiderability'
 
 jest.mock('../../../utils/nodesEdgesUtils/addEdge')
 jest.mock('../../../utils/nodesEdgesUtils/getEdgeIds')
@@ -23,6 +23,7 @@ jest.mock('../../../utils/networkStyling/setEdgeStyleByProperty')
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/networkGraphOptions/checkNodeVisibility')
 jest.mock('../../../utils/networkGraphOptions/checkEdgeVisibility')
+jest.mock('../../../utils/networkStyling/checkNodeSpiderability')
 
 checkNodeVisibility.mockImplementation(() => true)
 checkEdgeVisibility.mockImplementation(() => true)
@@ -128,13 +129,6 @@ describe('setOntologyAddEdge', () => {
       }]]
     )
 
-    expect(setNodeStyle.mock.calls).toEqual(
-      [
-        [{ nodeId: '1' }],
-        [{ nodeId: '141' }]
-      ]
-    )
-
     const newObjectPropertiesFromApi = JSON.parse(JSON.stringify(objectPropertiesFromApi))
 
     newObjectPropertiesFromApi['123'] = {
@@ -148,6 +142,11 @@ describe('setOntologyAddEdge', () => {
       userDefined: true,
       userId: undefined
     }
+
+    expect(checkNodeSpiderability.mock.calls).toEqual(
+      [[{ nodeId: '1', updateStoreValue, visibleEdges: ['1', '2', '3'] }],
+        [{ nodeId: '141', updateStoreValue, visibleEdges: ['1', '2', '3'] }]]
+    )
 
     expect(updateStoreValue.mock.calls).toEqual(
       [
@@ -180,8 +179,6 @@ describe('setOntologyAddEdge', () => {
         [['addedEdges'], OPERATION_TYPE_PUSH_UNIQUE, '123'],
         [['nodesEdges', '1'], OPERATION_TYPE_PUSH_UNIQUE, '123'],
         [['nodesEdges', '141'], OPERATION_TYPE_PUSH_UNIQUE, '123'],
-        [['nodesSpiderability', '1'], OPERATION_TYPE_UPDATE, 'true'],
-        [['nodesSpiderability', '141'], OPERATION_TYPE_UPDATE, 'true']
       ]
     )
   })

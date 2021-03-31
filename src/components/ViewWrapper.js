@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
@@ -9,32 +9,33 @@ import HeadTags from './HeadTags'
 import HeaderComponent from './HeaderComponent'
 import Sidebar from './Sidebar'
 import MainArea from './MainArea'
-import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
+import { DYNAMIC_ROUTES, ROUTE_SEARCH } from '../constants/routes'
+import { toDashedCase, turnToRoute } from '../constants/functions'
 
 const ViewWrapper = ({
-  updateStoreValue,
   user,
-  view
 }) => {
   const { t } = useTranslation()
   const router = useRouter()
+  const { query } = router
+  const { slug } = query
 
-  // check if authenticated, otherwise redirect to login
+  const isInitialMountCurrentGraph = useRef(true)
+
   useEffect(() => {
-    if (!user.isGuest && user.email === '') {
-      checkAuthAtStartup({
-        router,
-        updateStoreValue
-      })
+    if (isInitialMountCurrentGraph.current === true) {
+      if (!slug || !DYNAMIC_ROUTES.includes(turnToRoute(toDashedCase(slug[0])))) {
+        router.push(ROUTE_SEARCH)
+        isInitialMountCurrentGraph.current = false
+      }
     }
-  },
-  [])
+  }, [slug])
 
   return (
     <>
       <HeadTags
-        title={t(view)}
+        title={t(slug ? slug[0] : '')}
         description={t('ontologyVisualisationDescription')}
       />
 
@@ -62,9 +63,7 @@ const ViewWrapper = ({
 }
 
 ViewWrapper.propTypes = {
-  updateStoreValue: PropTypes.func.isRequired,
-  user: PropTypes.shape().isRequired,
-  view: PropTypes.string.isRequired,
+  user: PropTypes.shape().isRequired
 }
 
 const mapPropsToState = ({

@@ -10,7 +10,7 @@ import { ROUTE_SYNONYMS } from '../../src/constants/routes'
 
 context('Synonyms list', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Synonyms list', () => {

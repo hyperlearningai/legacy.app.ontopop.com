@@ -1,4 +1,4 @@
-import ViewWrapper from '../components/ViewWrapper'
+import ViewWrapper from '../../components/ViewWrapper'
 
 const Index = () => <ViewWrapper />
 

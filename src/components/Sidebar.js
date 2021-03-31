@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import {
   FiLayers,
   FiSettings
@@ -40,27 +39,9 @@ import {
 } from 'react-icons/fa'
 import { Button } from 'primereact/button'
 import { useRouter } from 'next/router'
+import { camelCase } from 'lodash'
 import actions from '../store/actions'
 import {
-  SIDEBAR_VIEW_ENTRY_SEARCH,
-  SIDEBAR_VIEW_GRAPHS,
-  SIDEBAR_VIEW_GRAPH_OPTIONS,
-  SIDEBAR_VIEW_FREE_TEXT_SEARCH,
-  SIDEBAR_VIEW_NEIGHBOURHOOD,
-  SIDEBAR_VIEW_SHORTEST_PATH,
-  SIDEBAR_VIEW_NODES_SELECTION,
-  SIDEBAR_VIEW_EDGES_SELECTION,
-  SIDEBAR_VIEW_SETTINGS,
-  SIDEBAR_VIEW_EXPORT,
-  SIDEBAR_VIEW_BOUNDING_BOX,
-  SIDEBAR_VIEW_NODES_FILTER,
-  SIDEBAR_VIEW_EDGES_FILTER,
-  SIDEBAR_VIEW_CUSTOM_QUERY,
-  SIDEBAR_VIEW_EDIT_ONTOLOGY,
-  SIDEBAR_VIEW_STYLING,
-  SIDEBAR_VIEW_STRUCTURED_SEARCH,
-  SIDEBAR_VIEW_NOTES,
-  SIDEBAR_VIEW_SYNONYMS,
   IS_SEARCH_VISIBLE,
   IS_GRAPHS_VISIBLE,
   IS_GRAPH_OPTIONS_VISIBLE,
@@ -101,7 +82,6 @@ import EntrySearch from './EntrySearch'
 import SynonymsList from './SynonymsList'
 import NetworkGraphOptions from './NetworkGraphOptions'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import { toDashedCase } from '../constants/functions'
 import {
   ROUTE_BOUNDING_BOX,
   ROUTE_EDGES_FILTER,
@@ -121,8 +101,9 @@ import {
   ROUTE_NOTES,
   ROUTE_SYNONYMS,
   ROUTE_EXPORT,
-  ROUTE_EDIT_ONTOLOGY
+  ROUTE_EDIT_ONTOLOGY,
 } from '../constants/routes'
+import { toDashedCase, turnToRoute } from '../constants/functions'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -134,29 +115,28 @@ const Sidebar = ({
 
   const router = useRouter()
 
-  const { view } = router.query
+  const { query } = router
+  const { slug } = query
+
+  const slugRoute = slug ? turnToRoute(toDashedCase(slug[0])) : ROUTE_SEARCH
 
   const sidebarButtons = {
-    [toDashedCase(SIDEBAR_VIEW_ENTRY_SEARCH)]: {
-      route: ROUTE_SEARCH,
+    [ROUTE_SEARCH]: {
       icon: <BsSearch />,
       isVisible: IS_SEARCH_VISIBLE,
       component: <EntrySearch />
     },
-    [toDashedCase(SIDEBAR_VIEW_GRAPHS)]: {
-      route: ROUTE_NETWORK_GRAPHS,
+    [ROUTE_NETWORK_GRAPHS]: {
       icon: <FiLayers />,
       isVisible: IS_GRAPHS_VISIBLE,
       component: <NetworkGraphList />
     },
-    [toDashedCase(SIDEBAR_VIEW_GRAPH_OPTIONS)]: {
-      route: ROUTE_NETWORK_GRAPH_OPTIONS,
+    [ROUTE_NETWORK_GRAPH_OPTIONS]: {
       icon: <IoMdOptions />,
       isVisible: IS_GRAPH_OPTIONS_VISIBLE,
       component: <NetworkGraphOptions />
     },
-    [toDashedCase(SIDEBAR_VIEW_FREE_TEXT_SEARCH)]: {
-      route: ROUTE_FREE_TEXT_SEARCH,
+    [ROUTE_FREE_TEXT_SEARCH]: {
       icon: (
         <>
           <BsSearch />
@@ -166,8 +146,7 @@ const Sidebar = ({
       isVisible: IS_FREE_TEXT_SEARCH_VISIBLE,
       component: <FreeTextSearch />
     },
-    [toDashedCase(SIDEBAR_VIEW_STRUCTURED_SEARCH)]: {
-      route: ROUTE_STRUCTURED_SEARCH,
+    [ROUTE_STRUCTURED_SEARCH]: {
       icon: (
         <>
           <BsSearch />
@@ -177,8 +156,7 @@ const Sidebar = ({
       isVisible: IS_STRUCTURED_SEARCH_VISIBLE,
       component: <StructuredSearch />
     },
-    [toDashedCase(SIDEBAR_VIEW_NODES_SELECTION)]: {
-      route: ROUTE_NODES_SELECTION,
+    [ROUTE_NODES_SELECTION]: {
       icon: (
         <>
           <FaRegCircle />
@@ -188,8 +166,7 @@ const Sidebar = ({
       isVisible: IS_NODE_SELECTION_VISIBLE,
       component: <NodesSelection />
     },
-    [toDashedCase(SIDEBAR_VIEW_EDGES_SELECTION)]: {
-      route: ROUTE_EDGES_SELECTION,
+    [ROUTE_EDGES_SELECTION]: {
       icon: (
         <>
           <BsArrowUpRight />
@@ -199,8 +176,7 @@ const Sidebar = ({
       isVisible: IS_EDGE_SELECTION_VISIBLE,
       component: <EdgesSelection />
     },
-    [toDashedCase(SIDEBAR_VIEW_NODES_FILTER)]: {
-      route: ROUTE_NODES_FILTER,
+    [ROUTE_NODES_FILTER]: {
       icon: (
         <>
           <FaRegCircle />
@@ -210,8 +186,7 @@ const Sidebar = ({
       isVisible: IS_NODES_FILTER_VISIBLE,
       component: <NodesFilter />
     },
-    [toDashedCase(SIDEBAR_VIEW_EDGES_FILTER)]: {
-      route: ROUTE_EDGES_FILTER,
+    [ROUTE_EDGES_FILTER]: {
       icon: (
         <>
           <BsArrowUpRight />
@@ -221,62 +196,52 @@ const Sidebar = ({
       isVisible: IS_EDGES_FILTER_VISIBLE,
       component: <EdgesFilter />
     },
-    [toDashedCase(SIDEBAR_VIEW_BOUNDING_BOX)]: {
-      route: ROUTE_BOUNDING_BOX,
+    [ROUTE_BOUNDING_BOX]: {
       icon: <BiSelection />,
       isVisible: IS_BOUNDING_BOX_VISIBLE,
       component: <BoundingBoxSelection />
     },
-    [toDashedCase(SIDEBAR_VIEW_NEIGHBOURHOOD)]: {
-      route: ROUTE_NODE_NEIGHBOURHOOD,
+    [ROUTE_NODE_NEIGHBOURHOOD]: {
       icon: <BiNetworkChart />,
       isVisible: IS_NEIGHBOURHOOD_VISIBLE,
       component: <NodeNeighbourhood />
     },
-    [toDashedCase(SIDEBAR_VIEW_SHORTEST_PATH)]: {
-      route: ROUTE_SHORTEST_PATH,
+    [ROUTE_SHORTEST_PATH]: {
       icon: <IoGitNetwork />,
       isVisible: IS_SHORTEST_PATH_VISIBLE,
       component: <ShortestPath />
     },
-    [toDashedCase(SIDEBAR_VIEW_CUSTOM_QUERY)]: {
-      route: ROUTE_CUSTOM_QUERY,
+    [ROUTE_CUSTOM_QUERY]: {
       icon: <BsCodeSlash />,
       isVisible: IS_CUSTOM_QUERY_VISIBLE,
       component: <CustomQuery />
     },
-    [toDashedCase(SIDEBAR_VIEW_SETTINGS)]: {
-      route: ROUTE_SETTINGS,
+    [ROUTE_SETTINGS]: {
       icon: <FiSettings />,
       isVisible: IS_PHYSICS_SETTINGS_VISIBLE,
       component: <NetworkSettings />
     },
-    [toDashedCase(SIDEBAR_VIEW_STYLING)]: {
-      route: ROUTE_STYLING,
+    [ROUTE_STYLING]: {
       icon: <FaPaintBrush />,
       isVisible: IS_STYLING_VISIBLE,
       component: <NetworkStyling />
     },
-    [toDashedCase(SIDEBAR_VIEW_NOTES)]: {
-      route: ROUTE_NOTES,
+    [ROUTE_NOTES]: {
       icon: <FaStickyNote />,
       isVisible: IS_NOTES_VISIBLE,
       component: <NotesList />
     },
-    [toDashedCase(SIDEBAR_VIEW_SYNONYMS)]: {
-      route: ROUTE_SYNONYMS,
+    [ROUTE_SYNONYMS]: {
       icon: <FaFileAlt />,
       isVisible: IS_SYNONIMS_VISIBLE,
       component: <SynonymsList />
     },
-    [toDashedCase(SIDEBAR_VIEW_EXPORT)]: {
-      route: ROUTE_EXPORT,
+    [ROUTE_EXPORT]: {
       icon: <FaFileExport />,
       isVisible: IS_EXPORT_VISIBLE,
       component: <ExportSettings />
     },
-    [toDashedCase(SIDEBAR_VIEW_EDIT_ONTOLOGY)]: {
-      route: ROUTE_EDIT_ONTOLOGY,
+    [ROUTE_EDIT_ONTOLOGY]: {
       icon: <BsPencilSquare />,
       isVisible: IS_EDIT_ONTOLOGY_VISIBLE,
       component: <EditOntology />
@@ -287,28 +252,45 @@ const Sidebar = ({
     <aside className={`sidebar${isSidebarOpen ? '' : '-closed'}`}>
       <div className="sidebar-icons">
         {
-          Object.keys(sidebarButtons).map((label) => {
+          Object.keys(sidebarButtons).map((route) => {
             const {
-              route, icon, isVisible
-            } = sidebarButtons[label]
+              icon, isVisible
+            } = sidebarButtons[route]
 
             if (!isVisible) return false
 
+            const label = camelCase(route.replace('/app/', ''))
+            const dashedLabel = toDashedCase(label)
+
             return (
-              <Link
-                key={`sidebar-button-${label}`}
-                href={route}
+              <Button
+                key={`sidebar-button-${dashedLabel}`}
+                id={`sidebar-button-${dashedLabel}`}
                 aria-label={t(label)}
                 tooltip={t(label)}
-                onClick={() => updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, true)}
+                className={slugRoute === route ? 'p-button sidebar-bar-button-selected' : 'p-button'}
+                onClick={() => {
+                  updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, true)
+                  router.push(route)
+                }}
               >
-                <a
-                  id={`sidebar-button-${label}`}
-                  className={view === label ? 'p-button sidebar-bar-button-selected' : 'p-button'}
-                >
-                  {icon}
-                </a>
-              </Link>
+                {icon}
+              </Button>
+
+            // <Link
+            //   key={`sidebar-button-${label}`}
+            //   href={route}
+            //   aria-label={t(label)}
+            //   tooltip={t(label)}
+            //   onClick={() => updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, true)}
+            // >
+            //   <a
+            //     id={`sidebar-button-${label}`}
+            //     className={pathname === route ? 'p-button sidebar-bar-button-selected' : 'p-button'}
+            //   >
+            //     {icon}
+            //   </a>
+            // </Link>
             )
           })
         }
@@ -331,8 +313,13 @@ const Sidebar = ({
         isSidebarOpen && (
           <div className="sidebar-main">
             {
-              graphData[currentGraph]
-              && view ? sidebarButtons[view].component : <EntrySearch />
+              (
+                graphData[currentGraph]
+                && slugRoute
+                && sidebarButtons[slugRoute]
+              )
+                ? sidebarButtons[slugRoute].component
+                : <EntrySearch />
             }
           </div>
         )

@@ -7,7 +7,7 @@ import { ROUTE_EDGES_FILTER } from '../../src/constants/routes'
 
 context('Edges filter', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Edges filter', () => {

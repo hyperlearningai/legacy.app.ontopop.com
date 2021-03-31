@@ -12,7 +12,7 @@ import { ROUTE_EDIT_ONTOLOGY } from '../../src/constants/routes'
 
 context('Edit ontology', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Edit ontology', () => {

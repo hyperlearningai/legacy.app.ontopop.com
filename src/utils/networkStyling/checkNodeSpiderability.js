@@ -11,10 +11,11 @@ import setNodeStyle from './setNodeStyle'
 const checkNodeSpiderability = ({
   nodeId,
   updateStoreValue,
-  visibleEdges
+  visibleEdges,
 }) => {
   const {
     totalEdgesPerNode,
+    classesFromApi
   } = store.getState()
 
   const nodeEdges = totalEdgesPerNode[nodeId]
@@ -28,7 +29,7 @@ const checkNodeSpiderability = ({
   updateStoreValue(['nodesSpiderability', nodeId], OPERATION_TYPE_UPDATE, isNotSpiderable ? 'false' : 'true')
 
   setNodeStyle({
-    nodeId,
+    node: classesFromApi[nodeId]
   })
 }
 

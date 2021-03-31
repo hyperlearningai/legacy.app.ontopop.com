@@ -7,7 +7,7 @@ import { ROUTE_EXPORT } from '../../src/constants/routes'
 
 context('Export', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Export', () => {

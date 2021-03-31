@@ -1,8 +1,11 @@
 import setBoundingBoxNodes from '../../../utils/boundingBoxSelection/setBoundingBoxNodes'
 import store from '../../../store'
+import { ROUTE_NETWORK_GRAPHS } from '../../../constants/routes'
 
 const updateStoreValue = jest.fn()
 const lastGraphIndex = 1
+const push = jest.fn()
+const router = { push }
 
 const getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
@@ -28,6 +31,7 @@ describe('setBoundingBoxNodes', () => {
   it('should work correctly', async () => {
     await setBoundingBoxNodes({
       updateStoreValue,
+      router
     })
 
     expect(updateStoreValue.mock.calls).toEqual([
@@ -66,13 +70,7 @@ describe('setBoundingBoxNodes', () => {
         'update',
         2,
       ],
-      [
-        [
-          'sidebarView',
-        ],
-        'update',
-        'networkGraphs',
-      ],
     ])
+    expect(push).toHaveBeenCalledWith(ROUTE_NETWORK_GRAPHS)
   })
 })

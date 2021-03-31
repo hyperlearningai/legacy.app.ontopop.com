@@ -7,7 +7,7 @@ import { ROUTE_BOUNDING_BOX } from '../../src/constants/routes'
 
 context('Bounding box selection', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/login')
   })
 
   describe('Bounding box selection', () => {

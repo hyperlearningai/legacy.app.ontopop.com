@@ -20,7 +20,7 @@ const setNodeStyle = ({
 
   if (userDefined) {
     setUserDefinedNodeStyle({
-      node
+      node,
     })
   } else {
     resetNodeStyle({
@@ -45,7 +45,7 @@ const setNodeStyle = ({
 
   // check if nodes are spiderable
   addNodeBorders({
-    node
+    node,
   })
 }
 

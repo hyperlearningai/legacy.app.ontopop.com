@@ -2,11 +2,12 @@ import { Menu } from 'primereact/menu'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import expandNode from '../utils/graphVisualisation/expandNode'
-import { SIDEBAR_VIEW_CUSTOM_QUERY, SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import { NODE_TYPE } from '../constants/graph'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { ROUTE_CUSTOM_QUERY, ROUTE_NOTES, ROUTE_SYNONYMS } from '../constants/routes'
 
 const GraphContextMenu = ({
   updateStoreValue,
@@ -14,6 +15,7 @@ const GraphContextMenu = ({
   classesFromApi,
 }) => {
   const { t } = useTranslation()
+  const router = useRouter()
 
   const {
     top,
@@ -27,8 +29,8 @@ const GraphContextMenu = ({
       label: t('customQuery'),
       icon: 'pi pi-fw pi-tablet',
       command: () => {
-        updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_CUSTOM_QUERY)
         updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
+        router.push(ROUTE_CUSTOM_QUERY)
       }
     },
     {
@@ -54,8 +56,8 @@ const GraphContextMenu = ({
         command: () => {
           updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, nodeId)
           updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
-          updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
           updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
+          router.push(ROUTE_SYNONYMS)
         }
       }]
     }
@@ -77,8 +79,8 @@ const GraphContextMenu = ({
         command: () => {
           updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, nodeId)
           updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
-          updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
           updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
+          router.push(ROUTE_NOTES)
         }
       },
     ]
@@ -97,8 +99,8 @@ const GraphContextMenu = ({
         command: () => {
           updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, edgeId)
           updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'edge')
-          updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
           updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
+          router.push(ROUTE_NOTES)
         }
       }
     ]

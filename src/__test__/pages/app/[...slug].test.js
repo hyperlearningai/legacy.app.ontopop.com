@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import View from '../../../pages/app/[view]'
+import View from '../../../pages/app/[...slug]'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../../constants/views'
 
 const setup = () => {
