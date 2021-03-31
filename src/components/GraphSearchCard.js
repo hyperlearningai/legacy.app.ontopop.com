@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'
 import { Card } from 'primereact/card'
-import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import { RESERVED_PROPERTIES } from '../constants/graph'
 import setSearchNeighbourNodes from '../utils/graphSearch/setSearchNeighbourNodes'
@@ -19,8 +18,6 @@ const GraphSearchCard = ({
   userDefinedEdgeStyling
 }) => {
   const { t } = useTranslation()
-
-  const router = useRouter()
 
   const [isShowMore, setShowMore] = useState(false)
   const { type, userDefined } = searchResult
@@ -81,7 +78,6 @@ const GraphSearchCard = ({
             separationDegree: 1,
             updateStoreValue,
             searchResult,
-            router
           })}
         />
       </div>
