@@ -36,7 +36,7 @@ module.exports = withImages({
     // ]
 
     const routes = {
-      '/login': { page: '/login' },
+      // '/login': { page: '/login' },
       '/profile': { page: '/profile' },
       '/': { page: '/' },
       '/app/:slug': { page: '/app/[...slug]' }

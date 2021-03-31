@@ -7,7 +7,7 @@ import { ROUTE_NODES_SELECTION } from '../../src/constants/routes'
 
 context('Nodes selection', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Nodes selection', () => {

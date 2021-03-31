@@ -7,7 +7,7 @@ import { ROUTE_NODE_NEIGHBOURHOOD } from '../../src/constants/routes'
 
 context('Node neighbourhood', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Node neighbourhood', () => {

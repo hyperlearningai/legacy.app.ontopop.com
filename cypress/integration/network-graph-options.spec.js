@@ -7,7 +7,7 @@ import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../../src/constants/routes'
 
 context('Network graph options', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Network graph options', () => {

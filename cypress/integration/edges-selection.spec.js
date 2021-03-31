@@ -7,7 +7,7 @@ import { ROUTE_EDGES_SELECTION } from '../../src/constants/routes'
 
 context('Edges selection', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Edges selection', () => {
@@ -70,6 +70,8 @@ context('Edges selection', () => {
 
       // click the nodes selection icon
       cy.get('#sidebar-button-edges-selection').click()
+
+      cy.wait(500)
 
       cy.location('pathname').should('be.equal', ROUTE_EDGES_SELECTION)
 

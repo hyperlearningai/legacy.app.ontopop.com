@@ -16,7 +16,7 @@ import { ROUTE_NOTES } from '../../src/constants/routes'
 
 context('Notes list', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Notes list', () => {

@@ -7,7 +7,7 @@ import { ROUTE_NODES_FILTER } from '../../src/constants/routes'
 
 context('Nodes filter', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Nodes filter', () => {

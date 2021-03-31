@@ -8,7 +8,7 @@ import getStyling from '../fixtures/getStyling'
 
 context('Auth', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Auth', () => {
@@ -92,6 +92,8 @@ context('Auth', () => {
       cy.wait('@postLogin')
 
       cy.get('.auth-error').should('not.be.exist')
+
+      cy.wait(500)
 
       cy.location('pathname').should('be.equal', ROUTE_SEARCH)
     })
