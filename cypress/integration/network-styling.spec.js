@@ -10,7 +10,7 @@ import { ROUTE_STYLING } from '../../src/constants/routes'
 
 context('Network styling', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Network styling nodes', () => {

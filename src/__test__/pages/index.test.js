@@ -1,27 +1,35 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import Index from '../../pages/index'
+import Login from '../../pages/index'
 
-const setup = () => {
+const setup = ({
+  activeLoaders
+}) => {
   const props = {
-    user: {
-      isGuest: false,
-      email: 'a@b.c',
-      token: '123'
-    },
-    updateStoreValue: jest.fn()
+    updateStoreValue: jest.fn(),
+    activeLoaders
   }
-  const component = shallow(<Index {...props} />)
+
+  const component = shallow(<Login {...props} />)
 
   return {
     component
   }
 }
 
-describe('Index page', () => {
-  it('should match snapshot', () => {
-    const { component } = setup()
+describe('Login page', () => {
+  it('should match snapshot when activeLoaders', () => {
+    const { component } = setup({
+      activeLoaders: 1
+    })
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when no activeLoaders', () => {
+    const { component } = setup({
+      activeLoaders: 0
+    })
     expect(toJson(component)).toMatchSnapshot()
   })
 })

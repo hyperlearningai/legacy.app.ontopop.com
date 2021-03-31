@@ -1,3 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile page should match snapshot 1`] = `<ConnectWrapper />`;
+exports[`Profile page should match snapshot 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
+  user={
+    Object {
+      "email": "a@b.c",
+    }
+  }
+>
+  <Component />
+</Connect>
+`;

@@ -7,7 +7,7 @@ import { ROUTE_BOUNDING_BOX } from '../../src/constants/routes'
 
 context('Bounding box selection', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Bounding box selection', () => {
@@ -70,6 +70,8 @@ context('Bounding box selection', () => {
 
       // click the bounding box selection icon
       cy.get('#sidebar-button-bounding-box').click()
+
+      cy.wait(500)
 
       cy.location('pathname').should('be.equal', ROUTE_BOUNDING_BOX)
 

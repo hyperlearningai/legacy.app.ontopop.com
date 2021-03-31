@@ -10,7 +10,7 @@ import getTriplesFromApi from './getTriplesFromApi'
 import setObjectPropertiesFromApi from './setObjectPropertiesFromApi'
 import setAnnotationProperties from './setAnnotationProperties'
 import { AUTH_COOKIE } from '../../constants/auth'
-import { ROUTE_INDEX } from '../../constants/routes'
+import { ROUTE_LOGIN } from '../../constants/routes'
 import httpCall from './httpCall'
 
 /**
@@ -46,7 +46,7 @@ const getGraphData = async ({
   if (error) {
     setTimeout(() => {
       localStorage.removeItem(AUTH_COOKIE)
-      window.location.replace(ROUTE_INDEX)
+      window.location.replace(ROUTE_LOGIN)
     }, 2000)
 
     return showNotification({

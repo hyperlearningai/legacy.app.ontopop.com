@@ -1,5 +1,5 @@
 export const ROUTE_INDEX = '/'
-export const ROUTE_LOGIN = '/login'
+export const ROUTE_LOGIN = '/'
 export const ROUTE_PROFILE = '/profile'
 export const ROUTE_FORGOT_PASSWORD = '/forgot-password'
 export const ROUTE_SEARCH = '/app/search'

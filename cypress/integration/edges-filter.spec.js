@@ -7,7 +7,7 @@ import { ROUTE_EDGES_FILTER } from '../../src/constants/routes'
 
 context('Edges filter', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Edges filter', () => {
@@ -70,6 +70,8 @@ context('Edges filter', () => {
 
       // click the nodes filter icon
       cy.get('#sidebar-button-edges-filter').click()
+
+      cy.wait(500)
 
       cy.location('pathname').should('be.equal', ROUTE_EDGES_FILTER)
 

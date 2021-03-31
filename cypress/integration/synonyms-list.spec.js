@@ -10,7 +10,7 @@ import { ROUTE_SYNONYMS } from '../../src/constants/routes'
 
 context('Synonyms list', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000')
   })
 
   describe('Synonyms list', () => {
@@ -78,6 +78,8 @@ context('Synonyms list', () => {
 
       // click the synonym sidebar icon
       cy.get('#sidebar-button-synonyms').click()
+
+      cy.wait(500)
 
       cy.location('pathname').should('be.equal', ROUTE_SYNONYMS)
 
