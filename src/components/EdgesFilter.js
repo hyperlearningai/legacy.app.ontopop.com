@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Dropdown } from 'primereact/dropdown'
 import { Button } from 'primereact/button'
-import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_EDGES_FILTER } from '../constants/views'
 import setFilteredEdges from '../utils/edgesFilter/setFilteredEdges'
@@ -20,7 +19,6 @@ const EdgesFilter = ({
   updateStoreValue
 }) => {
   const { t } = useTranslation()
-  const router = useRouter()
 
   const defaultEdgeFilter = {
     property: '',
@@ -151,7 +149,6 @@ const EdgesFilter = ({
           onClick={() => setFilteredEdges({
             updateStoreValue,
             edgesFilters,
-            router
           })}
         />
       </div>

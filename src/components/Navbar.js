@@ -7,27 +7,22 @@ import {
   BsSearch,
   BsArrowUpRight
 } from 'react-icons/bs'
-import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 
 const Navbar = ({
   availableNodesCount,
   availableEdgesCount,
-  entrySearchResults
+  entrySearchResults,
+  sidebarView
 }) => {
   const { t } = useTranslation()
-
-  const router = useRouter()
-
-  const { query } = router
-  const { slug } = query
 
   return (
     <nav>
       <div className="nav-left">
         {
-          (slug && slug[0] === SIDEBAR_VIEW_ENTRY_SEARCH) ? (
+          (sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH) ? (
             <span>
               <BsSearch className="nodes-icon node m-r-5" />
               {`${t('searchResults')}: ${entrySearchResults.length}`}
@@ -51,16 +46,19 @@ Navbar.propTypes = {
   availableNodesCount: PropTypes.number.isRequired,
   availableEdgesCount: PropTypes.number.isRequired,
   entrySearchResults: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  sidebarView: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
   availableNodesCount,
   availableEdgesCount,
-  entrySearchResults
+  entrySearchResults,
+  sidebarView
 }) => ({
   availableNodesCount,
   availableEdgesCount,
-  entrySearchResults
+  entrySearchResults,
+  sidebarView
 })
 
 export default connect(

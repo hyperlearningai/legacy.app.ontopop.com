@@ -9,7 +9,6 @@ import {
   RiAddBoxLine,
   RiCheckboxIndeterminateLine
 } from 'react-icons/ri'
-import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_BOUNDING_BOX } from '../constants/views'
 import setBoundingBoxNodes from '../utils/boundingBoxSelection/setBoundingBoxNodes'
@@ -23,7 +22,6 @@ const BoundingBoxSelection = ({
   isBoundingBoxSelectionInternal,
 }) => {
   const { t } = useTranslation()
-  const router = useRouter()
 
   useEffect(() => {
     updateStoreValue(['isBoundingBoxSelectable'], OPERATION_TYPE_UPDATE, true)
@@ -122,7 +120,6 @@ const BoundingBoxSelection = ({
           label={t('show')}
           onClick={() => setBoundingBoxNodes({
             updateStoreValue,
-            router
           })}
         />
       </div>
