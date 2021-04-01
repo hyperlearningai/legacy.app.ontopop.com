@@ -2,14 +2,11 @@ import setNeighbourNodes from '../../../utils/nodeNeighbourhood/setNeighbourNode
 import { classesFromApi } from '../../fixtures/classesFromApi'
 import store from '../../../store'
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
-import { ROUTE_NETWORK_GRAPHS } from '../../../constants/routes'
 
 const updateStoreValue = jest.fn()
 const selectedElement = { 1: 'node' }
 const separationDegree = 1
 const lastGraphIndex = 1
-const push = jest.fn()
-const router = { push }
 
 store.getState = jest.fn().mockImplementation(() => ({
   classesFromApi,
@@ -36,7 +33,6 @@ describe('setNeighbourNodes', () => {
     await setNeighbourNodes({
       separationDegree,
       updateStoreValue,
-      router
     })
 
     expect(updateStoreValue.mock.calls).toEqual([
@@ -74,7 +70,13 @@ describe('setNeighbourNodes', () => {
         OPERATION_TYPE_UPDATE,
         2,
       ],
+      [
+        [
+          'sidebarView',
+        ],
+        'update',
+        'networkGraphs',
+      ],
     ])
-    expect(push).toHaveBeenCalledWith(ROUTE_NETWORK_GRAPHS)
   })
 })

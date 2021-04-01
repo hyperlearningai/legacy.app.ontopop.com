@@ -10,7 +10,6 @@ import { MultiSelect } from 'primereact/multiselect'
 import { Dropdown } from 'primereact/dropdown'
 import { Checkbox } from 'primereact/checkbox'
 import { uniq } from 'lodash'
-import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import {
   SIDEBAR_VIEW_SHORTEST_PATH
@@ -31,7 +30,6 @@ const ShortestPath = ({
   nodesDropdownLabels
 }) => {
   const { t } = useTranslation()
-  const router = useRouter()
 
   const [isNodeOverlay, setNodesOverlay] = useState(false)
   const [nodesToExclude, setNodesToExclude] = useState([])
@@ -204,7 +202,6 @@ const ShortestPath = ({
               updateStoreValue,
               nodesToExclude,
               edgesToExclude,
-              router
             })}
           />
         </div>

@@ -16,6 +16,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+## [0.6.1]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- ONTOLOGY-153 Updated Sidebar views routing as routing not working on cloud
+
+### Security
+
 ## [0.6.0]
 ### Added
 - ONTOLOGY-130 Login form can be submitted on enter

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login page should match snapshot when activeLoaders 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  activeLoaders={1}
+  mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Login page should match snapshot when no activeLoaders 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  activeLoaders={0}
+  mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

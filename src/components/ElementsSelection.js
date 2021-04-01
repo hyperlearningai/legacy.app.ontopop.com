@@ -6,7 +6,6 @@ import { SelectButton } from 'primereact/selectbutton'
 import { useEffect, useState } from 'react'
 import { orderBy } from 'lodash'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_EDGES_SELECTION, SIDEBAR_VIEW_NODES_SELECTION } from '../constants/views'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 import EdgesSelectionDetails from './EdgesSelectionDetails'
@@ -78,8 +77,8 @@ const ElementsSelection = ({
   return (
     <>
       <div className="sidebar-main-title">
-        {!selectedElementID && selectedElementType === 'node' && t(SIDEBAR_VIEW_NODES_SELECTION)}
-        {!selectedElementID && selectedElementType === 'edge' && t(SIDEBAR_VIEW_EDGES_SELECTION)}
+        {!selectedElementID && selectedElementType === 'node' && t('nodesSelection')}
+        {!selectedElementID && selectedElementType === 'edge' && t('edgesSelection')}
         {selectedElementID && selectedElementType === 'node' && <>{`${t('node')}: ${getNode(selectedElementID).label}`}</>}
         {selectedElementID && selectedElementType === 'edge' && <>{`${t('edge')}: ${getEdge(selectedElementID).label}`}</>}
       </div>

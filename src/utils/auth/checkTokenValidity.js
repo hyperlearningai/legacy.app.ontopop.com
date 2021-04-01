@@ -1,16 +1,20 @@
 import { AUTH_COOKIE } from '../../constants/auth'
 import {
   AUTH_ROUTES,
-  ROUTE_SEARCH
 } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
+import store from '../../store'
 import logout from './logout'
 
 const checkTokenValidity = ({
   router,
   updateStoreValue
 }) => {
+  const {
+    sidebarView
+  } = store.getState()
+
   // check if local storage with cookie
   const authCookie = localStorage.getItem(AUTH_COOKIE)
 
@@ -33,11 +37,8 @@ const checkTokenValidity = ({
   updateStoreValue(['user', 'email'], OPERATION_TYPE_UPDATE, email)
   updateStoreValue(['user', 'token'], OPERATION_TYPE_UPDATE, token)
 
-  const { query } = router
-  const { slug } = query
-
-  if (!slug || (slug && slug[0] !== SIDEBAR_VIEW_ENTRY_SEARCH)) {
-    router.push(ROUTE_SEARCH)
+  if (sidebarView !== SIDEBAR_VIEW_ENTRY_SEARCH) {
+    updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_ENTRY_SEARCH)
   }
 }
 

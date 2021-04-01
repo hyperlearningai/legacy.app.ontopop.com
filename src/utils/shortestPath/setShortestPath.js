@@ -3,6 +3,7 @@ import getShortestPath from './getShortestPath'
 import store from '../../store'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
+import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 
 /**
  * Set shortest path
@@ -11,7 +12,6 @@ import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
  * @param  {Function} params.updateStoreValue              updateStoreValue action
  * @param  {Array}    params.nodesToExclude             Node IDs to exclude
  * @param  {Array}    params.edgesToExclude             Edge labels to exclude
- * @param  {Class}    params.router                    router class
  * @return { undefined }
  */
 const setShortestPath = async ({
@@ -19,7 +19,6 @@ const setShortestPath = async ({
   updateStoreValue,
   nodesToExclude,
   edgesToExclude,
-  router
 }) => {
   const {
     lastGraphIndex,
@@ -71,7 +70,8 @@ const setShortestPath = async ({
   updateStoreValue(['graphData', newCurrentGraph], OPERATION_TYPE_UPDATE, graphValue)
   updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, newCurrentGraph)
   updateStoreValue(['lastGraphIndex'], OPERATION_TYPE_UPDATE, newGraphIndex)
-  router.push(ROUTE_NETWORK_GRAPHS)
+  updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
+  window.history.pushState('', '', ROUTE_NETWORK_GRAPHS)
 }
 
 export default setShortestPath
