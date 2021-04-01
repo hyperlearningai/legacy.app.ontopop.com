@@ -4,6 +4,7 @@ export const IS_GRAPH_OPTIONS_VISIBLE = process.env.NEXT_PUBLIC_GRAPH_OPTIONS ==
 export const IS_FREE_TEXT_SEARCH_VISIBLE = process.env.NEXT_PUBLIC_FREE_TEXT_SEARCH === 'true'
 export const IS_STRUCTURED_SEARCH_VISIBLE = process.env.NEXT_PUBLIC_STRUCTURED_SEARCH === 'true'
 export const IS_NODE_SELECTION_VISIBLE = process.env.NEXT_PUBLIC_SELECTION === 'true'
+export const IS_ELEMENTS_SELECTION_VISIBLE = process.env.NEXT_PUBLIC_SELECTION === 'true'
 export const IS_EDGE_SELECTION_VISIBLE = process.env.NEXT_PUBLIC_SELECTION === 'true'
 export const IS_NODES_FILTER_VISIBLE = process.env.NEXT_PUBLIC_FILTERS === 'true'
 export const IS_EDGES_FILTER_VISIBLE = process.env.NEXT_PUBLIC_FILTERS === 'true'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import EdgesSelection from '../../components/EdgesSelection'
+import CustomQuery from '../../components/CustomQuery'
 
 const setup = ({ customQueryOutput }) => {
   const props = {
@@ -10,7 +10,7 @@ const setup = ({ customQueryOutput }) => {
     updateStoreValue: jest.fn(),
   }
 
-  const component = shallow(<EdgesSelection {...props} />)
+  const component = shallow(<CustomQuery {...props} />)
 
   return {
     component,
@@ -18,7 +18,7 @@ const setup = ({ customQueryOutput }) => {
   }
 }
 
-describe('EdgesSelection', () => {
+describe('Custom Query', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

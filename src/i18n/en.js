@@ -43,6 +43,8 @@ export default {
   'nodes-selection': 'Nodes selection',
   edgesSelection: 'Edges selection',
   'edges-selection': 'Edges selection',
+  elementsSelection: 'Elements  selection',
+  'elements-selection': 'Elements selection',
   nodesFilter: 'Nodes filter',
   'nodes-filter': 'Nodes filter',
   edgesFilter: 'Edges filter',
@@ -81,6 +83,8 @@ export default {
   selectNodeFromGraph: 'Select node from graph',
   selectNodeFromGraphOrFromList: 'Select node from graph or pick from list',
   selectNode: 'Select node',
+
+  // elements selection
 
   // structured search
   filterElementsByArbitraryPropsCombination: 'Filter nodes or adges by any arbitrary combination of one or more node property values',

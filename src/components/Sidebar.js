@@ -2,71 +2,45 @@ import React from 'react'
 import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
+import { FiLayers, FiSettings } from 'react-icons/fi'
+import { BiNetworkChart, BiSelection, BiText } from 'react-icons/bi'
 import {
-  FiLayers,
-  FiSettings
-} from 'react-icons/fi'
-import {
-  BiNetworkChart,
-  BiSelection,
-  BiText
-} from 'react-icons/bi'
-import {
-  BsSearch,
-  BsArrowUpRight,
-  BsFilter,
-  BsPencilSquare,
-  BsCodeSlash
+  BsArrowUpRight, BsCodeSlash, BsFilter, BsPencilSquare, BsSearch
 } from 'react-icons/bs'
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
+import { IoBuildSharp, IoGitNetwork } from 'react-icons/io5'
+import { IoMdOptions } from 'react-icons/io'
 import {
-  AiOutlineArrowLeft,
-  AiOutlineArrowRight
-} from 'react-icons/ai'
-import {
-  IoGitNetwork,
-  IoBuildSharp,
-} from 'react-icons/io5'
-import {
-  IoMdOptions
-} from 'react-icons/io'
-import {
-  FaRegHandPointer,
-  FaRegCircle,
-  FaFileExport,
-  FaPaintBrush,
-  FaStickyNote,
-  FaFileAlt
+  FaFileAlt, FaFileExport, FaPaintBrush, FaRegCircle, FaRegHandPointer, FaStickyNote
 } from 'react-icons/fa'
 import { Button } from 'primereact/button'
 import { useRouter } from 'next/router'
 import { camelCase } from 'lodash'
 import actions from '../store/actions'
 import {
-  IS_SEARCH_VISIBLE,
-  IS_GRAPHS_VISIBLE,
-  IS_GRAPH_OPTIONS_VISIBLE,
-  IS_FREE_TEXT_SEARCH_VISIBLE,
-  IS_STRUCTURED_SEARCH_VISIBLE,
-  IS_NODE_SELECTION_VISIBLE,
-  IS_EDGE_SELECTION_VISIBLE,
-  IS_NODES_FILTER_VISIBLE,
-  IS_EDGES_FILTER_VISIBLE,
   IS_BOUNDING_BOX_VISIBLE,
-  IS_NEIGHBOURHOOD_VISIBLE,
-  IS_SHORTEST_PATH_VISIBLE,
   IS_CUSTOM_QUERY_VISIBLE,
-  IS_PHYSICS_SETTINGS_VISIBLE,
-  IS_STYLING_VISIBLE,
-  IS_NOTES_VISIBLE,
-  IS_SYNONIMS_VISIBLE,
+  IS_EDGES_FILTER_VISIBLE,
+  IS_EDIT_ONTOLOGY_VISIBLE,
+  IS_ELEMENTS_SELECTION_VISIBLE,
   IS_EXPORT_VISIBLE,
-  IS_EDIT_ONTOLOGY_VISIBLE
+  IS_FREE_TEXT_SEARCH_VISIBLE,
+  IS_GRAPH_OPTIONS_VISIBLE,
+  IS_GRAPHS_VISIBLE,
+  IS_NEIGHBOURHOOD_VISIBLE,
+  IS_NODES_FILTER_VISIBLE,
+  IS_NOTES_VISIBLE,
+  IS_PHYSICS_SETTINGS_VISIBLE,
+  IS_SEARCH_VISIBLE,
+  IS_SHORTEST_PATH_VISIBLE,
+  IS_STRUCTURED_SEARCH_VISIBLE,
+  IS_STYLING_VISIBLE,
+  IS_SYNONIMS_VISIBLE
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
-import NodesSelection from './NodesSelection'
-import EdgesSelection from './EdgesSelection'
+import ElementsSelection from './ElementsSelection'
 import NetworkSettings from './NetworkSettings'
 import ExportSettings from './ExportSettings'
 import ShortestPath from './ShortestPath'
@@ -84,24 +58,23 @@ import NetworkGraphOptions from './NetworkGraphOptions'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import {
   ROUTE_BOUNDING_BOX,
+  ROUTE_CUSTOM_QUERY,
   ROUTE_EDGES_FILTER,
-  ROUTE_EDGES_SELECTION,
+  ROUTE_EDIT_ONTOLOGY,
+  ROUTE_ELEMENTS_SELECTION,
+  ROUTE_EXPORT,
   ROUTE_FREE_TEXT_SEARCH,
-  ROUTE_NETWORK_GRAPHS,
   ROUTE_NETWORK_GRAPH_OPTIONS,
-  ROUTE_NODES_FILTER,
-  ROUTE_NODES_SELECTION,
+  ROUTE_NETWORK_GRAPHS,
   ROUTE_NODE_NEIGHBOURHOOD,
+  ROUTE_NODES_FILTER,
+  ROUTE_NOTES,
   ROUTE_SEARCH,
+  ROUTE_SETTINGS,
   ROUTE_SHORTEST_PATH,
   ROUTE_STRUCTURED_SEARCH,
-  ROUTE_CUSTOM_QUERY,
-  ROUTE_SETTINGS,
   ROUTE_STYLING,
-  ROUTE_NOTES,
   ROUTE_SYNONYMS,
-  ROUTE_EXPORT,
-  ROUTE_EDIT_ONTOLOGY,
 } from '../constants/routes'
 import { toDashedCase, turnToRoute } from '../constants/functions'
 
@@ -156,25 +129,15 @@ const Sidebar = ({
       isVisible: IS_STRUCTURED_SEARCH_VISIBLE,
       component: <StructuredSearch />
     },
-    [ROUTE_NODES_SELECTION]: {
+    [ROUTE_ELEMENTS_SELECTION]: {
       icon: (
         <>
           <FaRegCircle />
           <FaRegHandPointer />
         </>
       ),
-      isVisible: IS_NODE_SELECTION_VISIBLE,
-      component: <NodesSelection />
-    },
-    [ROUTE_EDGES_SELECTION]: {
-      icon: (
-        <>
-          <BsArrowUpRight />
-          <FaRegHandPointer />
-        </>
-      ),
-      isVisible: IS_EDGE_SELECTION_VISIBLE,
-      component: <EdgesSelection />
+      isVisible: IS_ELEMENTS_SELECTION_VISIBLE,
+      component: <ElementsSelection />
     },
     [ROUTE_NODES_FILTER]: {
       icon: (
