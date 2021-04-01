@@ -16,16 +16,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
-## [0.6.0]
+## [0.6.1]
 ### Added
 - ONTOLOGY-90 Added search bar autocomplete
+
+### Changed
+- ONTOLOGY-90 Search performed via Search APi rather than locally 
+- ONTOLOGY-90 Added vocabulary API endpoint and updated paths
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- ONTOLOGY-153 Updated Sidebar views routing as routing not working on cloud
+
+### Security
+
+## [0.6.0]
+### Added
+- ONTOLOGY-130 Login form can be submitted on enter
+- ONTOLOGY-153 Sidebar views routing for improved analytics
+- ONTOLOGY-153 Additional env variables to toggle sidebar views on/off
 - ONTOLOGY-130 Added updateStoreValue action to replace all other store actions
 - ONTOLOGY-130 Search starts also on search icon click
 - ONTOLOGY-109 Added userback and mouseflow snippets
 
 ### Changed
-- ONTOLOGY-90 Search performed via Search APi rather than locally 
-- ONTOLOGY-90 Added vocabulary API endpoint and updated paths
+- ONTOLOGY-153 Logout function now resets the store
 - ONTOLOGY-151 Node and edge rendering logic to improve performance
 
 ### Deprecated

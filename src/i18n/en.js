@@ -26,16 +26,27 @@ export default {
 
   // sidebar
   networkGraphs: 'Network graphs',
+  'network-graphs': 'Network graphs',
   networkGraphOptions: 'Network graph options',
+  'network-graph-options': 'Network graph options',
   nodeNeighbourhood: 'Node neighbourhood',
+  'node-neighbourhood': 'Node neighbourhood',
   structuredSearch: 'Structured search',
+  'structured-search': 'Structured search',
   ontologyFilter: 'Ontology filter',
+  'ontology-filter': 'Ontology filter',
   shortestPath: 'Shortest path',
+  'shortest-path': 'Shortest path',
   toggleSidebar: 'Toggle sidebar',
+  'toggle-sidebar': 'Toggle sidebar',
   nodesSelection: 'Nodes selection',
+  'nodes-selection': 'Nodes selection',
   edgesSelection: 'Edges selection',
+  'edges-selection': 'Edges selection',
   nodesFilter: 'Nodes filter',
+  'nodes-filter': 'Nodes filter',
   edgesFilter: 'Edges filter',
+  'edges-filter': 'Edges filter',
   selectNodes: 'Select nodes',
   selectEdges: 'Select edges',
   selectEdge: 'Select edge',
@@ -44,7 +55,9 @@ export default {
   notes: 'Notes',
   export: 'Export',
   freeTextSearch: 'Free-text search',
+  'free-text-search': 'Free-text search',
   versioning: 'Versioning',
+  synonyms: 'Synonyms',
 
   // data loading
   couldNotQueryGraph: 'Could not query graph!',
@@ -441,7 +454,6 @@ export default {
   apiCallNotValid: 'Invalid http request',
 
   // synonyms
-  synonyms: 'Synonyms',
   synonymsFor: 'Synonyms for',
   addNewSynonym: 'Add New Synonym',
   addSynonym: 'Add Synonym',

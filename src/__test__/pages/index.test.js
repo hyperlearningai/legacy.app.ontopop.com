@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import Index from '../../pages/index'
+import Index from '../../pages'
 
 const setup = () => {
   const props = {
@@ -10,7 +10,6 @@ const setup = () => {
       email: 'a@b.c',
       token: '123'
     },
-    updateStoreValue: jest.fn()
   }
   const component = shallow(<Index {...props} />)
 

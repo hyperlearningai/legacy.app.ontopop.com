@@ -17,9 +17,9 @@ const NetworkGraphList = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPHS)}
-      </div>
+      </h1>
       <div className="network-graph-list">
         {
           graphViewsKeys.map((graphViewsKey) => {
@@ -34,6 +34,7 @@ const NetworkGraphList = ({
                   {
                     !noDelete && (
                       <Button
+                        aria-label={t('removeGraph')}
                         tooltip={`${t('removeGraph')}: ${label}`}
                         onClick={() => {
                           if (currentGraph === graphViewsKey) {
@@ -50,6 +51,7 @@ const NetworkGraphList = ({
 
                 <div className="network-graph-list-row-main">
                   <Button
+                    aria-label={t('viewGraph')}
                     tooltip={`${t('viewGraph')}: ${label}`}
                     disabled={currentGraph === graphViewsKey}
                     onClick={() => updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, graphViewsKey)}

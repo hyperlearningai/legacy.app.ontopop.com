@@ -1,6 +1,7 @@
 import { ALGO_TYPE_SEARCH_NEIGHBOURHOOD } from '../../constants/algorithms'
+import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
-import { MAIN_VIEW_GRAPH, SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
+import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
 
 /**
@@ -14,7 +15,7 @@ import store from '../../store'
 const setSearchNeighbourNodes = ({
   separationDegree,
   updateStoreValue,
-  searchResult
+  searchResult,
 }) => {
   const {
     lastGraphIndex,
@@ -74,8 +75,8 @@ const setSearchNeighbourNodes = ({
   updateStoreValue(['graphData', newCurrentGraph], OPERATION_TYPE_UPDATE, graphValue)
   updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, newCurrentGraph)
   updateStoreValue(['lastGraphIndex'], OPERATION_TYPE_UPDATE, newGraphIndex)
-  updateStoreValue(['mainVisualisation'], OPERATION_TYPE_UPDATE, MAIN_VIEW_GRAPH)
   updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
+  window.history.pushState('', '', ROUTE_NETWORK_GRAPHS)
 }
 
 export default setSearchNeighbourNodes

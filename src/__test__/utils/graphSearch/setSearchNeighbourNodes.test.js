@@ -74,19 +74,11 @@ describe('setSearchNeighbourNodes', () => {
       ],
       [
         [
-          'mainVisualisation',
-        ],
-        'update',
-        'graph',
-      ],
-      [
-        [
           'sidebarView',
         ],
         'update',
         'networkGraphs',
       ],
-
     ])
   })
 
@@ -145,19 +137,11 @@ describe('setSearchNeighbourNodes', () => {
       ],
       [
         [
-          'mainVisualisation',
-        ],
-        'update',
-        'graph',
-      ],
-      [
-        [
           'sidebarView',
         ],
         'update',
         'networkGraphs',
       ],
-
     ])
   })
 })

@@ -45,9 +45,9 @@ const CustomQuery = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_CUSTOM_QUERY)}
-      </div>
+      </h1>
       <div className="custom-query">
 
         <div className="p-input-icon-right custom-query-input">
@@ -62,6 +62,7 @@ const CustomQuery = ({
 
         <div className="custom-query-buttons">
           <Button
+            aria-label={t('clear')}
             tooltip={t('clear')}
             tooltipOptions={{ position: 'top' }}
             className="custom-query-buttons-button"
@@ -84,6 +85,7 @@ const CustomQuery = ({
               </div>
             ) : (
               <Button
+                aria-label={t('query')}
                 tooltip={t('query')}
                 tooltipOptions={{ position: 'top' }}
                 className="custom-query-buttons-button"
@@ -143,6 +145,7 @@ const CustomQuery = ({
                     >
                       <div className="custom-query-row-delete">
                         <Button
+                          aria-label={t('removeFromHistory')}
                           tooltip={`${t('removeFromHistory')}: ${query}`}
                           onClick={() => updateStoreValue(['customQueryStringHistory'], OPERATION_TYPE_TOGGLE, query)}
                           icon="pi pi-times"
@@ -151,6 +154,7 @@ const CustomQuery = ({
 
                       <div className="custom-query-row-main">
                         <Button
+                          aria-label={t('queryAgain')}
                           tooltip={`${t('queryAgain')}: ${query}`}
                           disabled={query === customQueryString}
                           onClick={() => {

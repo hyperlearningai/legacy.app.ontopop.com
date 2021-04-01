@@ -2,23 +2,24 @@
 import addNodeBorders from '../../../utils/networkStyling/addNodeBorders'
 import highlightCommentedNode from '../../../utils/networkStyling/highlightCommentedNode'
 import highlightSpiderableNode from '../../../utils/networkStyling/highlightSpiderableNode'
-import store from '../../../store'
-import { SIDEBAR_VIEW_NOTES } from '../../../constants/views'
+import { ROUTE_NOTES } from '../../../constants/routes'
 
 jest.mock('../../../utils/networkStyling/highlightCommentedNode')
 jest.mock('../../../utils/networkStyling/highlightSpiderableNode')
 
 const node = { id: '12' }
 
+const currentLocation = window.location
+
 describe('addNodeBorders', () => {
   afterEach(() => {
     jest.clearAllMocks()
+    window.location = currentLocation
   })
 
-  it('should work correctly when SIDEBAR_VIEW_NOTES', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
-      sidebarView: SIDEBAR_VIEW_NOTES
-    }))
+  it('should work correctly when ROUTE_NOTES', async () => {
+    delete window.location
+    window.location = { pathname: ROUTE_NOTES }
 
     await addNodeBorders({
       node
@@ -31,10 +32,8 @@ describe('addNodeBorders', () => {
   })
 
   it('should work correctly', async () => {
-    store.getState = jest.fn().mockImplementationOnce(() => ({
-      sidebarView: 'any'
-
-    }))
+    delete window.location
+    window.location = { pathname: '/any' }
 
     await addNodeBorders({
       node

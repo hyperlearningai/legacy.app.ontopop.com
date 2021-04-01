@@ -1,6 +1,6 @@
 {
   "name": "ontology-visualisation",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Ontology visualisation",
   "main": "",
   "repository": {
@@ -62,7 +62,6 @@
     "jsdoc": "^3.6.6",
     "jsdom": "^16.4.0",
     "sass-loader": "^10.1.1",
-    "serverless": "^2.18.0",
     "start-server-and-test": "^1.12.0",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
@@ -128,6 +127,7 @@
     "react-simple-code-editor": "^0.11.0",
     "react-transition-group": "^4.4.1",
     "redux-zero": "^5.1.7",
+    "serverless": "^2.31.0",
     "uuid": "^8.3.2",
     "vis-data": "^7.1.1",
     "vis-network": "^8.5.6",

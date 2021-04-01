@@ -90,6 +90,7 @@ const NetworkGraphOptions = ({
                   Object.keys(nodesProperties).length > 0
                   && Object.keys(nodesProperties).map((nodePropertyIndex) => (
                     <AccordionTab
+                      key={nodePropertyIndex.toString()}
                       header={`${t('filter')} ${parseInt(nodePropertyIndex) + 1}`}
                     >
                       <HideElementsByPropertyForm

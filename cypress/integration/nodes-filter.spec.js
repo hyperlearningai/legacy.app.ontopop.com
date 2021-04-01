@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_NODES_FILTER } from '../../src/constants/routes'
 
 context('Nodes filter', () => {
   beforeEach(() => {
@@ -64,11 +65,13 @@ context('Nodes filter', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the nodes filter icon
       cy.get('#sidebar-button-nodes-filter').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_NODES_FILTER)
 
       // AND search should work
 
@@ -89,8 +92,8 @@ context('Nodes filter', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 2')
     })
   })
 })

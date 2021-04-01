@@ -27,16 +27,23 @@ const GraphVisualisation = ({
 }) => {
   const { t } = useTranslation()
   const isInitialMountCurrentGraph = useRef(true)
+  const isInitialMountNetwork = useRef(true)
 
   const visJsRef = useRef(null)
 
   // set new Network
-  useEffect(() => setNetwork({
-    updateStoreValue,
-    visJsRef,
-    availableNodes,
-    availableEdges,
-  }), [
+  useEffect(() => {
+    if (isInitialMountNetwork.current) {
+      setNetwork({
+        updateStoreValue,
+        visJsRef,
+        availableNodes,
+        availableEdges,
+      })
+    } else {
+      isInitialMountNetwork.current = false
+    }
+  }, [
     visJsRef,
   ])
 

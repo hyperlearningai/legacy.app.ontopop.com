@@ -4,6 +4,7 @@ import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import customQueryResponse from '../fixtures/customQueryResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_CUSTOM_QUERY } from '../../src/constants/routes'
 
 context('Custom query', () => {
   beforeEach(() => {
@@ -70,11 +71,13 @@ context('Custom query', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 19')
+      cy.get('.nav-left').should('contain', 'Nodes: 12')
+      cy.get('.nav-left').should('contain', 'Edges: 20')
 
       // click the custom query sidebar icon
       cy.get('#sidebar-button-custom-query').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_CUSTOM_QUERY)
 
       // should have two items in query history
       cy.get('.custom-query-row').should('have.length', 2)

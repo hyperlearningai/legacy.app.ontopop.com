@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_EDGES_SELECTION } from '../../src/constants/routes'
 
 context('Edges selection', () => {
   beforeEach(() => {
@@ -64,11 +65,15 @@ context('Edges selection', () => {
       cy.wait(1000)
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 11')
+      cy.get('.nav-left').should('contain', 'Edges: 14')
 
       // click the nodes selection icon
       cy.get('#sidebar-button-edges-selection').click()
+
+      cy.wait(500)
+
+      cy.location('pathname').should('be.equal', ROUTE_EDGES_SELECTION)
 
       cy.get('.edges-selection-details').should('not.have.exist')
 

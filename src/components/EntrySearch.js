@@ -41,9 +41,9 @@ const EntrySearch = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t('advancedSearchOptions')}
-      </div>
+      </h1>
 
       <div className="entry-search">
         <div

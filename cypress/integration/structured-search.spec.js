@@ -3,6 +3,7 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_STRUCTURED_SEARCH } from '../../src/constants/routes'
 
 context('Structured search', () => {
   beforeEach(() => {
@@ -69,6 +70,8 @@ context('Structured search', () => {
 
       // click the structured search icon
       cy.get('#sidebar-button-structured-search').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_STRUCTURED_SEARCH)
 
       // AND search should work
 

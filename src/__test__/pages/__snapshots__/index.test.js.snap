@@ -8,7 +8,6 @@ exports[`Index page should match snapshot 1`] = `
     }
   }
   mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
   user={
     Object {
       "email": "a@b.c",

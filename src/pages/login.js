@@ -10,7 +10,7 @@ import { Chip } from 'primereact/chip'
 // import logo from '../assets/images/logo.svg'
 import HeadTags from '../components/HeadTags'
 import signIn from '../utils/auth/signIn'
-// import { ROUTE_INDEX } from '../constants/routes'
+// import { ROUTE_SEARCH } from '../constants/routes'
 import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
 
@@ -52,39 +52,64 @@ const Login = ({
 
           <Chip label={t('alphaVersion')} className="p-mr-2" icon="pi pi-info-circle" />
 
-          <div className="auth-input-container">
-            <label htmlFor="email" className="auth-label">{t('email')}</label>
-            <div className="p-input-icon-left auth-input">
-              <i className="pi pi-user" />
-              <InputText
-                id="email"
-                value={email}
-                type="email"
-                onChange={(e) => {
-                  setShowError(false)
-                  setEmail(e.target.value)
-                }}
-              />
-            </div>
-          </div>
+          <form onSubmit={(e) => {
+            e.preventDefault()
 
-          <div className="auth-input-container">
-            <label htmlFor="password" className="auth-label">{t('password')}</label>
-            <div className="p-input-icon-left auth-input">
-              <i className="pi pi-key" />
-              <InputText
-                id="password"
-                value={password}
-                type="password"
-                onChange={(e) => {
-                  setShowError(false)
-                  setPassword(e.target.value)
-                }}
-              />
+            signIn({
+              router,
+              updateStoreValue,
+              email,
+              password,
+              setShowError,
+              t
+            })
+          }}
+          >
+            <div className="auth-input-container">
+              <label htmlFor="email" className="auth-label">{t('email')}</label>
+              <div className="p-input-icon-left auth-input">
+                <i className="pi pi-user" />
+                <InputText
+                  id="email"
+                  value={email}
+                  type="email"
+                  onChange={(e) => {
+                    setShowError(false)
+                    setEmail(e.target.value)
+                  }}
+                />
+              </div>
             </div>
-          </div>
 
-          {
+            <div className="auth-input-container">
+              <label htmlFor="password" className="auth-label">{t('password')}</label>
+              <div className="p-input-icon-left auth-input">
+                <i className="pi pi-key" />
+                <InputText
+                  id="password"
+                  value={password}
+                  type="password"
+                  onChange={(e) => {
+                    setShowError(false)
+                    setPassword(e.target.value)
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.code === 'Enter') {
+                      signIn({
+                        router,
+                        updateStoreValue,
+                        email,
+                        password,
+                        setShowError,
+                        t
+                      })
+                    }
+                  }}
+                />
+              </div>
+            </div>
+
+            {
             showError && (
               <div className="auth-error">
                 {t('invalidEmailPassword')}
@@ -92,7 +117,7 @@ const Login = ({
             )
           }
 
-          {
+            {
             activeLoaders > 0 ? (
               <div className="auth-loader">
                 <ProgressSpinner
@@ -103,6 +128,7 @@ const Login = ({
             ) : (
               <>
                 <Button
+                  aria-label="auth-login-button"
                   className="auth-button m-t-20"
                   label={t('login')}
                   id="auth-login-button"
@@ -121,12 +147,18 @@ const Login = ({
                   label={t('continueGuest')}
                   onClick={() => {
                     updateStoreValue('user', 'isGuest', true)
-                    router.push(ROUTE_INDEX)
+                    router.push(ROUTE_SEARCH)
                   }}
                 /> */}
               </>
             )
           }
+            <input
+              name="submit"
+              className="hidden"
+              type="submit"
+            />
+          </form>
 
         </div>
       </main>

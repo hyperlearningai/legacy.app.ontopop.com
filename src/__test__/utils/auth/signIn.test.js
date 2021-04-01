@@ -3,6 +3,7 @@ import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import { AUTH_COOKIE } from '../../../constants/auth'
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
+import { ROUTE_SEARCH } from '../../../constants/routes'
 
 jest.useFakeTimers()
 
@@ -78,7 +79,7 @@ describe('signIn', () => {
         'test@test.com'], [
         ['user', 'token'], OPERATION_TYPE_UPDATE, '12345']]
     )
-    expect(push).toHaveBeenCalledWith('/')
+    expect(push).toHaveBeenCalledWith(ROUTE_SEARCH)
     expect(setItem).toHaveBeenCalledWith(
       AUTH_COOKIE, JSON.stringify({ email, token })
     )

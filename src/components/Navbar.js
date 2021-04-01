@@ -8,13 +8,13 @@ import {
   BsArrowUpRight
 } from 'react-icons/bs'
 import actions from '../store/actions'
-import { MAIN_VIEW_GRAPH, MAIN_VIEW_SEARCH } from '../constants/views'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 
 const Navbar = ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
-  entrySearchResults
+  entrySearchResults,
+  sidebarView
 }) => {
   const { t } = useTranslation()
 
@@ -22,16 +22,12 @@ const Navbar = ({
     <nav>
       <div className="nav-left">
         {
-          mainVisualisation === MAIN_VIEW_SEARCH && (
+          (sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH) ? (
             <span>
               <BsSearch className="nodes-icon node m-r-5" />
               {`${t('searchResults')}: ${entrySearchResults.length}`}
             </span>
-          )
-        }
-
-        {
-          mainVisualisation === MAIN_VIEW_GRAPH && (
+          ) : (
             <span>
               <BsFillCircleFill className="nodes-icon node m-r-5" />
               {`${t('nodes')}: ${availableNodesCount}`}
@@ -49,20 +45,20 @@ const Navbar = ({
 Navbar.propTypes = {
   availableNodesCount: PropTypes.number.isRequired,
   availableEdgesCount: PropTypes.number.isRequired,
-  mainVisualisation: PropTypes.string.isRequired,
   entrySearchResults: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  sidebarView: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
-  entrySearchResults
+  entrySearchResults,
+  sidebarView
 }) => ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
-  entrySearchResults
+  entrySearchResults,
+  sidebarView
 })
 
 export default connect(

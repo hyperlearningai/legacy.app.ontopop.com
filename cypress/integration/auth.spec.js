@@ -3,6 +3,8 @@ import authNotValid from '../fixtures/authNotValid'
 import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
+import { ROUTE_SEARCH } from '../../src/constants/routes'
+import getStyling from '../fixtures/getStyling'
 
 context('Auth', () => {
   beforeEach(() => {
@@ -35,6 +37,11 @@ context('Auth', () => {
         method: 'GET',
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
 
       cy.get('#email').type('wrong@email.com')
       cy.get('#password').type('password')
@@ -72,6 +79,11 @@ context('Auth', () => {
         url: '**/graph?model=1',
       }, graphResponse).as('getGraph')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -81,7 +93,9 @@ context('Auth', () => {
 
       cy.get('.auth-error').should('not.be.exist')
 
-      cy.get('.logo').should('be.visible')
+      cy.wait(500)
+
+      cy.location('pathname').should('be.equal', ROUTE_SEARCH)
     })
   })
 })
