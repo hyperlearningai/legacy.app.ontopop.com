@@ -6,14 +6,13 @@ import Sidebar from '../../components/Sidebar'
 import {
   ROUTE_CUSTOM_QUERY,
   ROUTE_EDGES_FILTER,
-  ROUTE_EDGES_SELECTION,
+  ROUTE_ELEMENTS_SELECTION,
   ROUTE_EDIT_ONTOLOGY,
   ROUTE_EXPORT,
   ROUTE_FREE_TEXT_SEARCH,
   ROUTE_NETWORK_GRAPHS,
   ROUTE_NETWORK_GRAPH_OPTIONS,
   ROUTE_NODES_FILTER,
-  ROUTE_NODES_SELECTION,
   ROUTE_NODE_NEIGHBOURHOOD,
   ROUTE_SEARCH, ROUTE_SETTINGS,
   ROUTE_SHORTEST_PATH,
@@ -145,23 +144,9 @@ describe('Sidebar', () => {
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_SELECTION', () => {
+  it('should match snapshot when sidebar open and SIDEBAR_VIEW_ELEMENTS_SELECTION', () => {
     useRouter.mockImplementation(() => ({
-      view: ROUTE_NODES_SELECTION
-    }))
-
-    const {
-      component
-    } = setup({
-      isSidebarOpen: true,
-    })
-
-    expect(toJson(component)).toMatchSnapshot()
-  })
-
-  it('should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_SELECTION', () => {
-    useRouter.mockImplementation(() => ({
-      view: ROUTE_EDGES_SELECTION
+      view: ROUTE_ELEMENTS_SELECTION
     }))
 
     const {
