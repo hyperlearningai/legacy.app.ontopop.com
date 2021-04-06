@@ -120,7 +120,7 @@ context('Notes list', () => {
       cy.get('#notes-filter-field').find('.p-dropdown-item').eq(0).click({ force: true })
       cy.get('.p-datepicker-calendar').find('td:not(.p-datepicker-other-month)').eq(0).find('span')
         .click({ force: true })
-      cy.get('.notes-note').should('have.length', 2)
+      cy.get('.notes-note').should('have.length', 1)
 
       cy.get('#notes-filter-field').find('.p-dropdown-trigger').click({ force: true })
       cy.get('#notes-filter-field').find('.p-dropdown-item').eq(2).click({ force: true })

@@ -21,10 +21,16 @@ exports[`ExportSettings should match snapshot  1`] = `
       <div
         className="export-settings-item-input"
       >
-        <ForwardRef
+        <InputText
           id="filename"
+          keyfilter={null}
           onChange={[Function]}
+          onInput={null}
+          onKeyPress={null}
           placeholder="insertName"
+          tooltip={null}
+          tooltipOptions={null}
+          validateOnly={false}
           value="network-graph"
         />
       </div>
@@ -40,8 +46,12 @@ exports[`ExportSettings should match snapshot  1`] = `
       <div
         className="export-settings-buttons"
       >
-        <ForwardRef
+        <Button
           aria-label="jpeg"
+          badge={null}
+          badgeClassName={null}
+          icon={null}
+          iconPos="left"
           key="export-btn-jpeg"
           label="jpeg"
           onClick={[Function]}
@@ -52,8 +62,12 @@ exports[`ExportSettings should match snapshot  1`] = `
             }
           }
         />
-        <ForwardRef
+        <Button
           aria-label="png"
+          badge={null}
+          badgeClassName={null}
+          icon={null}
+          iconPos="left"
           key="export-btn-png"
           label="png"
           onClick={[Function]}
@@ -64,8 +78,12 @@ exports[`ExportSettings should match snapshot  1`] = `
             }
           }
         />
-        <ForwardRef
+        <Button
           aria-label="pdf"
+          badge={null}
+          badgeClassName={null}
+          icon={null}
+          iconPos="left"
           key="export-btn-pdf"
           label="pdf"
           onClick={[Function]}
@@ -89,8 +107,12 @@ exports[`ExportSettings should match snapshot  1`] = `
       <div
         className="export-settings-buttons"
       >
-        <ForwardRef
+        <Button
           aria-label="csv"
+          badge={null}
+          badgeClassName={null}
+          icon={null}
+          iconPos="left"
           key="export-btn-csv"
           label="csv"
           onClick={[Function]}
@@ -101,8 +123,12 @@ exports[`ExportSettings should match snapshot  1`] = `
             }
           }
         />
-        <ForwardRef
+        <Button
           aria-label="owl"
+          badge={null}
+          badgeClassName={null}
+          icon={null}
+          iconPos="left"
           key="export-btn-owl"
           label="owl"
           onClick={[Function]}
@@ -126,8 +152,12 @@ exports[`ExportSettings should match snapshot  1`] = `
       <div
         className="export-settings-buttons"
       >
-        <ForwardRef
+        <Button
           aria-label="print"
+          badge={null}
+          badgeClassName={null}
+          icon={null}
+          iconPos="left"
           key="export-btn-print"
           label="print"
           onClick={[Function]}

@@ -42,7 +42,7 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-jest": "^26.3.0",
     "browserslist": "^4.16.1",
-    "cypress": "^6.8.0",
+    "cypress": "^7.0.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.5.0",
     "eslint": "^7.17.0",
@@ -101,7 +101,6 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "flat": "^5.0.2",
     "i18next": "^19.8.4",
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-xhr-backend": "^3.2.2",

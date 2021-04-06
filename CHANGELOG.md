@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - ONTOLOGY-90 Search performed via Search APi rather than locally 
 - ONTOLOGY-90 Added vocabulary API endpoint and updated paths
+- ONTOLOGY-134 Unified node and edge selection into elements selection
 
 ### Deprecated
 
