@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.6.1]
 ### Added
+- ONTOLOGY-90 Added advanced search options and connected enumeration API for some properties
 - ONTOLOGY-90 Added search bar autocomplete
 
 ### Changed

@@ -20,6 +20,7 @@ import {
   LABEL_PROPERTY_DATASET,
   DEFAULT_GRAPH_VISUALISATION_OPTIONS
 } from '../constants/graph'
+import { ADVANCED_SEARCH_TEMPLATE } from '../constants/search'
 
 const initialState = {
   // view updates
@@ -145,8 +146,18 @@ const initialState = {
   entrySearchFilter: 'all',
   entrySearchResults: [],
   entrySearchAnnotationProperties: [],
-  isQueried: false,
+  entrySearchResultsByPage: {},
+  isFirstQuery: false,
   entrySearchValue: '',
+  isDataEntityTypeSearch: true,
+  isDatasetTypeSearch: true,
+  isUpperOntologySearch: true,
+  totalSearchCount: 0,
+  searchPageSelected: 0,
+  isSearchLoading: false,
+  dataTypeSearch: 'any',
+  upperOntologySearch: 'any',
+  advancedSearchFilters: { 0: JSON.parse(JSON.stringify(ADVANCED_SEARCH_TEMPLATE)) },
 
   // free text search
   freeTextSelection: {},

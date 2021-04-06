@@ -50,7 +50,7 @@ const EdgesSelection = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {selectedEdgeType !== 'edge'
           ? t(SIDEBAR_VIEW_EDGES_SELECTION)
           : (
@@ -58,7 +58,7 @@ const EdgesSelection = ({
               {`${t('edge')}: ${getEdge(selectedEdge).label}`}
             </>
           )}
-      </div>
+      </h1>
 
       <div className="edges-selection">
         <div className="edges-selection-message">

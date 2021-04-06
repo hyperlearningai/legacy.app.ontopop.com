@@ -7,8 +7,6 @@ exports[`NetworkGraphOptions should match snapshot  1`] = `
       "updateStoreValue": [Function],
     }
   }
-  addNumber={[MockFunction]}
-  addToObject={[MockFunction]}
   currentGraph="graph-0"
   graphData={
     Object {
@@ -22,7 +20,6 @@ exports[`NetworkGraphOptions should match snapshot  1`] = `
     }
   }
   mapToProps={[Function]}
-  toggleFromArrayInKey={[MockFunction]}
   updateStoreValue={[MockFunction]}
 >
   <Component />

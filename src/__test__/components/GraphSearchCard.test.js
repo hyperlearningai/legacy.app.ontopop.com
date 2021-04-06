@@ -11,8 +11,6 @@ const setup = () => {
       rdfsLabel: 'test',
       rdfAbout: 'http://test.test/test'
     },
-    stylingNodeCaptionProperty: 'rdfsLabel',
-    stylingEdgeCaptionProperty: 'rdfsLabel'
   }
 
   const component = shallow(<GraphSearchCard {...props} />)

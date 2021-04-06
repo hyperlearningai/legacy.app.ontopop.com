@@ -15,8 +15,6 @@ exports[`GraphSearchCard should match snapshot 1`] = `
       "rdfsLabel": "test",
     }
   }
-  stylingEdgeCaptionProperty="rdfsLabel"
-  stylingNodeCaptionProperty="rdfsLabel"
   updateStoreValue={[MockFunction]}
 >
   <Component />

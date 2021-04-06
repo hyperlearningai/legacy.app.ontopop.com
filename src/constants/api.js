@@ -19,6 +19,8 @@ export const API_ENDPOINT_GRAPH_EDGES_CREATE = `${API_ENDPOINT_GRAPH}/edges/crea
 
 export const API_ENDPOINT_GRAPH_QUERY = `${API_ENDPOINT_GRAPH}/query`
 
+export const API_ENDPOINT_GRAPH_PROPERTY = `${API_ENDPOINT_GRAPH}/nodes/properties/{property}/values?unique=true`
+
 // AUTH
 export const API_ENDPOINT_AUTH = `${process.env.NEXT_PUBLIC_AUTH_API_ENDPOINT}/api/auth`
 
@@ -79,9 +81,10 @@ export const API_ENDPOINT_ONTOLOGY_TRIPLE = `${API_ENDPOINT_ONTOLOGY}/triples`
 export const API_ENDPOINT_ONTOLOGY_TRIPLE_ID = `${API_ENDPOINT_ONTOLOGY_TRIPLE}/{id}`
 
 // SEARCH
-export const API_ENDPOINT_SEARCH = `${process.env.NEXT_PUBLIC_SEARCH_API_ENDPOINT}/indexes/${process.env.NEXT_PUBLIC_SEARCH_API_INDEX}/docs`
-export const API_ENDPOINT_SEARCH_AUTOCOMPLETE = `${API_ENDPOINT_SEARCH}/autocomplete`
-
 export const API_ENDPOINT_SEARCH_KEY = process.env.NEXT_PUBLIC_SEARCH_API_QUERY_KEY
 export const API_ENDPOINT_SEARCH_VERSION = process.env.NEXT_PUBLIC_SEARCH_API_VERSION
 export const API_ENDPOINT_SEARCH_SUGGESTER = process.env.NEXT_PUBLIC_SEARCH_API_SUGGESTER
+
+export const API_ENDPOINT_SEARCH = `${process.env.NEXT_PUBLIC_SEARCH_API_ENDPOINT}/indexes/${process.env.NEXT_PUBLIC_SEARCH_API_INDEX}/docs/`
+export const API_ENDPOINT_SEARCH_POST = `${process.env.NEXT_PUBLIC_SEARCH_API_ENDPOINT}/indexes/${process.env.NEXT_PUBLIC_SEARCH_API_INDEX}/docs/search?api-version=${API_ENDPOINT_SEARCH_VERSION}`
+export const API_ENDPOINT_SEARCH_AUTOCOMPLETE = `${API_ENDPOINT_SEARCH}autocomplete`

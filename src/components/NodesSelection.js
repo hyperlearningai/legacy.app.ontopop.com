@@ -18,7 +18,7 @@ const NodesSelection = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {selectedNodeType !== 'node'
           ? t(SIDEBAR_VIEW_NODES_SELECTION)
           : (
@@ -26,7 +26,7 @@ const NodesSelection = ({
               {`${t('node')}: ${getNode(selectedNode).label}`}
             </>
           )}
-      </div>
+      </h1>
       <div className="nodes-selection">
         <div className="nodes-selection-message">
           {t('selectNodeFromGraphOrFromList')}

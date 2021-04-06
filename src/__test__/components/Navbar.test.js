@@ -2,16 +2,25 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Navbar from '../../components/Navbar'
-import { MAIN_VIEW_GRAPH, MAIN_VIEW_SEARCH } from '../../constants/views'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
 
 const setup = ({
-  mainVisualisation
+  sidebarView
 }) => {
   const props = {
     availableEdgesCount: 333,
     availableNodesCount: 200,
-    mainVisualisation,
-    entrySearchResults: [{ id: '123' }]
+    totalSearchCount: 100,
+    sidebarView,
+    searchPageSelected: 1,
+    entrySearchResultsByPage: {
+      0: [
+        { id: '1' }
+      ],
+      1: [
+        { id: '2' }
+      ]
+    },
   }
 
   const component = shallow(<Navbar {...props} />)
@@ -23,11 +32,11 @@ const setup = ({
 }
 
 describe('Navbar', () => {
-  it('should match snapshot when MAIN_VIEW_SEARCH', () => {
+  it('should match snapshot when SIDEBAR_VIEW_ENTRY_SEARCH', () => {
     const {
       component
     } = setup({
-      mainVisualisation: MAIN_VIEW_SEARCH
+      sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH
     })
 
     expect(toJson(component)).toMatchSnapshot()
@@ -37,7 +46,7 @@ describe('Navbar', () => {
     const {
       component
     } = setup({
-      mainVisualisation: MAIN_VIEW_GRAPH
+      sidebarView: 'any'
     })
 
     expect(toJson(component)).toMatchSnapshot()

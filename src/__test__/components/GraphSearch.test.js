@@ -4,13 +4,23 @@ import toJson from 'enzyme-to-json'
 import GraphSearch from '../../components/GraphSearch'
 
 const setup = ({
-  isQueried
+  isFirstQuery,
+  isSearchLoading,
+  searchPageSelected
 }) => {
   const props = {
-    updateStoreValue: jest.fn(),
-    entrySearchResults: [{ id: '123' }],
-    isQueried,
-    entrySearchValue: 'value'
+    entrySearchResultsByPage: {
+      0: {
+        id: '1'
+      },
+      1: {
+        id: '3'
+      }
+    },
+    isFirstQuery,
+    isSearchLoading,
+    searchPageSelected,
+    entrySearchValue: 'road'
   }
 
   const component = shallow(<GraphSearch {...props} />)
@@ -25,22 +35,49 @@ describe('GraphSearch', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
-
-  it('should match snapshot when isQueried false', () => {
+  it('should match snapshot when isSearchLoading false', () => {
     const {
       component
     } = setup({
-      isQueried: false
+      isFirstQuery: false,
+      isSearchLoading: true,
+      searchPageSelected: 0
     })
 
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when isQueried true', () => {
+  it('should match snapshot when isFirstQuery false', () => {
     const {
       component
     } = setup({
-      isQueried: true
+      isFirstQuery: false,
+      isSearchLoading: false,
+      searchPageSelected: 0
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when isFirstQuery true and search page selected with values', () => {
+    const {
+      component
+    } = setup({
+      isFirstQuery: true,
+      isSearchLoading: false,
+      searchPageSelected: 0
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when isFirstQuery true and search page selected with no values', () => {
+    const {
+      component
+    } = setup({
+      isFirstQuery: true,
+      isSearchLoading: false,
+      searchPageSelected: 2
     })
 
     expect(toJson(component)).toMatchSnapshot()
