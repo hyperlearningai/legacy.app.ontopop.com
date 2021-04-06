@@ -1,7 +1,37 @@
-.nodes-selection {
+.elements-selection {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+
+  &-select-row {
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      width: 100%;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .p-dropdown,
+    .p-dropdown-panel,
+    .p-dropdown-items,
+    .p-dropdown-items-wrapper,
+    .p-input {
+      width: 100%;
+    }
+
+    .p-dropdown-item {
+      width: 100%;
+      word-break: break-word;
+      height: auto;
+      white-space: normal;
+    }
+  }
 
   &-message {
     width: 100%;

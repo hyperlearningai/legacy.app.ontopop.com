@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import NodesSelection from '../../components/NodesSelection'
+import ElementsSelection from '../../components/ElementsSelection'
 
 const setup = ({
   selectedElement
@@ -15,7 +15,7 @@ const setup = ({
     }]
   }
 
-  const component = shallow(<NodesSelection {...props} />)
+  const component = shallow(<ElementsSelection {...props} />)
 
   return {
     component,
@@ -23,12 +23,12 @@ const setup = ({
   }
 }
 
-describe('NodesSelection', () => {
+describe('ElementsSelection', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot when no selected node', () => {
+  it('should match snapshot when no selected element', () => {
     const {
       component
     } = setup({
@@ -43,6 +43,16 @@ describe('NodesSelection', () => {
       component
     } = setup({
       selectedElement: { 1: 'node' }
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when selected edge', () => {
+    const {
+      component
+    } = setup({
+      selectedElement: { 2: 'edge' }
     })
 
     expect(toJson(component)).toMatchSnapshot()

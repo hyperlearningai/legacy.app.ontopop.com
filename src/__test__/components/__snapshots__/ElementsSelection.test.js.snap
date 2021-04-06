@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NodesSelection should match snapshot when no selected node 1`] = `
+exports[`ElementsSelection should match snapshot when no selected element 1`] = `
 <Connect
   actions={
     Object {
@@ -22,7 +22,34 @@ exports[`NodesSelection should match snapshot when no selected node 1`] = `
 </Connect>
 `;
 
-exports[`NodesSelection should match snapshot when selected node 1`] = `
+exports[`ElementsSelection should match snapshot when selected edge 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  mapToProps={[Function]}
+  nodesDropdownLabels={
+    Array [
+      Object {
+        "id": "1",
+        "value": "node",
+      },
+    ]
+  }
+  selectedElement={
+    Object {
+      "2": "edge",
+    }
+  }
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`ElementsSelection should match snapshot when selected node 1`] = `
 <Connect
   actions={
     Object {
