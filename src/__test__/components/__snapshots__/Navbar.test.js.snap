@@ -9,21 +9,30 @@ exports[`Navbar should match snapshot when MAIN_VIEW_GRAPH 1`] = `
   }
   availableEdgesCount={333}
   availableNodesCount={200}
-  entrySearchResults={
-    Array [
-      Object {
-        "id": "123",
-      },
-    ]
+  entrySearchResultsByPage={
+    Object {
+      "0": Array [
+        Object {
+          "id": "1",
+        },
+      ],
+      "1": Array [
+        Object {
+          "id": "2",
+        },
+      ],
+    }
   }
-  mainVisualisation="graph"
   mapToProps={[Function]}
+  searchPageSelected={1}
+  sidebarView="any"
+  totalSearchCount={100}
 >
   <Component />
 </Connect>
 `;
 
-exports[`Navbar should match snapshot when MAIN_VIEW_SEARCH 1`] = `
+exports[`Navbar should match snapshot when SIDEBAR_VIEW_ENTRY_SEARCH 1`] = `
 <Connect
   actions={
     Object {
@@ -32,15 +41,24 @@ exports[`Navbar should match snapshot when MAIN_VIEW_SEARCH 1`] = `
   }
   availableEdgesCount={333}
   availableNodesCount={200}
-  entrySearchResults={
-    Array [
-      Object {
-        "id": "123",
-      },
-    ]
+  entrySearchResultsByPage={
+    Object {
+      "0": Array [
+        Object {
+          "id": "1",
+        },
+      ],
+      "1": Array [
+        Object {
+          "id": "2",
+        },
+      ],
+    }
   }
-  mainVisualisation="search"
   mapToProps={[Function]}
+  searchPageSelected={1}
+  sidebarView="search"
+  totalSearchCount={100}
 >
   <Component />
 </Connect>

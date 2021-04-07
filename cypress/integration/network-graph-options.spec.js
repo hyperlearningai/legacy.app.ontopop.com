@@ -3,6 +3,8 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import linkAutocomplete from '../fixtures/linkAutocomplete'
+import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../../src/constants/routes'
 
 context('Network graph options', () => {
@@ -42,6 +44,16 @@ context('Network graph options', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -49,26 +61,26 @@ context('Network graph options', () => {
 
       cy.wait('@postLogin')
 
-      cy.wait('@getGraph')
+      cy.get('#main-search').type('link')
 
-      cy.get('#main-search').type('material')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for material: 4')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click()
 
+      cy.wait(1000)
+
+      // click to show network graph options
       cy.get('#sidebar-button-network-graph-options').click()
 
       cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPH_OPTIONS)
 
       // Check number of nodes and edges at first loading
-      cy.get('.nav-left').should('contain', 'Nodes: 23')
-      cy.get('.nav-left').should('contain', 'Edges: 40')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
 
       // switch 3 main options
       cy.get('#upper-ontology-checkbox').click()
@@ -78,8 +90,8 @@ context('Network graph options', () => {
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 22')
-      cy.get('.nav-left').should('contain', 'Edges: 18')
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 19')
 
       // Add nodes filters
       cy.get('#upper-ontology-checkbox').click()
@@ -104,17 +116,12 @@ context('Network graph options', () => {
 
       cy.get('.property-select').find('.p-dropdown-trigger')
         .click()
-
-      cy.get('.property-select').find('.p-dropdown-item')
-        .eq(18)
-        .click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(18).click({ force: true })
 
       cy.get('.operation-select').find('.p-dropdown-trigger')
         .click()
 
-      cy.get('.operation-select').find('.p-dropdown-item')
-        .eq(0)
-        .click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       cy.get('.value-input').type('in')
 
@@ -132,7 +139,7 @@ context('Network graph options', () => {
       cy.get('#network-graph-options-save').click()
 
       cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 4')
 
       // Add edges filters
       cy.get('.p-accordion').find('a').eq(0)
@@ -157,16 +164,12 @@ context('Network graph options', () => {
       cy.get('.property-select').find('.p-dropdown-trigger')
         .click()
 
-      cy.get('.property-select').find('.p-dropdown-item')
-        .eq(1)
-        .click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(1).click({ force: true })
 
       cy.get('.operation-select').find('.p-dropdown-trigger')
         .click()
 
-      cy.get('.operation-select').find('.p-dropdown-item')
-        .eq(2)
-        .click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })
 
       cy.get('.value-input').type('of')
 
@@ -184,7 +187,7 @@ context('Network graph options', () => {
       cy.get('#network-graph-options-save').click()
 
       cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 0')
+      cy.get('.nav-left').should('contain', 'Edges: 3')
     })
   })
 })

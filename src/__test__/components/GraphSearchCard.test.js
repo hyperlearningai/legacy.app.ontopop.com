@@ -6,13 +6,12 @@ import GraphSearchCard from '../../components/GraphSearchCard'
 const setup = () => {
   const props = {
     updateStoreValue: jest.fn(),
+    index: 0,
     searchResult: {
       id: '123',
       rdfsLabel: 'test',
       rdfAbout: 'http://test.test/test'
     },
-    stylingNodeCaptionProperty: 'rdfsLabel',
-    stylingEdgeCaptionProperty: 'rdfsLabel'
   }
 
   const component = shallow(<GraphSearchCard {...props} />)

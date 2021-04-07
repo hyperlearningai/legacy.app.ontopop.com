@@ -3,6 +3,8 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import linkAutocomplete from '../fixtures/linkAutocomplete'
+import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_FREE_TEXT_SEARCH } from '../../src/constants/routes'
 
 context('Free text search', () => {
@@ -42,6 +44,16 @@ context('Free text search', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -49,24 +61,17 @@ context('Free text search', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('road')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(0).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click()
 
       cy.wait(1000)
-
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 25')
 
       // click the free text search icon
       cy.get('#sidebar-button-free-text-search').click()
@@ -75,7 +80,7 @@ context('Free text search', () => {
 
       cy.get('.freetext-search-input').find('.p-inputtext').type('main')
 
-      cy.get('.freetext-search-row').should('have.length', 12)
+      cy.get('.freetext-search-row').should('have.length', 9)
 
       // press on first element
       cy.get('.freetext-search-row').eq(0).find('.p-button').eq(1)
@@ -85,7 +90,7 @@ context('Free text search', () => {
       cy.get('.freetext-search-row').eq(0).find('.p-button').eq(0)
         .click()
 
-      cy.get('.freetext-search-row').should('have.length', 11)
+      cy.get('.freetext-search-row').should('have.length', 8)
     })
   })
 })

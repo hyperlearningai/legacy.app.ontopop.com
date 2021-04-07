@@ -55,25 +55,6 @@ context('Custom query', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('link')
-
-      cy.wait('@getGraph')
-
-      cy.get('.p-autocomplete-item').click()
-
-      cy.get('.graph-search-results-number').should('contain', 'Search results for link: 6')
-
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(4).find('.p-button')
-        .eq(1)
-        .click()
-
-      cy.wait(1000)
-
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 12')
-      cy.get('.nav-left').should('contain', 'Edges: 20')
-
       // click the custom query sidebar icon
       cy.get('#sidebar-button-custom-query').click()
 

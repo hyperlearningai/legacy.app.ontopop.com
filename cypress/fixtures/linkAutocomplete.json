@@ -1,0 +1,10 @@
+{
+  "statusCode": 200,
+  "body": { 
+    "@odata.context": "https://ontology-search-development.search.windows.net/indexes('ontology-graph-search-index')/$metadata#Collection(Microsoft.Azure.Search.V2020_06_30.AutocompleteItem)",
+    "@search.coverage": 100,
+    "value": [{"text": "link", "queryPlusText": "link"}]
+  },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

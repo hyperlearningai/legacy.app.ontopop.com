@@ -4,7 +4,21 @@ footer {
   padding-right: 20px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   background: $secondary;
   color: $white;
+
+  .p-paginator {
+    background: $secondary;
+
+    button {
+      color: $white !important;
+
+      &.p-highlight,
+      &:hover {
+        background: $secondary !important;
+        border: 2px solid $white !important;
+      }
+    }
+  }
 }

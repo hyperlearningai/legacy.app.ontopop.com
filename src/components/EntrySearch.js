@@ -1,117 +1,247 @@
+/* eslint jsx-a11y/label-has-associated-control:0  */
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { SelectButton } from 'primereact/selectbutton'
-import { Checkbox } from 'primereact/checkbox'
-import { useEffect, useState } from 'react'
-import { MultiSelect } from 'primereact/multiselect'
+import { RadioButton } from 'primereact/radiobutton'
+import { Accordion, AccordionTab } from 'primereact/accordion'
+import { Dropdown } from 'primereact/dropdown'
+import { InputText } from 'primereact/inputtext'
+import { Button } from 'primereact/button'
+import { useState } from 'react'
 import actions from '../store/actions'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { OPERATION_TYPE_DELETE, OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
+import SearchBar from './SearchBar'
+import { ADVANCED_SEARCH_TEMPLATE, ENUMERATION_PROPERTIES } from '../constants/search'
+import getEnumeration from '../utils/graphSearch/getEnumeration'
 
 const EntrySearch = ({
-  entrySearchFilter,
+  dataTypeSearch,
+  upperOntologySearch,
   updateStoreValue,
   annotationProperties,
-  entrySearchAnnotationProperties
+  advancedSearchFilters
 }) => {
   const { t } = useTranslation()
 
-  const [isAdvancedSearch, toggleAdvancedSearch] = useState(false)
+  const [suggestions, setSuggestions] = useState([])
 
-  useEffect(() => {
-    if (annotationProperties.length > 0) {
-      updateStoreValue(
-        ['entrySearchAnnotationProperties'],
-        OPERATION_TYPE_UPDATE,
-        annotationProperties.map((property) => property.value)
-      )
-    }
-  }, [annotationProperties])
-
-  const filterOptions = [{
-    label: t('all'),
-    value: 'all'
+  const dataTypeOptions = [{
+    label: t('any'),
+    value: 'any'
   }, {
-    label: t('nodes'),
-    value: 'nodes'
+    label: t('dataEntity'),
+    value: 'class'
   }, {
-    label: t('edges'),
-    value: 'edges'
+    label: t('dataset'),
+    value: 'dataset'
   }]
+
+  const ontologyTypeOptions = [{
+    label: t('any'),
+    value: 'any'
+  }, {
+    label: t('upperOntology'),
+    value: 'true'
+  }, {
+    label: t('lowerOntology'),
+    value: 'false'
+  }]
+
+  const searchFilterKeys = Object.keys(advancedSearchFilters)
+  const maxSearchFilterKey = Math.max(searchFilterKeys)
 
   return (
     <>
       <h1 className="sidebar-main-title">
-        {t('advancedSearchOptions')}
+        {t('search')}
       </h1>
 
       <div className="entry-search">
         <div
           className="entry-search-row"
         >
-          <label htmlFor="filter-select">
-            {t('resultsType')}
-          </label>
-          <SelectButton
-            id="filter-select"
-            value={entrySearchFilter}
-            options={filterOptions}
-            onChange={(e) => updateStoreValue(['entrySearchFilter'], OPERATION_TYPE_UPDATE, e.value)}
-          />
+          <SearchBar />
         </div>
 
-        <div className="entry-search-row entry-search-row-checkbox">
-          <Checkbox
-            inputId="advanced-search"
-            onChange={() => toggleAdvancedSearch(!isAdvancedSearch)}
-            checked={isAdvancedSearch}
-          />
-          <label
-            htmlFor="advanced-search"
-            className="p-checkbox-label"
+        <div
+          className="entry-search-title"
+        >
+          {t('searchFilters')}
+        </div>
+
+        <div
+          className="entry-search-subtitle"
+        >
+          {t('resultType')}
+        </div>
+
+        <div className="entry-search-row">
+          {
+            dataTypeOptions.map((option) => (
+              <div
+                key={`data-type-option-${option.value}`}
+                className="p-field-radiobutton"
+              >
+                <RadioButton
+                  id={`data-type-option-${option.value}`}
+                  name="data-type-option"
+                  value={option.value}
+                  onChange={() => updateStoreValue(['dataTypeSearch'], OPERATION_TYPE_UPDATE, option.value)}
+                  checked={dataTypeSearch === option.value}
+                />
+                <label htmlFor={`data-type-option-${option.value}`}>{option.label}</label>
+              </div>
+            ))
+          }
+        </div>
+
+        <div
+          className="entry-search-subtitle"
+        >
+          {t('topology')}
+        </div>
+
+        <div className="entry-search-row">
+          {
+            ontologyTypeOptions.map((option) => (
+              <div
+                key={`data-type-option-${option.value}`}
+                className="p-field-radiobutton"
+              >
+                <RadioButton
+                  id={`ontology-type-option-${option.value}`}
+                  name="data-type-option"
+                  value={option.value}
+                  onChange={() => updateStoreValue(['upperOntologySearch'], OPERATION_TYPE_UPDATE, option.value)}
+                  checked={upperOntologySearch === option.value}
+                />
+                <label htmlFor={`data-type-option-${option.value}`}>{option.label}</label>
+              </div>
+            ))
+          }
+        </div>
+
+        <Accordion>
+          <AccordionTab
+            header={t('advancedSearch')}
           >
-            {t('showAdvancedSearch')}
-          </label>
-        </div>
+            {
+              searchFilterKeys.map((searchFilterKey) => {
+                const {
+                  property,
+                  value
+                } = advancedSearchFilters[searchFilterKey]
 
-        {
-          isAdvancedSearch && (
-            <div
-              className="entry-search-row"
-            >
-              <label htmlFor="search-field">{t('selectProperty')}</label>
-              <MultiSelect
-                id="search-field"
-                value={entrySearchAnnotationProperties}
-                options={annotationProperties}
-                filter
-                onChange={(e) => updateStoreValue(['entrySearchAnnotationProperties'], OPERATION_TYPE_UPDATE, e.value)}
-                className="m-t-10"
-                placeholder={t('selectProperty')}
-              />
-            </div>
-          )
-        }
+                const isWithEnumeration = ENUMERATION_PROPERTIES.includes(property)
+
+                return (
+                  <div
+                    key={`advanced-search-${searchFilterKey}`}
+                    className="entry-search-block p-pt-3 p-pb-3 p-d-flex p-ai-center"
+                  >
+                    <div className="p-d-flex p-flex-column">
+                      <div className="entry-search-block-row m-b-5">
+                        <Dropdown
+                          id={`advanced-search-property-${searchFilterKey}`}
+                          value={property}
+                          options={annotationProperties}
+                          filter
+                          onChange={(e) => {
+                            const selectedValue = e.value
+
+                            if (ENUMERATION_PROPERTIES.includes(selectedValue)) {
+                              getEnumeration({
+                                property: selectedValue,
+                                setSuggestions,
+                                updateStoreValue,
+                                t
+                              })
+                            }
+
+                            updateStoreValue(['advancedSearchFilters', searchFilterKey], OPERATION_TYPE_OBJECT_ADD, { property: selectedValue })
+                          }}
+                          placeholder={t('selectProperty')}
+                        />
+                      </div>
+
+                      <div className="entry-search-block-row">
+                        {
+                          isWithEnumeration ? (
+                            <Dropdown
+                              id={`advanced-search-value-${searchFilterKey}`}
+                              value={value}
+                              options={suggestions}
+                              filter
+                              onChange={(e) => updateStoreValue(['advancedSearchFilters', searchFilterKey], OPERATION_TYPE_OBJECT_ADD, { value: e.value })}
+                              placeholder={t('selectProperty')}
+                            />
+                          ) : (
+                            <InputText
+                              className="property-text-input value-input"
+                              id={`advanced-search-value-${searchFilterKey}`}
+                              value={value}
+                              placeholder={t('insertText')}
+                              onChange={(e) => updateStoreValue(['advancedSearchFilters', searchFilterKey], OPERATION_TYPE_OBJECT_ADD, { value: e.target.value })}
+                            />
+                          )
+                        }
+
+                      </div>
+                    </div>
+
+                    <div className="p-d-flex p-flex-column">
+                      <Button
+                        icon="pi pi-plus"
+                        className="p-m-1"
+                        id={`advanced-search-plus-${searchFilterKey}`}
+                        aria-label={t('add')}
+                        onClick={() => updateStoreValue(['advancedSearchFilters'], OPERATION_TYPE_OBJECT_ADD, { [maxSearchFilterKey + 1]: JSON.parse(JSON.stringify(ADVANCED_SEARCH_TEMPLATE)) })}
+                      />
+
+                      <Button
+                        icon="pi pi-minus"
+                        className="p-m-1"
+                        id={`advanced-search-minus-${searchFilterKey}`}
+                        aria-label={t('remove')}
+                        onClick={() => {
+                          if (searchFilterKeys.length > 1) {
+                            return updateStoreValue(['advancedSearchFilters', searchFilterKey], OPERATION_TYPE_DELETE)
+                          }
+
+                          updateStoreValue(['advancedSearchFilters'], OPERATION_TYPE_UPDATE, {})
+                          return updateStoreValue(['advancedSearchFilters'], OPERATION_TYPE_UPDATE, { 0: JSON.parse(JSON.stringify(ADVANCED_SEARCH_TEMPLATE)) })
+                        }}
+                      />
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </AccordionTab>
+        </Accordion>
       </div>
     </>
   )
 }
 
 EntrySearch.propTypes = {
+  dataTypeSearch: PropTypes.string.isRequired,
+  upperOntologySearch: PropTypes.string.isRequired,
   updateStoreValue: PropTypes.func.isRequired,
-  entrySearchFilter: PropTypes.string.isRequired,
+  advancedSearchFilters: PropTypes.shape().isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  entrySearchAnnotationProperties: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 const mapToProps = ({
-  entrySearchFilter,
+  dataTypeSearch,
+  upperOntologySearch,
+  advancedSearchFilters,
   annotationProperties,
-  entrySearchAnnotationProperties
 }) => ({
-  entrySearchFilter,
+  dataTypeSearch,
+  upperOntologySearch,
+  advancedSearchFilters,
   annotationProperties,
-  entrySearchAnnotationProperties
 })
 
 export default connect(

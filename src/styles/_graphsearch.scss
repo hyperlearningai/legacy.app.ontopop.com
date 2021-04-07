@@ -7,6 +7,7 @@
   height: 100%;
   min-height: 0;
   overflow-y: auto;
+  padding: 20px;
 
   &-bar {
     width: 100%;
@@ -52,22 +53,34 @@
 
     &-list {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      // flex-wrap: wrap;
 
       .p-card {
         margin: 20px;
-        width: 200px;
+        width: 100%;
+        max-width: 700px;
         cursor: pointer;
         word-break: break-word;
+        border-radius: 25px;
 
-        &-title {
-          font-size: 1.1rem;
+        &-body {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
         }
 
         &-content {
           padding: 0;
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-wrap: wrap;
         }
 
         &-row {
@@ -76,15 +89,38 @@
           margin-bottom: 10px;
         }
 
+        &-info {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          width: 100%;
+          max-width: 450px;
+          padding: 20px;
+
+          &-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+          }
+        }
+
         &-buttons {
           display: flex;
           align-items: center;
           justify-content: center;
           flex-direction: column;
+          width: 200px;
+          padding: 20px;
 
           .p-button {
             width: 100%;
             margin: 10px;
+
+            &.link {
+              display: block;
+              text-align: center;
+              text-decoration: none;
+            }
           }
 
           &-info {

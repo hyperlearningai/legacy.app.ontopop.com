@@ -1,20 +1,24 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import MainArea from '../../components/MainArea'
+import EntrySearch from '../../components/EntrySearch'
 
 const setup = () => {
   const props = {
     updateStoreValue: jest.fn(),
-    entrySearchFilter: 'all',
     annotationProperties: [{
       value: 'rdfAbout',
       label: 'rdfAbout'
     }],
-    entrySearchAnnotationProperties: ['rdfAbout']
+    advancedSearchFilters: [{
+      value: 'name',
+      label: 'road'
+    }],
+    dataTypeSearch: 'any',
+    upperOntologySearch: 'any',
   }
 
-  const component = shallow(<MainArea {...props} />)
+  const component = shallow(<EntrySearch {...props} />)
 
   return {
     component,
@@ -22,7 +26,7 @@ const setup = () => {
   }
 }
 
-describe('MainArea', () => {
+describe('EntrySearch', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

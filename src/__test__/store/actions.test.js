@@ -1,4 +1,3 @@
-// import { DataSet } from 'vis-data'
 import { OPERATION_TYPE_ARRAY_DELETE, OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_PUSH_UNIQUE } from '../../constants/store'
 import actions from '../../store/actions'
 

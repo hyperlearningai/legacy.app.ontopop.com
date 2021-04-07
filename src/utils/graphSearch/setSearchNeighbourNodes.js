@@ -32,6 +32,7 @@ const setSearchNeighbourNodes = ({
 
   const selectedNodesId = []
   const selectedEdgesId = []
+  updateStoreValue(['nodesIdsToDisplay'], OPERATION_TYPE_UPDATE, [])
 
   if (type === 'node') {
     selectedNodesId.push(id)

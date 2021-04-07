@@ -1,46 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GraphSearch should match snapshot when isQueried false 1`] = `
+exports[`GraphSearch should match snapshot when isFirstQuery false 1`] = `
 <Connect
-  actions={
+  actions={Object {}}
+  entrySearchResultsByPage={
     Object {
-      "updateStoreValue": [Function],
+      "0": Object {
+        "id": "1",
+      },
+      "1": Object {
+        "id": "3",
+      },
     }
   }
-  entrySearchResults={
-    Array [
-      Object {
-        "id": "123",
-      },
-    ]
-  }
-  entrySearchValue="value"
-  isQueried={false}
+  entrySearchValue="road"
+  isFirstQuery={false}
+  isSearchLoading={false}
   mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
+  searchPageSelected={0}
 >
   <Component />
 </Connect>
 `;
 
-exports[`GraphSearch should match snapshot when isQueried true 1`] = `
+exports[`GraphSearch should match snapshot when isFirstQuery true and search page selected with no values 1`] = `
 <Connect
-  actions={
+  actions={Object {}}
+  entrySearchResultsByPage={
     Object {
-      "updateStoreValue": [Function],
+      "0": Object {
+        "id": "1",
+      },
+      "1": Object {
+        "id": "3",
+      },
     }
   }
-  entrySearchResults={
-    Array [
-      Object {
-        "id": "123",
-      },
-    ]
-  }
-  entrySearchValue="value"
-  isQueried={true}
+  entrySearchValue="road"
+  isFirstQuery={true}
+  isSearchLoading={false}
   mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
+  searchPageSelected={2}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`GraphSearch should match snapshot when isFirstQuery true and search page selected with values 1`] = `
+<Connect
+  actions={Object {}}
+  entrySearchResultsByPage={
+    Object {
+      "0": Object {
+        "id": "1",
+      },
+      "1": Object {
+        "id": "3",
+      },
+    }
+  }
+  entrySearchValue="road"
+  isFirstQuery={true}
+  isSearchLoading={false}
+  mapToProps={[Function]}
+  searchPageSelected={0}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`GraphSearch should match snapshot when isSearchLoading false 1`] = `
+<Connect
+  actions={Object {}}
+  entrySearchResultsByPage={
+    Object {
+      "0": Object {
+        "id": "1",
+      },
+      "1": Object {
+        "id": "3",
+      },
+    }
+  }
+  entrySearchValue="road"
+  isFirstQuery={false}
+  isSearchLoading={true}
+  mapToProps={[Function]}
+  searchPageSelected={0}
 >
   <Component />
 </Connect>

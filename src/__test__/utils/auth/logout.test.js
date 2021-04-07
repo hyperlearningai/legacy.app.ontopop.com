@@ -370,7 +370,14 @@ describe('logout', () => {
         ],
         [
           [
-            'isQueried'
+            'entrySearchResultsByPage'
+          ],
+          OPERATION_TYPE_UPDATE,
+          {}
+        ],
+        [
+          [
+            'isFirstQuery'
           ],
           OPERATION_TYPE_UPDATE,
           false
@@ -381,6 +388,74 @@ describe('logout', () => {
           ],
           OPERATION_TYPE_UPDATE,
           ''
+        ],
+        [
+          [
+            'isDataEntityTypeSearch',
+          ],
+          OPERATION_TYPE_UPDATE,
+          true,
+        ],
+        [
+          [
+            'isDatasetTypeSearch',
+          ],
+          OPERATION_TYPE_UPDATE,
+          true,
+        ],
+        [
+          [
+            'isUpperOntologySearch',
+          ],
+          OPERATION_TYPE_UPDATE,
+          true,
+        ],
+        [
+          [
+            'totalSearchCount',
+          ],
+          OPERATION_TYPE_UPDATE,
+          0,
+        ],
+        [
+          [
+            'searchPageSelected',
+          ],
+          OPERATION_TYPE_UPDATE,
+          0,
+        ],
+        [
+          [
+            'isSearchLoading',
+          ],
+          OPERATION_TYPE_UPDATE,
+          false,
+        ],
+        [
+          [
+            'dataTypeSearch',
+          ],
+          OPERATION_TYPE_UPDATE,
+          'any',
+        ],
+        [
+          [
+            'upperOntologySearch',
+          ],
+          OPERATION_TYPE_UPDATE,
+          'any',
+        ],
+        [
+          [
+            'advancedSearchFilters',
+          ],
+          OPERATION_TYPE_UPDATE,
+          {
+            0: {
+              property: '',
+              value: '',
+            },
+          },
         ],
         [
           [

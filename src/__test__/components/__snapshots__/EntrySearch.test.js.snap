@@ -1,11 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainArea should match snapshot 1`] = `
+exports[`EntrySearch should match snapshot 1`] = `
 <Connect
   actions={
     Object {
       "updateStoreValue": [Function],
     }
+  }
+  advancedSearchFilters={
+    Array [
+      Object {
+        "label": "road",
+        "value": "name",
+      },
+    ]
   }
   annotationProperties={
     Array [
@@ -15,14 +23,10 @@ exports[`MainArea should match snapshot 1`] = `
       },
     ]
   }
-  entrySearchAnnotationProperties={
-    Array [
-      "rdfAbout",
-    ]
-  }
-  entrySearchFilter="all"
+  dataTypeSearch="any"
   mapToProps={[Function]}
   updateStoreValue={[MockFunction]}
+  upperOntologySearch="any"
 >
   <Component />
 </Connect>

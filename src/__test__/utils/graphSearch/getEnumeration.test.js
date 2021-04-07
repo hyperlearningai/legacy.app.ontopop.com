@@ -1,4 +1,4 @@
-import getSuggestions from '../../../utils/graphSearch/getSuggestions'
+import getEnumeration from '../../../utils/graphSearch/getEnumeration'
 import showNotification from '../../../utils/notifications/showNotification'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import en from '../../../i18n/en'
@@ -11,24 +11,9 @@ const query = 'road'
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('../../../utils/apiCalls/httpCall')
 
-describe('getSuggestions', () => {
+describe('getEnumeration', () => {
   afterEach(() => {
     jest.clearAllMocks()
-  })
-
-  it('should equal false if short query', () => {
-    httpCall.mockImplementation(() => (
-      { error: 'apiRequestError' }
-    ))
-
-    getSuggestions({
-      query: 'ro',
-      setSuggestions,
-      updateStoreValue,
-      t
-    })
-
-    expect(setSuggestions).toHaveBeenCalledTimes(0)
   })
 
   it('should catch error', async () => {
@@ -36,8 +21,8 @@ describe('getSuggestions', () => {
       { error: 'apiRequestError' }
     ))
 
-    await getSuggestions({
-      query,
+    await getEnumeration({
+      property: 'name',
       setSuggestions,
       updateStoreValue,
       t
@@ -51,16 +36,14 @@ describe('getSuggestions', () => {
 
   it('should work correctly', async () => {
     httpCall.mockImplementation(() => ({
-      data: {
-        value: [{
-          queryPlusText: 'roadside operational',
-          text: 'roadside operational'
-        }]
-      }
+      data: [
+        'road',
+        'network'
+      ]
     }))
 
-    await getSuggestions({
-      query,
+    await getEnumeration({
+      property: 'name',
       setSuggestions,
       updateStoreValue,
       t
@@ -71,8 +54,8 @@ describe('getSuggestions', () => {
         label: 'road',
         value: 'road'
       }, {
-        label: 'roadside operational',
-        value: 'roadside operational'
+        label: 'network',
+        value: 'network'
       }]
     )
   })
@@ -84,18 +67,14 @@ describe('getSuggestions', () => {
       }
     }))
 
-    await getSuggestions({
+    await getEnumeration({
       query,
+      suggestions: [],
       setSuggestions,
       updateStoreValue,
       t
     })
 
-    expect(setSuggestions).toHaveBeenCalledWith(
-      [{
-        label: 'road',
-        value: 'road'
-      }]
-    )
+    expect(setSuggestions).toHaveBeenCalledTimes(0)
   })
 })
