@@ -45,30 +45,9 @@ const NotesList = ({
     addNodesBorders()
 
     return () => {
-      updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, undefined)
-      updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, undefined)
-
       addNodesBorders()
     }
   }, [])
-
-  useEffect(() => {
-    if (selectedNotesType === 'node' && noteElementId && noteElementId !== '') {
-      updateHighlightedElement({
-        updateStoreValue,
-        id: noteElementId,
-        type: 'node'
-      })
-    }
-
-    if (selectedNotesType === 'edge' && noteElementId && noteElementId !== '') {
-      updateHighlightedElement({
-        updateStoreValue,
-        id: noteElementId,
-        type: 'edge'
-      })
-    }
-  }, [noteElementId, selectedNotesType])
 
   const filterNode = (note) => {
     if (search === '' && !filter) return true
@@ -186,7 +165,11 @@ const NotesList = ({
                     ? availableNodesList
                     : availableEdgesList
                 }
-                onChange={(e) => updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, e.value)}
+                onChange={(e) => updateHighlightedElement({
+                  updateStoreValue,
+                  id: e.value,
+                  type: selectedNotesType,
+                })}
               />
             </div>
           )
@@ -276,26 +259,25 @@ const NotesList = ({
                     </div>
 
                     {
-                    filter === 'userId' && (
-                      <div className="notes-select-row">
-                        <label htmlFor="notes-select">
-                          {t('selectUserIds')}
-                        </label>
-                        <MultiSelect
-                          id="notes-filter-user"
-                          value={filterValue}
-                          filter
-                          options={userIds}
-                          onChange={(e) => setFilterValue(e.value)}
-                        />
-                      </div>
-                    )
-                  }
+                      filter === 'userId' && (
+                        <div className="notes-select-row">
+                          <label htmlFor="notes-select">
+                            {t('selectUserIds')}
+                          </label>
+                          <MultiSelect
+                            id="notes-filter-user"
+                            value={filterValue}
+                            filter
+                            options={userIds}
+                            onChange={(e) => setFilterValue(e.value)}
+                          />
+                        </div>
+                      )
+                    }
 
-                    {
-                    (
+                    {(
                       filter === 'dateCreated'
-                      || filter === 'dateLastUpdated'
+                    || filter === 'dateLastUpdated'
                     ) && (
                       <div className="notes-select-row">
                         <Calendar
@@ -306,22 +288,21 @@ const NotesList = ({
                           inline
                         />
                       </div>
-                    )
-                  }
+                    )}
 
                   </AccordionTab>
                 </Accordion>
               </div>
 
               {
-              filteredNotes.length > 0
-              && orderBy(filteredNotes, [sortField], [sortDirection]).map((note) => (
-                <NotesListNote
-                  key={`note-card-${note.id}`}
-                  note={note}
-                />
-              ))
-            }
+                filteredNotes.length > 0
+                && orderBy(filteredNotes, [sortField], [sortDirection]).map((note) => (
+                  <NotesListNote
+                    key={`note-card-${note.id}`}
+                    note={note}
+                  />
+                ))
+              }
             </div>
           )
         }

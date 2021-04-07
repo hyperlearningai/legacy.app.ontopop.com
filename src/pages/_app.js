@@ -15,9 +15,12 @@ import AuthCheck from '../components/AuthCheck'
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
+
     return (
       <Provider store={store}>
-        <AuthCheck />
+        <AuthCheck
+          pageProps={pageProps}
+        />
         <Component {...pageProps} />
         <ReactNotification />
       </Provider>

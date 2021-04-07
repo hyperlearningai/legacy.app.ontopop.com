@@ -19,13 +19,13 @@ import SynonymsListAddNew from './SynonymsListAddNew'
 import synonymsGetSynonyms from '../utils/synonyms/synonymsGetSynonyms'
 import SynonymsListNode from './SynonymsListNode'
 import { NODE_TYPE } from '../constants/graph'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
+import { getElementIdAndType } from '../constants/functions'
 
 const SynonymsList = ({
   nodesSynonyms,
   updateStoreValue,
-  synonymElementId,
+  selectedElement,
   classesFromApi
 }) => {
   const { t } = useTranslation()
@@ -36,36 +36,25 @@ const SynonymsList = ({
   const [filter, setFilter] = useState(undefined)
   const [filterValue, setFilterValue] = useState('')
 
+  let synonymElementId
+
+  const [elementId, type] = getElementIdAndType(selectedElement)
+
+  if (elementId && type === 'node') {
+    synonymElementId = elementId
+  }
+
   useEffect(() => {
-    // get node synonyms
-    if (synonymElementId) {
+    const [newElementId, newType] = getElementIdAndType(selectedElement)
+
+    if (newElementId && newType === 'node') {
       synonymsGetSynonyms({
-        selectedElement: synonymElementId,
+        selectedElement: newElementId,
         updateStoreValue,
         t
       })
     }
-
-    return () => {
-      updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, undefined)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (synonymElementId && synonymElementId !== '') {
-      updateHighlightedElement({
-        updateStoreValue,
-        id: synonymElementId,
-        type: 'node'
-      })
-
-      synonymsGetSynonyms({
-        selectedElement: synonymElementId,
-        updateStoreValue,
-        t
-      })
-    }
-  }, [synonymElementId])
+  }, [selectedElement])
 
   const filterNode = (synonymObject) => {
     if (search === '' && !filter) return true
@@ -121,7 +110,11 @@ const SynonymsList = ({
             name="synonyms-select-element"
             value={synonymElementId}
             options={availableNodesList}
-            onChange={(e) => updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, e.value)}
+            onChange={(e) => updateHighlightedElement({
+              updateStoreValue,
+              id: e.value,
+              type: 'node',
+            })}
           />
         </div>
 
@@ -257,22 +250,22 @@ const SynonymsList = ({
 
 SynonymsList.propTypes = {
   nodesSynonyms: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  synonymElementId: PropTypes.string,
   updateStoreValue: PropTypes.func.isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
+  selectedElement: PropTypes.shape(),
+  classesFromApi: PropTypes.shape().isRequired
 }
 
 SynonymsList.defaultProps = {
-  synonymElementId: undefined,
+  selectedElement: undefined
 }
 
 const mapToProps = ({
   nodesSynonyms,
-  synonymElementId,
+  selectedElement,
   classesFromApi
 }) => ({
   nodesSynonyms,
-  synonymElementId,
+  selectedElement,
   classesFromApi
 })
 

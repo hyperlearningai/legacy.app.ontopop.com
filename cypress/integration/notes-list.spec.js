@@ -75,18 +75,6 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('link')
-
-      cy.wait('@linkAutocomplete')
-
-      cy.get('.p-autocomplete-item').eq(0).click()
-
-      cy.wait('@linkSearch')
-
-      cy.get('#card-visualise-btn-0').click()
-
-      cy.wait(1000)
-
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
 
@@ -214,9 +202,6 @@ context('Notes list', () => {
 
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
-
-      // select node
-      cy.get('#notes-select').find('.p-button').eq(1).click()
 
       // select first node from dropdown
       cy.get('#notes-select-element').find('.p-dropdown-trigger').click({ force: true })

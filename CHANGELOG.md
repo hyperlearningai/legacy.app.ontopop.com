@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-90 Added search bar autocomplete
 
 ### Changed
+- ONTOLOGY-133 Node or edge selection in network view updates notes and synonims view
 - ONTOLOGY-140 Updated no search results page with link to entire ontology graph
 - ONTOLOGY-90 Search performed via Search APi rather than locally 
 - ONTOLOGY-90 Added vocabulary API endpoint and updated paths

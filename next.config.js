@@ -3,15 +3,13 @@ const withImages = require('next-images')
 module.exports = withImages({
   target: 'serverless', // 'serverless',
   // trailingSlash: false, // true,
-  // // redirects: async () =>  {
-  // //   return [
-  // //     {
-  // //       source: '/search',
-  // //       destination: '/search',
-  // //       permanent: false,
-  // //     },
-  // //   ]
-  // // },
+  redirects: async () => [
+    {
+      source: '/_error',
+      destination: '/search',
+      permanent: false
+    },
+  ],
   exportPathMap: () => {
     // const dynamicRoutes = [
     //   '/search',

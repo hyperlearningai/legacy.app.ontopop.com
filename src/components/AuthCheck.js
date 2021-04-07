@@ -6,10 +6,12 @@ import { useTranslation } from 'react-i18next'
 import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
 import startupActions from '../utils/graphVisualisation/startupActions'
+import { ROUTE_LOGIN } from '../constants/routes'
 
 const AuthCheck = ({
   updateStoreValue,
   user,
+  pageProps
 }) => {
   const { t } = useTranslation()
 
@@ -36,12 +38,19 @@ const AuthCheck = ({
   },
   [user])
 
+  useEffect(() => {
+    if (pageProps.statusCode === 404) {
+      router.push(ROUTE_LOGIN)
+    }
+  }, [pageProps.statusCode])
+
   return null
 }
 
 AuthCheck.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   user: PropTypes.shape().isRequired,
+  pageProps: PropTypes.shape().isRequired,
 }
 
 const mapPropsToState = ({
