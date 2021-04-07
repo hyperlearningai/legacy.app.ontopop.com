@@ -400,6 +400,8 @@ export default {
   any: 'Any',
   lowerOntology: 'Lower ontology',
   weCouldNotFindAnyMatchFor: 'We could not find any match for',
+  pleaseTryDifferentQuery: 'Please try a different search query.',
+  visualiseEntireOntology: 'Visualise entire ontology',
 
   // edges list
   edges: 'Edges',
