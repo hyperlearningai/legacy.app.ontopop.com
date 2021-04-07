@@ -12,7 +12,6 @@ import showNotification from '../notifications/showNotification'
  * Get search suggestions
  * @param  {Object}   params
  * @param  {String}   params.query                  Search query
- * @param  {Array}    params.suggestions            Available suggestions
  * @param  {Function} params.setSuggestions         Set suggestions function
  * @param  {Function} params.updateStoreValue       updateStoreValue function
  * @param  {Function} params.t                      Internationalisation function
@@ -20,14 +19,13 @@ import showNotification from '../notifications/showNotification'
  */
 const getSuggestions = async ({
   query,
-  suggestions,
   setSuggestions,
   updateStoreValue,
   t
 }) => {
   if (query.length < 3) return false
 
-  const newSuggestions = suggestions.slice()
+  const newSuggestions = []
 
   const firstSuggestion = {
     label: query,

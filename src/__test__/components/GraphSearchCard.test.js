@@ -6,6 +6,7 @@ import GraphSearchCard from '../../components/GraphSearchCard'
 const setup = () => {
   const props = {
     updateStoreValue: jest.fn(),
+    index: 0,
     searchResult: {
       id: '123',
       rdfsLabel: 'test',

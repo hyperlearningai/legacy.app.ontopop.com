@@ -83,7 +83,7 @@ const EntrySearch = ({
                 className="p-field-radiobutton"
               >
                 <RadioButton
-                  inputId={`data-type-option-${option.value}`}
+                  id={`data-type-option-${option.value}`}
                   name="data-type-option"
                   value={option.value}
                   onChange={() => updateStoreValue(['dataTypeSearch'], OPERATION_TYPE_UPDATE, option.value)}
@@ -109,7 +109,7 @@ const EntrySearch = ({
                 className="p-field-radiobutton"
               >
                 <RadioButton
-                  inputId={`data-type-option-${option.value}`}
+                  id={`ontology-type-option-${option.value}`}
                   name="data-type-option"
                   value={option.value}
                   onChange={() => updateStoreValue(['upperOntologySearch'], OPERATION_TYPE_UPDATE, option.value)}
@@ -193,6 +193,7 @@ const EntrySearch = ({
                       <Button
                         icon="pi pi-plus"
                         className="p-m-1"
+                        id={`advanced-search-plus-${searchFilterKey}`}
                         aria-label={t('add')}
                         onClick={() => updateStoreValue(['advancedSearchFilters'], OPERATION_TYPE_OBJECT_ADD, { [maxSearchFilterKey + 1]: JSON.parse(JSON.stringify(ADVANCED_SEARCH_TEMPLATE)) })}
                       />
@@ -200,6 +201,7 @@ const EntrySearch = ({
                       <Button
                         icon="pi pi-minus"
                         className="p-m-1"
+                        id={`advanced-search-minus-${searchFilterKey}`}
                         aria-label={t('remove')}
                         onClick={() => {
                           if (searchFilterKeys.length > 1) {

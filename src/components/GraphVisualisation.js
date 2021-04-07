@@ -26,7 +26,6 @@ const GraphVisualisation = ({
   updateStoreValue
 }) => {
   const { t } = useTranslation()
-  const isInitialMountCurrentGraph = useRef(true)
   const isInitialMountNetwork = useRef(true)
 
   const visJsRef = useRef(null)
@@ -48,15 +47,10 @@ const GraphVisualisation = ({
   ])
 
   // update available nodes/edges according to view
-  useEffect(() => {
-    if (isInitialMountCurrentGraph.current) {
-      isInitialMountCurrentGraph.current = false
-    } else if (nodesIdsToDisplay.length > 0) {
-      addNodesToGraph({
-        updateStoreValue
-      })
-    }
-  }, [
+  useEffect(() => addNodesToGraph({
+    updateStoreValue
+  }),
+  [
     nodesIdsToDisplay,
   ])
 

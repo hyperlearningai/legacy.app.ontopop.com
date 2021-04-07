@@ -125,7 +125,12 @@ const SynonymsList = ({
           />
         </div>
 
-        <SynonymsListAddNew />
+        {
+          synonymElementId && (
+            <SynonymsListAddNew />
+          )
+        }
+
         <Divider />
 
         {

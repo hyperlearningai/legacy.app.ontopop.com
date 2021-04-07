@@ -3,6 +3,8 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import linkAutocomplete from '../fixtures/linkAutocomplete'
+import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_NETWORK_GRAPHS } from '../../src/constants/routes'
 
 context('Network graph', () => {
@@ -42,6 +44,16 @@ context('Network graph', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -51,16 +63,15 @@ context('Network graph', () => {
 
       cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for link: 6')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click()
+
+      cy.wait(1000)
 
       cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPHS)
 

@@ -43,8 +43,9 @@ const GraphSearch = ({
                         <div className="graph-search-results">
                           <div className="graph-search-results-list">
                             {
-                            searchResults.map((searchResult) => (
+                            searchResults.map((searchResult, index) => (
                               <GraphSearchCard
+                                index={index}
                                 key={`graph-card-${searchResult.type}-${searchResult.label}`}
                                 searchResult={searchResult}
                               />

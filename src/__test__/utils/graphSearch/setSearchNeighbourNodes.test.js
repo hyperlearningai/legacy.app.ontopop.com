@@ -37,6 +37,13 @@ describe('setSearchNeighbourNodes', () => {
     expect(updateStoreValue.mock.calls).toEqual([
       [
         [
+          'nodesIdsToDisplay',
+        ],
+        'update',
+        [],
+      ],
+      [
+        [
           'graphData',
           'graph-2',
         ],
@@ -95,6 +102,13 @@ describe('setSearchNeighbourNodes', () => {
     })
 
     expect(updateStoreValue.mock.calls).toEqual([
+      [
+        [
+          'nodesIdsToDisplay',
+        ],
+        'update',
+        [],
+      ],
       [
         [
           'graphData',

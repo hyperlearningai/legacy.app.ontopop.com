@@ -52,7 +52,6 @@ const SearchBar = ({
 
                     getSuggestions({
                       query,
-                      suggestions,
                       setSuggestions,
                       updateStoreValue,
                       t

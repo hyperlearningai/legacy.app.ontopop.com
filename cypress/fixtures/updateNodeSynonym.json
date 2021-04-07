@@ -2,7 +2,7 @@
   "statusCode": 200,
   "body": {
     "id":1,
-    "nodeId":13,
+    "nodeId":42,
     "edgeId":0,
     "userId":"valid@email.com",
     "synonym":"Latest node synonym added",

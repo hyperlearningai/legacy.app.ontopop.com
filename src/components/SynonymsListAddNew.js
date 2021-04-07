@@ -5,19 +5,19 @@ import { connect } from 'redux-zero/react'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
-import getNode from '../utils/nodesEdgesUtils/getNode'
 import synonymsCreateSynonym from '../utils/synonyms/synonymsCreateSynonym'
 
 const SynonymsListAddNew = ({
   synonymElementId,
   updateStoreValue,
+  classesFromApi
 }) => {
   const { t } = useTranslation()
 
   const [synonymText, setSynonymText] = useState('')
   const [showForm, setShowForm] = useState(false)
 
-  const elementLabel = getNode(synonymElementId).label
+  const elementLabel = classesFromApi[synonymElementId].label
 
   return (
     <div className="card">
@@ -90,6 +90,7 @@ const SynonymsListAddNew = ({
 SynonymsListAddNew.propTypes = {
   synonymElementId: PropTypes.string,
   updateStoreValue: PropTypes.func.isRequired,
+  classesFromApi: PropTypes.shape().isRequired,
 }
 
 SynonymsListAddNew.defaultProps = {
@@ -101,13 +102,15 @@ const mapToProps = ({
   synonymElementId,
   nodesNotes,
   edgesNotes,
-  user
+  user,
+  classesFromApi
 }) => ({
   synonyms,
   synonymElementId,
   nodesNotes,
   edgesNotes,
-  user
+  user,
+  classesFromApi
 })
 
 export default connect(

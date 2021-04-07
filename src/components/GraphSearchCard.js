@@ -8,11 +8,12 @@ import actions from '../store/actions'
 import setSearchNeighbourNodes from '../utils/graphSearch/setSearchNeighbourNodes'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
-import { DATASET_REPO_URL } from '../constants/routes'
+import { DATASET_REPO_URL, ROUTE_NOTES, ROUTE_SYNONYMS } from '../constants/routes'
 
 const GraphSearchCard = ({
   updateStoreValue,
   searchResult,
+  index
 }) => {
   const { t } = useTranslation()
 
@@ -50,11 +51,16 @@ const GraphSearchCard = ({
         <Button
           aria-label={t('visualise')}
           label={t('visualise')}
-          onClick={() => setSearchNeighbourNodes({
-            separationDegree: 1,
-            updateStoreValue,
-            searchResult,
-          })}
+          id={`card-visualise-btn-${index}`}
+          onClick={() => {
+            setSearchNeighbourNodes({
+              separationDegree: 1,
+              updateStoreValue,
+              searchResult,
+            })
+
+            updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { [id]: 'node' })
+          }}
         />
 
         {type === 'dataset' ? (
@@ -72,6 +78,7 @@ const GraphSearchCard = ({
             <Button
               aria-label={t('notes')}
               label={t('notes')}
+              id={`card-notes-btn-${index}`}
               onClick={() => {
                 setSearchNeighbourNodes({
                   separationDegree: 1,
@@ -79,14 +86,18 @@ const GraphSearchCard = ({
                   searchResult,
                 })
 
+                updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
+                updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, id)
                 updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { [id]: 'node' })
                 updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
+                window.history.pushState('', '', ROUTE_NOTES)
               }}
             />
 
             <Button
               aria-label={t('synonyms')}
               label={t('synonyms')}
+              id={`card-synonyms-btn-${index}`}
               onClick={() => {
                 setSearchNeighbourNodes({
                   separationDegree: 1,
@@ -94,8 +105,10 @@ const GraphSearchCard = ({
                   searchResult,
                 })
 
+                updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, id)
                 updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { [id]: 'node' })
                 updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
+                window.history.pushState('', '', ROUTE_SYNONYMS)
               }}
             />
           </>
@@ -109,6 +122,7 @@ const GraphSearchCard = ({
 GraphSearchCard.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   searchResult: PropTypes.shape().isRequired,
+  index: PropTypes.number.isRequired,
 }
 
 const mapToProps = ({

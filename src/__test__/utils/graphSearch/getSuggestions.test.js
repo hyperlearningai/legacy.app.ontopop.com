@@ -23,7 +23,6 @@ describe('getSuggestions', () => {
 
     getSuggestions({
       query: 'ro',
-      suggestions: [],
       setSuggestions,
       updateStoreValue,
       t
@@ -39,7 +38,6 @@ describe('getSuggestions', () => {
 
     await getSuggestions({
       query,
-      suggestions: [],
       setSuggestions,
       updateStoreValue,
       t
@@ -63,7 +61,6 @@ describe('getSuggestions', () => {
 
     await getSuggestions({
       query,
-      suggestions: [],
       setSuggestions,
       updateStoreValue,
       t
@@ -89,7 +86,6 @@ describe('getSuggestions', () => {
 
     await getSuggestions({
       query,
-      suggestions: [],
       setSuggestions,
       updateStoreValue,
       t

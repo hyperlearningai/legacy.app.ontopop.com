@@ -6,6 +6,8 @@ import deleteNodeSynonym from '../fixtures/deleteNodeSynonym'
 import createNodeSynonym from '../fixtures/createNodeSynonym'
 import updateNodeSynonym from '../fixtures/updateNodeSynonym'
 import getStyling from '../fixtures/getStyling'
+import linkAutocomplete from '../fixtures/linkAutocomplete'
+import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_SYNONYMS } from '../../src/constants/routes'
 
 context('Synonyms list', () => {
@@ -50,6 +52,16 @@ context('Synonyms list', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -57,26 +69,24 @@ context('Synonyms list', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('road')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-button')
-        .eq(1)
-        .click()
+      // click the synonym sidebar icon
+      cy.get('#card-synonyms-btn-0').click()
+      cy.location('pathname').should('be.equal', ROUTE_SYNONYMS)
+
+      cy.get('#sidebar-button-search').click()
+
+      cy.get('#card-visualise-btn-0').click()
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 5')
-
-      // click the synonym sidebar icon
       cy.get('#sidebar-button-synonyms').click()
 
       cy.wait(500)
@@ -87,14 +97,14 @@ context('Synonyms list', () => {
       cy.get('#synonyms-select-element').find('.p-dropdown-trigger').click({ force: true })
 
       // only class type nodes should be displayed
-      cy.get('#synonyms-select-element').find('.p-dropdown-item').should('have.length', 2)
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').should('have.length', 13)
 
       // select first node
-      cy.get('#synonyms-select-element').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // add Node synonym
       cy.get('#add-synonym').click()
-      cy.get('#selected-element-label').should('have.text', 'For Node: Geotechnical')
+      cy.get('#selected-element-label').should('have.text', 'For Node: Link')
 
       cy.get('#synonym-textarea').type('Latest node synonym')
       cy.get('#submit-synonym').click()
