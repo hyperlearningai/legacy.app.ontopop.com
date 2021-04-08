@@ -87,7 +87,7 @@ export default {
   // elements selection
 
   // structured search
-  filterElementsByArbitraryPropsCombination: 'Filter nodes or adges by any arbitrary combination of one or more node property values',
+  filterElementsByArbitraryPropsCombination: 'Filter nodes or edges by any arbitrary combination of one or more node property values',
   and: 'And',
   or: 'Or',
   chooseLogic: 'Choose logic',
@@ -400,6 +400,8 @@ export default {
   any: 'Any',
   lowerOntology: 'Lower ontology',
   weCouldNotFindAnyMatchFor: 'We could not find any match for',
+  pleaseTryDifferentQuery: 'Please try a different search query.',
+  visualiseEntireOntology: 'Visualise entire ontology',
 
   // edges list
   edges: 'Edges',

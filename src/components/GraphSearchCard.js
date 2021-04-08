@@ -58,7 +58,8 @@ const GraphSearchCard = ({
               updateStoreValue,
               searchResult,
             })
-
+            updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
+            updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, id)
             updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { [id]: 'node' })
           }}
         />
@@ -104,8 +105,8 @@ const GraphSearchCard = ({
                   updateStoreValue,
                   searchResult,
                 })
-
-                updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, id)
+                updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
+                updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, id)
                 updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { [id]: 'node' })
                 updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
                 window.history.pushState('', '', ROUTE_SYNONYMS)

@@ -54,8 +54,7 @@ const GraphContextMenu = ({
         label: t('synonyms'),
         icon: 'pi pi-file',
         command: () => {
-          updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, nodeId)
-          updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
+          updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { [nodeId]: 'node' })
           updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
           updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
           window.history.pushState('', '', ROUTE_SYNONYMS)

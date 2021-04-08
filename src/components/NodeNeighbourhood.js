@@ -11,6 +11,7 @@ import actions from '../store/actions'
 import { SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import setNeighbourNodes from '../utils/nodeNeighbourhood/setNeighbourNodes'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
+import { getElementIdAndType } from '../constants/functions'
 
 const NodeNeighbourhood = ({
   updateStoreValue,
@@ -21,7 +22,7 @@ const NodeNeighbourhood = ({
 
   const [separationDegree, setSeparationDegree] = useState(1)
 
-  const [selectedNode, selectedNodeType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, false]
+  const [selectedNode, selectedNodeType] = getElementIdAndType(selectedElement)
 
   return (
     <>

@@ -13,6 +13,7 @@ import NodesSelectionDetails from './NodesSelectionDetails'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { getElementIdAndType } from '../constants/functions'
 
 const ElementsSelection = ({
   selectedElement,
@@ -21,13 +22,14 @@ const ElementsSelection = ({
 }) => {
   const { t } = useTranslation()
 
-  const [selectedElID, selectedElType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, 'node']
-  const [selectedElementType, selectElementType] = useState(selectedElType)
+  const [selectedElID, selectedElType] = getElementIdAndType(selectedElement)
+  const [selectedElementType, selectElementType] = useState(selectedElType || 'node')
   const [selectedElementID, selectElementID] = useState(selectedElID)
 
   useEffect(() => {
-    const [selectedID, selectedType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, 'node']
-    selectElementType(selectedType)
+    const [selectedID, selectedType] = getElementIdAndType(selectedElement)
+
+    selectElementType(selectedType || 'node')
     selectElementID(selectedID)
   }, [selectedElement])
 

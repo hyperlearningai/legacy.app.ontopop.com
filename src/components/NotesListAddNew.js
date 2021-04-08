@@ -22,17 +22,25 @@ const NotesListAddNew = ({
   let elementLabel
 
   if (selectedNotesType === 'node') {
-    elementLabel = getNode(noteElementId).label
+    const node = getNode(noteElementId)
+
+    if (node !== null) {
+      elementLabel = node.label
+    }
   }
 
   if (selectedNotesType === 'edge') {
-    const {
-      from,
-      to,
-      label
-    } = getEdge(noteElementId)
+    const edge = getEdge(noteElementId)
 
-    elementLabel = `${getNode(from).label} => ${label} => ${getNode(to).label}`
+    if (edge !== null) {
+      const {
+        from,
+        to,
+        label
+      } = edge
+
+      elementLabel = `${getNode(from).label} => ${label} => ${getNode(to).label}`
+    }
   }
 
   return (

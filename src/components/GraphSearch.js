@@ -2,14 +2,20 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { ProgressSpinner } from 'primereact/progressspinner'
+import { Button } from 'primereact/button'
 import GraphSearchCard from './GraphSearchCard'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
+import actions from '../store/actions'
 
 const GraphSearch = ({
   entrySearchResultsByPage,
   isFirstQuery,
   isSearchLoading,
   searchPageSelected,
-  entrySearchValue
+  entrySearchValue,
+  updateStoreValue
 }) => {
   const { t } = useTranslation()
 
@@ -54,12 +60,26 @@ const GraphSearch = ({
                           </div>
                         </div>
                       ) : (
-                        <p>
-                          {t('weCouldNotFindAnyMatchFor')}
-                          {' '}
-                          <span className="bold italic">{entrySearchValue}</span>
-                          .
-                        </p>
+                        <>
+                          <p className="m-b-5">
+                            {t('weCouldNotFindAnyMatchFor')}
+                            {' '}
+                            <span className="bold italic">{entrySearchValue}</span>
+                            .
+                          </p>
+                          <p className="m-t-5">{t('pleaseTryDifferentQuery')}</p>
+                          <Button
+                            aria-label={t('visualiseEntireOntology')}
+                            label={t('visualiseEntireOntology')}
+                            id="visualise-ontology-button"
+                            className="m-t-30"
+                            onClick={() => {
+                              updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, 'graph-0')
+                              updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
+                              window.history.pushState('', '', ROUTE_NETWORK_GRAPHS)
+                            }}
+                          />
+                        </>
                       )
                   }
                 </>
@@ -78,6 +98,7 @@ GraphSearch.propTypes = {
   isSearchLoading: PropTypes.bool.isRequired,
   searchPageSelected: PropTypes.number.isRequired,
   entrySearchValue: PropTypes.string.isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
@@ -95,5 +116,6 @@ const mapToProps = ({
 })
 
 export default connect(
-  mapToProps
+  mapToProps,
+  actions
 )(GraphSearch)

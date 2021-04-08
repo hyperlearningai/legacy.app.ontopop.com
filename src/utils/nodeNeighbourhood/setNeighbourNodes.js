@@ -1,4 +1,5 @@
 import { ALGO_TYPE_NEIGHBOURHOOD } from '../../constants/algorithms'
+import { getElementIdAndType } from '../../constants/functions'
 import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
@@ -23,7 +24,7 @@ const setNeighbourNodes = ({
     graphData
   } = store.getState()
 
-  const [selectedNeighbourNode, selectedNodeType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, false]
+  const [selectedNeighbourNode, selectedNodeType] = getElementIdAndType(selectedElement)
 
   if (selectedNodeType !== 'node') return false
 

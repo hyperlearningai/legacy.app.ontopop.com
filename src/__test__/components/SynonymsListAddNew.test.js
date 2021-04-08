@@ -4,9 +4,11 @@ import toJson from 'enzyme-to-json'
 import SynonymsListAddNew from '../../components/SynonymsListAddNew'
 import { classesFromApi } from '../fixtures/classesFromApi'
 
-const setup = () => {
+const setup = ({
+  selectedElement
+}) => {
   const props = {
-    synonymElementId: '12',
+    selectedElement,
     updateStoreValue: jest.fn(),
     classesFromApi
   }
@@ -20,10 +22,22 @@ const setup = () => {
 }
 
 describe('SynonymsListAddNew', () => {
-  it('should match snapshot', () => {
+  it('should match snapshot when node selected', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      selectedElement: { 12: 'node' }
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when edge selected', () => {
+    const {
+      component
+    } = setup({
+      selectedElement: { 12: 'edge' }
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

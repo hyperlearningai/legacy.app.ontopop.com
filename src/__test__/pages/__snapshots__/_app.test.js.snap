@@ -12,7 +12,13 @@ exports[`_app should match snapshot  1`] = `
     }
   }
 >
-  <ConnectWrapper />
+  <ConnectWrapper
+    pageProps={
+      Object {
+        "success": false,
+      }
+    }
+  />
   <ConnectWrapper
     success={false}
   />
@@ -32,7 +38,15 @@ exports[`_app should match snapshot if error occurs 1`] = `
     }
   }
 >
-  <ConnectWrapper />
+  <ConnectWrapper
+    pageProps={
+      Object {
+        "error": Object {
+          "statusCode": 400,
+        },
+      }
+    }
+  />
   <ConnectWrapper
     error={
       Object {

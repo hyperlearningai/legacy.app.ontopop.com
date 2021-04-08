@@ -2,7 +2,11 @@
 
 exports[`GraphSearch should match snapshot when isFirstQuery false 1`] = `
 <Connect
-  actions={Object {}}
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
   entrySearchResultsByPage={
     Object {
       "0": Object {
@@ -25,7 +29,11 @@ exports[`GraphSearch should match snapshot when isFirstQuery false 1`] = `
 
 exports[`GraphSearch should match snapshot when isFirstQuery true and search page selected with no values 1`] = `
 <Connect
-  actions={Object {}}
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
   entrySearchResultsByPage={
     Object {
       "0": Object {
@@ -48,7 +56,11 @@ exports[`GraphSearch should match snapshot when isFirstQuery true and search pag
 
 exports[`GraphSearch should match snapshot when isFirstQuery true and search page selected with values 1`] = `
 <Connect
-  actions={Object {}}
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
   entrySearchResultsByPage={
     Object {
       "0": Object {
@@ -71,7 +83,11 @@ exports[`GraphSearch should match snapshot when isFirstQuery true and search pag
 
 exports[`GraphSearch should match snapshot when isSearchLoading false 1`] = `
 <Connect
-  actions={Object {}}
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
   entrySearchResultsByPage={
     Object {
       "0": Object {

@@ -73,11 +73,15 @@ const NodesSelectionDetails = ({
               <tbody>
                 {
                   connections.map((triple) => {
+                    const edge = getEdge(triple)
+
+                    if (edge === null) return null
+
                     const {
                       from,
                       to,
                       label
-                    } = getEdge(triple)
+                    } = edge
 
                     const fromLabel = getNode(from).label
                     const toLabel = getNode(to).label
