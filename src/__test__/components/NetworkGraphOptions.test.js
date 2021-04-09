@@ -15,9 +15,6 @@ const setup = () => {
         label: 'Search',
       }
     },
-    addNumber: jest.fn(),
-    addToObject: jest.fn(),
-    toggleFromArrayInKey: jest.fn(),
     updateStoreValue: jest.fn(),
   }
 

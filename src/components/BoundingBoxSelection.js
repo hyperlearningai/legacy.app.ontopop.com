@@ -56,9 +56,9 @@ const BoundingBoxSelection = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_BOUNDING_BOX)}
-      </div>
+      </h1>
       <div className="bounding-box">
         <div className="bounding-box-selection">
           {t('drawBoundingBox')}
@@ -90,6 +90,7 @@ const BoundingBoxSelection = ({
           </div>
           <div className="network-settings-buttons">
             <Button
+              aria-label={t('insideBoundingBox')}
               tooltip={t('insideBoundingBox')}
               tooltipOptions={{ position: 'top' }}
               className={isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
@@ -98,6 +99,7 @@ const BoundingBoxSelection = ({
               <RiAddBoxLine />
             </Button>
             <Button
+              aria-label={t('outsideBoundingBox')}
               tooltip={t('outsideBoundingBox')}
               tooltipOptions={{ position: 'top' }}
               className={!isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
@@ -109,6 +111,7 @@ const BoundingBoxSelection = ({
         </div>
 
         <Button
+          aria-label={t('showSelectedNodes')}
           tooltip={t('showSelectedNodes')}
           className="bounding-box-button"
           disabled={selectedBoundingBoxNodes.length < 1}
@@ -116,7 +119,7 @@ const BoundingBoxSelection = ({
           iconPos="right"
           label={t('show')}
           onClick={() => setBoundingBoxNodes({
-            updateStoreValue
+            updateStoreValue,
           })}
         />
       </div>

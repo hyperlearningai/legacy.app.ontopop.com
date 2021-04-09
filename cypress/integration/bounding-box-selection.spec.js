@@ -3,6 +3,9 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import linkAutocomplete from '../fixtures/linkAutocomplete'
+import linkSearch from '../fixtures/linkSearch'
+import { ROUTE_BOUNDING_BOX } from '../../src/constants/routes'
 
 context('Bounding box selection', () => {
   beforeEach(() => {
@@ -41,6 +44,16 @@ context('Bounding box selection', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -48,27 +61,24 @@ context('Bounding box selection', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('main')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for main: 103')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(4).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click()
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 17')
-
       // click the bounding box selection icon
       cy.get('#sidebar-button-bounding-box').click()
+
+      cy.wait(500)
+
+      cy.location('pathname').should('be.equal', ROUTE_BOUNDING_BOX)
 
       // generate bounding box
       cy.get('canvas').click(100, 100)

@@ -6,6 +6,9 @@ import addNode from '../fixtures/addNode'
 import addEdge from '../fixtures/addEdge'
 import getStyling from '../fixtures/getStyling'
 import saveStyling from '../fixtures/saveStyling'
+import linkAutocomplete from '../fixtures/linkAutocomplete'
+import linkSearch from '../fixtures/linkSearch'
+import { ROUTE_STYLING } from '../../src/constants/routes'
 
 context('Network styling', () => {
   beforeEach(() => {
@@ -44,120 +47,81 @@ context('Network styling', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('.auth-button').click({ force: true })
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('maintenance')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click({ force: true })
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for maintenance: 2')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(0).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click({ force: true })
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 17')
-
-      // toogle visualisation of datasets and upper ontology elements
-      cy.get('#sidebar-button-graph-options').click()
-      cy.get('#upper-ontology-checkbox').click()
-      cy.get('#dataset-checkbox').click()
-
-      cy.get('#network-graph-options-save').click()
-      cy.wait(3000)
-
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 25')
-
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click({ force: true })
+
+      cy.location('pathname').should('be.equal', ROUTE_STYLING)
 
       // open node styling
-      cy.get('.p-accordion').eq(0).click()
+      cy.get('.p-accordion-header').eq(0).find('a').click({ force: true })
 
       // open global node styling
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_6_header_0').click({ force: true })
 
-      // open global node shape
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      // // open global node shape
+      cy.get('#pr_id_7_header_0').click({ force: true })
 
       cy.get('#global-node-shape')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
       cy.get('#global-node-shape')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('#global-node-shape').find('.p-dropdown-item').eq(7).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(7).click({ force: true })
 
       // open global node size
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .click()
+      cy.get('#pr_id_7_header_1').click({ force: true })
 
       cy.get('#global-node-size')
         .find('input')
         .clear().type(100)
 
       // open global node font size
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .click()
+      cy.get('#pr_id_7_header_2').click({ force: true })
 
       cy.get('#global-node-font-size')
         .find('input')
         .clear().type(18)
 
       // open global node font alignment
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(3)
-        .click()
+      cy.get('#pr_id_7_header_3').click({ force: true })
 
       cy.get('#global-node-font-alignment')
-        .find('.p-button').eq(0).click()
+        .find('.p-button').eq(0).click({ force: true })
 
       // open global node font size
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(4)
-        .click()
+      cy.get('#pr_id_7_header_4').click({ force: true })
 
       cy.get('#global-node-border-width')
         .find('input')
@@ -168,13 +132,7 @@ context('Network styling', () => {
         .clear().type(7)
 
       // open global node colors
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(5)
-        .click()
+      cy.get('#pr_id_7_header_5').click({ force: true })
 
       cy.get('#global-node-color-text')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
@@ -201,25 +159,19 @@ context('Network styling', () => {
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open global node caption property
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(6)
-        .click()
+      cy.get('#pr_id_7_header_6').click({ force: true })
 
       cy.get('#global-node-caption-property')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('#global-node-caption-property').find('.p-dropdown-item').eq(3).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(3).click({ force: true })
 
       cy.get('#global-node-caption-property-dataset')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('#global-node-caption-property-dataset').find('.p-dropdown-item').eq(3).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(3).click({ force: true })
     })
 
     it('User-defined node styling', () => {
@@ -258,34 +210,37 @@ context('Network styling', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('.auth-button').click({ force: true })
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('value')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click({ force: true })
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click({ force: true })
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
-
       // click the edit ontology sidebar icon
-      cy.get('#sidebar-button-edit-ontology').click()
+      cy.get('#sidebar-button-edit-ontology').click({ force: true })
 
       // add node
       cy.get('.p-inputtextarea').should('have.length', 12)
@@ -293,92 +248,55 @@ context('Network styling', () => {
       cy.get('.p-inputtextarea').eq(2).type('http://test/node')
       cy.get('.p-inputtextarea').eq(3).type('Test node')
 
-      cy.get('.go-button').click()
+      cy.get('.go-button').click({ force: true })
 
       cy.wait('@addNode')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 25')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
 
-      cy.get('.vis-zoomExtends').click()
+      cy.get('.vis-zoomExtends').click({ force: true })
 
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click({ force: true })
 
       // open node styling
-      cy.get('.p-accordion').eq(0).click()
+      cy.get('.p-accordion-header').eq(0).find('a').click({ force: true })
 
       // open node styling by property
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .click()
+      cy.get('#pr_id_6_header_1').click({ force: true })
 
       // open user-defined (ud) node shape
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_7_header_0').click({ force: true })
 
       cy.get('#ud-node-shape')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('#ud-node-shape')
-        .find('.p-dropdown-trigger')
-        .click()
-
-      cy.get('#ud-node-shape').find('.p-dropdown-item').eq(7).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(7).click({ force: true })
 
       // open user-defined (ud) node size
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .click()
+      cy.get('#pr_id_7_header_1').click({ force: true })
 
       cy.get('#ud-node-size')
         .find('input')
         .clear().type(100)
 
       // open global node font size
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .click()
+      cy.get('#pr_id_7_header_2').click({ force: true })
 
       cy.get('#ud-node-font-size')
         .find('input')
         .clear().type(18)
 
       // open global node font alignment
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(3)
-        .click()
+      cy.get('#pr_id_7_header_3').click({ force: true })
 
       cy.get('#ud-node-font-alignment')
-        .find('.p-button').eq(0).click()
+        .find('.p-button').eq(0).click({ force: true })
 
       // open global node font size
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(4)
-        .click()
+      cy.get('#pr_id_7_header_4').click({ force: true })
 
       cy.get('#ud-node-border-width')
         .find('input')
@@ -389,13 +307,7 @@ context('Network styling', () => {
         .clear().type(7)
 
       // open global node colors
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(5)
-        .click()
+      cy.get('#pr_id_7_header_5').click({ force: true })
 
       cy.get('#ud-node-color-text')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
@@ -422,25 +334,19 @@ context('Network styling', () => {
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open global node caption property
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(6)
-        .click()
+      cy.get('#pr_id_7_header_6').click({ force: true })
 
       cy.get('#ud-node-caption-property')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('#ud-node-caption-property').find('.p-dropdown-item').eq(3).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(3).click({ force: true })
 
       cy.get('#ud-node-caption-property-dataset')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('#ud-node-caption-property-dataset').find('.p-dropdown-item').eq(3).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(3).click({ force: true })
     })
 
     it('Node styling by caption', () => {
@@ -474,52 +380,46 @@ context('Network styling', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('.auth-button').click({ force: true })
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('value')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click({ force: true })
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click({ force: true })
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
-
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click({ force: true })
 
       // open node styling
-      cy.get('.p-accordion').eq(0).click()
+      cy.get('.p-accordion-header').eq(0).find('a').click({ force: true })
 
       // open node styling by property
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .click()
+      cy.get('#pr_id_6_header_2').click({ force: true })
 
       // open first node property tab
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_7_header_0').click({ force: true })
 
       cy.get('.p-accordion').eq(0).find('.p-accordion-content')
         .find('.p-accordion-tab')
@@ -528,15 +428,9 @@ context('Network styling', () => {
         .find('.p-accordion-tab')
         .eq(0)
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-dropdown-item')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item')
         .eq(6)
         .click({ force: true })
 
@@ -549,7 +443,7 @@ context('Network styling', () => {
         .find('.p-selectbutton')
         .find('.p-button')
         .eq(0)
-        .click()
+        .click({ force: true })
 
       cy.get('.p-accordion').eq(0).find('.p-accordion-content')
         .find('.p-accordion-tab')
@@ -568,15 +462,9 @@ context('Network styling', () => {
         .eq(0)
         .find('.p-dropdown-trigger')
         .eq(1)
-        .click()
+        .click({ force: true })
 
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-dropdown-item')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item')
         .eq(6)
         .click({ force: true })
 
@@ -619,78 +507,60 @@ context('Network styling', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('.auth-button').click({ force: true })
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('value')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click({ force: true })
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click({ force: true })
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
-
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click({ force: true })
 
       // open edge styling
-      cy.get('.p-accordion').eq(1).click()
+      cy.get('.p-accordion-header').eq(1).find('a').click({ force: true })
 
       // open global edge styling
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_6_header_0').click({ force: true })
 
       // open global edge length
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_7_header_0').click({ force: true })
 
       cy.get('#global-edge-length')
         .find('input')
         .clear().type(100)
 
       // open global edge width
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .click()
+      cy.get('#pr_id_7_header_1').click({ force: true })
 
       cy.get('#global-edge-width')
         .find('input')
         .clear().type(10)
 
       // open global edge colors
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .click()
+      cy.get('#pr_id_7_header_2').click({ force: true })
 
       cy.get('#global-edge-color-line')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
@@ -702,68 +572,38 @@ context('Network styling', () => {
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open global edge line style
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(3)
-        .click()
+      cy.get('#pr_id_7_header_3').click({ force: true })
 
       cy.get('#global-edge-line-style')
-        .find('.p-button').eq(0).click()
+        .find('.p-button').eq(0).click({ force: true })
 
       // open global edge text size
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(4)
-        .click()
+      cy.get('#pr_id_7_header_4').click({ force: true })
 
       cy.get('#global-edge-text-size')
         .find('input')
         .clear().type(20)
 
       // open global edge text color
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(5)
-        .click()
+      cy.get('#pr_id_7_header_5').click({ force: true })
 
       cy.get('#global-edge-text-color')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open global edge text align
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(6)
-        .click()
+      cy.get('#pr_id_7_header_6').click({ force: true })
 
       cy.get('#global-edge-text-align')
-        .find('.p-button').eq(0).click()
+        .find('.p-button').eq(0).click({ force: true })
 
       // open global node caption property
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(7)
-        .click()
+      cy.get('#pr_id_7_header_7').click({ force: true })
 
       cy.get('#global-edge-caption-property')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('#global-edge-caption-property').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
     })
 
     it('User-defined edge styling', () => {
@@ -802,87 +642,75 @@ context('Network styling', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('.auth-button').click({ force: true })
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('value')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click({ force: true })
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click({ force: true })
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
-
       // click the edit ontology sidebar icon
-      cy.get('#sidebar-button-edit-ontology').click()
+      cy.get('#sidebar-button-edit-ontology').click({ force: true })
 
       // add edge
-      cy.get('#type-select').find('.p-button').eq(1).click()
+      cy.get('#type-select').find('.p-button').eq(1).click({ force: true })
 
       cy.get('#graph-select-from').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#graph-select-from').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       cy.get('#graph-select-edge').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#graph-select-edge').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       cy.get('#graph-select-to').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#graph-select-to').find('.p-dropdown-item').eq(2).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })
 
-      cy.get('.go-button').click()
+      cy.get('.go-button').click({ force: true })
 
       cy.wait('@addEdge')
 
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 14')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 53')
 
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click({ force: true })
 
       // open edge styling
-      cy.get('.p-accordion').eq(1).click()
+      cy.get('.p-accordion-header').eq(1).find('a').click({ force: true })
 
       // open user-defined (ud) edge styling
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .click()
+      cy.get('#pr_id_6_header_1').click({ force: true })
 
       // open ud edge width
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_7_header_0').click({ force: true })
 
       cy.get('#ud-edge-width')
         .find('input')
         .clear().type(10)
 
       // open ud edge colors
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .click()
+      cy.get('#pr_id_7_header_1').click({ force: true })
 
       cy.get('#ud-edge-color-line')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
@@ -894,68 +722,38 @@ context('Network styling', () => {
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open ud edge line style
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .click()
+      cy.get('#pr_id_7_header_2').click({ force: true })
 
       cy.get('#ud-edge-line-style')
-        .find('.p-button').eq(0).click()
+        .find('.p-button').eq(0).click({ force: true })
 
       // open ud edge text size
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(3)
-        .click()
+      cy.get('#pr_id_7_header_3').click({ force: true })
 
       cy.get('#ud-edge-text-size')
         .find('input')
         .clear().type(20)
 
       // open ud edge text color
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(4)
-        .click()
+      cy.get('#pr_id_7_header_4').click({ force: true })
 
       cy.get('#ud-edge-text-color')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open ud edge text align
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(5)
-        .click()
+      cy.get('#pr_id_7_header_5').click({ force: true })
 
       cy.get('#ud-edge-text-align')
-        .find('.p-button').eq(0).click()
+        .find('.p-button').eq(0).click({ force: true })
 
       // open ud node caption property
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(1)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(6)
-        .click()
+      cy.get('#pr_id_7_header_6').click({ force: true })
 
       cy.get('#ud-edge-caption-property')
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('#ud-edge-caption-property').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
     })
 
     it('Edge styling by caption', () => {
@@ -994,55 +792,49 @@ context('Network styling', () => {
         url: '**/api/ui/styling',
       }, saveStyling).as('saveStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('.auth-button').click({ force: true })
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('value')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click({ force: true })
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click({ force: true })
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
-
       // click the network styling icon
-      cy.get('#sidebar-button-view-styling').click()
+      cy.get('#sidebar-button-styling').click({ force: true })
 
       // open edge styling
-      cy.get('.p-accordion').eq(1).click()
+      cy.get('.p-accordion-header').eq(1).find('a').click({ force: true })
 
       // open edge styling by property
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .click()
+      cy.get('#pr_id_6_header_2').click({ force: true })
 
       // open first edge property tab
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_7_header_0').click({ force: true })
 
       // remove first edge property
-      cy.get('.delete-property-style').click()
+      cy.get('.delete-property-style').click({ force: true })
 
       // open first edge property tab
       cy.get('.p-accordion').eq(1).find('.p-accordion-content')
@@ -1051,7 +843,7 @@ context('Network styling', () => {
         .find('.p-accordion-content')
         .find('.p-accordion-tab')
         .eq(0)
-        .click()
+        .click({ force: true })
 
       cy.get('.p-accordion').eq(1).find('.p-accordion-content')
         .find('.p-accordion-tab')
@@ -1060,15 +852,9 @@ context('Network styling', () => {
         .find('.p-accordion-tab')
         .eq(0)
         .find('.p-dropdown-trigger')
-        .click()
+        .click({ force: true })
 
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-dropdown-item')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item')
         .eq(1)
         .click({ force: true })
 
@@ -1081,7 +867,7 @@ context('Network styling', () => {
         .find('.p-selectbutton')
         .find('.p-button')
         .eq(0)
-        .click()
+        .click({ force: true })
 
       cy.get('.p-accordion').eq(1).find('.p-accordion-content')
         .find('.p-accordion-tab')
@@ -1100,23 +886,17 @@ context('Network styling', () => {
         .eq(0)
         .find('.p-dropdown-trigger')
         .eq(1)
-        .click()
+        .click({ force: true })
 
-      cy.get('.p-accordion').eq(1).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(2)
-        .find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .find('.p-dropdown-item')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item')
         .eq(1)
         .click({ force: true })
 
-      cy.get('.p-inputtext').eq(4).invoke('val', '10').trigger('change')
+      cy.get('.p-inputtext').eq(0).invoke('val', '10').trigger('change')
 
       cy.get('.save-property-style').click({ force: true })
 
-      cy.get('#save-styling-button').click()
+      cy.get('#save-styling-button').click({ force: true })
 
       cy.wait('@saveStyling')
       cy.get('#save-styling-button').should('have.text', 'Saved!')

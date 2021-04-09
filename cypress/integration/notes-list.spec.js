@@ -12,6 +12,9 @@ import deleteEdgeNote from '../fixtures/deleteEdgeNote'
 import updateEdgeNote from '../fixtures/updateEdgeNote'
 import updateNodeNote from '../fixtures/updateNodeNote'
 import getStyling from '../fixtures/getStyling'
+import linkAutocomplete from '../fixtures/linkAutocomplete'
+import linkSearch from '../fixtures/linkSearch'
+import { ROUTE_NOTES } from '../../src/constants/routes'
 
 context('Notes list', () => {
   beforeEach(() => {
@@ -55,6 +58,16 @@ context('Notes list', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -62,27 +75,10 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('road')
-
-      cy.wait('@getGraph')
-
-      cy.get('.p-autocomplete-item').click()
-
-      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
-
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-button')
-        .eq(1)
-        .click()
-
-      cy.wait(1000)
-
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
-
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_NOTES)
 
       cy.get('.notes-note').should('have.length', 2)
 
@@ -106,7 +102,8 @@ context('Notes list', () => {
 
       // sort notes
       cy.get('#notes-sort-by').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#notes-sort-by').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
+
       cy.get('.notes-content').eq(0).find('p').should('have.text', 'graph note')
       cy.get('#notes-sort-by-direction').click()
       cy.get('.notes-content').eq(0).find('p').should('have.text', 'new note')
@@ -114,16 +111,16 @@ context('Notes list', () => {
       // should filter notes
       cy.get('#notes-filter').find('.p-accordion-header-link').click({ force: true })
       cy.get('#notes-filter-field').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#notes-filter-field').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
       cy.get('.p-datepicker-calendar').find('td:not(.p-datepicker-other-month)').eq(0).find('span')
         .click({ force: true })
-      cy.get('.notes-note').should('have.length', 2)
+      cy.get('.notes-note').should('have.length', 1)
 
       cy.get('#notes-filter-field').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#notes-filter-field').find('.p-dropdown-item').eq(2).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })
 
       cy.get('#notes-filter-user').find('.p-multiselect-trigger').click({ force: true })
-      cy.get('#notes-filter-user').find('.p-multiselect-item').eq(0).click({ force: true })
+      cy.get('.p-multiselect-items-wrapper').find('.p-multiselect-item').eq(0).click({ force: true })
 
       cy.get('.notes-note').should('have.length', 3)
     })
@@ -174,6 +171,16 @@ context('Notes list', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -181,38 +188,28 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('road')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click()
 
       cy.wait(1000)
-
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
 
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
 
-      // select node
-      cy.get('#notes-select').find('.p-button').eq(1).click()
-
       // select first node from dropdown
       cy.get('#notes-select-element').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#notes-select-element').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // add graph note
       cy.get('#add-note').click()
-      cy.get('#selected-element-label').should('have.text', 'For Node: Geotechnical')
+      cy.get('#selected-element-label').should('have.text', 'For Node: Link')
 
       cy.get('#note-textarea').type('Latest node note')
       cy.get('#submit-note').click()
@@ -296,6 +293,16 @@ context('Notes list', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -303,24 +310,17 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('road')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(1).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click()
 
       cy.wait(1000)
-
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 2')
-      cy.get('.nav-left').should('contain', 'Edges: 1')
 
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
@@ -330,11 +330,11 @@ context('Notes list', () => {
 
       // select first node from dropdown
       cy.get('#notes-select-element').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#notes-select-element').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // add graph note
       cy.get('#add-note').click()
-      cy.get('#selected-element-label').should('have.text', 'For Edge: Geotechnical => Subclass\nof => Strategic\nRoad\nNetwork\nAsset')
+      cy.get('#selected-element-label').should('have.text', 'For Edge: Route => Composed\nof => Link')
 
       cy.get('#note-textarea').type('Latest edge note')
       cy.get('#submit-note').click()

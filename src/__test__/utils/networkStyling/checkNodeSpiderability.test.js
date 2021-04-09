@@ -4,11 +4,13 @@ import store from '../../../store'
 import { totalEdgesPerNode } from '../../fixtures/totalEdgesPerNode'
 import setNodeStyle from '../../../utils/networkStyling/setNodeStyle'
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
+import { classesFromApi } from '../../fixtures/classesFromApi'
 
 jest.mock('../../../utils/networkStyling/setNodeStyle')
 
 store.getState = jest.fn().mockImplementation(() => ({
-  totalEdgesPerNode
+  totalEdgesPerNode,
+  classesFromApi
 }))
 
 const updateStoreValue = jest.fn()
@@ -32,7 +34,7 @@ describe('checkNodeSpiderability', () => {
       ['nodesSpiderability', nodeId], OPERATION_TYPE_UPDATE, 'true'
     )
     expect(setNodeStyle).toHaveBeenCalledWith(
-      { nodeId }
+      { node: classesFromApi[nodeId] }
     )
   })
 })

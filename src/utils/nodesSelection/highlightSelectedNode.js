@@ -36,11 +36,13 @@ const highlightSelectedNode = ({
     color
   })
 
-  network.focus(selectedNode,
-    {
-      scale: 1,
-      animation: false,
-    })
+  if (network) {
+    network.focus(selectedNode,
+      {
+        scale: 1,
+        animation: false,
+      })
+  }
 }
 
 export default highlightSelectedNode

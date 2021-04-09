@@ -19,13 +19,13 @@ import SynonymsListAddNew from './SynonymsListAddNew'
 import synonymsGetSynonyms from '../utils/synonyms/synonymsGetSynonyms'
 import SynonymsListNode from './SynonymsListNode'
 import { NODE_TYPE } from '../constants/graph'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
+import { getElementIdAndType } from '../constants/functions'
 
 const SynonymsList = ({
   nodesSynonyms,
   updateStoreValue,
-  synonymElementId,
+  selectedElement,
   classesFromApi
 }) => {
   const { t } = useTranslation()
@@ -36,36 +36,25 @@ const SynonymsList = ({
   const [filter, setFilter] = useState(undefined)
   const [filterValue, setFilterValue] = useState('')
 
+  let synonymElementId
+
+  const [elementId, type] = getElementIdAndType(selectedElement)
+
+  if (elementId && type === 'node') {
+    synonymElementId = elementId
+  }
+
   useEffect(() => {
-    // get node synonyms
-    if (synonymElementId) {
+    const [newElementId, newType] = getElementIdAndType(selectedElement)
+
+    if (newElementId && newType === 'node') {
       synonymsGetSynonyms({
-        selectedElement: synonymElementId,
+        selectedElement: newElementId,
         updateStoreValue,
         t
       })
     }
-
-    return () => {
-      updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, undefined)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (synonymElementId && synonymElementId !== '') {
-      updateHighlightedElement({
-        updateStoreValue,
-        id: synonymElementId,
-        type: 'node'
-      })
-
-      synonymsGetSynonyms({
-        selectedElement: synonymElementId,
-        updateStoreValue,
-        t
-      })
-    }
-  }, [synonymElementId])
+  }, [selectedElement])
 
   const filterNode = (synonymObject) => {
     if (search === '' && !filter) return true
@@ -106,9 +95,9 @@ const SynonymsList = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SYNONYMS)}
-      </div>
+      </h1>
 
       <div className="synonyms">
         <div className="synonyms-select-row">
@@ -116,15 +105,25 @@ const SynonymsList = ({
             {t('selectElement')}
           </label>
           <Dropdown
+            aria-label="synonyms-select-element"
             id="synonyms-select-element"
             name="synonyms-select-element"
             value={synonymElementId}
             options={availableNodesList}
-            onChange={(e) => updateStoreValue(['synonymElementId'], OPERATION_TYPE_UPDATE, e.value)}
+            onChange={(e) => updateHighlightedElement({
+              updateStoreValue,
+              id: e.value,
+              type: 'node',
+            })}
           />
         </div>
 
-        <SynonymsListAddNew />
+        {
+          synonymElementId && (
+            <SynonymsListAddNew />
+          )
+        }
+
         <Divider />
 
         {
@@ -150,6 +149,7 @@ const SynonymsList = ({
                 </label>
                 <div className="p-inputgroup">
                   <Dropdown
+                    aria-label="synonyms-sort-by"
                     id="synonyms-sort-by"
                     value={sortField}
                     options={SORT_FIELDS.map((field) => ({
@@ -159,6 +159,7 @@ const SynonymsList = ({
                     onChange={(e) => setSortField(e.value)}
                   />
                   <Button
+                    aria-label="synonyms-sort-by-direction"
                     id="synonyms-sort-by-direction"
                     tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
                     tooltipOptions={{ position: 'top' }}
@@ -178,6 +179,7 @@ const SynonymsList = ({
                         {t('filterBy')}
                       </label>
                       <Dropdown
+                        aria-label="synonyms-filter-field"
                         id="synonyms-filter-field"
                         value={filter}
                         options={SORT_FIELDS.map((field) => ({
@@ -248,22 +250,22 @@ const SynonymsList = ({
 
 SynonymsList.propTypes = {
   nodesSynonyms: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  synonymElementId: PropTypes.string,
   updateStoreValue: PropTypes.func.isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
+  selectedElement: PropTypes.shape(),
+  classesFromApi: PropTypes.shape().isRequired
 }
 
 SynonymsList.defaultProps = {
-  synonymElementId: undefined,
+  selectedElement: undefined
 }
 
 const mapToProps = ({
   nodesSynonyms,
-  synonymElementId,
+  selectedElement,
   classesFromApi
 }) => ({
   nodesSynonyms,
-  synonymElementId,
+  selectedElement,
   classesFromApi
 })
 

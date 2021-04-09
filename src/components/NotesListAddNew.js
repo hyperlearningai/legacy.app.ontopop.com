@@ -22,17 +22,25 @@ const NotesListAddNew = ({
   let elementLabel
 
   if (selectedNotesType === 'node') {
-    elementLabel = getNode(noteElementId).label
+    const node = getNode(noteElementId)
+
+    if (node !== null) {
+      elementLabel = node.label
+    }
   }
 
   if (selectedNotesType === 'edge') {
-    const {
-      from,
-      to,
-      label
-    } = getEdge(noteElementId)
+    const edge = getEdge(noteElementId)
 
-    elementLabel = `${getNode(from).label} => ${label} => ${getNode(to).label}`
+    if (edge !== null) {
+      const {
+        from,
+        to,
+        label
+      } = edge
+
+      elementLabel = `${getNode(from).label} => ${label} => ${getNode(to).label}`
+    }
   }
 
   return (
@@ -42,6 +50,7 @@ const NotesListAddNew = ({
         ? (
           <div className="notes-note notes-add-button">
             <Button
+              aria-label={t('addNewNote')}
               tooltip={t('addNewNote')}
               tooltipOptions={{ position: 'top' }}
               label={t('addNewNote')}
@@ -79,6 +88,7 @@ const NotesListAddNew = ({
 
             <div className="notes-buttons">
               <Button
+                aria-label={t('close')}
                 tooltip={t('close')}
                 tooltipOptions={{ position: 'top' }}
                 className="p-button-secondary"
@@ -88,6 +98,7 @@ const NotesListAddNew = ({
               />
 
               <Button
+                aria-label={t('addNote')}
                 tooltip={t('addNote')}
                 tooltipOptions={{ position: 'top' }}
                 label={t('addNote')}

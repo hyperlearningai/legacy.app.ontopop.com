@@ -1,4 +1,6 @@
 import { ALGO_TYPE_NEIGHBOURHOOD } from '../../constants/algorithms'
+import { getElementIdAndType } from '../../constants/functions'
+import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
@@ -22,7 +24,7 @@ const setNeighbourNodes = ({
     graphData
   } = store.getState()
 
-  const [selectedNeighbourNode, selectedNodeType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, false]
+  const [selectedNeighbourNode, selectedNodeType] = getElementIdAndType(selectedElement)
 
   if (selectedNodeType !== 'node') return false
 
@@ -59,6 +61,7 @@ const setNeighbourNodes = ({
   updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, newCurrentGraph)
   updateStoreValue(['lastGraphIndex'], OPERATION_TYPE_UPDATE, newGraphIndex)
   updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
+  window.history.pushState('', '', ROUTE_NETWORK_GRAPHS)
 }
 
 export default setNeighbourNodes

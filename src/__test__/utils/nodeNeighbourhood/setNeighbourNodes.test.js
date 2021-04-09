@@ -74,7 +74,7 @@ describe('setNeighbourNodes', () => {
         [
           'sidebarView',
         ],
-        OPERATION_TYPE_UPDATE,
+        'update',
         'networkGraphs',
       ],
     ])

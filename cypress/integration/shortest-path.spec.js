@@ -3,6 +3,9 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import linkAutocomplete from '../fixtures/linkAutocomplete'
+import linkSearch from '../fixtures/linkSearch'
+import { ROUTE_SHORTEST_PATH } from '../../src/constants/routes'
 
 context('Shortest path', () => {
   beforeEach(() => {
@@ -41,6 +44,16 @@ context('Shortest path', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -48,62 +61,45 @@ context('Shortest path', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('road')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for road: 28')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(0).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click()
 
       cy.wait(1000)
 
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 17')
-
-      // enable upper ontology
-      cy.get('#sidebar-button-graph-options').click()
-
-      // switch 3 main options
-      cy.get('#upper-ontology-checkbox').click()
-      cy.get('#dataset-checkbox').click()
-
-      // save and check new nodes and edges count
-      cy.get('#network-graph-options-save').click()
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 25')
-
       // click the shortest path icon
       cy.get('#sidebar-button-shortest-path').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_SHORTEST_PATH)
 
       // choose starting node
       cy.get('#shortest-path-button-1').click()
 
       // select first node
       cy.get('#node-select-1').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#node-select-1').find('.p-dropdown-filter').type('asse')
-      cy.get('#node-select-1').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('loc')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // choose ending node
       cy.get('#shortest-path-button-2').click()
 
       // select first node
       cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#node-select-2').find('.p-dropdown-filter').type('equi')
-      cy.get('#node-select-2').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('spe')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // check that shortest path button work
       cy.get('.shortest-path-show-button').click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 3')
-      cy.get('.nav-left').should('contain', 'Edges: 2')
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 6')
     })
 
     it('Shortest path should return results when nodes/edges to exclude and overlay', () => {
@@ -137,6 +133,16 @@ context('Shortest path', () => {
         url: '**/api/ui/styling',
       }, getStyling).as('getStyling')
 
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
@@ -144,24 +150,17 @@ context('Shortest path', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('value')
+      cy.get('#main-search').type('link')
 
-      cy.wait('@getGraph')
+      cy.wait('@linkAutocomplete')
 
-      cy.get('.p-autocomplete-item').click()
+      cy.get('.p-autocomplete-item').eq(0).click()
 
-      cy.get('.graph-search-results-number').should('contain', 'Search results for value: 5')
+      cy.wait('@linkSearch')
 
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(2).find('.p-button')
-        .eq(1)
-        .click()
+      cy.get('#card-visualise-btn-0').click()
 
       cy.wait(1000)
-
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
 
       // click the shortest path icon
       cy.get('#sidebar-button-shortest-path').click()
@@ -171,26 +170,28 @@ context('Shortest path', () => {
 
       // select first node
       cy.get('#node-select-1').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#node-select-1').find('.p-dropdown-filter').type('strat')
-      cy.get('#node-select-1').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('net')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // choose ending node
       cy.get('#shortest-path-button-2').click()
 
       // select first node
       cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('#node-select-2').find('.p-dropdown-filter').type('prod')
-      cy.get('#node-select-2').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('clo')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // select nodes to exclude
       cy.get('#excluded-nodes-select').find('.p-multiselect-trigger').click({ force: true })
-      cy.get('#excluded-nodes-select').find('.p-multiselect-filter').type('sys')
-      cy.get('#excluded-nodes-select').find('.p-multiselect-item').eq(0).click({ force: true })
+      cy.get('.p-multiselect-filter-container').find('.p-multiselect-filter').clear().type('lin')
+      cy.get('.p-multiselect-items-wrapper').find('.p-multiselect-item').eq(0).click({ force: true })
+
+      cy.wait(500)
 
       // select edges to exclude
       cy.get('#excluded-edges-select').find('.p-multiselect-trigger').click({ force: true })
-      cy.get('#excluded-edges-select').find('.p-multiselect-filter').type('subcla')
-      cy.get('#excluded-edges-select').find('.p-multiselect-item').eq(0).click({ force: true })
+      cy.get('.p-multiselect-filter-container').find('.p-multiselect-filter').eq(1).type('subcla')
+      cy.get('.p-multiselect-items-wrapper').find('.p-multiselect-item').eq(0).click({ force: true })
 
       // overlay checkbox
       cy.get('#overlay-checkbox').click()
@@ -199,8 +200,8 @@ context('Shortest path', () => {
       cy.get('.shortest-path-show-button').click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 10')
-      cy.get('.nav-left').should('contain', 'Edges: 13')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
     })
   })
 })

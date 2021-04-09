@@ -1,0 +1,6 @@
+{
+  "statusCode": 200,
+  "body": ["Design", "Maintain", "Finance", "Communications", "Construct", "Operate", "Plan", "Location"],
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

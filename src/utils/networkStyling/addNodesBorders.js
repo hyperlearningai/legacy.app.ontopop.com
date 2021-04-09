@@ -1,20 +1,13 @@
-import { SIDEBAR_VIEW_NOTES } from '../../constants/views'
-import store from '../../store'
+import { ROUTE_NOTES } from '../../constants/routes'
 import highlightCommentedNodes from './highlightCommentedNodes'
 import highlightSpiderableNodes from './highlightSpiderableNodes'
 
 /**
  * Highlight spiderable node borders
- * @param  {Object}   params
- * @param  {String}   params.node           Node object
  * @return { undefined }
  */
 const addNodesBorders = () => {
-  const {
-    sidebarView,
-  } = store.getState()
-
-  if (sidebarView === SIDEBAR_VIEW_NOTES) {
+  if (window.location.pathname === ROUTE_NOTES) {
     highlightCommentedNodes()
   } else {
     highlightSpiderableNodes()

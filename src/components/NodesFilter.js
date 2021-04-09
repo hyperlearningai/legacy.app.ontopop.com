@@ -35,9 +35,9 @@ const NodesFilter = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NODES_FILTER)}
-      </div>
+      </h1>
 
       <div className="nodes-filter">
         <div>{t('filterNodesByArbitraryPropsCombination')}</div>
@@ -60,6 +60,7 @@ const NodesFilter = ({
                       nodesFilters.length > 1 && (
                       <div className="p-field remove-button p-col-12">
                         <Button
+                          aria-label={t('removeFilter')}
                           icon="pi pi-times"
                           className="p-button-rounded p-button-danger"
                           tooltip={t('removeFilter')}
@@ -82,6 +83,7 @@ const NodesFilter = ({
                     <div className="p-field p-col-12">
                       <label htmlFor={selectId}>{t('selectProperty')}</label>
                       <Dropdown
+                        aria-label="notes-select-element"
                         id={selectId}
                         value={nodesFilters[index].property}
                         options={annotationProperties}
@@ -141,6 +143,7 @@ const NodesFilter = ({
         </div>
 
         <Button
+          aria-label={t('removeFilter')}
           tooltip={t('showFilteredNodes')}
           className="nodes-filter-button m-t-30"
           disabled={nodesFilters.length < 2}
@@ -150,7 +153,6 @@ const NodesFilter = ({
           onClick={() => setFilteredNodes({
             updateStoreValue,
             nodesFilters,
-            t
           })}
         />
       </div>

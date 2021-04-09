@@ -1,11 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FooterComponent should match snapshot  1`] = `
-<footer>
-  <div
-    className="footer-right"
-  >
-    Ontology Visualisation v0.6.0
-  </div>
-</footer>
+exports[`FooterComponent should match snapshot when SIDEBAR_VIEW_ENTRY_SEARCH 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  entrySearchResultsByPage={
+    Object {
+      "0": Array [
+        Object {
+          "id": "1",
+        },
+      ],
+      "1": Array [
+        Object {
+          "id": "2",
+        },
+      ],
+    }
+  }
+  mapToProps={[Function]}
+  searchPageSelected={1}
+  sidebarView="search"
+  totalSearchCount={100}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`FooterComponent should match snapshot when SIDEBAR_VIEW_ENTRY_SEARCH and 0 total search count 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  entrySearchResultsByPage={
+    Object {
+      "0": Array [
+        Object {
+          "id": "1",
+        },
+      ],
+      "1": Array [
+        Object {
+          "id": "2",
+        },
+      ],
+    }
+  }
+  mapToProps={[Function]}
+  searchPageSelected={1}
+  sidebarView="search"
+  totalSearchCount={0}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`FooterComponent should match snapshot when any  view 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  entrySearchResultsByPage={
+    Object {
+      "0": Array [
+        Object {
+          "id": "1",
+        },
+      ],
+      "1": Array [
+        Object {
+          "id": "2",
+        },
+      ],
+    }
+  }
+  mapToProps={[Function]}
+  searchPageSelected={1}
+  sidebarView="any"
+  totalSearchCount={0}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
 `;

@@ -8,30 +8,36 @@ import {
   BsArrowUpRight
 } from 'react-icons/bs'
 import actions from '../store/actions'
-import { MAIN_VIEW_GRAPH, MAIN_VIEW_SEARCH } from '../constants/views'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
+import { DISPLAYED_RESULTS_PER_PAGE } from '../constants/search'
 
 const Navbar = ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
-  entrySearchResults
+  totalSearchCount,
+  sidebarView,
+  searchPageSelected,
+  entrySearchResultsByPage,
 }) => {
   const { t } = useTranslation()
+
+  const displayedSearchResults = entrySearchResultsByPage[searchPageSelected]
+
+  const firstSearchCount = displayedSearchResults && displayedSearchResults.length > 0 ? (searchPageSelected * DISPLAYED_RESULTS_PER_PAGE) + 1 : 0
+  const lastSearchCount = displayedSearchResults && displayedSearchResults.length > 0 ? firstSearchCount + displayedSearchResults.length - 1 : 0
+
+  const entrySearchResultRange = `${firstSearchCount}${lastSearchCount > 0 ? `-${lastSearchCount}` : ''}`
 
   return (
     <nav>
       <div className="nav-left">
         {
-          mainVisualisation === MAIN_VIEW_SEARCH && (
+          (sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH) ? (
             <span>
               <BsSearch className="nodes-icon node m-r-5" />
-              {`${t('searchResults')}: ${entrySearchResults.length}`}
+              {`${t('searchResults')}: ${entrySearchResultRange} ${t('of')} ${totalSearchCount}`}
             </span>
-          )
-        }
-
-        {
-          mainVisualisation === MAIN_VIEW_GRAPH && (
+          ) : (
             <span>
               <BsFillCircleFill className="nodes-icon node m-r-5" />
               {`${t('nodes')}: ${availableNodesCount}`}
@@ -49,20 +55,26 @@ const Navbar = ({
 Navbar.propTypes = {
   availableNodesCount: PropTypes.number.isRequired,
   availableEdgesCount: PropTypes.number.isRequired,
-  mainVisualisation: PropTypes.string.isRequired,
-  entrySearchResults: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  sidebarView: PropTypes.string.isRequired,
+  totalSearchCount: PropTypes.number.isRequired,
+  searchPageSelected: PropTypes.number.isRequired,
+  entrySearchResultsByPage: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
-  entrySearchResults
+  sidebarView,
+  totalSearchCount,
+  searchPageSelected,
+  entrySearchResultsByPage,
 }) => ({
   availableNodesCount,
   availableEdgesCount,
-  mainVisualisation,
-  entrySearchResults
+  sidebarView,
+  totalSearchCount,
+  searchPageSelected,
+  entrySearchResultsByPage,
 })
 
 export default connect(

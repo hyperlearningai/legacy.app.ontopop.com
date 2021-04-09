@@ -5,21 +5,27 @@ import { connect } from 'redux-zero/react'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
-import getNode from '../utils/nodesEdgesUtils/getNode'
 import synonymsCreateSynonym from '../utils/synonyms/synonymsCreateSynonym'
+import { getElementIdAndType } from '../constants/functions'
 
 const SynonymsListAddNew = ({
-  synonymElementId,
+  selectedElement,
   updateStoreValue,
+  classesFromApi
 }) => {
   const { t } = useTranslation()
 
   const [synonymText, setSynonymText] = useState('')
   const [showForm, setShowForm] = useState(false)
 
-  const elementLabel = getNode(synonymElementId).label
+  const [synonymElementId, type] = getElementIdAndType(selectedElement)
+  let elementLabel
 
-  return (
+  if (synonymElementId && type === 'node') {
+    elementLabel = classesFromApi[synonymElementId].label
+  }
+
+  return type === 'node' ? (
     <div className="card">
 
       {!showForm
@@ -84,30 +90,25 @@ const SynonymsListAddNew = ({
         )}
 
     </div>
-  )
+  ) : null
 }
 
 SynonymsListAddNew.propTypes = {
-  synonymElementId: PropTypes.string,
+  selectedElement: PropTypes.shape(),
   updateStoreValue: PropTypes.func.isRequired,
+  classesFromApi: PropTypes.shape().isRequired,
 }
 
 SynonymsListAddNew.defaultProps = {
-  synonymElementId: undefined,
+  selectedElement: undefined,
 }
 
 const mapToProps = ({
-  synonyms,
-  synonymElementId,
-  nodesNotes,
-  edgesNotes,
-  user
+  selectedElement,
+  classesFromApi
 }) => ({
-  synonyms,
-  synonymElementId,
-  nodesNotes,
-  edgesNotes,
-  user
+  selectedElement,
+  classesFromApi
 })
 
 export default connect(

@@ -3,7 +3,7 @@
   "body": { 
     "id":1,
     "type":"node",
-    "nodeId":13,
+    "nodeId":42,
     "edgeId":0,
     "userId":"valid@email.com",
     "contents":"Latest node note",

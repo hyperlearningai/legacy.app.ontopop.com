@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EdgesSelection should match snapshot when no selected edge 1`] = `
+exports[`SearchBar should match snapshot when loading 1`] = `
 <Connect
   actions={
     Object {
       "updateStoreValue": [Function],
     }
   }
+  entrySearchValue="road"
+  isSearchLoading={true}
   mapToProps={[Function]}
   updateStoreValue={[MockFunction]}
 >
@@ -14,19 +16,16 @@ exports[`EdgesSelection should match snapshot when no selected edge 1`] = `
 </Connect>
 `;
 
-exports[`EdgesSelection should match snapshot when selected edge 1`] = `
+exports[`SearchBar should match snapshot when not loading 1`] = `
 <Connect
   actions={
     Object {
       "updateStoreValue": [Function],
     }
   }
+  entrySearchValue="road"
+  isSearchLoading={false}
   mapToProps={[Function]}
-  selectedElement={
-    Object {
-      "1": "edge",
-    }
-  }
   updateStoreValue={[MockFunction]}
 >
   <Component />

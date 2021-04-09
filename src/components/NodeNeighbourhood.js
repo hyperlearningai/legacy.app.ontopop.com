@@ -11,6 +11,7 @@ import actions from '../store/actions'
 import { SIDEBAR_VIEW_NEIGHBOURHOOD } from '../constants/views'
 import setNeighbourNodes from '../utils/nodeNeighbourhood/setNeighbourNodes'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
+import { getElementIdAndType } from '../constants/functions'
 
 const NodeNeighbourhood = ({
   updateStoreValue,
@@ -21,13 +22,13 @@ const NodeNeighbourhood = ({
 
   const [separationDegree, setSeparationDegree] = useState(1)
 
-  const [selectedNode, selectedNodeType] = selectedElement ? Object.entries(selectedElement)[0] : [undefined, false]
+  const [selectedNode, selectedNodeType] = getElementIdAndType(selectedElement)
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
-      </div>
+      </h1>
       <div className="node-neighbourhood">
         <div className="node-neighbourhood-message">
           {t('selectNodeFromGraphOrFromList')}
@@ -35,6 +36,7 @@ const NodeNeighbourhood = ({
 
         <div className="node-neighbourhood-dropdown">
           <Dropdown
+            aria-label="notes-select-element"
             id="node-select"
             value={selectedNode}
             filter
@@ -69,6 +71,7 @@ const NodeNeighbourhood = ({
 
         <div className="node-neighbourhood-buttons m-t-40">
           <Button
+            aria-label={t('showNeighbourhood')}
             tooltip={t('showNeighbourhood')}
             className="node-neighbourhood-button"
             disabled={selectedNodeType !== 'node'}

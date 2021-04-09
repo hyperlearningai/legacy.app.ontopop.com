@@ -35,11 +35,10 @@
       justify-content: center;
 
       &:enabled {
-        &:hover {
+        &:hover,
+        &:active,
+        &:focus {
           border-color: transparent;
-        }
-
-        &:active {
           border: transparent;
         }
       }
@@ -63,6 +62,27 @@
       svg {
         font-size: 24px;
 
+        &:nth-child(1) {
+          margin-bottom: 10px;
+          font-size: 24px;
+        }
+
+        &:nth-child(2) {
+          font-size: 18px;
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+        }
+      }
+    }
+
+    .toggle-view-button {
+      svg {
+        &:nth-child(2) {
+          margin-bottom: 10px;
+          font-size: 24px;
+        }
+
         &:nth-child(3) {
           font-size: 18px;
           position: absolute;
@@ -85,11 +105,12 @@
       font-weight: 700;
       border-bottom: 0 solid $white;
       padding: 23px;
-      font-size: 16px;
+      font-size: 1.2rem;
       display: flex;
       background: #33343d;
       align-items: center;
       justify-content: flex-start;
+      margin: 0;
 
       .p-button {
         font-size: 18px;

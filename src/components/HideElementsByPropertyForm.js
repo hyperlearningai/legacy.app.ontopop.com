@@ -111,6 +111,7 @@ const HideElementsByPropertyForm = ({
                 </label>
 
                 <Dropdown
+                  aria-label={`filter-${type}-${index}-${propertyIndex}`}
                   id={`filter-${type}-${index}-${propertyIndex}`}
                   value={property}
                   options={annotationPropertyList}
@@ -135,6 +136,7 @@ const HideElementsByPropertyForm = ({
 
               <div className="graph-options-property-form-row m-t-10">
                 <Dropdown
+                  aria-label={t('selectLogic')}
                   value={operation}
                   className="operation-select"
                   options={operationButtons}

@@ -1,21 +1,18 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import NodesSelection from '../../components/NodesSelection'
+import SearchBar from '../../components/SearchBar'
 
 const setup = ({
-  selectedElement
+  isSearchLoading
 }) => {
   const props = {
     updateStoreValue: jest.fn(),
-    selectedElement,
-    nodesDropdownLabels: [{
-      id: '1',
-      value: 'node'
-    }]
+    entrySearchValue: 'road',
+    isSearchLoading
   }
 
-  const component = shallow(<NodesSelection {...props} />)
+  const component = shallow(<SearchBar {...props} />)
 
   return {
     component,
@@ -23,26 +20,26 @@ const setup = ({
   }
 }
 
-describe('NodesSelection', () => {
+describe('SearchBar', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should match snapshot when no selected node', () => {
+  it('should match snapshot when loading', () => {
     const {
       component
     } = setup({
-      selectedElement: undefined
+      isSearchLoading: true
     })
 
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when selected node', () => {
+  it('should match snapshot when not loading', () => {
     const {
       component
     } = setup({
-      selectedElement: { 1: 'node' }
+      isSearchLoading: false
     })
 
     expect(toJson(component)).toMatchSnapshot()

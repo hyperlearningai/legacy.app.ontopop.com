@@ -63,6 +63,7 @@ const NetworkStylingNode = ({
             <Accordion>
               <AccordionTab header={t('stylingNodeShape')}>
                 <Dropdown
+                  aria-label="global-node-shape"
                   value={globalNodeStyling.stylingNodeShape}
                   options={nodeShapeOptions}
                   filter
@@ -260,6 +261,7 @@ const NetworkStylingNode = ({
                     {t('stylingNodeCaptionProperty')}
                   </span>
                   <Dropdown
+                    aria-label="global-node-caption-property"
                     value={globalNodeStyling.stylingNodeCaptionProperty}
                     options={annotationProperties}
                     filter
@@ -275,6 +277,7 @@ const NetworkStylingNode = ({
                     {t('stylingNodeCaptionPropertyDataset')}
                   </span>
                   <Dropdown
+                    aria-label="ud-node-shape"
                     value={globalNodeStyling.stylingNodeCaptionPropertyDataset}
                     options={annotationPropertiesDatasets}
                     filter
@@ -293,6 +296,7 @@ const NetworkStylingNode = ({
             <Accordion>
               <AccordionTab header={t('stylingNodeShape')}>
                 <Dropdown
+                  aria-label="ud-node-shape"
                   value={userDefinedNodeStyling.stylingNodeShape}
                   options={nodeShapeOptions}
                   filter
@@ -490,6 +494,7 @@ const NetworkStylingNode = ({
                     {t('stylingNodeCaptionProperty')}
                   </span>
                   <Dropdown
+                    aria-label="ud-node-caption-property-dataset"
                     value={userDefinedNodeStyling.stylingNodeCaptionProperty}
                     options={annotationProperties}
                     filter
@@ -505,6 +510,7 @@ const NetworkStylingNode = ({
                     {t('stylingNodeCaptionPropertyDataset')}
                   </span>
                   <Dropdown
+                    aria-label="ud-node-caption-property-dataset"
                     value={userDefinedNodeStyling.stylingNodeCaptionPropertyDataset}
                     options={annotationPropertiesDatasets}
                     filter

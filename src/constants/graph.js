@@ -234,9 +234,9 @@ export const DEFAULT_HIDDEN_ELEMENT_PROPERTY = {
 }
 
 export const DEFAULT_GRAPH_VISUALISATION_OPTIONS = {
-  isUpperOntologyVisible: false,
+  isUpperOntologyVisible: true,
   isSubClassEdgeVisible: true,
-  isDatasetVisible: false,
+  isDatasetVisible: true,
   hiddenNodesProperties: { 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY },
   hiddenEdgesProperties: { 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY },
 }

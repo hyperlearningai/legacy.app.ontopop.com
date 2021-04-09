@@ -27,7 +27,7 @@ const loopThroughNodes = ({
     const listOfTriples = totalEdgesPerNode[nodeId]
 
     if (listOfTriples && listOfTriples.length > 0) {
-      listOfTriples.map((triple) => {
+      listOfTriples?.map((triple) => {
         const {
           from,
           to

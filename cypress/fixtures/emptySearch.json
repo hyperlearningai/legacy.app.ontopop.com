@@ -1,0 +1,11 @@
+{
+  "statusCode": 200,
+  "body": { 
+    "@odata.context":"https://ontology-search-development.search.windows.net/indexes('ontology-graph-search-index')/$metadata#docs(*)",
+    "@odata.count":0,
+    "@search.coverage":100.0,
+    "value":[]
+  },
+  "headers": { "access-control-allow-origin": "*" },
+  "delayMs": 200
+}

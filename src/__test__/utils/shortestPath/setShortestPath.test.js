@@ -91,7 +91,7 @@ describe('setShortestPath', () => {
         [
           'sidebarView',
         ],
-        OPERATION_TYPE_UPDATE,
+        'update',
         'networkGraphs',
       ],
     ])

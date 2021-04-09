@@ -1,8 +1,9 @@
 import { ALGO_TYPE_SHORTEST_PATH } from '../../constants/algorithms'
-import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import getShortestPath from './getShortestPath'
 import store from '../../store'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
+import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 
 /**
  * Set shortest path
@@ -70,6 +71,7 @@ const setShortestPath = async ({
   updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, newCurrentGraph)
   updateStoreValue(['lastGraphIndex'], OPERATION_TYPE_UPDATE, newGraphIndex)
   updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
+  window.history.pushState('', '', ROUTE_NETWORK_GRAPHS)
 }
 
 export default setShortestPath

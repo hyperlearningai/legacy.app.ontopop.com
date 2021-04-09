@@ -4,6 +4,7 @@ import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import customQueryResponse from '../fixtures/customQueryResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_CUSTOM_QUERY } from '../../src/constants/routes'
 
 context('Custom query', () => {
   beforeEach(() => {
@@ -54,27 +55,10 @@ context('Custom query', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('link')
-
-      cy.wait('@getGraph')
-
-      cy.get('.p-autocomplete-item').click()
-
-      cy.get('.graph-search-results-number').should('contain', 'Search results for link: 6')
-
-      // click to show network graph
-      cy.get('.graph-search-results-list').find('.p-card-buttons').eq(4).find('.p-button')
-        .eq(1)
-        .click()
-
-      cy.wait(1000)
-
-      // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 11')
-      cy.get('.nav-left').should('contain', 'Edges: 19')
-
       // click the custom query sidebar icon
       cy.get('#sidebar-button-custom-query').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_CUSTOM_QUERY)
 
       // should have two items in query history
       cy.get('.custom-query-row').should('have.length', 2)

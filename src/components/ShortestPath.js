@@ -35,11 +35,19 @@ const ShortestPath = ({
   const [nodesToExclude, setNodesToExclude] = useState([])
   const [edgesToExclude, setEdgesToExclude] = useState([])
 
-  useEffect(() => () => {
-    resetShortestPathNodes({
-      updateStoreValue
-    })
-    updateStoreValue(['isElementSelectable'], OPERATION_TYPE_UPDATE, true)
+  useEffect(() => {
+    updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, true)
+    updateStoreValue(['isShortestPathNode2Selectable'], OPERATION_TYPE_UPDATE, false)
+    updateStoreValue(['isElementSelectable'], OPERATION_TYPE_UPDATE, false)
+
+    return () => {
+      resetShortestPathNodes({
+        updateStoreValue
+      })
+      updateStoreValue(['isShortestPathNode1Selectable'], OPERATION_TYPE_UPDATE, false)
+      updateStoreValue(['isShortestPathNode2Selectable'], OPERATION_TYPE_UPDATE, false)
+      updateStoreValue(['isElementSelectable'], OPERATION_TYPE_UPDATE, true)
+    }
   }, [])
 
   useEffect(() => {
@@ -76,9 +84,9 @@ const ShortestPath = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SHORTEST_PATH)}
-      </div>
+      </h1>
       <div className="shortest-path">
         <div className="shortest-path-message">
           {t('selectNodesFromGraphOrFromList')}
@@ -86,6 +94,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-button">
           <Button
+            aria-label={t('edit')}
             label={t('selectStartingNode')}
             id="shortest-path-button-1"
             icon={isShortestPathNode1Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
@@ -98,6 +107,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-dropdown">
           <Dropdown
+            aria-label="node-select-1"
             id="node-select-1"
             value={shortestPathNode1}
             filter
@@ -109,6 +119,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-button">
           <Button
+            aria-label={t('selectEndingNode')}
             label={t('selectEndingNode')}
             id="shortest-path-button-2"
             icon={isShortestPathNode2Selectable ? 'pi pi-circle-on' : 'pi pi-circle-off'}
@@ -121,6 +132,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-dropdown">
           <Dropdown
+            aria-label="node-select-2"
             id="node-select-2"
             value={shortestPathNode2}
             filter
@@ -178,6 +190,7 @@ const ShortestPath = ({
 
         <div className="shortest-path-buttons m-t-20">
           <Button
+            aria-label={t('showShortestPath')}
             tooltip={t('showShortestPath')}
             className="shortest-path-show-button"
             disabled={shortestPathNode1 === '' || shortestPathNode2 === ''}

@@ -44,7 +44,9 @@ const addNode = ({
     label: label || id
   })
 
-  setNodeStyle({ node })
+  setNodeStyle({
+    node,
+  })
 }
 
 export default addNode

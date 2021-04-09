@@ -36,9 +36,9 @@ const NetworkGraphOptions = ({
 
   return (
     <>
-      <div className="sidebar-main-title">
+      <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
-      </div>
+      </h1>
       <div className="graph-options">
         <div className="graph-options-text">{t('chooseGraphOptions')}</div>
 
@@ -90,6 +90,7 @@ const NetworkGraphOptions = ({
                   Object.keys(nodesProperties).length > 0
                   && Object.keys(nodesProperties).map((nodePropertyIndex) => (
                     <AccordionTab
+                      key={nodePropertyIndex.toString()}
                       header={`${t('filter')} ${parseInt(nodePropertyIndex) + 1}`}
                     >
                       <HideElementsByPropertyForm

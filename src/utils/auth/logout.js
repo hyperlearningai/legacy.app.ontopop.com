@@ -1,6 +1,8 @@
 import { AUTH_COOKIE } from '../../constants/auth'
 import { ROUTE_LOGIN } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
+import store from '../../store'
+import initialState from '../../store/initialState'
 
 /**
  * Set nodes inside bounding box
@@ -13,13 +15,19 @@ const logout = ({
   router,
   updateStoreValue
 }) => {
-  updateStoreValue(['user'], OPERATION_TYPE_UPDATE, {
-    email: '',
-    firstName: '',
-    lastName: '',
-    company: '',
-    isGuest: false,
-    token: ''
+  const {
+    availableNodes,
+    availableEdges
+  } = store.getState()
+
+  availableNodes.clear()
+  availableEdges.clear()
+
+  Object.keys(initialState).forEach((key) => {
+    if (key === 'availableNodes') return false
+    if (key === 'availableEdges') return false
+
+    updateStoreValue([key], OPERATION_TYPE_UPDATE, initialState[key])
   })
 
   localStorage.removeItem(AUTH_COOKIE)

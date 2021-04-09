@@ -37,6 +37,13 @@ describe('setSearchNeighbourNodes', () => {
     expect(updateStoreValue.mock.calls).toEqual([
       [
         [
+          'nodesIdsToDisplay',
+        ],
+        'update',
+        [],
+      ],
+      [
+        [
           'graphData',
           'graph-2',
         ],
@@ -74,19 +81,11 @@ describe('setSearchNeighbourNodes', () => {
       ],
       [
         [
-          'mainVisualisation',
-        ],
-        'update',
-        'graph',
-      ],
-      [
-        [
           'sidebarView',
         ],
         'update',
         'networkGraphs',
       ],
-
     ])
   })
 
@@ -103,6 +102,13 @@ describe('setSearchNeighbourNodes', () => {
     })
 
     expect(updateStoreValue.mock.calls).toEqual([
+      [
+        [
+          'nodesIdsToDisplay',
+        ],
+        'update',
+        [],
+      ],
       [
         [
           'graphData',
@@ -145,19 +151,11 @@ describe('setSearchNeighbourNodes', () => {
       ],
       [
         [
-          'mainVisualisation',
-        ],
-        'update',
-        'graph',
-      ],
-      [
-        [
           'sidebarView',
         ],
         'update',
         'networkGraphs',
       ],
-
     ])
   })
 })
