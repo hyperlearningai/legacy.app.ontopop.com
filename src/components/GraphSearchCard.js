@@ -69,6 +69,7 @@ const GraphSearchCard = ({
             href={`${DATASET_REPO_URL}${path}`}
             aria-label={t('open')}
             className="p-button p-text-center link"
+            id={`card-open-link-btn-${index}`}
             rel="noopener nofollow noreferrer"
             target="_blank"
           >

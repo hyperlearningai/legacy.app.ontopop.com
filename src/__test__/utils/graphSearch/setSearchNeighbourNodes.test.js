@@ -89,6 +89,71 @@ describe('setSearchNeighbourNodes', () => {
     ])
   })
 
+  it('should work correctly when node and dataset', async () => {
+    await setSearchNeighbourNodes({
+      separationDegree,
+      updateStoreValue,
+      searchResult: {
+        id: '2849',
+        type: 'dataset',
+      }
+    })
+
+    expect(updateStoreValue.mock.calls).toEqual([
+      [
+        [
+          'nodesIdsToDisplay',
+        ],
+        'update',
+        [],
+      ],
+      [
+        [
+          'graphData',
+          'graph-2',
+        ],
+        'update',
+        {
+          hiddenEdgesProperties: [],
+          hiddenNodesProperties: [],
+          isDatasetVisible: true,
+          isSubClassEdgeVisible: true,
+          isUpperOntologyVisible: true,
+          label: 'search-graph-2',
+          options: {
+            selectedEdgesId: [],
+            selectedNodesId: [
+              '2849',
+            ],
+            separationDegree: 1,
+          },
+          type: 'search-neighbourhood',
+        },
+      ],
+      [
+        [
+          'currentGraph',
+        ],
+        'update',
+        'graph-2',
+      ],
+      [
+        [
+          'lastGraphIndex',
+        ],
+        'update',
+        2,
+      ],
+      [
+        [
+          'sidebarView',
+        ],
+        'update',
+        'networkGraphs',
+      ],
+    ])
+  })
+
   it('should work correctly when edge', async () => {
     await setSearchNeighbourNodes({
       separationDegree,
