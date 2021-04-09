@@ -123,6 +123,80 @@ context('Entry search', () => {
       cy.get('#sidebar-button-search').click()
     })
 
+    it('searching for dataset should work', () => {
+      cy.intercept({
+        method: 'POST',
+        url: '**/login',
+      }, authValid).as('postLogin')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/notes',
+      }, emptyNotes).as('getNotes')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/nodes/notes',
+      }, getNodesNotes).as('getNodesNotes')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/edges/notes',
+      }, emptyNotes).as('getEdgesNotes')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph?model=1',
+      }, graphResponse).as('getGraph')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/api/ui/styling',
+      }, getStyling).as('getStyling')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/autocomplete**',
+      }, linkAutocomplete).as('linkAutocomplete')
+
+      cy.intercept({
+        method: 'POST',
+        url: '**/search?api-version=2020-06-30',
+      }, linkSearch).as('linkSearch')
+
+      cy.intercept({
+        method: 'GET',
+        url: '**/graph/nodes/properties/Business%20Area/values?unique=true',
+      }, businessAreaValues).as('businessAreaValues')
+
+      cy.get('#email').type('valid@email.com')
+      cy.get('#password').type('password')
+
+      cy.get('.auth-button').click()
+
+      cy.wait('@postLogin')
+
+      cy.location('pathname').should('be.equal', ROUTE_SEARCH)
+
+      cy.get('#main-search').type('link')
+
+      cy.wait('@linkAutocomplete')
+
+      cy.get('.p-autocomplete-item').eq(0).click()
+
+      cy.wait('@linkSearch')
+
+      cy.get('.nav-left').should('contain', 'Search results: 1-10 of 44')
+
+      // click to visualise a dataset
+      cy.get('#card-visualise-btn-4').click()
+      cy.get('.nav-left').should('contain', 'Nodes: 2')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
+      cy.get('#sidebar-button-search').click()
+
+      cy.get('#card-open-link-btn-4').click()
+    })
+
     it('no results page should work', () => {
       cy.intercept({
         method: 'POST',
