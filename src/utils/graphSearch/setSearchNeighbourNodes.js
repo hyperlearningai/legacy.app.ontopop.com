@@ -34,16 +34,15 @@ const setSearchNeighbourNodes = ({
   const selectedEdgesId = []
   updateStoreValue(['nodesIdsToDisplay'], OPERATION_TYPE_UPDATE, [])
 
-  if (type === 'node') {
-    selectedNodesId.push(id)
-  }
-
   if (type === 'edge') {
     selectedEdgesId.push(id)
 
     selectedNodesId.push(from)
     selectedNodesId.push(to)
+  } else {
+    selectedNodesId.push(id)
   }
+
   const newGraphIndex = lastGraphIndex + 1
 
   const newCurrentGraph = `graph-${newGraphIndex}`
