@@ -1,14 +1,18 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import EdgesFilter from '../../components/EdgesFilter'
+import ElementsFilter from '../../components/ElementsFilter'
 
 const setup = () => {
   const props = {
+    annotationProperties: [{
+      property: 'rdfsLabel',
+      value: 'road'
+    }],
     updateStoreValue: jest.fn(),
   }
 
-  const component = shallow(<EdgesFilter {...props} />)
+  const component = shallow(<ElementsFilter {...props} />)
 
   return {
     component,
@@ -16,7 +20,7 @@ const setup = () => {
   }
 }
 
-describe('EdgesFilter', () => {
+describe('ElementsFilter', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

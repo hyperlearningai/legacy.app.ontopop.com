@@ -5,15 +5,15 @@ import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
-import { ROUTE_EDGES_FILTER } from '../../src/constants/routes'
+import {ROUTE_ELEMENTS_FILTER} from '../../src/constants/routes'
 
-context('Edges filter', () => {
+context('Elements filter', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
   })
 
-  describe('Edges filter', () => {
-    it('Edges filter should return results', () => {
+  describe('Elements filter', () => {
+    it('Elements filter should return results', () => {
       cy.intercept({
         method: 'POST',
         url: '**/login',
@@ -73,12 +73,61 @@ context('Edges filter', () => {
 
       cy.wait(1000)
 
-      // click the nodes filter icon
-      cy.get('#sidebar-button-edges-filter').click()
+      // click the elements filter icon
+      cy.get('#sidebar-button-elements-filter').click()
+
+      cy.location('pathname').should('be.equal', ROUTE_ELEMENTS_FILTER)
+
+      // AND search should work
+
+      // first AND filter
+      cy.get('#nodes-filter-property-0').find('.p-dropdown-trigger').click({ force: true })
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('#nodes-filter-value-0').type('loc')
+
+      cy.get('#elements-filter-add').click()
+
+      // second AND filter
+      cy.get('#nodes-filter-property-1').find('.p-dropdown-trigger').click({ force: true })
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('#nodes-filter-value-1').type('net')
+
+      cy.get('.elements-filter-button').click()
+
+      cy.wait(1000)
+
+      // shows subgraph
+      cy.get('.nav-left').should('contain', 'Nodes: 3')
+      cy.get('.nav-left').should('contain', 'Edges: 1')
+
+      cy.get('#remove-graph-1').click()
+      cy.get('#remove-graph-1').click()
+
+      cy.get('#sidebar-button-search').click()
+
+      cy.get('#main-search').clear().type('link')
+
+      cy.wait('@linkAutocomplete')
+
+      cy.get('.p-autocomplete-item').eq(0).click()
+
+      cy.wait('@linkSearch')
+
+      cy.get('#card-visualise-btn-0').click()
+
+      cy.wait(1000)
+
+      // click the elements filter icon
+      cy.get('#sidebar-button-elements-filter').click()
 
       cy.wait(500)
 
-      cy.location('pathname').should('be.equal', ROUTE_EDGES_FILTER)
+      cy.location('pathname').should('be.equal', ROUTE_ELEMENTS_FILTER)
+
+      // change type to edge
+      cy.get('#element-type-select').find('.p-button').eq(1).click()
 
       // first AND filter
       cy.get('#edges-filter-property-0').find('.p-dropdown-trigger').click({ force: true })
@@ -86,13 +135,15 @@ context('Edges filter', () => {
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').click({ force: true })
       cy.get('#edges-filter-value-0').type('loc')
 
+      cy.get('#elements-filter-add').click()
+
       // second AND filter
       cy.get('#edges-filter-property-1').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').click({ force: true })
       cy.get('#edges-filter-value-1').type('in')
 
-      cy.get('.edges-filter-button').click()
+      cy.get('.elements-filter-button').click()
 
       cy.wait(1000)
 

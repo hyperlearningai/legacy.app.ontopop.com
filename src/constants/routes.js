@@ -8,7 +8,7 @@ export const ROUTE_NETWORK_GRAPH_OPTIONS = '/app/network-graph-options'
 export const ROUTE_FREE_TEXT_SEARCH = '/app/free-text-search'
 export const ROUTE_STRUCTURED_SEARCH = '/app/structured-search'
 export const ROUTE_ELEMENTS_SELECTION = '/app/elements-selection'
-export const ROUTE_NODES_FILTER = '/app/nodes-filter'
+export const ROUTE_ELEMENTS_FILTER = '/app/elements-filter'
 export const ROUTE_EDGES_FILTER = '/app/edges-filter'
 export const ROUTE_BOUNDING_BOX = '/app/bounding-box'
 export const ROUTE_NODE_NEIGHBOURHOOD = '/app/node-neighbourhood'
@@ -27,7 +27,7 @@ export const DYNAMIC_ROUTES = [
   ROUTE_NETWORK_GRAPH_OPTIONS,
   ROUTE_FREE_TEXT_SEARCH,
   ROUTE_STRUCTURED_SEARCH,
-  ROUTE_NODES_FILTER,
+  ROUTE_ELEMENTS_FILTER,
   ROUTE_EDGES_FILTER,
   ROUTE_ELEMENTS_SELECTION,
   ROUTE_BOUNDING_BOX,
