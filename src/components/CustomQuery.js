@@ -3,11 +3,11 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
-import ReactJson from 'react-json-view'
 import Editor from 'react-simple-code-editor'
 import { highlight, languages } from 'prismjs/components/prism-core'
 import { v4 } from 'uuid'
 import { ProgressSpinner } from 'primereact/progressspinner'
+import dynamic from 'next/dynamic'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_CUSTOM_QUERY } from '../constants/views'
 import makeCustomQuery from '../utils/customQuery/makeCustomQuery'
@@ -17,6 +17,8 @@ import 'prismjs/components/prism-javascript'
 import 'prismjs/themes/prism-coy.css'
 import { CUSTOM_QUERIES_LS } from '../constants/localStorage'
 import { OPERATION_TYPE_TOGGLE, OPERATION_TYPE_UPDATE } from '../constants/store'
+
+const ReactJson = dynamic(import('react-json-view'), { ssr: false })
 
 const CustomQuery = ({
   updateStoreValue,

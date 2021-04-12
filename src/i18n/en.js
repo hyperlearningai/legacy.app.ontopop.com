@@ -47,6 +47,8 @@ export default {
   'elements-selection': 'Elements selection',
   nodesFilter: 'Nodes filter',
   'nodes-filter': 'Nodes filter',
+  elementsFilter: 'Elements filter',
+  'elements-filter': 'Elements filter',
   edgesFilter: 'Edges filter',
   'edges-filter': 'Edges filter',
   selectNodes: 'Select nodes',

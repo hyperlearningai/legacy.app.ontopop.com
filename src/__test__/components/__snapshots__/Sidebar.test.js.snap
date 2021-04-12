@@ -27,6 +27,33 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
 </Connect>
 `;
 
+exports[`Sidebar should match snapshot when sidebar open and ROUTE_ELEMENTS_FILTER 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
+  isSidebarOpen={true}
+  mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDING_BOX 1`] = `
 <Connect
   actions={
@@ -55,33 +82,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
 `;
 
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM_QUERY 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  currentGraph="graph-0"
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-      },
-      "graph-1": Object {
-        "label": "Search",
-      },
-    }
-  }
-  isSidebarOpen={true}
-  mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
->
-  <Component />
-</Connect>
-`;
-
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_FILTER 1`] = `
 <Connect
   actions={
     Object {
@@ -298,33 +298,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
 `;
 
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHBOURHOOD 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  currentGraph="graph-0"
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-      },
-      "graph-1": Object {
-        "label": "Search",
-      },
-    }
-  }
-  isSidebarOpen={true}
-  mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
->
-  <Component />
-</Connect>
-`;
-
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_FILTER 1`] = `
 <Connect
   actions={
     Object {

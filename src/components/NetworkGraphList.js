@@ -22,7 +22,7 @@ const NetworkGraphList = ({
       </h1>
       <div className="network-graph-list">
         {
-          graphViewsKeys.map((graphViewsKey) => {
+          graphViewsKeys.map((graphViewsKey, index) => {
             const { label, noDelete } = graphData[graphViewsKey]
 
             return (
@@ -34,6 +34,7 @@ const NetworkGraphList = ({
                   {
                     !noDelete && (
                       <Button
+                        id={`remove-graph-${index}`}
                         aria-label={t('removeGraph')}
                         tooltip={`${t('removeGraph')}: ${label}`}
                         onClick={() => {
