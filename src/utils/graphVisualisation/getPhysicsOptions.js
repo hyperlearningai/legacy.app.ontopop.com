@@ -75,7 +75,7 @@ const getPhysicsOptions = () => {
       size: stylingNodeTextFontSize,
       color: stylingNodeTextColor,
       align: stylingNodeTextFontAlign,
-      face: 'Montserrat',
+      face: 'Inter',
       bold: '700'
     },
     shape: stylingNodeShape,

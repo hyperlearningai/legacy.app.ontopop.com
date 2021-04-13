@@ -791,7 +791,7 @@ describe('logout', () => {
           OPERATION_TYPE_UPDATE,
           [
             "g.V().hasLabel('class').count()",
-            "g.V().has('id', 48).bothE().otherV().path().unfold().dedup().valueMap()"
+            "g.V().has('name', 'Link').valueMap()"
           ]
         ],
         [

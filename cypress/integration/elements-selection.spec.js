@@ -80,23 +80,21 @@ context('Elements selection', () => {
 
       cy.location('pathname').should('be.equal', ROUTE_ELEMENTS_SELECTION)
 
-      cy.get('.elements-selection-details').should('not.have.exist')
-
       // select first node
       cy.get('#element-select').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('rou')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '10')
-      cy.get('.nodes-selection-details-table-relationships').find('tbody tr').should('have.length', '1')
+      cy.get('.elements-selection-details-table-properties').find('.elements-selection-details-table-row').should('have.length', '10')
+      cy.get('.elements-selection-details-table-relationships').find('.elements-selection-details-table-row').should('have.length', '2')
 
       // select another node
       cy.get('#element-select').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('lin')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.nodes-selection-details-table-properties').find('tbody tr').should('have.length', '9')
-      cy.get('.nodes-selection-details-table-relationships').find('tbody tr').should('have.length', '24')
+      cy.get('.elements-selection-details-table-properties').find('.elements-selection-details-table-row').should('have.length', '9')
+      cy.get('.elements-selection-details-table-relationships').find('.elements-selection-details-table-row').should('have.length', '25')
 
       // change type to edge
       cy.get('#element-type-select').find('.p-button').eq(1).click()
@@ -106,16 +104,16 @@ context('Elements selection', () => {
       cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('lin')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.edges-selection-details-table-properties').find('tbody tr').should('have.length', '2')
-      cy.get('.edges-selection-details-table-relationships').find('tbody tr').should('have.length', '1')
+      cy.get('.elements-selection-details-table-properties').find('.elements-selection-details-table-row').should('have.length', '2')
+      cy.get('.elements-selection-details-table-relationships').find('.elements-selection-details-table-row').should('have.length', '2')
 
       // select another edge
       cy.get('#element-select').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('in')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.edges-selection-details-table-properties').find('tbody tr').should('have.length', '2')
-      cy.get('.edges-selection-details-table-relationships').find('tbody tr').should('have.length', '1')
+      cy.get('.elements-selection-details-table-properties').find('.elements-selection-details-table-row').should('have.length', '2')
+      cy.get('.elements-selection-details-table-relationships').find('.elements-selection-details-table-row').should('have.length', '2')
     })
   })
 })

@@ -1,26 +1,4 @@
 .entry-search {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  padding: 20px;
-  padding-top: 0;
-
-  &-title {
-    font-weight: 700;
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-  }
-
-  &-subtitle {
-    font-weight: 700;
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size: 1rem;
-  }
-
   &-block {
     border-top: 1px solid $mid-grey;
     border-bottom: 1px solid $mid-grey;
@@ -29,16 +7,12 @@
       width: 100%;
 
       .p-dropdown,
-      .p-dropdown-panel,
-      .p-dropdown-items,
-      .p-dropdown-items-wrapper,
       .p-input,
       .p-inputtext {
         width: 100%;
       }
 
       .p-dropdown-item {
-        width: 100%;
         word-break: break-word;
         height: auto;
         white-space: normal;

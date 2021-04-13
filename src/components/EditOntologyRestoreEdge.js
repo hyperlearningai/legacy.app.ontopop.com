@@ -65,19 +65,23 @@ const EditOntologyRestoreEdge = ({
       {
         optionEdges.length === 0
           ? (
-            <div className="edit-ontology-row">
+            <div className="sidebar-main-body-info m-t-50">
               {t('noDeletedElements')}
             </div>
           ) : (
             <>
               <div className="edit-ontology-row">
-                <label htmlFor="element-select">
+                <label
+                  className="sidebar-main-body-label"
+                  htmlFor="element-select"
+                >
                   {t('selectElement')}
                 </label>
 
                 <MultiSelect
                   value={selectedElement}
                   options={optionEdges}
+                  className="m-t-10"
                   onChange={(e) => setSelectedElement(e.value)}
                   placeholder={t('selectElement')}
                   display="chip"
@@ -87,29 +91,27 @@ const EditOntologyRestoreEdge = ({
                 />
               </div>
 
-              <div className="edit-ontology-row">
-                <Button
-                  aria-label={`${t(operation)}`}
-                  className="go-button"
-                  tooltip={`${t(operation)}`}
-                  disabled={!selectedElement}
-                  onClick={() => {
-                    setOntology({
-                      operation,
-                      type,
-                      selectedElement,
-                      updateStoreValue,
-                      selectedElementProperties,
-                      t
-                    })
-                    setSelectedElement(undefined)
-                    setSelectedElementProperties({})
-                  }}
-                  label={t(operation)}
-                  icon="pi pi-chevron-right"
-                  iconPos="right"
-                />
-              </div>
+              <Button
+                aria-label={`${t(operation)}`}
+                className="sidebar-button-primary go-button"
+                tooltip={`${t(operation)}`}
+                disabled={!selectedElement}
+                onClick={() => {
+                  setOntology({
+                    operation,
+                    type,
+                    selectedElement,
+                    updateStoreValue,
+                    selectedElementProperties,
+                    t
+                  })
+                  setSelectedElement(undefined)
+                  setSelectedElementProperties({})
+                }}
+                label={t(operation)}
+                icon="pi pi-chevron-right"
+                iconPos="right"
+              />
             </>
           )
       }

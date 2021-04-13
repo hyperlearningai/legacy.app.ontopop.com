@@ -104,6 +104,10 @@ context('Entry search', () => {
       cy.get('#advanced-search-value-0').find('.p-dropdown-trigger').click()
       cy.get('.p-dropdown-item').eq(1).click()
 
+      cy.get('#apply-filters-btn').click()
+
+      cy.wait('@linkSearch')
+
       // check pagination
       cy.get('.p-paginator-page').eq(2).click()
       cy.get('.nav-left').should('contain', 'Search results: 21-30 of 44')

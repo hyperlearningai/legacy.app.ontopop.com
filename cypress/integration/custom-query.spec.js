@@ -67,7 +67,7 @@ context('Custom query', () => {
       cy.get('.custom-query-editor').find('textarea').type('V().hasLabel(\'class\').count()')
 
       // query and get result
-      cy.get('.custom-query-buttons-button').eq(1).click()
+      cy.get('#query-btn').click()
 
       cy.wait('@postQuery')
 
@@ -75,10 +75,10 @@ context('Custom query', () => {
       cy.get('.react-json-view').should('be.visible')
 
       // check that json export works
-      cy.get('.custom-query-buttons-button').eq(2).click()
+      cy.get('#export-btn').click()
 
       // check that clear button works
-      cy.get('.custom-query-buttons-button').eq(0).click()
+      cy.get('#clear-btn').click()
 
       // check that query history is longer
       cy.get('.custom-query-row').should('have.length', 3)
@@ -86,7 +86,7 @@ context('Custom query', () => {
       // check that textarea value is equal to value pressed in query history
       cy.get('.custom-query-row').eq(1).find('.custom-query-row-main').find('.p-button')
         .click()
-      cy.get('.custom-query-editor').find('textarea').should('have.value', 'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()')
+      cy.get('.custom-query-editor-wrapper').find('textarea').should('have.value', 'g.V().has(\'name\', \'Link\').valueMap()')
 
       // check that element is removed from query history
       cy.get('.custom-query-row').eq(1).find('.custom-query-row-delete').find('.p-button')

@@ -228,10 +228,6 @@ const NetworkStylingNodeByPropertyForm = ({
               <Button
                 aria-label={t('delete')}
                 label={t('delete')}
-                tooltip={t('delete')}
-                tooltipOptions={{
-                  position: 'top'
-                }}
                 className="p-button-warning delete-property-style"
                 icon="pi pi-trash"
                 onClick={() => updateStylingByProperties({
@@ -246,13 +242,10 @@ const NetworkStylingNodeByPropertyForm = ({
           }
 
           <Button
-            aria-label={t('delete')}
+            aria-label={t('save')}
             label={t('save')}
-            tooltip={t('save')}
-            tooltipOptions={{
-              position: 'top'
-            }}
             icon="pi pi-check"
+            iconPos="right"
             className="save-property-style"
             disabled={!stylingPropertyObject.styleValue
               || stylingPropertyObject.styleValue.length === 0

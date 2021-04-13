@@ -30,20 +30,24 @@ const EditOntologyUpdateNode = ({
   return (
     <>
       <div
-        className="edit-ontology-row"
+        className="edit-ontology-row m-t-50"
       >
-        <label htmlFor="graph-select">
-          {t('selectElement')}
+        <label
+          className="sidebar-main-body-label m-t-50"
+          htmlFor="graph-select"
+        >
+          {t('selectNode')}
         </label>
 
         <Dropdown
           aria-label="graph-select"
           id="graph-select"
+          className="m-t-10"
           value={selectedElement}
           filter
           options={userDefinedNodes}
           onChange={(e) => setSelectedElement(e.value)}
-          placeholder={t('selectElement')}
+          placeholder={t('selectNode')}
         />
       </div>
 
@@ -51,12 +55,8 @@ const EditOntologyUpdateNode = ({
         selectedElement
         && (
           <>
-            <div
-              className="edit-ontology-row"
-            >
-              <label htmlFor="graph-select">
-                {t('insertProperties')}
-              </label>
+            <div className="sidebar-main-body-title m-t-50">
+              {t('insertProperties')}
             </div>
 
             <EditOntologyForm
@@ -67,10 +67,9 @@ const EditOntologyUpdateNode = ({
               initialData={classesFromApi[selectedElement]}
             />
 
-            <div className="edit-ontology-row">
+            <div className="edit-ontology-row-buttons m-t-50">
               <Button
-                className="go-button"
-                tooltip={`${t(operation)}`}
+                className="sidebar-button-secondary go-button m-r-10"
                 onClick={() => restoreUpdatedElement({
                   setSelectedElementProperties,
                   selectedElement
@@ -80,13 +79,10 @@ const EditOntologyUpdateNode = ({
                 icon="pi pi-refresh"
                 iconPos="left"
               />
-            </div>
 
-            <div className="edit-ontology-row">
               <Button
                 aria-label={t(operation)}
-                className="go-button"
-                tooltip={`${t(operation)}`}
+                className="sidebar-button-primary go-button m-l-10"
                 onClick={() => {
                   setOntology({
                     operation,

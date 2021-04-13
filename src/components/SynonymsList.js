@@ -99,9 +99,12 @@ const SynonymsList = ({
         {t(SIDEBAR_VIEW_SYNONYMS)}
       </h1>
 
-      <div className="synonyms">
+      <div className="sidebar-main-body synonyms">
         <div className="synonyms-select-row">
-          <label htmlFor="synonyms-select-element">
+          <label
+            className="sidebar-main-body-label m-b-10"
+            htmlFor="synonyms-select-element"
+          >
             {t('selectElement')}
           </label>
           <Dropdown
@@ -118,64 +121,68 @@ const SynonymsList = ({
           />
         </div>
 
+        <Divider />
+
+        <div className="sidebar-main-body-title m-t-20 text-center">
+          {t('availableSynonyms')}
+        </div>
+
         {
           synonymElementId && (
             <SynonymsListAddNew />
           )
         }
 
-        <Divider />
-
         {
           synonymElementId && (
             <div className="synonyms-list">
-              <div htmlFor="synonyms-list-title">
-                {t('availableSynonyms')}
-              </div>
-
-              <div className="p-input-icon-right synonyms-list-search-input">
-                <i className="pi pi-search" />
-                <InputText
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder={t('search')}
-                  id="synonyms-search-filter"
-                />
-              </div>
-
-              <div className="synonyms-select-row">
-                <label htmlFor="synonyms-select">
-                  {t('sortBy')}
-                </label>
-                <div className="p-inputgroup">
-                  <Dropdown
-                    aria-label="synonyms-sort-by"
-                    id="synonyms-sort-by"
-                    value={sortField}
-                    options={SORT_FIELDS.map((field) => ({
-                      value: field,
-                      label: t(field)
-                    }))}
-                    onChange={(e) => setSortField(e.value)}
-                  />
-                  <Button
-                    aria-label="synonyms-sort-by-direction"
-                    id="synonyms-sort-by-direction"
-                    tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
-                    tooltipOptions={{ position: 'top' }}
-                    icon={sortDirection === 'asc' ? 'pi pi-arrow-down' : 'pi pi-arrow-up'}
-                    onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
-                  />
-                </div>
-              </div>
-
               <div className="synonyms-accordion-row">
-                <Accordion
-                  id="synonyms-filter"
-                >
-                  <AccordionTab header={t('filter')}>
+                <Accordion id="synonyms-filter">
+                  <AccordionTab header={t('advancedOptions')}>
+                    <div className="p-input-icon-right synonyms-list-search-input m-t-10">
+                      <i className="pi pi-search" />
+                      <InputText
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder={t('search')}
+                        id="synonyms-search-filter"
+                      />
+                    </div>
+
                     <div className="synonyms-select-row">
-                      <label htmlFor="synonyms-filter-field">
+                      <label
+                        className="sidebar-main-body-label text-center m-t-30 m-b-10"
+                        htmlFor="synonyms-select"
+                      >
+                        {t('sortBy')}
+                      </label>
+                      <div className="p-inputgroup">
+                        <Dropdown
+                          aria-label="synonyms-sort-by"
+                          id="synonyms-sort-by"
+                          value={sortField}
+                          options={SORT_FIELDS.map((field) => ({
+                            value: field,
+                            label: t(field)
+                          }))}
+                          onChange={(e) => setSortField(e.value)}
+                        />
+                        <Button
+                          aria-label="synonyms-sort-by-direction"
+                          id="synonyms-sort-by-direction"
+                          tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
+                          tooltipOptions={{ position: 'top' }}
+                          icon={sortDirection === 'asc' ? 'pi pi-arrow-down' : 'pi pi-arrow-up'}
+                          onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="notes-select-row m-b-10">
+                      <label
+                        className="sidebar-main-body-label text-center m-t-30 m-b-10"
+                        htmlFor="synonyms-filter-field"
+                      >
                         {t('filterBy')}
                       </label>
                       <Dropdown
@@ -194,52 +201,58 @@ const SynonymsList = ({
                     </div>
 
                     {
-                    filter === 'userId' && (
-                      <div className="synonyms-select-row">
-                        <label htmlFor="synonyms-select">
-                          {t('selectUserIds')}
-                        </label>
-                        <MultiSelect
-                          id="synonyms-filter-user"
-                          value={filterValue}
-                          filter
-                          options={userIds}
-                          onChange={(e) => setFilterValue(e.value)}
-                        />
-                      </div>
-                    )
-                  }
+                      filter === 'userId' && (
+                        <div className="synonyms-select-row">
+                          <label
+                            className="sidebar-main-body-label text-center m-t-20 m-b-10"
+                            htmlFor="synonyms-select"
+                          >
+                            {t('selectUserIds')}
+                          </label>
+                          <MultiSelect
+                            id="synonyms-filter-user"
+                            value={filterValue}
+                            filter
+                            options={userIds}
+                            onChange={(e) => setFilterValue(e.value)}
+                          />
+                        </div>
+                      )
+                    }
 
                     {
-                    (
-                      filter === 'dateCreated'
-                      || filter === 'dateLastUpdated'
-                    ) && (
-                      <div className="synonyms-select-row">
-                        <Calendar
-                          minDate={new Date(MIN_DATE)}
-                          maxDate={new Date()}
-                          value={filterValue || MIN_DATE}
-                          onChange={(e) => setFilterValue(e.value)}
-                          inline
-                        />
-                      </div>
-                    )
-                  }
-
+                      (
+                        filter === 'dateCreated'
+                        || filter === 'dateLastUpdated'
+                      ) && (
+                        <div className="synonyms-select-row">
+                          <Calendar
+                            minDate={new Date(MIN_DATE)}
+                            maxDate={new Date()}
+                            value={filterValue || MIN_DATE}
+                            onChange={(e) => setFilterValue(e.value)}
+                            inline
+                          />
+                        </div>
+                      )
+                    }
                   </AccordionTab>
                 </Accordion>
               </div>
 
               {
-              filteredSynonyms.length > 0
-              && orderBy(filteredSynonyms, [sortField], [sortDirection]).map((synonym) => (
-                <SynonymsListNode
-                  key={`synonym-card-${synonym.id}`}
-                  synonymObject={synonym}
-                />
-              ))
-            }
+                filteredSynonyms.length > 0
+                  ? orderBy(filteredSynonyms, [sortField], [sortDirection]).map((synonym) => (
+                    <SynonymsListNode
+                      key={`synonym-card-${synonym.id}`}
+                      synonymObject={synonym}
+                    />
+                  )) : (
+                    <div className="sidebar-main-body-info m-t-20 text-center" id="no-synonyms-message">
+                      {t('noSynonymsPresent')}
+                    </div>
+                  )
+              }
             </div>
           )
         }

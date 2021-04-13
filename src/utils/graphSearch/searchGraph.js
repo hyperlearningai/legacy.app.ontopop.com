@@ -1,7 +1,7 @@
 /* eslint max-len:0 */
 import { API_ENDPOINT_SEARCH_KEY, API_ENDPOINT_SEARCH_POST } from '../../constants/api'
 import { NOTIFY_WARNING } from '../../constants/notifications'
-import { DISPLAYED_RESULTS_PER_PAGE } from '../../constants/search'
+import { DISPLAYED_RESULTS_PER_PAGE, PROPERTY_ODATA_FILTER_MAPPING } from '../../constants/search'
 import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_PUSH, OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
@@ -100,7 +100,8 @@ const searchGraph = async ({
 
       if (property === '' || value === '') return false
 
-      const propertyValueString = `${property} eq '${value}'`
+      const propertyQueryString = PROPERTY_ODATA_FILTER_MAPPING[property] || property
+      const propertyValueString = `search.ismatchscoring('"${value}"', '${propertyQueryString}')` // `${property} eq '${value}'`
 
       body.filter = body.filter ? `${body.filter} and ${propertyValueString}` : propertyValueString
     })

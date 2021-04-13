@@ -21,12 +21,8 @@ const EditOntologyAddNode = ({
 
   return (
     <>
-      <div
-        className="edit-ontology-row"
-      >
-        <label htmlFor="graph-select">
-          {t('insertProperties')}
-        </label>
+      <div className="sidebar-main-body-title m-t-50">
+        {t('insertProperties')}
       </div>
 
       <EditOntologyForm
@@ -38,51 +34,47 @@ const EditOntologyAddNode = ({
       />
 
       {
-        classesFromApi[selectedElementProperties[RDF_ABOUT_PROPERTY]]
-         && (
-         <div
-           className="edit-ontology-row"
-         >
-           <small
-             id="username2-help"
-             className="p-error p-d-block"
-           >
-             {t('idExists')}
-           </small>
-         </div>
-         )
+        classesFromApi[selectedElementProperties[RDF_ABOUT_PROPERTY]] && (
+          <div
+            className="edit-ontology-row"
+          >
+            <small
+              id="username2-help"
+              className="p-error p-d-block"
+            >
+              {t('idExists')}
+            </small>
+          </div>
+        )
       }
 
-      <div className="edit-ontology-row">
-        <Button
-          aria-label={`${t(operation)}`}
-          className="go-button"
-          tooltip={`${t(operation)}`}
-          disabled={operation === 'add'
-              && (
-                !selectedElementProperties[RDF_ABOUT_PROPERTY]
-                || selectedElementProperties[RDF_ABOUT_PROPERTY] === ''
-                || (
-                  type === 'node' && classesFromApi[selectedElementProperties[RDF_ABOUT_PROPERTY]]
-                )
-              )}
-          onClick={() => {
-            setOntology({
-              operation,
-              type,
-              selectedElement,
-              updateStoreValue,
-              selectedElementProperties,
-              t
-            })
-            setSelectedElement(undefined)
-            setSelectedElementProperties({})
-          }}
-          label={t(operation)}
-          icon="pi pi-chevron-right"
-          iconPos="right"
-        />
-      </div>
+      <Button
+        className="sidebar-button-primary go-button m-t-50"
+        disabled={operation === 'add'
+          && (
+            !selectedElementProperties[RDF_ABOUT_PROPERTY]
+            || selectedElementProperties[RDF_ABOUT_PROPERTY] === ''
+            || (
+              type === 'node' && classesFromApi[selectedElementProperties[RDF_ABOUT_PROPERTY]]
+            )
+          )}
+        onClick={() => {
+          setOntology({
+            operation,
+            type,
+            selectedElement,
+            updateStoreValue,
+            selectedElementProperties,
+            t
+          })
+          setSelectedElement(undefined)
+          setSelectedElementProperties({})
+        }}
+        label={t(operation)}
+        icon="pi pi-chevron-right"
+        aria-label={`${t(operation)}`}
+        iconPos="right"
+      />
     </>
   )
 }

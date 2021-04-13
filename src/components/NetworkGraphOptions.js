@@ -39,8 +39,10 @@ const NetworkGraphOptions = ({
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
       </h1>
-      <div className="graph-options">
-        <div className="graph-options-text">{t('chooseGraphOptions')}</div>
+      <div className="sidebar-main-body graph-options">
+        <div className="sidebar-main-body-info">
+          {t('chooseGraphOptions')}
+        </div>
 
         <div className="graph-options-toggle p-col-12">
           <Checkbox
@@ -64,7 +66,7 @@ const NetworkGraphOptions = ({
           </label>
         </div>
 
-        <div className="graph-options-toggle p-col-12  m-t-10">
+        <div className="graph-options-toggle p-col-12 m-t-10">
           <Checkbox
             id="dataset-checkbox"
             onChange={(e) => setDatasetVisibleLocal(e.checked)}
@@ -75,7 +77,11 @@ const NetworkGraphOptions = ({
           </label>
         </div>
 
-        <div className="graph-options-text">{t('hideElementsByProperties')}</div>
+        <div
+          className="sidebar-main-body-subtitle m-t-40"
+        >
+          {t('hideElementsByProperties')}
+        </div>
 
         <div
           className="graph-options-selection"
@@ -106,13 +112,10 @@ const NetworkGraphOptions = ({
               <div className="graph-options-button-wrapper">
                 <Button
                   label={t('add')}
+                  aria-label={t('add')}
                   icon="pi pi-plus"
-                  className="graph-options-button graph-options-button-add"
-                  tooltip={t('add')}
+                  className="sidebar-button-primary graph-options-button graph-options-button-add"
                   iconPos="right"
-                  tooltipOptions={{
-                    position: 'top'
-                  }}
                   onClick={() => {
                     if (Object.keys(nodesProperties).length === 0) return setNodesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
 
@@ -147,50 +150,45 @@ const NetworkGraphOptions = ({
                   ))
                 }
               </Accordion>
-              <div className="graph-options-button-wrapper">
-                <Button
-                  label={t('add')}
-                  tooltip={t('add')}
-                  className="graph-options-button graph-options-button-add"
-                  iconPos="right"
-                  tooltipOptions={{
-                    position: 'top'
-                  }}
-                  icon="pi pi-plus"
-                  onClick={() => {
-                    if (Object.keys(edgesProperties).length === 0) return setEdgesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
 
-                    const nextIndex = Object.keys(edgesProperties).length
+              <Button
+                label={t('add')}
+                aria-label={t('add')}
+                className="sidebar-button-primary graph-options-button graph-options-button-add"
+                iconPos="right"
+                icon="pi pi-plus"
+                onClick={() => {
+                  if (Object.keys(edgesProperties).length === 0) return setEdgesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
 
-                    setEdgesProperties({
-                      ...edgesProperties,
-                      [nextIndex]: DEFAULT_HIDDEN_ELEMENT_PROPERTY
-                    })
-                  }}
-                />
-              </div>
+                  const nextIndex = Object.keys(edgesProperties).length
+
+                  setEdgesProperties({
+                    ...edgesProperties,
+                    [nextIndex]: DEFAULT_HIDDEN_ELEMENT_PROPERTY
+                  })
+                }}
+              />
+
             </AccordionTab>
           </Accordion>
         </div>
 
-        <div className="graph-options-button-wrapper">
-          <Button
-            tooltip={t('save')}
-            id="network-graph-options-save"
-            className="graph-options-button m-t-30"
-            icon="pi pi-save"
-            iconPos="right"
-            label={t('show')}
-            onClick={() => setNetworkGraphOptions({
-              isUpperOntologyVisible: isUpperOntologyVisibleLocal,
-              isSubClassEdgeVisible: isSubClassEdgeVisibleLocal,
-              isDatasetVisible: isDatasetVisibleLocal,
-              hiddenNodesProperties: nodesProperties,
-              hiddenEdgesProperties: edgesProperties,
-              updateStoreValue
-            })}
-          />
-        </div>
+        <Button
+          id="network-graph-options-save"
+          className="sidebar-button-primary m-t-50"
+          icon="pi pi-arrow-right"
+          iconPos="right"
+          label={t('apply')}
+          aria-label={t('apply')}
+          onClick={() => setNetworkGraphOptions({
+            isUpperOntologyVisible: isUpperOntologyVisibleLocal,
+            isSubClassEdgeVisible: isSubClassEdgeVisibleLocal,
+            isDatasetVisible: isDatasetVisibleLocal,
+            hiddenNodesProperties: nodesProperties,
+            hiddenEdgesProperties: edgesProperties,
+            updateStoreValue
+          })}
+        />
 
       </div>
     </>

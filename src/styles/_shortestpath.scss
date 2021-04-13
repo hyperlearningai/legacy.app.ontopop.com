@@ -1,16 +1,4 @@
 .shortest-path {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  text-align: center;
-  padding: 24px;
-
-  &-message {
-    width: 100%;
-    padding: 10px 24px;
-    text-align: center;
-  }
-
   &-toggle {
     width: 100%;
     display: flex;
@@ -25,6 +13,7 @@
 
   &-dropdown {
     width: 100%;
+    margin-top: -10px;
 
     .p-dropdown,
     .p-dropdown-panel,
@@ -71,18 +60,5 @@
   &-node {
     width: 100%;
     margin: 10px auto 70px;
-  }
-
-  &-buttons {
-    padding: 10px 0;
-  }
-
-  &-button {
-    margin: 30px auto 15px;
-    width: 100%;
-
-    .p-button {
-      width: 100%;
-    }
   }
 }

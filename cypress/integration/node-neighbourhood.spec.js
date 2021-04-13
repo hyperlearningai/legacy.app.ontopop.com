@@ -90,7 +90,7 @@ context('Node neighbourhood', () => {
 
       cy.get('#separation-degree').find('.p-inputnumber-input').should('have.value', 2)
 
-      cy.get('.node-neighbourhood-button').click()
+      cy.get('#node-neighbourhood-btn').click()
 
       cy.wait(1000)
 

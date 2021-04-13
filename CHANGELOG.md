@@ -16,6 +16,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Security
 
+
+## [0.7.0]
+### Added
+- ONTOLOGY-163 Added explicit search button in search sidebar view
+
+### Changed
+- ONTOLOGY-163 Improved sidebar UI/UX
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- ONTOLOGY-163 Fixed advanced search query 
+
+### Security
+
+
 ## [0.6.1]
 ### Added
 - ONTOLOGY-90 Added advanced search options and connected enumeration API for some properties
@@ -28,14 +46,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-90 Added vocabulary API endpoint and updated paths
 - ONTOLOGY-134 Unified node and edge selection into elements selection
 
-### Deprecated
-
-### Removed
-
 ### Fixed
 - ONTOLOGY-153 Updated Sidebar views routing as routing not working on cloud
 
-### Security
 
 ## [0.6.0]
 ### Added
@@ -50,14 +63,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-153 Logout function now resets the store
 - ONTOLOGY-151 Node and edge rendering logic to improve performance
 
-### Deprecated
-
 ### Removed
 - ONTOLOGY-130 Removed all actions except for updateStoreValue
 
-### Fixed
-
-### Security
 
 ## [0.5.0]
 ### Added
@@ -75,8 +83,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-112 Updated node and edge removal logic
 - ONTOLOGY-112 Used sidebar button IDs rather than eq in cypress tests to allow buttons reordering
 
-### Deprecated
-
 ### Removed
 - ONTOLOGY-112 Removed unnecessary test fixtures
 
@@ -84,7 +90,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-137 Fixed dataset/upper ontology nodes toggling bug
 - ONTOLOGY-112 Fixed node update API
 
-### Security
 
 ## [0.4.0]
 ### Added
@@ -113,8 +118,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-93 Refactored edge management components and utils
 - ONTOLOGY-93 Refactored node management components and utils
 - ONTOLOGY-93 Refactored functions with api calls to use the httpCall function
-
-### Deprecated
 
 ### Removed
 - ONTOLOGY-110 Removed redux loading middleware
@@ -161,9 +164,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-104 Fixed styling of ontology restore edge when no edges available
 - ONTOLOGY-75 Fixed styling when edge or node styling by property is removed
 
-### Security
-
-
 
 ## [0.2.0]
 ### Added
@@ -183,16 +183,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - ONTOLOGY-33 Removed availableNodesNormalised and availableEdgesNormalised and replaced with AvailableNodes and AvailableEdges DataSet
 
-### Deprecated
-
-### Removed
-
 ### Fixed
 - ONTOLOGY-33 Fixed edges filter, using annotation properties for property dropdown
 - ONTOLOGY-32 Added useRef constants in GraphVisualisationWrapper to avoid refreshing the graph multiple times at startup
 - ONTOLOGY-47 Removed highlight from free-text search selected node after sidebar section update
 
-### Security
 
 ## [0.1.0]
 ### Added
@@ -215,8 +210,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-23 Moved from modal overlays to sidebar with left icons vscode-style
 - ONTOLOGY-36 Moved from nodes/edges arrays to datasets to improve elements customisation
 
-### Deprecated
-
 ### Removed
 - ONTOLOGY-54 Node search icon in toolbar
 
@@ -225,8 +218,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-54 Fixed node and edges count when node expanded
 - ONTOLOGY-54 Added subClassOf as default edge is owlRestrictions missing
 - ONTOLOGY-28 Added jsdoc comments to store actions and utils
-
-### Security
 
 ## [0.0.2]
 ### Added

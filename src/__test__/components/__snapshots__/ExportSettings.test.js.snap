@@ -8,12 +8,18 @@ exports[`ExportSettings should match snapshot  1`] = `
     export
   </h1>
   <div
-    className="export-settings"
+    className="sidebar-main-body export-settings"
   >
+    <div
+      className="sidebar-main-body-info"
+    >
+      setFileNameAndChooseExportFormat
+    </div>
     <div
       className="export-settings-input"
     >
       <label
+        className="sidebar-main-body-label text-center m-b-10"
         htmlFor="filename"
       >
         fileName
@@ -33,7 +39,7 @@ exports[`ExportSettings should match snapshot  1`] = `
       className="export-settings-input"
     >
       <div
-        className="label"
+        className="sidebar-main-body-label text-center m-b-10"
       >
         exportGraphAs
       </div>
@@ -82,7 +88,7 @@ exports[`ExportSettings should match snapshot  1`] = `
       className="export-settings-input"
     >
       <div
-        className="label"
+        className="sidebar-main-body-label text-center m-b-10"
       >
         exportDataAs
       </div>
@@ -119,7 +125,7 @@ exports[`ExportSettings should match snapshot  1`] = `
       className="export-settings-input"
     >
       <div
-        className="label"
+        className="sidebar-main-body-label text-center m-b-10"
       >
         PrintGraph
       </div>

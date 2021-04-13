@@ -1,9 +1,126 @@
 .p-badge.p-badge-warning {
-  background-color: #FDC600;
+  background-color: #fdc600;
   color: #212529;
 }
 
 .p-button,
-.p-selectbutton .p-button.p-highlight{
-  background-color: $indigo;
+.p-selectbutton .p-button.p-highlight {
+  background: $primary;
+  color: $white;
+
+  &:hover {
+    color: $primary !important;
+    background: $white !important;
+  }
+}
+
+.p-accordion {
+  &-header-link {
+    background: $dark-background-lighter !important;
+    color: $white !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem $primary !important;
+    }
+  }
+
+  &-content {
+    background: $dark-background-lighter !important;
+    color: $white !important;
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem $primary !important;
+    }
+  }
+}
+
+.p-dropdown,
+.p-multiselect,
+.p-dropdown-items,
+.p-dropdown-items-wrapper,
+.p-inputtext {
+  width: 100%;
+  white-space: normal;
+
+  .p-dropdown-item,
+  .p-multiselect-item {
+    min-width: 100px;
+    overflow: hidden;
+    white-space: normal !important;
+    word-break: break-all;
+    height: auto;
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+  }
+
+  &-panel {
+    max-width: 200px;
+    min-width: 100px;
+    white-space: normal !important;
+
+    .p-multiselect-item {
+      min-width: 100px;
+      white-space: normal;
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem $primary !important;
+    border-color: $primary !important;
+  }
+}
+
+.p-inputwrapper-focus {
+  box-shadow: 0 0 0 0.2rem $primary !important;
+  border-color: $primary !important;
+}
+
+.p-inputtext {
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+  &.p-dropdown-label,
+  &.p-multiselect-label {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+.p-overlaypanel {
+  left: auto !important;
+  right: 20px;
+  top: 55px !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  &-content {
+    padding: 0 !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .p-button {
+      width: 100%;
+      margin: 0;
+      background: $white;
+      color: $font-color;
+      border-radius: 0;
+      border: 1px solid $font-color;
+      padding: 10px;
+    }
+  }
 }

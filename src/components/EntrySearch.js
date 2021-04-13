@@ -11,8 +11,9 @@ import { useState } from 'react'
 import actions from '../store/actions'
 import { OPERATION_TYPE_DELETE, OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 import SearchBar from './SearchBar'
-import { ADVANCED_SEARCH_TEMPLATE, ENUMERATION_PROPERTIES } from '../constants/search'
+import { ADVANCED_SEARCH_TEMPLATE, ENUMERATION_PROPERTIES, PROPERTYIES_TO_EXCLUDE_FROM_ADVANCED_SEARCH } from '../constants/search'
 import getEnumeration from '../utils/graphSearch/getEnumeration'
+import searchGraph from '../utils/graphSearch/searchGraph'
 
 const EntrySearch = ({
   dataTypeSearch,
@@ -56,7 +57,7 @@ const EntrySearch = ({
         {t('search')}
       </h1>
 
-      <div className="entry-search">
+      <div className="sidebar-main-body entry-search">
         <div
           className="entry-search-row"
         >
@@ -64,13 +65,13 @@ const EntrySearch = ({
         </div>
 
         <div
-          className="entry-search-title"
+          className="sidebar-main-body-title"
         >
           {t('searchFilters')}
         </div>
 
         <div
-          className="entry-search-subtitle"
+          className="sidebar-main-body-subtitle"
         >
           {t('resultType')}
         </div>
@@ -96,7 +97,7 @@ const EntrySearch = ({
         </div>
 
         <div
-          className="entry-search-subtitle"
+          className="sidebar-main-body-subtitle"
         >
           {t('topology')}
         </div>
@@ -139,12 +140,16 @@ const EntrySearch = ({
                     key={`advanced-search-${searchFilterKey}`}
                     className="entry-search-block p-pt-3 p-pb-3 p-d-flex p-ai-center"
                   >
-                    <div className="p-d-flex p-flex-column">
+                    <div className="p-d-flex p-flex-column full-width">
                       <div className="entry-search-block-row m-b-5">
                         <Dropdown
                           id={`advanced-search-property-${searchFilterKey}`}
                           value={property}
-                          options={annotationProperties}
+                          options={
+                            annotationProperties && annotationProperties.length > 0
+                              ? annotationProperties.filter((prop) => !PROPERTYIES_TO_EXCLUDE_FROM_ADVANCED_SEARCH.includes(prop.value))
+                              : []
+                          }
                           filter
                           onChange={(e) => {
                             const selectedValue = e.value
@@ -195,6 +200,7 @@ const EntrySearch = ({
                         className="p-m-1"
                         id={`advanced-search-plus-${searchFilterKey}`}
                         aria-label={t('add')}
+                        tooltip={t('add')}
                         onClick={() => updateStoreValue(['advancedSearchFilters'], OPERATION_TYPE_OBJECT_ADD, { [maxSearchFilterKey + 1]: JSON.parse(JSON.stringify(ADVANCED_SEARCH_TEMPLATE)) })}
                       />
 
@@ -203,6 +209,7 @@ const EntrySearch = ({
                         className="p-m-1"
                         id={`advanced-search-minus-${searchFilterKey}`}
                         aria-label={t('remove')}
+                        tooltip={t('remove')}
                         onClick={() => {
                           if (searchFilterKeys.length > 1) {
                             return updateStoreValue(['advancedSearchFilters', searchFilterKey], OPERATION_TYPE_DELETE)
@@ -219,6 +226,27 @@ const EntrySearch = ({
             }
           </AccordionTab>
         </Accordion>
+
+        <div
+          className="entry-search-row"
+        >
+          <Button
+            icon="pi pi-search"
+            iconPos="right"
+            id="apply-filters-btn"
+            aria-label={t('search')}
+            label={t('search')}
+            className="sidebar-button-primary"
+            onClick={() => {
+              updateStoreValue(['searchPageSelected'], OPERATION_TYPE_UPDATE, 0)
+
+              searchGraph({
+                updateStoreValue,
+                t
+              })
+            }}
+          />
+        </div>
       </div>
     </>
   )

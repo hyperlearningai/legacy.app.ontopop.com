@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EdgesSelectionDetailsNode should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  mapToProps={null}
+  node={
+    Object {
+      "label": "Road",
+      "rdfAbout": "http://test.com/Road",
+      "rdfsLabel": "Road",
+    }
+  }
+>
+  <Component />
+</Connect>
+`;
