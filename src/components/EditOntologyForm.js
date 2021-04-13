@@ -42,7 +42,7 @@ const EditOntologyForm = ({
               key={`element-property-${id}`}
             >
               <label className="form-label" htmlFor={`element-property-${id}`}>
-                {`${label}`}
+                {label}
               </label>
 
               <InputTextarea
