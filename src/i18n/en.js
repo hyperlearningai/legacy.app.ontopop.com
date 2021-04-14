@@ -503,4 +503,5 @@ export default {
   insertText: 'Insert text',
   insertTextOrSelect: 'Insert text or select',
   apply: 'Apply',
+  showOrphanNodes: 'Show orphan nodes',
 }

@@ -75,8 +75,23 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('#main-search').type('link')
+
+      cy.wait('@linkAutocomplete')
+
+      cy.get('.p-autocomplete-item').eq(0).click()
+
+      cy.wait('@linkSearch')
+
+      cy.get('#card-visualise-btn-0').click()
+
+      cy.wait(1000)
+
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
+
+      // select node
+      cy.get('#notes-select').find('.p-button').eq(0).click()
 
       cy.location('pathname').should('be.equal', ROUTE_NOTES)
 
@@ -111,15 +126,16 @@ context('Notes list', () => {
       cy.get('.notes-content').eq(0).should('have.text', 'new note')
 
       // should filter notes
-      cy.get('#notes-filter').find('.p-accordion-header-link').click({ force: true })
-      cy.get('#notes-filter-field').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('#notes-filter-field').find('.p-dropdown-trigger').click()
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(1).click()
+
+      cy.wait(200)
+
       cy.get('.p-datepicker-calendar').find('td:not(.p-datepicker-other-month)').eq(0).find('span')
         .click({ force: true })
+
       cy.get('.no-notes-message').should('have.text', 'No notes present')
       cy.get('.notes-note').should('not.exist')
-
-      cy.get('.p-accordion-header').find('a').click()
 
       cy.get('#notes-filter-field').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })
