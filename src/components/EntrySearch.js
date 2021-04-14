@@ -8,6 +8,7 @@ import { Dropdown } from 'primereact/dropdown'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { useState } from 'react'
+import { ListBox } from 'primereact/listbox'
 import actions from '../store/actions'
 import { OPERATION_TYPE_DELETE, OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 import SearchBar from './SearchBar'
@@ -135,12 +136,21 @@ const EntrySearch = ({
 
                 const isWithEnumeration = ENUMERATION_PROPERTIES.includes(property)
 
+                const enumerationSuggestions = suggestions && suggestions.length > 0
+                  ? suggestions.filter((suggestion) => suggestion.value.toLowerCase().includes(value.toLowerCase()))
+                  : []
+
+                const diplayedEnumerationSuggestions = enumerationSuggestions.length === 1
+                  && enumerationSuggestions[0].value === value
+                  ? []
+                  : enumerationSuggestions
+
                 return (
                   <div
                     key={`advanced-search-${searchFilterKey}`}
                     className="entry-search-block p-pt-3 p-pb-3 p-d-flex p-ai-center"
                   >
-                    <div className="p-d-flex p-flex-column full-width">
+                    <div className="p-d-flex p-flex-column">
                       <div className="entry-search-block-row m-b-5">
                         <Dropdown
                           id={`advanced-search-property-${searchFilterKey}`}
@@ -170,27 +180,23 @@ const EntrySearch = ({
                       </div>
 
                       <div className="entry-search-block-row">
+                        <InputText
+                          className="property-text-input value-input"
+                          id={`advanced-search-value-${searchFilterKey}`}
+                          value={value}
+                          placeholder={t('insertTextOrSelect')}
+                          onChange={(e) => updateStoreValue(['advancedSearchFilters', searchFilterKey], OPERATION_TYPE_OBJECT_ADD, { value: e.target.value })}
+                        />
                         {
-                          isWithEnumeration ? (
-                            <Dropdown
-                              id={`advanced-search-value-${searchFilterKey}`}
+                          isWithEnumeration
+                          && diplayedEnumerationSuggestions.length > 0 && (
+                            <ListBox
                               value={value}
-                              options={suggestions}
-                              filter
+                              options={diplayedEnumerationSuggestions}
                               onChange={(e) => updateStoreValue(['advancedSearchFilters', searchFilterKey], OPERATION_TYPE_OBJECT_ADD, { value: e.value })}
-                              placeholder={t('selectProperty')}
-                            />
-                          ) : (
-                            <InputText
-                              className="property-text-input value-input"
-                              id={`advanced-search-value-${searchFilterKey}`}
-                              value={value}
-                              placeholder={t('insertText')}
-                              onChange={(e) => updateStoreValue(['advancedSearchFilters', searchFilterKey], OPERATION_TYPE_OBJECT_ADD, { value: e.target.value })}
                             />
                           )
                         }
-
                       </div>
                     </div>
 

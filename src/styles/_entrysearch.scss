@@ -3,6 +3,16 @@
     border-top: 1px solid $mid-grey;
     border-bottom: 1px solid $mid-grey;
 
+    .p-d-flex {
+      &:nth-child(1) {
+        width: calc(100% - 40px);
+      }
+
+      &:nth-child(2) {
+        width: 40px;
+      }
+    }
+
     &-row {
       width: 100%;
 

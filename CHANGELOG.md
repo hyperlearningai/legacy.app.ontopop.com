@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-163 Added explicit search button in search sidebar view
 
 ### Changed
+- ONTOLOGY-171 Turned dropdown into text input with suggestions in advanced search properties with enumeration
 - ONTOLOGY-163 Improved sidebar UI/UX
 
 ### Deprecated
