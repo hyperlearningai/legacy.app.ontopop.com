@@ -5,7 +5,7 @@ import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
-import {ROUTE_ELEMENTS_FILTER} from '../../src/constants/routes'
+import { ROUTE_ELEMENTS_FILTER } from '../../src/constants/routes'
 
 context('Elements filter', () => {
   beforeEach(() => {
@@ -94,7 +94,7 @@ context('Elements filter', () => {
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
       cy.get('#nodes-filter-value-1').type('net')
 
-      cy.get('.elements-filter-button').click()
+      cy.get('#elements-filter-btn').click()
 
       cy.wait(1000)
 
@@ -143,7 +143,7 @@ context('Elements filter', () => {
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').click({ force: true })
       cy.get('#edges-filter-value-1').type('in')
 
-      cy.get('.elements-filter-button').click()
+      cy.get('#elements-filter-btn').click()
 
       cy.wait(1000)
 

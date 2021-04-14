@@ -87,14 +87,14 @@ context('Bounding box selection', () => {
       cy.wait(500)
 
       // get number of selected elements
-      cy.get('.bounding-box-selected').find('td').eq(1).should(($div) => {
-        const n = parseInt($div.text())
+      cy.get('.bounding-box-selection').should(($div) => {
+        const selectedNodes = parseInt($div.text().split(': ')[1])
 
-        expect(n).to.be.gte(0)
+        expect(selectedNodes).to.be.gte(0)
       })
 
       // second AND filter
-      cy.get('.bounding-box-button').click()
+      cy.get('#bounding-box-button').click()
 
       cy.wait(1000)
 

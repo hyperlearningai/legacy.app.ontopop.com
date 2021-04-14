@@ -59,36 +59,24 @@ const BoundingBoxSelection = ({
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_BOUNDING_BOX)}
       </h1>
-      <div className="bounding-box">
-        <div className="bounding-box-selection">
+
+      <div className="sidebar-main-body bounding-box">
+        <div className="sidebar-main-body-info">
           {t('drawBoundingBox')}
         </div>
-        <div className="bounding-box-selection-steps">
+        <div className="sidebar-main-body-info m-b-0">
           {t('drawBoundingBoxFirstClick')}
         </div>
-        <div className="bounding-box-selection-steps">
+        <div className="sidebar-main-body-info">
           {t('drawBoundingBoxSecondClick')}
         </div>
 
-        <div className="bounding-box-selected">
-          <table>
-            <tbody>
-              <tr>
-                <td className="bold">
-                  {t('selectedNodes')}
-                  :
-                </td>
-                <td>{selectedBoundingBoxNodes.length}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="bounding-box-input">
-          <div className="label">
+        <div className="bounding-box-input m-t-50">
+          <span className="sidebar-main-body-label">
             {t('selectionDirection')}
-          </div>
-          <div className="network-settings-buttons">
+          </span>
+
+          <div className="bounding-box-buttons">
             <Button
               aria-label={t('insideBoundingBox')}
               tooltip={t('insideBoundingBox')}
@@ -110,10 +98,14 @@ const BoundingBoxSelection = ({
           </div>
         </div>
 
+        <div className="sidebar-main-body-label bounding-box-selection m-t-30 m-b-15">
+          {`${t('selectedNodes')}: ${selectedBoundingBoxNodes.length}`}
+        </div>
+
         <Button
           aria-label={t('showSelectedNodes')}
-          tooltip={t('showSelectedNodes')}
-          className="bounding-box-button"
+          className="sidebar-button-primary m-t-50"
+          id="bounding-box-button"
           disabled={selectedBoundingBoxNodes.length < 1}
           icon="pi pi-chevron-right"
           iconPos="right"

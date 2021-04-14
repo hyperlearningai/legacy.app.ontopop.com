@@ -30,14 +30,12 @@ const EditOntology = ({
   const [operation, setOperation] = useState('add')
   const [type, setType] = useState('node')
 
-  const typeButtonsUpdate = [{
-    label: t('node'),
-    value: 'node',
-    icon: 'pi-circle-off'
-  }]
-
   const typeButtons = [
-    ...typeButtonsUpdate,
+    {
+      label: t('node'),
+      value: 'node',
+      icon: 'pi-circle-off'
+    },
     {
       value: 'edge',
       label: t('edge'),
@@ -170,15 +168,19 @@ const EditOntology = ({
       <h1 className="sidebar-main-title">
         { t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
       </h1>
-      <div className="edit-ontology">
+      <div className="sidebar-main-body edit-ontology">
         <div
           className="edit-ontology-row"
         >
-          <label htmlFor="operation-select">
+          <label
+            className="sidebar-main-body-label"
+            htmlFor="operation-select"
+          >
             {t('chooseOperation')}
           </label>
           <SelectButton
             id="operation-select"
+            className="m-t-10"
             value={operation}
             options={operationButtons}
             onChange={(e) => {
@@ -188,24 +190,30 @@ const EditOntology = ({
           />
         </div>
 
-        <div
-          className="edit-ontology-row"
-        >
-          <label htmlFor="type-select">
-            {t('chooseElementType')}
-          </label>
-          <SelectButton
-            id="type-select"
-            value={operation === 'update' ? 'node' : type}
-            options={operation === 'update'
-              ? typeButtonsUpdate
-              : typeButtons}
-            onChange={(e) => {
-              setType(e.value)
-            }}
-            itemTemplate={itemTemplate}
-          />
-        </div>
+        {
+            operation !== 'update' && (
+            <div
+              className="edit-ontology-row m-t-40"
+            >
+              <label
+                className="sidebar-main-body-label text-center m-b-10"
+                htmlFor="type-select"
+              >
+                {t('chooseElementType')}
+              </label>
+              <SelectButton
+                id="type-select"
+                className="m-t-10"
+                value={operation === 'update' ? 'node' : type}
+                options={typeButtons}
+                onChange={(e) => {
+                  setType(e.value)
+                }}
+                itemTemplate={itemTemplate}
+              />
+            </div>
+            )
+          }
 
         {
           operation === 'add'

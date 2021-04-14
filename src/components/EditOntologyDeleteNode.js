@@ -25,48 +25,60 @@ const EditOntologyDeleteNode = ({
 
   return (
     <>
-      <div
-        className="edit-ontology-row"
-      >
-        <label htmlFor="element-select">
-          {t('selectElement')}
-        </label>
+      {
+        userDefinedNodes.length === 0
+          ? (
+            <div className="sidebar-main-body-info m-t-50">
+              {t('noNodesToDelete')}
+            </div>
+          ) : (
+            <>
+              <div
+                className="edit-ontology-row m-t-50"
+              >
+                <label
+                  className="sidebar-main-body-label"
+                  htmlFor="element-select"
+                >
+                  {t('selectElement')}
+                </label>
 
-        <MultiSelect
-          value={selectedElement}
-          options={userDefinedNodes}
-          onChange={(e) => setSelectedElement(e.value)}
-          placeholder={t('selectElement')}
-          display="chip"
-          filter
-          showClear
-          filterBy="label"
-        />
-      </div>
+                <MultiSelect
+                  value={selectedElement}
+                  options={userDefinedNodes}
+                  onChange={(e) => setSelectedElement(e.value)}
+                  placeholder={t('selectElement')}
+                  className="m-t-10"
+                  display="chip"
+                  filter
+                  showClear
+                  filterBy="label"
+                />
+              </div>
 
-      <div className="edit-ontology-row">
-        <Button
-          aria-label={`${t(operation)}`}
-          className="go-button"
-          tooltip={`${t(operation)}`}
-          disabled={!selectedElement}
-          onClick={() => {
-            setOntology({
-              operation,
-              type,
-              selectedElement,
-              updateStoreValue,
-              selectedElementProperties,
-              t
-            })
-            setSelectedElement(undefined)
-            setSelectedElementProperties({})
-          }}
-          label={t(operation)}
-          icon="pi pi-chevron-right"
-          iconPos="right"
-        />
-      </div>
+              <Button
+                aria-label={`${t(operation)}`}
+                className="sidebar-button-primary go-button m-t-50"
+                disabled={!selectedElement}
+                onClick={() => {
+                  setOntology({
+                    operation,
+                    type,
+                    selectedElement,
+                    updateStoreValue,
+                    selectedElementProperties,
+                    t
+                  })
+                  setSelectedElement(undefined)
+                  setSelectedElementProperties({})
+                }}
+                label={t(operation)}
+                icon="pi pi-chevron-right"
+                iconPos="right"
+              />
+            </>
+          )
+      }
     </>
   )
 }

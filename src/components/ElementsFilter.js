@@ -31,8 +31,6 @@ const ElementsFilter = ({
     value: '',
   }
 
-  // const checkEmptyRow = (filters) => filters.filter((filter) => filter.property === '' && filter.value === '').length > 0
-
   const [elementsFilters, setElementsFilters] = useState([defaultElementFilter])
   const [selectedElementType, selectElementType] = useState('node')
 
@@ -55,25 +53,28 @@ const ElementsFilter = ({
       <h1 className="sidebar-main-title">
         {selectedElementType === 'node' ? t('nodesFilter') : t('edgesFilter')}
       </h1>
-      <div className="elements-selection-select-row">
-        <SelectButton
-          id="element-type-select"
-          value={selectedElementType}
-          options={elementTypeButtons}
-          onChange={(e) => {
-            const { value } = e
-            selectElementType(value)
-            setElementsFilters([defaultElementFilter])
-          }}
-          itemTemplate={itemTemplate}
-        />
-      </div>
 
-      <div className="elements-filter">
-        <div>
-          {selectedElementType === 'node'
-            ? t('filterNodesByArbitraryPropsCombination')
-            : t('filterEdgesByArbitraryPropsCombination')}
+      <div className="sidebar-main-body elements-filter">
+        <div className="elements-selection-select-row">
+          <SelectButton
+            id="element-type-select"
+            value={selectedElementType}
+            options={elementTypeButtons}
+            onChange={(e) => {
+              const { value } = e
+              selectElementType(value)
+              setElementsFilters([defaultElementFilter])
+            }}
+            itemTemplate={itemTemplate}
+          />
+        </div>
+
+        <div className="sidebar-main-body-info">
+          {t(
+            selectedElementType === 'node'
+              ? 'filterNodesByArbitraryPropsCombination'
+              : 'filterEdgesByArbitraryPropsCombination'
+          )}
         </div>
 
         <div
@@ -91,7 +92,13 @@ const ElementsFilter = ({
                     key={`${selectedElementType}s-filter-${index}`}
                   >
                     <div className="p-field p-col-12">
-                      <label htmlFor={selectId}>{t('selectProperty')}</label>
+                      <label
+                        className="sidebar-main-body-label"
+                        htmlFor={selectId}
+                      >
+                        {t('selectProperty')}
+
+                      </label>
                       <Dropdown
                         aria-label="select-element"
                         id={selectId}
@@ -109,7 +116,13 @@ const ElementsFilter = ({
                     </div>
 
                     <div className="p-field p-col-12 m-t-20">
-                      <label htmlFor={inputTextId}>{t('searchString')}</label>
+                      <label
+                        className="sidebar-main-body-label"
+                        htmlFor={inputTextId}
+                      >
+                        {t('searchString')}
+
+                      </label>
                       <InputText
                         id={inputTextId}
                         value={elementsFilters[index].value}
@@ -136,6 +149,7 @@ const ElementsFilter = ({
                           <Button
                             disabled={index === 0}
                             label={t('delete')}
+                            aria-label={t('delete')}
                             tooltip={t('delete')}
                             tooltipOptions={{
                               position: 'top'
@@ -151,6 +165,7 @@ const ElementsFilter = ({
                           <Button
                             id="elements-filter-add"
                             label={t('add')}
+                            aria-label={t('add')}
                             className="add-property"
                             onClick={() => {
                               const newElementsFilters = [
@@ -172,11 +187,11 @@ const ElementsFilter = ({
 
         <Button
           aria-label={t('show')}
-          tooltip={selectedElementType === 'node' ? t('showFilteredNodes') : t('showFilteredEdges')}
-          className="elements-filter-button m-t-30"
+          className="sidebar-button-primary m-t-50"
           disabled={elementsFilters.length < 2}
           icon="pi pi-chevron-right"
           iconPos="right"
+          id="elements-filter-btn"
           label={t('show')}
           onClick={() => {
             if (selectedElementType === 'node') {

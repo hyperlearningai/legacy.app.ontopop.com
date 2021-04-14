@@ -151,13 +151,15 @@ export default {
   isNodeOverlay: 'Show path over nodes',
   isNotNodeOverlay: 'Show path only',
   overlay: 'Overlay',
-  selectStartingNode: 'Select starting node',
-  selectEndingNode: 'Select ending node',
+  overlayNetworkGraph: 'Overlay network graph',
+  selectStartingNode: 'Set starting node',
+  selectEndingNode: 'Set ending node',
   selectNodesFromGraphOrFromList: 'Select nodes from graph or pick from list',
   nodesToExclude: 'Nodes to exclude',
   edgesToExclude: 'Edges to exclude',
   showShortestPath: 'Show shortest path',
   showUpperOntologyLayers: 'Show upper ontology layers',
+  advancedOptions: 'Advanced options',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -217,7 +219,7 @@ export default {
   stylingNodeTextFontSize: 'Node font size',
   nodeCaptionPosition: 'Node caption position',
   nodeCaptionProperties: 'Node caption properties',
-  nodeShapeInstructions: 'Choose the node shape',
+  nodeShapeInstructions: 'Choose shape',
   stylingNodeTextFontAlign: 'Node font alignment',
   stylingNodeCaptionProperty: 'Node caption property',
   stylingNodeCaptionPropertyDataset: 'Node caption property (Dataset)',
@@ -263,7 +265,8 @@ export default {
   fileCanBeDownloaded: 'File can now be downloaded, check your browser!',
   fileCanBePrinted: 'File can now be printed, check your browser!',
   couldNotDownloadCsv: 'Could not download CSV!',
-  insertFileName: 'Insert file name.',
+  insertFileName: 'Insert file name',
+  setFileNameAndChooseExportFormat: 'Set file name and choose export format',
 
   // custom query
   customQuery: 'Custom query',
@@ -275,6 +278,7 @@ export default {
   query: 'Query',
   clear: 'Clear',
   exportAsJson: 'Export as Json',
+  insertGremlinQuery: 'Insert Gremlin query or pick a query from history',
 
   // versioning
   version: 'Version',
@@ -341,6 +345,8 @@ export default {
   nodesRestored: 'Nodes restored',
   edgesDeleted: 'Edges deleted',
   edgesRestored: 'Edges restored',
+  noNodesToDelete: 'No nodes to delete',
+  noEdgesToDelete: 'No edges to delete',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',
@@ -369,7 +375,7 @@ export default {
   properties: 'Properties',
   relationships: 'Relationships',
   from: 'From',
-  to: 'to',
+  to: 'To',
   nodesProperties: 'Nodes properties',
 
   // entry search
@@ -404,6 +410,7 @@ export default {
   weCouldNotFindAnyMatchFor: 'We could not find any match for',
   pleaseTryDifferentQuery: 'Please try a different search query.',
   visualiseEntireOntology: 'Visualise entire ontology',
+  applyFilters: 'Apply filters',
 
   // edges list
   edges: 'Edges',
@@ -468,6 +475,8 @@ export default {
   selectUserIds: 'Select user IDs',
   edgeId: 'Edge ID',
   edgeLabel: 'Edge label',
+  noNotesPresent: 'No notes present',
+  editNote: 'Edit note',
 
   // api calls
   apiCallNotValid: 'Invalid http request',
@@ -479,6 +488,8 @@ export default {
   synonymText: 'Synonym Text',
   availableSynonyms: 'Available Synonyms',
   synonymCreated: 'Synonym Created!',
+  noSynonymsPresent: 'No synonyms present',
+  editSynonym: 'Edit synonym',
 
   // network graph options
   showSubclassRelationships: 'Show subclass relationships',
@@ -489,5 +500,6 @@ export default {
   notEqual: 'Not equal',
   chooseFilter: 'Choose filter',
   selectLogic: 'Select logic',
-  insertText: 'Insert text'
+  insertText: 'Insert text',
+  apply: 'Apply',
 }

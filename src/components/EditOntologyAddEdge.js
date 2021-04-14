@@ -23,18 +23,17 @@ const EditOntologyAddEdge = ({
 
   return (
     <>
-      <div
-        className="edit-ontology-row"
-      >
-        <label htmlFor="graph-select">
-          {t('chooseElementsToConnect')}
-        </label>
+      <div className="sidebar-main-body-title m-t-50">
+        {t('chooseElementsToConnect')}
       </div>
 
       <div
-        className="edit-ontology-row"
+        className="edit-ontology-row m-t-30"
       >
-        <label htmlFor="graph-select-from">
+        <label
+          className="sidebar-main-body-label"
+          htmlFor="graph-select-from"
+        >
           {t('fromNode')}
         </label>
 
@@ -50,9 +49,12 @@ const EditOntologyAddEdge = ({
       </div>
 
       <div
-        className="edit-ontology-row"
+        className="edit-ontology-row m-t-30"
       >
-        <label htmlFor="graph-select-edge">
+        <label
+          className="sidebar-main-body-label"
+          htmlFor="graph-select-edge"
+        >
           {t('edge')}
         </label>
 
@@ -70,9 +72,12 @@ const EditOntologyAddEdge = ({
       </div>
 
       <div
-        className="edit-ontology-row"
+        className="edit-ontology-row m-t-30"
       >
-        <label htmlFor="graph-select-to">
+        <label
+          className="sidebar-main-body-label"
+          htmlFor="graph-select-to"
+        >
           {t('toNode')}
         </label>
 
@@ -103,39 +108,37 @@ const EditOntologyAddEdge = ({
         )
       }
 
-      <div className="edit-ontology-row">
-        <Button
-          aria-label={`${t(operation)}`}
-          className="go-button"
-          tooltip={`${t(operation)}`}
-          disabled={
+      <Button
+        aria-label={`${t(operation)}`}
+        className="sidebar-button-primary go-button m-t-50"
+        tooltip={`${t(operation)}`}
+        disabled={
             !fromNode
             || !edge
             || !toNode
             || getEdge(edge) !== null
           }
-          onClick={() => {
-            setOntology({
-              operation,
-              type,
-              updateStoreValue,
-              selectedElementProperties: {
-                from: fromNode,
-                edge,
-                to: toNode,
-                optionEdges
-              },
-              t
-            })
-            setFromNode(undefined)
-            setEdge(undefined)
-            setToNode(undefined)
-          }}
-          label={t(operation)}
-          icon="pi pi-chevron-right"
-          iconPos="right"
-        />
-      </div>
+        onClick={() => {
+          setOntology({
+            operation,
+            type,
+            updateStoreValue,
+            selectedElementProperties: {
+              from: fromNode,
+              edge,
+              to: toNode,
+              optionEdges
+            },
+            t
+          })
+          setFromNode(undefined)
+          setEdge(undefined)
+          setToNode(undefined)
+        }}
+        label={t(operation)}
+        icon="pi pi-chevron-right"
+        iconPos="right"
+      />
     </>
   )
 }

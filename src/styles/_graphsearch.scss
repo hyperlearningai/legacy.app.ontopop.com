@@ -12,7 +12,6 @@
   &-bar {
     width: 100%;
     max-width: 400px;
-    margin: 20px auto;
     position: relative;
 
     .p-autocomplete {
@@ -20,14 +19,16 @@
 
       .p-inputtext {
         width: 100%;
+        padding: 12px;
         padding-right: 30px;
+        border-radius: 20px;
       }
     }
 
     .p-button-icon-only {
       position: absolute;
       right: 0;
-      top: 0;
+      top: 4px;
       background: transparent;
       border: none;
       color: $dark-grey;

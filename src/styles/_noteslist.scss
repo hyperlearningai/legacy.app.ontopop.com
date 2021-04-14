@@ -1,57 +1,17 @@
 .notes {
-  height: 100%;
-  // height: calc(100% - 140px);
-  overflow-y: auto;
-
   &-select-row {
     width: 100%;
-    margin: 20px 0;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    label {
-      width: 100%;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .p-dropdown,
-    .p-dropdown-panel,
-    .p-dropdown-items,
-    .p-dropdown-items-wrapper,
-    .p-input {
-      width: 100%;
-    }
-
-    .p-dropdown-item {
-      width: 100%;
-      word-break: break-word;
-      height: auto;
-      white-space: normal;
-    }
   }
 
   &-accordion-row {
     width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    label {
-      margin-left: 10px;
-    }
-
-    .p-accordion,
-    .p-dropdown,
-    .p-multiselect {
-      width: 100%;
-    }
 
     .p-calendar {
       width: 100%;
+      margin-top: 20px;
 
       .p-datepicker {
         width: 100%;
@@ -101,23 +61,18 @@
 
   &-list {
     width: 100%;
-    height: 100%;
-    // height: calc(100% - 140px);
-    overflow-y: auto;
     text-align: center;
     padding: 0;
 
     &-search-input {
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
 
       input {
         width: 100%;
       }
 
       i {
-        right: 20px !important;
+        right: 10px !important;
       }
     }
   }
@@ -129,34 +84,15 @@
   }
 
   &-note {
-    background-color: white;
-    color: black;
-    padding: 15px;
-    margin: 15px;
+    background-color: $white;
+    color: $black;
     border-radius: 8px;
     text-align: left;
-
-    h2,
-    p {
-      margin-top: 0;
-    }
 
     textarea {
       min-height: 150px;
       margin-bottom: 20px;
       width: 100%;
-    }
-
-    button {
-      margin-right: 10px;
-    }
-  }
-
-  &-add-button {
-    text-align: center;
-
-    i {
-      margin-left: 10px;
     }
   }
 
@@ -173,15 +109,7 @@
   }
 
   &-content {
-    font-size: 0.8rem;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
+    font-size: 1rem;
+    font-weight: 600;
   }
 }
