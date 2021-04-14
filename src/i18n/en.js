@@ -501,5 +501,6 @@ export default {
   chooseFilter: 'Choose filter',
   selectLogic: 'Select logic',
   insertText: 'Insert text',
+  insertTextOrSelect: 'Insert text or select',
   apply: 'Apply',
 }

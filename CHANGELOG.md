@@ -19,9 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.7.0]
 ### Added
+- ONTOLOGY-164 Advanced search structured queries without a free-text search query
 - ONTOLOGY-163 Added explicit search button in search sidebar view
 
 ### Changed
+- ONTOLOGY-171 Turned dropdown into text input with suggestions in advanced search properties with enumeration
 - ONTOLOGY-163 Improved sidebar UI/UX
 
 ### Deprecated
@@ -30,6 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-170 Removed required from rdfLabel in edit ontology form
 
 ### Fixed
+- ONTOLOGY-171 Restored search bar in main view at first search
 - ONTOLOGY-163 Fixed advanced search query 
 
 ### Security

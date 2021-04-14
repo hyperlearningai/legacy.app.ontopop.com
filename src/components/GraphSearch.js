@@ -8,6 +8,7 @@ import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
 import actions from '../store/actions'
+import SearchBar from './SearchBar'
 
 const GraphSearch = ({
   entrySearchResultsByPage,
@@ -34,10 +35,11 @@ const GraphSearch = ({
         ) : (
           <>
             {
-              !isFirstQuery ? (
+              isFirstQuery ? (
                 <>
                   <h1>{t('searchGraph')}</h1>
-                  <p>{t('typeInSidebar')}</p>
+                  <SearchBar />
+                  {/* <p>{t('typeInSidebar')}</p> */}
                   <p>{t('setAdvancedOptions')}</p>
                 </>
               ) : (

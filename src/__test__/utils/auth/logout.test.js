@@ -380,7 +380,7 @@ describe('logout', () => {
             'isFirstQuery'
           ],
           OPERATION_TYPE_UPDATE,
-          false
+          true
         ],
         [
           [

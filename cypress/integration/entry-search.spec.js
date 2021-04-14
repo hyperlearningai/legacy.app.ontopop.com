@@ -101,8 +101,13 @@ context('Entry search', () => {
       cy.get('#advanced-search-property-0').find('.p-dropdown-trigger').click()
       cy.get('.p-dropdown-item').eq(0).click()
       cy.wait('@businessAreaValues')
-      cy.get('#advanced-search-value-0').find('.p-dropdown-trigger').click()
-      cy.get('.p-dropdown-item').eq(1).click()
+      cy.get('#advanced-search-value-0').clear()
+      cy.get('.p-listbox-item').should('have.length', 8)
+      cy.get('#advanced-search-value-0').type('des')
+      cy.get('.p-listbox-item').should('have.length', 1)
+      cy.get('.p-listbox-item').click()
+      cy.get('#advanced-search-value-0').should('have.value', 'Design')
+      cy.get('#advanced-search-plus-0').click()
 
       cy.get('#apply-filters-btn').click()
 
