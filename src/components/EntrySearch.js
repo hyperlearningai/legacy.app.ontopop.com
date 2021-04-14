@@ -21,7 +21,8 @@ const EntrySearch = ({
   upperOntologySearch,
   updateStoreValue,
   annotationProperties,
-  advancedSearchFilters
+  advancedSearchFilters,
+  isFirstQuery
 }) => {
   const { t } = useTranslation()
 
@@ -59,11 +60,15 @@ const EntrySearch = ({
       </h1>
 
       <div className="sidebar-main-body entry-search">
-        <div
-          className="entry-search-row"
-        >
-          <SearchBar />
-        </div>
+        {
+          !isFirstQuery && (
+            <div
+              className="entry-search-row"
+            >
+              <SearchBar />
+            </div>
+          )
+        }
 
         <div
           className="sidebar-main-body-title"
@@ -264,6 +269,7 @@ EntrySearch.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   advancedSearchFilters: PropTypes.shape().isRequired,
   annotationProperties: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  isFirstQuery: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
@@ -271,11 +277,13 @@ const mapToProps = ({
   upperOntologySearch,
   advancedSearchFilters,
   annotationProperties,
+  isFirstQuery
 }) => ({
   dataTypeSearch,
   upperOntologySearch,
   advancedSearchFilters,
   annotationProperties,
+  isFirstQuery
 })
 
 export default connect(

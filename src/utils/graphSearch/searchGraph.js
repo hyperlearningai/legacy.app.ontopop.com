@@ -80,8 +80,8 @@ const searchGraph = async ({
     t
   })
 
-  if (!isFirstQuery) {
-    updateStoreValue(['isFirstQuery'], OPERATION_TYPE_UPDATE, true)
+  if (isFirstQuery) {
+    updateStoreValue(['isFirstQuery'], OPERATION_TYPE_UPDATE, false)
   }
 
   const {

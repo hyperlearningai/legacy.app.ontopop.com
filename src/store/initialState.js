@@ -147,7 +147,7 @@ const initialState = {
   entrySearchResults: [],
   entrySearchAnnotationProperties: [],
   entrySearchResultsByPage: {},
-  isFirstQuery: false,
+  isFirstQuery: true,
   entrySearchValue: '',
   isDataEntityTypeSearch: true,
   isDatasetTypeSearch: true,

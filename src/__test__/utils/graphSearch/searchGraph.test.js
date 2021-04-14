@@ -136,13 +136,6 @@ describe('searchGraph', () => {
         ],
         [
           [
-            'isFirstQuery',
-          ],
-          OPERATION_TYPE_UPDATE,
-          true,
-        ],
-        [
-          [
             'isSearchLoading',
           ],
           OPERATION_TYPE_UPDATE,
@@ -268,6 +261,14 @@ describe('searchGraph', () => {
           OPERATION_TYPE_UPDATE,
           true,
         ],
+        [
+          [
+            'isFirstQuery',
+          ],
+          OPERATION_TYPE_UPDATE,
+          false,
+        ],
+
         [
           [
             'totalSearchCount',
