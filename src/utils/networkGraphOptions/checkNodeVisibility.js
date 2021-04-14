@@ -15,10 +15,13 @@ const checkNodeVisibility = ({
   const {
     currentGraph,
     graphData,
-    classesFromApiBackup
+    classesFromApiBackup,
+    totalEdgesPerNode,
+    highlightedNodes
   } = store.getState()
 
   const {
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isDatasetVisible,
     hiddenNodesProperties,
@@ -26,7 +29,13 @@ const checkNodeVisibility = ({
 
   let isVisible = true
 
-  if (!isUpperOntologyVisible) {
+  const nodeEdges = totalEdgesPerNode[nodeId]
+
+  if (isOrphanNodeVisible === false) {
+    isVisible = !(!highlightedNodes.includes(nodeId) && !nodeEdges)
+  }
+
+  if (isVisible && !isUpperOntologyVisible) {
     isVisible = classesFromApiBackup[nodeId] && (!classesFromApiBackup[nodeId][UPPER_ONTOLOGY] || classesFromApiBackup[nodeId][UPPER_ONTOLOGY] === false)
   }
 

@@ -21,6 +21,7 @@ const NetworkGraphOptions = ({
   const { t } = useTranslation()
 
   const {
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -28,6 +29,7 @@ const NetworkGraphOptions = ({
     hiddenEdgesProperties
   } = graphData[currentGraph]
 
+  const [isOrphanNodeVisibleLocal, setOrphanNodeVisibleLocal] = useState(isOrphanNodeVisible)
   const [isUpperOntologyVisibleLocal, setUpperOntologyVisibleLocal] = useState(isUpperOntologyVisible)
   const [isSubClassEdgeVisibleLocal, setSubClassEdgeVisibleLocal] = useState(isSubClassEdgeVisible)
   const [isDatasetVisibleLocal, setDatasetVisibleLocal] = useState(isDatasetVisible)
@@ -42,6 +44,17 @@ const NetworkGraphOptions = ({
       <div className="sidebar-main-body graph-options">
         <div className="sidebar-main-body-info">
           {t('chooseGraphOptions')}
+        </div>
+
+        <div className="graph-options-toggle p-col-12">
+          <Checkbox
+            id="orphan-nodes-checkbox"
+            onChange={(e) => setOrphanNodeVisibleLocal(e.checked)}
+            checked={isOrphanNodeVisibleLocal}
+          />
+          <label htmlFor="orphan-nodes-checkbox" className="p-checkbox-label">
+            {t('showOrphanNodes')}
+          </label>
         </div>
 
         <div className="graph-options-toggle p-col-12">
@@ -181,6 +194,7 @@ const NetworkGraphOptions = ({
           label={t('apply')}
           aria-label={t('apply')}
           onClick={() => setNetworkGraphOptions({
+            isOrphanNodeVisible: isOrphanNodeVisibleLocal,
             isUpperOntologyVisible: isUpperOntologyVisibleLocal,
             isSubClassEdgeVisible: isSubClassEdgeVisibleLocal,
             isDatasetVisible: isDatasetVisibleLocal,

@@ -276,7 +276,7 @@ context('Entry search', () => {
 
       cy.wait(3000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 320')
+      cy.get('.nav-left').should('contain', 'Nodes: 305')
       cy.get('.nav-left').should('contain', 'Edges: 828')
     })
   })
