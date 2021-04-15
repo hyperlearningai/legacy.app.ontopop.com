@@ -5,7 +5,7 @@ import { ProgressSpinner } from 'primereact/progressspinner'
 import { Button } from 'primereact/button'
 import GraphSearchCard from './GraphSearchCard'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
 import actions from '../store/actions'
 import SearchBar from './SearchBar'
@@ -16,14 +16,15 @@ const GraphSearch = ({
   isSearchLoading,
   searchPageSelected,
   entrySearchValue,
-  updateStoreValue
+  updateStoreValue,
+  sidebarView
 }) => {
   const { t } = useTranslation()
 
   const searchResults = entrySearchResultsByPage[searchPageSelected]
 
   return (
-    <div className="graph-search">
+    <div className={`graph-search${sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH ? ' elevate-view' : ''}`}>
       {
         isSearchLoading ? (
           <div className="graph-search-loader">
@@ -39,7 +40,6 @@ const GraphSearch = ({
                 <>
                   <h1>{t('searchGraph')}</h1>
                   <SearchBar />
-                  {/* <p>{t('typeInSidebar')}</p> */}
                   <p>{t('setAdvancedOptions')}</p>
                 </>
               ) : (
@@ -101,6 +101,7 @@ GraphSearch.propTypes = {
   searchPageSelected: PropTypes.number.isRequired,
   entrySearchValue: PropTypes.string.isRequired,
   updateStoreValue: PropTypes.func.isRequired,
+  sidebarView: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
@@ -108,13 +109,15 @@ const mapToProps = ({
   isSearchLoading,
   entrySearchResultsByPage,
   searchPageSelected,
-  entrySearchValue
+  entrySearchValue,
+  sidebarView
 }) => ({
   isFirstQuery,
   isSearchLoading,
   entrySearchResultsByPage,
   searchPageSelected,
-  entrySearchValue
+  entrySearchValue,
+  sidebarView
 })
 
 export default connect(

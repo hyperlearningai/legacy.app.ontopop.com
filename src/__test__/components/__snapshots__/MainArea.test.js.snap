@@ -1,30 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainArea should match snapshot when MAIN_VIEW_GRAPH 1`] = `
+exports[`MainArea should match snapshot when currentGraph does not exists 1`] = `
 <Connect
-  actions={
+  actions={Object {}}
+  currentGraph="graph-1"
+  graphData={
     Object {
-      "updateStoreValue": [Function],
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
     }
   }
-  mainVisualisation="graph"
   mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
 `;
 
-exports[`MainArea should match snapshot when MAIN_VIEW_SEARCH 1`] = `
+exports[`MainArea should match snapshot when currentGraph exists 1`] = `
 <Connect
-  actions={
+  actions={Object {}}
+  currentGraph="graph-0"
+  graphData={
     Object {
-      "updateStoreValue": [Function],
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
     }
   }
-  mainVisualisation="search"
   mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

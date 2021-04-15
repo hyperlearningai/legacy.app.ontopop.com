@@ -22,6 +22,8 @@ exports[`GraphSearch should match snapshot when isFirstQuery false 1`] = `
   isSearchLoading={false}
   mapToProps={[Function]}
   searchPageSelected={0}
+  sidebarView="any"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -49,6 +51,37 @@ exports[`GraphSearch should match snapshot when isFirstQuery true and search pag
   isSearchLoading={false}
   mapToProps={[Function]}
   searchPageSelected={2}
+  sidebarView="any"
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`GraphSearch should match snapshot when isFirstQuery true and search page selected with no values and sidebar view 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  entrySearchResultsByPage={
+    Object {
+      "0": Object {
+        "id": "1",
+      },
+      "1": Object {
+        "id": "3",
+      },
+    }
+  }
+  entrySearchValue="road"
+  isFirstQuery={true}
+  isSearchLoading={false}
+  mapToProps={[Function]}
+  searchPageSelected={2}
+  sidebarView="search"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -76,6 +109,8 @@ exports[`GraphSearch should match snapshot when isFirstQuery true and search pag
   isSearchLoading={false}
   mapToProps={[Function]}
   searchPageSelected={0}
+  sidebarView="any"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>
@@ -103,6 +138,8 @@ exports[`GraphSearch should match snapshot when isSearchLoading false 1`] = `
   isSearchLoading={true}
   mapToProps={[Function]}
   searchPageSelected={0}
+  sidebarView="any"
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

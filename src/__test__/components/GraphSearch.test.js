@@ -2,11 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import GraphSearch from '../../components/GraphSearch'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
 
 const setup = ({
   isFirstQuery,
   isSearchLoading,
-  searchPageSelected
+  searchPageSelected,
+  sidebarView
 }) => {
   const props = {
     entrySearchResultsByPage: {
@@ -20,7 +22,9 @@ const setup = ({
     isFirstQuery,
     isSearchLoading,
     searchPageSelected,
-    entrySearchValue: 'road'
+    entrySearchValue: 'road',
+    updateStoreValue: jest.fn(),
+    sidebarView: sidebarView || 'any'
   }
 
   const component = shallow(<GraphSearch {...props} />)
@@ -35,6 +39,7 @@ describe('GraphSearch', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
+
   it('should match snapshot when isSearchLoading false', () => {
     const {
       component
@@ -78,6 +83,19 @@ describe('GraphSearch', () => {
       isFirstQuery: true,
       isSearchLoading: false,
       searchPageSelected: 2
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when isFirstQuery true and search page selected with no values and sidebar view', () => {
+    const {
+      component
+    } = setup({
+      isFirstQuery: true,
+      isSearchLoading: false,
+      searchPageSelected: 2,
+      sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH
     })
 
     expect(toJson(component)).toMatchSnapshot()
