@@ -203,7 +203,7 @@ context('Entry search', () => {
       cy.get('.nav-left').should('contain', 'Edges: 1')
       cy.get('#sidebar-button-search').click()
 
-      cy.get('#card-open-link-btn-4').click()
+      cy.get('#card-open-link-btn-4').should('have.text', 'Open')
     })
 
     it('no results page should work', () => {
@@ -274,7 +274,7 @@ context('Entry search', () => {
       // click on visualise
       cy.get('#visualise-ontology-button').click()
 
-      cy.wait(3000)
+      cy.wait(1000)
 
       cy.get('.nav-left').should('contain', 'Nodes: 305')
       cy.get('.nav-left').should('contain', 'Edges: 828')

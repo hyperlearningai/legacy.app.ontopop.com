@@ -7,8 +7,11 @@ import {
   EDGE_COLOR,
   EDGE_COLOR_HIGHLIGHTED,
 } from '../../constants/graph'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
 
-const setup = () => {
+const setup = ({
+  sidebarView
+}) => {
   const props = {
     currentGraph: 'graph-0',
     showContextMenu: true,
@@ -40,6 +43,7 @@ const setup = () => {
       stylingEdgeWidth: 1,
       stylingEdgeLength: 250,
     },
+    sidebarView
   }
 
   const component = shallow(<GraphVisualisation {...props} />)
@@ -55,10 +59,22 @@ describe('GraphVisualisation', () => {
     jest.clearAllMocks()
   })
 
+  it('should match snapshot when sidebarView is not SIDEBAR_VIEW_ENTRY_SEARCH', () => {
+    const {
+      component
+    } = setup({
+      sidebarView: 'any'
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
   it('should match snapshot ', () => {
     const {
       component
-    } = setup()
+    } = setup({
+      sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH
+    })
 
     expect(toJson(component)).toMatchSnapshot()
   })

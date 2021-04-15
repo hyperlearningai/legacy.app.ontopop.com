@@ -9,6 +9,7 @@ import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
 import addNodesToGraph from '../utils/graphVisualisation/addNodesToGraph'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 
 const GraphVisualisation = ({
   currentGraph,
@@ -23,7 +24,8 @@ const GraphVisualisation = ({
   physicsRepulsion,
   isPhysicsOn,
   globalEdgeStyling,
-  updateStoreValue
+  updateStoreValue,
+  sidebarView
 }) => {
   const { t } = useTranslation()
   const isInitialMountNetwork = useRef(true)
@@ -38,6 +40,11 @@ const GraphVisualisation = ({
         visJsRef,
         availableNodes,
         availableEdges,
+      })
+
+      setNodesIdsToDisplay({
+        updateStoreValue,
+        t
       })
     } else {
       isInitialMountNetwork.current = false
@@ -75,10 +82,12 @@ const GraphVisualisation = ({
   ])
 
   // // set graph options
-  useEffect(() => setNetworkMethods({
-    updateStoreValue,
-    network,
-  }), [
+  useEffect(() => {
+    setNetworkMethods({
+      updateStoreValue,
+      network,
+    })
+  }, [
     network,
     nodesIdsToDisplay
   ])
@@ -91,7 +100,7 @@ const GraphVisualisation = ({
   } = boundingBoxGeometry
 
   return (
-    <div className="graph-container">
+    <div className={`graph-container${sidebarView !== SIDEBAR_VIEW_ENTRY_SEARCH ? ' elevate-view' : ''}`}>
       <div
         id="network-graph"
         ref={visJsRef}
@@ -140,6 +149,7 @@ GraphVisualisation.propTypes = {
   physicsRepulsion: PropTypes.bool.isRequired,
   globalEdgeStyling: PropTypes.shape().isRequired,
   updateStoreValue: PropTypes.func.isRequired,
+  sidebarView: PropTypes.string.isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -158,7 +168,8 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   isPhysicsOn,
-  globalEdgeStyling
+  globalEdgeStyling,
+  sidebarView
 }) => ({
   currentGraph,
   showContextMenu,
@@ -171,7 +182,8 @@ const mapToProps = ({
   physicsHierarchicalView,
   physicsRepulsion,
   isPhysicsOn,
-  globalEdgeStyling
+  globalEdgeStyling,
+  sidebarView
 })
 
 export default connect(

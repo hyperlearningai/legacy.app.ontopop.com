@@ -16,7 +16,7 @@ const updateStyleAndPhysics = ({
   const {
     network,
     isPhysicsOn,
-    physicsRepulsion
+    physicsRepulsion,
   } = store.getState()
 
   const currentPhysicsOnState = isPhysicsOn
