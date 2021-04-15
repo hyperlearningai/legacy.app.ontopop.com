@@ -8,7 +8,7 @@ import { ROUTE_CUSTOM_QUERY } from '../../src/constants/routes'
 
 context('Custom query', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Custom query', () => {
@@ -54,6 +54,14 @@ context('Custom query', () => {
       cy.get('.auth-button').click()
 
       cy.wait('@postLogin')
+
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
 
       // click the custom query sidebar icon
       cy.get('#sidebar-button-custom-query').click()

@@ -504,4 +504,12 @@ export default {
   insertTextOrSelect: 'Insert text or select',
   apply: 'Apply',
   showOrphanNodes: 'Show orphan nodes',
+
+  // listing page
+  name: 'Name',
+  description: 'Description',
+  owner: 'Owner',
+  actions: 'Actions',
+  availableOntologies: 'Available ontologies',
+  openInWebProtege: 'Open in WebProtege'
 }

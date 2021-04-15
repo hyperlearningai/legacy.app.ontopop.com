@@ -55,6 +55,7 @@ const NetworkStylingNode = ({
     <Accordion>
       <AccordionTab
         header={t('nodeStyling')}
+        data-cy="node-styling-tab"
       >
         <Accordion>
           <AccordionTab

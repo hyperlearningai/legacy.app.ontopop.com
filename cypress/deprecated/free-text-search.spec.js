@@ -9,7 +9,7 @@ import { ROUTE_FREE_TEXT_SEARCH } from '../../src/constants/routes'
 
 context('Free text search', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Free text search', () => {

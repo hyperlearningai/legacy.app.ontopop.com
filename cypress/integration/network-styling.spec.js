@@ -12,7 +12,7 @@ import { ROUTE_STYLING } from '../../src/constants/routes'
 
 context('Network styling', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Network styling nodes', () => {
@@ -64,6 +64,14 @@ context('Network styling', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -85,10 +93,10 @@ context('Network styling', () => {
       cy.get('.p-accordion-header').eq(0).find('a').click({ force: true })
 
       // open global node styling
-      cy.get('#pr_id_6_header_0').click({ force: true })
+      cy.get('#pr_id_7_header_0').click({ force: true })
 
       // // open global node shape
-      cy.get('#pr_id_7_header_0').click({ force: true })
+      cy.get('#pr_id_8_header_0').click({ force: true })
 
       cy.get('#global-node-shape')
         .find('.p-dropdown-trigger')
@@ -101,27 +109,27 @@ context('Network styling', () => {
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(7).click({ force: true })
 
       // open global node size
-      cy.get('#pr_id_7_header_1').click({ force: true })
+      cy.get('#pr_id_8_header_1').click({ force: true })
 
       cy.get('#global-node-size')
         .find('input')
         .clear().type(100)
 
       // open global node font size
-      cy.get('#pr_id_7_header_2').click({ force: true })
+      cy.get('#pr_id_8_header_2').click({ force: true })
 
       cy.get('#global-node-font-size')
         .find('input')
         .clear().type(18)
 
       // open global node font alignment
-      cy.get('#pr_id_7_header_3').click({ force: true })
+      cy.get('#pr_id_8_header_3').click({ force: true })
 
       cy.get('#global-node-font-alignment')
         .find('.p-button').eq(0).click({ force: true })
 
       // open global node font size
-      cy.get('#pr_id_7_header_4').click({ force: true })
+      cy.get('#pr_id_8_header_4').click({ force: true })
 
       cy.get('#global-node-border-width')
         .find('input')
@@ -132,7 +140,7 @@ context('Network styling', () => {
         .clear().type(7)
 
       // open global node colors
-      cy.get('#pr_id_7_header_5').click({ force: true })
+      cy.get('#pr_id_8_header_5').click({ force: true })
 
       cy.get('#global-node-color-text')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
@@ -159,7 +167,7 @@ context('Network styling', () => {
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open global node caption property
-      cy.get('#pr_id_7_header_6').click({ force: true })
+      cy.get('#pr_id_8_header_6').click({ force: true })
 
       cy.get('#global-node-caption-property')
         .find('.p-dropdown-trigger')
@@ -227,6 +235,14 @@ context('Network styling', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -264,10 +280,10 @@ context('Network styling', () => {
       cy.get('.p-accordion-header').eq(0).find('a').click({ force: true })
 
       // open node styling by property
-      cy.get('#pr_id_6_header_1').click({ force: true })
+      cy.get('#pr_id_7_header_1').click({ force: true })
 
       // open user-defined (ud) node shape
-      cy.get('#pr_id_7_header_0').click({ force: true })
+      cy.get('#pr_id_8_header_0').click({ force: true })
 
       cy.get('#ud-node-shape')
         .find('.p-dropdown-trigger')
@@ -276,27 +292,27 @@ context('Network styling', () => {
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(7).click({ force: true })
 
       // open user-defined (ud) node size
-      cy.get('#pr_id_7_header_1').click({ force: true })
+      cy.get('#pr_id_8_header_1').click({ force: true })
 
       cy.get('#ud-node-size')
         .find('input')
         .clear().type(100)
 
       // open global node font size
-      cy.get('#pr_id_7_header_2').click({ force: true })
+      cy.get('#pr_id_8_header_2').click({ force: true })
 
       cy.get('#ud-node-font-size')
         .find('input')
         .clear().type(18)
 
       // open global node font alignment
-      cy.get('#pr_id_7_header_3').click({ force: true })
+      cy.get('#pr_id_8_header_3').click({ force: true })
 
       cy.get('#ud-node-font-alignment')
         .find('.p-button').eq(0).click({ force: true })
 
       // open global node font size
-      cy.get('#pr_id_7_header_4').click({ force: true })
+      cy.get('#pr_id_8_header_4').click({ force: true })
 
       cy.get('#ud-node-border-width')
         .find('input')
@@ -307,7 +323,7 @@ context('Network styling', () => {
         .clear().type(7)
 
       // open global node colors
-      cy.get('#pr_id_7_header_5').click({ force: true })
+      cy.get('#pr_id_8_header_5').click({ force: true })
 
       cy.get('#ud-node-color-text')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
@@ -334,7 +350,7 @@ context('Network styling', () => {
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open global node caption property
-      cy.get('#pr_id_7_header_6').click({ force: true })
+      cy.get('#pr_id_8_header_6').click({ force: true })
 
       cy.get('#ud-node-caption-property')
         .find('.p-dropdown-trigger')
@@ -397,6 +413,14 @@ context('Network styling', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -416,10 +440,10 @@ context('Network styling', () => {
       cy.get('.p-accordion-header').eq(0).find('a').click({ force: true })
 
       // open node styling by property
-      cy.get('#pr_id_6_header_2').click({ force: true })
+      cy.get('#pr_id_7_header_2').click({ force: true })
 
       // open first node property tab
-      cy.get('#pr_id_7_header_0').click({ force: true })
+      cy.get('#pr_id_8_header_0').click({ force: true })
 
       cy.get('.p-accordion').eq(0).find('.p-accordion-content')
         .find('.p-accordion-tab')
@@ -524,6 +548,14 @@ context('Network styling', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -543,24 +575,24 @@ context('Network styling', () => {
       cy.get('.p-accordion-header').eq(1).find('a').click({ force: true })
 
       // open global edge styling
-      cy.get('#pr_id_6_header_0').click({ force: true })
+      cy.get('#pr_id_7_header_0').click({ force: true })
 
       // open global edge length
-      cy.get('#pr_id_7_header_0').click({ force: true })
+      cy.get('#pr_id_8_header_0').click({ force: true })
 
       cy.get('#global-edge-length')
         .find('input')
         .clear().type(100)
 
       // open global edge width
-      cy.get('#pr_id_7_header_1').click({ force: true })
+      cy.get('#pr_id_8_header_1').click({ force: true })
 
       cy.get('#global-edge-width')
         .find('input')
         .clear().type(10)
 
       // open global edge colors
-      cy.get('#pr_id_7_header_2').click({ force: true })
+      cy.get('#pr_id_8_header_2').click({ force: true })
 
       cy.get('#global-edge-color-line')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
@@ -572,32 +604,32 @@ context('Network styling', () => {
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open global edge line style
-      cy.get('#pr_id_7_header_3').click({ force: true })
+      cy.get('#pr_id_8_header_3').click({ force: true })
 
       cy.get('#global-edge-line-style')
         .find('.p-button').eq(0).click({ force: true })
 
       // open global edge text size
-      cy.get('#pr_id_7_header_4').click({ force: true })
+      cy.get('#pr_id_8_header_4').click({ force: true })
 
       cy.get('#global-edge-text-size')
         .find('input')
         .clear().type(20)
 
       // open global edge text color
-      cy.get('#pr_id_7_header_5').click({ force: true })
+      cy.get('#pr_id_8_header_5').click({ force: true })
 
       cy.get('#global-edge-text-color')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open global edge text align
-      cy.get('#pr_id_7_header_6').click({ force: true })
+      cy.get('#pr_id_8_header_6').click({ force: true })
 
       cy.get('#global-edge-text-align')
         .find('.p-button').eq(0).click({ force: true })
 
       // open global node caption property
-      cy.get('#pr_id_7_header_7').click({ force: true })
+      cy.get('#pr_id_8_header_7').click({ force: true })
 
       cy.get('#global-edge-caption-property')
         .find('.p-dropdown-trigger')
@@ -659,6 +691,14 @@ context('Network styling', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -700,17 +740,17 @@ context('Network styling', () => {
       cy.get('.p-accordion-header').eq(1).find('a').click({ force: true })
 
       // open user-defined (ud) edge styling
-      cy.get('#pr_id_6_header_1').click({ force: true })
+      cy.get('#pr_id_7_header_1').click({ force: true })
 
       // open ud edge width
-      cy.get('#pr_id_7_header_0').click({ force: true })
+      cy.get('#pr_id_8_header_0').click({ force: true })
 
       cy.get('#ud-edge-width')
         .find('input')
         .clear().type(10)
 
       // open ud edge colors
-      cy.get('#pr_id_7_header_1').click({ force: true })
+      cy.get('#pr_id_8_header_1').click({ force: true })
 
       cy.get('#ud-edge-color-line')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
@@ -722,32 +762,32 @@ context('Network styling', () => {
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open ud edge line style
-      cy.get('#pr_id_7_header_2').click({ force: true })
+      cy.get('#pr_id_8_header_2').click({ force: true })
 
       cy.get('#ud-edge-line-style')
         .find('.p-button').eq(0).click({ force: true })
 
       // open ud edge text size
-      cy.get('#pr_id_7_header_3').click({ force: true })
+      cy.get('#pr_id_8_header_3').click({ force: true })
 
       cy.get('#ud-edge-text-size')
         .find('input')
         .clear().type(20)
 
       // open ud edge text color
-      cy.get('#pr_id_7_header_4').click({ force: true })
+      cy.get('#pr_id_8_header_4').click({ force: true })
 
       cy.get('#ud-edge-text-color')
         .find('.p-inputtext').then((elem) => elem.val('ff1212').trigger('change'))
 
       // open ud edge text align
-      cy.get('#pr_id_7_header_5').click({ force: true })
+      cy.get('#pr_id_8_header_5').click({ force: true })
 
       cy.get('#ud-edge-text-align')
         .find('.p-button').eq(0).click({ force: true })
 
       // open ud node caption property
-      cy.get('#pr_id_7_header_6').click({ force: true })
+      cy.get('#pr_id_8_header_6').click({ force: true })
 
       cy.get('#ud-edge-caption-property')
         .find('.p-dropdown-trigger')
@@ -809,6 +849,14 @@ context('Network styling', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -828,10 +876,10 @@ context('Network styling', () => {
       cy.get('.p-accordion-header').eq(1).find('a').click({ force: true })
 
       // open edge styling by property
-      cy.get('#pr_id_6_header_2').click({ force: true })
+      cy.get('#pr_id_7_header_2').click({ force: true })
 
       // open first edge property tab
-      cy.get('#pr_id_7_header_0').click({ force: true })
+      cy.get('#pr_id_8_header_0').click({ force: true })
 
       // remove first edge property
       cy.get('.delete-property-style').click({ force: true })

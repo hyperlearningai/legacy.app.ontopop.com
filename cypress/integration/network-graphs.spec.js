@@ -9,7 +9,7 @@ import { ROUTE_NETWORK_GRAPHS } from '../../src/constants/routes'
 
 context('Network graph', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Network graph', () => {
@@ -60,6 +60,14 @@ context('Network graph', () => {
       cy.get('.auth-button').click()
 
       cy.wait('@postLogin')
+
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
 
       cy.get('#main-search').type('link')
 

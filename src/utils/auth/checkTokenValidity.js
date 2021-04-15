@@ -1,6 +1,7 @@
 import { AUTH_COOKIE } from '../../constants/auth'
 import {
   AUTH_ROUTES,
+  ROUTE_LISTING
 } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
@@ -39,6 +40,10 @@ const checkTokenValidity = ({
 
   if (sidebarView !== SIDEBAR_VIEW_ENTRY_SEARCH) {
     updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_ENTRY_SEARCH)
+  }
+
+  if (router.pathname !== ROUTE_LISTING) {
+    router.push(ROUTE_LISTING)
   }
 }
 

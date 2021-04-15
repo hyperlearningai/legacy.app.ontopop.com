@@ -9,7 +9,7 @@ import { ROUTE_SHORTEST_PATH } from '../../src/constants/routes'
 
 context('Shortest path', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Shortest path', () => {
@@ -60,6 +60,12 @@ context('Shortest path', () => {
       cy.get('.auth-button').click()
 
       cy.wait('@postLogin')
+
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
 
       cy.get('#main-search').type('link')
 
@@ -149,6 +155,14 @@ context('Shortest path', () => {
       cy.get('.auth-button').click()
 
       cy.wait('@postLogin')
+
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
 
       cy.get('#main-search').type('link')
 

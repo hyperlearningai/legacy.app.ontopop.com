@@ -11,8 +11,10 @@ import logo from '../assets/images/logo.svg'
 import logout from '../utils/auth/logout'
 import actions from '../store/actions'
 import {
-  FORM_LINK, ROUTE_SEARCH, ROUTE_LOGIN, ROUTE_PROFILE
+  FORM_LINK, ROUTE_SEARCH, ROUTE_LOGIN, ROUTE_PROFILE, ROUTE_LISTING
 } from '../constants/routes'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 
 const HeaderComponent = ({
   activeLoaders,
@@ -62,20 +64,34 @@ const HeaderComponent = ({
         />
 
         <OverlayPanel ref={overlay}>
+          <Button
+            aria-label={t('home')}
+            icon="pi pi-home"
+            iconPos="right"
+            label={t('home')}
+            id="overlay-menu-home"
+            className="p-button-secondary"
+            onClick={() => router.push(ROUTE_LISTING)}
+          />
           {
             router.asPath === ROUTE_PROFILE ? (
               <Button
-                aria-label={t('home')}
-                icon="pi pi-home"
-                label={t('home')}
-                id="overlay-menu-home"
+                aria-label={t('search')}
+                icon="pi pi-search"
+                iconPos="right"
+                label={t('search')}
+                id="overlay-menu-search"
                 className="p-button-secondary"
-                onClick={() => router.push(ROUTE_SEARCH)}
+                onClick={() => {
+                  updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_ENTRY_SEARCH)
+                  router.push(ROUTE_SEARCH)
+                }}
               />
             ) : (
               <Button
                 aria-label={t('profile')}
                 icon="pi pi-user"
+                iconPos="right"
                 id="overlay-menu-profile"
                 label={t('profile')}
                 className="p-button-secondary"
@@ -88,6 +104,7 @@ const HeaderComponent = ({
               <Button
                 aria-label={t('signIn')}
                 icon="pi pi-sign-in"
+                iconPos="right"
                 id="overlay-menu-login"
                 className="p-button-secondary"
                 label={t('signIn')}
@@ -97,6 +114,7 @@ const HeaderComponent = ({
               <Button
                 aria-label={t('signOut')}
                 icon="pi pi-sign-out"
+                iconPos="right"
                 id="overlay-menu-logout"
                 className="p-button-secondary"
                 label={t('signOut')}

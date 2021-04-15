@@ -9,7 +9,7 @@ import { ROUTE_EXPORT } from '../../src/constants/routes'
 
 context('Export', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Export', () => {
@@ -61,6 +61,14 @@ context('Export', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -82,18 +90,21 @@ context('Export', () => {
       cy.get('#filename').clear().type('new-file')
 
       // export images
-      cy.get('.export-settings-buttons').eq(0).find('.p-button').eq(0)
-        .click()
-      cy.get('.export-settings-buttons').eq(0).find('.p-button').eq(1)
-        .click()
-      cy.get('.export-settings-buttons').eq(0).find('.p-button').eq(2)
-        .click()
+      cy.get('.export-settings-buttons').eq(0).find('.p-button-label').eq(0)
+        .should('have.text', 'JPG')
+
+      cy.get('.export-settings-buttons').eq(0).find('.p-button-label').eq(1)
+        .should('have.text', 'PNG')
+
+      cy.get('.export-settings-buttons').eq(0).find('.p-button-label').eq(2)
+        .should('have.text', 'PDF')
 
       // export data
-      cy.get('.export-settings-buttons').eq(1).find('.p-button').eq(0)
-        .click()
-      cy.get('.export-settings-buttons').eq(1).find('.p-button').eq(1)
-        .click()
+      cy.get('.export-settings-buttons').eq(1).find('.p-button-label').eq(0)
+        .should('have.text', 'CSV')
+
+      cy.get('.export-settings-buttons').eq(1).find('.p-button-label').eq(1)
+        .should('have.text', 'OWL')
 
       // print
       cy.get('.export-settings-buttons').eq(2).find('.p-button-label').should('have.text', 'Print')
