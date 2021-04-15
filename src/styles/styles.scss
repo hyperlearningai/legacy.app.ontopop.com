@@ -35,11 +35,11 @@ body,
 }
 
 main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100% - 210px);
+  // flex: 1;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // height: calc(100% - 210px);
 }
 
 // Components
@@ -74,3 +74,4 @@ main {
 @import '_synonymslist';
 @import '_graphoptions';
 @import "_elementsselection";
+@import "_listing";

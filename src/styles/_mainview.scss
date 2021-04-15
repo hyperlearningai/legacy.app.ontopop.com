@@ -1,8 +1,10 @@
 .main-view {
+  flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
+  height: calc(100% - 210px);
 
   &-area {
     width: 100%;

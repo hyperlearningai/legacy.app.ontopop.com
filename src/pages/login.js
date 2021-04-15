@@ -10,7 +10,7 @@ import { Chip } from 'primereact/chip'
 // import logo from '../assets/images/logo.svg'
 import HeadTags from '../components/HeadTags'
 import signIn from '../utils/auth/signIn'
-// import { ROUTE_SEARCH } from '../constants/routes'
+// import { ROUTE_LISTING } from '../constants/routes'
 import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
 
@@ -147,7 +147,7 @@ const Login = ({
                   label={t('continueGuest')}
                   onClick={() => {
                     updateStoreValue('user', 'isGuest', true)
-                    router.push(ROUTE_SEARCH)
+                    router.push(ROUTE_LISTING)
                   }}
                 /> */}
               </>

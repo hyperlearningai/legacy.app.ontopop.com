@@ -9,7 +9,7 @@ import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../../src/constants/routes'
 
 context('Network graph options', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Network graph options', () => {
@@ -61,6 +61,14 @@ context('Network graph options', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       // click to show network graph options
       cy.get('#sidebar-button-network-graph-options').click()
 
@@ -81,7 +89,7 @@ context('Network graph options', () => {
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
 
-      cy.wait(5000)
+      cy.wait(2000)
 
       cy.get('.nav-left').should('contain', 'Nodes: 200')
       cy.get('.nav-left').should('contain', 'Edges: 352')
@@ -91,14 +99,11 @@ context('Network graph options', () => {
       cy.get('#subclass-checkbox').click()
       cy.get('#dataset-checkbox').click()
 
-      // cy.get('.p-accordion').eq(0).click()
-      cy.get('.p-accordion-header').eq(0).find('a').click()
+      // set filters
+      cy.get('#pr_id_5_header_0').click({ force: true })
 
       // open first filter
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_6_header_0').click({ force: true })
 
       // fill in filter and remove
       cy.get('.value-input').type('cond')
@@ -135,51 +140,47 @@ context('Network graph options', () => {
       cy.get('.nav-left').should('contain', 'Nodes: 36')
       cy.get('.nav-left').should('contain', 'Edges: 17')
 
-      // TODO: Breaking tests only on pipeline, possible issue with accordion clicks
       // Add edges filters
-      // cy.get('.p-accordion-header').eq(3).find('a').click()
+      cy.get('#pr_id_5_header_1').click({ force: true })
 
-      // // open first filter
-      // cy.get('.p-accordion').eq(2)
-      //   .find('.p-accordion-tab')
-      //   .eq(0)
-      //   .click()
+      // open first filter
+      cy.get('#pr_id_9_header_0').click({ force: true })
 
-      // // fill in filter and remove
-      // cy.get('.value-input').eq(1).type('cond')
+      // fill in filter and remove
+      cy.get('.value-input').eq(1).type('cond')
 
-      // cy.get('.graph-options-button-delete').click()
+      cy.get('.graph-options-button-delete').click()
 
-      // // fill in first filter
-      // cy.get('.logic-select').find('.p-button').eq(1).click()
+      // fill in first filter
+      cy.get('.logic-select').find('.p-button').eq(1).click()
 
-      // cy.get('.property-select').find('.p-dropdown-trigger')
-      //   .click()
+      cy.get('.property-select').find('.p-dropdown-trigger')
+        .click()
 
-      // cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(1).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(1).click({ force: true })
 
-      // cy.get('.operation-select').find('.p-dropdown-trigger')
-      //   .click()
+      cy.get('.operation-select').find('.p-dropdown-trigger')
+        .click()
 
-      // cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })
 
-      // cy.get('.value-input').type('of')
+      cy.get('.value-input').type('of')
 
-      // // add subfilter
-      // cy.get('.add-delete-buttons').find('.add-property').click()
+      // add subfilter
+      cy.get('.add-delete-buttons').find('.add-property').click()
 
-      // cy.get('.value-input').eq(1).type('of')
+      cy.get('.value-input').eq(1).type('of')
 
-      // cy.get('.add-delete-buttons').eq(1).find('.delete-property').click()
+      cy.get('.add-delete-buttons').eq(1).find('.delete-property').click()
 
-      // // add new filter and delete
-      // cy.get('.graph-options-button-add').click()
+      // add new filter and delete
+      cy.get('.graph-options-button-add').click()
 
-      // // save and check new nodes and edges count
-      // cy.get('#network-graph-options-save').click()
+      // save and check new nodes and edges count
+      cy.get('#network-graph-options-save').click()
 
-      // cy.get('.nav-left').should('contain', 'Nodes: 36')
-      // cy.get('.nav-left').should('contain', 'Edges: 5')
+      cy.get('.nav-left').should('contain', 'Nodes: 36')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
     })
   })
 })

@@ -1,0 +1,65 @@
+.listing {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  height: calc(100% - 190px);
+  overflow-y: auto;
+
+  &-logo {
+    width: 280px;
+    margin: auto;
+    height: 120px;
+
+    img {
+      width: 140px;
+    }
+
+    span {
+      font-size: 36px;
+      color: $indigo;
+    }
+  }
+
+  &-table-wrapper {
+    width: 100%;
+    max-width: $lg;
+    margin: 20px auto;
+    padding: 1rem;
+
+    @media screen and (max-width: $md) {
+      .p-datatable.p-datatable-responsive .p-datatable-thead > tr > th,
+      .p-datatable.p-datatable-responsive .p-datatable-tbody > tr > td {
+        text-align: left;
+        display: block;
+        width: 100%;
+        float: left;
+        clear: left;
+        border: 0 none;
+        padding: 0.4rem;
+        padding-left: 0.9rem;
+      }
+
+      .p-datatable.p-datatable-responsive .p-datatable-thead > tr > th .p-column-title,
+      .p-datatable.p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
+        padding: 0;
+        min-width: 30%;
+        display: inline-block;
+        font-weight: bold;
+      }
+
+      .p-datatable.p-datatable-responsive .p-datatable-thead > tr > th:last-child,
+      .p-datatable.p-datatable-responsive .p-datatable-tbody > tr > td:last-child {
+        border-bottom: 1px solid var(--surface-d);
+      }
+    }
+  }
+
+  &-footer {
+    background: $white;
+    color: $indigo;
+    border-top: 1px solid var(--surface-d);
+  }
+}

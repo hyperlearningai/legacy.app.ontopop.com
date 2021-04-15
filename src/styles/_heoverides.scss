@@ -115,17 +115,20 @@
     flex-direction: column;
 
     .p-button {
-      width: 100%;
+      width: 160px;
       margin: 0;
-      background: $white;
-      color: $font-color;
+      background: $indigo;
+      color: $white;
       border-radius: 0;
-      border: 1px solid $font-color;
-      padding: 10px;
+      padding: 15px 10px;
     }
   }
 }
 
 .p-listbox-list-wrapper {
   max-height: 200px;
+}
+
+.p-link {
+  color: $primary;
 }

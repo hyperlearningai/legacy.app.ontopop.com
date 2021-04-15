@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.7.0]
 ### Added
+- ONTOLOGY-175 Post login ontology listing page
 - ONTOLOGY-174 Added checkbox to toggle orphan nodes visibility
 - ONTOLOGY-164 Advanced search structured queries without a free-text search query
 - ONTOLOGY-163 Added explicit search button in search sidebar view
