@@ -50,6 +50,8 @@ const setSearchNeighbourNodes = ({
   const label = `search-${newCurrentGraph}`
 
   const {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -65,6 +67,8 @@ const setSearchNeighbourNodes = ({
       selectedEdgesId,
       separationDegree,
     },
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,

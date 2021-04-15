@@ -28,6 +28,8 @@ const setFilteredEdges = ({
   const label = `edges-filter-${newCurrentGraph}`
 
   const {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -41,6 +43,8 @@ const setFilteredEdges = ({
     options: {
       edgesFilters
     },
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,

@@ -45,6 +45,8 @@ const setShortestPath = async ({
   const label = `shortest-path${isNodeOverlay ? '-full' : ''}-${newCurrentGraph}`
 
   const {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -53,6 +55,8 @@ const setShortestPath = async ({
   } = graphData[currentGraph]
 
   const graphValue = {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
