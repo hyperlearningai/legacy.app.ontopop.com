@@ -9,7 +9,13 @@ const setup = () => {
     graphData: {
       'graph-0': {
         label: 'Main',
-        noDelete: true
+        noDelete: true,
+        isOrphanNodeVisible: true,
+        isUpperOntologyVisible: true,
+        isSubClassEdgeVisible: true,
+        isDatasetVisible: true,
+        hiddenNodesProperties: [],
+        hiddenEdgesProperties: []
       },
       'graph-1': {
         label: 'Search',

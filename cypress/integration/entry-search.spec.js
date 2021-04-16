@@ -13,7 +13,7 @@ import { ROUTE_SEARCH } from '../../src/constants/routes'
 
 context('Entry search', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Entry search', () => {
@@ -70,6 +70,14 @@ context('Entry search', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.location('pathname').should('be.equal', ROUTE_SEARCH)
 
       cy.get('#main-search').type('link')
@@ -101,8 +109,17 @@ context('Entry search', () => {
       cy.get('#advanced-search-property-0').find('.p-dropdown-trigger').click()
       cy.get('.p-dropdown-item').eq(0).click()
       cy.wait('@businessAreaValues')
-      cy.get('#advanced-search-value-0').find('.p-dropdown-trigger').click()
-      cy.get('.p-dropdown-item').eq(1).click()
+      cy.get('#advanced-search-value-0').clear()
+      cy.get('.p-listbox-item').should('have.length', 8)
+      cy.get('#advanced-search-value-0').type('des')
+      cy.get('.p-listbox-item').should('have.length', 1)
+      cy.get('.p-listbox-item').click()
+      cy.get('#advanced-search-value-0').should('have.value', 'Design')
+      cy.get('#advanced-search-plus-0').click()
+
+      cy.get('#apply-filters-btn').click()
+
+      cy.wait('@linkSearch')
 
       // check pagination
       cy.get('.p-paginator-page').eq(2).click()
@@ -176,6 +193,14 @@ context('Entry search', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.location('pathname').should('be.equal', ROUTE_SEARCH)
 
       cy.get('#main-search').type('link')
@@ -194,7 +219,7 @@ context('Entry search', () => {
       cy.get('.nav-left').should('contain', 'Edges: 1')
       cy.get('#sidebar-button-search').click()
 
-      cy.get('#card-open-link-btn-4').click()
+      cy.get('#card-open-link-btn-4').should('have.text', 'Open')
     })
 
     it('no results page should work', () => {
@@ -250,6 +275,14 @@ context('Entry search', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.location('pathname').should('be.equal', ROUTE_SEARCH)
 
       cy.get('#main-search').type('abc123')
@@ -265,9 +298,9 @@ context('Entry search', () => {
       // click on visualise
       cy.get('#visualise-ontology-button').click()
 
-      cy.wait(3000)
+      cy.wait(1000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 320')
+      cy.get('.nav-left').should('contain', 'Nodes: 305')
       cy.get('.nav-left').should('contain', 'Edges: 828')
     })
   })

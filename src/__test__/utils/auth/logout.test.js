@@ -380,7 +380,7 @@ describe('logout', () => {
             'isFirstQuery'
           ],
           OPERATION_TYPE_UPDATE,
-          false
+          true
         ],
         [
           [
@@ -791,7 +791,7 @@ describe('logout', () => {
           OPERATION_TYPE_UPDATE,
           [
             "g.V().hasLabel('class').count()",
-            "g.V().has('id', 48).bothE().otherV().path().unfold().dedup().valueMap()"
+            "g.V().has('name', 'Link').valueMap()"
           ]
         ],
         [
@@ -818,6 +818,7 @@ describe('logout', () => {
               label: 'Main',
               noDelete: true,
               type: 'full',
+              isOrphanNodeVisible: false,
               isUpperOntologyVisible: true,
               isSubClassEdgeVisible: true,
               isDatasetVisible: true,

@@ -147,7 +147,7 @@ const initialState = {
   entrySearchResults: [],
   entrySearchAnnotationProperties: [],
   entrySearchResultsByPage: {},
-  isFirstQuery: false,
+  isFirstQuery: true,
   entrySearchValue: '',
   isDataEntityTypeSearch: true,
   isDatasetTypeSearch: true,
@@ -243,7 +243,7 @@ const initialState = {
   customQueryFromLatestOutput: '',
   customQueryStringHistory: [
     'g.V().hasLabel(\'class\').count()',
-    'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()',
+    'g.V().has(\'name\', \'Link\').valueMap()',
   ],
 
   // graphs data storage

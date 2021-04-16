@@ -8,14 +8,9 @@ nav {
   background: $secondary;
   color: $white;
 
-  .nodes-icon{
+  .nodes-icon {
     vertical-align: text-top;
-    &.node{
-      color: #adefd1;
-    }
-    &.edge{
-      color: white;
-    }
+    color: $white;
   }
 
   button {

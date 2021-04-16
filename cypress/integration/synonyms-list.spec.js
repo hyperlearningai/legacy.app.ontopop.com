@@ -12,7 +12,7 @@ import { ROUTE_SYNONYMS } from '../../src/constants/routes'
 
 context('Synonyms list', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Synonyms list', () => {
@@ -69,6 +69,14 @@ context('Synonyms list', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -111,35 +119,38 @@ context('Synonyms list', () => {
 
       cy.wait('@createNodeSynonym')
 
-      cy.get('.synonyms-synonym').should('have.length', 2)
+      cy.get('.synonyms-synonym').should('have.length', 1)
 
       // search filter should work
+      cy.get('.p-accordion-header').find('a').click()
+
       cy.get('#synonyms-search-filter').type('latest')
-      cy.get('.synonyms-synonym').should('have.length', 2)
+      cy.get('.synonyms-synonym').should('have.length', 1)
 
       cy.get('#synonyms-search-filter').clear()
 
-      cy.get('.synonyms-synonym').should('have.length', 2)
+      cy.get('.synonyms-synonym').should('have.length', 1)
 
       // editing and closing should work
-      cy.get('.edit-synonym').eq(0).click({ force: true })
+      cy.get('.edit-synonym').click({ force: true })
 
       cy.get('.close-synonym').click({ force: true })
-      cy.get('.synonyms-content').eq(0).find('p').should('have.text', 'Latest node synonym')
+      cy.get('.synonyms-content').eq(0).should('have.text', 'Latest node synonym')
 
       // editing should work
-      cy.get('.edit-synonym').eq(0).click({ force: true })
+      cy.get('.edit-synonym').click({ force: true })
       cy.get('.synonym-text').type(' added')
-      cy.get('.edit-synonym').eq(0).click({ force: true })
+      cy.get('.edit-synonym').click({ force: true })
 
       cy.wait('@updateNodeSynonym')
 
-      cy.get('.synonyms-content').eq(0).find('p').should('have.text', 'Latest node synonym added')
+      cy.get('.synonyms-content').eq(0).should('have.text', 'Latest node synonym added')
 
       cy.get('.delete-synonym').eq(0).click({ force: true })
       cy.wait('@deleteNodeSynonym')
 
-      cy.get('.synonyms-synonym').should('have.length', 1)
+      cy.get('.synonyms-synonym').should('not.exist')
+      cy.get('#no-synonyms-message').should('have.text', 'No synonyms present')
     })
   })
 })

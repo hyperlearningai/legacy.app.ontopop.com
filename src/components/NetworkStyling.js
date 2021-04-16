@@ -28,12 +28,14 @@ const NetworkStyling = ({
           <NetworkStylingEdge />
         </div>
 
-        <div className="network-styling-button m-t-20 m-b-20">
+        <div className="network-styling-button p-p-4">
           <Button
             aria-label={t(isSaved ? 'saved' : 'save')}
             label={t(isSaved ? 'saved' : 'save')}
             disabled={isSaved}
             icon={icon}
+            iconPos="right"
+            className="sidebar-button-primary"
             id="save-styling-button"
             onClick={() => saveStyling({
               setSaved,

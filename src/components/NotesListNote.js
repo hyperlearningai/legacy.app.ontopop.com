@@ -32,85 +32,91 @@ const NotesListNode = ({
   } = note
 
   return (
-    <div key={`note-${id}`} className="card notes-note">
+    <div key={`note-${id}`} className="card notes-note p-p-3 m-t-30">
       {editingId !== id && (
-        <div className="notes-content">
-          <p>{contents}</p>
-        </div>
+        <>
+          <p className="notes-content">
+            {contents}
+          </p>
+
+          <div className="notes-row">
+            <span>
+              {t('dateCreated')}
+            </span>
+            <span>{new Date(dateCreated).toLocaleString()}</span>
+          </div>
+          <div className="notes-row">
+            <span>
+              {t('dateLastUpdated')}
+            </span>
+            <span>{new Date(dateLastUpdated).toLocaleString()}</span>
+          </div>
+
+          <div className="notes-row">
+            <span>
+              {t('userId')}
+            </span>
+            <span>{userId}</span>
+          </div>
+
+          {
+            nodeId > 0 && (
+              <>
+                <div className="notes-row">
+                  <span>
+                    {t('nodeId')}
+                  </span>
+                  <span>{nodeId}</span>
+                </div>
+                <div className="notes-row">
+                  <span>
+                    {t('nodeLabel')}
+                  </span>
+                  <span>
+                    {
+                      classesFromApi[nodeId].label
+                    }
+                  </span>
+                </div>
+              </>
+            )
+          }
+
+          {
+            edgeId > 0 && (
+              <>
+                <div className="notes-row">
+                  <span>
+                    {t('edgeId')}
+                  </span>
+                  <span>{edgeId}</span>
+                </div>
+                <div className="notes-row">
+                  <span>
+                    {t('edgeLabel')}
+                  </span>
+                  <span>
+                    {
+                      `${classesFromApi[objectPropertiesFromApi[edgeId].from].label} => ${objectPropertiesFromApi[edgeId].label} => ${classesFromApi[objectPropertiesFromApi[edgeId].to].label}`
+                    }
+                  </span>
+                </div>
+              </>
+            )
+          }
+        </>
       )}
-
-      <div className="notes-row">
-        <span>
-          {t('dateCreated')}
-        </span>
-        <span>{new Date(dateCreated).toLocaleString()}</span>
-      </div>
-      <div className="notes-row">
-        <span>
-          {t('dateLastUpdated')}
-        </span>
-        <span>{new Date(dateLastUpdated).toLocaleString()}</span>
-      </div>
-
-      <div className="notes-row">
-        <span>
-          {t('userId')}
-        </span>
-        <span>{userId}</span>
-      </div>
-
-      {
-        nodeId > 0 && (
-          <>
-            <div className="notes-row">
-              <span>
-                {' '}
-                {t('nodeId')}
-              </span>
-              <span>{nodeId}</span>
-            </div>
-            <div className="notes-row">
-              <span>
-                {t('nodeLabel')}
-              </span>
-              <span>
-                {
-                  classesFromApi[nodeId].label
-                }
-              </span>
-            </div>
-          </>
-        )
-      }
-
-      {
-        edgeId > 0 && (
-          <>
-            <div className="notes-row">
-              <span>
-                {t('edgeId')}
-              </span>
-              <span>{edgeId}</span>
-            </div>
-            <div className="notes-row">
-              <span>
-                {t('edgeLabel')}
-              </span>
-              <span>
-                {
-                  `${classesFromApi[objectPropertiesFromApi[edgeId].from].label} => ${objectPropertiesFromApi[edgeId].label} => ${classesFromApi[objectPropertiesFromApi[edgeId].to].label}`
-                }
-              </span>
-            </div>
-          </>
-        )
-      }
 
       {
         editingId === id
         && (
           <div>
-            <label htmlFor={`note-text-${id}`}>{t('noteText')}</label>
+            <label
+              className="sidebar-main-body-label m-b-10"
+              htmlFor={`note-text-${id}`}
+            >
+              {t('editNote')}
+            </label>
             <InputTextarea
               id={`note-text-${id}`}
               className="note-text"
@@ -121,22 +127,18 @@ const NotesListNode = ({
               }}
             />
 
-            <div className="notes-buttons">
+            <div className="p-d-flex full-width">
               <Button
                 aria-label={t('close')}
-                tooltip={t('close')}
-                tooltipOptions={{ position: 'top' }}
                 label={t('close')}
-                className="p-button-secondary close-note"
+                className="sidebar-button-secondary close-note m-r-10 m-t-0 m-b-0"
                 id={`close-note-${id}`}
                 onClick={() => setEditingId('')}
               />
               <Button
                 aria-label={t('edit')}
-                tooltip={t('edit')}
-                tooltipOptions={{ position: 'top' }}
                 label={t('edit')}
-                className="edit-note"
+                className="sidebar-button-primary edit-note m-l-10 m-t-0 m-b-0"
                 id={`edit-note-${id}`}
                 onClick={() => {
                   setEditingId('')
@@ -161,12 +163,10 @@ const NotesListNode = ({
         editingId !== id
         && user.email === userId
         && (
-          <div className="notes-buttons">
+          <div className="p-d-flex full-width">
             <Button
               aria-label={t('delete')}
-              tooltip={t('delete')}
-              tooltipOptions={{ position: 'top' }}
-              className="p-button-danger delete-note"
+              className="sidebar-button-secondary delete-note m-r-10 m-b-0"
               id={`delete-note-${id}`}
               label={t('delete')}
               onClick={() => notesDeleteNote({
@@ -180,10 +180,8 @@ const NotesListNode = ({
 
             <Button
               aria-label={t('edit')}
-              tooltip={t('edit')}
-              tooltipOptions={{ position: 'top' }}
               label={t('edit')}
-              className="p-button-secondary edit-note"
+              className="sidebar-button-primary edit-note m-l-10 m-b-0"
               id={`edit-note-${id}`}
               onClick={() => {
                 setEditingId(id)

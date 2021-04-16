@@ -9,7 +9,7 @@ import { ROUTE_NODE_NEIGHBOURHOOD } from '../../src/constants/routes'
 
 context('Node neighbourhood', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Node neighbourhood', () => {
@@ -61,6 +61,14 @@ context('Node neighbourhood', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -90,7 +98,7 @@ context('Node neighbourhood', () => {
 
       cy.get('#separation-degree').find('.p-inputnumber-input').should('have.value', 2)
 
-      cy.get('.node-neighbourhood-button').click()
+      cy.get('#node-neighbourhood-btn').click()
 
       cy.wait(1000)
 

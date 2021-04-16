@@ -84,7 +84,7 @@ const ElementsSelection = ({
         {selectedElementID && selectedElementType === 'node' && <>{`${t('node')}: ${getNode(selectedElementID).label}`}</>}
         {selectedElementID && selectedElementType === 'edge' && <>{`${t('edge')}: ${getEdge(selectedElementID).label}`}</>}
       </div>
-      <div className="elements-selection">
+      <div className="sidebar-main-body elements-selection">
         <div className="elements-selection-select-row">
           <SelectButton
             id="element-type-select"
@@ -97,13 +97,13 @@ const ElementsSelection = ({
             }}
             itemTemplate={itemTemplate}
           />
-          <div className="elements-selection-message">
-            {selectedElementType === 'node' && t('selectNodeFromGraphOrFromList')}
-            {selectedElementType === 'edge' && t('selectEdgeFromGraphOrFromList')}
-          </div>
         </div>
 
-        <div className="elements-selection-dropdown">
+        <div className="sidebar-main-body-info">
+          {t(selectedElementType === 'node' ? 'selectNodeFromGraphOrFromList' : 'selectEdgeFromGraphOrFromList')}
+        </div>
+
+        <div className="full-width">
           <Dropdown
             id="element-select"
             value={selectedElementID}
@@ -123,6 +123,7 @@ const ElementsSelection = ({
             nodeId={selectedElementID}
           />
         )}
+
         {selectedElementType === 'edge' && selectedElementID && (
           <EdgesSelectionDetails
             edgeId={selectedElementID}

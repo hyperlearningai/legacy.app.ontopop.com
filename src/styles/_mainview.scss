@@ -1,16 +1,25 @@
 .main-view {
+  flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
+  height: calc(100% - 210px);
 
   &-area {
     width: 100%;
     height: calc(100% - 140px);
 
-    .graph-container {
+    &-wrapper {
       position: relative;
       height: 100%;
+    }
+
+    .graph-container {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: $white;
 
       .vis-tooltip {
         background: $dark-grey;

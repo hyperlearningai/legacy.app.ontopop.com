@@ -8,6 +8,10 @@ $transition: all 1s ease;
   font-weight: 700;
 }
 
+.light-bold {
+  font-weight: 600;
+}
+
 .italic {
   font-style: italic;
 }
@@ -26,4 +30,12 @@ $transition: all 1s ease;
 
 .text-justify {
   text-align: justifys;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.elevate-view {
+  z-index: 100;
 }

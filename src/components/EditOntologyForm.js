@@ -38,10 +38,10 @@ const EditOntologyForm = ({
 
           return (
             <div
-              className="edit-ontology-row"
+              className="edit-ontology-row m-t-30"
               key={`element-property-${id}`}
             >
-              <label className="form-label" htmlFor={`element-property-${id}`}>
+              <label className="sidebar-main-body-label form-label" htmlFor={`element-property-${id}`}>
                 {label}
               </label>
 

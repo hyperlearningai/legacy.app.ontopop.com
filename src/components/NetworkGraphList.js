@@ -52,8 +52,7 @@ const NetworkGraphList = ({
 
                 <div className="network-graph-list-row-main">
                   <Button
-                    aria-label={t('viewGraph')}
-                    tooltip={`${t('viewGraph')}: ${label}`}
+                    aria-label={`${t('viewGraph')}: ${label}`}
                     disabled={currentGraph === graphViewsKey}
                     onClick={() => updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, graphViewsKey)}
                     label={label}

@@ -1,11 +1,11 @@
 /* eslint max-len:0 */
 import { API_ENDPOINT_SEARCH_KEY, API_ENDPOINT_SEARCH_POST } from '../../constants/api'
 import { NOTIFY_WARNING } from '../../constants/notifications'
-import { DISPLAYED_RESULTS_PER_PAGE } from '../../constants/search'
 import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_PUSH, OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
 import httpCall from '../apiCalls/httpCall'
 import showNotification from '../notifications/showNotification'
+import generateSearchGraphQuery from './generateSearchGraphQuery'
 
 /**
  * Update element types
@@ -55,56 +55,18 @@ const searchGraph = async ({
     entrySearchValue,
     isFirstQuery,
     searchPageSelected,
-    dataTypeSearch,
-    upperOntologySearch,
-    advancedSearchFilters
   } = store.getState()
 
   updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, [])
   updateStoreValue(['totalSearchCount'], OPERATION_TYPE_UPDATE, 0)
 
-  if (!entrySearchValue || typeof entrySearchValue !== 'string' || entrySearchValue === '') {
-    return updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, [])
-  }
+  if (typeof entrySearchValue !== 'string') return updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, [])
+
+  const body = generateSearchGraphQuery()
+
+  if (!body.search || body.search === '') return updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, [])
 
   updateStoreValue(['isSearchLoading'], OPERATION_TYPE_UPDATE, true)
-
-  const startAtIndex = searchPageSelected * DISPLAYED_RESULTS_PER_PAGE
-
-  const search = `${entrySearchValue}~`
-
-  const body = {
-    search,
-    skip: startAtIndex,
-    top: DISPLAYED_RESULTS_PER_PAGE,
-    minimumCoverage: 99,
-    queryType: 'full',
-    count: true
-  }
-
-  if (dataTypeSearch !== 'any') {
-    body.filter = `label eq '${dataTypeSearch}'`
-  }
-
-  if (upperOntologySearch !== 'any') {
-    const upperOntologyFilter = `upperOntology eq ${upperOntologySearch}`
-
-    body.filter = body.filter ? `${body.filter} and ${upperOntologyFilter}` : upperOntologyFilter
-  }
-
-  const advancedSearchFiltersKeys = Object.keys(advancedSearchFilters)
-
-  if (advancedSearchFiltersKeys.length > 0) {
-    advancedSearchFiltersKeys.forEach((searchFilter) => {
-      const { property, value } = advancedSearchFilters[searchFilter]
-
-      if (property === '' || value === '') return false
-
-      const propertyValueString = `${property} eq '${value}'`
-
-      body.filter = body.filter ? `${body.filter} and ${propertyValueString}` : propertyValueString
-    })
-  }
 
   const response = await httpCall({
     updateStoreValue,
@@ -118,8 +80,8 @@ const searchGraph = async ({
     t
   })
 
-  if (!isFirstQuery) {
-    updateStoreValue(['isFirstQuery'], OPERATION_TYPE_UPDATE, true)
+  if (isFirstQuery) {
+    updateStoreValue(['isFirstQuery'], OPERATION_TYPE_UPDATE, false)
   }
 
   const {

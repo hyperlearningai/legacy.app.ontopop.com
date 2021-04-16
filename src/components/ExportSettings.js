@@ -38,9 +38,16 @@ const ExportSettings = () => {
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_EXPORT)}
       </h1>
-      <div className="export-settings">
+      <div className="sidebar-main-body export-settings">
+        <div className="sidebar-main-body-info">
+          {t('setFileNameAndChooseExportFormat')}
+        </div>
+
         <div className="export-settings-input">
-          <label htmlFor="filename">
+          <label
+            className="sidebar-main-body-label text-center m-b-10"
+            htmlFor="filename"
+          >
             {t('fileName')}
           </label>
           <div className="export-settings-item-input">
@@ -65,7 +72,7 @@ const ExportSettings = () => {
         </div>
 
         <div className="export-settings-input">
-          <div className="label">
+          <div className="sidebar-main-body-label text-center m-b-10">
             {t('exportGraphAs')}
           </div>
           <div className="export-settings-buttons">
@@ -96,7 +103,7 @@ const ExportSettings = () => {
         </div>
 
         <div className="export-settings-input">
-          <div className="label">
+          <div className="sidebar-main-body-label text-center m-b-10">
             {t('exportDataAs')}
           </div>
           <div className="export-settings-buttons">
@@ -122,7 +129,7 @@ const ExportSettings = () => {
         </div>
 
         <div className="export-settings-input">
-          <div className="label">
+          <div className="sidebar-main-body-label text-center m-b-10">
             {t('PrintGraph')}
           </div>
           <div className="export-settings-buttons">

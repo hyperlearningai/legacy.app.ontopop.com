@@ -61,27 +61,27 @@ context('Network graph options', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('#main-search').type('link')
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
 
-      cy.wait('@linkAutocomplete')
+      cy.get('.pi-chevron-down').click()
 
-      cy.get('.p-autocomplete-item').eq(0).click()
-
-      cy.wait('@linkSearch')
-
-      cy.get('#card-visualise-btn-0').click()
+      cy.get('.p-menuitem-link').eq(0).click()
 
       cy.wait(1000)
 
       // click to show network graph options
       cy.get('#sidebar-button-network-graph-options').click()
 
+      cy.wait(5000)
+
       cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPH_OPTIONS)
 
       // Check number of nodes and edges at first loading
-      cy.get('.nav-left').should('contain', 'Nodes: 24')
-      cy.get('.nav-left').should('contain', 'Edges: 52')
+      cy.get('.nav-left').should('contain', 'Nodes: 305')
+      cy.get('.nav-left').should('contain', 'Edges: 828')
 
+      // switch 4 main options
+      cy.get('#orphan-nodes-checkbox').click()
 
       // should toggle physics
       cy.get('.graph-options-physics-buttons').eq(0).find('.p-button').should('have.class', 'p-button p-component')
@@ -125,21 +125,21 @@ context('Network graph options', () => {
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 13')
-      cy.get('.nav-left').should('contain', 'Edges: 19')
+      cy.wait(2000)
+
+      cy.get('.nav-left').should('contain', 'Nodes: 200')
+      cy.get('.nav-left').should('contain', 'Edges: 352')
 
       // Add nodes filters
       cy.get('#upper-ontology-checkbox').click()
       cy.get('#subclass-checkbox').click()
       cy.get('#dataset-checkbox').click()
 
-      cy.get('.p-accordion').eq(0).click()
+      // set filters
+      cy.get('#pr_id_5_header_0').click({ force: true })
 
       // open first filter
-      cy.get('.p-accordion').eq(0).find('.p-accordion-content')
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_6_header_0').click({ force: true })
 
       // fill in filter and remove
       cy.get('.value-input').type('cond')
@@ -173,23 +173,17 @@ context('Network graph options', () => {
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 4')
+      cy.get('.nav-left').should('contain', 'Nodes: 36')
+      cy.get('.nav-left').should('contain', 'Edges: 17')
 
       // Add edges filters
-      cy.get('.p-accordion').find('a').eq(0)
-        .click({ force: true })
-      cy.get('.p-accordion').find('a').eq(3)
-        .click({ force: true })
+      cy.get('#pr_id_5_header_1').click({ force: true })
 
       // open first filter
-      cy.get('.p-accordion').eq(2)
-        .find('.p-accordion-tab')
-        .eq(0)
-        .click()
+      cy.get('#pr_id_9_header_0').click({ force: true })
 
       // fill in filter and remove
-      cy.get('.value-input').type('cond')
+      cy.get('.value-input').eq(1).type('cond')
 
       cy.get('.graph-options-button-delete').click()
 
@@ -221,8 +215,8 @@ context('Network graph options', () => {
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 3')
+      cy.get('.nav-left').should('contain', 'Nodes: 36')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
     })
   })
 })

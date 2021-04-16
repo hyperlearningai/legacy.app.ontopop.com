@@ -9,7 +9,7 @@ import { ROUTE_BOUNDING_BOX } from '../../src/constants/routes'
 
 context('Bounding box selection', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Bounding box selection', () => {
@@ -61,6 +61,14 @@ context('Bounding box selection', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -87,14 +95,14 @@ context('Bounding box selection', () => {
       cy.wait(500)
 
       // get number of selected elements
-      cy.get('.bounding-box-selected').find('td').eq(1).should(($div) => {
-        const n = parseInt($div.text())
+      cy.get('.bounding-box-selection').should(($div) => {
+        const selectedNodes = parseInt($div.text().split(': ')[1])
 
-        expect(n).to.be.gte(0)
+        expect(selectedNodes).to.be.gte(0)
       })
 
       // second AND filter
-      cy.get('.bounding-box-button').click()
+      cy.get('#bounding-box-button').click()
 
       cy.wait(1000)
 

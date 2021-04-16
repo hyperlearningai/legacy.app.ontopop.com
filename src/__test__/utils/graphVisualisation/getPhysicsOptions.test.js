@@ -146,7 +146,7 @@ describe('getPhysicsOptions', () => {
           "align": "center",
           "bold": "700",
           "color": "#000000",
-          "face": "Montserrat",
+          "face": "Inter",
           "size": 12,
        },
        "shape": "circle",

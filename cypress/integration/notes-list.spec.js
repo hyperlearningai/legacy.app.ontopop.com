@@ -18,7 +18,7 @@ import { ROUTE_NOTES } from '../../src/constants/routes'
 
 context('Notes list', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Notes list', () => {
@@ -75,12 +75,35 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
+      cy.get('#main-search').type('link')
+
+      cy.wait('@linkAutocomplete')
+
+      cy.get('.p-autocomplete-item').eq(0).click()
+
+      cy.wait('@linkSearch')
+
+      cy.get('#card-visualise-btn-0').click()
+
+      cy.wait(1000)
+
       // click the noets sidebar icon
       cy.get('#sidebar-button-notes').click()
 
+      // select node
+      cy.get('#notes-select').find('.p-button').eq(0).click()
+
       cy.location('pathname').should('be.equal', ROUTE_NOTES)
 
-      cy.get('.notes-note').should('have.length', 2)
+      cy.get('.notes-note').should('have.length', 1)
 
       // add graph note
       cy.get('#add-note').click()
@@ -92,11 +115,13 @@ context('Notes list', () => {
 
       cy.wait('@createNote')
 
-      cy.get('.notes-note').should('have.length', 3)
+      cy.get('.notes-note').should('have.length', 2)
 
       // search filter should work
+      cy.get('.p-accordion-header').find('a').click()
+
       cy.get('#notes-search-filter').type('graph')
-      cy.get('.notes-note').should('have.length', 2)
+      cy.get('.notes-note').should('have.length', 1)
 
       cy.get('#notes-search-filter').clear()
 
@@ -104,17 +129,21 @@ context('Notes list', () => {
       cy.get('#notes-sort-by').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('.notes-content').eq(0).find('p').should('have.text', 'graph note')
+      cy.get('.notes-content').eq(0).should('have.text', 'graph note')
       cy.get('#notes-sort-by-direction').click()
-      cy.get('.notes-content').eq(0).find('p').should('have.text', 'new note')
+      cy.get('.notes-content').eq(0).should('have.text', 'new note')
 
       // should filter notes
-      cy.get('#notes-filter').find('.p-accordion-header-link').click({ force: true })
-      cy.get('#notes-filter-field').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('#notes-filter-field').find('.p-dropdown-trigger').click()
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(1).click()
+
+      cy.wait(200)
+
       cy.get('.p-datepicker-calendar').find('td:not(.p-datepicker-other-month)').eq(0).find('span')
         .click({ force: true })
-      cy.get('.notes-note').should('have.length', 1)
+
+      cy.get('.no-notes-message').should('have.text', 'No notes present')
+      cy.get('.notes-note').should('not.exist')
 
       cy.get('#notes-filter-field').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })
@@ -122,7 +151,7 @@ context('Notes list', () => {
       cy.get('#notes-filter-user').find('.p-multiselect-trigger').click({ force: true })
       cy.get('.p-multiselect-items-wrapper').find('.p-multiselect-item').eq(0).click({ force: true })
 
-      cy.get('.notes-note').should('have.length', 3)
+      cy.get('.notes-note').should('have.length', 2)
     })
 
     it('Nodes notes list should return results', () => {
@@ -188,6 +217,14 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -216,21 +253,23 @@ context('Notes list', () => {
 
       cy.wait('@createNodeNote')
 
-      cy.get('.notes-note').should('have.length', 3)
+      cy.get('.notes-note').should('have.length', 2)
 
       // search filter should work
+      cy.get('.p-accordion-header').find('a').click()
+
       cy.get('#notes-search-filter').type('latest')
-      cy.get('.notes-note').should('have.length', 2)
+      cy.get('.notes-note').should('have.length', 1)
 
       cy.get('#notes-search-filter').clear()
 
-      cy.get('.notes-note').should('have.length', 3)
+      cy.get('.notes-note').should('have.length', 2)
 
       // editing and closing should work
       cy.get('.edit-note').eq(1).click({ force: true })
 
       cy.get('.close-note').click({ force: true })
-      cy.get('.notes-content').eq(1).find('p').should('have.text', 'Latest node note')
+      cy.get('.notes-content').eq(1).should('have.text', 'Latest node note')
 
       // editing hould work
       cy.get('.edit-note').eq(1).click({ force: true })
@@ -239,12 +278,12 @@ context('Notes list', () => {
 
       cy.wait('@updateNodeNote')
 
-      cy.get('.notes-content').eq(1).find('p').should('have.text', 'Latest node note added')
+      cy.get('.notes-content').eq(1).should('have.text', 'Latest node note added')
 
       cy.get('.delete-note').eq(1).click({ force: true })
       cy.wait('@deleteNodeNote')
 
-      cy.get('.notes-note').should('have.length', 2)
+      cy.get('.notes-note').should('have.length', 1)
     })
 
     it('Edges notes list should return results', () => {
@@ -310,6 +349,14 @@ context('Notes list', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -341,21 +388,23 @@ context('Notes list', () => {
 
       cy.wait('@createEdgeNote')
 
-      cy.get('.notes-note').should('have.length', 3)
+      cy.get('.notes-note').should('have.length', 2)
 
       // search filter should work
+      cy.get('.p-accordion-header').find('a').click()
+
       cy.get('#notes-search-filter').type('latest')
-      cy.get('.notes-note').should('have.length', 2)
+      cy.get('.notes-note').should('have.length', 1)
 
       cy.get('#notes-search-filter').clear()
 
-      cy.get('.notes-note').should('have.length', 3)
+      cy.get('.notes-note').should('have.length', 2)
 
       // editing and closing should work
       cy.get('.edit-note').eq(1).click({ force: true })
 
       cy.get('.close-note').click({ force: true })
-      cy.get('.notes-content').eq(1).find('p').should('have.text', 'Latest edge note')
+      cy.get('.notes-content').eq(1).should('have.text', 'Latest edge note')
 
       // editing hould work
       cy.get('.edit-note').eq(1).click({ force: true })
@@ -364,12 +413,12 @@ context('Notes list', () => {
 
       cy.wait('@updateEdgeNote')
 
-      cy.get('.notes-content').eq(1).find('p').should('have.text', 'Latest edge note added')
+      cy.get('.notes-content').eq(1).should('have.text', 'Latest edge note added')
 
       cy.get('.delete-note').eq(1).click({ force: true })
       cy.wait('@deleteEdgeNote')
 
-      cy.get('.notes-note').should('have.length', 2)
+      cy.get('.notes-note').should('have.length', 1)
     })
   })
 })

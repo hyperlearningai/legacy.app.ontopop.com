@@ -136,13 +136,6 @@ describe('searchGraph', () => {
         ],
         [
           [
-            'isFirstQuery',
-          ],
-          OPERATION_TYPE_UPDATE,
-          true,
-        ],
-        [
-          [
             'isSearchLoading',
           ],
           OPERATION_TYPE_UPDATE,
@@ -154,6 +147,59 @@ describe('searchGraph', () => {
           ],
           OPERATION_TYPE_UPDATE,
           {},
+        ],
+        [
+          [
+            'entrySearchResults',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+      ]
+    )
+  })
+
+  it('should work correctly when no search value', async () => {
+    httpCall.mockImplementation(() => (
+      {
+        data: {
+          value: entrySearchResults,
+          '@odata.count': 80
+        }
+      }
+    ))
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      classesFromApi,
+      entrySearchValue: '',
+      isFirstQuery: false,
+      searchPageSelected: 0,
+      dataTypeSearch: 'any',
+      upperOntologySearch: 'any',
+      advancedSearchFilters: [ADVANCED_SEARCH_TEMPLATE]
+    }))
+
+    await searchGraph({
+      updateStoreValue,
+      setLoading,
+      t
+    })
+
+    expect(updateStoreValue.mock.calls).toEqual(
+      [
+        [
+          [
+            'entrySearchResults',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
+            'totalSearchCount',
+          ],
+          OPERATION_TYPE_UPDATE,
+          0,
         ],
         [
           [
@@ -215,6 +261,14 @@ describe('searchGraph', () => {
           OPERATION_TYPE_UPDATE,
           true,
         ],
+        [
+          [
+            'isFirstQuery',
+          ],
+          OPERATION_TYPE_UPDATE,
+          false,
+        ],
+
         [
           [
             'totalSearchCount',

@@ -11,3 +11,18 @@ export const ENUMERATION_PROPERTIES = [
   'Subdomain',
   'Business Area'
 ]
+
+export const PROPERTY_ODATA_FILTER_MAPPING = {
+  'Business Area': 'business_area',
+  'Data Source': 'source',
+  Subdomain: 'subdomain',
+  Type: 'item_type',
+}
+
+export const PROPERTYIES_TO_EXCLUDE_FROM_ADVANCED_SEARCH = [
+  'Subdomain',
+  'rdfAbout',
+  'synonyms',
+  'upperOntology',
+  'skosExample',
+]
