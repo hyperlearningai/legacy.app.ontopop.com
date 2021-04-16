@@ -28,6 +28,8 @@ const setFilteredNodes = ({
   const label = `nodes-filter-${newCurrentGraph}`
 
   const {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -41,6 +43,8 @@ const setFilteredNodes = ({
     options: {
       nodesFilters
     },
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,

@@ -1,4 +1,4 @@
-import { NODE_TYPE, UPPER_ONTOLOGY } from '../../constants/graph'
+import { NODE_TYPE, UPPER_ONTOLOGY, USER_DEFINED_PROPERTY } from '../../constants/graph'
 import store from '../../store'
 import checkValidProperties from './checkValidProperties'
 import checkVisibilityByProperty from './checkVisibilityByProperty'
@@ -21,6 +21,7 @@ const checkNodeVisibility = ({
   } = store.getState()
 
   const {
+    isUserDefinedNodeVisible,
     isOrphanNodeVisible,
     isUpperOntologyVisible,
     isDatasetVisible,
@@ -31,7 +32,13 @@ const checkNodeVisibility = ({
 
   const nodeEdges = totalEdgesPerNode[nodeId]
 
-  if (isOrphanNodeVisible === false) {
+  const isUserDefined = classesFromApiBackup[nodeId] && classesFromApiBackup[nodeId][USER_DEFINED_PROPERTY]
+
+  if (!isUserDefinedNodeVisible) {
+    isVisible = !isUserDefined
+  }
+
+  if (isVisible && !isUserDefined && !isOrphanNodeVisible) {
     isVisible = !(!highlightedNodes.includes(nodeId) && !nodeEdges)
   }
 

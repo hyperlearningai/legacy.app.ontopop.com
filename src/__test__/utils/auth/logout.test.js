@@ -818,6 +818,7 @@ describe('logout', () => {
               label: 'Main',
               noDelete: true,
               type: 'full',
+              isUserDefinedNodeVisible: true,
               isOrphanNodeVisible: false,
               isUpperOntologyVisible: true,
               isSubClassEdgeVisible: true,

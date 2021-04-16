@@ -10,6 +10,7 @@ const setup = () => {
       'graph-0': {
         label: 'Main',
         noDelete: true,
+        isUserDefinedNodeVisible: true,
         isOrphanNodeVisible: true,
         isUpperOntologyVisible: true,
         isSubClassEdgeVisible: true,

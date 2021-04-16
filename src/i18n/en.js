@@ -504,6 +504,7 @@ export default {
   insertTextOrSelect: 'Insert text or select',
   apply: 'Apply',
   showOrphanNodes: 'Show orphan nodes',
+  showUserDefinedNodes: 'Show user-defined nodes',
 
   // listing page
   name: 'Name',

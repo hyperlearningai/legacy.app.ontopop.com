@@ -17,6 +17,7 @@ exports[`NetworkGraphOptions should match snapshot  1`] = `
         "isOrphanNodeVisible": true,
         "isSubClassEdgeVisible": true,
         "isUpperOntologyVisible": true,
+        "isUserDefinedNodeVisible": true,
         "label": "Main",
         "noDelete": true,
       },

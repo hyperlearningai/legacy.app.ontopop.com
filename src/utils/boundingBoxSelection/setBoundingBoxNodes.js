@@ -27,6 +27,8 @@ const setBoundingBoxNodes = ({
   const label = `bounding-box-${newCurrentGraph}`
 
   const {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -40,6 +42,8 @@ const setBoundingBoxNodes = ({
     options: {
       selectedBoundingBoxNodes,
     },
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,

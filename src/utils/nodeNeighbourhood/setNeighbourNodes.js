@@ -36,6 +36,8 @@ const setNeighbourNodes = ({
   const label = `neighbourhood-${newCurrentGraph}`
 
   const {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -50,6 +52,8 @@ const setNeighbourNodes = ({
       selectedNodeId,
       separationDegree,
     },
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,

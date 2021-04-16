@@ -24,6 +24,7 @@ const NetworkGraphOptions = ({
   const {t} = useTranslation()
 
   const {
+    isUserDefinedNodeVisible,
     isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
@@ -32,6 +33,7 @@ const NetworkGraphOptions = ({
     hiddenEdgesProperties
   } = graphData[currentGraph]
 
+  const [isUserDefinedNodeVisibleLocal, setUserDefinedNodeVisibleLocal] = useState(isUserDefinedNodeVisible)
   const [isOrphanNodeVisibleLocal, setOrphanNodeVisibleLocal] = useState(isOrphanNodeVisible)
   const [isUpperOntologyVisibleLocal, setUpperOntologyVisibleLocal] = useState(isUpperOntologyVisible)
   const [isSubClassEdgeVisibleLocal, setSubClassEdgeVisibleLocal] = useState(isSubClassEdgeVisible)
@@ -51,6 +53,17 @@ const NetworkGraphOptions = ({
       <div className="sidebar-main-body graph-options">
         <div className="sidebar-main-body-info">
           {t('chooseGraphOptions')}
+        </div>
+
+        <div className="graph-options-toggle p-col-12">
+          <Checkbox
+            id="user-defined-nodes-checkbox"
+            onChange={(e) => setUserDefinedNodeVisibleLocal(e.checked)}
+            checked={isUserDefinedNodeVisibleLocal}
+          />
+          <label htmlFor="user-defined-nodes-checkbox" className="p-checkbox-label">
+            {t('showUserDefinedNodes')}
+          </label>
         </div>
 
         <div className="graph-options-toggle p-col-12">
@@ -272,6 +285,7 @@ const NetworkGraphOptions = ({
           label={t('apply')}
           aria-label={t('apply')}
           onClick={() => setNetworkGraphOptions({
+            isUserDefinedNodeVisible: isUserDefinedNodeVisibleLocal,
             isOrphanNodeVisible: isOrphanNodeVisibleLocal,
             isUpperOntologyVisible: isUpperOntologyVisibleLocal,
             isSubClassEdgeVisible: isSubClassEdgeVisibleLocal,
