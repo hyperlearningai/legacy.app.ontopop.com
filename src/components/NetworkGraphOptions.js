@@ -63,7 +63,7 @@ const NetworkGraphOptions = ({
 
       <div className="graph-options">
         <div className="sidebar-main-body graph-options">
-          <div className="sidebar-main-body-info">
+          <div className="sidebar-main-body-info m-b-20">
             {t('chooseGraphOptions')}
           </div>
 

@@ -9,7 +9,7 @@ import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../../src/constants/routes'
 
 context('Network graph options', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   describe('Network graph options', () => {
@@ -114,9 +114,6 @@ context('Network graph options', () => {
       cy.get('.graph-options-physics-buttons').eq(2).find('.p-button').eq(1)
         .should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
       cy.get('.graph-options-physics-buttons').eq(2).find('.p-button').should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
-
-
-
 
       // switch 3 main options
       cy.get('#upper-ontology-checkbox').click()
