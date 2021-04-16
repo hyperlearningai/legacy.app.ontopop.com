@@ -140,6 +140,48 @@ context('Network graph options', () => {
 
       cy.get('.nav-left').should('contain', 'Nodes: 36')
       cy.get('.nav-left').should('contain', 'Edges: 17')
+
+      // Add edges filters
+      cy.get('#pr_id_5_header_1').click({ force: true })
+
+      // open first filter
+      cy.get('#pr_id_9_header_0').click({ force: true })
+
+      // fill in filter and remove
+      cy.get('.value-input').eq(1).type('cond')
+
+      cy.get('.graph-options-button-delete').click()
+
+      // fill in first filter
+      cy.get('.logic-select').find('.p-button').eq(1).click()
+
+      cy.get('.property-select').find('.p-dropdown-trigger')
+        .click()
+
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(1).click({ force: true })
+
+      cy.get('.operation-select').find('.p-dropdown-trigger')
+        .click()
+
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })
+
+      cy.get('.value-input').type('of')
+
+      // add subfilter
+      cy.get('.add-delete-buttons').find('.add-property').click()
+
+      cy.get('.value-input').eq(1).type('of')
+
+      cy.get('.add-delete-buttons').eq(1).find('.delete-property').click()
+
+      // add new filter and delete
+      cy.get('.graph-options-button-add').click()
+
+      // save and check new nodes and edges count
+      cy.get('#network-graph-options-save').click()
+
+      cy.get('.nav-left').should('contain', 'Nodes: 36')
+      cy.get('.nav-left').should('contain', 'Edges: 5')
     })
   })
 })

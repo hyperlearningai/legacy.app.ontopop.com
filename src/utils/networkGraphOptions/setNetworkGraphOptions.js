@@ -7,6 +7,7 @@ import store from '../../store'
  * @param  {Function} params.updateStoreValue          updateStoreValue action
  * @param  {Object}   params.hiddenNodesProperties     Properties to hide nodes
  * @param  {Object}   params.hiddenEdgesProperties     Properties to hide edges
+ * @param  {Boolean}  params.isUserDefinedNodeVisible  Show user-defined nodes flag
  * @param  {Boolean}  params.isOrphanNodeVisible       Show orphan nodes flag
  * @param  {Boolean}  params.isUpperOntologyVisible    Show upper ontology flag
  * @param  {Boolean}  params.isSubClassEdgeVisible     Show subclass edges flag
@@ -14,6 +15,7 @@ import store from '../../store'
  * @return { undefined }
  */
 const setNetworkGraphOptions = ({
+  isUserDefinedNodeVisible,
   isOrphanNodeVisible,
   isUpperOntologyVisible,
   isSubClassEdgeVisible,
@@ -29,6 +31,7 @@ const setNetworkGraphOptions = ({
 
   const currentGraphObject = {
     ...graphData[currentGraph],
+    isUserDefinedNodeVisible,
     isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
