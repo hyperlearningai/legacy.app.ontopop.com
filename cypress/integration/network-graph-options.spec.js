@@ -82,6 +82,41 @@ context('Network graph options', () => {
       cy.get('.nav-left').should('contain', 'Nodes: 24')
       cy.get('.nav-left').should('contain', 'Edges: 52')
 
+
+      // should toggle physics
+      cy.get('.graph-options-physics-buttons').eq(0).find('.p-button').should('have.class', 'p-button p-component')
+        .click()
+      cy.get('.graph-options-physics-buttons').eq(0).find('.p-button').should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
+
+      // should toggle positioning
+      cy.get('.graph-options-physics-buttons').eq(1).find('.p-button').eq(0)
+        .should('have.class', 'p-button p-component')
+      cy.get('.graph-options-physics-buttons').eq(1).find('.p-button').eq(1)
+        .should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
+      cy.get('.graph-options-physics-buttons').eq(1).find('.p-button').eq(0)
+        .click()
+      cy.get('.graph-options-physics-buttons').eq(1).find('.p-button').eq(1)
+        .should('have.class', 'p-button p-component')
+      cy.get('.graph-options-physics-buttons').eq(1).find('.p-button').eq(0)
+        .should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
+      cy.get('.graph-options-physics-buttons').eq(1).find('.p-button').should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
+
+      // should toggle repulsion
+      cy.get('.graph-options-physics-buttons').eq(2).find('.p-button').eq(1)
+        .should('have.class', 'p-button p-component')
+      cy.get('.graph-options-physics-buttons').eq(2).find('.p-button').eq(0)
+        .should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
+      cy.get('.graph-options-physics-buttons').eq(2).find('.p-button').eq(1)
+        .click()
+      cy.get('.graph-options-physics-buttons').eq(2).find('.p-button').eq(0)
+        .should('have.class', 'p-button p-component')
+      cy.get('.graph-options-physics-buttons').eq(2).find('.p-button').eq(1)
+        .should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
+      cy.get('.graph-options-physics-buttons').eq(2).find('.p-button').should('have.class', 'p-button p-component graph-options-physics-buttons-button-selected')
+
+
+
+
       // switch 3 main options
       cy.get('#upper-ontology-checkbox').click()
       cy.get('#subclass-checkbox').click()

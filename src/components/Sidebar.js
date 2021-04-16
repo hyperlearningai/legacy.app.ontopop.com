@@ -45,7 +45,6 @@ import {
   SIDEBAR_VIEW_GRAPHS,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
   SIDEBAR_VIEW_NOTES,
-  SIDEBAR_VIEW_SETTINGS,
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_STRUCTURED_SEARCH,
   SIDEBAR_VIEW_STYLING,
@@ -55,7 +54,6 @@ import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
 import ElementsSelection from './ElementsSelection'
-import NetworkSettings from './NetworkSettings'
 import ExportSettings from './ExportSettings'
 import ShortestPath from './ShortestPath'
 import BoundingBoxSelection from './BoundingBoxSelection'
@@ -196,13 +194,6 @@ const Sidebar = ({
       component: <CustomQuery />,
       label: SIDEBAR_VIEW_CUSTOM_QUERY,
       route: ROUTE_CUSTOM_QUERY
-    },
-    [SIDEBAR_VIEW_SETTINGS]: {
-      icon: <FiSettings />,
-      isVisible: IS_PHYSICS_SETTINGS_VISIBLE,
-      component: <NetworkSettings />,
-      label: SIDEBAR_VIEW_SETTINGS,
-      route: ROUTE_SETTINGS
     },
     [SIDEBAR_VIEW_STYLING]: {
       icon: <FaPaintBrush />,

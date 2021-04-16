@@ -135,4 +135,109 @@
       padding: 12px 0;
     }
   }
+
+  &-physics {
+    width: 100%;
+    text-align: center;
+    padding: 20px 10px;
+
+    .text-center {
+      text-align: center;
+    }
+
+    &-selected {
+      margin: 10px auto;
+      font-size: 12px;
+      text-align: left;
+      padding: 10px;
+      width: 100%;
+
+      table {
+        font-size: 12px;
+
+        tbody {
+          tr {
+            td {
+              padding: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    &-input {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+
+      label,
+      .labels {
+        margin-bottom: 5px;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .label {
+        margin-bottom: 10px;
+      }
+
+      #rating {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+
+      .p-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background: transparent;
+        border: 1px solid $white;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: auto 5px;
+        outline: none;
+
+        &-label {
+          display: none;
+        }
+
+        svg {
+          color: $white;
+          font-size: 20px;
+        }
+
+        &:hover {
+          background: $white;
+          color: $secondary;
+          transition: $transition;
+
+          svg {
+            color: $secondary;
+            transition: $transition;
+          }
+        }
+      }
+
+      &-button-selected {
+        background: $white !important;
+        color: $secondary !important;
+        transition: $transition;
+
+        svg {
+          color: $secondary !important;
+          transition: $transition;
+        }
+      }
+    }
+  }
 }

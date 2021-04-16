@@ -1,24 +1,32 @@
 /* eslint react/no-array-index-key:0 */
 /* eslint react/jsx-key:0 */
-import { useState } from 'react'
-import { connect } from 'redux-zero/react'
+import {useState} from 'react'
+import {connect} from 'redux-zero/react'
 import PropTypes from 'prop-types'
-import { useTranslation } from 'react-i18next'
-import { Button } from 'primereact/button'
-import { Accordion, AccordionTab } from 'primereact/accordion'
-import { Checkbox } from 'primereact/checkbox'
+import {useTranslation} from 'react-i18next'
+import {Button} from 'primereact/button'
+import {Accordion, AccordionTab} from 'primereact/accordion'
+import {Checkbox} from 'primereact/checkbox'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
-import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
+import {SIDEBAR_VIEW_GRAPH_OPTIONS} from '../constants/views'
+import {DEFAULT_HIDDEN_ELEMENT_PROPERTY} from '../constants/graph'
 import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraphOptions'
 import HideElementsByPropertyForm from './HideElementsByPropertyForm'
+import {OPERATION_TYPE_UPDATE} from "../constants/store";
+import {AiOutlinePoweroff} from "react-icons/ai";
+import {FaSitemap} from "react-icons/fa";
+import {SiAtom} from "react-icons/si";
+import {IoFootballOutline, IoGitNetworkSharp} from "react-icons/io5";
 
 const NetworkGraphOptions = ({
   currentGraph,
   graphData,
-  updateStoreValue
+  updateStoreValue,
+  physicsRepulsion,
+  physicsHierarchicalView,
+  isPhysicsOn
 }) => {
-  const { t } = useTranslation()
+  const {t} = useTranslation()
 
   const {
     isUpperOntologyVisible,
@@ -39,8 +47,81 @@ const NetworkGraphOptions = ({
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
       </h1>
+
       <div className="graph-options">
+
         <div className="graph-options-text">{t('chooseGraphOptions')}</div>
+
+        <div className="graph-options-physics">
+          <div className="graph-options-physics-input">
+            <div className="label">
+              {t('physics')}
+            </div>
+            <div className="graph-options-physics-buttons">
+              <Button
+                aria-label={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
+                tooltip={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
+                tooltipOptions={{position: 'top'}}
+                className={isPhysicsOn ? 'graph-options-physics-buttons-button-selected' : ''}
+                onClick={() => updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, !isPhysicsOn)}
+              >
+                <AiOutlinePoweroff/>
+              </Button>
+            </div>
+          </div>
+
+          <div className="graph-options-physics-input">
+            <div className="label">
+              {t('positioning')}
+            </div>
+            <div className="graph-options-physics-buttons">
+              <Button
+                aria-label={t('hierachicalView')}
+                tooltip={t('hierachicalView')}
+                tooltipOptions={{position: 'top'}}
+                className={physicsHierarchicalView ? 'graph-options-physics-buttons-button-selected' : ''}
+                onClick={() => updateStoreValue(['physicsHierarchicalView'], OPERATION_TYPE_UPDATE, true)}
+              >
+                <FaSitemap/>
+              </Button>
+              <Button
+                aria-label={t('gravitationalView')}
+                tooltip={t('gravitationalView')}
+                tooltipOptions={{position: 'top'}}
+                className={!physicsHierarchicalView ? 'graph-options-physics-buttons-button-selected' : ''}
+                onClick={() => updateStoreValue(['physicsHierarchicalView'], OPERATION_TYPE_UPDATE, false)}
+              >
+                <SiAtom/>
+              </Button>
+            </div>
+          </div>
+
+          <div className="graph-options-physics-input">
+            <div className="label">
+              {t('repulsion')}
+            </div>
+            <div className="graph-options-physics-buttons">
+              <Button
+                aria-label={t('gravitationalView')}
+                tooltip={t('enableRepulsion')}
+                tooltipOptions={{position: 'top'}}
+                className={physicsRepulsion ? 'graph-options-physics-buttons-button-selected' : ''}
+                onClick={() => updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, true)}
+              >
+                <IoFootballOutline/>
+              </Button>
+              <Button
+                aria-label={t('disableRepulsion')}
+                tooltip={t('disableRepulsion')}
+                tooltipOptions={{position: 'top'}}
+                className={!physicsRepulsion ? 'graph-options-physics-buttons-button-selected' : ''}
+                onClick={() => updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, false)}
+              >
+                <IoGitNetworkSharp/>
+              </Button>
+            </div>
+          </div>
+        </div>
 
         <div className="graph-options-toggle p-col-12">
           <Checkbox
@@ -114,7 +195,7 @@ const NetworkGraphOptions = ({
                     position: 'top'
                   }}
                   onClick={() => {
-                    if (Object.keys(nodesProperties).length === 0) return setNodesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
+                    if (Object.keys(nodesProperties).length === 0) return setNodesProperties({0: DEFAULT_HIDDEN_ELEMENT_PROPERTY})
 
                     const nextIndex = Object.keys(nodesProperties).length
 
@@ -158,7 +239,7 @@ const NetworkGraphOptions = ({
                   }}
                   icon="pi pi-plus"
                   onClick={() => {
-                    if (Object.keys(edgesProperties).length === 0) return setEdgesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
+                    if (Object.keys(edgesProperties).length === 0) return setEdgesProperties({0: DEFAULT_HIDDEN_ELEMENT_PROPERTY})
 
                     const nextIndex = Object.keys(edgesProperties).length
 
@@ -201,14 +282,23 @@ NetworkGraphOptions.propTypes = {
   currentGraph: PropTypes.string.isRequired,
   graphData: PropTypes.shape().isRequired,
   updateStoreValue: PropTypes.func.isRequired,
+  physicsHierarchicalView: PropTypes.bool.isRequired,
+  isPhysicsOn: PropTypes.bool.isRequired,
+  physicsRepulsion: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
   currentGraph,
-  graphData
+  graphData,
+  physicsRepulsion,
+  physicsHierarchicalView,
+  isPhysicsOn
 }) => ({
   currentGraph,
-  graphData
+  graphData,
+  physicsRepulsion,
+  physicsHierarchicalView,
+  isPhysicsOn
 })
 
 export default connect(
