@@ -8,8 +8,18 @@ import { Button } from 'primereact/button'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { Checkbox } from 'primereact/checkbox'
 import {
-  AiOutlinePoweroff, FaSitemap, IoFootballOutline, IoGitNetworkSharp, SiAtom
-} from 'react-icons'
+  SiAtom
+} from 'react-icons/si'
+import {
+  FaSitemap
+} from 'react-icons/fa'
+import {
+  AiOutlinePoweroff
+} from 'react-icons/ai'
+import {
+  IoFootballOutline,
+  IoGitNetworkSharp
+} from 'react-icons/io5'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
@@ -52,33 +62,9 @@ const NetworkGraphOptions = ({
       </h1>
 
       <div className="graph-options">
-
-        <div className="graph-options-text">{t('chooseGraphOptions')}</div>
         <div className="sidebar-main-body graph-options">
           <div className="sidebar-main-body-info">
             {t('chooseGraphOptions')}
-          </div>
-
-          <div className="graph-options-toggle p-col-12">
-            <Checkbox
-              id="user-defined-nodes-checkbox"
-              onChange={(e) => setUserDefinedNodeVisibleLocal(e.checked)}
-              checked={isUserDefinedNodeVisibleLocal}
-            />
-            <label htmlFor="user-defined-nodes-checkbox" className="p-checkbox-label">
-              {t('showUserDefinedNodes')}
-            </label>
-          </div>
-
-          <div className="graph-options-toggle p-col-12">
-            <Checkbox
-              id="orphan-nodes-checkbox"
-              onChange={(e) => setOrphanNodeVisibleLocal(e.checked)}
-              checked={isOrphanNodeVisibleLocal}
-            />
-            <label htmlFor="orphan-nodes-checkbox" className="p-checkbox-label">
-              {t('showOrphanNodes')}
-            </label>
           </div>
 
           <div className="graph-options-physics">
@@ -150,6 +136,27 @@ const NetworkGraphOptions = ({
                 </Button>
               </div>
             </div>
+          </div>
+          <div className="graph-options-toggle p-col-12">
+            <Checkbox
+              id="user-defined-nodes-checkbox"
+              onChange={(e) => setUserDefinedNodeVisibleLocal(e.checked)}
+              checked={isUserDefinedNodeVisibleLocal}
+            />
+            <label htmlFor="user-defined-nodes-checkbox" className="p-checkbox-label">
+              {t('showUserDefinedNodes')}
+            </label>
+          </div>
+
+          <div className="graph-options-toggle p-col-12">
+            <Checkbox
+              id="orphan-nodes-checkbox"
+              onChange={(e) => setOrphanNodeVisibleLocal(e.checked)}
+              checked={isOrphanNodeVisibleLocal}
+            />
+            <label htmlFor="orphan-nodes-checkbox" className="p-checkbox-label">
+              {t('showOrphanNodes')}
+            </label>
           </div>
 
           <div className="graph-options-toggle p-col-12">
