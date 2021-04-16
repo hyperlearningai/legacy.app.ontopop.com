@@ -1,19 +1,15 @@
 import React from 'react'
-import { connect } from 'redux-zero/react'
-import { useTranslation } from 'react-i18next'
+import {connect} from 'redux-zero/react'
+import {useTranslation} from 'react-i18next'
 import PropTypes from 'prop-types'
-import { FiLayers, FiSettings } from 'react-icons/fi'
-import { BiNetworkChart, BiSelection, BiText } from 'react-icons/bi'
-import {
-  BsCodeSlash, BsFilter, BsPencilSquare, BsSearch
-} from 'react-icons/bs'
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
-import { IoBuildSharp, IoGitNetwork } from 'react-icons/io5'
-import { IoMdOptions } from 'react-icons/io'
-import {
-  FaFileAlt, FaFileExport, FaPaintBrush, FaRegCircle, FaRegHandPointer, FaStickyNote
-} from 'react-icons/fa'
-import { Button } from 'primereact/button'
+import {FiLayers} from 'react-icons/fi'
+import {BiNetworkChart, BiSelection, BiText} from 'react-icons/bi'
+import {BsCodeSlash, BsFilter, BsPencilSquare, BsSearch} from 'react-icons/bs'
+import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
+import {IoBuildSharp, IoGitNetwork} from 'react-icons/io5'
+import {IoMdOptions} from 'react-icons/io'
+import {FaFileAlt, FaFileExport, FaPaintBrush, FaRegCircle, FaRegHandPointer, FaStickyNote} from 'react-icons/fa'
+import {Button} from 'primereact/button'
 import actions from '../store/actions'
 import {
   IS_BOUNDING_BOX_VISIBLE,
@@ -27,7 +23,6 @@ import {
   IS_GRAPHS_VISIBLE,
   IS_NEIGHBOURHOOD_VISIBLE,
   IS_NOTES_VISIBLE,
-  IS_PHYSICS_SETTINGS_VISIBLE,
   IS_SEARCH_VISIBLE,
   IS_SHORTEST_PATH_VISIBLE,
   IS_STRUCTURED_SEARCH_VISIBLE,
@@ -66,7 +61,7 @@ import NotesList from './NotesList'
 import EntrySearch from './EntrySearch'
 import SynonymsList from './SynonymsList'
 import NetworkGraphOptions from './NetworkGraphOptions'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import {OPERATION_TYPE_UPDATE} from '../constants/store'
 import {
   ROUTE_BOUNDING_BOX,
   ROUTE_CUSTOM_QUERY,
@@ -80,13 +75,12 @@ import {
   ROUTE_NODE_NEIGHBOURHOOD,
   ROUTE_NOTES,
   ROUTE_SEARCH,
-  ROUTE_SETTINGS,
   ROUTE_SHORTEST_PATH,
   ROUTE_STRUCTURED_SEARCH,
   ROUTE_STYLING,
   ROUTE_SYNONYMS,
 } from '../constants/routes'
-import { toDashedCase } from '../constants/functions'
+import {toDashedCase} from '../constants/functions'
 
 const Sidebar = ({
   isSidebarOpen,
