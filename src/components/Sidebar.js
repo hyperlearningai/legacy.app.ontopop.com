@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import { FiLayers, FiSettings } from 'react-icons/fi'
+import { FiLayers } from 'react-icons/fi'
 import { BiNetworkChart, BiSelection, BiText } from 'react-icons/bi'
 import {
   BsCodeSlash, BsFilter, BsPencilSquare, BsSearch
@@ -27,7 +27,6 @@ import {
   IS_GRAPHS_VISIBLE,
   IS_NEIGHBOURHOOD_VISIBLE,
   IS_NOTES_VISIBLE,
-  IS_PHYSICS_SETTINGS_VISIBLE,
   IS_SEARCH_VISIBLE,
   IS_SHORTEST_PATH_VISIBLE,
   IS_STRUCTURED_SEARCH_VISIBLE,
@@ -45,7 +44,6 @@ import {
   SIDEBAR_VIEW_GRAPHS,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
   SIDEBAR_VIEW_NOTES,
-  SIDEBAR_VIEW_SETTINGS,
   SIDEBAR_VIEW_SHORTEST_PATH,
   SIDEBAR_VIEW_STRUCTURED_SEARCH,
   SIDEBAR_VIEW_STYLING,
@@ -55,7 +53,6 @@ import NetworkGraphList from './NetworkGraphList'
 import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
 import ElementsSelection from './ElementsSelection'
-import NetworkSettings from './NetworkSettings'
 import ExportSettings from './ExportSettings'
 import ShortestPath from './ShortestPath'
 import BoundingBoxSelection from './BoundingBoxSelection'
@@ -82,7 +79,6 @@ import {
   ROUTE_NODE_NEIGHBOURHOOD,
   ROUTE_NOTES,
   ROUTE_SEARCH,
-  ROUTE_SETTINGS,
   ROUTE_SHORTEST_PATH,
   ROUTE_STRUCTURED_SEARCH,
   ROUTE_STYLING,
@@ -196,13 +192,6 @@ const Sidebar = ({
       component: <CustomQuery />,
       label: SIDEBAR_VIEW_CUSTOM_QUERY,
       route: ROUTE_CUSTOM_QUERY
-    },
-    [SIDEBAR_VIEW_SETTINGS]: {
-      icon: <FiSettings />,
-      isVisible: IS_PHYSICS_SETTINGS_VISIBLE,
-      component: <NetworkSettings />,
-      label: SIDEBAR_VIEW_SETTINGS,
-      route: ROUTE_SETTINGS
     },
     [SIDEBAR_VIEW_STYLING]: {
       icon: <FaPaintBrush />,
