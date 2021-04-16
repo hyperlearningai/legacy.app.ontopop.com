@@ -1,19 +1,21 @@
 /* eslint react/no-array-index-key:0 */
 /* eslint react/jsx-key:0 */
-import {useState} from 'react'
-import {connect} from 'redux-zero/react'
+import { useState } from 'react'
+import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
-import {useTranslation} from 'react-i18next'
-import {Button} from 'primereact/button'
-import {Accordion, AccordionTab} from 'primereact/accordion'
-import {Checkbox} from 'primereact/checkbox'
+import { useTranslation } from 'react-i18next'
+import { Button } from 'primereact/button'
+import { Accordion, AccordionTab } from 'primereact/accordion'
+import { Checkbox } from 'primereact/checkbox'
+import {
+  AiOutlinePoweroff, FaSitemap, IoFootballOutline, IoGitNetworkSharp, SiAtom
+} from 'react-icons'
 import actions from '../store/actions'
-import {SIDEBAR_VIEW_GRAPH_OPTIONS} from '../constants/views'
-import {DEFAULT_HIDDEN_ELEMENT_PROPERTY} from '../constants/graph'
+import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
+import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
 import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraphOptions'
 import HideElementsByPropertyForm from './HideElementsByPropertyForm'
-import {OPERATION_TYPE_UPDATE} from "../constants/store";
-import {AiOutlinePoweroff, FaSitemap, IoFootballOutline, IoGitNetworkSharp, SiAtom} from "react-icons";
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkGraphOptions = ({
   currentGraph,
