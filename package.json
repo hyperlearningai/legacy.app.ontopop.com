@@ -24,8 +24,16 @@
     "build-docs": "jsdoc src/utils/*.js -d docs",
     "test:e2e:open": "cypress open",
     "cy:run": "cypress run",
-    "test:e2e:run": "start-server-and-test start 3000 cy:run",
-    "rebuild-saas": "npm rebuild node-sass"
+    "test:e2e:run": "start-server-and-test start 3000 cy:run --env coverage=false",
+    "test:e2e:run:coverage": "start-server-and-test start 3000 cy:run",
+    "rebuild-sass": "npm rebuild node-sass",
+    "mkdir:reports": "mkdir reports || true",
+    "precopy:reports": "npm run mkdir:reports",
+    "copy:reports": "cp cypress-coverage/coverage-final.json reports/from-cypress.json && cp jest-coverage/coverage-final.json reports/from-jest.json",
+    "precombine:reports": "npm run copy:reports && mkdir .nyc_output || true",
+    "combine:reports": "npx nyc merge reports && mv coverage.json .nyc_output/out.json",
+    "prereport:combined": "npm run combine:reports",
+    "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage"
   },
   "author": "@chriscarex",
   "license": "MIT",
@@ -37,11 +45,13 @@
     "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.5",
+    "@cypress/code-coverage": "^3.9.4",
     "@testing-library/dom": "^7.29.2",
     "@testing-library/jest-dom": "^5.11.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-jest": "^26.3.0",
     "browserslist": "^4.16.1",
+    "check-code-coverage": "^1.10.0",
     "cypress": "^7.0.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.5.0",
@@ -136,5 +146,21 @@
   "jest-junit": {
     "outputDirectory": "test/test_reports",
     "outputName": "jest-junit.xml"
+  },
+  "nyc": {
+    "report-dir": "cypress-coverage",
+    "reporter": [
+      "text",
+      "json",
+      "lcov"
+    ],
+    "all": true,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "**/*.test.js",
+      "**/*.spec.js"
+    ]
   }
 }

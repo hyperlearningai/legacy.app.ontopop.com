@@ -13,6 +13,8 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+import '@cypress/code-coverage/support' // eslint-disable-line
+
 // Import commands.js using ES2015 syntax:
 import './commands'
 

@@ -39,5 +39,10 @@ docs
 .serverless_nextjs/*
 test.json
 
-# cypress
+# tests
 cypress/downloads/*
+jest-coverage
+cypress-coverage
+reports
+coverage.json
+.nyc_output

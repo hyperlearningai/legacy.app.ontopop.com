@@ -265,6 +265,7 @@ export default {
   couldNotDownloadCsv: 'Could not download CSV!',
   insertFileName: 'Insert file name',
   setFileNameAndChooseExportFormat: 'Set file name and choose export format',
+  couldNotExportOwl: 'Could not export data as Owl file',
 
   // custom query
   customQuery: 'Custom query',

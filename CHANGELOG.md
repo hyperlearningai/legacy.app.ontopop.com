@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.7.0]
 ### Added
+- ONTOLOGY-156 Integrated Owl file export endpoint
 - ONTOLOGY-156 Added datatable as alternative way to visualise relationships among nodes
 - ONTOLOGY-191 Added checkbox to toggle user-defined nodes visibility
 - ONTOLOGY-175 Post login ontology listing page
@@ -36,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-156 Removed serialiseOwlFile util
 - ONTOLOGY-170 Removed required from rdfLabel in edit ontology form
 
 ### Fixed
