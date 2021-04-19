@@ -1,4 +1,11 @@
 module.exports = {
+  collectCoverage: true,
+  coverageDirectory: 'jest-coverage',
+  collectCoverageFrom: [
+    'src/**/*.js',
+    '!**/*.test.js',
+    '!**/*.spec.js',
+  ],
   setupFiles: [
     'jest-canvas-mock',
     './setupTests.js'

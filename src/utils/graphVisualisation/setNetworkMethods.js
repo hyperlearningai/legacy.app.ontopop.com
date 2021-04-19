@@ -107,10 +107,10 @@ const setNetworkMethods = async ({
     }
   })
 
-  await network?.stabilize(2000)
+  await network?.stabilize(1000)
 
   network?.fit({
-    animation: true
+    animation: false
   })
 }
 

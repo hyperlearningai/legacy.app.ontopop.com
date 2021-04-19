@@ -5,6 +5,8 @@ import {
 import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
+import { connect } from 'redux-zero/react'
+import PropTypes from 'prop-types'
 import { SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import {
   EXPORT_GRAPH_OPTIONS,
@@ -17,8 +19,11 @@ import exportAsPdf from '../utils/exportSettings/exportAsPdf'
 import exportCsv from '../utils/exportSettings/exportCsv'
 import exportOwl from '../utils/exportSettings/exportOwl'
 import printCanvas from '../utils/exportSettings/printCanvas'
+import actions from '../store/actions'
 
-const ExportSettings = () => {
+const ExportSettings = ({
+  updateStoreValue
+}) => {
   const { t } = useTranslation()
   const [exportFileName, setFileName] = useState('network-graph')
 
@@ -120,6 +125,7 @@ const ExportSettings = () => {
                     t
                   }) : exportOwl({
                     exportFileName,
+                    updateStoreValue,
                     t
                   }))}
                 />
@@ -152,4 +158,11 @@ const ExportSettings = () => {
   )
 }
 
-export default ExportSettings
+ExportSettings.propTypes = {
+  updateStoreValue: PropTypes.func.isRequired,
+}
+
+export default connect(
+  null,
+  actions
+)(ExportSettings)

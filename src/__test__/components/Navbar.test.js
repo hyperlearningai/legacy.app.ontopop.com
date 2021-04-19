@@ -2,10 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import Navbar from '../../components/Navbar'
-import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
+import {
+  NETWORK_VIEW_DATATABLE, NETWORK_VIEW_GRAPH, SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS
+} from '../../constants/views'
 
 const setup = ({
-  sidebarView
+  sidebarView,
+  networkVisualisation
 }) => {
   const props = {
     availableEdgesCount: 333,
@@ -21,6 +24,8 @@ const setup = ({
         { id: '2' }
       ]
     },
+    updateStoreValue: jest.fn(),
+    networkVisualisation
   }
 
   const component = shallow(<Navbar {...props} />)
@@ -32,21 +37,49 @@ const setup = ({
 }
 
 describe('Navbar', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should match snapshot when SIDEBAR_VIEW_ENTRY_SEARCH', () => {
     const {
       component
     } = setup({
-      sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH
+      sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH,
+      networkVisualisation: NETWORK_VIEW_GRAPH
     })
 
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when MAIN_VIEW_GRAPH', () => {
+  it('should match snapshot when SIDEBAR_VIEW_GRAPHS and NETWORK_VIEW_GRAPH', () => {
     const {
       component
     } = setup({
-      sidebarView: 'any'
+      sidebarView: SIDEBAR_VIEW_GRAPHS,
+      networkVisualisation: NETWORK_VIEW_GRAPH
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when SIDEBAR_VIEW_GRAPHS and NETWORK_VIEW_DATATABLE', () => {
+    const {
+      component
+    } = setup({
+      sidebarView: SIDEBAR_VIEW_GRAPHS,
+      networkVisualisation: NETWORK_VIEW_DATATABLE
+    })
+
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when any view', () => {
+    const {
+      component
+    } = setup({
+      sidebarView: 'any',
+      networkVisualisation: NETWORK_VIEW_GRAPH
     })
 
     expect(toJson(component)).toMatchSnapshot()

@@ -47,7 +47,7 @@ describe('setNetworkMethods', () => {
       'selectEdge'
     )
 
-    expect(stabilize).toHaveBeenCalledWith(2000)
+    expect(stabilize).toHaveBeenCalledWith(1000)
     expect(fit).toHaveBeenCalled()
   })
 })

@@ -60,10 +60,10 @@ describe('logout', () => {
         ],
         [
           [
-            'mainVisualisation'
+            'networkVisualisation'
           ],
           OPERATION_TYPE_UPDATE,
-          'search'
+          'graph'
         ],
         [
           [
@@ -225,6 +225,20 @@ describe('logout', () => {
           ],
           OPERATION_TYPE_UPDATE,
           []
+        ],
+        [
+          [
+            'dataTableTriples',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
+            'dataTableTriplesWithLabels',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
         ],
         [
           [

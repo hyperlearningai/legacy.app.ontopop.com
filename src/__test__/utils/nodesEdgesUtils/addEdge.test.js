@@ -1,7 +1,11 @@
 import { DataSet } from 'vis-data'
 import addEdge from '../../../utils/nodesEdgesUtils/addEdge'
 import store from '../../../store'
-import { OPERATION_TYPE_ADD, OPERATION_TYPE_PUSH_UNIQUE } from '../../../constants/store'
+import {
+  OPERATION_TYPE_ADD,
+  OPERATION_TYPE_PUSH_UNIQUE,
+  OPERATION_TYPE_PUSH
+} from '../../../constants/store'
 import setEdgeStyle from '../../../utils/networkStyling/setEdgeStyle'
 import { objectPropertiesFromApi } from '../../fixtures/objectPropertiesFromApi'
 
@@ -56,8 +60,34 @@ describe('addEdge', () => {
 
     expect(availableEdges.length).toEqual(1)
     expect(updateStoreValue.mock.calls).toEqual(
-      [[['availableEdgesCount'], OPERATION_TYPE_ADD, 1], [['nodesEdges', '12'],
-        OPERATION_TYPE_PUSH_UNIQUE, '123'], [['nodesEdges', '14'], OPERATION_TYPE_PUSH_UNIQUE, '123']]
+      [
+        [
+          ['availableEdgesCount'],
+          OPERATION_TYPE_ADD,
+          1
+        ],
+        [
+          ['nodesEdges', '12'],
+          OPERATION_TYPE_PUSH_UNIQUE,
+          '123'
+        ],
+        [
+          ['nodesEdges', '14'],
+          OPERATION_TYPE_PUSH_UNIQUE,
+          '123'
+        ],
+        [
+          [
+            'dataTableTriples',
+          ],
+          OPERATION_TYPE_PUSH,
+          {
+            edge: '123',
+            from: '12',
+            to: '14',
+          },
+        ],
+      ]
     )
     expect(setEdgeStyle).toHaveBeenCalledWith({ edge })
   })

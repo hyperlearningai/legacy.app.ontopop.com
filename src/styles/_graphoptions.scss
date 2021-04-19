@@ -1,5 +1,6 @@
 .graph-options {
-  overflow-y: scroll;
+  overflow-y: auto;
+
   &-toggle {
     width: 100%;
     display: flex;

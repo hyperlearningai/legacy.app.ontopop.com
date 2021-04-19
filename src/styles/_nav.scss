@@ -49,13 +49,22 @@ nav {
       align-items: center;
       justify-content: center;
 
-      &-button-selected {
+      .p-button {
         background: $white;
-        color: $secondary;
-        transition: $transition;
 
         svg {
           color: $secondary;
+          transition: $transition;
+        }
+      }
+
+      &-button-selected {
+        background: $primary !important;
+        color: $white;
+        transition: $transition;
+
+        svg {
+          color: $white !important;
           transition: $transition;
         }
       }

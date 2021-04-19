@@ -14,10 +14,8 @@ export default {
   // navbar
   hideSidebar: 'Hide sidebar',
   showSidebar: 'Show sidebar',
-  networkGraphView: 'Network graph view',
-  tableView: 'Table view',
   showNetworkGraph: 'Show network graph',
-  showTable: 'Show table',
+  showDataTable: 'Show datatable',
   showInfo: 'Show element info',
   hideInfo: 'Hide element info',
   nodes: 'Nodes',
@@ -267,6 +265,7 @@ export default {
   couldNotDownloadCsv: 'Could not download CSV!',
   insertFileName: 'Insert file name',
   setFileNameAndChooseExportFormat: 'Set file name and choose export format',
+  couldNotExportOwl: 'Could not export data as Owl file',
 
   // custom query
   customQuery: 'Custom query',
@@ -512,5 +511,10 @@ export default {
   owner: 'Owner',
   actions: 'Actions',
   availableOntologies: 'Available ontologies',
-  openInWebProtege: 'Open in WebProtege'
+  openInWebProtege: 'Open in WebProtege',
+
+  // datatable
+  availableRelationships: 'Available relationships',
+  predicate: 'Predicate',
+  noTriplesAvailable: 'No relationships available',
 }

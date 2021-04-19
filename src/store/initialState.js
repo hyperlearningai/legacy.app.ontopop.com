@@ -1,5 +1,5 @@
 import { DataSet } from 'vis-data'
-import { MAIN_VIEW_SEARCH, SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
+import { NETWORK_VIEW_GRAPH, SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import {
   EDGE_COLOR,
@@ -27,7 +27,7 @@ const initialState = {
   isSidebarOpen: true,
   sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH,
   activeLoaders: 0,
-  mainVisualisation: MAIN_VIEW_SEARCH,
+  networkVisualisation: NETWORK_VIEW_GRAPH,
 
   // user
   user: {
@@ -65,6 +65,8 @@ const initialState = {
   nodesEdges: {},
   highlightedNodes: [],
   highlightedEdges: [],
+  dataTableTriples: [],
+  dataTableTriplesWithLabels: [],
 
   // network styling
   globalEdgeStyling: {
