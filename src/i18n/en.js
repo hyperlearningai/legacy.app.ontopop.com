@@ -407,7 +407,7 @@ export default {
   open: 'Open',
   any: 'Any',
   lowerOntology: 'Lower ontology',
-  weCouldNotFindAnyMatchFor: 'We could not find any match for',
+  weCouldNotFindAnyMatchFor: 'We could not find any results for your search query ',
   pleaseTryDifferentQuery: 'Please try a different search query.',
   visualiseEntireOntology: 'Visualise entire ontology',
   applyFilters: 'Apply filters',
