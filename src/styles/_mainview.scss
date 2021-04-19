@@ -27,5 +27,13 @@
         border-radius: 10px;
       }
     }
+
+    .datatable-container {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: $white;
+      overflow: hidden;
+    }
   }
 }

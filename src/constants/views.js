@@ -35,5 +35,5 @@ export const SIDEBAR_VIEW_EXPORT = 'export'
 export const SIDEBAR_VIEW_CUSTOM_QUERY = 'customQuery'
 export const SIDEBAR_VIEW_EDIT_ONTOLOGY = 'editOntology'
 
-export const MAIN_VIEW_SEARCH = 'search'
-export const MAIN_VIEW_GRAPH = 'graph'
+export const NETWORK_VIEW_DATATABLE = 'datatable'
+export const NETWORK_VIEW_GRAPH = 'graph'

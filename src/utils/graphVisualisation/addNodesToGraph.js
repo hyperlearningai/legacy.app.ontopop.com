@@ -27,6 +27,8 @@ const addNodesToGraph = ({
   // reset nodes/edges (display at the end of the function)
   clearEdges()
   clearNodes()
+  updateStoreValue(['dataTableTriples'], OPERATION_TYPE_UPDATE, [])
+  updateStoreValue(['dataTableTriplesWithLabels'], OPERATION_TYPE_UPDATE, [])
   updateStoreValue(['nodesDropdownLabels'], OPERATION_TYPE_UPDATE, [])
   updateStoreValue(['edgesDropdownLabels'], OPERATION_TYPE_UPDATE, [])
   updateStoreValue(['availableNodesCount'], OPERATION_TYPE_UPDATE, 0)

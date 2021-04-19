@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.7.0]
 ### Added
+- ONTOLOGY-156 Added datatable as alternative way to visualise relationships among nodes
 - ONTOLOGY-191 Added checkbox to toggle user-defined nodes visibility
 - ONTOLOGY-175 Post login ontology listing page
 - ONTOLOGY-174 Added checkbox to toggle orphan nodes visibility
@@ -26,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-163 Added explicit search button in search sidebar view
 
 ### Changed
+- ONTOLOGY-156 Improved updateStoreValue action
 - ONTOLOGY-128 Merged physics settings with network graph options view
 - ONTOLOGY-172 Switched elevation between search view and graph view to avoid network reloading
 - ONTOLOGY-171 Turned dropdown into text input with suggestions in advanced search properties with enumeration
@@ -37,6 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-170 Removed required from rdfLabel in edit ontology form
 
 ### Fixed
+- ONTOLOGY-156 Fixed broken navigation buttons when adding a new graph
 - ONTOLOGY-171 Restored search bar in main view at first search
 - ONTOLOGY-163 Fixed advanced search query 
 
@@ -64,12 +67,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-130 Login form can be submitted on enter
 - ONTOLOGY-153 Sidebar views routing for improved analytics
 - ONTOLOGY-153 Additional env variables to toggle sidebar views on/off
+- ONTOLOGY-151 Added new types for updateStoreValue action
 - ONTOLOGY-130 Added updateStoreValue action to replace all other store actions
 - ONTOLOGY-130 Search starts also on search icon click
 - ONTOLOGY-109 Added userback and mouseflow snippets
 
 ### Changed
 - ONTOLOGY-153 Logout function now resets the store
+- ONTOLOGY-151 Updated edit ontology utils logic
 - ONTOLOGY-151 Node and edge rendering logic to improve performance
 
 ### Removed
@@ -241,7 +246,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.0.1]
 ### Added
-- Physics settings widget with edge lenght, zoom fit, hierarchival vs orbital view, repulsion
+- Physics settings widget with edge length, zoom fit, hierarchival vs orbital view, repulsion
 - Edges list widget with filter and edge toggling option
 - Node search widget
 - Node info widget

@@ -21,11 +21,10 @@ const setNetwork = ({
 }) => {
   const physicsSettings = getPhysicsOptions()
 
-  updateStoreValue(['network'], OPERATION_TYPE_UPDATE, visJsRef.current
-    && new Network(visJsRef.current, {
-      nodes: availableNodes,
-      edges: availableEdges
-    }, physicsSettings))
+  updateStoreValue(['network'], OPERATION_TYPE_UPDATE, visJsRef.current && new Network(visJsRef.current, {
+    nodes: availableNodes,
+    edges: availableEdges
+  }, physicsSettings))
 
   const canvas = document.getElementById('network-graph').getElementsByTagName('canvas')[0]
 

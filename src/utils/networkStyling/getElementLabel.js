@@ -38,9 +38,9 @@ const getElementLabel = ({
 
   const {
     stylingEdgeCaptionProperty
-  } = edge[USER_DEFINED_PROPERTY] ? userDefinedEdgeStyling : globalEdgeStyling
+  } = edge && edge[USER_DEFINED_PROPERTY] ? userDefinedEdgeStyling : globalEdgeStyling
 
-  return edge[stylingEdgeCaptionProperty] || ''
+  return edge ? edge[stylingEdgeCaptionProperty] : ''
 }
 
 export default getElementLabel

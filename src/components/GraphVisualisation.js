@@ -1,3 +1,4 @@
+/* eslint max-len:0 */
 import { useEffect, useRef } from 'react'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
@@ -9,7 +10,9 @@ import setNetwork from '../utils/graphVisualisation/setNetwork'
 import setNetworkMethods from '../utils/graphVisualisation/setNetworkMethods'
 import getPhysicsOptions from '../utils/graphVisualisation/getPhysicsOptions'
 import addNodesToGraph from '../utils/graphVisualisation/addNodesToGraph'
-import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
+import {
+  NETWORK_VIEW_DATATABLE, NETWORK_VIEW_GRAPH, SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS
+} from '../constants/views'
 
 const GraphVisualisation = ({
   currentGraph,
@@ -25,7 +28,8 @@ const GraphVisualisation = ({
   isPhysicsOn,
   globalEdgeStyling,
   updateStoreValue,
-  sidebarView
+  sidebarView,
+  networkVisualisation
 }) => {
   const { t } = useTranslation()
   const isInitialMountNetwork = useRef(true)
@@ -100,7 +104,7 @@ const GraphVisualisation = ({
   } = boundingBoxGeometry
 
   return (
-    <div className={`graph-container${sidebarView !== SIDEBAR_VIEW_ENTRY_SEARCH ? ' elevate-view' : ''}`}>
+    <div className={`graph-container${sidebarView !== SIDEBAR_VIEW_ENTRY_SEARCH && (networkVisualisation === NETWORK_VIEW_GRAPH || (networkVisualisation === NETWORK_VIEW_DATATABLE && sidebarView === SIDEBAR_VIEW_GRAPHS)) ? ' elevate-view' : ''}`}>
       <div
         id="network-graph"
         ref={visJsRef}
@@ -150,6 +154,7 @@ GraphVisualisation.propTypes = {
   globalEdgeStyling: PropTypes.shape().isRequired,
   updateStoreValue: PropTypes.func.isRequired,
   sidebarView: PropTypes.string.isRequired,
+  networkVisualisation: PropTypes.string.isRequired,
 }
 
 GraphVisualisation.defaultProps = {
@@ -169,7 +174,8 @@ const mapToProps = ({
   physicsRepulsion,
   isPhysicsOn,
   globalEdgeStyling,
-  sidebarView
+  sidebarView,
+  networkVisualisation
 }) => ({
   currentGraph,
   showContextMenu,
@@ -183,7 +189,8 @@ const mapToProps = ({
   physicsRepulsion,
   isPhysicsOn,
   globalEdgeStyling,
-  sidebarView
+  sidebarView,
+  networkVisualisation
 })
 
 export default connect(

@@ -14,10 +14,8 @@ export default {
   // navbar
   hideSidebar: 'Hide sidebar',
   showSidebar: 'Show sidebar',
-  networkGraphView: 'Network graph view',
-  tableView: 'Table view',
   showNetworkGraph: 'Show network graph',
-  showTable: 'Show table',
+  showDataTable: 'Show datatable',
   showInfo: 'Show element info',
   hideInfo: 'Hide element info',
   nodes: 'Nodes',
@@ -512,5 +510,10 @@ export default {
   owner: 'Owner',
   actions: 'Actions',
   availableOntologies: 'Available ontologies',
-  openInWebProtege: 'Open in WebProtege'
+  openInWebProtege: 'Open in WebProtege',
+
+  // datatable
+  availableRelationships: 'Available relationships',
+  predicate: 'Predicate',
+  noTriplesAvailable: 'No relationships available',
 }

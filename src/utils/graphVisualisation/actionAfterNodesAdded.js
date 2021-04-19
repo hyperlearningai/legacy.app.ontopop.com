@@ -36,7 +36,7 @@ const actionAfterNodesAdded = ({
     }
 
     network?.fit({
-      animation: false // true
+      animation: false
     })
   }, 250)
 }

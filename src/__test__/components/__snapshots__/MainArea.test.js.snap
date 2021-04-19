@@ -13,6 +13,8 @@ exports[`MainArea should match snapshot when currentGraph does not exists 1`] = 
     }
   }
   mapToProps={[Function]}
+  networkVisualisation="datatable"
+  sidebarView="networkGraphs"
 >
   <Component />
 </Connect>
@@ -31,6 +33,28 @@ exports[`MainArea should match snapshot when currentGraph exists 1`] = `
     }
   }
   mapToProps={[Function]}
+  networkVisualisation="graph"
+  sidebarView="networkGraphs"
+>
+  <Component />
+</Connect>
+`;
+
+exports[`MainArea should match snapshot when currentGraph exists and datatable to be shown 1`] = `
+<Connect
+  actions={Object {}}
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+    }
+  }
+  mapToProps={[Function]}
+  networkVisualisation="datatable"
+  sidebarView="networkGraphs"
 >
   <Component />
 </Connect>
