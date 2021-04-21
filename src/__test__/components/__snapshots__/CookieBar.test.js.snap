@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CookieBar should match snapshot when isCookieBarOpen  1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  isAnalyticsCookie={true}
+  isCookieBarOpen={true}
+  isPreferencesCookie={true}
+  mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`CookieBar should match snapshot when isCookieBarOpen is false 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  isAnalyticsCookie={true}
+  isCookieBarOpen={false}
+  isPreferencesCookie={true}
+  mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

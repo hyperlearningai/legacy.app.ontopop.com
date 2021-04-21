@@ -10,6 +10,7 @@ import { ROUTE_NODE_NEIGHBOURHOOD } from '../../src/constants/routes'
 context('Node neighbourhood', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Node neighbourhood', () => {

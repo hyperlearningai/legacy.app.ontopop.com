@@ -8,6 +8,7 @@ import { ROUTE_LOGIN } from '../../src/constants/routes'
 context('Profile', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Profile', () => {

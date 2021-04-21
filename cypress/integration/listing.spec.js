@@ -8,6 +8,7 @@ import getStyling from '../fixtures/getStyling'
 context('Listing', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Listing', () => {

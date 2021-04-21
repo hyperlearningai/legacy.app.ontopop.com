@@ -10,6 +10,7 @@ import { ROUTE_ELEMENTS_SELECTION } from '../../src/constants/routes'
 context('Elements selection', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Elements selection', () => {

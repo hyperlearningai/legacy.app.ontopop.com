@@ -1,0 +1,54 @@
+.cookiebar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: $dark-background;
+  color: $white;
+  border-radius: 20px;
+  padding: 20px;
+  width: calc(100% - 40px);
+  max-width: 333px;
+  font-size: 12px;
+
+  &-title {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  &-options {
+    width: 100%;
+
+    label {
+      width: 100%;
+    }
+
+    .p-selectbutton {
+      margin: auto;
+    }
+  }
+
+  .cookie-btn {
+    font-size: 12px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 133px;
+    margin: 2px;
+
+    &-secondary {
+      background: $white;
+      color: $primary;
+
+      &:hover {
+        background: $primary !important;
+        color: $white !important;
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}

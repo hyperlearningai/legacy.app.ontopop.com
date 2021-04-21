@@ -10,6 +10,7 @@ import { ROUTE_BOUNDING_BOX } from '../../src/constants/routes'
 context('Bounding box selection', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Bounding box selection', () => {

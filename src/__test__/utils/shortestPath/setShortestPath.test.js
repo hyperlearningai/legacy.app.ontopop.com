@@ -2,13 +2,18 @@ import setShortestPath from '../../../utils/shortestPath/setShortestPath'
 import store from '../../../store'
 import getShortestPath from '../../../utils/shortestPath/getShortestPath'
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
+import { ROUTE_NETWORK_GRAPHS } from '../../../constants/routes'
+import setPageView from '../../../utils/analytics/setPageView'
 
 const updateStoreValue = jest.fn()
+const pushState = jest.fn()
 const shortestPathNode1 = '33'
 const shortestPathNode2 = '40'
 const lastGraphIndex = 1
+let windowSpy
 
 jest.mock('../../../utils/shortestPath/getShortestPath')
+jest.mock('../../../utils/analytics/setPageView')
 
 store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
@@ -27,11 +32,22 @@ store.getState = jest.fn().mockImplementation(() => ({
 }))
 
 describe('setShortestPath', () => {
+  beforeEach(() => {
+    windowSpy = jest.spyOn(window, 'window', 'get')
+  })
+
   afterEach(() => {
+    windowSpy.mockRestore()
     jest.clearAllMocks()
   })
 
   it('should work correctly', async () => {
+    windowSpy.mockImplementation(() => ({
+      history: {
+        pushState
+      }
+    }))
+
     const isNodeOverlay = false
     const nodesToExclude = []
     const edgesToExclude = []
@@ -95,5 +111,7 @@ describe('setShortestPath', () => {
         'networkGraphs',
       ],
     ])
+    expect(pushState).toHaveBeenCalledWith('', '', ROUTE_NETWORK_GRAPHS)
+    expect(setPageView).toHaveBeenCalledWith({ url: ROUTE_NETWORK_GRAPHS, updateStoreValue })
   })
 })

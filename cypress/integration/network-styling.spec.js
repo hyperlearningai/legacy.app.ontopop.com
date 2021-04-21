@@ -13,6 +13,7 @@ import { ROUTE_STYLING } from '../../src/constants/routes'
 context('Network styling', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Network styling nodes', () => {

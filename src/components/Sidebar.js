@@ -85,6 +85,7 @@ import {
   ROUTE_SYNONYMS,
 } from '../constants/routes'
 import { toDashedCase } from '../constants/functions'
+import setPageView from '../utils/analytics/setPageView'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -252,6 +253,7 @@ const Sidebar = ({
                   updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, true)
                   updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, label)
                   window.history.pushState('', '', route)
+                  setPageView({ url: route, updateStoreValue })
                 }}
               >
                 {icon}
