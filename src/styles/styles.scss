@@ -34,6 +34,10 @@ body,
   height: 100%;
 }
 
+main {
+  width: 100%;
+}
+
 // Components
 @import "_header";
 @import "_nav";
