@@ -62,8 +62,14 @@ describe('getVisitorId', () => {
       updateStoreValue
     })
 
-    expect(updateStoreValue).toHaveBeenCalledWith(
-      ['uniqueFingerprint'], OPERATION_TYPE_UPDATE, 4114645313
+    const callParameters = updateStoreValue.mock.calls[0]
+
+    expect(callParameters[0]).toEqual(
+      ['uniqueFingerprint']
     )
+    expect(callParameters[1]).toEqual(
+      OPERATION_TYPE_UPDATE
+    )
+    expect(callParameters[2]).toBeGreaterThan(1)
   })
 })
