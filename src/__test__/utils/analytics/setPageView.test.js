@@ -3,24 +3,29 @@ import store from '../../../store'
 import getVisitorId from '../../../utils/analytics/getVisitorId'
 import setPageView from '../../../utils/analytics/setPageView'
 
+let windowSpy
+
 const updateStoreValue = jest.fn()
 const gtag = jest.fn()
 jest.mock('../../../utils/analytics/getVisitorId')
 
-const currentGtag = global.gtag
 const url = '/app'
 
 describe('setPageView', () => {
   beforeEach(() => {
-    global.gtag = gtag
+    windowSpy = jest.spyOn(window, 'window', 'get')
   })
 
   afterEach(() => {
-    global.gtag = currentGtag
+    windowSpy.mockRestore()
     jest.clearAllMocks()
   })
 
   it('should not call gtag if no uniqueFingerprint', async () => {
+    windowSpy.mockImplementation(() => ({
+      gtag
+    }))
+
     store.getState = jest.fn().mockImplementation(() => ({
       uniqueFingerprint: undefined
     }))
@@ -35,6 +40,10 @@ describe('setPageView', () => {
   })
 
   it('should call gtag if uniqueFingerprint', async () => {
+    windowSpy.mockImplementation(() => ({
+      gtag
+    }))
+
     store.getState = jest.fn().mockImplementation(() => ({
       uniqueFingerprint: 123
     }))

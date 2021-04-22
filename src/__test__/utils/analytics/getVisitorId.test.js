@@ -4,8 +4,6 @@ import getVisitorId from '../../../utils/analytics/getVisitorId'
 const updateStoreValue = jest.fn()
 let windowSpy
 const currentNavigator = global.navigator
-const currentPlatform = global.platform
-const currentScreen = global.screen
 
 describe('getVisitorId', () => {
   beforeEach(() => {
@@ -29,25 +27,23 @@ describe('getVisitorId', () => {
       },
       userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36'
     }
-    global.screen = {
-      height: 100,
-      width: 100,
-      pixelDepth: 100
-    }
-    global.platform = { layout: 'Blink' }
   })
 
   afterEach(() => {
     windowSpy.mockRestore()
     global.navigator = currentNavigator
-    global.platform = currentPlatform
-    global.screen = currentScreen
     jest.clearAllMocks()
   })
 
   it('should return false if do not track', () => {
     windowSpy.mockImplementation(() => ({
-      doNotTrack: '1'
+      doNotTrack: '1',
+      screen: {
+        height: 100,
+        width: 100,
+        pixelDepth: 100
+      },
+      platform: { layout: 'Blink' }
     }))
 
     expect(getVisitorId({
@@ -56,7 +52,14 @@ describe('getVisitorId', () => {
   })
 
   it('should return unique id', async () => {
-    windowSpy.mockImplementation(() => ({}))
+    windowSpy.mockImplementation(() => ({
+      screen: {
+        height: 100,
+        width: 100,
+        pixelDepth: 100
+      },
+      platform: { layout: 'Blink' }
+    }))
 
     await getVisitorId({
       updateStoreValue

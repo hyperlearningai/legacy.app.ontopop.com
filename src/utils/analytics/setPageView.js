@@ -11,14 +11,14 @@ const setPageView = ({
   } = store.getState()
 
   // eslint-disable-next-line
-  if (!gtag) return false
+  if (!window.gtag) return false
 
   if (!uniqueFingerprint) {
     return getVisitorId({ updateStoreValue })
   }
 
   // eslint-disable-next-line
-    gtag('config', GA_ID, {
+  window.gtag('config', GA_ID, {
     page_path: url,
     client_storage: 'none',
     client_id: uniqueFingerprint,

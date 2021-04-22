@@ -53,14 +53,14 @@ const getVisitorId = ({
     })
   }
 
-  if (screen) {
-    uuid += screen.height || ''
-    uuid += screen.width || ''
-    uuid += screen.pixelDepth || ''
+  if (window.screen) {
+    uuid += window.screen.height || ''
+    uuid += window.screen.width || ''
+    uuid += window.screen.pixelDepth || ''
   }
 
-  if (platform) {  //eslint-disable-line
-    uuid += platform.layout || '' //eslint-disable-line
+  if (window.platform) {
+    uuid += window.platform.layout || ''
   }
 
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone

@@ -1,8 +1,9 @@
 import store from '../../../store'
 import setGaEvent from '../../../utils/analytics/setGaEvent'
 
+let windowSpy
+
 const gtag = jest.fn()
-const currentGtag = global.gtag
 
 const action = 'search'
 const params = {
@@ -11,15 +12,19 @@ const params = {
 
 describe('setGaEvent', () => {
   beforeEach(() => {
-    global.gtag = gtag
+    windowSpy = jest.spyOn(window, 'window', 'get')
   })
 
   afterEach(() => {
-    global.gtag = currentGtag
+    windowSpy.mockRestore()
     jest.clearAllMocks()
   })
 
   it('should not call gtag if no uniqueFingerprint', async () => {
+    windowSpy.mockImplementation(() => ({
+      gtag
+    }))
+
     store.getState = jest.fn().mockImplementation(() => ({
       uniqueFingerprint: undefined
     }))
@@ -31,6 +36,10 @@ describe('setGaEvent', () => {
   })
 
   it('should call gtag if uniqueFingerprint', async () => {
+    windowSpy.mockImplementation(() => ({
+      gtag
+    }))
+
     store.getState = jest.fn().mockImplementation(() => ({
       uniqueFingerprint: 123
     }))

@@ -8,7 +8,10 @@ const setGaEvent = ({ action, params }) => {
   if (!uniqueFingerprint) return false
 
   // eslint-disable-next-line
-  gtag('event', action, params)
+  if (!window.gtag) return false
+
+  // eslint-disable-next-line
+  window.gtag('event', action, params)
 }
 
 export default setGaEvent
