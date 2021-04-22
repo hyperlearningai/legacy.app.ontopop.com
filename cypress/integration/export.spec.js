@@ -10,6 +10,7 @@ import { ROUTE_EXPORT } from '../../src/constants/routes'
 context('Export', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Export', () => {

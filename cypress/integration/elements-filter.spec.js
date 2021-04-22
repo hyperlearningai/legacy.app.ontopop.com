@@ -10,6 +10,7 @@ import { ROUTE_ELEMENTS_FILTER } from '../../src/constants/routes'
 context('Elements filter', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Elements filter', () => {

@@ -7,6 +7,7 @@ import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import { ADVANCED_SEARCH_TEMPLATE } from '../../../constants/search'
+import setGaEvent from '../../../utils/analytics/setGaEvent'
 
 const updateStoreValue = jest.fn()
 const setLoading = jest.fn()
@@ -15,6 +16,7 @@ const value = 'roa'
 
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/analytics/setGaEvent')
 
 const entrySearchResults = [
   {
@@ -238,6 +240,12 @@ describe('searchGraph', () => {
       t
     })
 
+    expect(setGaEvent).toHaveBeenCalledWith({
+      action: 'search',
+      params: {
+        search_term: 'roa~'
+      }
+    })
     expect(updateStoreValue.mock.calls).toEqual(
       [
         [

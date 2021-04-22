@@ -13,6 +13,7 @@ import { ROUTE_SYNONYMS } from '../../src/constants/routes'
 context('Synonyms list', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Synonyms list', () => {

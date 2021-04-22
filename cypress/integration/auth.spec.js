@@ -9,6 +9,7 @@ import getStyling from '../fixtures/getStyling'
 context('Auth', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Auth', () => {

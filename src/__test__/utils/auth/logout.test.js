@@ -877,7 +877,35 @@ describe('logout', () => {
           ],
           OPERATION_TYPE_UPDATE,
           []
-        ]
+        ],
+        [
+          [
+            'isCookieBarOpen',
+          ],
+          OPERATION_TYPE_UPDATE,
+          false,
+        ],
+        [
+          [
+            'isAnalyticsCookie',
+          ],
+          OPERATION_TYPE_UPDATE,
+          undefined,
+        ],
+        [
+          [
+            'isPreferencesCookie',
+          ],
+          OPERATION_TYPE_UPDATE,
+          undefined,
+        ],
+        [
+          [
+            'uniqueFingerprint',
+          ],
+          OPERATION_TYPE_UPDATE,
+          undefined,
+        ],
       ]
     )
 

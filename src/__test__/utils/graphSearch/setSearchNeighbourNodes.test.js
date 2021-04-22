@@ -1,9 +1,14 @@
 import setSearchNeighbourNodes from '../../../utils/graphSearch/setSearchNeighbourNodes'
 import store from '../../../store'
+import setPageView from '../../../utils/analytics/setPageView'
+import { ROUTE_NETWORK_GRAPHS } from '../../../constants/routes'
 
 const updateStoreValue = jest.fn()
+const pushState = jest.fn()
+
 const separationDegree = 1
 const lastGraphIndex = 1
+let windowSpy
 
 store.getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
@@ -19,12 +24,25 @@ store.getState = jest.fn().mockImplementation(() => ({
   currentGraph: 'graph-0'
 }))
 
+jest.mock('../../../utils/analytics/setPageView')
+
 describe('setSearchNeighbourNodes', () => {
+  beforeEach(() => {
+    windowSpy = jest.spyOn(window, 'window', 'get')
+  })
+
   afterEach(() => {
+    windowSpy.mockRestore()
     jest.clearAllMocks()
   })
 
   it('should work correctly when node', async () => {
+    windowSpy.mockImplementation(() => ({
+      history: {
+        pushState
+      }
+    }))
+
     await setSearchNeighbourNodes({
       separationDegree,
       updateStoreValue,
@@ -87,9 +105,18 @@ describe('setSearchNeighbourNodes', () => {
         'networkGraphs',
       ],
     ])
+
+    expect(pushState).toHaveBeenCalledWith('', '', ROUTE_NETWORK_GRAPHS)
+    expect(setPageView).toHaveBeenCalledWith({ url: ROUTE_NETWORK_GRAPHS, updateStoreValue })
   })
 
   it('should work correctly when node and dataset', async () => {
+    windowSpy.mockImplementation(() => ({
+      history: {
+        pushState
+      }
+    }))
+
     await setSearchNeighbourNodes({
       separationDegree,
       updateStoreValue,
@@ -152,9 +179,17 @@ describe('setSearchNeighbourNodes', () => {
         'networkGraphs',
       ],
     ])
+    expect(pushState).toHaveBeenCalledWith('', '', ROUTE_NETWORK_GRAPHS)
+    expect(setPageView).toHaveBeenCalledWith({ url: ROUTE_NETWORK_GRAPHS, updateStoreValue })
   })
 
   it('should work correctly when edge', async () => {
+    windowSpy.mockImplementation(() => ({
+      history: {
+        pushState
+      }
+    }))
+
     await setSearchNeighbourNodes({
       separationDegree,
       updateStoreValue,
@@ -222,5 +257,7 @@ describe('setSearchNeighbourNodes', () => {
         'networkGraphs',
       ],
     ])
+    expect(pushState).toHaveBeenCalledWith('', '', ROUTE_NETWORK_GRAPHS)
+    expect(setPageView).toHaveBeenCalledWith({ url: ROUTE_NETWORK_GRAPHS, updateStoreValue })
   })
 })

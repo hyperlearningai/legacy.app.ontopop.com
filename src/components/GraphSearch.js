@@ -9,8 +9,7 @@ import { SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS } from '../constants/vie
 import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
 import actions from '../store/actions'
 import SearchBar from './SearchBar'
-import Joyride from "react-joyride";
-import setSearchNeighbourNodes from "../utils/graphSearch/setSearchNeighbourNodes";
+import setPageView from '../utils/analytics/setPageView'
 
 const GraphSearch = ({
   entrySearchResultsByPage,
@@ -113,6 +112,7 @@ const GraphSearch = ({
                               updateStoreValue(['currentGraph'], OPERATION_TYPE_UPDATE, 'graph-0')
                               updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
                               window.history.pushState('', '', ROUTE_NETWORK_GRAPHS)
+                              setPageView({ url: ROUTE_NETWORK_GRAPHS, updateStoreValue })
                             }}
                           />
                         </>

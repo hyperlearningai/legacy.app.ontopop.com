@@ -10,6 +10,7 @@ import { ROUTE_SHORTEST_PATH } from '../../src/constants/routes'
 context('Shortest path', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Shortest path', () => {

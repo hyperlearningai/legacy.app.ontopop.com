@@ -7,6 +7,7 @@ import checkAuthAtStartup from '../utils/auth/checkTokenValidity'
 import actions from '../store/actions'
 import startupActions from '../utils/graphVisualisation/startupActions'
 import { ROUTE_LOGIN } from '../constants/routes'
+import setPageView from '../utils/analytics/setPageView'
 
 const AuthCheck = ({
   updateStoreValue,
@@ -18,6 +19,8 @@ const AuthCheck = ({
 
   const router = useRouter()
 
+  const handleRouteChange = (url) => setPageView({ url, updateStoreValue })
+
   // check if authenticated, otherwise redirect to login
   useEffect(() => {
     if (!user.isGuest && user.email === '') {
@@ -26,8 +29,11 @@ const AuthCheck = ({
         updateStoreValue
       })
     }
-  },
-  [])
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => router.events.off('routeChangeComplete', handleRouteChange)
+  }, [])
 
   useEffect(() => {
     if (user.email || user.isGuest) {
@@ -37,8 +43,7 @@ const AuthCheck = ({
         t
       })
     }
-  },
-  [user])
+  }, [user])
 
   useEffect(() => {
     if (pageProps.statusCode === 404) {

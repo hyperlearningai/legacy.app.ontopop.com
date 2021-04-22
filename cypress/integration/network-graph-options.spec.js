@@ -10,6 +10,7 @@ import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../../src/constants/routes'
 context('Network graph options', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Network graph options', () => {

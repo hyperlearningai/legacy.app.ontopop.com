@@ -15,6 +15,7 @@ import { ROUTE_EDIT_ONTOLOGY } from '../../src/constants/routes'
 context('Edit ontology', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Edit ontology', () => {

@@ -10,6 +10,7 @@ import { ROUTE_NETWORK_GRAPHS } from '../../src/constants/routes'
 context('Datatable network', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Datatable network', () => {

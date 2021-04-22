@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.7.0]
 ### Added
+- ONTOLOGY-177 Cookie banner and cookieless google analytics integration
 - ONTOLOGY-156 Integrated Owl file export endpoint
 - ONTOLOGY-156 Added datatable as alternative way to visualise relationships among nodes
 - ONTOLOGY-191 Added checkbox to toggle user-defined nodes visibility
