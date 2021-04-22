@@ -299,7 +299,7 @@ context('Entry search', () => {
       // click on visualise
       cy.get('#visualise-ontology-button').click()
 
-      cy.wait(1000)
+      cy.wait(4000)
 
       cy.get('.nav-left').should('contain', 'Nodes: 305')
       cy.get('.nav-left').should('contain', 'Edges: 828')
