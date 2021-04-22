@@ -9,18 +9,44 @@ import actions from '../store/actions'
 import getSuggestions from '../utils/graphSearch/getSuggestions'
 import searchGraph from '../utils/graphSearch/searchGraph'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import Joyride from "react-joyride";
+
+
+const steps =  [
+  {
+    target: '.graph-search-bar',
+    content: 'Start by searching. Try: road',
+    disableBeacon: true
+  }
+]
 
 const SearchBar = ({
   updateStoreValue,
   entrySearchValue,
-  isSearchLoading
+  isSearchLoading,
+  showTour
 }) => {
   const { t } = useTranslation()
 
   const [suggestions, setSuggestions] = useState([])
 
+  const handleJoyrideCallback = data => {
+    const {status} = data;
+    if(status === 'finished') {
+      showTour.search = false;
+      localStorage.setItem('showTour', JSON.stringify(showTour))
+      updateStoreValue(['entrySearchValue'], OPERATION_TYPE_UPDATE, 'road')
+      searchGraph({updateStoreValue, t});
+    }
+  }
+
   return (
     <>
+      {showTour.search && <Joyride
+        callback={handleJoyrideCallback}
+        locale={{close: 'Next'}}
+        steps={steps}
+      />}
       {
         isSearchLoading
           ? (
@@ -110,10 +136,12 @@ SearchBar.propTypes = {
 
 const mapToProps = ({
   entrySearchValue,
-  isSearchLoading
+  isSearchLoading,
+  showTour
 }) => ({
   entrySearchValue,
-  isSearchLoading
+  isSearchLoading,
+  showTour
 })
 
 export default connect(

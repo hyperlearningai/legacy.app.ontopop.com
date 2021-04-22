@@ -9,6 +9,8 @@ import { SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS } from '../constants/vie
 import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
 import actions from '../store/actions'
 import SearchBar from './SearchBar'
+import Joyride from "react-joyride";
+import setSearchNeighbourNodes from "../utils/graphSearch/setSearchNeighbourNodes";
 
 const GraphSearch = ({
   entrySearchResultsByPage,
@@ -17,11 +19,38 @@ const GraphSearch = ({
   searchPageSelected,
   entrySearchValue,
   updateStoreValue,
-  sidebarView
+  sidebarView,
+  showTour
 }) => {
   const { t } = useTranslation()
 
   const searchResults = entrySearchResultsByPage[searchPageSelected]
+
+  const steps =  [
+    {
+      target: '#card-visualise-btn-0',
+      content: 'Visualise this Entity',
+      placement: 'top',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = data => {
+    const {status} = data;
+    if(!searchResults || searchResults.length < 1) return
+    if(status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({...showTour, searchResults: false}))
+      const searchResult = searchResults[0];
+      setSearchNeighbourNodes({
+        separationDegree: 1,
+        updateStoreValue,
+        searchResult
+      })
+      updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
+      updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, 0)
+      updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { 0: 'node' })
+    }
+  }
 
   return (
     <div className={`graph-search${sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH ? ' elevate-view' : ''}`}>
@@ -35,6 +64,11 @@ const GraphSearch = ({
           </div>
         ) : (
           <>
+            {showTour.searchResults && <Joyride
+              callback={handleJoyrideCallback}
+              steps={steps}
+            />}
+
             {
               isFirstQuery ? (
                 <>
@@ -110,14 +144,16 @@ const mapToProps = ({
   entrySearchResultsByPage,
   searchPageSelected,
   entrySearchValue,
-  sidebarView
+  sidebarView,
+  showTour
 }) => ({
   isFirstQuery,
   isSearchLoading,
   entrySearchResultsByPage,
   searchPageSelected,
   entrySearchValue,
-  sidebarView
+  sidebarView,
+  showTour
 })
 
 export default connect(

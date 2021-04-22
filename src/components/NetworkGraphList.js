@@ -3,20 +3,55 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import {NETWORK_VIEW_DATATABLE, SIDEBAR_VIEW_GRAPHS} from '../constants/views'
 import { OPERATION_TYPE_DELETE, OPERATION_TYPE_UPDATE } from '../constants/store'
+import Joyride from "react-joyride";
+import setSearchNeighbourNodes from "../utils/graphSearch/setSearchNeighbourNodes";
 
 const NetworkGraphList = ({
   updateStoreValue,
   currentGraph,
-  graphData
+  graphData,
+  showTour
 }) => {
   const { t } = useTranslation()
 
   const graphViewsKeys = Object.keys(graphData)
 
+
+  const steps =  [
+    {
+      target: '.vis-up',
+      content: 'Use buttons to navigate',
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '#navbar-datatable-btn',
+      content: 'See database',
+      placement: 'bottom',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = data => {
+    const {status} = data;
+
+    if(status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({...showTour, navigate: false}))
+      updateStoreValue(['networkVisualisation'], OPERATION_TYPE_UPDATE, NETWORK_VIEW_DATATABLE)
+    }
+  }
+
+
   return (
     <>
+      {showTour.navigate && <Joyride
+        callback={handleJoyrideCallback}
+        steps={steps}
+        disableScrolling={true}
+        locale={{close: 'Next'}}
+      />}
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPHS)}
       </h1>
@@ -77,10 +112,12 @@ NetworkGraphList.propTypes = {
 
 const mapToProps = ({
   graphData,
-  currentGraph
+  currentGraph,
+  showTour
 }) => ({
   graphData,
-  currentGraph
+  currentGraph,
+  showTour
 })
 
 export default connect(

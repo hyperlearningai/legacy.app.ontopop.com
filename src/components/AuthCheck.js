@@ -11,6 +11,7 @@ import { ROUTE_LOGIN } from '../constants/routes'
 const AuthCheck = ({
   updateStoreValue,
   user,
+  showTour,
   pageProps
 }) => {
   const { t } = useTranslation()
@@ -31,6 +32,7 @@ const AuthCheck = ({
   useEffect(() => {
     if (user.email || user.isGuest) {
       startupActions({
+        showTour,
         updateStoreValue,
         t
       })
@@ -54,9 +56,11 @@ AuthCheck.propTypes = {
 }
 
 const mapPropsToState = ({
-  user
+  user,
+  showTour
 }) => ({
-  user
+  user,
+  showTour
 })
 
 export default connect(

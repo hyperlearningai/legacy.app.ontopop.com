@@ -23,6 +23,14 @@ import {
 import { ADVANCED_SEARCH_TEMPLATE } from '../constants/search'
 
 const initialState = {
+
+  showTour: {
+    search: true,
+    searchResults: true,
+    navigate: true,
+    database: true
+  },
+
   // view updates
   isSidebarOpen: true,
   sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH,

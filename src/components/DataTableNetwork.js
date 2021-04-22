@@ -6,6 +6,10 @@ import { Column } from 'primereact/column'
 import { useEffect } from 'react'
 import actions from '../store/actions'
 import setDataTableTriplesLabels from '../utils/dataTableNetwork/setDataTableTriplesLabels'
+import Joyride from "react-joyride";
+import {OPERATION_TYPE_UPDATE} from "../constants/store";
+import {NETWORK_VIEW_DATATABLE} from "../constants/views";
+import {ROUTE_ELEMENTS_SELECTION} from "../constants/routes";
 
 const DataTableNetwork = ({
   dataTableTriples,
@@ -14,7 +18,8 @@ const DataTableNetwork = ({
   userDefinedEdgeStyling,
   globalNodeStyling,
   userDefinedNodeStyling,
-  updateStoreValue
+  updateStoreValue,
+  showTour
 }) => {
   const { t } = useTranslation()
 
@@ -30,8 +35,32 @@ const DataTableNetwork = ({
 
   const filterPlaceholder = `${t('filter')}...`
 
+  const steps =  [
+    {
+      target: '#sidebar-button-elements-selection',
+      content: 'Navigate to a different section',
+      placement: 'right',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = data => {
+    const {status} = data;
+
+    if(status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({...showTour, database: false}))
+      window.history.pushState('', '', ROUTE_ELEMENTS_SELECTION)
+    }
+  }
+
   return (
     <div className="p-p-3 datatable-container elevate-view">
+      {showTour.database && <Joyride
+        callback={handleJoyrideCallback}
+        steps={steps}
+        disableScrolling={true}
+        locale={{close: 'Next'}}
+      />}
       <DataTable
         header={t('availableRelationships')}
         filter
@@ -88,14 +117,16 @@ const mapToProps = ({
   userDefinedEdgeStyling,
   globalNodeStyling,
   userDefinedNodeStyling,
-  dataTableTriplesWithLabels
+  dataTableTriplesWithLabels,
+  showTour
 }) => ({
   dataTableTriples,
   globalEdgeStyling,
   userDefinedEdgeStyling,
   globalNodeStyling,
   userDefinedNodeStyling,
-  dataTableTriplesWithLabels
+  dataTableTriplesWithLabels,
+  showTour
 })
 
 export default connect(
