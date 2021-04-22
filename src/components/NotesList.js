@@ -12,6 +12,8 @@ import { Button } from 'primereact/button'
 import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
+import Joyride from 'react-joyride'
+import { useRouter } from 'next/router'
 import { SIDEBAR_VIEW_NOTES } from '../constants/views'
 import actions from '../store/actions'
 import NotesListNote from './NotesListNote'
@@ -22,6 +24,7 @@ import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
+import { ROUTE_SYNONYMS } from '../constants/routes'
 
 const NotesList = ({
   notes,
@@ -31,7 +34,8 @@ const NotesList = ({
   selectedNotesType,
   noteElementId,
   classesFromApi,
-  nodesDropdownLabels
+  nodesDropdownLabels,
+  showTour
 }) => {
   const { t } = useTranslation()
 
@@ -122,8 +126,58 @@ const NotesList = ({
     })
   }).filter((edge) => edge.label)
 
+  const steps = [
+    {
+      target: '#notes-select',
+      content: 'Select Note type',
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '#notes-select-element',
+      content: 'Select Element',
+      placement: 'top',
+      disableBeacon: true
+    }
+  ]
+
+  const router = useRouter()
+
+  const handleJoyrideCallback = (data) => {
+    const { status, index } = data
+
+    if (index === 1) {
+      updateStoreValue(['isNodeSelectable'], OPERATION_TYPE_UPDATE, true)
+      updateStoreValue(['isEdgeSelectable'], OPERATION_TYPE_UPDATE, false)
+      updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, undefined)
+      updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
+    }
+
+    if (index === 2) {
+      updateHighlightedElement({
+        updateStoreValue,
+        id: '2',
+        type: selectedNotesType
+      })
+    }
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, notes: false }))
+      router.push(ROUTE_SYNONYMS)
+    }
+  }
+
   return (
     <>
+      {showTour.notes && (
+      <Joyride
+        callback={handleJoyrideCallback}
+        steps={steps}
+        disableScrolling
+        locale={{ close: 'Next' }}
+      />
+      )}
+
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NOTES)}
       </h1>
@@ -338,6 +392,7 @@ NotesList.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   classesFromApi: PropTypes.shape().isRequired,
   nodesDropdownLabels: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 NotesList.defaultProps = {
@@ -351,7 +406,8 @@ const mapToProps = ({
   edgesNotes,
   noteElementId,
   classesFromApi,
-  nodesDropdownLabels
+  nodesDropdownLabels,
+  showTour
 }) => ({
   notes,
   selectedNotesType,
@@ -359,7 +415,8 @@ const mapToProps = ({
   edgesNotes,
   noteElementId,
   classesFromApi,
-  nodesDropdownLabels
+  nodesDropdownLabels,
+  showTour
 })
 
 export default connect(

@@ -2,7 +2,7 @@ import loadStyling from '../networkStyling/loadStyling'
 import getGraphData from '../apiCalls/getGraphData'
 import setNodesIdsToDisplay from './setNodesIdsToDisplay'
 import notesGetNotes from '../notes/notesGetNotes'
-import {OPERATION_TYPE_UPDATE} from "../../constants/store";
+import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Graph data loading at startup
@@ -56,10 +56,8 @@ const startupActions = async ({
   if (localStorage.getItem('showTour')) {
     updateStoreValue(['showTour'], OPERATION_TYPE_UPDATE, JSON.parse(localStorage.getItem('showTour')))
   } else {
-    localStorage.setItem('showTour',  JSON.stringify(showTour))
+    localStorage.setItem('showTour', JSON.stringify(showTour))
   }
-
-
 }
 
 export default startupActions

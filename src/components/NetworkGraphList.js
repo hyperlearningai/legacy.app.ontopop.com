@@ -2,11 +2,10 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
+import Joyride from 'react-joyride'
 import actions from '../store/actions'
-import {NETWORK_VIEW_DATATABLE, SIDEBAR_VIEW_GRAPHS} from '../constants/views'
+import { NETWORK_VIEW_DATATABLE, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { OPERATION_TYPE_DELETE, OPERATION_TYPE_UPDATE } from '../constants/store'
-import Joyride from "react-joyride";
-import setSearchNeighbourNodes from "../utils/graphSearch/setSearchNeighbourNodes";
 
 const NetworkGraphList = ({
   updateStoreValue,
@@ -18,8 +17,7 @@ const NetworkGraphList = ({
 
   const graphViewsKeys = Object.keys(graphData)
 
-
-  const steps =  [
+  const steps = [
     {
       target: '.vis-up',
       content: 'Use buttons to navigate',
@@ -34,24 +32,25 @@ const NetworkGraphList = ({
     }
   ]
 
-  const handleJoyrideCallback = data => {
-    const {status} = data;
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
 
-    if(status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({...showTour, navigate: false}))
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, navigate: false }))
       updateStoreValue(['networkVisualisation'], OPERATION_TYPE_UPDATE, NETWORK_VIEW_DATATABLE)
     }
   }
 
-
   return (
     <>
-      {showTour.navigate && <Joyride
+      {showTour.navigate && (
+      <Joyride
         callback={handleJoyrideCallback}
         steps={steps}
-        disableScrolling={true}
-        locale={{close: 'Next'}}
-      />}
+        disableScrolling
+        locale={{ close: 'Next' }}
+      />
+      )}
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPHS)}
       </h1>
@@ -108,6 +107,7 @@ NetworkGraphList.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   graphData: PropTypes.shape().isRequired,
   currentGraph: PropTypes.string.isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({

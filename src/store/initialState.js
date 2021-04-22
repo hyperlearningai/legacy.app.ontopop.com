@@ -28,7 +28,13 @@ const initialState = {
     search: true,
     searchResults: true,
     navigate: true,
-    database: true
+    database: true,
+    elementSelection: true,
+    graphOptions: true,
+    notes: true,
+    synonyms: true,
+    editOntology: true,
+    export: true
   },
 
   // view updates

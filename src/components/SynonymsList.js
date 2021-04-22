@@ -11,6 +11,8 @@ import { Button } from 'primereact/button'
 import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
+import { useRouter } from 'next/router'
+import Joyride from 'react-joyride'
 import { SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import actions from '../store/actions'
 import { MIN_DATE, SORT_FIELDS } from '../constants/synonyms'
@@ -21,12 +23,14 @@ import SynonymsListNode from './SynonymsListNode'
 import { NODE_TYPE } from '../constants/graph'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 import { getElementIdAndType } from '../constants/functions'
+import { ROUTE_EDIT_ONTOLOGY } from '../constants/routes'
 
 const SynonymsList = ({
   nodesSynonyms,
   updateStoreValue,
   selectedElement,
-  classesFromApi
+  classesFromApi,
+  showTour
 }) => {
   const { t } = useTranslation()
 
@@ -93,8 +97,51 @@ const SynonymsList = ({
     })
   }).filter((node) => node.label)
 
+  const steps = [
+    {
+      target: '#synonyms-select-element',
+      content: 'Select Element',
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '.sidebar-main-body-title',
+      content: 'Manage Synonyms',
+      placement: 'bottom',
+      disableBeacon: true
+    }
+  ]
+
+  const router = useRouter()
+
+  const handleJoyrideCallback = (data) => {
+    const { status, index } = data
+
+    if (index === 1) {
+      updateHighlightedElement({
+        updateStoreValue,
+        id: '2',
+        type: 'node'
+      })
+    }
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, synonyms: false }))
+      router.push(ROUTE_EDIT_ONTOLOGY)
+    }
+  }
+
   return (
     <>
+      {showTour.synonyms && (
+      <Joyride
+        callback={handleJoyrideCallback}
+        steps={steps}
+        disableScrolling
+        locale={{ close: 'Next' }}
+      />
+      )}
+
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SYNONYMS)}
       </h1>
@@ -265,7 +312,8 @@ SynonymsList.propTypes = {
   nodesSynonyms: PropTypes.arrayOf(PropTypes.shape).isRequired,
   updateStoreValue: PropTypes.func.isRequired,
   selectedElement: PropTypes.shape(),
-  classesFromApi: PropTypes.shape().isRequired
+  classesFromApi: PropTypes.shape().isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 SynonymsList.defaultProps = {
@@ -275,11 +323,13 @@ SynonymsList.defaultProps = {
 const mapToProps = ({
   nodesSynonyms,
   selectedElement,
-  classesFromApi
+  classesFromApi,
+  showTour
 }) => ({
   nodesSynonyms,
   selectedElement,
-  classesFromApi
+  classesFromApi,
+  showTour
 })
 
 export default connect(

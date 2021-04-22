@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { SelectButton } from 'primereact/selectbutton'
 import { orderBy, uniqBy } from 'lodash'
+import Joyride from 'react-joyride'
+import { useRouter } from 'next/router'
 import { SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
 import actions from '../store/actions'
 import EditOntologyAddNode from './EditOntologyAddNode'
@@ -19,11 +21,13 @@ import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import { USER_DEFINED_PROPERTY } from '../constants/graph'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
+import { ROUTE_EXPORT } from '../constants/routes'
 
 const EditOntology = ({
   objectPropertiesFromApi,
   deletedNodes,
   deletedEdges,
+  showTour
 }) => {
   const { t } = useTranslation()
 
@@ -163,8 +167,43 @@ const EditOntology = ({
     }
   ) : []
 
+  const steps = [
+    {
+      target: '#operation-select',
+      content: 'Choose Operation',
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '.sidebar-main-body-title',
+      content: 'Manage Synonyms',
+      placement: 'bottom',
+      disableBeacon: true
+    }
+  ]
+
+  const router = useRouter()
+
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, editOntology: false }))
+      router.push(ROUTE_EXPORT)
+    }
+  }
+
   return (
     <>
+      {showTour.editOntology && (
+      <Joyride
+        callback={handleJoyrideCallback}
+        steps={steps}
+        disableScrolling
+        locale={{ close: 'Next' }}
+      />
+      )}
+
       <h1 className="sidebar-main-title">
         { t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}
       </h1>
@@ -309,17 +348,19 @@ EditOntology.propTypes = {
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
-
+  showTour: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   objectPropertiesFromApi,
   deletedNodes,
   deletedEdges,
+  showTour
 }) => ({
   objectPropertiesFromApi,
   deletedNodes,
   deletedEdges,
+  showTour
 })
 
 export default connect(

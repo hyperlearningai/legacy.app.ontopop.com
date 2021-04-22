@@ -4,12 +4,11 @@ import { useTranslation } from 'react-i18next'
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
 import { useEffect } from 'react'
+import Joyride from 'react-joyride'
 import actions from '../store/actions'
 import setDataTableTriplesLabels from '../utils/dataTableNetwork/setDataTableTriplesLabels'
-import Joyride from "react-joyride";
-import {OPERATION_TYPE_UPDATE} from "../constants/store";
-import {NETWORK_VIEW_DATATABLE} from "../constants/views";
-import {ROUTE_ELEMENTS_SELECTION} from "../constants/routes";
+import { ROUTE_ELEMENTS_SELECTION } from '../constants/routes'
+import setPageView from '../utils/analytics/setPageView'
 
 const DataTableNetwork = ({
   dataTableTriples,
@@ -35,7 +34,7 @@ const DataTableNetwork = ({
 
   const filterPlaceholder = `${t('filter')}...`
 
-  const steps =  [
+  const steps = [
     {
       target: '#sidebar-button-elements-selection',
       content: 'Navigate to a different section',
@@ -44,23 +43,26 @@ const DataTableNetwork = ({
     }
   ]
 
-  const handleJoyrideCallback = data => {
-    const {status} = data;
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
 
-    if(status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({...showTour, database: false}))
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, database: false }))
       window.history.pushState('', '', ROUTE_ELEMENTS_SELECTION)
+      setPageView({ url: ROUTE_ELEMENTS_SELECTION, updateStoreValue })
     }
   }
 
   return (
     <div className="p-p-3 datatable-container elevate-view">
-      {showTour.database && <Joyride
+      {showTour.database && (
+      <Joyride
         callback={handleJoyrideCallback}
         steps={steps}
-        disableScrolling={true}
-        locale={{close: 'Next'}}
-      />}
+        disableScrolling
+        locale={{ close: 'Next' }}
+      />
+      )}
       <DataTable
         header={t('availableRelationships')}
         filter
@@ -109,6 +111,7 @@ DataTableNetwork.propTypes = {
   userDefinedEdgeStyling: PropTypes.shape().isRequired,
   globalNodeStyling: PropTypes.shape().isRequired,
   userDefinedNodeStyling: PropTypes.shape().isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({

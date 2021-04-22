@@ -5,14 +5,13 @@ import { useTranslation } from 'react-i18next'
 import { AutoComplete } from 'primereact/autocomplete'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Button } from 'primereact/button'
+import Joyride from 'react-joyride'
 import actions from '../store/actions'
 import getSuggestions from '../utils/graphSearch/getSuggestions'
 import searchGraph from '../utils/graphSearch/searchGraph'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import Joyride from "react-joyride";
 
-
-const steps =  [
+const steps = [
   {
     target: '.graph-search-bar',
     content: 'Start by searching. Try: road',
@@ -30,23 +29,24 @@ const SearchBar = ({
 
   const [suggestions, setSuggestions] = useState([])
 
-  const handleJoyrideCallback = data => {
-    const {status} = data;
-    if(status === 'finished') {
-      showTour.search = false;
-      localStorage.setItem('showTour', JSON.stringify(showTour))
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, search: false }))
       updateStoreValue(['entrySearchValue'], OPERATION_TYPE_UPDATE, 'road')
-      searchGraph({updateStoreValue, t});
+      searchGraph({ updateStoreValue, t })
     }
   }
 
   return (
     <>
-      {showTour.search && <Joyride
+      {showTour.search && (
+      <Joyride
         callback={handleJoyrideCallback}
-        locale={{close: 'Next'}}
+        locale={{ close: 'Next' }}
         steps={steps}
-      />}
+      />
+      )}
       {
         isSearchLoading
           ? (
@@ -132,6 +132,7 @@ SearchBar.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   entrySearchValue: PropTypes.string.isRequired,
   isSearchLoading: PropTypes.bool.isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({

@@ -1,18 +1,13 @@
-import {
-  useState,
-  useEffect
-} from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
+import Joyride from 'react-joyride'
 import { SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import {
-  EXPORT_GRAPH_OPTIONS,
-  EXPORT_DATA_OPTIONS,
-  EXPORT_PDF,
-  EXPORT_CSV
+  EXPORT_CSV, EXPORT_DATA_OPTIONS, EXPORT_GRAPH_OPTIONS, EXPORT_PDF
 } from '../constants/export'
 import exportAsImage from '../utils/exportSettings/exportAsImage'
 import exportAsPdf from '../utils/exportSettings/exportAsPdf'
@@ -22,7 +17,8 @@ import printCanvas from '../utils/exportSettings/printCanvas'
 import actions from '../store/actions'
 
 const ExportSettings = ({
-  updateStoreValue
+  updateStoreValue,
+  showTour
 }) => {
   const { t } = useTranslation()
   const [exportFileName, setFileName] = useState('network-graph')
@@ -38,8 +34,45 @@ const ExportSettings = ({
     printFunction = (imgSrc) => print(imgSrc, 'image')
   }, [])
 
+  const steps = [
+    {
+      target: '#filename',
+      content: 'Choose Filename',
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '#export-image',
+      content: 'Export as image',
+      placement: 'bottom',
+      disableBeacon: true
+    },
+    {
+      target: '#export-data',
+      content: 'Export as data',
+      placement: 'bottom',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, export: false }))
+    }
+  }
+
   return (
     <>
+      {showTour.export && (
+      <Joyride
+        callback={handleJoyrideCallback}
+        steps={steps}
+        disableScrolling
+        locale={{ close: 'Next' }}
+      />
+      )}
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_EXPORT)}
       </h1>
@@ -80,7 +113,7 @@ const ExportSettings = ({
           <div className="sidebar-main-body-label text-center m-b-10">
             {t('exportGraphAs')}
           </div>
-          <div className="export-settings-buttons">
+          <div className="export-settings-buttons" id="export-image">
             {
               EXPORT_GRAPH_OPTIONS.map((option) => (
                 <Button
@@ -111,7 +144,7 @@ const ExportSettings = ({
           <div className="sidebar-main-body-label text-center m-b-10">
             {t('exportDataAs')}
           </div>
-          <div className="export-settings-buttons">
+          <div className="export-settings-buttons" id="export-data">
             {
               EXPORT_DATA_OPTIONS.map((option) => (
                 <Button
@@ -160,9 +193,16 @@ const ExportSettings = ({
 
 ExportSettings.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
+const mapToProps = ({
+  showTour
+}) => ({
+  showTour
+})
+
 export default connect(
-  null,
+  mapToProps,
   actions
 )(ExportSettings)

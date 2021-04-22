@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Dropdown } from 'primereact/dropdown'
 import { SelectButton } from 'primereact/selectbutton'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { orderBy } from 'lodash'
+import Joyride from 'react-joyride'
+import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
@@ -14,11 +16,13 @@ import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
 import { getElementIdAndType } from '../constants/functions'
+import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../constants/routes'
 
 const ElementsSelection = ({
   selectedElement,
   updateStoreValue,
   nodesDropdownLabels,
+  showTour
 }) => {
   const { t } = useTranslation()
 
@@ -76,13 +80,64 @@ const ElementsSelection = ({
     </span>
   )
 
+  const steps = [
+    {
+      target: '#element-type-select',
+      content: 'Choose Element Type',
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '#element-select',
+      content: 'Choose Element',
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '.elements-selection-details',
+      content: 'Explore properties',
+      placement: 'left',
+      disableBeacon: true
+    }
+  ]
+
+  const router = useRouter()
+
+  const handleJoyrideCallback = (data) => {
+    const { status, index } = data
+
+    if (index === 1) {
+      if (!selectedElementID || selectedElementID === '0') {
+        updateHighlightedElement({
+          updateStoreValue,
+          id: '2',
+          type: selectedElementType
+        })
+      }
+    }
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, elementSelection: false }))
+      router.push(ROUTE_NETWORK_GRAPH_OPTIONS)
+    }
+  }
+
   return (
     <>
+      {showTour.elementSelection && (
+      <Joyride
+        callback={handleJoyrideCallback}
+        steps={steps}
+        disableScrolling
+        locale={{ close: 'Next' }}
+      />
+      )}
+
       <div className="sidebar-main-title">
         {!selectedElementID && selectedElementType === 'node' && t('nodesSelection')}
         {!selectedElementID && selectedElementType === 'edge' && t('edgesSelection')}
-        {selectedElementID && selectedElementType === 'node' && <>{`${t('node')}: ${getNode(selectedElementID).label}`}</>}
-        {selectedElementID && selectedElementType === 'edge' && <>{`${t('edge')}: ${getEdge(selectedElementID).label}`}</>}
+        {selectedElementID && selectedElementType === 'node' && <>{`${t('node')}: ${getNode(selectedElementID)?.label}`}</>}
+        {selectedElementID && selectedElementType === 'edge' && <>{`${t('edge')}: ${getEdge(selectedElementID)?.label}`}</>}
       </div>
       <div className="sidebar-main-body elements-selection">
         <div className="elements-selection-select-row">
@@ -138,6 +193,7 @@ ElementsSelection.propTypes = {
   selectedElement: PropTypes.shape(),
   updateStoreValue: PropTypes.func.isRequired,
   nodesDropdownLabels: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 ElementsSelection.defaultProps = {
@@ -146,10 +202,12 @@ ElementsSelection.defaultProps = {
 
 const mapToProps = ({
   nodesDropdownLabels,
-  selectedElement
+  selectedElement,
+  showTour
 }) => ({
   nodesDropdownLabels,
   selectedElement,
+  showTour
 })
 
 export default connect(

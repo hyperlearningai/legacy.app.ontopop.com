@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Button } from 'primereact/button'
+import Joyride from 'react-joyride'
 import GraphSearchCard from './GraphSearchCard'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
@@ -10,6 +11,7 @@ import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
 import actions from '../store/actions'
 import SearchBar from './SearchBar'
 import setPageView from '../utils/analytics/setPageView'
+import setSearchNeighbourNodes from '../utils/graphSearch/setSearchNeighbourNodes'
 
 const GraphSearch = ({
   entrySearchResultsByPage,
@@ -25,21 +27,21 @@ const GraphSearch = ({
 
   const searchResults = entrySearchResultsByPage[searchPageSelected]
 
-  const steps =  [
+  const steps = [
     {
-      target: '#card-visualise-btn-0',
+      target: '#card-visualise-btn-2',
       content: 'Visualise this Entity',
       placement: 'top',
       disableBeacon: true
     }
   ]
 
-  const handleJoyrideCallback = data => {
-    const {status} = data;
-    if(!searchResults || searchResults.length < 1) return
-    if(status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({...showTour, searchResults: false}))
-      const searchResult = searchResults[0];
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
+    if (!searchResults || searchResults.length < 1) return
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, searchResults: false }))
+      const searchResult = searchResults[0]
       setSearchNeighbourNodes({
         separationDegree: 1,
         updateStoreValue,
@@ -63,10 +65,14 @@ const GraphSearch = ({
           </div>
         ) : (
           <>
-            {showTour.searchResults && <Joyride
+            {showTour.searchResults && (
+            <Joyride
               callback={handleJoyrideCallback}
+              disableScrolling
+              locale={{ close: 'Next' }}
               steps={steps}
-            />}
+            />
+            )}
 
             {
               isFirstQuery ? (
@@ -136,6 +142,7 @@ GraphSearch.propTypes = {
   entrySearchValue: PropTypes.string.isRequired,
   updateStoreValue: PropTypes.func.isRequired,
   sidebarView: PropTypes.string.isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
