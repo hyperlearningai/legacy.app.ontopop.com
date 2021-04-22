@@ -15,6 +15,7 @@ import {
 } from '../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
+import { APP_NAME } from '../constants/app'
 
 const HeaderComponent = ({
   activeLoaders,
@@ -41,7 +42,7 @@ const HeaderComponent = ({
         <div className="logo">
           <img
             src={logo}
-            alt="Highways England"
+            alt={APP_NAME}
           />
         </div>
       </div>

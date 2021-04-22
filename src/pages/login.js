@@ -7,12 +7,12 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Chip } from 'primereact/chip'
-// import logo from '../assets/images/logo-transparent.png'
 import HeadTags from '../components/HeadTags'
 import signIn from '../utils/auth/signIn'
-// import { ROUTE_LISTING } from '../constants/routes'
 import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
+import logo from '../assets/images/logo-transparent.png'
+import { APP_NAME } from '../constants/app'
 
 const Login = ({
   updateStoreValue,
@@ -40,13 +40,12 @@ const Login = ({
 
       <main className="auth">
         <div className="auth-container">
-
-          {/* <div className="logo">
+          <div className="logo">
             <img
               src={logo}
-              alt="Highways England"
+              alt={APP_NAME}
             />
-          </div> */}
+          </div>
 
           <h1 className="auth-title">{t('signIn')}</h1>
 

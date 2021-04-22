@@ -11,6 +11,7 @@ import actions from '../store/actions'
 import logo from '../assets/images/logo-transparent.png'
 import { version } from '../../package.json'
 import { ROUTE_SEARCH } from '../constants/routes'
+import { APP_NAME } from '../constants/app'
 
 const Index = ({
   user,
@@ -84,7 +85,7 @@ const Index = ({
             <header className="listing-logo p-d-flex p-jc-center p-ai-center">
               <img
                 src={logo}
-                alt="Highways England"
+                alt={APP_NAME}
               />
             </header>
             <main className="listing">
