@@ -8,10 +8,9 @@
     "url": "https://github.com/hyperlearningai/ontology-framework.git"
   },
   "scripts": {
-    "test": "jest --no-cache",
+    "test": "jest --no-cache --updateSnapshot",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
-    "test:update-snapshots": "npm run test -- --updateSnapshot",
     "lint": "eslint --ext .js src/ .*.js",
     "lint:watch": "npm run lint -- --watch",
     "lint:fix": "npm run lint -- --fix",

@@ -29,8 +29,6 @@ export default {
   'network-graph-options': 'Network graph options',
   nodeNeighbourhood: 'Node neighbourhood',
   'node-neighbourhood': 'Node neighbourhood',
-  structuredSearch: 'Structured search',
-  'structured-search': 'Structured search',
   ontologyFilter: 'Ontology filter',
   'ontology-filter': 'Ontology filter',
   shortestPath: 'Shortest path',
@@ -56,8 +54,6 @@ export default {
   styling: 'Styling',
   notes: 'Notes',
   export: 'Export',
-  freeTextSearch: 'Free-text search',
-  'free-text-search': 'Free-text search',
   versioning: 'Versioning',
   synonyms: 'Synonyms',
 
@@ -84,14 +80,10 @@ export default {
   selectNodeFromGraphOrFromList: 'Select node from graph or pick from list',
   selectNode: 'Select node',
 
-  // elements selection
-
   // structured search
-  filterElementsByArbitraryPropsCombination: 'Filter nodes or edges by any arbitrary combination of one or more node property values',
   and: 'And',
   or: 'Or',
   chooseLogic: 'Choose logic',
-  elementsFound: 'Elements found',
 
   // filter
   filterNodesByNodeProps: 'Filter Nodes by Node Properties',
@@ -353,6 +345,7 @@ export default {
   allowEdgeSelection: 'Allow edge selection',
   disallowEdgeSelection: 'Disallow edge selection',
   selectedEdges: 'Selected edges',
+  backToSearch: 'Back to search',
 
   // info
   id: 'ID',

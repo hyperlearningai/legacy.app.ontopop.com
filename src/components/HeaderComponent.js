@@ -7,7 +7,7 @@ import { OverlayPanel } from 'primereact/overlaypanel'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { Chip } from 'primereact/chip'
-import logo from '../assets/images/logo.svg'
+import logo from '../assets/images/logo-transparent.png'
 import logout from '../utils/auth/logout'
 import actions from '../store/actions'
 import {

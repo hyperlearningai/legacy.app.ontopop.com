@@ -473,48 +473,6 @@ describe('logout', () => {
         ],
         [
           [
-            'freeTextSelection'
-          ],
-          OPERATION_TYPE_UPDATE,
-          {}
-        ],
-        [
-          [
-            'freeTextSelectedElement'
-          ],
-          OPERATION_TYPE_UPDATE,
-          ''
-        ],
-        [
-          [
-            'freeTextPrevSelectedElement'
-          ],
-          OPERATION_TYPE_UPDATE,
-          undefined
-        ],
-        [
-          [
-            'structuredSelection'
-          ],
-          OPERATION_TYPE_UPDATE,
-          {}
-        ],
-        [
-          [
-            'structuredSelectedElement'
-          ],
-          OPERATION_TYPE_UPDATE,
-          ''
-        ],
-        [
-          [
-            'structuredPrevSelectedElement'
-          ],
-          OPERATION_TYPE_UPDATE,
-          undefined
-        ],
-        [
-          [
             'isElementSelectable'
           ],
           OPERATION_TYPE_UPDATE,

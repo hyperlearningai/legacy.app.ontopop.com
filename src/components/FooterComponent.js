@@ -4,12 +4,15 @@ import { Paginator } from 'primereact/paginator'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { Button } from 'primereact/button'
 import { version } from '../../package.json'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { DISPLAYED_PAGE_NUMBERS_ON_PAGINATOR, DISPLAYED_RESULTS_PER_PAGE } from '../constants/search'
 import searchGraph from '../utils/graphSearch/searchGraph'
+import setPageView from '../utils/analytics/setPageView'
+import { ROUTE_SEARCH } from '../constants/routes'
 
 const FooterComponent = ({
   updateStoreValue,
@@ -66,10 +69,10 @@ const FooterComponent = ({
   }
 
   return (
-    <footer>
+    <footer className="p-d-flex p-jc-center p-ai-center">
       {
         sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH ? (
-          <div className="footer-center">
+          <>
             {
               totalSearchCount > 0 && (
                 <Paginator
@@ -82,11 +85,24 @@ const FooterComponent = ({
                 />
               )
             }
-
-          </div>
+          </>
         ) : (
-          <div className="footer-center">
-            {`Ontology Visualisation v${version}`}
+          <div className="p-d-flex p-jc-between p-ai-center full-width">
+            <Button
+              onClick={() => {
+                updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_ENTRY_SEARCH)
+                window.history.pushState('', '', ROUTE_SEARCH)
+                setPageView({ url: ROUTE_SEARCH, updateStoreValue })
+              }}
+              id="back-button"
+              label={t('backToSearch')}
+              aria-label={t('backToSearch')}
+              icon="pi pi-arrow-left"
+            />
+
+            <span>
+              {`Ontology Visualisation v${version}`}
+            </span>
           </div>
         )
       }

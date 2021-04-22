@@ -1,1 +1,1 @@
-export const APP_NAME = 'OntoViz'
+export const APP_NAME = 'OntoPop'
