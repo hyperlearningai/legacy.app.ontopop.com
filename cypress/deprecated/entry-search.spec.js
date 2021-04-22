@@ -295,6 +295,14 @@ context('Entry search', () => {
       cy.wait('@emptySearch')
 
       cy.get('.nav-left').should('contain', 'Search results: 0 of 0')
+
+      // click on visualise
+      cy.get('#visualise-ontology-button').click()
+
+      cy.wait(4000)
+
+      cy.get('.nav-left').should('contain', 'Nodes: 305')
+      cy.get('.nav-left').should('contain', 'Edges: 828')
     })
   })
 })
