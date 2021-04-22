@@ -14,6 +14,7 @@ import { ROUTE_SEARCH } from '../../src/constants/routes'
 context('Entry search', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Entry search', () => {

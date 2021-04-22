@@ -517,4 +517,20 @@ export default {
   availableRelationships: 'Available relationships',
   predicate: 'Predicate',
   noTriplesAvailable: 'No relationships available',
+
+  // legal
+  cookieSettings: 'Cookie settings',
+  cookieBarMessage1: 'This website uses cookies to enhance the user experience.',
+  cookieBarMessage2: 'Choose your preferences, you can update them at any time.',
+  preferences: 'Preferences',
+  preferencesCookies: 'used to store preferences e.g. language',
+  analytics: 'Analytics',
+  analyticsCookies: 'used for anonymous statistics and user behaviour analysis',
+  functional: 'Functional',
+  functionalCookies: 'essentials and cannot be switched off.',
+  savePreferences: 'Save preferences',
+  yesY: 'Y',
+  noN: 'N',
+  acceptAll: 'Accept all',
+  chooseYourPreference: 'Choose your preference'
 }

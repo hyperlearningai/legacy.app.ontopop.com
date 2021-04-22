@@ -19,6 +19,7 @@ import { ROUTE_NOTES } from '../../src/constants/routes'
 context('Notes list', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Notes list', () => {

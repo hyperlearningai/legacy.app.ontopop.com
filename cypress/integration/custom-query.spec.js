@@ -9,6 +9,7 @@ import { ROUTE_CUSTOM_QUERY } from '../../src/constants/routes'
 context('Custom query', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Custom query', () => {

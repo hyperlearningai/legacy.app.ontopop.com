@@ -263,6 +263,12 @@ const initialState = {
   // dropdown labels
   nodesDropdownLabels: [],
   edgesDropdownLabels: [],
+
+  // cookies
+  isCookieBarOpen: false,
+  isAnalyticsCookie: undefined,
+  isPreferencesCookie: undefined,
+  uniqueFingerprint: undefined
 }
 
 export default initialState

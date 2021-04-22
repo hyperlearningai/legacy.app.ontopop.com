@@ -9,6 +9,7 @@ import setSearchNeighbourNodes from '../utils/graphSearch/setSearchNeighbourNode
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import { DATASET_REPO_URL, ROUTE_NOTES, ROUTE_SYNONYMS } from '../constants/routes'
+import setPageView from '../utils/analytics/setPageView'
 
 const GraphSearchCard = ({
   updateStoreValue,
@@ -93,6 +94,7 @@ const GraphSearchCard = ({
                 updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { [id]: 'node' })
                 updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
                 window.history.pushState('', '', ROUTE_NOTES)
+                setPageView({ url: ROUTE_NOTES, updateStoreValue })
               }}
             />
 
@@ -111,6 +113,7 @@ const GraphSearchCard = ({
                 updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { [id]: 'node' })
                 updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
                 window.history.pushState('', '', ROUTE_SYNONYMS)
+                setPageView({ url: ROUTE_SYNONYMS, updateStoreValue })
               }}
             />
           </>

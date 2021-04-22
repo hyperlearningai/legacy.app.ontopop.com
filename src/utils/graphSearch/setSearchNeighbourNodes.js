@@ -3,6 +3,7 @@ import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 import store from '../../store'
+import setPageView from '../analytics/setPageView'
 
 /**
  * Set neighbout nodes
@@ -81,6 +82,7 @@ const setSearchNeighbourNodes = ({
   updateStoreValue(['lastGraphIndex'], OPERATION_TYPE_UPDATE, newGraphIndex)
   updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
   window.history.pushState('', '', ROUTE_NETWORK_GRAPHS)
+  setPageView({ url: ROUTE_NETWORK_GRAPHS, updateStoreValue })
 }
 
 export default setSearchNeighbourNodes

@@ -72,7 +72,7 @@ const EditOntologyAddNode = ({
         }}
         label={t(operation)}
         icon="pi pi-chevron-right"
-        aria-label={`${t(operation)}`}
+        aria-label={t(operation)}
         iconPos="right"
       />
     </>

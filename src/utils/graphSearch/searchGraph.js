@@ -3,6 +3,7 @@ import { API_ENDPOINT_SEARCH_KEY, API_ENDPOINT_SEARCH_POST } from '../../constan
 import { NOTIFY_WARNING } from '../../constants/notifications'
 import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_PUSH, OPERATION_TYPE_UPDATE } from '../../constants/store'
 import store from '../../store'
+import setGaEvent from '../analytics/setGaEvent'
 import httpCall from '../apiCalls/httpCall'
 import showNotification from '../notifications/showNotification'
 import generateSearchGraphQuery from './generateSearchGraphQuery'
@@ -101,6 +102,14 @@ const searchGraph = async ({
 
     return updateStoreValue(['entrySearchResults'], OPERATION_TYPE_UPDATE, [])
   }
+
+  // track search on ga
+  setGaEvent({
+    action: 'search',
+    params: {
+      search_term: body.search
+    }
+  })
 
   const { value } = data
 
