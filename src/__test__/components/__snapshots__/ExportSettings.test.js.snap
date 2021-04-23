@@ -7,7 +7,7 @@ exports[`ExportSettings should match snapshot  1`] = `
       "updateStoreValue": [Function],
     }
   }
-  mapToProps={null}
+  mapToProps={[Function]}
 >
   <Component />
 </Connect>

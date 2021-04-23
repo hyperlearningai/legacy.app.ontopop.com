@@ -11,8 +11,6 @@ import getSuggestions from '../utils/graphSearch/getSuggestions'
 import searchGraph from '../utils/graphSearch/searchGraph'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
-
-
 const SearchBar = ({
   updateStoreValue,
   entrySearchValue,
