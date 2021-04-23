@@ -8,10 +8,10 @@ import { SplitButton } from 'primereact/splitbutton'
 import { useRouter } from 'next/router'
 import HeadTags from '../components/HeadTags'
 import actions from '../store/actions'
-import logo from '../assets/images/logo.svg'
-import { APP_NAME } from '../constants/app'
+import logo from '../assets/images/logo.png'
 import { version } from '../../package.json'
 import { ROUTE_SEARCH } from '../constants/routes'
+import { APP_NAME } from '../constants/app'
 
 const Index = ({
   user,
@@ -85,13 +85,8 @@ const Index = ({
             <header className="listing-logo p-d-flex p-jc-center p-ai-center">
               <img
                 src={logo}
-                alt="Highways England"
+                alt={APP_NAME}
               />
-              <span className="logo-name bold m-l-10">
-                {
-                    APP_NAME
-                  }
-              </span>
             </header>
             <main className="listing">
               <div className="listing-table-wrapper">
@@ -119,7 +114,7 @@ const Index = ({
 
             </main>
 
-            <footer className="listing-footer">
+            <footer className="p-d-flex p-jc-center p-ai-center listing-footer">
               {`Ontology Visualisation v${version}`}
             </footer>
           </>

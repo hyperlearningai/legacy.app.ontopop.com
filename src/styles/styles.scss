@@ -35,11 +35,7 @@ body,
 }
 
 main {
-  // flex: 1;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // height: calc(100% - 210px);
+  width: 100%;
 }
 
 // Components
@@ -55,7 +51,6 @@ main {
 @import "_ontologyfilter";
 @import "_networkstyling";
 @import "_exportsettings";
-@import "_freetextsearch";
 @import "_spacing_helper";
 @import "_heoverides";
 @import "_shortestpath";
@@ -66,7 +61,6 @@ main {
 @import '_editontology';
 @import '_auth';
 @import '_profile';
-@import '_structuredsearch';
 @import '_graphsearch';
 @import '_entrysearch';
 @import '_noteslist';

@@ -7,7 +7,7 @@ import { OverlayPanel } from 'primereact/overlaypanel'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { Chip } from 'primereact/chip'
-import logo from '../assets/images/logo.svg'
+import logo from '../assets/images/logo.png'
 import logout from '../utils/auth/logout'
 import actions from '../store/actions'
 import {
@@ -15,6 +15,7 @@ import {
 } from '../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
+import { APP_NAME } from '../constants/app'
 
 const HeaderComponent = ({
   activeLoaders,
@@ -41,7 +42,7 @@ const HeaderComponent = ({
         <div className="logo">
           <img
             src={logo}
-            alt="Highways England"
+            alt={APP_NAME}
           />
         </div>
       </div>

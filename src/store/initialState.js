@@ -175,16 +175,6 @@ const initialState = {
   upperOntologySearch: 'any',
   advancedSearchFilters: { 0: JSON.parse(JSON.stringify(ADVANCED_SEARCH_TEMPLATE)) },
 
-  // free text search
-  freeTextSelection: {},
-  freeTextSelectedElement: '',
-  freeTextPrevSelectedElement: undefined,
-
-  // Structured search
-  structuredSelection: {},
-  structuredSelectedElement: '',
-  structuredPrevSelectedElement: undefined,
-
   // node selection
   isElementSelectable: true,
   selectedElement: undefined,
