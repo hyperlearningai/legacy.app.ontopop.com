@@ -119,7 +119,7 @@ const SynonymsList = ({
     if (index === 1) {
       updateHighlightedElement({
         updateStoreValue,
-        id: '2',
+        id: '12',
         type: 'node'
       })
     }

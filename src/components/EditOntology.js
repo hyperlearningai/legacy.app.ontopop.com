@@ -190,7 +190,7 @@ const EditOntology = ({
       localStorage.setItem('showTour', JSON.stringify({ ...showTour, editOntology: false }))
       updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_EXPORT)
       window.history.pushState('', '', ROUTE_EXPORT)
-      setPageView({ url: ROUTE_EXPORT, updateStoreValue })
+      setPageView({ url: ROUTE_EXPORT, ROUTE_EXPORT })
     }
   }
 
