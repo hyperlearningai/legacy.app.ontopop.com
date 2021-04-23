@@ -11,7 +11,7 @@ import HeadTags from '../components/HeadTags'
 import signIn from '../utils/auth/signIn'
 import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
-import logo from '../assets/images/logo-transparent.png'
+import logo from '../assets/images/logo.png'
 import { APP_NAME } from '../constants/app'
 
 const Login = ({
