@@ -532,8 +532,17 @@ export default {
   yesY: 'Y',
   noN: 'N',
   acceptAll: 'Accept all',
-  chooseYourPreference: 'Choose your preference'
+  chooseYourPreference: 'Choose your preference',
 
   // intro
-
+  introSearchResults: 'Visualise this Entity',
+  introElementSelectionType: 'Choose Element Type',
+  introElementSelectionElement: 'Choose Element',
+  introElementSelectionProperties: 'Choose Properties',
+  introNotesType:'Select Note type',
+  introNotesElement:'Select Element',
+  introExportFilename: 'Choose Filename',
+  introExportImage: 'Export as image',
+  introExportData:'Export as data',
+  introSearchStart: 'Start by searching. Try: road',
 }

@@ -37,19 +37,19 @@ const ExportSettings = ({
   const steps = [
     {
       target: '#filename',
-      content: 'Choose Filename',
+      content: t('introExportFilename'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '#export-image',
-      content: 'Export as image',
+      content: t('introExportImage'),
       placement: 'bottom',
       disableBeacon: true
     },
     {
       target: '#export-data',
-      content: 'Export as data',
+      content: t('introExportData'),
       placement: 'bottom',
       disableBeacon: true
     }

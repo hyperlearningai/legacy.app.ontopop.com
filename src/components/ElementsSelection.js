@@ -83,19 +83,19 @@ const ElementsSelection = ({
   const steps = [
     {
       target: '#element-type-select',
-      content: 'Choose Element Type',
+      content: t('introElementSelectionType'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '#element-select',
-      content: 'Choose Element',
+      content: t('introElementSelectionElement'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '.elements-selection-details',
-      content: 'Explore properties',
+      content: t('introElementSelectionProperties'),
       placement: 'left',
       disableBeacon: true
     }

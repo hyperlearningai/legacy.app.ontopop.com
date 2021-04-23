@@ -129,13 +129,13 @@ const NotesList = ({
   const steps = [
     {
       target: '#notes-select',
-      content: 'Select Note type',
+      content: t('introNotesType'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '#notes-select-element',
-      content: 'Select Element',
+      content: t('introNotesElement'),
       placement: 'top',
       disableBeacon: true
     }

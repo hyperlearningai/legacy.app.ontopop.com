@@ -14,7 +14,7 @@ import { OPERATION_TYPE_UPDATE } from '../constants/store'
 const steps = [
   {
     target: '.graph-search-bar',
-    content: 'Start by searching. Try: road',
+    content: t('introSearchStart'),
     disableBeacon: true
   }
 ]

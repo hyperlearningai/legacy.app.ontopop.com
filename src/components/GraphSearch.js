@@ -30,7 +30,7 @@ const GraphSearch = ({
   const steps = [
     {
       target: '#card-visualise-btn-2',
-      content: 'Visualise this Entity',
+      content: t('introSearchResults'),
       placement: 'top',
       disableBeacon: true
     }
