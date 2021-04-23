@@ -71,6 +71,9 @@ const ExportSettings = ({
         steps={steps}
         disableScrolling
         locale={{ close: t('next') }}
+        styles={{
+          options: { primaryColor: '#011e41' }
+        }}
       />
       )}
       <h1 className="sidebar-main-title">

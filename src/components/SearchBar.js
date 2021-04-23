@@ -45,6 +45,9 @@ const SearchBar = ({
         callback={handleJoyrideCallback}
         locale={{ close: t('next') }}
         steps={steps}
+        styles={{
+          options: { primaryColor: '#011e41' }
+        }}
       />
       )}
       {

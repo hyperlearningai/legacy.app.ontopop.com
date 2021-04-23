@@ -140,6 +140,9 @@ const SynonymsList = ({
         steps={steps}
         disableScrolling
         locale={{ close: t('next') }}
+        styles={{
+          options: { primaryColor: '#011e41' }
+        }}
       />
       )}
 

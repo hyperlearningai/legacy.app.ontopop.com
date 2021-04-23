@@ -71,6 +71,9 @@ const GraphSearch = ({
               disableScrolling
               locale={{ close: t('next') }}
               steps={steps}
+              styles={{
+                options: { primaryColor: '#011e41' }
+              }}
             />
             )}
 
