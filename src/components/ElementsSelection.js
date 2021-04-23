@@ -107,13 +107,11 @@ const ElementsSelection = ({
     const { status, index } = data
 
     if (index === 1) {
-      if (!selectedElementID || selectedElementID === '0') {
         updateHighlightedElement({
           updateStoreValue,
-          id: '2',
-          type: selectedElementType
+          id: '12',
+          type: 'node'
         })
-      }
     }
 
     if (status === 'finished') {

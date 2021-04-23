@@ -533,4 +533,7 @@ export default {
   noN: 'N',
   acceptAll: 'Accept all',
   chooseYourPreference: 'Choose your preference'
+
+  // intro
+
 }
