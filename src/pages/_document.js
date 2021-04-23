@@ -45,7 +45,7 @@ class MyDocument extends Document {
           <meta httpEquiv="Strict-Transport-Security" content="max-age=31536000" />
           <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
           <meta lang="en" />
-          <link rel="shortcut icon" href="/images/logo-transparent.png" />
+          <link rel="shortcut icon" href="/images/logo.png" />
         </Head>
 
         <body>
