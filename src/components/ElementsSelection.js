@@ -15,9 +15,9 @@ import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
 import { getElementIdAndType } from '../constants/functions'
-import { ROUTE_NETWORK_GRAPH_OPTIONS, ROUTE_SYNONYMS } from '../constants/routes'
+import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import { SIDEBAR_VIEW_GRAPH_OPTIONS, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
+import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
 import setPageView from '../utils/analytics/setPageView'
 
 const ElementsSelection = ({

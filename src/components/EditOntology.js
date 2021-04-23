@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { SelectButton } from 'primereact/selectbutton'
 import { orderBy, uniqBy } from 'lodash'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_EDIT_ONTOLOGY, SIDEBAR_VIEW_EXPORT, SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
+import { SIDEBAR_VIEW_EDIT_ONTOLOGY, SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import actions from '../store/actions'
 import EditOntologyAddNode from './EditOntologyAddNode'
 import EditOntologyAddEdge from './EditOntologyAddEdge'
@@ -28,6 +28,7 @@ const EditOntology = ({
   objectPropertiesFromApi,
   deletedNodes,
   deletedEdges,
+  updateStoreValue,
   showTour
 }) => {
   const { t } = useTranslation()
@@ -190,7 +191,7 @@ const EditOntology = ({
       localStorage.setItem('showTour', JSON.stringify({ ...showTour, editOntology: false }))
       updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_EXPORT)
       window.history.pushState('', '', ROUTE_EXPORT)
-      setPageView({ url: ROUTE_EXPORT, ROUTE_EXPORT })
+      setPageView({ url: ROUTE_EXPORT, updateStoreValue })
     }
   }
 
@@ -346,6 +347,7 @@ const EditOntology = ({
 }
 
 EditOntology.propTypes = {
+  updateStoreValue: PropTypes.func.isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -356,11 +358,13 @@ const mapToProps = ({
   objectPropertiesFromApi,
   deletedNodes,
   deletedEdges,
+  updateStoreValue,
   showTour
 }) => ({
   objectPropertiesFromApi,
   deletedNodes,
   deletedEdges,
+  updateStoreValue,
   showTour
 })
 

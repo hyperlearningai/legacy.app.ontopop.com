@@ -9,8 +9,8 @@ import actions from '../store/actions'
 import setDataTableTriplesLabels from '../utils/dataTableNetwork/setDataTableTriplesLabels'
 import { ROUTE_ELEMENTS_SELECTION } from '../constants/routes'
 import setPageView from '../utils/analytics/setPageView'
-import {OPERATION_TYPE_UPDATE} from "../constants/store";
-import {SIDEBAR_VIEW_ELEMENTS_SELECTION} from "../constants/views";
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { SIDEBAR_VIEW_ELEMENTS_SELECTION } from '../constants/views'
 
 const DataTableNetwork = ({
   dataTableTriples,
