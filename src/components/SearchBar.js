@@ -11,13 +11,7 @@ import getSuggestions from '../utils/graphSearch/getSuggestions'
 import searchGraph from '../utils/graphSearch/searchGraph'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
-const steps = [
-  {
-    target: '.graph-search-bar',
-    content: t('introSearchStart'),
-    disableBeacon: true
-  }
-]
+
 
 const SearchBar = ({
   updateStoreValue,
@@ -28,6 +22,14 @@ const SearchBar = ({
   const { t } = useTranslation()
 
   const [suggestions, setSuggestions] = useState([])
+
+  const steps = [
+    {
+      target: '.graph-search-bar',
+      content: t('introSearchStart'),
+      disableBeacon: true
+    }
+  ]
 
   const handleJoyrideCallback = (data) => {
     const { status } = data
