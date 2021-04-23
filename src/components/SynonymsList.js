@@ -100,13 +100,13 @@ const SynonymsList = ({
   const steps = [
     {
       target: '#synonyms-select-element',
-      content: 'Select Element',
+      content: t('introSynonymsElement'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '.sidebar-main-body-title',
-      content: 'Manage Synonyms',
+      content: t('introSynonymsSynonyms'),
       placement: 'bottom',
       disableBeacon: true
     }

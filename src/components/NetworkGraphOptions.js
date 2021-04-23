@@ -53,19 +53,19 @@ const NetworkGraphOptions = ({
   const steps = [
     {
       target: '#physics',
-      content: 'Change Physics',
+      content: t('introGraphOptionsPhysics'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '#positioning',
-      content: 'Change Positioning',
+      content: t('introGraphOptionsPositioning'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '#repulsion',
-      content: 'Change Repulsion',
+      content: t('introGraphOptionsRepulsion'),
       placement: 'left',
       disableBeacon: true
     }

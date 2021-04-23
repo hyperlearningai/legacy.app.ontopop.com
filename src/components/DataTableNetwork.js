@@ -37,7 +37,7 @@ const DataTableNetwork = ({
   const steps = [
     {
       target: '#sidebar-button-elements-selection',
-      content: 'Navigate to a different section',
+      content: t('introDatabaseSection'),
       placement: 'right',
       disableBeacon: true
     }

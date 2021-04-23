@@ -170,13 +170,13 @@ const EditOntology = ({
   const steps = [
     {
       target: '#operation-select',
-      content: 'Choose Operation',
+      content: t('introEditOntologyOperation'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '.sidebar-main-body-title',
-      content: 'Manage Synonyms',
+      content: t('introEditOntologySynonyms'),
       placement: 'bottom',
       disableBeacon: true
     }

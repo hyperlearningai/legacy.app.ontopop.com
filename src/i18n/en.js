@@ -545,4 +545,15 @@ export default {
   introExportImage: 'Export as image',
   introExportData:'Export as data',
   introSearchStart: 'Start by searching. Try: road',
+  introDatabaseSection: 'Navigate to a different section',
+  introEditOntologyOperation: 'Choose Operation',
+  introEditOntologySynonyms: 'Manage Synonyms',
+  introNavigateButtons: 'Use buttons to navigate',
+  introNavigateDatabase: 'See database',
+  introGraphOptionsPhysics: 'Change Physics',
+  introGraphOptionsPositioning: 'Change Positioning',
+  introGraphOptionsRepulsion: 'Change Repulsion',
+  introSynonymsElement: 'Select Element',
+  introSynonymsSynonyms: 'Manage Synonyms',
+
 }
