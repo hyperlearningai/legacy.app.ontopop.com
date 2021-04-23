@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.7.0]
 ### Added
+- ONTOLOGY-179 Added new logo
 - ONTOLOGY-177 Cookie banner and cookieless google analytics integration
 - ONTOLOGY-156 Integrated Owl file export endpoint
 - ONTOLOGY-156 Added datatable as alternative way to visualise relationships among nodes
@@ -38,6 +39,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-179 Removed structured search components and utils
+- ONTOLOGY-179 Removed free text search components and utils
 - ONTOLOGY-156 Removed serialiseOwlFile util
 - ONTOLOGY-170 Removed required from rdfLabel in edit ontology form
 

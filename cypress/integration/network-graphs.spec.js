@@ -131,6 +131,9 @@ context('Network graph', () => {
       cy.get('.sidebar-main').should('not.be.exist')
       cy.get('#sidebar-button-toggle').click()
       cy.get('.sidebar-main').should('be.visible')
+
+      // back to search
+      cy.get('#back-button').click()
     })
   })
 })

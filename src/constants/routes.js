@@ -1,12 +1,10 @@
 export const ROUTE_LOGIN = '/login'
 export const ROUTE_PROFILE = '/profile'
 export const ROUTE_FORGOT_PASSWORD = '/forgot-password'
-export const ROUTE_LISTING = '/' // '/app/search'
+export const ROUTE_LISTING = '/'
 export const ROUTE_SEARCH = '/app'
 export const ROUTE_NETWORK_GRAPHS = '/app/network-graphs'
 export const ROUTE_NETWORK_GRAPH_OPTIONS = '/app/network-graph-options'
-export const ROUTE_FREE_TEXT_SEARCH = '/app/free-text-search'
-export const ROUTE_STRUCTURED_SEARCH = '/app/structured-search'
 export const ROUTE_ELEMENTS_SELECTION = '/app/elements-selection'
 export const ROUTE_ELEMENTS_FILTER = '/app/elements-filter'
 export const ROUTE_EDGES_FILTER = '/app/edges-filter'
@@ -25,8 +23,6 @@ export const DYNAMIC_ROUTES = [
   ROUTE_SEARCH,
   ROUTE_NETWORK_GRAPHS,
   ROUTE_NETWORK_GRAPH_OPTIONS,
-  ROUTE_FREE_TEXT_SEARCH,
-  ROUTE_STRUCTURED_SEARCH,
   ROUTE_ELEMENTS_FILTER,
   ROUTE_EDGES_FILTER,
   ROUTE_ELEMENTS_SELECTION,

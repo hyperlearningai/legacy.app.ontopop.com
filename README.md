@@ -16,6 +16,7 @@ Ontology visualisation web app based on NextJs/React/Redux-zero with internation
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/download/)
+- .env file (Request it by asking the team leader or check the documentation)
 
 ## Installation
 

@@ -14,12 +14,7 @@
     height: 120px;
 
     img {
-      width: 140px;
-    }
-
-    span {
-      font-size: 36px;
-      color: $indigo;
+      width: 100%;
     }
   }
 
@@ -28,6 +23,13 @@
     max-width: $lg;
     margin: 20px auto;
     padding: 1rem;
+
+    .p-datatable {
+      &-header {
+        background: $primary;
+        color: $white;
+      }
+    }
 
     @media screen and (max-width: $md) {
       .p-datatable.p-datatable-responsive .p-datatable-thead > tr > th,
