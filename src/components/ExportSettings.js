@@ -70,7 +70,7 @@ const ExportSettings = ({
         callback={handleJoyrideCallback}
         steps={steps}
         disableScrolling
-        locale={{ close: 'Next' }}
+        locale={{ close: t('next') }}
       />
       )}
       <h1 className="sidebar-main-title">

@@ -129,7 +129,7 @@ const ElementsSelection = ({
         callback={handleJoyrideCallback}
         steps={steps}
         disableScrolling
-        locale={{ close: 'Next' }}
+        locale={{ close: t('next') }}
       />
       )}
 

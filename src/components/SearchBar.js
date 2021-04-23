@@ -43,7 +43,7 @@ const SearchBar = ({
       {showTour.search && (
       <Joyride
         callback={handleJoyrideCallback}
-        locale={{ close: 'Next' }}
+        locale={{ close: t('next') }}
         steps={steps}
       />
       )}

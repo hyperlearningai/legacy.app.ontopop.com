@@ -535,6 +535,7 @@ export default {
   chooseYourPreference: 'Choose your preference',
 
   // intro
+  next: 'Next',
   introSearchResults: 'This allows you to visualise this Entity',
   introElementSelectionType: 'This allows you to choose Element Type',
   introElementSelectionElement: 'This allows you to choose Element',

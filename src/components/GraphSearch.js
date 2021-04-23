@@ -69,7 +69,7 @@ const GraphSearch = ({
             <Joyride
               callback={handleJoyrideCallback}
               disableScrolling
-              locale={{ close: 'Next' }}
+              locale={{ close: t('next') }}
               steps={steps}
             />
             )}
