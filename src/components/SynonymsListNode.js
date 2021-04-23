@@ -29,62 +29,68 @@ const SynonymsListNode = ({
   } = synonymObject
 
   return (
-    <div key={`synonym-${id}`} className="card synonyms-synonym">
+    <div key={`synonym-${id}`} className="card synonyms-synonym p-p-3 m-t-30">
       {editingId !== id && (
-        <div className="synonyms-content">
-          <p>{synonym}</p>
-        </div>
+        <>
+          <p className="synonyms-content">
+            {synonym}
+          </p>
+          <div className="synonyms-row">
+            <span>
+              {t('dateCreated')}
+            </span>
+            <span>{new Date(dateCreated).toLocaleString()}</span>
+          </div>
+          <div className="synonyms-row">
+            <span>
+              {t('dateLastUpdated')}
+            </span>
+            <span>{new Date(dateLastUpdated).toLocaleString()}</span>
+          </div>
+
+          <div className="synonyms-row">
+            <span>
+              {t('userId')}
+            </span>
+            <span>{userId}</span>
+          </div>
+
+          {
+            nodeId > 0 && (
+              <>
+                <div className="synonyms-row">
+                  <span>
+                    {' '}
+                    {t('nodeId')}
+                  </span>
+                  <span>{nodeId}</span>
+                </div>
+                <div className="synonyms-row">
+                  <span>
+                    {t('nodeLabel')}
+                  </span>
+                  <span>
+                    {
+                      classesFromApi[nodeId].label
+                    }
+                  </span>
+                </div>
+              </>
+            )
+          }
+        </>
       )}
-
-      <div className="synonyms-row">
-        <span>
-          {t('dateCreated')}
-        </span>
-        <span>{new Date(dateCreated).toLocaleString()}</span>
-      </div>
-      <div className="synonyms-row">
-        <span>
-          {t('dateLastUpdated')}
-        </span>
-        <span>{new Date(dateLastUpdated).toLocaleString()}</span>
-      </div>
-
-      <div className="synonyms-row">
-        <span>
-          {t('userId')}
-        </span>
-        <span>{userId}</span>
-      </div>
-
-      {
-        nodeId > 0 && (
-          <>
-            <div className="synonyms-row">
-              <span>
-                {' '}
-                {t('nodeId')}
-              </span>
-              <span>{nodeId}</span>
-            </div>
-            <div className="synonyms-row">
-              <span>
-                {t('nodeLabel')}
-              </span>
-              <span>
-                {
-                  classesFromApi[nodeId].label
-                }
-              </span>
-            </div>
-          </>
-        )
-      }
 
       {
         editingId === id
         && (
           <div>
-            <label htmlFor={`synonym-text-${id}`}>{t('synonymText')}</label>
+            <label
+              className="sidebar-main-body-label m-b-10"
+              htmlFor={`synonym-text-${id}`}
+            >
+              {t('editSynonym')}
+            </label>
             <InputTextarea
               id={`synonym-text-${id}`}
               className="synonym-text"
@@ -93,10 +99,9 @@ const SynonymsListNode = ({
               onChange={(e) => setSynonymText(e.target.value)}
             />
 
-            <div className="synonyms-buttons">
+            <div className="p-d-flex full-width">
               <Button
-                tooltip={t('close')}
-                tooltipOptions={{ position: 'top' }}
+                aria-label={t('close')}
                 label={t('close')}
                 className="p-button-secondary close-synonym"
                 id={`close-synonym-${id}`}
@@ -130,11 +135,10 @@ const SynonymsListNode = ({
         editingId !== id
         && user.email === userId
         && (
-          <div className="synonyms-buttons">
+          <div className="p-d-flex full-width">
             <Button
-              tooltip={t('delete')}
-              tooltipOptions={{ position: 'top' }}
-              className="p-button-danger delete-synonym"
+              aria-label={t('delete')}
+              className="sidebar-button-secondary delete-synonym m-r-10 m-b-0"
               id={`delete-synonym-${id}`}
               label={t('delete')}
               onClick={() => synonymsDeleteSynonym({
@@ -146,10 +150,9 @@ const SynonymsListNode = ({
             />
 
             <Button
-              tooltip={t('edit')}
-              tooltipOptions={{ position: 'top' }}
+              aria-label={t('edit')}
               label={t('edit')}
-              className="p-button-secondary edit-synonym"
+              className="sidebar-button-primary edit-synonym m-l-10 m-b-0"
               id={`edit-synonym-${id}`}
               onClick={() => {
                 setEditingId(id)

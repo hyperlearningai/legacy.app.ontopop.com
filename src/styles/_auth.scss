@@ -5,6 +5,20 @@
   text-align: left;
   padding: 24px;
   background-color: $mid-grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-container {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .logo {
+    img {
+      width: 100%;
+    }
+  }
 
   &-title {
     font-size: 1em;

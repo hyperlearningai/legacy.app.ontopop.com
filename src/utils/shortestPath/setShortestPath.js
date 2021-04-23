@@ -4,6 +4,7 @@ import store from '../../store'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { ROUTE_NETWORK_GRAPHS } from '../../constants/routes'
 import { SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
+import setPageView from '../analytics/setPageView'
 
 /**
  * Set shortest path
@@ -45,6 +46,8 @@ const setShortestPath = async ({
   const label = `shortest-path${isNodeOverlay ? '-full' : ''}-${newCurrentGraph}`
 
   const {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -53,6 +56,8 @@ const setShortestPath = async ({
   } = graphData[currentGraph]
 
   const graphValue = {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -72,6 +77,7 @@ const setShortestPath = async ({
   updateStoreValue(['lastGraphIndex'], OPERATION_TYPE_UPDATE, newGraphIndex)
   updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPHS)
   window.history.pushState('', '', ROUTE_NETWORK_GRAPHS)
+  setPageView({ url: ROUTE_NETWORK_GRAPHS, updateStoreValue })
 }
 
 export default setShortestPath

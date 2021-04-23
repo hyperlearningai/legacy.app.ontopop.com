@@ -1,8 +1,12 @@
 import setBoundingBoxNodes from '../../../utils/boundingBoxSelection/setBoundingBoxNodes'
 import store from '../../../store'
+import setPageView from '../../../utils/analytics/setPageView'
+import { ROUTE_NETWORK_GRAPHS } from '../../../constants/routes'
 
 const updateStoreValue = jest.fn()
+const pushState = jest.fn()
 const lastGraphIndex = 1
+let windowSpy
 
 const getState = jest.fn().mockImplementation(() => ({
   lastGraphIndex,
@@ -20,12 +24,25 @@ const getState = jest.fn().mockImplementation(() => ({
 }))
 store.getState = getState
 
+jest.mock('../../../utils/analytics/setPageView')
+
 describe('setBoundingBoxNodes', () => {
+  beforeEach(() => {
+    windowSpy = jest.spyOn(window, 'window', 'get')
+  })
+
   afterEach(() => {
+    windowSpy.mockRestore()
     jest.clearAllMocks()
   })
 
   it('should work correctly', async () => {
+    windowSpy.mockImplementation(() => ({
+      history: {
+        pushState
+      }
+    }))
+
     await setBoundingBoxNodes({
       updateStoreValue,
     })
@@ -74,5 +91,7 @@ describe('setBoundingBoxNodes', () => {
         'networkGraphs',
       ],
     ])
+    expect(pushState).toHaveBeenCalledWith('', '', ROUTE_NETWORK_GRAPHS)
+    expect(setPageView).toHaveBeenCalledWith({ url: ROUTE_NETWORK_GRAPHS, updateStoreValue })
   })
 })

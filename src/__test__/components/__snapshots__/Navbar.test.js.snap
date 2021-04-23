@@ -1,37 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar should match snapshot when MAIN_VIEW_GRAPH 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  availableEdgesCount={333}
-  availableNodesCount={200}
-  entrySearchResultsByPage={
-    Object {
-      "0": Array [
-        Object {
-          "id": "1",
-        },
-      ],
-      "1": Array [
-        Object {
-          "id": "2",
-        },
-      ],
-    }
-  }
-  mapToProps={[Function]}
-  searchPageSelected={1}
-  sidebarView="any"
-  totalSearchCount={100}
->
-  <Component />
-</Connect>
-`;
-
 exports[`Navbar should match snapshot when SIDEBAR_VIEW_ENTRY_SEARCH 1`] = `
 <Connect
   actions={
@@ -56,9 +24,113 @@ exports[`Navbar should match snapshot when SIDEBAR_VIEW_ENTRY_SEARCH 1`] = `
     }
   }
   mapToProps={[Function]}
+  networkVisualisation="graph"
   searchPageSelected={1}
   sidebarView="search"
   totalSearchCount={100}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Navbar should match snapshot when SIDEBAR_VIEW_GRAPHS and NETWORK_VIEW_DATATABLE 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  availableEdgesCount={333}
+  availableNodesCount={200}
+  entrySearchResultsByPage={
+    Object {
+      "0": Array [
+        Object {
+          "id": "1",
+        },
+      ],
+      "1": Array [
+        Object {
+          "id": "2",
+        },
+      ],
+    }
+  }
+  mapToProps={[Function]}
+  networkVisualisation="datatable"
+  searchPageSelected={1}
+  sidebarView="networkGraphs"
+  totalSearchCount={100}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Navbar should match snapshot when SIDEBAR_VIEW_GRAPHS and NETWORK_VIEW_GRAPH 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  availableEdgesCount={333}
+  availableNodesCount={200}
+  entrySearchResultsByPage={
+    Object {
+      "0": Array [
+        Object {
+          "id": "1",
+        },
+      ],
+      "1": Array [
+        Object {
+          "id": "2",
+        },
+      ],
+    }
+  }
+  mapToProps={[Function]}
+  networkVisualisation="graph"
+  searchPageSelected={1}
+  sidebarView="networkGraphs"
+  totalSearchCount={100}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Navbar should match snapshot when any view 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  availableEdgesCount={333}
+  availableNodesCount={200}
+  entrySearchResultsByPage={
+    Object {
+      "0": Array [
+        Object {
+          "id": "1",
+        },
+      ],
+      "1": Array [
+        Object {
+          "id": "2",
+        },
+      ],
+    }
+  }
+  mapToProps={[Function]}
+  networkVisualisation="graph"
+  searchPageSelected={1}
+  sidebarView="any"
+  totalSearchCount={100}
+  updateStoreValue={[MockFunction]}
 >
   <Component />
 </Connect>

@@ -1,5 +1,5 @@
 import { DataSet } from 'vis-data'
-import { MAIN_VIEW_SEARCH, SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
+import { NETWORK_VIEW_GRAPH, SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
 import { ALGO_TYPE_FULL } from '../constants/algorithms'
 import {
   EDGE_COLOR,
@@ -27,7 +27,7 @@ const initialState = {
   isSidebarOpen: true,
   sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH,
   activeLoaders: 0,
-  mainVisualisation: MAIN_VIEW_SEARCH,
+  networkVisualisation: NETWORK_VIEW_GRAPH,
 
   // user
   user: {
@@ -65,6 +65,8 @@ const initialState = {
   nodesEdges: {},
   highlightedNodes: [],
   highlightedEdges: [],
+  dataTableTriples: [],
+  dataTableTriplesWithLabels: [],
 
   // network styling
   globalEdgeStyling: {
@@ -147,7 +149,7 @@ const initialState = {
   entrySearchResults: [],
   entrySearchAnnotationProperties: [],
   entrySearchResultsByPage: {},
-  isFirstQuery: false,
+  isFirstQuery: true,
   entrySearchValue: '',
   isDataEntityTypeSearch: true,
   isDatasetTypeSearch: true,
@@ -158,16 +160,6 @@ const initialState = {
   dataTypeSearch: 'any',
   upperOntologySearch: 'any',
   advancedSearchFilters: { 0: JSON.parse(JSON.stringify(ADVANCED_SEARCH_TEMPLATE)) },
-
-  // free text search
-  freeTextSelection: {},
-  freeTextSelectedElement: '',
-  freeTextPrevSelectedElement: undefined,
-
-  // Structured search
-  structuredSelection: {},
-  structuredSelectedElement: '',
-  structuredPrevSelectedElement: undefined,
 
   // node selection
   isElementSelectable: true,
@@ -243,7 +235,7 @@ const initialState = {
   customQueryFromLatestOutput: '',
   customQueryStringHistory: [
     'g.V().hasLabel(\'class\').count()',
-    'g.V().has(\'id\', 48).bothE().otherV().path().unfold().dedup().valueMap()',
+    'g.V().has(\'name\', \'Link\').valueMap()',
   ],
 
   // graphs data storage
@@ -261,6 +253,12 @@ const initialState = {
   // dropdown labels
   nodesDropdownLabels: [],
   edgesDropdownLabels: [],
+
+  // cookies
+  isCookieBarOpen: false,
+  isAnalyticsCookie: undefined,
+  isPreferencesCookie: undefined,
+  uniqueFingerprint: undefined
 }
 
 export default initialState

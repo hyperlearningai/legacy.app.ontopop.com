@@ -1,21 +1,17 @@
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { useState, Fragment } from 'react'
-import {
-  BsCaretRightFill,
-  BsCaretDownFill,
-} from 'react-icons/bs'
+
 import actions from '../store/actions'
-import { EDGE_PROPERTIES, RESERVED_PROPERTIES } from '../constants/graph'
+import { EDGE_PROPERTIES } from '../constants/graph'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
+import EdgesSelectionDetailsNode from './EdgesSelectionDetailsNode'
 
 const EdgesSelectionDetails = ({
   edgeId,
 }) => {
   const { t } = useTranslation()
-  const [isExpanded, toggleExpanded] = useState(false)
 
   const edge = getEdge(edgeId)
   const {
@@ -29,109 +25,55 @@ const EdgesSelectionDetails = ({
   const tableRowNames = EDGE_PROPERTIES.sort()
 
   return (
-    <div className="edges-selection-details m-t-10">
-      <div className="edges-selection-details-title">
+    <div className="elements-selection-details m-t-10">
+      <div className="sidebar-main-body-title m-b-20 m-t-30">
         {t('properties')}
       </div>
 
-      <div className="edges-selection-details-table edges-selection-details-table-properties">
-        <table>
-          <thead>
-            <tr>
-              <th />
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {
-              tableRowNames.map((tableRowName) => {
-                if (!edge[tableRowName]) return null
+      <div className="elements-selection-details-table elements-selection-details-table-properties">
+        {
+          tableRowNames.map((tableRowName) => {
+            if (!edge[tableRowName]) return null
 
-                return (
-                  <tr
-                    key={`details-row-${tableRowName}`}
-                  >
-                    <td>
-                      {tableRowName}
-                    </td>
-                    <td>
-                      {edge[tableRowName] || t('null')}
-                    </td>
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-        </table>
+            return (
+              <div
+                key={`details-row-${tableRowName}`}
+                className="elements-selection-details-table-row"
+              >
+                <div className="light-bold">
+                  {tableRowName}
+                </div>
+                <div>
+                  {edge[tableRowName] || t('null')}
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
 
-      <div className="edges-selection-details-title">
+      <div className="sidebar-main-body-title m-b-20 m-t-50">
         {t('nodesProperties')}
       </div>
 
-      <div className="edges-selection-details-table edges-selection-details-table-relationships">
-        <table>
-          <thead>
-            <tr>
-              <th />
-              <th>{t('from')}</th>
-              <th>{t('to')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="icon-cell">
-                <button
-                  aria-label={t('expand')}
-                  type="button"
-                  className="button-expand"
-                  title={t('expand')}
-                  onClick={() => toggleExpanded(!isExpanded)}
-                >
-                  {isExpanded ? <BsCaretDownFill /> : <BsCaretRightFill />}
-                </button>
-              </td>
-              <td className="edge-node-cell-from">
-                <span>
-                  {fromObject.label}
-                </span>
-                <div className="edge-node-info">
-                  {
-                    isExpanded && (
-                      Object.keys(fromObject).filter((key) => !RESERVED_PROPERTIES.includes(key)).sort().map((nodeKey) => (
-                        (
-                          <Fragment key={`edge-node-from-${nodeKey}-${from}-${to}`}>
-                            <div className="edge-node-info-title">{nodeKey}</div>
-                            <div className="edge-node-info-value">{fromObject[nodeKey]}</div>
-                          </Fragment>
-                        )
-                      ))
-                    )
-                  }
-                </div>
-              </td>
-              <td className="edge-node-cell-to">
-                <span>
-                  {toObject.label}
-                </span>
-                <div className="edge-node-info">
-                  {
-                    isExpanded && (
-                      Object.keys(toObject).filter((key) => !RESERVED_PROPERTIES.includes(key)).sort().map((nodeKey) => (
-                        (
-                          <Fragment key={`edge-node-to-${nodeKey}-${from}-${to}`}>
-                            <div className="edge-node-info-title">{nodeKey}</div>
-                            <div className="edge-node-info-value">{toObject[nodeKey]}</div>
-                          </Fragment>
-                        )
-                      ))
-                    )
-                  }
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="elements-selection-details-table elements-selection-details-table-relationships">
+        <div
+          className="elements-selection-details-table-row"
+        >
+          <div className="light-bold">{t('from')}</div>
+          <EdgesSelectionDetailsNode
+            node={fromObject}
+          />
+        </div>
+
+        <div
+          className="elements-selection-details-table-row"
+        >
+          <div className="light-bold">{t('to')}</div>
+          <EdgesSelectionDetailsNode
+            node={toObject}
+          />
+        </div>
       </div>
     </div>
   )

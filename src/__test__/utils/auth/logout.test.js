@@ -60,10 +60,10 @@ describe('logout', () => {
         ],
         [
           [
-            'mainVisualisation'
+            'networkVisualisation'
           ],
           OPERATION_TYPE_UPDATE,
-          'search'
+          'graph'
         ],
         [
           [
@@ -228,6 +228,20 @@ describe('logout', () => {
         ],
         [
           [
+            'dataTableTriples',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
+            'dataTableTriplesWithLabels',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
             'globalEdgeStyling'
           ],
           OPERATION_TYPE_UPDATE,
@@ -380,7 +394,7 @@ describe('logout', () => {
             'isFirstQuery'
           ],
           OPERATION_TYPE_UPDATE,
-          false
+          true
         ],
         [
           [
@@ -456,48 +470,6 @@ describe('logout', () => {
               value: '',
             },
           },
-        ],
-        [
-          [
-            'freeTextSelection'
-          ],
-          OPERATION_TYPE_UPDATE,
-          {}
-        ],
-        [
-          [
-            'freeTextSelectedElement'
-          ],
-          OPERATION_TYPE_UPDATE,
-          ''
-        ],
-        [
-          [
-            'freeTextPrevSelectedElement'
-          ],
-          OPERATION_TYPE_UPDATE,
-          undefined
-        ],
-        [
-          [
-            'structuredSelection'
-          ],
-          OPERATION_TYPE_UPDATE,
-          {}
-        ],
-        [
-          [
-            'structuredSelectedElement'
-          ],
-          OPERATION_TYPE_UPDATE,
-          ''
-        ],
-        [
-          [
-            'structuredPrevSelectedElement'
-          ],
-          OPERATION_TYPE_UPDATE,
-          undefined
         ],
         [
           [
@@ -791,7 +763,7 @@ describe('logout', () => {
           OPERATION_TYPE_UPDATE,
           [
             "g.V().hasLabel('class').count()",
-            "g.V().has('id', 48).bothE().otherV().path().unfold().dedup().valueMap()"
+            "g.V().has('name', 'Link').valueMap()"
           ]
         ],
         [
@@ -818,6 +790,8 @@ describe('logout', () => {
               label: 'Main',
               noDelete: true,
               type: 'full',
+              isUserDefinedNodeVisible: true,
+              isOrphanNodeVisible: false,
               isUpperOntologyVisible: true,
               isSubClassEdgeVisible: true,
               isDatasetVisible: true,
@@ -861,7 +835,35 @@ describe('logout', () => {
           ],
           OPERATION_TYPE_UPDATE,
           []
-        ]
+        ],
+        [
+          [
+            'isCookieBarOpen',
+          ],
+          OPERATION_TYPE_UPDATE,
+          false,
+        ],
+        [
+          [
+            'isAnalyticsCookie',
+          ],
+          OPERATION_TYPE_UPDATE,
+          undefined,
+        ],
+        [
+          [
+            'isPreferencesCookie',
+          ],
+          OPERATION_TYPE_UPDATE,
+          undefined,
+        ],
+        [
+          [
+            'uniqueFingerprint',
+          ],
+          OPERATION_TYPE_UPDATE,
+          undefined,
+        ],
       ]
     )
 

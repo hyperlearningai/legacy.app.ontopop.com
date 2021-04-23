@@ -4,7 +4,7 @@ $pink: #e91e63;
 $purple: #9c27b0;
 $deep-purple: #673ab7;
 $indigo: #011e41;
-$blue: #2196f3;
+$blue: #0082ca;
 $light-blue: #03a9f4;
 $cyan: #00bcd4;
 $teal: #009688;
@@ -20,7 +20,8 @@ $grey: #424250;
 $light-grey: #f2f2f2;
 $mid-grey: #eff1f3;
 $blue-grey: #607d8b;
-$dark-grey: #33333d;
+$dark-grey: #232323;
+$very-dark-grey: #121212;
 $white: #ffffff;
 $black: #000000;
 $mint: #adefd1;
@@ -33,6 +34,10 @@ $primary: $blue;
 $secondary: $indigo;
 $tertiary: $orange;
 $font-color: $black;
+
+// background colors
+$dark-background: $very-dark-grey;
+$dark-background-lighter: $dark-grey;
 
 // edge colors
 $node-background: $mint;

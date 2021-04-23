@@ -16,7 +16,7 @@ const updateStyleAndPhysics = ({
   const {
     network,
     isPhysicsOn,
-    physicsRepulsion
+    physicsRepulsion,
   } = store.getState()
 
   const currentPhysicsOnState = isPhysicsOn
@@ -43,7 +43,7 @@ const updateStyleAndPhysics = ({
     }
 
     network?.fit({
-      animation: false // true
+      animation: false
     })
   }, displayedNodes.length > 100 ? 3000 : 1000)
 }

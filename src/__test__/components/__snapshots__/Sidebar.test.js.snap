@@ -27,7 +27,7 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
 </Connect>
 `;
 
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDING_BOX 1`] = `
+exports[`Sidebar should match snapshot when sidebar open and ROUTE_ELEMENTS_FILTER 1`] = `
 <Connect
   actions={
     Object {
@@ -55,33 +55,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDI
 `;
 
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM_QUERY 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  currentGraph="graph-0"
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-      },
-      "graph-1": Object {
-        "label": "Search",
-      },
-    }
-  }
-  isSidebarOpen={true}
-  mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
->
-  <Component />
-</Connect>
-`;
-
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_FILTER 1`] = `
 <Connect
   actions={
     Object {
@@ -216,33 +189,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT
 </Connect>
 `;
 
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_TEXT_SEARCH 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  currentGraph="graph-0"
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-      },
-      "graph-1": Object {
-        "label": "Search",
-      },
-    }
-  }
-  isSidebarOpen={true}
-  mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
->
-  <Component />
-</Connect>
-`;
-
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPH_OPTIONS 1`] = `
 <Connect
   actions={
@@ -324,33 +270,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
 </Connect>
 `;
 
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_FILTER 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  currentGraph="graph-0"
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-      },
-      "graph-1": Object {
-        "label": "Search",
-      },
-    }
-  }
-  isSidebarOpen={true}
-  mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
->
-  <Component />
-</Connect>
-`;
-
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTINGS 1`] = `
 <Connect
   actions={
@@ -379,33 +298,6 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTIN
 `;
 
 exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTEST_PATH 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  currentGraph="graph-0"
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-      },
-      "graph-1": Object {
-        "label": "Search",
-      },
-    }
-  }
-  isSidebarOpen={true}
-  mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
->
-  <Component />
-</Connect>
-`;
-
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STRUCTURED_SEARCH 1`] = `
 <Connect
   actions={
     Object {

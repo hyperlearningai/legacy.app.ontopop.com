@@ -1,18 +1,19 @@
 .graph-search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  position: absolute;
   width: 100%;
   height: 100%;
   min-height: 0;
   overflow-y: auto;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: $white;
 
   &-bar {
     width: 100%;
     max-width: 400px;
-    margin: 20px auto;
     position: relative;
 
     .p-autocomplete {
@@ -20,14 +21,16 @@
 
       .p-inputtext {
         width: 100%;
+        padding: 12px;
         padding-right: 30px;
+        border-radius: 20px;
       }
     }
 
     .p-button-icon-only {
       position: absolute;
       right: 0;
-      top: 0;
+      top: 4px;
       background: transparent;
       border: none;
       color: $dark-grey;

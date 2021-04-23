@@ -3,12 +3,13 @@ import authNotValid from '../fixtures/authNotValid'
 import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
-import { ROUTE_SEARCH } from '../../src/constants/routes'
+import { ROUTE_LISTING } from '../../src/constants/routes'
 import getStyling from '../fixtures/getStyling'
 
 context('Auth', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Auth', () => {
@@ -95,7 +96,7 @@ context('Auth', () => {
 
       cy.wait(500)
 
-      cy.location('pathname').should('be.equal', ROUTE_SEARCH)
+      cy.location('pathname').should('be.equal', ROUTE_LISTING)
     })
   })
 })

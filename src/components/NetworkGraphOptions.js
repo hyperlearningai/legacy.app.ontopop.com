@@ -7,20 +7,39 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { Checkbox } from 'primereact/checkbox'
+import {
+  SiAtom
+} from 'react-icons/si'
+import {
+  FaSitemap
+} from 'react-icons/fa'
+import {
+  AiOutlinePoweroff
+} from 'react-icons/ai'
+import {
+  IoFootballOutline,
+  IoGitNetworkSharp
+} from 'react-icons/io5'
 import actions from '../store/actions'
 import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
 import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraphOptions'
 import HideElementsByPropertyForm from './HideElementsByPropertyForm'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkGraphOptions = ({
   currentGraph,
   graphData,
-  updateStoreValue
+  updateStoreValue,
+  physicsRepulsion,
+  physicsHierarchicalView,
+  isPhysicsOn
 }) => {
   const { t } = useTranslation()
 
   const {
+    isUserDefinedNodeVisible,
+    isOrphanNodeVisible,
     isUpperOntologyVisible,
     isSubClassEdgeVisible,
     isDatasetVisible,
@@ -28,6 +47,8 @@ const NetworkGraphOptions = ({
     hiddenEdgesProperties
   } = graphData[currentGraph]
 
+  const [isUserDefinedNodeVisibleLocal, setUserDefinedNodeVisibleLocal] = useState(isUserDefinedNodeVisible)
+  const [isOrphanNodeVisibleLocal, setOrphanNodeVisibleLocal] = useState(isOrphanNodeVisible)
   const [isUpperOntologyVisibleLocal, setUpperOntologyVisibleLocal] = useState(isUpperOntologyVisible)
   const [isSubClassEdgeVisibleLocal, setSubClassEdgeVisibleLocal] = useState(isSubClassEdgeVisible)
   const [isDatasetVisibleLocal, setDatasetVisibleLocal] = useState(isDatasetVisible)
@@ -39,54 +60,154 @@ const NetworkGraphOptions = ({
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
       </h1>
+
       <div className="graph-options">
-        <div className="graph-options-text">{t('chooseGraphOptions')}</div>
+        <div className="sidebar-main-body graph-options">
+          <div className="sidebar-main-body-info m-b-20">
+            {t('chooseGraphOptions')}
+          </div>
 
-        <div className="graph-options-toggle p-col-12">
-          <Checkbox
-            id="upper-ontology-checkbox"
-            onChange={(e) => setUpperOntologyVisibleLocal(e.checked)}
-            checked={isUpperOntologyVisibleLocal}
-          />
-          <label htmlFor="upper-ontology-checkbox" className="p-checkbox-label">
-            {t('showUpperOntologyLayers')}
-          </label>
-        </div>
+          <div className="graph-options-physics">
+            <div className="graph-options-physics-input">
+              <div className="label">
+                {t('physics')}
+              </div>
+              <div className="graph-options-physics-buttons">
+                <Button
+                  aria-label={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
+                  tooltip={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
+                  tooltipOptions={{ position: 'top' }}
+                  className={isPhysicsOn ? 'graph-options-physics-buttons-button-selected' : ''}
+                  onClick={() => updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, !isPhysicsOn)}
+                >
+                  <AiOutlinePoweroff />
+                </Button>
+              </div>
+            </div>
 
-        <div className="graph-options-toggle p-col-12  m-t-10">
-          <Checkbox
-            id="subclass-checkbox"
-            onChange={(e) => setSubClassEdgeVisibleLocal(e.checked)}
-            checked={isSubClassEdgeVisibleLocal}
-          />
-          <label htmlFor="overlay-checkbox" className="p-checkbox-label">
-            {t('showSubclassRelationships')}
-          </label>
-        </div>
+            <div className="graph-options-physics-input">
+              <div className="label">
+                {t('positioning')}
+              </div>
+              <div className="graph-options-physics-buttons">
+                <Button
+                  aria-label={t('hierachicalView')}
+                  tooltip={t('hierachicalView')}
+                  tooltipOptions={{ position: 'top' }}
+                  className={physicsHierarchicalView ? 'graph-options-physics-buttons-button-selected' : ''}
+                  onClick={() => updateStoreValue(['physicsHierarchicalView'], OPERATION_TYPE_UPDATE, true)}
+                >
+                  <FaSitemap />
+                </Button>
+                <Button
+                  aria-label={t('gravitationalView')}
+                  tooltip={t('gravitationalView')}
+                  tooltipOptions={{ position: 'top' }}
+                  className={!physicsHierarchicalView ? 'graph-options-physics-buttons-button-selected' : ''}
+                  onClick={() => updateStoreValue(['physicsHierarchicalView'], OPERATION_TYPE_UPDATE, false)}
+                >
+                  <SiAtom />
+                </Button>
+              </div>
+            </div>
 
-        <div className="graph-options-toggle p-col-12  m-t-10">
-          <Checkbox
-            id="dataset-checkbox"
-            onChange={(e) => setDatasetVisibleLocal(e.checked)}
-            checked={isDatasetVisibleLocal}
-          />
-          <label htmlFor="upper-ontology-checkbox" className="p-checkbox-label">
-            {t('showDatasets')}
-          </label>
-        </div>
+            <div className="graph-options-physics-input">
+              <div className="label">
+                {t('repulsion')}
+              </div>
+              <div className="graph-options-physics-buttons">
+                <Button
+                  aria-label={t('gravitationalView')}
+                  tooltip={t('enableRepulsion')}
+                  tooltipOptions={{ position: 'top' }}
+                  className={physicsRepulsion ? 'graph-options-physics-buttons-button-selected' : ''}
+                  onClick={() => updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, true)}
+                >
+                  <IoFootballOutline />
+                </Button>
+                <Button
+                  aria-label={t('disableRepulsion')}
+                  tooltip={t('disableRepulsion')}
+                  tooltipOptions={{ position: 'top' }}
+                  className={!physicsRepulsion ? 'graph-options-physics-buttons-button-selected' : ''}
+                  onClick={() => updateStoreValue(['physicsRepulsion'], OPERATION_TYPE_UPDATE, false)}
+                >
+                  <IoGitNetworkSharp />
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="graph-options-toggle p-col-12">
+            <Checkbox
+              id="user-defined-nodes-checkbox"
+              onChange={(e) => setUserDefinedNodeVisibleLocal(e.checked)}
+              checked={isUserDefinedNodeVisibleLocal}
+            />
+            <label htmlFor="user-defined-nodes-checkbox" className="p-checkbox-label">
+              {t('showUserDefinedNodes')}
+            </label>
+          </div>
 
-        <div className="graph-options-text">{t('hideElementsByProperties')}</div>
+          <div className="graph-options-toggle p-col-12">
+            <Checkbox
+              id="orphan-nodes-checkbox"
+              onChange={(e) => setOrphanNodeVisibleLocal(e.checked)}
+              checked={isOrphanNodeVisibleLocal}
+            />
+            <label htmlFor="orphan-nodes-checkbox" className="p-checkbox-label">
+              {t('showOrphanNodes')}
+            </label>
+          </div>
 
-        <div
-          className="graph-options-selection"
-        >
-          <Accordion>
-            <AccordionTab
-              id="nodes-accordion"
-              header={t('nodes')}
-            >
-              <Accordion>
-                {
+          <div className="graph-options-toggle p-col-12">
+            <Checkbox
+              id="upper-ontology-checkbox"
+              onChange={(e) => setUpperOntologyVisibleLocal(e.checked)}
+              checked={isUpperOntologyVisibleLocal}
+            />
+            <label htmlFor="upper-ontology-checkbox" className="p-checkbox-label">
+              {t('showUpperOntologyLayers')}
+            </label>
+          </div>
+
+          <div className="graph-options-toggle p-col-12  m-t-10">
+            <Checkbox
+              id="subclass-checkbox"
+              onChange={(e) => setSubClassEdgeVisibleLocal(e.checked)}
+              checked={isSubClassEdgeVisibleLocal}
+            />
+            <label htmlFor="overlay-checkbox" className="p-checkbox-label">
+              {t('showSubclassRelationships')}
+            </label>
+          </div>
+
+          <div className="graph-options-toggle p-col-12 m-t-10">
+            <Checkbox
+              id="dataset-checkbox"
+              onChange={(e) => setDatasetVisibleLocal(e.checked)}
+              checked={isDatasetVisibleLocal}
+            />
+            <label htmlFor="upper-ontology-checkbox" className="p-checkbox-label">
+              {t('showDatasets')}
+            </label>
+          </div>
+
+          <div
+            className="sidebar-main-body-subtitle m-t-40"
+          >
+            {t('hideElementsByProperties')}
+          </div>
+
+          <div
+            className="graph-options-selection"
+          >
+            <Accordion>
+              <AccordionTab
+                id="nodes-accordion"
+                header={t('nodes')}
+              >
+                <Accordion>
+                  {
                   Object.keys(nodesProperties).length > 0
                   && Object.keys(nodesProperties).map((nodePropertyIndex) => (
                     <AccordionTab
@@ -102,36 +223,33 @@ const NetworkGraphOptions = ({
                     </AccordionTab>
                   ))
                 }
-              </Accordion>
-              <div className="graph-options-button-wrapper">
-                <Button
-                  label={t('add')}
-                  icon="pi pi-plus"
-                  className="graph-options-button graph-options-button-add"
-                  tooltip={t('add')}
-                  iconPos="right"
-                  tooltipOptions={{
-                    position: 'top'
-                  }}
-                  onClick={() => {
-                    if (Object.keys(nodesProperties).length === 0) return setNodesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
+                </Accordion>
+                <div className="graph-options-button-wrapper">
+                  <Button
+                    label={t('add')}
+                    aria-label={t('add')}
+                    icon="pi pi-plus"
+                    className="sidebar-button-primary graph-options-button graph-options-button-add"
+                    iconPos="right"
+                    onClick={() => {
+                      if (Object.keys(nodesProperties).length === 0) return setNodesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
 
-                    const nextIndex = Object.keys(nodesProperties).length
+                      const nextIndex = Object.keys(nodesProperties).length
 
-                    setNodesProperties({
-                      ...nodesProperties,
-                      [nextIndex]: DEFAULT_HIDDEN_ELEMENT_PROPERTY
-                    })
-                  }}
-                />
-              </div>
-            </AccordionTab>
-            <AccordionTab
-              id="edges-accordion"
-              header={t('edges')}
-            >
-              <Accordion>
-                {
+                      setNodesProperties({
+                        ...nodesProperties,
+                        [nextIndex]: DEFAULT_HIDDEN_ELEMENT_PROPERTY
+                      })
+                    }}
+                  />
+                </div>
+              </AccordionTab>
+              <AccordionTab
+                id="edges-accordion"
+                header={t('edges')}
+              >
+                <Accordion>
+                  {
                   Object.keys(edgesProperties).length > 0
                   && Object.keys(edgesProperties).map((edgePropertyIndex) => (
                     <AccordionTab
@@ -146,16 +264,13 @@ const NetworkGraphOptions = ({
                     </AccordionTab>
                   ))
                 }
-              </Accordion>
-              <div className="graph-options-button-wrapper">
+                </Accordion>
+
                 <Button
                   label={t('add')}
-                  tooltip={t('add')}
-                  className="graph-options-button graph-options-button-add"
+                  aria-label={t('add')}
+                  className="sidebar-button-primary graph-options-button graph-options-button-add"
                   iconPos="right"
-                  tooltipOptions={{
-                    position: 'top'
-                  }}
                   icon="pi pi-plus"
                   onClick={() => {
                     if (Object.keys(edgesProperties).length === 0) return setEdgesProperties({ 0: DEFAULT_HIDDEN_ELEMENT_PROPERTY })
@@ -168,20 +283,21 @@ const NetworkGraphOptions = ({
                     })
                   }}
                 />
-              </div>
-            </AccordionTab>
-          </Accordion>
-        </div>
 
-        <div className="graph-options-button-wrapper">
+              </AccordionTab>
+            </Accordion>
+          </div>
+
           <Button
-            tooltip={t('save')}
             id="network-graph-options-save"
-            className="graph-options-button m-t-30"
-            icon="pi pi-save"
+            className="sidebar-button-primary m-t-50"
+            icon="pi pi-arrow-right"
             iconPos="right"
-            label={t('show')}
+            label={t('apply')}
+            aria-label={t('apply')}
             onClick={() => setNetworkGraphOptions({
+              isUserDefinedNodeVisible: isUserDefinedNodeVisibleLocal,
+              isOrphanNodeVisible: isOrphanNodeVisibleLocal,
               isUpperOntologyVisible: isUpperOntologyVisibleLocal,
               isSubClassEdgeVisible: isSubClassEdgeVisibleLocal,
               isDatasetVisible: isDatasetVisibleLocal,
@@ -190,8 +306,8 @@ const NetworkGraphOptions = ({
               updateStoreValue
             })}
           />
-        </div>
 
+        </div>
       </div>
     </>
   )
@@ -201,14 +317,23 @@ NetworkGraphOptions.propTypes = {
   currentGraph: PropTypes.string.isRequired,
   graphData: PropTypes.shape().isRequired,
   updateStoreValue: PropTypes.func.isRequired,
+  physicsHierarchicalView: PropTypes.bool.isRequired,
+  isPhysicsOn: PropTypes.bool.isRequired,
+  physicsRepulsion: PropTypes.bool.isRequired,
 }
 
 const mapToProps = ({
   currentGraph,
-  graphData
+  graphData,
+  physicsRepulsion,
+  physicsHierarchicalView,
+  isPhysicsOn
 }) => ({
   currentGraph,
-  graphData
+  graphData,
+  physicsRepulsion,
+  physicsHierarchicalView,
+  isPhysicsOn
 })
 
 export default connect(

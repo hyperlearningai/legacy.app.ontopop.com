@@ -128,9 +128,12 @@ const NotesList = ({
         {t(SIDEBAR_VIEW_NOTES)}
       </h1>
 
-      <div className="notes">
+      <div className="sidebar-main-body notes">
         <div className="notes-select-row">
-          <label htmlFor="notes-select">
+          <label
+            className="sidebar-main-body-label text-center m-b-10"
+            htmlFor="notes-select"
+          >
             {t('notesFor')}
           </label>
           <SelectButton
@@ -151,8 +154,11 @@ const NotesList = ({
 
         {
           selectedNotesType !== 'graph' && (
-            <div className="notes-select-row">
-              <label htmlFor="notes-select-element">
+            <div className="notes-select-row m-b-20">
+              <label
+                className="sidebar-main-body-label text-center m-t-50 m-b-10"
+                htmlFor="notes-select-element"
+              >
                 {t('selectElement')}
               </label>
               <Dropdown
@@ -175,6 +181,12 @@ const NotesList = ({
           )
         }
 
+        <Divider />
+
+        <div className="sidebar-main-body-title m-t-20 text-center">
+          {t('availableNotes')}
+        </div>
+
         {
           (
             selectedNotesType === 'graph' || (
@@ -185,8 +197,6 @@ const NotesList = ({
           )
         }
 
-        <Divider />
-
         {
           (
             selectedNotesType === 'graph' || (
@@ -194,53 +204,54 @@ const NotesList = ({
             && noteElementId)
           ) && (
             <div className="notes-list">
-              <div htmlFor="notes-list-title">
-                {t('availableNotes')}
-              </div>
-
-              <div className="p-input-icon-right notes-list-search-input">
-                <i className="pi pi-search" />
-                <InputText
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder={t('search')}
-                  id="notes-search-filter"
-                />
-              </div>
-
-              <div className="notes-select-row">
-                <label htmlFor="notes-select">
-                  {t('sortBy')}
-                </label>
-                <div className="p-inputgroup">
-                  <Dropdown
-                    aria-label="notes-sort-by"
-                    id="notes-sort-by"
-                    value={sortField}
-                    options={SORT_FIELDS.map((field) => ({
-                      value: field,
-                      label: t(field)
-                    }))}
-                    onChange={(e) => setSortField(e.value)}
-                  />
-                  <Button
-                    aria-label={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
-                    id="notes-sort-by-direction"
-                    tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
-                    tooltipOptions={{ position: 'top' }}
-                    icon={sortDirection === 'asc' ? 'pi pi-arrow-down' : 'pi pi-arrow-up'}
-                    onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
-                  />
-                </div>
-              </div>
-
               <div className="notes-accordion-row">
-                <Accordion
-                  id="notes-filter"
-                >
-                  <AccordionTab header={t('filter')}>
+                <Accordion id="notes-filter">
+                  <AccordionTab header={t('advancedOptions')}>
+                    <div className="p-input-icon-right notes-list-search-input m-t-10">
+                      <i className="pi pi-search" />
+                      <InputText
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder={t('search')}
+                        id="notes-search-filter"
+                        className="full-width"
+                      />
+                    </div>
+
                     <div className="notes-select-row">
-                      <label htmlFor="notes-filter-field">
+                      <label
+                        className="sidebar-main-body-label text-center m-t-30 m-b-10"
+                        htmlFor="notes-select"
+                      >
+                        {t('sortBy')}
+                      </label>
+                      <div className="p-inputgroup">
+                        <Dropdown
+                          aria-label="notes-sort-by"
+                          id="notes-sort-by"
+                          value={sortField}
+                          options={SORT_FIELDS.map((field) => ({
+                            value: field,
+                            label: t(field)
+                          }))}
+                          onChange={(e) => setSortField(e.value)}
+                        />
+                        <Button
+                          aria-label={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
+                          id="notes-sort-by-direction"
+                          tooltip={t(sortDirection === 'asc' ? 'ascending' : 'descending')}
+                          tooltipOptions={{ position: 'top' }}
+                          icon={sortDirection === 'asc' ? 'pi pi-arrow-down' : 'pi pi-arrow-up'}
+                          onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="notes-select-row m-b-10">
+                      <label
+                        className="sidebar-main-body-label text-center m-t-30 m-b-10"
+                        htmlFor="notes-filter-field"
+                      >
                         {t('filterBy')}
                       </label>
                       <Dropdown
@@ -261,7 +272,10 @@ const NotesList = ({
                     {
                       filter === 'userId' && (
                         <div className="notes-select-row">
-                          <label htmlFor="notes-select">
+                          <label
+                            className="sidebar-main-body-label text-center m-t-20 m-b-10"
+                            htmlFor="notes-select"
+                          >
                             {t('selectUserIds')}
                           </label>
                           <MultiSelect
@@ -296,12 +310,16 @@ const NotesList = ({
 
               {
                 filteredNotes.length > 0
-                && orderBy(filteredNotes, [sortField], [sortDirection]).map((note) => (
-                  <NotesListNote
-                    key={`note-card-${note.id}`}
-                    note={note}
-                  />
-                ))
+                  ? orderBy(filteredNotes, [sortField], [sortDirection]).map((note) => (
+                    <NotesListNote
+                      key={`note-card-${note.id}`}
+                      note={note}
+                    />
+                  )) : (
+                    <div className="sidebar-main-body-info no-notes-message m-t-20 text-center">
+                      {t('noNotesPresent')}
+                    </div>
+                  )
               }
             </div>
           )

@@ -8,14 +8,9 @@ nav {
   background: $secondary;
   color: $white;
 
-  .nodes-icon{
+  .nodes-icon {
     vertical-align: text-top;
-    &.node{
-      color: #adefd1;
-    }
-    &.edge{
-      color: white;
-    }
+    color: $white;
   }
 
   button {
@@ -54,13 +49,22 @@ nav {
       align-items: center;
       justify-content: center;
 
-      &-button-selected {
+      .p-button {
         background: $white;
-        color: $secondary;
-        transition: $transition;
 
         svg {
           color: $secondary;
+          transition: $transition;
+        }
+      }
+
+      &-button-selected {
+        background: $primary !important;
+        color: $white;
+        transition: $transition;
+
+        svg {
+          color: $white !important;
           transition: $transition;
         }
       }

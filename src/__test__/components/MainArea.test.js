@@ -2,14 +2,23 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import MainArea from '../../components/MainArea'
-import { MAIN_VIEW_GRAPH, MAIN_VIEW_SEARCH } from '../../constants/views'
+import { NETWORK_VIEW_DATATABLE, NETWORK_VIEW_GRAPH, SIDEBAR_VIEW_GRAPHS } from '../../constants/views'
 
 const setup = ({
-  mainVisualisation
+  currentGraph,
+  networkVisualisation,
+  sidebarView
 }) => {
   const props = {
-    updateStoreValue: jest.fn(),
-    mainVisualisation
+    graphData: {
+      'graph-0': {
+        label: 'Main',
+        noDelete: true
+      }
+    },
+    currentGraph,
+    networkVisualisation,
+    sidebarView
   }
 
   const component = shallow(<MainArea {...props} />)
@@ -21,25 +30,36 @@ const setup = ({
 }
 
 describe('MainArea', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
-  it('should match snapshot when MAIN_VIEW_SEARCH', () => {
+  it('should match snapshot when currentGraph does not exists', () => {
     const {
       component
     } = setup({
-      mainVisualisation: MAIN_VIEW_SEARCH
+      currentGraph: 'graph-1',
+      networkVisualisation: NETWORK_VIEW_DATATABLE,
+      sidebarView: SIDEBAR_VIEW_GRAPHS
     })
 
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when MAIN_VIEW_GRAPH', () => {
+  it('should match snapshot when currentGraph exists', () => {
     const {
       component
     } = setup({
-      mainVisualisation: MAIN_VIEW_GRAPH
+      currentGraph: 'graph-0',
+      networkVisualisation: NETWORK_VIEW_GRAPH,
+      sidebarView: SIDEBAR_VIEW_GRAPHS
+    })
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should match snapshot when currentGraph exists and datatable to be shown', () => {
+    const {
+      component
+    } = setup({
+      currentGraph: 'graph-0',
+      networkVisualisation: NETWORK_VIEW_DATATABLE,
+      sidebarView: SIDEBAR_VIEW_GRAPHS
     })
     expect(toJson(component)).toMatchSnapshot()
   })

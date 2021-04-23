@@ -5,6 +5,8 @@ import {
 import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
+import { connect } from 'redux-zero/react'
+import PropTypes from 'prop-types'
 import { SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import {
   EXPORT_GRAPH_OPTIONS,
@@ -17,8 +19,11 @@ import exportAsPdf from '../utils/exportSettings/exportAsPdf'
 import exportCsv from '../utils/exportSettings/exportCsv'
 import exportOwl from '../utils/exportSettings/exportOwl'
 import printCanvas from '../utils/exportSettings/printCanvas'
+import actions from '../store/actions'
 
-const ExportSettings = () => {
+const ExportSettings = ({
+  updateStoreValue
+}) => {
   const { t } = useTranslation()
   const [exportFileName, setFileName] = useState('network-graph')
 
@@ -38,9 +43,16 @@ const ExportSettings = () => {
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_EXPORT)}
       </h1>
-      <div className="export-settings">
+      <div className="sidebar-main-body export-settings">
+        <div className="sidebar-main-body-info">
+          {t('setFileNameAndChooseExportFormat')}
+        </div>
+
         <div className="export-settings-input">
-          <label htmlFor="filename">
+          <label
+            className="sidebar-main-body-label text-center m-b-10"
+            htmlFor="filename"
+          >
             {t('fileName')}
           </label>
           <div className="export-settings-item-input">
@@ -65,7 +77,7 @@ const ExportSettings = () => {
         </div>
 
         <div className="export-settings-input">
-          <div className="label">
+          <div className="sidebar-main-body-label text-center m-b-10">
             {t('exportGraphAs')}
           </div>
           <div className="export-settings-buttons">
@@ -96,7 +108,7 @@ const ExportSettings = () => {
         </div>
 
         <div className="export-settings-input">
-          <div className="label">
+          <div className="sidebar-main-body-label text-center m-b-10">
             {t('exportDataAs')}
           </div>
           <div className="export-settings-buttons">
@@ -113,6 +125,7 @@ const ExportSettings = () => {
                     t
                   }) : exportOwl({
                     exportFileName,
+                    updateStoreValue,
                     t
                   }))}
                 />
@@ -122,7 +135,7 @@ const ExportSettings = () => {
         </div>
 
         <div className="export-settings-input">
-          <div className="label">
+          <div className="sidebar-main-body-label text-center m-b-10">
             {t('PrintGraph')}
           </div>
           <div className="export-settings-buttons">
@@ -145,4 +158,11 @@ const ExportSettings = () => {
   )
 }
 
-export default ExportSettings
+ExportSettings.propTypes = {
+  updateStoreValue: PropTypes.func.isRequired,
+}
+
+export default connect(
+  null,
+  actions
+)(ExportSettings)

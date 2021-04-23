@@ -1,6 +1,6 @@
 {
   "name": "ontology-visualisation",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Ontology visualisation",
   "main": "",
   "repository": {
@@ -8,10 +8,9 @@
     "url": "https://github.com/hyperlearningai/ontology-framework.git"
   },
   "scripts": {
-    "test": "jest --no-cache",
+    "test": "jest --no-cache --updateSnapshot",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
-    "test:update-snapshots": "npm run test -- --updateSnapshot",
     "lint": "eslint --ext .js src/ .*.js",
     "lint:watch": "npm run lint -- --watch",
     "lint:fix": "npm run lint -- --fix",
@@ -24,8 +23,16 @@
     "build-docs": "jsdoc src/utils/*.js -d docs",
     "test:e2e:open": "cypress open",
     "cy:run": "cypress run",
+    "test:e2e:run:no-coverage": "start-server-and-test start 3000 cy:run --env coverage=false",
     "test:e2e:run": "start-server-and-test start 3000 cy:run",
-    "rebuild-saas": "npm rebuild node-sass"
+    "rebuild-sass": "npm rebuild node-sass",
+    "mkdir:reports": "mkdir reports || true",
+    "precopy:reports": "npm run mkdir:reports",
+    "copy:reports": "cp cypress-coverage/coverage-final.json reports/from-cypress.json && cp jest-coverage/coverage-final.json reports/from-jest.json",
+    "precombine:reports": "npm run copy:reports && mkdir .nyc_output || true",
+    "combine:reports": "npx nyc merge reports && mv coverage.json .nyc_output/out.json",
+    "prereport:combined": "npm run combine:reports",
+    "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage"
   },
   "author": "@chriscarex",
   "license": "MIT",
@@ -37,11 +44,13 @@
     "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.5",
+    "@cypress/code-coverage": "^3.9.4",
     "@testing-library/dom": "^7.29.2",
     "@testing-library/jest-dom": "^5.11.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-jest": "^26.3.0",
     "browserslist": "^4.16.1",
+    "check-code-coverage": "^1.10.0",
     "cypress": "^7.0.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.5.0",
@@ -101,14 +110,18 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "flatted": "^3.1.1",
     "i18next": "^19.8.4",
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-xhr-backend": "^3.2.2",
     "jspdf": "^2.2.0",
     "jszip": "^3.5.0",
     "lodash": "^4.17.20",
+    "murmurhash-js": "^1.0.0",
     "next": "^10.0.5",
+    "next-compose-plugins": "^2.2.1",
     "next-images": "^1.6.2",
+    "next-img": "^0.3.2",
     "node-sass": "^4.14.1",
     "papaparse": "^5.3.0",
     "primeflex": "^2.0.0",
@@ -135,5 +148,21 @@
   "jest-junit": {
     "outputDirectory": "test/test_reports",
     "outputName": "jest-junit.xml"
+  },
+  "nyc": {
+    "report-dir": "cypress-coverage",
+    "reporter": [
+      "text",
+      "json",
+      "lcov"
+    ],
+    "all": true,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "**/*.test.js",
+      "**/*.spec.js"
+    ]
   }
 }

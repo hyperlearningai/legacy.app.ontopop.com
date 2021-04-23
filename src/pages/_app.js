@@ -11,6 +11,7 @@ import 'vis-network/styles/vis-network.min.css'
 import '../styles/styles.scss'
 import '../i18n'
 import AuthCheck from '../components/AuthCheck'
+import CookieBar from '../components/CookieBar'
 
 class MyApp extends App {
   render() {
@@ -23,6 +24,7 @@ class MyApp extends App {
         />
         <Component {...pageProps} />
         <ReactNotification />
+        <CookieBar />
       </Provider>
     )
   }

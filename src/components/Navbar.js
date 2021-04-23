@@ -5,11 +5,17 @@ import PropTypes from 'prop-types'
 import {
   BsFillCircleFill,
   BsSearch,
-  BsArrowUpRight
+  BsArrowUpRight,
+  BsTable
 } from 'react-icons/bs'
+import { BiNetworkChart } from 'react-icons/bi'
+import { Button } from 'primereact/button'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
+import {
+  NETWORK_VIEW_DATATABLE, NETWORK_VIEW_GRAPH, SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS
+} from '../constants/views'
 import { DISPLAYED_RESULTS_PER_PAGE } from '../constants/search'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const Navbar = ({
   availableNodesCount,
@@ -18,6 +24,8 @@ const Navbar = ({
   sidebarView,
   searchPageSelected,
   entrySearchResultsByPage,
+  updateStoreValue,
+  networkVisualisation
 }) => {
   const { t } = useTranslation()
 
@@ -48,6 +56,33 @@ const Navbar = ({
           )
         }
       </div>
+
+      {
+          sidebarView === SIDEBAR_VIEW_GRAPHS && (
+            <div className="nav-right">
+              <Button
+                aria-label={t('showNetworkGraph')}
+                tooltip={t('showNetworkGraph')}
+                tooltipOptions={{ position: 'top' }}
+                id="navbar-network-graph-btn"
+                className={networkVisualisation === NETWORK_VIEW_GRAPH ? 'nav-right-button-selected' : ''}
+                onClick={() => updateStoreValue(['networkVisualisation'], OPERATION_TYPE_UPDATE, NETWORK_VIEW_GRAPH)}
+              >
+                <BiNetworkChart />
+              </Button>
+              <Button
+                aria-label={t('showDataTable')}
+                tooltip={t('showDataTable')}
+                tooltipOptions={{ position: 'top' }}
+                id="navbar-datatable-btn"
+                className={networkVisualisation === NETWORK_VIEW_DATATABLE ? 'nav-right-button-selected' : ''}
+                onClick={() => updateStoreValue(['networkVisualisation'], OPERATION_TYPE_UPDATE, NETWORK_VIEW_DATATABLE)}
+              >
+                <BsTable />
+              </Button>
+            </div>
+          )
+        }
     </nav>
   )
 }
@@ -59,6 +94,8 @@ Navbar.propTypes = {
   totalSearchCount: PropTypes.number.isRequired,
   searchPageSelected: PropTypes.number.isRequired,
   entrySearchResultsByPage: PropTypes.shape().isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
+  networkVisualisation: PropTypes.string.isRequired,
 }
 
 const mapToProps = ({
@@ -68,6 +105,7 @@ const mapToProps = ({
   totalSearchCount,
   searchPageSelected,
   entrySearchResultsByPage,
+  networkVisualisation
 }) => ({
   availableNodesCount,
   availableEdgesCount,
@@ -75,6 +113,7 @@ const mapToProps = ({
   totalSearchCount,
   searchPageSelected,
   entrySearchResultsByPage,
+  networkVisualisation
 })
 
 export default connect(

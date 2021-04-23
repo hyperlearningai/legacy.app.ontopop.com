@@ -22,8 +22,12 @@ header {
       }
 
       .logo {
-        width: 140px;
+        width: 180px;
         padding-top: 10px;
+
+        img {
+          width: 100%;
+        }
       }
     }
 
@@ -37,30 +41,6 @@ header {
         background: $indigo;
         color: $white;
         height: 40px;
-      }
-
-      .p-overlaypanel {
-        left: auto !important;
-        right: 0;
-        top: 40px !important;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-
-        &-content {
-          padding: 0;
-          width: 160px;
-
-          .p-button {
-            width: 160px;
-            margin: 0;
-            background: $white;
-            color: $font-color;
-            border-radius: 0;
-            border: 1px solid $font-color;
-            padding: 10px;
-          }
-        }
       }
     }
   }

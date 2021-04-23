@@ -8,6 +8,7 @@ import { NODE_TYPE } from '../constants/graph'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { ROUTE_CUSTOM_QUERY, ROUTE_NOTES, ROUTE_SYNONYMS } from '../constants/routes'
 import { SIDEBAR_VIEW_CUSTOM_QUERY, SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
+import setPageView from '../utils/analytics/setPageView'
 
 const GraphContextMenu = ({
   updateStoreValue,
@@ -31,6 +32,7 @@ const GraphContextMenu = ({
         updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
         updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_CUSTOM_QUERY)
         window.history.pushState('', '', ROUTE_CUSTOM_QUERY)
+        setPageView({ url: ROUTE_CUSTOM_QUERY, updateStoreValue })
       }
     },
     {
@@ -58,6 +60,7 @@ const GraphContextMenu = ({
           updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
           updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
           window.history.pushState('', '', ROUTE_SYNONYMS)
+          setPageView({ url: ROUTE_SYNONYMS, updateStoreValue })
         }
       }]
     }
@@ -82,6 +85,7 @@ const GraphContextMenu = ({
           updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
           updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
           window.history.pushState('', '', ROUTE_NOTES)
+          setPageView({ url: ROUTE_NOTES, updateStoreValue })
         }
       },
     ]
@@ -103,6 +107,7 @@ const GraphContextMenu = ({
           updateStoreValue(['showContextMenu'], OPERATION_TYPE_UPDATE, false)
           updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
           window.history.pushState('', '', ROUTE_NOTES)
+          setPageView({ url: ROUTE_NOTES, updateStoreValue })
         }
       }
     ]

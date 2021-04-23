@@ -23,88 +23,77 @@ const NodesSelectionDetails = ({
   }
 
   return (
-    <div className="nodes-selection-details m-t-10">
-      <div className="nodes-selection-details-title">
+    <div className="elements-selection-details">
+      <div className="sidebar-main-body-title m-b-20 m-t-30">
         {t('properties')}
       </div>
 
-      <div className="nodes-selection-details-table nodes-selection-details-table-properties">
-        <table>
-          <thead>
-            <tr>
-              <th />
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {
-              tableRowNames.map((tableRowName) => (
-                <tr
-                  key={`details-row-${tableRowName}`}
-                >
-                  <td>
-                    {tableRowName}
-                  </td>
-                  <td>
-                    {selectedNode[tableRowName] || t('null')}
-                  </td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
+      <div className="elements-selection-details-table elements-selection-details-table-properties">
+        {
+          tableRowNames.map((tableRowName) => (
+            <div
+              key={`details-row-${tableRowName}`}
+              className="elements-selection-details-table-row"
+            >
+              <div className="light-bold">
+                {tableRowName}
+              </div>
+              <div>
+                {selectedNode[tableRowName] || t('null')}
+              </div>
+            </div>
+          ))
+        }
       </div>
 
-      <div className="nodes-selection-details-title">
+      <div className="sidebar-main-body-title m-b-20 m-t-50">
         {t('relationships')}
       </div>
 
       {
         connections.length > 0 ? (
-          <div className="nodes-selection-details-table nodes-selection-details-table-relationships">
-            <table>
-              <thead>
-                <tr>
-                  <th>{t('from')}</th>
-                  <th>{t('edge')}</th>
-                  <th>{t('to')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  connections.map((triple) => {
-                    const edge = getEdge(triple)
+          <div className="elements-selection-details-table elements-selection-details-table-relationships">
+            <div
+              className="elements-selection-details-table-row"
+            >
+              <div className="light-bold">{t('from')}</div>
+              <div className="light-bold">{t('edge')}</div>
+              <div className="light-bold">{t('to')}</div>
+            </div>
 
-                    if (edge === null) return null
+            {
+              connections.map((triple) => {
+                const edge = getEdge(triple)
 
-                    const {
-                      from,
-                      to,
-                      label
-                    } = edge
+                if (edge === null) return null
 
-                    const fromLabel = getNode(from).label
-                    const toLabel = getNode(to).label
+                const {
+                  from,
+                  to,
+                  label
+                } = edge
 
-                    return (
-                      <tr
-                        key={`relationship-row-${from}-${label}-${to}`}
-                      >
-                        <td className={`${from === selectedNode.id ? 'bold italic' : ''}`}>
-                          {fromLabel}
-                        </td>
-                        <td>
-                          {label}
-                        </td>
-                        <td className={`${to === selectedNode.id ? 'bold italic' : ''}`}>
-                          {toLabel}
-                        </td>
-                      </tr>
-                    )
-                  })
-                }
-              </tbody>
-            </table>
+                const fromLabel = getNode(from).label
+                const toLabel = getNode(to).label
+
+                return (
+                  <div
+                    key={`relationship-row-${from}-${label}-${to}`}
+                    className="elements-selection-details-table-row"
+                  >
+                    <div className={`${from === selectedNode.id ? 'light-bold italic' : ''}`}>
+                      {fromLabel}
+                    </div>
+                    <div>
+                      {label}
+                    </div>
+                    <div className={`${to === selectedNode.id ? 'light-bold italic' : ''}`}>
+                      {toLabel}
+                    </div>
+                  </div>
+                )
+              })
+            }
           </div>
         ) : (
           <>

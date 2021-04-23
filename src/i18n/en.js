@@ -14,10 +14,8 @@ export default {
   // navbar
   hideSidebar: 'Hide sidebar',
   showSidebar: 'Show sidebar',
-  networkGraphView: 'Network graph view',
-  tableView: 'Table view',
   showNetworkGraph: 'Show network graph',
-  showTable: 'Show table',
+  showDataTable: 'Show datatable',
   showInfo: 'Show element info',
   hideInfo: 'Hide element info',
   nodes: 'Nodes',
@@ -31,8 +29,6 @@ export default {
   'network-graph-options': 'Network graph options',
   nodeNeighbourhood: 'Node neighbourhood',
   'node-neighbourhood': 'Node neighbourhood',
-  structuredSearch: 'Structured search',
-  'structured-search': 'Structured search',
   ontologyFilter: 'Ontology filter',
   'ontology-filter': 'Ontology filter',
   shortestPath: 'Shortest path',
@@ -47,6 +43,8 @@ export default {
   'elements-selection': 'Elements selection',
   nodesFilter: 'Nodes filter',
   'nodes-filter': 'Nodes filter',
+  elementsFilter: 'Elements filter',
+  'elements-filter': 'Elements filter',
   edgesFilter: 'Edges filter',
   'edges-filter': 'Edges filter',
   selectNodes: 'Select nodes',
@@ -56,8 +54,6 @@ export default {
   styling: 'Styling',
   notes: 'Notes',
   export: 'Export',
-  freeTextSearch: 'Free-text search',
-  'free-text-search': 'Free-text search',
   versioning: 'Versioning',
   synonyms: 'Synonyms',
 
@@ -84,14 +80,10 @@ export default {
   selectNodeFromGraphOrFromList: 'Select node from graph or pick from list',
   selectNode: 'Select node',
 
-  // elements selection
-
   // structured search
-  filterElementsByArbitraryPropsCombination: 'Filter nodes or edges by any arbitrary combination of one or more node property values',
   and: 'And',
   or: 'Or',
   chooseLogic: 'Choose logic',
-  elementsFound: 'Elements found',
 
   // filter
   filterNodesByNodeProps: 'Filter Nodes by Node Properties',
@@ -149,13 +141,15 @@ export default {
   isNodeOverlay: 'Show path over nodes',
   isNotNodeOverlay: 'Show path only',
   overlay: 'Overlay',
-  selectStartingNode: 'Select starting node',
-  selectEndingNode: 'Select ending node',
+  overlayNetworkGraph: 'Overlay network graph',
+  selectStartingNode: 'Set starting node',
+  selectEndingNode: 'Set ending node',
   selectNodesFromGraphOrFromList: 'Select nodes from graph or pick from list',
   nodesToExclude: 'Nodes to exclude',
   edgesToExclude: 'Edges to exclude',
   showShortestPath: 'Show shortest path',
   showUpperOntologyLayers: 'Show upper ontology layers',
+  advancedOptions: 'Advanced options',
 
   // Physics settings
   physicsSettings: 'Physics settings',
@@ -215,7 +209,7 @@ export default {
   stylingNodeTextFontSize: 'Node font size',
   nodeCaptionPosition: 'Node caption position',
   nodeCaptionProperties: 'Node caption properties',
-  nodeShapeInstructions: 'Choose the node shape',
+  nodeShapeInstructions: 'Choose shape',
   stylingNodeTextFontAlign: 'Node font alignment',
   stylingNodeCaptionProperty: 'Node caption property',
   stylingNodeCaptionPropertyDataset: 'Node caption property (Dataset)',
@@ -261,7 +255,9 @@ export default {
   fileCanBeDownloaded: 'File can now be downloaded, check your browser!',
   fileCanBePrinted: 'File can now be printed, check your browser!',
   couldNotDownloadCsv: 'Could not download CSV!',
-  insertFileName: 'Insert file name.',
+  insertFileName: 'Insert file name',
+  setFileNameAndChooseExportFormat: 'Set file name and choose export format',
+  couldNotExportOwl: 'Could not export data as Owl file',
 
   // custom query
   customQuery: 'Custom query',
@@ -273,6 +269,7 @@ export default {
   query: 'Query',
   clear: 'Clear',
   exportAsJson: 'Export as Json',
+  insertGremlinQuery: 'Insert Gremlin query or pick a query from history',
 
   // versioning
   version: 'Version',
@@ -339,6 +336,8 @@ export default {
   nodesRestored: 'Nodes restored',
   edgesDeleted: 'Edges deleted',
   edgesRestored: 'Edges restored',
+  noNodesToDelete: 'No nodes to delete',
+  noEdgesToDelete: 'No edges to delete',
 
   // footer navbar
   hidePhysicsSettings: 'Hide physics settings',
@@ -346,6 +345,7 @@ export default {
   allowEdgeSelection: 'Allow edge selection',
   disallowEdgeSelection: 'Disallow edge selection',
   selectedEdges: 'Selected edges',
+  backToSearch: 'Back to search',
 
   // info
   id: 'ID',
@@ -367,7 +367,7 @@ export default {
   properties: 'Properties',
   relationships: 'Relationships',
   from: 'From',
-  to: 'to',
+  to: 'To',
   nodesProperties: 'Nodes properties',
 
   // entry search
@@ -399,9 +399,10 @@ export default {
   open: 'Open',
   any: 'Any',
   lowerOntology: 'Lower ontology',
-  weCouldNotFindAnyMatchFor: 'We could not find any match for',
+  weCouldNotFindAnyMatchFor: 'We could not find any results for your search query ',
   pleaseTryDifferentQuery: 'Please try a different search query.',
   visualiseEntireOntology: 'Visualise entire ontology',
+  applyFilters: 'Apply filters',
 
   // edges list
   edges: 'Edges',
@@ -466,6 +467,8 @@ export default {
   selectUserIds: 'Select user IDs',
   edgeId: 'Edge ID',
   edgeLabel: 'Edge label',
+  noNotesPresent: 'No notes present',
+  editNote: 'Edit note',
 
   // api calls
   apiCallNotValid: 'Invalid http request',
@@ -477,6 +480,8 @@ export default {
   synonymText: 'Synonym Text',
   availableSynonyms: 'Available Synonyms',
   synonymCreated: 'Synonym Created!',
+  noSynonymsPresent: 'No synonyms present',
+  editSynonym: 'Edit synonym',
 
   // network graph options
   showSubclassRelationships: 'Show subclass relationships',
@@ -487,5 +492,38 @@ export default {
   notEqual: 'Not equal',
   chooseFilter: 'Choose filter',
   selectLogic: 'Select logic',
-  insertText: 'Insert text'
+  insertText: 'Insert text',
+  insertTextOrSelect: 'Insert text or select',
+  apply: 'Apply',
+  showOrphanNodes: 'Show orphan nodes',
+  showUserDefinedNodes: 'Show user-defined nodes',
+
+  // listing page
+  name: 'Name',
+  description: 'Description',
+  owner: 'Owner',
+  actions: 'Actions',
+  availableOntologies: 'Available ontologies',
+  openInWebProtege: 'Open in WebProtege',
+
+  // datatable
+  availableRelationships: 'Available relationships',
+  predicate: 'Predicate',
+  noTriplesAvailable: 'No relationships available',
+
+  // legal
+  cookieSettings: 'Cookie settings',
+  cookieBarMessage1: 'This website uses cookies to enhance the user experience.',
+  cookieBarMessage2: 'Choose your preferences, you can update them at any time.',
+  preferences: 'Preferences',
+  preferencesCookies: 'used to store preferences e.g. language',
+  analytics: 'Analytics',
+  analyticsCookies: 'used for anonymous statistics and user behaviour analysis',
+  functional: 'Functional',
+  functionalCookies: 'essentials and cannot be switched off.',
+  savePreferences: 'Save preferences',
+  yesY: 'Y',
+  noN: 'N',
+  acceptAll: 'Accept all',
+  chooseYourPreference: 'Choose your preference'
 }

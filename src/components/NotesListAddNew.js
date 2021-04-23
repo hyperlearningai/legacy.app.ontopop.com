@@ -44,30 +44,28 @@ const NotesListAddNew = ({
   }
 
   return (
-    <div className="card">
-
+    <>
       {!showForm
         ? (
-          <div className="notes-note notes-add-button">
-            <Button
-              aria-label={t('addNewNote')}
-              tooltip={t('addNewNote')}
-              tooltipOptions={{ position: 'top' }}
-              label={t('addNewNote')}
-              id="add-note"
-              onClick={() => setShowForm(true)}
-            >
-              <i className="pi pi-plus-circle" />
-            </Button>
-          </div>
+          <Button
+            aria-label={t('addNewNote')}
+            label={t('addNewNote')}
+            id="add-note"
+            icon="pi pi-plus-circle"
+            iconPos="right"
+            className="sidebar-button-primary m-t-0"
+            onClick={() => setShowForm(true)}
+          />
         ) : (
-          <div className="notes-note">
-            <p className="bold">
+          <div className="card notes-note p-p-2 p-t-20 p-b-20 m-b-30">
+            <label
+              className="sidebar-main-body-label m-b-10"
+              htmlFor="note-textarea"
+            >
               {selectedNotesType === 'graph' && t('addGraphNote')}
               {selectedNotesType === 'node' && t('addNodeNote')}
               {selectedNotesType === 'edge' && t('addEdgeNote')}
-            </p>
-            <label htmlFor="note-textarea">{t('noteText')}</label>
+            </label>
             <InputTextarea
               id="note-textarea"
               value={noteText}
@@ -80,29 +78,29 @@ const NotesListAddNew = ({
             {
               selectedNotesType !== 'graph'
               && (
-                <p id="selected-element-label">
+                <div
+                  className="sidebar-main-body-info"
+                  id="selected-element-label"
+                >
                   {`${t(selectedNotesType === 'edge' ? 'forEdge' : 'forNode')}: ${elementLabel}`}
-                </p>
+                </div>
               )
             }
 
-            <div className="notes-buttons">
+            <div className="p-d-flex full-width">
               <Button
                 aria-label={t('close')}
-                tooltip={t('close')}
-                tooltipOptions={{ position: 'top' }}
-                className="p-button-secondary"
+                className="sidebar-button-secondary full-width m-r-10 m-t-0 m-b-0"
                 label={t('close')}
                 id="close-add-note"
                 onClick={() => setShowForm(false)}
               />
 
               <Button
-                aria-label={t('addNote')}
-                tooltip={t('addNote')}
-                tooltipOptions={{ position: 'top' }}
-                label={t('addNote')}
+                aria-label={t('add')}
+                label={t('add')}
                 id="submit-note"
+                className="sidebar-button-primary full-width m-l-10 m-t-0 m-b-0"
                 disabled={(selectedNotesType === 'node' && !noteElementId) || (selectedNotesType === 'edge' && !noteElementId)}
                 onClick={() => {
                   setShowForm(false)
@@ -119,8 +117,7 @@ const NotesListAddNew = ({
             </div>
           </div>
         )}
-
-    </div>
+    </>
   )
 }
 

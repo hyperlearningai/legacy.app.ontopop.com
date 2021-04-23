@@ -60,7 +60,7 @@ describe('setUserDefinedNodeStyle', () => {
           background: '#adefd1', border: '#011e41', highlight: { background: '#ffed00', border: '#009688' }, hover: { background: '#f2f2f2', border: '#607d8b' }
         },
         font: {
-          align: 'center', bold: '700', color: '#000000', face: 'Montserrat', size: 12
+          align: 'center', bold: '700', color: '#000000', face: 'Inter', size: 12
         },
         id: '12',
         label: 'Maintenance',
@@ -124,7 +124,7 @@ describe('setUserDefinedNodeStyle', () => {
           align: 'center',
           bold: '700',
           color: '#000000',
-          face: 'Montserrat',
+          face: 'Inter',
           size: 12,
         },
         id: '12',

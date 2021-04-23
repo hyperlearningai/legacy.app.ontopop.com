@@ -7,6 +7,7 @@ import en from '../../../i18n/en'
 import httpCall from '../../../utils/apiCalls/httpCall'
 import showNotification from '../../../utils/notifications/showNotification'
 import { ADVANCED_SEARCH_TEMPLATE } from '../../../constants/search'
+import setGaEvent from '../../../utils/analytics/setGaEvent'
 
 const updateStoreValue = jest.fn()
 const setLoading = jest.fn()
@@ -15,6 +16,7 @@ const value = 'roa'
 
 jest.mock('../../../utils/apiCalls/httpCall')
 jest.mock('../../../utils/notifications/showNotification')
+jest.mock('../../../utils/analytics/setGaEvent')
 
 const entrySearchResults = [
   {
@@ -136,13 +138,6 @@ describe('searchGraph', () => {
         ],
         [
           [
-            'isFirstQuery',
-          ],
-          OPERATION_TYPE_UPDATE,
-          true,
-        ],
-        [
-          [
             'isSearchLoading',
           ],
           OPERATION_TYPE_UPDATE,
@@ -154,6 +149,59 @@ describe('searchGraph', () => {
           ],
           OPERATION_TYPE_UPDATE,
           {},
+        ],
+        [
+          [
+            'entrySearchResults',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+      ]
+    )
+  })
+
+  it('should work correctly when no search value', async () => {
+    httpCall.mockImplementation(() => (
+      {
+        data: {
+          value: entrySearchResults,
+          '@odata.count': 80
+        }
+      }
+    ))
+
+    store.getState = jest.fn().mockImplementation(() => ({
+      classesFromApi,
+      entrySearchValue: '',
+      isFirstQuery: false,
+      searchPageSelected: 0,
+      dataTypeSearch: 'any',
+      upperOntologySearch: 'any',
+      advancedSearchFilters: [ADVANCED_SEARCH_TEMPLATE]
+    }))
+
+    await searchGraph({
+      updateStoreValue,
+      setLoading,
+      t
+    })
+
+    expect(updateStoreValue.mock.calls).toEqual(
+      [
+        [
+          [
+            'entrySearchResults',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
+            'totalSearchCount',
+          ],
+          OPERATION_TYPE_UPDATE,
+          0,
         ],
         [
           [
@@ -192,6 +240,12 @@ describe('searchGraph', () => {
       t
     })
 
+    expect(setGaEvent).toHaveBeenCalledWith({
+      action: 'search',
+      params: {
+        search_term: 'roa~'
+      }
+    })
     expect(updateStoreValue.mock.calls).toEqual(
       [
         [
@@ -215,6 +269,14 @@ describe('searchGraph', () => {
           OPERATION_TYPE_UPDATE,
           true,
         ],
+        [
+          [
+            'isFirstQuery',
+          ],
+          OPERATION_TYPE_UPDATE,
+          false,
+        ],
+
         [
           [
             'totalSearchCount',

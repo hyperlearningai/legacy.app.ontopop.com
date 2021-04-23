@@ -61,7 +61,7 @@ describe('resetNodesStyles', () => {
           align: 'center',
           bold: '700',
           color: '#000',
-          face: 'Montserrat',
+          face: 'Inter',
           size: 12
         },
         id: '12',

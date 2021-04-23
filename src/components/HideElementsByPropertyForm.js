@@ -184,10 +184,7 @@ const HideElementsByPropertyForm = ({
                   <span className="p-buttonset add-delete-buttons">
                     <Button
                       label={t('delete')}
-                      tooltip={t('delete')}
-                      tooltipOptions={{
-                        position: 'top'
-                      }}
+                      aria-label={t('delete')}
                       className="p-button-warning delete-property"
                       onClick={() => {
                         const newProperties = JSON.parse(JSON.stringify(elementProperties))
@@ -203,6 +200,7 @@ const HideElementsByPropertyForm = ({
 
                     <Button
                       label={t('add')}
+                      aria-label={t('add')}
                       className="add-property"
                       onClick={() => {
                         const newProperties = JSON.parse(JSON.stringify(elementProperties))
@@ -224,12 +222,9 @@ const HideElementsByPropertyForm = ({
       <div className="graph-options-button-wrapper">
         <Button
           label={t('delete')}
-          tooltip={t('delete')}
-          tooltipOptions={{
-            position: 'top'
-          }}
+          aria-label={t('delete')}
           iconPos="right"
-          className="graph-options-button graph-options-button-delete"
+          className="sidebar-button-secondary graph-options-button graph-options-button-delete"
           icon="pi pi-trash"
           onClick={() => {
             const newProperties = JSON.parse(JSON.stringify(elementProperties))

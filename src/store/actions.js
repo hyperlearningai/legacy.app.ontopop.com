@@ -1,22 +1,28 @@
+import { parse, stringify } from 'flatted'
 import {
+  OPERATION_TYPE_UPDATE,
   OPERATION_TYPE_ADD,
   OPERATION_TYPE_PUSH,
-  OPERATION_TYPE_TOGGLE,
-  OPERATION_TYPE_UPDATE,
-  OPERATION_TYPE_DELETE,
-  OPERATION_TYPE_ARRAY_DELETE,
   OPERATION_TYPE_PUSH_UNIQUE,
-  OPERATION_TYPE_OBJECT_ADD
+  OPERATION_TYPE_TOGGLE,
+  OPERATION_TYPE_ARRAY_DELETE,
+  OPERATION_TYPE_DELETE,
+  OPERATION_TYPE_OBJECT_ADD,
+  OPERATION_TYPE_ARRAY_DELETE_INDEX
 } from '../constants/store'
 
 export default {
   /**
    * Update store value
    * Add operation: Add/append value to existing
-   * Delete operation: Delete key (only avaiable for multi-keys as cannot remove key from store)
-   * Update operation: Replace current value with new one
    * Push operation: Push value to array
+   * Push unique operation: Push value to array if not existing
    * Toggle operation: Push value to array if not existing, remove from array if existing
+   * Delete operation: Delete key
+   * Array Delete operation: Delete item in array which matches the value
+   * Array Delete Index operation: Delete item in array by index value
+   * Object add operation: Add item to object
+   * Update operation: Replace current value with new one
    * @param  {Object}  state            Store state
    * @param  {Array}   keys             Object keys in nested order
    * @param  {String}  type             operation type [add | delete | update | push | toggle]
@@ -24,164 +30,125 @@ export default {
    * @return {undefined}
    */
   updateStoreValue: (state, keys, type, value) => {
-    const newObject = state
-    const key = keys[0]
+    const stateKey = keys[0]
 
-    if (keys.length < 2) {
-      if (type === OPERATION_TYPE_ADD) {
-        return {
-          [key]: newObject[key] + value
-        }
-      }
-
-      if (type === OPERATION_TYPE_OBJECT_ADD) {
-        return {
-          [key]: {
-            ...newObject[key],
-            ...value
-          }
-        }
-      }
-
-      if (type === OPERATION_TYPE_PUSH) {
-        const newArray = state[key] ? state[key].slice() : []
-        newArray.push(value)
-
-        return {
-          [key]: newArray
-        }
-      }
-
-      if (type === OPERATION_TYPE_PUSH_UNIQUE) {
-        const newArray = state[key] ? state[key].slice() : []
-
-        if (!newArray.includes(value)) {
-          newArray.push(value)
-        }
-
-        return {
-          [key]: newArray
-        }
-      }
-
-      if (type === OPERATION_TYPE_ARRAY_DELETE) {
-        const newArray = state[key] ? state[key].slice() : []
-
-        const valueIndex = newArray.indexOf(value)
-
-        if (valueIndex > -1) {
-          newArray.splice(valueIndex, 1)
-        }
-
-        return {
-          [key]: newArray
-        }
-      }
-
-      if (type === OPERATION_TYPE_TOGGLE) {
-        const newArray = state[key] ? state[key].slice() : []
-
-        const valueIndex = newArray.indexOf(value)
-
-        if (valueIndex > -1) {
-          newArray.splice(valueIndex, 1)
-        } else {
-          newArray.push(value)
-        }
-
-        return {
-          [key]: newArray
-        }
-      }
-
-      return {
-        [key]: value
-      }
+    const newState = {
+      [stateKey]: state[stateKey] ? parse(stringify(state[stateKey])) : undefined
     }
 
-    const subValues = [newObject]
+    const subValues = [newState]
 
     keys.map((currentKey, index) => {
-      if (index > keys.length - 2) return false
+      const isLastKey = index === keys.length - 1
 
-      if (index > keys.length - 3) {
-        const nextKey = keys[index + 1]
+      const nextSubvalue = subValues[index][currentKey]
 
+      if (isLastKey) {
         if (type === OPERATION_TYPE_UPDATE) {
-          subValues[index][currentKey][nextKey] = value
+          subValues[index][currentKey] = value
         }
 
         if (type === OPERATION_TYPE_ADD) {
-          subValues[index][currentKey][nextKey] += value
-        }
-
-        if (type === OPERATION_TYPE_OBJECT_ADD) {
-          subValues[index][currentKey][nextKey] = {
-            ...subValues[index][currentKey][nextKey],
-            ...value
+          if (typeof subValues[index][currentKey] === 'number') {
+            subValues[index][currentKey] += value
+          } else {
+            subValues[index][currentKey] = value
           }
-        }
-
-        if (type === OPERATION_TYPE_DELETE) {
-          delete subValues[index][currentKey][nextKey]
         }
 
         if (type === OPERATION_TYPE_PUSH) {
           if (
-            !subValues[index][currentKey][nextKey]
+            !subValues[index][currentKey]
+            || !Array.isArray(subValues[index][currentKey])
           ) {
-            subValues[index][currentKey][nextKey] = []
+            subValues[index][currentKey] = []
           }
 
-          subValues[index][currentKey][nextKey].push(value)
+          subValues[index][currentKey].push(value)
         }
 
         if (type === OPERATION_TYPE_PUSH_UNIQUE) {
           if (
-            !subValues[index][currentKey][nextKey]
+            !subValues[index][currentKey]
+            || !Array.isArray(subValues[index][currentKey])
           ) {
-            subValues[index][currentKey][nextKey] = []
+            subValues[index][currentKey] = []
           }
 
-          if (!subValues[index][currentKey][nextKey].includes(value)) {
-            subValues[index][currentKey][nextKey].push(value)
+          if (!subValues[index][currentKey].includes(value)) {
+            subValues[index][currentKey].push(value)
           }
         }
 
         if (type === OPERATION_TYPE_TOGGLE) {
           if (
-            !subValues[index][currentKey][nextKey]
+            !subValues[index][currentKey]
+            || !Array.isArray(subValues[index][currentKey])
           ) {
-            subValues[index][currentKey][nextKey] = []
+            subValues[index][currentKey] = []
           }
 
-          const valueIndex = subValues[index][currentKey][nextKey].indexOf(value)
+          const valueIndex = subValues[index][currentKey].indexOf(value)
 
           if (valueIndex > -1) {
-            subValues[index][currentKey][nextKey].splice(valueIndex, 1)
+            subValues[index][currentKey].splice(valueIndex, 1)
           } else {
-            subValues[index][currentKey][nextKey].push(value)
+            subValues[index][currentKey].push(value)
           }
         }
 
         if (type === OPERATION_TYPE_ARRAY_DELETE) {
           if (
-            subValues[index][currentKey][nextKey]
+            !Array.isArray(subValues[index][currentKey])
           ) {
-            const valueIndex = subValues[index][currentKey][nextKey].indexOf(value)
+            subValues[index][currentKey] = []
+          }
 
-            if (valueIndex > -1) {
-              subValues[index][currentKey][nextKey].splice(valueIndex, 1)
-            }
+          const valueIndex = subValues[index][currentKey].indexOf(value)
+
+          if (valueIndex > -1) {
+            subValues[index][currentKey].splice(valueIndex, 1)
           }
         }
 
-        return subValues.push(subValues[index][currentKey])
+        if (type === OPERATION_TYPE_ARRAY_DELETE_INDEX) {
+          if (
+            !subValues[index][currentKey]
+            || !Array.isArray(subValues[index][currentKey])
+          ) {
+            subValues[index][currentKey] = []
+          }
+
+          if (value > -1) {
+            subValues[index][currentKey].splice(value, 1)
+          }
+        }
+
+        if (type === OPERATION_TYPE_DELETE) {
+          if (
+            subValues[index][currentKey]
+          ) {
+            delete subValues[index][currentKey]
+          }
+        }
+
+        if (type === OPERATION_TYPE_OBJECT_ADD) {
+          if (
+            !subValues[index][currentKey]
+          ) {
+            subValues[index][currentKey] = {}
+          }
+
+          subValues[index][currentKey] = {
+            ...subValues[index][currentKey],
+            ...value
+          }
+        }
       }
 
-      return subValues.push(subValues[index][currentKey])
+      return subValues.push(nextSubvalue)
     })
 
-    return { [key]: JSON.parse(JSON.stringify(newObject[key])) }
+    return { [stateKey]: subValues[0][stateKey] }
   },
 }

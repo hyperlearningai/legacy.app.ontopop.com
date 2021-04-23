@@ -1,7 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: row;
-  background: $grey;
+  background: $dark-background-lighter;
   color: $white;
   width: 100%;
   max-width: 360px;
@@ -14,7 +14,7 @@
   &-icons {
     height: 100%;
     width: 50px;
-    background: $dark-grey;
+    background: $dark-background;
     overflow-y: auto;
 
     .p-button {
@@ -23,10 +23,10 @@
       height: 50px;
       outline: none;
       border: none;
-      background: $dark-grey;
+      background: $dark-background;
       color: $white;
-      border-top: 1px solid $dark-grey;
-      border-bottom: 1px solid $dark-grey;
+      border-top: 1px solid $dark-background;
+      border-bottom: 1px solid $dark-background;
       overflow: hidden;
       position: relative;
       padding: 0;
@@ -44,14 +44,14 @@
       }
 
       &:hover {
-        color: $dark-grey;
+        color: $dark-background;
         background: $white;
         transition: $transition;
       }
 
       &.sidebar-bar-button-selected {
         color: $white;
-        background: $grey;
+        background: $primary;
         transition: $transition;
       }
 
@@ -63,7 +63,6 @@
         font-size: 24px;
 
         &:nth-child(1) {
-          margin-bottom: 10px;
           font-size: 24px;
         }
 
@@ -71,7 +70,7 @@
           font-size: 18px;
           position: absolute;
           bottom: 5px;
-          right: 5px;
+          right: 10px;
         }
       }
     }
@@ -102,15 +101,16 @@
     overflow: hidden;
 
     &-title {
-      font-weight: 700;
-      border-bottom: 0 solid $white;
-      padding: 23px;
-      font-size: 1.2rem;
+      font-weight: 600;
+      font-size: 21px;
+      padding: 24px;
+      height: 70px;
       display: flex;
-      background: #33343d;
+      background: $dark-background;
       align-items: center;
       justify-content: flex-start;
       margin: 0;
+      color: $white;
 
       .p-button {
         font-size: 18px;
@@ -126,6 +126,80 @@
         align-items: center;
         justify-content: center;
         margin-right: 10px;
+      }
+    }
+
+    &-body {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      padding: 24px;
+
+      &-title {
+        font-size: 1.25rem;
+        margin-bottom: 1.25rem;
+        font-weight: 600;
+      }
+
+      &-subtitle {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      &-label {
+        display: block;
+        font-size: 1rem;
+        font-weight: 400;
+        width: 100%;
+        margin-bottom: 0 !important;
+      }
+
+      &-info {
+        font-size: 1rem;
+        font-weight: 400;
+        font-style: italic;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  &-button {
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    margin: 2rem auto;
+    padding: 12px 20px;
+
+    &-primary {
+      @extend .sidebar-button;
+
+      background: $primary !important;
+      color: $white;
+
+      &:hover,
+      &:enabled:hover {
+        background: $white !important;
+        color: $primary !important;
+      }
+    }
+
+    &-secondary {
+      @extend .sidebar-button;
+
+      background: $white !important;
+      color: $primary !important;
+
+      &:hover {
+        color: $white !important;
+        background: $primary !important;
+      }
+
+      &:enabled {
+        &:hover {
+          color: $white !important;
+          background: $primary !important;
+        }
       }
     }
   }

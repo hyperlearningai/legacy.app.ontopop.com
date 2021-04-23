@@ -109,6 +109,20 @@ describe('addNodesToGraph', () => {
       [
         [
           [
+            'dataTableTriples',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
+            'dataTableTriplesWithLabels',
+          ],
+          OPERATION_TYPE_UPDATE,
+          [],
+        ],
+        [
+          [
             'nodesDropdownLabels',
           ],
           OPERATION_TYPE_UPDATE,

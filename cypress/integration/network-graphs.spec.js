@@ -9,7 +9,8 @@ import { ROUTE_NETWORK_GRAPHS } from '../../src/constants/routes'
 
 context('Network graph', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Network graph', () => {
@@ -61,6 +62,14 @@ context('Network graph', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -84,7 +93,7 @@ context('Network graph', () => {
 
       cy.wait(3000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 320')
+      cy.get('.nav-left').should('contain', 'Nodes: 305')
       cy.get('.nav-left').should('contain', 'Edges: 828')
 
       // click to Main
@@ -103,7 +112,7 @@ context('Network graph', () => {
 
       cy.wait(3000)
 
-      cy.get('.nav-left').should('contain', 'Nodes: 320')
+      cy.get('.nav-left').should('contain', 'Nodes: 305')
       cy.get('.nav-left').should('contain', 'Edges: 828')
 
       // check navigation buttons
@@ -122,6 +131,9 @@ context('Network graph', () => {
       cy.get('.sidebar-main').should('not.be.exist')
       cy.get('#sidebar-button-toggle').click()
       cy.get('.sidebar-main').should('be.visible')
+
+      // back to search
+      cy.get('#back-button').click()
     })
   })
 })

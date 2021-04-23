@@ -11,6 +11,13 @@ exports[`NetworkGraphOptions should match snapshot  1`] = `
   graphData={
     Object {
       "graph-0": Object {
+        "hiddenEdgesProperties": Array [],
+        "hiddenNodesProperties": Array [],
+        "isDatasetVisible": true,
+        "isOrphanNodeVisible": true,
+        "isSubClassEdgeVisible": true,
+        "isUpperOntologyVisible": true,
+        "isUserDefinedNodeVisible": true,
         "label": "Main",
         "noDelete": true,
       },

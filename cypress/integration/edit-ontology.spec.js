@@ -14,7 +14,8 @@ import { ROUTE_EDIT_ONTOLOGY } from '../../src/constants/routes'
 
 context('Edit ontology', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Edit ontology', () => {
@@ -90,6 +91,14 @@ context('Edit ontology', () => {
       cy.get('.auth-button').click()
 
       cy.wait('@postLogin')
+
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
 
       cy.get('#main-search').type('link')
 

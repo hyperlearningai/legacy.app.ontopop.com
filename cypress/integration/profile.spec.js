@@ -3,10 +3,12 @@ import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
+import { ROUTE_LOGIN } from '../../src/constants/routes'
 
 context('Profile', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Profile', () => {
@@ -48,6 +50,14 @@ context('Profile', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.wait('@getGraph')
 
       // Visit profile page
@@ -73,13 +83,24 @@ context('Profile', () => {
 
       // back home
       cy.get('#overlay-menu-button').click()
+      cy.get('#overlay-menu-search').click()
+
+      cy.wait(1000)
+
+      cy.get('#overlay-menu-button').click()
       cy.get('#overlay-menu-home').click()
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
 
       // logout
       cy.get('#overlay-menu-button').click()
       cy.get('#overlay-menu-logout').click()
 
-      cy.get('#auth-login-button').should('have.exist')
+      cy.wait(1000)
+
+      cy.location('pathname').should('be.equal', ROUTE_LOGIN)
     })
   })
 })

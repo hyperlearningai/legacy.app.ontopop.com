@@ -1,4 +1,4 @@
-import { ROUTE_LOGIN } from '../../../constants/routes'
+import { ROUTE_LISTING, ROUTE_LOGIN } from '../../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../../constants/views'
 import checkTokenValidity from '../../../utils/auth/checkTokenValidity'
@@ -43,7 +43,9 @@ describe('checkTokenValidity', () => {
     expect(updateStoreValue.mock.calls).toEqual(
       [[['user', 'email'], OPERATION_TYPE_UPDATE, 'a@b.c'], [['user', 'token'], OPERATION_TYPE_UPDATE, '123']]
     )
-    expect(push).toHaveBeenCalledTimes(0)
+    expect(push).toHaveBeenCalledWith(
+      ROUTE_LISTING
+    )
   })
 
   it('should work correctly when cookie and route different from search view', async () => {
@@ -63,6 +65,8 @@ describe('checkTokenValidity', () => {
     expect(updateStoreValue.mock.calls).toEqual(
       [[['user', 'email'], OPERATION_TYPE_UPDATE, 'a@b.c'], [['user', 'token'], OPERATION_TYPE_UPDATE, '123']]
     )
-    expect(push).toHaveBeenCalledTimes(0)
+    expect(push).toHaveBeenCalledWith(
+      ROUTE_LISTING
+    )
   })
 })

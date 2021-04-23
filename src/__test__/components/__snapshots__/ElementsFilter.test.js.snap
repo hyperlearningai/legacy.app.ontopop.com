@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ElementsFilter should match snapshot  1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  annotationProperties={
+    Array [
+      Object {
+        "property": "rdfsLabel",
+        "value": "road",
+      },
+    ]
+  }
+  mapToProps={[Function]}
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;

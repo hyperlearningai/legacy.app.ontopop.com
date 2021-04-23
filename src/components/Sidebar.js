@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'redux-zero/react'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import { FiLayers, FiSettings } from 'react-icons/fi'
-import { BiNetworkChart, BiSelection, BiText } from 'react-icons/bi'
+import { FiLayers } from 'react-icons/fi'
+import { BiNetworkChart, BiSelection } from 'react-icons/bi'
 import {
-  BsArrowUpRight, BsCodeSlash, BsFilter, BsPencilSquare, BsSearch
+  BsCodeSlash, BsFilter, BsPencilSquare, BsSearch
 } from 'react-icons/bs'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
-import { IoBuildSharp, IoGitNetwork } from 'react-icons/io5'
+import { IoGitNetwork } from 'react-icons/io5'
 import { IoMdOptions } from 'react-icons/io'
 import {
   FaFileAlt, FaFileExport, FaPaintBrush, FaRegCircle, FaRegHandPointer, FaStickyNote
@@ -18,55 +18,43 @@ import actions from '../store/actions'
 import {
   IS_BOUNDING_BOX_VISIBLE,
   IS_CUSTOM_QUERY_VISIBLE,
-  IS_EDGES_FILTER_VISIBLE,
   IS_EDIT_ONTOLOGY_VISIBLE,
   IS_ELEMENT_SELECTION_VISIBLE,
+  IS_ELEMENTS_FILTER_VISIBLE,
   IS_EXPORT_VISIBLE,
-  IS_FREE_TEXT_SEARCH_VISIBLE,
   IS_GRAPH_OPTIONS_VISIBLE,
   IS_GRAPHS_VISIBLE,
   IS_NEIGHBOURHOOD_VISIBLE,
-  IS_NODES_FILTER_VISIBLE,
   IS_NOTES_VISIBLE,
-  IS_PHYSICS_SETTINGS_VISIBLE,
   IS_SEARCH_VISIBLE,
   IS_SHORTEST_PATH_VISIBLE,
-  IS_STRUCTURED_SEARCH_VISIBLE,
   IS_STYLING_VISIBLE,
   IS_SYNONIMS_VISIBLE,
   SIDEBAR_VIEW_BOUNDING_BOX,
   SIDEBAR_VIEW_CUSTOM_QUERY,
-  SIDEBAR_VIEW_EDGES_FILTER,
   SIDEBAR_VIEW_EDIT_ONTOLOGY,
+  SIDEBAR_VIEW_ELEMENTS_FILTER,
   SIDEBAR_VIEW_ELEMENTS_SELECTION,
   SIDEBAR_VIEW_ENTRY_SEARCH,
   SIDEBAR_VIEW_EXPORT,
-  SIDEBAR_VIEW_FREE_TEXT_SEARCH,
   SIDEBAR_VIEW_GRAPH_OPTIONS,
   SIDEBAR_VIEW_GRAPHS,
   SIDEBAR_VIEW_NEIGHBOURHOOD,
-  SIDEBAR_VIEW_NODES_FILTER,
   SIDEBAR_VIEW_NOTES,
-  SIDEBAR_VIEW_SETTINGS,
   SIDEBAR_VIEW_SHORTEST_PATH,
-  SIDEBAR_VIEW_STRUCTURED_SEARCH,
   SIDEBAR_VIEW_STYLING,
   SIDEBAR_VIEW_SYNONYMS
 } from '../constants/views'
 import NetworkGraphList from './NetworkGraphList'
-import FreeTextSearch from './FreeTextSearch'
 import NodeNeighbourhood from './NodeNeighbourhood'
 import ElementsSelection from './ElementsSelection'
-import NetworkSettings from './NetworkSettings'
 import ExportSettings from './ExportSettings'
 import ShortestPath from './ShortestPath'
 import BoundingBoxSelection from './BoundingBoxSelection'
-import NodesFilter from './NodesFilter'
-import EdgesFilter from './EdgesFilter'
+import ElementsFilter from './ElementsFilter'
 import CustomQuery from './CustomQuery'
 import EditOntology from './EditOntology'
 import NetworkStyling from './NetworkStyling'
-import StructuredSearch from './StructuredSearch'
 import NotesList from './NotesList'
 import EntrySearch from './EntrySearch'
 import SynonymsList from './SynonymsList'
@@ -75,24 +63,21 @@ import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import {
   ROUTE_BOUNDING_BOX,
   ROUTE_CUSTOM_QUERY,
-  ROUTE_EDGES_FILTER,
   ROUTE_EDIT_ONTOLOGY,
+  ROUTE_ELEMENTS_FILTER,
   ROUTE_ELEMENTS_SELECTION,
   ROUTE_EXPORT,
-  ROUTE_FREE_TEXT_SEARCH,
   ROUTE_NETWORK_GRAPH_OPTIONS,
   ROUTE_NETWORK_GRAPHS,
   ROUTE_NODE_NEIGHBOURHOOD,
-  ROUTE_NODES_FILTER,
   ROUTE_NOTES,
   ROUTE_SEARCH,
-  ROUTE_SETTINGS,
   ROUTE_SHORTEST_PATH,
-  ROUTE_STRUCTURED_SEARCH,
   ROUTE_STYLING,
   ROUTE_SYNONYMS,
 } from '../constants/routes'
 import { toDashedCase } from '../constants/functions'
+import setPageView from '../utils/analytics/setPageView'
 
 const Sidebar = ({
   isSidebarOpen,
@@ -125,30 +110,6 @@ const Sidebar = ({
       label: SIDEBAR_VIEW_GRAPH_OPTIONS,
       route: ROUTE_NETWORK_GRAPH_OPTIONS
     },
-    [SIDEBAR_VIEW_FREE_TEXT_SEARCH]: {
-      icon: (
-        <>
-          <BsSearch />
-          <BiText />
-        </>
-      ),
-      isVisible: IS_FREE_TEXT_SEARCH_VISIBLE,
-      component: <FreeTextSearch />,
-      label: SIDEBAR_VIEW_FREE_TEXT_SEARCH,
-      route: ROUTE_FREE_TEXT_SEARCH
-    },
-    [SIDEBAR_VIEW_STRUCTURED_SEARCH]: {
-      icon: (
-        <>
-          <BsSearch />
-          <IoBuildSharp />
-        </>
-      ),
-      isVisible: IS_STRUCTURED_SEARCH_VISIBLE,
-      component: <StructuredSearch />,
-      label: SIDEBAR_VIEW_STRUCTURED_SEARCH,
-      route: ROUTE_STRUCTURED_SEARCH
-    },
     [SIDEBAR_VIEW_ELEMENTS_SELECTION]: {
       icon: (
         <>
@@ -161,29 +122,17 @@ const Sidebar = ({
       label: SIDEBAR_VIEW_ELEMENTS_SELECTION,
       route: ROUTE_ELEMENTS_SELECTION
     },
-    [SIDEBAR_VIEW_NODES_FILTER]: {
+    [SIDEBAR_VIEW_ELEMENTS_FILTER]: {
       icon: (
         <>
           <FaRegCircle />
           <BsFilter />
         </>
       ),
-      isVisible: IS_NODES_FILTER_VISIBLE,
-      component: <NodesFilter />,
-      label: SIDEBAR_VIEW_NODES_FILTER,
-      route: ROUTE_NODES_FILTER
-    },
-    [SIDEBAR_VIEW_EDGES_FILTER]: {
-      icon: (
-        <>
-          <BsArrowUpRight />
-          <BsFilter />
-        </>
-      ),
-      isVisible: IS_EDGES_FILTER_VISIBLE,
-      component: <EdgesFilter />,
-      label: SIDEBAR_VIEW_EDGES_FILTER,
-      route: ROUTE_EDGES_FILTER
+      isVisible: IS_ELEMENTS_FILTER_VISIBLE,
+      component: <ElementsFilter />,
+      label: SIDEBAR_VIEW_ELEMENTS_FILTER,
+      route: ROUTE_ELEMENTS_FILTER
     },
     [SIDEBAR_VIEW_BOUNDING_BOX]: {
       icon: <BiSelection />,
@@ -212,13 +161,6 @@ const Sidebar = ({
       component: <CustomQuery />,
       label: SIDEBAR_VIEW_CUSTOM_QUERY,
       route: ROUTE_CUSTOM_QUERY
-    },
-    [SIDEBAR_VIEW_SETTINGS]: {
-      icon: <FiSettings />,
-      isVisible: IS_PHYSICS_SETTINGS_VISIBLE,
-      component: <NetworkSettings />,
-      label: SIDEBAR_VIEW_SETTINGS,
-      route: ROUTE_SETTINGS
     },
     [SIDEBAR_VIEW_STYLING]: {
       icon: <FaPaintBrush />,
@@ -279,6 +221,7 @@ const Sidebar = ({
                   updateStoreValue(['isSidebarOpen'], OPERATION_TYPE_UPDATE, true)
                   updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, label)
                   window.history.pushState('', '', route)
+                  setPageView({ url: route, updateStoreValue })
                 }}
               >
                 {icon}

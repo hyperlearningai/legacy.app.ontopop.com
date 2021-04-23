@@ -69,10 +69,93 @@ exports[`GraphVisualisation should match snapshot  1`] = `
   isPhysicsOn={true}
   mapToProps={[Function]}
   network={Object {}}
+  networkVisualisation="networkGraphs"
   nodesIdsToDisplay={Array []}
   physicsHierarchicalView={true}
   physicsRepulsion={true}
   showContextMenu={true}
+  sidebarView="search"
+  updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`GraphVisualisation should match snapshot when sidebarView is not SIDEBAR_VIEW_ENTRY_SEARCH and networkVisualisation is SIDEBAR_VIEW_GRAPHS 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  availableEdges={
+    DataSet {
+      "_data": Map {},
+      "_idProp": "id",
+      "_options": Object {},
+      "_queue": null,
+      "_subscribers": Object {
+        "*": Array [],
+        "add": Array [],
+        "remove": Array [],
+        "update": Array [],
+      },
+      "length": 0,
+      "subscribe": [Function],
+      "unsubscribe": [Function],
+    }
+  }
+  availableNodes={
+    DataSet {
+      "_data": Map {},
+      "_idProp": "id",
+      "_options": Object {},
+      "_queue": null,
+      "_subscribers": Object {
+        "*": Array [],
+        "add": Array [],
+        "remove": Array [],
+        "update": Array [],
+      },
+      "length": 0,
+      "subscribe": [Function],
+      "unsubscribe": [Function],
+    }
+  }
+  boundingBoxGeometry={
+    Object {
+      "boundingBoxHeight": 200,
+      "boundingBoxPosX": 100,
+      "boundingBoxPosY": 100,
+      "boundingBoxWidth": 200,
+      "fixedPointX": 100,
+      "fixedPointY": 100,
+    }
+  }
+  currentGraph="graph-0"
+  globalEdgeStyling={
+    Object {
+      "stylingEdgeLength": 250,
+      "stylingEdgeLineColor": "#070b11",
+      "stylingEdgeLineColorHighlight": "#9c27b0",
+      "stylingEdgeLineColorHover": "#070b11",
+      "stylingEdgeLineStyle": false,
+      "stylingEdgeTextAlign": "horizontal",
+      "stylingEdgeTextColor": "#070b11",
+      "stylingEdgeTextSize": 12,
+      "stylingEdgeWidth": 1,
+    }
+  }
+  isBoundingBoxSelectable={true}
+  isPhysicsOn={true}
+  mapToProps={[Function]}
+  network={Object {}}
+  networkVisualisation="networkGraphs"
+  nodesIdsToDisplay={Array []}
+  physicsHierarchicalView={true}
+  physicsRepulsion={true}
+  showContextMenu={true}
+  sidebarView="any"
   updateStoreValue={[MockFunction]}
 >
   <Component />

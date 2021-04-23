@@ -13,7 +13,7 @@ const actionAfterNodesAdded = ({
   const {
     network,
     isPhysicsOn,
-    physicsRepulsion
+    physicsRepulsion,
   } = store.getState()
 
   const currentPhysicsOnState = isPhysicsOn
@@ -36,7 +36,7 @@ const actionAfterNodesAdded = ({
     }
 
     network?.fit({
-      animation: false // true
+      animation: false
     })
   }, 250)
 }

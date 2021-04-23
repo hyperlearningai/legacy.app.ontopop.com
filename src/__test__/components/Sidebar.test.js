@@ -5,18 +5,15 @@ import { useRouter } from 'next/router'
 import Sidebar from '../../components/Sidebar'
 import {
   ROUTE_CUSTOM_QUERY,
-  ROUTE_EDGES_FILTER,
+  ROUTE_ELEMENTS_FILTER,
   ROUTE_ELEMENTS_SELECTION,
   ROUTE_EDIT_ONTOLOGY,
   ROUTE_EXPORT,
-  ROUTE_FREE_TEXT_SEARCH,
   ROUTE_NETWORK_GRAPHS,
   ROUTE_NETWORK_GRAPH_OPTIONS,
-  ROUTE_NODES_FILTER,
   ROUTE_NODE_NEIGHBOURHOOD,
   ROUTE_SEARCH, ROUTE_SETTINGS,
   ROUTE_SHORTEST_PATH,
-  ROUTE_STRUCTURED_SEARCH,
   ROUTE_STYLING,
   ROUTE_SYNONYMS
 } from '../../constants/routes'
@@ -102,34 +99,6 @@ describe('Sidebar', () => {
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when sidebar open and SIDEBAR_VIEW_FREE_TEXT_SEARCH', () => {
-    useRouter.mockImplementation(() => ({
-      view: ROUTE_FREE_TEXT_SEARCH
-    }))
-
-    const {
-      component
-    } = setup({
-      isSidebarOpen: true,
-    })
-
-    expect(toJson(component)).toMatchSnapshot()
-  })
-
-  it('should match snapshot when sidebar open and SIDEBAR_VIEW_BOUNDING_BOX', () => {
-    useRouter.mockImplementation(() => ({
-      view: ROUTE_STRUCTURED_SEARCH
-    }))
-
-    const {
-      component
-    } = setup({
-      isSidebarOpen: true,
-    })
-
-    expect(toJson(component)).toMatchSnapshot()
-  })
-
   it('should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHBOURHOOD', () => {
     useRouter.mockImplementation(() => ({
       view: ROUTE_NODE_NEIGHBOURHOOD
@@ -186,23 +155,9 @@ describe('Sidebar', () => {
     expect(toJson(component)).toMatchSnapshot()
   })
 
-  it('should match snapshot when sidebar open and SIDEBAR_VIEW_NODES_FILTER', () => {
+  it('should match snapshot when sidebar open and ROUTE_ELEMENTS_FILTER', () => {
     useRouter.mockImplementation(() => ({
-      view: ROUTE_NODES_FILTER
-    }))
-
-    const {
-      component
-    } = setup({
-      isSidebarOpen: true,
-    })
-
-    expect(toJson(component)).toMatchSnapshot()
-  })
-
-  it('should match snapshot when sidebar open and SIDEBAR_VIEW_EDGES_FILTER', () => {
-    useRouter.mockImplementation(() => ({
-      view: ROUTE_EDGES_FILTER
+      view: ROUTE_ELEMENTS_FILTER
     }))
 
     const {
@@ -259,20 +214,6 @@ describe('Sidebar', () => {
   it('should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_ONTOLOGY', () => {
     useRouter.mockImplementation(() => ({
       view: ROUTE_EDIT_ONTOLOGY
-    }))
-
-    const {
-      component
-    } = setup({
-      isSidebarOpen: true,
-    })
-
-    expect(toJson(component)).toMatchSnapshot()
-  })
-
-  it('should match snapshot when sidebar open and SIDEBAR_VIEW_STRUCTURED_SEARCH', () => {
-    useRouter.mockImplementation(() => ({
-      view: ROUTE_STRUCTURED_SEARCH
     }))
 
     const {

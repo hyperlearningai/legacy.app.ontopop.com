@@ -9,7 +9,8 @@ import { ROUTE_SHORTEST_PATH } from '../../src/constants/routes'
 
 context('Shortest path', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
+    cy.get('#accept-all-btn').click()
   })
 
   describe('Shortest path', () => {
@@ -61,6 +62,12 @@ context('Shortest path', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -95,7 +102,7 @@ context('Shortest path', () => {
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // check that shortest path button work
-      cy.get('.shortest-path-show-button').click()
+      cy.get('#shortest-path-show-btn').click()
 
       // shows subgraph
       cy.get('.nav-left').should('contain', 'Nodes: 4')
@@ -150,6 +157,14 @@ context('Shortest path', () => {
 
       cy.wait('@postLogin')
 
+      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+
+      cy.get('.pi-chevron-down').click()
+
+      cy.get('.p-menuitem-link').eq(0).click()
+
+      cy.wait(1000)
+
       cy.get('#main-search').type('link')
 
       cy.wait('@linkAutocomplete')
@@ -176,12 +191,14 @@ context('Shortest path', () => {
       // choose ending node
       cy.get('#shortest-path-button-2').click()
 
-      // select first node
+      // select second node
       cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('clo')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // select nodes to exclude
+      cy.get('.p-accordion-header').find('a').click()
+
       cy.get('#excluded-nodes-select').find('.p-multiselect-trigger').click({ force: true })
       cy.get('.p-multiselect-filter-container').find('.p-multiselect-filter').clear().type('lin')
       cy.get('.p-multiselect-items-wrapper').find('.p-multiselect-item').eq(0).click({ force: true })
@@ -197,7 +214,7 @@ context('Shortest path', () => {
       cy.get('#overlay-checkbox').click()
 
       // check that shortest path button work
-      cy.get('.shortest-path-show-button').click()
+      cy.get('#shortest-path-show-btn').click()
 
       // shows subgraph
       cy.get('.nav-left').should('contain', 'Nodes: 24')

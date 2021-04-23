@@ -46,6 +46,7 @@ const SearchBar = ({
                   name="search"
                   value={entrySearchValue}
                   id="main-search"
+                  placeholder={`${t('search')}...`}
                   suggestions={suggestions}
                   completeMethod={(e) => {
                     const { query } = e
@@ -78,6 +79,7 @@ const SearchBar = ({
                   icon="pi pi-search"
                   id="search-icon"
                   className="p-button-rounded"
+                  aria-label={t('search')}
                   onClick={() => {
                     updateStoreValue(['searchPageSelected'], OPERATION_TYPE_UPDATE, 0)
 

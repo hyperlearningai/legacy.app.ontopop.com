@@ -2,6 +2,10 @@
 import Document, {
   Html, Head, Main, NextScript
 } from 'next/document'
+import {
+  USERBACK_ACCESS_TOKEN,
+  GA_ID
+} from '../constants/analytics'
 
 // We can't use Content-Security-Policy in 'next dev' mode, as it breaks hot-reloading
 // const disableCsp = process.env.NODE_ENV === 'development';
@@ -12,20 +16,24 @@ import Document, {
       script-src 'self';style-src 'self';" /> : '' } */
 
 const userbackSnippet = `window.Userback = window.Userback || {};
-      Userback.access_token = '29230|42198|CVJlhtfkaYN3J3xP2x200ghJ1';
-      (function(d) {
-          var s = d.createElement('script');s.async = true;
-          s.src = 'https://static.userback.io/widget/v1.js';
-          (d.head || d.body).appendChild(s);
-      })(document);`
+  Userback.access_token = '${USERBACK_ACCESS_TOKEN}';
+`
 
 const mouseflowSnippet = `window._mfq = window._mfq || [];
-        (function() {
-          var mf = document.createElement("script");
-          mf.type = "text/javascript"; mf.defer = true;
-          mf.src = "//cdn.mouseflow.com/projects/17067ed4-6a87-41f9-b1f0-44249c9c1bfe.js";
-          document.getElementsByTagName("head")[0].appendChild(mf);
-        })();`
+  (function() {
+    var mf = document.createElement("script");
+    mf.type = "text/javascript"; mf.defer = true;
+    mf.src = "//cdn.mouseflow.com/projects/17067ed4-6a87-41f9-b1f0-44249c9c1bfe.js";
+    document.getElementsByTagName("head")[0].appendChild(mf);
+  })();`
+
+const googleAnalyticsSnippet = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+`
+
+const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
 
 class MyDocument extends Document {
   render() {
@@ -37,7 +45,7 @@ class MyDocument extends Document {
           <meta httpEquiv="Strict-Transport-Security" content="max-age=31536000" />
           <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
           <meta lang="en" />
-          <link rel="shortcut icon" href="/images/logo.svg" />
+          <link rel="shortcut icon" href="/images/logo.png" />
         </Head>
 
         <body>
@@ -48,6 +56,12 @@ class MyDocument extends Document {
             process.env.NEXT_PUBLIC_ADD_FEEDBACK === 'true'
             && (
               <>
+                <script async src={gtagUrl} />
+
+                <script
+                  dangerouslySetInnerHTML={{ __html: googleAnalyticsSnippet }}
+                />
+
                 <script
                   dangerouslySetInnerHTML={{ __html: userbackSnippet }}
                 />

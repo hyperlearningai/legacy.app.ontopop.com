@@ -30,23 +30,23 @@ const SynonymsListAddNew = ({
 
       {!showForm
         ? (
-          <div className="synonyms-synonym synonyms-add-button">
-            <Button
-              tooltip={t('addNewSynonym')}
-              tooltipOptions={{ position: 'top' }}
-              label={t('addNewSynonym')}
-              id="add-synonym"
-              onClick={() => setShowForm(true)}
-            >
-              <i className="pi pi-plus-circle" />
-            </Button>
-          </div>
+          <Button
+            label={t('addNewSynonym')}
+            aria-label={t('addNewSynonym')}
+            id="add-synonym"
+            icon="pi pi-plus-circle"
+            iconPos="right"
+            className="sidebar-button-primary m-t-0"
+            onClick={() => setShowForm(true)}
+          />
         ) : (
-          <div className="synonyms-synonym">
-            <p className="bold">
+          <div className="synonyms-synonym p-p-2 p-t-20 p-b-20 m-b-30">
+            <label
+              className="sidebar-main-body-label m-b-10"
+              htmlFor="synonym-textarea"
+            >
               {t('addNewSynonym')}
-            </p>
-            <label htmlFor="synonym-textarea">{t('synonymText')}</label>
+            </label>
             <InputTextarea
               id="synonym-textarea"
               value={synonymText}
@@ -54,25 +54,27 @@ const SynonymsListAddNew = ({
               onChange={(e) => setSynonymText(e.target.value)}
             />
 
-            <p id="selected-element-label">
+            <div
+              className="sidebar-main-body-info"
+              id="selected-element-label"
+            >
               {`${t('forNode')}: ${elementLabel}`}
-            </p>
+            </div>
 
-            <div className="synonyms-buttons">
+            <div className="p-d-flex full-width">
               <Button
-                tooltip={t('close')}
-                tooltipOptions={{ position: 'top' }}
-                className="p-button-secondary"
+                className="sidebar-button-secondary full-width m-r-10 m-t-0 m-b-0"
                 label={t('close')}
+                aria-label={t('close')}
                 id="close-add-synonym"
                 onClick={() => setShowForm(false)}
               />
 
               <Button
-                tooltip={t('addSynonym')}
-                tooltipOptions={{ position: 'top' }}
-                label={t('addSynonym')}
+                aria-label={t('add')}
+                label={t('add')}
                 id="submit-synonym"
+                className="sidebar-button-primary full-width m-l-10 m-t-0 m-b-0"
                 disabled={!synonymElementId}
                 onClick={() => {
                   setShowForm(false)

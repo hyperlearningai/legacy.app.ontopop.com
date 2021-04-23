@@ -29,12 +29,12 @@ const NodeNeighbourhood = ({
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NEIGHBOURHOOD)}
       </h1>
-      <div className="node-neighbourhood">
-        <div className="node-neighbourhood-message">
+      <div className="sidebar-main-body node-neighbourhood">
+        <div className="sidebar-main-body-info">
           {t('selectNodeFromGraphOrFromList')}
         </div>
 
-        <div className="node-neighbourhood-dropdown">
+        <div className="full-width m-t-40">
           <Dropdown
             aria-label="notes-select-element"
             id="node-select"
@@ -50,8 +50,13 @@ const NodeNeighbourhood = ({
           />
         </div>
 
-        <div className="p-field node-neighbourhood-degree m-t-20">
-          <label htmlFor="separation-degree">{t('separationDegree')}</label>
+        <div className="p-field m-t-50">
+          <label
+            className="sidebar-main-body-label text-center"
+            htmlFor="separation-degree"
+          >
+            {t('separationDegree')}
+          </label>
           <InputNumber
             id="separation-degree"
             value={separationDegree}
@@ -69,21 +74,19 @@ const NodeNeighbourhood = ({
           />
         </div>
 
-        <div className="node-neighbourhood-buttons m-t-40">
-          <Button
-            aria-label={t('showNeighbourhood')}
-            tooltip={t('showNeighbourhood')}
-            className="node-neighbourhood-button"
-            disabled={selectedNodeType !== 'node'}
-            icon="pi pi-chevron-right"
-            iconPos="right"
-            label={t('show')}
-            onClick={() => setNeighbourNodes({
-              separationDegree,
-              updateStoreValue,
-            })}
-          />
-        </div>
+        <Button
+          aria-label={t('showNeighbourhood')}
+          className="sidebar-button-primary m-t-50"
+          disabled={selectedNodeType !== 'node'}
+          id="node-neighbourhood-btn"
+          icon="pi pi-chevron-right"
+          iconPos="right"
+          label={t('show')}
+          onClick={() => setNeighbourNodes({
+            separationDegree,
+            updateStoreValue,
+          })}
+        />
       </div>
     </>
   )
