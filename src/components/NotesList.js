@@ -13,8 +13,7 @@ import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import Joyride from 'react-joyride'
-import { useRouter } from 'next/router'
-import { SIDEBAR_VIEW_NOTES } from '../constants/views'
+import { SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import actions from '../store/actions'
 import NotesListNote from './NotesListNote'
 import NotesListAddNew from './NotesListAddNew'
@@ -25,6 +24,7 @@ import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 import { ROUTE_SYNONYMS } from '../constants/routes'
+import setPageView from '../utils/analytics/setPageView'
 
 const NotesList = ({
   notes,
@@ -141,8 +141,6 @@ const NotesList = ({
     }
   ]
 
-  const router = useRouter()
-
   const handleJoyrideCallback = (data) => {
     const { status, index } = data
 
@@ -163,7 +161,9 @@ const NotesList = ({
 
     if (status === 'finished') {
       localStorage.setItem('showTour', JSON.stringify({ ...showTour, notes: false }))
-      router.push(ROUTE_SYNONYMS)
+      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
+      window.history.pushState('', '', ROUTE_SYNONYMS)
+      setPageView({ url: ROUTE_SYNONYMS, updateStoreValue })
     }
   }
 

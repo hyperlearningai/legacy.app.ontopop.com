@@ -5,8 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { SelectButton } from 'primereact/selectbutton'
 import { orderBy, uniqBy } from 'lodash'
 import Joyride from 'react-joyride'
-import { useRouter } from 'next/router'
-import { SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
+import { SIDEBAR_VIEW_EDIT_ONTOLOGY, SIDEBAR_VIEW_EXPORT, SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
 import actions from '../store/actions'
 import EditOntologyAddNode from './EditOntologyAddNode'
 import EditOntologyAddEdge from './EditOntologyAddEdge'
@@ -22,6 +21,8 @@ import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import { USER_DEFINED_PROPERTY } from '../constants/graph'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
 import { ROUTE_EXPORT } from '../constants/routes'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import setPageView from '../utils/analytics/setPageView'
 
 const EditOntology = ({
   objectPropertiesFromApi,
@@ -182,14 +183,14 @@ const EditOntology = ({
     }
   ]
 
-  const router = useRouter()
-
   const handleJoyrideCallback = (data) => {
     const { status } = data
 
     if (status === 'finished') {
       localStorage.setItem('showTour', JSON.stringify({ ...showTour, editOntology: false }))
-      router.push(ROUTE_EXPORT)
+      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_EXPORT)
+      window.history.pushState('', '', ROUTE_EXPORT)
+      setPageView({ url: ROUTE_EXPORT, updateStoreValue })
     }
   }
 

@@ -6,7 +6,6 @@ import { SelectButton } from 'primereact/selectbutton'
 import React, { useEffect, useState } from 'react'
 import { orderBy } from 'lodash'
 import Joyride from 'react-joyride'
-import { useRouter } from 'next/router'
 import actions from '../store/actions'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
@@ -16,7 +15,10 @@ import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
 import { getElementIdAndType } from '../constants/functions'
-import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../constants/routes'
+import { ROUTE_NETWORK_GRAPH_OPTIONS, ROUTE_SYNONYMS } from '../constants/routes'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { SIDEBAR_VIEW_GRAPH_OPTIONS, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
+import setPageView from '../utils/analytics/setPageView'
 
 const ElementsSelection = ({
   selectedElement,
@@ -101,8 +103,6 @@ const ElementsSelection = ({
     }
   ]
 
-  const router = useRouter()
-
   const handleJoyrideCallback = (data) => {
     const { status, index } = data
 
@@ -116,7 +116,9 @@ const ElementsSelection = ({
 
     if (status === 'finished') {
       localStorage.setItem('showTour', JSON.stringify({ ...showTour, elementSelection: false }))
-      router.push(ROUTE_NETWORK_GRAPH_OPTIONS)
+      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPH_OPTIONS)
+      window.history.pushState('', '', ROUTE_NETWORK_GRAPH_OPTIONS)
+      setPageView({ url: ROUTE_NETWORK_GRAPH_OPTIONS, updateStoreValue })
     }
   }
 

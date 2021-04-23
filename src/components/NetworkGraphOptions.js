@@ -11,15 +11,15 @@ import { SiAtom } from 'react-icons/si'
 import { FaSitemap } from 'react-icons/fa'
 import { AiOutlinePoweroff } from 'react-icons/ai'
 import { IoFootballOutline, IoGitNetworkSharp } from 'react-icons/io5'
-import { useRouter } from 'next/router'
 import Joyride from 'react-joyride'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
+import { SIDEBAR_VIEW_GRAPH_OPTIONS, SIDEBAR_VIEW_NOTES } from '../constants/views'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
 import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraphOptions'
 import HideElementsByPropertyForm from './HideElementsByPropertyForm'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { ROUTE_NOTES } from '../constants/routes'
+import setPageView from '../utils/analytics/setPageView'
 
 const NetworkGraphOptions = ({
   currentGraph,
@@ -71,8 +71,6 @@ const NetworkGraphOptions = ({
     }
   ]
 
-  const router = useRouter()
-
   const handleJoyrideCallback = (data) => {
     const { status, index } = data
 
@@ -86,7 +84,9 @@ const NetworkGraphOptions = ({
 
     if (status === 'finished') {
       localStorage.setItem('showTour', JSON.stringify({ ...showTour, graphOptions: false }))
-      router.push(ROUTE_NOTES)
+      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
+      window.history.pushState('', '', ROUTE_NOTES)
+      setPageView({ url: ROUTE_NOTES, updateStoreValue })
     }
   }
 

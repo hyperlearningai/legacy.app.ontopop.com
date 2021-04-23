@@ -11,9 +11,8 @@ import { Button } from 'primereact/button'
 import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
-import { useRouter } from 'next/router'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
+import { SIDEBAR_VIEW_EDIT_ONTOLOGY, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import actions from '../store/actions'
 import { MIN_DATE, SORT_FIELDS } from '../constants/synonyms'
 import getNode from '../utils/nodesEdgesUtils/getNode'
@@ -24,6 +23,8 @@ import { NODE_TYPE } from '../constants/graph'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 import { getElementIdAndType } from '../constants/functions'
 import { ROUTE_EDIT_ONTOLOGY } from '../constants/routes'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import setPageView from '../utils/analytics/setPageView'
 
 const SynonymsList = ({
   nodesSynonyms,
@@ -112,8 +113,6 @@ const SynonymsList = ({
     }
   ]
 
-  const router = useRouter()
-
   const handleJoyrideCallback = (data) => {
     const { status, index } = data
 
@@ -127,7 +126,9 @@ const SynonymsList = ({
 
     if (status === 'finished') {
       localStorage.setItem('showTour', JSON.stringify({ ...showTour, synonyms: false }))
-      router.push(ROUTE_EDIT_ONTOLOGY)
+      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_EDIT_ONTOLOGY)
+      window.history.pushState('', '', ROUTE_EDIT_ONTOLOGY)
+      setPageView({ url: ROUTE_EDIT_ONTOLOGY, updateStoreValue })
     }
   }
 
