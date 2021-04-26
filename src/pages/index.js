@@ -66,7 +66,11 @@ const Index = ({
 
     return (
       <div>
-        <SplitButton label={t('open')} model={items} />
+        <SplitButton
+          label={t('open')}
+          model={items}
+          onClick={() => router.push(btnActions.open)}
+        />
       </div>
     )
   }

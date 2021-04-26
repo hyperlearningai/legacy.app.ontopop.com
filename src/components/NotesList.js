@@ -13,7 +13,7 @@ import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_NOTES, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
+import { SIDEBAR_VIEW_NOTES } from '../constants/views'
 import actions from '../store/actions'
 import NotesListNote from './NotesListNote'
 import NotesListAddNew from './NotesListAddNew'
@@ -21,10 +21,8 @@ import addNodesBorders from '../utils/networkStyling/addNodesBorders'
 import { SORT_FIELDS, MIN_DATE } from '../constants/notes'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
-import { ROUTE_SYNONYMS } from '../constants/routes'
-import setPageView from '../utils/analytics/setPageView'
 
 const NotesList = ({
   notes,
@@ -160,24 +158,21 @@ const NotesList = ({
     }
 
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, notes: false }))
-      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_SYNONYMS)
-      window.history.pushState('', '', ROUTE_SYNONYMS)
-      setPageView({ url: ROUTE_SYNONYMS, updateStoreValue })
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, notes: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { notes: 'false' })
+      document.getElementById('sidebar-button-synonyms').click()
     }
   }
 
   return (
     <>
-      {showTour.notes && (
+      {showTour.notes !== 'false' && (
       <Joyride
         callback={handleJoyrideCallback}
         steps={steps}
         disableScrolling
+        hideBackButton
         locale={{ close: t('next') }}
-        styles={{
-          options: { primaryColor: '#011e41' }
-        }}
       />
       )}
 

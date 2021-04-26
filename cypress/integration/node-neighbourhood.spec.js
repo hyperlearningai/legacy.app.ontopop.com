@@ -6,11 +6,13 @@ import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_NODE_NEIGHBOURHOOD } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Node neighbourhood', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Node neighbourhood', () => {

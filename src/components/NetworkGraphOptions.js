@@ -13,13 +13,11 @@ import { AiOutlinePoweroff } from 'react-icons/ai'
 import { IoFootballOutline, IoGitNetworkSharp } from 'react-icons/io5'
 import Joyride from 'react-joyride'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_GRAPH_OPTIONS, SIDEBAR_VIEW_NOTES } from '../constants/views'
+import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
 import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraphOptions'
 import HideElementsByPropertyForm from './HideElementsByPropertyForm'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import { ROUTE_NOTES } from '../constants/routes'
-import setPageView from '../utils/analytics/setPageView'
+import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkGraphOptions = ({
   currentGraph,
@@ -83,25 +81,22 @@ const NetworkGraphOptions = ({
     }
 
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, graphOptions: false }))
-      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_NOTES)
-      window.history.pushState('', '', ROUTE_NOTES)
-      setPageView({ url: ROUTE_NOTES, updateStoreValue })
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, graphOptions: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { graphOptions: 'false' })
+      document.getElementById('sidebar-button-notes').click()
     }
   }
 
   return (
     <>
-      {showTour.graphOptions && (
-      <Joyride
-        callback={handleJoyrideCallback}
-        steps={steps}
-        disableScrolling
-        locale={{ close: t('next') }}
-        styles={{
-          options: { primaryColor: '#011e41' }
-        }}
-      />
+      {showTour.graphOptions !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          hideBackButton
+          locale={{ close: t('next') }}
+        />
       )}
 
       <h1 className="sidebar-main-title">

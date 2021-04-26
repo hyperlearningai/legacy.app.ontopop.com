@@ -5,8 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { SelectButton } from 'primereact/selectbutton'
 import { orderBy, uniqBy } from 'lodash'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_EDIT_ONTOLOGY, SIDEBAR_VIEW_EXPORT } from '../constants/views'
-import actions from '../store/actions'
+import { SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
 import EditOntologyAddNode from './EditOntologyAddNode'
 import EditOntologyAddEdge from './EditOntologyAddEdge'
 import EditOntologyUpdateNode from './EditOntologyUpdateNode'
@@ -20,16 +19,15 @@ import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import { USER_DEFINED_PROPERTY } from '../constants/graph'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
-import { ROUTE_EXPORT } from '../constants/routes'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import setPageView from '../utils/analytics/setPageView'
+import actions from '../store/actions'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
 
 const EditOntology = ({
   objectPropertiesFromApi,
   deletedNodes,
   deletedEdges,
-  updateStoreValue,
-  showTour
+  showTour,
+  updateStoreValue
 }) => {
   const { t } = useTranslation()
 
@@ -178,7 +176,7 @@ const EditOntology = ({
     },
     {
       target: '.sidebar-main-body-title',
-      content: t('introEditOntologySynonyms'),
+      content: t('introEditOntologyProperties'),
       placement: 'bottom',
       disableBeacon: true
     }
@@ -188,25 +186,22 @@ const EditOntology = ({
     const { status } = data
 
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, editOntology: false }))
-      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_EXPORT)
-      window.history.pushState('', '', ROUTE_EXPORT)
-      setPageView({ url: ROUTE_EXPORT, updateStoreValue })
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, editOntology: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { editOntology: 'false' })
+      document.getElementById('sidebar-button-export').click()
     }
   }
 
   return (
     <>
-      {showTour.editOntology && (
-      <Joyride
-        callback={handleJoyrideCallback}
-        steps={steps}
-        disableScrolling
-        locale={{ close: t('next') }}
-        styles={{
-          options: { primaryColor: '#011e41' }
-        }}
-      />
+      {showTour.editOntology !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          hideBackButton
+          locale={{ close: t('next') }}
+        />
       )}
 
       <h1 className="sidebar-main-title">
@@ -350,11 +345,11 @@ const EditOntology = ({
 }
 
 EditOntology.propTypes = {
-  updateStoreValue: PropTypes.func.isRequired,
   objectPropertiesFromApi: PropTypes.shape().isRequired,
   deletedNodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   deletedEdges: PropTypes.arrayOf(PropTypes.string).isRequired,
   showTour: PropTypes.shape().isRequired,
+  updateStoreValue: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({

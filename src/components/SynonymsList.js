@@ -12,7 +12,7 @@ import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_EDIT_ONTOLOGY, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
+import { SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import actions from '../store/actions'
 import { MIN_DATE, SORT_FIELDS } from '../constants/synonyms'
 import getNode from '../utils/nodesEdgesUtils/getNode'
@@ -22,9 +22,7 @@ import SynonymsListNode from './SynonymsListNode'
 import { NODE_TYPE } from '../constants/graph'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 import { getElementIdAndType } from '../constants/functions'
-import { ROUTE_EDIT_ONTOLOGY } from '../constants/routes'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import setPageView from '../utils/analytics/setPageView'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
 
 const SynonymsList = ({
   nodesSynonyms,
@@ -125,25 +123,22 @@ const SynonymsList = ({
     }
 
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, synonyms: false }))
-      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_EDIT_ONTOLOGY)
-      window.history.pushState('', '', ROUTE_EDIT_ONTOLOGY)
-      setPageView({ url: ROUTE_EDIT_ONTOLOGY, updateStoreValue })
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, synonyms: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { synonyms: 'false' })
+      document.getElementById('sidebar-button-edit-ontology').click()
     }
   }
 
   return (
     <>
-      {showTour.synonyms && (
-      <Joyride
-        callback={handleJoyrideCallback}
-        steps={steps}
-        disableScrolling
-        locale={{ close: t('next') }}
-        styles={{
-          options: { primaryColor: '#011e41' }
-        }}
-      />
+      {showTour.synonyms !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          hideBackButton
+          locale={{ close: t('next') }}
+        />
       )}
 
       <h1 className="sidebar-main-title">

@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.7.0]
 ### Added
+- ONTOLOGY-167 Added guided tour at startup
 - ONTOLOGY-179 Added new logo
 - ONTOLOGY-177 Cookie banner and cookieless google analytics integration
 - ONTOLOGY-156 Integrated Owl file export endpoint

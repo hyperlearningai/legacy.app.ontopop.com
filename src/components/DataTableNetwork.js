@@ -7,10 +7,7 @@ import { useEffect } from 'react'
 import Joyride from 'react-joyride'
 import actions from '../store/actions'
 import setDataTableTriplesLabels from '../utils/dataTableNetwork/setDataTableTriplesLabels'
-import { ROUTE_ELEMENTS_SELECTION } from '../constants/routes'
-import setPageView from '../utils/analytics/setPageView'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import { SIDEBAR_VIEW_ELEMENTS_SELECTION } from '../constants/views'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
 
 const DataTableNetwork = ({
   dataTableTriples,
@@ -39,7 +36,7 @@ const DataTableNetwork = ({
   const steps = [
     {
       target: '#sidebar-button-elements-selection',
-      content: t('introDatabaseSection'),
+      content: t('introDatatableSection'),
       placement: 'right',
       disableBeacon: true
     }
@@ -49,25 +46,24 @@ const DataTableNetwork = ({
     const { status } = data
 
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, database: false }))
-      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_ELEMENTS_SELECTION)
-      window.history.pushState('', '', ROUTE_ELEMENTS_SELECTION)
-      setPageView({ url: ROUTE_ELEMENTS_SELECTION, updateStoreValue })
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, datatable: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { datatable: 'false' })
+      document.getElementById('sidebar-button-elements-selection').click()
     }
   }
 
   return (
     <div className="p-p-3 datatable-container elevate-view">
-      {showTour.database && (
-      <Joyride
-        callback={handleJoyrideCallback}
-        steps={steps}
-        disableScrolling
-        locale={{ close: t('next') }}
-        styles={{
-          options: { primaryColor: '#011e41' }
-        }}
-      />
+      {showTour.datatable !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          locale={{ close: t('next') }}
+          styles={{
+            options: { primaryColor: '#011e41' }
+          }}
+        />
       )}
       <DataTable
         header={t('availableRelationships')}

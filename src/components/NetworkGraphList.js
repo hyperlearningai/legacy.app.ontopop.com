@@ -5,7 +5,7 @@ import { Button } from 'primereact/button'
 import Joyride from 'react-joyride'
 import actions from '../store/actions'
 import { NETWORK_VIEW_DATATABLE, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
-import { OPERATION_TYPE_DELETE, OPERATION_TYPE_UPDATE } from '../constants/store'
+import { OPERATION_TYPE_DELETE, OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkGraphList = ({
   updateStoreValue,
@@ -20,13 +20,13 @@ const NetworkGraphList = ({
   const steps = [
     {
       target: '.vis-up',
-      content: 'Use buttons to navigate',
+      content: t('introNavigateButtons'),
       placement: 'top',
       disableBeacon: true
     },
     {
       target: '#navbar-datatable-btn',
-      content: 'See database',
+      content: t('introNavigateDatatable'),
       placement: 'bottom',
       disableBeacon: true
     }
@@ -36,23 +36,22 @@ const NetworkGraphList = ({
     const { status } = data
 
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, navigate: false }))
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, navigate: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { navigate: 'false' })
       updateStoreValue(['networkVisualisation'], OPERATION_TYPE_UPDATE, NETWORK_VIEW_DATATABLE)
     }
   }
 
   return (
     <>
-      {showTour.navigate && (
-      <Joyride
-        callback={handleJoyrideCallback}
-        steps={steps}
-        disableScrolling
-        locale={{ close: t('next') }}
-        styles={{
-          options: { primaryColor: '#011e41' }
-        }}
-      />
+      {showTour.navigate !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          hideBackButton
+          locale={{ close: t('next') }}
+        />
       )}
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPHS)}

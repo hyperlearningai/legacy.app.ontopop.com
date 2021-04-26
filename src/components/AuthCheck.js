@@ -12,7 +12,6 @@ import setPageView from '../utils/analytics/setPageView'
 const AuthCheck = ({
   updateStoreValue,
   user,
-  showTour,
   pageProps
 }) => {
   const { t } = useTranslation()
@@ -38,7 +37,6 @@ const AuthCheck = ({
   useEffect(() => {
     if (user.email || user.isGuest) {
       startupActions({
-        showTour,
         updateStoreValue,
         t
       })
@@ -62,10 +60,8 @@ AuthCheck.propTypes = {
 
 const mapPropsToState = ({
   user,
-  showTour
 }) => ({
   user,
-  showTour
 })
 
 export default connect(

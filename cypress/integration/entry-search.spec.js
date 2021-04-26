@@ -5,16 +5,16 @@ import getNodesNotes from '../fixtures/getNodesNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
-import emptyAutocomplete from '../fixtures/emptyAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
-import emptySearch from '../fixtures/emptySearch'
 import businessAreaValues from '../fixtures/businessAreaValues'
 import { ROUTE_SEARCH } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Entry search', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Entry search', () => {

@@ -15,6 +15,7 @@ import exportCsv from '../utils/exportSettings/exportCsv'
 import exportOwl from '../utils/exportSettings/exportOwl'
 import printCanvas from '../utils/exportSettings/printCanvas'
 import actions from '../store/actions'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
 
 const ExportSettings = ({
   updateStoreValue,
@@ -59,22 +60,27 @@ const ExportSettings = ({
     const { status } = data
 
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, export: false }))
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, export: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { export: 'false' })
     }
   }
 
   return (
     <>
-      {showTour.export && (
-      <Joyride
-        callback={handleJoyrideCallback}
-        steps={steps}
-        disableScrolling
-        locale={{ close: t('next') }}
-        styles={{
-          options: { primaryColor: '#011e41' }
-        }}
-      />
+      {showTour.export !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          hideBackButton
+          locale={{
+            close: t('next'),
+            last: t('last')
+          }}
+          styles={{
+            options: { primaryColor: '#011e41' }
+          }}
+        />
       )}
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_EXPORT)}

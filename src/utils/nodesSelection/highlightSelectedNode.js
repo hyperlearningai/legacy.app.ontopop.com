@@ -31,10 +31,12 @@ const highlightSelectedNode = ({
     element: node
   })
 
-  updateNodes({
-    id: selectedNode,
-    color
-  })
+  if (color.background) {
+    updateNodes({
+      id: selectedNode,
+      color
+    })
+  }
 
   if (network) {
     network.focus(selectedNode,

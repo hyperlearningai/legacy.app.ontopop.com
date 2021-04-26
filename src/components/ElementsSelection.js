@@ -15,10 +15,7 @@ import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
 import { getElementIdAndType } from '../constants/functions'
-import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../constants/routes'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
-import setPageView from '../utils/analytics/setPageView'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
 
 const ElementsSelection = ({
   selectedElement,
@@ -115,25 +112,22 @@ const ElementsSelection = ({
     }
 
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, elementSelection: false }))
-      updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_GRAPH_OPTIONS)
-      window.history.pushState('', '', ROUTE_NETWORK_GRAPH_OPTIONS)
-      setPageView({ url: ROUTE_NETWORK_GRAPH_OPTIONS, updateStoreValue })
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, elementSelection: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { elementSelection: 'false' })
+      document.getElementById('sidebar-button-network-graph-options').click()
     }
   }
 
   return (
     <>
-      {showTour.elementSelection && (
-      <Joyride
-        callback={handleJoyrideCallback}
-        steps={steps}
-        disableScrolling
-        locale={{ close: t('next') }}
-        styles={{
-          options: { primaryColor: '#011e41' }
-        }}
-      />
+      {showTour.elementSelection !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          hideBackButton
+          locale={{ close: t('next') }}
+        />
       )}
 
       <div className="sidebar-main-title">

@@ -6,11 +6,13 @@ import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_EXPORT } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Export', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Export', () => {

@@ -5,13 +5,12 @@ import { ProgressSpinner } from 'primereact/progressspinner'
 import { Button } from 'primereact/button'
 import Joyride from 'react-joyride'
 import GraphSearchCard from './GraphSearchCard'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
 import actions from '../store/actions'
 import SearchBar from './SearchBar'
 import setPageView from '../utils/analytics/setPageView'
-import setSearchNeighbourNodes from '../utils/graphSearch/setSearchNeighbourNodes'
 
 const GraphSearch = ({
   entrySearchResultsByPage,
@@ -29,7 +28,7 @@ const GraphSearch = ({
 
   const steps = [
     {
-      target: '#card-visualise-btn-2',
+      target: '#card-visualise-btn-0',
       content: t('introSearchResults'),
       placement: 'top',
       disableBeacon: true
@@ -40,16 +39,9 @@ const GraphSearch = ({
     const { status } = data
     if (!searchResults || searchResults.length < 1) return
     if (status === 'finished') {
-      localStorage.setItem('showTour', JSON.stringify({ ...showTour, searchResults: false }))
-      const searchResult = searchResults[0]
-      setSearchNeighbourNodes({
-        separationDegree: 1,
-        updateStoreValue,
-        searchResult
-      })
-      updateStoreValue(['selectedNotesType'], OPERATION_TYPE_UPDATE, 'node')
-      updateStoreValue(['noteElementId'], OPERATION_TYPE_UPDATE, 0)
-      updateStoreValue(['selectedElement'], OPERATION_TYPE_UPDATE, { 0: 'node' })
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, searchResults: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { searchResults: 'false' })
+      document.getElementById('card-visualise-btn-0').click()
     }
   }
 
@@ -65,16 +57,13 @@ const GraphSearch = ({
           </div>
         ) : (
           <>
-            {showTour.searchResults && (
-            <Joyride
-              callback={handleJoyrideCallback}
-              disableScrolling
-              locale={{ close: t('next') }}
-              steps={steps}
-              styles={{
-                options: { primaryColor: '#011e41' }
-              }}
-            />
+            {showTour.searchResults !== 'false' && (
+              <Joyride
+                callback={handleJoyrideCallback}
+                disableScrolling
+                locale={{ close: t('next') }}
+                steps={steps}
+              />
             )}
 
             {

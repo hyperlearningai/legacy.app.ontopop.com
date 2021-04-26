@@ -22,12 +22,12 @@ const getStylingProperty = ({
   } = store.getState()
 
   if (type === 'node') {
-    const style = element[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling : globalNodeStyling
+    const style = element && element[USER_DEFINED_PROPERTY] ? userDefinedNodeStyling : globalNodeStyling
 
     return style[property]
   }
 
-  const style = element[USER_DEFINED_PROPERTY] ? userDefinedEdgeStyling : globalEdgeStyling
+  const style = element && element[USER_DEFINED_PROPERTY] ? userDefinedEdgeStyling : globalEdgeStyling
 
   return style[property]
 }

@@ -30,7 +30,7 @@ const NodesSelectionDetails = ({
 
       <div className="elements-selection-details-table elements-selection-details-table-properties">
         {
-          tableRowNames?.map((tableRowName) => (
+          tableRowNames && tableRowNames.length > 0 ? tableRowNames.map((tableRowName) => (
             <div
               key={`details-row-${tableRowName}`}
               className="elements-selection-details-table-row"
@@ -42,7 +42,7 @@ const NodesSelectionDetails = ({
                 {selectedNode[tableRowName] || t('null')}
               </div>
             </div>
-          ))
+          )) : null
         }
       </div>
 

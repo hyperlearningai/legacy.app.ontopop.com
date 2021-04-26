@@ -5,11 +5,13 @@ import graphResponse from '../fixtures/graphResponse'
 import customQueryResponse from '../fixtures/customQueryResponse'
 import getStyling from '../fixtures/getStyling'
 import { ROUTE_CUSTOM_QUERY } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Custom query', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Custom query', () => {

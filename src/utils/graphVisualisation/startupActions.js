@@ -12,7 +12,6 @@ import { OPERATION_TYPE_UPDATE } from '../../constants/store'
  * @return { undefined }
 \ */
 const startupActions = async ({
-  showTour,
   updateStoreValue,
   t
 }) => {
@@ -55,8 +54,6 @@ const startupActions = async ({
 
   if (localStorage.getItem('showTour')) {
     updateStoreValue(['showTour'], OPERATION_TYPE_UPDATE, JSON.parse(localStorage.getItem('showTour')))
-  } else {
-    localStorage.setItem('showTour', JSON.stringify(showTour))
   }
 }
 
