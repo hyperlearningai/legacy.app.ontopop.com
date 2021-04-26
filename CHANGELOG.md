@@ -40,7 +40,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
-- ONTOLOGY-167 Added guided tour at startup
 - ONTOLOGY-179 Removed structured search components and utils
 - ONTOLOGY-179 Removed free text search components and utils
 - ONTOLOGY-156 Removed serialiseOwlFile util
