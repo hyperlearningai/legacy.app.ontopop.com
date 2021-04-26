@@ -129,7 +129,7 @@ const Login = ({
               ) : (
                 <>
                   <Button
-                    aria-label="auth-login-button"
+                    aria-label={t('login')}
                     className="auth-button m-t-20"
                     label={t('login')}
                     id="auth-login-button"
@@ -145,6 +145,7 @@ const Login = ({
 
                   <Button
                     className="auth-button m-t-20 p-button-secondary"
+                    aria-label={t('continueGuest')}
                     label={t('continueGuest')}
                     id="guest-login-button"
                     onClick={() => {

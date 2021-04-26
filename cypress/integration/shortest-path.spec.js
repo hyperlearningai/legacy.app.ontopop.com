@@ -70,7 +70,7 @@ context('Shortest path', () => {
 
       cy.get('.p-menuitem-link').eq(0).click()
 
-      cy.get('#main-search').type('link')
+      cy.get('#main-search').find('input').type('link', { force: true })
 
       cy.wait('@linkAutocomplete')
 
@@ -92,7 +92,7 @@ context('Shortest path', () => {
 
       // select first node
       cy.get('#node-select-1').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('loc')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('loc', { force: true })
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // choose ending node
@@ -100,7 +100,7 @@ context('Shortest path', () => {
 
       // select first node
       cy.get('#node-select-2').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('spe')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').clear().type('spe', { force: true })
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
       // check that shortest path button work

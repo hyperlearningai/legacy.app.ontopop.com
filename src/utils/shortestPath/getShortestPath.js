@@ -1,3 +1,4 @@
+import { UPPER_ONTOLOGY } from '../../constants/graph'
 import store from '../../store'
 import getElementLabel from '../networkStyling/getElementLabel'
 import getEdge from '../nodesEdgesUtils/getEdge'
@@ -50,6 +51,9 @@ const loopThroughNeighbours = ({
       from,
       to,
     } = edge
+
+    if (classesFromApi[from] && classesFromApi[from][UPPER_ONTOLOGY]) continue
+    if (classesFromApi[to] && classesFromApi[to][UPPER_ONTOLOGY]) continue
 
     if (nodesToExclude.includes(from)) continue
     if (nodesToExclude.includes(to)) continue

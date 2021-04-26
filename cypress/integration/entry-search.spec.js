@@ -81,7 +81,7 @@ context('Entry search', () => {
 
       cy.location('pathname').should('be.equal', ROUTE_SEARCH)
 
-      cy.get('#main-search').type('link')
+      cy.get('#main-search').find('input').type('link', { force: true })
 
       cy.wait('@linkAutocomplete')
 
@@ -204,7 +204,7 @@ context('Entry search', () => {
 
       cy.location('pathname').should('be.equal', ROUTE_SEARCH)
 
-      cy.get('#main-search').type('link')
+      cy.get('#main-search').find('input').type('link', { force: true })
 
       cy.wait('@linkAutocomplete')
 
