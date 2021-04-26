@@ -40,12 +40,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-167 Added guided tour at startup
 - ONTOLOGY-179 Removed structured search components and utils
 - ONTOLOGY-179 Removed free text search components and utils
 - ONTOLOGY-156 Removed serialiseOwlFile util
 - ONTOLOGY-170 Removed required from rdfLabel in edit ontology form
 
 ### Fixed
+- ONTOLOGY-48 Restored sign in as guest button
 - ONTOLOGY-156 Fixed broken navigation buttons when adding a new graph
 - ONTOLOGY-171 Restored search bar in main view at first search
 - ONTOLOGY-163 Fixed advanced search query 

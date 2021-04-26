@@ -90,7 +90,7 @@ context('Edit ontology', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 

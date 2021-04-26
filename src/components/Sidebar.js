@@ -84,7 +84,8 @@ const Sidebar = ({
   updateStoreValue,
   currentGraph,
   graphData,
-  sidebarView
+  sidebarView,
+  user
 }) => {
   const { t } = useTranslation()
 
@@ -157,7 +158,7 @@ const Sidebar = ({
     },
     [SIDEBAR_VIEW_CUSTOM_QUERY]: {
       icon: <BsCodeSlash />,
-      isVisible: IS_CUSTOM_QUERY_VISIBLE,
+      isVisible: user.isGuest ? false : IS_CUSTOM_QUERY_VISIBLE,
       component: <CustomQuery />,
       label: SIDEBAR_VIEW_CUSTOM_QUERY,
       route: ROUTE_CUSTOM_QUERY
@@ -171,14 +172,14 @@ const Sidebar = ({
     },
     [SIDEBAR_VIEW_NOTES]: {
       icon: <FaStickyNote />,
-      isVisible: IS_NOTES_VISIBLE,
+      isVisible: user.isGuest ? false : IS_NOTES_VISIBLE,
       component: <NotesList />,
       label: SIDEBAR_VIEW_NOTES,
       route: ROUTE_NOTES
     },
     [SIDEBAR_VIEW_SYNONYMS]: {
       icon: <FaFileAlt />,
-      isVisible: IS_SYNONIMS_VISIBLE,
+      isVisible: user.isGuest ? false : IS_SYNONIMS_VISIBLE,
       component: <SynonymsList />,
       label: SIDEBAR_VIEW_SYNONYMS,
       route: ROUTE_SYNONYMS
@@ -192,7 +193,7 @@ const Sidebar = ({
     },
     [SIDEBAR_VIEW_EDIT_ONTOLOGY]: {
       icon: <BsPencilSquare />,
-      isVisible: IS_EDIT_ONTOLOGY_VISIBLE,
+      isVisible: user.isGuest ? false : IS_EDIT_ONTOLOGY_VISIBLE,
       component: <EditOntology />,
       label: SIDEBAR_VIEW_EDIT_ONTOLOGY,
       route: ROUTE_EDIT_ONTOLOGY
@@ -269,18 +270,21 @@ Sidebar.propTypes = {
   currentGraph: PropTypes.string.isRequired,
   sidebarView: PropTypes.string.isRequired,
   graphData: PropTypes.shape().isRequired,
+  user: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   isSidebarOpen,
   currentGraph,
   graphData,
-  sidebarView
+  sidebarView,
+  user
 }) => ({
   isSidebarOpen,
   currentGraph,
   graphData,
-  sidebarView
+  sidebarView,
+  user
 })
 
 export default connect(

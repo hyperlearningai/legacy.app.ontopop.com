@@ -26,7 +26,8 @@ const NetworkGraphOptions = ({
   physicsRepulsion,
   physicsHierarchicalView,
   isPhysicsOn,
-  showTour
+  showTour,
+  user
 }) => {
   const { t } = useTranslation()
 
@@ -83,7 +84,12 @@ const NetworkGraphOptions = ({
     if (status === 'finished') {
       localStorage.setItem('showTour', JSON.stringify({ ...showTour, graphOptions: 'false' }))
       updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { graphOptions: 'false' })
-      document.getElementById('sidebar-button-notes').click()
+
+      document.getElementById(
+        user.isGuest
+          ? 'sidebar-button-export'
+          : 'sidebar-button-notes'
+      ).click()
     }
   }
 
@@ -292,20 +298,21 @@ const NetworkGraphOptions = ({
               >
                 <Accordion>
                   {
-                  Object.keys(edgesProperties).length > 0
-                  && Object.keys(edgesProperties).map((edgePropertyIndex) => (
-                    <AccordionTab
-                      header={`${t('filter')} ${parseInt(edgePropertyIndex) + 1}`}
-                    >
-                      <HideElementsByPropertyForm
-                        index={parseInt(edgePropertyIndex)}
-                        elementProperties={edgesProperties}
-                        elementType="edge"
-                        setProperty={setEdgesProperties}
-                      />
-                    </AccordionTab>
-                  ))
-                }
+                    Object.keys(edgesProperties).length > 0
+                    && Object.keys(edgesProperties).map((edgePropertyIndex) => (
+                      <AccordionTab
+                        key={`filter-${edgePropertyIndex}`}
+                        header={`${t('filter')} ${parseInt(edgePropertyIndex) + 1}`}
+                      >
+                        <HideElementsByPropertyForm
+                          index={parseInt(edgePropertyIndex)}
+                          elementProperties={edgesProperties}
+                          elementType="edge"
+                          setProperty={setEdgesProperties}
+                        />
+                      </AccordionTab>
+                    ))
+                  }
                 </Accordion>
 
                 <Button
@@ -363,6 +370,7 @@ NetworkGraphOptions.propTypes = {
   isPhysicsOn: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
   showTour: PropTypes.shape().isRequired,
+  user: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -371,14 +379,16 @@ const mapToProps = ({
   physicsRepulsion,
   physicsHierarchicalView,
   isPhysicsOn,
-  showTour
+  showTour,
+  user
 }) => ({
   currentGraph,
   graphData,
   physicsRepulsion,
   physicsHierarchicalView,
   isPhysicsOn,
-  showTour
+  showTour,
+  user
 })
 
 export default connect(
