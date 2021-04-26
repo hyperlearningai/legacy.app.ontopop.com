@@ -41,6 +41,7 @@ test.json
 
 # tests
 cypress/downloads/*
+cypress/screenshots/*
 jest-coverage
 cypress-coverage
 reports
