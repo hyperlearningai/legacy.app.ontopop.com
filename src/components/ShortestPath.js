@@ -21,6 +21,7 @@ import highlightSelectedNode from '../utils/nodesSelection/highlightSelectedNode
 import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { UPPER_ONTOLOGY } from '../constants/graph'
 
 const ShortestPath = ({
   updateStoreValue,
@@ -28,7 +29,8 @@ const ShortestPath = ({
   shortestPathNode2,
   isShortestPathNode1Selectable,
   isShortestPathNode2Selectable,
-  nodesDropdownLabels
+  nodesDropdownLabels,
+  classesFromApi
 }) => {
   const { t } = useTranslation()
 
@@ -111,7 +113,11 @@ const ShortestPath = ({
             id="node-select-1"
             value={shortestPathNode1}
             filter
-            options={nodesDropdownLabels.filter((node) => node.value !== shortestPathNode2)}
+            options={nodesDropdownLabels.filter((node) => {
+              const isUpperOntology = classesFromApi[node.value] && classesFromApi[node.value][UPPER_ONTOLOGY]
+
+              return node.value !== shortestPathNode2 && !isUpperOntology
+            })}
             onChange={(e) => updateStoreValue(['shortestPathNode1'], OPERATION_TYPE_UPDATE, e.value)}
             placeholder={t('selectNode')}
           />
@@ -135,7 +141,11 @@ const ShortestPath = ({
             id="node-select-2"
             value={shortestPathNode2}
             filter
-            options={nodesDropdownLabels.filter((node) => node.value !== shortestPathNode1)}
+            options={nodesDropdownLabels.filter((node) => {
+              const isUpperOntology = classesFromApi[node.value] && classesFromApi[node.value][UPPER_ONTOLOGY]
+
+              return node.value !== shortestPathNode1 && !isUpperOntology
+            })}
             onChange={(e) => updateStoreValue(['shortestPathNode2'], OPERATION_TYPE_UPDATE, e.value)}
             placeholder={t('selectNode')}
           />
@@ -221,6 +231,7 @@ ShortestPath.propTypes = {
   isShortestPathNode1Selectable: PropTypes.bool.isRequired,
   isShortestPathNode2Selectable: PropTypes.bool.isRequired,
   nodesDropdownLabels: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  classesFromApi: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({

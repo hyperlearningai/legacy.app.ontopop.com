@@ -63,7 +63,7 @@ context('Network styling', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click({ force: true })
+      cy.get('#auth-login-button').click({ force: true })
 
       cy.wait('@postLogin')
 
@@ -234,7 +234,7 @@ context('Network styling', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click({ force: true })
+      cy.get('#auth-login-button').click({ force: true })
 
       cy.wait('@postLogin')
 
@@ -412,7 +412,7 @@ context('Network styling', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click({ force: true })
+      cy.get('#auth-login-button').click({ force: true })
 
       cy.wait('@postLogin')
 
@@ -547,7 +547,7 @@ context('Network styling', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click({ force: true })
+      cy.get('#auth-login-button').click({ force: true })
 
       cy.wait('@postLogin')
 
@@ -690,7 +690,7 @@ context('Network styling', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click({ force: true })
+      cy.get('#auth-login-button').click({ force: true })
 
       cy.wait('@postLogin')
 
@@ -848,7 +848,7 @@ context('Network styling', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click({ force: true })
+      cy.get('#auth-login-button').click({ force: true })
 
       cy.wait('@postLogin')
 
@@ -950,7 +950,6 @@ context('Network styling', () => {
       cy.get('#save-styling-button').click({ force: true })
 
       cy.wait('@saveStyling')
-      cy.get('#save-styling-button').should('have.text', 'Saved!')
     })
   })
 })
