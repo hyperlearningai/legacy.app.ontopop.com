@@ -25,6 +25,12 @@ const NetworkGraphList = ({
       disableBeacon: true
     },
     {
+      target: '.vis-zoomExtends',
+      content: t('introNavigateZoom'),
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
       target: '#navbar-datatable-btn',
       content: t('introNavigateDatatable'),
       placement: 'bottom',
