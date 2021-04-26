@@ -39,6 +39,24 @@ describe('logout', () => {
       [
         [
           [
+            'showTour',
+          ],
+          OPERATION_TYPE_UPDATE,
+          {
+            datatable: 'true',
+            editOntology: 'true',
+            elementSelection: 'true',
+            export: 'true',
+            graphOptions: 'true',
+            navigate: 'true',
+            notes: 'true',
+            search: 'true',
+            searchResults: 'true',
+            synonyms: 'true',
+          },
+        ],
+        [
+          [
             'isSidebarOpen'
           ],
           OPERATION_TYPE_UPDATE,

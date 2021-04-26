@@ -12,7 +12,7 @@ import setPageView from '../utils/analytics/setPageView'
 const AuthCheck = ({
   updateStoreValue,
   user,
-  pageProps,
+  pageProps
 }) => {
   const { t } = useTranslation()
 

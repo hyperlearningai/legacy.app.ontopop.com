@@ -4,11 +4,13 @@ import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import { ROUTE_LISTING, ROUTE_SEARCH } from '../../src/constants/routes'
 import getStyling from '../fixtures/getStyling'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Listing', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Listing', () => {
@@ -46,7 +48,7 @@ context('Listing', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 

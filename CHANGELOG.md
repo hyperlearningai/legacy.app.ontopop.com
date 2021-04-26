@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.7.0]
 ### Added
+- ONTOLOGY-167 Added guided tour at startup
 - ONTOLOGY-179 Added new logo
 - ONTOLOGY-177 Cookie banner and cookieless google analytics integration
 - ONTOLOGY-156 Integrated Owl file export endpoint
@@ -45,6 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-170 Removed required from rdfLabel in edit ontology form
 
 ### Fixed
+- ONTOLOGY-48 Restored sign in as guest button
 - ONTOLOGY-156 Fixed broken navigation buttons when adding a new graph
 - ONTOLOGY-171 Restored search bar in main view at first search
 - ONTOLOGY-163 Fixed advanced search query 

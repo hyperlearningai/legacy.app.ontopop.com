@@ -21,6 +21,7 @@ exports[`Sidebar should match snapshot when sidebar closed 1`] = `
   }
   isSidebarOpen={false}
   mapToProps={[Function]}
+  sidebarView="search"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -48,6 +49,7 @@ exports[`Sidebar should match snapshot when sidebar open and ROUTE_ELEMENTS_FILT
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="elementsFilter"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -75,6 +77,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_CUSTOM
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="customQuery"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -102,6 +105,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EDIT_O
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="editOntology"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -129,6 +133,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_ELEMEN
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="elementsSelection"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -156,7 +161,41 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_ENTRY_
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="search"
   updateStoreValue={[MockFunction]}
+>
+  <Component />
+</Connect>
+`;
+
+exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_ENTRY_SEARCH and isGuest 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  currentGraph="graph-0"
+  graphData={
+    Object {
+      "graph-0": Object {
+        "label": "Main",
+        "noDelete": true,
+      },
+      "graph-1": Object {
+        "label": "Search",
+      },
+    }
+  }
+  isSidebarOpen={false}
+  mapToProps={[Function]}
+  sidebarView="search"
+  updateStoreValue={[MockFunction]}
+  user={
+    Object {
+      "isGuest": true,
+    }
+  }
 >
   <Component />
 </Connect>
@@ -183,6 +222,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_EXPORT
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="export"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -210,6 +250,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPH_
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="networkGraphOptions"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -237,6 +278,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_GRAPHS
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="networkGraphs"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -264,33 +306,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_NEIGHB
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
-  updateStoreValue={[MockFunction]}
->
-  <Component />
-</Connect>
-`;
-
-exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SETTINGS 1`] = `
-<Connect
-  actions={
-    Object {
-      "updateStoreValue": [Function],
-    }
-  }
-  currentGraph="graph-0"
-  graphData={
-    Object {
-      "graph-0": Object {
-        "label": "Main",
-        "noDelete": true,
-      },
-      "graph-1": Object {
-        "label": "Search",
-      },
-    }
-  }
-  isSidebarOpen={true}
-  mapToProps={[Function]}
+  sidebarView="nodeNeighbourhood"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -318,6 +334,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SHORTE
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="shortestPath"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -345,6 +362,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_STYLIN
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="styling"
   updateStoreValue={[MockFunction]}
 >
   <Component />
@@ -372,6 +390,7 @@ exports[`Sidebar should match snapshot when sidebar open and SIDEBAR_VIEW_SYNONY
   }
   isSidebarOpen={true}
   mapToProps={[Function]}
+  sidebarView="synonyms"
   updateStoreValue={[MockFunction]}
 >
   <Component />

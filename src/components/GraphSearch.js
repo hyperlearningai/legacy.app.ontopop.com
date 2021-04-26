@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Button } from 'primereact/button'
+import Joyride from 'react-joyride'
 import GraphSearchCard from './GraphSearchCard'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
 import actions from '../store/actions'
@@ -18,11 +19,31 @@ const GraphSearch = ({
   searchPageSelected,
   entrySearchValue,
   updateStoreValue,
-  sidebarView
+  sidebarView,
+  showTour
 }) => {
   const { t } = useTranslation()
 
   const searchResults = entrySearchResultsByPage[searchPageSelected]
+
+  const steps = [
+    {
+      target: '#card-visualise-btn-0',
+      content: t('introSearchResults'),
+      placement: 'top',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
+    if (!searchResults || searchResults.length < 1) return
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, searchResults: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { searchResults: 'false' })
+      document.getElementById('card-visualise-btn-0').click()
+    }
+  }
 
   return (
     <div className={`graph-search${sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH ? ' elevate-view' : ''}`}>
@@ -36,6 +57,15 @@ const GraphSearch = ({
           </div>
         ) : (
           <>
+            {showTour.searchResults !== 'false' && (
+              <Joyride
+                callback={handleJoyrideCallback}
+                disableScrolling
+                locale={{ close: t('next') }}
+                steps={steps}
+              />
+            )}
+
             {
               isFirstQuery ? (
                 <>
@@ -104,6 +134,7 @@ GraphSearch.propTypes = {
   entrySearchValue: PropTypes.string.isRequired,
   updateStoreValue: PropTypes.func.isRequired,
   sidebarView: PropTypes.string.isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -112,14 +143,16 @@ const mapToProps = ({
   entrySearchResultsByPage,
   searchPageSelected,
   entrySearchValue,
-  sidebarView
+  sidebarView,
+  showTour
 }) => ({
   isFirstQuery,
   isSearchLoading,
   entrySearchResultsByPage,
   searchPageSelected,
   entrySearchValue,
-  sidebarView
+  sidebarView,
+  showTour
 })
 
 export default connect(

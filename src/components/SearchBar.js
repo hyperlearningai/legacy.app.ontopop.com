@@ -5,22 +5,53 @@ import { useTranslation } from 'react-i18next'
 import { AutoComplete } from 'primereact/autocomplete'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { Button } from 'primereact/button'
+import Joyride from 'react-joyride'
 import actions from '../store/actions'
 import getSuggestions from '../utils/graphSearch/getSuggestions'
 import searchGraph from '../utils/graphSearch/searchGraph'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const SearchBar = ({
   updateStoreValue,
   entrySearchValue,
-  isSearchLoading
+  isSearchLoading,
+  showTour
 }) => {
   const { t } = useTranslation()
 
   const [suggestions, setSuggestions] = useState([])
 
+  const steps = [
+    {
+      target: '.graph-search-bar',
+      content: t('introSearchStart'),
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, search: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { search: 'false' })
+      updateStoreValue(['entrySearchValue'], OPERATION_TYPE_UPDATE, 'road')
+      searchGraph({ updateStoreValue, t })
+    }
+  }
+
   return (
     <>
+      {showTour.search !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          locale={{ close: t('next') }}
+          steps={steps}
+          hideBackButton
+          styles={{
+            options: { primaryColor: '#011e41' }
+          }}
+        />
+      )}
       {
         isSearchLoading
           ? (
@@ -106,14 +137,17 @@ SearchBar.propTypes = {
   updateStoreValue: PropTypes.func.isRequired,
   entrySearchValue: PropTypes.string.isRequired,
   isSearchLoading: PropTypes.bool.isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
   entrySearchValue,
-  isSearchLoading
+  isSearchLoading,
+  showTour
 }) => ({
   entrySearchValue,
-  isSearchLoading
+  isSearchLoading,
+  showTour
 })
 
 export default connect(

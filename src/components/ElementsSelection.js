@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Dropdown } from 'primereact/dropdown'
 import { SelectButton } from 'primereact/selectbutton'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { orderBy } from 'lodash'
+import Joyride from 'react-joyride'
 import actions from '../store/actions'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
@@ -14,11 +15,13 @@ import getEdgeIds from '../utils/nodesEdgesUtils/getEdgeIds'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
 import { getElementIdAndType } from '../constants/functions'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
 
 const ElementsSelection = ({
   selectedElement,
   updateStoreValue,
   nodesDropdownLabels,
+  showTour
 }) => {
   const { t } = useTranslation()
 
@@ -76,13 +79,62 @@ const ElementsSelection = ({
     </span>
   )
 
+  const steps = [
+    {
+      target: '#element-type-select',
+      content: t('introElementSelectionType'),
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '#element-select',
+      content: t('introElementSelectionElement'),
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '.elements-selection-details',
+      content: t('introElementSelectionProperties'),
+      placement: 'left',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = (data) => {
+    const { status, index } = data
+
+    if (index === 1) {
+      updateHighlightedElement({
+        updateStoreValue,
+        id: '12',
+        type: 'node'
+      })
+    }
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, elementSelection: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { elementSelection: 'false' })
+      document.getElementById('sidebar-button-network-graph-options').click()
+    }
+  }
+
   return (
     <>
+      {showTour.elementSelection !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          hideBackButton
+          locale={{ close: t('next') }}
+        />
+      )}
+
       <div className="sidebar-main-title">
         {!selectedElementID && selectedElementType === 'node' && t('nodesSelection')}
         {!selectedElementID && selectedElementType === 'edge' && t('edgesSelection')}
-        {selectedElementID && selectedElementType === 'node' && <>{`${t('node')}: ${getNode(selectedElementID).label}`}</>}
-        {selectedElementID && selectedElementType === 'edge' && <>{`${t('edge')}: ${getEdge(selectedElementID).label}`}</>}
+        {selectedElementID && selectedElementType === 'node' && <>{`${t('node')}: ${getNode(selectedElementID)?.label}`}</>}
+        {selectedElementID && selectedElementType === 'edge' && <>{`${t('edge')}: ${getEdge(selectedElementID)?.label}`}</>}
       </div>
       <div className="sidebar-main-body elements-selection">
         <div className="elements-selection-select-row">
@@ -138,6 +190,7 @@ ElementsSelection.propTypes = {
   selectedElement: PropTypes.shape(),
   updateStoreValue: PropTypes.func.isRequired,
   nodesDropdownLabels: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 ElementsSelection.defaultProps = {
@@ -146,10 +199,12 @@ ElementsSelection.defaultProps = {
 
 const mapToProps = ({
   nodesDropdownLabels,
-  selectedElement
+  selectedElement,
+  showTour
 }) => ({
   nodesDropdownLabels,
   selectedElement,
+  showTour
 })
 
 export default connect(

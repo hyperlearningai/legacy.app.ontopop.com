@@ -1,0 +1,17 @@
+.react-joyride {
+  &__tooltip {
+    button {
+      &[data-action="primary"] {
+        background: $primary !important;
+        padding: 10px !important;
+        border-radius: 20px !important;
+        width: 100px;
+      }
+
+      &[data-action="back"] {
+        color: $primary !important;
+        padding: 10px !important;
+      }
+    }
+  }
+}

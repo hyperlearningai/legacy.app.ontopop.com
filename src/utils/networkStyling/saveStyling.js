@@ -1,3 +1,4 @@
+import { STYLING_LS } from '../../constants/localStorage'
 import store from '../../store'
 import updateNetworkStyling from './updateNetworkStyling'
 
@@ -17,6 +18,7 @@ const saveStyling = async ({
     globalEdgeStyling,
     userDefinedEdgeStyling,
     stylingEdgeByProperty,
+    user
   } = store.getState()
 
   const stylingJSON = JSON.stringify({
@@ -30,11 +32,15 @@ const saveStyling = async ({
 
   setSaved(true)
 
-  await updateNetworkStyling({
-    stylingJSON, updateStoreValue, t
-  })
+  if (user.isGuest) {
+    localStorage.setItem(STYLING_LS, stylingJSON)
+  } else {
+    await updateNetworkStyling({
+      stylingJSON, updateStoreValue, t
+    })
+  }
 
-  setTimeout(() => setSaved(false), 5000)
+  setSaved(false)
 }
 
 export default saveStyling

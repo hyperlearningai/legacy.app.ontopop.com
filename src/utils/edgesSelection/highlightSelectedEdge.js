@@ -31,13 +31,15 @@ const highlightSelectedEdge = ({
     element: edge
   })
 
-  const width = 3
+  if (color.color) {
+    const width = 3
 
-  updateEdges({
-    id: edge.id,
-    color,
-    width
-  })
+    updateEdges({
+      id: edge.id,
+      color,
+      width
+    })
+  }
 
   network.focus(edge.from,
     {

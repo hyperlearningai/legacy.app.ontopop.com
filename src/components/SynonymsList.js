@@ -11,6 +11,7 @@ import { Button } from 'primereact/button'
 import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
+import Joyride from 'react-joyride'
 import { SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import actions from '../store/actions'
 import { MIN_DATE, SORT_FIELDS } from '../constants/synonyms'
@@ -21,12 +22,14 @@ import SynonymsListNode from './SynonymsListNode'
 import { NODE_TYPE } from '../constants/graph'
 import updateHighlightedElement from '../utils/networkStyling/updateHighlightedElement'
 import { getElementIdAndType } from '../constants/functions'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
 
 const SynonymsList = ({
   nodesSynonyms,
   updateStoreValue,
   selectedElement,
-  classesFromApi
+  classesFromApi,
+  showTour
 }) => {
   const { t } = useTranslation()
 
@@ -93,8 +96,51 @@ const SynonymsList = ({
     })
   }).filter((node) => node.label)
 
+  const steps = [
+    {
+      target: '#synonyms-select-element',
+      content: t('introSynonymsElement'),
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '.sidebar-main-body-title',
+      content: t('introSynonymsSynonyms'),
+      placement: 'bottom',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = (data) => {
+    const { status, index } = data
+
+    if (index === 1) {
+      updateHighlightedElement({
+        updateStoreValue,
+        id: '12',
+        type: 'node'
+      })
+    }
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, synonyms: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { synonyms: 'false' })
+      document.getElementById('sidebar-button-edit-ontology').click()
+    }
+  }
+
   return (
     <>
+      {showTour.synonyms !== 'false' && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          steps={steps}
+          disableScrolling
+          hideBackButton
+          locale={{ close: t('next') }}
+        />
+      )}
+
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SYNONYMS)}
       </h1>
@@ -265,7 +311,8 @@ SynonymsList.propTypes = {
   nodesSynonyms: PropTypes.arrayOf(PropTypes.shape).isRequired,
   updateStoreValue: PropTypes.func.isRequired,
   selectedElement: PropTypes.shape(),
-  classesFromApi: PropTypes.shape().isRequired
+  classesFromApi: PropTypes.shape().isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 SynonymsList.defaultProps = {
@@ -275,11 +322,13 @@ SynonymsList.defaultProps = {
 const mapToProps = ({
   nodesSynonyms,
   selectedElement,
-  classesFromApi
+  classesFromApi,
+  showTour
 }) => ({
   nodesSynonyms,
   selectedElement,
-  classesFromApi
+  classesFromApi,
+  showTour
 })
 
 export default connect(

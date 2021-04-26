@@ -4,11 +4,13 @@ import emptyNotes from '../fixtures/emptyNotes'
 import graphResponse from '../fixtures/graphResponse'
 import getStyling from '../fixtures/getStyling'
 import { ROUTE_LOGIN } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Profile', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Profile', () => {
@@ -46,7 +48,7 @@ context('Profile', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 

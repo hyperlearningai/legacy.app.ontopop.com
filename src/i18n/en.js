@@ -525,5 +525,36 @@ export default {
   yesY: 'Y',
   noN: 'N',
   acceptAll: 'Accept all',
-  chooseYourPreference: 'Choose your preference'
+  chooseYourPreference: 'Choose your preference',
+
+  // intro
+  next: 'Next',
+  introSearchStart: 'Start your search here. Try: road',
+  introSearchResults: 'This allows you to visualise this entity',
+  introNavigateButtons: 'Use these buttons to navigate around the visualisation.',
+  introNavigateZoom: 'Use these buttons to zoom in and out of the visualisation or to choose the fullscreen option',
+  introNavigateDatatable: 'This allows you to see data in a datable',
+  introDatatableSection: 'This allows you to navigate to a different section',
+  introElementSelectionType: 'Select how you want to view the visualisation. Either by node or edge.',
+  introElementSelectionElement: 'This allows you to choose element',
+  introElementSelectionProperties: 'Choose which properties you want to view',
+  introGraphOptionsPhysics: 'This allows you to change physics',
+  introGraphOptionsPositioning: 'This allows you to change positioning',
+  introGraphOptionsRepulsion: 'This allows you to change repulsion',
+  introNotesType: 'Where would you like to add a note? Choose from graph, node, or edge',
+  introNotesElement: 'Choose an option from the dropdown that you want to add a note to.',
+  introSynonymsElement: 'Select which element you want to add a synonym to.',
+  introSynonymsSynonyms: 'This allows you to manage synonyms',
+  introEditOntologyOperation: 'This allows you to choose operation',
+  introEditOntologyProperties: 'This allows you to manage properties',
+  introExportFilename: 'Start by choosing filename',
+  introExportImage: 'This allows you to export as image',
+  introExportData: 'Use this option to export your data in any of the three formats.',
+  introUseButtonsToNavigate: 'Use buttons to navigate',
+  introSeeAsDatatable: 'Change view to datatable',
+
+  // react joyride
+  back: 'Back',
+  skip: 'Skip',
+  last: 'Last'
 }

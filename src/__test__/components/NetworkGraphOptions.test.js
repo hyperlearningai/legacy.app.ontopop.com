@@ -23,6 +23,13 @@ const setup = () => {
       }
     },
     updateStoreValue: jest.fn(),
+    physicsRepulsion: true,
+    physicsHierarchicalView: true,
+    isPhysicsOn: true,
+    showTour: 'true',
+    user: {
+      isGuest: true
+    }
   }
 
   const component = shallow(<NetworkGraphOptions {...props} />)
