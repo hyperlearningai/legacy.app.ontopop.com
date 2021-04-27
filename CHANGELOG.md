@@ -30,6 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Removed
 
 ### Fixed
+- ONTOLOGY-214 Improved note borders rendering when entering notes view
+- ONTOLOGY-170 Add button not disabled anymore on missing rdfAbout property when adding node
 
 ### Security
 
