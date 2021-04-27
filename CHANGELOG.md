@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 ### Changed
+- ONTOLOGY-147 Internalisation textual context
 - ONTOLOGY-216 Added input text with suggestions instead of dropdown when adding new edge
 
 ### Deprecated

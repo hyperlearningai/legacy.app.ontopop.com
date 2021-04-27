@@ -256,7 +256,7 @@ const initialState = {
   currentGraph: 'graph-0',
   graphData: {
     'graph-0': {
-      label: 'Main',
+      label: 'entireOntology',
       noDelete: true,
       type: ALGO_TYPE_FULL,
       ...DEFAULT_GRAPH_VISUALISATION_OPTIONS

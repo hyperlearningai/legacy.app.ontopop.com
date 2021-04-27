@@ -15,7 +15,7 @@ import {
   EDGE_ALIGNMENT_OPTIONS,
   EDGE_LINE_STYLE_OPTIONS,
   EDGE_LINE_STYLE_TEMPLATE,
-  EDGE_PROPERTIES_DROPDOWN
+  EDGE_PROPERTIES,
 } from '../constants/graph'
 import setEdgesStyle from '../utils/networkStyling/setEdgesStyle'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
@@ -46,6 +46,11 @@ const NetworkStylingEdge = ({
   const captionAlignmentOptions = EDGE_ALIGNMENT_OPTIONS.map((shape) => ({
     label: t(shape),
     value: shape
+  }))
+
+  const edgeProperties = EDGE_PROPERTIES.map((property) => ({
+    value: property,
+    label: t(property),
   }))
 
   return (
@@ -167,7 +172,7 @@ const NetworkStylingEdge = ({
                   aria-label="global-edge-caption-property"
                   id="global-edge-caption-property"
                   value={globalEdgeStyling.stylingEdgeCaptionProperty}
-                  options={EDGE_PROPERTIES_DROPDOWN}
+                  options={edgeProperties}
                   filter
                   onChange={(e) => updateStoreValue(['globalEdgeStyling', 'stylingEdgeCaptionProperty'], OPERATION_TYPE_UPDATE, e.value)}
                   className="m-t-10"
@@ -273,7 +278,7 @@ const NetworkStylingEdge = ({
                   aria-label="global-node-shape"
                   id="ud-edge-caption-property"
                   value={userDefinedEdgeStyling.stylingEdgeCaptionProperty}
-                  options={EDGE_PROPERTIES_DROPDOWN}
+                  options={edgeProperties}
                   filter
                   onChange={(e) => updateStoreValue(['userDefinedEdgeStyling', 'stylingEdgeCaptionProperty'], OPERATION_TYPE_UPDATE, e.value)}
                   className="m-t-10"

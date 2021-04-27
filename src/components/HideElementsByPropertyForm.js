@@ -12,7 +12,7 @@ import actions from '../store/actions'
 import {
   DEFAULT_HIDDEN_ELEMENT_PROPERTY,
   DEFAULT_HIDDEN_ELEMENT_SUBPROPERTY,
-  EDGE_PROPERTIES_DROPDOWN
+  EDGE_PROPERTIES
 } from '../constants/graph'
 
 const HideElementsByPropertyForm = ({
@@ -63,10 +63,15 @@ const HideElementsByPropertyForm = ({
     </span>
   )
 
+  const edgeProperties = EDGE_PROPERTIES.map((property) => ({
+    value: property,
+    label: t(property),
+  }))
+
   const annotationPropertyList = elementType === 'node' ? orderBy([
     ...annotationProperties,
     ...annotationPropertiesDatasets
-  ], ['label'], ['asc']) : EDGE_PROPERTIES_DROPDOWN
+  ], ['label'], ['asc']) : edgeProperties
 
   return (
     <div className="graph-options-property-form">

@@ -278,6 +278,9 @@ export const RESERVED_PROPERTIES = [
 
 export const RDF_ABOUT_PROPERTY = 'rdfAbout'
 export const LABEL_PROPERTY = 'rdfsLabel'
+export const SKOS_DEFINITION_PROPERTY = 'skosDefinition'
+export const SKOS_COMMENT_PROPERTY = 'skosComment'
+export const SKOS_COMMENT_EXAMPLE = 'skosExample'
 export const LABEL_PROPERTY_DATASET = 'name'
 export const EDGE_LABEL_PROPERTY = 'rdfsLabel'
 export const UPPER_ONTOLOGY = 'upperOntology'
@@ -285,15 +288,18 @@ export const SUBCLASSOF_PROPERTY = 'rdfsSubClassOf'
 export const OWL_ANNOTATION_PROPERTIES = 'owlAnnotationProperties'
 export const OWL_RESTRICTION = 'owlRestriction'
 
+export const PROPERTIES_WITH_I18N = [
+  RDF_ABOUT_PROPERTY,
+  LABEL_PROPERTY,
+  SKOS_DEFINITION_PROPERTY,
+  SKOS_COMMENT_PROPERTY,
+  SKOS_COMMENT_EXAMPLE
+]
+
 export const EDGE_PROPERTIES = [
   RDF_ABOUT_PROPERTY,
   LABEL_PROPERTY,
 ]
-
-export const EDGE_PROPERTIES_DROPDOWN = EDGE_PROPERTIES.map((property) => ({
-  value: property,
-  label: property,
-}))
 
 export const LOW_LEVEL_PROPERTIES = [
   ...EDGE_PROPERTIES,

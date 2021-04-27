@@ -14,7 +14,7 @@ import updateStylingByProperties from '../utils/networkStyling/updateStylingByPr
 import {
   FILTER_TYPE_OPTIONS,
   EDGE_STYLING_PROPERTIES,
-  EDGE_PROPERTIES_DROPDOWN
+  EDGE_PROPERTIES
 } from '../constants/graph'
 
 const NetworkStylingEdgeByPropertyForm = ({
@@ -48,7 +48,10 @@ const NetworkStylingEdgeByPropertyForm = ({
         <Dropdown
           aria-label={t('selectStyle')}
           value={stylingPropertyObject.property}
-          options={EDGE_PROPERTIES_DROPDOWN}
+          options={EDGE_PROPERTIES.map((property) => ({
+            value: property,
+            label: t(property),
+          }))}
           filter
           onChange={(e) => setStylingPropertyObject({
             ...stylingPropertyObject,

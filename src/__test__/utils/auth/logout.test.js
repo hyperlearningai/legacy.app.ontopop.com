@@ -805,7 +805,7 @@ describe('logout', () => {
           OPERATION_TYPE_UPDATE,
           {
             'graph-0': {
-              label: 'Main',
+              label: 'entireOntology',
               noDelete: true,
               type: 'full',
               isUserDefinedNodeVisible: true,
