@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [1.0.0]
 ### Added
+- ONTOLOGY-170 Show tour flag as environment variable
 
 ### Changed
 - ONTOLOGY-147 Internalisation textual context
@@ -29,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-170 Disable show tour
 
 ### Fixed
 - ONTOLOGY-214 Improved note borders rendering when entering notes view
