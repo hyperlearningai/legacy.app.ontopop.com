@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IndexNavbar should match snapshot 1`] = `
+<Fragment>
+  <nav
+    className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between navbar-expand-lg bg-white shadow website-navbar"
+  >
+    <div
+      className="container mx-auto flex items-center justify-between"
+    >
+      <Link
+        href="/#top"
+      >
+        <a
+          className="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+        >
+          <img
+            alt="OntoPop"
+            className="h-16"
+            src={
+              Object {
+                "process": [Function],
+              }
+            }
+          />
+        </a>
+      </Link>
+      <div
+        className="website-navbar-items flex"
+      >
+        <Link
+          href="/#about"
+          key="nav-about"
+        >
+          <a
+            className="p-link "
+          >
+            about
+          </a>
+        </Link>
+        <Link
+          href="/#features"
+          key="nav-features"
+        >
+          <a
+            className="p-link "
+          >
+            features
+          </a>
+        </Link>
+        <Link
+          href="/#app"
+          key="nav-app"
+        >
+          <a
+            className="p-link "
+          >
+            app
+          </a>
+        </Link>
+        <Link
+          href="/#contribute"
+          key="nav-contribute"
+        >
+          <a
+            className="p-link "
+          >
+            contribute
+          </a>
+        </Link>
+        <Link
+          href="/#contacts"
+          key="nav-contacts"
+        >
+          <a
+            className="p-link "
+          >
+            contacts
+          </a>
+        </Link>
+      </div>
+    </div>
+  </nav>
+</Fragment>
+`;

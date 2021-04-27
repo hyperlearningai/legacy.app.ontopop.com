@@ -16,6 +16,7 @@ import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import getElementLabel from '../utils/networkStyling/getElementLabel'
 import { getElementIdAndType } from '../constants/functions'
 import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
+import { IS_SHOW_TOUR_VISIBLE } from '../constants/views'
 
 const ElementsSelection = ({
   selectedElement,
@@ -120,15 +121,20 @@ const ElementsSelection = ({
 
   return (
     <>
-      {showTour.elementSelection !== 'false' && (
-        <Joyride
-          callback={handleJoyrideCallback}
-          steps={steps}
-          disableScrolling
-          hideBackButton
-          locale={{ close: t('next') }}
-        />
-      )}
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.elementSelection !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            hideBackButton
+            locale={{ close: t('next') }}
+          />
+        )
+      }
 
       <div className="sidebar-main-title">
         {!selectedElementID && selectedElementType === 'node' && t('nodesSelection')}

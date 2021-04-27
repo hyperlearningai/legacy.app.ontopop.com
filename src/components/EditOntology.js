@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { SelectButton } from 'primereact/selectbutton'
 import { orderBy, uniqBy } from 'lodash'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
+import { IS_SHOW_TOUR_VISIBLE, SIDEBAR_VIEW_EDIT_ONTOLOGY } from '../constants/views'
 import EditOntologyAddNode from './EditOntologyAddNode'
 import EditOntologyAddEdge from './EditOntologyAddEdge'
 import EditOntologyUpdateNode from './EditOntologyUpdateNode'
@@ -194,15 +194,20 @@ const EditOntology = ({
 
   return (
     <>
-      {showTour.editOntology !== 'false' && (
-        <Joyride
-          callback={handleJoyrideCallback}
-          steps={steps}
-          disableScrolling
-          hideBackButton
-          locale={{ close: t('next') }}
-        />
-      )}
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.editOntology !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            hideBackButton
+            locale={{ close: t('next') }}
+          />
+        )
+      }
 
       <h1 className="sidebar-main-title">
         { t(SIDEBAR_VIEW_EDIT_ONTOLOGY)}

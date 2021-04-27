@@ -1,0 +1,67 @@
+.website {
+  &-navbar {
+    &-items {
+      width: auto;
+
+      .p-link {
+        background: transparent !important;
+        width: auto;
+        color: $dark-background !important;
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
+
+        &-selected {
+          color: $primary !important;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          color: $primary !important;
+        }
+      }
+    }
+  }
+
+  &-btn {
+    &-primary {
+      border-radius: 20px;
+    }
+  }
+
+  &-footer {
+    height: 38% !important;
+
+    @media screen and (max-width: $lg) {
+      height: 67% !important;
+    }
+
+    &-items {
+      width: auto;
+
+      .p-link {
+        background: transparent !important;
+        width: auto;
+        color: $dark-background !important;
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
+
+        &-selected {
+          color: $primary !important;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          color: $primary !important;
+        }
+      }
+    }
+  }
+}

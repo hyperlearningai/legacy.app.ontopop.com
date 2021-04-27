@@ -13,7 +13,7 @@ import { AiOutlinePoweroff } from 'react-icons/ai'
 import { IoFootballOutline, IoGitNetworkSharp } from 'react-icons/io5'
 import Joyride from 'react-joyride'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
+import { IS_SHOW_TOUR_VISIBLE, SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
 import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraphOptions'
 import HideElementsByPropertyForm from './HideElementsByPropertyForm'
@@ -95,15 +95,20 @@ const NetworkGraphOptions = ({
 
   return (
     <>
-      {showTour.graphOptions !== 'false' && (
-        <Joyride
-          callback={handleJoyrideCallback}
-          steps={steps}
-          disableScrolling
-          hideBackButton
-          locale={{ close: t('next') }}
-        />
-      )}
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.graphOptions !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            hideBackButton
+            locale={{ close: t('next') }}
+          />
+        )
+      }
 
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPH_OPTIONS)}

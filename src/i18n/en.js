@@ -556,5 +556,17 @@ export default {
   // react joyride
   back: 'Back',
   skip: 'Skip',
-  last: 'Last'
+  last: 'Last',
+
+  // website
+  about: 'About',
+  features: 'Features',
+  app: 'App',
+  contribute: 'Contribute',
+  contacts: 'Contacts',
+  cookies: 'Cookies',
+  allRightsReserved: 'All rights reserved',
+  ontopopDescription: 'OntoPop is an open source framework enabling the visualisation, search, exploration and management of ontologies.',
+  findOutMore: 'Find out more',
+
 }

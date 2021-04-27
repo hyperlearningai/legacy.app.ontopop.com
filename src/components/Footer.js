@@ -1,12 +1,24 @@
-import React from "react";
+/* eslint react/no-unescaped-entities:0 */
 
-export default function Footer() {
+import { useTranslation } from 'react-i18next'
+import { connect } from 'redux-zero/react'
+import PropTypes from 'prop-types'
+import { Button } from 'primereact/button'
+import actions from '../store/actions'
+import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { APP_NAME } from '../constants/app'
+
+const Footer = ({
+  updateStoreValue
+}) => {
+  const { t } = useTranslation()
+
   return (
     <>
-      <footer className="relative bg-blueGray-200 pt-8 pb-6">
+      <footer className="website-footer relative bg-blueGray-200 pt-8 pb-6">
         <div
           className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-          style={{ transform: "translateZ(0)" }}
+          style={{ transform: 'translateZ(0)' }}
         >
           <svg
             className="absolute bottom-0 overflow-hidden"
@@ -20,7 +32,7 @@ export default function Footer() {
             <polygon
               className="text-blueGray-200 fill-current"
               points="2560 0 2560 100 0 100"
-            ></polygon>
+            />
           </svg>
         </div>
         <div className="container mx-auto px-4">
@@ -35,25 +47,25 @@ export default function Footer() {
                   className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                   type="button"
                 >
-                  <i className="fab fa-twitter"></i>
+                  <i className="fab fa-twitter" />
                 </button>
                 <button
                   className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                   type="button"
                 >
-                  <i className="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </button>
                 <button
                   className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                   type="button"
                 >
-                  <i className="fab fa-dribbble"></i>
+                  <i className="fab fa-dribbble" />
                 </button>
                 <button
                   className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                   type="button"
                 >
-                  <i className="fab fa-github"></i>
+                  <i className="fab fa-github" />
                 </button>
               </div>
             </div>
@@ -141,15 +153,32 @@ export default function Footer() {
             </div>
           </div>
           <hr className="my-6 border-blueGray-300" />
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-              <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Copyright © {new Date().getFullYear()}
-              </div>
+
+          <div className="container mx-auto flex items-center justify-between">
+            <div className="text-sm text-blueGray-500 font-semibold py-1">
+              {`Copyright © ${APP_NAME} ${new Date().getFullYear()} - ${t('allRightsReserved')}`}
+            </div>
+
+            <div className="website-footer-items">
+              <Button
+                className="p-link"
+                onClick={() => updateStoreValue(['isCookieBarOpen'], OPERATION_TYPE_UPDATE, true)}
+              >
+                {t('cookies')}
+              </Button>
             </div>
           </div>
         </div>
       </footer>
     </>
-  );
+  )
 }
+
+Footer.propTypes = {
+  updateStoreValue: PropTypes.func.isRequired,
+}
+
+export default connect(
+  null,
+  actions
+)(Footer)

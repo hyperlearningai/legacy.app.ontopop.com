@@ -1,18 +1,24 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import Index from '../../pages'
+import Listing from '../../pages/listing'
 
 const setup = () => {
-  const props = { }
-  const component = shallow(<Index {...props} />)
+  const props = {
+    user: {
+      isGuest: false,
+      email: 'a@b.c',
+      token: '123'
+    },
+  }
+  const component = shallow(<Listing {...props} />)
 
   return {
     component
   }
 }
 
-describe('Index page', () => {
+describe('Listing page', () => {
   it('should match snapshot', () => {
     const { component } = setup()
     expect(toJson(component)).toMatchSnapshot()

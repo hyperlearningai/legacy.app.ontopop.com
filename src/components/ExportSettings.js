@@ -5,7 +5,7 @@ import { Button } from 'primereact/button'
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_EXPORT } from '../constants/views'
+import { IS_SHOW_TOUR_VISIBLE, SIDEBAR_VIEW_EXPORT } from '../constants/views'
 import {
   EXPORT_CSV, EXPORT_DATA_OPTIONS, EXPORT_GRAPH_OPTIONS, EXPORT_PDF
 } from '../constants/export'
@@ -67,21 +67,26 @@ const ExportSettings = ({
 
   return (
     <>
-      {showTour.export !== 'false' && (
-        <Joyride
-          callback={handleJoyrideCallback}
-          steps={steps}
-          disableScrolling
-          hideBackButton
-          locale={{
-            close: t('next'),
-            last: t('last')
-          }}
-          styles={{
-            options: { primaryColor: '#011e41' }
-          }}
-        />
-      )}
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.export !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            hideBackButton
+            locale={{
+              close: t('next'),
+              last: t('last')
+            }}
+            styles={{
+              options: { primaryColor: '#011e41' }
+            }}
+          />
+        )
+      }
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_EXPORT)}
       </h1>

@@ -1,50 +1,46 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from "react";
-import Link from "next/link";
+/* eslint max-len:0 */
+/* eslint react/no-unescaped-entities:0 */
+import React from 'react'
+import Link from 'next/link'
 
+import { useTranslation } from 'react-i18next'
 import IndexNavbar from '../components/IndexNavbar.js'
 import Footer from '../components/Footer.js'
+import { APP_NAME } from '../constants/app.js'
+import { ROUTE_INDEX } from '../constants/routes.js'
+import {
+  ANCHOR_ABOUT,
+  ANCHOR_FEATURES,
+  ANCHOR_CONTRIBUTE
+} from '../constants/homepage.js'
 
-export default function Index() {
+const Index = () => {
+  const { t } = useTranslation()
+
   return (
-    <div className="landing">
+    <div className="landing website">
       <IndexNavbar fixed />
-      <section className="header relative pt-16 items-center flex h-screen h-860-px">
+      <section id={ANCHOR_ABOUT} className="header relative pt-16 items-center flex h-screen h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0 mt-20 pb-20">
               <h2 className="font-semibold text-4xl text-blueGray-600">
-                Notus NextJS - A beautiful extension for Tailwind CSS.
+                {APP_NAME}
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                Notus NextJS is Free and Open Source. It does not change any of
-                the CSS from{" "}
-                <a
-                  href="https://tailwindcss.com/?ref=creativetim"
-                  className="text-blueGray-600"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Tailwind CSS
-                </a>
-                . It features multiple HTML elements and it comes with dynamic
-                components for ReactJS, Vue and Angular.
+                {t('ontopopDescription')}
               </p>
               <div className="mt-12">
-                <a
-                  href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus?ref=nnjs-index"
-                  target="_blank"
-                  className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                <Link
+                  href={`${ROUTE_INDEX}#${ANCHOR_FEATURES}`}
                 >
-                  Get started
-                </a>
-                <a
-                  href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
-                  className="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
-                  target="_blank"
-                >
-                  Github Star
-                </a>
+                  <a
+                    className="p-button website-btn-primary"
+                  >
+                    {t('findOutMore')}
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -56,10 +52,10 @@ export default function Index() {
         />
       </section>
 
-      <section className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
+      <section id={ANCHOR_FEATURES} className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
         <div
           className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-          style={{ transform: "translateZ(0)" }}
+          style={{ transform: 'translateZ(0)' }}
         >
           <svg
             className="absolute bottom-0 overflow-hidden"
@@ -73,7 +69,7 @@ export default function Index() {
             <polygon
               className="text-blueGray-100 fill-current"
               points="2560 0 2560 100 0 100"
-            ></polygon>
+            />
           </svg>
         </div>
         <div className="container mx-auto">
@@ -95,7 +91,7 @@ export default function Index() {
                     <polygon
                       points="-30,95 583,95 583,65"
                       className="text-blueGray-700 fill-current"
-                    ></polygon>
+                    />
                   </svg>
                   <h4 className="text-xl font-bold text-white">
                     Great for your awesome project
@@ -116,7 +112,7 @@ export default function Index() {
                   <div className="relative flex flex-col mt-4">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-sitemap"></i>
+                        <i className="fas fa-sitemap" />
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
                         CSS Components
@@ -130,7 +126,7 @@ export default function Index() {
                   <div className="relative flex flex-col min-w-0">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-drafting-compass"></i>
+                        <i className="fas fa-drafting-compass" />
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
                         JavaScript Components
@@ -146,7 +142,7 @@ export default function Index() {
                   <div className="relative flex flex-col min-w-0 mt-4">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-newspaper"></i>
+                        <i className="fas fa-newspaper" />
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">Pages</h6>
                       <p className="mb-4 text-blueGray-500">
@@ -158,7 +154,7 @@ export default function Index() {
                   <div className="relative flex flex-col min-w-0">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-file-alt"></i>
+                        <i className="fas fa-file-alt" />
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
                         Documentation
@@ -179,7 +175,7 @@ export default function Index() {
           <div className="flex flex-wrap items-center">
             <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
               <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                <i className="fas fa-sitemap text-xl"></i>
+                <i className="fas fa-sitemap text-xl" />
               </div>
               <h3 className="text-3xl mb-2 font-semibold leading-normal">
                 CSS Components
@@ -220,8 +216,9 @@ export default function Index() {
                 target="_blank"
                 className="font-bold text-blueGray-700 hover:text-blueGray-500 ease-linear transition-all duration-150"
               >
-                View All{" "}
-                <i className="fa fa-angle-double-right ml-1 leading-relaxed"></i>
+                View All
+                {' '}
+                <i className="fa fa-angle-double-right ml-1 leading-relaxed" />
               </a>
             </div>
 
@@ -363,7 +360,7 @@ export default function Index() {
 
             <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
               <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                <i className="fas fa-drafting-compass text-xl"></i>
+                <i className="fas fa-drafting-compass text-xl" />
               </div>
               <h3 className="text-3xl mb-2 font-semibold leading-normal">
                 Javascript Components
@@ -408,8 +405,9 @@ export default function Index() {
                 target="_blank"
                 className="font-bold text-blueGray-700 hover:text-blueGray-500 ease-linear transition-all duration-150"
               >
-                View all{" "}
-                <i className="fa fa-angle-double-right ml-1 leading-relaxed"></i>
+                View all
+                {' '}
+                <i className="fa fa-angle-double-right ml-1 leading-relaxed" />
               </a>
             </div>
           </div>
@@ -420,7 +418,7 @@ export default function Index() {
             <div className="w-full md:w-5/12 ml-auto px-12 md:px-4">
               <div className="md:pr-12">
                 <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                  <i className="fas fa-file-alt text-xl"></i>
+                  <i className="fas fa-file-alt text-xl" />
                 </div>
                 <h3 className="text-3xl font-semibold">
                   Complex Documentation
@@ -436,7 +434,7 @@ export default function Index() {
                     <div className="flex items-center">
                       <div>
                         <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                          <i className="fas fa-fingerprint"></i>
+                          <i className="fas fa-fingerprint" />
                         </span>
                       </div>
                       <div>
@@ -450,7 +448,7 @@ export default function Index() {
                     <div className="flex items-center">
                       <div>
                         <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                          <i className="fab fa-html5"></i>
+                          <i className="fab fa-html5" />
                         </span>
                       </div>
                       <div>
@@ -464,7 +462,7 @@ export default function Index() {
                     <div className="flex items-center">
                       <div>
                         <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                          <i className="far fa-paper-plane"></i>
+                          <i className="far fa-paper-plane" />
                         </span>
                       </div>
                       <div>
@@ -482,10 +480,7 @@ export default function Index() {
               <img
                 alt="..."
                 className="max-w-full rounded-lg shadow-xl"
-                style={{
-                  transform:
-                    "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
-                }}
+                style={{ transform: 'scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)' }}
                 src="https://demos.creative-tim.com/notus-nextjs/img/documentation.png"
               />
             </div>
@@ -564,20 +559,22 @@ export default function Index() {
           <div className="flex flex-wrap justify-center">
             <div className="w-full md:w-5/12 px-12 md:px-4 ml-auto mr-auto md:mt-64">
               <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                <i className="fas fa-code-branch text-xl"></i>
+                <i className="fas fa-code-branch text-xl" />
               </div>
               <h3 className="text-3xl mb-2 font-semibold leading-normal text-white">
                 Open Source
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-400">
-                Since{" "}
+                Since
+                {' '}
                 <a
                   href="https://tailwindcss.com/?ref=creative"
                   className="text-blueGray-300"
                   target="_blank"
                 >
                   Tailwind CSS
-                </a>{" "}
+                </a>
+                {' '}
                 is an open source project we wanted to continue this movement
                 too. You can give this version a try to feel the design and also
                 test the quality of the code!
@@ -596,7 +593,7 @@ export default function Index() {
             </div>
 
             <div className="w-full md:w-4/12 px-4 mr-auto ml-auto mt-32 relative">
-              <i className="fab fa-github text-blueGray-700 absolute text-55 -top-150-px -right-100 left-auto opacity-80"></i>
+              <i className="fab fa-github text-blueGray-700 absolute text-55 -top-150-px -right-100 left-auto opacity-80" />
             </div>
           </div>
         </div>
@@ -605,7 +602,7 @@ export default function Index() {
       <section className="pb-16 bg-blueGray-200 relative pt-32">
         <div
           className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-          style={{ transform: "translateZ(0)" }}
+          style={{ transform: 'translateZ(0)' }}
         >
           <svg
             className="absolute bottom-0 overflow-hidden"
@@ -619,11 +616,11 @@ export default function Index() {
             <polygon
               className="text-blueGray-200 fill-current"
               points="2560 0 2560 100 0 100"
-            ></polygon>
+            />
           </svg>
         </div>
 
-        <div className="container mx-auto">
+        <div id={ANCHOR_CONTRIBUTE} className="container mx-auto">
           <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10">
             <div className="w-full text-center lg:w-8/12">
               <p className="text-4xl text-center">
@@ -652,16 +649,18 @@ export default function Index() {
                   target="_blank"
                   className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                 >
-                  <i className="fab fa-github text-lg mr-1"></i>
+                  <i className="fab fa-github text-lg mr-1" />
                   <span>Help With a Star</span>
                 </a>
               </div>
-              <div className="text-center mt-16"></div>
+              <div className="text-center mt-16" />
             </div>
           </div>
         </div>
       </section>
       <Footer />
     </div>
-  );
+  )
 }
+
+export default Index

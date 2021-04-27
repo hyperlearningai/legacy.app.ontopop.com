@@ -10,6 +10,7 @@ import actions from '../store/actions'
 import getSuggestions from '../utils/graphSearch/getSuggestions'
 import searchGraph from '../utils/graphSearch/searchGraph'
 import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
+import { IS_SHOW_TOUR_VISIBLE } from '../constants/views'
 
 const SearchBar = ({
   updateStoreValue,
@@ -41,17 +42,22 @@ const SearchBar = ({
 
   return (
     <>
-      {showTour.search !== 'false' && (
-        <Joyride
-          callback={handleJoyrideCallback}
-          locale={{ close: t('next') }}
-          steps={steps}
-          hideBackButton
-          styles={{
-            options: { primaryColor: '#011e41' }
-          }}
-        />
-      )}
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.search !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            locale={{ close: t('next') }}
+            steps={steps}
+            hideBackButton
+            styles={{
+              options: { primaryColor: '#011e41' }
+            }}
+          />
+        )
+      }
       {
         isSearchLoading
           ? (

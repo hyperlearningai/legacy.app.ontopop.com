@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import Joyride from 'react-joyride'
 import actions from '../store/actions'
-import { NETWORK_VIEW_DATATABLE, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { IS_SHOW_TOUR_VISIBLE, NETWORK_VIEW_DATATABLE, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { OPERATION_TYPE_DELETE, OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkGraphList = ({
@@ -50,15 +50,20 @@ const NetworkGraphList = ({
 
   return (
     <>
-      {showTour.navigate !== 'false' && (
-        <Joyride
-          callback={handleJoyrideCallback}
-          steps={steps}
-          disableScrolling
-          hideBackButton
-          locale={{ close: t('next') }}
-        />
-      )}
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.navigate !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            hideBackButton
+            locale={{ close: t('next') }}
+          />
+        )
+      }
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPHS)}
       </h1>
