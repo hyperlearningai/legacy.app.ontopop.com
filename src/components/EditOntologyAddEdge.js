@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import { Dropdown } from 'primereact/dropdown'
+import { InputText } from 'primereact/inputtext'
+import { ListBox } from 'primereact/listbox'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
@@ -20,6 +22,19 @@ const EditOntologyAddEdge = ({
   const [fromNode, setFromNode] = useState(undefined)
   const [edge, setEdge] = useState(undefined)
   const [toNode, setToNode] = useState(undefined)
+
+  const enumerationSuggestions = optionEdges && optionEdges.length > 0 && edge
+    ? optionEdges.filter((suggestion) => {
+      if (!suggestion || !suggestion.label) return false
+
+      return suggestion.label.toLowerCase().includes(edge.toLowerCase())
+    })
+    : []
+
+  const diplayedEnumerationSuggestions = enumerationSuggestions.length === 1
+    && enumerationSuggestions[0].value === edge
+    ? []
+    : enumerationSuggestions
 
   return (
     <>
@@ -58,17 +73,24 @@ const EditOntologyAddEdge = ({
           {t('edge')}
         </label>
 
-        <Dropdown
-          aria-label="graph-select-edge"
-          id="graph-select-edge"
-          value={edge}
-          filter
-          options={optionEdges}
-          onChange={(e) => {
-            setEdge(e.value)
-          }}
-          placeholder={t('selectElement')}
-        />
+        <div className="entry-search-block-row">
+          <InputText
+            className="property-text-input value-input"
+            id="graph-select-edge"
+            value={edge}
+            placeholder={t('insertTextOrSelect')}
+            onChange={(e) => setEdge(e.target.value)}
+          />
+          {
+            diplayedEnumerationSuggestions.length > 0 && (
+              <ListBox
+                value={edge}
+                options={diplayedEnumerationSuggestions}
+                onChange={(e) => setEdge(e.value)}
+              />
+            )
+          }
+        </div>
       </div>
 
       <div
