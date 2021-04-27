@@ -34,11 +34,11 @@ const t = (id) => en[id]
 
 const selectedElementProperties = {
   from: '1',
-  edge: '11',
+  edge: 'Provided to',
   to: '141',
   optionEdges: [
     {
-      value: '11',
+      value: 'Provided to',
       label: 'Provided to'
     }
   ]
@@ -120,7 +120,6 @@ describe('setOntologyAddEdge', () => {
           from: '1',
           id: '123',
           label: 'Provided to',
-          rdfAbout: '11',
           rdfsLabel: 'Provided to',
           to: '141',
           userDefined: true,
@@ -136,7 +135,6 @@ describe('setOntologyAddEdge', () => {
       from: '1',
       id: '123',
       label: 'Provided to',
-      rdfAbout: '11',
       rdfsLabel: 'Provided to',
       to: '141',
       userDefined: true,
@@ -155,7 +153,6 @@ describe('setOntologyAddEdge', () => {
           from: '1',
           id: '123',
           label: 'Provided to',
-          rdfAbout: '11',
           rdfsLabel: 'Provided to',
           to: '141',
           userDefined: true,
@@ -166,7 +163,6 @@ describe('setOntologyAddEdge', () => {
           from: '1',
           id: '123',
           label: 'Provided to',
-          rdfAbout: '11',
           rdfsLabel: 'Provided to',
           to: '141',
           userDefined: true,

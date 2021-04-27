@@ -17,6 +17,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Security
 
 
+
+
+## [1.0.0]
+### Added
+- ONTOLOGY-170 Show tour flag as environment variable
+
+### Changed
+- ONTOLOGY-147 Internalisation textual context
+- ONTOLOGY-216 Added input text with suggestions instead of dropdown when adding new edge
+
+### Deprecated
+
+### Removed
+- ONTOLOGY-170 Disable show tour
+
+### Fixed
+- ONTOLOGY-214 Improved note borders rendering when entering notes view
+- ONTOLOGY-170 Add button not disabled anymore on missing rdfAbout property when adding node
+
+### Security
+
+
 ## [0.7.0]
 ### Added
 - ONTOLOGY-167 Added guided tour at startup
@@ -37,8 +59,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-171 Turned dropdown into text input with suggestions in advanced search properties with enumeration
 - ONTOLOGY-163 Improved sidebar UI/UX
 
-### Deprecated
-
 ### Removed
 - ONTOLOGY-179 Removed structured search components and utils
 - ONTOLOGY-179 Removed free text search components and utils
@@ -51,8 +71,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-156 Fixed broken navigation buttons when adding a new graph
 - ONTOLOGY-171 Restored search bar in main view at first search
 - ONTOLOGY-163 Fixed advanced search query 
-
-### Security
 
 
 ## [0.6.1]

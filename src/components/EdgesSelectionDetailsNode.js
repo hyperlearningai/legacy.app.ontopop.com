@@ -5,7 +5,8 @@ import { useState } from 'react'
 
 import { Button } from 'primereact/button'
 import actions from '../store/actions'
-import { RESERVED_PROPERTIES } from '../constants/graph'
+import { PROPERTIES_WITH_I18N, RESERVED_PROPERTIES } from '../constants/graph'
+import { dashedToCapitalisedString } from '../constants/functions'
 
 const EdgesSelectionDetailsNode = ({
   node,
@@ -34,19 +35,23 @@ const EdgesSelectionDetailsNode = ({
       {
         isExpanded && (
           <div className="elements-selection-details-table elements-selection-details-table-properties">
-            {nodeProperties.map((property) => (
-              <div
-                key={`details-node-${label}-${property}`}
-                className="elements-selection-details-table-row"
-              >
-                <div className="light-bold">
-                  {property}
+            {nodeProperties.map((nodeProperty) => {
+              const property = PROPERTIES_WITH_I18N.includes(nodeProperty) ? t(nodeProperty) : dashedToCapitalisedString(nodeProperty)
+
+              return (
+                <div
+                  key={`details-node-${label}-${nodeProperty}`}
+                  className="elements-selection-details-table-row"
+                >
+                  <div className="light-bold">
+                    {property}
+                  </div>
+                  <div>
+                    {node[nodeProperty] || t('null')}
+                  </div>
                 </div>
-                <div>
-                  {node[property] || t('null')}
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )
       }

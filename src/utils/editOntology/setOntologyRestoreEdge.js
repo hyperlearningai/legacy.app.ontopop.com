@@ -42,14 +42,18 @@ const setOntologyRestoreEdge = async ({
 
     if (!edge) return false
 
-    edge.label = 'subclass'
+    const body = {
+      edgeLabel: edge.rdfsLabel,
+      sourceVertexId: parseInt(edge.from),
+      targetVertexId: parseInt(edge.to),
+    }
 
     const response = await httpCall({
       updateStoreValue,
       withAuth: true,
       route: API_ENDPOINT_GRAPH_EDGES_CREATE,
       method: 'post',
-      body: edge,
+      body,
       t
     })
 
@@ -118,7 +122,6 @@ const setOntologyRestoreEdge = async ({
       if (isVisible) {
         addEdge({
           edge,
-          label,
           updateStoreValue,
         })
       }

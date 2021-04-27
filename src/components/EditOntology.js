@@ -122,7 +122,6 @@ const EditOntology = ({
   const availableEdges = orderBy(uniqBy(Object.keys(objectPropertiesFromApi).map(
     (edgeId) => {
       const {
-        rdfAbout,
         userDefined
       } = objectPropertiesFromApi[edgeId]
 
@@ -132,7 +131,7 @@ const EditOntology = ({
       })
 
       return ({
-        value: rdfAbout,
+        value: label,
         label,
         userDefined
       })

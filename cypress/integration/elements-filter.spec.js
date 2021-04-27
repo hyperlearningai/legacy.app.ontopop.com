@@ -93,7 +93,7 @@ context('Elements filter', () => {
 
       // first AND filter
       cy.get('#nodes-filter-property-0').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('Concept Name')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
       cy.get('#nodes-filter-value-0').type('loc')
 
@@ -101,7 +101,7 @@ context('Elements filter', () => {
 
       // second AND filter
       cy.get('#nodes-filter-property-1').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('Concept Name')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
       cy.get('#nodes-filter-value-1').type('net')
 
@@ -142,7 +142,7 @@ context('Elements filter', () => {
 
       // first AND filter
       cy.get('#edges-filter-property-0').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('Concept Name')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').click({ force: true })
       cy.get('#edges-filter-value-0').type('loc')
 
@@ -150,7 +150,7 @@ context('Elements filter', () => {
 
       // second AND filter
       cy.get('#edges-filter-property-1').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('Concept Name')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').click({ force: true })
       cy.get('#edges-filter-value-1').type('in')
 

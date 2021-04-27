@@ -14,7 +14,7 @@ import actions from '../store/actions'
 import setFilteredNodes from '../utils/nodesFilter/setFilteredNodes'
 import setFilteredEdges from '../utils/edgesFilter/setFilteredEdges'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
-import { EDGE_PROPERTIES_DROPDOWN } from '../constants/graph'
+import { EDGE_PROPERTIES } from '../constants/graph'
 
 const ElementsFilter = ({
   updateStoreValue,
@@ -47,6 +47,11 @@ const ElementsFilter = ({
       {`${option.label}`}
     </span>
   )
+
+  const edgeProperties = EDGE_PROPERTIES.map((property) => ({
+    value: property,
+    label: t(property),
+  }))
 
   return (
     <>
@@ -103,7 +108,9 @@ const ElementsFilter = ({
                         aria-label="select-element"
                         id={selectId}
                         value={elementsFilters[index].property}
-                        options={selectedElementType === 'node' ? annotationProperties : EDGE_PROPERTIES_DROPDOWN}
+                        options={selectedElementType === 'node'
+                          ? annotationProperties
+                          : edgeProperties}
                         filter
                         onChange={(e) => {
                           const newElementsFilters = [...elementsFilters]

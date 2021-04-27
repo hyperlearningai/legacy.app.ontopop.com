@@ -77,7 +77,7 @@ export default {
   node: 'Node',
   noRelationships: 'No relationships found',
   selectNodeFromGraph: 'Select node from graph',
-  selectNodeFromGraphOrFromList: 'Select node from graph or pick from list',
+  selectNodeFromGraphOrFromList: 'Select a node from the graph or pick from the dropdown list below',
   selectNode: 'Select node',
 
   // structured search
@@ -115,7 +115,7 @@ export default {
 
   // edge selection
   selectEdgeFromGraph: 'Select edge from graph',
-  selectEdgeFromGraphOrFromList: 'Select edge from graph or pick from list',
+  selectEdgeFromGraphOrFromList: 'Select an edge from the graph or pick from the dropdown list below',
   edge: 'Edge',
   expand: 'Expand',
 
@@ -350,10 +350,11 @@ export default {
   // info
   id: 'ID',
   label: 'Label',
-  rdfAbout: 'rdfAbout',
-  skosComment: 'skosComment',
-  skosDefinition: 'skosDefinition',
-  skosExample: 'skosExample',
+  rdfAbout: 'Concept Unique Identifier',
+  rdfsLabel: 'Concept Name',
+  skosDefinition: 'Concept Description',
+  skosComment: 'Concept Comments',
+  skosExample: 'Concept Example',
   null: 'Null',
   deleteNode: 'Delete node',
   selectedNodes: 'Selected nodes',
@@ -373,7 +374,7 @@ export default {
   // entry search
   advancedSearchOptions: 'Advanced search options',
   entrySearch: 'Search',
-  searchGraph: 'Search graph',
+  searchGraph: 'Search ontology',
   typeInSidebar: 'Type on the search field in the sidebar',
   setAdvancedOptions: 'You can also set filters and advanced options',
   resultsType: 'Results\' types to show',
@@ -497,6 +498,7 @@ export default {
   apply: 'Apply',
   showOrphanNodes: 'Show orphan nodes',
   showUserDefinedNodes: 'Show user-defined nodes',
+  entireOntology: 'Entire ontology',
 
   // listing page
   name: 'Name',
@@ -556,5 +558,5 @@ export default {
   // react joyride
   back: 'Back',
   skip: 'Skip',
-  last: 'Last'
+  last: 'Last',
 }

@@ -1,15 +1,18 @@
-import { RESERVED_PROPERTIES } from '../../constants/graph'
+import { dashedToCapitalisedString } from '../../constants/functions'
+import { PROPERTIES_WITH_I18N, RESERVED_PROPERTIES } from '../../constants/graph'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 
 /**
  * Set annotation properties
  * @param  {Object}   params
- * @param  {Function} params.updateStoreValue              updateStoreValue action
+ * @param  {Function} params.updateStoreValue           updateStoreValue action
+ * @param  {Function} params.t                          i18n internationalisation function
  * @param  {Array}    params.nodes                      Nodes from API
  * @return {undefined}
  */
 const setAnnotationProperties = ({
   updateStoreValue,
+  t,
   nodes
 }) => {
   let annotationProperties = []
@@ -50,11 +53,11 @@ const setAnnotationProperties = ({
   })
 
   updateStoreValue(['annotationProperties'], OPERATION_TYPE_UPDATE, annotationProperties.sort().map((property) => ({
-    label: property,
+    label: PROPERTIES_WITH_I18N.includes(property) ? t(property) : dashedToCapitalisedString(property),
     value: property
   })))
   updateStoreValue(['annotationPropertiesDatasets'], OPERATION_TYPE_UPDATE, annotationPropertiesDatasets.sort().map((property) => ({
-    label: property,
+    label: PROPERTIES_WITH_I18N.includes(property) ? t(property) : dashedToCapitalisedString(property),
     value: property
   })))
 }

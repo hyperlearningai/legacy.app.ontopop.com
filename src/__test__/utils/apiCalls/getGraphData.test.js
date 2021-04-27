@@ -91,7 +91,8 @@ describe('getGraphData', () => {
 
     expect(setAnnotationProperties).toHaveBeenCalledWith({
       updateStoreValue,
-      nodes
+      nodes,
+      t
     })
     expect(setClassesFromApi).toHaveBeenCalledWith({
       updateStoreValue,

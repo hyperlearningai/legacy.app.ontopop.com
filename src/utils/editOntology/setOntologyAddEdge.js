@@ -25,11 +25,8 @@ const setOntologyAddEdge = async ({
   const {
     from,
     to,
-    edge: edgeId,
-    optionEdges
+    edge: edgeLabel,
   } = selectedElementProperties
-
-  const edgeLabel = optionEdges.find((option) => option.value === edgeId).label
 
   const body = {
     edgeLabel,
@@ -76,7 +73,6 @@ const setOntologyAddEdge = async ({
     id: stringId,
     label: edgeLabel,
     rdfsLabel: edgeLabel,
-    rdfAbout: edgeId,
     userDefined,
     userId
   }
