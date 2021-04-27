@@ -9,6 +9,8 @@ import 'primeicons/primeicons.css'
 import 'react-notifications-component/dist/theme.css'
 import 'vis-network/styles/vis-network.min.css'
 import '../styles/styles.scss'
+import '../styles/tailwind.css'
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import '../i18n'
 import AuthCheck from '../components/AuthCheck'
 import CookieBar from '../components/CookieBar'

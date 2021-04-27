@@ -16,7 +16,6 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 
   @media only screen and (max-width: $sm) {
     body {
@@ -33,9 +32,24 @@ body,
   height: 100%;
 }
 
+.landing {
+  overflow: scroll;
+
+  footer {
+    height: 300px;
+    background: #e1e8f0;
+  }
+
+  .h-860-px {
+    min-height: 860px;
+  }
+
+}
+
 main {
   width: 100%;
 }
+
 
 // Components
 @import "_header";
