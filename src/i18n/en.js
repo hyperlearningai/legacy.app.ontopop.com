@@ -588,8 +588,8 @@ export default {
   management: 'Management',
 
   // website learn
-  followingVideo: 'The following video provides a 2 minute tour of the core features available in OntoPop.',
-  toLearnMore: 'To learn more about OntoPop, please visit the OntoPop Wiki',
+  followingVideo: 'The following video provides a 3 minute tour of the core features available in OntoPop.',
+  toLearnMore: 'To learn more about OntoPop, please visit the OntoPop Wiki.',
   ontopopWiki: 'OntoPop Wiki',
 
   // website app

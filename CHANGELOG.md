@@ -21,9 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [1.0.0]
 ### Added
+- ONTOLOGY-201 Single-page website
 - ONTOLOGY-170 Show tour flag as environment variable
 
 ### Changed
+- ONTOLOGY-201 Updated readme
 - ONTOLOGY-147 Internalisation textual context
 - ONTOLOGY-216 Added input text with suggestions instead of dropdown when adding new edge
 
