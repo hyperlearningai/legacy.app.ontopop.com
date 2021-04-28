@@ -8,6 +8,7 @@ import Joyride from 'react-joyride'
 import actions from '../store/actions'
 import setDataTableTriplesLabels from '../utils/dataTableNetwork/setDataTableTriplesLabels'
 import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
+import { IS_SHOW_TOUR_VISIBLE } from '../constants/views'
 
 const DataTableNetwork = ({
   dataTableTriples,
@@ -54,17 +55,22 @@ const DataTableNetwork = ({
 
   return (
     <div className="p-p-3 datatable-container elevate-view">
-      {showTour.datatable !== 'false' && (
-        <Joyride
-          callback={handleJoyrideCallback}
-          steps={steps}
-          disableScrolling
-          locale={{ close: t('next') }}
-          styles={{
-            options: { primaryColor: '#011e41' }
-          }}
-        />
-      )}
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.datatable !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            locale={{ close: t('next') }}
+            styles={{
+              options: { primaryColor: '#011e41' }
+            }}
+          />
+        )
+      }
       <DataTable
         header={t('availableRelationships')}
         filter

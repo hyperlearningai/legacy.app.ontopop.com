@@ -4,13 +4,7 @@ import toJson from 'enzyme-to-json'
 import Index from '../../pages'
 
 const setup = () => {
-  const props = {
-    user: {
-      isGuest: false,
-      email: 'a@b.c',
-      token: '123'
-    },
-  }
+  const props = { }
   const component = shallow(<Index {...props} />)
 
   return {

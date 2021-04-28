@@ -19,7 +19,7 @@ import showTourLs from '../fixtures/showTourLs'
 
 context('Notes list', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
     cy.get('#accept-all-btn').click()
     window.localStorage.setItem('showTour', showTourLs)
   })

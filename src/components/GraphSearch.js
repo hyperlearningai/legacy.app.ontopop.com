@@ -6,7 +6,7 @@ import { Button } from 'primereact/button'
 import Joyride from 'react-joyride'
 import GraphSearchCard from './GraphSearchCard'
 import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
-import { SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
+import { IS_SHOW_TOUR_VISIBLE, SIDEBAR_VIEW_ENTRY_SEARCH, SIDEBAR_VIEW_GRAPHS } from '../constants/views'
 import { ROUTE_NETWORK_GRAPHS } from '../constants/routes'
 import actions from '../store/actions'
 import SearchBar from './SearchBar'
@@ -57,14 +57,19 @@ const GraphSearch = ({
           </div>
         ) : (
           <>
-            {showTour.searchResults !== 'false' && (
-              <Joyride
-                callback={handleJoyrideCallback}
-                disableScrolling
-                locale={{ close: t('next') }}
-                steps={steps}
-              />
-            )}
+            {
+              (
+                IS_SHOW_TOUR_VISIBLE
+                && showTour.searchResults !== 'false'
+              ) && (
+                <Joyride
+                  callback={handleJoyrideCallback}
+                  disableScrolling
+                  locale={{ close: t('next') }}
+                  steps={steps}
+                />
+              )
+            }
 
             {
               isFirstQuery ? (

@@ -12,7 +12,7 @@ import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
+import { IS_SHOW_TOUR_VISIBLE, SIDEBAR_VIEW_SYNONYMS } from '../constants/views'
 import actions from '../store/actions'
 import { MIN_DATE, SORT_FIELDS } from '../constants/synonyms'
 import getNode from '../utils/nodesEdgesUtils/getNode'
@@ -131,7 +131,11 @@ const SynonymsList = ({
 
   return (
     <>
-      {showTour.synonyms !== 'false' && (
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.synonyms !== 'false'
+        ) && (
         <Joyride
           callback={handleJoyrideCallback}
           steps={steps}
@@ -139,7 +143,8 @@ const SynonymsList = ({
           hideBackButton
           locale={{ close: t('next') }}
         />
-      )}
+        )
+}
 
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_SYNONYMS)}

@@ -8,7 +8,7 @@ import showTourLs from '../fixtures/showTourLs'
 
 context('Profile', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
     cy.get('#accept-all-btn').click()
     window.localStorage.setItem('showTour', showTourLs)
   })

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Listing page should match snapshot 1`] = `
+<Connect
+  actions={
+    Object {
+      "updateStoreValue": [Function],
+    }
+  }
+  mapToProps={[Function]}
+  user={
+    Object {
+      "email": "a@b.c",
+      "isGuest": false,
+      "token": "123",
+    }
+  }
+>
+  <Component />
+</Connect>
+`;

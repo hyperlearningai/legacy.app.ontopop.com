@@ -16,7 +16,6 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 
   @media only screen and (max-width: $sm) {
     body {
@@ -31,6 +30,19 @@ body,
   display: flex;
   flex-flow: column;
   height: 100%;
+}
+
+.landing {
+  overflow: scroll;
+
+  footer {
+    height: 300px;
+    background: #e1e8f0;
+  }
+
+  .h-860-px {
+    min-height: 860px;
+  }
 }
 
 main {
@@ -69,3 +81,4 @@ main {
 @import "_listing";
 @import "_cookiebar";
 @import "_joyride";
+@import "_website";

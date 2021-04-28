@@ -559,4 +559,55 @@ export default {
   back: 'Back',
   skip: 'Skip',
   last: 'Last',
+
+  // website
+  about: 'About',
+  whyUseOntopop: 'Why use OntoPop',
+  learn: 'Learn',
+  howToUse: 'How to use OntoPop',
+  features: 'Features',
+  app: 'App',
+  contribute: 'Contribute',
+  contacts: 'Contacts',
+  cookies: 'Cookies',
+  allRightsReserved: 'All rights reserved',
+  ontopopDescription: 'OntoPop is an open source framework enabling the visualisation, search, exploration and management of ontologies.',
+  findOutMore: 'Find out more',
+
+  // website features
+  whyUsePart1: 'OntoPop was created to make ontologies more accessible to a broader range of stakeholders beyond the traditional users of ontologies such as information and data architects.',
+  whyUsePart2: 'By providing an intuitive and easy-to-use visual interface, our aim is to make ontologies less abstract and more applicable to real-world use-cases.',
+  ontoVisAndExploration: 'Ontology visualisation and exploration',
+  freeTextSearchQueryBuilder: 'Free-text search and structured query builders',
+  ontoEditingManagement: 'Ontology editing and management',
+  vocabulary: 'Vocabulary',
+  vocabularyManagement: 'Vocabulary management including synonyms',
+  exportCollaboration: 'Export and collaboration',
+  visualisation: 'Visualisation',
+  networkVisualisationExploration: 'Network-based visualisation and exploration',
+  management: 'Management',
+
+  // website learn
+  followingVideo: 'The following video provides a 2 minute tour of the core features available in OntoPop.',
+  toLearnMore: 'To learn more about OntoPop, please visit the OntoPop Wiki',
+  ontopopWiki: 'OntoPop Wiki',
+
+  // website app
+  ontopopApp: 'OntoPop App',
+  communityHostedApp: 'A community-hosted online instance of OntoPop pre-loaded with publicly-available ontologies is available for free and accessible via the button below.',
+  openOntopop: 'Open OntoPop',
+
+  // website contribute
+  howToContribute: 'How to contribute to OntoPop',
+  openSourceFramework1: 'OntoPop is a community-driven open source framework under active development and released under the',
+  openSourceFramework2: 'As such, we need your help to build this framework into a tool synonymous with ontologies and information management more widely.',
+  openSourceFramework3: 'If you would like to contribute, the best way to get started is by visiting the OntoPop Wiki.',
+  openSourceFramework4: 'Alternatively, if you would like to take a deep-dive into the source code, OntoPop’s public code repositories are available on GitHub.',
+  ontopopRepo: 'OntoPop Repo',
+  mainContributors: 'Main Contributors',
+  primarySponsor: 'Primary Sponsor',
+
+  // website contacts
+  contactUs: 'Contact us',
+  anyQuestions: 'Do you have any questions',
 }

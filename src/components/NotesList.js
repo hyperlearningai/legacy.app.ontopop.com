@@ -13,7 +13,7 @@ import { Calendar } from 'primereact/calendar'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { MultiSelect } from 'primereact/multiselect'
 import Joyride from 'react-joyride'
-import { SIDEBAR_VIEW_NOTES } from '../constants/views'
+import { IS_SHOW_TOUR_VISIBLE, SIDEBAR_VIEW_NOTES } from '../constants/views'
 import actions from '../store/actions'
 import NotesListNote from './NotesListNote'
 import NotesListAddNew from './NotesListAddNew'
@@ -166,15 +166,20 @@ const NotesList = ({
 
   return (
     <>
-      {showTour.notes !== 'false' && (
-      <Joyride
-        callback={handleJoyrideCallback}
-        steps={steps}
-        disableScrolling
-        hideBackButton
-        locale={{ close: t('next') }}
-      />
-      )}
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+            && showTour.notes !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            hideBackButton
+            locale={{ close: t('next') }}
+          />
+        )
+      }
 
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_NOTES)}
