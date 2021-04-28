@@ -49,6 +49,16 @@ exports[`IndexNavbar should match snapshot 1`] = `
           </a>
         </Link>
         <Link
+          href="/#learn"
+          key="nav-learn"
+        >
+          <a
+            className="p-link "
+          >
+            learn
+          </a>
+        </Link>
+        <Link
           href="/#app"
           key="nav-app"
         >
@@ -79,6 +89,13 @@ exports[`IndexNavbar should match snapshot 1`] = `
           </a>
         </Link>
       </div>
+      <ForwardRef
+        aria-label="toggleSidebar"
+        className="website-navbar-sidebar"
+        onClick={[Function]}
+      >
+        <BiMenu />
+      </ForwardRef>
     </div>
   </nav>
 </Fragment>

@@ -1,7 +1,14 @@
 /* eslint max-len:0 */
+/* eslint jsx-a11y/no-static-element-interactions: 0 */
+/* eslint jsx-a11y/click-events-have-key-events: 0 */
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import {
+  BiMenu
+} from 'react-icons/bi'
+import { Button } from 'primereact/button'
 import logo from '../assets/images/logo.png'
 import { APP_NAME } from '../constants/app'
 import { NAVBAR } from '../constants/homepage'
@@ -10,6 +17,8 @@ import { ROUTE_INDEX } from '../constants/routes'
 const IndexNavbar = () => {
   const { t } = useTranslation()
   const router = useRouter()
+
+  const [isSidebarOpen, toggleSidebar] = useState(false)
 
   return (
     <>
@@ -45,8 +54,38 @@ const IndexNavbar = () => {
               ))
             }
           </div>
+
+          <Button
+            aria-label={t('toggleSidebar')}
+            className="website-navbar-sidebar"
+            onClick={() => toggleSidebar(!isSidebarOpen)}
+          >
+            <BiMenu />
+          </Button>
         </div>
       </nav>
+      {
+        isSidebarOpen && (
+          <aside className="website-sidebar">
+            {
+              NAVBAR.map((nav) => (
+                <Link
+                  key={`nav-${nav}`}
+                  href={`${ROUTE_INDEX}#${nav}`}
+                >
+                  <a
+                    className={`website-sidebar-link ${router.asPath.includes(nav) ? 'website-sidebar-link-selected' : ''}`}
+                    onClick={() => toggleSidebar(false)}
+                  >
+                    <i className="pi pi-arrow-left" />
+                    {t(nav)}
+                  </a>
+                </Link>
+              ))
+            }
+          </aside>
+        )
+      }
     </>
   )
 }
