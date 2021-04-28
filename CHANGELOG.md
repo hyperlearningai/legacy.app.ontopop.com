@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [1.0.0]
 ### Added
+- ONTOLOGY-201 Added sample .env file
 - ONTOLOGY-201 Single-page website
 - ONTOLOGY-170 Show tour flag as environment variable
 

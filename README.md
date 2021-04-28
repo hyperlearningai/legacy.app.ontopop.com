@@ -3,18 +3,18 @@
 <br />
 <p align="center">
   <a href="https://ontopop.com" target="_blank">
-    <img src="static/assets/images/logos/ontopop-logo-small-150x500.png" alt="OntoPop" width="500" height="150">
+    <img src="src/assets/images/logo.png" alt="OntoPop" width="500" height="150">
   </a>
   <h3 align="center">OntoPop</h3>
   <p align="center">
     Open source framework enabling the visualisation, search, exploration and management of ontologies.
     <br/>
-    <a href="https://ontopop.com" target="_blank"><strong>OntoPop Website</strong></a>
+    <a href="https://www.ontopop.com" target="_blank"><strong>OntoPop Website</strong></a>
     <br/>
     <br/>
-    <a href="https://ontopop.com" target="_blank"">Website</a>
+    <a href="https://www.ontopop.com" target="_blank"">Website</a>
     ·
-    <a href="https://ontopop.com" target="_blank"">Documentation</a>
+    <a href="https://www.ontopop.com" target="_blank"">Documentation</a>
   </p>
 </p>
 <br/>
@@ -35,7 +35,7 @@ OntoPop is an open source framework enabling the visualisation, search, explorat
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/download/)
-- .env file (Request it by asking the team leader or check the documentation)
+- .env file (Copy it from .env-sample or request it from project leader)
 
 ## Installation
 
