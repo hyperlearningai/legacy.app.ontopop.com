@@ -13,7 +13,7 @@ import showTourLs from '../fixtures/showTourLs'
 
 context('Synonyms list', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
     cy.get('#accept-all-btn').click()
     window.localStorage.setItem('showTour', showTourLs)
   })

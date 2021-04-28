@@ -14,7 +14,7 @@ import en from '../../src/i18n/en'
 
 context('Guest user', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
     cy.get('#accept-all-btn').click()
   })
 

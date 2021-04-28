@@ -2,7 +2,7 @@
 
 context('CookieBar', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
   })
 
   describe('CookieBar', () => {
