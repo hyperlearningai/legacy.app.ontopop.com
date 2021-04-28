@@ -138,8 +138,7 @@ context('Edit ontology', () => {
       cy.get('#graph-select-from').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
 
-      cy.get('#graph-select-edge').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
+      cy.get('#graph-select-edge').type('Represented by')
 
       cy.get('#graph-select-to').find('.p-dropdown-trigger').click({ force: true })
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(2).click({ force: true })

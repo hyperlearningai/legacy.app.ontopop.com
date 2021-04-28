@@ -1,7 +1,9 @@
 import { OPERATION_TYPE_UPDATE } from '../../../constants/store'
 import setAnnotationProperties from '../../../utils/apiCalls/setAnnotationProperties'
+import en from '../../../i18n/en'
 
 const updateStoreValue = jest.fn()
+const t = (id) => en[id]
 
 describe('setAnnotationProperties', () => {
   afterEach(() => {
@@ -37,7 +39,8 @@ describe('setAnnotationProperties', () => {
 
     await setAnnotationProperties({
       updateStoreValue,
-      nodes
+      nodes,
+      t
     })
 
     expect(updateStoreValue.mock.calls).toEqual(
@@ -45,29 +48,29 @@ describe('setAnnotationProperties', () => {
         label: 'Business Area',
         value: 'Business Area'
       }, {
-        label: 'rdfAbout',
+        label: en.rdfAbout,
         value: 'rdfAbout'
       }, {
-        label: 'rdfsLabel',
+        label: en.rdfsLabel,
         value: 'rdfsLabel'
       }, {
-        label: 'skosComment',
+        label: en.skosComment,
         value: 'skosComment'
       }, {
-        label: 'skosDefinition',
+        label: en.skosDefinition,
         value: 'skosDefinition'
       }]], [['annotationPropertiesDatasets'], OPERATION_TYPE_UPDATE,
         [{
           label: 'Business Area',
           value: 'Business Area'
-        }, { label: 'rdfAbout', value: 'rdfAbout' }, {
-          label: 'rdfsLabel',
+        }, { label: en.rdfAbout, value: 'rdfAbout' }, {
+          label: en.rdfsLabel,
           value: 'rdfsLabel'
-        }, { label: 'skosComment', value: 'skosComment' }, {
-          label: 'skosDefinition',
+        }, { label: en.skosComment, value: 'skosComment' }, {
+          label: en.skosDefinition,
           value: 'skosDefinition'
         }, {
-          label: 'skosExample',
+          label: en.skosExample,
           value: 'skosExample'
         }]
       ]]

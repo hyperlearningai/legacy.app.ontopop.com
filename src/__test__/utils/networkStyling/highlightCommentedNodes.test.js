@@ -62,11 +62,11 @@ describe('highlightCommentedNodes', () => {
       ],
       [
         {
-          borderWidth: 1,
+          borderWidth: 5,
           color: {
-            border: '#000',
+            border: '#2196f3',
           },
-          id: '33',
+          id: '44',
         },
       ],
     ])

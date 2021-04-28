@@ -2,9 +2,10 @@ import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import actions from '../store/actions'
-import { RESERVED_PROPERTIES } from '../constants/graph'
+import { PROPERTIES_WITH_I18N, RESERVED_PROPERTIES } from '../constants/graph'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
+import { dashedToCapitalisedString } from '../constants/functions'
 
 const NodesSelectionDetails = ({
   nodeId,
@@ -30,19 +31,23 @@ const NodesSelectionDetails = ({
 
       <div className="elements-selection-details-table elements-selection-details-table-properties">
         {
-          tableRowNames && tableRowNames.length > 0 ? tableRowNames.map((tableRowName) => (
-            <div
-              key={`details-row-${tableRowName}`}
-              className="elements-selection-details-table-row"
-            >
-              <div className="light-bold">
-                {tableRowName}
+          tableRowNames && tableRowNames.length > 0 ? tableRowNames.map((tableRowName) => {
+            const property = PROPERTIES_WITH_I18N.includes(tableRowName) ? t(tableRowName) : dashedToCapitalisedString(tableRowName)
+
+            return (
+              <div
+                key={`details-row-${tableRowName}`}
+                className="elements-selection-details-table-row"
+              >
+                <div className="light-bold">
+                  {property}
+                </div>
+                <div>
+                  {selectedNode[tableRowName] || t('null')}
+                </div>
               </div>
-              <div>
-                {selectedNode[tableRowName] || t('null')}
-              </div>
-            </div>
-          )) : null
+            )
+          }) : null
         }
       </div>
 

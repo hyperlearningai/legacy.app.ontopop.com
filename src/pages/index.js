@@ -4,14 +4,15 @@
 import React from 'react'
 import Link from 'next/link'
 
-import {useTranslation} from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import IndexNavbar from '../components/IndexNavbar.js'
-import {APP_NAME} from '../constants/app.js'
-import {ROUTE_INDEX} from '../constants/routes.js'
-import {ANCHOR_ABOUT, ANCHOR_CONTRIBUTE, ANCHOR_FEATURES} from '../constants/homepage.js'
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import { APP_NAME } from '../constants/app.js'
+import { ROUTE_INDEX } from '../constants/routes.js'
+import { ANCHOR_ABOUT, ANCHOR_CONTRIBUTE, ANCHOR_FEATURES } from '../constants/homepage.js'
+import '@fortawesome/fontawesome-free/css/all.css'
 import ndLogo from '../assets/images/nd-logo.png'
 import highwaysenglandLogo from '../assets/images/highwaysengland-logo.png'
+import Footer from '../components/Footer.js'
 
 const Index = () => {
   const { t } = useTranslation()
@@ -44,7 +45,7 @@ const Index = () => {
           </div>
         </div>
         <img
-          className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12"
+          className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 website-image-main"
           src="https://demos.creative-tim.com/notus-nextjs/img/pattern_nextjs.png"
           alt="..."
         />
@@ -139,9 +140,12 @@ const Index = () => {
 
             <div className="w-full md:w-5/12 px-4 mr-auto ml-auto mt-32">
               <div className="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0">
-                <iframe width="840" height="630"
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
-                </iframe>
+                <iframe
+                  title={APP_NAME}
+                  width="840"
+                  height="630"
+                  src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1"
+                />
               </div>
             </div>
           </div>
@@ -360,7 +364,6 @@ const Index = () => {
           </div>
         </div>
 
-
       </section>
 
       <section className="block relative z-1 bg-blueGray-600">
@@ -490,6 +493,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

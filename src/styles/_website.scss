@@ -32,6 +32,12 @@
     }
   }
 
+  &-image {
+    &-main {
+      filter: sepia(100%) hue-rotate(190deg) saturate(600%);
+    }
+  }
+
   &-footer {
     height: 38% !important;
 
