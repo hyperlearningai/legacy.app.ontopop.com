@@ -7,10 +7,6 @@ import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
 import businessAreaValues from '../fixtures/businessAreaValues'
-import {
-  ROUTE_EDIT_ONTOLOGY, ROUTE_ELEMENTS_SELECTION, ROUTE_EXPORT, ROUTE_NETWORK_GRAPHS, ROUTE_NETWORK_GRAPH_OPTIONS, ROUTE_NOTES, ROUTE_SYNONYMS
-} from '../../src/constants/routes'
-import en from '../../src/i18n/en'
 
 context('Guest user', () => {
   beforeEach(() => {
@@ -80,65 +76,7 @@ context('Guest user', () => {
 
       cy.wait(2000)
 
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introSearchStart)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introSearchResults)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.wait('@linkSearch')
-
-      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPHS)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introNavigateButtons)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPHS)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introNavigateZoom)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPHS)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introNavigateDatatable)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPHS)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introDatatableSection)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_ELEMENTS_SELECTION)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introElementSelectionType)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_ELEMENTS_SELECTION)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introElementSelectionElement)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_ELEMENTS_SELECTION)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introElementSelectionProperties)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPH_OPTIONS)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introGraphOptionsPhysics)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPH_OPTIONS)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introGraphOptionsPositioning)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPH_OPTIONS)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introGraphOptionsRepulsion)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_EXPORT)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introExportFilename)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_EXPORT)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introExportImage)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
-
-      cy.location('pathname').should('be.equal', ROUTE_EXPORT)
-      cy.get('.react-joyride__tooltip').find('div').eq(0).should('have.text', en.introExportData)
-      cy.get('.react-joyride__tooltip').find('button[data-action="primary"]').click()
+      cy.get('.sidebar-icons').find('button').should('have.length', 11)
     })
   })
 })
