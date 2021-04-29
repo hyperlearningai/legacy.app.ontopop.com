@@ -1,3 +1,4 @@
+/* eslint no-loop-func:0 */
 import { dashedToCapitalisedString } from '../../constants/functions'
 import { PROPERTIES_WITH_I18N, RESERVED_PROPERTIES } from '../../constants/graph'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
@@ -18,13 +19,18 @@ const setAnnotationProperties = ({
   let annotationProperties = []
   let annotationPropertiesDatasets = []
 
-  Object.keys(nodes).map((nodeId) => {
+  const nodeIds = Object.keys(nodes)
+  const nodeIdsLength = nodeIds.length - 1
+
+  for (let index = nodeIdsLength; index >= 0; index--) {
+    const nodeId = nodeIds[nodeIdsLength - index]
+
     const node = nodes[nodeId]
 
     if (node.label === 'dataset') {
       const properties = Object.keys(node).filter(
         (key) => !annotationPropertiesDatasets.includes(key)
-        && !RESERVED_PROPERTIES.includes(key)
+          && !RESERVED_PROPERTIES.includes(key)
       )
 
       if (properties.length > 0) {
@@ -34,7 +40,7 @@ const setAnnotationProperties = ({
         ]
       }
 
-      return true
+      continue
     }
 
     const properties = Object.keys(node).filter(
@@ -48,9 +54,7 @@ const setAnnotationProperties = ({
         ...properties
       ]
     }
-
-    return true
-  })
+  }
 
   updateStoreValue(['annotationProperties'], OPERATION_TYPE_UPDATE, annotationProperties.sort().map((property) => ({
     label: PROPERTIES_WITH_I18N.includes(property) ? t(property) : dashedToCapitalisedString(property),

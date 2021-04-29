@@ -15,28 +15,30 @@ const getNodesFromPaths = ({
   const shortestPathNodes = []
 
   if (shortestPathResults?.length > 0) {
-    shortestPathResults.map((path) => {
+    const shortestPathResultsLength = shortestPathResults.length - 1
+
+    for (let pathIndex = shortestPathResultsLength; pathIndex >= 0; pathIndex--) {
+      const path = shortestPathResults[shortestPathResultsLength - pathIndex]
       const pathEdges = getPathEdges(path)
 
-      if (pathEdges?.length > 0) {
-        pathEdges.map((edge, index) => {
-          // first value of pathEdges is actually the start node
-          if (index === 0) {
-            return shortestPathNodes.push(edge)
-          }
+      if (!pathEdges || pathEdges.length === 0) continue
 
-          // eslint-disable-next-line
+      const pathEdgesLength = pathEdges.length - 1
+      for (let index = pathEdgesLength; index >= 0; index--) {
+        const edge = pathEdges[pathEdgesLength - index]
+
+        if (pathEdgesLength - index === 0) {
+          shortestPathNodes.push(edge)
+          continue
+        }
+
+        // eslint-disable-next-line
           const {from, to} = getEdge(edge)
 
-          if (!shortestPathNodes.includes(from)) shortestPathNodes.push(from)
-          if (!shortestPathNodes.includes(to)) shortestPathNodes.push(to)
-
-          return true
-        })
+        if (!shortestPathNodes.includes(from)) shortestPathNodes.push(from)
+        if (!shortestPathNodes.includes(to)) shortestPathNodes.push(to)
       }
-
-      return true
-    })
+    }
   }
 
   return shortestPathNodes

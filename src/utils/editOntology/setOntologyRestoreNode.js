@@ -35,9 +35,12 @@ const setOntologyRestoreNode = async ({
   const restoredNodes = {}
 
   if (selectedElement.length === 0) return false
+
+  const selectedElementLength = selectedElement.length - 1
+
   // first add nodes back
-  for (let index = 0; index < selectedElement.length; index++) {
-    const oldId = selectedElement[index]
+  for (let index = selectedElementLength; index >= 0; index--) {
+    const oldId = selectedElement[selectedElementLength - index]
 
     const node = classesFromApiBackup[oldId] ? JSON.parse(JSON.stringify(classesFromApiBackup[oldId])) : undefined
 
@@ -121,64 +124,72 @@ const setOntologyRestoreNode = async ({
 
   const restoredNodesIds = Object.keys(restoredNodes)
 
-  if (restoredNodesIds.length > 0) {
-    restoredNodesIds.forEach((restoredNodeOldId) => {
-      const edges = totalEdgesPerNodeBackup[restoredNodeOldId]
+  if (restoredNodesIds.length === 0) return false
 
-      if (edges.length === 0) return false
+  const restoredNodesIdsLength = restoredNodesIds.length - 1
 
-      edges.forEach((edgeId) => {
-        const edge = objectPropertiesFromApiBackup[edgeId]
+  for (let index = restoredNodesIdsLength; index >= 0; index--) {
+    const restoredNodeOldId = restoredNodesIds[restoredNodesIdsLength - index]
 
-        const {
-          from,
-          to,
-          userDefined
-        } = edge
+    const edges = totalEdgesPerNodeBackup[restoredNodeOldId]
 
-        if (restoredNodeOldId[from]) {
-          edge.from = restoredNodeOldId[from]
+    if (edges.length === 0) return false
+
+    const edgesLength = edges.length - 1
+
+    for (let edgeIndex = edgesLength; edgeIndex >= 0; edgeIndex--) {
+      const edgeId = edges[edgesLength - edgeIndex]
+
+      const edge = objectPropertiesFromApiBackup[edgeId]
+
+      const {
+        from,
+        to,
+        userDefined
+      } = edge
+
+      if (restoredNodeOldId[from]) {
+        edge.from = restoredNodeOldId[from]
+      }
+
+      if (restoredNodeOldId[to]) {
+        edge.to = restoredNodeOldId[to]
+      }
+
+      // add object properties
+      updateStoreValue(['objectPropertiesFromApi', edgeId], OPERATION_TYPE_UPDATE, edge)
+      updateStoreValue(['objectPropertiesFromApiBackup', edgeId], OPERATION_TYPE_UPDATE, edge)
+
+      // add to connections
+      updateStoreValue(['totalEdgesPerNode', edge.from], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
+      updateStoreValue(['totalEdgesPerNodeBackup', edge.to], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
+
+      // check if visible
+      const isFromVisible = getNode(edge.from) !== null
+      const isToVisible = getNode(edge.to) !== null
+
+      if (isFromVisible && isToVisible) {
+        // add to nodes edges
+        updateStoreValue(['nodesEdges', edge.from], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
+        updateStoreValue(['nodesEdges', edge.to], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
+
+        if (userDefined) {
+          updateStoreValue(['deletedEdges'], OPERATION_TYPE_ARRAY_DELETE, edgeId)
+          updateStoreValue(['addedEdges'], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
         }
 
-        if (restoredNodeOldId[to]) {
-          edge.to = restoredNodeOldId[to]
-        }
+        const isVisible = checkEdgeVisibility({
+          edgeId: edge.id,
+        })
 
-        // add object properties
-        updateStoreValue(['objectPropertiesFromApi', edgeId], OPERATION_TYPE_UPDATE, edge)
-        updateStoreValue(['objectPropertiesFromApiBackup', edgeId], OPERATION_TYPE_UPDATE, edge)
-
-        // add to connections
-        updateStoreValue(['totalEdgesPerNode', edge.from], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
-        updateStoreValue(['totalEdgesPerNodeBackup', edge.to], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
-
-        // check if visible
-        const isFromVisible = getNode(edge.from) !== null
-        const isToVisible = getNode(edge.to) !== null
-
-        if (isFromVisible && isToVisible) {
-          // add to nodes edges
-          updateStoreValue(['nodesEdges', edge.from], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
-          updateStoreValue(['nodesEdges', edge.to], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
-
-          if (userDefined) {
-            updateStoreValue(['deletedEdges'], OPERATION_TYPE_ARRAY_DELETE, edgeId)
-            updateStoreValue(['addedEdges'], OPERATION_TYPE_PUSH_UNIQUE, edgeId)
-          }
-
-          const isVisible = checkEdgeVisibility({
-            edgeId: edge.id,
+        if (isVisible) {
+          addEdge({
+            edge,
+            updateStoreValue
           })
-
-          if (isVisible) {
-            addEdge({
-              edge,
-              updateStoreValue
-            })
-          }
         }
-      })
-    })
+      }
+    }
   }
 }
 

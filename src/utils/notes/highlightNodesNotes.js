@@ -20,33 +20,37 @@ const highlightNodesNotes = () => {
 
   const availableNodesIDs = getNodeIds()
 
-  if (availableNodesIDs.length > 0) {
-    availableNodesIDs.map((nodeId) => {
-      const node = getNode(nodeId)
+  if (availableNodesIDs.length === 0) return false
 
-      const { userDefined } = node
+  const availableNodesIDsLength = availableNodesIDs.length - 1
 
-      const {
-        stylingNodeBorderColor,
-        stylingNodeBorder
-      } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+  for (let index = availableNodesIDsLength; index >= 0; index--) {
+    const nodeId = availableNodesIDs[availableNodesIDsLength - index]
 
-      let existingColorProperties
+    const node = getNode(nodeId)
 
-      if (node.color) {
-        existingColorProperties = node.color
-      }
+    const { userDefined } = node
 
-      const hasNote = notes.find((note) => note.nodeId === parseInt(nodeId))
+    const {
+      stylingNodeBorderColor,
+      stylingNodeBorder
+    } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
-      return updateNodes({
-        id: nodeId,
-        color: {
-          ...existingColorProperties,
-          border: hasNote ? NOTE_NODE_BORDER_COLOR : stylingNodeBorderColor
-        },
-        borderWidth: hasNote ? NOTE_NODE_BORDER_WIDTH : stylingNodeBorder
-      })
+    let existingColorProperties
+
+    if (node.color) {
+      existingColorProperties = node.color
+    }
+
+    const hasNote = notes.find((note) => note.nodeId === parseInt(nodeId))
+
+    updateNodes({
+      id: nodeId,
+      color: {
+        ...existingColorProperties,
+        border: hasNote ? NOTE_NODE_BORDER_COLOR : stylingNodeBorderColor
+      },
+      borderWidth: hasNote ? NOTE_NODE_BORDER_WIDTH : stylingNodeBorder
     })
   }
 }

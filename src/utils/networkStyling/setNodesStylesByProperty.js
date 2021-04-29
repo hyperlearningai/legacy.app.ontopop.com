@@ -13,7 +13,11 @@ const setNodesStylesByProperty = () => {
   if (stylingNodeByProperty.length === 0) return false
 
   // update node style
-  stylingNodeByProperty.map((property) => {
+  const stylingNodeByPropertyLength = stylingNodeByProperty.length - 1
+
+  for (let index = stylingNodeByPropertyLength; index >= 0; index--) {
+    const property = stylingNodeByProperty[stylingNodeByPropertyLength - index]
+
     const {
       styleValue, filterValue
     } = property
@@ -27,9 +31,7 @@ const setNodesStylesByProperty = () => {
     ) {
       styleNodesByProperty({ property })
     }
-
-    return true
-  })
+  }
 }
 
 export default setNodesStylesByProperty

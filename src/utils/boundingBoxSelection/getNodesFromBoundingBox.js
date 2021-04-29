@@ -48,7 +48,11 @@ const getNodesFromBoundingBox = async ({
 
   if (availableNodes.length === 0) updateStoreValue(['selectedBoundingBoxNodes'], OPERATION_TYPE_UPDATE, [])
 
-  availableNodes.map((node) => {
+  const availableNodesLength = availableNodes.length - 1
+
+  for (let index = availableNodesLength; index >= 0; index--) {
+    const node = availableNodes[availableNodesLength - index]
+
     const color = node.color || {}
 
     color.background = getStylingProperty({
@@ -57,10 +61,10 @@ const getNodesFromBoundingBox = async ({
       element: node
     })
 
-    return updateNodes(
+    updateNodes(
       { id: node.id, color }
     )
-  })
+  }
 
   return updateStoreValue(['selectedBoundingBoxNodes'], OPERATION_TYPE_UPDATE, availableNodes)
 }

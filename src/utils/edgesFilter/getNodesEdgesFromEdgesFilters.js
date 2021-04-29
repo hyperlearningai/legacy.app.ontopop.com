@@ -16,8 +16,10 @@ const getNodesEdgesFromEdgesFilters = ({
   const availableEdgesIds = getEdgeIds()
 
   if (availableEdgesIds?.length > 0) {
-    for (let index = 0; index < availableEdgesIds.length; index++) {
-      const edgeId = availableEdgesIds[index]
+    const availableEdgesIdsLength = availableEdgesIds.length - 1
+
+    for (let index = availableEdgesIdsLength; index >= 0; index--) {
+      const edgeId = availableEdgesIds[availableEdgesIdsLength - index]
 
       const edge = getEdge(edgeId)
 

@@ -38,10 +38,14 @@ const generateSearchGraphQuery = () => {
   const advancedSearchFiltersKeys = Object.keys(advancedSearchFilters)
 
   if (advancedSearchFiltersKeys.length > 0) {
-    advancedSearchFiltersKeys.forEach((searchFilter) => {
+    const advancedSearchFiltersKeysLength = advancedSearchFiltersKeys.length - 1
+
+    for (let index = advancedSearchFiltersKeysLength; index >= 0; index--) {
+      const searchFilter = advancedSearchFiltersKeys[advancedSearchFiltersKeysLength - index]
+
       const { property, value } = advancedSearchFilters[searchFilter]
 
-      if (property === '' || value === '') return false
+      if (property === '' || value === '') continue
 
       const propertyQueryString = PROPERTY_ODATA_FILTER_MAPPING[property] || property
 
@@ -52,7 +56,7 @@ const generateSearchGraphQuery = () => {
         customBodyProperties.search = customBodyProperties.search ? `${customBodyProperties.search} ${value}~` : `${value}~`
         customBodyProperties.searchFields = customBodyProperties.searchFields ? `${customBodyProperties.searchFields},${propertyQueryString}` : propertyQueryString
       }
-    })
+    }
   }
 
   if (dataTypeSearch !== 'any') {

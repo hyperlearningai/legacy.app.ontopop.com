@@ -57,13 +57,19 @@ const setUserDefinedEdgesStyles = () => {
   }
 
   // update edge style
-  availableEdges.map((edge) => updateEdges({
-    ...edge,
-    ...edgeStyle,
-    label: objectPropertiesFromApi[edge.id][stylingEdgeCaptionProperty]
-      ? objectPropertiesFromApi[edge.id][stylingEdgeCaptionProperty].replace(/ /g, '\n')
-      : ''
-  }))
+  const availableEdgesLength = availableEdges.length - 1
+
+  for (let index = availableEdgesLength; index >= 0; index--) {
+    const edge = availableEdges[availableEdgesLength - index]
+
+    updateEdges({
+      ...edge,
+      ...edgeStyle,
+      label: objectPropertiesFromApi[edge.id][stylingEdgeCaptionProperty]
+        ? objectPropertiesFromApi[edge.id][stylingEdgeCaptionProperty].replace(/ /g, '\n')
+        : ''
+    })
+  }
 }
 
 export default setUserDefinedEdgesStyles

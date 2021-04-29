@@ -20,7 +20,11 @@ const setHighlightedNodes = () => {
 
   if (highlightedNodesObjects.length === 0) return false
 
-  highlightedNodesObjects.map((node) => {
+  const highlightedNodesObjectsLength = highlightedNodesObjects.length - 1
+
+  for (let index = highlightedNodesObjectsLength; index >= 0; index--) {
+    const node = highlightedNodesObjects[highlightedNodesObjectsLength - index]
+
     const color = node.color || {}
 
     color.background = getStylingProperty({
@@ -29,11 +33,11 @@ const setHighlightedNodes = () => {
       element: node
     })
 
-    return updateNodes({
+    updateNodes({
       id: node.id,
       color
     })
-  })
+  }
 }
 
 export default setHighlightedNodes

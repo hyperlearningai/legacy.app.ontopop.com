@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-170 Show tour flag as environment variable
 
 ### Changed
+- ONTOLOGY-222 Replaced loops with reversed loops for performance
 - ONTOLOGY-219 Set HTML title to Ontopop
 - ONTOLOGY-221 Renamed contacts to contact in sticky header
 - ONTOLOGY-218 Updated favicon

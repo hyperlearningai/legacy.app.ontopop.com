@@ -13,7 +13,12 @@ const getTriplesFromApi = ({
 }) => {
   const totalEdgesPerNode = {}
 
-  Object.keys(edges).map((edgeId) => {
+  const edgesIds = Object.keys(edges)
+  const edgesIdsLength = edgesIds.length - 1
+
+  for (let index = edgesIdsLength; index >= 0; index--) {
+    const edgeId = edgesIds[edgesIdsLength - index]
+
     const edge = edges[edgeId]
 
     const {
@@ -36,9 +41,7 @@ const getTriplesFromApi = ({
     } else if (!totalEdgesPerNode[toAsString].includes(id)) {
       totalEdgesPerNode[toAsString].push(id)
     }
-
-    return true
-  })
+  }
 
   updateStoreValue(['totalEdgesPerNode'], OPERATION_TYPE_UPDATE, totalEdgesPerNode)
   updateStoreValue(['totalEdgesPerNodeBackup'], OPERATION_TYPE_UPDATE, totalEdgesPerNode)

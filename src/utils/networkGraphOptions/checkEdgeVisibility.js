@@ -32,17 +32,15 @@ const checkEdgeVisibility = ({
   }
 
   if (isVisible) {
-    if (isVisible) {
-      const properties = checkValidProperties({
-        properties: hiddenEdgesProperties
-      })
+    const properties = checkValidProperties({
+      properties: hiddenEdgesProperties
+    })
 
-      if (properties.length > 0) {
-        isVisible = checkVisibilityByProperty({
-          element: objectPropertiesFromApiBackup[edgeId],
-          properties
-        })
-      }
+    if (properties.length > 0) {
+      isVisible = checkVisibilityByProperty({
+        element: objectPropertiesFromApiBackup[edgeId],
+        properties
+      })
     }
   }
 

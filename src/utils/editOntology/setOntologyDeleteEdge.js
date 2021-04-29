@@ -28,8 +28,10 @@ const setOntologyDeleteEdge = async ({
   // delete connections from graph and remove from graph
   if (selectedElement.length === 0) return false
 
-  for (let index = 0; index < selectedElement.length; index++) {
-    const edgeId = selectedElement[index]
+  const selectedElementLength = selectedElement.length - 1
+
+  for (let index = selectedElementLength; index >= 0; index--) {
+    const edgeId = selectedElement[selectedElementLength - index]
 
     const response = await httpCall({
       updateStoreValue,

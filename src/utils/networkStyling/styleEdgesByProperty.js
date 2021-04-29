@@ -30,61 +30,63 @@ const styleEdgesByProperty = ({
     }
   })
 
-  if (edgesToStyle.length > 0) {
-    edgesToStyle.map((edge) => {
-      const { id } = edge
+  if (edgesToStyle.length === 0) return false
 
-      const propertyToUpdate = {}
+  const edgesToStyleLength = edgesToStyle.length - 1
 
-      switch (styleType) {
-        case 'stylingEdgeWidth':
-          propertyToUpdate.width = styleValue
-          break
+  for (let edgeIndex = edgesToStyleLength; edgeIndex >= 0; edgeIndex--) {
+    const edge = edgesToStyle[edgesToStyleLength - edgeIndex]
 
-        case 'stylingEdgeTextColor':
-          propertyToUpdate.font = edge.font || {}
+    const { id } = edge
 
-          propertyToUpdate.font.color = styleValue
-          break
-        case 'stylingEdgeTextSize':
-          propertyToUpdate.font = edge.font || {}
+    const propertyToUpdate = {}
 
-          propertyToUpdate.font.size = styleValue
-          break
-        case 'stylingEdgeTextAlign':
-          propertyToUpdate.font = edge.font || {}
+    switch (styleType) {
+      case 'stylingEdgeWidth':
+        propertyToUpdate.width = styleValue
+        break
 
-          propertyToUpdate.font.align = styleValue
-          break
+      case 'stylingEdgeTextColor':
+        propertyToUpdate.font = edge.font || {}
 
-        case 'stylingEdgeLineColor':
-          propertyToUpdate.color = edge.color || {}
+        propertyToUpdate.font.color = styleValue
+        break
+      case 'stylingEdgeTextSize':
+        propertyToUpdate.font = edge.font || {}
 
-          propertyToUpdate.color.color = styleValue
-          break
-        case 'stylingEdgeLineColorHighlight':
-          propertyToUpdate.color = edge.color || {}
+        propertyToUpdate.font.size = styleValue
+        break
+      case 'stylingEdgeTextAlign':
+        propertyToUpdate.font = edge.font || {}
 
-          propertyToUpdate.color.highlight = styleValue
-          break
+        propertyToUpdate.font.align = styleValue
+        break
 
-        case 'stylingEdgeLineColorHover':
-          propertyToUpdate.color = edge.color || {}
+      case 'stylingEdgeLineColor':
+        propertyToUpdate.color = edge.color || {}
 
-          propertyToUpdate.color.hover = styleValue
-          break
+        propertyToUpdate.color.color = styleValue
+        break
+      case 'stylingEdgeLineColorHighlight':
+        propertyToUpdate.color = edge.color || {}
 
-        default:
-          propertyToUpdate.dashes = styleValue
-          break
-      }
+        propertyToUpdate.color.highlight = styleValue
+        break
 
-      updateEdges({
-        id,
-        ...propertyToUpdate
-      })
+      case 'stylingEdgeLineColorHover':
+        propertyToUpdate.color = edge.color || {}
 
-      return true
+        propertyToUpdate.color.hover = styleValue
+        break
+
+      default:
+        propertyToUpdate.dashes = styleValue
+        break
+    }
+
+    updateEdges({
+      id,
+      ...propertyToUpdate
     })
   }
 }

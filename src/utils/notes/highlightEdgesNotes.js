@@ -17,32 +17,35 @@ const highlightEdgesNotes = () => {
 
   const availableEdgeIDs = getEdgeIds()
 
-  if (availableEdgeIDs.length > 0) {
-    availableEdgeIDs.map((edgeId) => {
-      const edge = getEdge(edgeId)
+  if (availableEdgeIDs.length === 0) return false
 
-      const { userDefined } = edge
+  const availableEdgeIDsLength = availableEdgeIDs.length - 1
 
-      const {
-        stylingEdgeLineColor,
-        stylingEdgeWidth
-      } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+  for (let index = availableEdgeIDsLength; index >= 0; index--) {
+    const edgeId = availableEdgeIDs[index]
+    const edge = getEdge(edgeId)
 
-      let existingColorProperties
+    const { userDefined } = edge
 
-      if (edge.color) {
-        existingColorProperties = edge.color
-      }
+    const {
+      stylingEdgeLineColor,
+      stylingEdgeWidth
+    } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
-      const hasNote = notes.find((note) => note.edgeId === parseInt(edgeId))
-      return updateEdges({
-        id: edgeId,
-        color: {
-          ...existingColorProperties,
-          color: hasNote ? NOTE_EDGE_BORDER_COLOR : stylingEdgeLineColor
-        },
-        width: hasNote ? NOTE_EDGE_BORDER_WIDTH : stylingEdgeWidth
-      })
+    let existingColorProperties
+
+    if (edge.color) {
+      existingColorProperties = edge.color
+    }
+
+    const hasNote = notes.find((note) => note.edgeId === parseInt(edgeId))
+    updateEdges({
+      id: edgeId,
+      color: {
+        ...existingColorProperties,
+        color: hasNote ? NOTE_EDGE_BORDER_COLOR : stylingEdgeLineColor
+      },
+      width: hasNote ? NOTE_EDGE_BORDER_WIDTH : stylingEdgeWidth
     })
   }
 }

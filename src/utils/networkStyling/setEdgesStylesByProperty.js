@@ -13,7 +13,11 @@ const setEdgesStylesByProperty = () => {
   if (stylingEdgeByProperty.length === 0) return false
 
   // update edge style
-  stylingEdgeByProperty.map((property) => {
+  const stylingEdgeByPropertyLength = stylingEdgeByProperty.length - 1
+
+  for (let index = stylingEdgeByPropertyLength; index >= 0; index--) {
+    const property = stylingEdgeByProperty[stylingEdgeByPropertyLength - index]
+
     const {
       styleValue, filterValue
     } = property
@@ -27,9 +31,7 @@ const setEdgesStylesByProperty = () => {
     ) {
       styleEdgesByProperty({ property })
     }
-
-    return true
-  })
+  }
 }
 
 export default setEdgesStylesByProperty
