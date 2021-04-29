@@ -1,6 +1,7 @@
 /* eslint react/no-danger:0 */
 import Head from 'next/head'
 import PropTypes from 'prop-types'
+import { APP_NAME } from '../constants/app'
 
 const HeadTags = ({
   title,
@@ -8,8 +9,7 @@ const HeadTags = ({
 }) => (
   <Head>
     <title>
-      Highways England Ontology Visualisation
-      {title ? ` - ${title}` : ''}
+      {`${APP_NAME}${title ? ` - ${title}` : ''}`}
     </title>
     <meta name="description" content={`${description}`} />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />

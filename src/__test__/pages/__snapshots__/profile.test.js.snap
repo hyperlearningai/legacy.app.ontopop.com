@@ -1,868 +1,874 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Profile page should match snapshot 1`] = `
-<div
-  className="landing website"
->
-  <IndexNavbar
-    fixed={true}
+<Fragment>
+  <HeadTags
+    description="ontopopDescription"
+    title=""
   />
-  <section
-    className="website-jumbo header relative pt-16 items-center flex h-screen h-860-px overflow-x-hidden"
-    id="about"
+  <div
+    className="landing website"
   >
-    <div
-      className="container mx-auto items-center flex flex-wrap pr-4"
+    <IndexNavbar
+      fixed={true}
+    />
+    <section
+      className="website-jumbo header relative pt-16 items-center flex h-screen h-860-px overflow-x-hidden"
+      id="about"
     >
       <div
-        className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4"
+        className="container mx-auto items-center flex flex-wrap pr-4"
       >
         <div
-          className="pt-32 sm:pt-0 mt-20 pb-20"
+          className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4"
         >
-          <h1
-            className="font-semibold text-4xl text-blueGray-600"
-          >
-            OntoPop
-          </h1>
-          <p
-            className="mt-4 text-lg leading-relaxed text-blueGray-500"
-          >
-            ontopopDescription
-          </p>
           <div
-            className="mt-12"
+            className="pt-32 sm:pt-0 mt-20 pb-20"
           >
-            <Link
-              href="/#features"
+            <h1
+              className="font-semibold text-4xl text-blueGray-600"
             >
-              <a
-                className="p-button website-btn-primary flex align-center justify-between"
+              OntoPop
+            </h1>
+            <p
+              className="mt-4 text-lg leading-relaxed text-blueGray-500"
+            >
+              ontopopDescription
+            </p>
+            <div
+              className="mt-12"
+            >
+              <Link
+                href="/#features"
               >
-                findOutMore
-                <i
-                  className="pi pi-arrow-right"
-                />
-              </a>
-            </Link>
+                <a
+                  className="p-button website-btn-primary flex align-center justify-between"
+                >
+                  findOutMore
+                  <i
+                    className="pi pi-arrow-right"
+                  />
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section
-    className="pt-40 pb-40 relative bg-blueGray-100 pr-4 overflow-x-hidden"
-  >
-    <div
-      className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-      style={
-        Object {
-          "transform": "translateZ(0)",
+    </section>
+    <section
+      className="pt-40 pb-40 relative bg-blueGray-100 pr-4 overflow-x-hidden"
+    >
+      <div
+        className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
+        style={
+          Object {
+            "transform": "translateZ(0)",
+          }
         }
-      }
-    >
-      <svg
-        className="absolute bottom-0 overflow-hidden"
-        preserveAspectRatio="none"
-        version="1.1"
-        viewBox="0 0 2560 100"
-        x="0"
-        xmlns="http://www.w3.org/2000/svg"
-        y="0"
       >
-        <polygon
-          className="text-blueGray-100 fill-current"
-          points="2560 0 2560 100 0 100"
-        />
-      </svg>
-    </div>
-    <div
-      className="container mx-auto pt-20"
-      id="features"
-    >
-      <div
-        className="flex flex-wrap items-center"
-      >
-        <div
-          className="w-full md:w-6/12 px-10 website-title-section"
+        <svg
+          className="absolute bottom-0 overflow-hidden"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
         >
-          <div
-            className="text-blueGray-500 p-3 text-xl text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
-          >
-            <FaTasks />
-          </div>
-          <h2
-            className="text-3xl mb-2 font-semibold leading-normal"
-          >
-            whyUseOntopop
-          </h2>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600"
-          >
-            whyUsePart1
-          </p>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600"
-          >
-            whyUsePart2
-          </p>
-        </div>
-        <div
-          className="w-full px-4 mt-10"
-        >
-          <div
-            className="flex flex-wrap items-start"
-          >
-            <div
-              className="w-full md:w-4/12 px-4 website-feature"
-            >
-              <div
-                className="relative flex flex-col min-w-0 mt-4"
-              >
-                <div
-                  className="px-4 py-5 flex-auto"
-                >
-                  <div
-                    className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
-                  >
-                    <img
-                      alt="visualisation"
-                      src={
-                        Object {
-                          "process": [Function],
-                        }
-                      }
-                    />
-                  </div>
-                  <h6
-                    className="text-xl mb-1 font-semibold"
-                  >
-                    visualisation
-                  </h6>
-                  <p
-                    className="mb-4 text-blueGray-500"
-                  >
-                    networkVisualisationExploration
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="w-full md:w-4/12 px-4 website-feature"
-            >
-              <div
-                className="relative flex flex-col min-w-0 mt-4"
-              >
-                <div
-                  className="px-4 py-5 flex-auto"
-                >
-                  <div
-                    className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
-                  >
-                    <img
-                      alt="search"
-                      src={
-                        Object {
-                          "process": [Function],
-                        }
-                      }
-                    />
-                  </div>
-                  <h6
-                    className="text-xl mb-1 font-semibold"
-                  >
-                    search
-                  </h6>
-                  <p
-                    className="mb-4 text-blueGray-500"
-                  >
-                    freeTextSearchQueryBuilder
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="w-full md:w-4/12 px-4 website-feature"
-            >
-              <div
-                className="relative flex flex-col min-w-0 mt-4"
-              >
-                <div
-                  className="px-4 py-5 flex-auto"
-                >
-                  <div
-                    className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
-                  >
-                    <img
-                      alt="management"
-                      src={
-                        Object {
-                          "process": [Function],
-                        }
-                      }
-                    />
-                  </div>
-                  <h6
-                    className="text-xl mb-1 font-semibold"
-                  >
-                    management
-                  </h6>
-                  <p
-                    className="mb-4 text-blueGray-500"
-                  >
-                    ontoEditingManagement
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="w-full md:w-4/12 px-4 website-feature"
-            >
-              <div
-                className="relative flex flex-col min-w-0 mt-4"
-              >
-                <div
-                  className="px-4 py-5 flex-auto"
-                >
-                  <div
-                    className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
-                  >
-                    <img
-                      alt="vocabulary"
-                      src={
-                        Object {
-                          "process": [Function],
-                        }
-                      }
-                    />
-                  </div>
-                  <h6
-                    className="text-xl mb-1 font-semibold"
-                  >
-                    vocabulary
-                  </h6>
-                  <p
-                    className="mb-4 text-blueGray-500"
-                  >
-                    vocabularyManagement
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="w-full md:w-4/12 px-4 website-feature"
-            >
-              <div
-                className="relative flex flex-col min-w-0 mt-4"
-              >
-                <div
-                  className="px-4 py-5 flex-auto"
-                >
-                  <div
-                    className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
-                  >
-                    <img
-                      alt="export"
-                      src={
-                        Object {
-                          "process": [Function],
-                        }
-                      }
-                    />
-                  </div>
-                  <h6
-                    className="text-xl mb-1 font-semibold"
-                  >
-                    export
-                  </h6>
-                  <p
-                    className="mb-4 text-blueGray-500"
-                  >
-                    exportCollaboration
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <polygon
+            className="text-blueGray-100 fill-current"
+            points="2560 0 2560 100 0 100"
+          />
+        </svg>
       </div>
-    </div>
-  </section>
-  <section
-    className="pt-40 pb-40 relative bg-blueGray-600 pr-4 overflow-x-hidden"
-  >
-    <div
-      className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-      style={
-        Object {
-          "transform": "translateZ(0)",
-        }
-      }
-    >
-      <svg
-        className="absolute bottom-0 overflow-hidden"
-        preserveAspectRatio="none"
-        version="1.1"
-        viewBox="0 0 2560 100"
-        x="0"
-        xmlns="http://www.w3.org/2000/svg"
-        y="0"
-      >
-        <polygon
-          className="text-blueGray-600 fill-current"
-          points="2560 0 2560 100 0 100"
-        />
-      </svg>
-    </div>
-    <div
-      className="container mx-auto pt-20"
-      id="learn"
-    >
       <div
-        className="flex flex-wrap items-center"
+        className="container mx-auto pt-20"
+        id="features"
       >
         <div
-          className="w-full md:w-6/12 px-10 website-title-section"
+          className="flex flex-wrap items-center"
         >
           <div
-            className="text-blueGray-500 text-xl p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
-          >
-            <AiOutlineRead />
-          </div>
-          <h2
-            className="text-3xl text-white mb-2 font-semibold leading-normal"
-          >
-            howToUse
-          </h2>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
-          >
-            followingVideo
-          </p>
-          <div
-            className="website-video"
-          >
-            <iframe
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen={true}
-              frameBorder="0"
-              height="315"
-              src="https://www.youtube-nocookie.com/embed/oYlav3twVEE"
-              title="OntoPop"
-              width="560"
-            />
-          </div>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
-          >
-            toLearnMore
-          </p>
-          <div
-            className="mt-12"
-          >
-            <a
-              className="p-button website-btn-primary flex align-center justify-between"
-              href="https://hyperlearningai.atlassian.net/wiki/spaces/OF"
-              rel="noopener noreferrer nofollow"
-              target="_blank"
-            >
-              ontopopWiki
-              <i
-                className="pi pi-arrow-right"
-              />
-            </a>
-          </div>
-        </div>
-        <div
-          className="w-full md:w-4/12 px-4 mr-auto ml-auto mt-32 relative text-blueGray-700 absolute text-55 opacity-80 tablet-hide"
-        >
-          <GiCubes />
-        </div>
-      </div>
-    </div>
-  </section>
-  <section
-    className="pt-40 pb-40 relative bg-blueGray-100 pr-4 overflow-x-hidden"
-  >
-    <div
-      className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-      style={
-        Object {
-          "transform": "translateZ(0)",
-        }
-      }
-    >
-      <svg
-        className="absolute bottom-0 overflow-hidden"
-        preserveAspectRatio="none"
-        version="1.1"
-        viewBox="0 0 2560 100"
-        x="0"
-        xmlns="http://www.w3.org/2000/svg"
-        y="0"
-      >
-        <polygon
-          className="text-blueGray-100 fill-current"
-          points="2560 0 2560 100 0 100"
-        />
-      </svg>
-    </div>
-    <div
-      className="container mx-auto pt-20"
-      id="app"
-    >
-      <div
-        className="flex flex-wrap items-center"
-      >
-        <div
-          className="w-full md:w-6/12 px-10 website-title-section"
-        >
-          <div
-            className="text-blueGray-500 p-3 text-xl text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
-          >
-            <VscRocket />
-          </div>
-          <h2
-            className="text-3xl mb-2 font-semibold leading-normal"
-          >
-            ontopopApp
-          </h2>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600"
-          >
-            communityHostedApp
-          </p>
-          <div
-            className="mt-12"
-          >
-            <Link
-              href="/login"
-            >
-              <a
-                className="p-button website-btn-primary flex align-center justify-between"
-              >
-                openOntopop
-                <i
-                  className="pi pi-arrow-right"
-                />
-              </a>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section
-    className="pt-40 pb-40 relative bg-blueGray-600 pr-4 overflow-x-hidden"
-  >
-    <div
-      className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-      style={
-        Object {
-          "transform": "translateZ(0)",
-        }
-      }
-    >
-      <svg
-        className="absolute bottom-0 overflow-hidden"
-        preserveAspectRatio="none"
-        version="1.1"
-        viewBox="0 0 2560 100"
-        x="0"
-        xmlns="http://www.w3.org/2000/svg"
-        y="0"
-      >
-        <polygon
-          className="text-blueGray-600 fill-current"
-          points="2560 0 2560 100 0 100"
-        />
-      </svg>
-    </div>
-    <div
-      className="container mx-auto pt-20"
-      id="contribute"
-    >
-      <div
-        className="flex flex-wrap items-center"
-      >
-        <div
-          className="w-full md:w-6/12 px-10 website-title-section"
-        >
-          <div
-            className="text-blueGray-500 text-xl p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
-          >
-            <GoGitBranch />
-          </div>
-          <h2
-            className="text-3xl text-white mb-2 font-semibold leading-normal"
-          >
-            howToContribute
-          </h2>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
-          >
-            openSourceFramework1
-             
-            <a
-              className="p-link website-btn-link"
-              href="https://creativecommons.org/licenses/by-sa/2.0/"
-              rel="noopener noreferrer nofollow"
-              target="_blank"
-            >
-              Creative Commons Attribution-ShareAlike license
-            </a>
-            .
-          </p>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
-          >
-            openSourceFramework2
-          </p>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
-          >
-            openSourceFramework3
-          </p>
-          <p
-            className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
-          >
-            openSourceFramework4
-          </p>
-          <div
-            className="mt-12 flex align-center justify-start"
-          >
-            <a
-              className="p-button website-btn-secondary flex align-center justify-between"
-              href="https://hyperlearningai.atlassian.net/wiki/spaces/OF"
-              rel="noopener noreferrer nofollow"
-              target="_blank"
-            >
-              ontopopWiki
-              <i
-                className="pi pi-arrow-right"
-              />
-            </a>
-            <a
-              className="p-button website-btn-primary flex align-center justify-between ml-2"
-              href="https://github.com/hyperlearningai/ontology-visualisation"
-              rel="noopener noreferrer nofollow"
-              target="_blank"
-            >
-              ontopopRepo
-              <i
-                className="pi pi-arrow-right"
-              />
-            </a>
-          </div>
-        </div>
-        <div
-          className="w-full md:w-4/12 px-4 mr-auto ml-auto mt-32 relative text-blueGray-700 absolute text-55 opacity-80 tablet-hide"
-        >
-          <FiCodepen />
-        </div>
-      </div>
-    </div>
-    <div
-      className="container mx-auto mt-20"
-    >
-      <div
-        className="w-full lg:w-8/12 px-4 mx-auto"
-      >
-        <div
-          className="flex flex-wrap align-center justify-center"
-        >
-          <div
-            className="w-full px-4 website-sponsor"
-          >
-            <h5
-              className="text-xl text-white font-semibold pb-4 text-center"
-            >
-              primarySponsor
-            </h5>
-            <a
-              href="https://highwaysengland.co.uk/"
-              rel="noopener noreferrer nofollow"
-              target="_blank"
-            >
-              <div
-                className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150"
-              >
-                <img
-                  alt="..."
-                  className="align-middle border-none max-w-full h-auto rounded-lg"
-                  src={
-                    Object {
-                      "process": [Function],
-                    }
-                  }
-                />
-              </div>
-            </a>
-          </div>
-          <div
-            className="w-full px-4 website-sponsor"
-          >
-            <h5
-              className="text-xl text-white font-semibold pb-4 text-center"
-            >
-              National Digital Twin
-            </h5>
-            <a
-              href="https://www.cdbb.cam.ac.uk/what-we-do/national-digital-twin-programme"
-              rel="noopener noreferrer nofollow"
-              target="_blank"
-            >
-              <div
-                className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150"
-              >
-                <img
-                  alt="..."
-                  className="align-middle border-none max-w-full h-auto rounded-lg py-5"
-                  src={
-                    Object {
-                      "process": [Function],
-                    }
-                  }
-                />
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="container mx-auto px-4 pb-32 pt-48"
-    >
-      <div
-        className="items-center flex flex-wrap"
-      >
-        <div
-          className="w-full md:w-5/12 ml-auto px-12 md:px-4"
-        >
-          <div
-            className="md:pr-12"
+            className="w-full md:w-6/12 px-10 website-title-section"
           >
             <div
               className="text-blueGray-500 p-3 text-xl text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
             >
-              <IoCode />
+              <FaTasks />
             </div>
-            <h3
-              className="text-3xl text-white font-semibold"
+            <h2
+              className="text-3xl mb-2 font-semibold leading-normal"
             >
-              mainContributors
-            </h3>
-            <ul
-              className="list-none mt-6"
+              whyUseOntopop
+            </h2>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600"
             >
-              <li
-                className="py-2"
+              whyUsePart1
+            </p>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600"
+            >
+              whyUsePart2
+            </p>
+          </div>
+          <div
+            className="w-full px-4 mt-10"
+          >
+            <div
+              className="flex flex-wrap items-start"
+            >
+              <div
+                className="w-full md:w-4/12 px-4 website-feature"
               >
                 <div
-                  className="flex items-center"
+                  className="relative flex flex-col min-w-0 mt-4"
                 >
-                  <div>
-                    <span
-                      className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                  <div
+                    className="px-4 py-5 flex-auto"
+                  >
+                    <div
+                      className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
                     >
-                      <BiCog />
-                    </span>
-                  </div>
-                  <div>
-                    <h4
-                      className="text-blueGray-200"
+                      <img
+                        alt="visualisation"
+                        src={
+                          Object {
+                            "process": [Function],
+                          }
+                        }
+                      />
+                    </div>
+                    <h6
+                      className="text-xl mb-1 font-semibold"
                     >
-                      Jillur Quddus - Project Team Lead & Lead Engineer
-                    </h4>
+                      visualisation
+                    </h6>
+                    <p
+                      className="mb-4 text-blueGray-500"
+                    >
+                      networkVisualisationExploration
+                    </p>
                   </div>
                 </div>
-              </li>
-              <li
-                className="py-2"
+              </div>
+              <div
+                className="w-full md:w-4/12 px-4 website-feature"
               >
                 <div
-                  className="flex items-center"
+                  className="relative flex flex-col min-w-0 mt-4"
                 >
-                  <div>
-                    <span
-                      className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                  <div
+                    className="px-4 py-5 flex-auto"
+                  >
+                    <div
+                      className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
                     >
-                      <GiMagnifyingGlass />
-                    </span>
-                  </div>
-                  <div>
-                    <h4
-                      className="text-blueGray-200"
+                      <img
+                        alt="search"
+                        src={
+                          Object {
+                            "process": [Function],
+                          }
+                        }
+                      />
+                    </div>
+                    <h6
+                      className="text-xl mb-1 font-semibold"
                     >
-                      Natasha Chowdory - Lead User Researcher
-                    </h4>
+                      search
+                    </h6>
+                    <p
+                      className="mb-4 text-blueGray-500"
+                    >
+                      freeTextSearchQueryBuilder
+                    </p>
                   </div>
                 </div>
-              </li>
-              <li
-                className="py-2"
+              </div>
+              <div
+                className="w-full md:w-4/12 px-4 website-feature"
               >
                 <div
-                  className="flex items-center"
+                  className="relative flex flex-col min-w-0 mt-4"
                 >
-                  <div>
-                    <span
-                      className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                  <div
+                    className="px-4 py-5 flex-auto"
+                  >
+                    <div
+                      className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
                     >
-                      <FiCodepen />
-                    </span>
-                  </div>
-                  <div>
-                    <h4
-                      className="text-blueGray-200"
+                      <img
+                        alt="management"
+                        src={
+                          Object {
+                            "process": [Function],
+                          }
+                        }
+                      />
+                    </div>
+                    <h6
+                      className="text-xl mb-1 font-semibold"
                     >
-                      Christian Carestia - Lead Front End Engineer
-                    </h4>
+                      management
+                    </h6>
+                    <p
+                      className="mb-4 text-blueGray-500"
+                    >
+                      ontoEditingManagement
+                    </p>
                   </div>
                 </div>
-              </li>
-              <li
-                className="py-2"
+              </div>
+              <div
+                className="w-full md:w-4/12 px-4 website-feature"
               >
                 <div
-                  className="flex items-center"
+                  className="relative flex flex-col min-w-0 mt-4"
                 >
-                  <div>
-                    <span
-                      className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                  <div
+                    className="px-4 py-5 flex-auto"
+                  >
+                    <div
+                      className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
                     >
-                      <FiCodepen />
-                    </span>
-                  </div>
-                  <div>
-                    <h4
-                      className="text-blueGray-200"
+                      <img
+                        alt="vocabulary"
+                        src={
+                          Object {
+                            "process": [Function],
+                          }
+                        }
+                      />
+                    </div>
+                    <h6
+                      className="text-xl mb-1 font-semibold"
                     >
-                      Michal Kostyal - Front End Engineer
-                    </h4>
+                      vocabulary
+                    </h6>
+                    <p
+                      className="mb-4 text-blueGray-500"
+                    >
+                      vocabularyManagement
+                    </p>
                   </div>
                 </div>
-              </li>
-              <li
-                className="py-2"
+              </div>
+              <div
+                className="w-full md:w-4/12 px-4 website-feature"
               >
                 <div
-                  className="flex items-center"
+                  className="relative flex flex-col min-w-0 mt-4"
                 >
-                  <div>
-                    <span
-                      className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                  <div
+                    className="px-4 py-5 flex-auto"
+                  >
+                    <div
+                      className="text-blueGray-500 p-3 text-center inline-flex items-start justify-center mb-5 shadow-lg rounded-full bg-white website-feature-icon"
                     >
-                      <FiCodepen />
-                    </span>
-                  </div>
-                  <div>
-                    <h4
-                      className="text-blueGray-200"
+                      <img
+                        alt="export"
+                        src={
+                          Object {
+                            "process": [Function],
+                          }
+                        }
+                      />
+                    </div>
+                    <h6
+                      className="text-xl mb-1 font-semibold"
                     >
-                      Tan Kent - Front End Engineer
-                    </h4>
+                      export
+                    </h6>
+                    <p
+                      className="mb-4 text-blueGray-500"
+                    >
+                      exportCollaboration
+                    </p>
                   </div>
                 </div>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div
-          className="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0"
-        >
-          <img
-            alt="..."
-            className="max-w-full rounded-lg shadow-xl"
-            src={
-              Object {
-                "process": [Function],
-              }
-            }
-            style={
-              Object {
-                "transform": "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
-              }
-            }
-          />
-        </div>
       </div>
-    </div>
-  </section>
-  <section
-    className="pb-16 bg-blueGray-200 relative pt-32 pr-4 pl-4"
-  >
-    <div
-      className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-      style={
-        Object {
-          "transform": "translateZ(0)",
-        }
-      }
-    >
-      <svg
-        className="absolute bottom-0 overflow-hidden"
-        preserveAspectRatio="none"
-        version="1.1"
-        viewBox="0 0 2560 100"
-        x="0"
-        xmlns="http://www.w3.org/2000/svg"
-        y="0"
-      >
-        <polygon
-          className="text-blueGray-200 fill-current"
-          points="2560 0 2560 100 0 100"
-        />
-      </svg>
-    </div>
-    <div
-      className="container mx-auto"
-      id="contacts"
+    </section>
+    <section
+      className="pt-40 pb-40 relative bg-blueGray-600 pr-4 overflow-x-hidden"
     >
       <div
-        className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10"
+        className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
+        style={
+          Object {
+            "transform": "translateZ(0)",
+          }
+        }
+      >
+        <svg
+          className="absolute bottom-0 overflow-hidden"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            className="text-blueGray-600 fill-current"
+            points="2560 0 2560 100 0 100"
+          />
+        </svg>
+      </div>
+      <div
+        className="container mx-auto pt-20"
+        id="learn"
       >
         <div
-          className="w-full text-center lg:w-8/12"
+          className="flex flex-wrap items-center"
         >
           <div
-            className="flex align-center justify-center"
+            className="w-full md:w-6/12 px-10 website-title-section"
+          >
+            <div
+              className="text-blueGray-500 text-xl p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+            >
+              <AiOutlineRead />
+            </div>
+            <h2
+              className="text-3xl text-white mb-2 font-semibold leading-normal"
+            >
+              howToUse
+            </h2>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
+            >
+              followingVideo
+            </p>
+            <div
+              className="website-video"
+            >
+              <iframe
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen={true}
+                frameBorder="0"
+                height="315"
+                src="https://www.youtube-nocookie.com/embed/oYlav3twVEE"
+                title="OntoPop"
+                width="560"
+              />
+            </div>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
+            >
+              toLearnMore
+            </p>
+            <div
+              className="mt-12"
+            >
+              <a
+                className="p-button website-btn-primary flex align-center justify-between"
+                href="https://hyperlearningai.atlassian.net/wiki/spaces/OF"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                ontopopWiki
+                <i
+                  className="pi pi-arrow-right"
+                />
+              </a>
+            </div>
+          </div>
+          <div
+            className="w-full md:w-4/12 px-4 mr-auto ml-auto mt-32 relative text-blueGray-700 absolute text-55 opacity-80 tablet-hide"
+          >
+            <GiCubes />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      className="pt-40 pb-40 relative bg-blueGray-100 pr-4 overflow-x-hidden"
+    >
+      <div
+        className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
+        style={
+          Object {
+            "transform": "translateZ(0)",
+          }
+        }
+      >
+        <svg
+          className="absolute bottom-0 overflow-hidden"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            className="text-blueGray-100 fill-current"
+            points="2560 0 2560 100 0 100"
+          />
+        </svg>
+      </div>
+      <div
+        className="container mx-auto pt-20"
+        id="app"
+      >
+        <div
+          className="flex flex-wrap items-center"
+        >
+          <div
+            className="w-full md:w-6/12 px-10 website-title-section"
+          >
+            <div
+              className="text-blueGray-500 p-3 text-xl text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+            >
+              <VscRocket />
+            </div>
+            <h2
+              className="text-3xl mb-2 font-semibold leading-normal"
+            >
+              ontopopApp
+            </h2>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600"
+            >
+              communityHostedApp
+            </p>
+            <div
+              className="mt-12"
+            >
+              <Link
+                href="/login"
+              >
+                <a
+                  className="p-button website-btn-primary flex align-center justify-between"
+                >
+                  openOntopop
+                  <i
+                    className="pi pi-arrow-right"
+                  />
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      className="pt-40 pb-40 relative bg-blueGray-600 pr-4 overflow-x-hidden"
+    >
+      <div
+        className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
+        style={
+          Object {
+            "transform": "translateZ(0)",
+          }
+        }
+      >
+        <svg
+          className="absolute bottom-0 overflow-hidden"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            className="text-blueGray-600 fill-current"
+            points="2560 0 2560 100 0 100"
+          />
+        </svg>
+      </div>
+      <div
+        className="container mx-auto pt-20"
+        id="contribute"
+      >
+        <div
+          className="flex flex-wrap items-center"
+        >
+          <div
+            className="w-full md:w-6/12 px-10 website-title-section"
+          >
+            <div
+              className="text-blueGray-500 text-xl p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+            >
+              <GoGitBranch />
+            </div>
+            <h2
+              className="text-3xl text-white mb-2 font-semibold leading-normal"
+            >
+              howToContribute
+            </h2>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
+            >
+              openSourceFramework1
+               
+              <a
+                className="p-link website-btn-link"
+                href="https://creativecommons.org/licenses/by-sa/4.0/"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                Creative Commons Attribution-ShareAlike license
+              </a>
+              .
+            </p>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
+            >
+              openSourceFramework2
+            </p>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
+            >
+              openSourceFramework3
+            </p>
+            <p
+              className="text-lg font-light leading-relaxed mt-4 mb-4 text-white"
+            >
+              openSourceFramework4
+            </p>
+            <div
+              className="mt-12 flex align-center justify-start"
+            >
+              <a
+                className="p-button website-btn-secondary flex align-center justify-between"
+                href="https://hyperlearningai.atlassian.net/wiki/spaces/OF"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                ontopopWiki
+                <i
+                  className="pi pi-arrow-right"
+                />
+              </a>
+              <a
+                className="p-button website-btn-primary flex align-center justify-between ml-2"
+                href="https://github.com/hyperlearningai/ontology-visualisation"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                ontopopRepo
+                <i
+                  className="pi pi-arrow-right"
+                />
+              </a>
+            </div>
+          </div>
+          <div
+            className="w-full md:w-4/12 px-4 mr-auto ml-auto mt-32 relative text-blueGray-700 absolute text-55 opacity-80 tablet-hide"
+          >
+            <FiCodepen />
+          </div>
+        </div>
+      </div>
+      <div
+        className="container mx-auto mt-20"
+      >
+        <div
+          className="w-full lg:w-8/12 px-4 mx-auto"
+        >
+          <div
+            className="flex flex-wrap align-center justify-center"
+          >
+            <div
+              className="w-full px-4 website-sponsor"
+            >
+              <h5
+                className="text-xl text-white font-semibold pb-4 text-center"
+              >
+                primarySponsor
+              </h5>
+              <a
+                href="https://highwaysengland.co.uk/"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                <div
+                  className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150"
+                >
+                  <img
+                    alt="..."
+                    className="align-middle border-none max-w-full h-auto rounded-lg"
+                    src={
+                      Object {
+                        "process": [Function],
+                      }
+                    }
+                  />
+                </div>
+              </a>
+            </div>
+            <div
+              className="w-full px-4 website-sponsor"
+            >
+              <h5
+                className="text-xl text-white font-semibold pb-4 text-center"
+              >
+                National Digital Twin
+              </h5>
+              <a
+                href="https://www.cdbb.cam.ac.uk/what-we-do/national-digital-twin-programme"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                <div
+                  className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150"
+                >
+                  <img
+                    alt="..."
+                    className="align-middle border-none max-w-full h-auto rounded-lg py-5"
+                    src={
+                      Object {
+                        "process": [Function],
+                      }
+                    }
+                  />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="container mx-auto px-4 pb-32 pt-48"
+      >
+        <div
+          className="items-center flex flex-wrap"
+        >
+          <div
+            className="w-full md:w-5/12 ml-auto px-12 md:px-4"
+          >
+            <div
+              className="md:pr-12"
+            >
+              <div
+                className="text-blueGray-500 p-3 text-xl text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+              >
+                <IoCode />
+              </div>
+              <h3
+                className="text-3xl text-white font-semibold"
+              >
+                mainContributors
+              </h3>
+              <ul
+                className="list-none mt-6"
+              >
+                <li
+                  className="py-2"
+                >
+                  <div
+                    className="flex items-center"
+                  >
+                    <div>
+                      <span
+                        className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                      >
+                        <BiCog />
+                      </span>
+                    </div>
+                    <div>
+                      <h4
+                        className="text-blueGray-200"
+                      >
+                        Jillur Quddus - Project Team Lead & Lead Engineer
+                      </h4>
+                    </div>
+                  </div>
+                </li>
+                <li
+                  className="py-2"
+                >
+                  <div
+                    className="flex items-center"
+                  >
+                    <div>
+                      <span
+                        className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                      >
+                        <GiMagnifyingGlass />
+                      </span>
+                    </div>
+                    <div>
+                      <h4
+                        className="text-blueGray-200"
+                      >
+                        Natasha Chowdory - Lead User Researcher
+                      </h4>
+                    </div>
+                  </div>
+                </li>
+                <li
+                  className="py-2"
+                >
+                  <div
+                    className="flex items-center"
+                  >
+                    <div>
+                      <span
+                        className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                      >
+                        <FiCodepen />
+                      </span>
+                    </div>
+                    <div>
+                      <h4
+                        className="text-blueGray-200"
+                      >
+                        Christian Carestia - Lead Front End Engineer
+                      </h4>
+                    </div>
+                  </div>
+                </li>
+                <li
+                  className="py-2"
+                >
+                  <div
+                    className="flex items-center"
+                  >
+                    <div>
+                      <span
+                        className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                      >
+                        <FiCodepen />
+                      </span>
+                    </div>
+                    <div>
+                      <h4
+                        className="text-blueGray-200"
+                      >
+                        Michal Kostyal - Front End Engineer
+                      </h4>
+                    </div>
+                  </div>
+                </li>
+                <li
+                  className="py-2"
+                >
+                  <div
+                    className="flex items-center"
+                  >
+                    <div>
+                      <span
+                        className="text-xl font-semibold inline-block py-2 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3"
+                      >
+                        <FiCodepen />
+                      </span>
+                    </div>
+                    <div>
+                      <h4
+                        className="text-blueGray-200"
+                      >
+                        Tan Kent - Front End Engineer
+                      </h4>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            className="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0"
           >
             <img
-              alt="anyQuestions"
+              alt="..."
+              className="max-w-full rounded-lg shadow-xl"
               src={
                 Object {
                   "process": [Function],
                 }
               }
+              style={
+                Object {
+                  "transform": "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
+                }
+              }
             />
           </div>
-          <h3
-            className="font-semibold text-3xl"
-          >
-            anyQuestions
-            ?
-          </h3>
-          <div
-            className="flex align-center justify-center mt-10"
-          >
-            <a
-              className="p-button website-btn-primary flex align-center justify-between"
-              href="mailto:contactus@ontopop.com"
-            >
-              contactUs
-              <i
-                className="pi pi-envelope"
-              />
-            </a>
-          </div>
-          <div
-            className="text-center mt-16"
-          />
         </div>
       </div>
-    </div>
-  </section>
-  <ConnectWrapper />
-</div>
+    </section>
+    <section
+      className="pb-16 bg-blueGray-200 relative pt-32 pr-4 pl-4"
+    >
+      <div
+        className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
+        style={
+          Object {
+            "transform": "translateZ(0)",
+          }
+        }
+      >
+        <svg
+          className="absolute bottom-0 overflow-hidden"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            className="text-blueGray-200 fill-current"
+            points="2560 0 2560 100 0 100"
+          />
+        </svg>
+      </div>
+      <div
+        className="container mx-auto"
+        id="contacts"
+      >
+        <div
+          className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10"
+        >
+          <div
+            className="w-full text-center lg:w-8/12"
+          >
+            <div
+              className="flex align-center justify-center"
+            >
+              <img
+                alt="anyQuestions"
+                src={
+                  Object {
+                    "process": [Function],
+                  }
+                }
+              />
+            </div>
+            <h3
+              className="font-semibold text-3xl"
+            >
+              anyQuestions
+              ?
+            </h3>
+            <div
+              className="flex align-center justify-center mt-10"
+            >
+              <a
+                className="p-button website-btn-primary flex align-center justify-between"
+                href="mailto:contactus@ontopop.com"
+              >
+                contactUs
+                <i
+                  className="pi pi-envelope"
+                />
+              </a>
+            </div>
+            <div
+              className="text-center mt-16"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <ConnectWrapper />
+  </div>
+</Fragment>
 `;

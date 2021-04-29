@@ -79,7 +79,7 @@ const Index = ({
     <>
       <HeadTags
         title=""
-        description={t('ontologyVisualisationDescription')}
+        description={t('ontopopDescription')}
       />
 
       {
