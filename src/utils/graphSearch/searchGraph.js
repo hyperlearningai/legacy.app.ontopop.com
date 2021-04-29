@@ -29,10 +29,6 @@ const getUpdatedElements = ({
       const nodeElement = classesFromApi[id]
 
       if (!nodeElement) return null
-      console.log({
-        item,
-        node: classesFromApi[id]
-      })
 
       switch (label) {
         case 'dataset':
