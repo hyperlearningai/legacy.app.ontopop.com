@@ -24,8 +24,11 @@ const extractCsvRows = ({
 
   const edgesIds = getEdgeIds()
 
-  for (let index = 0; index < edgesIds.length; index++) {
-    const currentEdgeId = edgesIds[index]
+  const edgesIdsLength = edgesIds.length - 1
+
+  for (let index = edgesIdsLength; index >= 0; index--) {
+    const currentEdgeId = edgesIds[edgesIdsLength - index]
+
     const {
       id,
       label,
@@ -48,23 +51,29 @@ const extractCsvRows = ({
     // full csv data
     const fullRow = {}
 
-    nodeKeys.map((key) => {
-      if (IGNORED_PROPERTIES.includes(key)) return false
+    const nodeKeysLength = nodeKeys.length - 1
+
+    for (let nodeIndex = nodeKeysLength; nodeIndex >= 0; nodeIndex--) {
+      const key = nodeKeys[nodeKeysLength - nodeIndex]
+
+      if (IGNORED_PROPERTIES.includes(key)) continue
 
       const fromNode = getNode(from)
       const toNode = getNode(to)
 
       fullRow[`from:${key}`] = fromNode ? fromNode[key] : ''
       fullRow[`to:${key}`] = toNode ? toNode[key] : ''
-      return true
-    })
+    }
 
-    edgeKeys.map((key) => {
-      if (IGNORED_PROPERTIES.includes(key)) return false
+    const edgeKeysLength = edgeKeys.length - 1
+
+    for (let edgeIndex = edgeKeysLength; edgeIndex >= 0; edgeIndex--) {
+      const key = edgeKeys[edgeKeysLength - edgeIndex]
+
+      if (IGNORED_PROPERTIES.includes(key)) continue
 
       fullRow[`edge:${key}`] = objectPropertiesFromApi[id][key]
-      return true
-    })
+    }
 
     fullData.push(fullRow)
   }

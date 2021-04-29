@@ -21,10 +21,13 @@ const highlightCommentedNodes = () => {
 
   if (nodesNotesIds.length === 0) return false
 
-  nodesNotesIds.map((nodeId) => {
+  const nodesNotesIdsLength = nodesNotesIds.length - 1
+
+  for (let index = nodesNotesIdsLength; index >= 0; index--) {
+    const nodeId = nodesNotesIds[nodesNotesIdsLength - index]
     const node = getNode(nodeId)
 
-    if (node === null) return false
+    if (node === null) continue
 
     const { userDefined } = node
 
@@ -35,9 +38,9 @@ const highlightCommentedNodes = () => {
 
     const isCommented = nodesNotesIds.includes(node.id)
 
-    if (!isCommented) return false
+    if (!isCommented) continue
 
-    return updateNodes({
+    updateNodes({
       id: nodeId,
       color: {
         border: isCommented
@@ -47,7 +50,7 @@ const highlightCommentedNodes = () => {
         ? COMMENTED_NODE_BORDER_WIDTH
         : stylingNodeBorder
     })
-  })
+  }
 }
 
 export default highlightCommentedNodes

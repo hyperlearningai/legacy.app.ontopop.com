@@ -13,7 +13,11 @@ const resetBoundingBoxNodes = () => {
 
   if (selectedBoundingBoxNodes.length === 0) return false
 
-  selectedBoundingBoxNodes.forEach((nodeId) => {
+  const selectedBoundingBoxNodesLength = selectedBoundingBoxNodes.length - 1
+
+  for (let index = selectedBoundingBoxNodesLength; index >= 0; index--) {
+    const nodeId = selectedBoundingBoxNodes[selectedBoundingBoxNodesLength - index]
+
     const node = classesFromApi[nodeId]
 
     if (node) {
@@ -21,7 +25,7 @@ const resetBoundingBoxNodes = () => {
         node,
       })
     }
-  })
+  }
 }
 
 export default resetBoundingBoxNodes

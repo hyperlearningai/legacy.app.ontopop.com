@@ -64,11 +64,15 @@ const addNodeToGraph = ({
       })
     }
 
-    for (let edgeIndex = 0; edgeIndex < visibleEdges.length; edgeIndex++) {
-      const edgeId = visibleEdges[edgeIndex]
-      const isLastEdge = edgeIndex === visibleEdges.length - 1
+    const visibleEdgesLength = visibleEdges.length - 1
 
-      if (useTimeout && edgeIndex > 50) {
+    for (let index = visibleEdgesLength; index >= 0; index--) {
+      const invertedIndex = visibleEdgesLength - index
+      const edgeId = visibleEdges[invertedIndex]
+
+      const isLastEdge = invertedIndex === visibleEdges.length - 1
+
+      if (useTimeout && invertedIndex > 50) {
         setTimeout(() => addEdgeToGraph({
           updateStoreValue,
           edgeId,

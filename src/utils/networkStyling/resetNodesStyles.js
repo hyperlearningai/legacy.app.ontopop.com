@@ -63,14 +63,18 @@ const resetNodesStyles = () => {
   })
 
   // update node style
-  availableNodes.map((node) => {
+  const availableNodesLength = availableNodes.length - 1
+
+  for (let index = availableNodesLength; index >= 0; index--) {
+    const node = availableNodes[availableNodesLength - index]
+
     const nodeWithoutCoordinates = JSON.parse(JSON.stringify(node))
     delete nodeWithoutCoordinates.x
     delete nodeWithoutCoordinates.y
 
     const nodeStyleObject = nodeStyle(node)
 
-    return updateNodes({
+    updateNodes({
       ...nodeWithoutCoordinates,
       ...nodeStyleObject,
       label: getElementLabel({
@@ -78,7 +82,7 @@ const resetNodesStyles = () => {
         id: node.id
       })
     })
-  })
+  }
 }
 
 export default resetNodesStyles

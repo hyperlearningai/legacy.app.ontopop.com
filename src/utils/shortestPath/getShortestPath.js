@@ -38,8 +38,10 @@ const loopThroughNeighbours = ({
   const nextEdgesToExplore = []
   const nextPathRoots = []
 
-  for (let index = 0; index < edgesToExplore.length; index++) {
-    const edgeId = edgesToExplore[index]
+  const edgesToExploreLength = edgesToExplore.length - 1
+
+  for (let index = edgesToExploreLength; index >= 0; index--) {
+    const edgeId = edgesToExplore[edgesToExploreLength - index]
 
     const nextPathRoot = `${pathRoots[index]}|||${edgeId}`
 
@@ -65,30 +67,43 @@ const loopThroughNeighbours = ({
 
     if (edgesToExclude.includes(label)) continue
 
+    const fromNodesEdges = nodesEdges[from]
+
     if (
       !exploredNodes.includes(from)
-      && nodesEdges[from]
+      && fromNodesEdges
+      && fromNodesEdges.length > 0
     ) {
-      nodesEdges[from].forEach((nodeEdgeId) => {
-        if (nextEdgesToExplore.includes(nodeEdgeId)) return false
+      const fromNodesLength = fromNodesEdges.length - 1
+      for (let fromIndex = fromNodesLength; fromIndex >= 0; fromIndex--) {
+        const nodeEdgeId = fromNodesEdges[fromNodesLength - fromIndex]
+
+        if (nextEdgesToExplore.includes(nodeEdgeId)) continue
 
         nextEdgesToExplore.push(nodeEdgeId)
         nextPathRoots.push(nextPathRoot)
-      })
+      }
 
       exploredNodes.push(from)
     }
 
+    const toNodesEdges = nodesEdges[to]
+
     if (
       !exploredNodes.includes(to)
-      && nodesEdges[to]
+      && toNodesEdges
+      && toNodesEdges.length > 0
     ) {
-      nodesEdges[to].forEach((nodeEdgeId) => {
-        if (nextEdgesToExplore.includes(nodeEdgeId)) return false
+      const toNodesLength = toNodesEdges.length - 1
+
+      for (let toIndex = toNodesLength; toIndex >= 0; toIndex--) {
+        const nodeEdgeId = toNodesEdges[toNodesLength - toIndex]
+
+        if (nextEdgesToExplore.includes(nodeEdgeId)) continue
 
         nextEdgesToExplore.push(nodeEdgeId)
         nextPathRoots.push(nextPathRoot)
-      })
+      }
 
       exploredNodes.push(to)
     }

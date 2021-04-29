@@ -60,10 +60,15 @@ const addNodesToGraph = ({
     edgeId
   }))
 
-  visibleNodes.forEach((nodeId, index) => {
-    const isLast = index === visibleNodes.length - 1
+  const visibleNodesLength = visibleNodes.length - 1
 
-    if (index > 100) {
+  for (let index = visibleNodesLength; index >= 0; index--) {
+    const invertedIndex = visibleNodesLength - index
+    const nodeId = visibleNodes[invertedIndex]
+
+    const isLast = invertedIndex === visibleNodes.length - 1
+
+    if (invertedIndex > 100) {
       setTimeout(() => addNodeToGraph({
         updateStoreValue,
         nodeId,
@@ -78,7 +83,7 @@ const addNodesToGraph = ({
         isLast
       })
     }
-  })
+  }
 }
 
 export default addNodesToGraph

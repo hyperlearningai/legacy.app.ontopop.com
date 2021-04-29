@@ -71,8 +71,13 @@ const expandNode = ({
   updateStoreValue(['activeLoaders'], OPERATION_TYPE_ADD, 1)
 
   // add new nodes and edges
-  nodesToDisplay.forEach((currentNodeId, index) => {
-    const isLast = index === nodesToDisplay.length - 1
+  const nodesToDisplayLength = nodesToDisplay.length - 1
+
+  for (let index = nodesToDisplayLength; index >= 0; index--) {
+    const invertedIndex = nodesToDisplayLength - index
+    const currentNodeId = nodesToDisplay[invertedIndex]
+
+    const isLast = invertedIndex === nodesToDisplay.length - 1
 
     if (index > 50) {
       setTimeout(() => addNodeToGraph({
@@ -93,7 +98,7 @@ const expandNode = ({
         existingEdges
       })
     }
-  })
+  }
 }
 
 export default expandNode

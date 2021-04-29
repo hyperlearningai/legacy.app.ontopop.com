@@ -107,8 +107,8 @@ context('Shortest path', () => {
       cy.get('#shortest-path-show-btn').click()
 
       // shows subgraph
-      cy.get('.nav-left').should('contain', 'Nodes: 4')
-      cy.get('.nav-left').should('contain', 'Edges: 6')
+      cy.get('.nav-left').should('contain', 'Nodes: 5')
+      cy.get('.nav-left').should('contain', 'Edges: 8')
     })
   })
 })

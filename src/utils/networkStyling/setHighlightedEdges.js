@@ -20,7 +20,11 @@ const setHighlightedEdges = () => {
 
   if (highlightedEdgesObjects.length === 0) return false
 
-  highlightedEdgesObjects.map((edge) => {
+  const highlightedEdgesObjectsLength = highlightedEdgesObjects.length - 1
+
+  for (let index = highlightedEdgesObjectsLength; index >= 0; index--) {
+    const edge = highlightedEdgesObjects[highlightedEdgesObjectsLength - index]
+
     const color = edge.color || {}
 
     color.color = getStylingProperty({
@@ -29,11 +33,11 @@ const setHighlightedEdges = () => {
       element: edge
     })
 
-    return updateEdges({
+    updateEdges({
       id: edge.id,
       color
     })
-  })
+  }
 }
 
 export default setHighlightedEdges

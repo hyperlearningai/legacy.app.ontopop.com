@@ -1,8 +1,5 @@
 /* eslint max-len:0 */
 export default {
-  // titles & descriptions
-  ontologyVisualisationDescription: 'Highways England ontology visualisation web app',
-
   // header
   signOut: 'Sign out',
   alphaVersion: 'Alpha version',
@@ -568,7 +565,7 @@ export default {
   features: 'Features',
   app: 'App',
   contribute: 'Contribute',
-  contacts: 'Contacts',
+  contacts: 'Contact',
   cookies: 'Cookies',
   allRightsReserved: 'All rights reserved',
   ontopopDescription: 'OntoPop is an open source framework enabling the visualisation, search, exploration and management of ontologies.',

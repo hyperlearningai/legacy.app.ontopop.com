@@ -20,18 +20,20 @@ const setNodesOverlay = () => {
     filter: (node) => !shortestPathNodes.includes(node.id)
   })
 
-  if (nodesToStyle.length > 0) {
-    nodesToStyle.map((node) => {
-      const { id, userDefined } = node
+  if (nodesToStyle.length === 0) return false
 
-      const { stylingNodeOverlayOpacity } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+  const nodesToStyleLength = nodesToStyle.length - 1
 
-      updateNodes({
-        id,
-        opacity: stylingNodeOverlayOpacity
-      })
+  for (let index = nodesToStyleLength; index >= 0; index--) {
+    const node = nodesToStyle[nodesToStyleLength - index]
 
-      return true
+    const { id, userDefined } = node
+
+    const { stylingNodeOverlayOpacity } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+
+    updateNodes({
+      id,
+      opacity: stylingNodeOverlayOpacity
     })
   }
 }

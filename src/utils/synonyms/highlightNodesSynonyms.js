@@ -20,33 +20,36 @@ const highlightNodesSynonyms = () => {
 
   const availableNodesIDs = getNodeIds()
 
-  if (availableNodesIDs.length > 0) {
-    availableNodesIDs.map((nodeId) => {
-      const node = getNode(nodeId)
+  if (availableNodesIDs.length === 0) return false
 
-      const { userDefined } = node
+  const availableNodesIDsLength = availableNodesIDs.length - 1
 
-      const {
-        stylingNodeBorderColor,
-        stylingNodeBorder
-      } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+  for (let index = availableNodesIDsLength; index >= 0; index--) {
+    const nodeId = availableNodesIDs[availableNodesIDsLength - index]
+    const node = getNode(nodeId)
 
-      let existingColorProperties
+    const { userDefined } = node
 
-      if (node.color) {
-        existingColorProperties = node.color
-      }
+    const {
+      stylingNodeBorderColor,
+      stylingNodeBorder
+    } = userDefined ? userDefinedNodeStyling : globalNodeStyling
 
-      const hasSynonym = synonyms.find((synonym) => synonym.nodeId === parseInt(nodeId))
+    let existingColorProperties
 
-      return updateNodes({
-        id: nodeId,
-        color: {
-          ...existingColorProperties,
-          border: hasSynonym ? NOTE_NODE_BORDER_COLOR : stylingNodeBorderColor
-        },
-        borderWidth: hasSynonym ? NOTE_NODE_BORDER_WIDTH : stylingNodeBorder
-      })
+    if (node.color) {
+      existingColorProperties = node.color
+    }
+
+    const hasSynonym = synonyms.find((synonym) => synonym.nodeId === parseInt(nodeId))
+
+    updateNodes({
+      id: nodeId,
+      color: {
+        ...existingColorProperties,
+        border: hasSynonym ? NOTE_NODE_BORDER_COLOR : stylingNodeBorderColor
+      },
+      borderWidth: hasSynonym ? NOTE_NODE_BORDER_WIDTH : stylingNodeBorder
     })
   }
 }

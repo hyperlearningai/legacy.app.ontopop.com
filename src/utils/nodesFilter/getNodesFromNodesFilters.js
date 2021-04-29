@@ -15,10 +15,11 @@ const getNodesFromNodesFilters = ({
   const availableNodesIds = getNodeIds()
 
   if (availableNodesIds.length > 0) {
-    for (let index = 0; index < availableNodesIds.length; index++) {
-      const nodeId = availableNodesIds[index]
+    const availableNodesIdsLength = availableNodesIds.length - 1
+    for (let index = availableNodesIdsLength; index >= 0; index--) {
+      const nodeId = availableNodesIds[availableNodesIdsLength - index]
 
-      for (let propertyIndex = 0; propertyIndex < nodesFilters.length; propertyIndex++) {
+      for (let propertyIndex = nodesFilters.length - 1; propertyIndex >= 0; propertyIndex--) {
         const { property, value } = nodesFilters[propertyIndex]
 
         if (property === '') continue

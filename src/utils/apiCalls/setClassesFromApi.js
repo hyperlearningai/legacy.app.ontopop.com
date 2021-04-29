@@ -14,7 +14,12 @@ const setClassesFromApi = ({
 }) => {
   const classes = nodes
 
-  Object.keys(classes).map((nodeId) => {
+  const classesIds = Object.keys(classes)
+  const classesIdsLength = classesIds.length - 1
+
+  for (let index = classesIds.length - 1; index >= 0; index--) {
+    const nodeId = classesIds[classesIdsLength - index]
+
     const nodeObject = classes[nodeId]
 
     const {
@@ -36,9 +41,7 @@ const setClassesFromApi = ({
       label: viewLabel,
       [NODE_TYPE]: label === 'dataset' ? 'dataset' : 'class'
     }
-
-    return true
-  })
+  }
 
   updateStoreValue(['classesFromApi'], OPERATION_TYPE_UPDATE, classes)
   updateStoreValue(['classesFromApiBackup'], OPERATION_TYPE_UPDATE, classes)
