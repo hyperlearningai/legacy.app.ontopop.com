@@ -6,7 +6,7 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
-import { RDF_ABOUT_PROPERTY } from '../constants/graph'
+import {LABEL_PROPERTY, RDF_ABOUT_PROPERTY} from '../constants/graph'
 
 const EditOntologyAddNode = ({
   type,
@@ -62,6 +62,11 @@ const EditOntologyAddNode = ({
           setSelectedElement(undefined)
           setSelectedElementProperties({})
         }}
+        disabled={operation === 'add'
+        && (
+          !selectedElementProperties[LABEL_PROPERTY]
+          || selectedElementProperties[LABEL_PROPERTY] === ''
+        )}
         label={t(operation)}
         icon="pi pi-chevron-right"
         aria-label={t(operation)}
