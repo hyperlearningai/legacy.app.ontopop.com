@@ -6,7 +6,7 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
-import {LABEL_PROPERTY, RDF_ABOUT_PROPERTY} from '../constants/graph'
+import { LABEL_PROPERTY, RDF_ABOUT_PROPERTY } from '../constants/graph'
 
 const EditOntologyAddNode = ({
   type,

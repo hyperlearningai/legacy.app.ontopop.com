@@ -25,14 +25,14 @@ const EditOntologyForm = ({
         search: property.value.toLowerCase()
       })), ['search'], ['asc'])
         .map((property) => {
-        const { value: propertyValue } = property
+          const { value: propertyValue } = property
 
-        if(propertyValue === "name") return
+          if (propertyValue === 'name') return
 
-        const id = propertyValue
-        const label = PROPERTIES_WITH_I18N.includes(propertyValue) ? t(propertyValue) : dashedToCapitalisedString(propertyValue)
+          const id = propertyValue
+          const label = PROPERTIES_WITH_I18N.includes(propertyValue) ? t(propertyValue) : dashedToCapitalisedString(propertyValue)
 
-        const initialDataValue = initialData ? (initialData[id]
+          const initialDataValue = initialData ? (initialData[id]
           || (
             initialData
             && initialData[id]
@@ -40,37 +40,37 @@ const EditOntologyForm = ({
               : ''
           )) : ''
 
-        const defaultValue = operation === 'add' ? '' : initialDataValue
+          const defaultValue = operation === 'add' ? '' : initialDataValue
 
-        const value = selectedElementProperties && (
-          selectedElementProperties[id]
+          const value = selectedElementProperties && (
+            selectedElementProperties[id]
           || selectedElementProperties[id] === ''
-        ) ? selectedElementProperties[id] : defaultValue
+          ) ? selectedElementProperties[id] : defaultValue
 
-        return (
-          <div
-            className="edit-ontology-row m-t-30"
-            key={`element-property-${id}`}
-          >
-            <label className="sidebar-main-body-label form-label" htmlFor={`element-property-${id}`}>
-              {(propertyValue === "rdfsLabel") && <span>*</span>}
-              {label}
-            </label>
+          return (
+            <div
+              className="edit-ontology-row m-t-30"
+              key={`element-property-${id}`}
+            >
+              <label className="sidebar-main-body-label form-label" htmlFor={`element-property-${id}`}>
+                {(propertyValue === 'rdfsLabel') && <span>*</span>}
+                {label}
+              </label>
 
-            <InputTextarea
-              id={`element-property-${id}`}
-              value={value}
-              onChange={(e) => {
-                const elementProperties = JSON.parse(JSON.stringify(selectedElementProperties))
+              <InputTextarea
+                id={`element-property-${id}`}
+                value={value}
+                onChange={(e) => {
+                  const elementProperties = JSON.parse(JSON.stringify(selectedElementProperties))
 
-                elementProperties[id] = e.target.value
-                setSelectedElementProperties(elementProperties)
-              }}
-              placeholder={label}
-            />
-          </div>
-        )
-      })
+                  elementProperties[id] = e.target.value
+                  setSelectedElementProperties(elementProperties)
+                }}
+                placeholder={label}
+              />
+            </div>
+          )
+        })
     }
     </>
   )
