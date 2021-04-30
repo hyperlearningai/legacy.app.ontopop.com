@@ -12,7 +12,7 @@ import { Button } from 'primereact/button'
 import logo from '../assets/images/logo.png'
 import { APP_NAME } from '../constants/app'
 import { NAVBAR } from '../constants/homepage'
-import { ROUTE_INDEX } from '../constants/routes'
+import {BASE_URL, ROUTE_INDEX} from '../constants/routes'
 
 const IndexNavbar = () => {
   const { t } = useTranslation()
@@ -24,7 +24,7 @@ const IndexNavbar = () => {
     <>
       <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between navbar-expand-lg bg-white shadow website-navbar">
         <div className="container mx-auto flex items-center justify-between">
-          <Link href={`${ROUTE_INDEX}#top`}>
+          <Link href={`${BASE_URL}`}>
             <a
               className="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
             >
