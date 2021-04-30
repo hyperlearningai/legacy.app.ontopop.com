@@ -8,7 +8,8 @@ import getStyling from '../fixtures/getStyling'
 
 context('Auth', () => {
   beforeEach(() => {
-    cy.visit('/login')
+    cy.visit('/')
+    cy.get('#open-app').click()
     cy.get('#accept-all-btn').click()
   })
 

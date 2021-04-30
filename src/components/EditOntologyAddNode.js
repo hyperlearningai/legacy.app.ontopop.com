@@ -6,13 +6,14 @@ import { Button } from 'primereact/button'
 import actions from '../store/actions'
 import setOntology from '../utils/editOntology/setOntology'
 import EditOntologyForm from './EditOntologyForm'
-import { RDF_ABOUT_PROPERTY } from '../constants/graph'
+import {
+  LABEL_PROPERTY,
+} from '../constants/graph'
 
 const EditOntologyAddNode = ({
   type,
   operation,
   updateStoreValue,
-  classesFromApi,
 }) => {
   const { t } = useTranslation()
 
@@ -33,21 +34,6 @@ const EditOntologyAddNode = ({
         type={type}
       />
 
-      {
-        classesFromApi[selectedElementProperties[RDF_ABOUT_PROPERTY]] && (
-          <div
-            className="edit-ontology-row"
-          >
-            <small
-              id="username2-help"
-              className="p-error p-d-block"
-            >
-              {t('idExists')}
-            </small>
-          </div>
-        )
-      }
-
       <Button
         className="sidebar-button-primary go-button m-t-50"
         onClick={() => {
@@ -62,6 +48,10 @@ const EditOntologyAddNode = ({
           setSelectedElement(undefined)
           setSelectedElementProperties({})
         }}
+        disabled={
+          !selectedElementProperties[LABEL_PROPERTY]
+          || selectedElementProperties[LABEL_PROPERTY] === ''
+        }
         label={t(operation)}
         icon="pi pi-chevron-right"
         aria-label={t(operation)}
@@ -74,18 +64,15 @@ const EditOntologyAddNode = ({
 EditOntologyAddNode.propTypes = {
   type: PropTypes.string.isRequired,
   operation: PropTypes.string.isRequired,
-  classesFromApi: PropTypes.shape().isRequired,
   updateStoreValue: PropTypes.func.isRequired,
 }
 
 const mapToProps = ({
   selectedGraphVersion,
   graphVersions,
-  classesFromApi,
 }) => ({
   selectedGraphVersion,
   graphVersions,
-  classesFromApi,
 })
 
 export default connect(

@@ -52,5 +52,4 @@ export const VALID_ROUTES = [
   ROUTE_INDEX
 ]
 
-export const FORM_LINK = 'https://forms.office.com/Pages/ResponsePage.aspx?id=sp9QKa9_i0-3ojL5bsXebMHGED18T-VBrbTcXx4rIrtUNVdHRDQ1SVdQVFg4UDlTR1MwWThITjM4Qy4u'
 export const DATASET_REPO_URL = 'https://highways.sharepoint.com/'

@@ -7,7 +7,7 @@ jest.mock('../../../utils/networkStyling/setNodeStyle')
 
 store.getState = jest.fn().mockImplementation(() => ({
   selectedBoundingBoxNodes: [
-    '1',
+    classesFromApi['1'],
   ],
   classesFromApi
 }))

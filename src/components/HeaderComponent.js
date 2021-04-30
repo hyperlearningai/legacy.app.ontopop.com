@@ -5,13 +5,13 @@ import { ProgressSpinner } from 'primereact/progressspinner'
 import { Button } from 'primereact/button'
 import { OverlayPanel } from 'primereact/overlaypanel'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-import { Chip } from 'primereact/chip'
 import logo from '../assets/images/logo.png'
 import logout from '../utils/auth/logout'
 import actions from '../store/actions'
 import {
-  FORM_LINK, ROUTE_SEARCH, ROUTE_LOGIN, ROUTE_PROFILE, ROUTE_LISTING
+  ROUTE_SEARCH, ROUTE_LOGIN, ROUTE_PROFILE, ROUTE_LISTING, ROUTE_INDEX
 } from '../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../constants/views'
@@ -39,23 +39,21 @@ const HeaderComponent = ({
             </div>
           )
         }
-        <div className="logo">
-          <img
-            src={logo}
-            alt={APP_NAME}
-          />
-        </div>
+        <Link
+          href={ROUTE_INDEX}
+        >
+          <a>
+            <div className="logo">
+              <img
+                src={logo}
+                alt={APP_NAME}
+              />
+            </div>
+          </a>
+        </Link>
       </div>
 
       <div className="header-right">
-        <a
-          href={FORM_LINK}
-          rel="noopener noreferrer nofollow"
-          target="_blank"
-        >
-          <Chip label={`${t('alphaVersion')} | ${t('sendFeedback')}`} className="p-mr-2" icon="pi pi-info-circle" />
-        </a>
-
         <Button
           aria-label="overlay-menu-button"
           type="button"

@@ -8,7 +8,8 @@ import showTourLs from '../fixtures/showTourLs'
 
 context('Profile', () => {
   beforeEach(() => {
-    cy.visit('/login')
+    cy.visit('/')
+    cy.get('#open-app').click()
     cy.get('#accept-all-btn').click()
     window.localStorage.setItem('showTour', showTourLs)
   })
@@ -52,13 +53,9 @@ context('Profile', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+      cy.get('.p-splitbutton-defaultbutton').click()
 
-      cy.get('.pi-chevron-down').click()
-
-      cy.get('.p-menuitem-link').eq(0).click()
-
-      cy.wait(1000)
+      cy.wait(5000)
 
       cy.wait('@getGraph')
 

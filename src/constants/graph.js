@@ -322,5 +322,5 @@ export const PROPERTIES_TO_IGNORE = [
   'id',
   'label',
   'x',
-  'y'
+  'y',
 ]
