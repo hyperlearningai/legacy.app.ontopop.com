@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-170 Show tour flag as environment variable
 
 ### Changed
+- ONTOLOGY-228 made Concept Name mandatory in Edit ontology Add node form
 - ONTOLOGY-222 Replaced loops with reversed loops for performance
 - ONTOLOGY-219 Set HTML title to Ontopop
 - ONTOLOGY-221 Renamed contacts to contact in sticky header
@@ -38,9 +39,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+- ONTOLOGY-231 Removed alpha version and send feedback button
 - ONTOLOGY-170 Disable show tour
 
 ### Fixed
+- ONTOLOGY-227 Fixed bounding box direction button not highlighted when selected
+- ONTOLOGY-227 Fixed bounding box node selection not restored after leaving tab
+- ONTOLOGY-230 Put Continue as guest button outside sign in form to avoid triggering sign in on submit
+- ONTOLOGY-230 Fixed spacing between choose element type ande select element in edit ontology restore operation form
 - ONTOLOGY-225 Fixed search form typography
 - ONTOLOGY-224 Fixed info banner not center-aligned
 - ONTOLOGY-223 Fix to allow rendering search results when node id not present in ontology

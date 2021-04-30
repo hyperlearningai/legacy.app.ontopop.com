@@ -8,7 +8,6 @@ import setNodeStyle from '../networkStyling/setNodeStyle'
 const resetBoundingBoxNodes = () => {
   const {
     selectedBoundingBoxNodes,
-    classesFromApi
   } = store.getState()
 
   if (selectedBoundingBoxNodes.length === 0) return false
@@ -16,9 +15,7 @@ const resetBoundingBoxNodes = () => {
   const selectedBoundingBoxNodesLength = selectedBoundingBoxNodes.length - 1
 
   for (let index = selectedBoundingBoxNodesLength; index >= 0; index--) {
-    const nodeId = selectedBoundingBoxNodes[selectedBoundingBoxNodesLength - index]
-
-    const node = classesFromApi[nodeId]
+    const node = selectedBoundingBoxNodes[selectedBoundingBoxNodesLength - index]
 
     if (node) {
       setNodeStyle({

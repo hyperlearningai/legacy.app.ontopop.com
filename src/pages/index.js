@@ -333,9 +333,11 @@ const Index = () => {
 
                 <div className="mt-12">
                   <Link
+                    id="open-app"
                     href={`${ROUTE_LOGIN}`}
                   >
                     <a
+                      id="open-app"
                       className="p-button website-btn-primary flex align-center justify-between"
                     >
                       {t('openOntopop')}

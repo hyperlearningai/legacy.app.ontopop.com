@@ -9,7 +9,8 @@ import showTourLs from '../fixtures/showTourLs'
 
 context('Custom query', () => {
   beforeEach(() => {
-    cy.visit('/login')
+    cy.visit('/')
+    cy.get('#open-app').click()
     cy.get('#accept-all-btn').click()
     window.localStorage.setItem('showTour', showTourLs)
   })
@@ -58,13 +59,9 @@ context('Custom query', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+      cy.get('.p-splitbutton-defaultbutton').click()
 
-      cy.get('.pi-chevron-down').click()
-
-      cy.get('.p-menuitem-link').eq(0).click()
-
-      cy.wait(1000)
+      cy.wait(5000)
 
       // click the custom query sidebar icon
       cy.get('#sidebar-button-custom-query').click()
@@ -86,7 +83,7 @@ context('Custom query', () => {
       cy.get('.react-json-view').should('be.visible')
 
       // check that json export works
-      cy.get('#export-btn').click()
+      cy.get('#export-btn').should('have.text', 'Export as Json')
 
       // check that clear button works
       cy.get('#clear-btn').click()

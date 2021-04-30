@@ -81,7 +81,7 @@ const BoundingBoxSelection = ({
               aria-label={t('insideBoundingBox')}
               tooltip={t('insideBoundingBox')}
               tooltipOptions={{ position: 'top' }}
-              className={isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
+              className={isBoundingBoxSelectionInternal ? 'bounding-box-buttons-button-selected' : ''}
               onClick={() => updateStoreValue(['isBoundingBoxSelectionInternal'], OPERATION_TYPE_UPDATE, true)}
             >
               <RiAddBoxLine />
@@ -90,7 +90,7 @@ const BoundingBoxSelection = ({
               aria-label={t('outsideBoundingBox')}
               tooltip={t('outsideBoundingBox')}
               tooltipOptions={{ position: 'top' }}
-              className={!isBoundingBoxSelectionInternal ? 'network-settings-buttons-button-selected' : ''}
+              className={!isBoundingBoxSelectionInternal ? 'bounding-box-buttons-button-selected' : ''}
               onClick={() => updateStoreValue(['isBoundingBoxSelectionInternal'], OPERATION_TYPE_UPDATE, false)}
             >
               <RiCheckboxIndeterminateLine />
