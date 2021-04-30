@@ -549,7 +549,7 @@ exports[`Index page should match snapshot 1`] = `
               </a>
               <a
                 className="p-button website-btn-primary flex align-center justify-between ml-2"
-                href="https://github.com/hyperlearningai/ontology-visualisation"
+                href="https://github.com/hyperlearningai/ontopop"
                 rel="noopener noreferrer nofollow"
                 target="_blank"
               >
