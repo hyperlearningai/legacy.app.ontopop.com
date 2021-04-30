@@ -23,8 +23,11 @@ const EditOntologyForm = ({
       && orderBy(annotationProperties.map((property) => ({
         ...property,
         search: property.value.toLowerCase()
-      })), ['search'], ['asc']).map((property) => {
+      })), ['search'], ['asc'])
+        .map((property) => {
         const { value: propertyValue } = property
+
+        if(propertyValue === "name") return
 
         const id = propertyValue
         const label = PROPERTIES_WITH_I18N.includes(propertyValue) ? t(propertyValue) : dashedToCapitalisedString(propertyValue)
@@ -50,6 +53,7 @@ const EditOntologyForm = ({
             key={`element-property-${id}`}
           >
             <label className="sidebar-main-body-label form-label" htmlFor={`element-property-${id}`}>
+              {(propertyValue === "rdfsLabel") && <span>*</span>}
               {label}
             </label>
 
