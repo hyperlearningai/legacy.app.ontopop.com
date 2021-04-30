@@ -303,7 +303,7 @@ export default {
   editProperties: 'Edit properties',
   requiredField: 'This field is required',
   restoreOriginal: 'Restore',
-  idExists: 'ID already exists',
+  missingConceptName: 'Missing concept name',
   noDeletedElements: 'No deleted elements to restore!',
   nodeIdAlreadyExists: 'Node ID already exists',
   edgeIdAlreadyExists: 'Edge ID already exists',

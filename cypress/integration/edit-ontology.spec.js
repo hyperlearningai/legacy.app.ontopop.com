@@ -15,7 +15,8 @@ import showTourLs from '../fixtures/showTourLs'
 
 context('Edit ontology', () => {
   beforeEach(() => {
-    cy.visit('/login')
+    cy.visit('/')
+    cy.get('#open-app').click()
     cy.get('#accept-all-btn').click()
     window.localStorage.setItem('showTour', showTourLs)
   })
@@ -94,13 +95,9 @@ context('Edit ontology', () => {
 
       cy.wait('@postLogin')
 
-      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+      cy.get('.p-splitbutton-defaultbutton').click()
 
-      cy.get('.pi-chevron-down').click()
-
-      cy.get('.p-menuitem-link').eq(0).click()
-
-      cy.wait(1000)
+      cy.wait(5000)
 
       cy.get('#main-search').type('link')
 
@@ -120,9 +117,10 @@ context('Edit ontology', () => {
       cy.location('pathname').should('be.equal', ROUTE_EDIT_ONTOLOGY)
 
       // add node
-      cy.get('.p-inputtextarea').should('have.length', 12)
+      cy.get('.p-inputtextarea').should('have.length', 11)
 
       cy.get('.p-inputtextarea').eq(2).type('http://test/node')
+      cy.get('#concept-name-error').should('have.text', 'Missing concept name')
       cy.get('.p-inputtextarea').eq(3).type('Test node')
 
       cy.get('.go-button').click()

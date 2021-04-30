@@ -68,7 +68,7 @@ const addNodesToGraph = ({
 
     const isLast = invertedIndex === visibleNodes.length - 1
 
-    if (invertedIndex > 125) {
+    if (invertedIndex > 100) {
       setTimeout(() => addNodeToGraph({
         updateStoreValue,
         nodeId,

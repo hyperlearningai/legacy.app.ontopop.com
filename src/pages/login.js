@@ -6,7 +6,6 @@ import { InputText } from 'primereact/inputtext'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { ProgressSpinner } from 'primereact/progressspinner'
-import { Chip } from 'primereact/chip'
 import HeadTags from '../components/HeadTags'
 import signIn from '../utils/auth/signIn'
 import actions from '../store/actions'
@@ -50,8 +49,6 @@ const Login = ({
           </div>
 
           <h1 className="auth-title">{t('signIn')}</h1>
-
-          <Chip label={t('alphaVersion')} className="p-mr-2" icon="pi pi-info-circle" />
 
           <form onSubmit={(e) => {
             e.preventDefault()
@@ -142,17 +139,6 @@ const Login = ({
                       t
                     })}
                   />
-
-                  <Button
-                    className="auth-button m-t-20 p-button-secondary"
-                    aria-label={t('continueGuest')}
-                    label={t('continueGuest')}
-                    id="guest-login-button"
-                    onClick={() => {
-                      updateStoreValue(['user'], OPERATION_TYPE_OBJECT_ADD, { isGuest: true })
-                      router.push(ROUTE_LISTING)
-                    }}
-                  />
                 </>
               )
             }
@@ -162,6 +148,17 @@ const Login = ({
               type="submit"
             />
           </form>
+
+          <Button
+            className="auth-button m-t-20 p-button-secondary"
+            aria-label={t('continueGuest')}
+            label={t('continueGuest')}
+            id="guest-login-button"
+            onClick={() => {
+              updateStoreValue(['user'], OPERATION_TYPE_OBJECT_ADD, { isGuest: true })
+              router.push(ROUTE_LISTING)
+            }}
+          />
 
         </div>
       </main>

@@ -70,7 +70,7 @@ const EditOntologyRestoreEdge = ({
             </div>
           ) : (
             <>
-              <div className="edit-ontology-row">
+              <div className="edit-ontology-row m-t-50">
                 <label
                   className="sidebar-main-body-label"
                   htmlFor="element-select"

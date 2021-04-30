@@ -442,9 +442,11 @@ exports[`Index page should match snapshot 1`] = `
             >
               <Link
                 href="/login"
+                id="open-app"
               >
                 <a
                   className="p-button website-btn-primary flex align-center justify-between"
+                  id="open-app"
                 >
                   openOntopop
                   <i

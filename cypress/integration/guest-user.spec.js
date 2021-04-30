@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-import authValid from '../fixtures/authValid'
 import emptyNotes from '../fixtures/emptyNotes'
 import getNodesNotes from '../fixtures/getNodesNotes'
 import graphResponse from '../fixtures/graphResponse'
@@ -7,20 +6,17 @@ import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
 import businessAreaValues from '../fixtures/businessAreaValues'
+import { ROUTE_SEARCH } from '../../src/constants/routes'
 
 context('Guest user', () => {
   beforeEach(() => {
-    cy.visit('/login')
+    cy.visit('/')
+    cy.get('#open-app').click()
     cy.get('#accept-all-btn').click()
   })
 
   describe('Guest user', () => {
-    it('tour should work', () => {
-      cy.intercept({
-        method: 'POST',
-        url: '**/login',
-      }, authValid).as('postLogin')
-
+    it('Guest user signin should work', () => {
       cy.intercept({
         method: 'GET',
         url: '**/graph/notes',
@@ -61,20 +57,15 @@ context('Guest user', () => {
         url: '**/graph/nodes/properties/Business%20Area/values?unique=true',
       }, businessAreaValues).as('businessAreaValues')
 
-      cy.get('#email').type('valid@email.com')
-      cy.get('#password').type('password')
-
       cy.get('#guest-login-button').click()
 
-      cy.wait('@postLogin')
+      cy.wait(1000)
 
-      cy.get('.p-datatable-tbody').find('tr').should('have.length', 1)
+      cy.get('.p-splitbutton-defaultbutton').click()
 
-      cy.get('.pi-chevron-down').click()
+      cy.wait(10000)
 
-      cy.get('.p-menuitem-link').eq(0).click()
-
-      cy.wait(2000)
+      cy.location('pathname').should('be.equal', ROUTE_SEARCH)
 
       cy.get('.sidebar-icons').find('button').should('have.length', 11)
     })
