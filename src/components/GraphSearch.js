@@ -74,9 +74,11 @@ const GraphSearch = ({
             {
               isFirstQuery ? (
                 <>
-                  <h1>{t('searchGraph')}</h1>
+                  <h1 className="graph-search-title">{t('searchGraph')}</h1>
                   <SearchBar />
-                  <p>{t('setAdvancedOptions')}</p>
+                  <p className="m-t-15">
+                    {t('setAdvancedOptions')}
+                  </p>
                 </>
               ) : (
                 <>

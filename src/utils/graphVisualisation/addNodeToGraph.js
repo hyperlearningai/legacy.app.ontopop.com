@@ -72,7 +72,7 @@ const addNodeToGraph = ({
 
       const isLastEdge = invertedIndex === visibleEdges.length - 1
 
-      if (useTimeout && invertedIndex > 50) {
+      if (useTimeout && invertedIndex > 75) {
         setTimeout(() => addEdgeToGraph({
           updateStoreValue,
           edgeId,

@@ -26,7 +26,7 @@ const checkTokenValidity = ({
 
   // redirect to homepage if not valid route
   const isNotValid = !VALID_ROUTES.includes(pathname)
-  if (isNotValid) return router.push(ROUTE_INDEX)
+  if (isNotValid) return router.push(ROUTE_LISTING)
 
   // check if local storage with cookie
   const authCookie = localStorage.getItem(AUTH_COOKIE)

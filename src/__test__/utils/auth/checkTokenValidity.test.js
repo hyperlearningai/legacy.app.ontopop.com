@@ -30,7 +30,7 @@ describe('checkTokenValidity', () => {
       updateStoreValue
     })
 
-    expect(push).toHaveBeenCalledWith(ROUTE_INDEX)
+    expect(push).toHaveBeenCalledWith(ROUTE_LISTING)
   })
 
   it('should work correctly when no cookie', async () => {

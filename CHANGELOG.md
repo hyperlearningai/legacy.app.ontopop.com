@@ -41,6 +41,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ONTOLOGY-170 Disable show tour
 
 ### Fixed
+- ONTOLOGY-225 Fixed search form typography
+- ONTOLOGY-224 Fixed info banner not center-aligned
 - ONTOLOGY-223 Fix to allow rendering search results when node id not present in ontology
 - ONTOLOGY-214 Improved note borders rendering when entering notes view
 - ONTOLOGY-170 Add button not disabled anymore on missing rdfAbout property when adding node
