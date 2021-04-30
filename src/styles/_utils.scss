@@ -39,3 +39,9 @@ $transition: all 1s ease;
 .elevate-view {
   z-index: 100;
 }
+
+.tablet-hide {
+  @media screen and (max-width: $lg) {
+    display: none;
+  }
+}

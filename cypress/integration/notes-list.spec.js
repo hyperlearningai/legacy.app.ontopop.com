@@ -15,11 +15,13 @@ import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_NOTES } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Notes list', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Notes list', () => {
@@ -72,7 +74,7 @@ context('Notes list', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 
@@ -84,7 +86,7 @@ context('Notes list', () => {
 
       cy.wait(1000)
 
-      cy.get('#main-search').type('link')
+      cy.get('#main-search').find('input').type('link', { force: true })
 
       cy.wait('@linkAutocomplete')
 
@@ -214,7 +216,7 @@ context('Notes list', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 
@@ -226,7 +228,7 @@ context('Notes list', () => {
 
       cy.wait(1000)
 
-      cy.get('#main-search').type('link')
+      cy.get('#main-search').find('input').type('link', { force: true })
 
       cy.wait('@linkAutocomplete')
 
@@ -346,7 +348,7 @@ context('Notes list', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 
@@ -358,7 +360,7 @@ context('Notes list', () => {
 
       cy.wait(1000)
 
-      cy.get('#main-search').type('link')
+      cy.get('#main-search').find('input').type('link', { force: true })
 
       cy.wait('@linkAutocomplete')
 

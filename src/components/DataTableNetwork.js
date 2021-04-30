@@ -4,8 +4,11 @@ import { useTranslation } from 'react-i18next'
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
 import { useEffect } from 'react'
+import Joyride from 'react-joyride'
 import actions from '../store/actions'
 import setDataTableTriplesLabels from '../utils/dataTableNetwork/setDataTableTriplesLabels'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
+import { IS_SHOW_TOUR_VISIBLE } from '../constants/views'
 
 const DataTableNetwork = ({
   dataTableTriples,
@@ -14,7 +17,8 @@ const DataTableNetwork = ({
   userDefinedEdgeStyling,
   globalNodeStyling,
   userDefinedNodeStyling,
-  updateStoreValue
+  updateStoreValue,
+  showTour
 }) => {
   const { t } = useTranslation()
 
@@ -30,8 +34,43 @@ const DataTableNetwork = ({
 
   const filterPlaceholder = `${t('filter')}...`
 
+  const steps = [
+    {
+      target: '#sidebar-button-elements-selection',
+      content: t('introDatatableSection'),
+      placement: 'right',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = (data) => {
+    const { status } = data
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, datatable: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { datatable: 'false' })
+      document.getElementById('sidebar-button-elements-selection').click()
+    }
+  }
+
   return (
     <div className="p-p-3 datatable-container elevate-view">
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.datatable !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            locale={{ close: t('next') }}
+            styles={{
+              options: { primaryColor: '#011e41' }
+            }}
+          />
+        )
+      }
       <DataTable
         header={t('availableRelationships')}
         filter
@@ -80,6 +119,7 @@ DataTableNetwork.propTypes = {
   userDefinedEdgeStyling: PropTypes.shape().isRequired,
   globalNodeStyling: PropTypes.shape().isRequired,
   userDefinedNodeStyling: PropTypes.shape().isRequired,
+  showTour: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -88,14 +128,16 @@ const mapToProps = ({
   userDefinedEdgeStyling,
   globalNodeStyling,
   userDefinedNodeStyling,
-  dataTableTriplesWithLabels
+  dataTableTriplesWithLabels,
+  showTour
 }) => ({
   dataTableTriples,
   globalEdgeStyling,
   userDefinedEdgeStyling,
   globalNodeStyling,
   userDefinedNodeStyling,
-  dataTableTriplesWithLabels
+  dataTableTriplesWithLabels,
+  showTour
 })
 
 export default connect(

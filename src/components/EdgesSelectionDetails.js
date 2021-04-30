@@ -1,12 +1,12 @@
 import { connect } from 'redux-zero/react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-
 import actions from '../store/actions'
-import { EDGE_PROPERTIES } from '../constants/graph'
+import { EDGE_PROPERTIES, PROPERTIES_WITH_I18N } from '../constants/graph'
 import getNode from '../utils/nodesEdgesUtils/getNode'
 import getEdge from '../utils/nodesEdgesUtils/getEdge'
 import EdgesSelectionDetailsNode from './EdgesSelectionDetailsNode'
+import { dashedToCapitalisedString } from '../constants/functions'
 
 const EdgesSelectionDetails = ({
   edgeId,
@@ -35,13 +35,15 @@ const EdgesSelectionDetails = ({
           tableRowNames.map((tableRowName) => {
             if (!edge[tableRowName]) return null
 
+            const property = PROPERTIES_WITH_I18N.includes(tableRowName) ? t(tableRowName) : dashedToCapitalisedString(tableRowName)
+
             return (
               <div
                 key={`details-row-${tableRowName}`}
                 className="elements-selection-details-table-row"
               >
                 <div className="light-bold">
-                  {tableRowName}
+                  {property}
                 </div>
                 <div>
                   {edge[tableRowName] || t('null')}

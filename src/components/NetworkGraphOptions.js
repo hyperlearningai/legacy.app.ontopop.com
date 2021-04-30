@@ -7,25 +7,17 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'primereact/button'
 import { Accordion, AccordionTab } from 'primereact/accordion'
 import { Checkbox } from 'primereact/checkbox'
-import {
-  SiAtom
-} from 'react-icons/si'
-import {
-  FaSitemap
-} from 'react-icons/fa'
-import {
-  AiOutlinePoweroff
-} from 'react-icons/ai'
-import {
-  IoFootballOutline,
-  IoGitNetworkSharp
-} from 'react-icons/io5'
+import { SiAtom } from 'react-icons/si'
+import { FaSitemap } from 'react-icons/fa'
+import { AiOutlinePoweroff } from 'react-icons/ai'
+import { IoFootballOutline, IoGitNetworkSharp } from 'react-icons/io5'
+import Joyride from 'react-joyride'
 import actions from '../store/actions'
-import { SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
+import { IS_SHOW_TOUR_VISIBLE, SIDEBAR_VIEW_GRAPH_OPTIONS } from '../constants/views'
 import { DEFAULT_HIDDEN_ELEMENT_PROPERTY } from '../constants/graph'
 import setNetworkGraphOptions from '../utils/networkGraphOptions/setNetworkGraphOptions'
 import HideElementsByPropertyForm from './HideElementsByPropertyForm'
-import { OPERATION_TYPE_UPDATE } from '../constants/store'
+import { OPERATION_TYPE_OBJECT_ADD, OPERATION_TYPE_UPDATE } from '../constants/store'
 
 const NetworkGraphOptions = ({
   currentGraph,
@@ -33,7 +25,9 @@ const NetworkGraphOptions = ({
   updateStoreValue,
   physicsRepulsion,
   physicsHierarchicalView,
-  isPhysicsOn
+  isPhysicsOn,
+  showTour,
+  user
 }) => {
   const { t } = useTranslation()
 
@@ -55,8 +49,67 @@ const NetworkGraphOptions = ({
   const [nodesProperties, setNodesProperties] = useState(hiddenNodesProperties)
   const [edgesProperties, setEdgesProperties] = useState(hiddenEdgesProperties)
 
+  const steps = [
+    {
+      target: '#physics',
+      content: t('introGraphOptionsPhysics'),
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '#positioning',
+      content: t('introGraphOptionsPositioning'),
+      placement: 'top',
+      disableBeacon: true
+    },
+    {
+      target: '#repulsion',
+      content: t('introGraphOptionsRepulsion'),
+      placement: 'left',
+      disableBeacon: true
+    }
+  ]
+
+  const handleJoyrideCallback = (data) => {
+    const { status, index } = data
+
+    if (index === 1) {
+      updateStoreValue(['isPhysicsOn'], OPERATION_TYPE_UPDATE, !isPhysicsOn)
+    }
+
+    if (index === 2) {
+      updateStoreValue(['physicsHierarchicalView'], OPERATION_TYPE_UPDATE, false)
+    }
+
+    if (status === 'finished') {
+      localStorage.setItem('showTour', JSON.stringify({ ...showTour, graphOptions: 'false' }))
+      updateStoreValue(['showTour'], OPERATION_TYPE_OBJECT_ADD, { graphOptions: 'false' })
+
+      document.getElementById(
+        user.isGuest
+          ? 'sidebar-button-export'
+          : 'sidebar-button-notes'
+      ).click()
+    }
+  }
+
   return (
     <>
+      {
+        (
+          IS_SHOW_TOUR_VISIBLE
+          && showTour.graphOptions !== 'false'
+        ) && (
+          <Joyride
+            callback={handleJoyrideCallback}
+            steps={steps}
+            disableScrolling
+            hideBackButton
+            locale={{ close: t('next') }}
+          />
+        )
+      }
+
       <h1 className="sidebar-main-title">
         {t(SIDEBAR_VIEW_GRAPH_OPTIONS)}
       </h1>
@@ -72,7 +125,7 @@ const NetworkGraphOptions = ({
               <div className="label">
                 {t('physics')}
               </div>
-              <div className="graph-options-physics-buttons">
+              <div className="graph-options-physics-buttons" id="physics">
                 <Button
                   aria-label={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
                   tooltip={t(isPhysicsOn ? 'physicsOff' : 'physicsOn')}
@@ -89,7 +142,7 @@ const NetworkGraphOptions = ({
               <div className="label">
                 {t('positioning')}
               </div>
-              <div className="graph-options-physics-buttons">
+              <div className="graph-options-physics-buttons" id="positioning">
                 <Button
                   aria-label={t('hierachicalView')}
                   tooltip={t('hierachicalView')}
@@ -115,7 +168,7 @@ const NetworkGraphOptions = ({
               <div className="label">
                 {t('repulsion')}
               </div>
-              <div className="graph-options-physics-buttons">
+              <div className="graph-options-physics-buttons" id="repulsion">
                 <Button
                   aria-label={t('gravitationalView')}
                   tooltip={t('enableRepulsion')}
@@ -250,20 +303,21 @@ const NetworkGraphOptions = ({
               >
                 <Accordion>
                   {
-                  Object.keys(edgesProperties).length > 0
-                  && Object.keys(edgesProperties).map((edgePropertyIndex) => (
-                    <AccordionTab
-                      header={`${t('filter')} ${parseInt(edgePropertyIndex) + 1}`}
-                    >
-                      <HideElementsByPropertyForm
-                        index={parseInt(edgePropertyIndex)}
-                        elementProperties={edgesProperties}
-                        elementType="edge"
-                        setProperty={setEdgesProperties}
-                      />
-                    </AccordionTab>
-                  ))
-                }
+                    Object.keys(edgesProperties).length > 0
+                    && Object.keys(edgesProperties).map((edgePropertyIndex) => (
+                      <AccordionTab
+                        key={`filter-${edgePropertyIndex}`}
+                        header={`${t('filter')} ${parseInt(edgePropertyIndex) + 1}`}
+                      >
+                        <HideElementsByPropertyForm
+                          index={parseInt(edgePropertyIndex)}
+                          elementProperties={edgesProperties}
+                          elementType="edge"
+                          setProperty={setEdgesProperties}
+                        />
+                      </AccordionTab>
+                    ))
+                  }
                 </Accordion>
 
                 <Button
@@ -320,6 +374,8 @@ NetworkGraphOptions.propTypes = {
   physicsHierarchicalView: PropTypes.bool.isRequired,
   isPhysicsOn: PropTypes.bool.isRequired,
   physicsRepulsion: PropTypes.bool.isRequired,
+  showTour: PropTypes.shape().isRequired,
+  user: PropTypes.shape().isRequired,
 }
 
 const mapToProps = ({
@@ -327,13 +383,17 @@ const mapToProps = ({
   graphData,
   physicsRepulsion,
   physicsHierarchicalView,
-  isPhysicsOn
+  isPhysicsOn,
+  showTour,
+  user
 }) => ({
   currentGraph,
   graphData,
   physicsRepulsion,
   physicsHierarchicalView,
-  isPhysicsOn
+  isPhysicsOn,
+  showTour,
+  user
 })
 
 export default connect(

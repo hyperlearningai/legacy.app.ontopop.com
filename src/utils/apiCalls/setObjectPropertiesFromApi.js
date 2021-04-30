@@ -13,7 +13,12 @@ const setObjectPropertiesFromApi = ({
 }) => {
   const objectProperties = edges
 
-  Object.keys(objectProperties).map((edgeId) => {
+  const objectPropertiesIds = Object.keys(objectProperties)
+  const objectPropertiesIdsLength = objectPropertiesIds.length - 1
+
+  for (let index = objectPropertiesIdsLength; index >= 0; index--) {
+    const edgeId = objectPropertiesIds[objectPropertiesIdsLength - index]
+
     const edge = objectProperties[edgeId]
 
     const {
@@ -30,9 +35,7 @@ const setObjectPropertiesFromApi = ({
       from: from.toString(),
       to: to.toString()
     }
-
-    return true
-  })
+  }
 
   updateStoreValue(['objectPropertiesFromApi'], OPERATION_TYPE_UPDATE, objectProperties)
   updateStoreValue(['objectPropertiesFromApiBackup'], OPERATION_TYPE_UPDATE, objectProperties)

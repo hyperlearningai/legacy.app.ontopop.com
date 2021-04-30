@@ -14,6 +14,7 @@ export const IS_NOTES_VISIBLE = process.env.NEXT_PUBLIC_NOTES === 'true'
 export const IS_SYNONIMS_VISIBLE = process.env.NEXT_PUBLIC_SYNONIMS === 'true'
 export const IS_EXPORT_VISIBLE = process.env.NEXT_PUBLIC_EXPORT === 'true'
 export const IS_EDIT_ONTOLOGY_VISIBLE = process.env.NEXT_PUBLIC_EDIT_ONTOLOGY === 'true'
+export const IS_SHOW_TOUR_VISIBLE = process.env.NEXT_PUBLIC_SHOW_TOUR === 'true'
 
 export const SIDEBAR_VIEW_ENTRY_SEARCH = 'search'
 export const SIDEBAR_VIEW_GRAPHS = 'networkGraphs'

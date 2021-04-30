@@ -1,0 +1,220 @@
+.website {
+  &-navbar {
+    border-bottom: 1px solid $blue-grey-600;
+
+    &-items {
+      width: auto;
+
+      @media screen and (max-width: $lg) {
+        display: none !important;
+      }
+
+      .p-link {
+        background: transparent !important;
+        width: auto;
+        color: $dark-background !important;
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
+
+        &-selected {
+          color: $primary !important;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          color: $primary !important;
+        }
+      }
+    }
+
+    &-sidebar {
+      color: $blue-grey-600 !important;
+      background: $white;
+      border: 1px solid  $blue-grey-600 !important;
+      box-shadow: none;
+
+      svg {
+        color: $blue-grey-600 !important;
+      }
+
+      &:hover {
+        background: $blue-grey-600 !important;
+        color: $white;
+        box-shadow: none;
+
+        svg {
+          color: $white !important;
+        }
+      }
+
+      @media screen and (min-width: $lg + 1) {
+        display: none !important;
+      }
+    }
+  }
+
+  &-sidebar {
+    position: fixed;
+    z-index: 777777;
+    right: 0;
+    top: 70px;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    background: #fefefeee;
+    width: 280px;
+
+    &-link {
+      width: 100%;
+      border-bottom: 1px solid $blue-grey-600;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: $blue-grey-600;
+
+      &:hover {
+        background: $blue-grey-600;
+        color: $white;
+      }
+    }
+  }
+
+  &-jumbo {
+    // background: url('https://demos.creative-tim.com/notus-nextjs/img/pattern_nextjs.png');
+    background: url('../assets/images/pattern_nextjs.png');
+    background-attachment: fixed;
+    background-position: right;
+    background-position-y: top;
+    background-repeat: no-repeat;
+    background-image: cover;
+    background-size: 700px 700px;
+    background-color: #011e41aa;
+    background-blend-mode: color-dodge;
+    color: $white;
+
+    h1 {
+      color: $white;
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: $white;
+    }
+  }
+
+  &-feature {
+    min-height: 300px;
+
+    &-icon {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &-title {
+    &-section {
+      padding-left: 3rem;
+    }
+  }
+
+  &-video {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-bottom: 56.25%;
+    height: 0;
+    position: relative;
+    padding-top: 30px;
+    overflow: hidden;
+
+    iframe,
+    object,
+    embed {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (max-width: $lg) {
+      position: relative;
+      padding-bottom: 47%;
+      padding-top: 30px;
+      margin-right: 20px;
+      height: 0;
+      overflow: hidden;
+    }
+  }
+
+  &-sponsor {
+    max-width: 300px;
+  }
+
+  &-btn {
+    &-primary {
+      border-radius: 30px;
+      width: 200px;
+      padding: 12px 20px;
+    }
+
+    &-secondary {
+      @extend .website-btn-primary;
+
+      background: $white;
+      color: $blue-grey-600;
+      border: 1px solid $white;
+
+      &:hover {
+        background: $blue-grey-600 !important;
+        color: $white !important;
+      }
+    }
+
+    &-link {
+      color: $white;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+
+  &-image {
+    &-main {
+      filter: sepia(100%) hue-rotate(190deg) saturate(600%);
+    }
+  }
+
+  &-footer {
+    height: 18% !important;
+
+    &-items {
+      width: auto;
+
+      .p-link {
+        background: transparent !important;
+        width: auto;
+        color: $dark-background !important;
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
+
+        &-selected {
+          color: $primary !important;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          color: $primary !important;
+        }
+      }
+    }
+  }
+}

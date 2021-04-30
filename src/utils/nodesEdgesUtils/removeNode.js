@@ -41,11 +41,16 @@ const removeNode = ({
     filter: (edge) => edge.from === nodeId || edge.to === nodeId
   })
 
-  if (edges.length > 0) {
-    edges.map((edge) => removeEdge({
+  if (edges.length === 0) return false
+
+  const edgesLength = edges.length - 1
+  for (let index = edgesLength; index >= 0; index--) {
+    const edge = edges[edgesLength - index]
+
+    removeEdge({
       edge,
       updateStoreValue
-    }))
+    })
   }
 }
 

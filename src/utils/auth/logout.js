@@ -23,12 +23,17 @@ const logout = ({
   availableNodes.clear()
   availableEdges.clear()
 
-  Object.keys(initialState).forEach((key) => {
-    if (key === 'availableNodes') return false
-    if (key === 'availableEdges') return false
+  const initialStateKeys = Object.keys(initialState)
+  const initialStateKeysLength = initialStateKeys.length - 1
+
+  for (let index = initialStateKeysLength; index >= 0; index--) {
+    const key = initialStateKeys[initialStateKeysLength - index]
+
+    if (key === 'availableNodes') continue
+    if (key === 'availableEdges') continue
 
     updateStoreValue([key], OPERATION_TYPE_UPDATE, initialState[key])
-  })
+  }
 
   localStorage.removeItem(AUTH_COOKIE)
 

@@ -15,11 +15,15 @@ const checkVisibilityByProperty = ({
 
   let isVisible = true
 
-  for (let index = 0; index < properties.length; index++) {
+  const propertiesLength = properties.length - 1
+
+  for (let index = propertiesLength; index >= 0; index--) {
+    const property = properties[propertiesLength - index]
+
     const {
       filterProperties,
       type
-    } = properties[index]
+    } = property
 
     if (!isVisible) return isVisible
 

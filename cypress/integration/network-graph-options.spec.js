@@ -6,11 +6,13 @@ import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_NETWORK_GRAPH_OPTIONS } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Network graph options', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Network graph options', () => {
@@ -58,7 +60,7 @@ context('Network graph options', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 
@@ -70,16 +72,25 @@ context('Network graph options', () => {
 
       cy.wait(1000)
 
+      cy.get('#main-search').type('link')
+
+      cy.wait('@linkAutocomplete')
+
+      cy.get('.p-autocomplete-item').eq(0).click({ force: true })
+
+      cy.wait('@linkSearch')
+
+      cy.get('#card-visualise-btn-0').click({ force: true })
+
+      cy.wait(1000)
+
       // click to show network graph options
       cy.get('#sidebar-button-network-graph-options').click()
 
-      cy.wait(5000)
-
       cy.location('pathname').should('be.equal', ROUTE_NETWORK_GRAPH_OPTIONS)
 
-      // Check number of nodes and edges at first loading
-      cy.get('.nav-left').should('contain', 'Nodes: 305')
-      cy.get('.nav-left').should('contain', 'Edges: 828')
+      cy.get('.nav-left').should('contain', 'Nodes: 24')
+      cy.get('.nav-left').should('contain', 'Edges: 52')
 
       // switch 4 main options
       cy.get('#user-defined-nodes-checkbox').click()
@@ -124,10 +135,8 @@ context('Network graph options', () => {
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
 
-      cy.wait(5000)
-
-      cy.get('.nav-left').should('contain', 'Nodes: 200')
-      cy.get('.nav-left').should('contain', 'Edges: 352')
+      cy.get('.nav-left').should('contain', 'Nodes: 13')
+      cy.get('.nav-left').should('contain', 'Edges: 19')
 
       // Add nodes filters
       cy.get('#upper-ontology-checkbox').click()
@@ -150,7 +159,7 @@ context('Network graph options', () => {
 
       cy.get('.property-select').find('.p-dropdown-trigger')
         .click()
-      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(18).click({ force: true })
+      cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(4).click({ force: true })
 
       cy.get('.operation-select').find('.p-dropdown-trigger')
         .click()
@@ -172,8 +181,8 @@ context('Network graph options', () => {
       // save and check new nodes and edges count
       cy.get('#network-graph-options-save').click()
 
-      cy.get('.nav-left').should('contain', 'Nodes: 36')
-      cy.get('.nav-left').should('contain', 'Edges: 17')
+      cy.get('.nav-left').should('contain', 'Nodes: 4')
+      cy.get('.nav-left').should('contain', 'Edges: 4')
     })
   })
 })

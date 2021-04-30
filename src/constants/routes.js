@@ -1,7 +1,8 @@
 export const ROUTE_LOGIN = '/login'
 export const ROUTE_PROFILE = '/profile'
 export const ROUTE_FORGOT_PASSWORD = '/forgot-password'
-export const ROUTE_LISTING = '/'
+export const ROUTE_INDEX = '/'
+export const ROUTE_LISTING = '/listing'
 export const ROUTE_SEARCH = '/app'
 export const ROUTE_NETWORK_GRAPHS = '/app/network-graphs'
 export const ROUTE_NETWORK_GRAPH_OPTIONS = '/app/network-graph-options'
@@ -41,6 +42,14 @@ export const DYNAMIC_ROUTES = [
 export const AUTH_ROUTES = [
   ROUTE_LOGIN,
   ROUTE_FORGOT_PASSWORD
+]
+
+export const VALID_ROUTES = [
+  ...DYNAMIC_ROUTES,
+  ...AUTH_ROUTES,
+  ROUTE_LISTING,
+  ROUTE_PROFILE,
+  ROUTE_INDEX
 ]
 
 export const FORM_LINK = 'https://forms.office.com/Pages/ResponsePage.aspx?id=sp9QKa9_i0-3ojL5bsXebMHGED18T-VBrbTcXx4rIrtUNVdHRDQ1SVdQVFg4UDlTR1MwWThITjM4Qy4u'

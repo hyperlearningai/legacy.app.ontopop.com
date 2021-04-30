@@ -23,6 +23,19 @@ import {
 import { ADVANCED_SEARCH_TEMPLATE } from '../constants/search'
 
 const initialState = {
+  showTour: {
+    search: 'true',
+    searchResults: 'true',
+    navigate: 'true',
+    datatable: 'true',
+    elementSelection: 'true',
+    graphOptions: 'true',
+    notes: 'true',
+    synonyms: 'true',
+    editOntology: 'true',
+    export: 'true'
+  },
+
   // view updates
   isSidebarOpen: true,
   sidebarView: SIDEBAR_VIEW_ENTRY_SEARCH,
@@ -243,7 +256,7 @@ const initialState = {
   currentGraph: 'graph-0',
   graphData: {
     'graph-0': {
-      label: 'Main',
+      label: 'entireOntology',
       noDelete: true,
       type: ALGO_TYPE_FULL,
       ...DEFAULT_GRAPH_VISUALISATION_OPTIONS

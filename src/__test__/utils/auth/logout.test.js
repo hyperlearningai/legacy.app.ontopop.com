@@ -39,6 +39,24 @@ describe('logout', () => {
       [
         [
           [
+            'showTour',
+          ],
+          OPERATION_TYPE_UPDATE,
+          {
+            datatable: 'true',
+            editOntology: 'true',
+            elementSelection: 'true',
+            export: 'true',
+            graphOptions: 'true',
+            navigate: 'true',
+            notes: 'true',
+            search: 'true',
+            searchResults: 'true',
+            synonyms: 'true',
+          },
+        ],
+        [
+          [
             'isSidebarOpen'
           ],
           OPERATION_TYPE_UPDATE,
@@ -787,7 +805,7 @@ describe('logout', () => {
           OPERATION_TYPE_UPDATE,
           {
             'graph-0': {
-              label: 'Main',
+              label: 'entireOntology',
               noDelete: true,
               type: 'full',
               isUserDefinedNodeVisible: true,

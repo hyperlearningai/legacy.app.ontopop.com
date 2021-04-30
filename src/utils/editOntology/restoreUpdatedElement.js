@@ -20,19 +20,20 @@ const restoreUpdatedElement = async ({
 
   const nodeBackup = classesFromApiBackup[selectedElement]
 
-  annotationProperties.map((nodeProperty) => {
+  const annotationPropertiesLength = annotationProperties.length - 1
+
+  for (let index = annotationPropertiesLength; index >= 0; index--) {
+    const nodeProperty = annotationProperties[annotationPropertiesLength - index]
+
     if (nodeBackup[nodeProperty]) {
       elementProperties[nodeProperty] = nodeBackup[nodeProperty]
-      return true
+      continue
     }
 
     if (nodeBackup[nodeProperty]) {
       elementProperties[nodeProperty] = nodeBackup[nodeProperty]
-      return true
     }
-
-    return true
-  })
+  }
 
   setSelectedElementProperties(elementProperties)
 }

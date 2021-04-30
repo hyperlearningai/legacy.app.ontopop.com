@@ -97,12 +97,11 @@ describe('setOntologyRestoreEdge', () => {
 
     expect(addEdge).toHaveBeenLastCalledWith({
       updateStoreValue,
-      label: 'Subclass of',
       edge: {
         edgeId: 12,
         from: '1',
         id: '12',
-        label: 'subclass',
+        label: 'Subclass of',
         rdfsLabel: 'Subclass of',
         role: 'Subclass of',
         to: '147',
@@ -116,7 +115,7 @@ describe('setOntologyRestoreEdge', () => {
           edgeId: 12,
           from: '1',
           id: '12',
-          label: 'subclass',
+          label: 'Subclass of',
           rdfsLabel: 'Subclass of',
           role: 'Subclass of',
           to: '147',

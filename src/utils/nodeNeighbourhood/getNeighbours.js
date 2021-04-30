@@ -23,11 +23,18 @@ const loopThroughNodes = ({
 }) => {
   const nextIdsLoop = []
 
-  nextIds.map((nodeId) => {
+  const nextIdsLength = nextIds.length - 1
+
+  for (let nodeIndex = nextIdsLength; nodeIndex >= 0; nodeIndex--) {
+    const nodeId = nextIds[nextIdsLength - nodeIndex]
     const listOfTriples = totalEdgesPerNode[nodeId]
 
     if (listOfTriples && listOfTriples.length > 0) {
-      listOfTriples?.map((triple) => {
+      const listOfTriplesLength = listOfTriples.length - 1
+
+      for (let index = listOfTriplesLength; index >= 0; index--) {
+        const triple = listOfTriples[listOfTriplesLength - index]
+
         const {
           from,
           to
@@ -43,13 +50,9 @@ const loopThroughNodes = ({
             nextIdsLoop.push(newNode)
           }
         }
-
-        return true
-      })
+      }
     }
-
-    return true
-  })
+  }
 
   const nextRound = round + 1
 

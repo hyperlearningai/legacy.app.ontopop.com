@@ -6,11 +6,13 @@ import getStyling from '../fixtures/getStyling'
 import linkAutocomplete from '../fixtures/linkAutocomplete'
 import linkSearch from '../fixtures/linkSearch'
 import { ROUTE_ELEMENTS_FILTER } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Elements filter', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Elements filter', () => {
@@ -58,7 +60,7 @@ context('Elements filter', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 
@@ -91,7 +93,7 @@ context('Elements filter', () => {
 
       // first AND filter
       cy.get('#nodes-filter-property-0').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('Concept Name')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
       cy.get('#nodes-filter-value-0').type('loc')
 
@@ -99,7 +101,7 @@ context('Elements filter', () => {
 
       // second AND filter
       cy.get('#nodes-filter-property-1').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('Concept Name')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').eq(0).click({ force: true })
       cy.get('#nodes-filter-value-1').type('net')
 
@@ -140,7 +142,7 @@ context('Elements filter', () => {
 
       // first AND filter
       cy.get('#edges-filter-property-0').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('Concept Name')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').click({ force: true })
       cy.get('#edges-filter-value-0').type('loc')
 
@@ -148,7 +150,7 @@ context('Elements filter', () => {
 
       // second AND filter
       cy.get('#edges-filter-property-1').find('.p-dropdown-trigger').click({ force: true })
-      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('rdfs')
+      cy.get('.p-dropdown-filter-container').find('.p-dropdown-filter').type('Concept Name')
       cy.get('.p-dropdown-items-wrapper').find('.p-dropdown-item').click({ force: true })
       cy.get('#edges-filter-value-1').type('in')
 

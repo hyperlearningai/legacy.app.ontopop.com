@@ -63,19 +63,23 @@ const setUserDefinedNodesStyles = () => {
   }))
 
   // update node style
-  availableNodes.map((node) => {
+  const availableNodesLength = availableNodes.length - 1
+
+  for (let index = availableNodesLength; index >= 0; index--) {
+    const node = availableNodes[availableNodesLength - index]
+
     const nodeWithoutCoordinates = JSON.parse(JSON.stringify(node))
     delete nodeWithoutCoordinates.x
     delete nodeWithoutCoordinates.y
 
-    return updateNodes({
+    updateNodes({
       ...nodeWithoutCoordinates,
       ...nodeStyle,
       label: classesFromApi[node.id][stylingNodeCaptionProperty]
         ? classesFromApi[node.id][stylingNodeCaptionProperty].replace(/ /g, '\n')
         : ''
     })
-  })
+  }
 }
 
 export default setUserDefinedNodesStyles

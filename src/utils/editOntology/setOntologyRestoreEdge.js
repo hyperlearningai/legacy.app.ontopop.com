@@ -35,21 +35,27 @@ const setOntologyRestoreEdge = async ({
   // restore connections from graph
   if (selectedElement.length === 0) return false
 
-  for (let index = 0; index < selectedElement.length; index++) {
-    const oldId = selectedElement[index]
+  const selectedElementLength = selectedElement.length - 1
+
+  for (let index = selectedElementLength; index >= 0; index--) {
+    const oldId = selectedElement[selectedElementLength - index]
 
     const edge = objectPropertiesFromApiBackup[oldId] ? JSON.parse(JSON.stringify(objectPropertiesFromApiBackup[oldId])) : undefined
 
     if (!edge) return false
 
-    edge.label = 'subclass'
+    const body = {
+      edgeLabel: edge.rdfsLabel,
+      sourceVertexId: parseInt(edge.from),
+      targetVertexId: parseInt(edge.to),
+    }
 
     const response = await httpCall({
       updateStoreValue,
       withAuth: true,
       route: API_ENDPOINT_GRAPH_EDGES_CREATE,
       method: 'post',
-      body: edge,
+      body,
       t
     })
 
@@ -118,7 +124,6 @@ const setOntologyRestoreEdge = async ({
       if (isVisible) {
         addEdge({
           edge,
-          label,
           updateStoreValue,
         })
       }

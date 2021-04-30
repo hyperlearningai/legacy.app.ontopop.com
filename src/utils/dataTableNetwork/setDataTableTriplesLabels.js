@@ -17,7 +17,11 @@ const setDataTableTriplesLabels = ({
 
   if (dataTableTriples.length === 0) return false
 
-  dataTableTriples.forEach((triple) => {
+  const dataTableTriplesLength = dataTableTriples.length - 1
+
+  for (let index = dataTableTriplesLength; index >= 0; index--) {
+    const triple = dataTableTriples[dataTableTriplesLength - index]
+
     const {
       from,
       edge,
@@ -44,7 +48,7 @@ const setDataTableTriplesLabels = ({
       edgeLabel,
       toLabel
     })
-  })
+  }
 }
 
 export default setDataTableTriplesLabels

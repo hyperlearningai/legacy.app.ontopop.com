@@ -1,7 +1,9 @@
 import { AUTH_COOKIE } from '../../constants/auth'
 import {
   AUTH_ROUTES,
-  ROUTE_LISTING
+  ROUTE_INDEX,
+  ROUTE_LISTING,
+  VALID_ROUTES
 } from '../../constants/routes'
 import { OPERATION_TYPE_UPDATE } from '../../constants/store'
 import { SIDEBAR_VIEW_ENTRY_SEARCH } from '../../constants/views'
@@ -16,11 +18,21 @@ const checkTokenValidity = ({
     sidebarView
   } = store.getState()
 
+  const { pathname } = router
+
+  // if homepage, do nothing
+  const isIndex = pathname === ROUTE_INDEX
+  if (isIndex) return false
+
+  // redirect to homepage if not valid route
+  const isNotValid = !VALID_ROUTES.includes(pathname)
+  if (isNotValid) return router.push(ROUTE_LISTING)
+
   // check if local storage with cookie
   const authCookie = localStorage.getItem(AUTH_COOKIE)
 
   if (!authCookie) {
-    const isBackToLogin = !AUTH_ROUTES.includes(router.pathname)
+    const isBackToLogin = !AUTH_ROUTES.includes(pathname)
 
     if (isBackToLogin) {
       return logout({
@@ -42,7 +54,7 @@ const checkTokenValidity = ({
     updateStoreValue(['sidebarView'], OPERATION_TYPE_UPDATE, SIDEBAR_VIEW_ENTRY_SEARCH)
   }
 
-  if (router.pathname !== ROUTE_LISTING) {
+  if (pathname !== ROUTE_LISTING) {
     router.push(ROUTE_LISTING)
   }
 }

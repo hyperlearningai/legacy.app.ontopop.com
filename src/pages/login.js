@@ -13,6 +13,8 @@ import actions from '../store/actions'
 import checkTokenValidity from '../utils/auth/checkTokenValidity'
 import logo from '../assets/images/logo.png'
 import { APP_NAME } from '../constants/app'
+import { ROUTE_LISTING } from '../constants/routes'
+import { OPERATION_TYPE_OBJECT_ADD } from '../constants/store'
 
 const Login = ({
   updateStoreValue,
@@ -35,7 +37,7 @@ const Login = ({
     <>
       <HeadTags
         title=""
-        description={t('ontologyVisualisationDescription')}
+        description={t('ontopopDescription')}
       />
 
       <main className="auth">
@@ -109,49 +111,51 @@ const Login = ({
             </div>
 
             {
-            showError && (
-              <div className="auth-error">
-                {t('invalidEmailPassword')}
-              </div>
-            )
-          }
+              showError && (
+                <div className="auth-error">
+                  {t('invalidEmailPassword')}
+                </div>
+              )
+            }
 
             {
-            activeLoaders > 0 ? (
-              <div className="auth-loader">
-                <ProgressSpinner
-                  className="spinner"
-                  strokeWidth="4"
-                />
-              </div>
-            ) : (
-              <>
-                <Button
-                  aria-label="auth-login-button"
-                  className="auth-button m-t-20"
-                  label={t('login')}
-                  id="auth-login-button"
-                  onClick={() => signIn({
-                    router,
-                    updateStoreValue,
-                    email,
-                    password,
-                    setShowError,
-                    t
-                  })}
-                />
+              activeLoaders > 0 ? (
+                <div className="auth-loader">
+                  <ProgressSpinner
+                    className="spinner"
+                    strokeWidth="4"
+                  />
+                </div>
+              ) : (
+                <>
+                  <Button
+                    aria-label={t('login')}
+                    className="auth-button m-t-20"
+                    label={t('login')}
+                    id="auth-login-button"
+                    onClick={() => signIn({
+                      router,
+                      updateStoreValue,
+                      email,
+                      password,
+                      setShowError,
+                      t
+                    })}
+                  />
 
-                {/* <Button
-                  className="auth-button m-t-20 p-button-secondary"
-                  label={t('continueGuest')}
-                  onClick={() => {
-                    updateStoreValue('user', 'isGuest', true)
-                    router.push(ROUTE_LISTING)
-                  }}
-                /> */}
-              </>
-            )
-          }
+                  <Button
+                    className="auth-button m-t-20 p-button-secondary"
+                    aria-label={t('continueGuest')}
+                    label={t('continueGuest')}
+                    id="guest-login-button"
+                    onClick={() => {
+                      updateStoreValue(['user'], OPERATION_TYPE_OBJECT_ADD, { isGuest: true })
+                      router.push(ROUTE_LISTING)
+                    }}
+                  />
+                </>
+              )
+            }
             <input
               name="submit"
               className="hidden"

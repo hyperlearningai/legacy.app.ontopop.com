@@ -3,8 +3,7 @@
 exports[`HeadTags should match snapshot  1`] = `
 <Head>
   <title>
-    Highways England Ontology Visualisation
-     - Test
+    OntoPop - Test
   </title>
   <meta
     content="Another test"

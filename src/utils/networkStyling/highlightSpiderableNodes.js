@@ -18,32 +18,35 @@ const highlightSpiderableNodes = () => {
 
   const availableNodesIDs = getNodeIds()
 
-  if (availableNodesIDs.length > 0) {
-    availableNodesIDs.map((nodeId) => {
-      const currentNodeConnections = nodesEdges[nodeId]?.length
-      const totalNodesEdges = totalEdgesPerNode[nodeId]?.length
+  if (availableNodesIDs.length === 0) return false
+  const availableNodesIDsLength = availableNodesIDs.length - 1
 
-      const node = getNode(nodeId)
+  for (let index = availableNodesIDsLength; index >= 0; index--) {
+    const nodeId = availableNodesIDs[availableNodesIDsLength - index]
 
-      const { userDefined } = node
+    const currentNodeConnections = nodesEdges[nodeId]?.length
+    const totalNodesEdges = totalEdgesPerNode[nodeId]?.length
 
-      const {
-        stylingNodeBorderColor,
-        stylingNodeBorder
-      } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+    const node = getNode(nodeId)
 
-      const isSpiderable = currentNodeConnections < totalNodesEdges
+    const { userDefined } = node
 
-      return updateNodes({
-        id: nodeId,
-        color: {
-          border: isSpiderable
-            ? SPIDERABLE_NODE_BORDER_COLOR : stylingNodeBorderColor
-        },
-        borderWidth: isSpiderable
-          ? SPIDERABLE_NODE_BORDER_WIDTH
-          : stylingNodeBorder
-      })
+    const {
+      stylingNodeBorderColor,
+      stylingNodeBorder
+    } = userDefined ? userDefinedNodeStyling : globalNodeStyling
+
+    const isSpiderable = currentNodeConnections < totalNodesEdges
+
+    updateNodes({
+      id: nodeId,
+      color: {
+        border: isSpiderable
+          ? SPIDERABLE_NODE_BORDER_COLOR : stylingNodeBorderColor
+      },
+      borderWidth: isSpiderable
+        ? SPIDERABLE_NODE_BORDER_WIDTH
+        : stylingNodeBorder
     })
   }
 }

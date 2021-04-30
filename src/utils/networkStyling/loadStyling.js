@@ -20,17 +20,15 @@ const loadStyling = async ({
 
   const state = store.getState()
 
-  if (savedStyle) {
-    Object.keys(savedStyle).map((option) => {
-      const optionValue = Array.isArray(state[option])
-        ? [...state[option], ...savedStyle[option]]
-        : { ...state[option], ...savedStyle[option] }
+  if (!savedStyle) return false
 
-      return updateStoreValue([option], OPERATION_TYPE_UPDATE, optionValue)
-    })
-  }
+  Object.keys(savedStyle).map((option) => {
+    const optionValue = Array.isArray(state[option])
+      ? [...state[option], ...savedStyle[option]]
+      : { ...state[option], ...savedStyle[option] }
 
-  return true
+    return updateStoreValue([option], OPERATION_TYPE_UPDATE, optionValue)
+  })
 }
 
 export default loadStyling

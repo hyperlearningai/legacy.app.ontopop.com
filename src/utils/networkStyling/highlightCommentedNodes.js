@@ -2,7 +2,6 @@ import { uniq } from 'lodash'
 import { COMMENTED_NODE_BORDER_COLOR, COMMENTED_NODE_BORDER_WIDTH } from '../../constants/graph'
 import store from '../../store'
 import getNode from '../nodesEdgesUtils/getNode'
-import getNodeIds from '../nodesEdgesUtils/getNodeIds'
 import updateNodes from '../nodesEdgesUtils/updateNodes'
 
 /**
@@ -20,12 +19,15 @@ const highlightCommentedNodes = () => {
 
   const nodesNotesIds = uniq(nodesNotes.map((note) => note.nodeId.toString()))
 
-  const availableNodesIds = getNodeIds()
+  if (nodesNotesIds.length === 0) return false
 
-  if (availableNodesIds.length === 0) return false
+  const nodesNotesIdsLength = nodesNotesIds.length - 1
 
-  availableNodesIds.map((nodeId) => {
+  for (let index = nodesNotesIdsLength; index >= 0; index--) {
+    const nodeId = nodesNotesIds[nodesNotesIdsLength - index]
     const node = getNode(nodeId)
+
+    if (node === null) continue
 
     const { userDefined } = node
 
@@ -36,7 +38,9 @@ const highlightCommentedNodes = () => {
 
     const isCommented = nodesNotesIds.includes(node.id)
 
-    return updateNodes({
+    if (!isCommented) continue
+
+    updateNodes({
       id: nodeId,
       color: {
         border: isCommented
@@ -46,7 +50,7 @@ const highlightCommentedNodes = () => {
         ? COMMENTED_NODE_BORDER_WIDTH
         : stylingNodeBorder
     })
-  })
+  }
 }
 
 export default highlightCommentedNodes

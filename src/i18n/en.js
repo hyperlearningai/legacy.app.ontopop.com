@@ -1,8 +1,5 @@
 /* eslint max-len:0 */
 export default {
-  // titles & descriptions
-  ontologyVisualisationDescription: 'Highways England ontology visualisation web app',
-
   // header
   signOut: 'Sign out',
   alphaVersion: 'Alpha version',
@@ -77,7 +74,7 @@ export default {
   node: 'Node',
   noRelationships: 'No relationships found',
   selectNodeFromGraph: 'Select node from graph',
-  selectNodeFromGraphOrFromList: 'Select node from graph or pick from list',
+  selectNodeFromGraphOrFromList: 'Select a node from the graph or pick from the dropdown list below',
   selectNode: 'Select node',
 
   // structured search
@@ -115,7 +112,7 @@ export default {
 
   // edge selection
   selectEdgeFromGraph: 'Select edge from graph',
-  selectEdgeFromGraphOrFromList: 'Select edge from graph or pick from list',
+  selectEdgeFromGraphOrFromList: 'Select an edge from the graph or pick from the dropdown list below',
   edge: 'Edge',
   expand: 'Expand',
 
@@ -350,10 +347,11 @@ export default {
   // info
   id: 'ID',
   label: 'Label',
-  rdfAbout: 'rdfAbout',
-  skosComment: 'skosComment',
-  skosDefinition: 'skosDefinition',
-  skosExample: 'skosExample',
+  rdfAbout: 'Concept Unique Identifier',
+  rdfsLabel: 'Concept Name',
+  skosDefinition: 'Concept Description',
+  skosComment: 'Concept Comments',
+  skosExample: 'Concept Example',
   null: 'Null',
   deleteNode: 'Delete node',
   selectedNodes: 'Selected nodes',
@@ -373,7 +371,7 @@ export default {
   // entry search
   advancedSearchOptions: 'Advanced search options',
   entrySearch: 'Search',
-  searchGraph: 'Search graph',
+  searchGraph: 'Search ontology',
   typeInSidebar: 'Type on the search field in the sidebar',
   setAdvancedOptions: 'You can also set filters and advanced options',
   resultsType: 'Results\' types to show',
@@ -497,6 +495,7 @@ export default {
   apply: 'Apply',
   showOrphanNodes: 'Show orphan nodes',
   showUserDefinedNodes: 'Show user-defined nodes',
+  entireOntology: 'Entire ontology',
 
   // listing page
   name: 'Name',
@@ -525,5 +524,87 @@ export default {
   yesY: 'Y',
   noN: 'N',
   acceptAll: 'Accept all',
-  chooseYourPreference: 'Choose your preference'
+  chooseYourPreference: 'Choose your preference',
+
+  // intro
+  next: 'Next',
+  introSearchStart: 'Start your search here. Try: road',
+  introSearchResults: 'This allows you to visualise this entity',
+  introNavigateButtons: 'Use these buttons to navigate around the visualisation.',
+  introNavigateZoom: 'Use these buttons to zoom in and out of the visualisation or to choose the fullscreen option',
+  introNavigateDatatable: 'This allows you to see data in a datable',
+  introDatatableSection: 'This allows you to navigate to a different section',
+  introElementSelectionType: 'Select how you want to view the visualisation. Either by node or edge.',
+  introElementSelectionElement: 'This allows you to choose element',
+  introElementSelectionProperties: 'Choose which properties you want to view',
+  introGraphOptionsPhysics: 'This allows you to change physics',
+  introGraphOptionsPositioning: 'This allows you to change positioning',
+  introGraphOptionsRepulsion: 'This allows you to change repulsion',
+  introNotesType: 'Where would you like to add a note? Choose from graph, node, or edge',
+  introNotesElement: 'Choose an option from the dropdown that you want to add a note to.',
+  introSynonymsElement: 'Select which element you want to add a synonym to.',
+  introSynonymsSynonyms: 'This allows you to manage synonyms',
+  introEditOntologyOperation: 'This allows you to choose operation',
+  introEditOntologyProperties: 'This allows you to manage properties',
+  introExportFilename: 'Start by choosing filename',
+  introExportImage: 'This allows you to export as image',
+  introExportData: 'Use this option to export your data in any of the three formats.',
+  introUseButtonsToNavigate: 'Use buttons to navigate',
+  introSeeAsDatatable: 'Change view to datatable',
+
+  // react joyride
+  back: 'Back',
+  skip: 'Skip',
+  last: 'Last',
+
+  // website
+  about: 'About',
+  whyUseOntopop: 'Why use OntoPop',
+  learn: 'Learn',
+  howToUse: 'How to use OntoPop',
+  features: 'Features',
+  app: 'App',
+  contribute: 'Contribute',
+  contacts: 'Contact',
+  cookies: 'Cookies',
+  allRightsReserved: 'All rights reserved',
+  ontopopDescription: 'OntoPop is an open source framework enabling the visualisation, search, exploration and management of ontologies.',
+  findOutMore: 'Find out more',
+
+  // website features
+  whyUsePart1: 'OntoPop was created to make ontologies more accessible to a broader range of stakeholders beyond the traditional users of ontologies such as information and data architects.',
+  whyUsePart2: 'By providing an intuitive and easy-to-use visual interface, our aim is to make ontologies less abstract and more applicable to real-world use-cases.',
+  ontoVisAndExploration: 'Ontology visualisation and exploration',
+  freeTextSearchQueryBuilder: 'Free-text search and structured query builders',
+  ontoEditingManagement: 'Ontology editing and management',
+  vocabulary: 'Vocabulary',
+  vocabularyManagement: 'Vocabulary management including synonyms',
+  exportCollaboration: 'Export and collaboration',
+  visualisation: 'Visualisation',
+  networkVisualisationExploration: 'Network-based visualisation and exploration',
+  management: 'Management',
+
+  // website learn
+  followingVideo: 'The following video provides a 3 minute tour of the core features available in OntoPop.',
+  toLearnMore: 'To learn more about OntoPop, please visit the OntoPop Wiki.',
+  ontopopWiki: 'OntoPop Wiki',
+
+  // website app
+  ontopopApp: 'OntoPop App',
+  communityHostedApp: 'A community-hosted online instance of OntoPop pre-loaded with publicly-available ontologies is available for free and accessible via the button below.',
+  openOntopop: 'Open OntoPop',
+
+  // website contribute
+  howToContribute: 'How to contribute to OntoPop',
+  openSourceFramework1: 'OntoPop is a community-driven open source framework under active development and released under the',
+  openSourceFramework2: 'As such, we need your help to build this framework into a tool synonymous with ontologies and information management more widely.',
+  openSourceFramework3: 'If you would like to contribute, the best way to get started is by visiting the OntoPop Wiki.',
+  openSourceFramework4: 'Alternatively, if you would like to take a deep-dive into the source code, OntoPop’s public code repositories are available on GitHub.',
+  ontopopRepo: 'OntoPop Repo',
+  mainContributors: 'Main Contributors',
+  primarySponsor: 'Primary Sponsor',
+
+  // website contacts
+  contactUs: 'Contact us',
+  anyQuestions: 'Do you have any questions',
 }

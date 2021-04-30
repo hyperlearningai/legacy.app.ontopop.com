@@ -72,6 +72,7 @@ const getGraphData = async ({
 
   setAnnotationProperties({
     updateStoreValue,
+    t,
     nodes: nodesJson
   })
 

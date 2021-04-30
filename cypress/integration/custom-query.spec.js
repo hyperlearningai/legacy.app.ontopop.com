@@ -5,11 +5,13 @@ import graphResponse from '../fixtures/graphResponse'
 import customQueryResponse from '../fixtures/customQueryResponse'
 import getStyling from '../fixtures/getStyling'
 import { ROUTE_CUSTOM_QUERY } from '../../src/constants/routes'
+import showTourLs from '../fixtures/showTourLs'
 
 context('Custom query', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
     cy.get('#accept-all-btn').click()
+    window.localStorage.setItem('showTour', showTourLs)
   })
 
   describe('Custom query', () => {
@@ -52,7 +54,7 @@ context('Custom query', () => {
       cy.get('#email').type('valid@email.com')
       cy.get('#password').type('password')
 
-      cy.get('.auth-button').click()
+      cy.get('#auth-login-button').click()
 
       cy.wait('@postLogin')
 

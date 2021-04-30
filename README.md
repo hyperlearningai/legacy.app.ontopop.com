@@ -1,4 +1,23 @@
-# Ontology Visualisation
+# Ontopop UI Web App
+
+<br />
+<p align="center">
+  <a href="https://ontopop.com" target="_blank">
+    <img src="src/assets/images/logo.png" alt="OntoPop" width="500" height="150">
+  </a>
+  <h3 align="center">OntoPop</h3>
+  <p align="center">
+    Open source framework enabling the visualisation, search, exploration and management of ontologies.
+    <br/>
+    <a href="https://www.ontopop.com" target="_blank"><strong>OntoPop Website</strong></a>
+    <br/>
+    <br/>
+    <a href="https://www.ontopop.com" target="_blank"">Website</a>
+    ·
+    <a href="https://www.ontopop.com" target="_blank"">Documentation</a>
+  </p>
+</p>
+<br/>
 
 ## Build status
 
@@ -11,12 +30,12 @@
 
 ## Introduction
 
-Ontology visualisation web app based on NextJs/React/Redux-zero with internationalisation i18n support.
+OntoPop is an open source framework enabling the visualisation, search, exploration and management of ontologies.
 
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/download/)
-- .env file (Request it by asking the team leader or check the documentation)
+- .env file (Copy it from .env-sample or request it from project leader)
 
 ## Installation
 
@@ -38,10 +57,8 @@ If having issues with starting the application:
 
 ## Run API server
 
-Download the API server from https://github.com/hyperlearningai/ontology-framework/releases/tag/v0.0.1-alpha
-Unzip and from the root folder run
+To setup a local server, please follow the [OntoPop Services installation guide](https://github.com/hyperlearningai/ontology-framework/tree/develop/ontology-services)
 
-`./bin/start-ontology-knowledge-graph-api.sh ` # opens on http://localhost:8080
 
 ## Run dev server
 

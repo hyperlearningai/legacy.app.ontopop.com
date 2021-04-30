@@ -50,14 +50,6 @@ const EditOntologyAddNode = ({
 
       <Button
         className="sidebar-button-primary go-button m-t-50"
-        disabled={operation === 'add'
-          && (
-            !selectedElementProperties[RDF_ABOUT_PROPERTY]
-            || selectedElementProperties[RDF_ABOUT_PROPERTY] === ''
-            || (
-              type === 'node' && classesFromApi[selectedElementProperties[RDF_ABOUT_PROPERTY]]
-            )
-          )}
         onClick={() => {
           setOntology({
             operation,
