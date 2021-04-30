@@ -41,18 +41,18 @@ const Navbar = ({
       <div className="nav-left">
         {
           (sidebarView === SIDEBAR_VIEW_ENTRY_SEARCH) ? (
-            <span>
+            <div className="flex">
               <BsSearch className="nodes-icon node m-r-5" />
               {`${t('searchResults')}: ${entrySearchResultRange} ${t('of')} ${totalSearchCount}`}
-            </span>
+            </div>
           ) : (
-            <span>
+            <div className="flex">
               <BsFillCircleFill className="nodes-icon node m-r-5" />
               {`${t('nodes')}: ${availableNodesCount}`}
               <span className="m-l-5 m-r-5">|</span>
               <BsArrowUpRight className="nodes-icon edge" />
               {`${t('edges')}: ${availableEdgesCount}`}
-            </span>
+            </div>
           )
         }
       </div>
