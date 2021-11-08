@@ -9,12 +9,12 @@
   <p align="center">
     Open source framework enabling the visualisation, search, exploration and management of ontologies.
     <br/>
-    <a href="https://www.ontopop.com" target="_blank"><strong>OntoPop Website</strong></a>
+    <a href="https://ontopop.com" target="_blank"><strong>OntoPop Website</strong></a>
     <br/>
     <br/>
-    <a href="https://www.ontopop.com" target="_blank"">Website</a>
+    <a href="https://ontopop.com" target="_blank"">Website</a>
     ·
-    <a href="https://www.ontopop.com" target="_blank"">Documentation</a>
+    <a href="https://docs.ontopop.com" target="_blank"">Documentation</a>
   </p>
 </p>
 <br/>
