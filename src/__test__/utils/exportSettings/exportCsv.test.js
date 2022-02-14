@@ -6,7 +6,6 @@ import en from '../../../i18n/en'
 import showNotification from '../../../utils/notifications/showNotification'
 
 const fileMock = jest.fn()
-const generateAsyncMock = jest.fn()
 
 jest.mock('../../../utils/notifications/showNotification')
 jest.mock('jszip')
@@ -20,9 +19,11 @@ describe('exportCsv', () => {
     JSZip.mockImplementation(() => (
       {
         file: fileMock,
-        generateAsync: () => Promise.resolve((blob) => generateAsyncMock(blob))
+        generateAsync: () => Promise.resolve('fakeblob')
       }
     ))
+    const createObjectURLStub = jest.fn()
+    window.URL = { createObjectURL: createObjectURLStub }
 
     const exportFileName = 'file'
     const t = (id) => en[id]
@@ -33,6 +34,7 @@ describe('exportCsv', () => {
     })
 
     expect(fileMock).toHaveBeenCalledTimes(2)
+    expect(createObjectURLStub).toHaveBeenCalledWith('fakeblob')
     expect(showNotification).toHaveBeenCalledWith(
       {
         message: 'File can now be downloaded, check your browser!',

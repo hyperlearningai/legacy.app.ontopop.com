@@ -20,6 +20,6 @@ describe('downloadBlob', () => {
       fileName
     })
 
-    expect(createObjectURLStub).toHaveBeenCalled()
+    expect(createObjectURLStub).toHaveBeenCalledWith(blob)
   })
 })
